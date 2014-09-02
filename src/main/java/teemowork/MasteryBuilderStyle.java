@@ -100,9 +100,9 @@ class MasteryBuilderStyle {
             position.relative();
             cursor.pointer();
 
-            while (with(Unavailable.class)) {
+            with(Unavailable.class, () -> {
                 cursor.defaults();
-            }
+            });
         }
     }
 
@@ -119,13 +119,13 @@ class MasteryBuilderStyle {
             box.size(IconSize, px);
             border.color(AvailableColor).width(IconBorderSize, px).solid().radius(Corner, px);
 
-            while (insideOf(Unavailable.class)) {
+            insideOf(Unavailable.class, () -> {
                 border.color(AvailableColor.grayscale());
-            }
+            });
 
-            while (insideOf(Completed.class)) {
+            insideOf(Completed.class, () -> {
                 border.color(CompleteColor);
-            }
+            });
         }
     }
 
@@ -141,13 +141,13 @@ class MasteryBuilderStyle {
             font.color(AvailableColor).size(11, px);
             text.outline(1).align.right();
 
-            while (insideOf(Unavailable.class)) {
+            insideOf(Unavailable.class, () -> {
                 display.none();
-            }
+            });
 
-            while (insideOf(Completed.class)) {
+            insideOf(Completed.class, () -> {
                 font.color(CompleteColor);
-            }
+            });
         }
     }
 
@@ -215,15 +215,15 @@ class MasteryBuilderStyle {
 
             Snippet.createBottomBubble(6);
 
-            while (insideOf(Unavailable.class)) {
+            insideOf(Unavailable.class, () -> {
                 font.color(AvailableColor.grayscale());
-            }
+            });
 
-            while (siblingHover()) {
+            siblingHover(() -> {
                 box.opacity(1);
                 visibility.visible();
                 position.bottom(IconSize + 12, px);
-            }
+            });
         }
     }
 
@@ -242,9 +242,9 @@ class MasteryBuilderStyle {
         {
             text.unselectable();
 
-            while (inBackOf(Unavailable.class)) {
+            inBackOf(Unavailable.class, () -> {
                 font.color(hsl(0, 70, 70));
-            }
+            });
         }
     }
 
@@ -295,15 +295,15 @@ class MasteryBuilderStyle {
 
             transition.property("background-color").timing.easeOut().duration(0.2, s);
 
-            while (hover()) {
+            hover(() -> {
                 background.color(back.lighten(6));
-            }
+            });
 
-            while (active()) {
+            active(() -> {
                 background.color(back.lighten(4)).imageNone();
                 position.relative().top(1, px);
                 box.shadowInset(0, px, 1, px, 1, px, Color.Black.opacify(-0.7));
-            }
+            });
         }
     }
 
@@ -334,12 +334,12 @@ class MasteryBuilderStyle {
             background.color(White);
             transition.property.all().duration(0.2, s).timing.linear();
 
-            while (focus()) {
+            focus(() -> {
                 border.color(rgba(82, 168, 236, 0.8));
                 outline.none();
                 box.shadowInset(0, px, 1, px, 1, px, rgba(0, 0, 0, 0.075))
                         .shadow(0, px, 0, px, 8, px, rgba(82, 168, 236, 0.6));
-            }
+            });
         }
     }
 }

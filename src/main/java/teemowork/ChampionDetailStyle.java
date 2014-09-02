@@ -129,9 +129,9 @@ class ChampionDetailStyle {
             border.left.solid().color(Black).width(1, px);
             background.image(linear(rgba(240, 192, 28, 0.5), rgba(160, 123, 1, 0.5)));
 
-            while (firstChild()) {
+            firstChild(() -> {
                 border.none();
-            }
+            });
         }
     }
 
@@ -272,13 +272,13 @@ class ChampionDetailStyle {
         {
             font.color(25, 111, 136);
 
-            while (inBackOf(NormalValue.class)) {
+            inBackOf(NormalValue.class, () -> {
                 margin.left(0.4, em);
-            }
+            });
 
-            while (inBackOf(Amplifier.class)) {
+            inBackOf(Amplifier.class, () -> {
                 margin.left(0.4, em);
-            }
+            });
         }
     }
 

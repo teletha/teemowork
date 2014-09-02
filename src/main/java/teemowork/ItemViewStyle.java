@@ -66,7 +66,8 @@ public class ItemViewStyle {
     static class Materials extends CSS {
 
         {
-            display.blockLine();
+            display.flex();
+            flexWrap.wrap();
             box.width(IconSize, px);
         }
     }
@@ -83,9 +84,9 @@ public class ItemViewStyle {
             border.radius(3, px).color(rgb(50, 50, 50)).width(1, px).solid();
             transition.property.all().timing.easeInOut().duration(0.3, s);
 
-            while (hover()) {
+            hover(() -> {
                 box.opacity(1);
-            }
+            });
         }
     }
 
