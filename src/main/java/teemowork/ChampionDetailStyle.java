@@ -77,7 +77,7 @@ class ChampionDetailStyle {
     class SkillTable extends CSS {
 
         {
-            display.tableCell();
+            display.block();
         }
     }
 
@@ -87,7 +87,7 @@ class ChampionDetailStyle {
     class Container extends CSS {
 
         {
-            display.tableCell();
+            display.flex();
         }
     }
 
@@ -97,7 +97,7 @@ class ChampionDetailStyle {
     class SkillRow extends CSS {
 
         {
-            display.block();
+            display.flex();
             margin.bottom(1, em);
         }
     }
@@ -121,8 +121,8 @@ class ChampionDetailStyle {
     class LevelBox extends CSS {
 
         {
-            display.table();
-            box.width(SkillIconSize, px).height(LevelBoxHeight, px);
+            display.flex();
+            box.width(SkillIconSize, px).height(LevelBoxHeight + 2, px);
             border.width(1, px).solid().color(Black);
             margin.top(2, px).bottom(5, px);
         }
@@ -134,7 +134,7 @@ class ChampionDetailStyle {
     class LevelMark extends CSS {
 
         {
-            display.tableCell();
+            display.block();
             box.width(SkillIconSize / 5, px).height(LevelBoxHeight, px);
             border.left.solid().color(Black).width(1, px);
             background.image(linear(rgba(240, 192, 28, 0.5), rgba(160, 123, 1, 0.5)));
@@ -171,21 +171,9 @@ class ChampionDetailStyle {
     class IconBox extends CSS {
 
         {
-            display.tableCell();
-            padding.right(SkillIconSize / 5, px);
+            margin.right(SkillIconSize / 5, px);
             cursor.pointer();
-        }
-    }
-
-    /**
-     * @version 2013/02/02 11:27:13
-     */
-    class DescriptionBox extends CSS {
-
-        {
-            display.tableCell();
-            text.verticalAlign.top();
-            box.height(60, px);
+            flexShrink.size(0);
         }
     }
 
@@ -340,9 +328,9 @@ class ChampionDetailStyle {
     class StatusViewBox extends CSS {
 
         {
-            display.tableCell();
+            display.block();
             box.width(13, em);
-            text.verticalAlign.top();
+            flexShrink.size(0);
         }
     }
 
@@ -352,7 +340,7 @@ class ChampionDetailStyle {
     class StatusBox extends CSS {
 
         {
-            display.block();
+            display.flex();
             margin.bottom(4, px);
         }
     }
@@ -363,7 +351,6 @@ class ChampionDetailStyle {
     class StatusName extends CSS {
 
         {
-            display.tableCell();
             box.width(5, em);
         }
     }
@@ -374,7 +361,6 @@ class ChampionDetailStyle {
     class StatusValue extends CSS {
 
         {
-            display.tableCell();
             box.width(50, px);
         }
     }

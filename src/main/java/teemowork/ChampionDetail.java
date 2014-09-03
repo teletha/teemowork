@@ -32,7 +32,6 @@ import teemowork.ChampionDetailStyle.ChampionLevelIndicator;
 import teemowork.ChampionDetailStyle.ComputedValue;
 import teemowork.ChampionDetailStyle.Container;
 import teemowork.ChampionDetailStyle.Current;
-import teemowork.ChampionDetailStyle.DescriptionBox;
 import teemowork.ChampionDetailStyle.IconBox;
 import teemowork.ChampionDetailStyle.ItemIcon;
 import teemowork.ChampionDetailStyle.ItemIconBase;
@@ -274,7 +273,7 @@ public class ChampionDetail extends Page {
                 }
             }
 
-            Element descriptor = root.child(DescriptionBox.class);
+            Element descriptor = root.child("div");
             descriptor.child(Name.class).text(skill.name);
 
             this.range = descriptor.child(SkillStatusValues.class);
