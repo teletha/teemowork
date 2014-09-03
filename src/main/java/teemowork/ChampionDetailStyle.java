@@ -78,6 +78,7 @@ class ChampionDetailStyle {
 
         {
             display.block();
+            flexBasis.size(100, percent);
         }
     }
 
