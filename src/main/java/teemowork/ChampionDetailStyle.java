@@ -84,6 +84,16 @@ class ChampionDetailStyle {
     /**
      * @version 2013/02/02 11:27:13
      */
+    class Container extends CSS {
+
+        {
+            display.tableCell();
+        }
+    }
+
+    /**
+     * @version 2013/02/02 11:27:13
+     */
     class SkillRow extends CSS {
 
         {

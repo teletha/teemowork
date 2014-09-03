@@ -11,7 +11,6 @@ package teemowork;
 
 import static booton.css.value.Color.*;
 import booton.css.CSS;
-import booton.css.Snippet;
 import booton.css.Unit;
 import booton.css.value.Color;
 import booton.css.value.LinearGradient;
@@ -213,7 +212,7 @@ class MasteryBuilderStyle {
             transition.property.all().duration(0.15, s).timing.easeInOut().delay(0.2, s);
             pointerEvents.none();
 
-            Snippet.createBottomBubble(6);
+            createBottomBubble(6);
 
             insideOf(Unavailable.class, () -> {
                 font.color(AvailableColor.grayscale());

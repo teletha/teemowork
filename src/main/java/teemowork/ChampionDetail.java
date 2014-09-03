@@ -30,6 +30,7 @@ import teemowork.ChampionDetailStyle.Assigned;
 import teemowork.ChampionDetailStyle.ChampionIcon;
 import teemowork.ChampionDetailStyle.ChampionLevelIndicator;
 import teemowork.ChampionDetailStyle.ComputedValue;
+import teemowork.ChampionDetailStyle.Container;
 import teemowork.ChampionDetailStyle.Current;
 import teemowork.ChampionDetailStyle.DescriptionBox;
 import teemowork.ChampionDetailStyle.IconBox;
@@ -150,12 +151,13 @@ public class ChampionDetail extends Page {
             items.add(itemViewBox.child(new ItemBox(build.getItem(i))));
         }
 
-        Element statusView = root.child(StatusViewBox.class);
+        Element container = root.child(Container.class);
+        Element statusView = container.child(StatusViewBox.class);
 
         for (Status status : VISIBLE) {
             statuses.add(new StatusView(status, statusView));
         }
-        skillView = root.child(SkillTable.class);
+        skillView = container.child(SkillTable.class);
 
         window.subscribe(UIAction.KeyPress, event -> {
             switch (event.which) {
@@ -503,8 +505,8 @@ public class ChampionDetail extends Page {
                 int size = resolver.estimateSize();
 
                 for (int i = 1; i <= size; i++) {
-                    Element value = element.child(NormalValue.class)
-                            .text(Mathematics.round(amplifier.calculate(i, build), 4));
+                    Element value = element.child(NormalValue.class).text(Mathematics.round(amplifier
+                            .calculate(i, build), 4));
 
                     if (!resolver.isSkillLevelBased()) {
                         value.attr("title", "Level " + resolver.convertChampionLevel(i))
