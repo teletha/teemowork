@@ -31,9 +31,8 @@ class ChampionDetailStyle {
     class UpperInfo extends CSS {
 
         {
-            display.flex();
+            display.flex().alignItems.end();
             margin.bottom(1, em);
-            alignItems.end();
         }
     }
 
@@ -78,7 +77,7 @@ class ChampionDetailStyle {
 
         {
             display.block();
-            flexBasis.size(100, percent);
+            flexItem.basis(100, percent);
         }
     }
 
@@ -174,7 +173,7 @@ class ChampionDetailStyle {
         {
             margin.right(SkillIconSize / 5, px);
             cursor.pointer();
-            flexShrink.size(0);
+            flexItem.shrink(0);
         }
     }
 
@@ -331,7 +330,7 @@ class ChampionDetailStyle {
         {
             display.block();
             box.width(13, em);
-            flexShrink.size(0);
+            flexItem.shrink(0);
         }
     }
 

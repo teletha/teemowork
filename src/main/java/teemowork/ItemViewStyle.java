@@ -40,8 +40,7 @@ public class ItemViewStyle {
     static class IconArea extends CSS {
 
         {
-            display.flex();
-            flexDirection.column();
+            display.flex().direction.column();
             margin.right(1.2, em);
         }
     }
@@ -66,8 +65,7 @@ public class ItemViewStyle {
     static class Materials extends CSS {
 
         {
-            display.flex();
-            flexWrap.wrap();
+            display.flex().wrap.enable();
             box.width(IconSize, px);
         }
     }
