@@ -10,6 +10,7 @@
 package teemowork;
 
 import static js.lang.Global.*;
+import static teemowork.ChampionDetailStyle.*;
 import static teemowork.model.Status.*;
 
 import java.util.ArrayList;
@@ -24,38 +25,6 @@ import jsx.application.PageInfo;
 import jsx.bwt.UI;
 import jsx.event.Subscribe;
 import jsx.event.SubscribeUI;
-import teemowork.ChampionDetailStyle.Active;
-import teemowork.ChampionDetailStyle.Amplifier;
-import teemowork.ChampionDetailStyle.Assigned;
-import teemowork.ChampionDetailStyle.ChampionIcon;
-import teemowork.ChampionDetailStyle.ChampionLevelIndicator;
-import teemowork.ChampionDetailStyle.ComputedValue;
-import teemowork.ChampionDetailStyle.Container;
-import teemowork.ChampionDetailStyle.Current;
-import teemowork.ChampionDetailStyle.IconBox;
-import teemowork.ChampionDetailStyle.ItemIcon;
-import teemowork.ChampionDetailStyle.ItemIconBase;
-import teemowork.ChampionDetailStyle.ItemViewBox;
-import teemowork.ChampionDetailStyle.Level;
-import teemowork.ChampionDetailStyle.LevelBox;
-import teemowork.ChampionDetailStyle.LevelMark;
-import teemowork.ChampionDetailStyle.LevelMark3;
-import teemowork.ChampionDetailStyle.Name;
-import teemowork.ChampionDetailStyle.NormalValue;
-import teemowork.ChampionDetailStyle.Passive;
-import teemowork.ChampionDetailStyle.Separator;
-import teemowork.ChampionDetailStyle.SkillIcon;
-import teemowork.ChampionDetailStyle.SkillRow;
-import teemowork.ChampionDetailStyle.SkillStatusValue;
-import teemowork.ChampionDetailStyle.SkillStatusValues;
-import teemowork.ChampionDetailStyle.SkillTable;
-import teemowork.ChampionDetailStyle.StatusBox;
-import teemowork.ChampionDetailStyle.StatusLabel;
-import teemowork.ChampionDetailStyle.StatusName;
-import teemowork.ChampionDetailStyle.StatusValue;
-import teemowork.ChampionDetailStyle.StatusViewBox;
-import teemowork.ChampionDetailStyle.Text;
-import teemowork.ChampionDetailStyle.UpperInfo;
 import teemowork.model.Build;
 import teemowork.model.Build.Computed;
 import teemowork.model.Champion;
@@ -134,29 +103,29 @@ public class ChampionDetail extends Page {
      */
     @Override
     public void load(DocumentFragment root) {
-        Element upper = root.child(UpperInfo.class);
+        Element upper = root.child(UpperInfo);
 
         // Icon
-        Element icon = upper.child(ChampionIcon.class).subscribe(this);
+        Element icon = upper.child(ChampionIcon).subscribe(this);
         build.champion.applyIcon(icon);
 
         // Level
-        level = icon.child(Level.class);
+        level = icon.child(Level);
 
         // Items
-        Element itemViewBox = upper.child(ItemViewBox.class);
+        Element itemViewBox = upper.child(ItemViewBox);
 
         for (int i = 0; i < 6; i++) {
             items.add(itemViewBox.child(new ItemBox(build.getItem(i))));
         }
 
-        Element container = root.child(Container.class);
-        Element statusView = container.child(StatusViewBox.class);
+        Element container = root.child(Container);
+        Element statusView = container.child(StatusViewBox);
 
         for (Status status : VISIBLE) {
             statuses.add(new StatusView(status, statusView));
         }
-        skillView = container.child(SkillTable.class);
+        skillView = container.child(SkillTable);
 
         window.subscribe(UIAction.KeyPress, event -> {
             switch (event.which) {
@@ -197,7 +166,7 @@ public class ChampionDetail extends Page {
         skillView.empty();
 
         for (Skill skill : build.champion.skills) {
-            new SkillView(skill, skillView.child(SkillRow.class)).update();
+            new SkillView(skill, skillView.child(SkillRow)).update();
         }
 
         for (StatusView box : statuses) {
@@ -255,8 +224,8 @@ public class ChampionDetail extends Page {
             this.skill = skill;
             this.levels = new Element[size];
 
-            Element iconBox = root.child(IconBox.class);
-            icon = iconBox.child(SkillIcon.class).css("background-image", "url(" + skill.getIcon() + ")");
+            Element iconBox = root.child(IconBox);
+            icon = iconBox.child(SkillIcon).css("background-image", "url(" + skill.getIcon() + ")");
             iconBox.subscribe(UIAction.Click, event -> {
                 event.preventDefault();
                 build.up(skill);
@@ -266,22 +235,22 @@ public class ChampionDetail extends Page {
             });
 
             if (skill.key != SkillKey.Passive) {
-                Element levels = iconBox.child(LevelBox.class);
+                Element levels = iconBox.child(LevelBox);
 
                 for (int i = 0; i < size; i++) {
-                    this.levels[i] = levels.child(size == 3 ? LevelMark3.class : LevelMark.class);
+                    this.levels[i] = levels.child(size == 3 ? LevelMark3 : LevelMark);
                 }
             }
 
             Element descriptor = root.child("div");
-            descriptor.child(Name.class).text(skill.name);
+            descriptor.child(Name).text(skill.name);
 
-            this.range = descriptor.child(SkillStatusValues.class);
-            this.cooldown = descriptor.child(SkillStatusValues.class);
-            this.cost = descriptor.child(SkillStatusValues.class);
+            this.range = descriptor.child(SkillStatusValues);
+            this.cooldown = descriptor.child(SkillStatusValues);
+            this.cost = descriptor.child(SkillStatusValues);
 
-            this.passive = descriptor.child(Text.class);
-            this.active = descriptor.child(Text.class);
+            this.passive = descriptor.child(Text);
+            this.active = descriptor.child(Text);
         }
 
         /**
@@ -296,16 +265,16 @@ public class ChampionDetail extends Page {
 
             for (int i = 0; i < levels.length; i++) {
                 if (i < level) {
-                    levels[i].add(Assigned.class);
+                    levels[i].add(Assigned);
                 } else {
-                    levels[i].remove(Assigned.class);
+                    levels[i].remove(Assigned);
                 }
             }
 
             if (build.isActive(skill)) {
-                icon.add(Active.class);
+                icon.add(Active);
             } else {
-                icon.remove(Active.class);
+                icon.remove(Active);
             }
 
             write(cooldown, status, status.getCooldown());
@@ -319,7 +288,7 @@ public class ChampionDetail extends Page {
             passive.empty();
 
             if (!status.getPassive().isEmpty()) {
-                passive.child(Passive.class).text("PASSIVE");
+                passive.child(Passive).text("PASSIVE");
 
                 for (Object token : status.getPassive()) {
                     if (token instanceof Variable) {
@@ -336,7 +305,7 @@ public class ChampionDetail extends Page {
             SkillType type = status.getType();
 
             if (type != SkillType.Active && type != SkillType.OnHitEffectable) {
-                active.child(Passive.class).text(status.getType());
+                active.child(Passive).text(status.getType());
             }
 
             for (Object token : status.getActive()) {
@@ -388,14 +357,14 @@ public class ChampionDetail extends Page {
                         label = "攻撃毎" + label;
                     }
                 }
-                root.child(StatusLabel.class).text(label);
+                root.child(StatusLabel).text(label);
 
                 // write values
                 int size = resolver.estimateSize();
 
                 for (int i = 1; i <= size; i++) {
                     double value = status.round(variable.calculate(i, build));
-                    Element element = root.child(SkillStatusValue.class).text(value == -1 ? "∞" : value);
+                    Element element = root.child(SkillStatusValue).text(value == -1 ? "∞" : value);
 
                     if (!resolver.isSkillLevelBased()) {
                         String title;
@@ -406,15 +375,15 @@ public class ChampionDetail extends Page {
                         } else {
                             title = "Level " + resolver.convertChampionLevel(i);
                         }
-                        element.attr("title", title).add(ChampionLevelIndicator.class);
+                        element.attr("title", title).add(ChampionLevelIndicator);
                     }
 
                     if (size != 1 && i == level) {
-                        element.add(Current.class);
+                        element.add(Current);
                     }
 
                     if (i != size) {
-                        root.child(Separator.class).text("/");
+                        root.child(Separator).text("/");
                     }
                 }
 
@@ -444,7 +413,7 @@ public class ChampionDetail extends Page {
             }
 
             // compute current value
-            root.child(ComputedValue.class).text(status.format(variable.calculate(Math.max(1, level), build)));
+            root.child(ComputedValue).text(status.format(variable.calculate(Math.max(1, level), build)));
 
             // All values
             int size = resolver.estimateSize();
@@ -453,7 +422,7 @@ public class ChampionDetail extends Page {
                 root.append("(");
 
                 for (int i = 1; i <= size; i++) {
-                    Element element = root.child(NormalValue.class).text(Mathematics.round(resolver.compute(i), 2));
+                    Element element = root.child(NormalValue).text(Mathematics.round(resolver.compute(i), 2));
 
                     if (!resolver.isSkillLevelBased()) {
                         String title;
@@ -464,15 +433,15 @@ public class ChampionDetail extends Page {
                         } else {
                             title = "Level " + resolver.convertChampionLevel(i);
                         }
-                        element.attr("title", title).add(ChampionLevelIndicator.class);
+                        element.attr("title", title).add(ChampionLevelIndicator);
                     }
 
                     if (i == level) {
-                        element.add(Current.class);
+                        element.add(Current);
                     }
 
                     if (i != size) {
-                        root.child(Separator.class).text("/");
+                        root.child(Separator).text("/");
                     }
                 }
 
@@ -492,7 +461,7 @@ public class ChampionDetail extends Page {
          */
         private void writeAmplifier(Element root, List<Variable> amplifiers, int level) {
             for (Variable amplifier : amplifiers) {
-                Element element = root.child(Amplifier.class);
+                Element element = root.child(Amplifier);
                 element.append("+");
 
                 VariableResolver resolver = amplifier.getResolver();
@@ -504,20 +473,20 @@ public class ChampionDetail extends Page {
                 int size = resolver.estimateSize();
 
                 for (int i = 1; i <= size; i++) {
-                    Element value = element.child(NormalValue.class).text(Mathematics.round(amplifier
-                            .calculate(i, build), 4));
+                    Element value = element
+                            .child(NormalValue)
+                            .text(Mathematics.round(amplifier.calculate(i, build), 4));
 
                     if (!resolver.isSkillLevelBased()) {
-                        value.attr("title", "Level " + resolver.convertChampionLevel(i))
-                                .add(ChampionLevelIndicator.class);
+                        value.attr("title", "Level " + resolver.convertChampionLevel(i)).add(ChampionLevelIndicator);
                     }
 
                     if (size != 1 && i == level) {
-                        value.add(Current.class);
+                        value.add(Current);
                     }
 
                     if (i != size) {
-                        element.child(Separator.class).text("/");
+                        element.child(Separator).text("/");
                     }
                 }
 
@@ -546,11 +515,11 @@ public class ChampionDetail extends Page {
         /**
          */
         private StatusView(Status status, Element root) {
-            Element box = root.child(StatusBox.class);
-            box.child(StatusName.class).text(status.name());
+            Element box = root.child(StatusBox);
+            box.child(StatusName).text(status.name());
 
             this.status = status;
-            this.current = box.child(StatusValue.class);
+            this.current = box.child(StatusValue);
         }
 
         /**
@@ -589,7 +558,7 @@ public class ChampionDetail extends Page {
          */
         public ItemBox(Item item) {
             this.item = item;
-            this.icon = root.add(ItemIconBase.class).child(ItemIcon.class);
+            this.icon = root.add(ItemIconBase).child(ItemIcon);
         }
 
         /**
@@ -627,7 +596,7 @@ public class ChampionDetail extends Page {
             // apply champion icon
 
             // display level
-            level = me.child(Level.class);
+            level = me.child(Level);
         }
 
         @SubscribeUI(type = UIAction.Click, abort = true)
