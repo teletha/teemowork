@@ -10,6 +10,7 @@
 package teemowork;
 
 import static js.lang.Global.*;
+import static teemowork.MasteryBuilderStyle2.*;
 import js.dom.DocumentFragment;
 import js.dom.Element;
 import js.dom.Image;
@@ -21,22 +22,6 @@ import jsx.bwt.Select;
 import jsx.event.Subscribe;
 import jsx.model.SelectableModel;
 import kiss.I;
-import teemowork.MasteryBuilderStyle.Completed;
-import teemowork.MasteryBuilderStyle.Defense;
-import teemowork.MasteryBuilderStyle.EmptyPane;
-import teemowork.MasteryBuilderStyle.IconImage;
-import teemowork.MasteryBuilderStyle.Information;
-import teemowork.MasteryBuilderStyle.LevelPane;
-import teemowork.MasteryBuilderStyle.LevelSeparator;
-import teemowork.MasteryBuilderStyle.LevelValue;
-import teemowork.MasteryBuilderStyle.MasteryName;
-import teemowork.MasteryBuilderStyle.MasteryPane;
-import teemowork.MasteryBuilderStyle.Offense;
-import teemowork.MasteryBuilderStyle.PopupPane;
-import teemowork.MasteryBuilderStyle.RankPane;
-import teemowork.MasteryBuilderStyle.SumPoint;
-import teemowork.MasteryBuilderStyle.Unavailable;
-import teemowork.MasteryBuilderStyle.Utility;
 import teemowork.model.Describable;
 import teemowork.model.DescriptionView;
 import teemowork.model.Mastery;
@@ -97,7 +82,7 @@ public class MasteryBuilder extends Page {
             masteryManager = new MasteryManager();
         }
 
-        Element infomation = root.child(Information.class);
+        Element infomation = root.child(Information);
         menu = infomation.child(new Select(masteryManager));
         menu.model.subscribe(this);
 
@@ -110,9 +95,9 @@ public class MasteryBuilder extends Page {
 
         Mastery[][][] masteries = Mastery.getMasteryTree(Version.Latest);
 
-        offense = build(root.child(Offense.class), masteries[0]);
-        defense = build(root.child(Defense.class), masteries[1]);
-        utility = build(root.child(Utility.class), masteries[2]);
+        offense = build(root.child(Offense), masteries[0]);
+        defense = build(root.child(Defense), masteries[1]);
+        utility = build(root.child(Utility), masteries[2]);
 
         masterySet.publish(masterySet);
     }
@@ -127,19 +112,19 @@ public class MasteryBuilder extends Page {
      */
     private Element build(Element root, Mastery[][] set) {
         for (Mastery[] masteries : set) {
-            Element rank = root.child(RankPane.class);
+            Element rank = root.child(RankPane);
 
             for (final Mastery mastery : masteries) {
-                Element pane = rank.child(MasteryPane.class);
+                Element pane = rank.child(MasteryPane);
 
                 if (mastery == null) {
-                    pane.add(EmptyPane.class);
+                    pane.add(EmptyPane);
                 } else {
                     masterySet.subscribe(new MasteryView(pane, mastery));
                 }
             }
         }
-        return root.child(SumPoint.class);
+        return root.child(SumPoint);
     }
 
     /**
@@ -211,17 +196,17 @@ public class MasteryBuilder extends Page {
             this.mastery = mastery;
 
             // Icon Pane
-            image = root.image(IconImage.class).src(mastery.getSpriteImage()).clip(mastery.id * size, 0, size, size);
+            image = root.image(IconImage).src(mastery.getSpriteImage()).clip(mastery.id * size, 0, size, size);
 
             // Mastery Level Pane
-            Element levelPane = root.child(LevelPane.class);
-            currentLevel = levelPane.child(LevelValue.class).text(0);
-            levelPane.child(LevelSeparator.class).text("/");
-            levelPane.child(LevelValue.class).text(mastery.getMaxLevel());
+            Element levelPane = root.child(LevelPane);
+            currentLevel = levelPane.child(LevelValue).text(0);
+            levelPane.child(LevelSeparator).text("/");
+            levelPane.child(LevelValue).text(mastery.getMaxLevel());
 
             // Mastery Description Pane
-            popup = root.child(PopupPane.class);
-            popup.child(MasteryName.class).text(mastery.name);
+            popup = root.child(PopupPane);
+            popup.child(MasteryName).text(mastery.name);
             masterySet.subscribe(new MasteryDescriptionView(popup, mastery));
 
             // Event Handlers
@@ -247,17 +232,17 @@ public class MasteryBuilder extends Page {
             // Switch enable / disable
             if (current != 0 || masterySet.isAvailable(mastery)) {
                 image.saturate(0.8);
-                root.remove(Unavailable.class);
+                root.remove(Unavailable);
             } else {
                 image.grayscale(0.4);
-                root.add(Unavailable.class);
+                root.add(Unavailable);
             }
 
             // Switch complete / incomplete
             if (masterySet.isMax(mastery)) {
-                root.add(Completed.class);
+                root.add(Completed);
             } else {
-                root.remove(Completed.class);
+                root.remove(Completed);
             }
         }
 
