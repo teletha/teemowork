@@ -10,7 +10,7 @@
 package teemowork;
 
 import static js.lang.Global.*;
-import static teemowork.MasteryBuilderStyle2.*;
+import static teemowork.MasteryBuilderStyle.*;
 import js.dom.DocumentFragment;
 import js.dom.Element;
 import js.dom.Image;
