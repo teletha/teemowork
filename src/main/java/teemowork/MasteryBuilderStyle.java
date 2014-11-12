@@ -20,7 +20,7 @@ import booton.css.Unit;
 /**
  * @version 2013/03/13 15:05:12
  */
-class MasteryBuilderStyle2 extends StyleRuleDescriptor {
+class MasteryBuilderStyle extends StyleRuleDescriptor {
 
     private static int TreeWidth = 240;
 
