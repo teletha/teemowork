@@ -10,7 +10,7 @@
 package teemowork;
 
 import static js.lang.Global.*;
-import static teemowork.ChampionComparingStyle2.*;
+import static teemowork.ChampionComparingStyle.*;
 import static teemowork.model.Status.*;
 
 import java.util.ArrayList;
