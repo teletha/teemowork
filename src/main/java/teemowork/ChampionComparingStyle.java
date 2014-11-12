@@ -15,7 +15,7 @@ import jsx.style.StyleRuleDescriptor;
 /**
  * @version 2013/03/23 14:49:35
  */
-class ChampionComparingStyle2 extends StyleRuleDescriptor {
+class ChampionComparingStyle extends StyleRuleDescriptor {
 
     /**
      * @version 2013/02/16 9:52:23
