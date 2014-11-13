@@ -9,6 +9,7 @@
  */
 package teemowork;
 
+import static teemowork.ItemViewStyle.*;
 import static teemowork.model.Status.*;
 
 import java.util.function.Consumer;
@@ -18,19 +19,6 @@ import js.dom.UIAction;
 import js.dom.UIEvent;
 import jsx.application.Application;
 import jsx.bwt.UI;
-import teemowork.ItemViewStyle.AbilityArea;
-import teemowork.ItemViewStyle.Cost;
-import teemowork.ItemViewStyle.DescriptionArea;
-import teemowork.ItemViewStyle.Heading;
-import teemowork.ItemViewStyle.Icon;
-import teemowork.ItemViewStyle.IconArea;
-import teemowork.ItemViewStyle.Material;
-import teemowork.ItemViewStyle.Materials;
-import teemowork.ItemViewStyle.Name;
-import teemowork.ItemViewStyle.Root;
-import teemowork.ItemViewStyle.StatusValue;
-import teemowork.ItemViewStyle.TotalCost;
-import teemowork.ItemViewStyle.UniqueAbility;
 import teemowork.model.Ability;
 import teemowork.model.AbilityDescriptor;
 import teemowork.model.Describable;
@@ -57,17 +45,18 @@ public class ItemView extends UI {
      */
     public ItemView(Item item, ItemDescriptor itemDescriptor, StatusCalculator calculator) {
         this.calculator = calculator;
-        root.add(Root.class);
+        root.add(Root);
 
         // Icon Area
-        Element icons = root.child(IconArea.class);
+        Element icons = root.child(IconArea);
         // icons.child(Icon.class).backgound(item.getIcon());
-        item.applyIcon(icons.child(Icon.class));
+        item.applyIcon(icons.child(Icon));
 
-        Element materials = icons.child(Materials.class);
+        Element materials = icons.child(Materials);
 
         for (final Item material : itemDescriptor.getBuild()) {
-            material.applyIcon(materials.child(Material.class)
+            material.applyIcon(materials
+                    .child(Material)
                     .attr("title", material.name)
                     .subscribe(UIAction.Click, new Consumer<UIEvent>() {
 
@@ -79,17 +68,17 @@ public class ItemView extends UI {
         }
 
         // Description Area
-        Element descriptions = root.child(DescriptionArea.class);
+        Element descriptions = root.child(DescriptionArea);
 
         // Name and Cost
-        double cost = itemDescriptor.get(Cost);
+        double cost = itemDescriptor.get(Status.Cost);
         double total = item.getTotalCost(Version.Latest);
 
-        Element heading = descriptions.child(Heading.class);
-        heading.child(Name.class).text(item.name);
-        heading.child(TotalCost.class).text(total);
+        Element heading = descriptions.child(Heading);
+        heading.child(Name).text(item.name);
+        heading.child(TotalCost).text(total);
         if (cost != total) {
-            heading.child(Cost.class).text("(" + cost + ")");
+            heading.child(ItemViewStyle.Cost).text("(" + cost + ")");
         }
 
         // Status
@@ -97,27 +86,27 @@ public class ItemView extends UI {
             double value = itemDescriptor.get(status);
 
             if (value != 0) {
-                descriptions.child(StatusValue.class).text(value + status.getUnit() + " " + status.name);
+                descriptions.child(StatusValue).text(value + status.getUnit() + " " + status.name);
             }
         }
 
         // Ability
         for (Ability ability : itemDescriptor.getAbilities()) {
             AbilityDescriptor abilityDescriptor = ability.getDescriptor(Version.Latest);
-            Element element = descriptions.child(AbilityArea.class);
+            Element element = descriptions.child(AbilityArea);
 
             if (abilityDescriptor.isUnique()) {
-                element.child(UniqueAbility.class).text("UNIQUE");
+                element.child(UniqueAbility).text("UNIQUE");
             }
 
             if (abilityDescriptor.isAura()) {
-                element.child(UniqueAbility.class).text("AURA");
+                element.child(UniqueAbility).text("AURA");
             }
 
-            element.child(UniqueAbility.class).text(abilityDescriptor.isActive() ? "Active" : "Passive");
+            element.child(UniqueAbility).text(abilityDescriptor.isActive() ? "Active" : "Passive");
 
             if (!ability.name.startsWith("#")) {
-                element.child(UniqueAbility.class).text("[" + ability.name + "]");
+                element.child(UniqueAbility).text("[" + ability.name + "]");
             }
             new AbilityDescriptionView(element, ability, calculator, abilityDescriptor.isActive()).receive();
         }
