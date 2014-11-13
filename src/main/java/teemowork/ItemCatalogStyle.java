@@ -9,9 +9,11 @@
  */
 package teemowork;
 
+import jsx.style.StyleRuleDescriptor;
+
 /**
  * @version 2013/06/13 16:44:26
  */
-class ItemCatalogStyle {
+class ItemCatalogStyle extends StyleRuleDescriptor {
 
 }

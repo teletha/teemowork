@@ -10,11 +10,10 @@
 package teemowork;
 
 import static js.lang.Global.*;
+import static teemowork.TeemoworkTheme.*;
 import jsx.application.Application;
 import jsx.application.Header;
 import jsx.application.Header.Menu;
-import teemowork.TeemoworkTheme.Content;
-import teemowork.TeemoworkTheme.HTML;
 
 /**
  * @version 2012/12/11 14:23:57
@@ -26,8 +25,8 @@ public class Teemowork extends Application {
     }
 
     public void main() {
-        document.documentElement().add(HTML.class);
-        document.getElementById("Content").add(Content.class);
+        document.documentElement().add(HTML);
+        document.getElementById("Content").add(Content);
 
         Header nav = new Header();
         nav.add("< ^ v ^ > Teemowork", "");

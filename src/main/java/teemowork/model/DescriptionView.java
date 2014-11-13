@@ -9,16 +9,12 @@
  */
 package teemowork.model;
 
+import static teemowork.model.DescriptionViewStyle.*;
+
 import java.util.List;
 
 import js.dom.Element;
 import js.math.Mathematics;
-import teemowork.model.DescriptionViewStyle.Amplifier;
-import teemowork.model.DescriptionViewStyle.ComputedValue;
-import teemowork.model.DescriptionViewStyle.Current;
-import teemowork.model.DescriptionViewStyle.Passive;
-import teemowork.model.DescriptionViewStyle.Separator;
-import teemowork.model.DescriptionViewStyle.Value;
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
 
@@ -47,7 +43,7 @@ public abstract class DescriptionView {
      * @param root
      */
     protected DescriptionView(Element root, Describable describable, StatusCalculator calculator, boolean forPassive) {
-        this.description = root.child(Passive.class);
+        this.description = root.child(Passive);
         this.describable = describable;
         this.calculator = calculator;
         this.forPassive = forPassive;
@@ -106,7 +102,7 @@ public abstract class DescriptionView {
         List<Variable> amplifiers = variable.getAmplifiers();
 
         // compute current value
-        root.child(ComputedValue.class).text(status.format(variable.calculate(Math.max(1, level), calculator)));
+        root.child(ComputedValue).text(status.format(variable.calculate(Math.max(1, level), calculator)));
 
         // All values
         int size = resolver.estimateSize();
@@ -115,14 +111,14 @@ public abstract class DescriptionView {
             root.append("(");
 
             for (int i = 1; i <= size; i++) {
-                Element element = root.child(Value.class).text(Mathematics.round(resolver.compute(i), 2));
+                Element element = root.child(Value).text(Mathematics.round(resolver.compute(i), 2));
 
                 if (i == level) {
-                    element.add(Current.class);
+                    element.add(Current);
                 }
 
                 if (i != size) {
-                    root.child(Separator.class).text("/");
+                    root.child(Separator).text("/");
                 }
             }
 
@@ -142,21 +138,20 @@ public abstract class DescriptionView {
      */
     private void writeAmplifier(Element root, List<Variable> amplifiers, int level) {
         for (Variable amplifier : amplifiers) {
-            Element element = root.child(Amplifier.class);
+            Element element = root.child(Amplifier);
             element.append("+");
 
             int size = amplifier.getResolver().estimateSize();
 
             for (int i = 1; i <= size; i++) {
-                Element value = element.child(Value.class)
-                        .text(Mathematics.round(amplifier.calculate(i, calculator), 4));
+                Element value = element.child(Value).text(Mathematics.round(amplifier.calculate(i, calculator), 4));
 
                 if (size != 1 && i == level) {
-                    value.add(Current.class);
+                    value.add(Current);
                 }
 
                 if (i != size) {
-                    element.child(Separator.class).text("/");
+                    element.child(Separator).text("/");
                 }
             }
 

@@ -9,13 +9,14 @@
  */
 package teemowork;
 
-import booton.css.CSS;
+import jsx.style.Style;
+import jsx.style.StyleRuleDescriptor;
 import booton.css.value.Font;
 
 /**
  * @version 2013/03/24 16:34:23
  */
-public class TeemoworkTheme {
+public class TeemoworkTheme extends StyleRuleDescriptor {
 
     /** The main font. */
     public static final Font Main = new Font("http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600");
@@ -26,18 +27,12 @@ public class TeemoworkTheme {
     /** The title/heading font. */
     public static final Font Title = new Font("http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz");
 
-    class HTML extends CSS {
+    static Style HTML = () -> {
+        font.family(Main.name).sansSerif();
+        padding.horizontal(10, percent).top(10, px);
+    };
 
-        {
-            font.family(Main).sansSerif();
-            padding.horizontal(10, percent).top(10, px);
-        }
-    }
-
-    class Content extends CSS {
-
-        {
-            padding.top(20, px);
-        }
-    }
+    static Style Content = () -> {
+        padding.top(20, px);
+    };
 }

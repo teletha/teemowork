@@ -9,85 +9,80 @@
  */
 package teemowork.model;
 
-import booton.css.CSS;
+import jsx.style.Style;
+import jsx.style.StyleRuleDescriptor;
 
 /**
  * @version 2013/03/17 0:05:57
  */
-class DescriptionViewStyle {
+class DescriptionViewStyle extends StyleRuleDescriptor {
 
     /** The skill icon size. */
-    int SkillIconSize = 45;
+    private static int SkillIconSize = 45;
 
     /** The level box height. */
-    int LevelBoxHeight = 5;
+    private static int LevelBoxHeight = 5;
 
     /**
      * @version 2013/02/06 20:03:25
      */
-    class ComputedValue extends CSS {
+    static Style ComputedValue = () ->
 
-        {
-            font.weight.bolder();
-        }
-    }
-
-    /**
-     * @version 2013/02/06 20:03:25
-     */
-    class Value extends CSS {
-
-        {
-            text.align.center();
-        }
-    }
+    {
+        font.weight.bolder();
+    };
 
     /**
      * @version 2013/02/06 20:03:25
      */
-    class Separator extends CSS {
+    static Style Value = () ->
 
-        {
-            box.opacity(0.4);
-            margin.horizontal(1, px);
-        }
-    }
+    {
+        text.align.center();
+    };
 
     /**
      * @version 2013/02/06 20:03:25
      */
-    class Current extends CSS {
+    static Style Separator = () ->
 
-        {
-            font.color(rgba(160, 123, 1, 1));
-        }
-    }
-
-    /**
-     * @version 2013/02/06 20:03:25
-     */
-    class Passive extends CSS {
-
-        {
-            margin.right(1, em);
-        }
-    }
+    {
+        box.opacity(0.4);
+        margin.horizontal(1, px);
+    };
 
     /**
      * @version 2013/02/06 20:03:25
      */
-    class Amplifier extends CSS {
+    static Style Current = () ->
 
-        {
-            font.color(25, 111, 136);
+    {
+        font.color(rgba(160, 123, 1, 1));
+    };
 
-            inBackOf(Value.class, () -> {
-                margin.left(0.4, em);
-            });
+    /**
+     * @version 2013/02/06 20:03:25
+     */
+    static Style Passive = () ->
 
-            inBackOf(Amplifier.class, () -> {
-                margin.left(0.4, em);
-            });
-        }
-    }
+    {
+        margin.right(1, em);
+    };
+
+    /**
+     * @version 2013/02/06 20:03:25
+     */
+    static Style Amplifier = () ->
+
+    {
+        font.color(25, 111, 136);
+
+        inBackOf(Value, () -> {
+            margin.left(0.4, em);
+        });
+
+        // inBackOf(Amplifier, () -> {
+        // margin.left(0.4, em);
+        // });
+    };
 }

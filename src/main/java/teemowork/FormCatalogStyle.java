@@ -9,17 +9,15 @@
  */
 package teemowork;
 
-import booton.css.CSS;
+import jsx.style.Style;
+import jsx.style.StyleRuleDescriptor;
 
 /**
  * @version 2013/04/02 16:15:20
  */
-public class FormCatalogStyle {
+public class FormCatalogStyle extends StyleRuleDescriptor {
 
-    class Table extends CSS {
-
-        {
-            box.width(100, px);
-        }
-    }
+    static Style Table = () -> {
+        box.width(100, px);
+    };
 }

@@ -9,13 +9,14 @@
  */
 package teemowork;
 
-import booton.css.CSS;
+import jsx.style.Style;
+import jsx.style.StyleRuleDescriptor;
 import booton.css.value.Font;
 
 /**
  * @version 2013/06/09 19:05:20
  */
-public class ItemViewStyle {
+public class ItemViewStyle extends StyleRuleDescriptor {
 
     private static Font Sans = new Font("http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600");
 
@@ -25,154 +26,136 @@ public class ItemViewStyle {
     /**
      * @version 2013/02/16 9:52:23
      */
-    static class Root extends CSS {
+    static Style Root = () ->
 
-        {
-            display.flex();
-            margin.bottom(25, px);
-            box.maxWidth(600, px);
-        }
-    }
-
-    /**
-     * @version 2013/02/16 10:00:01
-     */
-    static class IconArea extends CSS {
-
-        {
-            display.flex().direction.column();
-            margin.right(1.2, em);
-        }
-    }
+    {
+        display.flex();
+        margin.bottom(25, px);
+        box.maxWidth(600, px);
+    };
 
     /**
      * @version 2013/02/16 10:00:01
      */
-    static class Icon extends CSS {
+    static Style IconArea = () -> {
+        display.flex().direction.column();
+        margin.right(1.2, em);
+    };
 
-        {
-            display.block();
-            margin.bottom(IconSize / 5, px);
-            cursor.pointer();
-            box.size(44, px);
-            border.radius(5, px).color(rgb(50, 50, 50)).width(1, px).solid();
-        }
-    }
+    /**
+     * @version 2013/02/16 10:00:01
+     */
+    static Style Icon = () -> {
+        display.block();
+        margin.bottom(IconSize / 5, px);
+        cursor.pointer();
+        box.size(44, px);
+        border.radius(5, px).color(rgb(50, 50, 50)).width(1, px).solid();
+    };
 
     /**
      * @version 2013/06/13 13:57:38
      */
-    static class Materials extends CSS {
+    static Style Materials = () ->
 
-        {
-            display.flex().wrap.enable();
-            box.width(IconSize, px);
-        }
-    }
+    {
+        display.flex().wrap.enable();
+        box.width(IconSize, px);
+    };
 
     /**
      * @version 2013/06/13 13:57:38
      */
-    static class Material extends CSS {
+    static Style Material = () ->
 
-        {
-            display.block();
-            cursor.pointer();
-            box.size(22, px).opacity(0.7);
-            border.radius(3, px).color(rgb(50, 50, 50)).width(1, px).solid();
-            transition.property.all().timing.easeInOut().duration(0.3, s);
+    {
+        display.block();
+        cursor.pointer();
+        box.size(22, px).opacity(0.7);
+        border.radius(3, px).color(rgb(50, 50, 50)).width(1, px).solid();
 
-            hover(() -> {
-                box.opacity(1);
-            });
-        }
-    }
+        transit().duration(0.3, s).easeInOut().whenHover(() -> {
+            box.opacity(1);
+        });
+    };
 
     /**
      * @version 2013/02/16 9:52:23
      */
-    static class DescriptionArea extends CSS {
+    static Style DescriptionArea = () ->
 
-        {
-            box.maxWidth(290, px);
-        }
-    }
-
-    /**
-     * @version 2013/02/16 10:00:01
-     */
-    static class Heading extends CSS {
-
-        {
-            display.block();
-            margin.bottom(0.4, em);
-            font.family(Sans);
-        }
-    }
+    {
+        box.maxWidth(290, px);
+    };
 
     /**
      * @version 2013/02/16 10:00:01
      */
-    static class Name extends CSS {
+    static Style Heading = () ->
 
-        {
-            margin.right(0.5, em);
-            font.weight.bold();
-        }
-    }
-
-    /**
-     * @version 2013/02/16 10:00:01
-     */
-    static class TotalCost extends CSS {
-
-        {
-            margin.right(0.5, em);
-        }
-    }
+    {
+        display.block();
+        margin.bottom(0.4, em);
+        font.family(Sans.name);
+    };
 
     /**
      * @version 2013/02/16 10:00:01
      */
-    static class Cost extends CSS {
+    static Style Name = () ->
 
-        {
-
-        }
-    }
+    {
+        margin.right(0.5, em);
+        font.weight.bold();
+    };
 
     /**
      * @version 2013/02/16 10:00:01
      */
-    static class StatusValue extends CSS {
+    static Style TotalCost = () ->
 
-        {
-            display.block();
-            margin.bottom(0.2, em);
-            font.size.smaller().family(Sans);
-        }
-    }
+    {
+        margin.right(0.5, em);
+    };
+
+    /**
+     * @version 2013/02/16 10:00:01
+     */
+    static Style Cost = () ->
+
+    {
+
+    };
+
+    /**
+     * @version 2013/02/16 10:00:01
+     */
+    static Style StatusValue = () ->
+
+    {
+        display.block();
+        margin.bottom(0.2, em);
+        font.size.smaller().family(Sans.name);
+    };
 
     /**
      * @version 2013/06/04 23:24:52
      */
-    static class AbilityArea extends CSS {
+    static Style AbilityArea = () ->
 
-        {
-            display.block();
-            font.size.smaller();
-            margin.top(0.4, em);
-        }
-    }
+    {
+        display.block();
+        font.size.smaller();
+        margin.top(0.4, em);
+    };
 
     /**
      * @version 2013/06/04 23:24:52
      */
-    static class UniqueAbility extends CSS {
+    static Style UniqueAbility = () ->
 
-        {
-            font.color(205, 146, 0).weight.bolder();
-            padding.right(0.5, em);
-        }
-    }
+    {
+        font.color(205, 146, 0).weight.bolder();
+        padding.right(0.5, em);
+    };
 }
