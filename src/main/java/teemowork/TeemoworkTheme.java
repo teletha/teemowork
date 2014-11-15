@@ -11,7 +11,7 @@ package teemowork;
 
 import jsx.style.Style;
 import jsx.style.StyleRuleDescriptor;
-import booton.css.value.Font;
+import jsx.style.value.Font;
 
 /**
  * @version 2013/03/24 16:34:23
