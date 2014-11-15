@@ -14,7 +14,7 @@ import jsx.style.Style;
 import jsx.style.StyleRuleDescriptor;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Numeric;
-import booton.css.Unit;
+import jsx.style.value.Unit;
 
 /**
  * @version 2013/02/26 23:49:51
