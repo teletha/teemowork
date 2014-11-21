@@ -542,6 +542,10 @@ public class Champion {
         return null;
     }
 
+    public static int size() {
+        return counter;
+    }
+
     static {
         Aatrox.update(P0000)
                 .set(Health, 395, 85)

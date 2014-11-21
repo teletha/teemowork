@@ -1907,4 +1907,8 @@ public class Item extends Describable<ItemDescriptor> {
         }
         return null;
     }
+
+    public static int size() {
+        return counter;
+    }
 }

@@ -50,7 +50,7 @@ public class ChampionSelect extends Page {
          */
         @Override
         protected void select(Champion source) {
-            Application.show(new ChampionDetail(source.systemName));
+            Application.show(new ChampionDetail2(source.systemName));
         }
     };
 
