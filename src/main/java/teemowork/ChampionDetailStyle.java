@@ -286,6 +286,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
 
     {
         display.block();
+        background.image(BackgroundImage.url("src/main/resources/teemowork/champions.jpg").cover().borderBox());
         box.size(ChampionIconSize);
         border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
         position.relative();
@@ -360,13 +361,14 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
     {
         display.block();
         box.size(ItemIconSize);
-        background.image(BackgroundImage.url("src/main/resources/teemowork/item/empty.png").contain());
+        background.image(BackgroundImage.url("src/main/resources/teemowork/item/empty.png").contain().noRepeat());
         padding.size(3, px);
     };
 
     static Style ItemIcon = () ->
 
     {
+        background.image(BackgroundImage.url("src/main/resources/teemowork/items.jpg").cover().borderBox().noRepeat());
         display.block();
         box.size(100, percent);
     };
