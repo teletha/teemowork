@@ -88,30 +88,44 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 $〡.hbox.〡(Level);
             });
             $〡.hbox.〡(ItemViewBox, () -> {
-                $〡.hbox.〡(ItemIconBase, () -> {
-                    int id = build.getItem(0).position;
-                    $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100 + "% 0%").〡(ItemIcon);
-                });
-                $〡.hbox.〡(ItemIconBase, () -> {
-                    int id = build.getItem(1).position;
-                    $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100 + "% 0%").〡(ItemIcon);
-                });
-                $〡.hbox.〡(ItemIconBase, () -> {
-                    int id = build.getItem(2).position;
-                    $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100 + "% 0%").〡(ItemIcon);
-                });
-                $〡.hbox.〡(ItemIconBase, () -> {
-                    int id = build.getItem(3).position;
-                    $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100 + "% 0%").〡(ItemIcon);
-                });
-                $〡.hbox.〡(ItemIconBase, () -> {
-                    int id = build.getItem(4).position;
-                    $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100 + "% 0%").〡(ItemIcon);
-                });
-                $〡.hbox.〡(ItemIconBase, () -> {
-                    int id = build.getItem(5).position;
-                    $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100 + "% 0%").〡(ItemIcon);
-                });
+                for (int i = 0; i < 6; i++) {
+                    int pos = build.getItem(i).position;
+                    $〡.hbox.〡(ItemIconBase, () -> {
+                        $〡.hbox.〡ª("style", "background-position:" + pos / (Item.size() - 1) * 100 + "% 0%")
+                                .〡(ItemIcon);
+                    });
+                }
+
+                // $〡.hbox.〡(ItemIconBase, () -> {
+                // int id = build.getItem(0).position;
+                // $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100
+                // + "% 0%").〡(ItemIcon);
+                // });
+                // $〡.hbox.〡(ItemIconBase, () -> {
+                // int id = build.getItem(1).position;
+                // $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100
+                // + "% 0%").〡(ItemIcon);
+                // });
+                // $〡.hbox.〡(ItemIconBase, () -> {
+                // int id = build.getItem(2).position;
+                // $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100
+                // + "% 0%").〡(ItemIcon);
+                // });
+                // $〡.hbox.〡(ItemIconBase, () -> {
+                // int id = build.getItem(3).position;
+                // $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100
+                // + "% 0%").〡(ItemIcon);
+                // });
+                // $〡.hbox.〡(ItemIconBase, () -> {
+                // int id = build.getItem(4).position;
+                // $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100
+                // + "% 0%").〡(ItemIcon);
+                // });
+                // $〡.hbox.〡(ItemIconBase, () -> {
+                // int id = build.getItem(5).position;
+                // $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100
+                // + "% 0%").〡(ItemIcon);
+                // });
             });
         });
     }
@@ -489,7 +503,8 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 int size = resolver.estimateSize();
 
                 for (int i = 1; i <= size; i++) {
-                    Element value = element.child(NormalValue)
+                    Element value = element
+                            .child(NormalValue)
                             .text(Mathematics.round(amplifier.calculate(i, build), 4));
 
                     if (!resolver.isSkillLevelBased()) {
@@ -554,6 +569,20 @@ public class ChampionDetailWidget extends Widget1<Build> {
             if (status == MRPen) {
                 current.append(" | ").append(build.get(MRPenRatio).value() + MRPenRatio.getUnit());
             }
+        }
+    }
+
+    /**
+     * @version 2014/11/21 21:07:52
+     */
+    private static class ItemBoxWidget extends Widget1<Item> {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        protected void virtualize(VirtualStructure $〡) {
+            super.virtualize($〡);
         }
     }
 
