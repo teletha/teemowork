@@ -25,6 +25,8 @@ import jsx.event.Subscribe;
 import jsx.event.SubscribeUI;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget1;
+import jsx.ui.piece.Output;
+import jsx.ui.piece.SpriteImage;
 import teemowork.model.Build;
 import teemowork.model.Build.Computed;
 import teemowork.model.Champion;
@@ -76,57 +78,43 @@ public class ChampionDetailWidget extends Widget1<Build> {
         build.setLevel(build.getLevel() - 1);
     }
 
+    private final SpriteImage championFace = jsx.ui.piece.UI.image("src/main/resources/teemowork/champions.jpg", Champion.size())
+            .style(ChampionIconBox);
+
+    private final Output levelText = jsx.ui.piece.UI.output("1");
+
+    /** The item image. */
+    private final SpriteImage item1 = jsx.ui.piece.UI.image("src/main/resources/teemowork/items.jpg", Item.size())
+            .style(ItemIconBox);
+
+    /** The item image. */
+    private final SpriteImage item2 = jsx.ui.piece.UI.image("src/main/resources/teemowork/items.jpg", Item.size())
+            .style(ItemIconBox);
+
+    /** The item image. */
+    private final SpriteImage item3 = jsx.ui.piece.UI.image("src/main/resources/teemowork/items.jpg", Item.size())
+            .style(ItemIconBox);
+
+    /** The item image. */
+    private final SpriteImage item4 = jsx.ui.piece.UI.image("src/main/resources/teemowork/items.jpg", Item.size())
+            .style(ItemIconBox);
+
+    /** The item image. */
+    private final SpriteImage item5 = jsx.ui.piece.UI.image("src/main/resources/teemowork/items.jpg", Item.size())
+            .style(ItemIconBox);
+
+    /** The item image. */
+    private final SpriteImage item6 = jsx.ui.piece.UI.image("src/main/resources/teemowork/items.jpg", Item.size())
+            .style(ItemIconBox);
+
     /**
      * {@inheritDoc}
      */
     @Override
     protected void virtualize(VirtualStructure $〡) {
-        String champIconStyle = "background-position:" + champion.id / (Champion.size() - 1) * 100 + "% 0%";
-
         $〡.hbox.〡(UpperInfo, () -> {
-            $〡.hbox.〡ª("style", champIconStyle).〡(ChampionIcon, () -> {
-                $〡.hbox.〡(Level);
-            });
-            $〡.hbox.〡(ItemViewBox, () -> {
-                for (int i = 0; i < 6; i++) {
-                    int pos = build.getItem(i).position;
-                    $〡.hbox.〡(ItemIconBase, () -> {
-                        $〡.hbox.〡ª("style", "background-position:" + pos / (Item.size() - 1) * 100 + "% 0%")
-                                .〡(ItemIcon);
-                    });
-                }
-
-                // $〡.hbox.〡(ItemIconBase, () -> {
-                // int id = build.getItem(0).position;
-                // $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100
-                // + "% 0%").〡(ItemIcon);
-                // });
-                // $〡.hbox.〡(ItemIconBase, () -> {
-                // int id = build.getItem(1).position;
-                // $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100
-                // + "% 0%").〡(ItemIcon);
-                // });
-                // $〡.hbox.〡(ItemIconBase, () -> {
-                // int id = build.getItem(2).position;
-                // $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100
-                // + "% 0%").〡(ItemIcon);
-                // });
-                // $〡.hbox.〡(ItemIconBase, () -> {
-                // int id = build.getItem(3).position;
-                // $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100
-                // + "% 0%").〡(ItemIcon);
-                // });
-                // $〡.hbox.〡(ItemIconBase, () -> {
-                // int id = build.getItem(4).position;
-                // $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100
-                // + "% 0%").〡(ItemIcon);
-                // });
-                // $〡.hbox.〡(ItemIconBase, () -> {
-                // int id = build.getItem(5).position;
-                // $〡.hbox.〡ª("style", "background-position:" + id / (Item.size() - 1) * 100
-                // + "% 0%").〡(ItemIcon);
-                // });
-            });
+            $〡.sbox.〡(championFace, levelText);
+            $〡.hbox.〡(ItemViewBox, item1, item2, item3, item4, item5, item6);
         });
     }
 
@@ -503,8 +491,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 int size = resolver.estimateSize();
 
                 for (int i = 1; i <= size; i++) {
-                    Element value = element
-                            .child(NormalValue)
+                    Element value = element.child(NormalValue)
                             .text(Mathematics.round(amplifier.calculate(i, build), 4));
 
                     if (!resolver.isSkillLevelBased()) {

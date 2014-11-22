@@ -293,6 +293,12 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         cursor.pointer();
     };
 
+    static Style ChampionIconBox = () -> {
+        box.size(ChampionIconSize);
+        border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
+        cursor.pointer();
+    };
+
     /**
      * @version 2013/01/15 13:19:52
      */
@@ -372,4 +378,10 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         display.block();
         box.size(100, percent);
     };
+
+    static Style ItemIconBox = () -> {
+        box.size(ItemIconSize);
+        padding.size(3, px);
+    };
+
 }
