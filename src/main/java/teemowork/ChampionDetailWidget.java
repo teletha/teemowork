@@ -10,6 +10,7 @@
 package teemowork;
 
 import static js.lang.Global.*;
+import static jsx.style.StyleDescriptor.*;
 import static teemowork.ChampionDetailStyle.*;
 import static teemowork.model.Status.*;
 
@@ -81,7 +82,9 @@ public class ChampionDetailWidget extends Widget1<Build> {
     private final SpriteImage championFace = jsx.ui.piece.UI.image("src/main/resources/teemowork/champions.jpg", Champion.size())
             .style(ChampionIconBox);
 
-    private final Output levelText = jsx.ui.piece.UI.output("1");
+    private final Output levelText = jsx.ui.piece.UI.output("1").style(() -> {
+        background.color(rgb(0, 0, 0));
+    });
 
     /** The item image. */
     private final SpriteImage item1 = jsx.ui.piece.UI.image("src/main/resources/teemowork/items.jpg", Item.size())
@@ -113,7 +116,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
     @Override
     protected void virtualize(VirtualStructure $〡) {
         $〡.hbox.〡(UpperInfo, () -> {
-            $〡.sbox.〡(championFace, levelText);
+            $〡.asis.〡(levelText);
             $〡.hbox.〡(ItemViewBox, item1, item2, item3, item4, item5, item6);
         });
     }
