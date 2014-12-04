@@ -109,8 +109,20 @@ public class ChampionDetailWidget extends Widget1<Build> {
      */
     @Override
     protected void virtualize(VirtualStructure $〡) {
-        // $(UpperInfo, () -> {
+        // $.e(UpperInfo, () -> {
+        // $.e(levelText);
+        // $.e(ItemViewBox, item1, item2, item3, item4, item5, item6);
+        // });
         //
+        // $.e(Container, () -> {
+        // $.e(StatusViewBox, () -> {
+        // for (Status status : VISIBLE) {
+        // $.e(StatusBox, () -> {
+        // $.e(StatusName, status.name);
+        // $.e(StatusValue, status.value);
+        // });
+        // }
+        // });
         // });
         $〡.hbox.〡(UpperInfo, () -> {
             $〡.asis.〡(levelText);
