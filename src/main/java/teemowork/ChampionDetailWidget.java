@@ -24,10 +24,12 @@ import js.math.Mathematics;
 import jsx.bwt.UI;
 import jsx.event.Subscribe;
 import jsx.event.SubscribeUI;
+import jsx.style.Style;
+import jsx.style.property.Background.BackgroundImage;
 import jsx.ui.VirtualStructure;
+import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.Output;
-import jsx.ui.piece.SpriteImage;
 import teemowork.model.Build;
 import teemowork.model.Build.Computed;
 import teemowork.model.Champion;
@@ -79,45 +81,50 @@ public class ChampionDetailWidget extends Widget1<Build> {
         build.setLevel(build.getLevel() - 1);
     }
 
-    private final SpriteImage championFace = jsx.ui.piece.UI.image("src/main/resources/teemowork/champions.jpg", Champion.size())
-            .style(ChampionIconBox);
-
-    private final Output levelText = jsx.ui.piece.UI.output("1").style(() -> {
-        background.color(rgb(0, 0, 0));
+    private final Output levelText = jsx.ui.piece.UI.output("1").style(ChampionIconBox, () -> {
+        background.image(BackgroundImage.url("src/main/resources/teemowork/champions.jpg")
+                .horizontal(champion.id / (Champion.size() - 1) * 100, percent));
     });
 
     /** The item image. */
-    private final SpriteImage item1 = jsx.ui.piece.UI.image("src/main/resources/teemowork/items.jpg", Item.size())
-            .style(ItemIconBox);
+    private final ItemBoxWidget item1 = Widget.of(ItemBoxWidget.class, build.getItem(0));
 
     /** The item image. */
-    private final SpriteImage item2 = jsx.ui.piece.UI.image("src/main/resources/teemowork/items.jpg", Item.size())
-            .style(ItemIconBox);
+    private final ItemBoxWidget item2 = Widget.of(ItemBoxWidget.class, build.getItem(1));
 
     /** The item image. */
-    private final SpriteImage item3 = jsx.ui.piece.UI.image("src/main/resources/teemowork/items.jpg", Item.size())
-            .style(ItemIconBox);
+    private final ItemBoxWidget item3 = Widget.of(ItemBoxWidget.class, build.getItem(2));
 
     /** The item image. */
-    private final SpriteImage item4 = jsx.ui.piece.UI.image("src/main/resources/teemowork/items.jpg", Item.size())
-            .style(ItemIconBox);
+    private final ItemBoxWidget item4 = Widget.of(ItemBoxWidget.class, build.getItem(3));
 
     /** The item image. */
-    private final SpriteImage item5 = jsx.ui.piece.UI.image("src/main/resources/teemowork/items.jpg", Item.size())
-            .style(ItemIconBox);
+    private final ItemBoxWidget item5 = Widget.of(ItemBoxWidget.class, build.getItem(4));
 
     /** The item image. */
-    private final SpriteImage item6 = jsx.ui.piece.UI.image("src/main/resources/teemowork/items.jpg", Item.size())
-            .style(ItemIconBox);
+    private final ItemBoxWidget item6 = Widget.of(ItemBoxWidget.class, build.getItem(5));
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected void virtualize(VirtualStructure $〡) {
+        // $(UpperInfo, () -> {
+        //
+        // });
         $〡.hbox.〡(UpperInfo, () -> {
             $〡.asis.〡(levelText);
             $〡.hbox.〡(ItemViewBox, item1, item2, item3, item4, item5, item6);
+        });
+
+        $〡.hbox.〡(Container, () -> {
+            $〡.vbox.〡(StatusViewBox, () -> {
+                for (Status status : VISIBLE) {
+                    $〡.hbox.〡(StatusBox, () -> {
+                        $〡.hbox.〡(StatusName, status.name);
+                    });
+                }
+            });
         });
     }
 
@@ -125,28 +132,13 @@ public class ChampionDetailWidget extends Widget1<Build> {
      * {@inheritDoc}
      */
     public void load(DocumentFragment root) {
-        // Element upper = root.child(UpperInfo);
-        //
-        // // Icon
-        // Element icon = upper.child(ChampionIcon).subscribe(this);
-        // build.champion.applyIcon(icon);
-        //
-        // // Level
-        // level = icon.child(Level);
-
-        // Items
-        Element itemViewBox = upper.child(ItemViewBox);
-
-        for (int i = 0; i < 6; i++) {
-            items.add(itemViewBox.child(new ItemBox(build.getItem(i))));
-        }
-
         Element container = root.child(Container);
         Element statusView = container.child(StatusViewBox);
 
         for (Status status : VISIBLE) {
             statuses.add(new StatusView(status, statusView));
         }
+
         skillView = container.child(SkillTable);
 
         window.subscribe(UIAction.KeyPress, event -> {
@@ -572,7 +564,17 @@ public class ChampionDetailWidget extends Widget1<Build> {
          */
         @Override
         protected void virtualize(VirtualStructure $〡) {
-            super.virtualize($〡);
+            $〡.hbox.〡(ItemIconBase, () -> {
+                $〡.hbox.〡((Style) () -> {
+                    background.image(BackgroundImage.url("src/main/resources/teemowork/items.jpg")
+                            .horizontal(model1.position / (Item.size() - 1) * 100, percent)
+                            .cover()
+                            .borderBox()
+                            .noRepeat());
+                    display.block();
+                    box.size(100, percent);
+                });
+            });
         }
     }
 
