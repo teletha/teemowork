@@ -124,18 +124,34 @@ public class ChampionDetailWidget extends Widget1<Build> {
         // }
         // });
         // });
+
+        // $(UpperInfo, () -> {
+        // $(levelText);
+        // $(ItemViewBox, item1, item2, item3, item4, item5, item6);
+        // });
+        //
+        // $(Container, () -> {
+        // $(StatusViewBox, () -> {
+        // for (Status status : VISIBLE) {
+        // $(StatusBox, () -> {
+        // $(StatusName, status.name);
+        // $(StatusValue, status.value);
+        // });
+        // }
+        // });
+        // });
+
         $〡.hbox.〡(UpperInfo, () -> {
             $〡.asis.〡(levelText);
             $〡.hbox.〡(ItemViewBox, item1, item2, item3, item4, item5, item6);
         });
 
         $〡.hbox.〡(Container, () -> {
-            $〡.vbox.〡(StatusViewBox, () -> {
-                for (Status status : VISIBLE) {
-                    $〡.hbox.〡(StatusBox, () -> {
-                        $〡.hbox.〡(StatusName, status.name);
-                    });
-                }
+            $〡.vbox.〡(StatusViewBox, VISIBLE, status -> {
+                $〡.hbox.〡(StatusBox, () -> {
+                    $〡.hbox.〡(StatusName, status.name());
+                    $〡.hbox.〡(StatusValue, build.get(status).value() + status.getUnit());
+                });
             });
         });
     }
