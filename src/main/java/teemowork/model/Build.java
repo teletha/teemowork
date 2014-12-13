@@ -224,6 +224,18 @@ public class Build extends Publishable implements StatusCalculator {
     }
 
     /**
+     * <p>
+     * Compute build status as human readable text.
+     * </p>
+     * 
+     * @param status A target status.
+     * @return A computed value as text.
+     */
+    public String getQualified(Status status) {
+        return get(status).value() + status.getUnit();
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
