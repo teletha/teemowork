@@ -9,7 +9,6 @@
  */
 package teemowork;
 
-import static js.lang.Global.*;
 import static jsx.style.StyleDescriptor.*;
 import static teemowork.ChampionDetailStyle.*;
 import static teemowork.model.Status.*;
@@ -30,6 +29,7 @@ import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.Output;
+import jsx.ui.style.DynamicStyle;
 import teemowork.model.Build;
 import teemowork.model.Build.Computed;
 import teemowork.model.Champion;
@@ -109,40 +109,8 @@ public class ChampionDetailWidget extends Widget1<Build> {
      */
     @Override
     protected void virtualize(VirtualStructure $〡) {
-        // $.e(UpperInfo, () -> {
-        // $.e(levelText);
-        // $.e(ItemViewBox, item1, item2, item3, item4, item5, item6);
-        // });
-        //
-        // $.e(Container, () -> {
-        // $.e(StatusViewBox, () -> {
-        // for (Status status : VISIBLE) {
-        // $.e(StatusBox, () -> {
-        // $.e(StatusName, status.name);
-        // $.e(StatusValue, status.value);
-        // });
-        // }
-        // });
-        // });
-
-        // $(UpperInfo, () -> {
-        // $(levelText);
-        // $(ItemViewBox, item1, item2, item3, item4, item5, item6);
-        // });
-        //
-        // $(Container, () -> {
-        // $(StatusViewBox, () -> {
-        // for (Status status : VISIBLE) {
-        // $(StatusBox, () -> {
-        // $(StatusName, status.name);
-        // $(StatusValue, status.value);
-        // });
-        // }
-        // });
-        // });
-
         $〡.hbox.〡(UpperInfo, () -> {
-            $〡.asis.〡(levelText);
+            $〡.asis.〡$(levelText);
             $〡.hbox.〡(ItemViewBox, item1, item2, item3, item4, item5, item6);
         });
 
@@ -150,49 +118,41 @@ public class ChampionDetailWidget extends Widget1<Build> {
             $〡.vbox.〡(StatusViewBox, VISIBLE, status -> {
                 $〡.hbox.〡(StatusBox, () -> {
                     $〡.hbox.〡(StatusName, status.name());
-                    $〡.hbox.〡(StatusValue, build.get(status).value() + status.getUnit());
+                    $〡.hbox.〡(StatusValue, computeStatusValue(status));
+                });
+            });
+
+            // $〡.vbox.〡(SkillTable, SkillBoxWidget.class, build.champion.skills);
+            $〡.vbox.〡(SkillTable, build.champion.skills, skill -> {
+                DynamicStyle icon = new DynamicStyle(SkillIcon, () -> {
+                    background.image(BackgroundImage.url(skill.getIcon()));
+                });
+
+                $〡.hbox.〡(IconBox, () -> {
+                    $〡.hbox.〡(icon);
                 });
             });
         });
     }
 
     /**
-     * {@inheritDoc}
+     * <p>
+     * Compute the specified status and make it human readable.
+     * </p>
+     * 
+     * @param status
+     * @return
      */
-    public void load(DocumentFragment root) {
-        Element container = root.child(Container);
-        Element statusView = container.child(StatusViewBox);
+    private Object[] computeStatusValue(Status status) {
+        String value = build.getQualified(status);
 
-        for (Status status : VISIBLE) {
-            statuses.add(new StatusView(status, statusView));
+        if (status == ARPen) {
+            return new String[] {value, " | ", build.getQualified(ARPenRatio)};
+        } else if (status == MRPen) {
+            return new String[] {value, " | ", build.getQualified(MRPenRatio)};
+        } else {
+            return new String[] {value};
         }
-
-        skillView = container.child(SkillTable);
-
-        window.subscribe(UIAction.KeyPress, event -> {
-            switch (event.which) {
-            case 113:// Q
-                build.active(SkillKey.Q);
-                break;
-
-            case 119:// W
-                build.active(SkillKey.W);
-                break;
-
-            case 101:// E
-                build.active(SkillKey.E);
-                break;
-
-            case 114:// R
-                build.active(SkillKey.R);
-                break;
-
-            default:
-                break;
-            }
-        });
-
-        calcurate();
     }
 
     /**
@@ -223,8 +183,38 @@ public class ChampionDetailWidget extends Widget1<Build> {
     /**
      * {@inheritDoc}
      */
+    public void load(DocumentFragment root) {
+        Element container = root.child(Container);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     protected String getPageId() {
         return "Champion2/" + build.champion.systemName;
+    }
+
+    /**
+     * @version 2014/11/21 21:07:52
+     */
+    private static class SkillBoxWidget extends Widget1<Skill> {
+
+        private final Skill skill = model1;
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        protected void virtualize(VirtualStructure $〡) {
+            $〡.hbox.〡(IconBox, () -> {
+                $〡.hbox.〡((Style) () -> {
+
+                    background.image(BackgroundImage.url(skill.getIcon()));
+                    display.block();
+                    box.size(45, px);
+                });
+            });
+        }
     }
 
     /**
