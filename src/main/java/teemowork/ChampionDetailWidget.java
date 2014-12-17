@@ -23,13 +23,13 @@ import js.math.Mathematics;
 import jsx.bwt.UI;
 import jsx.event.Subscribe;
 import jsx.event.SubscribeUI;
+import jsx.style.MultipleStyle;
 import jsx.style.Style;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.Output;
-import jsx.ui.style.DynamicStyle;
 import teemowork.model.Build;
 import teemowork.model.Build.Computed;
 import teemowork.model.Champion;
@@ -122,14 +122,70 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 });
             });
 
-            // $〡.vbox.〡(SkillTable, SkillBoxWidget.class, build.champion.skills);
             $〡.vbox.〡(SkillTable, build.champion.skills, skill -> {
-                DynamicStyle icon = new DynamicStyle(SkillIcon, () -> {
-                    background.image(BackgroundImage.url(skill.getIcon()));
-                });
+                $〡.hbox.〡(() -> {
+                    MultipleStyle icon = new MultipleStyle(SkillIcon, () -> {
+                        background.image(BackgroundImage.url(skill.getIcon()));
+                    });
 
-                $〡.hbox.〡(IconBox, () -> {
-                    $〡.hbox.〡(icon);
+                    $〡.vbox.〡(IconBox, () -> {
+                        $〡.hbox.〡(icon);
+
+                        if (skill.key != SkillKey.Passive) {
+                            int size = skill.getMaxLevel();
+
+                            $〡.hbox.〡(LevelBox, size, level -> {
+                                $〡.hbox.〡(size == 3 ? LevelMark3 : LevelMark);
+                            });
+                        }
+                    });
+
+                    $〡.vbox.〡(() -> {
+                        SkillDescriptor status = skill.getDescriptor(build.getVersion());
+                        int level = build.getLevel(skill);
+
+                        $〡.hbox.〡(Name, skill.name);
+                        $〡.hbox.〡(() -> {
+                            $〡.hbox.〡(SkillStatusValue, () -> {
+                                writeStatusValue($〡, skill, status, status.getRange());
+                                writeStatusValue($〡, skill, status, status.getCooldown());
+                                writeStatusValue($〡, skill, status, status.getCost());
+                            });
+                        });
+
+                        // Passive
+                        $〡.hbox.〡(Text, () -> {
+                            if (!status.getPassive().isEmpty()) {
+                                $〡.hbox.〡(Passive, "PASSIVE");
+                                $〡.hbox.〡(null, status.getPassive(), text -> {
+                                    if (text instanceof Variable) {
+                                        writeVariable($〡, (Variable) text, level);
+                                    } else {
+                                        $〡.hbox.〡(null, text);
+                                    }
+                                });
+                            }
+                        });
+                        $〡.hbox.〡(Text, () -> {
+                            SkillType type = status.getType();
+
+                            if (type != SkillType.Active && type != SkillType.OnHitEffectable) {
+                                $〡.hbox.〡(Passive, status.getType());
+                            }
+
+                            $〡.hbox.〡(null, status.getActive(), text -> {
+                                if (text instanceof Variable) {
+                                    writeVariable($〡, (Variable) text, level);
+                                } else {
+                                    $〡.asis.〡(null, text);
+                                }
+                            });
+
+                            if (type == SkillType.OnHitEffectable) {
+                                $〡.hbox.〡(null, "このスキルはOn-Hit Effectの影響を受ける。");
+                            }
+                        });
+                    });
                 });
             });
         });
@@ -153,6 +209,180 @@ public class ChampionDetailWidget extends Widget1<Build> {
         } else {
             return new String[] {value};
         }
+    }
+
+    /**
+     * <p>
+     * Write skill related status.
+     * </p>
+     * 
+     * @param root A element to write.
+     * @param skill A current processing skill.
+     * @param variable A target skill variable.
+     */
+    private void writeStatusValue(VirtualStructure $〡, Skill sss, SkillDescriptor skill, Variable variable) {
+        if (variable != null) {
+            Status status = variable.getStatus();
+            VariableResolver resolver = variable.getResolver();
+
+            int level = build.getLevel(sss);
+
+            if (!resolver.isSkillLevelBased()) {
+                level = resolver.convertLevel(build);
+            }
+
+            // write label
+            String label = status.name;
+
+            if (status != Range && status != CD) {
+                if (skill.getType() == SkillType.Toggle) {
+                    label = "毎秒" + label;
+                } else if (skill.getType() == SkillType.ToggleForAttack) {
+                    label = "攻撃毎" + label;
+                }
+            }
+
+            $〡.hbox.〡(StatusLabel, label);
+
+            // write values
+            int size = resolver.estimateSize();
+
+            for (int i = 1; i <= size; i++) {
+                double value = status.round(variable.calculate(i, build));
+                $〡.hbox.〡(SkillStatusValue, value == -1 ? "∞" : value);
+
+                // if (!resolver.isSkillLevelBased()) {
+                // String title;
+                //
+                // if (resolver instanceof Refer) {
+                // Refer refer = (Refer) resolver;
+                // title = refer.reference.name + " level " + i;
+                // } else {
+                // title = "Level " + resolver.convertChampionLevel(i);
+                // }
+                // element.attr("title", title).addClass(ChampionLevelIndicator);
+                // }
+                //
+                // if (size != 1 && i == level) {
+                // element.addClass(Current);
+                // }
+
+                if (i != size) {
+                    $〡.hbox.〡(Separator, "/");
+                }
+            }
+
+            // write amplifiers
+            writeAmplifier($〡, variable.getAmplifiers(), 0);
+
+            // write unit
+            $〡.asis.〡$(status.getUnit());
+        }
+    }
+
+    /**
+     * <p>
+     * </p>
+     * 
+     * @param root
+     * @param variable
+     * @param level
+     */
+    private void writeVariable(VirtualStructure $〡, Variable variable, int level) {
+        VariableResolver resolver = variable.getResolver();
+        Status status = variable.getStatus();
+        List<Variable> amplifiers = variable.getAmplifiers();
+
+        if (!resolver.isSkillLevelBased()) {
+            level = resolver.convertLevel(build);
+        }
+
+        // compute current value
+        $〡.hbox.〡(ComputedValue, status.format(variable.calculate(Math.max(1, level), build)));
+
+        // All values
+        int size = resolver.estimateSize();
+
+        if (1 < size || !amplifiers.isEmpty()) {
+            $〡.hbox.〡(null, "(");
+
+            $〡.hbox.〡(null, size, i -> {
+                $〡.hbox.〡(NormalValue, Mathematics.round(resolver.compute(i + 1), 2));
+
+                // if (!resolver.isSkillLevelBased()) {
+                // String title;
+                //
+                // if (resolver instanceof Refer) {
+                // Refer refer = (Refer) resolver;
+                // title = refer.reference.name + " level " + i;
+                // } else {
+                // title = "Level " + resolver.convertChampionLevel(i);
+                // }
+                // element.attr("title", title).addClass(ChampionLevelIndicator);
+                // }
+
+                // if (i == level) {
+                // element.addClass(Current);
+                // }
+
+                if (i + 1 != size) {
+                    $〡.hbox.〡(Separator, "/");
+                }
+            });
+
+            writeAmplifier($〡, amplifiers, level);
+            $〡.hbox.〡(null, ")");
+        }
+    }
+
+    /**
+     * <p>
+     * Write skill amplifier.
+     * </p>
+     * 
+     * @param root A element to write.
+     * @param amplifiers A list of skill amplifiers.
+     * @param level A current skill level.
+     */
+    private void writeAmplifier(VirtualStructure $〡, List<Variable> amplifiers, int level) {
+        $〡.hbox.〡(null, amplifiers, amplifier -> {
+            $〡.hbox.〡(Amplifier, () -> {
+                $〡.hbox.〡(null, "+");
+
+                VariableResolver resolver = amplifier.getResolver();
+
+                if (!resolver.isSkillLevelBased()) {
+                    // level = resolver.convertLevel(build);
+                }
+
+                int size = resolver.estimateSize();
+
+                $〡.hbox.〡(null, size, i -> {
+                    $〡.hbox.〡(NormalValue, Mathematics.round(amplifier.calculate(i + 1, build), 4));
+
+                    // if (!resolver.isSkillLevelBased()) {
+                    // value.attr("title", "Level " + resolver.convertChampionLevel(i))
+                    // .addClass(ChampionLevelIndicator);
+                    // }
+                    //
+                    // if (size != 1 && i == level) {
+                    // value.addClass(Current);
+                    // }
+
+                    if (i + 1 != size) {
+                        $〡.hbox.〡(Separator, "/");
+                    }
+                });
+
+                $〡.hbox.〡(null, amplifier.getStatus().getUnit());
+                // if (!amplifier.getAmplifiers().isEmpty()) {
+                // element.append("(");
+                // writeAmplifier(element, amplifier.getAmplifiers(), level);
+                // element.append(")");
+                // }
+                $〡.hbox.〡(null, amplifier.getStatus().name);
+            });
+        });
     }
 
     /**
@@ -296,16 +526,16 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
             for (int i = 0; i < levels.length; i++) {
                 if (i < level) {
-                    levels[i].add(Assigned);
+                    levels[i].addClass(Assigned);
                 } else {
-                    levels[i].remove(Assigned);
+                    levels[i].removeClass(Assigned);
                 }
             }
 
             if (build.isActive(skill)) {
-                icon.add(Active);
+                icon.addClass(Active);
             } else {
-                icon.remove(Active);
+                icon.removeClass(Active);
             }
 
             write(cooldown, status, status.getCooldown());
@@ -406,11 +636,11 @@ public class ChampionDetailWidget extends Widget1<Build> {
                         } else {
                             title = "Level " + resolver.convertChampionLevel(i);
                         }
-                        element.attr("title", title).add(ChampionLevelIndicator);
+                        element.attr("title", title).addClass(ChampionLevelIndicator);
                     }
 
                     if (size != 1 && i == level) {
-                        element.add(Current);
+                        element.addClass(Current);
                     }
 
                     if (i != size) {
@@ -464,11 +694,11 @@ public class ChampionDetailWidget extends Widget1<Build> {
                         } else {
                             title = "Level " + resolver.convertChampionLevel(i);
                         }
-                        element.attr("title", title).add(ChampionLevelIndicator);
+                        element.attr("title", title).addClass(ChampionLevelIndicator);
                     }
 
                     if (i == level) {
-                        element.add(Current);
+                        element.addClass(Current);
                     }
 
                     if (i != size) {
@@ -508,11 +738,12 @@ public class ChampionDetailWidget extends Widget1<Build> {
                             .text(Mathematics.round(amplifier.calculate(i, build), 4));
 
                     if (!resolver.isSkillLevelBased()) {
-                        value.attr("title", "Level " + resolver.convertChampionLevel(i)).add(ChampionLevelIndicator);
+                        value.attr("title", "Level " + resolver.convertChampionLevel(i))
+                                .addClass(ChampionLevelIndicator);
                     }
 
                     if (size != 1 && i == level) {
-                        value.add(Current);
+                        value.addClass(Current);
                     }
 
                     if (i != size) {
@@ -612,7 +843,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
          */
         public ItemBox(Item item) {
             this.item = item;
-            this.icon = root.add(ItemIconBase).child(ItemIcon);
+            this.icon = root.addClass(ItemIconBase).child(ItemIcon);
         }
 
         /**

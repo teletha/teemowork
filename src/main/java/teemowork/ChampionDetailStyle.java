@@ -62,7 +62,6 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
     static Style SkillStatusValue = () ->
 
     {
-        display.inlineBlock();
         text.align.center();
         box.opacity(0.7);
         margin.horizontal(3, px);
