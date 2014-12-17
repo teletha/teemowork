@@ -45,7 +45,7 @@ public class ItemView extends UI {
      */
     public ItemView(Item item, ItemDescriptor itemDescriptor, StatusCalculator calculator) {
         this.calculator = calculator;
-        root.add(Root);
+        root.addClass(Root);
 
         // Icon Area
         Element icons = root.child(IconArea);

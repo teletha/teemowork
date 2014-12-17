@@ -221,16 +221,16 @@ public class ChampionDetail2 extends Page {
 
             for (int i = 0; i < levels.length; i++) {
                 if (i < level) {
-                    levels[i].add(Assigned);
+                    levels[i].addClass(Assigned);
                 } else {
-                    levels[i].remove(Assigned);
+                    levels[i].removeClass(Assigned);
                 }
             }
 
             if (build.isActive(skill)) {
-                icon.add(Active);
+                icon.addClass(Active);
             } else {
-                icon.remove(Active);
+                icon.removeClass(Active);
             }
 
             write(cooldown, status, status.getCooldown());
@@ -331,11 +331,11 @@ public class ChampionDetail2 extends Page {
                         } else {
                             title = "Level " + resolver.convertChampionLevel(i);
                         }
-                        element.attr("title", title).add(ChampionLevelIndicator);
+                        element.attr("title", title).addClass(ChampionLevelIndicator);
                     }
 
                     if (size != 1 && i == level) {
-                        element.add(Current);
+                        element.addClass(Current);
                     }
 
                     if (i != size) {
@@ -389,11 +389,11 @@ public class ChampionDetail2 extends Page {
                         } else {
                             title = "Level " + resolver.convertChampionLevel(i);
                         }
-                        element.attr("title", title).add(ChampionLevelIndicator);
+                        element.attr("title", title).addClass(ChampionLevelIndicator);
                     }
 
                     if (i == level) {
-                        element.add(Current);
+                        element.addClass(Current);
                     }
 
                     if (i != size) {
@@ -433,11 +433,11 @@ public class ChampionDetail2 extends Page {
                             .text(Mathematics.round(amplifier.calculate(i, build), 4));
 
                     if (!resolver.isSkillLevelBased()) {
-                        value.attr("title", "Level " + resolver.convertChampionLevel(i)).add(ChampionLevelIndicator);
+                        value.attr("title", "Level " + resolver.convertChampionLevel(i)).addClass(ChampionLevelIndicator);
                     }
 
                     if (size != 1 && i == level) {
-                        value.add(Current);
+                        value.addClass(Current);
                     }
 
                     if (i != size) {
@@ -513,7 +513,7 @@ public class ChampionDetail2 extends Page {
          */
         public ItemBox(Item item) {
             this.item = item;
-            this.icon = root.add(ItemIconBase).child(ItemIcon);
+            this.icon = root.addClass(ItemIconBase).child(ItemIcon);
         }
 
         /**

@@ -25,8 +25,8 @@ public class Teemowork extends Application {
     }
 
     public void main() {
-        document.documentElement().add(HTML);
-        document.getElementById("Content").add(Content);
+        document.documentElement().addClass(HTML);
+        document.getElementById("Content").addClass(Content);
 
         Header nav = new Header();
         nav.add("< ^ v ^ > Teemowork", "");
