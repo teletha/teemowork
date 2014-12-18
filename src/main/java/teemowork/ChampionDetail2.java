@@ -194,7 +194,7 @@ public class ChampionDetail2 extends Page {
                 Element levels = iconBox.child(LevelBox);
 
                 for (int i = 0; i < size; i++) {
-                    this.levels[i] = levels.child(size == 3 ? LevelMark3 : LevelMark);
+                    this.levels[i] = levels.child(LevelMark);
                 }
             }
 
@@ -244,7 +244,7 @@ public class ChampionDetail2 extends Page {
             passive.empty();
 
             if (!status.getPassive().isEmpty()) {
-                passive.child(Passive).text("PASSIVE");
+                passive.child(SkillTypeInfo).text("PASSIVE");
 
                 for (Object token : status.getPassive()) {
                     if (token instanceof Variable) {
@@ -260,8 +260,8 @@ public class ChampionDetail2 extends Page {
 
             SkillType type = status.getType();
 
-            if (type != SkillType.Active && type != SkillType.OnHitEffectable) {
-                active.child(Passive).text(status.getType());
+            if (type != SkillType.Active) {
+                active.child(SkillTypeInfo).text(status.getType());
             }
 
             for (Object token : status.getActive()) {
@@ -270,10 +270,6 @@ public class ChampionDetail2 extends Page {
                 } else {
                     active.append(token);
                 }
-            }
-
-            if (type == SkillType.OnHitEffectable) {
-                active.append("このスキルはOn-Hit Effectの影響を受ける。");
             }
 
             // avoid circular dependency
@@ -429,11 +425,13 @@ public class ChampionDetail2 extends Page {
                 int size = resolver.estimateSize();
 
                 for (int i = 1; i <= size; i++) {
-                    Element value = element.child(NormalValue)
+                    Element value = element
+                            .child(NormalValue)
                             .text(Mathematics.round(amplifier.calculate(i, build), 4));
 
                     if (!resolver.isSkillLevelBased()) {
-                        value.attr("title", "Level " + resolver.convertChampionLevel(i)).addClass(ChampionLevelIndicator);
+                        value.attr("title", "Level " + resolver.convertChampionLevel(i))
+                                .addClass(ChampionLevelIndicator);
                     }
 
                     if (size != 1 && i == level) {

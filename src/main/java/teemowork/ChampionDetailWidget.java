@@ -29,6 +29,7 @@ import jsx.style.property.Background.BackgroundImage;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
+import jsx.ui.Widget2;
 import jsx.ui.piece.Output;
 import teemowork.model.Build;
 import teemowork.model.Build.Computed;
@@ -82,7 +83,8 @@ public class ChampionDetailWidget extends Widget1<Build> {
     }
 
     private final Output levelText = jsx.ui.piece.UI.output("1").style(ChampionIconBox, () -> {
-        background.image(BackgroundImage.url("src/main/resources/teemowork/champions.jpg")
+        background.image(BackgroundImage
+                .url("src/main/resources/teemowork/champions.jpg")
                 .horizontal(champion.id / (Champion.size() - 1) * 100, percent));
     });
 
@@ -123,72 +125,70 @@ public class ChampionDetailWidget extends Widget1<Build> {
             });
 
             $〡.vbox.〡(SkillTable, build.champion.skills, skill -> {
-                $〡.hbox.〡(() -> {
+                $〡.hbox.〡(SkillRow, () -> {
                     MultipleStyle icon = new MultipleStyle(SkillIcon, () -> {
                         background.image(BackgroundImage.url(skill.getIcon()));
                     });
 
                     $〡.vbox.〡(IconBox, () -> {
-                        $〡.hbox.〡(icon);
+                        $〡.nbox.〡(icon);
 
                         if (skill.key != SkillKey.Passive) {
-                            int size = skill.getMaxLevel();
-
-                            $〡.hbox.〡(LevelBox, size, level -> {
-                                $〡.hbox.〡(size == 3 ? LevelMark3 : LevelMark);
+                            $〡.nbox.〡(LevelBox, skill.getMaxLevel(), level -> {
+                                $〡.nbox.〡(LevelMark);
                             });
                         }
                     });
 
                     $〡.vbox.〡(() -> {
                         SkillDescriptor status = skill.getDescriptor(build.getVersion());
-                        int level = build.getLevel(skill);
 
-                        $〡.hbox.〡(Name, skill.name);
-                        $〡.hbox.〡(() -> {
-                            $〡.hbox.〡(SkillStatusValue, () -> {
-                                writeStatusValue($〡, skill, status, status.getRange());
-                                writeStatusValue($〡, skill, status, status.getCooldown());
-                                writeStatusValue($〡, skill, status, status.getCost());
+                        $〡.nbox.〡(Name, skill.name);
+                        $〡.nbox.〡(() -> {
+                            writeStatusValue($〡, skill, status, status.getRange());
+                            writeStatusValue($〡, skill, status, status.getCooldown());
+                            writeStatusValue($〡, skill, status, status.getCost());
+                        });
+
+                        if (!status.getPassive().isEmpty()) {
+                            $〡.nbox.〡(Text, () -> {
+                                $〡.nbox.〡(SkillTypeInfo, "PASSIVE");
+                                $〡.nbox.〡(null, Widget.of(SkillTextWidget.class, skill, status.getPassive()));
                             });
-                        });
+                        }
 
-                        // Passive
-                        $〡.hbox.〡(Text, () -> {
-                            if (!status.getPassive().isEmpty()) {
-                                $〡.hbox.〡(Passive, "PASSIVE");
-                                $〡.hbox.〡(null, status.getPassive(), text -> {
-                                    if (text instanceof Variable) {
-                                        writeVariable($〡, (Variable) text, level);
-                                    } else {
-                                        $〡.hbox.〡(null, text);
-                                    }
-                                });
-                            }
-                        });
-                        $〡.hbox.〡(Text, () -> {
-                            SkillType type = status.getType();
-
-                            if (type != SkillType.Active && type != SkillType.OnHitEffectable) {
-                                $〡.hbox.〡(Passive, status.getType());
-                            }
-
-                            $〡.hbox.〡(null, status.getActive(), text -> {
-                                if (text instanceof Variable) {
-                                    writeVariable($〡, (Variable) text, level);
-                                } else {
-                                    $〡.asis.〡(null, text);
-                                }
+                        if (!status.getActive().isEmpty()) {
+                            $〡.nbox.〡(Text, () -> {
+                                $〡.nbox.〡(SkillTypeInfo, status.getType());
+                                $〡.nbox.〡(null, Widget.of(SkillTextWidget.class, skill, status.getActive()));
                             });
-
-                            if (type == SkillType.OnHitEffectable) {
-                                $〡.hbox.〡(null, "このスキルはOn-Hit Effectの影響を受ける。");
-                            }
-                        });
+                        }
                     });
                 });
             });
         });
+    }
+
+    /**
+     * @version 2014/12/18 16:51:00
+     */
+    private class SkillTextWidget extends Widget2<Skill, List> {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        protected void virtualize(VirtualStructure $〡) {
+            int level = build.getLevel(model1);
+
+            for (Object text : model2) {
+                if (text instanceof Variable) {
+                    writeVariable($〡, (Variable) text, level);
+                } else {
+                    $〡.〡(text);
+                }
+            }
+        }
     }
 
     /**
@@ -222,61 +222,63 @@ public class ChampionDetailWidget extends Widget1<Build> {
      */
     private void writeStatusValue(VirtualStructure $〡, Skill sss, SkillDescriptor skill, Variable variable) {
         if (variable != null) {
-            Status status = variable.getStatus();
-            VariableResolver resolver = variable.getResolver();
+            $〡.hbox.〡(StatusBlock, () -> {
+                Status status = variable.getStatus();
+                VariableResolver resolver = variable.getResolver();
 
-            int level = build.getLevel(sss);
+                int level = build.getLevel(sss);
 
-            if (!resolver.isSkillLevelBased()) {
-                level = resolver.convertLevel(build);
-            }
-
-            // write label
-            String label = status.name;
-
-            if (status != Range && status != CD) {
-                if (skill.getType() == SkillType.Toggle) {
-                    label = "毎秒" + label;
-                } else if (skill.getType() == SkillType.ToggleForAttack) {
-                    label = "攻撃毎" + label;
+                if (!resolver.isSkillLevelBased()) {
+                    level = resolver.convertLevel(build);
                 }
-            }
 
-            $〡.hbox.〡(StatusLabel, label);
+                // write label
+                String label = status.name;
 
-            // write values
-            int size = resolver.estimateSize();
-
-            for (int i = 1; i <= size; i++) {
-                double value = status.round(variable.calculate(i, build));
-                $〡.hbox.〡(SkillStatusValue, value == -1 ? "∞" : value);
-
-                // if (!resolver.isSkillLevelBased()) {
-                // String title;
-                //
-                // if (resolver instanceof Refer) {
-                // Refer refer = (Refer) resolver;
-                // title = refer.reference.name + " level " + i;
-                // } else {
-                // title = "Level " + resolver.convertChampionLevel(i);
-                // }
-                // element.attr("title", title).addClass(ChampionLevelIndicator);
-                // }
-                //
-                // if (size != 1 && i == level) {
-                // element.addClass(Current);
-                // }
-
-                if (i != size) {
-                    $〡.hbox.〡(Separator, "/");
+                if (status != Range && status != CD) {
+                    if (skill.getType() == SkillType.Toggle) {
+                        label = "毎秒" + label;
+                    } else if (skill.getType() == SkillType.ToggleForAttack) {
+                        label = "攻撃毎" + label;
+                    }
                 }
-            }
 
-            // write amplifiers
-            writeAmplifier($〡, variable.getAmplifiers(), 0);
+                $〡.nbox.〡(StatusLabel, label);
 
-            // write unit
-            $〡.asis.〡$(status.getUnit());
+                // write values
+                int size = resolver.estimateSize();
+
+                for (int i = 1; i <= size; i++) {
+                    double value = status.round(variable.calculate(i, build));
+                    $〡.nbox.〡(SkillStatusValue, value == -1 ? "∞" : value);
+
+                    // if (!resolver.isSkillLevelBased()) {
+                    // String title;
+                    //
+                    // if (resolver instanceof Refer) {
+                    // Refer refer = (Refer) resolver;
+                    // title = refer.reference.name + " level " + i;
+                    // } else {
+                    // title = "Level " + resolver.convertChampionLevel(i);
+                    // }
+                    // element.attr("title", title).addClass(ChampionLevelIndicator);
+                    // }
+                    //
+                    // if (size != 1 && i == level) {
+                    // element.addClass(Current);
+                    // }
+
+                    if (i != size) {
+                        $〡.nbox.〡(Separator, "/");
+                    }
+                }
+
+                // write amplifiers
+                writeAmplifier($〡, variable.getAmplifiers(), 0);
+
+                // write unit
+                $〡.〡(status.getUnit());
+            });
         }
     }
 
@@ -298,16 +300,16 @@ public class ChampionDetailWidget extends Widget1<Build> {
         }
 
         // compute current value
-        $〡.hbox.〡(ComputedValue, status.format(variable.calculate(Math.max(1, level), build)));
+        $〡.nbox.〡(ComputedValue, status.format(variable.calculate(Math.max(1, level), build)));
 
         // All values
         int size = resolver.estimateSize();
 
         if (1 < size || !amplifiers.isEmpty()) {
-            $〡.hbox.〡(null, "(");
+            $〡.〡("(");
 
-            $〡.hbox.〡(null, size, i -> {
-                $〡.hbox.〡(NormalValue, Mathematics.round(resolver.compute(i + 1), 2));
+            $〡.nbox.〡(null, size, i -> {
+                $〡.nbox.〡(NormalValue, Mathematics.round(resolver.compute(i + 1), 2));
 
                 // if (!resolver.isSkillLevelBased()) {
                 // String title;
@@ -326,12 +328,12 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 // }
 
                 if (i + 1 != size) {
-                    $〡.hbox.〡(Separator, "/");
+                    $〡.nbox.〡(Separator, "/");
                 }
             });
 
             writeAmplifier($〡, amplifiers, level);
-            $〡.hbox.〡(null, ")");
+            $〡.〡(")");
         }
     }
 
@@ -345,9 +347,9 @@ public class ChampionDetailWidget extends Widget1<Build> {
      * @param level A current skill level.
      */
     private void writeAmplifier(VirtualStructure $〡, List<Variable> amplifiers, int level) {
-        $〡.hbox.〡(null, amplifiers, amplifier -> {
-            $〡.hbox.〡(Amplifier, () -> {
-                $〡.hbox.〡(null, "+");
+        $〡.nbox.〡(null, amplifiers, amplifier -> {
+            $〡.nbox.〡(Amplifier, () -> {
+                $〡.〡("+");
 
                 VariableResolver resolver = amplifier.getResolver();
 
@@ -357,8 +359,8 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
                 int size = resolver.estimateSize();
 
-                $〡.hbox.〡(null, size, i -> {
-                    $〡.hbox.〡(NormalValue, Mathematics.round(amplifier.calculate(i + 1, build), 4));
+                $〡.nbox.〡(null, size, i -> {
+                    $〡.nbox.〡(NormalValue, Mathematics.round(amplifier.calculate(i + 1, build), 4));
 
                     // if (!resolver.isSkillLevelBased()) {
                     // value.attr("title", "Level " + resolver.convertChampionLevel(i))
@@ -370,17 +372,17 @@ public class ChampionDetailWidget extends Widget1<Build> {
                     // }
 
                     if (i + 1 != size) {
-                        $〡.hbox.〡(Separator, "/");
+                        $〡.nbox.〡(Separator, "/");
                     }
                 });
 
-                $〡.hbox.〡(null, amplifier.getStatus().getUnit());
+                $〡.〡(amplifier.getStatus().getUnit());
                 // if (!amplifier.getAmplifiers().isEmpty()) {
                 // element.append("(");
                 // writeAmplifier(element, amplifier.getAmplifiers(), level);
                 // element.append(")");
                 // }
-                $〡.hbox.〡(null, amplifier.getStatus().name);
+                $〡.〡(amplifier.getStatus().name);
             });
         });
     }
@@ -499,7 +501,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 Element levels = iconBox.child(LevelBox);
 
                 for (int i = 0; i < size; i++) {
-                    this.levels[i] = levels.child(size == 3 ? LevelMark3 : LevelMark);
+                    this.levels[i] = levels.child(LevelMark);
                 }
             }
 
@@ -549,7 +551,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
             passive.empty();
 
             if (!status.getPassive().isEmpty()) {
-                passive.child(Passive).text("PASSIVE");
+                passive.child(SkillTypeInfo).text(status.getType());
 
                 for (Object token : status.getPassive()) {
                     if (token instanceof Variable) {
@@ -563,11 +565,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
             // ACTIVE
             active.empty();
 
-            SkillType type = status.getType();
-
-            if (type != SkillType.Active && type != SkillType.OnHitEffectable) {
-                active.child(Passive).text(status.getType());
-            }
+            active.child(SkillTypeInfo).text(status.getType());
 
             for (Object token : status.getActive()) {
                 if (token instanceof Variable) {
@@ -575,10 +573,6 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 } else {
                     active.append(token);
                 }
-            }
-
-            if (type == SkillType.OnHitEffectable) {
-                active.append("このスキルはOn-Hit Effectの影響を受ける。");
             }
 
             // avoid circular dependency
@@ -734,7 +728,8 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 int size = resolver.estimateSize();
 
                 for (int i = 1; i <= size; i++) {
-                    Element value = element.child(NormalValue)
+                    Element value = element
+                            .child(NormalValue)
                             .text(Mathematics.round(amplifier.calculate(i, build), 4));
 
                     if (!resolver.isSkillLevelBased()) {
@@ -815,7 +810,8 @@ public class ChampionDetailWidget extends Widget1<Build> {
         protected void virtualize(VirtualStructure $〡) {
             $〡.hbox.〡(ItemIconBase, () -> {
                 $〡.hbox.〡((Style) () -> {
-                    background.image(BackgroundImage.url("src/main/resources/teemowork/items.jpg")
+                    background.image(BackgroundImage
+                            .url("src/main/resources/teemowork/items.jpg")
                             .horizontal(model1.position / (Item.size() - 1) * 100, percent)
                             .cover()
                             .borderBox()
