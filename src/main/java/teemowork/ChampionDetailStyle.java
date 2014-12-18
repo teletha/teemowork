@@ -40,10 +40,13 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
     /**
      * @version 2013/02/06 20:03:25
      */
-    static Style StatusLabel = () ->
-
-    {
+    static Style StatusLabel = () -> {
         font.size.smaller();
+    };
+
+    static Style StatusBlock = () -> {
+        display.inlineBlock();
+        margin.right(0.8, em);
     };
 
     /**
@@ -127,30 +130,14 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
 
     {
         display.block();
-        box.width(SkillIconSize / 5, px).height(LevelBoxHeight, px);
+        flexItem.grow(1);
+        box.height(LevelBoxHeight, px);
         border.left.solid().color(Black).width(1, px);
         background.image(BackgroundImage.of(linear(rgba(240, 192, 28, 0.5), rgba(160, 123, 1, 0.5))));
 
         firstChild(() -> {
             border.none();
         });
-    };
-
-    /**
-     * @version 2013/02/02 11:27:13
-     */
-    static Style LevelMark3 = () ->
-
-    {
-        display.block();
-        box.width(SkillIconSize / 5, px).height(LevelBoxHeight, px);
-        border.left.solid().color(Black).width(1, px);
-        background.image(BackgroundImage.of(linear(rgba(240, 192, 28, 0.5), rgba(160, 123, 1, 0.5))));
-
-        firstChild(() -> {
-            border.none();
-        });
-        box.width(SkillIconSize / 3, px);
     };
 
     /**
@@ -165,9 +152,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
     /**
      * @version 2013/02/02 11:27:13
      */
-    static Style IconBox = () ->
-
-    {
+    static Style IconBox = () -> {
         margin.right(SkillIconSize / 5, px);
         cursor.pointer();
         flexItem.shrink(0);
@@ -176,19 +161,18 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
     /**
      * @version 2013/02/06 20:03:25
      */
-    static Style Name = () ->
-
-    {
+    static Style Name = () -> {
         margin.right(0.5, em);
         font.weight.bold();
+    };
+
+    static Style Info = () -> {
     };
 
     /**
      * @version 2013/02/06 20:03:25
      */
-    static Style Text = () ->
-
-    {
+    static Style Text = () -> {
         display.block();
         margin.top(0.4, em);
         line.height(140, percent);
@@ -198,9 +182,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
     /**
      * @version 2013/02/06 20:03:25
      */
-    static Style ComputedValue = () ->
-
-    {
+    static Style ComputedValue = () -> {
         font.weight.bolder();
     };
 
@@ -244,9 +226,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
     /**
      * @version 2013/02/06 20:03:25
      */
-    static Style Passive = () ->
-
-    {
+    static Style SkillTypeInfo = () -> {
         margin.right(1, em);
     };
 

@@ -14,15 +14,15 @@ package teemowork.model;
  */
 public enum SkillType {
 
-    Active,
+    Passive,
+
+    Active(""),
 
     Toggle,
 
     ToggleForAttack("TOGGLE"),
 
-    Channel,
-
-    OnHitEffectable;
+    Channel;
 
     private String name;
 
