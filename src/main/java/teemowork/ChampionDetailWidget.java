@@ -126,12 +126,8 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
             $〡.vbox.〡(SkillTable, build.champion.skills, skill -> {
                 $〡.hbox.〡(SkillRow, () -> {
-                    MultipleStyle icon = new MultipleStyle(SkillIcon, () -> {
-                        background.image(BackgroundImage.url(skill.getIcon()));
-                    });
-
                     $〡.vbox.〡(IconBox, () -> {
-                        $〡.nbox.〡(icon);
+                        $〡.〡(SkillBoxWidget.class, skill);
 
                         if (skill.key != SkillKey.Passive) {
                             $〡.nbox.〡(LevelBox, skill.getMaxLevel(), level -> {
@@ -142,7 +138,6 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
                     $〡.vbox.〡(() -> {
                         SkillDescriptor status = skill.getDescriptor(build.getVersion());
-
                         $〡.nbox.〡(Name, skill.name);
                         $〡.nbox.〡(() -> {
                             writeStatusValue($〡, skill, status, status.getRange());
@@ -159,7 +154,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
                         if (!status.getActive().isEmpty()) {
                             $〡.nbox.〡(Text, () -> {
-                                $〡.nbox.〡(SkillTypeInfo, status.getType());
+                                $〡.nbox.〡(SkillTypeInfo, status.getType().toString());
                                 $〡.nbox.〡(null, Widget.of(SkillTextWidget.class, skill, status.getActive()));
                             });
                         }
@@ -307,7 +302,6 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
         if (1 < size || !amplifiers.isEmpty()) {
             $〡.〡("(");
-
             $〡.nbox.〡(null, size, i -> {
                 $〡.nbox.〡(NormalValue, Mathematics.round(resolver.compute(i + 1), 2));
 
@@ -427,25 +421,20 @@ public class ChampionDetailWidget extends Widget1<Build> {
     }
 
     /**
-     * @version 2014/11/21 21:07:52
+     * @version 2014/12/19 9:25:49
      */
     private static class SkillBoxWidget extends Widget1<Skill> {
-
-        private final Skill skill = model1;
 
         /**
          * {@inheritDoc}
          */
         @Override
         protected void virtualize(VirtualStructure $〡) {
-            $〡.hbox.〡(IconBox, () -> {
-                $〡.hbox.〡((Style) () -> {
-
-                    background.image(BackgroundImage.url(skill.getIcon()));
-                    display.block();
-                    box.size(45, px);
-                });
+            MultipleStyle icon = new MultipleStyle(SkillIcon, () -> {
+                background.image(BackgroundImage.url(model1.getIcon()));
             });
+
+            $〡.hbox.〡(icon);
         }
     }
 
