@@ -44,7 +44,6 @@ import teemowork.model.Status;
 import teemowork.model.Version;
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
-import teemowork.model.variable.VariableResolver.Refer;
 
 /**
  * @version 2013/01/10 2:36:58
@@ -83,8 +82,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
     }
 
     private final Output levelText = jsx.ui.piece.UI.output("1").style(ChampionIconBox, () -> {
-        background.image(BackgroundImage
-                .url("src/main/resources/teemowork/champions.jpg")
+        background.image(BackgroundImage.url("src/main/resources/teemowork/champions.jpg")
                 .horizontal(champion.id / (Champion.size() - 1) * 100, percent));
     });
 
@@ -110,52 +108,52 @@ public class ChampionDetailWidget extends Widget1<Build> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure $〡) {
-        $〡.hbox.〡(UpperInfo, () -> {
-            $〡.asis.〡$(levelText);
-            $〡.hbox.〡(ItemViewBox, item1, item2, item3, item4, item5, item6);
+    protected void virtualize(VirtualStructure 〡) {
+        〡.hbox.〡(UpperInfo, () -> {
+            〡.asis.〡$(levelText);
+            〡.hbox.〡(ItemViewBox, item1, item2, item3, item4, item5, item6);
         });
 
-        $〡.hbox.〡(Container, () -> {
-            $〡.vbox.〡(StatusViewBox, VISIBLE, status -> {
-                $〡.hbox.〡(StatusBox, () -> {
-                    $〡.hbox.〡(StatusName, status.name());
-                    $〡.hbox.〡(StatusValue, computeStatusValue(status));
+        〡.hbox.〡(Container, () -> {
+            〡.vbox.〡(StatusViewBox, VISIBLE, status -> {
+                〡.hbox.〡(StatusBox, () -> {
+                    〡.hbox.〡(StatusName, status.name());
+                    〡.hbox.〡(StatusValue, computeStatusValue(status));
                 });
             });
 
-            $〡.vbox.〡(SkillTable, build.champion.skills, skill -> {
-                $〡.hbox.〡(SkillRow, () -> {
-                    $〡.vbox.〡(IconBox, () -> {
-                        $〡.〡(SkillBoxWidget.class, skill);
+            〡.vbox.〡(SkillTable, build.champion.skills, skill -> {
+                〡.hbox.〡(SkillRow, () -> {
+                    〡.vbox.〡(IconBox, () -> {
+                        〡.〡(SkillBoxWidget.class, skill);
 
                         if (skill.key != SkillKey.Passive) {
-                            $〡.nbox.〡(LevelBox, skill.getMaxLevel(), level -> {
-                                $〡.nbox.〡(LevelMark);
+                            〡.nbox.〡(LevelBox, skill.getMaxLevel(), level -> {
+                                〡.nbox.〡(LevelMark);
                             });
                         }
                     });
 
-                    $〡.vbox.〡(() -> {
+                    〡.vbox.〡(() -> {
                         SkillDescriptor status = skill.getDescriptor(build.getVersion());
-                        $〡.nbox.〡(Name, skill.name);
-                        $〡.nbox.〡(() -> {
-                            writeStatusValue($〡, skill, status, status.getRange());
-                            writeStatusValue($〡, skill, status, status.getCooldown());
-                            writeStatusValue($〡, skill, status, status.getCost());
+                        〡.nbox.〡(Name, skill.name);
+                        〡.nbox.〡(() -> {
+                            writeStatusValue(〡, skill, status, status.getRange());
+                            writeStatusValue(〡, skill, status, status.getCooldown());
+                            writeStatusValue(〡, skill, status, status.getCost());
                         });
 
                         if (!status.getPassive().isEmpty()) {
-                            $〡.nbox.〡(Text, () -> {
-                                $〡.nbox.〡(SkillTypeInfo, "PASSIVE");
-                                $〡.nbox.〡(null, Widget.of(SkillTextWidget.class, skill, status.getPassive()));
+                            〡.nbox.〡(Text, () -> {
+                                〡.nbox.〡(SkillTypeInfo, "PASSIVE");
+                                〡.nbox.〡(null, Widget.of(SkillTextWidget.class, skill, status.getPassive()));
                             });
                         }
 
                         if (!status.getActive().isEmpty()) {
-                            $〡.nbox.〡(Text, () -> {
-                                $〡.nbox.〡(SkillTypeInfo, status.getType().toString());
-                                $〡.nbox.〡(null, Widget.of(SkillTextWidget.class, skill, status.getActive()));
+                            〡.nbox.〡(Text, () -> {
+                                〡.nbox.〡(SkillTypeInfo, status.getType().toString());
+                                〡.nbox.〡(null, Widget.of(SkillTextWidget.class, skill, status.getActive()));
                             });
                         }
                     });
@@ -245,7 +243,9 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
                 for (int i = 1; i <= size; i++) {
                     double value = status.round(variable.calculate(i, build));
-                    $〡.nbox.〡(SkillStatusValue, value == -1 ? "∞" : value);
+
+                    // element.attr("title", title).addClass(ChampionLevelIndicator);
+                    $〡.nbox.title(resolver.getLevelDescription(i)).〡(SkillStatusValue, value == -1 ? "∞" : value);
 
                     // if (!resolver.isSkillLevelBased()) {
                     // String title;
@@ -299,27 +299,14 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
         // All values
         int size = resolver.estimateSize();
+        int current = level;
 
         if (1 < size || !amplifiers.isEmpty()) {
             $〡.〡("(");
             $〡.nbox.〡(null, size, i -> {
-                $〡.nbox.〡(NormalValue, Mathematics.round(resolver.compute(i + 1), 2));
-
-                // if (!resolver.isSkillLevelBased()) {
-                // String title;
-                //
-                // if (resolver instanceof Refer) {
-                // Refer refer = (Refer) resolver;
-                // title = refer.reference.name + " level " + i;
-                // } else {
-                // title = "Level " + resolver.convertChampionLevel(i);
-                // }
-                // element.attr("title", title).addClass(ChampionLevelIndicator);
-                // }
-
-                // if (i == level) {
-                // element.addClass(Current);
-                // }
+                Style style = NormalValue.when(i + 1 == current, Current)
+                        .when("title", resolver.getLevelDescription(i + 1), ChampionLevelIndicator);
+                $〡.nbox.〡(style, Mathematics.round(resolver.compute(i + 1), 2));
 
                 if (i + 1 != size) {
                     $〡.nbox.〡(Separator, "/");
@@ -354,13 +341,9 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 int size = resolver.estimateSize();
 
                 $〡.nbox.〡(null, size, i -> {
-                    $〡.nbox.〡(NormalValue, Mathematics.round(amplifier.calculate(i + 1, build), 4));
+                    $〡.nbox.title(resolver.getLevelDescription(i + 1))
+                            .〡(NormalValue, Mathematics.round(amplifier.calculate(i + 1, build), 4));
 
-                    // if (!resolver.isSkillLevelBased()) {
-                    // value.attr("title", "Level " + resolver.convertChampionLevel(i))
-                    // .addClass(ChampionLevelIndicator);
-                    // }
-                    //
                     // if (size != 1 && i == level) {
                     // value.addClass(Current);
                     // }
@@ -611,14 +594,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
                     Element element = root.child(SkillStatusValue).text(value == -1 ? "∞" : value);
 
                     if (!resolver.isSkillLevelBased()) {
-                        String title;
-
-                        if (resolver instanceof Refer) {
-                            Refer refer = (Refer) resolver;
-                            title = refer.reference.name + " level " + i;
-                        } else {
-                            title = "Level " + resolver.convertChampionLevel(i);
-                        }
+                        String title = resolver.getLevelDescription(i);
                         element.attr("title", title).addClass(ChampionLevelIndicator);
                     }
 
@@ -669,14 +645,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
                     Element element = root.child(NormalValue).text(Mathematics.round(resolver.compute(i), 2));
 
                     if (!resolver.isSkillLevelBased()) {
-                        String title;
-
-                        if (resolver instanceof Refer) {
-                            Refer refer = (Refer) resolver;
-                            title = refer.reference.name + " level " + i;
-                        } else {
-                            title = "Level " + resolver.convertChampionLevel(i);
-                        }
+                        String title = resolver.getLevelDescription(i);
                         element.attr("title", title).addClass(ChampionLevelIndicator);
                     }
 
@@ -717,13 +686,11 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 int size = resolver.estimateSize();
 
                 for (int i = 1; i <= size; i++) {
-                    Element value = element
-                            .child(NormalValue)
+                    Element value = element.child(NormalValue)
                             .text(Mathematics.round(amplifier.calculate(i, build), 4));
 
                     if (!resolver.isSkillLevelBased()) {
-                        value.attr("title", "Level " + resolver.convertChampionLevel(i))
-                                .addClass(ChampionLevelIndicator);
+                        value.attr("title", resolver.getLevelDescription(i)).addClass(ChampionLevelIndicator);
                     }
 
                     if (size != 1 && i == level) {
@@ -799,8 +766,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
         protected void virtualize(VirtualStructure $〡) {
             $〡.hbox.〡(ItemIconBase, () -> {
                 $〡.hbox.〡((Style) () -> {
-                    background.image(BackgroundImage
-                            .url("src/main/resources/teemowork/items.jpg")
+                    background.image(BackgroundImage.url("src/main/resources/teemowork/items.jpg")
                             .horizontal(model1.position / (Item.size() - 1) * 100, percent)
                             .cover()
                             .borderBox()

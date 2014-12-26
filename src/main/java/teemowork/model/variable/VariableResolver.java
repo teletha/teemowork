@@ -48,6 +48,19 @@ public abstract class VariableResolver {
     }
 
     /**
+     * Compute champion level as human readable text.
+     * 
+     * @param skillLevel
+     * @return
+     */
+    public String getLevelDescription(int skillLevel) {
+        if (isSkillLevelBased()) {
+            return "";
+        }
+        return "Champion Level " + convertChampionLevel(skillLevel);
+    }
+
+    /**
      * <p>
      * Compute champion level from skill level.
      * </p>
@@ -55,7 +68,7 @@ public abstract class VariableResolver {
      * @param skillLevel
      * @return
      */
-    public int convertChampionLevel(int skillLevel) {
+    protected int convertChampionLevel(int skillLevel) {
         return -1;
     }
 
@@ -123,7 +136,7 @@ public abstract class VariableResolver {
          * {@inheritDoc}
          */
         @Override
-        public int convertChampionLevel(int skillLevel) {
+        protected int convertChampionLevel(int skillLevel) {
             return levels[skillLevel - 1];
         }
 
@@ -406,7 +419,7 @@ public abstract class VariableResolver {
          * {@inheritDoc}
          */
         @Override
-        public int convertChampionLevel(int skillLevel) {
+        protected int convertChampionLevel(int skillLevel) {
             return skillLevel;
         }
 
@@ -526,6 +539,14 @@ public abstract class VariableResolver {
         @Override
         public int convertLevel(StatusCalculator calculator) {
             return calculator.getLevel(reference);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String getLevelDescription(int skillLevel) {
+            return reference.name + " Level " + skillLevel;
         }
     }
 }

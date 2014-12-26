@@ -38,7 +38,6 @@ import teemowork.model.Status;
 import teemowork.model.Version;
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
-import teemowork.model.variable.VariableResolver.Refer;
 
 /**
  * @version 2013/01/10 2:36:58
@@ -363,14 +362,7 @@ public class ChampionDetail extends Page {
                     Element element = root.child(SkillStatusValue).text(value == -1 ? "∞" : value);
 
                     if (!resolver.isSkillLevelBased()) {
-                        String title;
-
-                        if (resolver instanceof Refer) {
-                            Refer refer = (Refer) resolver;
-                            title = refer.reference.name + " level " + i;
-                        } else {
-                            title = "Level " + resolver.convertChampionLevel(i);
-                        }
+                        String title = resolver.getLevelDescription(i);
                         element.attr("title", title).addClass(ChampionLevelIndicator);
                     }
 
@@ -421,14 +413,7 @@ public class ChampionDetail extends Page {
                     Element element = root.child(NormalValue).text(Mathematics.round(resolver.compute(i), 2));
 
                     if (!resolver.isSkillLevelBased()) {
-                        String title;
-
-                        if (resolver instanceof Refer) {
-                            Refer refer = (Refer) resolver;
-                            title = refer.reference.name + " level " + i;
-                        } else {
-                            title = "Level " + resolver.convertChampionLevel(i);
-                        }
+                        String title = resolver.getLevelDescription(i);
                         element.attr("title", title).addClass(ChampionLevelIndicator);
                     }
 
@@ -469,13 +454,11 @@ public class ChampionDetail extends Page {
                 int size = resolver.estimateSize();
 
                 for (int i = 1; i <= size; i++) {
-                    Element value = element
-                            .child(NormalValue)
+                    Element value = element.child(NormalValue)
                             .text(Mathematics.round(amplifier.calculate(i, build), 4));
 
                     if (!resolver.isSkillLevelBased()) {
-                        value.attr("title", "Level " + resolver.convertChampionLevel(i))
-                                .addClass(ChampionLevelIndicator);
+                        value.attr("title", resolver.getLevelDescription(i)).addClass(ChampionLevelIndicator);
                     }
 
                     if (size != 1 && i == level) {
