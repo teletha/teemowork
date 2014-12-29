@@ -16,6 +16,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 import jsx.event.Publishable;
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
@@ -32,7 +35,7 @@ public class Build extends Publishable implements StatusCalculator {
     private Version version = Version.Latest;
 
     /** The level. */
-    private int level = 1;
+    public final IntegerProperty level = new SimpleIntegerProperty(1);
 
     /** The item list. */
     private Item[] items = new Item[6];
@@ -90,7 +93,7 @@ public class Build extends Publishable implements StatusCalculator {
      */
     @Override
     public int getLevel() {
-        return level;
+        return level.get();
     }
 
     /**
@@ -108,7 +111,7 @@ public class Build extends Publishable implements StatusCalculator {
      */
     public void setLevel(int level) {
         if (0 < level && level < 19) {
-            this.level = level;
+            this.level.set(level);
 
             publish(this);
         }
@@ -150,7 +153,7 @@ public class Build extends Publishable implements StatusCalculator {
             return new Computed(0, get(AD).base, status);
 
         case Lv:
-            return new Computed(level, level, Lv);
+            return new Computed(level.get(), level.get(), Lv);
 
         case DealtDamageRatio:
         case Tenacity:
@@ -197,7 +200,7 @@ public class Build extends Publishable implements StatusCalculator {
 
         case MS:
             double baseMS = base(status);
-            double computedMS = (baseMS + sum(status) + sum(MSPerLv) * level) * (1 + sum(MSRatio) / 100);
+            double computedMS = (baseMS + sum(status) + sum(MSPerLv) * level.get()) * (1 + sum(MSRatio) / 100);
 
             // calcurate movement speed cap
             if (490 < computedMS) {
@@ -211,13 +214,13 @@ public class Build extends Publishable implements StatusCalculator {
 
         case AS:
             double baseAS = champion.getStatus(version).get(AS);
-            double levelAS = champion.getStatus(version).get(ASPerLv) * (level - 1);
+            double levelAS = champion.getStatus(version).get(ASPerLv) * (level.get() - 1);
 
             return new Computed(baseAS * (1 + levelAS / 100), Math.min(2.5, baseAS * (1 + (levelAS + sum(ASRatio)) / 100)), status);
 
         default:
             double base = base(status);
-            double computed = (base + sum(status) + sum(status.per()) * level) * (1 + sum(status.ratio()) / 100);
+            double computed = (base + sum(status) + sum(status.per()) * level.get()) * (1 + sum(status.ratio()) / 100);
 
             return new Computed(base, computed, status);
         }
@@ -317,7 +320,7 @@ public class Build extends Publishable implements StatusCalculator {
             return champion.getStatus(version).get(status);
 
         default:
-            double value = champion.getStatus(version).get(status) + champion.getStatus(version).get(status.per()) * level;
+            double value = champion.getStatus(version).get(status) + champion.getStatus(version).get(status.per()) * level.get();
 
             if (champion == Champion.EliseSpider) {
                 value += computeVariable(status, Skill.SpiderForm);
