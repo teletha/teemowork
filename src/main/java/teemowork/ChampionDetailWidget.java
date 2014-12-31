@@ -19,10 +19,11 @@ import js.math.Mathematics;
 import jsx.style.MultipleStyle;
 import jsx.style.Style;
 import jsx.style.property.Background.BackgroundImage;
+import jsx.ui.LowLevelWidget;
 import jsx.ui.VirtualStructure;
+import jsx.ui.VirtualStructure.ContainerDescriptor;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
-import jsx.ui.Widget2;
 import jsx.ui.piece.Output;
 import teemowork.model.Build;
 import teemowork.model.Champion;
@@ -57,11 +58,9 @@ public class ChampionDetailWidget extends Widget1<Build> {
         build.setLevel(build.getLevel() - 1);
     }
 
-    private final Output levelText = jsx.ui.piece.UI
-            .output(build.level)
+    private final Output levelText = jsx.ui.piece.UI.output(build.level)
             .style(ChampionIconBox, () -> {
-                background.image(BackgroundImage
-                        .url("src/main/resources/teemowork/champions.jpg")
+                background.image(BackgroundImage.url("src/main/resources/teemowork/champions.jpg")
                         .horizontal(champion.id / (Champion.size() - 1) * 100, percent));
             })
             .click(() -> {
@@ -107,7 +106,12 @@ public class ChampionDetailWidget extends Widget1<Build> {
             〡.vbox.〡(SkillTable, build.champion.skills, skill -> {
                 〡.hbox.〡(SkillRow, () -> {
                     〡.vbox.〡(IconBox, () -> {
-                        〡.〡(SkillBoxWidget.class, skill);
+                        〡.asis.〡$(new SkillBoxWidget(skill));
+                        // MultipleStyle icon = new MultipleStyle(SkillIcon, () -> {
+                        // background.image(BackgroundImage.url(skill.getIcon()));
+                        // });
+                        //
+                        // 〡.hbox.〡(icon);
 
                         if (skill.key != SkillKey.Passive) {
                             〡.nbox.〡(LevelBox, skill.getMaxLevel(), level -> {
@@ -127,43 +131,37 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
                         if (!status.getPassive().isEmpty()) {
                             〡.nbox.〡(Text, () -> {
+                                int level = build.getLevel(skill);
+
                                 〡.nbox.〡(SkillTypeInfo, "PASSIVE");
-                                〡.nbox.〡(null, Widget.of(SkillTextWidget.class, skill, status.getPassive()));
+                                〡.nbox.〡(null, status.getPassive(), text -> {
+                                    if (text instanceof Variable) {
+                                        writeVariable(〡, (Variable) text, level);
+                                    } else {
+                                        〡.〡(text);
+                                    }
+                                });
                             });
                         }
 
                         if (!status.getActive().isEmpty()) {
                             〡.nbox.〡(Text, () -> {
+                                int level = build.getLevel(skill);
+
                                 〡.nbox.〡(SkillTypeInfo, status.getType().toString());
-                                〡.nbox.〡(null, Widget.of(SkillTextWidget.class, skill, status.getActive()));
+                                〡.nbox.〡(null, status.getActive(), text -> {
+                                    if (text instanceof Variable) {
+                                        writeVariable(〡, (Variable) text, level);
+                                    } else {
+                                        〡.〡(text);
+                                    }
+                                });
                             });
                         }
                     });
                 });
             });
         });
-    }
-
-    /**
-     * @version 2014/12/18 16:51:00
-     */
-    private class SkillTextWidget extends Widget2<Skill, List> {
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize(VirtualStructure $〡) {
-            int level = build.getLevel(model1);
-
-            $〡.nbox.〡(null, model2, text -> {
-                if (text instanceof Variable) {
-                    writeVariable($〡, (Variable) text, level);
-                } else {
-                    $〡.〡(text);
-                }
-            });
-        }
     }
 
     /**
@@ -335,18 +333,40 @@ public class ChampionDetailWidget extends Widget1<Build> {
     /**
      * @version 2014/12/19 9:25:49
      */
-    private static class SkillBoxWidget extends Widget1<Skill> {
+    private class SkillBoxWidget extends LowLevelWidget {
+
+        private final Skill skill;
+
+        /**
+         * 
+         */
+        private SkillBoxWidget(Skill skill) {
+            this.skill = skill;
+
+            click(() -> {
+                System.out.println(skill.name);
+            });
+            System.out.println(skill.name);
+        }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        protected void virtualize(VirtualStructure $〡) {
+        protected String virtualizeName() {
+            return "div";
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        protected void virtualizeStructure(ContainerDescriptor $〡) {
             MultipleStyle icon = new MultipleStyle(SkillIcon, () -> {
-                background.image(BackgroundImage.url(model1.getIcon()));
+                background.image(BackgroundImage.url(skill.getIcon()));
             });
 
-            $〡.hbox.〡(icon);
+            $〡.〡(icon);
         }
     }
 
@@ -362,8 +382,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
         protected void virtualize(VirtualStructure $〡) {
             $〡.hbox.〡(ItemIconBase, () -> {
                 $〡.hbox.〡((Style) () -> {
-                    background.image(BackgroundImage
-                            .url("src/main/resources/teemowork/items.jpg")
+                    background.image(BackgroundImage.url("src/main/resources/teemowork/items.jpg")
                             .horizontal(model1.position / (Item.size() - 1) * 100, percent)
                             .cover()
                             .borderBox()
