@@ -17,7 +17,10 @@ import java.util.List;
 import java.util.Set;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
 
 import jsx.event.Publishable;
 import teemowork.model.variable.Variable;
@@ -47,7 +50,7 @@ public class Build extends Publishable implements StatusCalculator {
     private int[] skills = new int[18];
 
     /** The skill level. */
-    private int[] skillLevel = {0, 0, 0, 0, 0};
+    public final ListProperty<Integer> skillLevel = new SimpleListProperty(FXCollections.observableArrayList(0, 0, 0, 0, 0));
 
     /** The skill level. */
     private boolean[] skillActivation = {false, false, false, false, false};
@@ -77,7 +80,7 @@ public class Build extends Publishable implements StatusCalculator {
         this.champion = champion;
 
         for (int i = 0; i < 5; i++) {
-            skillLevel[i] = champion.skills[i].getMinLevel();
+            skillLevel.set(i, champion.skills[i].getMinLevel());
         }
 
         items[0] = Item.DeathfireGrasp;
@@ -101,7 +104,7 @@ public class Build extends Publishable implements StatusCalculator {
      */
     @Override
     public int getLevel(Skill skill) {
-        return skillLevel[skill.key.ordinal()];
+        return skillLevel.get(skill.key.ordinal());
     }
 
     /**
@@ -276,10 +279,10 @@ public class Build extends Publishable implements StatusCalculator {
      */
     public void up(Skill skill) {
         int index = skill.key.ordinal();
-        int now = skillLevel[index];
+        int now = skillLevel.get(index);
 
         if (now < skill.getMaxLevel()) {
-            skillLevel[index] = now + 1;
+            skillLevel.set(index, now + 1);
 
             publish(this);
         }
@@ -294,10 +297,10 @@ public class Build extends Publishable implements StatusCalculator {
      */
     public void down(Skill skill) {
         int index = skill.key.ordinal();
-        int now = skillLevel[index];
+        int now = skillLevel.get(index);
 
         if (skill.getMinLevel() < now) {
-            skillLevel[index] = now - 1;
+            skillLevel.set(index, now - 1);
 
             publish(this);
         }
@@ -320,7 +323,8 @@ public class Build extends Publishable implements StatusCalculator {
             return champion.getStatus(version).get(status);
 
         default:
-            double value = champion.getStatus(version).get(status) + champion.getStatus(version).get(status.per()) * level.get();
+            double value = champion.getStatus(version).get(status) + champion.getStatus(version).get(status.per()) * level
+                    .get();
 
             if (champion == Champion.EliseSpider) {
                 value += computeVariable(status, Skill.SpiderForm);
@@ -490,7 +494,7 @@ public class Build extends Publishable implements StatusCalculator {
      */
     private double computeVariable(Status status, Skill skill) {
         double value = 0;
-        int level = skillLevel[skill.key.ordinal()];
+        int level = skillLevel.get(skill.key.ordinal());
 
         if (0 < level) {
             SkillDescriptor skillStatus = skill.getDescriptor(version);
@@ -500,7 +504,7 @@ public class Build extends Publishable implements StatusCalculator {
                     Variable variable = (Variable) token;
 
                     if (variable.getStatus() == status) {
-                        value += calculateVariable(skill, variable, skillLevel[skill.key.ordinal()]);
+                        value += calculateVariable(skill, variable, skillLevel.get(skill.key.ordinal()));
                     }
                 }
             }
@@ -522,8 +526,8 @@ public class Build extends Publishable implements StatusCalculator {
         skillActivation[index] = !skillActivation[index];
 
         // assure minimun skill level
-        if (skillActivation[index] && skillLevel[index] == 0) {
-            skillLevel[index] = 1;
+        if (skillActivation[index] && skillLevel.get(index) == 0) {
+            skillLevel.set(index, 1);
         }
 
         if (key == SkillKey.R) {
