@@ -23,7 +23,6 @@ import jsx.style.property.Background.BackgroundImage;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
-import jsx.ui.piece.Output;
 import teemowork.model.Build;
 import teemowork.model.Champion;
 import teemowork.model.Item;
@@ -49,25 +48,6 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
     private final Champion champion = build.champion;
 
-    private void levelUp() {
-        build.setLevel(build.getLevel() + 1);
-    }
-
-    private void levelDown() {
-        build.setLevel(build.getLevel() - 1);
-    }
-
-    private final Output levelText = jsx.ui.piece.UI
-            .output(build.level)
-            .style(ChampionIconBox, () -> {
-                background.image(BackgroundImage
-                        .url("src/main/resources/teemowork/champions.jpg")
-                        .horizontal(champion.id / (Champion.size() - 1) * 100, percent));
-            })
-            .click(() -> {
-                build.setLevel(build.getLevel() + 1);
-            });
-
     /** The item image. */
     private final ItemBoxWidget item1 = Widget.of(ItemBoxWidget.class, build.getItem(0));
 
@@ -92,7 +72,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
     @Override
     protected void virtualize(VirtualStructure 〡) {
         〡.hbox.〡(UpperInfo, () -> {
-            〡.asis.〡$(levelText);
+            〡.nbox.〡(null, ChampionFace.class, champion);
             〡.hbox.〡(ItemViewBox, item1, item2, item3, item4, item5, item6);
         });
 
@@ -327,6 +307,40 @@ public class ChampionDetailWidget extends Widget1<Build> {
     }
 
     /**
+     * @version 2015/01/03 13:33:33
+     */
+    private class ChampionFace extends Widget1<Champion> {
+
+        private final Champion champion = model1;
+
+        /**
+         * 
+         */
+        private ChampionFace() {
+            listen(UIAction.Click).to(e -> {
+                build.levelUp();
+            });
+            listen(UIAction.ClickRight).to(e -> {
+                build.levelDown();
+                e.preventDefault();
+            });
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        protected void virtualize(VirtualStructure $〡) {
+            Style style = new MultipleStyle(ChampionIconBox, () -> {
+                background.image(BackgroundImage.url("src/main/resources/teemowork/champions.jpg")
+                        .horizontal(champion.id / (Champion.size() - 1) * 100, percent));
+            });
+
+            $〡.nbox.〡(style);
+        }
+    }
+
+    /**
      * @version 2014/12/19 9:25:49
      */
     private class SkillBoxWidget extends Widget1<Skill> {
@@ -338,7 +352,12 @@ public class ChampionDetailWidget extends Widget1<Build> {
          */
         public SkillBoxWidget() {
             listen(UIAction.Click).to(e -> {
-                build.up(skill);
+                build.levelUp(skill);
+            });
+
+            listen(UIAction.ClickRight).to(e -> {
+                build.levelDown(skill);
+                e.preventDefault();
             });
         }
 
@@ -368,8 +387,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
         protected void virtualize(VirtualStructure $〡) {
             $〡.hbox.〡(ItemIconBase, () -> {
                 $〡.hbox.〡((Style) () -> {
-                    background.image(BackgroundImage
-                            .url("src/main/resources/teemowork/items.jpg")
+                    background.image(BackgroundImage.url("src/main/resources/teemowork/items.jpg")
                             .horizontal(model1.position / (Item.size() - 1) * 100, percent)
                             .cover()
                             .borderBox()

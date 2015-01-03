@@ -227,10 +227,10 @@ public class ChampionDetail extends Page {
             icon = iconBox.child(SkillIcon).css("background-image", "url(" + skill.getIcon() + ")");
             iconBox.subscribe(UIAction.Click, event -> {
                 event.preventDefault();
-                build.up(skill);
+                build.levelUp(skill);
             }).subscribe(UIAction.ClickRight, event -> {
                 event.preventDefault();
-                build.down(skill);
+                build.levelDown(skill);
             });
 
             if (skill.key != SkillKey.Passive) {
