@@ -272,12 +272,38 @@ public class Build extends Publishable implements StatusCalculator {
 
     /**
      * <p>
+     * Increase chmapion level.
+     * </p>
+     */
+    public void levelUp() {
+        int now = level.get();
+
+        if (now < 18) {
+            level.set(now + 1);
+        }
+    }
+
+    /**
+     * <p>
+     * Increase chmapion level.
+     * </p>
+     */
+    public void levelDown() {
+        int now = level.get();
+
+        if (1 < now) {
+            level.set(now - 1);
+        }
+    }
+
+    /**
+     * <p>
      * Increase skill level.
      * </p>
      * 
      * @param skill
      */
-    public void up(Skill skill) {
+    public void levelUp(Skill skill) {
         int index = skill.key.ordinal();
         int now = skillLevel.get(index);
 
@@ -295,7 +321,7 @@ public class Build extends Publishable implements StatusCalculator {
      * 
      * @param skill
      */
-    public void down(Skill skill) {
+    public void levelDown(Skill skill) {
         int index = skill.key.ordinal();
         int now = skillLevel.get(index);
 
@@ -323,8 +349,7 @@ public class Build extends Publishable implements StatusCalculator {
             return champion.getStatus(version).get(status);
 
         default:
-            double value = champion.getStatus(version).get(status) + champion.getStatus(version).get(status.per()) * level
-                    .get();
+            double value = champion.getStatus(version).get(status) + champion.getStatus(version).get(status.per()) * level.get();
 
             if (champion == Champion.EliseSpider) {
                 value += computeVariable(status, Skill.SpiderForm);
