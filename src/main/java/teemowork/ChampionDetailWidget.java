@@ -72,7 +72,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
     @Override
     protected void virtualize(VirtualStructure 〡) {
         〡.hbox.〡(UpperInfo, () -> {
-            〡.nbox.〡(null, ChampionFace.class, champion);
+            〡.nbox(3000).〡(null, ChampionFace.class, champion);
             〡.hbox.〡(ItemViewBox, item1, item2, item3, item4, item5, item6);
         });
 
@@ -336,7 +336,9 @@ public class ChampionDetailWidget extends Widget1<Build> {
                         .horizontal(champion.id / (Champion.size() - 1) * 100, percent));
             });
 
-            $〡.nbox.〡(style);
+            $〡.hbox.〡(style, () -> {
+                $〡.nbox.〡(Level, build.getLevel());
+            });
         }
     }
 
