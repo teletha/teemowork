@@ -276,6 +276,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         box.size(ChampionIconSize);
         border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
         cursor.pointer();
+        position.relative();
     };
 
     /**
