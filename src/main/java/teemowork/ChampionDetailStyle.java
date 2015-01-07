@@ -290,7 +290,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         font.size(20, px).color(240, 240, 240).weight.bold().family("Arial");
         text.align.center().shadow(shadow().blurRadius(1, px).color(rgba(0, 0, 0, 1))).unselectable();
         position.absolute().bottom(4, px).right(4, px);
-        cursor.defaults();
+        cursor.pointer();
     };
 
     /**
