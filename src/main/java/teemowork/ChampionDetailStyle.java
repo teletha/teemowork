@@ -273,6 +273,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
     };
 
     static Style ChampionIconBox = () -> {
+        background.image("src/main/resources/teemowork/champions.jpg");
         box.size(ChampionIconSize);
         border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
         cursor.pointer();
