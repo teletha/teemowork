@@ -17,9 +17,7 @@ import java.util.List;
 
 import js.dom.UIAction;
 import js.math.Mathematics;
-import jsx.style.MultipleStyle;
 import jsx.style.Style;
-import jsx.style.property.Background.BackgroundImage;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
@@ -331,9 +329,8 @@ public class ChampionDetailWidget extends Widget1<Build> {
          */
         @Override
         protected void virtualize(VirtualStructure $〡) {
-            Style style = new MultipleStyle(ChampionIconBox, () -> {
-                background.image(BackgroundImage.url("src/main/resources/teemowork/champions.jpg")
-                        .horizontal(champion.id / (Champion.size() - 1) * 100, percent));
+            Style style = ChampionIconBox.with(() -> {
+                background.horizontal(champion.id / (Champion.size() - 1) * 100, percent);
             });
 
             $〡.hbox.〡(style, () -> {
@@ -368,11 +365,9 @@ public class ChampionDetailWidget extends Widget1<Build> {
          */
         @Override
         protected void virtualize(VirtualStructure 〡) {
-            MultipleStyle icon = new MultipleStyle(SkillIcon, () -> {
-                background.image(BackgroundImage.url(skill.getIcon()));
-            });
-
-            〡.hbox.〡(icon);
+            〡.hbox.〡(SkillIcon.with(() -> {
+                background.image(skill.getIcon());
+            }));
         }
 
     }
@@ -388,15 +383,9 @@ public class ChampionDetailWidget extends Widget1<Build> {
         @Override
         protected void virtualize(VirtualStructure $〡) {
             $〡.hbox.〡(ItemIconBase, () -> {
-                $〡.hbox.〡((Style) () -> {
-                    background.image(BackgroundImage.url("src/main/resources/teemowork/items.jpg")
-                            .horizontal(model1.position / (Item.size() - 1) * 100, percent)
-                            .cover()
-                            .borderBox()
-                            .noRepeat());
-                    display.block();
-                    box.size(100, percent);
-                });
+                $〡.hbox.〡(ItemIcon.with(() -> {
+                    background.horizontal(model1.position / (Item.size() - 1) * 100, percent);
+                }));
             });
         }
     }
