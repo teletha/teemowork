@@ -167,9 +167,9 @@ public class ChampionDetailWidget extends Widget1<Build> {
      * @param skill A current processing skill.
      * @param variable A target skill variable.
      */
-    private void writeStatusValue(VirtualStructure $〡, Skill sss, SkillDescriptor skill, Variable variable) {
+    private void writeStatusValue(VirtualStructure 〡, Skill sss, SkillDescriptor skill, Variable variable) {
         if (variable != null) {
-            $〡.hbox.〡(StatusBlock, () -> {
+            〡.hbox.〡(StatusBlock, () -> {
                 Status status = variable.getStatus();
                 VariableResolver resolver = variable.getResolver();
 
@@ -190,29 +190,31 @@ public class ChampionDetailWidget extends Widget1<Build> {
                     }
                 }
 
-                $〡.nbox.〡(StatusLabel, label);
+                〡.nbox.〡(StatusLabel, label);
 
                 // write values
                 int size = resolver.estimateSize();
                 int current = level;
 
-                $〡.nbox.〡(null, size, i -> {
+                〡.nbox.〡(null, size, i -> {
                     double value = status.round(variable.calculate(i + 1, build));
 
-                    $〡.style.〡(size != 1 && i + 1 == current, Current);
-                    $〡.style.〡("title", resolver.getLevelDescription(i + 1), ChampionLevelIndicator);
-                    $〡.nbox.〡(SkillStatusValue, value == -1 ? "∞" : value);
+                    〡.nbox.〡(SkillStatusValue, () -> {
+                        〡.style.〡(Current, size != 1 && i + 1 == current);
+                        〡.style.〡(ChampionLevelIndicator, "title", resolver.getLevelDescription(i + 1));
+                        〡.〡(value == -1 ? "∞" : value);
+                    });
 
                     if (i + 1 != size) {
-                        $〡.nbox.〡(Separator, "/");
+                        〡.nbox.〡(Separator, "/");
                     }
                 });
 
                 // write amplifiers
-                writeAmplifier($〡, variable.getAmplifiers(), 0);
+                writeAmplifier(〡, variable.getAmplifiers(), 0);
 
                 // write unit
-                $〡.〡(status.getUnit());
+                〡.〡(status.getUnit());
             });
         }
     }
@@ -225,7 +227,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
      * @param variable
      * @param level
      */
-    private void writeVariable(VirtualStructure $〡, Variable variable, int level) {
+    private void writeVariable(VirtualStructure 〡, Variable variable, int level) {
         VariableResolver resolver = variable.getResolver();
         Status status = variable.getStatus();
         List<Variable> amplifiers = variable.getAmplifiers();
@@ -235,26 +237,28 @@ public class ChampionDetailWidget extends Widget1<Build> {
         }
 
         // compute current value
-        $〡.nbox.〡(ComputedValue, status.format(variable.calculate(Math.max(1, level), build)));
+        〡.nbox.〡(ComputedValue, status.format(variable.calculate(Math.max(1, level), build)));
 
         // All values
         int size = resolver.estimateSize();
         int current = level;
 
         if (1 < size || !amplifiers.isEmpty()) {
-            $〡.〡("(");
-            $〡.nbox.〡(null, size, i -> {
-                $〡.style.〡(i + 1 == current, Current);
-                $〡.style.〡("title", resolver.getLevelDescription(i + 1), ChampionLevelIndicator);
-                $〡.nbox.〡(NormalValue, Mathematics.round(resolver.compute(i + 1), 2));
+            〡.〡("(");
+            〡.nbox.〡(null, size, i -> {
+                〡.nbox.〡(NormalValue, () -> {
+                    〡.style.〡(Current, i + 1 == current);
+                    〡.style.〡(ChampionLevelIndicator, "title", resolver.getLevelDescription(i + 1));
+                    〡.〡(Mathematics.round(resolver.compute(i + 1), 2));
+                });
 
                 if (i + 1 != size) {
-                    $〡.nbox.〡(Separator, "/");
+                    〡.nbox.〡(Separator, "/");
                 }
             });
 
-            writeAmplifier($〡, amplifiers, level);
-            $〡.〡(")");
+            writeAmplifier(〡, amplifiers, level);
+            〡.〡(")");
         }
     }
 
@@ -267,12 +271,12 @@ public class ChampionDetailWidget extends Widget1<Build> {
      * @param amplifiers A list of skill amplifiers.
      * @param level A current skill level.
      */
-    private void writeAmplifier(VirtualStructure $〡, List<Variable> amplifiers, int level) {
-        $〡.nbox.〡(null, amplifiers, amplifier -> {
-            $〡.nbox.〡(Amplifier, () -> {
+    private void writeAmplifier(VirtualStructure 〡, List<Variable> amplifiers, int level) {
+        〡.nbox.〡(null, amplifiers, amplifier -> {
+            〡.nbox.〡(Amplifier, () -> {
                 int amp = level;
 
-                $〡.〡("+");
+                〡.〡("+");
 
                 VariableResolver resolver = amplifier.getResolver();
 
@@ -283,23 +287,25 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 int size = resolver.estimateSize();
                 int current = amp;
 
-                $〡.nbox.〡(null, size, i -> {
-                    $〡.style.〡(size != 1 && i + 1 == current, Current);
-                    $〡.style.〡("title", resolver.getLevelDescription(i + 1), ChampionLevelIndicator);
-                    $〡.nbox.〡(NormalValue, Mathematics.round(amplifier.calculate(i + 1, build), 4));
+                〡.nbox.〡(null, size, i -> {
+                    〡.nbox.〡(NormalValue, () -> {
+                        〡.style.〡(Current, size != 1 && i + 1 == current);
+                        〡.style.〡(ChampionLevelIndicator, "title", resolver.getLevelDescription(i + 1));
+                        〡.〡(Mathematics.round(amplifier.calculate(i + 1, build), 4));
+                    });
 
                     if (i + 1 != size) {
-                        $〡.nbox.〡(Separator, "/");
+                        〡.nbox.〡(Separator, "/");
                     }
                 });
 
-                $〡.〡(amplifier.getStatus().getUnit());
+                〡.〡(amplifier.getStatus().getUnit());
                 if (!amplifier.getAmplifiers().isEmpty()) {
-                    $〡.〡("(");
-                    writeAmplifier($〡, amplifier.getAmplifiers(), current);
-                    $〡.〡(")");
+                    〡.〡("(");
+                    writeAmplifier(〡, amplifier.getAmplifiers(), current);
+                    〡.〡(")");
                 }
-                $〡.〡(amplifier.getStatus().name);
+                〡.〡(amplifier.getStatus().name);
             });
         });
     }
