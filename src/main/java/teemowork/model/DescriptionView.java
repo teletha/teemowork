@@ -114,7 +114,7 @@ public abstract class DescriptionView {
                 Element element = root.child(Value).text(Mathematics.round(resolver.compute(i), 2));
 
                 if (i == level) {
-                    element.addClass(Current);
+                    element.add(Current);
                 }
 
                 if (i != size) {
@@ -147,7 +147,7 @@ public abstract class DescriptionView {
                 Element value = element.child(Value).text(Mathematics.round(amplifier.calculate(i, calculator), 4));
 
                 if (size != 1 && i == level) {
-                    value.addClass(Current);
+                    value.add(Current);
                 }
 
                 if (i != size) {

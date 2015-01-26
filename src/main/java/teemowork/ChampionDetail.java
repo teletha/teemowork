@@ -264,16 +264,16 @@ public class ChampionDetail extends Page {
 
             for (int i = 0; i < levels.length; i++) {
                 if (i < level) {
-                    levels[i].addClass(Assigned);
+                    levels[i].add(Assigned);
                 } else {
-                    levels[i].removeClass(Assigned);
+                    levels[i].remove(Assigned);
                 }
             }
 
             if (build.isActive(skill)) {
-                icon.addClass(Active);
+                icon.add(Active);
             } else {
-                icon.removeClass(Active);
+                icon.remove(Active);
             }
 
             write(cooldown, status, status.getCooldown());
@@ -363,11 +363,11 @@ public class ChampionDetail extends Page {
 
                     if (!resolver.isSkillLevelBased()) {
                         String title = resolver.getLevelDescription(i);
-                        element.attr("title", title).addClass(ChampionLevelIndicator);
+                        element.attr("title", title).add(ChampionLevelIndicator);
                     }
 
                     if (size != 1 && i == level) {
-                        element.addClass(Current);
+                        element.add(Current);
                     }
 
                     if (i != size) {
@@ -414,11 +414,11 @@ public class ChampionDetail extends Page {
 
                     if (!resolver.isSkillLevelBased()) {
                         String title = resolver.getLevelDescription(i);
-                        element.attr("title", title).addClass(ChampionLevelIndicator);
+                        element.attr("title", title).add(ChampionLevelIndicator);
                     }
 
                     if (i == level) {
-                        element.addClass(Current);
+                        element.add(Current);
                     }
 
                     if (i != size) {
@@ -458,11 +458,11 @@ public class ChampionDetail extends Page {
                             .text(Mathematics.round(amplifier.calculate(i, build), 4));
 
                     if (!resolver.isSkillLevelBased()) {
-                        value.attr("title", resolver.getLevelDescription(i)).addClass(ChampionLevelIndicator);
+                        value.attr("title", resolver.getLevelDescription(i)).add(ChampionLevelIndicator);
                     }
 
                     if (size != 1 && i == level) {
-                        value.addClass(Current);
+                        value.add(Current);
                     }
 
                     if (i != size) {
@@ -538,7 +538,7 @@ public class ChampionDetail extends Page {
          */
         public ItemBox(Item item) {
             this.item = item;
-            this.icon = root.addClass(ItemIconBase).child(ItemIcon);
+            this.icon = root.add(ItemIconBase).child(ItemIcon);
         }
 
         /**
