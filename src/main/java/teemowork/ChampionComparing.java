@@ -77,7 +77,7 @@ public class ChampionComparing extends Page {
         for (final Champion champion : Champion.getAll()) {
             ChampionStatus status = champion.getStatus(Version.Latest);
 
-            Element row = document.createElement("div").addClass(RowLine);
+            Element row = document.createElement("div").add(RowLine);
             Element icon = row.child(Icon).subscribe(UIAction.Click, event -> {
                 Application.show(new ChampionDetail(champion));
             });

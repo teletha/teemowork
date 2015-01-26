@@ -118,7 +118,7 @@ public class MasteryBuilder extends Page {
                 Element pane = rank.child(MasteryPane);
 
                 if (mastery == null) {
-                    pane.addClass(EmptyPane);
+                    pane.add(EmptyPane);
                 } else {
                     masterySet.subscribe(new MasteryView(pane, mastery));
                 }
@@ -232,17 +232,17 @@ public class MasteryBuilder extends Page {
             // Switch enable / disable
             if (current != 0 || masterySet.isAvailable(mastery)) {
                 image.saturate(0.8);
-                root.removeClass(Unavailable);
+                root.remove(Unavailable);
             } else {
                 image.grayscale(0.4);
-                root.addClass(Unavailable);
+                root.add(Unavailable);
             }
 
             // Switch complete / incomplete
             if (masterySet.isMax(mastery)) {
-                root.addClass(Completed);
+                root.add(Completed);
             } else {
-                root.removeClass(Completed);
+                root.remove(Completed);
             }
         }
 

@@ -45,7 +45,7 @@ public class ItemView extends UI {
      */
     public ItemView(Item item, ItemDescriptor itemDescriptor, StatusCalculator calculator) {
         this.calculator = calculator;
-        root.addClass(Root);
+        root.add(Root);
 
         // Icon Area
         Element icons = root.child(IconArea);
@@ -55,8 +55,7 @@ public class ItemView extends UI {
         Element materials = icons.child(Materials);
 
         for (final Item material : itemDescriptor.getBuild()) {
-            material.applyIcon(materials
-                    .child(Material)
+            material.applyIcon(materials.child(Material)
                     .attr("title", material.name)
                     .subscribe(UIAction.Click, new Consumer<UIEvent>() {
 
