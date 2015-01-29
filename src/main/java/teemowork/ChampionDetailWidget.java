@@ -89,7 +89,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
                         if (skill.key != SkillKey.Passive) {
                             〡.nbox.〡(LevelBox, skill.getMaxLevel(), level -> {
-                                〡.nbox.〡(LevelMark.when(Assigned, level < build.getLevel(skill)));
+                                〡.nbox.〡(LevelMark.withIf(level < build.getLevel(skill), Assigned));
                             });
                         }
                     });
