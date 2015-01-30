@@ -9,6 +9,8 @@
  */
 package teemowork;
 
+import static jsx.style.StyleDescriptor.*;
+
 import java.util.Collection;
 
 import js.dom.DocumentFragment;
@@ -16,7 +18,8 @@ import js.dom.Element;
 import jsx.application.Application;
 import jsx.application.Page;
 import jsx.application.PageInfo;
-import jsx.bwt.ImageGrid;
+import jsx.style.Style;
+import jsx.ui.piece.ImageGrid;
 import teemowork.model.Champion;
 
 /**
@@ -49,6 +52,19 @@ public class ChampionSelect extends Page {
          * {@inheritDoc}
          */
         @Override
+        protected Style image(Champion source) {
+            return () -> {
+                background.image("src/main/resources/teemowork/champions.jpg")
+                        .cover()
+                        .borderBox()
+                        .position(source.id / (Champion.size() - 1) * 100, percent, 0, percent);
+            };
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
         protected void select(Champion source) {
             Application.show(new ChampionDetail2(source.systemName));
         }
@@ -63,7 +79,9 @@ public class ChampionSelect extends Page {
      */
     @Override
     public void load(DocumentFragment root) {
-        root.child(champions);
+        Element e = root.child("div");
+
+        champions.renderIn(e);
     }
 
     /**
