@@ -9,66 +9,16 @@
  */
 package teemowork;
 
-import static jsx.style.StyleDescriptor.*;
-
-import java.util.Collection;
-
 import js.dom.DocumentFragment;
 import js.dom.Element;
-import jsx.application.Application;
 import jsx.application.Page;
 import jsx.application.PageInfo;
-import jsx.style.Style;
-import jsx.ui.piece.ImageGrid;
-import teemowork.model.Champion;
+import jsx.ui.Widget;
 
 /**
  * @version 2012/12/26 13:06:59
  */
 public class ChampionSelect extends Page {
-
-    /** The champion viewer. */
-    private ImageGrid champions = new ImageGrid<Champion>() {
-
-        @Override
-        protected Collection<Champion> sources() {
-            return Champion.getAll();
-        }
-
-        @Override
-        protected String getTitle(Champion source) {
-            return source.name;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void apply(Champion source, Element element) {
-            source.applyIcon(element);
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected Style image(Champion source) {
-            return () -> {
-                background.image("src/main/resources/teemowork/champions.jpg")
-                        .cover()
-                        .borderBox()
-                        .position(source.id / (Champion.size() - 1) * 100, percent, 0, percent);
-            };
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void select(Champion source) {
-            Application.show(new ChampionDetail2(source.systemName));
-        }
-    };
 
     @PageInfo(path = "")
     public ChampionSelect() {
@@ -81,7 +31,9 @@ public class ChampionSelect extends Page {
     public void load(DocumentFragment root) {
         Element e = root.child("div");
 
-        champions.renderIn(e);
+        Widget widget = Widget.of(ChampionSelectWidget.class);
+
+        widget.renderIn(e);
     }
 
     /**
