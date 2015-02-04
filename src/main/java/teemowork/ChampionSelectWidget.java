@@ -22,6 +22,8 @@ import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.Input;
 import jsx.ui.piece.UI;
+import kiss.Events;
+import kiss.I;
 import teemowork.model.Champion;
 
 /**
@@ -47,6 +49,10 @@ public class ChampionSelectWidget extends Widget {
      */
     private class Icon extends Widget1<Champion> {
 
+        /** The visible flag. */
+        private Events<Boolean> visible = I.observe(input.value).map(v -> v.length() == 0 || model1.name.toLowerCase()
+                .contains(v.toLowerCase()));
+
         /**
          * 
          */
@@ -59,9 +65,7 @@ public class ChampionSelectWidget extends Widget {
          */
         @Override
         protected void virtualize(VirtualStructure 〡) {
-            String name = input.value.get().toLowerCase();
-
-            〡.nbox.〡(CSS.Container.withIf(name.length() != 0 && !model1.name.toLowerCase().contains(name), CSS.Unselected), () -> {
+            〡.nbox.〡(CSS.Container.withIf(visible, CSS.Unselected), () -> {
                 Style style = () -> {
                     background.position(model1.id / (Champion.size() - 1) * 100, percent, 0, percent);
                 };
