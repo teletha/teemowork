@@ -10,6 +10,9 @@
 package teemowork;
 
 import static jsx.style.StyleDescriptor.*;
+
+import javafx.beans.property.Property;
+
 import js.dom.UIAction;
 import jsx.application.Application;
 import jsx.style.Style;
@@ -22,7 +25,6 @@ import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.Input;
 import jsx.ui.piece.UI;
-import kiss.Events;
 import kiss.I;
 import teemowork.model.Champion;
 
@@ -50,8 +52,13 @@ public class ChampionSelectWidget extends Widget {
     private class Icon extends Widget1<Champion> {
 
         /** The visible flag. */
-        private Events<Boolean> visible = I.observe(input.value).map(v -> v.length() == 0 || model1.name.toLowerCase()
-                .contains(v.toLowerCase()));
+        private Property<Boolean> invisible = I.observe(input.value)
+                .map(v -> v.length() != 0 && !model1.name.toLowerCase().contains(v.toLowerCase())).to();
+
+        /** The icon image of the champion. */
+        private Style IconImage = CSS.IconImage.with(() -> {
+            background.position(model1.id / (Champion.size() - 1) * 100, percent, 0, percent);
+        });
 
         /**
          * 
@@ -65,12 +72,8 @@ public class ChampionSelectWidget extends Widget {
          */
         @Override
         protected void virtualize(VirtualStructure 〡) {
-            〡.nbox.〡(CSS.Container.withIf(visible, CSS.Unselected), () -> {
-                Style style = () -> {
-                    background.position(model1.id / (Champion.size() - 1) * 100, percent, 0, percent);
-                };
-
-                〡.nbox.〡(CSS.IconImage.with(style));
+            〡.nbox.〡(CSS.Container.withIf(invisible, CSS.Unselected), () -> {
+                〡.nbox.〡(IconImage);
                 〡.nbox.〡(CSS.Title, model1.name);
             });
         }
