@@ -10,7 +10,6 @@
 package teemowork;
 
 import static jsx.style.StyleDescriptor.*;
-import static jsx.style.value.Color.*;
 import js.dom.UIAction;
 import jsx.application.Application;
 import jsx.style.Style;
@@ -18,10 +17,11 @@ import jsx.style.StyleRuleDescriptor;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
-import jsx.style.value.Shadow;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
+import jsx.ui.piece.Input;
+import jsx.ui.piece.UI;
 import teemowork.model.Champion;
 
 /**
@@ -29,13 +29,16 @@ import teemowork.model.Champion;
  */
 public class ChampionSelectWidget extends Widget {
 
+    private Input input = UI.input().placeholder("Champion Name");
+
     /**
      * {@inheritDoc}
      */
     @Override
     protected void virtualize(VirtualStructure 〡) {
-        〡.nbox.〡(Class.Root, () -> {
-            〡.nbox.〡(Class.ImageSet, Icon.class, Champion.getAll());
+        〡.nbox.〡(CSS.Root, () -> {
+            〡.nbox.〡(CSS.SearchByName, input);
+            〡.nbox.〡(CSS.ImageSet, Icon.class, Champion.getAll());
         });
     }
 
@@ -56,13 +59,15 @@ public class ChampionSelectWidget extends Widget {
          */
         @Override
         protected void virtualize(VirtualStructure 〡) {
-            〡.nbox.〡(Class.Container, () -> {
+            String name = input.value.get().toLowerCase();
+
+            〡.nbox.〡(CSS.Container.withIf(name.length() != 0 && !model1.name.toLowerCase().contains(name), CSS.Unselected), () -> {
                 Style style = () -> {
                     background.position(model1.id / (Champion.size() - 1) * 100, percent, 0, percent);
                 };
 
-                〡.nbox.〡(Class.IconImage.with(style));
-                〡.nbox.〡(Class.Title, model1.name);
+                〡.nbox.〡(CSS.IconImage.with(style));
+                〡.nbox.〡(CSS.Title, model1.name);
             });
         }
     }
@@ -70,18 +75,11 @@ public class ChampionSelectWidget extends Widget {
     /**
      * @version 2015/01/30 14:32:48
      */
-    private static class Class extends StyleRuleDescriptor {
+    private static class CSS extends StyleRuleDescriptor {
 
         private static final Color backColor = new Color(0, 10, 10);
 
         private static final Numeric ImageSize = new Numeric(70, px);
-
-        private static final Shadow in = shadow().inset()
-                .offset(0, 1, px)
-                .blurRadius(1, px)
-                .color(rgba(0, 0, 0, 0.075));
-
-        private static final Shadow out = shadow().blurRadius(8, px).color(rgba(82, 168, 236, 0.6));
 
         static Style Root = () -> {
             display.block();
@@ -99,6 +97,11 @@ public class ChampionSelectWidget extends Widget {
         static Style Container = () -> {
             position.relative();
             display.block();
+        };
+
+        static Style Unselected = () -> {
+            box.opacity(0);
+            margin.right(-70, px);
         };
 
         static Style IconImage = () -> {
@@ -146,28 +149,9 @@ public class ChampionSelectWidget extends Widget {
             });
         };
 
-        // @Priority(100)
-        static Style Unselected = () -> {
-            box.opacity(0);
-            margin.right(-70, px);
-        };
-
-        static Style InputStyle = () -> {
+        static Style SearchByName = () -> {
             display.block();
-            box.height(20, px).width(200, px).shadow(in);
-            padding.vertical(4, px).horizontal(6, px);
             margin.bottom(10, px);
-            font.size(14, px).color(85, 85, 85);
-            line.height(20, px);
-            text.verticalAlign.middle();
-            border.radius(4, px).width(1, px).solid().color(rgb(204, 204, 204));
-            background.color(White);
-
-            transit().duration(0.2, s).linear().whenFocus(() -> {
-                border.color(rgba(82, 168, 236, 0.8));
-                outline.none();
-                box.shadow(in, out);
-            });
         };
     }
 }
