@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Nameless Production Committee
+ * Copyright (C) 2015 Nameless Production Committee
  *
  * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import js.dom.UIAction;
 import js.math.Mathematics;
 import jsx.style.Style;
 import jsx.ui.VirtualStructure;
-import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import teemowork.model.Build;
 import teemowork.model.Champion;
@@ -33,7 +32,7 @@ import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
 
 /**
- * @version 2013/01/10 2:36:58
+ * @version 2015/02/06 16:14:08
  */
 public class ChampionDetailWidget extends Widget1<Build> {
 
@@ -44,34 +43,14 @@ public class ChampionDetailWidget extends Widget1<Build> {
     /** The your custom build. */
     private final Build build = model1;
 
-    private final Champion champion = build.champion;
-
-    /** The item image. */
-    private final ItemBoxWidget item1 = Widget.of(ItemBoxWidget.class, build.getItem(0));
-
-    /** The item image. */
-    private final ItemBoxWidget item2 = Widget.of(ItemBoxWidget.class, build.getItem(1));
-
-    /** The item image. */
-    private final ItemBoxWidget item3 = Widget.of(ItemBoxWidget.class, build.getItem(2));
-
-    /** The item image. */
-    private final ItemBoxWidget item4 = Widget.of(ItemBoxWidget.class, build.getItem(3));
-
-    /** The item image. */
-    private final ItemBoxWidget item5 = Widget.of(ItemBoxWidget.class, build.getItem(4));
-
-    /** The item image. */
-    private final ItemBoxWidget item6 = Widget.of(ItemBoxWidget.class, build.getItem(5));
-
     /**
      * {@inheritDoc}
      */
     @Override
     protected void virtualize(VirtualStructure 〡) {
         〡.hbox.〡(UpperInfo, () -> {
-            〡.nbox(3000).〡(null, ChampionFace.class, champion);
-            〡.hbox.〡(ItemViewBox, item1, item2, item3, item4, item5, item6);
+            〡.nbox(3000).〡(null, ChampionFace.class, build.champion);
+            〡.hbox.〡(ItemViewBox, ItemBoxWidget.class, build.items);
         });
 
         〡.hbox.〡(Container, () -> {

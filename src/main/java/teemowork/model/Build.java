@@ -41,7 +41,7 @@ public class Build extends Publishable implements StatusCalculator {
     public final IntegerProperty level = new SimpleIntegerProperty(1);
 
     /** The item list. */
-    private Item[] items = new Item[6];
+    public final Item[] items = new Item[6];
 
     /** The item list. */
     private int[] itemCounts = {1, 1, 1, 1, 1, 1};
