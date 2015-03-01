@@ -49,7 +49,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
     @Override
     protected void virtualize(VirtualStructure 〡) {
         〡.hbox.〡(UpperInfo, () -> {
-            〡.nbox(3000).〡(null, ChampionFace.class, build.champion);
+            〡.nbox.〡(null, ChampionFace.class, build.champion);
             〡.hbox.〡(ItemViewBox, ItemBoxWidget.class, build.items);
         });
 
@@ -334,7 +334,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
         /**
          * 
          */
-        public SkillBoxWidget() {
+        private SkillBoxWidget() {
             listen(UIAction.Click).to(e -> {
                 build.levelUp(skill);
             });
