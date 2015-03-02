@@ -9,8 +9,6 @@
  */
 package teemowork;
 
-import static js.lang.Global.*;
-import static teemowork.ChampionComparingStyle.*;
 import static teemowork.model.Status.*;
 
 import java.util.ArrayList;
@@ -20,10 +18,9 @@ import java.util.List;
 
 import js.dom.DocumentFragment;
 import js.dom.Element;
-import js.dom.UIAction;
-import jsx.application.Application;
 import jsx.application.Page;
 import jsx.application.PageInfo;
+import jsx.ui.Widget;
 import teemowork.model.Champion;
 import teemowork.model.ChampionGroup;
 import teemowork.model.ChampionStatus;
@@ -60,37 +57,10 @@ public class ChampionComparing extends Page {
      */
     @Override
     public void load(DocumentFragment root) {
-        Element table = root.child(Table);
-        Element head = table.child(Head);
-        head.child(NoIcon);
-        head.child(Name).text("Name");
+        Element child = root.child("div");
 
-        for (final Status value : STATUS) {
-            head.child(StatusView).text(value.name).subscribe(UIAction.Click, event -> {
-                sort(value);
-            });
-        }
-
-        body = table.child(Body);
-
-        // create row
-        for (final Champion champion : Champion.getAll()) {
-            ChampionStatus status = champion.getStatus(Version.Latest);
-
-            Element row = document.createElement("div").add(RowLine);
-            Element icon = row.child(Icon).subscribe(UIAction.Click, event -> {
-                Application.show(new ChampionDetail(champion));
-            });
-            champion.applyIcon(icon);
-
-            row.child(Name).text(champion.name);
-
-            for (Status value : STATUS) {
-                row.child(StatusView).text(status.get(value));
-            }
-            rows.add(new Row(champion, row));
-        }
-        update();
+        ChampionComparingWidget widget = Widget.of(ChampionComparingWidget.class);
+        widget.renderIn(child);
     }
 
     /**

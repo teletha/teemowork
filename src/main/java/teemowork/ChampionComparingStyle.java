@@ -41,26 +41,11 @@ class ChampionComparingStyle extends StyleRuleDescriptor {
     static Style RowLine = () -> {
     };
 
-    /**
-     * @version 2013/02/16 10:00:01
-     */
-    static Style Name = () -> {
-        display.inlineBlock();
-        box.width(7, em);
-        text.verticalAlign.middle();
-        padding.left(20, px);
-    };
-
-    /**
-     * @version 2013/02/16 10:00:01
-     */
     static Style Icon = () -> {
-
-        int size = 44;
         display.inlineBlock();
-        box.size(size, px);
+        background.image("src/main/resources/teemowork/champions.jpg").cover();
+        box.size(44, px);
         border.radius(5, px).color(rgb(50, 50, 50)).width(1, px).solid();
-        text.verticalAlign.middle();
         cursor.pointer();
     };
 
