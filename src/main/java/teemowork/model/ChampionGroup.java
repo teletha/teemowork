@@ -13,6 +13,8 @@ import static teemowork.model.Champion.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -55,5 +57,33 @@ public class ChampionGroup {
      */
     public boolean contains(Champion champion) {
         return members.contains(champion);
+    }
+
+    /**
+     * <p>
+     * List up all champions by the specified sort.
+     * </p>
+     * 
+     * @param health
+     * @return
+     */
+    public List<Champion> sortBy(Status status, boolean descending) {
+        Comparator<Champion> sorter;
+
+        if (status == null) {
+            // by name
+            sorter = Comparator.comparing(champion -> champion.name);
+        } else {
+            // by status
+            sorter = Comparator.comparingDouble(champion -> champion.getStatus(Version.Latest).get(status));
+        }
+
+        if (descending) {
+            sorter = sorter.reversed();
+        }
+
+        List<Champion> sorted = new ArrayList(members);
+        Collections.sort(sorted, sorter);
+        return sorted;
     }
 }

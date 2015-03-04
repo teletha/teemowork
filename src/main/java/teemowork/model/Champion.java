@@ -14,8 +14,6 @@ import static teemowork.model.Status.*;
 import static teemowork.model.Version.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import js.dom.Element;
@@ -525,34 +523,6 @@ public class Champion {
      */
     public static List<Champion> getAll() {
         return champions;
-    }
-
-    /**
-     * <p>
-     * List up all champions by the specified sort.
-     * </p>
-     * 
-     * @param health
-     * @return
-     */
-    public static List<Champion> sortBy(Status status, boolean descending) {
-        Comparator<Champion> sorter;
-
-        if (status == null) {
-            // by name
-            sorter = Comparator.comparing(champion -> champion.name);
-        } else {
-            // by status
-            sorter = Comparator.comparingDouble(champion -> champion.getStatus(Version.Latest).get(status));
-        }
-
-        if (descending) {
-            sorter = sorter.reversed();
-        }
-
-        List<Champion> sorted = new ArrayList(champions.subList(0, 3));
-        Collections.sort(sorted, sorter);
-        return sorted;
     }
 
     /**
