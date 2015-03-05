@@ -50,6 +50,13 @@ public class ClientImageBuilder {
         for (Path dir : I.walkDirectory(root.resolve("RADS/projects/lol_air_client/releases"), "*")) {
             latest = dir;
         }
+
+        if (latest == null) {
+            // If this exception will be thrown, it is bug of this program. So we must rethrow the
+            // wrapped error in here.
+            throw new Error();
+        }
+
         version = latest;
         images = latest.resolve("deploy/assets/images");
     }
