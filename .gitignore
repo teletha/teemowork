@@ -1,0 +1,11 @@
+.classpath
+.project
+.factorypath
+
+.settings/
+target/
+
+application.js
+application.css
+index.html
+live.js
