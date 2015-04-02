@@ -570,14 +570,14 @@ public class Champion {
                 .set(MR, 30, 0)
                 .set(Range, 550)
                 .set(MS, 330);
-        Akali.update(P0000)
+        Akali.update(P506)
                 .set(Health, 445, 85)
                 .set(Hreg, 7.25, 0.65)
                 .set(Energy, 200)
                 .set(Ereg, 50)
                 .set(AD, 53, 3.2)
                 .set(AS, 0.694, 3.1)
-                .set(AR, 16.5, 3.5)
+                .set(AR, 20.5, 3.5)
                 .set(MR, 30, 1.25)
                 .set(Range, 125)
                 .set(MS, 350);
