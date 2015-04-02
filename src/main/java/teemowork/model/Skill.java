@@ -3975,12 +3975,17 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(3, MR, 10, 10)
                 .variable(4, MSSlowRatio, 14, 4)
                 .variable(5, Stealth)
-                .cd(20, 0)
+                .cd(20)
                 .cost(Energy, 80, -5)
-                .range(700);
-        TwilightShroud.update(P307)
+                .range(700)
+                .update(P307)
                 .active("指定地点に8秒間煙を発生させ{1}のユニットに以下の効果を与えて{5}。Akaliは{2}と{3}、{5}を得る。敵ユニットには{4}を与える。")
-                .variable(5, Visionable);
+                .variable(5, Visionable)
+                .update(P506)
+                .active("指定地点に8秒間煙を発生させ{1}のユニットに以下の効果を与える。自身は{2}と{3}を得る。敵ユニットには{4}を与える。ステルスはスキル使用または通常攻撃時に解除され、再度ステルス化するのに0.65秒かかる。")
+                .variable(1, Radius, 400)
+                .variable(2, Stealth)
+                .variable(3, MSRatio, 20, 20);
         CrescentSlash.update()
                 .active("{2}の敵ユニットに{1}を与える。")
                 .variable(1, PhysicalDamage, 30, 25, ap(0.3), ad(0.6))
