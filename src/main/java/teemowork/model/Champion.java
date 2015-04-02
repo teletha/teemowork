@@ -554,7 +554,7 @@ public class Champion {
                 .set(Mreg, 0, 0)
                 .set(AD, 55, 3.2)
                 .set(AS, 0.651, 3)
-                .set(AR, 14, 3.8)
+                .set(AR, 18, 3.8)
                 .set(MR, 30, 1.25)
                 .set(Range, 150)
                 .set(MS, 345);

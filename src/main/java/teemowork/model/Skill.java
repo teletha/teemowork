@@ -3877,7 +3877,9 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(1, Radius)
                 .variable(2, MagicDamage, 200, 100, ap(1))
                 .variable(3, ASRatio, 40, 10)
-                .cd(100, -15);
+                .cd(100, -15)
+                .update(P506)
+                .active("{1}の敵Championに{2}を与え、12秒間{3}し、通常攻撃の射程が325に増加する。当たった敵毎に20%の" + BloodWell + "を得る。");
     }
 
     private static void Ahri() {
