@@ -3877,15 +3877,17 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(1, Radius)
                 .variable(2, MagicDamage, 200, 100, ap(1))
                 .variable(3, ASRatio, 40, 10)
-                .cd(100, -15);
+                .cd(100, -15)
+                .update(P506)
+                .active("{1}の敵Championに{2}を与え、12秒間{3}し、通常攻撃の射程が325に増加する。当たった敵毎に20%の" + BloodWell + "を得る。");
     }
 
     private static void Ahri() {
         EssenceTheft.update()
                 .passive("スキルが敵ユニットに当たる度に" + EssenceTheft + "のチャージを1つ得る(1回のスキルで得られる上限は3チャージまで)。9チャージの状態でスキルを使用すると、チャージを全て消費して使用したスキルに{1}が追加される。")
                 .variable(-1, SV, 35)
-                .cost(Charge, 9, 0);
-        EssenceTheft.update(P313)
+                .cost(Charge, 9, 0)
+                .update(P313)
                 .passive("スキルが敵ユニットに当たる度に" + EssenceTheft + "のチャージを1つ得る(1回のスキルで得られる上限は3チャージまで)。9チャージの状態でスキルを使用すると、チャージを全て消費して使用したスキルが敵に当たる毎に{1}する。")
                 .variable(1, RestoreHealth, 2, 0, ap(0.09), amplify(Lv, 1));
         OrbOfDeception.update()
@@ -3894,36 +3896,58 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(2, TrueDamage, 40, 25, ap(0.33))
                 .cd(7, 0)
                 .mana(70, 5)
-                .range(880);
+                .range(880)
+                .update(P506)
+                .active("指定方向にオーブを放ち当たった敵ユニットに{1}を与える。オーブは行きと帰りでそれぞれにヒット判定があり、帰りの場合は{2}を与える。オーブを射出している間{3}する。（0.5秒かけて80まで減衰）")
+                .variable(1, MagicDamage, 40, 25, ap(0.35))
+                .variable(2, TrueDamage, 40, 25, ap(0.35))
+                .variable(3, MS, 215)
+                .mana(65, 5);
         FoxFire.update()
                 .active("Ahriの周囲を回る3本の鬼火を放つ。鬼火は5秒間持続し、近くの敵ユニットに自動的に突撃して{1}を与える。鬼火が同一対象に突撃した場合、2発目以降は本来の{2}分の魔法DMを与える(同一対象に3発命中すると{3})。Ahriの通常攻撃範囲内に敵Championがいる場合、それらを優先して狙う。")
                 .variable(1, MagicDamage, 40, 25, ap(0.4))
                 .variable(2, Percentage, 50)
                 .variable(3, MagicDamage, 80, 50, ap(0.8))
                 .cd(9, -1)
-                .mana(60, 0)
-                .range(800);
-        FoxFire.update(P313).variable(2, Percentage, 30).variable(3, MagicDamage, 64, 40, ap(0.64)).mana(50);
+                .mana(60)
+                .range(800)
+                .update(P313)
+                .variable(2, Percentage, 30)
+                .variable(3, MagicDamage, 64, 40, ap(0.64))
+                .mana(50)
+                .update(P506)
+                .variable(1, MagicDamage, 40, 25, ap(0.4))
+                .variable(2, Percentage, 30)
+                .variable(3, MagicDamage, 64, 40, ap(0.64))
+                .range(550)
+                .mana(50);
         Charm.update()
                 .active("指定方向に投げキッスを放ち、当たった敵ユニットに{1}と{2}を与え自分の方向に移動させる。また" + Status.Charm + "した対象には{3}を与える。")
                 .variable(1, MagicDamage, 60, 30, ap(0.35))
                 .variable(2, Status.Charm, 1, 0.25)
                 .variable(3, MSSlowRatio, 50)
-                .cd(12, 0)
+                .cd(12)
                 .mana(50, 15)
-                .range(975);
-        Charm.update(P313)
+                .range(975)
+                .update(P313)
                 .active("指定方向に投げキッスを放ち、当たった敵ユニットに{1}と{2}を与え自分の方向に移動させる。また" + Status.Charm + "した対象には{3}を与える。6秒間、対象はAhriから受けるDMが20%増加する。")
-                .mana(85);
+                .mana(85)
+                .update(P506)
+                .active("指定方向に投げキッスを放ち、当たった敵ユニットに{1}と{2}を与え自分の方向に移動させる。また" + Status.Charm + "した対象には{3}を与える。")
+                .variable(1, MagicDamage, 60, 305, ap(0.5));
         SpiritRush.update()
                 .active("指定方向にダッシュした後、{2}の敵ユニット(敵Championを優先)3体に{1}を与える。このスキルは10秒の間、3回まで連続して使用できる(但し、一度使用する度に1秒のCDが発生する)。2～3発目はマナコスト無しで使用可能。同一対象に3発命中すると{3}。")
                 .variable(1, MagicDamage, 85, 40, ap(0.35))
                 .variable(2, Radius, 500)
                 .variable(3, MagicDamage, 255, 120, ap(1.05))
                 .cd(110, -15)
-                .mana(100, 0)
-                .range(450);
-        SpiritRush.update(P313).variable(1, MagicDamage, 70, 40, ap(0.3)).variable(3, MagicDamage, 210, 120, ap(0.9));
+                .mana(100)
+                .range(450)
+                .update(P313)
+                .variable(1, MagicDamage, 70, 40, ap(0.3))
+                .variable(3, MagicDamage, 210, 120, ap(0.9))
+                .update(P506)
+                .variable(2, Radius, 600);
     }
 
     private static void Akali() {
