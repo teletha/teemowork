@@ -546,6 +546,7 @@ public class Champion {
         return counter;
     }
 
+    /* Define Champion base status. */
     static {
         Aatrox.update(P506)
                 .set(Health, 395, 85)
