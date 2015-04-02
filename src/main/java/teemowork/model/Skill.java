@@ -3962,10 +3962,12 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(3, RestoreEnergy, 20, 5)
                 .cd(6, -0.5)
                 .cost(Energy, 60, 0)
-                .range(600);
-        MarkOftheAssassin.update(P3051)
+                .range(600)
+                .update(P3051)
                 .variable(1, MagicDamage, 35, 20, ap(0.4))
-                .variable(2, MagicDamage, 45, 25, ap(0.5));
+                .variable(2, MagicDamage, 45, 25, ap(0.5))
+                .update(P506)
+                .active("対象の敵ユニットにカマを投げつけ{1}と6秒間マークを与える。マークが付いた対象に通常攻撃でダメージを与えたとき、マークを消費して{2}を与え、{3}する。");
         TwilightShroud.update()
                 .active("指定地点に8秒間煙を発生させ{1}のユニットに以下の効果を与える。Akaliは{2}と{3}、{5}を得る。敵ユニットには{4}を与える。")
                 .variable(1, Radius, 300)
