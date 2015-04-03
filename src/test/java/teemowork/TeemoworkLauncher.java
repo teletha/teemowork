@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Nameless Production Committee
+ * Copyright (C) 2015 Nameless Production Committee
  *
  * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@ package teemowork;
 import booton.Booton;
 
 /**
- * @version 2014/08/18 12:55:06
+ * @version 2015/04/03 20:51:33
  */
 public class TeemoworkLauncher {
 
