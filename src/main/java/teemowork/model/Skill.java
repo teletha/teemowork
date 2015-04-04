@@ -12,6 +12,7 @@ package teemowork.model;
 import static teemowork.model.SkillKey.*;
 import static teemowork.model.Status.*;
 import static teemowork.model.Version.*;
+
 import teemowork.model.variable.VariableResolver.Diff;
 import teemowork.model.variable.VariableResolver.Fixed;
 import teemowork.model.variable.VariableResolver.Per1Level;
@@ -3998,9 +3999,13 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(2, CDRAwareTime, 25, -5)
                 .cd(2, -0.5)
                 .cost(Charge, 1, 0)
-                .range(800);
-        ShadowDance.update(P3051).variable(2, CDRAwareTime, 35, -10);
-        ShadowDance.update(P307).variable(2, CDRAwareTime, 30, -7.5);
+                .range(800)
+                .update(P3051)
+                .variable(2, CDRAwareTime, 35, -10)
+                .update(P307)
+                .variable(2, CDRAwareTime, 30, -7.5)
+                .update(P506)
+                .range(700);
     }
 
     private static void Alistar() {
