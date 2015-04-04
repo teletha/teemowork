@@ -4057,7 +4057,7 @@ public class Skill extends Describable<SkillDescriptor> {
         BandageToss.update(P303).variable(1, MagicDamage, 80, 50, ap(0.7));
         Despair.update()
                 .active("毎秒、{2}の敵ユニットに{1}を与える。")
-                .variable(1, MagicDamage, 8, 4, amplify(TargetMaxHealthRatio, 1.5, 0.3, ap(0.01)))
+                .variable(1, MagicDamage, 8, 4, amplify(TargetMaxHealthRatio, 1, 0.5, ap(0.01)))
                 .variable(2, Radius, 350)
                 .mana(8)
                 .cd(1)

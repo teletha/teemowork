@@ -33,7 +33,19 @@ public class Champion {
     private static final List<Champion> champions = new ArrayList();
 
     /** The champion name. */
-    public static final Champion Aatrox = new Champion("Aatrox", BloodWell, DarkFlight, BloodThirst, BladesOfTorment, Massacre);
+    public static final Champion Aatrox = new Champion("Aatrox", BloodWell, DarkFlight, BloodThirst, BladesOfTorment, Massacre, self -> {
+        self.update(P506)
+                .set(Health, 395, 85)
+                .set(Hreg, 5.75, 0.5)
+                .set(Mana, 0, 0)
+                .set(Mreg, 0, 0)
+                .set(AD, 55, 3.2)
+                .set(AS, 0.651, 3)
+                .set(AR, 18, 3.8)
+                .set(MR, 30, 1.25)
+                .set(Range, 150)
+                .set(MS, 345);
+    } );
 
     /** The champion name. */
     public static final Champion Ahri = new Champion("Ahri", EssenceTheft, OrbOfDeception, FoxFire, Skill.Charm, SpiritRush);
@@ -57,7 +69,19 @@ public class Champion {
     } );
 
     /** The champion name. */
-    public static final Champion Amumu = new Champion("Amumu", CursedTouch, BandageToss, Despair, Tantrum, CurseOftheSadMummy);
+    public static final Champion Amumu = new Champion("Amumu", CursedTouch, BandageToss, Despair, Tantrum, CurseOftheSadMummy, self -> {
+        self.update(P0000)
+                .set(Health, 472, 84)
+                .set(Hreg, 7.45, 0.85)
+                .set(Mana, 220, 40)
+                .set(Mreg, 6.5, 0.525)
+                .set(AD, 47, 3.8)
+                .set(AS, 0.638, 2.18)
+                .set(AR, 23.544, 3.3)
+                .set(MR, 30, 1.25)
+                .set(Range, 125)
+                .set(MS, 335);
+    } );
 
     /** The champion name. */
     public static final Champion Anivia = new Champion("Anivia", Rebirth, FlashFrost, Crystalize, Frostbite, GlacialStorm);
@@ -591,17 +615,6 @@ public class Champion {
 
     /* Define Champion base status. */
     static {
-        Aatrox.update(P506)
-                .set(Health, 395, 85)
-                .set(Hreg, 5.75, 0.5)
-                .set(Mana, 0, 0)
-                .set(Mreg, 0, 0)
-                .set(AD, 55, 3.2)
-                .set(AS, 0.651, 3)
-                .set(AR, 18, 3.8)
-                .set(MR, 30, 1.25)
-                .set(Range, 150)
-                .set(MS, 345);
         Ahri.update(P506)
                 .set(Health, 380, 80)
                 .set(Hreg, 5.5, 0.6)
@@ -624,17 +637,7 @@ public class Champion {
                 .set(MR, 30, 1.25)
                 .set(Range, 125)
                 .set(MS, 350);
-        Amumu.update(P0000)
-                .set(Health, 472, 84)
-                .set(Hreg, 7.45, 0.85)
-                .set(Mana, 220, 40)
-                .set(Mreg, 6.5, 0.525)
-                .set(AD, 47, 3.8)
-                .set(AS, 0.638, 2.18)
-                .set(AR, 18, 3.3)
-                .set(MR, 30, 1.25)
-                .set(Range, 125)
-                .set(MS, 335);
+
         Anivia.update(P0000)
                 .set(Health, 350, 70)
                 .set(Hreg, 4.65, 0.55)
