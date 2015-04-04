@@ -15,6 +15,7 @@ import static teemowork.model.Version.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 import js.dom.Element;
 
@@ -41,7 +42,19 @@ public class Champion {
     public static final Champion Akali = new Champion("Akali", TwinDisciplines, MarkOftheAssassin, TwilightShroud, CrescentSlash, ShadowDance);
 
     /** The champion name. */
-    public static final Champion Alistar = new Champion("Alistar", Trample, Pulverize, Headbutt, TriumphantRoar, UnbreakableWill);
+    public static final Champion Alistar = new Champion("Alistar", Trample, Pulverize, Headbutt, TriumphantRoar, UnbreakableWill, self -> {
+        self.update(P506)
+                .set(Health, 442, 102)
+                .set(Hreg, 7.25, 0.85)
+                .set(Mana, 215, 38)
+                .set(Mreg, 6.45, 0.45)
+                .set(AD, 55.03, 3.62)
+                .set(AS, 0.625, 3.62)
+                .set(AR, 18.5, 3.5)
+                .set(MR, 30, 1.25)
+                .set(Range, 125)
+                .set(MS, 325);
+    } );
 
     /** The champion name. */
     public static final Champion Amumu = new Champion("Amumu", CursedTouch, BandageToss, Despair, Tantrum, CurseOftheSadMummy);
@@ -440,6 +453,36 @@ public class Champion {
 
     /**
      * <p>
+     * Create new champion.
+     * </p>
+     * 
+     * @param name
+     */
+    Champion(String name, Skill passive, Skill q, Skill w, Skill e, Skill r, Consumer<Champion> status) {
+        this(name, false, passive, q, w, e, r, status);
+    }
+
+    /**
+     * <p>
+     * Create new champion.
+     * </p>
+     * 
+     * @param name
+     */
+    Champion(String name, boolean transformed, Skill passive, Skill q, Skill w, Skill e, Skill r, Consumer<Champion> status) {
+        this.id = transformed ? counter : counter++;
+        this.name = name;
+        this.systemName = getSystemName().toLowerCase().replaceAll("[\\s'\\.]", "");
+        this.skills = new Skill[] {passive, q, w, e, r};
+
+        if (!transformed) {
+            champions.add(this);
+        }
+        status.accept(this);
+    }
+
+    /**
+     * <p>
      * Returns system name.
      * </p>
      * 
@@ -581,17 +624,6 @@ public class Champion {
                 .set(MR, 30, 1.25)
                 .set(Range, 125)
                 .set(MS, 350);
-        Alistar.update(P0000)
-                .set(Health, 442, 102)
-                .set(Hreg, 7.25, 0.85)
-                .set(Mana, 215, 38)
-                .set(Mreg, 6.45, 0.45)
-                .set(AD, 55.03, 3.62)
-                .set(AS, 0.625, 3.62)
-                .set(AR, 14.5, 3.5)
-                .set(MR, 30, 1.25)
-                .set(Range, 125)
-                .set(MS, 325);
         Amumu.update(P0000)
                 .set(Health, 472, 84)
                 .set(Hreg, 7.45, 0.85)
