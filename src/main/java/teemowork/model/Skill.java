@@ -4010,7 +4010,7 @@ public class Skill extends Describable<SkillDescriptor> {
 
     private static void Alistar() {
         Trample.update()
-                .passive("スキルを使用すると3秒間{1}を得て、{2}の敵ユニットと建物に毎秒{3}を与える。ミニオンとモンスターに対しては与えるダメージが2倍になる。")
+                .passive("スキルを使用すると3秒間{1}を得て、{2}の敵ユニットと建物に毎秒{3}を与える。ミニオンに対しては与えるダメージが2倍になる。")
                 .variable(3, MagicDamage, 6, 0, ap(0.1), amplify(Lv, 1))
                 .variable(2, Radius, 182.5)
                 .variable(1, IgnoreUnitCollision);
@@ -4021,13 +4021,13 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(3, Stun, 0.5, 0)
                 .variable(4, Radius, 365)
                 .cd(17, -1)
-                .mana(70, 10);
+                .mana(65, 5);
         Headbutt.update()
                 .active("対象の敵ユニットに突撃し{1}と{2}を与える。")
                 .variable(1, MagicDamage, 55, 55, ap(0.7))
                 .variable(2, Knockback, 650)
                 .cd(14, -1)
-                .mana(70, 10)
+                .mana(65, 5)
                 .range(650);
         TriumphantRoar.update()
                 .active("{1}する。{3}の味方ユニットは{2}する。近くの敵ユニットが死ぬと{4}する。")
@@ -4039,8 +4039,8 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(40, 10);
         UnbreakableWill.update()
                 .active("7秒間Alistarは{1}を得て、{2}する。Disable中でも使用可能。使用時に自身にかかっているCCを全て解除する。")
-                .variable(1, AD, 60, 10)
-                .variable(2, DamageReductionRatio, 50, 10)
+                .variable(1, AD, 60, 15)
+                .variable(2, DamageReductionRatio, 70)
                 .cd(120, -20)
                 .mana(100, 0);
     }
