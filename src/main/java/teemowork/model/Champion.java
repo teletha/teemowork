@@ -45,7 +45,7 @@ public class Champion {
                 .set(MR, 30, 1.25)
                 .set(Range, 150)
                 .set(MS, 345);
-    } );
+    });
 
     /** The champion name. */
     public static final Champion Ahri = new Champion("Ahri", EssenceTheft, OrbOfDeception, FoxFire, Skill.Charm, SpiritRush);
@@ -66,7 +66,7 @@ public class Champion {
                 .set(MR, 30, 1.25)
                 .set(Range, 125)
                 .set(MS, 325);
-    } );
+    });
 
     /** The champion name. */
     public static final Champion Amumu = new Champion("Amumu", CursedTouch, BandageToss, Despair, Tantrum, CurseOftheSadMummy, self -> {
@@ -81,10 +81,23 @@ public class Champion {
                 .set(MR, 30, 1.25)
                 .set(Range, 125)
                 .set(MS, 335);
-    } );
+    });
 
     /** The champion name. */
-    public static final Champion Anivia = new Champion("Anivia", Rebirth, FlashFrost, Crystalize, Frostbite, GlacialStorm);
+    public static final Champion Anivia = new Champion("Anivia", Rebirth, FlashFrost, Crystalize, Frostbite, GlacialStorm, self -> {
+        self.update(P506)
+                .set(Health, 350, 70)
+                .set(Hreg, 4.65, 0.55)
+                .set(Mana, 257, 53)
+                .set(Mreg, 7.0, 0.6)
+                .set(AD, 48, 3.2)
+                .set(AS, 0.625, 1.68)
+                .set(AR, 17.22, 4)
+                .set(MR, 30, 0)
+                .set(Range, 600)
+                .set(MissileSpeed, 1400)
+                .set(MS, 325);
+    });
 
     /** The champion name. */
     public static final Champion Annie = new Champion("Annie", Pyromania, Disintegrate, Incinerate, MoltenShield, SummonTibbers);
@@ -637,20 +650,6 @@ public class Champion {
                 .set(MR, 30, 1.25)
                 .set(Range, 125)
                 .set(MS, 350);
-
-        Anivia.update(P0000)
-                .set(Health, 350, 70)
-                .set(Hreg, 4.65, 0.55)
-                .set(Mana, 257, 53)
-                .set(Mreg, 7.0, 0.6)
-                .set(AD, 48, 3.2)
-                .set(AS, 0.625, 1.68)
-                .set(AR, 10.5, 4)
-                .set(MR, 30, 0)
-                .set(Range, 600)
-                .set(MissileSpeed, 1100)
-                .set(MS, 325);
-        Anivia.update(P401).set(MissileSpeed, 1400);
         Annie.update(P0000)
                 .set(Health, 384, 76)
                 .set(Hreg, 4.5, 0.55)
