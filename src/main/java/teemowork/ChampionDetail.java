@@ -224,7 +224,7 @@ public class ChampionDetail extends Page {
             this.levels = new Element[size];
 
             Element iconBox = root.child(IconBox);
-            icon = iconBox.child(SkillIcon).css("background-image", "url(" + skill.getIcon() + ")");
+            icon = iconBox.child(SkillIcon.of(skill.getIcon())).css("background-image", "url(" + skill.getIcon() + ")");
             iconBox.subscribe(UIAction.Click, event -> {
                 event.preventDefault();
                 build.levelUp(skill);
@@ -237,7 +237,7 @@ public class ChampionDetail extends Page {
                 Element levels = iconBox.child(LevelBox);
 
                 for (int i = 0; i < size; i++) {
-                    this.levels[i] = levels.child(LevelMark);
+                    this.levels[i] = levels.child(LevelMark.of(false));
                 }
             }
 
@@ -263,11 +263,11 @@ public class ChampionDetail extends Page {
             int level = build.getLevel(skill);
 
             for (int i = 0; i < levels.length; i++) {
-                if (i < level) {
-                    levels[i].add(Assigned);
-                } else {
-                    levels[i].remove(Assigned);
-                }
+                // if (i < level) {
+                // levels[i].add(Assigned);
+                // } else {
+                // levels[i].remove(Assigned);
+                // }
             }
 
             if (build.isActive(skill)) {

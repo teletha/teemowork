@@ -11,6 +11,7 @@ package teemowork;
 
 import static jsx.style.value.Color.*;
 
+import jsx.style.BinaryStyle;
 import jsx.style.Style;
 import jsx.style.StyleRuleDescriptor;
 import jsx.style.ValueStyle;
@@ -70,10 +71,10 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         margin.bottom(1, em);
     };
 
-    static Style SkillIcon = () -> {
+    static ValueStyle<String> SkillIcon = uri -> {
         display.block();
         box.size(SkillIconSize, px);
-        background.image(BackgroundImage.none().contain().size(SkillIconSize, px)).borderBox();
+        background.image(BackgroundImage.url(uri).contain().size(SkillIconSize, px)).borderBox();
         border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
     };
 
@@ -84,20 +85,17 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         margin.top(2, px).bottom(5, px);
     };
 
-    static Style LevelMark = () -> {
+    static BinaryStyle LevelMark = state -> {
         display.block();
         flexItem.grow(1);
         box.height(LevelBoxHeight, px);
         border.left.solid().color(Black).width(1, px);
-        background.image(BackgroundImage.of(linear(rgba(240, 192, 28, 0.5), rgba(160, 123, 1, 0.5))));
+        background.image(BackgroundImage
+                .of(linear(rgba(240, 192, 28, state ? 1 : 0.5), rgba(160, 123, 1, state ? 1 : 0.5))));
 
         firstChild(() -> {
             border.none();
         });
-    };
-
-    static Style Assigned = () -> {
-        background.image(BackgroundImage.of(linear(rgba(240, 192, 28, 1), rgba(160, 123, 1, 1))));
     };
 
     /**

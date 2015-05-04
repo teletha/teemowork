@@ -9,7 +9,6 @@
  */
 package teemowork;
 
-import static jsx.style.StyleDescriptor.*;
 import static teemowork.ChampionDetailStyle.*;
 import static teemowork.model.Status.*;
 
@@ -67,7 +66,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
                         if (skill.key != SkillKey.Passive) {
                             〡.nbox.〡(LevelBox, skill.getMaxLevel(), level -> {
-                                〡.nbox.〡(LevelMark.withIf(level < build.getLevel(skill), Assigned));
+                                〡.nbox.〡(LevelMark.of(level < build.getLevel(skill)));
                             });
                         }
                     });
@@ -345,9 +344,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
          */
         @Override
         protected void virtualize(VirtualStructure 〡) {
-            〡.hbox.〡(SkillIcon.with(() -> {
-                background.image(skill.getIcon());
-            }));
+            〡.hbox.〡(SkillIcon.of(skill.getIcon()));
         }
 
     }
