@@ -14,10 +14,13 @@ import static teemowork.model.Status.*;
 
 import java.util.List;
 
+import com.oracle.webservices.internal.api.EnvelopeStyle.Style;
+
 import js.dom.UIAction;
 import js.math.Mathematics;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget1;
+import kiss.Events;
 import teemowork.model.Build;
 import teemowork.model.Champion;
 import teemowork.model.Item;
@@ -41,13 +44,25 @@ public class ChampionDetailWidget extends Widget1<Build> {
     /** The your custom build. */
     private final Build build = model1;
 
+    private void levelUp() {
+
+    }
+
+    private <V> Events<V> event(Style matcher) {
+
+        return null;
+    }
+
     /**
      * {@inheritDoc}
      */
     @Override
     protected void virtualize(VirtualStructure 〡) {
         〡.hbox.〡(UpperInfo, () -> {
-            〡.nbox.〡(null, ChampionFace.class, build.champion);
+            〡.hbox.〡(ChampionIconBox.of(build.champion.id), () -> {
+                〡.nbox.〡(Level, build.getLevel());
+            });
+            // 〡.nbox.〡(null, ChampionFace.class, build.champion);
             〡.hbox.〡(ItemViewBox, ItemBoxWidget.class, build.items);
         });
 
@@ -62,7 +77,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
             〡.vbox.〡(SkillTable, build.champion.skills, skill -> {
                 〡.hbox.〡(SkillRow, () -> {
                     〡.vbox.〡(IconBox, () -> {
-                        〡.nbox.〡(null, SkillBoxWidget.class, skill);
+                        〡.hbox.〡(SkillIcon.of(skill.getIcon())).with(SkillChange);
 
                         if (skill.key != SkillKey.Passive) {
                             〡.nbox.〡(LevelBox, skill.getMaxLevel(), level -> {
