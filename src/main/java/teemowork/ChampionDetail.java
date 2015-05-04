@@ -538,7 +538,7 @@ public class ChampionDetail extends Page {
          */
         public ItemBox(Item item) {
             this.item = item;
-            this.icon = root.add(ItemIconBase).child(ItemIcon);
+            this.icon = root.add(ItemIconBase).child(ItemIcon.of(0));
         }
 
         /**

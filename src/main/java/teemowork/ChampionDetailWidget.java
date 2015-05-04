@@ -17,7 +17,6 @@ import java.util.List;
 
 import js.dom.UIAction;
 import js.math.Mathematics;
-import jsx.style.Style;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget1;
 import teemowork.model.Build;
@@ -314,11 +313,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
          */
         @Override
         protected void virtualize(VirtualStructure $〡) {
-            Style style = ChampionIconBox.with(() -> {
-                background.horizontal(champion.id / (Champion.size() - 1) * 100, percent);
-            });
-
-            $〡.hbox.〡(style, () -> {
+            $〡.hbox.〡(ChampionIconBox.of(champion.id), () -> {
                 $〡.nbox.〡(Level, build.getLevel());
             });
         }
@@ -368,9 +363,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
         @Override
         protected void virtualize(VirtualStructure $〡) {
             $〡.hbox.〡(ItemIconBase, () -> {
-                $〡.hbox.〡(ItemIcon.with(() -> {
-                    background.horizontal(model1.position / (Item.size() - 1) * 100, percent);
-                }));
+                $〡.hbox.〡(ItemIcon.of(model1.position));
             });
         }
     }
