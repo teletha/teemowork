@@ -224,7 +224,7 @@ public class ChampionDetail extends Page {
             this.levels = new Element[size];
 
             Element iconBox = root.child(IconBox);
-            icon = iconBox.child(SkillIcon.of(skill.getIcon())).css("background-image", "url(" + skill.getIcon() + ")");
+            icon = iconBox.child(SkillIcon.of(skill)).css("background-image", "url(" + skill.getIcon() + ")");
             iconBox.subscribe(UIAction.Click, event -> {
                 event.preventDefault();
                 build.levelUp(skill);

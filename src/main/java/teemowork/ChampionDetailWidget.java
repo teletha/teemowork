@@ -13,13 +13,15 @@ import static teemowork.ChampionDetailStyle.*;
 import static teemowork.model.Status.*;
 
 import java.util.List;
-
-import com.oracle.webservices.internal.api.EnvelopeStyle.Style;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 import js.dom.UIAction;
 import js.math.Mathematics;
+import jsx.style.ValueStyle;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget1;
+import kiss.Disposable;
 import kiss.Events;
 import teemowork.model.Build;
 import teemowork.model.Champion;
@@ -48,9 +50,35 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
     }
 
-    private <V> Events<V> event(Style matcher) {
+    private <V> Events<V> click(ValueStyle<V> matcher) {
 
         return null;
+    }
+
+    private <V> Events<V> rclick(ValueStyle<V> matcher) {
+
+        return null;
+    }
+
+    private Disposable skillUp = click(SkillIcon).buffer(250, TimeUnit.MILLISECONDS)
+            .map(list -> list.size())
+            .filter(size -> size >= 2)
+            .to(size -> {
+
+            });
+
+    private Events<Skill> skillDown = rclick(SkillIcon).diff();
+
+    /**
+     * @version 2015/05/05 12:04:18
+     */
+    public static interface Action<E> extends Function<Events<E>, Disposable> {
+    }
+
+    private Action<Skill> a = e -> e.diff().to(skill -> build.levelUp(skill));
+
+    private void virtualize(Eventer e) {
+
     }
 
     /**
@@ -77,7 +105,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
             〡.vbox.〡(SkillTable, build.champion.skills, skill -> {
                 〡.hbox.〡(SkillRow, () -> {
                     〡.vbox.〡(IconBox, () -> {
-                        〡.hbox.〡(SkillIcon.of(skill.getIcon())).with(SkillChange);
+                        〡.hbox.〡(SkillIcon.of(skill));
 
                         if (skill.key != SkillKey.Passive) {
                             〡.nbox.〡(LevelBox, skill.getMaxLevel(), level -> {
@@ -359,7 +387,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
          */
         @Override
         protected void virtualize(VirtualStructure 〡) {
-            〡.hbox.〡(SkillIcon.of(skill.getIcon()));
+            〡.hbox.〡(SkillIcon.of(skill));
         }
 
     }

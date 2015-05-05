@@ -11,6 +11,7 @@ package teemowork;
 
 import static js.lang.Global.*;
 
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -105,10 +106,14 @@ public class FormCatalogPage extends Page {
 
         mouseDrag.to(e -> {
             System.out.println("drag " + e.pageX + "  " + e.pageY);
-        }, error -> {
+        } , error -> {
             System.out.println("error " + error);
-        }, () -> {
+        } , () -> {
             System.out.println("completed");
+        });
+
+        mouseDown.buffer(500, TimeUnit.MILLISECONDS).map(list -> list.size()).filter(size -> size >= 2).to(size -> {
+            System.out.println("click " + size);
         });
 
         // model.modeler.test[0] = "acted";

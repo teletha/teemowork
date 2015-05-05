@@ -20,6 +20,7 @@ import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
 import teemowork.model.Champion;
 import teemowork.model.Item;
+import teemowork.model.Skill;
 
 /**
  * @version 2013/02/26 23:49:51
@@ -71,10 +72,10 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         margin.bottom(1, em);
     };
 
-    static ValueStyle<String> SkillIcon = uri -> {
+    static ValueStyle<Skill> SkillIcon = skill -> {
         display.block();
         box.size(SkillIconSize, px);
-        background.image(BackgroundImage.url(uri).contain().size(SkillIconSize, px)).borderBox();
+        background.image(BackgroundImage.url(skill.getIcon()).contain().size(SkillIconSize, px)).borderBox();
         border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
     };
 
