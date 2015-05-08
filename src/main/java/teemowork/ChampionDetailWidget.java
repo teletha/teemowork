@@ -13,16 +13,12 @@ import static teemowork.ChampionDetailStyle.*;
 import static teemowork.model.Status.*;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 
 import js.dom.UIAction;
 import js.math.Mathematics;
-import jsx.style.ValueStyle;
+import jsx.ui.Action;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget1;
-import kiss.Disposable;
-import kiss.Events;
 import teemowork.model.Build;
 import teemowork.model.Champion;
 import teemowork.model.Item;
@@ -46,40 +42,13 @@ public class ChampionDetailWidget extends Widget1<Build> {
     /** The your custom build. */
     private final Build build = model1;
 
-    private void levelUp() {
+    public final Action<Champion> levelUp = click(ChampionIconBox, v -> build.levelUp());
 
-    }
+    public final Action<Champion> levelDown = click(ChampionIconBox, v -> build.levelDown());
 
-    private <V> Events<V> click(ValueStyle<V> matcher) {
+    public final Action<Skill> skillUp = click(SkillIcon, v -> build.levelUp(v));
 
-        return null;
-    }
-
-    private <V> Events<V> rclick(ValueStyle<V> matcher) {
-
-        return null;
-    }
-
-    private Disposable skillUp = click(SkillIcon).buffer(250, TimeUnit.MILLISECONDS)
-            .map(list -> list.size())
-            .filter(size -> size >= 2)
-            .to(size -> {
-
-            });
-
-    private Events<Skill> skillDown = rclick(SkillIcon).diff();
-
-    /**
-     * @version 2015/05/05 12:04:18
-     */
-    public static interface Action<E> extends Function<Events<E>, Disposable> {
-    }
-
-    private Action<Skill> a = e -> e.diff().to(skill -> build.levelUp(skill));
-
-    private void virtualize(Eventer e) {
-
-    }
+    public final Action<Skill> skillDown = rclick(SkillIcon, v -> build.levelDown(v));
 
     /**
      * {@inheritDoc}
@@ -87,7 +56,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
     @Override
     protected void virtualize(VirtualStructure 〡) {
         〡.hbox.〡(UpperInfo, () -> {
-            〡.hbox.〡(ChampionIconBox.of(build.champion.id), () -> {
+            〡.hbox.〡(ChampionIconBox.of(build.champion), () -> {
                 〡.nbox.〡(Level, build.getLevel());
             });
             // 〡.nbox.〡(null, ChampionFace.class, build.champion);
@@ -355,7 +324,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
          */
         @Override
         protected void virtualize(VirtualStructure $〡) {
-            $〡.hbox.〡(ChampionIconBox.of(champion.id), () -> {
+            $〡.hbox.〡(ChampionIconBox.of(champion), () -> {
                 $〡.nbox.〡(Level, build.getLevel());
             });
         }

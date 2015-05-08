@@ -178,13 +178,13 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         cursor.pointer();
     };
 
-    static ValueStyle<Integer> ChampionIconBox = value -> {
+    static ValueStyle<Champion> ChampionIconBox = champion -> {
         box.size(ChampionIconSize);
         border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
         cursor.pointer();
         position.relative();
         background.image("src/main/resources/teemowork/champions.jpg")
-                .horizontal(value / (Champion.size() - 1) * 100, percent);
+                .horizontal(champion.id / (Champion.size() - 1) * 100, percent);
 
     };
 
