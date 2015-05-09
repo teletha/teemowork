@@ -16,9 +16,9 @@ import java.util.List;
 
 import js.dom.UIAction;
 import js.math.Mathematics;
-import jsx.ui.Action;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget1;
+import kiss.Events;
 import teemowork.model.Build;
 import teemowork.model.Champion;
 import teemowork.model.Item;
@@ -42,13 +42,13 @@ public class ChampionDetailWidget extends Widget1<Build> {
     /** The your custom build. */
     private final Build build = model1;
 
-    public final Action<Champion> levelUp = click(ChampionIconBox, v -> build.levelUp());
+    public final Events<Champion> levelUp = click(ChampionIconBox, v -> build.levelUp());
 
-    public final Action<Champion> levelDown = click(ChampionIconBox, v -> build.levelDown());
+    public final Events<Champion> levelDown = click(ChampionIconBox, v -> build.levelDown());
 
-    public final Action<Skill> skillUp = click(SkillIcon, v -> build.levelUp(v));
+    public final Events<Skill> skillUp = click(SkillIcon, v -> build.levelUp(v));
 
-    public final Action<Skill> skillDown = rclick(SkillIcon, v -> build.levelDown(v));
+    public final Events<Skill> skillDown = rclick(SkillIcon, v -> build.levelDown(v));
 
     /**
      * {@inheritDoc}
