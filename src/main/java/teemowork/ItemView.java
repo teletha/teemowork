@@ -12,11 +12,8 @@ package teemowork;
 import static teemowork.ItemViewStyle.*;
 import static teemowork.model.Status.*;
 
-import java.util.function.Consumer;
-
 import js.dom.Element;
 import js.dom.UIAction;
-import js.dom.UIEvent;
 import jsx.application.Application;
 import jsx.bwt.UI;
 import teemowork.model.Ability;
@@ -57,13 +54,7 @@ public class ItemView extends UI {
         for (final Item material : itemDescriptor.getBuild()) {
             material.applyIcon(materials.child(Material)
                     .attr("title", material.name)
-                    .subscribe(UIAction.Click, new Consumer<UIEvent>() {
-
-                        @Override
-                        public void accept(UIEvent event) {
-                            Application.show(new ItemDetail(material.name));
-                        }
-                    }));
+                    .subscribe(UIAction.Click, v -> Application.show(new ItemDetail(material.name))));
         }
 
         // Description Area

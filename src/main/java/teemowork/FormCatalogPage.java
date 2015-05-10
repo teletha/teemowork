@@ -12,7 +12,6 @@ package teemowork;
 import static js.lang.Global.*;
 
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
 import java.util.function.Function;
 
 import js.dom.DocumentFragment;
@@ -66,14 +65,10 @@ public class FormCatalogPage extends Page {
 
         Input num = root.child(new Input(model.type));
         Input name = root.child(new Input(model.name));
-        Button a = root.child(new Button("Add", new Consumer<UIEvent>() {
-
-            @Override
-            public void accept(UIEvent event) {
-                model.type++;
-                System.out.println(model.type);
-                model.name = String.valueOf(model.type);
-            }
+        Button a = root.child(new Button("Add", v -> {
+            model.type++;
+            System.out.println(model.type);
+            model.name = String.valueOf(model.type);
         }));
         model.type = 111000;
 
