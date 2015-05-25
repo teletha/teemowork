@@ -83,6 +83,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         display.flex();
         box.width(SkillIconSize, px).height(LevelBoxHeight + 2, px);
         border.width(1, px).solid().color(Black);
+        border.left.none();
         margin.top(2, px).bottom(5, px);
     };
 
@@ -93,10 +94,6 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         border.left.solid().color(Black).width(1, px);
         background.image(BackgroundImage
                 .of(linear(rgba(240, 192, 28, state ? 1 : 0.5), rgba(160, 123, 1, state ? 1 : 0.5))));
-
-        firstChild(() -> {
-            border.none();
-        });
     };
 
     /**
