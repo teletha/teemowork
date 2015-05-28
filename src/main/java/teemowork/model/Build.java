@@ -50,7 +50,8 @@ public class Build extends Publishable implements StatusCalculator {
     private int[] skills = new int[18];
 
     /** The skill level. */
-    public final ListProperty<Integer> skillLevel = new SimpleListProperty(FXCollections.observableArrayList(0, 0, 0, 0, 0));
+    public final ListProperty<Integer> skillLevel = new SimpleListProperty(FXCollections
+            .observableArrayList(0, 0, 0, 0, 0));
 
     /** The skill level. */
     private boolean[] skillActivation = {false, false, false, false, false};
@@ -219,7 +220,8 @@ public class Build extends Publishable implements StatusCalculator {
             double baseAS = champion.getStatus(version).get(AS);
             double levelAS = champion.getStatus(version).get(ASPerLv) * (level.get() - 1);
 
-            return new Computed(baseAS * (1 + levelAS / 100), Math.min(2.5, baseAS * (1 + (levelAS + sum(ASRatio)) / 100)), status);
+            return new Computed(baseAS * (1 + levelAS / 100), Math
+                    .min(2.5, baseAS * (1 + (levelAS + sum(ASRatio)) / 100)), status);
 
         default:
             double base = base(status);
@@ -349,7 +351,8 @@ public class Build extends Publishable implements StatusCalculator {
             return champion.getStatus(version).get(status);
 
         default:
-            double value = champion.getStatus(version).get(status) + champion.getStatus(version).get(status.per()) * level.get();
+            double value = champion.getStatus(version)
+                    .get(status) + champion.getStatus(version).get(status.per()) * level.get();
 
             if (champion == Champion.EliseSpider) {
                 value += computeVariable(status, Skill.SpiderForm);

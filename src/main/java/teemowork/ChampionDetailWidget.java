@@ -44,11 +44,11 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
     public final Events<Champion> levelUp = click(ChampionIconBox, v -> build.levelUp());
 
-    public final Events<Champion> levelDown = click(ChampionIconBox, v -> build.levelDown());
+    public final Events<Champion> levelDown = rclick(ChampionIconBox, v -> build.levelDown());
 
-    public final Events<Skill> skillUp = click(SkillIcon, v -> build.levelUp(v));
+    public final Events<Skill> skillUp = click(IconBox, Skill.class, v -> build.levelUp(v));
 
-    public final Events<Skill> skillDown = rclick(SkillIcon, v -> build.levelDown(v));
+    public final Events<Skill> skillDown = rclick(IconBox, Skill.class, v -> build.levelDown(v));
 
     /**
      * {@inheritDoc}
@@ -297,68 +297,6 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 〡.〡(amplifier.getStatus().name);
             });
         });
-    }
-
-    /**
-     * @version 2015/01/03 13:33:33
-     */
-    private class ChampionFace extends Widget1<Champion> {
-
-        private final Champion champion = model1;
-
-        /**
-         * 
-         */
-        private ChampionFace() {
-            listen(UIAction.Click).to(e -> {
-                build.levelUp();
-            });
-            listen(UIAction.ClickRight).to(e -> {
-                build.levelDown();
-                e.preventDefault();
-            });
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize(VirtualStructure $〡) {
-            $〡.hbox.〡(ChampionIconBox.of(champion), () -> {
-                $〡.nbox.〡(Level, build.getLevel());
-            });
-        }
-    }
-
-    /**
-     * @version 2014/12/19 9:25:49
-     */
-    private class SkillBoxWidget extends Widget1<Skill> {
-
-        private final Skill skill = model1;
-
-        /**
-         * 
-         */
-        private SkillBoxWidget() {
-            listen(UIAction.Click).to(e -> {
-                build.levelUp(skill);
-            });
-
-            listen(UIAction.ClickRight).to(e -> {
-                build.levelDown(skill);
-                e.preventDefault();
-            });
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize(VirtualStructure 〡) {
-            〡.hbox.〡(SkillIcon.of(skill));
-        }
-
     }
 
     /**

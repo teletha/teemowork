@@ -9,23 +9,18 @@
  */
 package teemowork;
 
-import static jsx.style.StyleDescriptor.*;
-
-import javafx.beans.property.Property;
-
-import js.dom.UIAction;
 import jsx.application.Application;
 import jsx.style.Style;
 import jsx.style.StyleRuleDescriptor;
+import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
-import jsx.ui.Widget1;
 import jsx.ui.piece.Input;
 import jsx.ui.piece.UI;
-import kiss.I;
+import kiss.Events;
 import teemowork.model.Champion;
 
 /**
@@ -35,6 +30,10 @@ public class ChampionSelectWidget extends Widget {
 
     private Input input = UI.input().placeholder("Champion Name");
 
+    public Events<Champion> select = click(CSS.Container, Champion.class, champion -> {
+        Application.show(new ChampionDetail2(champion.systemName));
+    });
+
     /**
      * {@inheritDoc}
      */
@@ -42,41 +41,16 @@ public class ChampionSelectWidget extends Widget {
     protected void virtualize(VirtualStructure 〡) {
         〡.nbox.〡(CSS.Root, () -> {
             〡.nbox.〡(CSS.SearchByName, input);
-            〡.nbox.〡(CSS.ImageSet, Icon.class, Champion.getAll());
-        });
-    }
+            〡.nbox.〡(CSS.ImageSet, Champion.getAll(), champion -> {
+                String value = input.value.get();
+                boolean invisible = value.length() != 0 && !champion.name.toLowerCase().contains(value.toLowerCase());
 
-    /**
-     * @version 2015/02/03 16:12:25
-     */
-    private class Icon extends Widget1<Champion> {
-
-        /** The visible flag. */
-        private Property<Boolean> invisible = I.observe(input.value)
-                .map(v -> v.length() != 0 && !model1.name.toLowerCase().contains(v.toLowerCase())).to();
-
-        /** The icon image of the champion. */
-        private Style IconImage = CSS.IconImage.with(() -> {
-            background.position(model1.id / (Champion.size() - 1) * 100, percent, 0, percent);
-        });
-
-        /**
-         * 
-         */
-        private Icon() {
-            listen(UIAction.Click).to(e -> Application.show(new ChampionDetail2(model1.systemName)));
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize(VirtualStructure 〡) {
-            〡.nbox.〡(CSS.Container.withIf(invisible, CSS.Unselected), () -> {
-                〡.nbox.〡(IconImage);
-                〡.nbox.〡(CSS.Title, model1.name);
+                〡.nbox.〡(CSS.Container.withIf(invisible, CSS.Unselected), () -> {
+                    〡.nbox.〡(CSS.IconImage.with(CSS.IconPosition.of(champion)));
+                    〡.nbox.〡(CSS.Title, champion.name);
+                });
             });
-        }
+        });
     }
 
     /**
@@ -130,6 +104,10 @@ public class ChampionSelectWidget extends Widget {
                     box.opacity(0);
                 });
             });
+        };
+
+        static ValueStyle<Champion> IconPosition = chmapion -> {
+            background.position(chmapion.id / (Champion.size() - 1) * 100, percent, 0, percent);
         };
 
         static Style Title = () -> {

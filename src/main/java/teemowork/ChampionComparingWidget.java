@@ -19,7 +19,6 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 
-import js.dom.UIAction;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
@@ -91,7 +90,7 @@ public class ChampionComparingWidget extends Widget {
     /**
      * @version 2015/03/02 10:58:34
      */
-    private class Header extends Widget1<Status> implements Comparator<Champion> {
+    private class Header extends Widget1<Status>implements Comparator<Champion> {
 
         /** The champion status. */
         private final Status status = model1;
@@ -103,15 +102,15 @@ public class ChampionComparingWidget extends Widget {
          * 
          */
         private Header() {
-            listen(UIAction.Click).to(v -> {
-                if (order.get(0) == this) {
-                    this.decending = !decending;
-                }
-
-                // push this at top
-                order.remove(this);
-                order.add(0, this);
-            });
+            // listen(UIAction.Click).to(v -> {
+            // if (order.get(0) == this) {
+            // this.decending = !decending;
+            // }
+            //
+            // // push this at top
+            // order.remove(this);
+            // order.add(0, this);
+            // });
         }
 
         /**
