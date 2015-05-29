@@ -9,6 +9,8 @@
  */
 package teemowork;
 
+import static js.dom.UIAction.*;
+
 import jsx.application.Application;
 import jsx.style.Style;
 import jsx.style.StyleRuleDescriptor;
@@ -30,9 +32,14 @@ public class ChampionSelectWidget extends Widget {
 
     private Input input = UI.input().placeholder("Champion Name");
 
-    public Events<Champion> select = click(CSS.Container, Champion.class, champion -> {
-        Application.show(new ChampionDetail2(champion.systemName));
-    });
+    public Events<Champion> select = on(Click, CSS.Container, Champion.class);
+
+    /**
+     * 
+     */
+    public ChampionSelectWidget() {
+        select.to(champion -> Application.show(new ChampionDetail2(champion.systemName)));
+    }
 
     /**
      * {@inheritDoc}

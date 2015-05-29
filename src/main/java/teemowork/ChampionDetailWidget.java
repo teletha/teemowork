@@ -9,12 +9,12 @@
  */
 package teemowork;
 
+import static js.dom.UIAction.*;
 import static teemowork.ChampionDetailStyle.*;
 import static teemowork.model.Status.*;
 
 import java.util.List;
 
-import js.dom.UIAction;
 import js.math.Mathematics;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget1;
@@ -42,13 +42,21 @@ public class ChampionDetailWidget extends Widget1<Build> {
     /** The your custom build. */
     private final Build build = model1;
 
-    public final Events<Champion> levelUp = click(ChampionIconBox, v -> build.levelUp());
+    public final Events<Champion> levelUp = on(Click, ChampionIconBox).merge(on(MouseWheelUp, ChampionIconBox));
 
-    public final Events<Champion> levelDown = rclick(ChampionIconBox, v -> build.levelDown());
+    public final Events<Champion> levelDown = on(ClickRight, ChampionIconBox)
+            .merge(on(MouseWheelDown, ChampionIconBox));
 
-    public final Events<Skill> skillUp = click(IconBox, Skill.class, v -> build.levelUp(v));
+    public final Events<Skill> skillUp = on(Click, IconBox, Skill.class);
 
-    public final Events<Skill> skillDown = rclick(IconBox, Skill.class, v -> build.levelDown(v));
+    public final Events<Skill> skillDown = on(ClickRight, IconBox, Skill.class);
+
+    public ChampionDetailWidget() {
+        levelUp.to(v -> build.levelUp());
+        levelDown.to(v -> build.levelDown());
+        skillUp.to(v -> build.levelUp(v));
+        skillDown.to(v -> build.levelDown(v));
+    }
 
     /**
      * {@inheritDoc}
