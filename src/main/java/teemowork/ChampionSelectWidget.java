@@ -49,10 +49,7 @@ public class ChampionSelectWidget extends Widget {
         〡.nbox.〡(CSS.Root, () -> {
             〡.nbox.〡(CSS.SearchByName, input);
             〡.nbox.〡(CSS.ImageSet, Champion.getAll(), champion -> {
-                String value = input.value.get();
-                boolean invisible = value.length() != 0 && !champion.name.toLowerCase().contains(value.toLowerCase());
-
-                〡.nbox.〡(CSS.Container.withIf(invisible, CSS.Unselected), () -> {
+                〡.nbox.〡(CSS.Container.with(CSS.Unselected.when(champion.match(input.value.get()))), () -> {
                     〡.nbox.〡(CSS.IconImage.with(CSS.IconPosition.of(champion)));
                     〡.nbox.〡(CSS.Title, champion.name);
                 });

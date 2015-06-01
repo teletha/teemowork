@@ -531,6 +531,18 @@ public class Champion {
 
     /**
      * <p>
+     * Pattern natch against this champion name.
+     * </p>
+     * 
+     * @param name A name pattern.
+     * @return A result.
+     */
+    public boolean match(String name) {
+        return name != null && systemName.contains(name.toLowerCase());
+    }
+
+    /**
+     * <p>
      * Returns splash art path.
      * </p>
      * 
