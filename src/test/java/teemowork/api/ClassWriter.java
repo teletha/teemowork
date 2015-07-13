@@ -20,8 +20,18 @@ public class ClassWriter {
     /** The code buffer. */
     private final StringBuilder code = new StringBuilder();
 
+    /** The class name. */
+    public final String className;
+
     /**
-     * 
+     * @param className
+     */
+    public ClassWriter(String className) {
+        this.className = className;
+    }
+
+    /**
+     * Write license header comment.
      */
     public void writeLicense() {
         code.append("/*").append(EOL);
@@ -33,6 +43,29 @@ public class ClassWriter {
         code.append(" *").append(EOL);
         code.append(" *          http://opensource.org/licenses/mit-license.php").append(EOL);
         code.append(" */").append(EOL);
+    }
+
+    /**
+     * <p>
+     * Write code fragment.
+     * </p>
+     * 
+     * @param codes
+     */
+    public void write(Object... codes) {
+        for (Object code : codes) {
+            this.code.append(code);
+        }
+        this.code.append(EOL);
+    }
+
+    /**
+     * <p>
+     * Write blank line.
+     * </p>
+     */
+    public void write() {
+        code.append(EOL);
     }
 
     /**

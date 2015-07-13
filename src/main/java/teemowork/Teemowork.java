@@ -11,6 +11,7 @@ package teemowork;
 
 import static js.lang.Global.*;
 import static teemowork.TeemoworkTheme.*;
+
 import jsx.application.Application;
 import jsx.application.Header;
 import jsx.application.Header.Menu;
@@ -39,7 +40,7 @@ public class Teemowork extends Application {
         sub.add("Rune", "#");
 
         nav.add("Builder", "#GridTest");
-        nav.add("About", "#");
+        nav.add("About", "#ItemCatalog2");
         nav.add("Contact", "#");
         // nav.add(new Select(Version.class, selected -> {
         // Version.setSelection(selected);

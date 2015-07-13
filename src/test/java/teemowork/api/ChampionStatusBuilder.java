@@ -9,8 +9,11 @@
  */
 package teemowork.api;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map;
+
+import teemowork.model.Version;
 
 /**
  * @version 2015/07/13 12:41:51
@@ -26,12 +29,18 @@ public class ChampionStatusBuilder {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        // ChampionDefinitions definitions = RiotAPI.parse(ChampionDefinitions.class,
-        // Version.Latest, Locale.JAPAN);
+        ChampionDefinitions en = RiotAPI.parse(ChampionDefinitions.class, Version.Latest, Locale.US);
+        ChampionDefinitions ja = RiotAPI.parse(ChampionDefinitions.class, Version.Latest, Locale.JAPAN);
 
-        ClassWriter code = new ClassWriter();
+        ClassWriter code = new ClassWriter("ChampionAPI");
         code.writeLicense();
-
+        code.write("public enum ", code.className, " {");
+        for (ChampionDefinition definition : en.data.values()) {
+            ChampionDefinition localized = ja.data.get(definition.id);
+            code.write("    ", definition.id, "(\"", localized.name, "\"),");
+            code.write();
+        }
+        code.write("}");
         System.out.println(code);
     }
 
@@ -41,7 +50,7 @@ public class ChampionStatusBuilder {
     private static class ChampionDefinitions {
 
         /** The champion data store. */
-        public Map<String, ChampionDefinition> data = new HashMap();
+        public Map<String, ChampionDefinition> data = new LinkedHashMap();
     }
 
     /**
@@ -51,6 +60,9 @@ public class ChampionStatusBuilder {
 
         /** The champion id. */
         public int key;
+
+        /** The identical name. */
+        public String id;
 
         /** The localized name. */
         public String name;
