@@ -71,7 +71,7 @@ public class ChampionDataBuilder {
         code.write("}");
         code.write("}");
 
-        code.writeTo(I.locate("src/test/java"));
+        code.writeTo(I.locate("src/main/java"));
     }
 
     /**
