@@ -9,16 +9,18 @@
  */
 package teemowork.api;
 
+import static teemowork.api.ClassWriter.*;
+
 import java.util.LinkedHashMap;
 import java.util.Locale;
-import java.util.Map;
 
+import kiss.I;
 import teemowork.model.Version;
 
 /**
  * @version 2015/07/13 12:41:51
  */
-public class ChampionStatusBuilder {
+public class ChampionDataBuilder {
 
     /**
      * <p>
@@ -32,16 +34,44 @@ public class ChampionStatusBuilder {
         ChampionDefinitions en = RiotAPI.parse(ChampionDefinitions.class, Version.Latest, Locale.US);
         ChampionDefinitions ja = RiotAPI.parse(ChampionDefinitions.class, Version.Latest, Locale.JAPAN);
 
-        ClassWriter code = new ClassWriter("ChampionAPI");
-        code.writeLicense();
+        ClassWriter code = new ClassWriter("teemowork.api", "ChampionData");
         code.write("public enum ", code.className, " {");
-        for (ChampionDefinition definition : en.data.values()) {
-            ChampionDefinition localized = ja.data.get(definition.id);
-            code.write("    ", definition.id, "(\"", localized.name, "\"),");
+        code.writeConstants(en.data.values(), champion -> {
+            ChampionStatus status = champion.stats;
+            ChampionDefinition localized = ja.data.get(champion.id);
+
             code.write();
+            code.write("/** ", champion.name, " Definition", " */");
+            code.write(champion.id, param(string(champion.name), string(localized.name), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange), ",");
+        });
+
+        // Properties
+        Object[] properties = {String.class, "name", String.class, "jp", float.class, "hp", float.class, "hpPer",
+                float.class, "hreg", float.class, "hregPer", float.class, "mp", float.class, "mpPer", float.class,
+                "mreg", float.class, "mregPer", float.class, "ad", float.class, "adPer", float.class, "as", float.class,
+                "asPer", float.class, "crit", float.class, "critPer", float.class, "ar", float.class, "arPer",
+                float.class, "mr", float.class, "mrPer", float.class, "ms", float.class, "range"};
+
+        // Field
+        for (int i = 0; i < properties.length; i++) {
+            code.write();
+            code.write("/** Champion status. */");
+            code.write("public final ", properties[i], " ", properties[++i], ";");
+        }
+
+        // constructor
+        code.write();
+        code.write("/**");
+        code.write(" * The champion definition.");
+        code.write(" */");
+        code.write("private ", code.className, paramDef(properties), " {");
+        for (int i = 0; i < properties.length; i++) {
+            code.write("this.", properties[++i], " = ", properties[i], ";");
         }
         code.write("}");
-        System.out.println(code);
+        code.write("}");
+
+        code.writeTo(I.locate("src/test/java"));
     }
 
     /**
@@ -50,7 +80,7 @@ public class ChampionStatusBuilder {
     private static class ChampionDefinitions {
 
         /** The champion data store. */
-        public Map<String, ChampionDefinition> data = new LinkedHashMap();
+        public LinkedHashMap<String, ChampionDefinition> data;
     }
 
     /**
@@ -141,13 +171,5 @@ public class ChampionStatusBuilder {
 
         /** The status. */
         public float attackspeedperlevel;
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public String toString() {
-            return "ChampionStatus [hp=" + hp + ", hpperlevel=" + hpperlevel + ", mp=" + mp + ", mpperlevel=" + mpperlevel + ", movespeed=" + movespeed + ", armor=" + armor + ", armorperlevel=" + armorperlevel + ", spellblock=" + spellblock + ", spellblockperle=" + spellblockperle + ", attackrange=" + attackrange + ", hpregen=" + hpregen + ", hpregenperlevel=" + hpregenperlevel + ", mpregen=" + mpregen + ", mpregenperlevel=" + mpregenperlevel + ", crit=" + crit + ", critperlevel=" + critperlevel + ", attackdamage=" + attackdamage + ", attackdamageperlevel=" + attackdamageperlevel + ", attackspeedoffset=" + attackspeedoffset + ", attackspeedperlevel=" + attackspeedperlevel + "]";
-        }
     }
 }
