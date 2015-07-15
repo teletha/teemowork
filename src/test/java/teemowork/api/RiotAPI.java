@@ -45,7 +45,6 @@ public class RiotAPI {
             String uri = DRAGON_URL + version.name + ".1/data/" + locale + "/" + modelClass.getSimpleName()
                     .replaceAll("Definition[s]?", ".json")
                     .toLowerCase();
-
             return I.read(new InputStreamReader(new URL(uri).openConnection().getInputStream()), I.make(modelClass));
         } catch (Exception e) {
             throw I.quiet(e);
