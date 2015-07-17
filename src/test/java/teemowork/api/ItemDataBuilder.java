@@ -9,8 +9,13 @@
  */
 package teemowork.api;
 
+import static teemowork.api.ClassWriter.*;
+
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 
+import kiss.I;
 import teemowork.model.Version;
 
 /**
@@ -30,53 +35,49 @@ public class ItemDataBuilder {
         ItemDefinitions en = RiotAPI.parse(ItemDefinitions.class, Version.Latest, Locale.US);
         ItemDefinitions ja = RiotAPI.parse(ItemDefinitions.class, Version.Latest, Locale.JAPAN);
 
-        // ClassWriter code = new ClassWriter("teemowork.api", "ItemData");
-        // code.write("public enum ", code.className, " {");
-        // code.writeConstants(en.data.values(), champion -> {
-        // ChampionStatus status = champion.stats;
-        // ChampionDefinition localized = ja.data.get(champion.id);
-        //
-        // code.write();
-        // code.write("/** ", champion.name, " Definition", " */");
-        // code.write(champion.id, param(string(champion.name), string(localized.name), status.hp,
-        // status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel,
-        // status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel,
-        // status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel,
-        // status.armor, status.armorperlevel, status.spellblock, status.spellblockperle,
-        // status.movespeed, status.attackrange), ",");
-        // });
-        //
-        // // Properties
-        // Object[] properties = {String.class, "name", String.class, "jp", float.class, "hp",
-        // float.class, "hpPer",
-        // float.class, "hreg", float.class, "hregPer", float.class, "mp", float.class, "mpPer",
-        // float.class,
-        // "mreg", float.class, "mregPer", float.class, "ad", float.class, "adPer", float.class,
-        // "as", float.class,
-        // "asPer", float.class, "crit", float.class, "critPer", float.class, "ar", float.class,
-        // "arPer",
-        // float.class, "mr", float.class, "mrPer", float.class, "ms", float.class, "range"};
-        //
-        // // Field
-        // for (int i = 0; i < properties.length; i++) {
-        // code.write();
-        // code.write("/** Champion status. */");
-        // code.write("public final ", properties[i], " ", properties[++i], ";");
-        // }
-        //
-        // // constructor
-        // code.write();
-        // code.write("/**");
-        // code.write(" * The champion definition.");
-        // code.write(" */");
-        // code.write("private ", code.className, paramDef(properties), " {");
-        // for (int i = 0; i < properties.length; i++) {
-        // code.write("this.", properties[++i], " = ", properties[i], ";");
-        // }
-        // code.write("}");
-        // code.write("}");
-        //
-        // code.writeTo(I.locate("src/main/java"));
+        ClassWriter code = new ClassWriter("teemowork.api", "ItemData");
+        code.write("public enum ", code.className, " {");
+        code.writeConstants(en.data.entrySet(), entry -> {
+            int id = entry.getKey();
+
+            ItemDefinition item = entry.getValue();
+            ItemDefinition localized = ja.data.get(id);
+            ItemStatus status = item.stats;
+
+            code.write();
+            code.write("/** ", item.name, " Definition", " */");
+
+            String name = item.name;
+
+            if (name.startsWith("Enchantment") && item.from != null) {
+                name = en.data.get(item.from.get(0)).name + name;
+            }
+            code.write(name.replaceAll("[\\s'-\\.:]", ""), param(string(item.name), string(localized.name), id), ",");
+        });
+
+        // Properties
+        Object[] properties = {String.class, "name", String.class, "jp", int.class, "id"};
+
+        // Field
+        for (int i = 0; i < properties.length; i++) {
+            code.write();
+            code.write("/** Champion status. */");
+            code.write("public final ", properties[i], " ", properties[++i], ";");
+        }
+
+        // constructor
+        code.write();
+        code.write("/**");
+        code.write(" * The item definition.");
+        code.write(" */");
+        code.write("private ", code.className, paramDef(properties), " {");
+        for (int i = 0; i < properties.length; i++) {
+            code.write("this.", properties[++i], " = ", properties[i], ";");
+        }
+        code.write("}");
+        code.write("}");
+
+        code.writeTo(I.locate("src/main/java"));
     }
 
     /**
@@ -84,5 +85,54 @@ public class ItemDataBuilder {
      */
     private static class ItemDefinitions {
 
+        public LinkedHashMap<Integer, ItemDefinition> data;
+    }
+
+    /**
+     * @version 2015/07/17 17:56:25
+     */
+    private static class ItemDefinition {
+
+        public int depth;
+
+        public String colloq;
+
+        public String name;
+
+        public String description;
+
+        public Gold gold;
+
+        public List<Integer> into;
+
+        public List<Integer> from;
+
+        public ItemStatus stats;
+    }
+
+    /**
+     * @version 2015/07/18 0:10:31
+     */
+    private static class Gold {
+
+        public int base;
+
+        public int sell;
+
+        public int total;
+    }
+
+    /**
+     * @version 2015/07/18 0:11:39
+     */
+    private static class ItemStatus {
+
+        public float FlatMovementSpeedMod;
+
+        public float FlatMPPoolMod;
+
+        public float FlatHPPoolMod;
+
+        public float FlatPhysicalDamageMod;
     }
 }

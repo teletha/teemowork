@@ -13,6 +13,7 @@ public class Project extends bee.api.Project {
         product("teemowork", "Teemowork", "1.0");
 
         require("npc", "booton", "0.1");
+        require("org.glassfish", "javax.json", "1.0.4");
         require("icy.manipulator", "IcyManipulator", "0.1");
     }
 }

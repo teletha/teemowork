@@ -16,7 +16,15 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
+import javax.json.JsonString;
+import javax.json.JsonValue;
+
 import kiss.I;
+import kiss.model.Model;
+import kiss.model.Property;
 import teemowork.model.Version;
 
 /**
@@ -45,9 +53,69 @@ public class RiotAPI {
             String uri = DRAGON_URL + version.name + ".1/data/" + locale + "/" + modelClass.getSimpleName()
                     .replaceAll("Definition[s]?", ".json")
                     .toLowerCase();
-            return I.read(new InputStreamReader(new URL(uri).openConnection().getInputStream()), I.make(modelClass));
+
+            M m = I.make(modelClass);
+            Model model = Model.load(m.getClass());
+            return parase(model, m, Json
+                    .createReader(new InputStreamReader(new URL(uri).openConnection().getInputStream())).readObject());
         } catch (Exception e) {
             throw I.quiet(e);
+        }
+    }
+
+    /**
+     * <p>
+     * Helper method to traverse json structure using Java Object {@link Model}.
+     * </p>
+     *
+     * @param <M> A current model type.
+     * @param model A java object model.
+     * @param java A java value.
+     * @param js A javascript value.
+     * @return A restored java object.
+     */
+    private static <M> M parase(Model model, M java, JsonValue js) {
+        switch (js.getValueType()) {
+        case ARRAY:
+            JsonArray array = (JsonArray) js;
+
+            for (int i = 0; i < array.size(); i++) {
+                parse(model, java, array.get(i), model.getProperty(String.valueOf(i)));
+            }
+            break;
+
+        case OBJECT:
+            JsonObject object = (JsonObject) js;
+
+            for (String id : object.keySet()) {
+                parse(model, java, object.get(id), model.getProperty(id));
+            }
+            break;
+        }
+
+        // API definition
+        return java;
+    }
+
+    private static void parse(Model model, Object java, JsonValue js, Property property) {
+        if (property != null) {
+            // calculate value
+            Object value;
+            Class type = property.model.type;
+
+            // convert value
+            if (property.isAttribute()) {
+
+                if (js instanceof JsonString) {
+                    value = I.transform(((JsonString) js).getString(), type);
+                } else {
+                    value = I.transform(js.toString(), type);
+                }
+            } else {
+                value = parase(property.model, I.make(type), js);
+            }
+
+            model.set(java, property, value);
         }
     }
 
