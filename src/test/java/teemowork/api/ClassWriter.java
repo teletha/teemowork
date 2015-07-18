@@ -12,7 +12,9 @@ package teemowork.api;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.StringJoiner;
 import java.util.function.Consumer;
 
@@ -38,7 +40,7 @@ public class ClassWriter {
     public final String className;
 
     /** The import manager. */
-    private final Imports imports = new Imports();
+    private final Imports imports;
 
     /** The import position. */
     private final int importPosition;
@@ -58,6 +60,7 @@ public class ClassWriter {
     public ClassWriter(String packageName, String className) {
         this.packageName = packageName;
         this.className = className;
+        this.imports = new Imports(packageName);
 
         write("/*");
         write(" * Copyright (C) 2015 Nameless Production Committee");
@@ -135,7 +138,7 @@ public class ClassWriter {
             }
 
             if (value instanceof Importable) {
-
+                text = ((Importable) value).text(imports);
             }
 
             if (value instanceof Class) {
@@ -166,7 +169,10 @@ public class ClassWriter {
      */
     public void writeTo(Path path) {
         try {
-            Files.write(code, path.resolve(packageName.replace('.', '/'))
+            StringBuilder copy = new StringBuilder(code);
+            copy.insert(importPosition, imports);
+
+            Files.write(copy, path.resolve(packageName.replace('.', '/'))
                     .resolve(className.concat(".java"))
                     .toFile(), I.$encoding);
         } catch (IOException e) {
@@ -344,16 +350,18 @@ public class ClassWriter {
      * @return
      */
     public static Object param(Object... params) {
-        Importable importable = new Importable();
+        // ImportableParameters importable = new ImportableParameters();
+        //
+        // for (Object param : params) {
+        // if (param == null) {
+        // param = "null";
+        // } else if (param instanceof Float) {
+        // param = param + "F";
+        // }
+        // importable.joiner.add(param.toString());
+        // }
 
-        for (Object param : params) {
-            if (param instanceof Float) {
-                param = param + "F";
-            }
-            importable.joiner.add(param.toString());
-        }
-
-        return importable;
+        return new ImportableParameters(params);
     }
 
     /**
@@ -365,31 +373,114 @@ public class ClassWriter {
      * @return
      */
     public static Object paramDef(Object... params) {
-        Importable importable = new Importable();
+        return new ImportableParameterDefinition(params);
+    }
 
-        for (int i = 0; i < params.length; i++) {
-            importable.joiner.add(importable.imports.convert(params[i]) + " " + params[++i]);
-        }
+    /**
+     * <p>
+     * Helper method to write generic parameter definition.
+     * </p>
+     * 
+     * @param params
+     * @return
+     */
+    public static Object generic(Class base, Class... params) {
+        return new ImportableGeneric(base, params);
+    }
 
-        return importable;
+    /**
+     * @version 2015/07/19 4:27:34
+     */
+    private static abstract class Importable {
+
+        abstract String text(Imports imports);
     }
 
     /**
      * @version 2015/07/14 10:31:33
      */
-    private static class Importable {
+    private static class ImportableParameters extends Importable {
 
-        /** The code holder. */
-        private final StringJoiner joiner = new StringJoiner(", ", "(", ")");
+        /** The parameters. */
+        private final Object[] params;
 
-        /** The imported class. */
-        private final Imports imports = new Imports();
+        /**
+         * @param params
+         */
+        private ImportableParameters(Object[] params) {
+            this.params = params;
+        }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public String toString() {
+        String text(Imports imports) {
+            StringJoiner joiner = new StringJoiner(", ", "(", ")");
+            for (Object param : params) {
+                joiner.add(imports.add(param));
+            }
+            return joiner.toString();
+        }
+    }
+
+    /**
+     * @version 2015/07/14 10:31:33
+     */
+    private static class ImportableParameterDefinition extends Importable {
+
+        /** The parameters. */
+        private final Object[] params;
+
+        /**
+         * @param params
+         */
+        private ImportableParameterDefinition(Object[] params) {
+            this.params = params;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        String text(Imports imports) {
+            StringJoiner joiner = new StringJoiner(", ", "(", ")");
+            for (int i = 0; i < params.length; i++) {
+                joiner.add(imports.add(params[i++]) + " " + params[i]);
+            }
+            return joiner.toString();
+        }
+    }
+
+    /**
+     * @version 2015/07/19 4:18:32
+     */
+    private static class ImportableGeneric extends Importable {
+
+        /** The base type. */
+        private final Class base;
+
+        /** The parameter types. */
+        private final Class[] params;
+
+        /**
+         * @param base
+         * @param params
+         */
+        private ImportableGeneric(Class base, Class... params) {
+            this.base = base;
+            this.params = params;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        String text(Imports imports) {
+            StringJoiner joiner = new StringJoiner(", ", imports.add(base) + "<", ">");
+            for (Class param : params) {
+                joiner.add(imports.add(param));
+            }
             return joiner.toString();
         }
     }
@@ -399,6 +490,66 @@ public class ClassWriter {
      */
     private static class Imports {
 
+        /** The package name. */
+        private final String packageName;
+
+        /** The imported classes. */
+        private final Set<Class> classes = new HashSet();
+
+        /**
+         * @param packageName
+         */
+        private Imports(String packageName) {
+            this.packageName = packageName;
+        }
+
+        /**
+         * <p>
+         * Import class.
+         * </p>
+         * 
+         * @param clazz
+         */
+        private String add(Object value) {
+            if (value instanceof Importable) {
+                return ((Importable) value).text(this);
+            }
+            return convert2(value);
+        }
+
+        /**
+         * <p>
+         * Import class.
+         * </p>
+         * 
+         * @param clazz
+         */
+        private String convert2(Object value) {
+            if (value == null) {
+                value = "null";
+            }
+
+            if (value instanceof Class) {
+                Class clazz = (Class) value;
+                String full = clazz.getName();
+                String simple = clazz.getSimpleName();
+
+                if (clazz == Integer.class) {
+                    return "int";
+                } else if (clazz.isArray()) {
+                    return convert2(clazz.getComponentType()) + "[]";
+                } else if (clazz.isPrimitive() || full.startsWith("java.lang.") || packageName
+                        .equals(clazz.getPackage().getName())) {
+                    return simple;
+                }
+
+                classes.add(clazz);
+
+                return clazz.getSimpleName();
+            }
+            return value.toString();
+        }
+
         /**
          * <p>
          * Import class.
@@ -407,6 +558,10 @@ public class ClassWriter {
          * @param clazz
          */
         private static String convert(Object value) {
+            if (value == null) {
+                value = "null";
+            }
+
             if (value instanceof Class) {
                 Class clazz = (Class) value;
                 String full = clazz.getName();
@@ -422,6 +577,18 @@ public class ClassWriter {
                 return clazz.getName();
             }
             return value.toString();
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String toString() {
+            StringBuilder builder = new StringBuilder(EOL);
+            for (Class clazz : classes) {
+                builder.append("import ").append(clazz.getName()).append(";").append(EOL);
+            }
+            return builder.toString();
         }
     }
 }
