@@ -14,6 +14,7 @@ import static teemowork.api.ClassWriter.*;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import kiss.I;
 import teemowork.model.Version;
@@ -42,26 +43,29 @@ public class ItemDataBuilder {
 
             ItemDefinition item = entry.getValue();
             ItemDefinition localized = ja.data.get(id);
+            ItemGold gold = item.gold;
             ItemStatus status = item.stats;
 
-            code.write();
-            code.write("/** ", item.name, " Definition", " */");
+            if (id != 2009 && (item.maps == null || item.maps.get(1) == null)) {
+                code.write();
+                code.write("/** ", item.name, " Definition", " */");
 
-            String name = item.name;
+                String name = name(item, en.data);
+                String localizedName = name(localized, ja.data);
 
-            if (name.startsWith("Enchantment") && item.from != null) {
-                name = en.data.get(item.from.get(0)).name + name;
+                code.write(name
+                        .replaceAll("[\\s'-\\.:]", ""), param(string(name), string(localizedName), id, gold.base, gold.total, gold.sell), ",");
             }
-            code.write(name.replaceAll("[\\s'-\\.:]", ""), param(string(item.name), string(localized.name), id), ",");
         });
 
         // Properties
-        Object[] properties = {String.class, "name", String.class, "jp", int.class, "id"};
+        Object[] properties = {String.class, "name", String.class, "localizedName", int.class, "id", int.class,
+                "buyBase", int.class, "buyTotal", int.class, "sell"};
 
         // Field
         for (int i = 0; i < properties.length; i++) {
             code.write();
-            code.write("/** Champion status. */");
+            code.write("/** Item status. */");
             code.write("public final ", properties[i], " ", properties[++i], ";");
         }
 
@@ -78,6 +82,26 @@ public class ItemDataBuilder {
         code.write("}");
 
         code.writeTo(I.locate("src/main/java"));
+    }
+
+    /**
+     * <p>
+     * Normalize name.
+     * </p>
+     * 
+     * @param item
+     * @param data
+     * @return
+     */
+    private static String name(ItemDefinition item, Map<Integer, ItemDefinition> data) {
+        String name = item.name;
+
+        if (name.startsWith("Enchantment: Sated Devourer") && item.from != null) {
+            name = data.get(data.get(item.from.get(0)).from.get(0)).name + " " + name;
+        } else if (item.from != null && (name.startsWith("Enchantment") || name.startsWith("追加特性"))) {
+            name = data.get(item.from.get(0)).name + " " + name;
+        }
+        return name;
     }
 
     /**
@@ -99,13 +123,17 @@ public class ItemDataBuilder {
 
         public String name;
 
+        public String group;
+
         public String description;
 
-        public Gold gold;
+        public ItemGold gold;
 
         public List<Integer> into;
 
         public List<Integer> from;
+
+        public Map<Integer, Boolean> maps;
 
         public ItemStatus stats;
     }
@@ -113,7 +141,7 @@ public class ItemDataBuilder {
     /**
      * @version 2015/07/18 0:10:31
      */
-    private static class Gold {
+    private static class ItemGold {
 
         public int base;
 
@@ -127,12 +155,135 @@ public class ItemDataBuilder {
      */
     private static class ItemStatus {
 
-        public float FlatMovementSpeedMod;
+        public float FlatArmorMod;
 
-        public float FlatMPPoolMod;
+        public float FlatAttackSpeedMod;
+
+        public float FlatBlockMod;
+
+        public float FlatCritChanceMod;
+
+        public float FlatCritDamageMod;
+
+        public float FlatEXPBonus;
+
+        public float FlatEnergyPoolMod;
+
+        public float FlatEnergyRegenMod;
 
         public float FlatHPPoolMod;
 
+        public float FlatHPRegenMod;
+
+        public float FlatMPPoolMod;
+
+        public float FlatMPRegenMod;
+
+        public float FlatMagicDamageMod;
+
+        public float FlatMovementSpeedMod;
+
         public float FlatPhysicalDamageMod;
+
+        public float FlatSpellBlockMod;
+
+        public float PercentArmorMod;
+
+        public float PercentAttackSpeedMod;
+
+        public float PercentBlockMod;
+
+        public float PercentCritChanceMod;
+
+        public float PercentCritDamageMod;
+
+        public float PercentDodgeMod;
+
+        public float PercentEXPBonus;
+
+        public float PercentHPPoolMod;
+
+        public float PercentHPRegenMod;
+
+        public float PercentLifeStealMod;
+
+        public float PercentMPPoolMod;
+
+        public float PercentMPRegenMod;
+
+        public float PercentMagicDamageMod;
+
+        public float PercentMovementSpeedMod;
+
+        public float PercentPhysicalDamageMod;
+
+        public float PercentSpellBlockMod;
+
+        public float PercentSpellVampMod;
+
+        public float rFlatArmorModPerLevel;
+
+        public float rFlatArmorPenetrationMod;
+
+        public float rFlatArmorPenetrationModPerLevel;
+
+        public float rFlatCritChanceModPerLevel;
+
+        public float rFlatCritDamageModPerLevel;
+
+        public float rFlatDodgeMod;
+
+        public float rFlatDodgeModPerLevel;
+
+        public float rFlatEnergyModPerLevel;
+
+        public float rFlatEnergyRegenModPerLevel;
+
+        public float rFlatGoldPer10Mod;
+
+        public float rFlatHPModPerLevel;
+
+        public float rFlatHPRegenModPerLevel;
+
+        public float rFlatMPModPerLevel;
+
+        public float rFlatMPRegenModPerLevel;
+
+        public float rFlatMagicDamageModPerLevel;
+
+        public float rFlatMagicPenetrationMod;
+
+        public float rFlatMagicPenetrationModPerLevel;
+
+        public float rFlatMovementSpeedModPerLevel;
+
+        public float rFlatPhysicalDamageModPerLevel;
+
+        public float rFlatSpellBlockModPerLevel;
+
+        public float rFlatTimeDeadMod;
+
+        public float rFlatTimeDeadModPerLevel;
+
+        public float rPercentArmorPenetrationMod;
+
+        public float rPercentArmorPenetrationModPerLevel;
+
+        public float rPercentAttackSpeedModPerLevel;
+
+        public float rPercentCooldownMod;
+
+        public float rPercentCooldownModPerLevel;
+
+        public float rPercentMagicPenetrationMod;
+
+        public float rPercentMagicPenetrationModPerLevel;
+
+        public float rPercentMovementSpeedModPerLevel;
+
+        public float rPercentTimeDeadMod;
+
+        public float rPercentTimeDeadModPerLevel;
+
     }
 }
