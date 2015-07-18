@@ -11,6 +11,8 @@ package teemowork.api;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringJoiner;
 import java.util.function.Consumer;
 
@@ -137,7 +139,7 @@ public class ClassWriter {
             }
 
             if (value instanceof Class) {
-                text = imports.comvert(value);
+                text = imports.convert(value);
             }
             code.append(text);
         }
@@ -201,6 +203,140 @@ public class ClassWriter {
 
     /**
      * <p>
+     * Helper method to write string literal.
+     * </p>
+     * 
+     * @param values
+     * @return
+     */
+    public static <E> String array(List<E> list) {
+        if (list == null || list.isEmpty()) {
+            return "null";
+        }
+
+        Class type = list.get(0).getClass();
+        StringJoiner builder = new StringJoiner(", ", "new " + Imports.convert(type) + "[] {", "}");
+
+        for (Object item : list) {
+            builder.add(item.toString());
+        }
+        return builder.toString();
+    }
+
+    /**
+     * <p>
+     * Helper method to write array.
+     * </p>
+     * 
+     * @param values
+     * @return
+     */
+    public static <E> String array(int[] array) {
+        List<Integer> list = new ArrayList();
+        for (Integer value : array) {
+            list.add(value);
+        }
+        return array(list);
+    }
+
+    /**
+     * <p>
+     * Helper method to write array.
+     * </p>
+     * 
+     * @param values
+     * @return
+     */
+    public static <E> String array(float[] array) {
+        List<Float> list = new ArrayList();
+        for (Float value : array) {
+            list.add(value);
+        }
+        return array(list);
+    }
+
+    /**
+     * <p>
+     * Helper method to write array.
+     * </p>
+     * 
+     * @param values
+     * @return
+     */
+    public static <E> String array(long[] array) {
+        List<Long> list = new ArrayList();
+        for (Long value : array) {
+            list.add(value);
+        }
+        return array(list);
+    }
+
+    /**
+     * <p>
+     * Helper method to write array.
+     * </p>
+     * 
+     * @param values
+     * @return
+     */
+    public static <E> String array(double[] array) {
+        List<Double> list = new ArrayList();
+        for (Double value : array) {
+            list.add(value);
+        }
+        return array(list);
+    }
+
+    /**
+     * <p>
+     * Helper method to write array.
+     * </p>
+     * 
+     * @param values
+     * @return
+     */
+    public static <E> String array(boolean[] array) {
+        List<Boolean> list = new ArrayList();
+        for (Boolean value : array) {
+            list.add(value);
+        }
+        return array(list);
+    }
+
+    /**
+     * <p>
+     * Helper method to write array.
+     * </p>
+     * 
+     * @param values
+     * @return
+     */
+    public static <E> String array(char[] array) {
+        List<Character> list = new ArrayList();
+        for (Character value : array) {
+            list.add(value);
+        }
+        return array(list);
+    }
+
+    /**
+     * <p>
+     * Helper method to write array.
+     * </p>
+     * 
+     * @param values
+     * @return
+     */
+    public static <E> String array(byte[] array) {
+        List<Byte> list = new ArrayList();
+        for (Byte value : array) {
+            list.add(value);
+        }
+        return array(list);
+    }
+
+    /**
+     * <p>
      * Helper method to write parameters.
      * </p>
      * 
@@ -232,7 +368,7 @@ public class ClassWriter {
         Importable importable = new Importable();
 
         for (int i = 0; i < params.length; i++) {
-            importable.joiner.add(importable.imports.comvert(params[i]) + " " + params[++i]);
+            importable.joiner.add(importable.imports.convert(params[i]) + " " + params[++i]);
         }
 
         return importable;
@@ -270,14 +406,18 @@ public class ClassWriter {
          * 
          * @param clazz
          */
-        private String comvert(Object value) {
+        private static String convert(Object value) {
             if (value instanceof Class) {
                 Class clazz = (Class) value;
                 String full = clazz.getName();
                 String simple = clazz.getSimpleName();
 
-                if (clazz.isPrimitive() || full.startsWith("java.lang.")) {
+                if (clazz == Integer.class) {
+                    return "int";
+                } else if (clazz.isPrimitive() || full.startsWith("java.lang.")) {
                     return simple;
+                } else if (clazz.isArray()) {
+                    return convert(clazz.getComponentType()) + "[]";
                 }
                 return clazz.getName();
             }

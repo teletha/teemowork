@@ -44,6 +44,7 @@ public class ItemDataBuilder {
             ItemDefinition item = entry.getValue();
             ItemDefinition localized = ja.data.get(id);
             ItemGold gold = item.gold;
+            ItemImage image = item.image;
             ItemStatus status = item.stats;
 
             if (id != 2009 && (item.maps == null || item.maps.get(1) == null)) {
@@ -54,13 +55,15 @@ public class ItemDataBuilder {
                 String localizedName = name(localized, ja.data);
 
                 code.write(name
-                        .replaceAll("[\\s'-\\.:]", ""), param(string(name), string(localizedName), id, gold.base, gold.total, gold.sell), ",");
+                        .replaceAll("[\\s'-\\.:]", ""), param(string(name), string(localizedName), id, gold.base, gold.total, gold.sell, array(item.from), array(item.into), image.sprite
+                                .charAt(4), image.x, image.y, item.depth, string(localized.description)), ",");
             }
         });
 
         // Properties
         Object[] properties = {String.class, "name", String.class, "localizedName", int.class, "id", int.class,
-                "buyBase", int.class, "buyTotal", int.class, "sell"};
+                "buyBase", int.class, "buyTotal", int.class, "sell", int[].class, "from", int[].class, "to", int.class,
+                "imageNo", int.class, "imageX", int.class, "imageY", int.class, "depth", String.class, "description"};
 
         // Field
         for (int i = 0; i < properties.length; i++) {
@@ -129,6 +132,8 @@ public class ItemDataBuilder {
 
         public ItemGold gold;
 
+        public ItemImage image;
+
         public List<Integer> into;
 
         public List<Integer> from;
@@ -136,6 +141,26 @@ public class ItemDataBuilder {
         public Map<Integer, Boolean> maps;
 
         public ItemStatus stats;
+    }
+
+    /**
+     * @version 2015/07/19 3:33:27
+     */
+    private static class ItemImage {
+
+        public String sprite;
+
+        public int h;
+
+        public int w;
+
+        public int x;
+
+        public int y;
+
+        private int[] info() {
+            return new int[] {sprite.charAt(4), h, w, x, y};
+        }
     }
 
     /**
