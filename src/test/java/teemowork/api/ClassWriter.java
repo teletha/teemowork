@@ -109,7 +109,9 @@ public class ClassWriter {
      * </p>
      */
     public void write() {
-        writeEOL();
+        code.append("\r\n");
+
+        isHead = true;
     }
 
     /**
@@ -120,8 +122,23 @@ public class ClassWriter {
      * @param values
      */
     public void write(Object... values) {
-        for (int i = 0, length = values.length; i < length; i++) {
-            Object value = values[i];
+        for (Object value : values) {
+            code(value);
+        }
+        write();
+    }
+
+    /**
+     * <p>
+     * Write code actually.
+     * </p>
+     * 
+     * @param value
+     */
+    private ClassWriter code(Object value) {
+        if (value instanceof CodeFragment) {
+            ((CodeFragment) value).write(this);
+        } else {
             String text = value.toString();
 
             if (text.endsWith("{")) {
@@ -137,27 +154,14 @@ public class ClassWriter {
                 isHead = false;
             }
 
-            if (value instanceof Importable) {
-                text = ((Importable) value).text(imports);
-            }
-
             if (value instanceof Class) {
-                text = imports.convert(value);
+                text = imports.add(value);
+            } else if (value instanceof Float) {
+                text = text + "F";
             }
             code.append(text);
         }
-        writeEOL();
-    }
-
-    /**
-     * <p>
-     * Write end of line code.
-     * </p>
-     */
-    private void writeEOL() {
-        code.append("\r\n");
-
-        isHead = true;
+        return this;
     }
 
     /**
@@ -376,6 +380,10 @@ public class ClassWriter {
         return new ImportableParameterDefinition(params);
     }
 
+    public static Object lambda(String param, Runnable code) {
+        return new Lambda(param, code);
+    }
+
     /**
      * <p>
      * Helper method to write generic parameter definition.
@@ -384,22 +392,60 @@ public class ClassWriter {
      * @param params
      * @return
      */
-    public static Object generic(Class base, Class... params) {
+    public static Object generic(Class base, Object... params) {
         return new ImportableGeneric(base, params);
     }
 
     /**
-     * @version 2015/07/19 4:27:34
+     * @version 2015/07/19 5:18:02
      */
-    private static abstract class Importable {
+    private static interface CodeFragment {
 
-        abstract String text(Imports imports);
+        /**
+         * <p>
+         * Write code.
+         * </p>
+         * 
+         * @param $
+         */
+        void write(ClassWriter $);
+    }
+
+    /**
+     * @version 2015/07/19 5:09:45
+     */
+    private static class Lambda implements CodeFragment {
+
+        /** The parameters. */
+        private final String param;
+
+        /** The actual code. */
+        private final Runnable code;
+
+        /**
+         * @param param
+         * @param code
+         */
+        private Lambda(String param, Runnable code) {
+            this.param = param;
+            this.code = code;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void write(ClassWriter $) {
+            $.write(param, " -> {");
+            code.run();
+            $.code("}");
+        }
     }
 
     /**
      * @version 2015/07/14 10:31:33
      */
-    private static class ImportableParameters extends Importable {
+    private static class ImportableParameters implements CodeFragment {
 
         /** The parameters. */
         private final Object[] params;
@@ -415,19 +461,25 @@ public class ClassWriter {
          * {@inheritDoc}
          */
         @Override
-        String text(Imports imports) {
-            StringJoiner joiner = new StringJoiner(", ", "(", ")");
-            for (Object param : params) {
-                joiner.add(imports.add(param));
+        public void write(ClassWriter $) {
+            $.code("(");
+
+            for (int i = 0, length = params.length; i < length; i++) {
+                $.code(params[i]);
+
+                if (i + 1 < length) {
+                    $.code(", ");
+                }
             }
-            return joiner.toString();
+
+            $.code(")");
         }
     }
 
     /**
      * @version 2015/07/14 10:31:33
      */
-    private static class ImportableParameterDefinition extends Importable {
+    private static class ImportableParameterDefinition implements CodeFragment {
 
         /** The parameters. */
         private final Object[] params;
@@ -443,31 +495,35 @@ public class ClassWriter {
          * {@inheritDoc}
          */
         @Override
-        String text(Imports imports) {
-            StringJoiner joiner = new StringJoiner(", ", "(", ")");
-            for (int i = 0; i < params.length; i++) {
-                joiner.add(imports.add(params[i++]) + " " + params[i]);
+        public void write(ClassWriter $) {
+            $.code("(");
+            for (int i = 0, length = params.length; i < length; i++) {
+                $.code(params[i++]).code(" ").code(params[i]);
+
+                if (i + 1 < length) {
+                    $.code(", ");
+                }
             }
-            return joiner.toString();
+            $.code(")");
         }
     }
 
     /**
      * @version 2015/07/19 4:18:32
      */
-    private static class ImportableGeneric extends Importable {
+    private static class ImportableGeneric implements CodeFragment {
 
         /** The base type. */
         private final Class base;
 
         /** The parameter types. */
-        private final Class[] params;
+        private final Object[] params;
 
         /**
          * @param base
          * @param params
          */
-        private ImportableGeneric(Class base, Class... params) {
+        private ImportableGeneric(Class base, Object... params) {
             this.base = base;
             this.params = params;
         }
@@ -476,12 +532,16 @@ public class ClassWriter {
          * {@inheritDoc}
          */
         @Override
-        String text(Imports imports) {
-            StringJoiner joiner = new StringJoiner(", ", imports.add(base) + "<", ">");
-            for (Class param : params) {
-                joiner.add(imports.add(param));
+        public void write(ClassWriter $) {
+            $.code(base).code("<");
+            for (int i = 0, length = params.length; i < length; i++) {
+                $.code(params[i]);
+
+                if (i + 1 < length) {
+                    $.code(", ");
+                }
             }
-            return joiner.toString();
+            $.code(">");
         }
     }
 
@@ -511,9 +571,6 @@ public class ClassWriter {
          * @param clazz
          */
         private String add(Object value) {
-            if (value instanceof Importable) {
-                return ((Importable) value).text(this);
-            }
             return convert2(value);
         }
 
@@ -544,7 +601,6 @@ public class ClassWriter {
                 }
 
                 classes.add(clazz);
-
                 return clazz.getSimpleName();
             }
             return value.toString();

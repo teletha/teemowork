@@ -9,6 +9,7 @@
  */
 package teemowork.api;
 
+
 public enum ChampionData {
 
     /** Aatrox Definition */
