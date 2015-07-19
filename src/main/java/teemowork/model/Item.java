@@ -770,7 +770,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** PoachersKnife */
-    public static final Item PoachersKnifeEnchantmentCinderhulk = new Item(RiotItemData.PoachersKnifeEnchantmentCinderhulk, item -> {
+    public static final Item PoachersKnifeCinderhulk = new Item(RiotItemData.PoachersKnifeCinderhulk, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ScavengingSmite)
@@ -781,7 +781,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** PoachersKnife */
-    public static final Item PoachersKnifeEnchantmentDevourer = new Item(RiotItemData.PoachersKnifeEnchantmentDevourer, item -> {
+    public static final Item PoachersKnifeDevourer = new Item(RiotItemData.PoachersKnifeDevourer, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ScavengingSmite)
@@ -791,7 +791,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** PoachersKnife */
-    public static final Item PoachersKnifeEnchantmentRuneglaive = new Item(RiotItemData.PoachersKnifeEnchantmentRuneglaive, item -> {
+    public static final Item PoachersKnifeRuneglaive = new Item(RiotItemData.PoachersKnifeRuneglaive, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ScavengingSmite)
@@ -803,7 +803,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** PoachersKnife */
-    public static final Item PoachersKnifeEnchantmentWarrior = new Item(RiotItemData.PoachersKnifeEnchantmentWarrior, item -> {
+    public static final Item PoachersKnifeWarrior = new Item(RiotItemData.PoachersKnifeWarrior, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ScavengingSmite)
@@ -814,7 +814,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** PoachersKnife */
-    public static final Item PoachersKnifeEnchantmentSatedDevourer = new Item(RiotItemData.PoachersKnifeEnchantmentSatedDevourer, item -> {
+    public static final Item PoachersKnifeSatedDevourer = new Item(RiotItemData.PoachersKnifeSatedDevourer, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ScavengingSmite)
@@ -902,7 +902,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** RangersTrailblazer */
-    public static final Item RangersTrailblazerEnchantmentCinderhulk = new Item(RiotItemData.RangersTrailblazerEnchantmentCinderhulk, item -> {
+    public static final Item RangersTrailblazerCinderhulk = new Item(RiotItemData.RangersTrailblazerCinderhulk, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.BlastingSmite)
@@ -913,7 +913,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** RangersTrailblazer */
-    public static final Item RangersTrailblazerEnchantmentDevourer = new Item(RiotItemData.RangersTrailblazerEnchantmentDevourer, item -> {
+    public static final Item RangersTrailblazerDevourer = new Item(RiotItemData.RangersTrailblazerDevourer, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.BlastingSmite)
@@ -923,7 +923,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** RangersTrailblazer */
-    public static final Item RangersTrailblazerEnchantmentRuneglaive = new Item(RiotItemData.RangersTrailblazerEnchantmentRuneglaive, item -> {
+    public static final Item RangersTrailblazerRuneglaive = new Item(RiotItemData.RangersTrailblazerRuneglaive, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.BlastingSmite)
@@ -935,7 +935,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** RangersTrailblazer */
-    public static final Item RangersTrailblazerEnchantmentWarrior = new Item(RiotItemData.RangersTrailblazerEnchantmentWarrior, item -> {
+    public static final Item RangersTrailblazerWarrior = new Item(RiotItemData.RangersTrailblazerWarrior, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.BlastingSmite)
@@ -946,7 +946,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** RangersTrailblazer */
-    public static final Item RangersTrailblazerEnchantmentSatedDevourer = new Item(RiotItemData.RangersTrailblazerEnchantmentSatedDevourer, item -> {
+    public static final Item RangersTrailblazerSatedDevourer = new Item(RiotItemData.RangersTrailblazerSatedDevourer, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.BlastingSmite)
@@ -1028,7 +1028,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** SkirmishersSabre */
-    public static final Item SkirmishersSabreEnchantmentCinderhulk = new Item(RiotItemData.SkirmishersSabreEnchantmentCinderhulk, item -> {
+    public static final Item SkirmishersSabreCinderhulk = new Item(RiotItemData.SkirmishersSabreCinderhulk, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ChallengingSmite)
@@ -1039,7 +1039,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** SkirmishersSabre */
-    public static final Item SkirmishersSabreEnchantmentDevourer = new Item(RiotItemData.SkirmishersSabreEnchantmentDevourer, item -> {
+    public static final Item SkirmishersSabreDevourer = new Item(RiotItemData.SkirmishersSabreDevourer, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ChallengingSmite)
@@ -1049,7 +1049,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** SkirmishersSabre */
-    public static final Item SkirmishersSabreEnchantmentRuneglaive = new Item(RiotItemData.SkirmishersSabreEnchantmentRuneglaive, item -> {
+    public static final Item SkirmishersSabreRuneglaive = new Item(RiotItemData.SkirmishersSabreRuneglaive, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ChallengingSmite)
@@ -1061,7 +1061,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** SkirmishersSabre */
-    public static final Item SkirmishersSabreEnchantmentWarrior = new Item(RiotItemData.SkirmishersSabreEnchantmentWarrior, item -> {
+    public static final Item SkirmishersSabreWarrior = new Item(RiotItemData.SkirmishersSabreWarrior, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ChallengingSmite)
@@ -1072,7 +1072,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** SkirmishersSabre */
-    public static final Item SkirmishersSabreEnchantmentSatedDevourer = new Item(RiotItemData.SkirmishersSabreEnchantmentSatedDevourer, item -> {
+    public static final Item SkirmishersSabreSatedDevourer = new Item(RiotItemData.SkirmishersSabreSatedDevourer, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ChallengingSmite)
@@ -1087,7 +1087,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** StalkersBlade */
-    public static final Item StalkersBladeEnchantmentCinderhulk = new Item(RiotItemData.StalkersBladeEnchantmentCinderhulk, item -> {
+    public static final Item StalkersBladeCinderhulk = new Item(RiotItemData.StalkersBladeCinderhulk, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ChillingSmite)
@@ -1098,7 +1098,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** StalkersBlade */
-    public static final Item StalkersBladeEnchantmentDevourer = new Item(RiotItemData.StalkersBladeEnchantmentDevourer, item -> {
+    public static final Item StalkersBladeDevourer = new Item(RiotItemData.StalkersBladeDevourer, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ChillingSmite)
@@ -1108,7 +1108,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** StalkersBlade */
-    public static final Item StalkersBladeEnchantmentRuneglaive = new Item(RiotItemData.StalkersBladeEnchantmentRuneglaive, item -> {
+    public static final Item StalkersBladeRuneglaive = new Item(RiotItemData.StalkersBladeRuneglaive, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ChillingSmite)
@@ -1120,7 +1120,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** StalkersBlade */
-    public static final Item StalkersBladeEnchantmentWarrior = new Item(RiotItemData.StalkersBladeEnchantmentWarrior, item -> {
+    public static final Item StalkersBladeWarrior = new Item(RiotItemData.StalkersBladeWarrior, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ChillingSmite)
@@ -1131,7 +1131,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** StalkersBlade */
-    public static final Item StalkersBladeEnchantmentSatedDevourer = new Item(RiotItemData.StalkersBladeEnchantmentSatedDevourer, item -> {
+    public static final Item StalkersBladeSatedDevourer = new Item(RiotItemData.StalkersBladeSatedDevourer, item -> {
         item.add(Ability.GoldIncome)
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ChillingSmite)

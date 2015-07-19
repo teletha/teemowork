@@ -367,12 +367,16 @@ public class ItemDataBuilder {
         public ItemStatus stats;
 
         private void name(Map<Integer, ItemDefinition> data) {
+            // normalize
+            name = name.replaceAll("：", ": ");
+
             if (name.startsWith("Enchantment: Sated Devourer") && from != null) {
-                name = data.get(data.get(from.get(0)).from.get(0)).name + " " + name;
+                name = data.get(data.get(from.get(0)).from.get(0)).name + " [" + name
+                        .substring(name.indexOf(":") + 2) + "]";
             } else if (from != null && (name.startsWith("Enchantment") || name.startsWith("追加特性"))) {
-                name = data.get(from.get(0)).name + " " + name;
+                name = data.get(from.get(0)).name + " [" + name.substring(name.indexOf(":") + 2) + "]";
             }
-            identicalName = name.replaceAll("[\\s'-\\.:]", "");
+            identicalName = name.replaceAll("[\\s'-\\.:\\[\\]]", "");
         }
     }
 

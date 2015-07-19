@@ -153,226 +153,226 @@ public class RiotItemData extends Describable<ItemDescriptor> {
     });
 
     /** Enchantment: Furor Definition */
-    public static final RiotItemData BerserkersGreavesEnchantmentFuror = new RiotItemData("Berserker's Greaves Enchantment: Furor", "バーサーカーのブーツ 追加特性: 憤怒", 1300, 475, 1475, 1033, new int[] {3006}, null, 2, 0, 336, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「憤怒」の効果を付ける。<br><br><unique>ユニーク自動効果 - 憤怒:</unique> 単体対象のスキル/攻撃が(命中して)ダメージを与えると、移動速度が12％上昇する。この効果は2秒間かけて減衰する。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData BerserkersGreavesFuror = new RiotItemData("Berserker's Greaves [Furor]", "バーサーカーのブーツ [憤怒]", 1300, 475, 1475, 1033, new int[] {3006}, null, 2, 0, 336, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「憤怒」の効果を付ける。<br><br><unique>ユニーク自動効果 - 憤怒:</unique> 単体対象のスキル/攻撃が(命中して)ダメージを与えると、移動速度が12％上昇する。この効果は2秒間かけて減衰する。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.attackSpeed(25);
         item.add("憤怒", ability -> {
         });
     });
 
     /** Enchantment: Alacrity Definition */
-    public static final RiotItemData BerserkersGreavesEnchantmentAlacrity = new RiotItemData("Berserker's Greaves Enchantment: Alacrity", "バーサーカーのブーツ 追加特性: 疾風", 1301, 475, 1475, 1033, new int[] {3006}, null, 2, 48, 336, 3, "<groupLimit>Limited to 1 of each enchantment type.</groupLimit><br>Enchants boots to have Alacrity bonus. <br><br><unique>UNIQUE Passive - Alacrity:</unique> +20 Movement Speed<br><br><i>(Unique Passives with the same name don't stack.)</i>", item -> {
+    public static final RiotItemData BerserkersGreavesAlacrity = new RiotItemData("Berserker's Greaves [Alacrity]", "バーサーカーのブーツ [疾風]", 1301, 475, 1475, 1033, new int[] {3006}, null, 2, 48, 336, 3, "<groupLimit>Limited to 1 of each enchantment type.</groupLimit><br>Enchants boots to have Alacrity bonus. <br><br><unique>UNIQUE Passive - Alacrity:</unique> +20 Movement Speed<br><br><i>(Unique Passives with the same name don't stack.)</i>", item -> {
         item.attackSpeed(25);
         item.add("Alacrity", ability -> {
         });
     });
 
     /** Enchantment: Captain Definition */
-    public static final RiotItemData BerserkersGreavesEnchantmentCaptain = new RiotItemData("Berserker's Greaves Enchantment: Captain", "バーサーカーのブーツ 追加特性：隊長", 1302, 600, 1600, 1120, new int[] {3006}, null, 2, 96, 336, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData BerserkersGreavesCaptain = new RiotItemData("Berserker's Greaves [Captain]", "バーサーカーのブーツ [隊長]", 1302, 600, 1600, 1120, new int[] {3006}, null, 2, 96, 336, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.attackSpeed(25);
         item.add("隊長", ability -> {
         });
     });
 
     /** Enchantment: Distortion Definition */
-    public static final RiotItemData BerserkersGreavesEnchantmentDistortion = new RiotItemData("Berserker's Greaves Enchantment: Distortion", "バーサーカーのブーツ 追加特性: 時空歪曲", 1303, 475, 1475, 1033, new int[] {3006}, null, 2, 144, 336, 3, "<groupLimit>追加特性はいずれか1種類しか付与できない。</groupLimit><br>ブーツに「時空歪曲」の効果を付ける。<br><br><unique>ユニーク自動効果 - 時空歪曲:</unique> サモナースペルのうち、テレポート、フラッシュ、ゴーストのクールダウンが20%短縮し、以下の移動速度ボーナスを得る。<br><br><font color='#FFDD00'>ゴースト:</font> 移動速度ボーナスが27%から40%に上昇。<br><font color='#FFDD00'>フラッシュ:</font> 使用後1秒間、移動速度に20%ボーナス。<br><font color='#FFDD00'>テレポート:</font> 使用後3秒間、移動速度に30%ボーナス。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData BerserkersGreavesDistortion = new RiotItemData("Berserker's Greaves [Distortion]", "バーサーカーのブーツ [時空歪曲]", 1303, 475, 1475, 1033, new int[] {3006}, null, 2, 144, 336, 3, "<groupLimit>追加特性はいずれか1種類しか付与できない。</groupLimit><br>ブーツに「時空歪曲」の効果を付ける。<br><br><unique>ユニーク自動効果 - 時空歪曲:</unique> サモナースペルのうち、テレポート、フラッシュ、ゴーストのクールダウンが20%短縮し、以下の移動速度ボーナスを得る。<br><br><font color='#FFDD00'>ゴースト:</font> 移動速度ボーナスが27%から40%に上昇。<br><font color='#FFDD00'>フラッシュ:</font> 使用後1秒間、移動速度に20%ボーナス。<br><font color='#FFDD00'>テレポート:</font> 使用後3秒間、移動速度に30%ボーナス。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.attackSpeed(25);
         item.add("時空歪曲", ability -> {
         });
     });
 
     /** Enchantment: Homeguard Definition */
-    public static final RiotItemData BerserkersGreavesEnchantmentHomeguard = new RiotItemData("Berserker's Greaves Enchantment: Homeguard", "バーサーカーのブーツ 追加特性: 防衛", 1304, 475, 1475, 1033, new int[] {3006}, null, 2, 192, 336, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「防衛」の効果をつける。<br><br><unique>ユニーク自動効果 - 防衛:</unique> ショップを訪れるとライフ自動回復速度とマナ自動回復速度が大きく上昇する。また移動速度に+200％のボーナスを得る(この効果は8秒間かけて減衰する)。移動速度ボーナスおよび自動回復速度ボーナスは、戦闘状態を離脱後6秒間は発動しない。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData BerserkersGreavesHomeguard = new RiotItemData("Berserker's Greaves [Homeguard]", "バーサーカーのブーツ [防衛]", 1304, 475, 1475, 1033, new int[] {3006}, null, 2, 192, 336, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「防衛」の効果をつける。<br><br><unique>ユニーク自動効果 - 防衛:</unique> ショップを訪れるとライフ自動回復速度とマナ自動回復速度が大きく上昇する。また移動速度に+200％のボーナスを得る(この効果は8秒間かけて減衰する)。移動速度ボーナスおよび自動回復速度ボーナスは、戦闘状態を離脱後6秒間は発動しない。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.attackSpeed(25);
         item.add("防衛", ability -> {
         });
     });
 
     /** Enchantment: Furor Definition */
-    public static final RiotItemData BootsofSwiftnessEnchantmentFuror = new RiotItemData("Boots of Swiftness Enchantment: Furor", "迅速のブーツ 追加特性: 憤怒", 1305, 475, 1475, 1033, new int[] {3009}, null, 2, 240, 336, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「憤怒」の効果を付ける。<br><br><unique>ユニーク自動効果 - 憤怒:</unique> 単体対象のスキル/攻撃が(命中して)ダメージを与えると、移動速度が12％上昇する。この効果は2秒間かけて減衰する。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData BootsofSwiftnessFuror = new RiotItemData("Boots of Swiftness [Furor]", "迅速のブーツ [憤怒]", 1305, 475, 1475, 1033, new int[] {3009}, null, 2, 240, 336, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「憤怒」の効果を付ける。<br><br><unique>ユニーク自動効果 - 憤怒:</unique> 単体対象のスキル/攻撃が(命中して)ダメージを与えると、移動速度が12％上昇する。この効果は2秒間かけて減衰する。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("憤怒", ability -> {
         });
     });
 
     /** Enchantment: Alacrity Definition */
-    public static final RiotItemData BootsofSwiftnessEnchantmentAlacrity = new RiotItemData("Boots of Swiftness Enchantment: Alacrity", "迅速のブーツ 追加特性: 疾風", 1306, 475, 1475, 1033, new int[] {3009}, null, 2, 288, 336, 3, "<groupLimit>Limited to 1 of each enchantment type.</groupLimit><br>Enchants boots to have Alacrity bonus. <br><br><unique>UNIQUE Passive - Alacrity:</unique> +20 Movement Speed<br><br><i>(Unique Passives with the same name don't stack.)</i>", item -> {
+    public static final RiotItemData BootsofSwiftnessAlacrity = new RiotItemData("Boots of Swiftness [Alacrity]", "迅速のブーツ [疾風]", 1306, 475, 1475, 1033, new int[] {3009}, null, 2, 288, 336, 3, "<groupLimit>Limited to 1 of each enchantment type.</groupLimit><br>Enchants boots to have Alacrity bonus. <br><br><unique>UNIQUE Passive - Alacrity:</unique> +20 Movement Speed<br><br><i>(Unique Passives with the same name don't stack.)</i>", item -> {
         item.add("Alacrity", ability -> {
         });
     });
 
     /** Enchantment: Captain Definition */
-    public static final RiotItemData BootsofSwiftnessEnchantmentCaptain = new RiotItemData("Boots of Swiftness Enchantment: Captain", "迅速のブーツ 追加特性：隊長", 1307, 600, 1600, 1120, new int[] {3009}, null, 2, 336, 336, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData BootsofSwiftnessCaptain = new RiotItemData("Boots of Swiftness [Captain]", "迅速のブーツ [隊長]", 1307, 600, 1600, 1120, new int[] {3009}, null, 2, 336, 336, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("隊長", ability -> {
         });
     });
 
     /** Enchantment: Distortion Definition */
-    public static final RiotItemData BootsofSwiftnessEnchantmentDistortion = new RiotItemData("Boots of Swiftness Enchantment: Distortion", "迅速のブーツ 追加特性: 時空歪曲", 1308, 475, 1475, 1033, new int[] {3009}, null, 2, 384, 336, 3, "<groupLimit>追加特性はいずれか1種類しか付与できない。</groupLimit><br>ブーツに「時空歪曲」の効果を付ける。<br><br><unique>ユニーク自動効果 - 時空歪曲:</unique> サモナースペルのうち、テレポート、フラッシュ、ゴーストのクールダウンが20%短縮し、以下の移動速度ボーナスを得る。<br><br><font color='#FFDD00'>ゴースト:</font> 移動速度ボーナスが27%から40%に上昇。<br><font color='#FFDD00'>フラッシュ:</font> 使用後1秒間、移動速度に20%ボーナス。<br><font color='#FFDD00'>テレポート:</font> 使用後3秒間、移動速度に30%ボーナス。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData BootsofSwiftnessDistortion = new RiotItemData("Boots of Swiftness [Distortion]", "迅速のブーツ [時空歪曲]", 1308, 475, 1475, 1033, new int[] {3009}, null, 2, 384, 336, 3, "<groupLimit>追加特性はいずれか1種類しか付与できない。</groupLimit><br>ブーツに「時空歪曲」の効果を付ける。<br><br><unique>ユニーク自動効果 - 時空歪曲:</unique> サモナースペルのうち、テレポート、フラッシュ、ゴーストのクールダウンが20%短縮し、以下の移動速度ボーナスを得る。<br><br><font color='#FFDD00'>ゴースト:</font> 移動速度ボーナスが27%から40%に上昇。<br><font color='#FFDD00'>フラッシュ:</font> 使用後1秒間、移動速度に20%ボーナス。<br><font color='#FFDD00'>テレポート:</font> 使用後3秒間、移動速度に30%ボーナス。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("時空歪曲", ability -> {
         });
     });
 
     /** Enchantment: Homeguard Definition */
-    public static final RiotItemData BootsofSwiftnessEnchantmentHomeguard = new RiotItemData("Boots of Swiftness Enchantment: Homeguard", "迅速のブーツ 追加特性: 防衛", 1309, 475, 1475, 1033, new int[] {3009}, null, 2, 432, 336, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「防衛」の効果をつける。<br><br><unique>ユニーク自動効果 - 防衛:</unique> ショップを訪れるとライフ自動回復速度とマナ自動回復速度が大きく上昇する。また移動速度に+200％のボーナスを得る(この効果は8秒間かけて減衰する)。移動速度ボーナスおよび自動回復速度ボーナスは、戦闘状態を離脱後6秒間は発動しない。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData BootsofSwiftnessHomeguard = new RiotItemData("Boots of Swiftness [Homeguard]", "迅速のブーツ [防衛]", 1309, 475, 1475, 1033, new int[] {3009}, null, 2, 432, 336, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「防衛」の効果をつける。<br><br><unique>ユニーク自動効果 - 防衛:</unique> ショップを訪れるとライフ自動回復速度とマナ自動回復速度が大きく上昇する。また移動速度に+200％のボーナスを得る(この効果は8秒間かけて減衰する)。移動速度ボーナスおよび自動回復速度ボーナスは、戦闘状態を離脱後6秒間は発動しない。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("防衛", ability -> {
         });
     });
 
     /** Enchantment: Furor Definition */
-    public static final RiotItemData SorcerersShoesEnchantmentFuror = new RiotItemData("Sorcerer's Shoes Enchantment: Furor", "魔道士の靴 追加特性: 憤怒", 1310, 475, 1575, 1103, new int[] {3020}, null, 2, 0, 384, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「憤怒」の効果を付ける。<br><br><unique>ユニーク自動効果 - 憤怒:</unique> 単体対象のスキル/攻撃が(命中して)ダメージを与えると、移動速度が12％上昇する。この効果は2秒間かけて減衰する。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData SorcerersShoesFuror = new RiotItemData("Sorcerer's Shoes [Furor]", "魔道士の靴 [憤怒]", 1310, 475, 1575, 1103, new int[] {3020}, null, 2, 0, 384, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「憤怒」の効果を付ける。<br><br><unique>ユニーク自動効果 - 憤怒:</unique> 単体対象のスキル/攻撃が(命中して)ダメージを与えると、移動速度が12％上昇する。この効果は2秒間かけて減衰する。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("憤怒", ability -> {
         });
     });
 
     /** Enchantment: Alacrity Definition */
-    public static final RiotItemData SorcerersShoesEnchantmentAlacrity = new RiotItemData("Sorcerer's Shoes Enchantment: Alacrity", "魔道士の靴 追加特性: 疾風", 1311, 475, 1575, 1103, new int[] {3020}, null, 2, 48, 384, 3, "<groupLimit>Limited to 1 of each enchantment type.</groupLimit><br>Enchants boots to have Alacrity bonus. <br><br><unique>UNIQUE Passive - Alacrity:</unique> +20 Movement Speed<br><br><i>(Unique Passives with the same name don't stack.)</i>", item -> {
+    public static final RiotItemData SorcerersShoesAlacrity = new RiotItemData("Sorcerer's Shoes [Alacrity]", "魔道士の靴 [疾風]", 1311, 475, 1575, 1103, new int[] {3020}, null, 2, 48, 384, 3, "<groupLimit>Limited to 1 of each enchantment type.</groupLimit><br>Enchants boots to have Alacrity bonus. <br><br><unique>UNIQUE Passive - Alacrity:</unique> +20 Movement Speed<br><br><i>(Unique Passives with the same name don't stack.)</i>", item -> {
         item.add("Alacrity", ability -> {
         });
     });
 
     /** Enchantment: Captain Definition */
-    public static final RiotItemData SorcerersShoesEnchantmentCaptain = new RiotItemData("Sorcerer's Shoes Enchantment: Captain", "魔道士の靴 追加特性：隊長", 1312, 600, 1700, 1190, new int[] {3020}, null, 2, 96, 384, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData SorcerersShoesCaptain = new RiotItemData("Sorcerer's Shoes [Captain]", "魔道士の靴 [隊長]", 1312, 600, 1700, 1190, new int[] {3020}, null, 2, 96, 384, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("隊長", ability -> {
         });
     });
 
     /** Enchantment: Distortion Definition */
-    public static final RiotItemData SorcerersShoesEnchantmentDistortion = new RiotItemData("Sorcerer's Shoes Enchantment: Distortion", "魔道士の靴 追加特性: 時空歪曲", 1313, 475, 1575, 1103, new int[] {3020}, null, 2, 144, 384, 3, "<groupLimit>追加特性はいずれか1種類しか付与できない。</groupLimit><br>ブーツに「時空歪曲」の効果を付ける。<br><br><unique>ユニーク自動効果 - 時空歪曲:</unique> サモナースペルのうち、テレポート、フラッシュ、ゴーストのクールダウンが20%短縮し、以下の移動速度ボーナスを得る。<br><br><font color='#FFDD00'>ゴースト:</font> 移動速度ボーナスが27%から40%に上昇。<br><font color='#FFDD00'>フラッシュ:</font> 使用後1秒間、移動速度に20%ボーナス。<br><font color='#FFDD00'>テレポート:</font> 使用後3秒間、移動速度に30%ボーナス。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData SorcerersShoesDistortion = new RiotItemData("Sorcerer's Shoes [Distortion]", "魔道士の靴 [時空歪曲]", 1313, 475, 1575, 1103, new int[] {3020}, null, 2, 144, 384, 3, "<groupLimit>追加特性はいずれか1種類しか付与できない。</groupLimit><br>ブーツに「時空歪曲」の効果を付ける。<br><br><unique>ユニーク自動効果 - 時空歪曲:</unique> サモナースペルのうち、テレポート、フラッシュ、ゴーストのクールダウンが20%短縮し、以下の移動速度ボーナスを得る。<br><br><font color='#FFDD00'>ゴースト:</font> 移動速度ボーナスが27%から40%に上昇。<br><font color='#FFDD00'>フラッシュ:</font> 使用後1秒間、移動速度に20%ボーナス。<br><font color='#FFDD00'>テレポート:</font> 使用後3秒間、移動速度に30%ボーナス。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("時空歪曲", ability -> {
         });
     });
 
     /** Enchantment: Homeguard Definition */
-    public static final RiotItemData SorcerersShoesEnchantmentHomeguard = new RiotItemData("Sorcerer's Shoes Enchantment: Homeguard", "魔道士の靴 追加特性: 防衛", 1314, 475, 1575, 1103, new int[] {3020}, null, 2, 192, 384, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「防衛」の効果をつける。<br><br><unique>ユニーク自動効果 - 防衛:</unique> ショップを訪れるとライフ自動回復速度とマナ自動回復速度が大きく上昇する。また移動速度に+200％のボーナスを得る(この効果は8秒間かけて減衰する)。移動速度ボーナスおよび自動回復速度ボーナスは、戦闘状態を離脱後6秒間は発動しない。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData SorcerersShoesHomeguard = new RiotItemData("Sorcerer's Shoes [Homeguard]", "魔道士の靴 [防衛]", 1314, 475, 1575, 1103, new int[] {3020}, null, 2, 192, 384, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「防衛」の効果をつける。<br><br><unique>ユニーク自動効果 - 防衛:</unique> ショップを訪れるとライフ自動回復速度とマナ自動回復速度が大きく上昇する。また移動速度に+200％のボーナスを得る(この効果は8秒間かけて減衰する)。移動速度ボーナスおよび自動回復速度ボーナスは、戦闘状態を離脱後6秒間は発動しない。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("防衛", ability -> {
         });
     });
 
     /** Enchantment: Furor Definition */
-    public static final RiotItemData NinjaTabiEnchantmentFuror = new RiotItemData("Ninja Tabi Enchantment: Furor", "忍者足袋 追加特性: 憤怒", 1315, 475, 1475, 1033, new int[] {3047}, null, 2, 240, 384, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「憤怒」の効果を付ける。<br><br><unique>ユニーク自動効果 - 憤怒:</unique> 単体対象のスキル/攻撃が(命中して)ダメージを与えると、移動速度が12％上昇する。この効果は2秒間かけて減衰する。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData NinjaTabiFuror = new RiotItemData("Ninja Tabi [Furor]", "忍者足袋 [憤怒]", 1315, 475, 1475, 1033, new int[] {3047}, null, 2, 240, 384, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「憤怒」の効果を付ける。<br><br><unique>ユニーク自動効果 - 憤怒:</unique> 単体対象のスキル/攻撃が(命中して)ダメージを与えると、移動速度が12％上昇する。この効果は2秒間かけて減衰する。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.armor(25);
         item.add("憤怒", ability -> {
         });
     });
 
     /** Enchantment: Alacrity Definition */
-    public static final RiotItemData NinjaTabiEnchantmentAlacrity = new RiotItemData("Ninja Tabi Enchantment: Alacrity", "忍者足袋 追加特性: 疾風", 1316, 475, 1475, 1033, new int[] {3047}, null, 2, 288, 384, 3, "<groupLimit>Limited to 1 of each enchantment type.</groupLimit><br>Enchants boots to have Alacrity bonus. <br><br><unique>UNIQUE Passive - Alacrity:</unique> +20 Movement Speed<br><br><i>(Unique Passives with the same name don't stack.)</i>", item -> {
+    public static final RiotItemData NinjaTabiAlacrity = new RiotItemData("Ninja Tabi [Alacrity]", "忍者足袋 [疾風]", 1316, 475, 1475, 1033, new int[] {3047}, null, 2, 288, 384, 3, "<groupLimit>Limited to 1 of each enchantment type.</groupLimit><br>Enchants boots to have Alacrity bonus. <br><br><unique>UNIQUE Passive - Alacrity:</unique> +20 Movement Speed<br><br><i>(Unique Passives with the same name don't stack.)</i>", item -> {
         item.armor(25);
         item.add("Alacrity", ability -> {
         });
     });
 
     /** Enchantment: Captain Definition */
-    public static final RiotItemData NinjaTabiEnchantmentCaptain = new RiotItemData("Ninja Tabi Enchantment: Captain", "忍者足袋 追加特性：隊長", 1317, 600, 1600, 1120, new int[] {3047}, null, 2, 336, 384, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData NinjaTabiCaptain = new RiotItemData("Ninja Tabi [Captain]", "忍者足袋 [隊長]", 1317, 600, 1600, 1120, new int[] {3047}, null, 2, 336, 384, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.armor(25);
         item.add("隊長", ability -> {
         });
     });
 
     /** Enchantment: Distortion Definition */
-    public static final RiotItemData NinjaTabiEnchantmentDistortion = new RiotItemData("Ninja Tabi Enchantment: Distortion", "忍者足袋 追加特性: 時空歪曲", 1318, 475, 1475, 1033, new int[] {3047}, null, 2, 384, 384, 3, "<groupLimit>追加特性はいずれか1種類しか付与できない。</groupLimit><br>ブーツに「時空歪曲」の効果を付ける。<br><br><unique>ユニーク自動効果 - 時空歪曲:</unique> サモナースペルのうち、テレポート、フラッシュ、ゴーストのクールダウンが20%短縮し、以下の移動速度ボーナスを得る。<br><br><font color='#FFDD00'>ゴースト:</font> 移動速度ボーナスが27%から40%に上昇。<br><font color='#FFDD00'>フラッシュ:</font> 使用後1秒間、移動速度に20%ボーナス。<br><font color='#FFDD00'>テレポート:</font> 使用後3秒間、移動速度に30%ボーナス。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData NinjaTabiDistortion = new RiotItemData("Ninja Tabi [Distortion]", "忍者足袋 [時空歪曲]", 1318, 475, 1475, 1033, new int[] {3047}, null, 2, 384, 384, 3, "<groupLimit>追加特性はいずれか1種類しか付与できない。</groupLimit><br>ブーツに「時空歪曲」の効果を付ける。<br><br><unique>ユニーク自動効果 - 時空歪曲:</unique> サモナースペルのうち、テレポート、フラッシュ、ゴーストのクールダウンが20%短縮し、以下の移動速度ボーナスを得る。<br><br><font color='#FFDD00'>ゴースト:</font> 移動速度ボーナスが27%から40%に上昇。<br><font color='#FFDD00'>フラッシュ:</font> 使用後1秒間、移動速度に20%ボーナス。<br><font color='#FFDD00'>テレポート:</font> 使用後3秒間、移動速度に30%ボーナス。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.armor(25);
         item.add("時空歪曲", ability -> {
         });
     });
 
     /** Enchantment: Homeguard Definition */
-    public static final RiotItemData NinjaTabiEnchantmentHomeguard = new RiotItemData("Ninja Tabi Enchantment: Homeguard", "忍者足袋 追加特性: 防衛", 1319, 475, 1475, 1033, new int[] {3047}, null, 2, 432, 384, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「防衛」の効果をつける。<br><br><unique>ユニーク自動効果 - 防衛:</unique> ショップを訪れるとライフ自動回復速度とマナ自動回復速度が大きく上昇する。また移動速度に+200％のボーナスを得る(この効果は8秒間かけて減衰する)。移動速度ボーナスおよび自動回復速度ボーナスは、戦闘状態を離脱後6秒間は発動しない。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData NinjaTabiHomeguard = new RiotItemData("Ninja Tabi [Homeguard]", "忍者足袋 [防衛]", 1319, 475, 1475, 1033, new int[] {3047}, null, 2, 432, 384, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「防衛」の効果をつける。<br><br><unique>ユニーク自動効果 - 防衛:</unique> ショップを訪れるとライフ自動回復速度とマナ自動回復速度が大きく上昇する。また移動速度に+200％のボーナスを得る(この効果は8秒間かけて減衰する)。移動速度ボーナスおよび自動回復速度ボーナスは、戦闘状態を離脱後6秒間は発動しない。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.armor(25);
         item.add("防衛", ability -> {
         });
     });
 
     /** Enchantment: Furor Definition */
-    public static final RiotItemData MercurysTreadsEnchantmentFuror = new RiotItemData("Mercury's Treads Enchantment: Furor", "マーキュリーの靴 追加特性: 憤怒", 1320, 475, 1675, 1173, new int[] {3111}, null, 2, 0, 432, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「憤怒」の効果を付ける。<br><br><unique>ユニーク自動効果 - 憤怒:</unique> 単体対象のスキル/攻撃が(命中して)ダメージを与えると、移動速度が12％上昇する。この効果は2秒間かけて減衰する。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData MercurysTreadsFuror = new RiotItemData("Mercury's Treads [Furor]", "マーキュリーの靴 [憤怒]", 1320, 475, 1675, 1173, new int[] {3111}, null, 2, 0, 432, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「憤怒」の効果を付ける。<br><br><unique>ユニーク自動効果 - 憤怒:</unique> 単体対象のスキル/攻撃が(命中して)ダメージを与えると、移動速度が12％上昇する。この効果は2秒間かけて減衰する。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.magicRegist(25);
         item.add("憤怒", ability -> {
         });
     });
 
     /** Enchantment: Alacrity Definition */
-    public static final RiotItemData MercurysTreadsEnchantmentAlacrity = new RiotItemData("Mercury's Treads Enchantment: Alacrity", "マーキュリーの靴 追加特性: 疾風", 1321, 475, 1675, 1173, new int[] {3111}, null, 2, 48, 432, 3, "<groupLimit>Limited to 1 of each enchantment type.</groupLimit><br>Enchants boots to have Alacrity bonus. <br><br><unique>UNIQUE Passive - Alacrity:</unique> +20 Movement Speed<br><br><i>(Unique Passives with the same name don't stack.)</i>", item -> {
+    public static final RiotItemData MercurysTreadsAlacrity = new RiotItemData("Mercury's Treads [Alacrity]", "マーキュリーの靴 [疾風]", 1321, 475, 1675, 1173, new int[] {3111}, null, 2, 48, 432, 3, "<groupLimit>Limited to 1 of each enchantment type.</groupLimit><br>Enchants boots to have Alacrity bonus. <br><br><unique>UNIQUE Passive - Alacrity:</unique> +20 Movement Speed<br><br><i>(Unique Passives with the same name don't stack.)</i>", item -> {
         item.magicRegist(25);
         item.add("Alacrity", ability -> {
         });
     });
 
     /** Enchantment: Captain Definition */
-    public static final RiotItemData MercurysTreadsEnchantmentCaptain = new RiotItemData("Mercury's Treads Enchantment: Captain", "マーキュリーの靴 追加特性：隊長", 1322, 600, 1800, 1260, new int[] {3111}, null, 2, 96, 432, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData MercurysTreadsCaptain = new RiotItemData("Mercury's Treads [Captain]", "マーキュリーの靴 [隊長]", 1322, 600, 1800, 1260, new int[] {3111}, null, 2, 96, 432, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.magicRegist(25);
         item.add("隊長", ability -> {
         });
     });
 
     /** Enchantment: Distortion Definition */
-    public static final RiotItemData MercurysTreadsEnchantmentDistortion = new RiotItemData("Mercury's Treads Enchantment: Distortion", "マーキュリーの靴 追加特性: 時空歪曲", 1323, 475, 1675, 1173, new int[] {3111}, null, 2, 144, 432, 3, "<groupLimit>追加特性はいずれか1種類しか付与できない。</groupLimit><br>ブーツに「時空歪曲」の効果を付ける。<br><br><unique>ユニーク自動効果 - 時空歪曲:</unique> サモナースペルのうち、テレポート、フラッシュ、ゴーストのクールダウンが20%短縮し、以下の移動速度ボーナスを得る。<br><br><font color='#FFDD00'>ゴースト:</font> 移動速度ボーナスが27%から40%に上昇。<br><font color='#FFDD00'>フラッシュ:</font> 使用後1秒間、移動速度に20%ボーナス。<br><font color='#FFDD00'>テレポート:</font> 使用後3秒間、移動速度に30%ボーナス。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData MercurysTreadsDistortion = new RiotItemData("Mercury's Treads [Distortion]", "マーキュリーの靴 [時空歪曲]", 1323, 475, 1675, 1173, new int[] {3111}, null, 2, 144, 432, 3, "<groupLimit>追加特性はいずれか1種類しか付与できない。</groupLimit><br>ブーツに「時空歪曲」の効果を付ける。<br><br><unique>ユニーク自動効果 - 時空歪曲:</unique> サモナースペルのうち、テレポート、フラッシュ、ゴーストのクールダウンが20%短縮し、以下の移動速度ボーナスを得る。<br><br><font color='#FFDD00'>ゴースト:</font> 移動速度ボーナスが27%から40%に上昇。<br><font color='#FFDD00'>フラッシュ:</font> 使用後1秒間、移動速度に20%ボーナス。<br><font color='#FFDD00'>テレポート:</font> 使用後3秒間、移動速度に30%ボーナス。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.magicRegist(25);
         item.add("時空歪曲", ability -> {
         });
     });
 
     /** Enchantment: Homeguard Definition */
-    public static final RiotItemData MercurysTreadsEnchantmentHomeguard = new RiotItemData("Mercury's Treads Enchantment: Homeguard", "マーキュリーの靴 追加特性: 防衛", 1324, 475, 1675, 1173, new int[] {3111}, null, 2, 192, 432, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「防衛」の効果をつける。<br><br><unique>ユニーク自動効果 - 防衛:</unique> ショップを訪れるとライフ自動回復速度とマナ自動回復速度が大きく上昇する。また移動速度に+200％のボーナスを得る(この効果は8秒間かけて減衰する)。移動速度ボーナスおよび自動回復速度ボーナスは、戦闘状態を離脱後6秒間は発動しない。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData MercurysTreadsHomeguard = new RiotItemData("Mercury's Treads [Homeguard]", "マーキュリーの靴 [防衛]", 1324, 475, 1675, 1173, new int[] {3111}, null, 2, 192, 432, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「防衛」の効果をつける。<br><br><unique>ユニーク自動効果 - 防衛:</unique> ショップを訪れるとライフ自動回復速度とマナ自動回復速度が大きく上昇する。また移動速度に+200％のボーナスを得る(この効果は8秒間かけて減衰する)。移動速度ボーナスおよび自動回復速度ボーナスは、戦闘状態を離脱後6秒間は発動しない。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.magicRegist(25);
         item.add("防衛", ability -> {
         });
     });
 
     /** Enchantment: Furor Definition */
-    public static final RiotItemData BootsofMobilityEnchantmentFuror = new RiotItemData("Boots of Mobility Enchantment: Furor", "踏破のブーツ 追加特性: 憤怒", 1325, 475, 1275, 893, new int[] {3117}, null, 2, 240, 432, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「憤怒」の効果を付ける。<br><br><unique>ユニーク自動効果 - 憤怒:</unique> 単体対象のスキル/攻撃が(命中して)ダメージを与えると、移動速度が12％上昇する。この効果は2秒間かけて減衰する。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData BootsofMobilityFuror = new RiotItemData("Boots of Mobility [Furor]", "踏破のブーツ [憤怒]", 1325, 475, 1275, 893, new int[] {3117}, null, 2, 240, 432, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「憤怒」の効果を付ける。<br><br><unique>ユニーク自動効果 - 憤怒:</unique> 単体対象のスキル/攻撃が(命中して)ダメージを与えると、移動速度が12％上昇する。この効果は2秒間かけて減衰する。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("憤怒", ability -> {
         });
     });
 
     /** Enchantment: Alacrity Definition */
-    public static final RiotItemData BootsofMobilityEnchantmentAlacrity = new RiotItemData("Boots of Mobility Enchantment: Alacrity", "踏破のブーツ 追加特性: 疾風", 1326, 475, 1275, 893, new int[] {3117}, null, 2, 288, 432, 3, "<groupLimit>Limited to 1 of each enchantment type.</groupLimit><br>Enchants boots to have Alacrity bonus. <br><br><unique>UNIQUE Passive - Alacrity:</unique> +20 Movement Speed<br><br><i>(Unique Passives with the same name don't stack.)</i>", item -> {
+    public static final RiotItemData BootsofMobilityAlacrity = new RiotItemData("Boots of Mobility [Alacrity]", "踏破のブーツ [疾風]", 1326, 475, 1275, 893, new int[] {3117}, null, 2, 288, 432, 3, "<groupLimit>Limited to 1 of each enchantment type.</groupLimit><br>Enchants boots to have Alacrity bonus. <br><br><unique>UNIQUE Passive - Alacrity:</unique> +20 Movement Speed<br><br><i>(Unique Passives with the same name don't stack.)</i>", item -> {
         item.add("Alacrity", ability -> {
         });
     });
 
     /** Enchantment: Captain Definition */
-    public static final RiotItemData BootsofMobilityEnchantmentCaptain = new RiotItemData("Boots of Mobility Enchantment: Captain", "踏破のブーツ 追加特性：隊長", 1327, 600, 1400, 980, new int[] {3117}, null, 2, 336, 432, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData BootsofMobilityCaptain = new RiotItemData("Boots of Mobility [Captain]", "踏破のブーツ [隊長]", 1327, 600, 1400, 980, new int[] {3117}, null, 2, 336, 432, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("隊長", ability -> {
         });
     });
 
     /** Enchantment: Distortion Definition */
-    public static final RiotItemData BootsofMobilityEnchantmentDistortion = new RiotItemData("Boots of Mobility Enchantment: Distortion", "踏破のブーツ 追加特性: 時空歪曲", 1328, 475, 1275, 893, new int[] {3117}, null, 2, 384, 432, 3, "<groupLimit>追加特性はいずれか1種類しか付与できない。</groupLimit><br>ブーツに「時空歪曲」の効果を付ける。<br><br><unique>ユニーク自動効果 - 時空歪曲:</unique> サモナースペルのうち、テレポート、フラッシュ、ゴーストのクールダウンが20%短縮し、以下の移動速度ボーナスを得る。<br><br><font color='#FFDD00'>ゴースト:</font> 移動速度ボーナスが27%から40%に上昇。<br><font color='#FFDD00'>フラッシュ:</font> 使用後1秒間、移動速度に20%ボーナス。<br><font color='#FFDD00'>テレポート:</font> 使用後3秒間、移動速度に30%ボーナス。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData BootsofMobilityDistortion = new RiotItemData("Boots of Mobility [Distortion]", "踏破のブーツ [時空歪曲]", 1328, 475, 1275, 893, new int[] {3117}, null, 2, 384, 432, 3, "<groupLimit>追加特性はいずれか1種類しか付与できない。</groupLimit><br>ブーツに「時空歪曲」の効果を付ける。<br><br><unique>ユニーク自動効果 - 時空歪曲:</unique> サモナースペルのうち、テレポート、フラッシュ、ゴーストのクールダウンが20%短縮し、以下の移動速度ボーナスを得る。<br><br><font color='#FFDD00'>ゴースト:</font> 移動速度ボーナスが27%から40%に上昇。<br><font color='#FFDD00'>フラッシュ:</font> 使用後1秒間、移動速度に20%ボーナス。<br><font color='#FFDD00'>テレポート:</font> 使用後3秒間、移動速度に30%ボーナス。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("時空歪曲", ability -> {
         });
     });
 
     /** Enchantment: Homeguard Definition */
-    public static final RiotItemData BootsofMobilityEnchantmentHomeguard = new RiotItemData("Boots of Mobility Enchantment: Homeguard", "踏破のブーツ 追加特性: 防衛", 1329, 475, 1275, 893, new int[] {3117}, null, 2, 432, 432, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「防衛」の効果をつける。<br><br><unique>ユニーク自動効果 - 防衛:</unique> ショップを訪れるとライフ自動回復速度とマナ自動回復速度が大きく上昇する。また移動速度に+200％のボーナスを得る(この効果は8秒間かけて減衰する)。移動速度ボーナスおよび自動回復速度ボーナスは、戦闘状態を離脱後6秒間は発動しない。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData BootsofMobilityHomeguard = new RiotItemData("Boots of Mobility [Homeguard]", "踏破のブーツ [防衛]", 1329, 475, 1275, 893, new int[] {3117}, null, 2, 432, 432, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「防衛」の効果をつける。<br><br><unique>ユニーク自動効果 - 防衛:</unique> ショップを訪れるとライフ自動回復速度とマナ自動回復速度が大きく上昇する。また移動速度に+200％のボーナスを得る(この効果は8秒間かけて減衰する)。移動速度ボーナスおよび自動回復速度ボーナスは、戦闘状態を離脱後6秒間は発動しない。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("防衛", ability -> {
         });
     });
 
     /** Enchantment: Furor Definition */
-    public static final RiotItemData IonianBootsofLucidityEnchantmentFuror = new RiotItemData("Ionian Boots of Lucidity Enchantment: Furor", "アイオニアブーツ 追加特性: 憤怒", 1330, 475, 1475, 1033, new int[] {3158}, null, 3, 0, 0, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「憤怒」の効果を付ける。<br><br><unique>ユニーク自動効果 - 憤怒:</unique> 単体対象のスキル/攻撃が(命中して)ダメージを与えると、移動速度が12％上昇する。この効果は2秒間かけて減衰する。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData IonianBootsofLucidityFuror = new RiotItemData("Ionian Boots of Lucidity [Furor]", "アイオニアブーツ [憤怒]", 1330, 475, 1475, 1033, new int[] {3158}, null, 3, 0, 0, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「憤怒」の効果を付ける。<br><br><unique>ユニーク自動効果 - 憤怒:</unique> 単体対象のスキル/攻撃が(命中して)ダメージを与えると、移動速度が12％上昇する。この効果は2秒間かけて減衰する。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("憤怒", ability -> {
         });
     });
 
     /** Enchantment: Alacrity Definition */
-    public static final RiotItemData IonianBootsofLucidityEnchantmentAlacrity = new RiotItemData("Ionian Boots of Lucidity Enchantment: Alacrity", "アイオニアブーツ 追加特性: 疾風", 1331, 475, 1475, 1033, new int[] {3158}, null, 3, 48, 0, 3, "<groupLimit>Limited to 1 of each enchantment type.</groupLimit><br>Enchants boots to have Alacrity bonus. <br><br><unique>UNIQUE Passive - Alacrity:</unique> +20 Movement Speed<br><br><i>(Unique Passives with the same name don't stack.)</i>", item -> {
+    public static final RiotItemData IonianBootsofLucidityAlacrity = new RiotItemData("Ionian Boots of Lucidity [Alacrity]", "アイオニアブーツ [疾風]", 1331, 475, 1475, 1033, new int[] {3158}, null, 3, 48, 0, 3, "<groupLimit>Limited to 1 of each enchantment type.</groupLimit><br>Enchants boots to have Alacrity bonus. <br><br><unique>UNIQUE Passive - Alacrity:</unique> +20 Movement Speed<br><br><i>(Unique Passives with the same name don't stack.)</i>", item -> {
         item.add("Alacrity", ability -> {
         });
     });
 
     /** Enchantment: Captain Definition */
-    public static final RiotItemData IonianBootsofLucidityEnchantmentCaptain = new RiotItemData("Ionian Boots of Lucidity Enchantment: Captain", "アイオニアブーツ 追加特性：隊長", 1332, 600, 1600, 1120, new int[] {3158}, null, 3, 96, 0, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData IonianBootsofLucidityCaptain = new RiotItemData("Ionian Boots of Lucidity [Captain]", "アイオニアブーツ [隊長]", 1332, 600, 1600, 1120, new int[] {3158}, null, 3, 96, 0, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("隊長", ability -> {
         });
     });
 
     /** Enchantment: Distortion Definition */
-    public static final RiotItemData IonianBootsofLucidityEnchantmentDistortion = new RiotItemData("Ionian Boots of Lucidity Enchantment: Distortion", "アイオニアブーツ 追加特性: 時空歪曲", 1333, 475, 1475, 1033, new int[] {3158}, null, 3, 144, 0, 3, "<groupLimit>追加特性はいずれか1種類しか付与できない。</groupLimit><br>ブーツに「時空歪曲」の効果を付ける。<br><br><unique>ユニーク自動効果 - 時空歪曲:</unique> サモナースペルのうち、テレポート、フラッシュ、ゴーストのクールダウンが20%短縮し、以下の移動速度ボーナスを得る。<br><br><font color='#FFDD00'>ゴースト:</font> 移動速度ボーナスが27%から40%に上昇。<br><font color='#FFDD00'>フラッシュ:</font> 使用後1秒間、移動速度に20%ボーナス。<br><font color='#FFDD00'>テレポート:</font> 使用後3秒間、移動速度に30%ボーナス。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData IonianBootsofLucidityDistortion = new RiotItemData("Ionian Boots of Lucidity [Distortion]", "アイオニアブーツ [時空歪曲]", 1333, 475, 1475, 1033, new int[] {3158}, null, 3, 144, 0, 3, "<groupLimit>追加特性はいずれか1種類しか付与できない。</groupLimit><br>ブーツに「時空歪曲」の効果を付ける。<br><br><unique>ユニーク自動効果 - 時空歪曲:</unique> サモナースペルのうち、テレポート、フラッシュ、ゴーストのクールダウンが20%短縮し、以下の移動速度ボーナスを得る。<br><br><font color='#FFDD00'>ゴースト:</font> 移動速度ボーナスが27%から40%に上昇。<br><font color='#FFDD00'>フラッシュ:</font> 使用後1秒間、移動速度に20%ボーナス。<br><font color='#FFDD00'>テレポート:</font> 使用後3秒間、移動速度に30%ボーナス。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("時空歪曲", ability -> {
         });
     });
 
     /** Enchantment: Homeguard Definition */
-    public static final RiotItemData IonianBootsofLucidityEnchantmentHomeguard = new RiotItemData("Ionian Boots of Lucidity Enchantment: Homeguard", "アイオニアブーツ 追加特性: 防衛", 1334, 475, 1475, 1033, new int[] {3158}, null, 3, 192, 0, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「防衛」の効果をつける。<br><br><unique>ユニーク自動効果 - 防衛:</unique> ショップを訪れるとライフ自動回復速度とマナ自動回復速度が大きく上昇する。また移動速度に+200％のボーナスを得る(この効果は8秒間かけて減衰する)。移動速度ボーナスおよび自動回復速度ボーナスは、戦闘状態を離脱後6秒間は発動しない。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData IonianBootsofLucidityHomeguard = new RiotItemData("Ionian Boots of Lucidity [Homeguard]", "アイオニアブーツ [防衛]", 1334, 475, 1475, 1033, new int[] {3158}, null, 3, 192, 0, 3, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「防衛」の効果をつける。<br><br><unique>ユニーク自動効果 - 防衛:</unique> ショップを訪れるとライフ自動回復速度とマナ自動回復速度が大きく上昇する。また移動速度に+200％のボーナスを得る(この効果は8秒間かけて減衰する)。移動速度ボーナスおよび自動回復速度ボーナスは、戦闘状態を離脱後6秒間は発動しない。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("防衛", ability -> {
         });
     });
@@ -1159,7 +1159,7 @@ public class RiotItemData extends Describable<ItemDescriptor> {
     });
 
     /** Enchantment: Captain Definition */
-    public static final RiotItemData EnchantmentCaptain = new RiotItemData("Enchantment: Captain", "追加特性：隊長", 3242, 600, 600, 420, null, null, 3, 336, 0, 0, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
+    public static final RiotItemData EnchantmentCaptain = new RiotItemData("Enchantment: Captain", "追加特性: 隊長", 3242, 600, 600, 420, null, null, 3, 336, 0, 0, "<groupLimit>適用可能な追加特性は1種類のみ。</groupLimit><br>ブーツに「隊長」の効果をつける。<br><br><unique>ユニーク自動効果 - 隊長:</unique> 自分に近づいてくる味方のチャンピオンの移動速度を10％上昇させる。<br><br><i>(同名のユニーク自動効果は累積しない)</i>", item -> {
         item.add("隊長", ability -> {
         });
     });
@@ -1291,22 +1291,22 @@ public class RiotItemData extends Describable<ItemDescriptor> {
     });
 
     /** Enchantment: Warrior Definition */
-    public static final RiotItemData StalkersBladeEnchantmentWarrior = new RiotItemData("Stalker's Blade Enchantment: Warrior", "追跡の鋭刃 追加特性: 戦士", 3707, 63, 2250, 1575, new int[] {3706, 3134}, null, 2, 240, 192, 3, "<stats>攻撃力 +40<br>クールダウン +10％<br>物理防御貫通 +10</stats>", item -> {
+    public static final RiotItemData StalkersBladeWarrior = new RiotItemData("Stalker's Blade [Warrior]", "追跡の鋭刃 [戦士]", 3707, 63, 2250, 1575, new int[] {3706, 3134}, null, 2, 240, 192, 3, "<stats>攻撃力 +40<br>クールダウン +10％<br>物理防御貫通 +10</stats>", item -> {
     });
 
     /** Enchantment: Runeglaive Definition */
-    public static final RiotItemData StalkersBladeEnchantmentRuneglaive = new RiotItemData("Stalker's Blade Enchantment: Runeglaive", "追跡の鋭刃 追加特性: 魔術師", 3708, 200, 2250, 1575, new int[] {3706, 3057}, null, 2, 288, 192, 3, "<stats>魔力 +80<br>クールダウン +20％</stats>", item -> {
+    public static final RiotItemData StalkersBladeRuneglaive = new RiotItemData("Stalker's Blade [Runeglaive]", "追跡の鋭刃 [魔術師]", 3708, 200, 2250, 1575, new int[] {3706, 3057}, null, 2, 288, 192, 3, "<stats>魔力 +80<br>クールダウン +20％</stats>", item -> {
         item.mana(200);
     });
 
     /** Enchantment: Cinderhulk Definition */
-    public static final RiotItemData StalkersBladeEnchantmentCinderhulk = new RiotItemData("Stalker's Blade Enchantment: Cinderhulk", "追跡の鋭刃 追加特性: 護炎石", 3709, 400, 2250, 1575, new int[] {3706, 3751}, null, 2, 336, 192, 3, "<stats>ライフ +300<br>ライフボーナス +25％</stats><br><br><unique>自動効果(累積不可) - 猛火:</unique> 周囲の敵に毎秒15 (+0.6 x チャンピオンのレベル) の魔法ダメージを与える。モンスターに対しては100％のダメージボーナスを与える。  ", item -> {
+    public static final RiotItemData StalkersBladeCinderhulk = new RiotItemData("Stalker's Blade [Cinderhulk]", "追跡の鋭刃 [護炎石]", 3709, 400, 2250, 1575, new int[] {3706, 3751}, null, 2, 336, 192, 3, "<stats>ライフ +300<br>ライフボーナス +25％</stats><br><br><unique>自動効果(累積不可) - 猛火:</unique> 周囲の敵に毎秒15 (+0.6 x チャンピオンのレベル) の魔法ダメージを与える。モンスターに対しては100％のダメージボーナスを与える。  ", item -> {
         item.add("猛火", ability -> {
         });
     });
 
     /** Enchantment: Devourer Definition */
-    public static final RiotItemData StalkersBladeEnchantmentDevourer = new RiotItemData("Stalker's Blade Enchantment: Devourer", "追跡の鋭刃 追加特性：貪食者", 3710, 300, 2250, 1575, new int[] {3706, 1043}, new int[] {3930}, 2, 384, 192, 3, "<stats>攻撃速度 +50％<br>命中時の魔法ダメージ +25</stats><br><br><passive>自動効果 - むさぼり食らう: </passive>大型モンスターを倒すと、このアイテムによる与魔法ダメージが1増加。チャンピオンに対するキルまたはアシスト獲得でこのアイテムによる与魔法ダメージが2増加。", item -> {
+    public static final RiotItemData StalkersBladeDevourer = new RiotItemData("Stalker's Blade [Devourer]", "追跡の鋭刃 [貪食者]", 3710, 300, 2250, 1575, new int[] {3706, 1043}, new int[] {3930}, 2, 384, 192, 3, "<stats>攻撃速度 +50％<br>命中時の魔法ダメージ +25</stats><br><br><passive>自動効果 - むさぼり食らう: </passive>大型モンスターを倒すと、このアイテムによる与魔法ダメージが1増加。チャンピオンに対するキルまたはアシスト獲得でこのアイテムによる与魔法ダメージが2増加。", item -> {
     });
 
     /** Poacher's Knife Definition */
@@ -1318,7 +1318,7 @@ public class RiotItemData extends Describable<ItemDescriptor> {
     });
 
     /** Enchantment: Warrior Definition */
-    public static final RiotItemData SkirmishersSabreEnchantmentWarrior = new RiotItemData("Skirmisher's Sabre Enchantment: Warrior", "一騎のサーベル 追加特性: 戦士", 3714, 63, 2250, 1575, new int[] {3715, 3134}, null, 2, 48, 240, 3, "<stats>攻撃力 +40<br>クールダウン +10％<br>物理防御貫通 +10</stats>", item -> {
+    public static final RiotItemData SkirmishersSabreWarrior = new RiotItemData("Skirmisher's Sabre [Warrior]", "一騎のサーベル [戦士]", 3714, 63, 2250, 1575, new int[] {3715, 3134}, null, 2, 48, 240, 3, "<stats>攻撃力 +40<br>クールダウン +10％<br>物理防御貫通 +10</stats>", item -> {
     });
 
     /** Skirmisher's Sabre Definition */
@@ -1326,56 +1326,56 @@ public class RiotItemData extends Describable<ItemDescriptor> {
     });
 
     /** Enchantment: Runeglaive Definition */
-    public static final RiotItemData SkirmishersSabreEnchantmentRuneglaive = new RiotItemData("Skirmisher's Sabre Enchantment: Runeglaive", "一騎のサーベル 追加特性: 魔術師", 3716, 200, 2250, 1575, new int[] {3715, 3057}, null, 2, 144, 240, 3, "<stats>魔力 +80<br>クールダウン +20％</stats>", item -> {
+    public static final RiotItemData SkirmishersSabreRuneglaive = new RiotItemData("Skirmisher's Sabre [Runeglaive]", "一騎のサーベル [魔術師]", 3716, 200, 2250, 1575, new int[] {3715, 3057}, null, 2, 144, 240, 3, "<stats>魔力 +80<br>クールダウン +20％</stats>", item -> {
         item.mana(200);
     });
 
     /** Enchantment: Cinderhulk Definition */
-    public static final RiotItemData SkirmishersSabreEnchantmentCinderhulk = new RiotItemData("Skirmisher's Sabre Enchantment: Cinderhulk", "一騎のサーベル 追加特性: 護炎石", 3717, 400, 2250, 1575, new int[] {3715, 3751}, null, 2, 192, 240, 3, "<stats>ライフ +300<br>ライフボーナス +25％</stats><br><br><unique>自動効果(累積不可) - 猛火:</unique> 周囲の敵に毎秒15 (+0.6 x チャンピオンのレベル) の魔法ダメージを与える。モンスターに対しては100％のダメージボーナスを与える。  ", item -> {
+    public static final RiotItemData SkirmishersSabreCinderhulk = new RiotItemData("Skirmisher's Sabre [Cinderhulk]", "一騎のサーベル [護炎石]", 3717, 400, 2250, 1575, new int[] {3715, 3751}, null, 2, 192, 240, 3, "<stats>ライフ +300<br>ライフボーナス +25％</stats><br><br><unique>自動効果(累積不可) - 猛火:</unique> 周囲の敵に毎秒15 (+0.6 x チャンピオンのレベル) の魔法ダメージを与える。モンスターに対しては100％のダメージボーナスを与える。  ", item -> {
         item.add("猛火", ability -> {
         });
     });
 
     /** Enchantment: Devourer Definition */
-    public static final RiotItemData SkirmishersSabreEnchantmentDevourer = new RiotItemData("Skirmisher's Sabre Enchantment: Devourer", "一騎のサーベル 追加特性：貪食者", 3718, 300, 2250, 1575, new int[] {3715, 1043}, new int[] {3931}, 2, 240, 240, 3, "<stats>攻撃速度 +50％<br>命中時の魔法ダメージ +25</stats><br><br><passive>自動効果 - むさぼり食らう: </passive>大型モンスターを倒すと、このアイテムによる与魔法ダメージが1増加。チャンピオンに対するキルまたはアシスト獲得でこのアイテムによる与魔法ダメージが2増加。", item -> {
+    public static final RiotItemData SkirmishersSabreDevourer = new RiotItemData("Skirmisher's Sabre [Devourer]", "一騎のサーベル [貪食者]", 3718, 300, 2250, 1575, new int[] {3715, 1043}, new int[] {3931}, 2, 240, 240, 3, "<stats>攻撃速度 +50％<br>命中時の魔法ダメージ +25</stats><br><br><passive>自動効果 - むさぼり食らう: </passive>大型モンスターを倒すと、このアイテムによる与魔法ダメージが1増加。チャンピオンに対するキルまたはアシスト獲得でこのアイテムによる与魔法ダメージが2増加。", item -> {
     });
 
     /** Enchantment: Warrior Definition */
-    public static final RiotItemData PoachersKnifeEnchantmentWarrior = new RiotItemData("Poacher's Knife Enchantment: Warrior", "略奪の短剣 追加特性: 戦士", 3719, 63, 2250, 1575, new int[] {3711, 3134}, null, 2, 288, 240, 3, "<stats>攻撃力 +40<br>クールダウン +10％<br>物理防御貫通 +10</stats>", item -> {
+    public static final RiotItemData PoachersKnifeWarrior = new RiotItemData("Poacher's Knife [Warrior]", "略奪の短剣 [戦士]", 3719, 63, 2250, 1575, new int[] {3711, 3134}, null, 2, 288, 240, 3, "<stats>攻撃力 +40<br>クールダウン +10％<br>物理防御貫通 +10</stats>", item -> {
     });
 
     /** Enchantment: Runeglaive Definition */
-    public static final RiotItemData PoachersKnifeEnchantmentRuneglaive = new RiotItemData("Poacher's Knife Enchantment: Runeglaive", "略奪の短剣 追加特性: 魔術師", 3720, 200, 2250, 1575, new int[] {3711, 3057}, null, 2, 336, 240, 3, "<stats>魔力 +80<br>クールダウン +20％</stats>", item -> {
+    public static final RiotItemData PoachersKnifeRuneglaive = new RiotItemData("Poacher's Knife [Runeglaive]", "略奪の短剣 [魔術師]", 3720, 200, 2250, 1575, new int[] {3711, 3057}, null, 2, 336, 240, 3, "<stats>魔力 +80<br>クールダウン +20％</stats>", item -> {
         item.mana(200);
     });
 
     /** Enchantment: Cinderhulk Definition */
-    public static final RiotItemData PoachersKnifeEnchantmentCinderhulk = new RiotItemData("Poacher's Knife Enchantment: Cinderhulk", "略奪の短剣 追加特性: 護炎石", 3721, 400, 2250, 1575, new int[] {3711, 3751}, null, 2, 384, 240, 3, "<stats>ライフ +300<br>ライフボーナス +25％</stats><br><br><unique>自動効果(累積不可) - 猛火:</unique> 周囲の敵に毎秒15 (+0.6 x チャンピオンのレベル) の魔法ダメージを与える。モンスターに対しては100％のダメージボーナスを与える。  ", item -> {
+    public static final RiotItemData PoachersKnifeCinderhulk = new RiotItemData("Poacher's Knife [Cinderhulk]", "略奪の短剣 [護炎石]", 3721, 400, 2250, 1575, new int[] {3711, 3751}, null, 2, 384, 240, 3, "<stats>ライフ +300<br>ライフボーナス +25％</stats><br><br><unique>自動効果(累積不可) - 猛火:</unique> 周囲の敵に毎秒15 (+0.6 x チャンピオンのレベル) の魔法ダメージを与える。モンスターに対しては100％のダメージボーナスを与える。  ", item -> {
         item.add("猛火", ability -> {
         });
     });
 
     /** Enchantment: Devourer Definition */
-    public static final RiotItemData PoachersKnifeEnchantmentDevourer = new RiotItemData("Poacher's Knife Enchantment: Devourer", "略奪の短剣 追加特性：貪食者", 3722, 300, 2250, 1575, new int[] {3711, 1043}, new int[] {3932}, 2, 432, 240, 3, "<stats>攻撃速度 +50％<br>命中時の魔法ダメージ +25</stats><br><br><passive>自動効果 - むさぼり食らう: </passive>大型モンスターを倒すと、このアイテムによる与魔法ダメージが1増加。チャンピオンに対するキルまたはアシスト獲得でこのアイテムによる与魔法ダメージが2増加。", item -> {
+    public static final RiotItemData PoachersKnifeDevourer = new RiotItemData("Poacher's Knife [Devourer]", "略奪の短剣 [貪食者]", 3722, 300, 2250, 1575, new int[] {3711, 1043}, new int[] {3932}, 2, 432, 240, 3, "<stats>攻撃速度 +50％<br>命中時の魔法ダメージ +25</stats><br><br><passive>自動効果 - むさぼり食らう: </passive>大型モンスターを倒すと、このアイテムによる与魔法ダメージが1増加。チャンピオンに対するキルまたはアシスト獲得でこのアイテムによる与魔法ダメージが2増加。", item -> {
     });
 
     /** Enchantment: Warrior Definition */
-    public static final RiotItemData RangersTrailblazerEnchantmentWarrior = new RiotItemData("Ranger's Trailblazer Enchantment: Warrior", "狩猟の手斧 追加特性: 戦士", 3723, 63, 2250, 1575, new int[] {3713, 3134}, null, 2, 0, 288, 3, "<stats>攻撃力 +40<br>クールダウン +10％<br>物理防御貫通 +10</stats>", item -> {
+    public static final RiotItemData RangersTrailblazerWarrior = new RiotItemData("Ranger's Trailblazer [Warrior]", "狩猟の手斧 [戦士]", 3723, 63, 2250, 1575, new int[] {3713, 3134}, null, 2, 0, 288, 3, "<stats>攻撃力 +40<br>クールダウン +10％<br>物理防御貫通 +10</stats>", item -> {
     });
 
     /** Enchantment: Runeglaive Definition */
-    public static final RiotItemData RangersTrailblazerEnchantmentRuneglaive = new RiotItemData("Ranger's Trailblazer Enchantment: Runeglaive", "狩猟の手斧 追加特性: 魔術師", 3724, 200, 2250, 1575, new int[] {3713, 3057}, null, 2, 48, 288, 3, "<stats>魔力 +80<br>クールダウン +20％</stats>", item -> {
+    public static final RiotItemData RangersTrailblazerRuneglaive = new RiotItemData("Ranger's Trailblazer [Runeglaive]", "狩猟の手斧 [魔術師]", 3724, 200, 2250, 1575, new int[] {3713, 3057}, null, 2, 48, 288, 3, "<stats>魔力 +80<br>クールダウン +20％</stats>", item -> {
         item.mana(200);
     });
 
     /** Enchantment: Cinderhulk Definition */
-    public static final RiotItemData RangersTrailblazerEnchantmentCinderhulk = new RiotItemData("Ranger's Trailblazer Enchantment: Cinderhulk", "狩猟の手斧 追加特性: 護炎石", 3725, 400, 2250, 1575, new int[] {3713, 3751}, null, 2, 96, 288, 3, "<stats>ライフ +300<br>ライフボーナス +25％</stats><br><br><unique>自動効果(累積不可) - 猛火:</unique> 周囲の敵に毎秒15 (+0.6 x チャンピオンのレベル) の魔法ダメージを与える。モンスターに対しては100％のダメージボーナスを与える。  ", item -> {
+    public static final RiotItemData RangersTrailblazerCinderhulk = new RiotItemData("Ranger's Trailblazer [Cinderhulk]", "狩猟の手斧 [護炎石]", 3725, 400, 2250, 1575, new int[] {3713, 3751}, null, 2, 96, 288, 3, "<stats>ライフ +300<br>ライフボーナス +25％</stats><br><br><unique>自動効果(累積不可) - 猛火:</unique> 周囲の敵に毎秒15 (+0.6 x チャンピオンのレベル) の魔法ダメージを与える。モンスターに対しては100％のダメージボーナスを与える。  ", item -> {
         item.add("猛火", ability -> {
         });
     });
 
     /** Enchantment: Devourer Definition */
-    public static final RiotItemData RangersTrailblazerEnchantmentDevourer = new RiotItemData("Ranger's Trailblazer Enchantment: Devourer", "狩猟の手斧 追加特性：貪食者", 3726, 300, 2250, 1575, new int[] {3713, 1043}, new int[] {3933}, 2, 144, 288, 3, "<stats>攻撃速度 +50％<br>命中時の魔法ダメージ +25</stats><br><br><passive>自動効果 - むさぼり食らう: </passive>大型モンスターを倒すと、このアイテムによる与魔法ダメージが1増加。チャンピオンに対するキルまたはアシスト獲得でこのアイテムによる与魔法ダメージが2増加。", item -> {
+    public static final RiotItemData RangersTrailblazerDevourer = new RiotItemData("Ranger's Trailblazer [Devourer]", "狩猟の手斧 [貪食者]", 3726, 300, 2250, 1575, new int[] {3713, 1043}, new int[] {3933}, 2, 144, 288, 3, "<stats>攻撃速度 +50％<br>命中時の魔法ダメージ +25</stats><br><br><passive>自動効果 - むさぼり食らう: </passive>大型モンスターを倒すと、このアイテムによる与魔法ダメージが1増加。チャンピオンに対するキルまたはアシスト獲得でこのアイテムによる与魔法ダメージが2増加。", item -> {
     });
 
     /** Bami's Cinder Definition */
@@ -1401,19 +1401,19 @@ public class RiotItemData extends Describable<ItemDescriptor> {
     });
 
     /** Enchantment: Sated Devourer Definition */
-    public static final RiotItemData StalkersBladeEnchantmentSatedDevourer = new RiotItemData("Stalker's Blade Enchantment: Sated Devourer", "追跡の鋭刃 Enchantment: Sated Devourer", 3930, 2250, 2250, 3150, new int[] {3710}, null, 3, 0, 48, 4, "<stats>+50% Attack Speed<br>+60 Magic Damage on Hit</stats><br><br><passive>Passive - Phantom Hit:</passive> Every other basic attack will trigger on Hit effects an additional time.", item -> {
+    public static final RiotItemData StalkersBladeSatedDevourer = new RiotItemData("Stalker's Blade [Sated Devourer]", "追跡の鋭刃 [Sated Devourer]", 3930, 2250, 2250, 3150, new int[] {3710}, null, 3, 0, 48, 4, "<stats>+50% Attack Speed<br>+60 Magic Damage on Hit</stats><br><br><passive>Passive - Phantom Hit:</passive> Every other basic attack will trigger on Hit effects an additional time.", item -> {
     });
 
     /** Enchantment: Sated Devourer Definition */
-    public static final RiotItemData SkirmishersSabreEnchantmentSatedDevourer = new RiotItemData("Skirmisher's Sabre Enchantment: Sated Devourer", "一騎のサーベル Enchantment: Sated Devourer", 3931, 2250, 2250, 3150, new int[] {3718}, null, 3, 48, 48, 4, "<stats>+50% Attack Speed<br>+60 Magic Damage on Hit</stats><br><br><passive>Passive - Phantom Hit:</passive> Every other basic attack will trigger on Hit effects an additional time.", item -> {
+    public static final RiotItemData SkirmishersSabreSatedDevourer = new RiotItemData("Skirmisher's Sabre [Sated Devourer]", "一騎のサーベル [Sated Devourer]", 3931, 2250, 2250, 3150, new int[] {3718}, null, 3, 48, 48, 4, "<stats>+50% Attack Speed<br>+60 Magic Damage on Hit</stats><br><br><passive>Passive - Phantom Hit:</passive> Every other basic attack will trigger on Hit effects an additional time.", item -> {
     });
 
     /** Enchantment: Sated Devourer Definition */
-    public static final RiotItemData PoachersKnifeEnchantmentSatedDevourer = new RiotItemData("Poacher's Knife Enchantment: Sated Devourer", "略奪の短剣 Enchantment: Sated Devourer", 3932, 2250, 2250, 3150, new int[] {3722}, null, 3, 96, 48, 4, "<stats>+50% Attack Speed<br>+60 Magic Damage on Hit</stats><br><br><passive>Passive - Phantom Hit:</passive> Every other basic attack will trigger on Hit effects an additional time.", item -> {
+    public static final RiotItemData PoachersKnifeSatedDevourer = new RiotItemData("Poacher's Knife [Sated Devourer]", "略奪の短剣 [Sated Devourer]", 3932, 2250, 2250, 3150, new int[] {3722}, null, 3, 96, 48, 4, "<stats>+50% Attack Speed<br>+60 Magic Damage on Hit</stats><br><br><passive>Passive - Phantom Hit:</passive> Every other basic attack will trigger on Hit effects an additional time.", item -> {
     });
 
     /** Enchantment: Sated Devourer Definition */
-    public static final RiotItemData RangersTrailblazerEnchantmentSatedDevourer = new RiotItemData("Ranger's Trailblazer Enchantment: Sated Devourer", "狩猟の手斧 Enchantment: Sated Devourer", 3933, 2250, 2250, 3150, new int[] {3726}, null, 3, 144, 48, 4, "<stats>+50% Attack Speed<br>+60 Magic Damage on Hit</stats><br><br><passive>Passive - Phantom Hit:</passive> Every other basic attack will trigger on Hit effects an additional time.", item -> {
+    public static final RiotItemData RangersTrailblazerSatedDevourer = new RiotItemData("Ranger's Trailblazer [Sated Devourer]", "狩猟の手斧 [Sated Devourer]", 3933, 2250, 2250, 3150, new int[] {3726}, null, 3, 144, 48, 4, "<stats>+50% Attack Speed<br>+60 Magic Damage on Hit</stats><br><br><passive>Passive - Phantom Hit:</passive> Every other basic attack will trigger on Hit effects an additional time.", item -> {
     });
 
     /** Item status. */
