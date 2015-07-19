@@ -210,7 +210,7 @@ public class BuildTest {
          * 
          */
         private EmptyItem() {
-            super(0, "Test Item", item -> {
+            super(RiotItemData.AbyssalScepter, item -> {
 
             });
 

@@ -84,7 +84,7 @@ public class Build extends Publishable implements StatusCalculator {
             skillLevel.set(i, champion.skills[i].getMinLevel());
         }
 
-        items[0] = Item.DeathfireGrasp;
+        items[0] = Item.FrostQueensClaim;
         items[1] = Item.SpiritVisage;
         items[2] = Item.RabadonsDeathcap;
         items[3] = Item.SorcerersShoes;

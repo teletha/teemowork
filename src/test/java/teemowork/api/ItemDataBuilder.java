@@ -43,7 +43,7 @@ public class ItemDataBuilder {
         ItemDefinitions en = RiotAPI.parse(ItemDefinitions.class, Version.Latest, Locale.US);
         ItemDefinitions ja = RiotAPI.parse(ItemDefinitions.class, Version.Latest, Locale.JAPAN);
 
-        ClassWriter code = new ClassWriter("teemowork.model", "ItemData");
+        ClassWriter code = new ClassWriter("teemowork.model", "RiotItemData");
         code.write("public class ", code.className, " extends ", generic(Describable.class, ItemDescriptor.class), " {");
 
         code.write("/** The item manager. */");
@@ -86,10 +86,10 @@ public class ItemDataBuilder {
         }
 
         // Properties
-        Object[] properties = {String.class, "name", String.class, "localizedName", int.class, "identicalName",
-                int.class, "buyBase", int.class, "buyTotal", int.class, "sell", int[].class, "from", int[].class, "to",
-                int.class, "imageNo", int.class, "imageX", int.class, "imageY", int.class, "depth", String.class,
-                "description", generic(Consumer.class, ItemDescriptor.class), "descriptor"};
+        Object[] properties = {String.class, "name", String.class, "localizedName", int.class, "id", int.class,
+                "buyBase", int.class, "buyTotal", int.class, "sell", int[].class, "from", int[].class, "to", int.class,
+                "imageNo", int.class, "imageX", int.class, "imageY", int.class, "depth", String.class, "description",
+                generic(Consumer.class, ItemDescriptor.class), "descriptor"};
 
         // Field
         for (int i = 0; i < properties.length; i++) {
@@ -118,6 +118,14 @@ public class ItemDataBuilder {
         code.write(" * Descrive item status.");
         code.write(" */");
         code.write("void describe", paramDef(generic(Consumer.class, ItemDescriptor.class), "description"), " {");
+        code.write("}");
+
+        code.write();
+        code.write("/**");
+        code.write(" * Retrieve image location.");
+        code.write(" */");
+        code.write("public String getImage()", " {");
+        code.write("return ", string("http://ddragon.leagueoflegends.com/cdn/" + Version.Latest.name + ".1/img/sprite/item"), " + imageNo + ", string(".png"), ";");
         code.write("}");
 
         code.write();
@@ -295,7 +303,15 @@ public class ItemDataBuilder {
      * @return
      */
     private static boolean canUseInSummonersRift(int id, ItemDefinition item) {
-        return id != 2009 && (item.maps == null || item.maps.get(1) == null);
+        switch (id) {
+        case 2009: // 要らない
+        case 3106: // 何故かMadred's Razorsのmap1=falseがないので除外する
+        case 3154: // 何故かWrigglesLanternのmap1=falseがないので除外する
+            return false;
+
+        default:
+            return item.maps == null || item.maps.get(1) == null;
+        }
     }
 
     /**

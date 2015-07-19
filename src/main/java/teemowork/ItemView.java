@@ -51,9 +51,12 @@ public class ItemView extends UI {
 
         Element materials = icons.child(Materials);
 
-        for (final Item material : itemDescriptor.getBuild()) {
+        for (int id : itemDescriptor.getBuild()) {
+            System.out.println(id);
+            Item material = Item.getById(id);
+
             material.applyIcon(materials.child(Material)
-                    .attr("title", material.name)
+                    .attr("title", material)
                     .subscribe(UIAction.Click, v -> Application.show(new ItemDetail(material.name))));
         }
 
@@ -62,7 +65,7 @@ public class ItemView extends UI {
 
         // Name and Cost
         double cost = itemDescriptor.get(Status.Cost);
-        double total = item.getTotalCost(Version.Latest);
+        double total = item.getTotalCost();
 
         Element heading = descriptions.child(Heading);
         heading.child(Name).text(item.name);

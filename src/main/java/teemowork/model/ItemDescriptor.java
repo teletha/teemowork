@@ -25,7 +25,7 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
     private double[] values = new double[Status.values().length];
 
     /** The item build. */
-    private Item[] build = new Item[0];
+    private int[] build = new int[0];
 
     /** The ability list. */
     private List<Ability> abilities = new ArrayList();
@@ -74,6 +74,20 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
 
     /**
      * <p>
+     * Set status value.
+     * </p>
+     * 
+     * @param data A item status.
+     * @return Chainable API.
+     */
+    ItemDescriptor set(RiotItemData data) {
+        cost(data.buyBase);
+
+        return this;
+    }
+
+    /**
+     * <p>
      * Set status.
      * </p>
      * 
@@ -101,6 +115,17 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
      * 
      * @return Chainable API.
      */
+    ItemDescriptor healthRegenRatio(double value) {
+        return set(HregRatio, value);
+    }
+
+    /**
+     * <p>
+     * Set status.
+     * </p>
+     * 
+     * @return Chainable API.
+     */
     ItemDescriptor mana(double value) {
         return set(Mana, value);
     }
@@ -114,6 +139,17 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
      */
     ItemDescriptor manaRegen(double value) {
         return set(Mreg, value);
+    }
+
+    /**
+     * <p>
+     * Set status.
+     * </p>
+     * 
+     * @return Chainable API.
+     */
+    ItemDescriptor manaRegenRatio(double value) {
+        return set(MregRatio, value);
     }
 
     /**
@@ -286,7 +322,7 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
      * 
      * @return items.
      */
-    public Item[] getBuild() {
+    public int[] getBuild() {
         return build;
     }
 
@@ -298,7 +334,7 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
      * @param items
      * @return
      */
-    ItemDescriptor build(Item... items) {
+    ItemDescriptor build(int... items) {
         this.build = items;
 
         return this;

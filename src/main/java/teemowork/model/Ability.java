@@ -23,9 +23,12 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability AegisValor = new Ability("Valor", item -> {
-        item.aura("{1}の味方ユニットは{2}を得る。味方ミニオンは与えるダメージが15%増加する。").variable(1, Radius).variable(2, Hreg, 10)
+        item.aura("{1}の味方ユニットは{2}を得る。味方ミニオンは与えるダメージが15%増加する。")
+                .variable(1, Radius)
+                .variable(2, Hreg, 10)
 
-        .update(P314).passive("{1}の味方ミニオンは与えるダメージが15%増加する。");
+                .update(P314)
+                .passive("{1}の味方ミニオンは与えるダメージが15%増加する。");
     });
 
     /** The ability. */
@@ -54,6 +57,14 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
+    public static final Ability BlastingSmite = new Ability("破裂のスマイト", item -> {
+        item.passive("ターゲットの周囲にいるモンスターとミニオンに半分のダメージを与え、全てのユニットに{1}を与える。「スマイト」をモンスターに使用すると、{2}し{3}する。")
+                .variable(1, Stun, 1.5)
+                .variable(2, RestoreHealth, 0, 0, amplify(MissingHealthRatio, 15))
+                .variable(3, RestoreMana, 0, 0, amplify(MissingManaRatio, 15));
+    });
+
+    /** The ability. */
     public static final Ability BountyHunter = new Ability("Bounty Hunter", item -> {
         item.passive("キル、アシストもしくは伝説のモンスターを倒すと{1}を、巨大モンスターを倒すと{2}を得る。").variable(1, Gold, 40).variable(2, Gold, 10);
     });
@@ -69,9 +80,26 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability Butcher = new Ability("Butcher", item -> {
-        item.passive("中立モンスターに対するダメージが{1}上昇する。").variable(1, Percentage, 25)
+        item.passive("中立モンスターに対するダメージが{1}上昇する。")
+                .variable(1, Percentage, 25)
 
-        .update(P308).variable(1, Percentage, 30);
+                .update(P308)
+                .variable(1, Percentage, 30);
+    });
+
+    /** The ability. */
+    public static final Ability ChallengingSmite = new Ability("覚悟のスマイト", item -> {
+        item.passive("「スマイト」で敵のチャンピオンを攻撃できるようになる。対象のチャンピオンは4秒間マークされ{3}。対象への通常攻撃の命中時に3秒間かけて{1}を与え、対象から受ける{2}する。")
+                .variable(1, TrueDamage, 54, 0, amplify(Lv, 6))
+                .variable(2, DamageReductionRatio, 20)
+                .variable(3, Visionable);
+    });
+
+    /** The ability. */
+    public static final Ability ChillingSmite = new Ability("冷気のスマイト", item -> {
+        item.passive("「スマイト」で敵のチャンピオンを攻撃できるようになる。対象のチャンピオンに{1}と2秒間{2}を与え、その移動速度を自身に加算する。")
+                .variable(1, TrueDamage, 20, 0, amplify(Lv, 8))
+                .variable(2, MSSlowRatio, 20);
     });
 
     /** The ability. */
@@ -84,9 +112,12 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability ColdSteel1 = new Ability("Cold Steel", item -> {
-        item.passive("通常攻撃を受けた際に対象に{2}間{1}を与える。").variable(1, ASSlowRatio, 15).variable(2, Time, 1.5)
+        item.passive("通常攻撃を受けた際に対象に{2}間{1}を与える。")
+                .variable(1, ASSlowRatio, 15)
+                .variable(2, Time, 1.5)
 
-        .update(P310).variable(2, Time, 1);
+                .update(P310)
+                .variable(2, Time, 1);
     });
 
     /** The ability. */
@@ -115,6 +146,13 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
+    public static final Ability Devouring = new Ability("むさぼり食らう", item -> {
+        item.active("通常攻撃ごとに{1}を与える。スタックは大型モンスターかチャンピオンを{2}と1、RiftScuttlerを{2}と2、DragonかBaronを{2}と5、増加する。スタックが30貯まると進化する。")
+                .variable(1, MagicDamage, 30, 0, amplify(Stack, 1))
+                .variable(2, Takedown);
+    });
+
+    /** The ability. */
     public static final Ability EleisasBlessing = new Ability("Eleisa's Blessing", item -> {
         item.passive("このアイテムを所持した状態でレベルを3上げるとこのアイテムは消費されるが、アイテムの効果はその後もそのまま得られるようになる。");
     });
@@ -136,9 +174,12 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability EnhancedMovement5 = new Ability("Enhanced Movement", item -> {
-        item.passive("{1}する。5秒間戦闘をしなければ、{2}する。").variable(1, MS, 45).variable(2, MS, 105)
+        item.passive("{1}する。5秒間戦闘をしなければ、{2}する。")
+                .variable(1, MS, 45)
+                .variable(2, MS, 105)
 
-        .update(P403).variable(1, MS, 25);
+                .update(P403)
+                .variable(1, MS, 25);
     });
 
     /** The ability. */
@@ -217,10 +258,11 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
-    public static final Ability Incinerate = new Ability("Incinerate", item -> {
-        item.passive("通常攻撃またはDoTではないスキルによってダメージを与えた場合、3秒かけて{1}を与える。").variable(1, TrueDamage, 6, 0, amplify(Lv, 2))
-
-        .update(P314).passive("物理ダメージを与えた場合、3秒かけて{1}を与える。").variable(1, PhysicalDamage, 14, 0, amplify(Lv, 2));
+    public static final Ability Immolate = new Ability("猛火", item -> {
+        item.passive("周囲{1}の敵に毎秒{2}を与える。モンスターに対しては{3}を与える。 ")
+                .variable(1, Radius, 400)
+                .variable(2, MagicDamage, 15, 0, amplify(Lv, 0.6))
+                .variable(3, MagicDamage, 30, 0, amplify(Lv, 1.2));
     });
 
     /** The ability. */
@@ -236,6 +278,14 @@ public class Ability extends Describable<AbilityDescriptor> {
     /** The ability. */
     public static final Ability IonianCDR = new Ability(item -> {
         item.passive("{1}を得る。").variable(1, CDR, 15);
+    });
+
+    /** The ability. */
+    public static final Ability Jungler = new Ability("ジャングラー", ability -> {
+        ability.passive("モンスターに対する攻撃命中時に2秒間かけて{1}を与える。また、モンスターとの戦闘中、毎秒{2}し、{3}する（非好戦的なモンスターの場合、自動回復効果はなし）。")
+                .variable(1, MagicDamage, 45)
+                .variable(2, RestoreHealth, 10)
+                .variable(3, RestoreMana, 5);
     });
 
     /** The ability. */
@@ -292,21 +342,22 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
-    public static final Ability Maim = new Ability("Maim", item -> {
-        item.passive("ミニオンやモンスターに対して通常攻撃をした際、25%の確率で{1}を与える。").variable(1, MagicDamage, 300)
-
-        .update(P308).passive("モンスターへ通常攻撃をする度に{1}を与える。").variable(1, MagicDamage, 10)
-
-        .update(P314).passive("モンスターへ通常攻撃をする度に{1}を与え、{2}する。").variable(2, RestoreHealth, 5);
+    public static final Ability LargeMonsterKill = new Ability(ability -> {
+        ability.passive("大型モンスターを倒すたびに{1}を得る。").variable(1, Gold, 30);
     });
 
     /** The ability. */
     public static final Ability MaimForMadredsRazors = new Ability("Maim", item -> {
-        item.passive("ミニオンやモンスターに対して通常攻撃をした際、25%の確率で{1}を与える。").variable(1, MagicDamage, 500)
+        item.passive("ミニオンやモンスターに対して通常攻撃をした際、25%の確率で{1}を与える。")
+                .variable(1, MagicDamage, 500)
 
-        .update(P308).passive("モンスターへ通常攻撃をする度に{1}を与える。").variable(1, MagicDamage, 60)
+                .update(P308)
+                .passive("モンスターへ通常攻撃をする度に{1}を与える。")
+                .variable(1, MagicDamage, 60)
 
-        .update(P314).passive("モンスターへ通常攻撃をする度に{1}を与え、{2}する。").variable(2, RestoreHealth, 5);
+                .update(P314)
+                .passive("モンスターへ通常攻撃をする度に{1}を与え、{2}する。")
+                .variable(2, RestoreHealth, 5);
     });
 
     /** The ability. */
@@ -318,9 +369,12 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability ManaCharge = new Ability("Mana Charge", item -> {
-        item.passive("スキル使用時及びマナ消費時に最大Manaが6増加する(最大増加量は750)。{1}。").variable(1, ItemCD, 3)
+        item.passive("スキル使用時及びマナ消費時に最大Manaが6増加する(最大増加量は750)。{1}。")
+                .variable(1, ItemCD, 3)
 
-        .update(P309).passive("スキル使用時及びマナ消費時に最大Manaが8増加する(最大増加量は750)。{1}。").variable(1, ItemCD, 4);
+                .update(P309)
+                .passive("スキル使用時及びマナ消費時に最大Manaが8増加する(最大増加量は750)。{1}。")
+                .variable(1, ItemCD, 4);
     });
 
     /** The ability. */
@@ -330,9 +384,11 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability ManamuneManaCharge = new Ability("Mana Charge", item -> {
-        item.passive("通常攻撃時、スキル使用時及びマナ消費時に最大Manaが4増加する(最大増加量は750)。{1}。").variable(1, ItemCD, 3)
+        item.passive("通常攻撃時、スキル使用時及びマナ消費時に最大Manaが4増加する(最大増加量は750)。{1}。")
+                .variable(1, ItemCD, 3)
 
-        .update(P309).variable(1, ItemCD, 4);
+                .update(P309)
+                .variable(1, ItemCD, 4);
     });
 
     /** The ability. */
@@ -349,16 +405,22 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability ManaWarp = new Ability("Mana Warp", item -> {
-        item.aura("{1}の味方Championは{2}を得る。").variable(1, Radius, 1100).variable(2, Hreg, 6)
+        item.aura("{1}の味方Championは{2}を得る。")
+                .variable(1, Radius, 1100)
+                .variable(2, Hreg, 6)
 
-        .update(P307).variable(2, Hreg, 5);
+                .update(P307)
+                .variable(2, Hreg, 5);
     });
 
     /** The ability. */
     public static final Ability MawOfMalmortiusPassive = new Ability(item -> {
-        item.passive("{1}を得る。").variable(1, AD, 0, 0, amplify(MissingHealthPercentage, 0.4))
+        item.passive("{1}を得る。")
+                .variable(1, AD, 0, 0, amplify(MissingHealthPercentage, 0.4))
 
-        .update(P309).passive("{1}を得る。(最大35)").variable(1, AD, 0, 0, amplify(MissingHealthPercentage, 0.5));
+                .update(P309)
+                .passive("{1}を得る。(最大35)")
+                .variable(1, AD, 0, 0, amplify(MissingHealthPercentage, 0.5));
     });
 
     /** The ability. */
@@ -393,9 +455,12 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability NashorsToothPassive = new Ability(item -> {
-        item.passive("{1}を得る。").variable(1, CDR, 20)
+        item.passive("{1}を得る。")
+                .variable(1, CDR, 20)
 
-        .update(P308).passive("{1}を得る。通常攻撃に{2}を付与する。").variable(2, MagicDamage, 15, 0, ap(0.15));
+                .update(P308)
+                .passive("{1}を得る。通常攻撃に{2}を付与する。")
+                .variable(2, MagicDamage, 15, 0, ap(0.15));
     });
 
     /** The ability. */
@@ -410,24 +475,23 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability OraclesElixirActive = new Ability(item -> {
-        item.ununique().active("このアイテムを消費して{1}のStealth状態の敵が味方に見えるようになる。5分経つか、死亡すると効果が切れる。").variable(1, Radius, 750)
+        item.ununique()
+                .active("このアイテムを消費して{1}のStealth状態の敵が味方に見えるようになる。5分経つか、死亡すると効果が切れる。")
+                .variable(1, Radius, 750)
 
-        .update(P309).active("このアイテムを消費して{1}のStealth状態の敵が味方に見えるようになる。4分経つと効果が切れる。").variable(1, Radius, 600);
+                .update(P309)
+                .active("このアイテムを消費して{1}のStealth状態の敵が味方に見えるようになる。4分経つと効果が切れる。")
+                .variable(1, Radius, 600);
+    });
+
+    /** The ability. */
+    public static final Ability PhantomHit = new Ability("Phantom Hit", ability -> {
+        ability.passive("通常攻撃毎に追加で{1}を与える。また通常攻撃2回毎に、ダメージを持たない通常攻撃を追加で発生させる。").variable(1, MagicDamage, 60);
     });
 
     /** The ability. */
     public static final Ability PhantomDancerPassive = new Ability(item -> {
         item.passive("{1}を得る。").variable(1, IgnoreUnitCollision);
-    });
-
-    /** The ability. */
-    public static final Ability PortionHealth = new Ability(item -> {
-        item.ununique().active("このアイテムを消費して15秒かけて{1}する。").variable(1, RestoreHealth, 150);
-    });
-
-    /** The ability. */
-    public static final Ability PortionMana = new Ability(item -> {
-        item.ununique().active("このアイテムを消費して15秒かけて{1}する。").variable(1, RestoreMana, 100);
     });
 
     /** The ability. */
@@ -483,6 +547,15 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
+    public static final Ability RuneglaiveSpellblade = new Ability("追撃", item -> {
+        item.passive("スキル使用後、次の通常攻撃は魔法ダメージに変換され、対象の{1}の敵に追加{2}を与える({3})。またモンスターに対して攻撃した際には{4}する。")
+                .variable(1, Radius)
+                .variable(2, MagicDamage, 0, 0, amplify(BaseAD, 1), amplify(AP, 0.3))
+                .variable(3, CD, 1.5)
+                .variable(4, RestoreMana, 0, 0, amplify(MissingManaRatio, 8));
+    });
+
+    /** The ability. */
     public static final Ability RunaansHurricanePassive = new Ability(item -> {
         item.passive("通常攻撃をした際に、{1}の2体の敵ユニットに{2}を与える。これはOn-Hit Effectの効果を受ける。")
                 .variable(1, Radius, 375)
@@ -494,6 +567,14 @@ public class Ability extends Describable<AbilityDescriptor> {
         item.passive("スキルでダメージを与えた際に1.5秒間{1}を与える。対象が複数のスキルまたは秒間ダメージスキルの場合、{2} を与える。")
                 .variable(1, MSSlowRatio, 35)
                 .variable(2, MSSlowRatio, 15);
+    });
+
+    /** The ability. */
+    public static final Ability ScavengingSmite = new Ability("乱食のスマイト", item -> {
+        item.passive("スマイト」を使って敵陣側のジャングルで大型モンスターを攻撃すると、「スマイト」の{1}する。そのモンスターを倒すと、{2}を得て{3}する。この効果は2秒間にかけて減衰する。")
+                .variable(1, CDDecreaseRatio, 50)
+                .variable(2, Gold, 20)
+                .variable(3, MSRatio, 175);
     });
 
     /** The ability. */
@@ -573,25 +654,18 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
-    public static final Ability StealthWardAvtive = new Ability(item -> {
-        item.ununique()
-                .active("このアイテムを消費して、視界1100を持つオブジェクトを指定地点に設置する。オブジェクトは設置から約3秒後にステルス状態になり、3分間持続する。")
-
-                .update(P314)
-                .active("このアイテムを消費して、視界1100を持つオブジェクトを指定地点に設置する。オブジェクトは設置から約3秒後にステルス状態になり、3分間持続する。各プレイヤーは3つまでしか設置出来ず、5つしか携帯出来ない。");
-
-    });
-
-    /** The ability. */
     public static final Ability StingerPassive = new Ability(item -> {
         item.passive("{1}を得る。").variable(1, CDR, 10);
     });
 
     /** The ability. */
     public static final Ability SunfireCapePassive = new Ability(item -> {
-        item.aura("{1}の敵ユニットに毎秒{2}を与える。").variable(1, Radius, 400).variable(2, MagicDamage, 40)
+        item.aura("{1}の敵ユニットに毎秒{2}を与える。")
+                .variable(1, Radius, 400)
+                .variable(2, MagicDamage, 40)
 
-        .update(P401).variable(2, MagicDamage, 25, 0, amplify(Lv, 1));
+                .update(P401)
+                .variable(2, MagicDamage, 25, 0, amplify(Lv, 1));
     });
 
     /** The ability. */
@@ -616,11 +690,14 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability TearManaCharge = new Ability("Mana Charge", item -> {
-        item.passive("スキル使用時またはマナ消費時に最大マナが4増加する(最大増加量は750)。{1}。").variable(1, ItemCD, 3)
+        item.passive("スキル使用時またはマナ消費時に最大マナが4増加する(最大増加量は750)。{1}。")
+                .variable(1, ItemCD, 3)
 
-        .update(P309).variable(1, ItemCD, 4)
+                .update(P309)
+                .variable(1, ItemCD, 4)
 
-        .update(P403).passive("スキル使用時またはマナ消費時に最大マナが4増加し（{1}）、8秒毎に最大マナが1増加する。最大増加量は750。");
+                .update(P403)
+                .passive("スキル使用時またはマナ消費時に最大マナが4増加し（{1}）、8秒毎に最大マナが1増加する。最大増加量は750。");
     });
 
     /** The ability. */
@@ -656,16 +733,6 @@ public class Ability extends Describable<AbilityDescriptor> {
     /** The ability. */
     public static final Ability ValorsReward = new Ability("Valor's Reward", item -> {
         item.passive("レベルアップ時に8秒かけて{1}し、{2}する。").variable(1, RestoreHealth, 150).variable(2, RestoreMana, 200);
-    });
-
-    /** The ability. */
-    public static final Ability VisionWardAvtive = new Ability(item -> {
-        item.ununique()
-                .active("このアイテムを消費して、ステルスを看破できる視界1000を持つオブジェクトを指定地点に設置する。オブジェクトは設置から約3秒後にステルス状態になり、3分間持続する。")
-
-                .update(P314)
-                .active("このアイテムを消費して、ステルスを看破できる視界1000を持ち耐久値5のオブジェクトを指定地点に設置する。これは永久に持続する。各プレイヤーは1個しか設置出来ず、2個しか携帯出来ない。");
-
     });
 
     /** The ability. */

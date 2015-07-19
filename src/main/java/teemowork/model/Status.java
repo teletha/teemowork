@@ -128,6 +128,9 @@ public enum Status {
     /** Critical Chance */
     Critical("Critical Chance"), CriticalPerLv, CriticalRatio,
 
+    /** Other */
+    AttackTowerDamageRatio("タワーに対するダメージ"),
+
     // ==================================================
     // Ability Power Related
     // ==================================================
@@ -327,6 +330,8 @@ public enum Status {
 
     EnemyChampion("敵Championの数"),
 
+    Takedown("キルするかアシストする"),
+
     Value("", 0),
 
     Percentage(""),
@@ -522,6 +527,7 @@ public enum Status {
         case ExperimentRatio:
         case RestoreHealthRatio:
         case Grow:
+        case AttackTowerDamageRatio:
             return name + "が" + formatValue(computed) + "増加";
 
         case DamageReduction:

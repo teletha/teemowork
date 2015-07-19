@@ -277,7 +277,7 @@ public class Champion {
     public static final Champion Nidalee = new Champion("Nidalee", Prowl, JavelinToss, Bushwhack, PrimalSurge, AspectOfTheCougar);
 
     /** The champion name. */
-    public static final Champion NidaleeCougar = new Champion("Nidalee", true, Prowl, Takedown, Pounce, Swipe, AspectOfTheCougarInCougar);
+    public static final Champion NidaleeCougar = new Champion("Nidalee", true, Prowl, Skill.Takedown, Pounce, Swipe, AspectOfTheCougarInCougar);
 
     /** The champion name. */
     public static final Champion Nocturne = new Champion("Nocturne", UmbraBlades, Duskbringer, ShroudOfDarkness, UnspeakableHorror, Paranoia);

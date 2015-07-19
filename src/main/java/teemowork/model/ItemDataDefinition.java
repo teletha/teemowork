@@ -9,7 +9,7 @@
  */
 package teemowork.model;
 
-import static teemowork.model.ItemData.*;
+import static teemowork.model.RiotItemData.*;
 import static teemowork.model.Status.*;
 
 /**
