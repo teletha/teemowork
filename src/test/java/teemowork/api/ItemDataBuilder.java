@@ -17,13 +17,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import kiss.I;
-import teemowork.model.Describable;
-import teemowork.model.ItemDescriptor;
 import teemowork.model.Version;
 
 /**
@@ -43,11 +40,8 @@ public class ItemDataBuilder {
         ItemDefinitions en = RiotAPI.parse(ItemDefinitions.class, Version.Latest, Locale.US);
         ItemDefinitions ja = RiotAPI.parse(ItemDefinitions.class, Version.Latest, Locale.JAPAN);
 
-        ClassWriter code = new ClassWriter("teemowork.model", "RiotItemData");
-        code.write("public class ", code.className, " extends ", generic(Describable.class, ItemDescriptor.class), " {");
-
-        code.write("/** The item manager. */");
-        code.write("private static final ", generic(List.class, code.className), " items = new ", ArrayList.class, "();");
+        ClassWriter code = new ClassWriter("teemowork.api", "RiotItemData");
+        code.write("public class ", code.className, " {");
 
         for (Entry<Integer, ItemDefinition> entry : en.data.entrySet()) {
             int id = entry.getKey();
@@ -67,29 +61,14 @@ public class ItemDataBuilder {
                 List<AbilityDefinition> abilities = AbilityDefinition.analyze(localized);
 
                 code.write("public static final ", code.className, " ", item.identicalName, " = new ", code.className, param(string(item.name), string(localized.name), id, gold.base, gold.total, gold.sell, array(item.from), array(item.into), image.sprite
-                        .charAt(4), image.x, image.y, item.depth, string(localized.description), lambda("item", () -> {
-                            item.stats.describe(code);
-
-                            for (AbilityDefinition ability : abilities) {
-                                if (ability.name.isEmpty()) {
-                                    code.write("item.add", param(string(ability.explain), lambda("ability", () -> {
-
-                                    })), ";");
-                                } else {
-                                    code.write("item.add", param(string(ability.name), lambda("ability", () -> {
-
-                                    })), ";");
-                                }
-                            }
-                        })), ";");
+                        .charAt(4), image.x, image.y, item.depth), ";");
             }
         }
 
         // Properties
         Object[] properties = {String.class, "name", String.class, "localizedName", int.class, "id", int.class,
                 "buyBase", int.class, "buyTotal", int.class, "sell", int[].class, "from", int[].class, "to", int.class,
-                "imageNo", int.class, "imageX", int.class, "imageY", int.class, "depth", String.class, "description",
-                generic(Consumer.class, ItemDescriptor.class), "descriptor"};
+                "imageNo", int.class, "imageX", int.class, "imageY", int.class, "depth"};
 
         // Field
         for (int i = 0; i < properties.length; i++) {
@@ -107,52 +86,6 @@ public class ItemDataBuilder {
         for (int i = 0; i < properties.length; i++) {
             code.write("this.", properties[++i], " = ", properties[i], ";");
         }
-
-        code.write();
-        code.write("items.add(this);");
-        code.write("}");
-
-        // methods
-        code.write();
-        code.write("/**");
-        code.write(" * Descrive item status.");
-        code.write(" */");
-        code.write("void describe", paramDef(generic(Consumer.class, ItemDescriptor.class), "description"), " {");
-        code.write("}");
-
-        code.write();
-        code.write("/**");
-        code.write(" * Retrieve image location.");
-        code.write(" */");
-        code.write("public String getImage()", " {");
-        code.write("return ", string("http://ddragon.leagueoflegends.com/cdn/" + Version.Latest.name + ".1/img/sprite/item"), " + imageNo + ", string(".png"), ";");
-        code.write("}");
-
-        code.write();
-        code.write("/**");
-        code.write(" * {@inheritDoc}");
-        code.write(" */");
-        code.write("@Override");
-        code.write("public int getMaxLevel()", " {");
-        code.write("return 0;");
-        code.write("}");
-
-        code.write();
-        code.write("/**");
-        code.write(" * {@inheritDoc}");
-        code.write(" */");
-        code.write("@Override");
-        code.write("protected ItemDescriptor createDescriptor(Version version, ItemDescriptor previous)", " {");
-        // code.write("return new ItemDescriptor(this, previous, version);");
-        code.write("return null;");
-        code.write("}");
-
-        code.write();
-        code.write("/**");
-        code.write(" * List up all Items.");
-        code.write(" */");
-        code.write("public static ", generic(List.class, code.className), " getAll()", " {");
-        code.write("return items;");
         code.write("}");
 
         code.write("}");

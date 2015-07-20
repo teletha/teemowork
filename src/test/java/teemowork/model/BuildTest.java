@@ -14,6 +14,7 @@ import static teemowork.model.Status.*;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import teemowork.api.RiotItemData;
 import teemowork.model.Build.Computed;
 
 /**
