@@ -34,7 +34,7 @@ public class ChampionDataBuilder {
         ChampionDefinitions en = RiotAPI.parse(ChampionDefinitions.class, Version.Latest, Locale.US);
         ChampionDefinitions ja = RiotAPI.parse(ChampionDefinitions.class, Version.Latest, Locale.JAPAN);
 
-        ClassWriter code = new ClassWriter("teemowork.api", "ChampionData");
+        ClassWriter code = new ClassWriter("teemowork.api", "RiotChampionData");
         code.write("public enum ", code.className, " {");
         code.writeConstants(en.data.values(), champion -> {
             ChampionStatus status = champion.stats;
@@ -46,11 +46,11 @@ public class ChampionDataBuilder {
         });
 
         // Properties
-        Object[] properties = {String.class, "name", String.class, "jp", float.class, "hp", float.class, "hpPer",
-                float.class, "hreg", float.class, "hregPer", float.class, "mp", float.class, "mpPer", float.class,
-                "mreg", float.class, "mregPer", float.class, "ad", float.class, "adPer", float.class, "as", float.class,
-                "asPer", float.class, "crit", float.class, "critPer", float.class, "ar", float.class, "arPer",
-                float.class, "mr", float.class, "mrPer", float.class, "ms", float.class, "range"};
+        Object[] properties = {String.class, "name", String.class, "localizedName", float.class, "hp", float.class,
+                "hpPer", float.class, "hreg", float.class, "hregPer", float.class, "mp", float.class, "mpPer",
+                float.class, "mreg", float.class, "mregPer", float.class, "ad", float.class, "adPer", float.class, "as",
+                float.class, "asPer", float.class, "crit", float.class, "critPer", float.class, "ar", float.class,
+                "arPer", float.class, "mr", float.class, "mrPer", float.class, "ms", float.class, "range"};
 
         // Field
         for (int i = 0; i < properties.length; i++) {
@@ -105,6 +105,27 @@ public class ChampionDataBuilder {
 
         /** The status definition. */
         public ChampionStatus stats;
+
+        /** The image location. */
+        public ChampionImage image;
+    }
+
+    /**
+     * @version 2015/07/20 20:53:27
+     */
+    private static class ChampionImage {
+
+        public String full;
+
+        public String sprite;
+
+        public int h;
+
+        public int w;
+
+        public int x;
+
+        public int y;
     }
 
     /**

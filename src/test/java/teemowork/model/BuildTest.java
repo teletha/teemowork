@@ -14,6 +14,7 @@ import static teemowork.model.Status.*;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import teemowork.api.RiotChampionData;
 import teemowork.api.RiotItemData;
 import teemowork.model.Build.Computed;
 
@@ -196,7 +197,7 @@ public class BuildTest {
          * 
          */
         private EmptyChampion() {
-            super("Tester");
+            super(RiotChampionData.Aatrox);
 
             update(Version.P0000);
         }

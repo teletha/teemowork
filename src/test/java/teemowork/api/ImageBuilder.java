@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kiss.I;
+import teemowork.model.Champion;
 import teemowork.model.Item;
 import teemowork.model.Version;
 import teemowork.tool.ResourceLocator;
@@ -81,10 +82,50 @@ public class ImageBuilder {
     }
 
     /**
+     * <p>
+     * Create champion icon set.
+     * </p>
+     */
+    public void buildChampionIconSet() throws Exception {
+        List<Champion> champions = new ArrayList();
+
+        for (Field field : Champion.class.getFields()) {
+            if (field.getType() == Champion.class) {
+                try {
+                    champions.add((Champion) field.get(null));
+                } catch (Exception e) {
+                    throw I.quiet(e);
+                }
+            }
+        }
+
+        Path temporary = I.locateTemporary();
+        Files.createDirectories(temporary);
+
+        EditableImage container = new EditableImage();
+
+        for (Champion champion : champions) {
+            String file = champion.systemName + ".png";
+
+            Path local = temporary.resolve(file);
+            URL url = new URL("http://ddragon.leagueoflegends.com/cdn/" + version.name + ".1/img/champion/" + file);
+
+            I.copy(url.openStream(), Files.newOutputStream(local), true);
+
+            EditableImage image = new EditableImage(local);
+            image.trim(7).resize(70);
+
+            container.concat(image);
+        }
+        container.write(ResourceLocator.Resources.resolve("champions.jpg"));
+    }
+
+    /**
      * Build resources.
      */
     public static void main(String[] args) throws Exception {
         ImageBuilder builder = new ImageBuilder(Version.Latest);
         builder.buildItemIconSet();
+        builder.buildChampionIconSet();
     }
 }

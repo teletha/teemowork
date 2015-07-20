@@ -62,46 +62,6 @@ public class ClientImageBuilder {
 
     /**
      * <p>
-     * Helper method to find icons.
-     * </p>
-     * 
-     * @param root
-     */
-    public void copyChampionIcon() {
-        if (images != null) {
-            for (Path file : I.walk(images.resolve("champions"), "*_Square_0.png")) {
-                String name = file.getFileName().toString();
-                name = name.substring(0, name.indexOf('_'));
-
-                if (name.equals("MonkeyKing")) {
-                    name = "Wukong";
-                }
-                I.copy(file, ResourceLocator.ChampionIcon.resolve(name + ".png"));
-            }
-        }
-    }
-
-    /**
-     * <p>
-     * Create champion icon set.
-     * </p>
-     */
-    public void buildChampionIconSet() {
-        copyChampionIcon();
-
-        EditableImage container = new EditableImage();
-
-        for (Path icon : I.walk(ResourceLocator.ChampionIcon)) {
-            EditableImage image = new EditableImage(icon);
-            image.trim(7).resize(70);
-
-            container.concat(image);
-        }
-        container.write(ResourceLocator.Resources.resolve("champions.jpg"));
-    }
-
-    /**
-     * <p>
      * Helper method to find splash art.
      * </p>
      * 
@@ -159,7 +119,6 @@ public class ClientImageBuilder {
      */
     public static void main(String[] args) {
         ClientImageBuilder builder = new ClientImageBuilder();
-        builder.buildChampionIconSet();
         builder.buildMasteryIconSet();
     }
 }

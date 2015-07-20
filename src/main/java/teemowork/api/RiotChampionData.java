@@ -10,7 +10,7 @@
 package teemowork.api;
 
 
-public enum ChampionData {
+public enum RiotChampionData {
 
     /** Aatrox Definition */
     Aatrox("Aatrox", "エイトロックス", 537.8F, 85.0F, 6.59F, 0.5F, 105.6F, 45.0F, 0.0F, 0.0F, 60.376F, 3.2F, -0.04F, 3.0F, 0.0F, 0.0F, 24.384F, 3.8F, 32.1F, 0.0F, 345.0F, 150.0F),
@@ -394,7 +394,7 @@ public enum ChampionData {
     public final String name;
 
     /** Champion status. */
-    public final String jp;
+    public final String localizedName;
 
     /** Champion status. */
     public final float hp;
@@ -459,9 +459,9 @@ public enum ChampionData {
     /**
      * The champion definition.
      */
-    private ChampionData(String name, String jp, float hp, float hpPer, float hreg, float hregPer, float mp, float mpPer, float mreg, float mregPer, float ad, float adPer, float as, float asPer, float crit, float critPer, float ar, float arPer, float mr, float mrPer, float ms, float range) {
+    private RiotChampionData(String name, String localizedName, float hp, float hpPer, float hreg, float hregPer, float mp, float mpPer, float mreg, float mregPer, float ad, float adPer, float as, float asPer, float crit, float critPer, float ar, float arPer, float mr, float mrPer, float ms, float range) {
         this.name = name;
-        this.jp = jp;
+        this.localizedName = localizedName;
         this.hp = hp;
         this.hpPer = hpPer;
         this.hreg = hreg;
