@@ -33,7 +33,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Abyssal Scepter */
     public static final Item AbyssalScepter = new Item(RiotItemData.AbyssalScepter, item -> {
-        item.abilityPower(70).magicRegist(45).add(ability -> {
+        item.abilityPower(70).magicRegist(50).add(ability -> {
             ability.aura("{1}の敵ユニットに{2}を与える。").variable(1, Radius, 700).variable(2, MRReduction, 20);
         });
     });
@@ -62,7 +62,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Archangel's Staff */
     public static final Item ArchangelsStaff = new Item(RiotItemData.ArchangelsStaff, item -> {
-        item.abilityPower(60).manaRegen(10).mana(250).add(Ability.ArchangelInsight).add(Ability.ManaCharge);
+        item.abilityPower(80).manaRegenRatio(50).mana(250).add(Ability.ArchangelInsight).add(Ability.ManaChargeLevel2);
     });
 
     /** Archangel's Staff */
@@ -79,11 +79,13 @@ public class Item extends Describable<ItemDescriptor> {
     /** Athene's Unholy Grail */
     public static final Item AthenesUnholyGrail = new Item(RiotItemData.AthenesUnholyGrail, item -> {
         item.abilityPower(60)
-                .manaRegen(15)
-                .magicRegist(40)
+                .manaRegenRatio(100)
+                .magicRegist(25)
                 .cooldownReduction(20)
-                .add(Ability.AtheneRestore)
-                .add(Ability.ManaFont);
+                .add(Ability.ManaFont)
+                .add(ability -> {
+            ability.passive("{2}毎にに{1}する。").variable(1, RestoreMana, 0, 0, amplify(Mana, 0.3)).variable(2, Takedown);
+        });
     });
 
     /** Avarice Blade */
@@ -118,23 +120,9 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Banshee's Veil */
     public static final Item BansheesVeil = new Item(RiotItemData.BansheesVeil, item -> {
-        item.health(400)
-                .mana(300)
-                .magicRegist(45)
-                .add(ability -> {
-            ability.passive("敵Championからのスキルを無効化するシールドを張る。シールドはスキルを無効化すると消費され、25秒間敵Championからダメージを受けないと再生する。");
-        })
-
-                .update(P310)
-
-                .health(450)
-                .magicRegist(55)
-                .mana(0)
-                .add(ability -> {
-            ability.passive("Championからダメージを受けると10秒間{1}を得る。").variable(-1, Hreg, 45);
-        })
-
-                .update(P403);
+        item.health(450).magicRegist(55).manaRegenRatio(100).add(ability -> {
+            ability.passive("敵Championのスキルを無効化するシールドを張る。シールドはスキルを無効化すると消費され、40秒間敵Championからダメージを受けないと再生する。");
+        });
     });
 
     /** Berserker's Greaves */
@@ -180,40 +168,23 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** The Black Cleaver */
     public static final Item BlackCleaver = new Item(RiotItemData.TheBlackCleaver, item -> {
-        item.attackDamage(50)
-                .health(200)
-                .cooldownReduction(10)
-                .add(ability -> {
-            ability.ununique()
-                    .passive("敵Championに物理DMを与えた際、{1}を与える。5回（計25％）までスタックし、4秒間持続する。")
-                    .variable(1, ARReductionRatio, 5);
-        })
-                .add(ability -> {
-            ability.passive("{1}を得る。").variable(1, ARPen, 10);
-        })
-
-                .update(P403);
+        item.attackDamage(40).health(400).cooldownReduction(20).add(Ability.Rage).add(ability -> {
+            ability.ununique().passive("敵Championに物理DMを与えた際、6秒間{1}を与える（最大6回までスタック）。").variable(1, ARReductionRatio, 5);
+        });
     });
 
     /** Blade of the Ruined King */
     public static final Item BladeOftheRuinedKing = new Item(RiotItemData.BladeoftheRuinedKing, item -> {
-        item.lifeSteal(15).attackDamage(25).attackSpeed(40).add(ability -> {
-            ability.passive("通常攻撃に{1}(Minionに対しては60が上限)を付与する。")
-                    .variable(1, PhysicalDamage, 0, 0, amplify(TargetCurrentHealthRatio, 5));
+        item.lifeSteal(10).attackDamage(25).attackSpeed(40).add(ability -> {
+            ability.passive("通常攻撃に{1}を付与する（下限10ダメージ、ミニオンまたはモンスターに対しては上限60ダメージ）。")
+                    .variable(1, PhysicalDamage, 0, 0, amplify(TargetCurrentHealthRatio, 8));
         }).add(ability -> {
-            ability.active("対象の敵Champion({1})に{2}(下限100)を与え、{3}する。また{5}間{4}を与え、自身の移動速度がその分だけ増加する。{6}。")
+            ability.active("対象の敵Champion({1})に{2}(下限100ダメージ)を与え、{3}する。また{4}間{5}を与え、自身の移動速度がその分だけ増加する。{6}。")
                     .variable(1, Radius, 550)
                     .variable(2, PhysicalDamage, 0, 0, amplify(TargetMaxHealthRatio, 15))
                     .variable(3, RestoreHealth, 0, 0, amplify(DealtDamage, 1))
-                    .variable(4, MSSlowRatio, 30)
-                    .variable(5, Time, 4)
-                    .variable(6, ItemCD, 60)
-
-                    .update(P310)
-                    .variable(5, Time, 3)
-
-                    .update(P310A)
-                    .variable(1, Radius, 450)
+                    .variable(4, Time, 3)
+                    .variable(5, MSSlowRatio, 30)
                     .variable(6, ItemCD, 90);
         });
     });
@@ -225,11 +196,10 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** The Bloodthirster */
     public static final Item Bloodthirster = new Item(RiotItemData.TheBloodthirster, item -> {
-        item.lifeSteal(12).attackDamage(70).add(ability -> {
-            ability.ununique()
-                    .passive("敵ユニットを倒す度に{1}と{2}を得る。この効果は30回分までスタックし、死亡すると半分のスタックが失われる。")
-                    .variable(1, AD, 0, 0, amplify(Stack, 1))
-                    .variable(2, LS, 0, 0, amplify(Stack, 0.2));
+        item.attackDamage(80).add(ability -> {
+            ability.passive("{1}を得る。").variable(1, LS, 20);
+        }).add(ability -> {
+            ability.passive("通常攻撃で最大ライフ値を超えてライフを吸収できる。余ったライフはシールドとして自身に付与され、50～350ダメージ(チャンピオンのレベルに比例)をブロックする。");
         });
     });
 
@@ -418,6 +388,13 @@ public class Item extends Describable<ItemDescriptor> {
         });
     });
 
+    /** Item definition */
+    public static final Item EssenceReaver = new Item(RiotItemData.EssenceReaver, item -> {
+        item.cooldownReduction(10).attackDamage(80).lifeSteal(10).add(ability -> {
+            ability.passive("通常攻撃で与えたダメージの2％～8％をマナとして回復する。この効果は失ったマナ量に比例して増える。");
+        });
+    });
+
     /** Face of the Mountain */
     public static final Item FaceOfTheMountain = new Item(RiotItemData.FaceoftheMountain, item -> {
         item.health(500)
@@ -485,7 +462,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Frozen Mallet */
     public static final Item FrozenMallet = new Item(RiotItemData.FrozenMallet, item -> {
-        item.attackDamage(30).health(700).add(Ability.Icy2);
+        item.attackDamage(30).health(700).add(Ability.Icy);
     });
 
     /** Giant's Belt */
@@ -500,18 +477,12 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Guardian Angel */
     public static final Item GuardianAngel = new Item(RiotItemData.GuardianAngel, item -> {
-        item.armor(50)
-                .magicRegist(30)
-                .add(ability -> {
+        item.armor(50).magicRegist(50).add(ability -> {
             ability.passive("Healthが0になった際、4秒後に{1}と{2}を得て復活する。{3}。")
                     .variable(-1, Health, 0, 0, amplify(Health, 0.3))
                     .variable(-2, Mana, 0, 0, amplify(Mana, 0.3))
                     .variable(3, ItemCD, 300);
-        })
-
-                .update(P310)
-
-                .magicRegist(40);
+        });
     });
 
     /** Guinsoo's Rageblade */
@@ -549,7 +520,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Hextech Gunblade */
     public static final Item HextechGunblade = new Item(RiotItemData.HextechGunblade, item -> {
-        item.lifeSteal(12).attackDamage(45).abilityPower(65).add(ability -> {
+        item.lifeSteal(10).attackDamage(40).abilityPower(80).add(ability -> {
             ability.passive("{1}を得る。敵Championに通常攻撃でダメージを与えるか、単体対象かつDoTではないダメージスキルを使用するたびに、このアイテムのUNIQUE ActiveのCDが3秒解消する。")
                     .variable(1, SV, 20);
         }).add(ability -> {
@@ -582,12 +553,14 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Iceborn Gauntlet */
     public static final Item IcebornGauntlet = new Item(RiotItemData.IcebornGauntlet, item -> {
-        item.abilityPower(30).cooldownReduction(10).armor(70).mana(500).add(Ability.SpellbladeIceborn);
+        item.abilityPower(30).cooldownReduction(10).armor(60).mana(500).add(Ability.SpellbladeIceborn);
     });
 
     /** Infinity Edge */
     public static final Item InfinityEdge = new Item(RiotItemData.InfinityEdge, item -> {
-        item.attackDamage(70).critical(25).add(Ability.InfinityEdgePassive);
+        item.attackDamage(80).critical(25).add(ability -> {
+            ability.passive("{1}する。").variable(1, CriticalDamageRatio, 50);
+        });
     });
 
     /** Ionian Boots of Lucidity */
@@ -627,15 +600,17 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Last Whisper */
     public static final Item LastWhisper = new Item(RiotItemData.LastWhisper, item -> {
-        item.attackDamage(40)
-                .add(Ability.LastWhisperPassive)
-
-                .update(P314);
+        item.attackDamage(40).add(ability -> {
+            ability.passive("{1}を得る。").variable(1, ARPenRatio, 35);
+        });
     });
 
     /** Liandry's Torment */
     public static final Item LiandrysTorment = new Item(RiotItemData.LiandrysTorment, item -> {
-        item.abilityPower(50).health(300).add(Ability.EyesOfPain).add(Ability.LiandrysTormentPassive);
+        item.abilityPower(80).health(300).add(Ability.EyesOfPain).add(ability -> {
+            ability.passive("敵ユニットにスキルでダメージを与えた際に3秒間、毎秒{1}を与える(ミニオンやモンスターに対しては上限100)。対象が移動阻害効果を受けている場合、ダメージは2倍になる。")
+                    .variable(1, MagicDamage, 0, 0, amplify(TargetCurrentHealthRatio, 2));
+        });
     });
 
     /** Lich Bane */
@@ -658,6 +633,14 @@ public class Item extends Describable<ItemDescriptor> {
         item.attackDamage(10);
     });
 
+    /** Long Sword */
+    public static final Item LudensEcho = new Item(RiotItemData.LudensEcho, item -> {
+        item.abilityPower(100).movementSpeed(10).add(ability -> {
+            ability.passive("移動およびスキル使用によりチャージを溜めることができる。チャージが100溜まると、次に発動するスキルに{1}が追加される。最大4体のターゲットに命中する。")
+                    .variable(1, MagicDamage, 100, 0, ap(0.1));
+        });
+    });
+
     /** Mana Potion */
     public static final Item ManaPotion = new Item(RiotItemData.ManaPotion, item -> {
         item.add(ability -> {
@@ -667,13 +650,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Manamune */
     public static final Item Manamune = new Item(RiotItemData.Manamune, item -> {
-        item.attackDamage(20)
-                .manaRegen(7)
-                .mana(250)
-                .add(Ability.Awe)
-                .add(Ability.ManamuneManaCharge)
-
-                .update(P314);
+        item.attackDamage(25).manaRegenRatio(25).mana(250).add(Ability.Awe).add(Ability.ManaChargeManamune);
     });
 
     /** Maw of Malmortius */

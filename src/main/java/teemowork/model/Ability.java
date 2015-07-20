@@ -47,7 +47,7 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
-    public static final Ability ArchangelInsight = new Ability("Insight", ability -> {
+    public static final Ability ArchangelInsight = new Ability("洞察", ability -> {
         ability.passive("{1}を得る。").variable(1, AP, 0, 0, amplify(Mana, 0.03));
     });
 
@@ -57,17 +57,12 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
-    public static final Ability AtheneRestore = new Ability(ability -> {
-        ability.passive("キルまたはアシスト時に{1}する。").variable(1, RestoreMana, 0, 0, amplify(Mana, 0.12));
-    });
-
-    /** The ability. */
     public static final Ability Avarice = new Ability("強欲", ability -> {
         ability.passive("{1}を得る。").variable(1, GoldPer10Sec, 3);
     });
 
     /** The ability. */
-    public static final Ability Awe = new Ability("Awe", ability -> {
+    public static final Ability Awe = new Ability("畏怖", ability -> {
         ability.passive("{1}を得る。").variable(1, AD, 0, 0, amplify(Mana, 0.02));
     });
 
@@ -258,8 +253,8 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
-    public static final Ability Icy2 = new Ability("Icy", ability -> {
-        ability.passive("通常攻撃に1.5秒間{1}(Rangedは{2})を付与する。").variable(1, MSSlowRatio, 40).variable(2, MSSlowRatio, 30);
+    public static final Ability Icy = new Ability("Icy", ability -> {
+        ability.passive("通常攻撃に1.5秒間{1}(遠距離攻撃型は{2})を付与する。").variable(1, MSSlowRatio, 40).variable(2, MSSlowRatio, 30);
     });
 
     /** The ability. */
@@ -268,11 +263,6 @@ public class Ability extends Describable<AbilityDescriptor> {
                 .variable(1, Radius, 400)
                 .variable(2, MagicDamage, 15, 0, amplify(Lv, 0.6))
                 .variable(3, MagicDamage, 30, 0, amplify(Lv, 1.2));
-    });
-
-    /** The ability. */
-    public static final Ability InfinityEdgePassive = new Ability(ability -> {
-        ability.passive("{1}する。").variable(1, CriticalDamageRatio, 50);
     });
 
     /** The ability. */
@@ -299,22 +289,11 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
-    public static final Ability LastWhisperPassive = new Ability(ability -> {
-        ability.passive("{1}を得る。").variable(1, ARPenRatio, 35);
-    });
-
-    /** The ability. */
     public static final Ability Legion = new Ability("Legion", ability -> {
         ability.aura("{1}の味方ユニットは{2}得て、{3}する。")
                 .variable(1, Radius, 1100)
                 .variable(2, MR, 20)
                 .variable(3, HregRatio, 75);
-    });
-
-    /** The ability. */
-    public static final Ability LiandrysTormentPassive = new Ability(ability -> {
-        ability.passive("敵ユニットにスキルでダメージを与えた際に3秒かけて{1}を与える(ミニオンやモンスターに対しては上限300)。対象が移動阻害効果を受けている場合、ダメージは2倍になる。")
-                .variable(1, MagicDamage, 0, 0, amplify(TargetCurrentHealthRatio, 6));
     });
 
     /** The ability. */
@@ -368,27 +347,18 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
-    public static final Ability ManaCharge = new Ability("Mana Charge", ability -> {
-        ability.passive("スキル使用時及びマナ消費時に最大Manaが6増加する(最大増加量は750)。{1}。")
-                .variable(1, ItemCD, 3)
+    public static final Ability ManaChargeLevel2 = new Ability("マナチャージ", ability -> {
+        ability.passive("スキル使用時またはマナ消費時に最大マナが4増加する（{1}）。750まで貯まると進化する。").variable(1, ItemCD, 4);
+    });
 
-                .update(P309)
-                .passive("スキル使用時及びマナ消費時に最大Manaが8増加する(最大増加量は750)。{1}。")
-                .variable(1, ItemCD, 4);
+    /** The ability. */
+    public static final Ability ManaChargeManamune = new Ability("マナチャージ", ability -> {
+        ability.passive("通常攻撃時、スキル使用時及びマナ消費時に最大Manaが4増加する（{1}）。750まで貯まると進化する。").variable(1, ItemCD, 4);
     });
 
     /** The ability. */
     public static final Ability ManaFont = new Ability("Mana Font", ability -> {
         ability.passive("５秒ごとに{1}する。").variable(1, RestoreMana, 0, 0, amplify(MissingManaRatio, 2));
-    });
-
-    /** The ability. */
-    public static final Ability ManamuneManaCharge = new Ability("Mana Charge", ability -> {
-        ability.passive("通常攻撃時、スキル使用時及びマナ消費時に最大Manaが4増加する(最大増加量は750)。{1}。")
-                .variable(1, ItemCD, 3)
-
-                .update(P309)
-                .variable(1, ItemCD, 4);
     });
 
     /** The ability. */
