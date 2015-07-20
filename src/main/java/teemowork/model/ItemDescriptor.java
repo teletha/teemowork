@@ -74,20 +74,6 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
 
     /**
      * <p>
-     * Set status value.
-     * </p>
-     * 
-     * @param data A item status.
-     * @return Chainable API.
-     */
-    ItemDescriptor set(RiotItemData data) {
-        cost(data.buyBase);
-
-        return this;
-    }
-
-    /**
-     * <p>
      * Set status.
      * </p>
      * 
@@ -271,48 +257,6 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
      */
     ItemDescriptor goldGeneration(double value) {
         return set(GoldPer10Sec, value);
-    }
-
-    /**
-     * <p>
-     * Retrieve status value.
-     * </p>
-     * 
-     * @param status A target status.
-     * @return Chainable API.
-     */
-    ItemDescriptor cost(double base) {
-        set(Cost, base);
-
-        return this;
-    }
-
-    /**
-     * <p>
-     * Retrieve status value.
-     * </p>
-     * 
-     * @param status A target status.
-     * @return Chainable API.
-     */
-    ItemDescriptor price(double buy) {
-        set(Cost, buy);
-
-        return this;
-    }
-
-    /**
-     * <p>
-     * Retrieve status value.
-     * </p>
-     * 
-     * @param status A target status.
-     * @return Chainable API.
-     */
-    ItemDescriptor price(double buy, double sell) {
-        set(Cost, buy);
-
-        return this;
     }
 
     /**

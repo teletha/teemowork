@@ -33,14 +33,14 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Abyssal Scepter */
     public static final Item AbyssalScepter = new Item(RiotItemData.AbyssalScepter, item -> {
-        item.cost(980).abilityPower(70).magicRegist(45).add(ability -> {
+        item.abilityPower(70).magicRegist(45).add(ability -> {
             ability.aura("{1}の敵ユニットに{2}を与える。").variable(1, Radius, 700).variable(2, MRReduction, 20);
         });
     });
 
     /** Aegis of the Legion */
     public static final Item AegisOftheLegion = new Item(RiotItemData.AegisoftheLegion, item -> {
-
+        item.health(200).magicRegist(20).add(Ability.Legion);
     });
 
     /** Aether Wisp */
@@ -52,22 +52,17 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Amplifying Tome */
     public static final Item AmplifyingTome = new Item(RiotItemData.AmplifyingTome, item -> {
-        item.cost(435).abilityPower(20);
+        item.abilityPower(20);
     });
 
     /** Ancient Coin */
     public static final Item AncientCoin = new Item(RiotItemData.AncientCoin, item -> {
-        item.manaRegenRatio(25).add(Ability.GoldIncome).add("Favor", ability -> {
-            ability.passive("{3}であなたが殺すことなくミニオンが死んだ場合に{1}獲得し、{2}する。")
-                    .variable(1, Gold, 3)
-                    .variable(2, RestoreHealth, 5)
-                    .variable(3, Radius, 1400);
-        });
+        item.manaRegenRatio(25).add(Ability.GoldIncome).add(Ability.FavorLevel1);
     });
 
     /** Archangel's Staff */
     public static final Item ArchangelsStaff = new Item(RiotItemData.ArchangelsStaff, item -> {
-        item.cost(1140).abilityPower(60).manaRegen(10).mana(250).add(Ability.ArchangelInsight).add(Ability.ManaCharge);
+        item.abilityPower(60).manaRegen(10).mana(250).add(Ability.ArchangelInsight).add(Ability.ManaCharge);
     });
 
     /** Archangel's Staff */
@@ -83,8 +78,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Athene's Unholy Grail */
     public static final Item AthenesUnholyGrail = new Item(RiotItemData.AthenesUnholyGrail, item -> {
-        item.cost(900)
-                .abilityPower(60)
+        item.abilityPower(60)
                 .manaRegen(15)
                 .magicRegist(40)
                 .cooldownReduction(20)
@@ -94,12 +88,12 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Avarice Blade */
     public static final Item AvariceBlade = new Item(RiotItemData.AvariceBlade, item -> {
-        item.cost(400).critical(10).add(Ability.Avarice).add(Ability.Greed);
+        item.critical(10).add(Ability.Avarice).add(Ability.Greed);
     });
 
     /** B. F. Sword */
     public static final Item BFSword = new Item(RiotItemData.BFSword, item -> {
-        item.cost(1550).attackDamage(45);
+        item.attackDamage(50);
     });
 
     /** Item definition */
@@ -114,13 +108,17 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Banner of Command */
     public static final Item BannerOfCommand = new Item(RiotItemData.BannerofCommand, item -> {
-
+        item.abilityPower(60)
+                .cooldownReduction(10)
+                .health(200)
+                .magicRegist(20)
+                .add(Ability.Legion)
+                .add(Ability.Promote);
     });
 
     /** Banshee's Veil */
     public static final Item BansheesVeil = new Item(RiotItemData.BansheesVeil, item -> {
-        item.cost(600)
-                .health(400)
+        item.health(400)
                 .mana(300)
                 .magicRegist(45)
                 .add(ability -> {
@@ -129,7 +127,6 @@ public class Item extends Describable<ItemDescriptor> {
 
                 .update(P310)
 
-                .cost(875)
                 .health(450)
                 .magicRegist(55)
                 .mana(0)
@@ -137,44 +134,53 @@ public class Item extends Describable<ItemDescriptor> {
             ability.passive("Championからダメージを受けると10秒間{1}を得る。").variable(-1, Hreg, 45);
         })
 
-                .update(P403)
-                .price(950, 1925);
+                .update(P403);
     });
 
     /** Berserker's Greaves */
     public static final Item BerserkersGreaves = new Item(RiotItemData.BerserkersGreaves, item -> {
-        item.cost(150)
-                .attackSpeed(20)
-                .add(Ability.EnhancedMovement2)
+        item.attackSpeed(25).add(Ability.EnhancedMovement2);
+    });
 
-                .update(P308)
-                .cost(175);
+    /** Berserker's Greaves */
+    public static final Item BerserkersGreavesAlacrity = new Item(RiotItemData.BerserkersGreavesAlacrity, item -> {
+        item.attackSpeed(25).add(Ability.EnhancedMovement2);
+    });
+
+    /** Berserker's Greaves */
+    public static final Item BerserkersGreavesCaptain = new Item(RiotItemData.BerserkersGreavesCaptain, item -> {
+        item.attackSpeed(25).add(Ability.EnhancedMovement2);
+    });
+
+    /** Berserker's Greaves */
+    public static final Item BerserkersGreavesDistortion = new Item(RiotItemData.BerserkersGreavesDistortion, item -> {
+        item.attackSpeed(25).add(Ability.EnhancedMovement2);
+    });
+
+    /** Berserker's Greaves */
+    public static final Item BerserkersGreavesFuror = new Item(RiotItemData.BerserkersGreavesFuror, item -> {
+        item.attackSpeed(25).add(Ability.EnhancedMovement2);
+    });
+
+    /** Berserker's Greaves */
+    public static final Item BerserkersGreavesHomeguard = new Item(RiotItemData.BerserkersGreavesHomeguard, item -> {
+        item.attackSpeed(25).add(Ability.EnhancedMovement2);
     });
 
     /** Bilgewater Cutlass */
     public static final Item BilgewaterCutlass = new Item(RiotItemData.BilgewaterCutlass, item -> {
-        item.cost(200)
-                .lifeSteal(12)
-                .attackDamage(25)
-                .add(ability -> {
+        item.lifeSteal(8).attackDamage(25).add(ability -> {
             ability.active("対象の敵Champion({0})に{1}と2秒間{2}与える。{3}。")
                     .variable(0, Radius, 550)
                     .variable(1, MagicDamage, 100)
                     .variable(2, MSSlowRatio, 25)
-                    .variable(3, ItemCD, 90)
-
-                    .update(P310A)
-                    .variable(0, Radius, 450);
-        })
-
-                .update(P314)
-                .price(240, 980);
+                    .variable(3, ItemCD, 90);
+        });
     });
 
     /** The Black Cleaver */
     public static final Item BlackCleaver = new Item(RiotItemData.TheBlackCleaver, item -> {
-        item.cost(1188)
-                .attackDamage(50)
+        item.attackDamage(50)
                 .health(200)
                 .cooldownReduction(10)
                 .add(ability -> {
@@ -186,13 +192,12 @@ public class Item extends Describable<ItemDescriptor> {
             ability.passive("{1}を得る。").variable(1, ARPen, 10);
         })
 
-                .update(P403)
-                .price(1263, 2100);
+                .update(P403);
     });
 
     /** Blade of the Ruined King */
     public static final Item BladeOftheRuinedKing = new Item(RiotItemData.BladeoftheRuinedKing, item -> {
-        item.cost(1000).lifeSteal(15).attackDamage(25).attackSpeed(40).add(ability -> {
+        item.lifeSteal(15).attackDamage(25).attackSpeed(40).add(ability -> {
             ability.passive("通常攻撃に{1}(Minionに対しては60が上限)を付与する。")
                     .variable(1, PhysicalDamage, 0, 0, amplify(TargetCurrentHealthRatio, 5));
         }).add(ability -> {
@@ -215,12 +220,12 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Blasting Wand */
     public static final Item BlastingWand = new Item(RiotItemData.BlastingWand, item -> {
-        item.cost(860).abilityPower(40);
+        item.abilityPower(40);
     });
 
     /** The Bloodthirster */
     public static final Item Bloodthirster = new Item(RiotItemData.TheBloodthirster, item -> {
-        item.cost(850).lifeSteal(12).attackDamage(70).add(ability -> {
+        item.lifeSteal(12).attackDamage(70).add(ability -> {
             ability.ununique()
                     .passive("敵ユニットを倒す度に{1}と{2}を得る。この効果は30回分までスタックし、死亡すると半分のスタックが失われる。")
                     .variable(1, AD, 0, 0, amplify(Stack, 1))
@@ -230,91 +235,112 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Boots of Mobility */
     public static final Item BootsOfMobility = new Item(RiotItemData.BootsofMobility, item -> {
-        item.cost(650)
-                .add(Ability.EnhancedMovement5)
+        item.add(Ability.EnhancedMovement5);
+    });
 
-                .update(P308)
-                .cost(675)
+    /** Boots of Mobility */
+    public static final Item BootsofMobilityAlacrity = new Item(RiotItemData.BootsofMobilityAlacrity, item -> {
+        item.add(Ability.EnhancedMovement5);
+    });
 
-                .update(P403)
-                .cost(475);
+    /** Boots of Mobility */
+    public static final Item BootsofMobilityCaptain = new Item(RiotItemData.BootsofMobilityCaptain, item -> {
+        item.add(Ability.EnhancedMovement5);
+    });
+
+    /** Boots of Mobility */
+    public static final Item BootsofMobilityDistortion = new Item(RiotItemData.BootsofMobilityDistortion, item -> {
+        item.add(Ability.EnhancedMovement5);
+    });
+
+    /** Boots of Mobility */
+    public static final Item BootsofMobilityFuror = new Item(RiotItemData.BootsofMobilityFuror, item -> {
+        item.add(Ability.EnhancedMovement5);
+    });
+
+    /** Boots of Mobility */
+    public static final Item BootsofMobilityHomeguard = new Item(RiotItemData.BootsofMobilityHomeguard, item -> {
+        item.add(Ability.EnhancedMovement5);
     });
 
     /** Boots of Speed */
     public static final Item BootsOfSpeed = new Item(RiotItemData.BootsofSpeed, item -> {
-        item.cost(350)
-                .add(Ability.EnhancedMovement1)
-
-                .update(P308)
-                .cost(325);
+        item.add(Ability.EnhancedMovement1);
     });
 
     /** Boots of Swiftness */
     public static final Item BootsOfSwiftness = new Item(RiotItemData.BootsofSwiftness, item -> {
-        item.cost(650)
-                .add(Ability.EnhancedMovement3)
-                .add(Ability.SlowResist)
+        item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
+    });
 
-                .update(P308)
-                .cost(675);
+    /** Boots of Swiftness */
+    public static final Item BootsofSwiftnessAlacrity = new Item(RiotItemData.BootsofSwiftnessAlacrity, item -> {
+        item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
+    });
+
+    /** Boots of Swiftness */
+    public static final Item BootsofSwiftnessCaptain = new Item(RiotItemData.BootsofSwiftnessCaptain, item -> {
+        item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
+    });
+
+    /** Boots of Swiftness */
+    public static final Item BootsofSwiftnessDistortion = new Item(RiotItemData.BootsofSwiftnessDistortion, item -> {
+        item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
+    });
+
+    /** Boots of Swiftness */
+    public static final Item BootsofSwiftnessFuror = new Item(RiotItemData.BootsofSwiftnessFuror, item -> {
+        item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
+    });
+
+    /** Boots of Swiftness */
+    public static final Item BootsofSwiftnessHomeguard = new Item(RiotItemData.BootsofSwiftnessHomeguard, item -> {
+        item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
     });
 
     /** Brawler's Gloves */
     public static final Item BrawlersGloves = new Item(RiotItemData.BrawlersGloves, item -> {
-        item.cost(400).critical(8);
+        item.critical(8);
     });
 
     /** The Brutalizer */
     public static final Item Brutalizer = new Item(RiotItemData.TheBrutalizer, item -> {
-        item.cost(547)
-                .attackDamage(25)
-                .add(ability -> {
-            ability.passive("{1}と{2}を得る。").variable(1, CDR, 10).variable(2, ARPen, 10);
-        })
-
-                .update(P314)
-                .price(617, 936);
+        item.attackDamage(25).add(Ability.ARPen10).add(Ability.CDR10);
     });
 
     /** Catalyst the Protector */
     public static final Item CatalystTheProtector = new Item(RiotItemData.CatalysttheProtector, item -> {
-        item.cost(325)
-                .health(200)
-                .mana(300)
-                .add(Ability.ValorsReward)
-
-                .update(P403)
-                .price(400, 840);
+        item.health(200).mana(300).add(Ability.ValorsReward);
     });
 
     /** Chain Vest */
     public static final Item ChainVest = new Item(RiotItemData.ChainVest, item -> {
-        item.cost(720).armor(40);
+        item.armor(40);
     });
 
     /** Chalice of Harmony */
     public static final Item ChaliceOfHarmony = new Item(RiotItemData.ChaliceofHarmony, item -> {
-        item.cost(120).manaRegen(7).magicRegist(25).add(Ability.ManaFont);
+        item.manaRegenRatio(50).magicRegist(25).add(Ability.ManaFont);
     });
 
     /** Cloak of Agility */
     public static final Item CloakOfAgility = new Item(RiotItemData.CloakofAgility, item -> {
-        item.cost(730).critical(15);
+        item.critical(15);
     });
 
     /** Cloth Armor */
     public static final Item ClothArmor = new Item(RiotItemData.ClothArmor, item -> {
-        item.cost(300).armor(15);
+        item.armor(15);
     });
 
     /** Item definition */
     public static final Item CrystallineBracer = new Item(RiotItemData.CrystallineBracer, item -> {
-        item.health(200).healthRegen(50);
+        item.health(200).healthRegenRatio(50);
     });
 
     /** Crystalline Flask */
     public static final Item CrystallineFlask = new Item(RiotItemData.CrystallineFlask, item -> {
-        item.cost(345).add(ability -> {
+        item.add(ability -> {
             ability.active("チャージを1つ消費して12秒かけて{1}し、{2}する。")
                     .variable(1, Status.RestoreHealth, 120)
                     .variable(2, RestoreMana, 60);
@@ -325,7 +351,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Dagger */
     public static final Item Dagger = new Item(RiotItemData.Dagger, item -> {
-        item.cost(400).attackSpeed(12);
+        item.attackSpeed(15);
     });
 
     /** Doran's Blade */
@@ -392,61 +418,89 @@ public class Item extends Describable<ItemDescriptor> {
         });
     });
 
+    /** Face of the Mountain */
+    public static final Item FaceOfTheMountain = new Item(RiotItemData.FaceoftheMountain, item -> {
+        item.health(500)
+                .healthRegenRatio(100)
+                .cooldownReduction(10)
+                .add(Ability.GoldIncome)
+                .add(Ability.SpoilsofWarLevel3)
+                .add("Deadly Phalanx", ability -> {
+            ability.active("あなたは{1}を失う。対象の味方は4秒間{2}を得る。また、4秒後にその味方の周囲の敵に{3}を与える。{4}")
+                    .variable(1, CurrentHealthRatio, 20)
+                    .variable(2, Shield, 0, 0, amplify(Health, 0.1))
+                    .variable(3, MagicDamage, 0, 0, amplify(Health, 0.1))
+                    .variable(4, ItemCD, 60)
+
+                    .update(P403)
+                    .active("対象の味方は4秒間{2}を得る。また、4秒後にその味方の周囲の敵に{3}を与える。{4}")
+                    .variable(1, HealthRatio, 10)
+                    .variable(2, Shield, 0, 0, amplify(Health, 0.1))
+                    .variable(3, MagicDamage, 0, 0, amplify(TargetAD, 1), amplify(TargetAP, 0.3))
+                    .variable(4, ItemCD, 60);
+        })
+
+                .update(P403)
+
+        ;
+    });
+
     /** Faerie Charm */
     public static final Item FaerieCharm = new Item(RiotItemData.FaerieCharm, item -> {
-        item.cost(180).manaRegen(3);
+        item.manaRegenRatio(25);
     });
 
     /** Fiendish Codex */
     public static final Item FiendishCodex = new Item(RiotItemData.FiendishCodex, item -> {
-        item.cost(385).abilityPower(30).add(ability -> {
-            ability.passive("{1}を得る。").variable(1, CDR, 10);
-        });
+        item.abilityPower(30).add(Ability.CDR10);
     });
 
     /** Forbidden Idol */
     public static final Item ForbiddenIdol = new Item(RiotItemData.ForbiddenIdol, item -> {
-        item.manaRegen(50).add(ability -> {
-            ability.passive("{1}を得る。").variable(1, CDR, 10);
-        });
+        item.manaRegenRatio(50).add(Ability.CDR10);
+    });
+
+    /** Frostfang */
+    public static final Item Frostfang = new Item(RiotItemData.Frostfang, item -> {
+        item.abilityPower(10).manaRegenRatio(50).goldGeneration(2).add(Ability.GoldIncome).add(Ability.TributeLevel2);
+    });
+
+    /** Frost Queen's Claim */
+    public static final Item FrostQueensClaim = new Item(RiotItemData.FrostQueensClaim, item -> {
+        item.abilityPower(50)
+                .manaRegen(10)
+                .goldGeneration(2)
+                .cooldownReduction(10)
+                .add(Ability.GoldIncome)
+                .add(Ability.TributeLevel2)
+                .add(Ability.ArcticEmbrace);
     });
 
     /** Frozen Heart */
     public static final Item FrozenHeart = new Item(RiotItemData.FrozenHeart, item -> {
-        item.cost(550).cooldownReduction(20).armor(95).mana(400).add(Ability.FrozenHeartPassive);
+        item.cooldownReduction(20).armor(100).mana(400).add(ability -> {
+            ability.aura("{1}の敵ユニットに{2}を与える。").variable(1, Radius, 700).variable(2, ASSlowRatio, 15);
+        });
     });
 
     /** Frozen Mallet */
     public static final Item FrozenMallet = new Item(RiotItemData.FrozenMallet, item -> {
-        item.cost(835)
-                .attackDamage(30)
-                .health(700)
-                .add(Ability.Icy2)
-
-                .update(P310A)
-
-                .cost(950)
-
-                .update(P403)
-                .price(1025, 2310);
+        item.attackDamage(30).health(700).add(Ability.Icy2);
     });
 
     /** Giant's Belt */
     public static final Item GiantsBelt = new Item(RiotItemData.GiantsBelt, item -> {
-        item.cost(1000).health(380);
+        item.health(380);
     });
 
     /** Glacial Shroud */
     public static final Item GlacialShroud = new Item(RiotItemData.GlacialShroud, item -> {
-        item.cost(230).armor(45).mana(300).add(ability -> {
-            ability.passive("{1}を得る。").variable(1, CDR, 10);
-        });
+        item.armor(20).mana(250).add(Ability.CDR10);
     });
 
     /** Guardian Angel */
     public static final Item GuardianAngel = new Item(RiotItemData.GuardianAngel, item -> {
-        item.cost(1480)
-                .armor(50)
+        item.armor(50)
                 .magicRegist(30)
                 .add(ability -> {
             ability.passive("Healthが0になった際、4秒後に{1}と{2}を得て復活する。{3}。")
@@ -457,13 +511,12 @@ public class Item extends Describable<ItemDescriptor> {
 
                 .update(P310)
 
-                .cost(1310)
                 .magicRegist(40);
     });
 
     /** Guinsoo's Rageblade */
     public static final Item GuinsoosRageblade = new Item(RiotItemData.GuinsoosRageblade, item -> {
-        item.cost(865).attackDamage(30).abilityPower(40).add(ability -> {
+        item.attackDamage(30).abilityPower(40).add(ability -> {
             ability.ununique()
                     .passive("通常攻撃またはスキル使用時にスタックが1増加する。1スタックにつき{1}し{2}を得る。スタックは8秒持続し、最大8スタックまで増加する。")
                     .variable(-1, ASRatio, 4)
@@ -479,36 +532,24 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Haunting Guise */
     public static final Item HauntingGuise = new Item(RiotItemData.HauntingGuise, item -> {
-        item.cost(575)
-                .abilityPower(25)
-                .health(200)
-                .add(Ability.EyesOfPain)
-
-                .update(P403)
-                .price(650, 1040);
+        item.abilityPower(25).health(200).add(Ability.EyesOfPain);
     });
 
     /** Health Potion */
     public static final Item HealthPotion = new Item(RiotItemData.HealthPotion, item -> {
-        item.cost(35).add(ability -> {
+        item.add(ability -> {
             ability.ununique().active("このアイテムを消費して15秒かけて{1}する。").variable(1, RestoreHealth, 150);
         });
     });
 
     /** Hexdrinker */
     public static final Item Hexdrinker = new Item(RiotItemData.Hexdrinker, item -> {
-        item.cost(550)
-                .attackDamage(25)
-                .magicRegist(25)
-                .add(Ability.Lifeline1)
-
-                .update(P314)
-                .price(590, 945);
+        item.attackDamage(25).magicRegist(30).add(Ability.LifelineLevel1);
     });
 
     /** Hextech Gunblade */
     public static final Item HextechGunblade = new Item(RiotItemData.HextechGunblade, item -> {
-        item.cost(800).lifeSteal(12).attackDamage(45).abilityPower(65).add(ability -> {
+        item.lifeSteal(12).attackDamage(45).abilityPower(65).add(ability -> {
             ability.passive("{1}を得る。敵Championに通常攻撃でダメージを与えるか、単体対象かつDoTではないダメージスキルを使用するたびに、このアイテムのUNIQUE ActiveのCDが3秒解消する。")
                     .variable(1, SV, 20);
         }).add(ability -> {
@@ -522,7 +563,9 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Hextech Revolver */
     public static final Item HextechRevolver = new Item(RiotItemData.HextechRevolver, item -> {
-        item.cost(330).abilityPower(40).add(Ability.HextechRevolverPassive);
+        item.abilityPower(40).add(ability -> {
+            ability.passive("{1}を得る。").variable(1, SV, 12);
+        });
     });
 
     /** Hunter's Machete */
@@ -539,115 +582,106 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Iceborn Gauntlet */
     public static final Item IcebornGauntlet = new Item(RiotItemData.IcebornGauntlet, item -> {
-        item.cost(700).abilityPower(30).cooldownReduction(10).armor(70).mana(500).add(Ability.Spellblade);
+        item.abilityPower(30).cooldownReduction(10).armor(70).mana(500).add(Ability.SpellbladeIceborn);
     });
 
     /** Infinity Edge */
     public static final Item InfinityEdge = new Item(RiotItemData.InfinityEdge, item -> {
-        item.cost(645).attackDamage(70).critical(25).add(Ability.InfinityEdgePassive);
+        item.attackDamage(70).critical(25).add(Ability.InfinityEdgePassive);
     });
 
     /** Ionian Boots of Lucidity */
     public static final Item IonianBootsOfLucidity = new Item(RiotItemData.IonianBootsofLucidity, item -> {
-        item.cost(700)
-                .add(Ability.IonianCDR)
-                .add(Ability.EnhancedMovement2)
+        item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
+    });
 
-                .update(P306)
-                .cost(650)
+    /** Ionian Boots of Lucidity */
+    public static final Item IonianBootsofLucidityAlacrity = new Item(RiotItemData.IonianBootsofLucidityAlacrity, item -> {
+        item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
+    });
 
-                .update(P308)
-                .cost(675);
+    /** Ionian Boots of Lucidity */
+    public static final Item IonianBootsofLucidityCaptain = new Item(RiotItemData.IonianBootsofLucidityCaptain, item -> {
+        item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
+    });
+
+    /** Ionian Boots of Lucidity */
+    public static final Item IonianBootsofLucidityDistortion = new Item(RiotItemData.IonianBootsofLucidityDistortion, item -> {
+        item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
+    });
+
+    /** Ionian Boots of Lucidity */
+    public static final Item IonianBootsofLucidityFuror = new Item(RiotItemData.IonianBootsofLucidityFuror, item -> {
+        item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
+    });
+
+    /** Ionian Boots of Lucidity */
+    public static final Item IonianBootsofLucidityHomeguard = new Item(RiotItemData.IonianBootsofLucidityHomeguard, item -> {
+        item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
     });
 
     /** Kindlegem */
     public static final Item Kindlegem = new Item(RiotItemData.Kindlegem, item -> {
-        item.cost(375)
-                .health(200)
-                .add(Ability.KindlegemPassive)
-
-                .update(P403)
-                .price(450, 595);
+        item.health(200).add(Ability.CDR10);
     });
 
     /** Last Whisper */
     public static final Item LastWhisper = new Item(RiotItemData.LastWhisper, item -> {
-        item.cost(1025)
-                .attackDamage(40)
+        item.attackDamage(40)
                 .add(Ability.LastWhisperPassive)
 
-                .update(P314)
-                .price(1065, 1610);
+                .update(P314);
     });
 
     /** Liandry's Torment */
     public static final Item LiandrysTorment = new Item(RiotItemData.LiandrysTorment, item -> {
-        item.cost(980).abilityPower(50).health(300).add(Ability.EyesOfPain).add(Ability.LiandrysTormentPassive);
+        item.abilityPower(50).health(300).add(Ability.EyesOfPain).add(Ability.LiandrysTormentPassive);
     });
 
     /** Lich Bane */
     public static final Item LichBane = new Item(RiotItemData.LichBane, item -> {
-        item.cost(940).abilityPower(80).mana(250).movementSpeed(5).add(Ability.LichSpellblade);
+        item.abilityPower(80).mana(250).movementSpeed(5).add(Ability.SpellbladeLich);
     });
 
     /** Locket of the Iron Solari */
     public static final Item LocketOftheIronSolari = new Item(RiotItemData.LocketoftheIronSolari, item -> {
-        item.cost(520)
-                .health(300)
-                .cooldownReduction(10)
-                .armor(35)
-                .healthRegen(5)
-                .add(Ability.SolariActive)
-
-                .update(P310)
-
-                .cost(600)
-                .health(300)
-                .armor(20)
-                .cooldownReduction(10)
-                .healthRegen(0)
-                .add(Ability.Legion);
+        item.cooldownReduction(10).health(400).magicRegist(20).add(Ability.Legion).add(ability -> {
+            ability.active("{1}の味方に５秒間{2}を付与する。{3}。")
+                    .variable(1, Radius, 600)
+                    .variable(2, Shield, 50, 0, amplify(Lv, 10))
+                    .variable(3, ItemCD, 60);
+        });
     });
 
     /** Long Sword */
     public static final Item LongSword = new Item(RiotItemData.LongSword, item -> {
-        item.cost(400)
-                .attackDamage(10)
-
-                .update(P314)
-                .cost(360)
-
-                .update(P513)
-                .set(RiotItemData.LongSword);
+        item.attackDamage(10);
     });
 
     /** Mana Potion */
     public static final Item ManaPotion = new Item(RiotItemData.ManaPotion, item -> {
-        item.cost(35).add(ability -> {
+        item.add(ability -> {
             ability.ununique().active("このアイテムを消費して15秒かけて{1}する。").variable(1, RestoreMana, 100);
         });
     });
 
     /** Manamune */
     public static final Item Manamune = new Item(RiotItemData.Manamune, item -> {
-        item.cost(1000)
-                .attackDamage(20)
+        item.attackDamage(20)
                 .manaRegen(7)
                 .mana(250)
                 .add(Ability.Awe)
                 .add(Ability.ManamuneManaCharge)
 
-                .update(P314)
-                .price(1040, 1470);
+                .update(P314);
     });
 
     /** Maw of Malmortius */
     public static final Item MawOfMalmortius = new Item(RiotItemData.MawofMalmortius, item -> {
-        item.cost(975)
-                .attackDamage(55)
+        item.attackDamage(55)
                 .magicRegist(36)
                 .add(Ability.MawOfMalmortiusPassive)
-                .add(Ability.Lifeline2)
+                .add(Ability.LifelineLevel2)
 
                 .update(P309)
                 .attackDamage(60)
@@ -656,23 +690,42 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Mejai's Soulstealer */
     public static final Item MejaisSoulstealer = new Item(RiotItemData.MejaisSoulstealer, item -> {
-        item.cost(800).abilityPower(20).add(Ability.MejaisSoulstealerPassive);
+        item.abilityPower(20).add(Ability.MejaisSoulstealerPassive);
     });
 
     /** Mercurial Scimitar */
     public static final Item MercurialScimitar = new Item(RiotItemData.MercurialScimitar, item -> {
-        item.cost(600).attackDamage(60).magicRegist(45).add(Ability.Quicksilver2);
+        item.attackDamage(60).magicRegist(45).add(Ability.Quicksilver2);
     });
 
     /** Mercury's Treads */
     public static final Item MercurysTreads = new Item(RiotItemData.MercurysTreads, item -> {
-        item.cost(450)
-                .magicRegist(25)
-                .add(Ability.EnhancedMovement2)
-                .add(Ability.TenacityPassive)
+        item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
+    });
 
-                .update(P308)
-                .cost(475);
+    /** Mercury's Treads */
+    public static final Item MercurysTreadsAlacrity = new Item(RiotItemData.MercurysTreadsAlacrity, item -> {
+        item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
+    });
+
+    /** Mercury's Treads */
+    public static final Item MercurysTreadsCaptain = new Item(RiotItemData.MercurysTreadsCaptain, item -> {
+        item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
+    });
+
+    /** Mercury's Treads */
+    public static final Item MercurysTreadsDistortion = new Item(RiotItemData.MercurysTreadsDistortion, item -> {
+        item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
+    });
+
+    /** Mercury's Treads */
+    public static final Item MercurysTreadsFuror = new Item(RiotItemData.MercurysTreadsFuror, item -> {
+        item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
+    });
+
+    /** Mercury's Treads */
+    public static final Item MercurysTreadsHomeguard = new Item(RiotItemData.MercurysTreadsHomeguard, item -> {
+        item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
     });
 
     /** Mikael's Crucible */
@@ -686,45 +739,73 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Muramana */
     public static final Item Muramana = new Item(RiotItemData.Muramana, item -> {
-        item.cost(0).attackDamage(20).manaRegen(7).mana(1000).add(Ability.Awe).add(Ability.MuramanaToggle);
+        item.attackDamage(20).manaRegen(7).mana(1000).add(Ability.Awe).add(Ability.MuramanaToggle);
     });
 
     /** Nashor's Tooth */
     public static final Item NashorsTooth = new Item(RiotItemData.NashorsTooth, item -> {
-        item.cost(430)
-                .abilityPower(65)
+        item.abilityPower(65)
                 .attackSpeed(50)
                 .add(Ability.NashorsToothPassive)
 
                 .update(P308)
-                .cost(920)
+
                 .abilityPower(60);
     });
 
     /** Needlessly Large Rod */
     public static final Item NeedlesslyLargeRod = new Item(RiotItemData.NeedlesslyLargeRod, item -> {
-        item.cost(1600).abilityPower(80);
+        item.abilityPower(60);
     });
 
     /** Negatron Cloak */
     public static final Item NegatronCloak = new Item(RiotItemData.NegatronCloak, item -> {
-        item.cost(720).magicRegist(40);
+        item.magicRegist(45);
     });
 
     /** Ninja Tabi */
     public static final Item NinjaTabi = new Item(RiotItemData.NinjaTabi, item -> {
-        item.cost(350)
-                .armor(25)
-                .add(Ability.NinjaTabiPassive)
-                .add(Ability.EnhancedMovement2)
+        item.armor(25).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
+    });
 
-                .update(P308)
-                .cost(375);
+    /** Ninja Tabi */
+    public static final Item NinjaTabiAlacrity = new Item(RiotItemData.NinjaTabiAlacrity, item -> {
+        item.armor(25).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
+    });
+
+    /** Ninja Tabi */
+    public static final Item NinjaTabiCaptain = new Item(RiotItemData.NinjaTabiCaptain, item -> {
+        item.armor(25).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
+    });
+
+    /** Ninja Tabi */
+    public static final Item NinjaTabiDistortion = new Item(RiotItemData.NinjaTabiDistortion, item -> {
+        item.armor(25).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
+    });
+
+    /** Ninja Tabi */
+    public static final Item NinjaTabiFuror = new Item(RiotItemData.NinjaTabiFuror, item -> {
+        item.armor(25).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
+    });
+
+    /** Ninja Tabi */
+    public static final Item NinjaTabiHomeguard = new Item(RiotItemData.NinjaTabiHomeguard, item -> {
+        item.armor(25).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
+    });
+
+    /** Nomad's Medallion */
+    public static final Item NomadsMedallion = new Item(RiotItemData.NomadsMedallion, item -> {
+        item.healthRegenRatio(25)
+                .manaRegenRatio(50)
+                .goldGeneration(2)
+                .set(MS, 10)
+                .add(Ability.GoldIncome)
+                .add(Ability.FavorLevel2);
     });
 
     /** Null-Magic Mantle */
     public static final Item NullMagicMantle = new Item(RiotItemData.NullMagicMantle, item -> {
-        item.cost(400).magicRegist(20);
+        item.magicRegist(25);
     });
 
     /** Ohmwrecker */
@@ -734,34 +815,17 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Phage */
     public static final Item Phage = new Item(RiotItemData.Phage, item -> {
-        item.cost(590)
-                .attackDamage(20)
-                .health(200)
-                .add(Ability.Icy1)
-
-                .update(P310A)
-                .cost(375)
-                .clear()
-                .add(Ability.Rage)
-
-                .update(P312)
-                .cost(475)
-
-                .update(P314)
-                .price(490, 928)
-
-                .update(P403)
-                .price(565);
+        item.attackDamage(20).health(200).add(Ability.Rage);
     });
 
     /** Phantom Dancer */
     public static final Item PhantomDancer = new Item(RiotItemData.PhantomDancer, item -> {
-        item.cost(495).attackSpeed(50).movementSpeed(5).critical(30).add(Ability.PhantomDancerPassive);
+        item.attackSpeed(50).movementSpeed(5).critical(30).add(Ability.PhantomDancerPassive);
     });
 
     /** Pickaxe */
     public static final Item Pickaxe = new Item(RiotItemData.Pickaxe, item -> {
-        item.cost(875).attackDamage(25);
+        item.attackDamage(25);
     });
 
     /** PoachersKnife */
@@ -799,7 +863,7 @@ public class Item extends Describable<ItemDescriptor> {
                 .abilityPower(50)
                 .mana(200)
                 .cooldownReduction(10)
-                .add(Ability.RuneglaiveSpellblade);
+                .add(Ability.SpellbladeRuneglaive);
     });
 
     /** PoachersKnife */
@@ -839,61 +903,57 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Quicksilver Sash */
     public static final Item QuicksilverSash = new Item(RiotItemData.QuicksilverSash, item -> {
-        item.cost(830).magicRegist(45).add(Ability.Quicksilver1);
+        item.magicRegist(30).add(ability -> {
+            ability.active("自身のDebuffをすべて除去する。{1}。").variable(1, ItemCD, 90);
+        });
     });
 
     /** Rabadon's Deathcap */
     public static final Item RabadonsDeathcap = new Item(RiotItemData.RabadonsDeathcap, item -> {
-        item.cost(840).abilityPower(120).add(Ability.RabadonsDeathcapPassive);
+        item.abilityPower(120).add(Ability.RabadonsDeathcapPassive);
     });
 
     /** Randuin's Omen */
     public static final Item RanduinsOmen = new Item(RiotItemData.RanduinsOmen, item -> {
-        item.cost(1000).health(500).armor(70).add(Ability.ColdSteel2).add(Ability.RanduinsOmenAvtive);
+        item.health(500).armor(70).add(Ability.ColdSteel).add(ability -> {
+            ability.active("{1}の敵ユニットに{4}間{2}を与える。この効果時間は、自身のArmor+Magic Resistの値100につき1秒増加する。{3}。")
+                    .variable(1, Radius, 500)
+                    .variable(2, MSSlowRatio, 35)
+                    .variable(3, ItemCD, 60)
+                    .variable(4, Time, 2, 0, amplify(AR, 0.005), amplify(MR, 0.005));
+        });
     });
 
     /** Raptor Cloak */
     public static final Item RaptorCloak = new Item(RiotItemData.RaptorCloak, item -> {
-        item.armor(40).healthRegen(100).add("ポイントランナー", ability -> {
-            ability.passive("タワー（破壊されたものを含む）の周囲{1}では,2秒間{2}する。").variable(1, Radius, 1300).variable(2, MSRatio, 30);
-        });
+        item.armor(40).healthRegenRatio(100).add(Ability.PointRunner);
     });
 
     /** Ravenous Hydra */
     public static final Item RavenousHydra = new Item(RiotItemData.RavenousHydraMeleeOnly, item -> {
-        item.cost(200)
-                .lifeSteal(12)
+        item.lifeSteal(12)
                 .attackDamage(75)
                 .healthRegen(15)
                 .add(Ability.RavenousHydraPassive)
                 .add(Ability.Cleave)
                 .add(Ability.Crescent)
 
-                .update(P306)
-                .cost(600);
+                .update(P306);
     });
 
     /** Recurve Bow */
     public static final Item RecurveBow = new Item(RiotItemData.RecurveBow, item -> {
-        item.cost(950)
-                .attackSpeed(30)
-
-                .update(P308)
-                .cost(900);
+        item.attackSpeed(30).add(Ability.BowDamage);
     });
 
     /** Rejuvenation Bead */
     public static final Item RejuvenationBead = new Item(RiotItemData.RejuvenationBead, item -> {
-        item.cost(180).healthRegen(5);
+        item.healthRegenRatio(50);
     });
 
     /** Relic Shield */
     public static final Item RelicShield = new Item(RiotItemData.RelicShield, item -> {
-        item.health(75).add(Ability.GoldIncome).add("戦場の略奪", ability -> {
-            ability.passive("60秒毎に最大2つまでスタックが貯まる。スタックがある状態でミニオンを倒すとあなたと最寄りの味方Championは共にゴールドを獲得し、{1}する。また、体力が{2}以下のミニオンに近接攻撃を行うと、そのミニオンを倒すことが出来る。近くに味方がいない場合、これらの効果は発動しない。")
-                    .variable(1, RestoreHealth, 40)
-                    .variable(2, Value, 200, 0, amplify(AD, 1));
-        });
+        item.health(75).add(Ability.GoldIncome).add(Ability.SpoilsofWarLevel1);
     });
 
     /** RangersTrailblazer */
@@ -931,7 +991,7 @@ public class Item extends Describable<ItemDescriptor> {
                 .abilityPower(50)
                 .mana(200)
                 .cooldownReduction(10)
-                .add(Ability.RuneglaiveSpellblade);
+                .add(Ability.SpellbladeRuneglaive);
     });
 
     /** RangersTrailblazer */
@@ -957,7 +1017,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Rod of Ages */
     public static final Item RodOfAges = new Item(RiotItemData.RodofAges, item -> {
-        item.cost(740).abilityPower(60).health(450).mana(450).add(Ability.ValorsReward).add(ability -> {
+        item.abilityPower(60).health(450).mana(450).add(Ability.ValorsReward).add(ability -> {
             ability.ununique()
                     .passive("1分毎に{1}と{2}と{3}を得る。この効果は10回まで発生する。")
                     .variable(1, Health, 0, 0, amplify(Stack, 20))
@@ -968,58 +1028,46 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Ruby Crystal */
     public static final Item RubyCrystal = new Item(RiotItemData.RubyCrystal, item -> {
-        item.cost(475)
-                .health(180)
-
-                .update(P403)
-                .price(400, 280)
-                .health(150);
+        item.health(150);
     });
 
     /** Ruby Sightstone */
     public static final Item RubySightstone = new Item(RiotItemData.RubySightstone, item -> {
-        item.cost(125)
-                .health(360)
-                .add(Ability.WardRefresh2)
-                .add(Ability.GhostWard2)
-
-                .update(P314)
-                .remove(Ability.GhostWard2)
-                .add(Ability.GhostWard1)
-
-                .update(P403)
-                .cost(325)
-                .health(400);
+        item.health(400).add(Ability.WardRefresh2).add(Ability.GhostWard);
     });
 
     /** Runaan's Hurricane */
     public static final Item RunaansHurricane = new Item(RiotItemData.RunaansHurricaneRangedOnly, item -> {
-        item.cost(700).attackSpeed(70).add(Ability.RunaansHurricanePassive);
+        item.attackSpeed(70).add(Ability.RunaansHurricanePassive);
     });
 
     /** Rylai's Crystal Scepter */
     public static final Item RylaisCrystalScepter = new Item(RiotItemData.RylaisCrystalScepter, item -> {
-        item.cost(605).abilityPower(80).health(500).add(Ability.RylaisCrystalScepterPassive);
+        item.abilityPower(80).health(500).add(Ability.RylaisCrystalScepterPassive);
     });
 
     /** Sapphire Crystal */
     public static final Item SapphireCrystal = new Item(RiotItemData.SapphireCrystal, item -> {
-        item.cost(400).mana(200);
+        item.mana(200);
     });
 
     /** Seraph's Embrace */
     public static final Item SeraphsEmbrace = new Item(RiotItemData.SeraphsEmbrace, item -> {
-        item.cost(0).abilityPower(60).manaRegen(10).mana(1000).add(Ability.Insight).add(Ability.ManaShield);
+        item.abilityPower(60).manaRegen(10).mana(1000).add(Ability.Insight).add(Ability.ManaShield);
     });
 
     /** Seeker's Armguard */
     public static final Item SeekersArmguard = new Item(RiotItemData.SeekersArmguard, item -> {
-        item.cost(125).abilityPower(20).armor(30).add(Ability.SeekersArmguardPassive);
+        item.abilityPower(25).armor(30).add(ability -> {
+            ability.passive("敵ユニットを倒す度に{1}と{2}を得る。この効果は30回分までスタックする。")
+                    .variable(1, AP, 0, 0, amplify(Stack, 0.5))
+                    .variable(2, AR, 0, 0, amplify(Stack, 0.5));
+        });
     });
 
     /** Sheen */
     public static final Item Sheen = new Item(RiotItemData.Sheen, item -> {
-        item.cost(365).abilityPower(25).mana(200).add(Ability.SheenSpellblade);
+        item.abilityPower(25).mana(200).add(Ability.SpellbladeSheen);
     });
 
     /** SkirmishersSabre */
@@ -1057,7 +1105,7 @@ public class Item extends Describable<ItemDescriptor> {
                 .abilityPower(50)
                 .mana(200)
                 .cooldownReduction(10)
-                .add(Ability.RuneglaiveSpellblade);
+                .add(Ability.SpellbladeRuneglaive);
     });
 
     /** SkirmishersSabre */
@@ -1116,7 +1164,7 @@ public class Item extends Describable<ItemDescriptor> {
                 .abilityPower(50)
                 .mana(200)
                 .cooldownReduction(10)
-                .add(Ability.RuneglaiveSpellblade);
+                .add(Ability.SpellbladeRuneglaive);
     });
 
     /** StalkersBlade */
@@ -1142,7 +1190,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Sight Ward */
     public static final Item StealthWard = new Item(RiotItemData.StealthWard, item -> {
-        item.cost(75).add(ability -> {
+        item.add(ability -> {
             ability.ununique()
                     .active("このアイテムを消費して、視界{1}を持つオブジェクトを指定地点に設置する。オブジェクトは設置から約3秒後にステルス状態になり、3分間持続する。各プレイヤーは3つまでしか設置出来ず、3つしか携帯出来ない。{2}")
                     .variable(1, Radius, 1100)
@@ -1152,63 +1200,65 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Sightstone */
     public static final Item Sightstone = new Item(RiotItemData.Sightstone, item -> {
-        item.cost(475)
-                .health(180)
-                .add(Ability.WardRefresh1)
-                .add(Ability.GhostWard1)
-
-                .update(P403)
-                .health(150)
-                .cost(400);
+        item.health(150).add(Ability.WardRefresh1).add(Ability.GhostWard);
     });
 
     /** Sorcerer's Shoes */
     public static final Item SorcerersShoes = new Item(RiotItemData.SorcerersShoes, item -> {
-        item.cost(750)
-                .set(MRPen, 15)
-                .add(Ability.EnhancedMovement2)
+        item.set(MRPen, 15).add(Ability.EnhancedMovement2);
+    });
 
-                .update(P308)
-                .cost(775);
+    /** Sorcerer's Shoes */
+    public static final Item SorcerersShoesAlacrity = new Item(RiotItemData.SorcerersShoesAlacrity, item -> {
+        item.set(MRPen, 15).add(Ability.EnhancedMovement2);
+    });
+
+    /** Sorcerer's Shoes */
+    public static final Item SorcerersShoesCaptain = new Item(RiotItemData.SorcerersShoesCaptain, item -> {
+        item.set(MRPen, 15).add(Ability.EnhancedMovement2);
+    });
+
+    /** Sorcerer's Shoes */
+    public static final Item SorcerersShoesDistortion = new Item(RiotItemData.SorcerersShoesDistortion, item -> {
+        item.set(MRPen, 15).add(Ability.EnhancedMovement2);
+    });
+
+    /** Sorcerer's Shoes */
+    public static final Item SorcerersShoesFuror = new Item(RiotItemData.SorcerersShoesFuror, item -> {
+        item.set(MRPen, 15).add(Ability.EnhancedMovement2);
+    });
+
+    /** Sorcerer's Shoes */
+    public static final Item SorcerersShoesHomeguard = new Item(RiotItemData.SorcerersShoesHomeguard, item -> {
+        item.set(MRPen, 15).add(Ability.EnhancedMovement2);
     });
 
     /** Spectre's Cowl */
     public static final Item SpectresCowl = new Item(RiotItemData.SpectresCowl, item -> {
-        item.cost(205)
-                .health(200)
-                .magicRegist(45)
-                .add(Ability.SpectresCowlPassive)
-
-                .update(P403)
-                .price(280, 945);
+        item.health(200).magicRegist(35).add(ability -> {
+            ability.passive("チャンピオンからダメージを受けると10秒間{1}を得る。").variable(-1, HregRatio, 150);
+        });
     });
 
     /** Spellthief's Edge */
     public static final Item SpellthiefsEdge = new Item(RiotItemData.SpellthiefsEdge, item -> {
-        item.abilityPower(5).manaRegenRatio(25).goldGeneration(2).add(Ability.GoldIncome).add("徴収", ability -> {
-            ability.passive("敵Championか建物に通常攻撃かスキルを使用すると{2}を与え{1}獲得する。この効果は30秒に3度まで発生し、ミニオンを倒すと12秒間無効になる。")
-                    .variable(1, Gold, 5)
-                    .variable(2, TrueDamage, 10);
-        });
+        item.abilityPower(5).manaRegenRatio(25).goldGeneration(2).add(Ability.GoldIncome).add(Ability.TributeLevel1);
     });
 
     /** Spirit Visage */
     public static final Item SpiritVisage = new Item(RiotItemData.SpiritVisage, item -> {
-        item.cost(630)
-                .health(200)
+        item.health(200)
                 .cooldownReduction(20)
                 .magicRegist(50)
                 .add(Ability.SpiritVisagePassive)
 
                 .update(P310)
 
-                .cost(375)
                 .health(400)
                 .magicRegist(55)
                 .healthRegen(20)
 
                 .update(P310A)
-                .cost(500)
 
                 .update(P401)
                 .cooldownReduction(10);
@@ -1216,38 +1266,52 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Statikk Shiv */
     public static final Item StatikkShiv = new Item(RiotItemData.StatikkShiv, item -> {
-        item.cost(525).attackSpeed(40).movementSpeed(6).critical(20).add(Ability.StatikkShivPassive);
+        item.attackSpeed(40).movementSpeed(6).critical(20).add(Ability.StatikkShivPassive);
     });
 
     /** Stinger */
     public static final Item Stinger = new Item(RiotItemData.Stinger, item -> {
-        item.cost(450).attackSpeed(40).add(Ability.StingerPassive);
+        item.attackSpeed(40).add(Ability.CDR10);
     });
 
     /** Sunfire Cape */
     public static final Item SunfireCape = new Item(RiotItemData.SunfireCape, item -> {
-        item.cost(930).health(450).armor(45).add(Ability.SunfireCapePassive);
+        item.health(450).armor(45).add(Ability.SunfireCapePassive);
     });
 
     /** Sword of the Occult */
     public static final Item SwordOftheOccult = new Item(RiotItemData.SwordoftheOccult, item -> {
-        item.cost(800)
-                .attackDamage(10)
+        item.attackDamage(10)
                 .add(Ability.SwordOftheOccultPassive)
 
-                .update(P314)
-                .price(840, 840);
+                .update(P314);
+    });
+
+    /** Targon's Brace */
+    public static final Item TargonsBrace = new Item(RiotItemData.TargonsBrace, item -> {
+        item.health(175).healthRegenRatio(50).add(Ability.GoldIncome).add(Ability.SpoilsofWarLevel2);
+    });
+
+    /** Talisman of Ascension */
+    public static final Item TalismanOfAscension = new Item(RiotItemData.TalismanofAscension, item -> {
+        item.healthRegenRatio(100)
+                .manaRegenRatio(100)
+                .cooldownReduction(10)
+                .set(MS, 20)
+                .goldGeneration(2)
+                .add(Ability.GoldIncome)
+                .add(Ability.FavorLevel2)
+                .add(ability -> {
+            ability.active("{1}の味方は3秒間{2}する。{3}。")
+                    .variable(1, Radius, 600)
+                    .variable(2, MSRatio, 40)
+                    .variable(3, ItemCD, 40);
+        });
     });
 
     /** Tear of the Goddess */
     public static final Item TearOftheGoddess = new Item(RiotItemData.TearoftheGoddess, item -> {
-        item.cost(120)
-                .manaRegen(7)
-                .mana(250)
-                .add(Ability.TearManaCharge)
-
-                .update(P403)
-                .manaRegen(6);
+        item.manaRegenRatio(25).mana(250).add(Ability.ManaChargeLevel1);
     });
 
     /** Augment: Power */
@@ -1260,7 +1324,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Thornmail */
     public static final Item Thornmail = new Item(RiotItemData.Thornmail, item -> {
-        item.cost(1180).armor(100).add(ability -> {
+        item.armor(100).add(ability -> {
             ability.passive("敵の通常攻撃受けるとその攻撃者に{1}を与える。")
                     .variable(1, MagicDamage, 0, 0, amplify(ReceivedOriginalDamageRatio, 30));
         });
@@ -1268,35 +1332,21 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Tiamat */
     public static final Item Tiamat = new Item(RiotItemData.TiamatMeleeOnly, item -> {
-        item.cost(665)
-                .attackDamage(50)
-                .healthRegen(15)
-                .add(Ability.Cleave)
-                .add(Ability.Crescent)
-
-                .update(P306)
-                .cost(265)
-                .attackDamage(40)
-
-                .update(P314)
-                .price(305, 1330);
+        item.attackDamage(40).healthRegenRatio(100).add(Ability.Cleave).add(Ability.Crescent);
     });
 
     /** Trinity Force */
     public static final Item TrinityForce = new Item(RiotItemData.TrinityForce, item -> {
-        item.cost(3)
-                .attackDamage(30)
+        item.attackDamage(30)
                 .abilityPower(30)
                 .health(250)
                 .attackSpeed(30)
                 .mana(200)
                 .movementSpeed(8)
                 .critical(10)
-                .add(Ability.Icy1)
-                .add(Ability.TrinitySpellblade)
+                .add(Ability.SpellbladeTrinityForce)
 
                 .update(P310A)
-                .remove(Ability.Icy1)
                 .add(Ability.Rage);
     });
 
@@ -1307,12 +1357,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Vampiric Scepter */
     public static final Item VampiricScepter = new Item(RiotItemData.VampiricScepter, item -> {
-        item.cost(400)
-                .lifeSteal(10)
-                .attackDamage(10)
-
-                .update(P314)
-                .price(440, 560);
+        item.lifeSteal(8).attackDamage(10);
     });
 
     /** Vision Ward */
@@ -1327,31 +1372,24 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Void Staff */
     public static final Item VoidStaff = new Item(RiotItemData.VoidStaff, item -> {
-        item.cost(1000).abilityPower(70).add(ability -> {
+        item.abilityPower(70).add(ability -> {
             ability.passive("{1}を得る。").variable(1, MRPenRatio, 35);
         });
     });
 
     /** Warden's Mail */
     public static final Item WardensMail = new Item(RiotItemData.WardensMail, item -> {
-        item.cost(500)
-                .armor(50)
-                .add(Ability.ColdSteel1)
-
-                .update(P310)
-                .cost(400);
+        item.armor(45).add(Ability.ColdSteel);
     });
 
     /** Warmog's Armor */
     public static final Item WarmogsArmor = new Item(RiotItemData.WarmogsArmor, item -> {
-        item.cost(995)
-                .health(1000)
+        item.health(1000)
                 .add(ability -> {
             ability.passive("{1}を得る。").variable(1, Hreg, 0, 0, amplify(Health, 0.01));
         })
 
-                .update(P403)
-                .price(1070, 1981);
+                .update(P403);
     });
 
     /** Will of the Ancients */
@@ -1361,21 +1399,18 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Wit's End */
     public static final Item WitsEnd = new Item(RiotItemData.WitsEnd, item -> {
-        item.cost(850)
-                .attackSpeed(40)
+        item.attackSpeed(40)
                 .magicRegist(25)
                 .add(Ability.WitsEndPassive)
 
                 .update(P308)
 
-                .cost(700)
                 .attackSpeed(42);
     });
 
     /** Youmuu's Ghostblade */
     public static final Item YoumuusGhostblade = new Item(RiotItemData.YoumuusGhostblade, item -> {
-        item.cost(563)
-                .attackDamage(30)
+        item.attackDamage(30)
                 .cooldownReduction(10)
                 .critical(15)
                 .add(Ability.YoumuusGhostbladePassive)
@@ -1384,193 +1419,22 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Zeal */
     public static final Item Zeal = new Item(RiotItemData.Zeal, item -> {
-        item.cost(375).attackSpeed(18).movementSpeed(5).critical(10);
+        item.attackSpeed(20).movementSpeed(5).critical(10);
     });
 
     /** Zeke's Herald */
     public static final Item ZekesHerald = new Item(RiotItemData.ZekesHerald, item -> {
-        item.cost(900).health(250).cooldownReduction(20).add(Ability.ZekesHeraldAura);
+        item.health(250).cooldownReduction(20).add(Ability.ZekesHeraldAura);
     });
 
     /** Zephyr */
     public static final Item Zephyr = new Item(RiotItemData.Zephyr, item -> {
-        item.cost(725)
-                .attackDamage(25)
-                .cooldownReduction(10)
-                .attackSpeed(50)
-                .movementSpeed(10)
-                .add(Ability.TenacityPassive);
+        item.attackDamage(25).cooldownReduction(10).attackSpeed(50).movementSpeed(10).add(Ability.TenacityEffect);
     });
 
     /** Zhonya's Hourglass */
     public static final Item ZhonyasHourglass = new Item(RiotItemData.ZhonyasHourglass, item -> {
-        item.cost(500).abilityPower(120).armor(50).add(Ability.Stasis);
-    });
-
-    /** Frostfang */
-    public static final Item Frostfang = new Item(RiotItemData.Frostfang, item -> {
-        item.price(485, 340)
-                .abilityPower(20)
-                .manaRegen(7)
-                .goldGeneration(4)
-                .add(Ability.GoldIncome)
-                .add("Tribute", ability -> {
-            ability.passive("Championに通常攻撃を行うと{1}獲得する（CD{2}）。ミニオンを倒すとこの効果は10秒間無効になる。")
-                    .variable(1, Gold, 8)
-                    .variable(2, Time, 10)
-
-                    .update(P403)
-                    .passive("敵Championか建物に通常攻撃かスキルを使用すると{2}を与え{1}獲得する。この効果は30秒に3度まで発生し、ミニオンを倒すと12秒間無効になる。")
-                    .variable(1, Gold, 10)
-                    .variable(2, TrueDamage, 15);
-        })
-
-                .update(P403)
-                .price(500, 346)
-                .abilityPower(10)
-                .manaRegen(5);
-    });
-
-    /** Frost Queen's Claim */
-    public static final Item FrostQueensClaim = new Item(RiotItemData.FrostQueensClaim, item -> {
-        item.price(715, 800)
-                .abilityPower(50)
-                .manaRegen(10)
-                .goldGeneration(4)
-                .add(Ability.GoldIncome)
-                .add("Tribute", ability -> {
-            ability.passive("Championに通常攻撃を行うと{1}獲得する（{2}）。ミニオンを倒すとこの効果は10秒間無効になる。")
-                    .variable(1, Gold, 8)
-                    .variable(2, ItemCD, 10)
-
-                    .update(P403)
-                    .passive("敵Championか建物に通常攻撃かスキルを使用すると{2}を与え{1}獲得する。この効果は30秒に3度まで発生する。")
-                    .variable(1, Gold, 10)
-                    .variable(2, TrueDamage, 15);
-        })
-
-                .update(P403)
-                .price(315, 800)
-
-                .abilityPower(40)
-                .cooldownReduction(10)
-                .add(ability -> {
-            ability.active("対象とその{1}の敵に{2}と2秒かけて減衰する{3}を与える。{4}")
-                    .variable(1, Radius)
-                    .variable(2, MagicDamage, 50, 0, amplify(Lv, 5, 5))
-                    .variable(3, MSSlowRatio, 80)
-                    .variable(4, ItemCD, 60);
-        });;
-    });
-
-    /** Nomad's Medallion */
-    public static final Item NomadsMedallion = new Item(RiotItemData.NomadsMedallion, item -> {
-        item.price(485, 340)
-                .healthRegen(8)
-                .manaRegen(11)
-                .goldGeneration(2)
-                .add(Ability.GoldIncome)
-                .add("Favor", ability -> {
-            ability.passive("周囲であなたが殺すことなくミニオンが死んだ場合に{1}獲得する。")
-                    .variable(1, Gold, 4)
-
-                    .update(P403)
-                    .passive("周囲であなたが殺すことなくミニオンが死んだ場合に{1}獲得し、{2}する。")
-                    .variable(1, Gold, 3)
-                    .variable(2, RestoreHealth, 5);
-        })
-
-                .update(P403)
-                .price(500, 340)
-                .healthRegen(5)
-                .manaRegen(7);
-    });
-
-    /** Talisman of Ascension */
-    public static final Item TalismanOfAscension = new Item(RiotItemData.TalismanofAscension, item -> {
-        item.price(970, 800)
-                .healthRegen(10)
-                .manaRegen(15)
-                .cooldownReduction(20)
-                .goldGeneration(2)
-                .add(Ability.GoldIncome)
-                .add("Favor", ability -> {
-            ability.passive("周囲であなたが殺すことなくミニオンが死んだ場合に{1}獲得する。")
-                    .variable(1, Gold, 4)
-
-                    .update(P403)
-                    .passive("周囲であなたが殺すことなくミニオンが死んだ場合に{1}獲得し、{2}する。")
-                    .variable(1, Gold, 3)
-                    .variable(2, RestoreHealth, 10);
-        })
-                .add(ability -> {
-            ability.active("{1}の味方は3秒間{2}する。{3}")
-                    .variable(1, Radius, 600)
-                    .variable(2, MSRatio, 40)
-                    .variable(3, ItemCD, 60);
-        })
-
-                .update(P403)
-                .price(955, 800)
-                .manaRegen(15);
-    });
-
-    /** Targon's Brace */
-    public static final Item TargonsBrace = new Item(RiotItemData.TargonsBrace, item -> {
-        item.price(485, 340)
-                .health(175)
-                .healthRegen(12)
-                .add(Ability.GoldIncome)
-                .add("Spoils of War", ability -> {
-            ability.passive("30秒毎に最大3つまでスタックが貯まる。スタックがある状態でミニオンを倒すと最寄りの味方Championはあなたが獲得した金額+10Goｌdを獲得し、{1}する。また、Healthが{2}以下のミニオンにMeleeが通常攻撃を行うと、そのミニオンを倒すことが出来る。近くに味方がいない場合、これらの効果は発動しない。")
-                    .variable(1, RestoreHealth, 0, 0, amplify(Health, 0.02))
-                    .variable(2, Value, 200, 0, ad(1))
-
-                    .update(P403)
-                    .passive("30秒毎に最大3つまでスタックが貯まる。スタックがある状態でミニオンを倒すとあなたと最寄りの味方Championは共にゴールドを獲得し、{1}する。また、Healthが200以下のミニオンにMeleeが通常攻撃を行うと、そのミニオンを倒すことが出来る。近くに味方がいない場合、これらの効果は発動しない。")
-                    .variable(1, RestoreHealth, 50);
-        })
-
-                .update(P403)
-                .price(500, 346)
-                .health(175)
-                .healthRegen(8);
-    });
-
-    /** Face of the Mountain */
-    public static final Item FaceOfTheMountain = new Item(RiotItemData.FaceoftheMountain, item -> {
-        item.price(675, 800)
-                .health(375)
-                .healthRegen(25)
-                .cooldownReduction(10)
-                .add(Ability.GoldIncome)
-                .add("Spoils of War", ability -> {
-            ability.passive("30秒毎に最大4つまでスタックが貯まる。スタックがある状態でミニオンを倒すと最寄りの味方Championはあなたが獲得した金額+10Goｌdを獲得し、{1}する。また、Healthが{2}以下のミニオンにMeleeが通常攻撃を行うと、そのミニオンを倒すことが出来る。近くに味方がいない場合、これらの効果は発動しない。")
-                    .variable(1, RestoreHealth, 0, 0, amplify(Health, 0.02))
-                    .variable(2, Value, 200, 0, ad(1))
-
-                    .update(P403)
-                    .passive("30秒毎に最大4つまでスタックが貯まる。スタックがある状態でミニオンを倒すとあなたと最寄りの味方Championは共にゴールドを獲得し、{1}する。また、Healthが200以下のミニオンにMeleeが通常攻撃を行うと、そのミニオンを倒すことが出来る。近くに味方がいない場合、これらの効果は発動しない。")
-                    .variable(1, RestoreHealth, 50, 0, amplify(HealthRatio, 0.01));
-        })
-                .add("Deadly Phalanx", ability -> {
-            ability.active("あなたは{1}を失う。対象の味方は4秒間{2}を得る。また、4秒後にその味方の周囲の敵に{3}を与える。{4}")
-                    .variable(1, CurrentHealthRatio, 20)
-                    .variable(2, Shield, 0, 0, amplify(Health, 0.1))
-                    .variable(3, MagicDamage, 0, 0, amplify(Health, 0.1))
-                    .variable(4, ItemCD, 60)
-
-                    .update(P403)
-                    .active("対象の味方は4秒間{2}を得る。また、4秒後にその味方の周囲の敵に{3}を与える。{4}")
-                    .variable(1, HealthRatio, 10)
-                    .variable(2, Shield, 0, 0, amplify(Health, 0.1))
-                    .variable(3, MagicDamage, 0, 0, amplify(TargetAD, 1), amplify(TargetAP, 0.3))
-                    .variable(4, ItemCD, 60);
-        })
-
-                .update(P403)
-
-                .price(285, 800);
+        item.abilityPower(120).armor(50).add(Ability.Stasis);
     });
 
     // lazy initialization
