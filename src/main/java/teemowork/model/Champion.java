@@ -61,12 +61,6 @@ public class Champion extends RiotChampionData {
     /** The descriptor. */
     private final ChampionStatus[] versions = new ChampionStatus[Version.values().length];
 
-    /** Champion status. */
-    public final String[] skillNames;
-
-    /** Champion status. */
-    public final String[] skillLocalized;
-
     /**
      * <p>
      * Create new champion.
@@ -78,7 +72,7 @@ public class Champion extends RiotChampionData {
         this.id = transformed ? counter : counter++;
 
         for (int i = 0; i < skills.length; i++) {
-            this.skills[i] = new Skill(skillNames[i], system, i, skillNames.length);
+            this.skills[i] = new Skill(skillNames[i], skillLocalized[i], system, i, skillNames.length);
         }
 
         this.P = this.skills[0];
@@ -94,8 +88,6 @@ public class Champion extends RiotChampionData {
         this.name = name;
         this.localized = localized;
         this.systemName = system;
-        this.skillNames = skillNames;
-        this.skillLocalized = skillLocalized;
 
         this.update(Version.P0000)
                 .set(Health, hp, hpPer)
@@ -207,7 +199,6 @@ public class Champion extends RiotChampionData {
      * @return
      */
     public static List<Champion> getAll() {
-        System.out.println(RiotChampionData.Aatrox);
         return champions;
     }
 

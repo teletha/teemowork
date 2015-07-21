@@ -40,8 +40,11 @@ import teemowork.model.variable.VariableResolver.Refer;
  */
 public class Skill extends Describable<SkillDescriptor> {
 
-    /** The owner data. */
+    /** The skill data. */
     private final String name;
+
+    /** The skill data. */
+    private final String localized;
 
     /** The owner champion. */
     private final String owner;
@@ -55,8 +58,9 @@ public class Skill extends Describable<SkillDescriptor> {
     /**
      * The skill definition.
      */
-    public Skill(String name, String owner, int id, int size) {
+    public Skill(String name, String localized, String owner, int id, int size) {
         this.name = name;
+        this.localized = localized;
         this.owner = owner;
         this.iconPosition = id / (size - 1) * 100;
         this.key = SkillKey.values()[id < 5 ? id : id - 4];
