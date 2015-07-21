@@ -14,7 +14,6 @@ import static teemowork.model.SkillKey.*;
 import static teemowork.model.Status.*;
 import static teemowork.model.Version.*;
 
-import teemowork.api.RiotChampionData;
 import teemowork.model.variable.VariableResolver.Diff;
 import teemowork.model.variable.VariableResolver.Fixed;
 import teemowork.model.variable.VariableResolver.Per1Level;
@@ -41,18 +40,14 @@ import teemowork.model.variable.VariableResolver.Refer;
  */
 public class Skill extends Describable<SkillDescriptor> {
 
-    /** Aspect Of The Cougar Definition */
-    public static final Skill AspectOfTheCougarInCougar = new Skill(RiotChampionData.Nidalee, 4);
-
     /** The owner data. */
     private final String name;
 
+    /** The owner champion. */
     private final String owner;
 
-    private final int size;
-
-    /** The skill id. */
-    private final int id;
+    /** The icon position. */
+    private final float iconPosition;
 
     /** The skill key type. */
     public final SkillKey key;
@@ -60,19 +55,10 @@ public class Skill extends Describable<SkillDescriptor> {
     /**
      * The skill definition.
      */
-    public Skill(RiotChampionData data, int id) {
-        this.name = data.skills[id];
-        this.owner = data.system;
-        this.size = data.skills.length;
-        this.id = id;
-        this.key = SkillKey.values()[id < 5 ? id : id - 4];
-    }
-
-    public Skill(String name, String owner, int size, int id) {
+    public Skill(String name, String owner, int id, int size) {
         this.name = name;
         this.owner = owner;
-        this.size = size;
-        this.id = id;
+        this.iconPosition = id / (size - 1) * 100;
         this.key = SkillKey.values()[id < 5 ? id : id - 4];
     }
 
@@ -115,7 +101,7 @@ public class Skill extends Describable<SkillDescriptor> {
      * @return
      */
     public float getIconPosition() {
-        return id / (size - 1) * 100;
+        return iconPosition;
     }
 
     /**
@@ -4078,7 +4064,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(2, NotSpellCast)
                 .variable(3, MR, 10, 10)
                 .cd(4);
-        AspectOfTheCougarInCougar.update()
+        NidaleeCougar.R.update()
                 .active("CougarからHumanに変身する。Human時はスキルの効果が変わり、通常攻撃の射程距離が525(Ranged)になる。{1}。")
                 .variable(1, NotSpellCast)
                 .cd(4);

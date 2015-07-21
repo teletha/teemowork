@@ -87,7 +87,7 @@ public class Champion {
     public static final Champion Elise = new Champion(RiotChampionData.Elise);
 
     /** The champion name. */
-    public static final Champion EliseSpider = new Champion(RiotChampionData.Elise);
+    public static final Champion EliseSpider = new Champion(RiotChampionData.Elise, true);
 
     /** The champion name. */
     public static final Champion Evelynn = new Champion(RiotChampionData.Evelynn);
@@ -141,7 +141,7 @@ public class Champion {
     public static final Champion Jayce = new Champion(RiotChampionData.Jayce);
 
     /** The champion name. */
-    public static final Champion JayceCannon = new Champion(RiotChampionData.Jayce);
+    public static final Champion JayceCannon = new Champion(RiotChampionData.Jayce, true);
 
     /** The champion name. */
     public static final Champion Jinx = new Champion(RiotChampionData.Jinx);
@@ -225,7 +225,7 @@ public class Champion {
     public static final Champion Nidalee = new Champion(RiotChampionData.Nidalee);
 
     /** The champion name. */
-    public static final Champion NidaleeCougar = new Champion(RiotChampionData.Nidalee);
+    public static final Champion NidaleeCougar = new Champion(RiotChampionData.Nidalee, true);
 
     /** The champion name. */
     public static final Champion Nocturne = new Champion(RiotChampionData.Nocturne);
@@ -402,7 +402,7 @@ public class Champion {
     public final String systemName;
 
     /** The skill set. */
-    public final Skill[] skills;
+    public final Skill[] skills = new Skill[5];
 
     /** The skill. */
     public final Skill P;
@@ -429,8 +429,8 @@ public class Champion {
      * 
      * @param name
      */
-    Champion(RiotChampionData data, Skill... skills) {
-        this(data, false, skills);
+    Champion(RiotChampionData data) {
+        this(data, false);
     }
 
     /**
@@ -440,43 +440,24 @@ public class Champion {
      * 
      * @param name
      */
-    Champion(RiotChampionData data, boolean transformed, Skill... skills) {
+    Champion(RiotChampionData data, boolean transformed) {
         this.id = counter++;
         this.name = data.name;
         this.systemName = data.system;
-        this.skills = skills;
+
+        for (int i = 0; i < skills.length; i++) {
+            skills[i] = new Skill(data.skills[i], data.system, i, data.skills.length);
+        }
+
+        this.P = skills[0];
+        this.Q = skills[1];
+        this.W = skills[2];
+        this.E = skills[3];
+        this.R = skills[4];
 
         if (!transformed) {
             champions.add(this);
         }
-
-        P = new Skill(data.skills[0], data.system, data.skills.length, 0);
-        Q = new Skill(data.skills[1], data.system, data.skills.length, 1);
-        W = new Skill(data.skills[2], data.system, data.skills.length, 2);
-        E = new Skill(data.skills[3], data.system, data.skills.length, 3);
-        R = new Skill(data.skills[4], data.system, data.skills.length, 4);
-    }
-
-    /**
-     * <p>
-     * Create new champion.
-     * </p>
-     * 
-     * @param name
-     */
-    Champion(RiotChampionData data) {
-        this.id = counter++;
-        this.name = data.name;
-        this.systemName = data.system;
-
-        champions.add(this);
-
-        this.P = new Skill(data.skills[0], data.system, data.skills.length, 0);
-        this.Q = new Skill(data.skills[1], data.system, data.skills.length, 1);
-        this.W = new Skill(data.skills[2], data.system, data.skills.length, 2);
-        this.E = new Skill(data.skills[3], data.system, data.skills.length, 3);
-        this.R = new Skill(data.skills[4], data.system, data.skills.length, 4);
-        this.skills = new Skill[] {P, Q, W, E, R};
     }
 
     /**

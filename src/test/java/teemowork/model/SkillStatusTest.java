@@ -15,7 +15,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import teemowork.api.RiotChampionData;
 import teemowork.model.variable.Variable;
 
 /**
@@ -81,7 +80,7 @@ public class SkillStatusTest {
          * 
          */
         private EmptySkill() {
-            super(RiotChampionData.Aatrox, 1);
+            super("name", "owner", 0, 1);
 
             update();
         }
@@ -90,7 +89,7 @@ public class SkillStatusTest {
          * 
          */
         private EmptySkill(SkillKey key) {
-            super(RiotChampionData.Aatrox, key.ordinal());
+            super("name", "owner", key.ordinal(), 1);
         }
     }
 }
