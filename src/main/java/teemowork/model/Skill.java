@@ -101,7 +101,7 @@ public class Skill extends RiotSkillData {
      * @return
      */
     public String getIcon() {
-        return "src/main/resources/teemowork/skill/" + data.name() + ".jpg";
+        return "src/main/resources/teemowork/skill/" + data.system + ".jpg";
     }
 
     /**

@@ -42,8 +42,8 @@ public class ChampionDataBuilder {
         ChampionDefinitions ja = RiotAPI.parse(ChampionDefinitions.class, Version.Latest, Locale.JAPAN);
 
         ClassWriter code = new ClassWriter("teemowork.api", "RiotChampionData");
-        code.write("public enum ", code.className, " {");
-        code.writeConstants(en.data.values(), champion -> {
+        code.write("public class ", code.className, " {");
+        for (ChampionDefinition champion : en.data.values()) {
             champion.analyze();
 
             Status status = champion.stats;
@@ -51,15 +51,15 @@ public class ChampionDataBuilder {
 
             code.write();
             code.write("/** ", champion.name, " Definition", " */");
-            code.write(champion.id, param(string(champion.name), string(localized.name), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, array(champion.skill), array(champion.skillLocalized)), ",");
-        });
+            code.write("public static final ", code.className, " ", champion.id, " = new ", code.className, param(string(champion.name), string(localized.name), string(champion.id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, array(champion.skill), array(champion.skillLocalized)), ";");
+        }
 
         // Properties
-        Object[] properties = {String.class, "name", String.class, "localizedName", float.class, "hp", float.class,
-                "hpPer", float.class, "hreg", float.class, "hregPer", float.class, "mp", float.class, "mpPer",
-                float.class, "mreg", float.class, "mregPer", float.class, "ad", float.class, "adPer", float.class, "as",
-                float.class, "asPer", float.class, "crit", float.class, "critPer", float.class, "ar", float.class,
-                "arPer", float.class, "mr", float.class, "mrPer", float.class, "ms", float.class, "range",
+        Object[] properties = {String.class, "name", String.class, "localizedName", String.class, "system", float.class,
+                "hp", float.class, "hpPer", float.class, "hreg", float.class, "hregPer", float.class, "mp", float.class,
+                "mpPer", float.class, "mreg", float.class, "mregPer", float.class, "ad", float.class, "adPer",
+                float.class, "as", float.class, "asPer", float.class, "crit", float.class, "critPer", float.class, "ar",
+                float.class, "arPer", float.class, "mr", float.class, "mrPer", float.class, "ms", float.class, "range",
                 String[].class, "skills", String[].class, "skillLocalized"};
 
         // Field
@@ -78,15 +78,6 @@ public class ChampionDataBuilder {
         for (int i = 0; i < properties.length; i++) {
             code.write("this.", properties[++i], " = ", properties[i], ";");
         }
-        code.write("}");
-
-        // method
-        code.write();
-        code.write("/**");
-        code.write(" * Search champion by id.");
-        code.write(" */");
-        code.write("public static ", code.className, " of", arg(int.class, "id"), " {");
-        code.write("return values()[id];");
         code.write("}");
         code.write("}");
         code.writeTo(I.locate("src/main/java"));

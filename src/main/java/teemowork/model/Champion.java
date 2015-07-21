@@ -406,9 +406,6 @@ public class Champion {
     /** The skill set. */
     public final Skill[] skills;
 
-    /** The raw data. */
-    public final RiotChampionData data;
-
     /** The descriptor. */
     private final ChampionStatus[] versions = new ChampionStatus[Version.values().length];
 
@@ -433,9 +430,8 @@ public class Champion {
     Champion(RiotChampionData data, boolean transformed, Skill... skills) {
         this.id = counter++;
         this.name = data.name;
-        this.systemName = data.name();
+        this.systemName = data.system;
         this.skills = skills;
-        this.data = data;
 
         if (!transformed) {
             champions.add(this);

@@ -9,9 +9,9 @@
  */
 package teemowork.api;
 
+import teemowork.model.Skill;
 import teemowork.model.Describable;
 import teemowork.model.SkillDescriptor;
-import teemowork.model.Skill;
 
 public abstract class RiotSkillData extends Describable<SkillDescriptor> {
 
