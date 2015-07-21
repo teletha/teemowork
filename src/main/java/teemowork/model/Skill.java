@@ -44,21 +44,21 @@ public class Skill extends RiotSkillData {
     /** Aspect Of The Cougar Definition */
     public static final Skill AspectOfTheCougarInCougar = new Skill(RiotChampionData.Nidalee, 8);
 
-    /** The skill key type. */
-    public final SkillKey key;
+    /** The owner data. */
+    private final RiotChampionData data;
 
     /** The skill id. */
     private final int id;
 
-    /** The owner data. */
-    private final RiotChampionData data;
+    /** The skill key type. */
+    public final SkillKey key;
 
     /**
      * The skill definition.
      */
     public Skill(RiotChampionData data, int id) {
-        this.id = id;
         this.data = data;
+        this.id = id;
         this.key = SkillKey.values()[id < 5 ? id : id - 4];
     }
 

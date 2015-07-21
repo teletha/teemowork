@@ -229,7 +229,7 @@ public class BuildTest {
          * 
          */
         private EmptySkill() {
-            super("Test Skill", SkillKey.Q);
+            super(RiotChampionData.Aatrox, 1);
 
             update();
         }
@@ -238,7 +238,7 @@ public class BuildTest {
          * 
          */
         private EmptySkill(SkillKey key) {
-            super("Test Skill", key);
+            super(RiotChampionData.Aatrox, key.ordinal());
         }
     }
 

@@ -22,14 +22,17 @@ import teemowork.api.ChampionDataBuilder.ChampionDefinition;
 import teemowork.api.ChampionDataBuilder.ChampionDefinitions;
 import teemowork.model.Champion;
 import teemowork.model.Item;
+import teemowork.model.MasterySeason4;
 import teemowork.model.Version;
-import teemowork.tool.ResourceLocator;
 import teemowork.tool.image.EditableImage;
 
 /**
  * @version 2015/07/19 22:25:30
  */
 public class ImageBuilder {
+
+    /** The resource root. */
+    private static final Path Resources = I.locate("src/main/resources/teemowork");
 
     /** The target version. */
     private final Version version;
@@ -81,7 +84,7 @@ public class ImageBuilder {
                 throw I.quiet(e);
             }
         }
-        container.write(ResourceLocator.Resources.resolve("items.jpg"));
+        container.write(Resources.resolve("items.jpg"));
     }
 
     /**
@@ -120,7 +123,7 @@ public class ImageBuilder {
 
             container.concat(image);
         }
-        container.write(ResourceLocator.Resources.resolve("champions.jpg"));
+        container.write(Resources.resolve("champions.jpg"));
     }
 
     /**
@@ -165,8 +168,37 @@ public class ImageBuilder {
 
                 container.concat(image);
             }
-            container.write(ResourceLocator.SkillIcon.resolve(definition.id + ".jpg"));
+            container.write(Resources.resolve("skill/" + definition.id + ".jpg"));
         }
+    }
+
+    /**
+     * <p>
+     * Create mastery icon set.
+     * </p>
+     */
+    public void buildMasteryIconSet() {
+        List<MasterySeason4> masteries = new ArrayList();
+
+        for (Field field : MasterySeason4.class.getFields()) {
+            if (field.getType() == MasterySeason4.class) {
+                try {
+                    masteries.add((MasterySeason4) field.get(null));
+                } catch (Exception e) {
+                    throw I.quiet(e);
+                }
+            }
+        }
+
+        EditableImage container = new EditableImage();
+
+        for (MasterySeason4 mastery : masteries) {
+            EditableImage image = new EditableImage(I.locate(mastery.getIcon()));
+            image.resize(45);
+
+            container.concat(image);
+        }
+        container.write(Resources.resolve("masteryS4.jpg"));
     }
 
     /**
