@@ -355,15 +355,15 @@ public class Build extends Publishable implements StatusCalculator {
                     .get(status) + champion.getStatus(version).get(status.per()) * level.get();
 
             if (champion == Champion.EliseSpider) {
-                value += computeVariable(status, Skill.SpiderForm);
+                value += computeVariable(status, Champion.Elise.R);
             }
 
             if (champion == Champion.NidaleeCougar) {
-                value += computeVariable(status, Skill.AspectOfTheCougar);
+                value += computeVariable(status, Champion.Nidalee.R);
             }
 
             if (champion == Champion.Jayce) {
-                value += computeVariable(status, Skill.MercuryHammer);
+                value += computeVariable(status, Champion.JayceCannon.R);
             }
             return value;
         }

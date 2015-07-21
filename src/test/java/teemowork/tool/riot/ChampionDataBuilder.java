@@ -18,9 +18,6 @@ import java.util.Locale;
 import java.util.Map;
 
 import kiss.I;
-import teemowork.model.Describable;
-import teemowork.model.Skill;
-import teemowork.model.SkillDescriptor;
 import teemowork.model.Version;
 import teemowork.tool.ClassWriter;
 
@@ -81,27 +78,6 @@ public class ChampionDataBuilder {
         code.write("}");
         code.write("}");
         code.writeTo(I.locate("src/main/java"));
-
-        //
-        ClassWriter writer = new ClassWriter("teemowork.api", "RiotSkillData");
-        writer.write("public abstract class ", writer.className, " extends ", generic(Describable.class, SkillDescriptor.class), " {");
-
-        for (ChampionDefinition definition : en.data.values()) {
-            for (int i = 0; i < definition.skill.size(); i++) {
-                String skill = definition.skill.get(i);
-                String name = skill.replaceAll(" of ", " Of ")
-                        .replaceAll(" the ", " The ")
-                        .replaceAll(" in ", "In")
-                        .replaceAll("[\\s-,!':/]", "")
-                        .replaceAll("^\\d+", "");
-
-                writer.write();
-                writer.write("/** ", skill, " Definition", " */");
-                writer.write("public static final ", Skill.class, " ", name, " = new ", Skill.class, param("RiotChampionData." + definition.id, i), ";");
-            }
-        }
-        writer.write("}");
-        writer.writeTo(I.locate("src/main/java"));
     }
 
     /**

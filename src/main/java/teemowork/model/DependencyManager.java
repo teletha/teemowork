@@ -9,8 +9,6 @@
  */
 package teemowork.model;
 
-import static teemowork.model.Skill.*;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,7 +30,7 @@ public class DependencyManager {
      */
     public static boolean use(Skill skill) {
         if (!dependencies.add(skill)) {
-            if (skill == CrimsonPact || skill == LivingShadow) {
+            if (skill == Champion.Vladimir.P || skill == Champion.Zed.W) {
                 return true;
             }
         }

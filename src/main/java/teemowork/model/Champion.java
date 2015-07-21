@@ -9,8 +9,6 @@
  */
 package teemowork.model;
 
-import static teemowork.api.RiotSkillData.*;
-import static teemowork.model.Skill.*;
 import static teemowork.model.Status.*;
 import static teemowork.model.Version.*;
 
@@ -35,364 +33,364 @@ public class Champion {
     public static final Champion Aatrox = new Champion(RiotChampionData.Aatrox);
 
     /** The champion name. */
-    public static final Champion Ahri = new Champion(RiotChampionData.Ahri, EssenceTheft, OrbOfDeception, FoxFire, Skill.Charm, SpiritRush);
+    public static final Champion Ahri = new Champion(RiotChampionData.Ahri);
 
     /** The champion name. */
-    public static final Champion Akali = new Champion(RiotChampionData.Akali, TwinDisciplines, MarkOfTheAssassin, TwilightShroud, CrescentSlash, ShadowDance);
+    public static final Champion Akali = new Champion(RiotChampionData.Akali);
 
     /** The champion name. */
-    public static final Champion Alistar = new Champion(RiotChampionData.Alistar, Trample, Pulverize, Headbutt, TriumphantRoar, UnbreakableWill);
+    public static final Champion Alistar = new Champion(RiotChampionData.Alistar);
 
     /** The champion name. */
-    public static final Champion Amumu = new Champion(RiotChampionData.Amumu, CursedTouch, BandageToss, Despair, Tantrum, CurseOfTheSadMummy);
+    public static final Champion Amumu = new Champion(RiotChampionData.Amumu);
 
     /** The champion name. */
-    public static final Champion Anivia = new Champion(RiotChampionData.Anivia, Rebirth, FlashFrost, Crystallize, Frostbite, GlacialStorm);
+    public static final Champion Anivia = new Champion(RiotChampionData.Anivia);
 
     /** The champion name. */
-    public static final Champion Annie = new Champion(RiotChampionData.Annie, Pyromania, Disintegrate, Incinerate, MoltenShield, SummonTibbers);
+    public static final Champion Annie = new Champion(RiotChampionData.Annie);
 
     /** The champion name. */
-    public static final Champion Ashe = new Champion(RiotChampionData.Ashe, FrostShot, RangersFocus, Volley, Hawkshot, EnchantedCrystalArrow);
+    public static final Champion Ashe = new Champion(RiotChampionData.Ashe);
 
     /** The champion name. */
-    public static final Champion Blitzcrank = new Champion(RiotChampionData.Blitzcrank, ManaBarrier, RocketGrab, Overdrive, PowerFist, StaticField);
+    public static final Champion Blitzcrank = new Champion(RiotChampionData.Blitzcrank);
 
     /** The champion name. */
-    public static final Champion Brand = new Champion(RiotChampionData.Brand, Blaze, Sear, PillarOfFlame, Conflagration, Pyroclasm);
+    public static final Champion Brand = new Champion(RiotChampionData.Brand);
 
     /** The champion name. */
-    public static final Champion Caitlyn = new Champion(RiotChampionData.Caitlyn, Headshot, PiltoverPeacemaker, YordleSnapTrap, CaliberNet, AceInTheHole);
+    public static final Champion Caitlyn = new Champion(RiotChampionData.Caitlyn);
 
     /** The champion name. */
-    public static final Champion Cassiopeia = new Champion(RiotChampionData.Cassiopeia, AspectOfTheSerpent, NoxiousBlast, Miasma, TwinFang, PetrifyingGaze);
+    public static final Champion Cassiopeia = new Champion(RiotChampionData.Cassiopeia);
 
     /** The champion name. */
-    public static final Champion ChoGath = new Champion(RiotChampionData.Chogath, Carnivore, Rupture, FeralScream, VorpalSpikes, Feast);
+    public static final Champion Chogath = new Champion(RiotChampionData.Chogath);
 
     /** The champion name. */
-    public static final Champion Corki = new Champion(RiotChampionData.Corki, HextechShrapnelShells, PhosphorusBomb, Valkyrie, GatlingGun, MissileBarrage);
+    public static final Champion Corki = new Champion(RiotChampionData.Corki);
 
     /** The champion name. */
-    public static final Champion Darius = new Champion(RiotChampionData.Darius, Hemorrhage, Decimate, CripplingStrike, Apprehend, NoxianGuillotine);
+    public static final Champion Darius = new Champion(RiotChampionData.Darius);
 
     /** The champion name. */
-    public static final Champion Diana = new Champion(RiotChampionData.Diana, MoonsilverBlade, CrescentStrike, PaleCascade, Moonfall, LunarRush);
+    public static final Champion Diana = new Champion(RiotChampionData.Diana);
 
     /** The champion name. */
-    public static final Champion Draven = new Champion(RiotChampionData.Draven, LeagueOfDraven, SpinningAxe, BloodRush, StandAside, WhirlingDeath);
+    public static final Champion Draven = new Champion(RiotChampionData.Draven);
 
     /** The champion name. */
-    public static final Champion DrMundo = new Champion(RiotChampionData.DrMundo, AdrenalineRush, InfectedCleaver, BurningAgony, Masochism, Sadism);
+    public static final Champion DrMundo = new Champion(RiotChampionData.DrMundo);
 
     /** The champion name. */
-    public static final Champion Elise = new Champion(RiotChampionData.Elise, SpiderQueen, NeurotoxinVenomousBite, VolatileSpiderlingSkitteringFrenzy, CocoonRappel, SpiderForm);
+    public static final Champion Elise = new Champion(RiotChampionData.Elise);
 
     /** The champion name. */
-    public static final Champion EliseSpider = new Champion(RiotChampionData.Elise, true, SpiderQueen, VenomousBiteNeurotoxin, SkitteringFrenzyVolatileSpiderling, RappelCocoon, HumanForm);
+    public static final Champion EliseSpider = new Champion(RiotChampionData.Elise);
 
     /** The champion name. */
-    public static final Champion Evelynn = new Champion(RiotChampionData.Evelynn, ShadowWalk, HateSpike, DarkFrenzy, Ravage, AgonysEmbrace);
+    public static final Champion Evelynn = new Champion(RiotChampionData.Evelynn);
 
     /** The champion name. */
-    public static final Champion Ezreal = new Champion(RiotChampionData.Ezreal, RisingSpellForce, MysticShot, EssenceFlux, ArcaneShift, TrueshotBarrage);
+    public static final Champion Ezreal = new Champion(RiotChampionData.Ezreal);
 
     /** The champion name. */
-    public static final Champion Fiddlesticks = new Champion(RiotChampionData.FiddleSticks, Dread, Terrify, Drain, DarkWind, Crowstorm);
+    public static final Champion FiddleSticks = new Champion(RiotChampionData.FiddleSticks);
 
     /** The champion name. */
-    public static final Champion Fiora = new Champion(RiotChampionData.Fiora, Duelist, Lunge, Riposte, BurstOfSpeed, BladeWaltz);
+    public static final Champion Fiora = new Champion(RiotChampionData.Fiora);
 
     /** The champion name. */
-    public static final Champion Fizz = new Champion(RiotChampionData.Fizz, NimbleFighter, UrchinStrike, SeastoneTrident, PlayfulTrickster, ChumTheWaters);
+    public static final Champion Fizz = new Champion(RiotChampionData.Fizz);
 
     /** The champion name. */
-    public static final Champion Galio = new Champion(RiotChampionData.Galio, RunicSkin, ResoluteSmite, Bulwark, RighteousGust, IdolOfDurand);
+    public static final Champion Galio = new Champion(RiotChampionData.Galio);
 
     /** The champion name. */
-    public static final Champion Gangplank = new Champion(RiotChampionData.Gangplank, GrogSoakedBlade, Parrrley, RemoveScurvy, RaiseMorale, CannonBarrage);
+    public static final Champion Gangplank = new Champion(RiotChampionData.Gangplank);
 
     /** The champion name. */
-    public static final Champion Garen = new Champion(RiotChampionData.Garen, Perseverance, DecisiveStrike, Courage, Judgment, DemacianJustice);
+    public static final Champion Garen = new Champion(RiotChampionData.Garen);
 
     /** The champion name. */
-    public static final Champion Gragas = new Champion(RiotChampionData.Gragas, HappyHour, BarrelRoll, DrunkenRage, BodySlam, ExplosiveCask);
+    public static final Champion Gragas = new Champion(RiotChampionData.Gragas);
 
     /** The champion name. */
-    public static final Champion Graves = new Champion(RiotChampionData.Graves, TrueGrit, Buckshot, SmokeScreen, Quickdraw, CollateralDamage);
+    public static final Champion Graves = new Champion(RiotChampionData.Graves);
 
     /** The champion name. */
-    public static final Champion Hecarim = new Champion(RiotChampionData.Hecarim, Warpath, Rampage, SpiritOfDread, DevastatingCharge, OnslaughtOfShadows);
+    public static final Champion Hecarim = new Champion(RiotChampionData.Hecarim);
 
     /** The champion name. */
-    public static final Champion Heimerdinger = new Champion(RiotChampionData.Heimerdinger, TechmaturgicalRepairBots, H28GEvolutionTurret, HextechMicroRockets, CH2ElectronStormGrenade, UPGRADE);
+    public static final Champion Heimerdinger = new Champion(RiotChampionData.Heimerdinger);
 
     /** The champion name. */
-    public static final Champion Irelia = new Champion(RiotChampionData.Irelia, IonianFervor, Bladesurge, HitenStyle, EquilibriumStrike, TranscendentBlades);
+    public static final Champion Irelia = new Champion(RiotChampionData.Irelia);
 
     /** The champion name. */
-    public static final Champion Janna = new Champion(RiotChampionData.Janna, Tailwind, HowlingGale, Zephyr, EyeOfTheStorm, Monsoon);
+    public static final Champion Janna = new Champion(RiotChampionData.Janna);
 
     /** The champion name. */
-    public static final Champion JarvanIV = new Champion(RiotChampionData.JarvanIV, MartialCadence, DragonStrike, GoldenAegis, DemacianStandard, Cataclysm);
+    public static final Champion JarvanIV = new Champion(RiotChampionData.JarvanIV);
 
     /** The champion name. */
-    public static final Champion Jax = new Champion(RiotChampionData.Jax, RelentlessAssault, LeapStrike, Empower, CounterStrike, GrandmastersMight);
+    public static final Champion Jax = new Champion(RiotChampionData.Jax);
 
     /** The champion name. */
-    public static final Champion Jayce = new Champion(RiotChampionData.Jayce, HextechCapacitor, ToTheSkiesShockBlast, LightningFieldHyperCharge, ThunderingBlowAccelerationGate, MercuryCannonMercuryHammer);
+    public static final Champion Jayce = new Champion(RiotChampionData.Jayce);
 
     /** The champion name. */
-    public static final Champion JayceCannon = new Champion(RiotChampionData.Jayce, true, HextechCapacitor, ShockBlast, HyperCharge, AccelerationGate, MercuryHammer);
+    public static final Champion JayceCannon = new Champion(RiotChampionData.Jayce);
 
     /** The champion name. */
-    public static final Champion Jinx = new Champion(RiotChampionData.Jinx, GetExcited, Switcheroo, Zap, FlameChompers, SuperMegaDeathRocket);
+    public static final Champion Jinx = new Champion(RiotChampionData.Jinx);
 
     /** The champion name. */
-    public static final Champion Karma = new Champion(RiotChampionData.Karma, GatheringFire, InnerFlame, FocusedResolve, Inspire, Mantra);
+    public static final Champion Karma = new Champion(RiotChampionData.Karma);
 
     /** The champion name. */
-    public static final Champion Karthus = new Champion(RiotChampionData.Karthus, DeathDefied, LayWaste, WallOfPain, Defile, Requiem);
+    public static final Champion Karthus = new Champion(RiotChampionData.Karthus);
 
     /** The champion name. */
-    public static final Champion Kassadin = new Champion(RiotChampionData.Kassadin, VoidStone, NullSphere, NetherBlade, ForcePulse, Riftwalk);
+    public static final Champion Kassadin = new Champion(RiotChampionData.Kassadin);
 
     /** The champion name. */
-    public static final Champion Katarina = new Champion(RiotChampionData.Katarina, Voracity, BouncingBlades, SinisterSteel, Shunpo, DeathLotus);
+    public static final Champion Katarina = new Champion(RiotChampionData.Katarina);
 
     /** The champion name. */
-    public static final Champion Kayle = new Champion(RiotChampionData.Kayle, HolyFervor, Reckoning, DivineBlessing, RighteousFury, Intervention);
+    public static final Champion Kayle = new Champion(RiotChampionData.Kayle);
 
     /** The champion name. */
-    public static final Champion Kennen = new Champion(RiotChampionData.Kennen, MarkOfTheStorm, ThunderingShuriken, ElectricalSurge, LightningRush, SlicingMaelstrom);
+    public static final Champion Kennen = new Champion(RiotChampionData.Kennen);
 
     /** The champion name. */
-    public static final Champion KhaZix = new Champion(RiotChampionData.Khazix, UnseenThreat, TasteTheirFear, VoidSpike, Leap, VoidAssault);
+    public static final Champion Khazix = new Champion(RiotChampionData.Khazix);
 
     /** The champion name. */
-    public static final Champion KogMaw = new Champion(RiotChampionData.KogMaw, IcathianSurprise, CausticSpittle, BioArcaneBarrage, VoidOoze, LivingArtillery);
+    public static final Champion KogMaw = new Champion(RiotChampionData.KogMaw);
 
     /** The champion name. */
-    public static final Champion LeBlanc = new Champion(RiotChampionData.Leblanc, MirrorImage, SigilOfMalice, Distortion, EtherealChains, Mimic);
+    public static final Champion Leblanc = new Champion(RiotChampionData.Leblanc);
 
     /** The champion name. */
-    public static final Champion LeeSin = new Champion(RiotChampionData.LeeSin, Flurry, SonicWaveResonatingStrike, SafeguardIronWill, TempestCripple, DragonsRage);
+    public static final Champion LeeSin = new Champion(RiotChampionData.LeeSin);
 
     /** The champion name. */
-    public static final Champion Leona = new Champion(RiotChampionData.Leona, Sunlight, ShieldOfDaybreak, Eclipse, ZenithBlade, SolarFlare);
+    public static final Champion Leona = new Champion(RiotChampionData.Leona);
 
     /** The champion name. */
-    public static final Champion Lissandra = new Champion(RiotChampionData.Lissandra, Iceborn, IceShard, RingOfFrost, GlacialPath, FrozenTomb);
+    public static final Champion Lissandra = new Champion(RiotChampionData.Lissandra);
 
     /** The champion name. */
-    public static final Champion Lucian = new Champion(RiotChampionData.Lucian, Lightslinger, PiercingLight, ArdentBlaze, RelentlessPursuit, TheCulling);
+    public static final Champion Lucian = new Champion(RiotChampionData.Lucian);
 
     /** The champion name. */
-    public static final Champion Lulu = new Champion(RiotChampionData.Lulu, PixFaerieCompanion, Glitterlance, Whimsy, HelpPix, WildGrowth);
+    public static final Champion Lulu = new Champion(RiotChampionData.Lulu);
 
     /** The champion name. */
-    public static final Champion Lux = new Champion(RiotChampionData.Lux, Illumination, LightBinding, PrismaticBarrier, LucentSingularity, FinalSpark);
+    public static final Champion Lux = new Champion(RiotChampionData.Lux);
 
     /** The champion name. */
-    public static final Champion Malphite = new Champion(RiotChampionData.Malphite, GraniteShield, SeismicShard, BrutalStrikes, GroundSlam, UnstoppableForce);
+    public static final Champion Malphite = new Champion(RiotChampionData.Malphite);
 
     /** The champion name. */
-    public static final Champion Malzahar = new Champion(RiotChampionData.Malzahar, SummonVoidling, CallOfTheVoid, NullZone, MaleficVisions, NetherGrasp);
+    public static final Champion Malzahar = new Champion(RiotChampionData.Malzahar);
 
     /** The champion name. */
-    public static final Champion Maokai = new Champion(RiotChampionData.Maokai, SapMagic, ArcaneSmash, TwistedAdvance, SaplingToss, VengefulMaelstrom);
+    public static final Champion Maokai = new Champion(RiotChampionData.Maokai);
 
     /** The champion name. */
-    public static final Champion MasterYi = new Champion(RiotChampionData.MasterYi, DoubleStrike, AlphaStrike, Meditate, WujuStyle, Highlander);
+    public static final Champion MasterYi = new Champion(RiotChampionData.MasterYi);
 
     /** The champion name. */
-    public static final Champion MissFortune = new Champion(RiotChampionData.MissFortune, Strut, DoubleUp, ImpureShots, MakeItRain, BulletTime);
+    public static final Champion MissFortune = new Champion(RiotChampionData.MissFortune);
 
     /** The champion name. */
-    public static final Champion Mordekaiser = new Champion(RiotChampionData.Mordekaiser, IronMan, MaceOfSpades, CreepingDeath, SiphonOfDestruction, ChildrenOfTheGrave);
+    public static final Champion Mordekaiser = new Champion(RiotChampionData.Mordekaiser);
 
     /** The champion name. */
-    public static final Champion Morgana = new Champion(RiotChampionData.Morgana, SoulSiphon, DarkBinding, TormentedSoil, BlackShield, SoulShackles);
+    public static final Champion Morgana = new Champion(RiotChampionData.Morgana);
 
     /** The champion name. */
-    public static final Champion Nami = new Champion(RiotChampionData.Nami, SurgingTides, AquaPrison, EbbandFlow, TidecallersBlessing, TidalWave);
+    public static final Champion Nami = new Champion(RiotChampionData.Nami);
 
     /** The champion name. */
-    public static final Champion Nasus = new Champion(RiotChampionData.Nasus, SoulEater, SiphoningStrike, Wither, SpiritFire, FuryOfTheSands);
+    public static final Champion Nasus = new Champion(RiotChampionData.Nasus);
 
     /** The champion name. */
-    public static final Champion Nautilus = new Champion(RiotChampionData.Nautilus, StaggeringBlow, DredgeLine, TitansWrath, Riptide, DepthCharge);
+    public static final Champion Nautilus = new Champion(RiotChampionData.Nautilus);
 
     /** The champion name. */
-    public static final Champion Nidalee = new Champion(RiotChampionData.Nidalee, Prowl, JavelinTossTakedown, BushwhackPounce, PrimalSurgeSwipe, AspectOfTheCougar);
+    public static final Champion Nidalee = new Champion(RiotChampionData.Nidalee);
 
     /** The champion name. */
-    public static final Champion NidaleeCougar = new Champion(RiotChampionData.Nidalee, true, Prowl, Skill.Takedown, Pounce, Swipe, AspectOfTheCougarInCougar);
+    public static final Champion NidaleeCougar = new Champion(RiotChampionData.Nidalee);
 
     /** The champion name. */
-    public static final Champion Nocturne = new Champion(RiotChampionData.Nocturne, UmbraBlades, Duskbringer, ShroudOfDarkness, UnspeakableHorror, Paranoia);
+    public static final Champion Nocturne = new Champion(RiotChampionData.Nocturne);
 
     /** The champion name. */
-    public static final Champion Nunu = new Champion(RiotChampionData.Nunu, Visionary, Consume, BloodBoil, IceBlast, AbsoluteZero);
+    public static final Champion Nunu = new Champion(RiotChampionData.Nunu);
 
     /** The champion name. */
-    public static final Champion Olaf = new Champion(RiotChampionData.Olaf, BerserkerRage, Undertow, ViciousStrikes, RecklessSwing, Ragnarok);
+    public static final Champion Olaf = new Champion(RiotChampionData.Olaf);
 
     /** The champion name. */
-    public static final Champion Orianna = new Champion(RiotChampionData.Orianna, ClockworkWindup, CommandAttack, CommandDissonance, CommandProtect, CommandShockwave);
+    public static final Champion Orianna = new Champion(RiotChampionData.Orianna);
 
     /** The champion name. */
-    public static final Champion Pantheon = new Champion(RiotChampionData.Pantheon, AegisProtection, SpearShot, AegisOfZeonia, HeartseekerStrike, GrandSkyfall);
+    public static final Champion Pantheon = new Champion(RiotChampionData.Pantheon);
 
     /** The champion name. */
-    public static final Champion Poppy = new Champion(RiotChampionData.Poppy, ValiantFighter, DevastatingBlow, ParagonOfDemacia, HeroicCharge, DiplomaticImmunity);
+    public static final Champion Poppy = new Champion(RiotChampionData.Poppy);
 
     /** The champion name. */
-    public static final Champion Quinn = new Champion(RiotChampionData.Quinn, Harrier, BlindingAssault, HeightenedSenses, Vault, TagTeam);
+    public static final Champion Quinn = new Champion(RiotChampionData.Quinn);
 
     /** The champion name. */
-    public static final Champion Rammus = new Champion(RiotChampionData.Rammus, SpikedShell, Powerball, DefensiveBallCurl, PuncturingTaunt, Tremors);
+    public static final Champion Rammus = new Champion(RiotChampionData.Rammus);
 
     /** The champion name. */
-    public static final Champion Renekton = new Champion(RiotChampionData.Renekton, ReignOfAnger, CullTheMeek, RuthlessPredator, SliceandDice, Dominus);
+    public static final Champion Renekton = new Champion(RiotChampionData.Renekton);
 
     /** The champion name. */
-    public static final Champion Rengar = new Champion(RiotChampionData.Rengar, UnseenPredator, Savagery, BattleRoar, BolaStrike, ThrillOfTheHunt);
+    public static final Champion Rengar = new Champion(RiotChampionData.Rengar);
 
     /** The champion name. */
-    public static final Champion Riven = new Champion(RiotChampionData.Riven, RunicBlade, BrokenWings, KiBurst, Valor, BladeOfTheExile);
+    public static final Champion Riven = new Champion(RiotChampionData.Riven);
 
     /** The champion name. */
-    public static final Champion Rumble = new Champion(RiotChampionData.Rumble, JunkyardTitan, Flamespitter, ScrapShield, ElectroHarpoon, TheEqualizer);
+    public static final Champion Rumble = new Champion(RiotChampionData.Rumble);
 
     /** The champion name. */
-    public static final Champion Ryze = new Champion(RiotChampionData.Ryze, ArcaneMastery, Overload, RunePrison, SpellFlux, DesperatePower);
+    public static final Champion Ryze = new Champion(RiotChampionData.Ryze);
 
     /** The champion name. */
-    public static final Champion Sejuani = new Champion(RiotChampionData.Sejuani, Frost, ArcticAssault, FlailOfTheNorthernWinds, Permafrost, GlacialPrison);
+    public static final Champion Sejuani = new Champion(RiotChampionData.Sejuani);
 
     /** The champion name. */
-    public static final Champion Shaco = new Champion(RiotChampionData.Shaco, Backstab, Deceive, JackInTheBox, TwoShivPoison, Hallucinate);
+    public static final Champion Shaco = new Champion(RiotChampionData.Shaco);
 
     /** The champion name. */
-    public static final Champion Shen = new Champion(RiotChampionData.Shen, KiStrike, VorpalBlade, Feint, ShadowDash, StandUnited);
+    public static final Champion Shen = new Champion(RiotChampionData.Shen);
 
     /** The champion name. */
-    public static final Champion Shyvana = new Champion(RiotChampionData.Shyvana, Dragonborn, TwinBite, Burnout, FlameBreath, DragonsDescent);
+    public static final Champion Shyvana = new Champion(RiotChampionData.Shyvana);
 
     /** The champion name. */
-    public static final Champion Singed = new Champion(RiotChampionData.Singed, EmpoweredBulwark, PoisonTrail, MegaAdhesive, Fling, InsanityPotion);
+    public static final Champion Singed = new Champion(RiotChampionData.Singed);
 
     /** The champion name. */
-    public static final Champion Sion = new Champion(RiotChampionData.Sion, GloryInDeath, DecimatingSmash, SoulFurnace, RoarOfTheSlayer, UnstoppableOnslaught);
+    public static final Champion Sion = new Champion(RiotChampionData.Sion);
 
     /** The champion name. */
-    public static final Champion Sivir = new Champion(RiotChampionData.Sivir, FleetOfFoot, BoomerangBlade, Ricochet, Skill.SpellShield, OnTheHunt);
+    public static final Champion Sivir = new Champion(RiotChampionData.Sivir);
 
     /** The champion name. */
-    public static final Champion Skarner = new Champion(RiotChampionData.Skarner, CrystallizingSting, CrystalSlash, CrystallineExoskeleton, Fracture, Impale);
+    public static final Champion Skarner = new Champion(RiotChampionData.Skarner);
 
     /** The champion name. */
-    public static final Champion Sona = new Champion(RiotChampionData.Sona, PowerChord, HymnOfValor, AriaOfPerseverance, SongOfCelerity, Crescendo);
+    public static final Champion Sona = new Champion(RiotChampionData.Sona);
 
     /** The champion name. */
-    public static final Champion Soraka = new Champion(RiotChampionData.Soraka, Salvation, Starcall, AstralInfusion, Equinox, Wish);
+    public static final Champion Soraka = new Champion(RiotChampionData.Soraka);
 
     /** The champion name. */
-    public static final Champion Swain = new Champion(RiotChampionData.Swain, CarrionRenewal, Decrepify, Nevermove, Torment, RavenousFlock);
+    public static final Champion Swain = new Champion(RiotChampionData.Swain);
 
     /** The champion name. */
-    public static final Champion Syndra = new Champion(RiotChampionData.Syndra, Transcendent, DarkSphere, ForceOfWill, ScatterTheWeak, UnleashedPower);
+    public static final Champion Syndra = new Champion(RiotChampionData.Syndra);
 
     /** The champion name. */
-    public static final Champion Talon = new Champion(RiotChampionData.Talon, Mercy, NoxianDiplomacy, Rake, Cutthroat, ShadowAssault);
+    public static final Champion Talon = new Champion(RiotChampionData.Talon);
 
     /** The champion name. */
-    public static final Champion Taric = new Champion(RiotChampionData.Taric, Gemcraft, Imbue, Shatter, Dazzle, Radiance);
+    public static final Champion Taric = new Champion(RiotChampionData.Taric);
 
     /** The champion name. */
-    public static final Champion Teemo = new Champion(RiotChampionData.Teemo, Camouflage, BlindingDart, MoveQuick, ToxicShot, NoxiousTrap);
+    public static final Champion Teemo = new Champion(RiotChampionData.Teemo);
 
     /** The champion name. */
-    public static final Champion Thresh = new Champion(RiotChampionData.Thresh, Damnation, DeathSentence, DarkPassage, Flay, TheBox);
+    public static final Champion Thresh = new Champion(RiotChampionData.Thresh);
 
     /** The champion name. */
-    public static final Champion Tristana = new Champion(RiotChampionData.Tristana, DrawaBead, RapidFire, RocketJump, ExplosiveCharge, BusterShot);
+    public static final Champion Tristana = new Champion(RiotChampionData.Tristana);
 
     /** The champion name. */
-    public static final Champion Trundle = new Champion(RiotChampionData.Trundle, KingsTribute, Chomp, FrozenDomain, PillarOfIce, Subjugate);
+    public static final Champion Trundle = new Champion(RiotChampionData.Trundle);
 
     /** The champion name. */
-    public static final Champion Tryndamere = new Champion(RiotChampionData.Tryndamere, BattleFury, Bloodlust, MockingShout, SpinningSlash, UndyingRage);
+    public static final Champion Tryndamere = new Champion(RiotChampionData.Tryndamere);
 
     /** The champion name. */
-    public static final Champion TwistedFate = new Champion(RiotChampionData.TwistedFate, LoadedDice, WildCards, PickACard, StackedDeck, Destiny);
+    public static final Champion TwistedFate = new Champion(RiotChampionData.TwistedFate);
 
     /** The champion name. */
-    public static final Champion Twitch = new Champion(RiotChampionData.Twitch, DeadlyVenom, Ambush, VenomCask, Contaminate, RatTaTatTat);
+    public static final Champion Twitch = new Champion(RiotChampionData.Twitch);
 
     /** The champion name. */
-    public static final Champion Udyr = new Champion(RiotChampionData.Udyr, MonkeysAgility, TigerStance, TurtleStance, BearStance, PhoenixStance);
+    public static final Champion Udyr = new Champion(RiotChampionData.Udyr);
 
     /** The champion name. */
-    public static final Champion Urgot = new Champion(RiotChampionData.Urgot, ZaunTouchedBoltAugmenter, AcidHunter, TerrorCapacitor, NoxianCorrosiveCharge, HyperKineticPositionReverser);
+    public static final Champion Urgot = new Champion(RiotChampionData.Urgot);
 
     /** The champion name. */
-    public static final Champion Varus = new Champion(RiotChampionData.Varus, LivingVengeance, PiercingArrow, BlightedQuiver, HailOfArrows, ChainOfCorruption);
+    public static final Champion Varus = new Champion(RiotChampionData.Varus);
 
     /** The champion name. */
-    public static final Champion Vayne = new Champion(RiotChampionData.Vayne, NightHunter, Tumble, SilverBolts, Condemn, FinalHour);
+    public static final Champion Vayne = new Champion(RiotChampionData.Vayne);
 
     /** The champion name. */
-    public static final Champion Veigar = new Champion(RiotChampionData.Veigar, Equilibrium, BalefulStrike, DarkMatter, EventHorizon, PrimordialBurst);
+    public static final Champion Veigar = new Champion(RiotChampionData.Veigar);
 
     /** The champion name. */
-    public static final Champion VelKoz = new Champion(RiotChampionData.Velkoz, OrganicDeconstruction, PlasmaFission, VoidRift, TectonicDisruption, LifeFormDisintegrationRay);
+    public static final Champion Velkoz = new Champion(RiotChampionData.Velkoz);
 
     /** The champion name. */
-    public static final Champion Vi = new Champion(RiotChampionData.Vi, BlastShield, VaultBreaker, DentingBlows, ExcessiveForce, AssaultandBattery);
+    public static final Champion Vi = new Champion(RiotChampionData.Vi);
 
     /** The champion name. */
-    public static final Champion Viktor = new Champion(RiotChampionData.Viktor, GloriousEvolution, SiphonPower, GravityField, DeathRay, ChaosStorm);
+    public static final Champion Viktor = new Champion(RiotChampionData.Viktor);
 
     /** The champion name. */
-    public static final Champion Vladimir = new Champion(RiotChampionData.Vladimir, CrimsonPact, Transfusion, SanguinePool, TidesOfBlood, Hemoplague);
+    public static final Champion Vladimir = new Champion(RiotChampionData.Vladimir);
 
     /** The champion name. */
-    public static final Champion Volibear = new Champion(RiotChampionData.Volibear, ChosenOfTheStorm, RollingThunder, Frenzy, MajesticRoar, ThunderClaws);
+    public static final Champion Volibear = new Champion(RiotChampionData.Volibear);
 
     /** The champion name. */
-    public static final Champion Warwick = new Champion(RiotChampionData.Warwick, EternalThirst, HungeringStrike, HuntersCall, BloodScent, InfiniteDuress);
+    public static final Champion Warwick = new Champion(RiotChampionData.Warwick);
 
     /** The champion name. */
-    public static final Champion Wukong = new Champion(RiotChampionData.MonkeyKing, StoneSkin, CrushingBlow, Decoy, NimbusStrike, Cyclone);
+    public static final Champion MonkeyKing = new Champion(RiotChampionData.MonkeyKing);
 
     /** The champion name. */
-    public static final Champion Xerath = new Champion(RiotChampionData.Xerath, ManaSurge, Arcanopulse, EyeOfDestruction, ShockingOrb, RiteOfTheArcane);
+    public static final Champion Xerath = new Champion(RiotChampionData.Xerath);
 
     /** The champion name. */
-    public static final Champion XinZhao = new Champion(RiotChampionData.XinZhao, Challenge, ThreeTalonStrike, BattleCry, AudaciousCharge, CrescentSweep);
+    public static final Champion XinZhao = new Champion(RiotChampionData.XinZhao);
 
     /** The champion name. */
-    public static final Champion Yasuo = new Champion(RiotChampionData.Yasuo, WayOfTheWanderer, SteelTempest, WindWall, SweepingBlade, LastBreath);
+    public static final Champion Yasuo = new Champion(RiotChampionData.Yasuo);
 
     /** The champion name. */
-    public static final Champion Yorick = new Champion(RiotChampionData.Yorick, UnholyCovenant, OmenOfWar, OmenOfPestilence, OmenOfFamine, OmenOfDeath);
+    public static final Champion Yorick = new Champion(RiotChampionData.Yorick);
 
     /** The champion name. */
-    public static final Champion Zac = new Champion(RiotChampionData.Zac, CellDivision, StretchingStrike, UnstableMatter, ElasticSlingshot, LetsBounce);
+    public static final Champion Zac = new Champion(RiotChampionData.Zac);
 
     /** The champion name. */
-    public static final Champion Zed = new Champion(RiotChampionData.Zed, ContemptforTheWeak, RazorShuriken, LivingShadow, ShadowSlash, DeathMark);
+    public static final Champion Zed = new Champion(RiotChampionData.Zed);
 
     /** The champion name. */
-    public static final Champion Ziggs = new Champion(RiotChampionData.Ziggs, ShortFuse, BouncingBomb, SatchelCharge, HexplosiveMinefield, MegaInfernoBomb);
+    public static final Champion Ziggs = new Champion(RiotChampionData.Ziggs);
 
     /** The champion name. */
-    public static final Champion Zilean = new Champion(RiotChampionData.Zilean, HeightenedLearning, TimeBomb, Rewind, TimeWarp, Chronoshift);
+    public static final Champion Zilean = new Champion(RiotChampionData.Zilean);
 
     /** The champion name. */
-    public static final Champion Zyra = new Champion(RiotChampionData.Zyra, RiseOfTheThorns, DeadlyBloom, RampantGrowth, GraspingRoots, Stranglethorns);
+    public static final Champion Zyra = new Champion(RiotChampionData.Zyra);
 
     /** The champion id. */
     public final int id;
@@ -738,7 +736,7 @@ public class Champion {
                 .set(MR, 30, 0)
                 .set(Range, 550)
                 .set(MS, 335);
-        ChoGath.update(P0000)
+        Chogath.update(P0000)
                 .set(Health, 440, 80)
                 .set(Hreg, 7.5, 0.85)
                 .set(Mana, 205, 40)
@@ -847,7 +845,7 @@ public class Champion {
                 .set(MR, 30, 0)
                 .set(Range, 550)
                 .set(MS, 325);
-        Fiddlesticks.update(P0000)
+        FiddleSticks.update(P0000)
                 .set(Health, 390, 80)
                 .set(Hreg, 4.6, 0.6)
                 .set(Mana, 251, 59)
@@ -1100,7 +1098,7 @@ public class Champion {
                 .set(Range, 550)
                 .set(MS, 335);
         Kennen.update(P309).set(AD, 47.2, 3.3);
-        KhaZix.update(P0000)
+        Khazix.update(P0000)
                 .set(Health, 430, 85)
                 .set(Hreg, 6.25, 0.75)
                 .set(Mana, 260, 40)
@@ -1122,7 +1120,7 @@ public class Champion {
                 .set(MR, 30, 0)
                 .set(Range, 500)
                 .set(MS, 340);
-        LeBlanc.update(P0000)
+        Leblanc.update(P0000)
                 .set(Health, 390, 75)
                 .set(Hreg, 4.5, 0.55)
                 .set(Mana, 250, 50)
@@ -1133,7 +1131,7 @@ public class Champion {
                 .set(MR, 30, 0)
                 .set(Range, 525)
                 .set(MS, 335);
-        LeBlanc.update(Version.P310A).set(Hreg, 6.5, 0.55).set(AD, 51, 3.5);
+        Leblanc.update(Version.P310A).set(Hreg, 6.5, 0.55).set(AD, 51, 3.5);
         LeeSin.update(P0000)
                 .set(Health, 428, 85)
                 .set(Hreg, 6.25, 0.7)
@@ -1777,7 +1775,7 @@ public class Champion {
                 .set(MR, 30, 0)
                 .set(Range, 525)
                 .set(MS, 340);
-        VelKoz.update(P403)
+        Velkoz.update(P403)
                 .set(Health, 380, 76)
                 .set(Hreg, 4.5, 0.55)
                 .set(Mana, 250, 45)
@@ -1842,7 +1840,7 @@ public class Champion {
                 .set(MR, 30, 1.25)
                 .set(Range, 125)
                 .set(MS, 345);
-        Wukong.update(P0000)
+        MonkeyKing.update(P0000)
                 .set(Health, 435, 85)
                 .set(Hreg, 5.1, 0.65)
                 .set(Mana, 202, 38)
