@@ -7,24 +7,27 @@
  *
  *          http://opensource.org/licenses/mit-license.php
  */
-package teemowork.api;
+package teemowork.tool.riot;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.StringJoiner;
 
 import kiss.I;
-import teemowork.api.ChampionDataBuilder.ChampionDefinition;
-import teemowork.api.ChampionDataBuilder.ChampionDefinitions;
 import teemowork.model.Champion;
 import teemowork.model.Item;
 import teemowork.model.MasterySeason4;
 import teemowork.model.Version;
 import teemowork.tool.image.EditableImage;
+import teemowork.tool.riot.ChampionDataBuilder.ChampionDefinition;
+import teemowork.tool.riot.ChampionDataBuilder.ChampionDefinitions;
 
 /**
  * @version 2015/07/19 22:25:30
@@ -37,11 +40,21 @@ public class ImageBuilder {
     /** The target version. */
     private final Version version;
 
+    /** The work space. */
+    private final Path temporary;
+
     /**
      * @param latest
      */
     public ImageBuilder(Version version) {
         this.version = version;
+
+        try {
+            temporary = I.locateTemporary();
+            Files.createDirectories(temporary);
+        } catch (IOException e) {
+            throw I.quiet(e);
+        }
     }
 
     /**
@@ -50,41 +63,18 @@ public class ImageBuilder {
      * </p>
      */
     public void buildItemIconSet() throws Exception {
-        List<Item> items = new ArrayList();
-
-        for (Field field : Item.class.getFields()) {
-            if (field.getType() == Item.class) {
-                try {
-                    items.add((Item) field.get(null));
-                } catch (Exception e) {
-                    throw I.quiet(e);
-                }
-            }
-        }
-
-        Path temporary = I.locateTemporary();
-        Files.createDirectories(temporary);
-
+        List<Item> items = collect(Item.class);
         EditableImage container = new EditableImage();
 
         for (Item item : items) {
-            String file = item.id + ".png";
+            EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/item/", item.id, ".png"));
+            image.trim(2).resize(45);
 
-            try {
-                Path local = temporary.resolve(file);
-                URL url = new URL("http://ddragon.leagueoflegends.com/cdn/" + version.name + ".1/img/item/" + file);
-
-                I.copy(url.openStream(), Files.newOutputStream(local), true);
-
-                EditableImage image = new EditableImage(local);
-                image.trim(2).resize(45);
-
-                container.concat(image);
-            } catch (Exception e) {
-                throw I.quiet(e);
-            }
+            container.concat(image);
         }
         container.write(Resources.resolve("items.jpg"));
+
+        log("Create item icon set.");
     }
 
     /**
@@ -93,37 +83,19 @@ public class ImageBuilder {
      * </p>
      */
     public void buildChampionIconSet() throws Exception {
-        List<Champion> champions = new ArrayList();
-
-        for (Field field : Champion.class.getFields()) {
-            if (field.getType() == Champion.class) {
-                try {
-                    champions.add((Champion) field.get(null));
-                } catch (Exception e) {
-                    throw I.quiet(e);
-                }
-            }
-        }
-
-        Path temporary = I.locateTemporary();
-        Files.createDirectories(temporary);
+        List<Champion> champions = collect(Champion.class);
 
         EditableImage container = new EditableImage();
 
         for (Champion champion : champions) {
-            String file = champion.systemName + ".png";
-
-            Path local = temporary.resolve(file);
-            URL url = new URL("http://ddragon.leagueoflegends.com/cdn/" + version.name + ".1/img/champion/" + file);
-
-            I.copy(url.openStream(), Files.newOutputStream(local), true);
-
-            EditableImage image = new EditableImage(local);
+            EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/champion/", champion.systemName, ".png"));
             image.trim(7).resize(70);
 
             container.concat(image);
         }
         container.write(Resources.resolve("champions.jpg"));
+
+        log("Create champion icon set.");
     }
 
     /**
@@ -132,22 +104,7 @@ public class ImageBuilder {
      * </p>
      */
     public void buildSkillIconSet() throws Exception {
-        List<Champion> champions = new ArrayList();
-
-        for (Field field : Champion.class.getFields()) {
-            if (field.getType() == Champion.class) {
-                try {
-                    champions.add((Champion) field.get(null));
-                } catch (Exception e) {
-                    throw I.quiet(e);
-                }
-            }
-        }
-
-        Path temporary = I.locateTemporary();
-        Files.createDirectories(temporary);
-
-        ChampionDefinitions definitions = RiotAPI.parse(ChampionDefinitions.class, Version.Latest, Locale.US);
+        ChampionDefinitions definitions = RiotAPI.parse(ChampionDefinitions.class, version, Locale.US);
 
         for (ChampionDefinition definition : definitions.data.values()) {
             definition.analyze();
@@ -156,19 +113,16 @@ public class ImageBuilder {
 
             for (int i = 0; i < definition.skillSystem.size(); i++) {
                 String file = (definition.skillSystem.get(i) + ".png").replaceAll("\\s", "%20");
+                String directory = i == 0 ? "passive" : "spell";
 
-                Path local = temporary.resolve(file);
-                URL url = new URL("http://ddragon.leagueoflegends.com/cdn/" + version.name + ".1/img/" + (i == 0
-                        ? "passive" : "spell") + "/" + file);
-
-                I.copy(url.openStream(), Files.newOutputStream(local), true);
-
-                EditableImage image = new EditableImage(local);
+                EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/", directory, "/", file));
                 image.resize(45);
 
                 container.concat(image);
             }
             container.write(Resources.resolve("skill/" + definition.id + ".jpg"));
+
+            log("Create ", definition.id, " skill icon set.");
         }
     }
 
@@ -202,12 +156,75 @@ public class ImageBuilder {
     }
 
     /**
+     * <p>
+     * Collect all defined model in the specified definition class.
+     * </p>
+     * 
+     * @param model
+     * @return
+     */
+    private <M> List<M> collect(Class<M> model) {
+        List<M> items = new ArrayList();
+
+        for (Field field : model.getFields()) {
+            if (field.getType() == model) {
+                try {
+                    items.add((M) field.get(null));
+                } catch (Exception e) {
+                    throw I.quiet(e);
+                }
+            }
+        }
+        return items;
+    }
+
+    /**
+     * <p>
+     * Download data from the specified uri.
+     * </p>
+     * 
+     * @param uri
+     * @return
+     */
+    private Path download(Object... uri) {
+        try {
+            StringJoiner joiner = new StringJoiner("");
+
+            for (Object object : uri) {
+                joiner.add(object.toString());
+            }
+
+            Path path = temporary.resolve("donwnloaded" + Instant.now().getEpochSecond());
+            URL url = new URL(joiner.toString());
+
+            // donwload
+            I.copy(url.openStream(), Files.newOutputStream(path), true);
+
+            return path;
+        } catch (Exception e) {
+            throw I.quiet(e);
+        }
+    }
+
+    /**
+     * Display message.
+     * 
+     * @param texts
+     */
+    private void log(Object... texts) {
+        for (int i = 0; i < texts.length; i++) {
+            System.out.print(texts[i]);
+        }
+        System.out.println("");
+    }
+
+    /**
      * Build resources.
      */
     public static void main(String[] args) throws Exception {
         ImageBuilder builder = new ImageBuilder(Version.Latest);
-        // builder.buildItemIconSet();
-        // builder.buildChampionIconSet();
+        builder.buildItemIconSet();
+        builder.buildChampionIconSet();
         builder.buildSkillIconSet();
     }
 }

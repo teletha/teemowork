@@ -7,7 +7,7 @@
  *
  *          http://opensource.org/licenses/mit-license.php
  */
-package teemowork.api;
+package teemowork.tool.riot;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -28,7 +28,7 @@ import kiss.model.Property;
 import teemowork.model.Version;
 
 /**
- * @version 2015/07/13 12:31:40
+ * @version 2015/07/21 16:54:35
  */
 public class RiotAPI {
 
@@ -111,6 +111,16 @@ public class RiotAPI {
         return java;
     }
 
+    /**
+     * <p>
+     * Analyze json and build model.
+     * </p>
+     * 
+     * @param model
+     * @param java
+     * @param js
+     * @param property
+     */
     private static void parse(Model model, Object java, JsonValue js, Property property) {
         if (property != null) {
             // calculate value
@@ -133,6 +143,9 @@ public class RiotAPI {
         }
     }
 
+    /**
+     * @return
+     */
     public static ChampionList getChampionList() {
         try {
             URL url = new URL("https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion?api_key=" + key);

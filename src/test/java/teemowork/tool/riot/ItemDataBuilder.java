@@ -7,9 +7,9 @@
  *
  *          http://opensource.org/licenses/mit-license.php
  */
-package teemowork.api;
+package teemowork.tool.riot;
 
-import static teemowork.api.ClassWriter.*;
+import static teemowork.tool.ClassWriter.*;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 
 import kiss.I;
 import teemowork.model.Version;
+import teemowork.tool.ClassWriter;
 
 /**
  * @version 2015/07/14 11:46:21

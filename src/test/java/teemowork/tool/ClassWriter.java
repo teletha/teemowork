@@ -7,7 +7,7 @@
  *
  *          http://opensource.org/licenses/mit-license.php
  */
-package teemowork.api;
+package teemowork.tool;
 
 import java.io.IOException;
 import java.nio.file.Path;

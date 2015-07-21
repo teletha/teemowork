@@ -7,9 +7,9 @@
  *
  *          http://opensource.org/licenses/mit-license.php
  */
-package teemowork.api;
+package teemowork.tool.riot;
 
-import static teemowork.api.ClassWriter.*;
+import static teemowork.tool.ClassWriter.*;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -22,6 +22,7 @@ import teemowork.model.Describable;
 import teemowork.model.Skill;
 import teemowork.model.SkillDescriptor;
 import teemowork.model.Version;
+import teemowork.tool.ClassWriter;
 
 /**
  * @version 2015/07/13 12:41:51
@@ -161,7 +162,6 @@ public class ChampionDataBuilder {
          */
         void analyze() {
             String path = "champion/" + id;
-            System.out.println(id);
             Detail info = RiotAPI.parse(path, Details.class, Version.Latest, Locale.US).data.get(id);
             Detail local = RiotAPI.parse(path, Details.class, Version.Latest, Locale.JAPAN).data.get(id);
 
