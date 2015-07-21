@@ -394,9 +394,6 @@ public class Skill extends Describable<SkillDescriptor> {
     public static final Skill Playful = new Skill("Playful", E);
 
     /** The skill name. */
-    public static final Skill Trickster = new Skill("Trickster", E);
-
-    /** The skill name. */
     public static final Skill ChumTheWaters = new Skill("Chum the Waters", R);
 
     /** The skill name. */
@@ -733,19 +730,10 @@ public class Skill extends Describable<SkillDescriptor> {
     public static final Skill SonicWave = new Skill("Sonic Wave", Q);
 
     /** The skill name. */
-    public static final Skill ResonatingStrike = new Skill("Resonating Strike", Q);
-
-    /** The skill name. */
     public static final Skill Safeguard = new Skill("Safeguard", W);
 
     /** The skill name. */
-    public static final Skill IronWill = new Skill("Iron Will", W);
-
-    /** The skill name. */
     public static final Skill Tempest = new Skill("Tempest", E);
-
-    /** The skill name. */
-    public static final Skill Cripple = new Skill("Cripple", E);
 
     /** The skill name. */
     public static final Skill DragonsRage = new Skill("Dragon's Rage", R);
@@ -1861,7 +1849,7 @@ public class Skill extends Describable<SkillDescriptor> {
     public static final Skill LifeFormDisintegrationRay = new Skill("Life Form Disintegration Ray", R);
 
     /** The skill name. */
-    public final String name;
+    public String name;
 
     /** The skill system name. */
     public final String system;
@@ -1877,7 +1865,7 @@ public class Skill extends Describable<SkillDescriptor> {
      * @param name
      */
     Skill(String name, SkillKey key) {
-        this.name = name;
+        this.name = "AAA";
         this.system = name.replaceAll(" of ", "Of").replaceAll("[\\s-,!':/]", "");
         this.key = key;
     }
@@ -4877,17 +4865,13 @@ public class Skill extends Describable<SkillDescriptor> {
                 .cd(10);
         SeastoneTrident.update(P313).variable(2, MagicDamage, 10, 5, ap(0.15));
         Playful.update()
-                .active("指定地点にジャンプする。ジャンプ中はターゲットされない状態になる。0.75秒後にその場に降下し、{1}の敵ユニットに{2}と2秒間{3}を与える。")
+                .active("指定地点にジャンプする。ジャンプ中はターゲットされない状態になる。0.75秒後にその場に降下し、{1}の敵ユニットに{2}と2秒間{3}を与える。また、ジャンプ中に再使用することで降下する場所を別の指定地点に変更しできる。その場合、{4}の敵ユニットに{5}を与える。")
                 .variable(1, Radius, 250)
                 .variable(2, MagicDamage, 70, 50, ap(0.75))
                 .variable(3, MSSlowRatio, 40, 5)
+                .variable(4, Radius, 150)
+                .variable(5, MagicDamage, 70, 50, ap(0.75))
                 .mana(90, 10)
-                .cd(16, -2)
-                .range(400);
-        Trickster.update()
-                .active("Playfulのジャンプ中のみ使用可能。降下する場所を別の指定地点に変更し、その{1}の敵ユニットに{2}を与える。このスキルを使用した場合Playfulのダメージとスローは発生しない。")
-                .variable(1, Radius, 150)
-                .variable(2, MagicDamage, 70, 50, ap(0.75))
                 .cd(16, -2)
                 .range(400);
         ChumTheWaters.update()
@@ -5415,36 +5399,33 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(-1, ASRatio, 40)
                 .variable(2, RestoreEnergy, 15);
         SonicWave.update()
-                .active("指定方向に気を飛ばし当たった敵ユニットに{1}を与える。このスキルが敵ユニットに当たった場合、3秒間Resonating Strikeが使用可能になる。また3秒間対象の視界を得る。")
+                .active("指定方向に気を飛ばし当たった敵ユニットに{1}を与える。このスキルが敵ユニットに当たった場合、3秒間対象の視界を得て、下記のスキルを使用できる。<br><br>{2}を消費して、Sonic Waveが当たった{3}の敵ユニットにダッシュし、{4}を与える。(追加ダメージはMinionに対して400DMが上限)")
                 .variable(1, PhysicalDamage, 50, 30, bounusAD(0.9))
+                .variable(2, Energy, 30)
+                .variable(3, Radius, 1300)
+                .variable(4, PhysicalDamage, 50, 0, bounusAD(0.5), amplify(Status.TargetMissingHealthRatio, 8))
                 .cd(11, -1)
-                .range(975)
+                .range(1100)
                 .cost(Energy, 50, 0);
-        ResonatingStrike.update()
-                .active("Sonic Waveが当たった敵ユニットにダッシュし、{1}を与える。(追加ダメージはMinionに対して400DMが上限)")
-                .variable(1, PhysicalDamage, 50, 0, bounusAD(0.5), amplify(Status.TargetMissingHealthRatio, 8))
-                .cost(Energy, 30, 0)
-                .range(1100);
         Safeguard.update()
-                .active("対象の味方ユニットまで移動する。自身及び対象は５秒間{1}を得る。")
+                .active("対象の味方ユニットまで移動する。自身及び対象（味方Championに限る）は５秒間{1}を得る。このスキル使用後3秒間、下記のスキルが使用できる。<br><br>{2}を消費して、5秒間{3}と{4}を得る。")
                 .variable(1, Shield, 40, 40, ap(0.8))
+                .variable(2, Energy, 30)
+                .variable(3, LS, 5, 5)
+                .variable(4, SV, 5, 5)
                 .cd(9)
                 .cost(Energy, 50, 0)
-                .range(700)
-                .update(P315)
-                .active("対象の味方ユニットまで移動する。自身及び対象（味方Championに限る）は５秒間{1}を得る。");
-        IronWill.update().active("5秒間{1}と{2}を得る。").variable(1, LS, 5, 5).variable(2, SV, 5, 5).cost(Energy, 30, 0);
+                .range(700);
         Tempest.update()
-                .active("{1}の敵ユニットに{2}を与え、4秒間そのユニットの{3}。このスキルが敵ユニットに当たった場合、3秒間Crippleが使用可能になる。")
+                .active("{1}の敵ユニットに{2}を与え、4秒間そのユニットの{3}。このスキルが敵ユニットに当たった場合、3秒間下記のスキルが使用できる。<br><br>{4}を消費して、Tempestが当たった{5}の敵ユニットに４秒間{6}を与える。これらの速度低下は時間と共に戻っていく。")
                 .variable(1, Radius, 450)
                 .variable(2, MagicDamage, 60, 35, bounusAD(1))
                 .variable(3, Visionable)
+                .variable(4, Energy, 30)
+                .variable(5, Radius, 500)
+                .variable(6, MSSlowRatio, 20, 10)
                 .cd(10)
                 .cost(Energy, 50, 0);
-        Cripple.update()
-                .active("Tempestが当たった敵ユニット４秒間{1}と{2}を与える。これらの速度低下は時間と共に戻っていく。")
-                .variable(1, MSSlowRatio, 20, 10)
-                .variable(2, ASSlowRatio, 20, 10);
         DragonsRage.update()
                 .active("対象の敵Championに{1}を与え、{2}させる。ノックバックした対象に触れた敵ユニットにも{1}を与え、{3}を与える。")
                 .variable(1, PhysicalDamage, 200, 200, bounusAD(2))

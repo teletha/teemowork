@@ -103,7 +103,7 @@ public class Champion {
     public static final Champion Fiora = new Champion(RiotChampionData.Fiora, Duelist, Lunge, Riposte, BurstOfSpeed, BladeWaltz);
 
     /** The champion name. */
-    public static final Champion Fizz = new Champion(RiotChampionData.Fizz, NimbleFighter, UrchinStrike, SeastoneTrident, Playful, Trickster, ChumTheWaters);
+    public static final Champion Fizz = new Champion(RiotChampionData.Fizz, NimbleFighter, UrchinStrike, SeastoneTrident, Playful, ChumTheWaters);
 
     /** The champion name. */
     public static final Champion Galio = new Champion(RiotChampionData.Galio, RunicSkin, ResoluteSmite, Bulwark, RighteousGust, IdolOfDurand);
@@ -175,7 +175,7 @@ public class Champion {
     public static final Champion LeBlanc = new Champion(RiotChampionData.Leblanc, MirrorImage, SigilOfSilence, Distortion, EtherealChains, Mimic);
 
     /** The champion name. */
-    public static final Champion LeeSin = new Champion(RiotChampionData.LeeSin, Flurry, SonicWave, ResonatingStrike, Safeguard, IronWill, Tempest, Cripple, DragonsRage);
+    public static final Champion LeeSin = new Champion(RiotChampionData.LeeSin, Flurry, SonicWave, Safeguard, Tempest, DragonsRage);
 
     /** The champion name. */
     public static final Champion Leona = new Champion(RiotChampionData.Leona, Sunlight, ShieldOfDaybreak, Eclipse, ZenithBlade, SolarFlare);
@@ -431,6 +431,11 @@ public class Champion {
         this.name = data.name;
         this.systemName = data.name();
         this.skills = skills;
+        System.out.println(name);
+        for (int i = 0; i < skills.length; i++) {
+            System.out.println(data.skills[i]);
+            skills[i].name = data.skills[i];
+        }
 
         if (!transformed) {
             champions.add(this);
