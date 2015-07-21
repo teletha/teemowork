@@ -9,26 +9,11 @@
  */
 package teemowork.api;
 
-import teemowork.model.Skill;
 import teemowork.model.Describable;
+import teemowork.model.Skill;
 import teemowork.model.SkillDescriptor;
 
 public abstract class RiotSkillData extends Describable<SkillDescriptor> {
-
-    /** Blood Well Definition */
-    public static final Skill BloodWell = new Skill(RiotChampionData.Aatrox, 0);
-
-    /** Dark Flight Definition */
-    public static final Skill DarkFlight = new Skill(RiotChampionData.Aatrox, 1);
-
-    /** Blood Thirst / Blood Price Definition */
-    public static final Skill BloodThirstBloodPrice = new Skill(RiotChampionData.Aatrox, 2);
-
-    /** Blades of Torment Definition */
-    public static final Skill BladesOfTorment = new Skill(RiotChampionData.Aatrox, 3);
-
-    /** Massacre Definition */
-    public static final Skill Massacre = new Skill(RiotChampionData.Aatrox, 4);
 
     /** Essence Theft Definition */
     public static final Skill EssenceTheft = new Skill(RiotChampionData.Ahri, 0);

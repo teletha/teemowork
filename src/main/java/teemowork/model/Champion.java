@@ -32,7 +32,7 @@ public class Champion {
     private static final List<Champion> champions = new ArrayList();
 
     /** The champion name. */
-    public static final Champion Aatrox = new Champion(RiotChampionData.Aatrox, BloodWell, DarkFlight, BloodThirstBloodPrice, BladesOfTorment, Massacre);
+    public static final Champion Aatrox = new Champion(RiotChampionData.Aatrox);
 
     /** The champion name. */
     public static final Champion Ahri = new Champion(RiotChampionData.Ahri, EssenceTheft, OrbOfDeception, FoxFire, Skill.Charm, SpiritRush);
@@ -406,6 +406,21 @@ public class Champion {
     /** The skill set. */
     public final Skill[] skills;
 
+    /** The skill. */
+    public final Skill P;
+
+    /** The skill. */
+    public final Skill Q;
+
+    /** The skill. */
+    public final Skill W;
+
+    /** The skill. */
+    public final Skill E;
+
+    /** The skill. */
+    public final Skill R;
+
     /** The descriptor. */
     private final ChampionStatus[] versions = new ChampionStatus[Version.values().length];
 
@@ -436,6 +451,34 @@ public class Champion {
         if (!transformed) {
             champions.add(this);
         }
+
+        P = new Skill(data.skills[0], data.system, data.skills.length, 0);
+        Q = new Skill(data.skills[1], data.system, data.skills.length, 1);
+        W = new Skill(data.skills[2], data.system, data.skills.length, 2);
+        E = new Skill(data.skills[3], data.system, data.skills.length, 3);
+        R = new Skill(data.skills[4], data.system, data.skills.length, 4);
+    }
+
+    /**
+     * <p>
+     * Create new champion.
+     * </p>
+     * 
+     * @param name
+     */
+    Champion(RiotChampionData data) {
+        this.id = counter++;
+        this.name = data.name;
+        this.systemName = data.system;
+
+        champions.add(this);
+
+        this.P = new Skill(data.skills[0], data.system, data.skills.length, 0);
+        this.Q = new Skill(data.skills[1], data.system, data.skills.length, 1);
+        this.W = new Skill(data.skills[2], data.system, data.skills.length, 2);
+        this.E = new Skill(data.skills[3], data.system, data.skills.length, 3);
+        this.R = new Skill(data.skills[4], data.system, data.skills.length, 4);
+        this.skills = new Skill[] {P, Q, W, E, R};
     }
 
     /**

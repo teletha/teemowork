@@ -9,6 +9,7 @@
  */
 package teemowork.model;
 
+import static teemowork.model.Champion.*;
 import static teemowork.model.SkillKey.*;
 import static teemowork.model.Status.*;
 import static teemowork.model.Version.*;
@@ -42,10 +43,14 @@ import teemowork.model.variable.VariableResolver.Refer;
 public class Skill extends RiotSkillData {
 
     /** Aspect Of The Cougar Definition */
-    public static final Skill AspectOfTheCougarInCougar = new Skill(RiotChampionData.Nidalee, 8);
+    public static final Skill AspectOfTheCougarInCougar = new Skill(RiotChampionData.Nidalee, 4);
 
     /** The owner data. */
-    private final RiotChampionData data;
+    private final String name;
+
+    private final String owner;
+
+    private final int size;
 
     /** The skill id. */
     private final int id;
@@ -57,7 +62,17 @@ public class Skill extends RiotSkillData {
      * The skill definition.
      */
     public Skill(RiotChampionData data, int id) {
-        this.data = data;
+        this.name = data.skills[id];
+        this.owner = data.system;
+        this.size = data.skills.length;
+        this.id = id;
+        this.key = SkillKey.values()[id < 5 ? id : id - 4];
+    }
+
+    public Skill(String name, String owner, int size, int id) {
+        this.name = name;
+        this.owner = owner;
+        this.size = size;
         this.id = id;
         this.key = SkillKey.values()[id < 5 ? id : id - 4];
     }
@@ -79,18 +94,7 @@ public class Skill extends RiotSkillData {
      */
     public String getName() {
         if (!initialized) initilaize();
-        return data.skills[id];
-    }
-
-    /**
-     * <p>
-     * Retrieve the localized skill name.
-     * </p>
-     * 
-     * @return A localized name of this skill.
-     */
-    public String getLocalizedName() {
-        return data.skillLocalized[id];
+        return name;
     }
 
     /**
@@ -101,7 +105,7 @@ public class Skill extends RiotSkillData {
      * @return
      */
     public String getIcon() {
-        return "src/main/resources/teemowork/skill/" + data.system + ".jpg";
+        return "src/main/resources/teemowork/skill/" + owner + ".jpg";
     }
 
     /**
@@ -112,7 +116,7 @@ public class Skill extends RiotSkillData {
      * @return
      */
     public float getIconPosition() {
-        return id / (data.skills.length - 1) * 100;
+        return id / (size - 1) * 100;
     }
 
     /**
@@ -2057,7 +2061,7 @@ public class Skill extends RiotSkillData {
     }
 
     private static void Aatrox() {
-        BloodWell.update()
+        Aatrox.P.update()
                 .passive("スキルを使用時に消費したHealthをBlood Wellとしてスタックし(最大スタック量は{1})、5秒間戦闘状態でなくなると毎秒2%ずつ失われていく。スタックが2%貯まる毎に{2}する(最大で{3})。Healthが0になると3秒かけて{4}する(最大で{5})。{6}。")
                 .variable(1, Stack, 30, 0, amplify(Lv, 45))
                 .variable(-2, ASRatio, 0, 0, amplify(StackPercentage, 0.5))
@@ -2065,11 +2069,11 @@ public class Skill extends RiotSkillData {
                 .variable(4, RestoreHealth, 10.5, 0, amplify(Lv, 15.75), amplify(Stack, 1))
                 .variable(5, RestoreHealth, 40.5, 0, amplify(Lv, 60.75))
                 .variable(6, CDRUnaware)
-                .cd(-225);
-        BloodWell.update(P313)
+                .cd(-225)
+                .update(P313)
                 .variable(-2, ASRatio, 0, 0, amplify(StackPercentage, new Per3Level(0.6, 0.1)))
                 .variable(-3, ASRatio, new Per3Level(30, 5));
-        DarkFlight.update()
+        Aatrox.Q.update()
                 .active("指定地点に飛びかかり、{1}の敵ユニットに{2}を与える。範囲内の中心にいる敵ユニットに対しては更に{3}を与える。")
                 .variable(1, Radius)
                 .variable(2, PhysicalDamage, 70, 45, bounusAD(0.6))
@@ -2077,7 +2081,7 @@ public class Skill extends RiotSkillData {
                 .cd(16, -1)
                 .cost(CurrentHealthRatio, 10, 0)
                 .range(650);
-        BloodThirstBloodPrice.update()
+        Aatrox.W.update()
                 .passive("通常攻撃3回ごとに{1}する。Healthが50%以下の場合、{2}する。ToggleOnの間、この効果は失われる。")
                 .variable(1, RestoreHealth, 20, 5, bounusAD(0.25))
                 .variable(2, RestoreHealth, 60, 15, bounusAD(0.75))
@@ -2086,23 +2090,24 @@ public class Skill extends RiotSkillData {
                 .variable(4, LoseHealth, 15, 8.75, bounusAD(0.25))
                 .cd(0.5)
                 .type(SkillType.Toggle);
-        BladesOfTorment.update()
+        Aatrox.E.update()
                 .active("指定方向に貫通するエネルギーを放ち、当たった敵ユニットに{1}と{2}間{3}を与える。")
                 .variable(1, MagicDamage, 75, 45, ap(0.6), bounusAD(0.6))
                 .variable(2, Time, 1.75, 0.25)
                 .variable(3, MSSlowRatio, 40)
                 .cost(CurrentHealthRatio, 5, 0)
                 .cd(12, -1)
-                .range(1000);
-        BladesOfTorment.update(P313).variable(1, MagicDamage, 75, 35, ap(0.6), bounusAD(0.6));
-        Massacre.update()
+                .range(1000)
+                .update(P313)
+                .variable(1, MagicDamage, 75, 35, ap(0.6), bounusAD(0.6));
+        Aatrox.R.update()
                 .active("{1}の敵Championに{2}を与え、12秒間{3}し、通常攻撃の射程が325に増加する。")
                 .variable(1, Radius)
                 .variable(2, MagicDamage, 200, 100, ap(1))
                 .variable(3, ASRatio, 40, 10)
                 .cd(100, -15)
                 .update(P506)
-                .active("{1}の敵Championに{2}を与え、12秒間{3}し、通常攻撃の射程が325に増加する。当たった敵毎に20%の" + BloodWell + "を得る。");
+                .active("{1}の敵Championに{2}を与え、12秒間{3}し、通常攻撃の射程が325に増加する。当たった敵毎に20%の" + Aatrox.P + "を得る。");
     }
 
     private static void Ahri() {
