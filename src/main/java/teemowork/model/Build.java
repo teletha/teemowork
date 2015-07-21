@@ -354,16 +354,16 @@ public class Build extends Publishable implements StatusCalculator {
             double value = champion.getStatus(version)
                     .get(status) + champion.getStatus(version).get(status.per()) * level.get();
 
-            if (champion == Champion.EliseSpider) {
+            if (champion == Champion.EliseTransformed) {
                 value += computeVariable(status, Champion.Elise.R);
             }
 
-            if (champion == Champion.NidaleeCougar) {
+            if (champion == Champion.NidaleeTransformed) {
                 value += computeVariable(status, Champion.Nidalee.R);
             }
 
             if (champion == Champion.Jayce) {
-                value += computeVariable(status, Champion.JayceCannon.R);
+                value += computeVariable(status, Champion.JayceTransformed.R);
             }
             return value;
         }
@@ -560,20 +560,20 @@ public class Build extends Publishable implements StatusCalculator {
 
         if (key == SkillKey.R) {
             if (champion == Champion.Nidalee) {
-                champion = Champion.NidaleeCougar;
-            } else if (champion == Champion.NidaleeCougar) {
+                champion = Champion.NidaleeTransformed;
+            } else if (champion == Champion.NidaleeTransformed) {
                 champion = Champion.Nidalee;
             }
 
             if (champion == Champion.Elise) {
-                champion = Champion.EliseSpider;
-            } else if (champion == Champion.EliseSpider) {
+                champion = Champion.EliseTransformed;
+            } else if (champion == Champion.EliseTransformed) {
                 champion = Champion.Elise;
             }
 
             if (champion == Champion.Jayce) {
-                champion = Champion.JayceCannon;
-            } else if (champion == Champion.JayceCannon) {
+                champion = Champion.JayceTransformed;
+            } else if (champion == Champion.JayceTransformed) {
                 champion = Champion.Jayce;
             }
         }

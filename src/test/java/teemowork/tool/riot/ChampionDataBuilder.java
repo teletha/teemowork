@@ -18,6 +18,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import kiss.I;
+import teemowork.model.Champion;
 import teemowork.model.Version;
 import teemowork.tool.ClassWriter;
 
@@ -48,36 +49,24 @@ public class ChampionDataBuilder {
 
             code.write();
             code.write("/** ", champion.name, " Definition", " */");
-            code.write("public static final ", code.className, " ", champion.id, " = new ", code.className, param(string(champion.name), string(localized.name), string(champion.id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, array(champion.skill), array(champion.skillLocalized)), ";");
-        }
+            code.write("public static final ", Champion.class, " ", champion.id, " = new ", Champion.class, param(string(champion.name), string(localized.name), string(champion.id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, array(champion.skill), array(champion.skillLocalized), false), ";");
 
-        // Properties
-        Object[] properties = {String.class, "name", String.class, "localizedName", String.class, "system", float.class,
-                "hp", float.class, "hpPer", float.class, "hreg", float.class, "hregPer", float.class, "mp", float.class,
-                "mpPer", float.class, "mreg", float.class, "mregPer", float.class, "ad", float.class, "adPer",
-                float.class, "as", float.class, "asPer", float.class, "crit", float.class, "critPer", float.class, "ar",
-                float.class, "arPer", float.class, "mr", float.class, "mrPer", float.class, "ms", float.class, "range",
-                String[].class, "skills", String[].class, "skillLocalized"};
-
-        // Field
-        for (int i = 0; i < properties.length; i++) {
-            code.write();
-            code.write("/** Champion status. */");
-            code.write("public final ", properties[i], " ", properties[++i], ";");
+            if (isTransformer(champion.name)) {
+                code.write();
+                code.write("/** ", champion.name, " Definition", " */");
+                code.write("public static final ", Champion.class, " ", champion.id + "Transformed", " = new ", Champion.class, param(string(champion.name), string(localized.name), string(champion.id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, array(champion.skill), array(champion.skillLocalized), true), ";");
+            }
         }
-
-        // constructor
-        code.write();
-        code.write("/**");
-        code.write(" * The champion definition.");
-        code.write(" */");
-        code.write("private ", code.className, arg(properties), " {");
-        for (int i = 0; i < properties.length; i++) {
-            code.write("this.", properties[++i], " = ", properties[i], ";");
-        }
-        code.write("}");
         code.write("}");
         code.writeTo(I.locate("src/main/java"));
+    }
+
+    /**
+     * @param name
+     * @return
+     */
+    private static boolean isTransformer(String name) {
+        return name.equals("Elise") || name.equals("Jayce") || name.equals("Nidalee");
     }
 
     /**

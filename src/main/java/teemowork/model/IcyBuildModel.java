@@ -195,11 +195,11 @@ public abstract class IcyBuildModel implements StatusCalculator {
             double value = champion.getStatus(version)
                     .get(status) + champion.getStatus(version).get(status.per()) * level;
 
-            if (champion == Champion.EliseSpider) {
+            if (champion == Champion.EliseTransformed) {
                 value += computeVariable(status, Champion.Elise.R);
             }
 
-            if (champion == Champion.NidaleeCougar) {
+            if (champion == Champion.NidaleeTransformed) {
                 value += computeVariable(status, Champion.Nidalee.R);
             }
 

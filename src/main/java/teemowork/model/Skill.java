@@ -9,7 +9,7 @@
  */
 package teemowork.model;
 
-import static teemowork.model.Champion.*;
+import static teemowork.api.RiotChampionData.*;
 import static teemowork.model.SkillKey.*;
 import static teemowork.model.Status.*;
 import static teemowork.model.Version.*;
@@ -124,7 +124,7 @@ public class Skill extends Describable<SkillDescriptor> {
             return 1;
         }
 
-        if (this == Elise.R || this == EliseSpider.R || this == Jayce.R || this == JayceCannon.R) {
+        if (this == Elise.R || this == EliseTransformed.R || this == Jayce.R || this == JayceTransformed.R) {
             return 1;
         }
         return 0;
@@ -143,11 +143,11 @@ public class Skill extends Describable<SkillDescriptor> {
             return 0;
         }
 
-        if (this == Elise.R || this == EliseSpider.R || this == Jayce.R || this == JayceCannon.R || this == Karma.R) {
+        if (this == Elise.R || this == EliseTransformed.R || this == Jayce.R || this == JayceTransformed.R || this == Karma.R) {
             return 4;
         }
 
-        if (this != Udyr.R && (key == R || this == NidaleeCougar.Q || this == NidaleeCougar.W || this == NidaleeCougar.E)) {
+        if (this != Udyr.R && (key == R || this == NidaleeTransformed.Q || this == NidaleeTransformed.W || this == NidaleeTransformed.E)) {
             return 3;
         } else {
             return 5;
@@ -427,7 +427,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(40, 5)
                 .cd(16, -2)
                 .range(600);
-        JayceCannon.Q.update()
+        JayceTransformed.Q.update()
                 .active("指定方向に{3}の雷のオーブを飛ばし、敵ユニットに命中するか一定距離で爆発し、周囲の敵ユニット{1}を与える。オーブがAcceleration Gateによって生成されたゲートを通過した場合、弾速、射程距離、爆発範囲、与えるDMが各40%増加する。{2}")
                 .variable(1, PhysicalDamage, 60, 55, bounusAD(1.2))
                 .variable(2, PhysicalDamage, 84, 77, bounusAD(1.68))
@@ -435,7 +435,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(55, 5)
                 .cd(8)
                 .range(1050);
-        JayceCannon.Q.update(P309).variable(3, MissileSpeed, 1450);
+        JayceTransformed.Q.update(P309).variable(3, MissileSpeed, 1450);
         Jayce.W.update()
                 .passive("通常攻撃ごとに{1}する。")
                 .variable(1, RestoreMana, 6, 2)
@@ -444,7 +444,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(3, MagicDamage, 25, 17.5, ap(0.25))
                 .mana(40)
                 .cd(10);
-        JayceCannon.E.update()
+        JayceTransformed.E.update()
                 .active("Jayceの攻撃速度が最大まで上昇する。3回通常攻撃を行うと効果が解消される。また効果中は通常攻撃で与えるダメージが{1}%になる。")
                 .variable(1, Percentage, 70, 15)
                 .mana(40)
@@ -456,26 +456,26 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(40)
                 .cd(14, -1)
                 .range(240);
-        JayceCannon.E.update()
+        JayceTransformed.E.update()
                 .active("4秒間持続するゲート(通りぬけ可能)を生成し、触れた味方ユニットは3秒間{1}する。移動速度は3秒かけて元に戻る。")
                 .variable(1, MSRatio, 30, 5)
                 .mana(50)
                 .cd(14, -1)
                 .range(650);
-        JayceCannon.E.update(P309).cd(16);
+        JayceTransformed.E.update(P309).cd(16);
         Jayce.R.update()
                 .active("射程が500(Ranged)になる。また、次の通常攻撃は５秒間{1}と{2}を与える。")
                 .variable(1, ARReductionRatio, 10, 5)
                 .variable(2, MRReductionRatio, 10, 5)
                 .cd(6);
         Jayce.R.update(P309).active("射程が500(Ranged)になる。また、次の通常攻撃は５秒間{1}と{2}を与える。{3}。").variable(3, NotSpellCast);
-        JayceCannon.R.update()
+        JayceTransformed.R.update()
                 .active("射程が125(Melee)になり、その間は{1}と{2}を得る。また、次の通常攻撃に追加{3}を付与する。")
                 .variable(1, AR, 5, 10)
                 .variable(2, MR, 5, 10)
                 .variable(3, MagicDamage, 20, 40)
                 .cd(6);
-        JayceCannon.R.update(P309)
+        JayceTransformed.R.update(P309)
                 .active("射程が125(Melee)になり、その間は{1}と{2}を得る。また、次の通常攻撃に追加{3}を付与する。{4}。")
                 .variable(4, NotSpellCast);
 
@@ -2918,30 +2918,31 @@ public class Skill extends Describable<SkillDescriptor> {
         Elise.R.update(P309)
                 .active("EliseがSpider Formに変身し射程125のMeleeになる。その間は通常攻撃に追加{1}が付与され、{4}する。またこのスキルに比例しSpiderlingの最大チャージ数、攻撃力が増加し、Spiderlingが受けるAoEダメージが低減される。{5}。")
                 .variable(5, NotSpellCast);
-        EliseSpider.Q.update()
+        EliseTransformed.Q.update()
                 .active("対象の敵ユニットに飛びつき{1}を与える。")
                 .variable(1, MagicDamage, 50, 45, amplify(TargetMissingHealthRatio, 8, 0, ap(0.03)))
                 .cd(6)
                 .range(475);
-        EliseSpider.Q.update(P304).variable(1, MagicDamage, 60, 50, amplify(TargetMissingHealthRatio, 8, 0, ap(0.03)));
-        EliseSpider.W.update()
+        EliseTransformed.Q.update(P304)
+                .variable(1, MagicDamage, 60, 50, amplify(TargetMissingHealthRatio, 8, 0, ap(0.03)));
+        EliseTransformed.W.update()
                 .passive("Spiderlingの{1}する。")
                 .variable(1, ASRatio, 5, 5)
                 .active("3秒間EliseとSpiderlingの{2}する。また、その間Spiderlingが攻撃を行うたびにEliseの{3}する。")
                 .variable(2, ASRatio, 60, 20)
                 .variable(3, RestoreHealth, 4, 0, ap(0.02))
                 .cd(12);
-        EliseSpider.W.update(P307).variable(3, RestoreHealth, 4, 0, ap(0.04));
-        EliseSpider.E.update()
+        EliseTransformed.W.update(P307).variable(3, RestoreHealth, 4, 0, ap(0.04));
+        EliseTransformed.E.update()
                 .active("EliseとSpiderlingが上空に退避し(ターゲット不可になる)指定の方法で降下する。上空にいる間は射程内の視界を得る地面をクリックした場合: 最大2秒間上空に待機し、初期位置へ降下する。この間、敵ユニットをターゲットし裏側に降下できる。敵ユニットをクリックした場合: 即座に下降し裏側に降り立つ。")
                 .cd(26, -2)
                 .range(1075);
-        EliseSpider.R.update()
+        EliseTransformed.R.update()
                 .passive("通常攻撃に追加{1}が付与される。")
                 .variable(1, MagicDamage, 10, 10, ap(0.3))
                 .active("EliseがHuman Formに変身し射程550のRangedになる。")
                 .cd(4);
-        EliseSpider.R.update(P307).passive("通常攻撃に追加{1}が付与される。{2}。").variable(2, NotSpellCast);
+        EliseTransformed.R.update(P307).passive("通常攻撃に追加{1}が付与される。{2}。").variable(2, NotSpellCast);
     }
 
     private static void Ezreal() {
@@ -4024,7 +4025,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .cd(5)
                 .range(1500);
         Nidalee.Q.update(P314).active("指定方向に槍を投げて当たった敵ユニットに{1}を与える。槍が投げた距離に比例して与えるダメージが増加する。最大で{2}。");
-        NidaleeCougar.Q.update()
+        NidaleeTransformed.Q.update()
                 .active("次に行う通常攻撃のダメージが{1}増加する。対象が受けているダメージに比例してダメージが増加する。最大で{2}。")
                 .variable(1, PhysicalDamage, 40, 30)
                 .variable(2, PhysicalDamage, 120, 90, ad(2))
@@ -4040,7 +4041,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .cd(18)
                 .range(900);
         Nidalee.W.update(P314).variable(5, Time, 8);
-        NidaleeCougar.W.update()
+        NidaleeTransformed.W.update()
                 .active("前方に飛びかかり着地地点の敵ユニットに{1}を与える。")
                 .variable(1, MagicDamage, 125, 50, ap(0.4))
                 .cd(3.5)
@@ -4052,19 +4053,19 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(60, 20)
                 .cd(10)
                 .range(600);
-        NidaleeCougar.E.update()
+        NidaleeTransformed.E.update()
                 .active("前方扇形180°{2}の敵ユニットに{1}を与える。")
                 .variable(1, MagicDamage, 150, 75, ap(0.4))
                 .variable(2, Radius, 300)
                 .cd(6);
-        NidaleeCougar.E.update().variable(1, MagicDamage, 150, 75, ap(0.6));
+        NidaleeTransformed.E.update().variable(1, MagicDamage, 150, 75, ap(0.6));
         Nidalee.R.update()
                 .active("HumanからCougarに変身する。Cougar時はスキルの効果が変わり、通常攻撃の射程距離が125(Melee)になり、{1}を得る。Cougarスキルはこのスキルのレベルに比例し威力が増加する。{2}。")
                 .variable(1, MS, 20)
                 .variable(2, NotSpellCast)
                 .variable(3, MR, 10, 10)
                 .cd(4);
-        NidaleeCougar.R.update()
+        NidaleeTransformed.R.update()
                 .active("CougarからHumanに変身する。Human時はスキルの効果が変わり、通常攻撃の射程距離が525(Ranged)になる。{1}。")
                 .variable(1, NotSpellCast)
                 .cd(4);

@@ -59,8 +59,6 @@ public class ItemDataBuilder {
                 item.name(en.data);
                 localized.name(ja.data);
 
-                List<AbilityDefinition> abilities = AbilityDefinition.analyze(localized);
-
                 code.write("public static final ", code.className, " ", item.identicalName, " = new ", code.className, param(string(item.name), string(localized.name), id, gold.base, gold.total, gold.sell, array(item.from), array(item.into), image.sprite
                         .charAt(4), image.x, image.y, item.depth), ";");
             }

@@ -14,7 +14,6 @@ import static teemowork.model.Status.*;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import teemowork.api.RiotChampionData;
 import teemowork.api.RiotItemData;
 import teemowork.model.Build.Computed;
 
@@ -194,13 +193,12 @@ public class BuildTest {
     private static class EmptyChampion extends Champion {
 
         /**
-         * 
+         *
          */
-        private EmptyChampion() {
-            super(RiotChampionData.Aatrox);
-
-            update(Version.P0000);
+        public EmptyChampion() {
+            super("", "", "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, new String[] {}, new String[] {}, false);
         }
+
     }
 
     /**

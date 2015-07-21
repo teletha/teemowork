@@ -21,7 +21,6 @@ import java.util.Locale;
 import java.util.StringJoiner;
 
 import kiss.I;
-import teemowork.model.Champion;
 import teemowork.model.Item;
 import teemowork.model.MasterySeason4;
 import teemowork.model.Version;
@@ -30,7 +29,7 @@ import teemowork.tool.riot.ChampionDataBuilder.ChampionDefinition;
 import teemowork.tool.riot.ChampionDataBuilder.ChampionDefinitions;
 
 /**
- * @version 2015/07/19 22:25:30
+ * @version 2015/07/22 2:39:54
  */
 public class ImageBuilder {
 
@@ -43,6 +42,9 @@ public class ImageBuilder {
     /** The work space. */
     private final Path temporary;
 
+    /** The champion list. */
+    private final ChampionDefinitions definitions;
+
     /**
      * @param latest
      */
@@ -52,6 +54,12 @@ public class ImageBuilder {
         try {
             temporary = I.locateTemporary();
             Files.createDirectories(temporary);
+
+            definitions = RiotAPI.parse(ChampionDefinitions.class, version, Locale.US);
+
+            for (ChampionDefinition definition : definitions.data.values()) {
+                definition.analyze();
+            }
         } catch (IOException e) {
             throw I.quiet(e);
         }
@@ -83,12 +91,10 @@ public class ImageBuilder {
      * </p>
      */
     public void buildChampionIconSet() throws Exception {
-        List<Champion> champions = collect(Champion.class);
-
         EditableImage container = new EditableImage();
 
-        for (Champion champion : champions) {
-            EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/champion/", champion.systemName, ".png"));
+        for (ChampionDefinition definition : definitions.data.values()) {
+            EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/champion/", definition.id, ".png"));
             image.trim(7).resize(70);
 
             container.concat(image);
@@ -104,11 +110,7 @@ public class ImageBuilder {
      * </p>
      */
     public void buildSkillIconSet() throws Exception {
-        ChampionDefinitions definitions = RiotAPI.parse(ChampionDefinitions.class, version, Locale.US);
-
         for (ChampionDefinition definition : definitions.data.values()) {
-            definition.analyze();
-
             EditableImage container = new EditableImage();
 
             for (int i = 0; i < definition.skillSystem.size(); i++) {
