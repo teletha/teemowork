@@ -11,8 +11,11 @@ package teemowork.api;
 
 import static teemowork.api.ClassWriter.*;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import kiss.I;
 import teemowork.model.Version;
@@ -34,15 +37,20 @@ public class ChampionDataBuilder {
         ChampionDefinitions en = RiotAPI.parse(ChampionDefinitions.class, Version.Latest, Locale.US);
         ChampionDefinitions ja = RiotAPI.parse(ChampionDefinitions.class, Version.Latest, Locale.JAPAN);
 
+        List<Detail> infos = new ArrayList();
+        List<Detail> infosLocalized = new ArrayList();
+
         ClassWriter code = new ClassWriter("teemowork.api", "RiotChampionData");
         code.write("public enum ", code.className, " {");
         code.writeConstants(en.data.values(), champion -> {
-            ChampionStatus status = champion.stats;
+            champion.analyze();
+
+            Status status = champion.stats;
             ChampionDefinition localized = ja.data.get(champion.id);
 
             code.write();
             code.write("/** ", champion.name, " Definition", " */");
-            code.write(champion.id, param(string(champion.name), string(localized.name), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange), ",");
+            code.write(champion.id, param(string(champion.name), string(localized.name), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, array(champion.skill), array(champion.skillLocalized), array(champion.skillSystem)), ",");
         });
 
         // Properties
@@ -50,7 +58,8 @@ public class ChampionDataBuilder {
                 "hpPer", float.class, "hreg", float.class, "hregPer", float.class, "mp", float.class, "mpPer",
                 float.class, "mreg", float.class, "mregPer", float.class, "ad", float.class, "adPer", float.class, "as",
                 float.class, "asPer", float.class, "crit", float.class, "critPer", float.class, "ar", float.class,
-                "arPer", float.class, "mr", float.class, "mrPer", float.class, "ms", float.class, "range"};
+                "arPer", float.class, "mr", float.class, "mrPer", float.class, "ms", float.class, "range",
+                String[].class, "skills", String[].class, "skillLocalized", String[].class, "skillIdentical"};
 
         // Field
         for (int i = 0; i < properties.length; i++) {
@@ -64,14 +73,53 @@ public class ChampionDataBuilder {
         code.write("/**");
         code.write(" * The champion definition.");
         code.write(" */");
-        code.write("private ", code.className, paramDef(properties), " {");
+        code.write("private ", code.className, arg(properties), " {");
         for (int i = 0; i < properties.length; i++) {
             code.write("this.", properties[++i], " = ", properties[i], ";");
         }
         code.write("}");
         code.write("}");
-
         code.writeTo(I.locate("src/main/java"));
+
+        // //
+        // ClassWriter writer = new ClassWriter("teemowork.api", "RiotSkillData");
+        // writer.write("public enum ", writer.className, " {");
+        // writer.writeConstants(infos, info -> {
+        // writer.write();
+        // writer.write("/** ", info.passive.name, " Definition", " */");
+        // writer.write(info.id, "1", param(string(info.passive.name)), ",");
+        //
+        // for (int i = 0; i < info.spells.size(); i++) {
+        // Skill skill = info.spells.get(i);
+        //
+        // writer.write();
+        // writer.write("/** ", skill.name, " Definition", " */");
+        // writer.write(info.id, i + 2, param(string(skill.name)), ",");
+        // }
+        // });
+        //
+        // // Properties
+        // properties = new Object[] {String.class, "name"};
+        //
+        // // Field
+        // for (int i = 0; i < properties.length; i++) {
+        // writer.write();
+        // writer.write("/** Skill status. */");
+        // writer.write("public final ", properties[i], " ", properties[++i], ";");
+        // }
+        //
+        // // constructor
+        // writer.write();
+        // writer.write("/**");
+        // writer.write(" * The skill definition.");
+        // writer.write(" */");
+        // writer.write("private ", writer.className, paramDef(properties), " {");
+        // for (int i = 0; i < properties.length; i++) {
+        // writer.write("this.", properties[++i], " = ", properties[i], ";");
+        // }
+        // writer.write("}");
+        // writer.write("}");
+        // writer.writeTo(I.locate("src/main/java"));
     }
 
     /**
@@ -91,9 +139,6 @@ public class ChampionDataBuilder {
         /** The champion id. */
         public int key;
 
-        /** The identical name. */
-        public String id;
-
         /** The localized name. */
         public String name;
 
@@ -104,16 +149,50 @@ public class ChampionDataBuilder {
         public String blurb;
 
         /** The status definition. */
-        public ChampionStatus stats;
+        public Status stats;
 
         /** The image location. */
-        public ChampionImage image;
+        public Image image;
+
+        /** The identical name. */
+        public String id;
+
+        /** The skill names. */
+        private List<String> skill = new ArrayList();
+
+        /** The loclized skill names. */
+        private List<String> skillLocalized = new ArrayList();
+
+        /** The skill names for system. */
+        private List<String> skillSystem = new ArrayList();
+
+        /**
+         * Analyze data in detail.
+         */
+        private void analyze() {
+            String path = "champion/" + id;
+            System.out.println(id);
+            Detail info = RiotAPI.parse(path, Details.class, Version.Latest, Locale.US).data.get(id);
+            Detail local = RiotAPI.parse(path, Details.class, Version.Latest, Locale.JAPAN).data.get(id);
+
+            skill.add(info.passive.name);
+            skillLocalized.add(local.passive.name);
+            skillSystem.add(info.passive.image.full.replaceAll("\\.png", ""));
+
+            for (int i = 0; i < info.spells.size(); i++) {
+                Skill spell = info.spells.get(i);
+
+                skill.add(spell.name);
+                skillLocalized.add(local.spells.get(i).name);
+                skillSystem.add(spell.image.full.replaceAll("\\.png", ""));
+            }
+        }
     }
 
     /**
      * @version 2015/07/20 20:53:27
      */
-    private static class ChampionImage {
+    private static class Image {
 
         public String full;
 
@@ -131,7 +210,7 @@ public class ChampionDataBuilder {
     /**
      * @version 2015/07/13 14:52:56
      */
-    private static class ChampionStatus {
+    private static class Status {
 
         /** The status. */
         public float hp;
@@ -192,5 +271,63 @@ public class ChampionDataBuilder {
 
         /** The status. */
         public float attackspeedperlevel;
+    }
+
+    /**
+     * @version 2015/07/20 21:41:00
+     */
+    private static class Details {
+
+        public Map<String, Detail> data;
+    }
+
+    /**
+     * @version 2015/07/20 21:42:06
+     */
+    private static class Detail {
+
+        public String allytips;
+
+        public String blurb;
+
+        public String enemytips;
+
+        public String lore;
+
+        public String name;
+
+        public String id;
+
+        public String partype;
+
+        public Skill passive;
+
+        public List<Skill> spells;
+
+    }
+
+    /**
+     * @version 2015/07/20 21:47:28
+     */
+    private static class Skill {
+
+        public Image image;
+
+        public String name;
+
+        public List<Float> cooldown;
+
+        public List<Integer> cost;
+
+        public List<Integer> range;
+
+        public String costType;
+
+        public String description;
+
+        public String id;
+
+        public int maxrank;
+
     }
 }

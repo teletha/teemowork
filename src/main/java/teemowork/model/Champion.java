@@ -20,9 +20,7 @@ import js.dom.Element;
 import teemowork.api.RiotChampionData;
 
 /**
- * 3.15準拠
- * 
- * @version 2013/06/14 8:39:54
+ * @version 2015/07/20 21:22:18
  */
 public class Champion {
 

@@ -82,7 +82,7 @@ public class ItemDataBuilder {
         code.write("/**");
         code.write(" * The item definition.");
         code.write(" */");
-        code.write("private ", code.className, paramDef(properties), " {");
+        code.write("private ", code.className, arg(properties), " {");
         for (int i = 0; i < properties.length; i++) {
             code.write("this.", properties[++i], " = ", properties[i], ";");
         }

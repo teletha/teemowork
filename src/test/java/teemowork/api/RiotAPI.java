@@ -49,10 +49,24 @@ public class RiotAPI {
      * @return
      */
     public static <M> M parse(Class<M> modelClass, Version version, Locale locale) {
+        return parse(modelClass.getSimpleName()
+                .replaceAll("Definition[s]?", "")
+                .toLowerCase(), modelClass, version, locale);
+    }
+
+    /**
+     * <p>
+     * Parse defined data of the specified version and locale.
+     * </p>
+     * 
+     * @param modelClass
+     * @param version
+     * @param locale
+     * @return
+     */
+    public static <M> M parse(String location, Class<M> modelClass, Version version, Locale locale) {
         try {
-            String uri = DRAGON_URL + version.name + ".1/data/" + locale + "/" + modelClass.getSimpleName()
-                    .replaceAll("Definition[s]?", ".json")
-                    .toLowerCase();
+            String uri = DRAGON_URL + version.name + ".1/data/" + locale + "/" + location + ".json";
 
             M m = I.make(modelClass);
             Model model = Model.load(m.getClass());

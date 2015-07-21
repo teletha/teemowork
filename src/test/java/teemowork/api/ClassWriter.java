@@ -228,7 +228,7 @@ public class ClassWriter {
         StringJoiner builder = new StringJoiner(", ", "new " + Imports.convert(type) + "[] {", "}");
 
         for (Object item : list) {
-            builder.add(item.toString());
+            builder.add(type == String.class ? string(item) : item.toString());
         }
         return builder.toString();
     }
@@ -376,8 +376,20 @@ public class ClassWriter {
      * @param params
      * @return
      */
-    public static Object paramDef(Object... params) {
-        return new ImportableParameterDefinition(params);
+    public static Object arg(Object... params) {
+        return new ImportableParameterDefinition(params, false);
+    }
+
+    /**
+     * <p>
+     * Helper method to write parameter definition wtih variable arguments.
+     * </p>
+     * 
+     * @param params
+     * @return
+     */
+    public static Object vararg(Object... params) {
+        return new ImportableParameterDefinition(params, true);
     }
 
     public static Object lambda(String param, Runnable code) {
@@ -484,11 +496,15 @@ public class ClassWriter {
         /** The parameters. */
         private final Object[] params;
 
+        /** The vararg usage. */
+        private final boolean useVarArg;
+
         /**
          * @param params
          */
-        private ImportableParameterDefinition(Object[] params) {
+        private ImportableParameterDefinition(Object[] params, boolean useVarArg) {
             this.params = params;
+            this.useVarArg = useVarArg;
         }
 
         /**
@@ -498,7 +514,24 @@ public class ClassWriter {
         public void write(ClassWriter $) {
             $.code("(");
             for (int i = 0, length = params.length; i < length; i++) {
-                $.code(params[i++]).code(" ").code(params[i]);
+                Object type = params[i++];
+                Object param = params[i];
+
+                if (useVarArg && i + 1 == length) {
+                    if (type instanceof Class) {
+                        Class clazz = (Class) type;
+
+                        if (clazz.isArray()) {
+                            $.code(clazz.getComponentType()).code("... ").code(param);
+                        } else {
+                            $.code(type).code(" ").code(param);
+                        }
+                    } else {
+                        $.code(type).code(" ").code(param);
+                    }
+                } else {
+                    $.code(type).code(" ").code(param);
+                }
 
                 if (i + 1 < length) {
                     $.code(", ");
