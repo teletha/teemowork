@@ -9,6 +9,7 @@
  */
 package teemowork.model;
 
+import static teemowork.api.RiotSkillData.*;
 import static teemowork.model.Skill.*;
 import static teemowork.model.Status.*;
 import static teemowork.model.Version.*;
@@ -61,7 +62,7 @@ public class Champion {
     public static final Champion Brand = new Champion(RiotChampionData.Brand, Blaze, Sear, PillarOfFlame, Conflagration, Pyroclasm);
 
     /** The champion name. */
-    public static final Champion Caitlyn = new Champion(RiotChampionData.Caitlyn, Headshot, PiltoverPeacemaker, YordleSnapTrap, CaliberNet, AceinTheHole);
+    public static final Champion Caitlyn = new Champion(RiotChampionData.Caitlyn, Headshot, PiltoverPeacemaker, YordleSnapTrap, CaliberNet, AceInTheHole);
 
     /** The champion name. */
     public static final Champion Cassiopeia = new Champion(RiotChampionData.Cassiopeia, AspectOfTheSerpent, NoxiousBlast, Miasma, TwinFang, PetrifyingGaze);
@@ -283,7 +284,7 @@ public class Champion {
     public static final Champion Singed = new Champion(RiotChampionData.Singed, EmpoweredBulwark, PoisonTrail, MegaAdhesive, Fling, InsanityPotion);
 
     /** The champion name. */
-    public static final Champion Sion = new Champion(RiotChampionData.Sion, GloryinDeath, DecimatingSmash, SoulFurnace, RoarOfTheSlayer, UnstoppableOnslaught);
+    public static final Champion Sion = new Champion(RiotChampionData.Sion, GloryInDeath, DecimatingSmash, SoulFurnace, RoarOfTheSlayer, UnstoppableOnslaught);
 
     /** The champion name. */
     public static final Champion Sivir = new Champion(RiotChampionData.Sivir, FleetOfFoot, BoomerangBlade, Ricochet, Skill.SpellShield, OnTheHunt);

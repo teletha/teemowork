@@ -18,6 +18,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import kiss.I;
+import teemowork.model.Describable;
+import teemowork.model.Skill;
+import teemowork.model.SkillDescriptor;
 import teemowork.model.Version;
 
 /**
@@ -47,7 +50,7 @@ public class ChampionDataBuilder {
 
             code.write();
             code.write("/** ", champion.name, " Definition", " */");
-            code.write(champion.id, param(string(champion.name), string(localized.name), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, array(champion.skill), array(champion.skillLocalized), array(champion.skillSystem)), ",");
+            code.write(champion.id, param(string(champion.name), string(localized.name), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, array(champion.skill), array(champion.skillLocalized)), ",");
         });
 
         // Properties
@@ -56,7 +59,7 @@ public class ChampionDataBuilder {
                 float.class, "mreg", float.class, "mregPer", float.class, "ad", float.class, "adPer", float.class, "as",
                 float.class, "asPer", float.class, "crit", float.class, "critPer", float.class, "ar", float.class,
                 "arPer", float.class, "mr", float.class, "mrPer", float.class, "ms", float.class, "range",
-                String[].class, "skills", String[].class, "skillLocalized", String[].class, "skillSystem"};
+                String[].class, "skills", String[].class, "skillLocalized"};
 
         // Field
         for (int i = 0; i < properties.length; i++) {
@@ -75,12 +78,21 @@ public class ChampionDataBuilder {
             code.write("this.", properties[++i], " = ", properties[i], ";");
         }
         code.write("}");
+
+        // method
+        code.write();
+        code.write("/**");
+        code.write(" * Search champion by id.");
+        code.write(" */");
+        code.write("public static ", code.className, " of", arg(int.class, "id"), " {");
+        code.write("return values()[id];");
+        code.write("}");
         code.write("}");
         code.writeTo(I.locate("src/main/java"));
 
         //
         ClassWriter writer = new ClassWriter("teemowork.api", "RiotSkillData");
-        writer.write("public class ", writer.className, " {");
+        writer.write("public abstract class ", writer.className, " extends ", generic(Describable.class, SkillDescriptor.class), " {");
 
         for (ChampionDefinition definition : en.data.values()) {
             for (int i = 0; i < definition.skill.size(); i++) {
@@ -93,32 +105,11 @@ public class ChampionDataBuilder {
 
                 writer.write();
                 writer.write("/** ", skill, " Definition", " */");
-                writer.write("public static final ", writer.className, " ", name, " = new ", writer.className, param("RiotChampionData." + definition.id, i), ";");
+                writer.write("public static final ", Skill.class, " ", name, " = new ", Skill.class, param("RiotChampionData." + definition.id, i), ";");
             }
         }
-
-        // Properties
-        properties = new Object[] {RiotChampionData.class, "data", int.class, "index"};
-
-        // Field
-        for (int i = 0; i < properties.length; i++) {
-            writer.write();
-            writer.write("/** Skill status. */");
-            writer.write("public final ", properties[i], " ", properties[++i], ";");
-        }
-
-        // constructor
-        writer.write();
-        writer.write("/**");
-        writer.write(" * The skill definition.");
-        writer.write(" */");
-        writer.write("private ", writer.className, arg(properties), " {");
-        for (int i = 0; i < properties.length; i++) {
-            writer.write("this.", properties[++i], " = ", properties[i], ";");
-        }
         writer.write("}");
-        writer.write("}");
-        writer.writeTo(I.locate("src/test/java"));
+        writer.writeTo(I.locate("src/main/java"));
     }
 
     /**
@@ -179,7 +170,7 @@ public class ChampionDataBuilder {
             skillSystem.add(info.passive.image.full.replaceAll("\\.png", ""));
 
             for (int i = 0; i < info.spells.size(); i++) {
-                Skill spell = info.spells.get(i);
+                Spell spell = info.spells.get(i);
 
                 skill.add(spell.name);
                 skillLocalized.add(local.spells.get(i).name);
@@ -299,16 +290,16 @@ public class ChampionDataBuilder {
 
         public String partype;
 
-        public Skill passive;
+        public Spell passive;
 
-        public List<Skill> spells;
+        public List<Spell> spells;
 
     }
 
     /**
      * @version 2015/07/20 21:47:28
      */
-    private static class Skill {
+    private static class Spell {
 
         public Image image;
 
