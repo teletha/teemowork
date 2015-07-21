@@ -15,12 +15,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import kiss.I;
+import teemowork.api.ChampionDataBuilder.ChampionDefinition;
+import teemowork.api.ChampionDataBuilder.ChampionDefinitions;
 import teemowork.model.Champion;
 import teemowork.model.Item;
-import teemowork.model.Skill;
-import teemowork.model.SkillKey;
 import teemowork.model.Version;
 import teemowork.tool.ResourceLocator;
 import teemowork.tool.image.EditableImage;
@@ -143,14 +144,18 @@ public class ImageBuilder {
         Path temporary = I.locateTemporary();
         Files.createDirectories(temporary);
 
-        for (Champion champion : champions) {
+        ChampionDefinitions definitions = RiotAPI.parse(ChampionDefinitions.class, Version.Latest, Locale.US);
+
+        for (ChampionDefinition definition : definitions.data.values()) {
+            definition.analyze();
+
             EditableImage container = new EditableImage();
 
-            for (Skill skill : champion.skills) {
-                String file = (skill.system + ".png").replaceAll("\\s", "%20");
+            for (int i = 0; i < definition.skillSystem.size(); i++) {
+                String file = (definition.skillSystem.get(i) + ".png").replaceAll("\\s", "%20");
 
                 Path local = temporary.resolve(file);
-                URL url = new URL("http://ddragon.leagueoflegends.com/cdn/" + version.name + ".1/img/" + (skill.key == SkillKey.Passive
+                URL url = new URL("http://ddragon.leagueoflegends.com/cdn/" + version.name + ".1/img/" + (i == 0
                         ? "passive" : "spell") + "/" + file);
 
                 I.copy(url.openStream(), Files.newOutputStream(local), true);
@@ -160,7 +165,7 @@ public class ImageBuilder {
 
                 container.concat(image);
             }
-            container.write(ResourceLocator.SkillIcon.resolve(champion.systemName + ".jpg"));
+            container.write(ResourceLocator.SkillIcon.resolve(definition.id + ".jpg"));
         }
     }
 

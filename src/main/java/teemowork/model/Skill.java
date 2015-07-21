@@ -1854,9 +1854,6 @@ public class Skill extends Describable<SkillDescriptor> {
     /** The localized skill name. */
     public String localized;
 
-    /** The skill skillSystem name. */
-    public String system;
-
     /** The skill owner. */
     public Champion owner;
 
@@ -1872,7 +1869,6 @@ public class Skill extends Describable<SkillDescriptor> {
      */
     Skill(String name, SkillKey key) {
         this.name = name;
-        this.system = name.replaceAll(" of ", "Of").replaceAll("[\\s-,!':/]", "");
         this.key = key;
     }
 
@@ -1892,7 +1888,7 @@ public class Skill extends Describable<SkillDescriptor> {
      * @return
      */
     public String getIcon() {
-        return "src/main/resources/teemowork/skill/" + system + ".jpg";
+        return "src/main/resources/teemowork/skill/" + owner.systemName + ".jpg";
     }
 
     /**

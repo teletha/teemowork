@@ -125,7 +125,7 @@ public class ChampionDataBuilder {
     /**
      * @version 2015/07/13 14:31:48
      */
-    private static class ChampionDefinitions {
+    static class ChampionDefinitions {
 
         /** The champion data store. */
         public LinkedHashMap<String, ChampionDefinition> data;
@@ -134,7 +134,7 @@ public class ChampionDataBuilder {
     /**
      * @version 2015/07/13 14:46:04
      */
-    private static class ChampionDefinition {
+    static class ChampionDefinition {
 
         /** The champion id. */
         public int key;
@@ -158,18 +158,18 @@ public class ChampionDataBuilder {
         public String id;
 
         /** The skill names. */
-        private List<String> skill = new ArrayList();
+        List<String> skill = new ArrayList();
 
         /** The loclized skill names. */
-        private List<String> skillLocalized = new ArrayList();
+        List<String> skillLocalized = new ArrayList();
 
         /** The skill names for skillSystem. */
-        private List<String> skillSystem = new ArrayList();
+        List<String> skillSystem = new ArrayList();
 
         /**
          * Analyze data in detail.
          */
-        private void analyze() {
+        void analyze() {
             String path = "champion/" + id;
             System.out.println(id);
             Detail info = RiotAPI.parse(path, Details.class, Version.Latest, Locale.US).data.get(id);

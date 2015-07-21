@@ -436,7 +436,6 @@ public class Champion {
             skills[i].owner = this;
             skills[i].name = data.skills[i];
             skills[i].localized = data.skillLocalized[i];
-            skills[i].system = data.skillSystem[i];
         }
 
         if (!transformed) {
