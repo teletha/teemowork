@@ -1851,8 +1851,14 @@ public class Skill extends Describable<SkillDescriptor> {
     /** The skill name. */
     public String name;
 
-    /** The skill system name. */
-    public final String system;
+    /** The localized skill name. */
+    public String localized;
+
+    /** The skill skillSystem name. */
+    public String system;
+
+    /** The skill owner. */
+    public Champion owner;
 
     /** The skill key type. */
     public final SkillKey key;
@@ -1865,7 +1871,7 @@ public class Skill extends Describable<SkillDescriptor> {
      * @param name
      */
     Skill(String name, SkillKey key) {
-        this.name = "AAA";
+        this.name = name;
         this.system = name.replaceAll(" of ", "Of").replaceAll("[\\s-,!':/]", "");
         this.key = key;
     }

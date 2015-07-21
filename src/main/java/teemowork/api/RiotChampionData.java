@@ -463,12 +463,12 @@ public enum RiotChampionData {
     public final String[] skillLocalized;
 
     /** Champion status. */
-    public final String[] skillIdentical;
+    public final String[] skillSystem;
 
     /**
      * The champion definition.
      */
-    private RiotChampionData(String name, String localizedName, float hp, float hpPer, float hreg, float hregPer, float mp, float mpPer, float mreg, float mregPer, float ad, float adPer, float as, float asPer, float crit, float critPer, float ar, float arPer, float mr, float mrPer, float ms, float range, String[] skills, String[] skillLocalized, String[] skillIdentical) {
+    private RiotChampionData(String name, String localizedName, float hp, float hpPer, float hreg, float hregPer, float mp, float mpPer, float mreg, float mregPer, float ad, float adPer, float as, float asPer, float crit, float critPer, float ar, float arPer, float mr, float mrPer, float ms, float range, String[] skills, String[] skillLocalized, String[] skillSystem) {
         this.name = name;
         this.localizedName = localizedName;
         this.hp = hp;
@@ -493,6 +493,6 @@ public enum RiotChampionData {
         this.range = range;
         this.skills = skills;
         this.skillLocalized = skillLocalized;
-        this.skillIdentical = skillIdentical;
+        this.skillSystem = skillSystem;
     }
 }

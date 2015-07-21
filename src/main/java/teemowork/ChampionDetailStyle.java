@@ -75,8 +75,12 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
     static ValueStyle<Skill> SkillIcon = skill -> {
         display.block();
         box.size(SkillIconSize, px);
-        background.image(BackgroundImage.url(skill.getIcon()).contain().size(SkillIconSize, px)).borderBox();
         border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
+        background.image(BackgroundImage.url("src/main/resources/teemowork/skill/" + skill.owner.systemName + ".jpg")
+                .horizontal(skill.key.ordinal() * 25, percent)
+                .cover()
+                .borderBox()
+                .noRepeat());
     };
 
     static Style LevelBox = () -> {

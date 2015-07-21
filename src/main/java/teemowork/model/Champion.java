@@ -399,7 +399,7 @@ public class Champion {
     /** The name. */
     public final String name;
 
-    /** The normalized system name. */
+    /** The normalized skillSystem name. */
     public final String systemName;
 
     /** The skill set. */
@@ -431,10 +431,12 @@ public class Champion {
         this.name = data.name;
         this.systemName = data.name();
         this.skills = skills;
-        System.out.println(name);
+
         for (int i = 0; i < skills.length; i++) {
-            System.out.println(data.skills[i]);
+            skills[i].owner = this;
             skills[i].name = data.skills[i];
+            skills[i].localized = data.skillLocalized[i];
+            skills[i].system = data.skillSystem[i];
         }
 
         if (!transformed) {
@@ -444,7 +446,7 @@ public class Champion {
 
     /**
      * <p>
-     * Returns system name.
+     * Returns skillSystem name.
      * </p>
      * 
      * @return
@@ -564,6 +566,17 @@ public class Champion {
 
     /* Define Champion base status. */
     static {
+        Aatrox.update(P0000)
+                .set(Health, 395, 85)
+                .set(Hreg, 5.75, 0.5)
+                .set(Mana, 0, 0)
+                .set(Mreg, 0, 0)
+                .set(AD, 55, 3.2)
+                .set(AS, 0.651, 3)
+                .set(AR, 18, 3.8)
+                .set(MR, 30, 1.25)
+                .set(Range, 150)
+                .set(MS, 345);
         Ahri.update(P506)
                 .set(Health, 380, 80)
                 .set(Hreg, 5.5, 0.6)
@@ -586,6 +599,40 @@ public class Champion {
                 .set(MR, 30, 1.25)
                 .set(Range, 125)
                 .set(MS, 350);
+        Alistar.update(P0000)
+                .set(Health, 442, 102)
+                .set(Hreg, 7.25, 0.85)
+                .set(Mana, 215, 38)
+                .set(Mreg, 6.45, 0.45)
+                .set(AD, 55.03, 3.62)
+                .set(AS, 0.625, 3.62)
+                .set(AR, 18.5, 3.5)
+                .set(MR, 30, 1.25)
+                .set(Range, 125)
+                .set(MS, 325);
+        Amumu.update(P0000)
+                .set(Health, 472, 84)
+                .set(Hreg, 7.45, 0.85)
+                .set(Mana, 220, 40)
+                .set(Mreg, 6.5, 0.525)
+                .set(AD, 47, 3.8)
+                .set(AS, 0.638, 2.18)
+                .set(AR, 23.544, 3.3)
+                .set(MR, 30, 1.25)
+                .set(Range, 125)
+                .set(MS, 335);
+        Anivia.update(P0000)
+                .set(Health, 350, 70)
+                .set(Hreg, 4.65, 0.55)
+                .set(Mana, 257, 53)
+                .set(Mreg, 7.0, 0.6)
+                .set(AD, 48, 3.2)
+                .set(AS, 0.625, 1.68)
+                .set(AR, 17.22, 4)
+                .set(MR, 30, 0)
+                .set(Range, 600)
+                .set(MissileSpeed, 1400)
+                .set(MS, 325);
         Annie.update(P0000)
                 .set(Health, 384, 76)
                 .set(Hreg, 4.5, 0.55)

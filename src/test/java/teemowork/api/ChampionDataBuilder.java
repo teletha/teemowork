@@ -59,7 +59,7 @@ public class ChampionDataBuilder {
                 float.class, "mreg", float.class, "mregPer", float.class, "ad", float.class, "adPer", float.class, "as",
                 float.class, "asPer", float.class, "crit", float.class, "critPer", float.class, "ar", float.class,
                 "arPer", float.class, "mr", float.class, "mrPer", float.class, "ms", float.class, "range",
-                String[].class, "skills", String[].class, "skillLocalized", String[].class, "skillIdentical"};
+                String[].class, "skills", String[].class, "skillLocalized", String[].class, "skillSystem"};
 
         // Field
         for (int i = 0; i < properties.length; i++) {
@@ -163,7 +163,7 @@ public class ChampionDataBuilder {
         /** The loclized skill names. */
         private List<String> skillLocalized = new ArrayList();
 
-        /** The skill names for system. */
+        /** The skill names for skillSystem. */
         private List<String> skillSystem = new ArrayList();
 
         /**

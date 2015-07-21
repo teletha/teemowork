@@ -19,6 +19,8 @@ import java.util.List;
 import kiss.I;
 import teemowork.model.Champion;
 import teemowork.model.Item;
+import teemowork.model.Skill;
+import teemowork.model.SkillKey;
 import teemowork.model.Version;
 import teemowork.tool.ResourceLocator;
 import teemowork.tool.image.EditableImage;
@@ -141,25 +143,25 @@ public class ImageBuilder {
         Path temporary = I.locateTemporary();
         Files.createDirectories(temporary);
 
-        EditableImage container = new EditableImage();
-
         for (Champion champion : champions) {
-            for (String name : champion.) {
-                
+            EditableImage container = new EditableImage();
+
+            for (Skill skill : champion.skills) {
+                String file = (skill.system + ".png").replaceAll("\\s", "%20");
+
+                Path local = temporary.resolve(file);
+                URL url = new URL("http://ddragon.leagueoflegends.com/cdn/" + version.name + ".1/img/" + (skill.key == SkillKey.Passive
+                        ? "passive" : "spell") + "/" + file);
+
+                I.copy(url.openStream(), Files.newOutputStream(local), true);
+
+                EditableImage image = new EditableImage(local);
+                image.resize(45);
+
+                container.concat(image);
             }
-            String file = champion.systemName + ".png";
-
-            Path local = temporary.resolve(file);
-            URL url = new URL("http://ddragon.leagueoflegends.com/cdn/" + version.name + ".1/img/spell/" + file);
-
-            I.copy(url.openStream(), Files.newOutputStream(local), true);
-
-            EditableImage image = new EditableImage(local);
-            image.trim(7).resize(70);
-
-            container.concat(image);
+            container.write(ResourceLocator.SkillIcon.resolve(champion.systemName + ".jpg"));
         }
-        container.write(ResourceLocator.Resources.resolve("champions.jpg"));
     }
 
     /**
@@ -167,7 +169,8 @@ public class ImageBuilder {
      */
     public static void main(String[] args) throws Exception {
         ImageBuilder builder = new ImageBuilder(Version.Latest);
-        builder.buildItemIconSet();
-        builder.buildChampionIconSet();
+        // builder.buildItemIconSet();
+        // builder.buildChampionIconSet();
+        builder.buildSkillIconSet();
     }
 }

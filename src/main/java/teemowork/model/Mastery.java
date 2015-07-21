@@ -28,7 +28,7 @@ public abstract class Mastery extends Describable<MasteryDescriptor> {
     /** The mastery name. */
     public final String name;
 
-    /** The system name. */
+    /** The skillSystem name. */
     public final String system;
 
     /** The tree type. */
