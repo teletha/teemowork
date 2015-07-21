@@ -546,7 +546,7 @@ public abstract class VariableResolver {
          */
         @Override
         public String getLevelDescription(int skillLevel) {
-            return reference.name + " Level " + skillLevel;
+            return reference + " Level " + skillLevel;
         }
     }
 }

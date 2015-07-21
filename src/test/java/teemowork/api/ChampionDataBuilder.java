@@ -37,9 +37,6 @@ public class ChampionDataBuilder {
         ChampionDefinitions en = RiotAPI.parse(ChampionDefinitions.class, Version.Latest, Locale.US);
         ChampionDefinitions ja = RiotAPI.parse(ChampionDefinitions.class, Version.Latest, Locale.JAPAN);
 
-        List<Detail> infos = new ArrayList();
-        List<Detail> infosLocalized = new ArrayList();
-
         ClassWriter code = new ClassWriter("teemowork.api", "RiotChampionData");
         code.write("public enum ", code.className, " {");
         code.writeConstants(en.data.values(), champion -> {
@@ -81,45 +78,47 @@ public class ChampionDataBuilder {
         code.write("}");
         code.writeTo(I.locate("src/main/java"));
 
-        // //
-        // ClassWriter writer = new ClassWriter("teemowork.api", "RiotSkillData");
-        // writer.write("public enum ", writer.className, " {");
-        // writer.writeConstants(infos, info -> {
-        // writer.write();
-        // writer.write("/** ", info.passive.name, " Definition", " */");
-        // writer.write(info.id, "1", param(string(info.passive.name)), ",");
         //
-        // for (int i = 0; i < info.spells.size(); i++) {
-        // Skill skill = info.spells.get(i);
-        //
-        // writer.write();
-        // writer.write("/** ", skill.name, " Definition", " */");
-        // writer.write(info.id, i + 2, param(string(skill.name)), ",");
-        // }
-        // });
-        //
-        // // Properties
-        // properties = new Object[] {String.class, "name"};
-        //
-        // // Field
-        // for (int i = 0; i < properties.length; i++) {
-        // writer.write();
-        // writer.write("/** Skill status. */");
-        // writer.write("public final ", properties[i], " ", properties[++i], ";");
-        // }
-        //
-        // // constructor
-        // writer.write();
-        // writer.write("/**");
-        // writer.write(" * The skill definition.");
-        // writer.write(" */");
-        // writer.write("private ", writer.className, paramDef(properties), " {");
-        // for (int i = 0; i < properties.length; i++) {
-        // writer.write("this.", properties[++i], " = ", properties[i], ";");
-        // }
-        // writer.write("}");
-        // writer.write("}");
-        // writer.writeTo(I.locate("src/main/java"));
+        ClassWriter writer = new ClassWriter("teemowork.api", "RiotSkillData");
+        writer.write("public class ", writer.className, " {");
+
+        for (ChampionDefinition definition : en.data.values()) {
+            for (int i = 0; i < definition.skill.size(); i++) {
+                String skill = definition.skill.get(i);
+                String name = skill.replaceAll(" of ", " Of ")
+                        .replaceAll(" the ", " The ")
+                        .replaceAll(" in ", "In")
+                        .replaceAll("[\\s-,!':/]", "")
+                        .replaceAll("^\\d+", "");
+
+                writer.write();
+                writer.write("/** ", skill, " Definition", " */");
+                writer.write("public static final ", writer.className, " ", name, " = new ", writer.className, param("RiotChampionData." + definition.id, i), ";");
+            }
+        }
+
+        // Properties
+        properties = new Object[] {RiotChampionData.class, "data", int.class, "index"};
+
+        // Field
+        for (int i = 0; i < properties.length; i++) {
+            writer.write();
+            writer.write("/** Skill status. */");
+            writer.write("public final ", properties[i], " ", properties[++i], ";");
+        }
+
+        // constructor
+        writer.write();
+        writer.write("/**");
+        writer.write(" * The skill definition.");
+        writer.write(" */");
+        writer.write("private ", writer.className, arg(properties), " {");
+        for (int i = 0; i < properties.length; i++) {
+            writer.write("this.", properties[++i], " = ", properties[i], ";");
+        }
+        writer.write("}");
+        writer.write("}");
+        writer.writeTo(I.locate("src/test/java"));
     }
 
     /**

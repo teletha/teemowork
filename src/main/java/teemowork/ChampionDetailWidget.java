@@ -93,7 +93,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
                     〡.vbox.〡(() -> {
                         SkillDescriptor status = skill.getDescriptor(build.getVersion());
-                        〡.nbox.〡(Name, skill.name);
+                        〡.nbox.〡(Name, skill);
                         〡.nbox.〡(() -> {
                             writeStatusValue(〡, skill, status, status.getRange());
                             writeStatusValue(〡, skill, status, status.getCooldown());

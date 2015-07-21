@@ -242,7 +242,7 @@ public class ChampionDetail extends Page {
             }
 
             Element descriptor = root.child("div");
-            descriptor.child(Name).text(skill.name);
+            descriptor.child(Name).text(skill);
 
             this.range = descriptor.child(SkillStatusValues);
             this.cooldown = descriptor.child(SkillStatusValues);

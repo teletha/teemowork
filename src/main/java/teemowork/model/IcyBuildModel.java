@@ -204,7 +204,7 @@ public abstract class IcyBuildModel implements StatusCalculator {
             }
 
             if (champion == Champion.Jayce) {
-                value += computeVariable(status, Skill.TransformMercuryHammer);
+                value += computeVariable(status, Skill.MercuryHammer);
             }
             return value;
         }

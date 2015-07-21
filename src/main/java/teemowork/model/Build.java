@@ -363,7 +363,7 @@ public class Build extends Publishable implements StatusCalculator {
             }
 
             if (champion == Champion.Jayce) {
-                value += computeVariable(status, Skill.TransformMercuryHammer);
+                value += computeVariable(status, Skill.MercuryHammer);
             }
             return value;
         }

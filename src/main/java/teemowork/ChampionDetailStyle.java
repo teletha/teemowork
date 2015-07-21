@@ -77,7 +77,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         box.size(SkillIconSize, px);
         border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
         background.image(BackgroundImage.url(skill.getIcon())
-                .horizontal(skill.key.ordinal() * 25, percent)
+                .horizontal(skill.getIconPosition(), percent)
                 .cover()
                 .borderBox()
                 .noRepeat());

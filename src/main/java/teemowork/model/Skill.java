@@ -13,6 +13,7 @@ import static teemowork.model.SkillKey.*;
 import static teemowork.model.Status.*;
 import static teemowork.model.Version.*;
 
+import teemowork.api.RiotChampionData;
 import teemowork.model.variable.VariableResolver.Diff;
 import teemowork.model.variable.VariableResolver.Fixed;
 import teemowork.model.variable.VariableResolver.Per1Level;
@@ -39,1826 +40,1937 @@ import teemowork.model.variable.VariableResolver.Refer;
  */
 public class Skill extends Describable<SkillDescriptor> {
 
-    /** The skill name. */
-    public static final Skill EssenceTheft = new Skill("Essence Theft", Passive);
+    /** Blood Well Definition */
+    public static final Skill BloodWell = new Skill(RiotChampionData.Aatrox, 0);
 
-    /** The skill name. */
-    public static final Skill OrbOfDeception = new Skill("Orb of Deception", Q);
+    /** Dark Flight Definition */
+    public static final Skill DarkFlight = new Skill(RiotChampionData.Aatrox, 1);
 
-    /** The skill name. */
-    public static final Skill FoxFire = new Skill("Fox-Fire", W);
+    /** Blood Thirst / Blood Price Definition */
+    public static final Skill BloodThirstBloodPrice = new Skill(RiotChampionData.Aatrox, 2);
 
-    /** The skill name. */
-    public static final Skill Charm = new Skill("Charm", E);
+    /** Blades of Torment Definition */
+    public static final Skill BladesOfTorment = new Skill(RiotChampionData.Aatrox, 3);
 
-    /** The skill name. */
-    public static final Skill SpiritRush = new Skill("Spirit Rush", R);
+    /** Massacre Definition */
+    public static final Skill Massacre = new Skill(RiotChampionData.Aatrox, 4);
 
-    /** The skill name. */
-    public static final Skill TwinDisciplines = new Skill("Twin Disciplines", Passive);
+    /** Essence Theft Definition */
+    public static final Skill EssenceTheft = new Skill(RiotChampionData.Ahri, 0);
 
-    /** The skill name. */
-    public static final Skill MarkOftheAssassin = new Skill("Mark of the Assassin", Q);
+    /** Orb of Deception Definition */
+    public static final Skill OrbOfDeception = new Skill(RiotChampionData.Ahri, 1);
 
-    /** The skill name. */
-    public static final Skill TwilightShroud = new Skill("Twilight Shroud", W);
+    /** Fox-Fire Definition */
+    public static final Skill FoxFire = new Skill(RiotChampionData.Ahri, 2);
 
-    /** The skill name. */
-    public static final Skill CrescentSlash = new Skill("Crescent Slash", E);
+    /** Charm Definition */
+    public static final Skill Charm = new Skill(RiotChampionData.Ahri, 3);
 
-    /** The skill name. */
-    public static final Skill ShadowDance = new Skill("Shadow Dance", R);
+    /** Spirit Rush Definition */
+    public static final Skill SpiritRush = new Skill(RiotChampionData.Ahri, 4);
 
-    /** The skill name. */
-    public static final Skill Trample = new Skill("Trample", Passive);
+    /** Twin Disciplines Definition */
+    public static final Skill TwinDisciplines = new Skill(RiotChampionData.Akali, 0);
 
-    /** The skill name. */
-    public static final Skill Pulverize = new Skill("Pulverize", Q);
+    /** Mark of the Assassin Definition */
+    public static final Skill MarkOfTheAssassin = new Skill(RiotChampionData.Akali, 1);
 
-    /** The skill name. */
-    public static final Skill Headbutt = new Skill("Headbutt", W);
+    /** Twilight Shroud Definition */
+    public static final Skill TwilightShroud = new Skill(RiotChampionData.Akali, 2);
 
-    /** The skill name. */
-    public static final Skill TriumphantRoar = new Skill("Triumphant Roar", E);
+    /** Crescent Slash Definition */
+    public static final Skill CrescentSlash = new Skill(RiotChampionData.Akali, 3);
 
-    /** The skill name. */
-    public static final Skill UnbreakableWill = new Skill("Unbreakable Will", R);
+    /** Shadow Dance Definition */
+    public static final Skill ShadowDance = new Skill(RiotChampionData.Akali, 4);
 
-    /** The skill name. */
-    public static final Skill CursedTouch = new Skill("Cursed Touch", Passive);
+    /** Trample Definition */
+    public static final Skill Trample = new Skill(RiotChampionData.Alistar, 0);
 
-    /** The skill name. */
-    public static final Skill BandageToss = new Skill("Bandage Toss", Q);
+    /** Pulverize Definition */
+    public static final Skill Pulverize = new Skill(RiotChampionData.Alistar, 1);
 
-    /** The skill name. */
-    public static final Skill Despair = new Skill("Despair", W);
+    /** Headbutt Definition */
+    public static final Skill Headbutt = new Skill(RiotChampionData.Alistar, 2);
 
-    /** The skill name. */
-    public static final Skill Tantrum = new Skill("Tantrum", E);
+    /** Triumphant Roar Definition */
+    public static final Skill TriumphantRoar = new Skill(RiotChampionData.Alistar, 3);
 
-    /** The skill name. */
-    public static final Skill CurseOftheSadMummy = new Skill("Curse of the Sad Mummy", R);
+    /** Unbreakable Will Definition */
+    public static final Skill UnbreakableWill = new Skill(RiotChampionData.Alistar, 4);
 
-    /** The skill name. */
-    public static final Skill Rebirth = new Skill("Rebirth", Passive);
+    /** Cursed Touch Definition */
+    public static final Skill CursedTouch = new Skill(RiotChampionData.Amumu, 0);
 
-    /** The skill name. */
-    public static final Skill FlashFrost = new Skill("Flash Frost", Q);
+    /** Bandage Toss Definition */
+    public static final Skill BandageToss = new Skill(RiotChampionData.Amumu, 1);
 
-    /** The skill name. */
-    public static final Skill Crystalize = new Skill("Crystalize", W);
+    /** Despair Definition */
+    public static final Skill Despair = new Skill(RiotChampionData.Amumu, 2);
 
-    /** The skill name. */
-    public static final Skill Frostbite = new Skill("Frostbite", E);
+    /** Tantrum Definition */
+    public static final Skill Tantrum = new Skill(RiotChampionData.Amumu, 3);
 
-    /** The skill name. */
-    public static final Skill GlacialStorm = new Skill("Glacial Storm", R);
+    /** Curse of the Sad Mummy Definition */
+    public static final Skill CurseOfTheSadMummy = new Skill(RiotChampionData.Amumu, 4);
 
-    /** The skill name. */
-    public static final Skill Pyromania = new Skill("Pyromania", Passive);
+    /** Rebirth Definition */
+    public static final Skill Rebirth = new Skill(RiotChampionData.Anivia, 0);
 
-    /** The skill name. */
-    public static final Skill Disintegrate = new Skill("Disintegrate", Q);
+    /** Flash Frost Definition */
+    public static final Skill FlashFrost = new Skill(RiotChampionData.Anivia, 1);
 
-    /** The skill name. */
-    public static final Skill Incinerate = new Skill("Incinerate", W);
+    /** Crystallize Definition */
+    public static final Skill Crystallize = new Skill(RiotChampionData.Anivia, 2);
 
-    /** The skill name. */
-    public static final Skill MoltenShield = new Skill("Molten Shield", E);
+    /** Frostbite Definition */
+    public static final Skill Frostbite = new Skill(RiotChampionData.Anivia, 3);
 
-    /** The skill name. */
-    public static final Skill SummonTibbers = new Skill("Summon: Tibbers", R);
+    /** Glacial Storm Definition */
+    public static final Skill GlacialStorm = new Skill(RiotChampionData.Anivia, 4);
 
-    /** The skill name. */
-    public static final Skill Focus = new Skill("Focus", Passive);
+    /** Pyromania Definition */
+    public static final Skill Pyromania = new Skill(RiotChampionData.Annie, 0);
 
-    /** The skill name. */
-    public static final Skill FrostShot = new Skill("Frost Shot", Q);
+    /** Disintegrate Definition */
+    public static final Skill Disintegrate = new Skill(RiotChampionData.Annie, 1);
 
-    /** The skill name. */
-    public static final Skill Volley = new Skill("Volley", W);
+    /** Incinerate Definition */
+    public static final Skill Incinerate = new Skill(RiotChampionData.Annie, 2);
 
-    /** The skill name. */
-    public static final Skill Hawkshot = new Skill("Hawkshot", E);
+    /** Molten Shield Definition */
+    public static final Skill MoltenShield = new Skill(RiotChampionData.Annie, 3);
 
-    /** The skill name. */
-    public static final Skill EnchantedCrystalArrow = new Skill("Enchanted Crystal Arrow", R);
+    /** Summon: Tibbers Definition */
+    public static final Skill SummonTibbers = new Skill(RiotChampionData.Annie, 4);
 
-    /** The skill name. */
-    public static final Skill ManaBarrier = new Skill("Mana Barrier", Passive);
+    /** Frost Shot Definition */
+    public static final Skill FrostShot = new Skill(RiotChampionData.Ashe, 0);
 
-    /** The skill name. */
-    public static final Skill RocketGrab = new Skill("Rocket Grab", Q);
+    /** Ranger's Focus Definition */
+    public static final Skill RangersFocus = new Skill(RiotChampionData.Ashe, 1);
 
-    /** The skill name. */
-    public static final Skill Overdrive = new Skill("Overdrive", W);
+    /** Volley Definition */
+    public static final Skill Volley = new Skill(RiotChampionData.Ashe, 2);
 
-    /** The skill name. */
-    public static final Skill PowerFist = new Skill("Power Fist", E);
+    /** Hawkshot Definition */
+    public static final Skill Hawkshot = new Skill(RiotChampionData.Ashe, 3);
 
-    /** The skill name. */
-    public static final Skill StaticField = new Skill("Static Field", R);
+    /** Enchanted Crystal Arrow Definition */
+    public static final Skill EnchantedCrystalArrow = new Skill(RiotChampionData.Ashe, 4);
 
-    /** The skill name. */
-    public static final Skill Blaze = new Skill("Blaze", Passive);
+    /** Shurima's Legacy Definition */
+    public static final Skill ShurimasLegacy = new Skill(RiotChampionData.Azir, 0);
 
-    /** The skill name. */
-    public static final Skill Sear = new Skill("Sear", Q);
+    /** Conquering Sands Definition */
+    public static final Skill ConqueringSands = new Skill(RiotChampionData.Azir, 1);
 
-    /** The skill name. */
-    public static final Skill PillarOfFlame = new Skill("Pillar of Flame", W);
+    /** Arise! Definition */
+    public static final Skill Arise = new Skill(RiotChampionData.Azir, 2);
 
-    /** The skill name. */
-    public static final Skill Conflagration = new Skill("Conflagration", E);
+    /** Shifting Sands Definition */
+    public static final Skill ShiftingSands = new Skill(RiotChampionData.Azir, 3);
 
-    /** The skill name. */
-    public static final Skill Pyroclasm = new Skill("Pyroclasm", R);
+    /** Emperor's Divide Definition */
+    public static final Skill EmperorsDivide = new Skill(RiotChampionData.Azir, 4);
 
-    /** The skill name. */
-    public static final Skill Headshot = new Skill("Headshot", Passive);
+    /** Traveler's Call Definition */
+    public static final Skill TravelersCall = new Skill(RiotChampionData.Bard, 0);
 
-    /** The skill name. */
-    public static final Skill PiltoverPeacemaker = new Skill("Piltover Peacemaker", Q);
+    /** Cosmic Binding Definition */
+    public static final Skill CosmicBinding = new Skill(RiotChampionData.Bard, 1);
 
-    /** The skill name. */
-    public static final Skill YordleSnapTrap = new Skill("Yordle Snap Trap", W);
+    /** Caretaker's Shrine Definition */
+    public static final Skill CaretakersShrine = new Skill(RiotChampionData.Bard, 2);
 
-    /** The skill name. */
-    public static final Skill CaliberNet = new Skill("90 Caliber Net", E);
+    /** Magical Journey Definition */
+    public static final Skill MagicalJourney = new Skill(RiotChampionData.Bard, 3);
 
-    /** The skill name. */
-    public static final Skill AceinTheHole = new Skill("Ace in the Hole", R);
+    /** Tempered Fate Definition */
+    public static final Skill TemperedFate = new Skill(RiotChampionData.Bard, 4);
 
-    /** The skill name. */
-    public static final Skill DeadlyCadence = new Skill("Deadly Cadence", Passive);
+    /** Mana Barrier Definition */
+    public static final Skill ManaBarrier = new Skill(RiotChampionData.Blitzcrank, 0);
 
-    /** The skill name. */
-    public static final Skill NoxiousBlast = new Skill("Noxious Blast", Q);
+    /** Rocket Grab Definition */
+    public static final Skill RocketGrab = new Skill(RiotChampionData.Blitzcrank, 1);
 
-    /** The skill name. */
-    public static final Skill Miasma = new Skill("Miasma", W);
+    /** Overdrive Definition */
+    public static final Skill Overdrive = new Skill(RiotChampionData.Blitzcrank, 2);
 
-    /** The skill name. */
-    public static final Skill TwinFang = new Skill("Twin Fang", E);
+    /** Power Fist Definition */
+    public static final Skill PowerFist = new Skill(RiotChampionData.Blitzcrank, 3);
 
-    /** The skill name. */
-    public static final Skill PetrifyingGaze = new Skill("Petrifying Gaze", R);
+    /** Static Field Definition */
+    public static final Skill StaticField = new Skill(RiotChampionData.Blitzcrank, 4);
 
-    /** The skill name. */
-    public static final Skill Carnivore = new Skill("Carnivore", Passive);
+    /** Blaze Definition */
+    public static final Skill Blaze = new Skill(RiotChampionData.Brand, 0);
 
-    /** The skill name. */
-    public static final Skill Rupture = new Skill("Rupture", Q);
+    /** Sear Definition */
+    public static final Skill Sear = new Skill(RiotChampionData.Brand, 1);
 
-    /** The skill name. */
-    public static final Skill FeralScream = new Skill("Feral Scream", W);
+    /** Pillar of Flame Definition */
+    public static final Skill PillarOfFlame = new Skill(RiotChampionData.Brand, 2);
 
-    /** The skill name. */
-    public static final Skill VorpalSpikes = new Skill("Vorpal Spikes", E);
+    /** Conflagration Definition */
+    public static final Skill Conflagration = new Skill(RiotChampionData.Brand, 3);
 
-    /** The skill name. */
-    public static final Skill Feast = new Skill("Feast", R);
+    /** Pyroclasm Definition */
+    public static final Skill Pyroclasm = new Skill(RiotChampionData.Brand, 4);
 
-    /** The skill name. */
-    public static final Skill HextechShrapnelShells = new Skill("Hextech Shrapnel Shells", Passive);
+    /** Concussive Blows Definition */
+    public static final Skill ConcussiveBlows = new Skill(RiotChampionData.Braum, 0);
 
-    /** The skill name. */
-    public static final Skill PhosphorusBomb = new Skill("Phosphorus Bomb", Q);
+    /** Winter's Bite Definition */
+    public static final Skill WintersBite = new Skill(RiotChampionData.Braum, 1);
 
-    /** The skill name. */
-    public static final Skill Valkyrie = new Skill("Valkyrie", W);
+    /** Stand Behind Me Definition */
+    public static final Skill StandBehindMe = new Skill(RiotChampionData.Braum, 2);
 
-    /** The skill name. */
-    public static final Skill GatlingGun = new Skill("Gatling Gun", E);
+    /** Unbreakable Definition */
+    public static final Skill Unbreakable = new Skill(RiotChampionData.Braum, 3);
 
-    /** The skill name. */
-    public static final Skill MissileBarrage = new Skill("Missile Barrage", R);
+    /** Glacial Fissure Definition */
+    public static final Skill GlacialFissure = new Skill(RiotChampionData.Braum, 4);
 
-    /** The skill name. */
-    public static final Skill Hemorrhage = new Skill("Hemorrhage", Passive);
+    /** Headshot Definition */
+    public static final Skill Headshot = new Skill(RiotChampionData.Caitlyn, 0);
 
-    /** The skill name. */
-    public static final Skill Decimate = new Skill("Decimate", Q);
+    /** Piltover Peacemaker Definition */
+    public static final Skill PiltoverPeacemaker = new Skill(RiotChampionData.Caitlyn, 1);
 
-    /** The skill name. */
-    public static final Skill CripplingStrike = new Skill("Crippling Strike", W);
+    /** Yordle Snap Trap Definition */
+    public static final Skill YordleSnapTrap = new Skill(RiotChampionData.Caitlyn, 2);
 
-    /** The skill name. */
-    public static final Skill Apprehend = new Skill("Apprehend", E);
+    /** 90 Caliber Net Definition */
+    public static final Skill CaliberNet = new Skill(RiotChampionData.Caitlyn, 3);
 
-    /** The skill name. */
-    public static final Skill NoxianGuillotine = new Skill("Noxian Guillotine", R);
+    /** Ace in the Hole Definition */
+    public static final Skill AceinTheHole = new Skill(RiotChampionData.Caitlyn, 4);
 
-    /** The skill name. */
-    public static final Skill MoonsilverBlade = new Skill("Moonsilver Blade", Passive);
+    /** Aspect of the Serpent Definition */
+    public static final Skill AspectOfTheSerpent = new Skill(RiotChampionData.Cassiopeia, 0);
 
-    /** The skill name. */
-    public static final Skill CrescentStrike = new Skill("Crescent Strike", Q);
+    /** Noxious Blast Definition */
+    public static final Skill NoxiousBlast = new Skill(RiotChampionData.Cassiopeia, 1);
 
-    /** The skill name. */
-    public static final Skill PaleCascade = new Skill("Pale Cascade", W);
+    /** Miasma Definition */
+    public static final Skill Miasma = new Skill(RiotChampionData.Cassiopeia, 2);
 
-    /** The skill name. */
-    public static final Skill Moonfall = new Skill("Moonfall", E);
+    /** Twin Fang Definition */
+    public static final Skill TwinFang = new Skill(RiotChampionData.Cassiopeia, 3);
 
-    /** The skill name. */
-    public static final Skill LunarRush = new Skill("Lunar Rush", R);
+    /** Petrifying Gaze Definition */
+    public static final Skill PetrifyingGaze = new Skill(RiotChampionData.Cassiopeia, 4);
 
-    /** The skill name. */
-    public static final Skill AdrenalineRush = new Skill("Adrenaline Rush", Passive);
+    /** Carnivore Definition */
+    public static final Skill Carnivore = new Skill(RiotChampionData.Chogath, 0);
 
-    /** The skill name. */
-    public static final Skill InfectedCleaver = new Skill("Infected Cleaver", Q);
+    /** Rupture Definition */
+    public static final Skill Rupture = new Skill(RiotChampionData.Chogath, 1);
 
-    /** The skill name. */
-    public static final Skill BurningAgony = new Skill("Burning Agony", W);
+    /** Feral Scream Definition */
+    public static final Skill FeralScream = new Skill(RiotChampionData.Chogath, 2);
 
-    /** The skill name. */
-    public static final Skill Masochism = new Skill("Masochism", E);
+    /** Vorpal Spikes Definition */
+    public static final Skill VorpalSpikes = new Skill(RiotChampionData.Chogath, 3);
 
-    /** The skill name. */
-    public static final Skill Sadism = new Skill("Sadism", R);
+    /** Feast Definition */
+    public static final Skill Feast = new Skill(RiotChampionData.Chogath, 4);
 
-    /** The skill name. */
-    public static final Skill LeagueOfDraven = new Skill("League of Draven", Passive);
+    /** Hextech Shrapnel Shells Definition */
+    public static final Skill HextechShrapnelShells = new Skill(RiotChampionData.Corki, 0);
 
-    /** The skill name. */
-    public static final Skill SpinningAxe = new Skill("Spinning Axe", Q);
+    /** Phosphorus Bomb Definition */
+    public static final Skill PhosphorusBomb = new Skill(RiotChampionData.Corki, 1);
 
-    /** The skill name. */
-    public static final Skill BloodRush = new Skill("Blood Rush", W);
+    /** Valkyrie Definition */
+    public static final Skill Valkyrie = new Skill(RiotChampionData.Corki, 2);
 
-    /** The skill name. */
-    public static final Skill StandAside = new Skill("Stand Aside", E);
+    /** Gatling Gun Definition */
+    public static final Skill GatlingGun = new Skill(RiotChampionData.Corki, 3);
 
-    /** The skill name. */
-    public static final Skill WhirlingDeath = new Skill("Whirling Death", R);
+    /** Missile Barrage Definition */
+    public static final Skill MissileBarrage = new Skill(RiotChampionData.Corki, 4);
 
-    /** The skill name. */
-    public static final Skill SpiderSwarm = new Skill("Spider Swarm", Passive);
+    /** Hemorrhage Definition */
+    public static final Skill Hemorrhage = new Skill(RiotChampionData.Darius, 0);
 
-    /** The skill name. */
-    public static final Skill Neurotoxin = new Skill("Neurotoxin", Q);
+    /** Decimate Definition */
+    public static final Skill Decimate = new Skill(RiotChampionData.Darius, 1);
 
-    /** The skill name. */
-    public static final Skill VenomousBite = new Skill("Venomous Bite", Q);
+    /** Crippling Strike Definition */
+    public static final Skill CripplingStrike = new Skill(RiotChampionData.Darius, 2);
 
-    /** The skill name. */
-    public static final Skill VolatileSpiderling = new Skill("Volatile Spiderling", W);
+    /** Apprehend Definition */
+    public static final Skill Apprehend = new Skill(RiotChampionData.Darius, 3);
 
-    /** The skill name. */
-    public static final Skill SkitteringFrenzy = new Skill("Skittering Frenzy", W);
+    /** Noxian Guillotine Definition */
+    public static final Skill NoxianGuillotine = new Skill(RiotChampionData.Darius, 4);
 
-    /** The skill name. */
-    public static final Skill Cocoon = new Skill("Cocoon", E);
+    /** Moonsilver Blade Definition */
+    public static final Skill MoonsilverBlade = new Skill(RiotChampionData.Diana, 0);
 
-    /** The skill name. */
-    public static final Skill Rappel = new Skill("Rappel", E);
+    /** Crescent Strike Definition */
+    public static final Skill CrescentStrike = new Skill(RiotChampionData.Diana, 1);
 
-    /** The skill name. */
-    public static final Skill SpiderForm = new Skill("Spider Form", R);
+    /** Pale Cascade Definition */
+    public static final Skill PaleCascade = new Skill(RiotChampionData.Diana, 2);
 
-    /** The skill name. */
-    public static final Skill HumanForm = new Skill("Human Form", R);
+    /** Moonfall Definition */
+    public static final Skill Moonfall = new Skill(RiotChampionData.Diana, 3);
 
-    /** The skill name. */
-    public static final Skill ShadowWalk = new Skill("Shadow Walk", Passive);
+    /** Lunar Rush Definition */
+    public static final Skill LunarRush = new Skill(RiotChampionData.Diana, 4);
 
-    /** The skill name. */
-    public static final Skill HateSpike = new Skill("Hate Spike", Q);
+    /** League of Draven Definition */
+    public static final Skill LeagueOfDraven = new Skill(RiotChampionData.Draven, 0);
 
-    /** The skill name. */
-    public static final Skill DarkFrenzy = new Skill("Dark Frenzy", W);
+    /** Spinning Axe Definition */
+    public static final Skill SpinningAxe = new Skill(RiotChampionData.Draven, 1);
 
-    /** The skill name. */
-    public static final Skill Ravage = new Skill("Ravage", E);
+    /** Blood Rush Definition */
+    public static final Skill BloodRush = new Skill(RiotChampionData.Draven, 2);
 
-    /** The skill name. */
-    public static final Skill AgonysEmbrace = new Skill("Agony's Embrace", R);
+    /** Stand Aside Definition */
+    public static final Skill StandAside = new Skill(RiotChampionData.Draven, 3);
 
-    /** The skill name. */
-    public static final Skill RisingSpellForce = new Skill("Rising Spell Force", Passive);
+    /** Whirling Death Definition */
+    public static final Skill WhirlingDeath = new Skill(RiotChampionData.Draven, 4);
 
-    /** The skill name. */
-    public static final Skill MysticShot = new Skill("Mystic Shot", Q);
+    /** Adrenaline Rush Definition */
+    public static final Skill AdrenalineRush = new Skill(RiotChampionData.DrMundo, 0);
 
-    /** The skill name. */
-    public static final Skill EssenceFlux = new Skill("Essence Flux", W);
+    /** Infected Cleaver Definition */
+    public static final Skill InfectedCleaver = new Skill(RiotChampionData.DrMundo, 1);
 
-    /** The skill name. */
-    public static final Skill ArcaneShift = new Skill("Arcane Shift", E);
+    /** Burning Agony Definition */
+    public static final Skill BurningAgony = new Skill(RiotChampionData.DrMundo, 2);
 
-    /** The skill name. */
-    public static final Skill TrueshotBarrage = new Skill("Trueshot Barrage", R);
+    /** Masochism Definition */
+    public static final Skill Masochism = new Skill(RiotChampionData.DrMundo, 3);
 
-    /** The skill name. */
-    public static final Skill Dread = new Skill("Dread", Passive);
+    /** Sadism Definition */
+    public static final Skill Sadism = new Skill(RiotChampionData.DrMundo, 4);
 
-    /** The skill name. */
-    public static final Skill Terrify = new Skill("Terrify", Q);
+    /** Z-Drive Resonance Definition */
+    public static final Skill ZDriveResonance = new Skill(RiotChampionData.Ekko, 0);
 
-    /** The skill name. */
-    public static final Skill Drain = new Skill("Drain", W);
+    /** Timewinder Definition */
+    public static final Skill Timewinder = new Skill(RiotChampionData.Ekko, 1);
 
-    /** The skill name. */
-    public static final Skill DarkWind = new Skill("Dark Wind", E);
+    /** Parallel Convergence Definition */
+    public static final Skill ParallelConvergence = new Skill(RiotChampionData.Ekko, 2);
 
-    /** The skill name. */
-    public static final Skill Crowstorm = new Skill("Crowstorm", R);
+    /** Phase Dive Definition */
+    public static final Skill PhaseDive = new Skill(RiotChampionData.Ekko, 3);
 
-    /** The skill name. */
-    public static final Skill Duelist = new Skill("Duelist", Passive);
+    /** Chronobreak Definition */
+    public static final Skill Chronobreak = new Skill(RiotChampionData.Ekko, 4);
 
-    /** The skill name. */
-    public static final Skill Lunge = new Skill("Lunge", Q);
+    /** Spider Queen Definition */
+    public static final Skill SpiderQueen = new Skill(RiotChampionData.Elise, 0);
 
-    /** The skill name. */
-    public static final Skill Riposte = new Skill("Riposte", W);
+    /** Neurotoxin / Venomous Bite Definition */
+    public static final Skill NeurotoxinVenomousBite = new Skill(RiotChampionData.Elise, 1);
 
-    /** The skill name. */
-    public static final Skill BurstOfSpeed = new Skill("Burst of Speed", E);
+    /** Volatile Spiderling / Skittering Frenzy Definition */
+    public static final Skill VolatileSpiderlingSkitteringFrenzy = new Skill(RiotChampionData.Elise, 2);
 
-    /** The skill name. */
-    public static final Skill BladeWaltz = new Skill("Blade Waltz", R);
+    /** Cocoon / Rappel Definition */
+    public static final Skill CocoonRappel = new Skill(RiotChampionData.Elise, 3);
 
-    /** The skill name. */
-    public static final Skill NimbleFighter = new Skill("Nimble Fighter", Passive);
+    /** Spider Form Definition */
+    public static final Skill SpiderForm = new Skill(RiotChampionData.Elise, 4);
 
-    /** The skill name. */
-    public static final Skill UrchinStrike = new Skill("Urchin Strike", Q);
+    /** Venomous Bite / Neurotoxin Definition */
+    public static final Skill VenomousBiteNeurotoxin = new Skill(RiotChampionData.Elise, 5);
 
-    /** The skill name. */
-    public static final Skill SeastoneTrident = new Skill("Seastone Trident", W);
+    /** Skittering Frenzy / Volatile Spiderling Definition */
+    public static final Skill SkitteringFrenzyVolatileSpiderling = new Skill(RiotChampionData.Elise, 6);
 
-    /** The skill name. */
-    public static final Skill Playful = new Skill("Playful", E);
+    /** Rappel / Cocoon Definition */
+    public static final Skill RappelCocoon = new Skill(RiotChampionData.Elise, 7);
 
-    /** The skill name. */
-    public static final Skill ChumTheWaters = new Skill("Chum the Waters", R);
+    /** Human Form Definition */
+    public static final Skill HumanForm = new Skill(RiotChampionData.Elise, 8);
 
-    /** The skill name. */
-    public static final Skill RunicSkin = new Skill("Runic Skin", Passive);
+    /** Shadow Walk Definition */
+    public static final Skill ShadowWalk = new Skill(RiotChampionData.Evelynn, 0);
 
-    /** The skill name. */
-    public static final Skill ResoluteSmite = new Skill("Resolute Smite", Q);
+    /** Hate Spike Definition */
+    public static final Skill HateSpike = new Skill(RiotChampionData.Evelynn, 1);
 
-    /** The skill name. */
-    public static final Skill Bulwark = new Skill("Bulwark", W);
+    /** Dark Frenzy Definition */
+    public static final Skill DarkFrenzy = new Skill(RiotChampionData.Evelynn, 2);
 
-    /** The skill name. */
-    public static final Skill RighteousGust = new Skill("Righteous Gust", E);
+    /** Ravage Definition */
+    public static final Skill Ravage = new Skill(RiotChampionData.Evelynn, 3);
 
-    /** The skill name. */
-    public static final Skill IdolOfDurand = new Skill("Idol of Durand", R);
+    /** Agony's Embrace Definition */
+    public static final Skill AgonysEmbrace = new Skill(RiotChampionData.Evelynn, 4);
 
-    /** The skill name. */
-    public static final Skill GrogSoakedBlade = new Skill("Grog Soaked Blade", Passive);
+    /** Rising Spell Force Definition */
+    public static final Skill RisingSpellForce = new Skill(RiotChampionData.Ezreal, 0);
 
-    /** The skill name. */
-    public static final Skill Parrrley = new Skill("Parrrley", Q);
+    /** Mystic Shot Definition */
+    public static final Skill MysticShot = new Skill(RiotChampionData.Ezreal, 1);
 
-    /** The skill name. */
-    public static final Skill RemoveScurvy = new Skill("Remove Scurvy", W);
+    /** Essence Flux Definition */
+    public static final Skill EssenceFlux = new Skill(RiotChampionData.Ezreal, 2);
 
-    /** The skill name. */
-    public static final Skill RaiseMorale = new Skill("Raise Morale", E);
+    /** Arcane Shift Definition */
+    public static final Skill ArcaneShift = new Skill(RiotChampionData.Ezreal, 3);
 
-    /** The skill name. */
-    public static final Skill CannonBarrage = new Skill("Cannon Barrage", R);
+    /** Trueshot Barrage Definition */
+    public static final Skill TrueshotBarrage = new Skill(RiotChampionData.Ezreal, 4);
 
-    /** The skill name. */
-    public static final Skill Perseverance = new Skill("Perseverance", Passive);
+    /** Dread Definition */
+    public static final Skill Dread = new Skill(RiotChampionData.FiddleSticks, 0);
 
-    /** The skill name. */
-    public static final Skill DecisiveStrike = new Skill("Decisive Strike", Q);
+    /** Terrify Definition */
+    public static final Skill Terrify = new Skill(RiotChampionData.FiddleSticks, 1);
 
-    /** The skill name. */
-    public static final Skill Courage = new Skill("Courage", W);
+    /** Drain Definition */
+    public static final Skill Drain = new Skill(RiotChampionData.FiddleSticks, 2);
 
-    /** The skill name. */
-    public static final Skill Judgment = new Skill("Judgment", E);
+    /** Dark Wind Definition */
+    public static final Skill DarkWind = new Skill(RiotChampionData.FiddleSticks, 3);
 
-    /** The skill name. */
-    public static final Skill DemacianJustice = new Skill("Demacian Justice", R);
+    /** Crowstorm Definition */
+    public static final Skill Crowstorm = new Skill(RiotChampionData.FiddleSticks, 4);
 
-    /** The skill name. */
-    public static final Skill HappyHour = new Skill("Happy Hour", Passive);
+    /** Duelist Definition */
+    public static final Skill Duelist = new Skill(RiotChampionData.Fiora, 0);
 
-    /** The skill name. */
-    public static final Skill BarrelRoll = new Skill("Barrel Roll", Q);
+    /** Lunge Definition */
+    public static final Skill Lunge = new Skill(RiotChampionData.Fiora, 1);
 
-    /** The skill name. */
-    public static final Skill DrunkenRage = new Skill("Drunken Rage", W);
+    /** Riposte Definition */
+    public static final Skill Riposte = new Skill(RiotChampionData.Fiora, 2);
 
-    /** The skill name. */
-    public static final Skill BodySlam = new Skill("Body Slam", E);
+    /** Burst of Speed Definition */
+    public static final Skill BurstOfSpeed = new Skill(RiotChampionData.Fiora, 3);
 
-    /** The skill name. */
-    public static final Skill ExplosiveCask = new Skill("Explosive Cask", R);
+    /** Blade Waltz Definition */
+    public static final Skill BladeWaltz = new Skill(RiotChampionData.Fiora, 4);
 
-    /** The skill name. */
-    public static final Skill TrueGrit = new Skill("True Grit", Passive);
+    /** Nimble Fighter Definition */
+    public static final Skill NimbleFighter = new Skill(RiotChampionData.Fizz, 0);
 
-    /** The skill name. */
-    public static final Skill Buckshot = new Skill("Buckshot", Q);
+    /** Urchin Strike Definition */
+    public static final Skill UrchinStrike = new Skill(RiotChampionData.Fizz, 1);
 
-    /** The skill name. */
-    public static final Skill Smokescreen = new Skill("Smokescreen", W);
+    /** Seastone Trident Definition */
+    public static final Skill SeastoneTrident = new Skill(RiotChampionData.Fizz, 2);
 
-    /** The skill name. */
-    public static final Skill Quickdraw = new Skill("Quickdraw", E);
+    /** Playful / Trickster Definition */
+    public static final Skill PlayfulTrickster = new Skill(RiotChampionData.Fizz, 3);
 
-    /** The skill name. */
-    public static final Skill CollateralDamage = new Skill("Collateral Damage", R);
+    /** Chum the Waters Definition */
+    public static final Skill ChumTheWaters = new Skill(RiotChampionData.Fizz, 4);
 
-    /** The skill name. */
-    public static final Skill Warpath = new Skill("Warpath", Passive);
+    /** Runic Skin Definition */
+    public static final Skill RunicSkin = new Skill(RiotChampionData.Galio, 0);
 
-    /** The skill name. */
-    public static final Skill Rampage = new Skill("Rampage", Q);
+    /** Resolute Smite Definition */
+    public static final Skill ResoluteSmite = new Skill(RiotChampionData.Galio, 1);
 
-    /** The skill name. */
-    public static final Skill SpiritOfDread = new Skill("Spirit of Dread", W);
+    /** Bulwark Definition */
+    public static final Skill Bulwark = new Skill(RiotChampionData.Galio, 2);
 
-    /** The skill name. */
-    public static final Skill DevastatingCharge = new Skill("Devastating Charge", E);
+    /** Righteous Gust Definition */
+    public static final Skill RighteousGust = new Skill(RiotChampionData.Galio, 3);
 
-    /** The skill name. */
-    public static final Skill OnslaughtOfShadows = new Skill("Onslaught of Shadows", R);
+    /** Idol of Durand Definition */
+    public static final Skill IdolOfDurand = new Skill(RiotChampionData.Galio, 4);
 
-    /** The skill name. */
-    public static final Skill TechmaturgicalRepairBots = new Skill("Techmaturgical Repair Bots", Passive);
+    /** Grog-Soaked Blade Definition */
+    public static final Skill GrogSoakedBlade = new Skill(RiotChampionData.Gangplank, 0);
 
-    /** The skill name. */
-    public static final Skill H28GEvolutionTurret = new Skill("H-28G Evolution Turret", Q);
+    /** Parrrley Definition */
+    public static final Skill Parrrley = new Skill(RiotChampionData.Gangplank, 1);
 
-    /** The skill name. */
-    public static final Skill HextechMicroRockets = new Skill("Hextech Micro-Rockets", W);
+    /** Remove Scurvy Definition */
+    public static final Skill RemoveScurvy = new Skill(RiotChampionData.Gangplank, 2);
 
-    /** The skill name. */
-    public static final Skill CH1ConcussionGrenade = new Skill("CH-1 Concussion Grenade", E);
+    /** Raise Morale Definition */
+    public static final Skill RaiseMorale = new Skill(RiotChampionData.Gangplank, 3);
 
-    /** The skill name. */
-    public static final Skill UPGRADE = new Skill("UPGRADE!!!", R);
+    /** Cannon Barrage Definition */
+    public static final Skill CannonBarrage = new Skill(RiotChampionData.Gangplank, 4);
 
-    /** The skill name. */
-    public static final Skill IonianFervor = new Skill("Ionian Fervor", Passive);
+    /** Perseverance Definition */
+    public static final Skill Perseverance = new Skill(RiotChampionData.Garen, 0);
 
-    /** The skill name. */
-    public static final Skill Bladesurge = new Skill("Bladesurge", Q);
+    /** Decisive Strike Definition */
+    public static final Skill DecisiveStrike = new Skill(RiotChampionData.Garen, 1);
 
-    /** The skill name. */
-    public static final Skill HitenStyle = new Skill("Hiten Style", W);
+    /** Courage Definition */
+    public static final Skill Courage = new Skill(RiotChampionData.Garen, 2);
 
-    /** The skill name. */
-    public static final Skill EquilibriumStrike = new Skill("Equilibrium Strike", E);
+    /** Judgment Definition */
+    public static final Skill Judgment = new Skill(RiotChampionData.Garen, 3);
 
-    /** The skill name. */
-    public static final Skill TranscendentBlades = new Skill("Transcendent Blades", R);
+    /** Demacian Justice Definition */
+    public static final Skill DemacianJustice = new Skill(RiotChampionData.Garen, 4);
 
-    /** The skill name. */
-    public static final Skill Tailwind = new Skill("Tailwind", Passive);
+    /** Rage Gene Definition */
+    public static final Skill RageGene = new Skill(RiotChampionData.Gnar, 0);
 
-    /** The skill name. */
-    public static final Skill HowlingGale = new Skill("Howling Gale", Q);
+    /** Boomerang Throw / Boulder Toss Definition */
+    public static final Skill BoomerangThrowBoulderToss = new Skill(RiotChampionData.Gnar, 1);
 
-    /** The skill name. */
-    public static final Skill Zephyr = new Skill("Zephyr", W);
+    /** Hyper / Wallop Definition */
+    public static final Skill HyperWallop = new Skill(RiotChampionData.Gnar, 2);
 
-    /** The skill name. */
-    public static final Skill EyeOfTheStorm = new Skill("Eye Of The Storm", E);
+    /** Hop / Crunch Definition */
+    public static final Skill HopCrunch = new Skill(RiotChampionData.Gnar, 3);
 
-    /** The skill name. */
-    public static final Skill Monsoon = new Skill("Monsoon", R);
+    /** GNAR! Definition */
+    public static final Skill GNAR = new Skill(RiotChampionData.Gnar, 4);
 
-    /** The skill name. */
-    public static final Skill MartialCadence = new Skill("Martial Cadence", Passive);
+    /** Happy Hour Definition */
+    public static final Skill HappyHour = new Skill(RiotChampionData.Gragas, 0);
 
-    /** The skill name. */
-    public static final Skill DragonStrike = new Skill("Dragon Strike", Q);
+    /** Barrel Roll Definition */
+    public static final Skill BarrelRoll = new Skill(RiotChampionData.Gragas, 1);
 
-    /** The skill name. */
-    public static final Skill GoldenAegis = new Skill("Golden Aegis", W);
+    /** Drunken Rage Definition */
+    public static final Skill DrunkenRage = new Skill(RiotChampionData.Gragas, 2);
 
-    /** The skill name. */
-    public static final Skill DemacianStandard = new Skill("Demacian Standard", E);
+    /** Body Slam Definition */
+    public static final Skill BodySlam = new Skill(RiotChampionData.Gragas, 3);
 
-    /** The skill name. */
-    public static final Skill Cataclysm = new Skill("Cataclysm", R);
+    /** Explosive Cask Definition */
+    public static final Skill ExplosiveCask = new Skill(RiotChampionData.Gragas, 4);
 
-    /** The skill name. */
-    public static final Skill RelentlessAssault = new Skill("Relentless Assault", Passive);
+    /** True Grit Definition */
+    public static final Skill TrueGrit = new Skill(RiotChampionData.Graves, 0);
 
-    /** The skill name. */
-    public static final Skill LeapStrike = new Skill("Leap Strike", Q);
+    /** Buckshot Definition */
+    public static final Skill Buckshot = new Skill(RiotChampionData.Graves, 1);
 
-    /** The skill name. */
-    public static final Skill Empower = new Skill("Empower", W);
+    /** Smoke Screen Definition */
+    public static final Skill SmokeScreen = new Skill(RiotChampionData.Graves, 2);
 
-    /** The skill name. */
-    public static final Skill CounterStrike = new Skill("Counter Strike", E);
+    /** Quickdraw Definition */
+    public static final Skill Quickdraw = new Skill(RiotChampionData.Graves, 3);
 
-    /** The skill name. */
-    public static final Skill GrandmastersMight = new Skill("Grandmaster's Might", R);
+    /** Collateral Damage Definition */
+    public static final Skill CollateralDamage = new Skill(RiotChampionData.Graves, 4);
 
-    /** The skill name. */
-    public static final Skill HextechCapacitor = new Skill("Hextech Capacitor", Passive);
+    /** Warpath Definition */
+    public static final Skill Warpath = new Skill(RiotChampionData.Hecarim, 0);
 
-    /** The skill name. */
-    public static final Skill ToTheSkies = new Skill("To the Skies!", Q);
+    /** Rampage Definition */
+    public static final Skill Rampage = new Skill(RiotChampionData.Hecarim, 1);
 
-    /** The skill name. */
-    public static final Skill ShockBlast = new Skill("Shock Blast", Q);
+    /** Spirit of Dread Definition */
+    public static final Skill SpiritOfDread = new Skill(RiotChampionData.Hecarim, 2);
 
-    /** The skill name. */
-    public static final Skill LightningField = new Skill("Lightning Field", W);
+    /** Devastating Charge Definition */
+    public static final Skill DevastatingCharge = new Skill(RiotChampionData.Hecarim, 3);
 
-    /** The skill name. */
-    public static final Skill HyperCharge = new Skill("Hyper Charge", W);
+    /** Onslaught of Shadows Definition */
+    public static final Skill OnslaughtOfShadows = new Skill(RiotChampionData.Hecarim, 4);
 
-    /** The skill name. */
-    public static final Skill ThunderingBlow = new Skill("Thundering Blow", E);
+    /** Techmaturgical Repair Bots Definition */
+    public static final Skill TechmaturgicalRepairBots = new Skill(RiotChampionData.Heimerdinger, 0);
 
-    /** The skill name. */
-    public static final Skill AccelerationGate = new Skill("Acceleration Gate", E);
+    /** H-28G Evolution Turret Definition */
+    public static final Skill H28GEvolutionTurret = new Skill(RiotChampionData.Heimerdinger, 1);
 
-    /** The skill name. */
-    public static final Skill TransformMercuryCannon = new Skill("Transform: Mercury Cannon", R);
+    /** Hextech Micro-Rockets Definition */
+    public static final Skill HextechMicroRockets = new Skill(RiotChampionData.Heimerdinger, 2);
 
-    /** The skill name. */
-    public static final Skill TransformMercuryHammer = new Skill("Transform: Mercury Hammer", R);
+    /** CH-2 Electron Storm Grenade Definition */
+    public static final Skill CH2ElectronStormGrenade = new Skill(RiotChampionData.Heimerdinger, 3);
 
-    /** The skill name. */
-    public static final Skill GatheringFire = new Skill("Gathering Fire", Passive);
+    /** UPGRADE!!! Definition */
+    public static final Skill UPGRADE = new Skill(RiotChampionData.Heimerdinger, 4);
 
-    /** The skill name. */
-    public static final Skill InnerFlame = new Skill("Inner Flame", Q);
+    /** Ionian Fervor Definition */
+    public static final Skill IonianFervor = new Skill(RiotChampionData.Irelia, 0);
 
-    /** The skill name. */
-    public static final Skill FocusedResolve = new Skill("Focused Resolve", W);
+    /** Bladesurge Definition */
+    public static final Skill Bladesurge = new Skill(RiotChampionData.Irelia, 1);
 
-    /** The skill name. */
-    public static final Skill Inspire = new Skill("Inspire", E);
+    /** Hiten Style Definition */
+    public static final Skill HitenStyle = new Skill(RiotChampionData.Irelia, 2);
 
-    /** The skill name. */
-    public static final Skill Mantra = new Skill("Mantra", R);
+    /** Equilibrium Strike Definition */
+    public static final Skill EquilibriumStrike = new Skill(RiotChampionData.Irelia, 3);
 
-    /** The skill name. */
-    public static final Skill DeathDefied = new Skill("Death Defied", Passive);
+    /** Transcendent Blades Definition */
+    public static final Skill TranscendentBlades = new Skill(RiotChampionData.Irelia, 4);
 
-    /** The skill name. */
-    public static final Skill LayWaste = new Skill("Lay Waste", Q);
+    /** Tailwind Definition */
+    public static final Skill Tailwind = new Skill(RiotChampionData.Janna, 0);
 
-    /** The skill name. */
-    public static final Skill WallOfPain = new Skill("Wall of Pain", W);
+    /** Howling Gale Definition */
+    public static final Skill HowlingGale = new Skill(RiotChampionData.Janna, 1);
 
-    /** The skill name. */
-    public static final Skill Defile = new Skill("Defile", E);
+    /** Zephyr Definition */
+    public static final Skill Zephyr = new Skill(RiotChampionData.Janna, 2);
 
-    /** The skill name. */
-    public static final Skill Requiem = new Skill("Requiem", R);
+    /** Eye Of The Storm Definition */
+    public static final Skill EyeOfTheStorm = new Skill(RiotChampionData.Janna, 3);
 
-    /** The skill name. */
-    public static final Skill VoidStone = new Skill("Void Stone", Passive);
+    /** Monsoon Definition */
+    public static final Skill Monsoon = new Skill(RiotChampionData.Janna, 4);
 
-    /** The skill name. */
-    public static final Skill NullSphere = new Skill("Null Sphere", Q);
+    /** Martial Cadence Definition */
+    public static final Skill MartialCadence = new Skill(RiotChampionData.JarvanIV, 0);
 
-    /** The skill name. */
-    public static final Skill NetherBlade = new Skill("Nether Blade", W);
+    /** Dragon Strike Definition */
+    public static final Skill DragonStrike = new Skill(RiotChampionData.JarvanIV, 1);
 
-    /** The skill name. */
-    public static final Skill ForcePulse = new Skill("Force Pulse", E);
+    /** Golden Aegis Definition */
+    public static final Skill GoldenAegis = new Skill(RiotChampionData.JarvanIV, 2);
 
-    /** The skill name. */
-    public static final Skill Riftwalk = new Skill("Riftwalk", R);
+    /** Demacian Standard Definition */
+    public static final Skill DemacianStandard = new Skill(RiotChampionData.JarvanIV, 3);
 
-    /** The skill name. */
-    public static final Skill Voracity = new Skill("Voracity", Passive);
+    /** Cataclysm Definition */
+    public static final Skill Cataclysm = new Skill(RiotChampionData.JarvanIV, 4);
 
-    /** The skill name. */
-    public static final Skill BouncingBlade = new Skill("Bouncing Blade", Q);
+    /** Relentless Assault Definition */
+    public static final Skill RelentlessAssault = new Skill(RiotChampionData.Jax, 0);
 
-    /** The skill name. */
-    public static final Skill SinisterSteel = new Skill("Sinister Steel", W);
+    /** Leap Strike Definition */
+    public static final Skill LeapStrike = new Skill(RiotChampionData.Jax, 1);
 
-    /** The skill name. */
-    public static final Skill Shunpo = new Skill("Shunpo", E);
+    /** Empower Definition */
+    public static final Skill Empower = new Skill(RiotChampionData.Jax, 2);
 
-    /** The skill name. */
-    public static final Skill DeathLotus = new Skill("Death Lotus", R);
+    /** Counter Strike Definition */
+    public static final Skill CounterStrike = new Skill(RiotChampionData.Jax, 3);
 
-    /** The skill name. */
-    public static final Skill HolyFervor = new Skill("Holy Fervor", Passive);
+    /** Grandmaster's Might Definition */
+    public static final Skill GrandmastersMight = new Skill(RiotChampionData.Jax, 4);
 
-    /** The skill name. */
-    public static final Skill Reckoning = new Skill("Reckoning", Q);
+    /** Hextech Capacitor Definition */
+    public static final Skill HextechCapacitor = new Skill(RiotChampionData.Jayce, 0);
 
-    /** The skill name. */
-    public static final Skill DivineBlessing = new Skill("Divine Blessing", W);
+    /** To the Skies! / Shock Blast Definition */
+    public static final Skill ToTheSkiesShockBlast = new Skill(RiotChampionData.Jayce, 1);
 
-    /** The skill name. */
-    public static final Skill RighteousFury = new Skill("Righteous Fury", E);
+    /** Lightning Field / Hyper Charge Definition */
+    public static final Skill LightningFieldHyperCharge = new Skill(RiotChampionData.Jayce, 2);
 
-    /** The skill name. */
-    public static final Skill Intervention = new Skill("Intervention", R);
+    /** Thundering Blow / Acceleration Gate Definition */
+    public static final Skill ThunderingBlowAccelerationGate = new Skill(RiotChampionData.Jayce, 3);
 
-    /** The skill name. */
-    public static final Skill MarkOftheStorm = new Skill("Mark of the Storm", Passive);
+    /** Mercury Cannon / Mercury Hammer Definition */
+    public static final Skill MercuryCannonMercuryHammer = new Skill(RiotChampionData.Jayce, 4);
 
-    /** The skill name. */
-    public static final Skill ThunderingShuriken = new Skill("Thundering Shuriken", Q);
+    /** Shock Blast Definition */
+    public static final Skill ShockBlast = new Skill(RiotChampionData.Jayce, 5);
 
-    /** The skill name. */
-    public static final Skill ElectricalSurge = new Skill("Electrical Surge", W);
+    /** Hyper Charge Definition */
+    public static final Skill HyperCharge = new Skill(RiotChampionData.Jayce, 6);
 
-    /** The skill name. */
-    public static final Skill LightningRush = new Skill("Lightning Rush", E);
+    /** Acceleration Gate Definition */
+    public static final Skill AccelerationGate = new Skill(RiotChampionData.Jayce, 7);
 
-    /** The skill name. */
-    public static final Skill SlicingMaelstrom = new Skill("Slicing Maelstrom", R);
+    /** Mercury Hammer Definition */
+    public static final Skill MercuryHammer = new Skill(RiotChampionData.Jayce, 8);
 
-    /** The skill name. */
-    public static final Skill UnseenThreat = new Skill("Unseen Threat", Passive);
+    /** Get Excited! Definition */
+    public static final Skill GetExcited = new Skill(RiotChampionData.Jinx, 0);
 
-    /** The skill name. */
-    public static final Skill TasteTheirFear = new Skill("Taste Their Fear", Q);
+    /** Switcheroo! Definition */
+    public static final Skill Switcheroo = new Skill(RiotChampionData.Jinx, 1);
 
-    /** The skill name. */
-    public static final Skill VoidSpike = new Skill("Void Spike", W);
+    /** Zap! Definition */
+    public static final Skill Zap = new Skill(RiotChampionData.Jinx, 2);
 
-    /** The skill name. */
-    public static final Skill Leap = new Skill("Leap", E);
+    /** Flame Chompers! Definition */
+    public static final Skill FlameChompers = new Skill(RiotChampionData.Jinx, 3);
 
-    /** The skill name. */
-    public static final Skill VoidAssault = new Skill("Void Assault", R);
+    /** Super Mega Death Rocket! Definition */
+    public static final Skill SuperMegaDeathRocket = new Skill(RiotChampionData.Jinx, 4);
 
-    /** The skill name. */
-    public static final Skill IcathianSurprise = new Skill("Icathian Surprise", Passive);
+    /** Martial Poise Definition */
+    public static final Skill MartialPoise = new Skill(RiotChampionData.Kalista, 0);
 
-    /** The skill name. */
-    public static final Skill CausticSpittle = new Skill("Caustic Spittle", Q);
+    /** Pierce Definition */
+    public static final Skill Pierce = new Skill(RiotChampionData.Kalista, 1);
 
-    /** The skill name. */
-    public static final Skill BioArcaneBarrage = new Skill("Bio-Arcane Barrage", W);
+    /** Sentinel Definition */
+    public static final Skill Sentinel = new Skill(RiotChampionData.Kalista, 2);
 
-    /** The skill name. */
-    public static final Skill VoidOoze = new Skill("Void Ooze", E);
+    /** Rend Definition */
+    public static final Skill Rend = new Skill(RiotChampionData.Kalista, 3);
 
-    /** The skill name. */
-    public static final Skill LivingArtillery = new Skill("Living Artillery", R);
+    /** Fate's Call Definition */
+    public static final Skill FatesCall = new Skill(RiotChampionData.Kalista, 4);
 
-    /** The skill name. */
-    public static final Skill MirrorImage = new Skill("Mirror Image", Passive);
+    /** Gathering Fire Definition */
+    public static final Skill GatheringFire = new Skill(RiotChampionData.Karma, 0);
 
-    /** The skill name. */
-    public static final Skill SigilOfSilence = new Skill("Sigil of Silence", Q);
+    /** Inner Flame Definition */
+    public static final Skill InnerFlame = new Skill(RiotChampionData.Karma, 1);
 
-    /** The skill name. */
-    public static final Skill Distortion = new Skill("Distortion", W);
+    /** Focused Resolve Definition */
+    public static final Skill FocusedResolve = new Skill(RiotChampionData.Karma, 2);
 
-    /** The skill name. */
-    public static final Skill EtherealChains = new Skill("Ethereal Chains", E);
+    /** Inspire Definition */
+    public static final Skill Inspire = new Skill(RiotChampionData.Karma, 3);
 
-    /** The skill name. */
-    public static final Skill Mimic = new Skill("Mimic", R);
+    /** Mantra Definition */
+    public static final Skill Mantra = new Skill(RiotChampionData.Karma, 4);
 
-    /** The skill name. */
-    public static final Skill Flurry = new Skill("Flurry", Passive);
+    /** Death Defied Definition */
+    public static final Skill DeathDefied = new Skill(RiotChampionData.Karthus, 0);
 
-    /** The skill name. */
-    public static final Skill SonicWave = new Skill("Sonic Wave", Q);
+    /** Lay Waste Definition */
+    public static final Skill LayWaste = new Skill(RiotChampionData.Karthus, 1);
 
-    /** The skill name. */
-    public static final Skill Safeguard = new Skill("Safeguard", W);
+    /** Wall of Pain Definition */
+    public static final Skill WallOfPain = new Skill(RiotChampionData.Karthus, 2);
 
-    /** The skill name. */
-    public static final Skill Tempest = new Skill("Tempest", E);
+    /** Defile Definition */
+    public static final Skill Defile = new Skill(RiotChampionData.Karthus, 3);
 
-    /** The skill name. */
-    public static final Skill DragonsRage = new Skill("Dragon's Rage", R);
+    /** Requiem Definition */
+    public static final Skill Requiem = new Skill(RiotChampionData.Karthus, 4);
 
-    /** The skill name. */
-    public static final Skill Sunlight = new Skill("Sunlight", Passive);
+    /** Void Stone Definition */
+    public static final Skill VoidStone = new Skill(RiotChampionData.Kassadin, 0);
 
-    /** The skill name. */
-    public static final Skill ShieldOfDaybreak = new Skill("Shield of Daybreak", Q);
+    /** Null Sphere Definition */
+    public static final Skill NullSphere = new Skill(RiotChampionData.Kassadin, 1);
 
-    /** The skill name. */
-    public static final Skill Eclipse = new Skill("Eclipse", W);
+    /** Nether Blade Definition */
+    public static final Skill NetherBlade = new Skill(RiotChampionData.Kassadin, 2);
 
-    /** The skill name. */
-    public static final Skill ZenithBlade = new Skill("Zenith Blade", E);
+    /** Force Pulse Definition */
+    public static final Skill ForcePulse = new Skill(RiotChampionData.Kassadin, 3);
 
-    /** The skill name. */
-    public static final Skill SolarFlare = new Skill("Solar Flare", R);
+    /** Riftwalk Definition */
+    public static final Skill Riftwalk = new Skill(RiotChampionData.Kassadin, 4);
 
-    /** The skill name. */
-    public static final Skill PixFaerieCompanion = new Skill("Pix, Faerie Companion", Passive);
+    /** Voracity Definition */
+    public static final Skill Voracity = new Skill(RiotChampionData.Katarina, 0);
 
-    /** The skill name. */
-    public static final Skill Glitterlance = new Skill("Glitterlance", Q);
+    /** Bouncing Blades Definition */
+    public static final Skill BouncingBlades = new Skill(RiotChampionData.Katarina, 1);
 
-    /** The skill name. */
-    public static final Skill Whimsy = new Skill("Whimsy", W);
+    /** Sinister Steel Definition */
+    public static final Skill SinisterSteel = new Skill(RiotChampionData.Katarina, 2);
 
-    /** The skill name. */
-    public static final Skill HelpPix = new Skill("Help, Pix!", E);
+    /** Shunpo Definition */
+    public static final Skill Shunpo = new Skill(RiotChampionData.Katarina, 3);
 
-    /** The skill name. */
-    public static final Skill WildGrowth = new Skill("Wild Growth", R);
+    /** Death Lotus Definition */
+    public static final Skill DeathLotus = new Skill(RiotChampionData.Katarina, 4);
 
-    /** The skill name. */
-    public static final Skill Illumination = new Skill("Illumination", Passive);
+    /** Holy Fervor Definition */
+    public static final Skill HolyFervor = new Skill(RiotChampionData.Kayle, 0);
 
-    /** The skill name. */
-    public static final Skill LightBinding = new Skill("Light Binding", Q);
+    /** Reckoning Definition */
+    public static final Skill Reckoning = new Skill(RiotChampionData.Kayle, 1);
 
-    /** The skill name. */
-    public static final Skill PrismaticBarrier = new Skill("Prismatic Barrier", W);
+    /** Divine Blessing Definition */
+    public static final Skill DivineBlessing = new Skill(RiotChampionData.Kayle, 2);
 
-    /** The skill name. */
-    public static final Skill LucentSingularity = new Skill("Lucent Singularity", E);
+    /** Righteous Fury Definition */
+    public static final Skill RighteousFury = new Skill(RiotChampionData.Kayle, 3);
 
-    /** The skill name. */
-    public static final Skill FinalSpark = new Skill("Final Spark", R);
+    /** Intervention Definition */
+    public static final Skill Intervention = new Skill(RiotChampionData.Kayle, 4);
 
-    /** The skill name. */
-    public static final Skill GraniteShield = new Skill("Granite Shield", Passive);
+    /** Mark of the Storm Definition */
+    public static final Skill MarkOfTheStorm = new Skill(RiotChampionData.Kennen, 0);
 
-    /** The skill name. */
-    public static final Skill SeismicShard = new Skill("Seismic Shard", Q);
+    /** Thundering Shuriken Definition */
+    public static final Skill ThunderingShuriken = new Skill(RiotChampionData.Kennen, 1);
 
-    /** The skill name. */
-    public static final Skill BrutalStrikes = new Skill("Brutal Strikes", W);
+    /** Electrical Surge Definition */
+    public static final Skill ElectricalSurge = new Skill(RiotChampionData.Kennen, 2);
 
-    /** The skill name. */
-    public static final Skill GroundSlam = new Skill("Ground Slam", E);
+    /** Lightning Rush Definition */
+    public static final Skill LightningRush = new Skill(RiotChampionData.Kennen, 3);
 
-    /** The skill name. */
-    public static final Skill UnstoppableForce = new Skill("Unstoppable Force", R);
+    /** Slicing Maelstrom Definition */
+    public static final Skill SlicingMaelstrom = new Skill(RiotChampionData.Kennen, 4);
 
-    /** The skill name. */
-    public static final Skill SummonVoidling = new Skill("Summon Voidling", Passive);
+    /** Unseen Threat Definition */
+    public static final Skill UnseenThreat = new Skill(RiotChampionData.Khazix, 0);
 
-    /** The skill name. */
-    public static final Skill CallOftheVoid = new Skill("Call of the Void", Q);
+    /** Taste Their Fear Definition */
+    public static final Skill TasteTheirFear = new Skill(RiotChampionData.Khazix, 1);
 
-    /** The skill name. */
-    public static final Skill NullZone = new Skill("Null Zone", W);
+    /** Void Spike Definition */
+    public static final Skill VoidSpike = new Skill(RiotChampionData.Khazix, 2);
 
-    /** The skill name. */
-    public static final Skill MaleficVisions = new Skill("Malefic Visions", E);
+    /** Leap Definition */
+    public static final Skill Leap = new Skill(RiotChampionData.Khazix, 3);
 
-    /** The skill name. */
-    public static final Skill NetherGrasp = new Skill("Nether Grasp", R);
+    /** Void Assault Definition */
+    public static final Skill VoidAssault = new Skill(RiotChampionData.Khazix, 4);
 
-    /** The skill name. */
-    public static final Skill SapMagic = new Skill("Sap Magic", Passive);
+    /** Icathian Surprise Definition */
+    public static final Skill IcathianSurprise = new Skill(RiotChampionData.KogMaw, 0);
 
-    /** The skill name. */
-    public static final Skill ArcaneSmash = new Skill("Arcane Smash", Q);
+    /** Caustic Spittle Definition */
+    public static final Skill CausticSpittle = new Skill(RiotChampionData.KogMaw, 1);
 
-    /** The skill name. */
-    public static final Skill TwistedAdvance = new Skill("Twisted Advance", W);
+    /** Bio-Arcane Barrage Definition */
+    public static final Skill BioArcaneBarrage = new Skill(RiotChampionData.KogMaw, 2);
 
-    /** The skill name. */
-    public static final Skill SaplingToss = new Skill("Sapling Toss", E);
+    /** Void Ooze Definition */
+    public static final Skill VoidOoze = new Skill(RiotChampionData.KogMaw, 3);
 
-    /** The skill name. */
-    public static final Skill VengefulMaelstrom = new Skill("Vengeful Maelstrom", R);
+    /** Living Artillery Definition */
+    public static final Skill LivingArtillery = new Skill(RiotChampionData.KogMaw, 4);
 
-    /** The skill name. */
-    public static final Skill DoubleStrike = new Skill("Double Strike", Passive);
+    /** Mirror Image Definition */
+    public static final Skill MirrorImage = new Skill(RiotChampionData.Leblanc, 0);
 
-    /** The skill name. */
-    public static final Skill AlphaStrike = new Skill("Alpha Strike", Q);
+    /** Sigil of Malice Definition */
+    public static final Skill SigilOfMalice = new Skill(RiotChampionData.Leblanc, 1);
 
-    /** The skill name. */
-    public static final Skill Meditate = new Skill("Meditate", W);
+    /** Distortion Definition */
+    public static final Skill Distortion = new Skill(RiotChampionData.Leblanc, 2);
 
-    /** The skill name. */
-    public static final Skill WujuStyle = new Skill("Wuju Style", E);
+    /** Ethereal Chains Definition */
+    public static final Skill EtherealChains = new Skill(RiotChampionData.Leblanc, 3);
 
-    /** The skill name. */
-    public static final Skill Highlander = new Skill("Highlander", R);
+    /** Mimic Definition */
+    public static final Skill Mimic = new Skill(RiotChampionData.Leblanc, 4);
 
-    /** The skill name. */
-    public static final Skill Strut = new Skill("Strut", Passive);
+    /** Flurry Definition */
+    public static final Skill Flurry = new Skill(RiotChampionData.LeeSin, 0);
 
-    /** The skill name. */
-    public static final Skill DoubleUp = new Skill("Double Up", Q);
+    /** Sonic Wave / Resonating Strike Definition */
+    public static final Skill SonicWaveResonatingStrike = new Skill(RiotChampionData.LeeSin, 1);
 
-    /** The skill name. */
-    public static final Skill ImpureShots = new Skill("Impure Shots", W);
+    /** Safeguard / Iron Will Definition */
+    public static final Skill SafeguardIronWill = new Skill(RiotChampionData.LeeSin, 2);
 
-    /** The skill name. */
-    public static final Skill MakeItRain = new Skill("Make It Rain", E);
+    /** Tempest / Cripple Definition */
+    public static final Skill TempestCripple = new Skill(RiotChampionData.LeeSin, 3);
 
-    /** The skill name. */
-    public static final Skill BulletTime = new Skill("Bullet Time", R);
+    /** Dragon's Rage Definition */
+    public static final Skill DragonsRage = new Skill(RiotChampionData.LeeSin, 4);
 
-    /** The skill name. */
-    public static final Skill IronMan = new Skill("Iron Man", Passive);
+    /** Sunlight Definition */
+    public static final Skill Sunlight = new Skill(RiotChampionData.Leona, 0);
 
-    /** The skill name. */
-    public static final Skill MaceOfSpades = new Skill("Mace of Spades", Q);
+    /** Shield of Daybreak Definition */
+    public static final Skill ShieldOfDaybreak = new Skill(RiotChampionData.Leona, 1);
 
-    /** The skill name. */
-    public static final Skill CreepingDeath = new Skill("Creeping Death", W);
+    /** Eclipse Definition */
+    public static final Skill Eclipse = new Skill(RiotChampionData.Leona, 2);
 
-    /** The skill name. */
-    public static final Skill SiphonOfDestruction = new Skill("Siphon of Destruction", E);
+    /** Zenith Blade Definition */
+    public static final Skill ZenithBlade = new Skill(RiotChampionData.Leona, 3);
 
-    /** The skill name. */
-    public static final Skill ChildrenOftheGrave = new Skill("Children of the Grave", R);
+    /** Solar Flare Definition */
+    public static final Skill SolarFlare = new Skill(RiotChampionData.Leona, 4);
 
-    /** The skill name. */
-    public static final Skill SoulSiphon = new Skill("Soul Siphon", Passive);
+    /** Iceborn Definition */
+    public static final Skill Iceborn = new Skill(RiotChampionData.Lissandra, 0);
 
-    /** The skill name. */
-    public static final Skill DarkBinding = new Skill("Dark Binding", Q);
+    /** Ice Shard Definition */
+    public static final Skill IceShard = new Skill(RiotChampionData.Lissandra, 1);
 
-    /** The skill name. */
-    public static final Skill TormentedSoil = new Skill("Tormented Soil", W);
+    /** Ring of Frost Definition */
+    public static final Skill RingOfFrost = new Skill(RiotChampionData.Lissandra, 2);
 
-    /** The skill name. */
-    public static final Skill BlackShield = new Skill("Black Shield", E);
+    /** Glacial Path Definition */
+    public static final Skill GlacialPath = new Skill(RiotChampionData.Lissandra, 3);
 
-    /** The skill name. */
-    public static final Skill SoulShackles = new Skill("Soul Shackles", R);
+    /** Frozen Tomb Definition */
+    public static final Skill FrozenTomb = new Skill(RiotChampionData.Lissandra, 4);
 
-    /** The skill name. */
-    public static final Skill SurgingTides = new Skill("Surging Tides", Passive);
+    /** Lightslinger Definition */
+    public static final Skill Lightslinger = new Skill(RiotChampionData.Lucian, 0);
 
-    /** The skill name. */
-    public static final Skill AquaPrison = new Skill("Aqua Prison", Q);
+    /** Piercing Light Definition */
+    public static final Skill PiercingLight = new Skill(RiotChampionData.Lucian, 1);
 
-    /** The skill name. */
-    public static final Skill EbbandFlow = new Skill("Ebb and Flow", W);
+    /** Ardent Blaze Definition */
+    public static final Skill ArdentBlaze = new Skill(RiotChampionData.Lucian, 2);
 
-    /** The skill name. */
-    public static final Skill TidecallersBlessing = new Skill("Tidecaller's Blessing", E);
+    /** Relentless Pursuit Definition */
+    public static final Skill RelentlessPursuit = new Skill(RiotChampionData.Lucian, 3);
 
-    /** The skill name. */
-    public static final Skill TidalWave = new Skill("Tidal Wave", R);
+    /** The Culling Definition */
+    public static final Skill TheCulling = new Skill(RiotChampionData.Lucian, 4);
 
-    /** The skill name. */
-    public static final Skill SoulEater = new Skill("Soul Eater", Passive);
+    /** Pix, Faerie Companion Definition */
+    public static final Skill PixFaerieCompanion = new Skill(RiotChampionData.Lulu, 0);
 
-    /** The skill name. */
-    public static final Skill SiphoningStrike = new Skill("Siphoning Strike", Q);
+    /** Glitterlance Definition */
+    public static final Skill Glitterlance = new Skill(RiotChampionData.Lulu, 1);
 
-    /** The skill name. */
-    public static final Skill Wither = new Skill("Wither", W);
+    /** Whimsy Definition */
+    public static final Skill Whimsy = new Skill(RiotChampionData.Lulu, 2);
 
-    /** The skill name. */
-    public static final Skill SpiritFire = new Skill("Spirit Fire", E);
+    /** Help, Pix! Definition */
+    public static final Skill HelpPix = new Skill(RiotChampionData.Lulu, 3);
 
-    /** The skill name. */
-    public static final Skill FuryOftheSands = new Skill("Fury of the Sands", R);
+    /** Wild Growth Definition */
+    public static final Skill WildGrowth = new Skill(RiotChampionData.Lulu, 4);
 
-    /** The skill name. */
-    public static final Skill StaggeringBlow = new Skill("Staggering Blow", Passive);
+    /** Illumination Definition */
+    public static final Skill Illumination = new Skill(RiotChampionData.Lux, 0);
 
-    /** The skill name. */
-    public static final Skill DredgeLine = new Skill("Dredge Line", Q);
+    /** Light Binding Definition */
+    public static final Skill LightBinding = new Skill(RiotChampionData.Lux, 1);
 
-    /** The skill name. */
-    public static final Skill TitansWrath = new Skill("Titan's Wrath", W);
+    /** Prismatic Barrier Definition */
+    public static final Skill PrismaticBarrier = new Skill(RiotChampionData.Lux, 2);
 
-    /** The skill name. */
-    public static final Skill Riptide = new Skill("Riptide", E);
+    /** Lucent Singularity Definition */
+    public static final Skill LucentSingularity = new Skill(RiotChampionData.Lux, 3);
 
-    /** The skill name. */
-    public static final Skill DepthCharge = new Skill("Depth Charge", R);
+    /** Final Spark Definition */
+    public static final Skill FinalSpark = new Skill(RiotChampionData.Lux, 4);
 
-    /** The skill name. */
-    public static final Skill Prowl = new Skill("Prowl", Passive);
+    /** Granite Shield Definition */
+    public static final Skill GraniteShield = new Skill(RiotChampionData.Malphite, 0);
 
-    /** The skill name. */
-    public static final Skill JavelinToss = new Skill("Javelin Toss", Q);
+    /** Seismic Shard Definition */
+    public static final Skill SeismicShard = new Skill(RiotChampionData.Malphite, 1);
 
-    /** The skill name. */
-    public static final Skill Takedown = new Skill("Takedown", Q);
+    /** Brutal Strikes Definition */
+    public static final Skill BrutalStrikes = new Skill(RiotChampionData.Malphite, 2);
 
-    /** The skill name. */
-    public static final Skill Bushwhack = new Skill("Bushwhack", W);
+    /** Ground Slam Definition */
+    public static final Skill GroundSlam = new Skill(RiotChampionData.Malphite, 3);
 
-    /** The skill name. */
-    public static final Skill Pounce = new Skill("Pounce", W);
+    /** Unstoppable Force Definition */
+    public static final Skill UnstoppableForce = new Skill(RiotChampionData.Malphite, 4);
 
-    /** The skill name. */
-    public static final Skill PrimalSurge = new Skill("Primal Surge", E);
+    /** Summon Voidling Definition */
+    public static final Skill SummonVoidling = new Skill(RiotChampionData.Malzahar, 0);
 
-    /** The skill name. */
-    public static final Skill Swipe = new Skill("Swipe", E);
+    /** Call of the Void Definition */
+    public static final Skill CallOfTheVoid = new Skill(RiotChampionData.Malzahar, 1);
 
-    /** The skill name. */
-    public static final Skill AspectOfTheCougar = new Skill("Aspect Of The Cougar", R);
+    /** Null Zone Definition */
+    public static final Skill NullZone = new Skill(RiotChampionData.Malzahar, 2);
 
-    /** The skill name. */
-    public static final Skill AspectOfTheCougarInCougar = new Skill("Aspect Of The Cougar", R);
+    /** Malefic Visions Definition */
+    public static final Skill MaleficVisions = new Skill(RiotChampionData.Malzahar, 3);
 
-    /** The skill name. */
-    public static final Skill UmbraBlades = new Skill("Umbra Blades", Passive);
+    /** Nether Grasp Definition */
+    public static final Skill NetherGrasp = new Skill(RiotChampionData.Malzahar, 4);
 
-    /** The skill name. */
-    public static final Skill Duskbringer = new Skill("Duskbringer", Q);
+    /** Sap Magic Definition */
+    public static final Skill SapMagic = new Skill(RiotChampionData.Maokai, 0);
 
-    /** The skill name. */
-    public static final Skill ShroudOfDarkness = new Skill("Shroud of Darkness", W);
+    /** Arcane Smash Definition */
+    public static final Skill ArcaneSmash = new Skill(RiotChampionData.Maokai, 1);
 
-    /** The skill name. */
-    public static final Skill UnspeakableHorror = new Skill("Unspeakable Horror", E);
+    /** Twisted Advance Definition */
+    public static final Skill TwistedAdvance = new Skill(RiotChampionData.Maokai, 2);
 
-    /** The skill name. */
-    public static final Skill Paranoia = new Skill("Paranoia", R);
+    /** Sapling Toss Definition */
+    public static final Skill SaplingToss = new Skill(RiotChampionData.Maokai, 3);
 
-    /** The skill name. */
-    public static final Skill Visionary = new Skill("Visionary", Passive);
+    /** Vengeful Maelstrom Definition */
+    public static final Skill VengefulMaelstrom = new Skill(RiotChampionData.Maokai, 4);
 
-    /** The skill name. */
-    public static final Skill Consume = new Skill("Consume", Q);
+    /** Double Strike Definition */
+    public static final Skill DoubleStrike = new Skill(RiotChampionData.MasterYi, 0);
 
-    /** The skill name. */
-    public static final Skill BloodBoil = new Skill("Blood Boil", W);
+    /** Alpha Strike Definition */
+    public static final Skill AlphaStrike = new Skill(RiotChampionData.MasterYi, 1);
 
-    /** The skill name. */
-    public static final Skill IceBlast = new Skill("Ice Blast", E);
+    /** Meditate Definition */
+    public static final Skill Meditate = new Skill(RiotChampionData.MasterYi, 2);
 
-    /** The skill name. */
-    public static final Skill AbsoluteZero = new Skill("Absolute Zero", R);
+    /** Wuju Style Definition */
+    public static final Skill WujuStyle = new Skill(RiotChampionData.MasterYi, 3);
 
-    /** The skill name. */
-    public static final Skill BerserkerRage = new Skill("Berserker Rage", Passive);
+    /** Highlander Definition */
+    public static final Skill Highlander = new Skill(RiotChampionData.MasterYi, 4);
 
-    /** The skill name. */
-    public static final Skill Undertow = new Skill("Undertow", Q);
+    /** Strut Definition */
+    public static final Skill Strut = new Skill(RiotChampionData.MissFortune, 0);
 
-    /** The skill name. */
-    public static final Skill ViciousStrikes = new Skill("Vicious Strikes", W);
+    /** Double Up Definition */
+    public static final Skill DoubleUp = new Skill(RiotChampionData.MissFortune, 1);
 
-    /** The skill name. */
-    public static final Skill RecklessSwing = new Skill("Reckless Swing", E);
+    /** Impure Shots Definition */
+    public static final Skill ImpureShots = new Skill(RiotChampionData.MissFortune, 2);
 
-    /** The skill name. */
-    public static final Skill Ragnarok = new Skill("Ragnarok", R);
+    /** Make It Rain Definition */
+    public static final Skill MakeItRain = new Skill(RiotChampionData.MissFortune, 3);
 
-    /** The skill name. */
-    public static final Skill ClockworkWindup = new Skill("Clockwork Windup", Passive);
+    /** Bullet Time Definition */
+    public static final Skill BulletTime = new Skill(RiotChampionData.MissFortune, 4);
 
-    /** The skill name. */
-    public static final Skill CommandAttack = new Skill("Command: Attack", Q);
+    /** Stone Skin Definition */
+    public static final Skill StoneSkin = new Skill(RiotChampionData.MonkeyKing, 0);
 
-    /** The skill name. */
-    public static final Skill CommandDissonance = new Skill("Command: Dissonance", W);
+    /** Crushing Blow Definition */
+    public static final Skill CrushingBlow = new Skill(RiotChampionData.MonkeyKing, 1);
 
-    /** The skill name. */
-    public static final Skill CommandProtect = new Skill("Command: Protect", E);
+    /** Decoy Definition */
+    public static final Skill Decoy = new Skill(RiotChampionData.MonkeyKing, 2);
 
-    /** The skill name. */
-    public static final Skill CommandShockwave = new Skill("Command: Shockwave", R);
+    /** Nimbus Strike Definition */
+    public static final Skill NimbusStrike = new Skill(RiotChampionData.MonkeyKing, 3);
 
-    /** The skill name. */
-    public static final Skill AegisProtection = new Skill("Aegis Protection", Passive);
+    /** Cyclone Definition */
+    public static final Skill Cyclone = new Skill(RiotChampionData.MonkeyKing, 4);
 
-    /** The skill name. */
-    public static final Skill SpearShot = new Skill("Spear Shot", Q);
+    /** Iron Man Definition */
+    public static final Skill IronMan = new Skill(RiotChampionData.Mordekaiser, 0);
 
-    /** The skill name. */
-    public static final Skill AegisOfZeonia = new Skill("Aegis of Zeonia", W);
+    /** Mace of Spades Definition */
+    public static final Skill MaceOfSpades = new Skill(RiotChampionData.Mordekaiser, 1);
 
-    /** The skill name. */
-    public static final Skill HeartseekerStrike = new Skill("Heartseeker Strike", E);
+    /** Creeping Death Definition */
+    public static final Skill CreepingDeath = new Skill(RiotChampionData.Mordekaiser, 2);
 
-    /** The skill name. */
-    public static final Skill GrandSkyfall = new Skill("Grand Skyfall", R);
+    /** Siphon of Destruction Definition */
+    public static final Skill SiphonOfDestruction = new Skill(RiotChampionData.Mordekaiser, 3);
 
-    /** The skill name. */
-    public static final Skill ValiantFighter = new Skill("Valiant Fighter", Passive);
+    /** Children of the Grave Definition */
+    public static final Skill ChildrenOfTheGrave = new Skill(RiotChampionData.Mordekaiser, 4);
 
-    /** The skill name. */
-    public static final Skill DevastatingBlow = new Skill("Devastating Blow", Q);
+    /** Soul Siphon Definition */
+    public static final Skill SoulSiphon = new Skill(RiotChampionData.Morgana, 0);
 
-    /** The skill name. */
-    public static final Skill ParagonOfDemacia = new Skill("Paragon of Demacia", W);
+    /** Dark Binding Definition */
+    public static final Skill DarkBinding = new Skill(RiotChampionData.Morgana, 1);
 
-    /** The skill name. */
-    public static final Skill HeroicCharge = new Skill("Heroic Charge", E);
+    /** Tormented Soil Definition */
+    public static final Skill TormentedSoil = new Skill(RiotChampionData.Morgana, 2);
 
-    /** The skill name. */
-    public static final Skill DiplomaticImmunity = new Skill("Diplomatic Immunity", R);
+    /** Black Shield Definition */
+    public static final Skill BlackShield = new Skill(RiotChampionData.Morgana, 3);
 
-    /** The skill name. */
-    public static final Skill SpikedShell = new Skill("Spiked Shell", Passive);
+    /** Soul Shackles Definition */
+    public static final Skill SoulShackles = new Skill(RiotChampionData.Morgana, 4);
 
-    /** The skill name. */
-    public static final Skill Powerball = new Skill("Powerball", Q);
+    /** Surging Tides Definition */
+    public static final Skill SurgingTides = new Skill(RiotChampionData.Nami, 0);
 
-    /** The skill name. */
-    public static final Skill DefensiveBallCurl = new Skill("Defensive Ball Curl", W);
+    /** Aqua Prison Definition */
+    public static final Skill AquaPrison = new Skill(RiotChampionData.Nami, 1);
 
-    /** The skill name. */
-    public static final Skill PuncturingTaunt = new Skill("Puncturing Taunt", E);
+    /** Ebb and Flow Definition */
+    public static final Skill EbbandFlow = new Skill(RiotChampionData.Nami, 2);
 
-    /** The skill name. */
-    public static final Skill Tremors = new Skill("Tremors", R);
+    /** Tidecaller's Blessing Definition */
+    public static final Skill TidecallersBlessing = new Skill(RiotChampionData.Nami, 3);
 
-    /** The skill name. */
-    public static final Skill ReignOfAnger = new Skill("Reign of Anger", Passive);
+    /** Tidal Wave Definition */
+    public static final Skill TidalWave = new Skill(RiotChampionData.Nami, 4);
 
-    /** The skill name. */
-    public static final Skill CullTheMeek = new Skill("Cull the Meek", Q);
+    /** Soul Eater Definition */
+    public static final Skill SoulEater = new Skill(RiotChampionData.Nasus, 0);
 
-    /** The skill name. */
-    public static final Skill RuthlessPredator = new Skill("Ruthless Predator", W);
+    /** Siphoning Strike Definition */
+    public static final Skill SiphoningStrike = new Skill(RiotChampionData.Nasus, 1);
 
-    /** The skill name. */
-    public static final Skill SliceandDice = new Skill("Slice and Dice", E);
+    /** Wither Definition */
+    public static final Skill Wither = new Skill(RiotChampionData.Nasus, 2);
 
-    /** The skill name. */
-    public static final Skill Dominus = new Skill("Dominus", R);
+    /** Spirit Fire Definition */
+    public static final Skill SpiritFire = new Skill(RiotChampionData.Nasus, 3);
 
-    /** The skill name. */
-    public static final Skill UnseenPredator = new Skill("Unseen Predator", Passive);
+    /** Fury of the Sands Definition */
+    public static final Skill FuryOfTheSands = new Skill(RiotChampionData.Nasus, 4);
 
-    /** The skill name. */
-    public static final Skill Savagery = new Skill("Savagery", Q);
+    /** Staggering Blow Definition */
+    public static final Skill StaggeringBlow = new Skill(RiotChampionData.Nautilus, 0);
 
-    /** The skill name. */
-    public static final Skill BattleRoar = new Skill("Battle Roar", W);
+    /** Dredge Line Definition */
+    public static final Skill DredgeLine = new Skill(RiotChampionData.Nautilus, 1);
 
-    /** The skill name. */
-    public static final Skill BolaStrike = new Skill("Bola Strike", E);
+    /** Titan's Wrath Definition */
+    public static final Skill TitansWrath = new Skill(RiotChampionData.Nautilus, 2);
 
-    /** The skill name. */
-    public static final Skill ThrillOftheHunt = new Skill("Thrill of the Hunt", R);
+    /** Riptide Definition */
+    public static final Skill Riptide = new Skill(RiotChampionData.Nautilus, 3);
 
-    /** The skill name. */
-    public static final Skill RunicBlade = new Skill("Runic Blade", Passive);
+    /** Depth Charge Definition */
+    public static final Skill DepthCharge = new Skill(RiotChampionData.Nautilus, 4);
 
-    /** The skill name. */
-    public static final Skill BrokenWings = new Skill("Broken Wings", Q);
+    /** Prowl Definition */
+    public static final Skill Prowl = new Skill(RiotChampionData.Nidalee, 0);
 
-    /** The skill name. */
-    public static final Skill KiBurst = new Skill("Ki Burst", W);
+    /** Javelin Toss / Takedown Definition */
+    public static final Skill JavelinTossTakedown = new Skill(RiotChampionData.Nidalee, 1);
 
-    /** The skill name. */
-    public static final Skill Valor = new Skill("Valor", E);
+    /** Bushwhack / Pounce Definition */
+    public static final Skill BushwhackPounce = new Skill(RiotChampionData.Nidalee, 2);
 
-    /** The skill name. */
-    public static final Skill BladeOftheExile = new Skill("Blade of the Exile", R);
+    /** Primal Surge / Swipe Definition */
+    public static final Skill PrimalSurgeSwipe = new Skill(RiotChampionData.Nidalee, 3);
 
-    /** The skill name. */
-    public static final Skill JunkyardTitan = new Skill("Junkyard Titan", Passive);
+    /** Aspect Of The Cougar Definition */
+    public static final Skill AspectOfTheCougar = new Skill(RiotChampionData.Nidalee, 4);
 
-    /** The skill name. */
-    public static final Skill Flamespitter = new Skill("Flamespitter", Q);
+    /** Takedown Definition */
+    public static final Skill Takedown = new Skill(RiotChampionData.Nidalee, 5);
 
-    /** The skill name. */
-    public static final Skill ScrapShield = new Skill("Scrap Shield", W);
+    /** Pounce Definition */
+    public static final Skill Pounce = new Skill(RiotChampionData.Nidalee, 6);
 
-    /** The skill name. */
-    public static final Skill ElectroHarpoon = new Skill("Electro-Harpoon", E);
+    /** Swipe Definition */
+    public static final Skill Swipe = new Skill(RiotChampionData.Nidalee, 7);
 
-    /** The skill name. */
-    public static final Skill TheEqualizer = new Skill("The Equalizer", R);
+    /** Aspect Of The Cougar Definition */
+    public static final Skill AspectOfTheCougarInCougar = new Skill(RiotChampionData.Nidalee, 8);
 
-    /** The skill name. */
-    public static final Skill ArcaneMastery = new Skill("Arcane Mastery", Passive);
+    /** Umbra Blades Definition */
+    public static final Skill UmbraBlades = new Skill(RiotChampionData.Nocturne, 0);
 
-    /** The skill name. */
-    public static final Skill Overload = new Skill("Overload", Q);
+    /** Duskbringer Definition */
+    public static final Skill Duskbringer = new Skill(RiotChampionData.Nocturne, 1);
 
-    /** The skill name. */
-    public static final Skill RunePrison = new Skill("Rune Prison", W);
+    /** Shroud of Darkness Definition */
+    public static final Skill ShroudOfDarkness = new Skill(RiotChampionData.Nocturne, 2);
 
-    /** The skill name. */
-    public static final Skill SpellFlux = new Skill("Spell Flux", E);
+    /** Unspeakable Horror Definition */
+    public static final Skill UnspeakableHorror = new Skill(RiotChampionData.Nocturne, 3);
 
-    /** The skill name. */
-    public static final Skill DesperatePower = new Skill("Desperate Power", R);
+    /** Paranoia Definition */
+    public static final Skill Paranoia = new Skill(RiotChampionData.Nocturne, 4);
 
-    /** The skill name. */
-    public static final Skill FrostArnor = new Skill("Frost Armor", Passive);
+    /** Visionary Definition */
+    public static final Skill Visionary = new Skill(RiotChampionData.Nunu, 0);
 
-    /** The skill name. */
-    public static final Skill ArcticAssault = new Skill("Arctic Assault", Q);
+    /** Consume Definition */
+    public static final Skill Consume = new Skill(RiotChampionData.Nunu, 1);
 
-    /** The skill name. */
-    public static final Skill FlailOfTheNorthernWinds = new Skill("Flail of the Northern Winds", W);
+    /** Blood Boil Definition */
+    public static final Skill BloodBoil = new Skill(RiotChampionData.Nunu, 2);
 
-    /** The skill name. */
-    public static final Skill Permafrost = new Skill("Permafrost", E);
+    /** Ice Blast Definition */
+    public static final Skill IceBlast = new Skill(RiotChampionData.Nunu, 3);
 
-    /** The skill name. */
-    public static final Skill GlacialPrison = new Skill("Glacial Prison", R);
+    /** Absolute Zero Definition */
+    public static final Skill AbsoluteZero = new Skill(RiotChampionData.Nunu, 4);
 
-    /** The skill name. */
-    public static final Skill Backstab = new Skill("Backstab", Passive);
+    /** Berserker Rage Definition */
+    public static final Skill BerserkerRage = new Skill(RiotChampionData.Olaf, 0);
 
-    /** The skill name. */
-    public static final Skill Deceive = new Skill("Deceive", Q);
+    /** Undertow Definition */
+    public static final Skill Undertow = new Skill(RiotChampionData.Olaf, 1);
 
-    /** The skill name. */
-    public static final Skill JackInTheBox = new Skill("Jack In The Box", W);
+    /** Vicious Strikes Definition */
+    public static final Skill ViciousStrikes = new Skill(RiotChampionData.Olaf, 2);
 
-    /** The skill name. */
-    public static final Skill TwoShivPoison = new Skill("Two-Shiv Poison", E);
+    /** Reckless Swing Definition */
+    public static final Skill RecklessSwing = new Skill(RiotChampionData.Olaf, 3);
 
-    /** The skill name. */
-    public static final Skill Hallucinate = new Skill("Hallucinate", R);
+    /** Ragnarok Definition */
+    public static final Skill Ragnarok = new Skill(RiotChampionData.Olaf, 4);
 
-    /** The skill name. */
-    public static final Skill KiStrike = new Skill("Ki Strike", Passive);
+    /** Clockwork Windup Definition */
+    public static final Skill ClockworkWindup = new Skill(RiotChampionData.Orianna, 0);
 
-    /** The skill name. */
-    public static final Skill VorpalBlade = new Skill("Vorpal Blade", Q);
+    /** Command: Attack Definition */
+    public static final Skill CommandAttack = new Skill(RiotChampionData.Orianna, 1);
 
-    /** The skill name. */
-    public static final Skill Feint = new Skill("Feint", W);
+    /** Command: Dissonance Definition */
+    public static final Skill CommandDissonance = new Skill(RiotChampionData.Orianna, 2);
 
-    /** The skill name. */
-    public static final Skill ShadowDash = new Skill("Shadow Dash", E);
+    /** Command: Protect Definition */
+    public static final Skill CommandProtect = new Skill(RiotChampionData.Orianna, 3);
 
-    /** The skill name. */
-    public static final Skill StandUnited = new Skill("Stand United", R);
+    /** Command: Shockwave Definition */
+    public static final Skill CommandShockwave = new Skill(RiotChampionData.Orianna, 4);
 
-    /** The skill name. */
-    public static final Skill Dragonborn = new Skill("Dragonborn", Passive);
+    /** Aegis Protection Definition */
+    public static final Skill AegisProtection = new Skill(RiotChampionData.Pantheon, 0);
 
-    /** The skill name. */
-    public static final Skill TwinBite = new Skill("Twin Bite", Q);
+    /** Spear Shot Definition */
+    public static final Skill SpearShot = new Skill(RiotChampionData.Pantheon, 1);
 
-    /** The skill name. */
-    public static final Skill Burnout = new Skill("Burnout", W);
+    /** Aegis of Zeonia Definition */
+    public static final Skill AegisOfZeonia = new Skill(RiotChampionData.Pantheon, 2);
 
-    /** The skill name. */
-    public static final Skill FlameBreath = new Skill("Flame Breath", E);
+    /** Heartseeker Strike Definition */
+    public static final Skill HeartseekerStrike = new Skill(RiotChampionData.Pantheon, 3);
 
-    /** The skill name. */
-    public static final Skill DragonsDescent = new Skill("Dragon's Descent", R);
+    /** Grand Skyfall Definition */
+    public static final Skill GrandSkyfall = new Skill(RiotChampionData.Pantheon, 4);
 
-    /** The skill name. */
-    public static final Skill EmpoweredBulwark = new Skill("Empowered Bulwark", Passive);
+    /** Valiant Fighter Definition */
+    public static final Skill ValiantFighter = new Skill(RiotChampionData.Poppy, 0);
 
-    /** The skill name. */
-    public static final Skill PoisonTrail = new Skill("Poison Trail", Q);
+    /** Devastating Blow Definition */
+    public static final Skill DevastatingBlow = new Skill(RiotChampionData.Poppy, 1);
 
-    /** The skill name. */
-    public static final Skill MegaAdhesive = new Skill("Mega Adhesive", W);
+    /** Paragon of Demacia Definition */
+    public static final Skill ParagonOfDemacia = new Skill(RiotChampionData.Poppy, 2);
 
-    /** The skill name. */
-    public static final Skill Fling = new Skill("Fling", E);
+    /** Heroic Charge Definition */
+    public static final Skill HeroicCharge = new Skill(RiotChampionData.Poppy, 3);
 
-    /** The skill name. */
-    public static final Skill InsanityPotion = new Skill("Insanity Potion", R);
+    /** Diplomatic Immunity Definition */
+    public static final Skill DiplomaticImmunity = new Skill(RiotChampionData.Poppy, 4);
 
-    /** The skill name. */
-    public static final Skill FeelNoPain = new Skill("Feel No Pain", Passive);
+    /** Harrier Definition */
+    public static final Skill Harrier = new Skill(RiotChampionData.Quinn, 0);
 
-    /** The skill name. */
-    public static final Skill CrypticGaze = new Skill("Cryptic Gaze", Q);
+    /** Blinding Assault Definition */
+    public static final Skill BlindingAssault = new Skill(RiotChampionData.Quinn, 1);
 
-    /** The skill name. */
-    public static final Skill DeathsCaress = new Skill("Death's Caress", W);
+    /** Heightened Senses Definition */
+    public static final Skill HeightenedSenses = new Skill(RiotChampionData.Quinn, 2);
 
-    /** The skill name. */
-    public static final Skill Enrage = new Skill("Enrage", E);
+    /** Vault Definition */
+    public static final Skill Vault = new Skill(RiotChampionData.Quinn, 3);
 
-    /** The skill name. */
-    public static final Skill Cannibalism = new Skill("Cannibalism", R);
+    /** Tag Team Definition */
+    public static final Skill TagTeam = new Skill(RiotChampionData.Quinn, 4);
 
-    /** The skill name. */
-    public static final Skill FleetOfFoot = new Skill("Fleet of Foot", Passive);
+    /** Spiked Shell Definition */
+    public static final Skill SpikedShell = new Skill(RiotChampionData.Rammus, 0);
 
-    /** The skill name. */
-    public static final Skill BoomerangBlade = new Skill("Boomerang Blade", Q);
+    /** Powerball Definition */
+    public static final Skill Powerball = new Skill(RiotChampionData.Rammus, 1);
 
-    /** The skill name. */
-    public static final Skill Ricochet = new Skill("Ricochet", W);
+    /** Defensive Ball Curl Definition */
+    public static final Skill DefensiveBallCurl = new Skill(RiotChampionData.Rammus, 2);
 
-    /** The skill name. */
-    public static final Skill SpellShield = new Skill("Spell Shield", E);
+    /** Puncturing Taunt Definition */
+    public static final Skill PuncturingTaunt = new Skill(RiotChampionData.Rammus, 3);
 
-    /** The skill name. */
-    public static final Skill OnTheHunt = new Skill("On The Hunt", R);
+    /** Tremors Definition */
+    public static final Skill Tremors = new Skill(RiotChampionData.Rammus, 4);
 
-    /** The skill name. */
-    public static final Skill Energize = new Skill("Energize", Passive);
+    /** Fury of the Xer'Sai Definition */
+    public static final Skill FuryOfTheXerSai = new Skill(RiotChampionData.RekSai, 0);
 
-    /** The skill name. */
-    public static final Skill CrystalSlash = new Skill("Crystal Slash", Q);
+    /** Queen's Wrath / Prey Seeker Definition */
+    public static final Skill QueensWrathPreySeeker = new Skill(RiotChampionData.RekSai, 1);
 
-    /** The skill name. */
-    public static final Skill CrystallineExoskeleton = new Skill("Crystalline Exoskeleton", W);
+    /** Burrow / Un-burrow Definition */
+    public static final Skill BurrowUnburrow = new Skill(RiotChampionData.RekSai, 2);
 
-    /** The skill name. */
-    public static final Skill Fracture = new Skill("Fracture", E);
+    /** Furious Bite / Tunnel Definition */
+    public static final Skill FuriousBiteTunnel = new Skill(RiotChampionData.RekSai, 3);
 
-    /** The skill name. */
-    public static final Skill Impale = new Skill("Impale", R);
+    /** Void Rush Definition */
+    public static final Skill VoidRush = new Skill(RiotChampionData.RekSai, 4);
 
-    /** The skill name. */
-    public static final Skill PowerChord = new Skill("Power Chord", Passive);
+    /** Reign of Anger Definition */
+    public static final Skill ReignOfAnger = new Skill(RiotChampionData.Renekton, 0);
 
-    /** The skill name. */
-    public static final Skill HymnOfValor = new Skill("Hymn of Valor", Q);
+    /** Cull the Meek Definition */
+    public static final Skill CullTheMeek = new Skill(RiotChampionData.Renekton, 1);
 
-    /** The skill name. */
-    public static final Skill AriaOfPerseverance = new Skill("Aria of Perseverance", W);
+    /** Ruthless Predator Definition */
+    public static final Skill RuthlessPredator = new Skill(RiotChampionData.Renekton, 2);
 
-    /** The skill name. */
-    public static final Skill SongOfCelerity = new Skill("Song of Celerity", E);
+    /** Slice and Dice Definition */
+    public static final Skill SliceandDice = new Skill(RiotChampionData.Renekton, 3);
 
-    /** The skill name. */
-    public static final Skill Crescendo = new Skill("Crescendo", R);
+    /** Dominus Definition */
+    public static final Skill Dominus = new Skill(RiotChampionData.Renekton, 4);
 
-    /** The skill name. */
-    public static final Skill Salvation = new Skill("Salvation", Passive);
+    /** Unseen Predator Definition */
+    public static final Skill UnseenPredator = new Skill(RiotChampionData.Rengar, 0);
 
-    /** The skill name. */
-    public static final Skill Starcall = new Skill("Starcall", Q);
+    /** Savagery Definition */
+    public static final Skill Savagery = new Skill(RiotChampionData.Rengar, 1);
 
-    /** The skill name. */
-    public static final Skill AstralBlessing = new Skill("Astral Blessing", W);
+    /** Battle Roar Definition */
+    public static final Skill BattleRoar = new Skill(RiotChampionData.Rengar, 2);
 
-    /** The skill name. */
-    public static final Skill Infuse = new Skill("Infuse", E);
+    /** Bola Strike Definition */
+    public static final Skill BolaStrike = new Skill(RiotChampionData.Rengar, 3);
 
-    /** The skill name. */
-    public static final Skill Wish = new Skill("Wish", R);
+    /** Thrill of the Hunt Definition */
+    public static final Skill ThrillOfTheHunt = new Skill(RiotChampionData.Rengar, 4);
 
-    /** The skill name. */
-    public static final Skill CarrionRenewal = new Skill("Carrion Renewal", Passive);
+    /** Runic Blade Definition */
+    public static final Skill RunicBlade = new Skill(RiotChampionData.Riven, 0);
 
-    /** The skill name. */
-    public static final Skill Decrepify = new Skill("Decrepify", Q);
+    /** Broken Wings Definition */
+    public static final Skill BrokenWings = new Skill(RiotChampionData.Riven, 1);
 
-    /** The skill name. */
-    public static final Skill Nevermove = new Skill("Nevermove", W);
+    /** Ki Burst Definition */
+    public static final Skill KiBurst = new Skill(RiotChampionData.Riven, 2);
 
-    /** The skill name. */
-    public static final Skill Torment = new Skill("Torment", E);
+    /** Valor Definition */
+    public static final Skill Valor = new Skill(RiotChampionData.Riven, 3);
 
-    /** The skill name. */
-    public static final Skill RavenousFlock = new Skill("Ravenous Flock", R);
+    /** Blade of the Exile Definition */
+    public static final Skill BladeOfTheExile = new Skill(RiotChampionData.Riven, 4);
 
-    /** The skill name. */
-    public static final Skill Transcendent = new Skill("Transcendent", Passive);
+    /** Junkyard Titan Definition */
+    public static final Skill JunkyardTitan = new Skill(RiotChampionData.Rumble, 0);
 
-    /** The skill name. */
-    public static final Skill DarkSphere = new Skill("Dark Sphere", Q);
+    /** Flamespitter Definition */
+    public static final Skill Flamespitter = new Skill(RiotChampionData.Rumble, 1);
 
-    /** The skill name. */
-    public static final Skill ForceOfWill = new Skill("Force of Will", W);
+    /** Scrap Shield Definition */
+    public static final Skill ScrapShield = new Skill(RiotChampionData.Rumble, 2);
 
-    /** The skill name. */
-    public static final Skill ScatterTheWeak = new Skill("Scatter the Weak", E);
+    /** Electro Harpoon Definition */
+    public static final Skill ElectroHarpoon = new Skill(RiotChampionData.Rumble, 3);
 
-    /** The skill name. */
-    public static final Skill UnleashedPower = new Skill("Unleashed Power", R);
+    /** The Equalizer Definition */
+    public static final Skill TheEqualizer = new Skill(RiotChampionData.Rumble, 4);
 
-    /** The skill name. */
-    public static final Skill Mercy = new Skill("Mercy", Passive);
+    /** Arcane Mastery Definition */
+    public static final Skill ArcaneMastery = new Skill(RiotChampionData.Ryze, 0);
 
-    /** The skill name. */
-    public static final Skill NoxianDiplomacy = new Skill("Noxian Diplomacy", Q);
+    /** Overload Definition */
+    public static final Skill Overload = new Skill(RiotChampionData.Ryze, 1);
 
-    /** The skill name. */
-    public static final Skill Rake = new Skill("Rake", W);
+    /** Rune Prison Definition */
+    public static final Skill RunePrison = new Skill(RiotChampionData.Ryze, 2);
 
-    /** The skill name. */
-    public static final Skill Cutthroat = new Skill("Cutthroat", E);
+    /** Spell Flux Definition */
+    public static final Skill SpellFlux = new Skill(RiotChampionData.Ryze, 3);
 
-    /** The skill name. */
-    public static final Skill ShadowAssault = new Skill("Shadow Assault", R);
+    /** Desperate Power Definition */
+    public static final Skill DesperatePower = new Skill(RiotChampionData.Ryze, 4);
 
-    /** The skill name. */
-    public static final Skill Gemcraft = new Skill("Gemcraft", Passive);
+    /** Frost Definition */
+    public static final Skill Frost = new Skill(RiotChampionData.Sejuani, 0);
 
-    /** The skill name. */
-    public static final Skill Imbue = new Skill("Imbue", Q);
+    /** Arctic Assault Definition */
+    public static final Skill ArcticAssault = new Skill(RiotChampionData.Sejuani, 1);
 
-    /** The skill name. */
-    public static final Skill Shatter = new Skill("Shatter", W);
+    /** Flail of the Northern Winds Definition */
+    public static final Skill FlailOfTheNorthernWinds = new Skill(RiotChampionData.Sejuani, 2);
 
-    /** The skill name. */
-    public static final Skill Dazzle = new Skill("Dazzle", E);
+    /** Permafrost Definition */
+    public static final Skill Permafrost = new Skill(RiotChampionData.Sejuani, 3);
 
-    /** The skill name. */
-    public static final Skill Radiance = new Skill("Radiance", R);
+    /** Glacial Prison Definition */
+    public static final Skill GlacialPrison = new Skill(RiotChampionData.Sejuani, 4);
 
-    /** The skill name. */
-    public static final Skill Camouflage = new Skill("Camouflage", Passive);
+    /** Backstab Definition */
+    public static final Skill Backstab = new Skill(RiotChampionData.Shaco, 0);
 
-    /** The skill name. */
-    public static final Skill BlindingDart = new Skill("Blinding Dart", Q);
+    /** Deceive Definition */
+    public static final Skill Deceive = new Skill(RiotChampionData.Shaco, 1);
 
-    /** The skill name. */
-    public static final Skill MoveQuick = new Skill("Move Quick", W);
+    /** Jack In The Box Definition */
+    public static final Skill JackInTheBox = new Skill(RiotChampionData.Shaco, 2);
 
-    /** The skill name. */
-    public static final Skill ToxicShot = new Skill("Toxic Shot", E);
+    /** Two-Shiv Poison Definition */
+    public static final Skill TwoShivPoison = new Skill(RiotChampionData.Shaco, 3);
 
-    /** The skill name. */
-    public static final Skill NoxiousTrap = new Skill("Noxious Trap", R);
+    /** Hallucinate Definition */
+    public static final Skill Hallucinate = new Skill(RiotChampionData.Shaco, 4);
 
-    /** The skill name. */
-    public static final Skill Damnation = new Skill("Damnation", Passive);
+    /** Ki Strike Definition */
+    public static final Skill KiStrike = new Skill(RiotChampionData.Shen, 0);
 
-    /** The skill name. */
-    public static final Skill DeathSentence = new Skill("Death Sentence", Q);
+    /** Vorpal Blade Definition */
+    public static final Skill VorpalBlade = new Skill(RiotChampionData.Shen, 1);
 
-    /** The skill name. */
-    public static final Skill DarkPassage = new Skill("Dark Passage", W);
+    /** Feint Definition */
+    public static final Skill Feint = new Skill(RiotChampionData.Shen, 2);
 
-    /** The skill name. */
-    public static final Skill Flay = new Skill("Flay", E);
+    /** Shadow Dash Definition */
+    public static final Skill ShadowDash = new Skill(RiotChampionData.Shen, 3);
 
-    /** The skill name. */
-    public static final Skill TheBox = new Skill("The Box", R);
+    /** Stand United Definition */
+    public static final Skill StandUnited = new Skill(RiotChampionData.Shen, 4);
 
-    /** The skill name. */
-    public static final Skill DrawaBead = new Skill("Draw a Bead", Passive);
+    /** Dragonborn Definition */
+    public static final Skill Dragonborn = new Skill(RiotChampionData.Shyvana, 0);
 
-    /** The skill name. */
-    public static final Skill RapidFire = new Skill("Rapid Fire", Q);
+    /** Twin Bite Definition */
+    public static final Skill TwinBite = new Skill(RiotChampionData.Shyvana, 1);
 
-    /** The skill name. */
-    public static final Skill RocketJump = new Skill("Rocket Jump", W);
+    /** Burnout Definition */
+    public static final Skill Burnout = new Skill(RiotChampionData.Shyvana, 2);
 
-    /** The skill name. */
-    public static final Skill ExplosiveShot = new Skill("Explosive Shot", E);
+    /** Flame Breath Definition */
+    public static final Skill FlameBreath = new Skill(RiotChampionData.Shyvana, 3);
 
-    /** The skill name. */
-    public static final Skill BusterShot = new Skill("Buster Shot", R);
+    /** Dragon's Descent Definition */
+    public static final Skill DragonsDescent = new Skill(RiotChampionData.Shyvana, 4);
 
-    /** The skill name. */
-    public static final Skill KingsTribute = new Skill("King's Tribute", Passive);
+    /** Empowered Bulwark Definition */
+    public static final Skill EmpoweredBulwark = new Skill(RiotChampionData.Singed, 0);
 
-    /** The skill name. */
-    public static final Skill Chomp = new Skill("Chomp", Q);
+    /** Poison Trail Definition */
+    public static final Skill PoisonTrail = new Skill(RiotChampionData.Singed, 1);
 
-    /** The skill name. */
-    public static final Skill FrozenKingdom = new Skill("Frozen Kingdom", W);
+    /** Mega Adhesive Definition */
+    public static final Skill MegaAdhesive = new Skill(RiotChampionData.Singed, 2);
 
-    /** The skill name. */
-    public static final Skill PillarOfIce = new Skill("Pillar of Ice", E);
+    /** Fling Definition */
+    public static final Skill Fling = new Skill(RiotChampionData.Singed, 3);
 
-    /** The skill name. */
-    public static final Skill Subjugate = new Skill("Subjugate", R);
+    /** Insanity Potion Definition */
+    public static final Skill InsanityPotion = new Skill(RiotChampionData.Singed, 4);
 
-    /** The skill name. */
-    public static final Skill BattleFury = new Skill("Battle Fury", Passive);
+    /** Glory in Death Definition */
+    public static final Skill GloryinDeath = new Skill(RiotChampionData.Sion, 0);
 
-    /** The skill name. */
-    public static final Skill Bloodlust = new Skill("Bloodlust", Q);
+    /** Decimating Smash Definition */
+    public static final Skill DecimatingSmash = new Skill(RiotChampionData.Sion, 1);
 
-    /** The skill name. */
-    public static final Skill MockingShout = new Skill("Mocking Shout", W);
+    /** Soul Furnace Definition */
+    public static final Skill SoulFurnace = new Skill(RiotChampionData.Sion, 2);
 
-    /** The skill name. */
-    public static final Skill SpinningSlash = new Skill("Spinning Slash", E);
+    /** Roar of the Slayer Definition */
+    public static final Skill RoarOfTheSlayer = new Skill(RiotChampionData.Sion, 3);
 
-    /** The skill name. */
-    public static final Skill UndyingRage = new Skill("Undying Rage", R);
+    /** Unstoppable Onslaught Definition */
+    public static final Skill UnstoppableOnslaught = new Skill(RiotChampionData.Sion, 4);
 
-    /** The skill name. */
-    public static final Skill LoadedDice = new Skill("Loaded Dice", Passive);
+    /** Fleet of Foot Definition */
+    public static final Skill FleetOfFoot = new Skill(RiotChampionData.Sivir, 0);
 
-    /** The skill name. */
-    public static final Skill WildCards = new Skill("Wild Cards", Q);
+    /** Boomerang Blade Definition */
+    public static final Skill BoomerangBlade = new Skill(RiotChampionData.Sivir, 1);
 
-    /** The skill name. */
-    public static final Skill PickACard = new Skill("Pick A Card", W);
+    /** Ricochet Definition */
+    public static final Skill Ricochet = new Skill(RiotChampionData.Sivir, 2);
 
-    /** The skill name. */
-    public static final Skill StackedDeck = new Skill("Stacked Deck", E);
+    /** Spell Shield Definition */
+    public static final Skill SpellShield = new Skill(RiotChampionData.Sivir, 3);
 
-    /** The skill name. */
-    public static final Skill Destiny = new Skill("Destiny", R);
+    /** On The Hunt Definition */
+    public static final Skill OnTheHunt = new Skill(RiotChampionData.Sivir, 4);
 
-    /** The skill name. */
-    public static final Skill DeadlyVenom = new Skill("Deadly Venom", Passive);
+    /** Crystallizing Sting Definition */
+    public static final Skill CrystallizingSting = new Skill(RiotChampionData.Skarner, 0);
 
-    /** The skill name. */
-    public static final Skill Ambush = new Skill("Ambush", Q);
+    /** Crystal Slash Definition */
+    public static final Skill CrystalSlash = new Skill(RiotChampionData.Skarner, 1);
 
-    /** The skill name. */
-    public static final Skill VenomCask = new Skill("Venom Cask", W);
+    /** Crystalline Exoskeleton Definition */
+    public static final Skill CrystallineExoskeleton = new Skill(RiotChampionData.Skarner, 2);
 
-    /** The skill name. */
-    public static final Skill Expunge = new Skill("Expunge", E);
+    /** Fracture Definition */
+    public static final Skill Fracture = new Skill(RiotChampionData.Skarner, 3);
 
-    /** The skill name. */
-    public static final Skill SprayandPray = new Skill("Spray and Pray", R);
+    /** Impale Definition */
+    public static final Skill Impale = new Skill(RiotChampionData.Skarner, 4);
 
-    /** The skill name. */
-    public static final Skill MonkeysAgility = new Skill("Monkey's Agility", Passive);
+    /** Power Chord Definition */
+    public static final Skill PowerChord = new Skill(RiotChampionData.Sona, 0);
 
-    /** The skill name. */
-    public static final Skill TigerStance = new Skill("Tiger Stance", Q);
+    /** Hymn of Valor Definition */
+    public static final Skill HymnOfValor = new Skill(RiotChampionData.Sona, 1);
 
-    /** The skill name. */
-    public static final Skill TurtleStance = new Skill("Turtle Stance", W);
+    /** Aria of Perseverance Definition */
+    public static final Skill AriaOfPerseverance = new Skill(RiotChampionData.Sona, 2);
 
-    /** The skill name. */
-    public static final Skill BearStance = new Skill("Bear Stance", E);
+    /** Song of Celerity Definition */
+    public static final Skill SongOfCelerity = new Skill(RiotChampionData.Sona, 3);
 
-    /** The skill name. */
-    public static final Skill PhoenixStance = new Skill("Phoenix Stance", R);
+    /** Crescendo Definition */
+    public static final Skill Crescendo = new Skill(RiotChampionData.Sona, 4);
 
-    /** The skill name. */
-    public static final Skill ZaunTouchedBoltAugmenter = new Skill("Zaun-Touched Bolt Augmenter", Passive);
+    /** Salvation Definition */
+    public static final Skill Salvation = new Skill(RiotChampionData.Soraka, 0);
 
-    /** The skill name. */
-    public static final Skill AcidHunter = new Skill("Acid Hunter", Q);
+    /** Starcall Definition */
+    public static final Skill Starcall = new Skill(RiotChampionData.Soraka, 1);
 
-    /** The skill name. */
-    public static final Skill TerrorCapacitor = new Skill("Terror Capacitor", W);
+    /** Astral Infusion Definition */
+    public static final Skill AstralInfusion = new Skill(RiotChampionData.Soraka, 2);
 
-    /** The skill name. */
-    public static final Skill NoxianCorrosiveCharge = new Skill("Noxian Corrosive Charge", E);
+    /** Equinox Definition */
+    public static final Skill Equinox = new Skill(RiotChampionData.Soraka, 3);
 
-    /** The skill name. */
-    public static final Skill HyperKineticPositionReverser = new Skill("Hyper-Kinetic Position Reverser", R);
+    /** Wish Definition */
+    public static final Skill Wish = new Skill(RiotChampionData.Soraka, 4);
 
-    /** The skill name. */
-    public static final Skill LivingVengeance = new Skill("Living Vengeance", Passive);
+    /** Carrion Renewal Definition */
+    public static final Skill CarrionRenewal = new Skill(RiotChampionData.Swain, 0);
 
-    /** The skill name. */
-    public static final Skill PiercingArrow = new Skill("Piercing Arrow", Q);
+    /** Decrepify Definition */
+    public static final Skill Decrepify = new Skill(RiotChampionData.Swain, 1);
 
-    /** The skill name. */
-    public static final Skill BlightedQuiver = new Skill("Blighted Quiver", W);
+    /** Nevermove Definition */
+    public static final Skill Nevermove = new Skill(RiotChampionData.Swain, 2);
 
-    /** The skill name. */
-    public static final Skill HailOfArrows = new Skill("Hail of Arrows", E);
+    /** Torment Definition */
+    public static final Skill Torment = new Skill(RiotChampionData.Swain, 3);
 
-    /** The skill name. */
-    public static final Skill ChainOfCorruption = new Skill("Chain of Corruption", R);
+    /** Ravenous Flock Definition */
+    public static final Skill RavenousFlock = new Skill(RiotChampionData.Swain, 4);
 
-    /** The skill name. */
-    public static final Skill NightHunter = new Skill("Night Hunter", Passive);
+    /** Transcendent Definition */
+    public static final Skill Transcendent = new Skill(RiotChampionData.Syndra, 0);
 
-    /** The skill name. */
-    public static final Skill Tumble = new Skill("Tumble", Q);
+    /** Dark Sphere Definition */
+    public static final Skill DarkSphere = new Skill(RiotChampionData.Syndra, 1);
 
-    /** The skill name. */
-    public static final Skill SilverBolts = new Skill("Silver Bolts", W);
+    /** Force of Will Definition */
+    public static final Skill ForceOfWill = new Skill(RiotChampionData.Syndra, 2);
 
-    /** The skill name. */
-    public static final Skill Condemn = new Skill("Condemn", E);
+    /** Scatter the Weak Definition */
+    public static final Skill ScatterTheWeak = new Skill(RiotChampionData.Syndra, 3);
 
-    /** The skill name. */
-    public static final Skill FinalHour = new Skill("Final Hour", R);
+    /** Unleashed Power Definition */
+    public static final Skill UnleashedPower = new Skill(RiotChampionData.Syndra, 4);
 
-    /** The skill name. */
-    public static final Skill Equilibrium = new Skill("Equilibrium", Passive);
+    /** An Acquired Taste Definition */
+    public static final Skill AnAcquiredTaste = new Skill(RiotChampionData.TahmKench, 0);
 
-    /** The skill name. */
-    public static final Skill BalefulStrike = new Skill("Baleful Strike", Q);
+    /** Tongue Lash Definition */
+    public static final Skill TongueLash = new Skill(RiotChampionData.TahmKench, 1);
 
-    /** The skill name. */
-    public static final Skill DarkMatter = new Skill("Dark Matter", W);
+    /** Devour Definition */
+    public static final Skill Devour = new Skill(RiotChampionData.TahmKench, 2);
 
-    /** The skill name. */
-    public static final Skill EventHorizon = new Skill("Event Horizon", E);
+    /** Thick Skin Definition */
+    public static final Skill ThickSkin = new Skill(RiotChampionData.TahmKench, 3);
 
-    /** The skill name. */
-    public static final Skill PrimordialBurst = new Skill("Primordial Burst", R);
+    /** Abyssal Voyage Definition */
+    public static final Skill AbyssalVoyage = new Skill(RiotChampionData.TahmKench, 4);
 
-    /** The skill name. */
-    public static final Skill BlastShield = new Skill("Blast Shield", Passive);
+    /** Mercy Definition */
+    public static final Skill Mercy = new Skill(RiotChampionData.Talon, 0);
 
-    /** The skill name. */
-    public static final Skill VaultBreaker = new Skill("Vault Breaker", Q);
+    /** Noxian Diplomacy Definition */
+    public static final Skill NoxianDiplomacy = new Skill(RiotChampionData.Talon, 1);
 
-    /** The skill name. */
-    public static final Skill DentingBlows = new Skill("Denting Blows", W);
+    /** Rake Definition */
+    public static final Skill Rake = new Skill(RiotChampionData.Talon, 2);
 
-    /** The skill name. */
-    public static final Skill ExcessiveForce = new Skill("Excessive Force", E);
+    /** Cutthroat Definition */
+    public static final Skill Cutthroat = new Skill(RiotChampionData.Talon, 3);
 
-    /** The skill name. */
-    public static final Skill AssaultandBattery = new Skill("Assault and Battery", R);
+    /** Shadow Assault Definition */
+    public static final Skill ShadowAssault = new Skill(RiotChampionData.Talon, 4);
 
-    /** The skill name. */
-    public static final Skill EvolvingTechnology = new Skill("Evolving Technology", Passive);
+    /** Gemcraft Definition */
+    public static final Skill Gemcraft = new Skill(RiotChampionData.Taric, 0);
 
-    /** The skill name. */
-    public static final Skill PowerTransfer = new Skill("Power Transfer", Q);
+    /** Imbue Definition */
+    public static final Skill Imbue = new Skill(RiotChampionData.Taric, 1);
 
-    /** The skill name. */
-    public static final Skill GravityField = new Skill("Gravity Field", W);
+    /** Shatter Definition */
+    public static final Skill Shatter = new Skill(RiotChampionData.Taric, 2);
 
-    /** The skill name. */
-    public static final Skill DeathRay = new Skill("Death Ray", E);
+    /** Dazzle Definition */
+    public static final Skill Dazzle = new Skill(RiotChampionData.Taric, 3);
 
-    /** The skill name. */
-    public static final Skill ChaosStorm = new Skill("Chaos Storm", R);
+    /** Radiance Definition */
+    public static final Skill Radiance = new Skill(RiotChampionData.Taric, 4);
 
-    /** The skill name. */
-    public static final Skill CrimsonPact = new Skill("Crimson Pact", Passive);
+    /** Camouflage Definition */
+    public static final Skill Camouflage = new Skill(RiotChampionData.Teemo, 0);
 
-    /** The skill name. */
-    public static final Skill Transfusion = new Skill("Transfusion", Q);
+    /** Blinding Dart Definition */
+    public static final Skill BlindingDart = new Skill(RiotChampionData.Teemo, 1);
 
-    /** The skill name. */
-    public static final Skill SanguinePool = new Skill("Sanguine Pool", W);
+    /** Move Quick Definition */
+    public static final Skill MoveQuick = new Skill(RiotChampionData.Teemo, 2);
 
-    /** The skill name. */
-    public static final Skill TidesOfBlood = new Skill("Tides of Blood", E);
+    /** Toxic Shot Definition */
+    public static final Skill ToxicShot = new Skill(RiotChampionData.Teemo, 3);
 
-    /** The skill name. */
-    public static final Skill Hemoplague = new Skill("Hemoplague", R);
+    /** Noxious Trap Definition */
+    public static final Skill NoxiousTrap = new Skill(RiotChampionData.Teemo, 4);
 
-    /** The skill name. */
-    public static final Skill ChosenOftheStorm = new Skill("Chosen of the Storm", Passive);
+    /** Damnation Definition */
+    public static final Skill Damnation = new Skill(RiotChampionData.Thresh, 0);
 
-    /** The skill name. */
-    public static final Skill RollingThunder = new Skill("Rolling Thunder", Q);
+    /** Death Sentence Definition */
+    public static final Skill DeathSentence = new Skill(RiotChampionData.Thresh, 1);
 
-    /** The skill name. */
-    public static final Skill Frenzy = new Skill("Frenzy", W);
+    /** Dark Passage Definition */
+    public static final Skill DarkPassage = new Skill(RiotChampionData.Thresh, 2);
 
-    /** The skill name. */
-    public static final Skill MajesticRoar = new Skill("Majestic Roar", E);
+    /** Flay Definition */
+    public static final Skill Flay = new Skill(RiotChampionData.Thresh, 3);
 
-    /** The skill name. */
-    public static final Skill ThunderClaws = new Skill("Thunder Claws", R);
+    /** The Box Definition */
+    public static final Skill TheBox = new Skill(RiotChampionData.Thresh, 4);
 
-    /** The skill name. */
-    public static final Skill EternalThirst = new Skill("Eternal Thirst", Passive);
+    /** Draw a Bead Definition */
+    public static final Skill DrawaBead = new Skill(RiotChampionData.Tristana, 0);
 
-    /** The skill name. */
-    public static final Skill HungeringStrike = new Skill("Hungering Strike", Q);
+    /** Rapid Fire Definition */
+    public static final Skill RapidFire = new Skill(RiotChampionData.Tristana, 1);
 
-    /** The skill name. */
-    public static final Skill HuntersCall = new Skill("Hunters Call", W);
+    /** Rocket Jump Definition */
+    public static final Skill RocketJump = new Skill(RiotChampionData.Tristana, 2);
 
-    /** The skill name. */
-    public static final Skill BloodScent = new Skill("Blood Scent", E);
+    /** Explosive Charge Definition */
+    public static final Skill ExplosiveCharge = new Skill(RiotChampionData.Tristana, 3);
 
-    /** The skill name. */
-    public static final Skill InfiniteDuress = new Skill("Infinite Duress", R);
+    /** Buster Shot Definition */
+    public static final Skill BusterShot = new Skill(RiotChampionData.Tristana, 4);
 
-    /** The skill name. */
-    public static final Skill StoneSkin = new Skill("Stone Skin", Passive);
+    /** King's Tribute Definition */
+    public static final Skill KingsTribute = new Skill(RiotChampionData.Trundle, 0);
 
-    /** The skill name. */
-    public static final Skill CrushingBlow = new Skill("Crushing Blow", Q);
+    /** Chomp Definition */
+    public static final Skill Chomp = new Skill(RiotChampionData.Trundle, 1);
 
-    /** The skill name. */
-    public static final Skill Decoy = new Skill("Decoy", W);
+    /** Frozen Domain Definition */
+    public static final Skill FrozenDomain = new Skill(RiotChampionData.Trundle, 2);
 
-    /** The skill name. */
-    public static final Skill NimbusStrike = new Skill("Nimbus Strike", E);
+    /** Pillar of Ice Definition */
+    public static final Skill PillarOfIce = new Skill(RiotChampionData.Trundle, 3);
 
-    /** The skill name. */
-    public static final Skill Cyclone = new Skill("Cyclone", R);
+    /** Subjugate Definition */
+    public static final Skill Subjugate = new Skill(RiotChampionData.Trundle, 4);
 
-    /** The skill name. */
-    public static final Skill AscendedForm = new Skill("Ascended Form", Passive);
+    /** Battle Fury Definition */
+    public static final Skill BattleFury = new Skill(RiotChampionData.Tryndamere, 0);
 
-    /** The skill name. */
-    public static final Skill Arcanopulse = new Skill("Arcanopulse", Q);
+    /** Bloodlust Definition */
+    public static final Skill Bloodlust = new Skill(RiotChampionData.Tryndamere, 1);
 
-    /** The skill name. */
-    public static final Skill LocusOfPower = new Skill("Locus of Power", W);
+    /** Mocking Shout Definition */
+    public static final Skill MockingShout = new Skill(RiotChampionData.Tryndamere, 2);
 
-    /** The skill name. */
-    public static final Skill ShockingOrb = new Skill("Shocking Orb", E);
+    /** Spinning Slash Definition */
+    public static final Skill SpinningSlash = new Skill(RiotChampionData.Tryndamere, 3);
 
-    /** The skill name. */
-    public static final Skill RiteOfTheArcane = new Skill("Rite of the Arcane", R);
+    /** Undying Rage Definition */
+    public static final Skill UndyingRage = new Skill(RiotChampionData.Tryndamere, 4);
 
-    /** The skill name. */
-    public static final Skill Challenge = new Skill("Challenge", Passive);
+    /** Loaded Dice Definition */
+    public static final Skill LoadedDice = new Skill(RiotChampionData.TwistedFate, 0);
 
-    /** The skill name. */
-    public static final Skill ThreeTalonStrike = new Skill("Three Talon Strike", Q);
+    /** Wild Cards Definition */
+    public static final Skill WildCards = new Skill(RiotChampionData.TwistedFate, 1);
 
-    /** The skill name. */
-    public static final Skill BattleCry = new Skill("Battle Cry", W);
+    /** Pick A Card Definition */
+    public static final Skill PickACard = new Skill(RiotChampionData.TwistedFate, 2);
 
-    /** The skill name. */
-    public static final Skill AudaciousCharge = new Skill("Audacious Charge", E);
+    /** Stacked Deck Definition */
+    public static final Skill StackedDeck = new Skill(RiotChampionData.TwistedFate, 3);
 
-    /** The skill name. */
-    public static final Skill CrescentSweep = new Skill("Crescent Sweep", R);
+    /** Destiny Definition */
+    public static final Skill Destiny = new Skill(RiotChampionData.TwistedFate, 4);
 
-    /** The skill name. */
-    public static final Skill UnholyCovenant = new Skill("Unholy Covenant", Passive);
+    /** Deadly Venom Definition */
+    public static final Skill DeadlyVenom = new Skill(RiotChampionData.Twitch, 0);
 
-    /** The skill name. */
-    public static final Skill OmenOfWar = new Skill("Omen of War", Q);
+    /** Ambush Definition */
+    public static final Skill Ambush = new Skill(RiotChampionData.Twitch, 1);
 
-    /** The skill name. */
-    public static final Skill OmenOfPestilence = new Skill("Omen of Pestilence", W);
+    /** Venom Cask Definition */
+    public static final Skill VenomCask = new Skill(RiotChampionData.Twitch, 2);
 
-    /** The skill name. */
-    public static final Skill OmenOfFamine = new Skill("Omen of Famine", E);
+    /** Contaminate Definition */
+    public static final Skill Contaminate = new Skill(RiotChampionData.Twitch, 3);
 
-    /** The skill name. */
-    public static final Skill OmenOfDeath = new Skill("Omen of Death", R);
+    /** Rat-Ta-Tat-Tat Definition */
+    public static final Skill RatTaTatTat = new Skill(RiotChampionData.Twitch, 4);
 
-    /** The skill name. */
-    public static final Skill ContemptforTheWeak = new Skill("Contempt for the Weak", Passive);
+    /** Monkey's Agility Definition */
+    public static final Skill MonkeysAgility = new Skill(RiotChampionData.Udyr, 0);
 
-    /** The skill name. */
-    public static final Skill RazorShuriken = new Skill("Razor Shuriken", Q);
+    /** Tiger Stance Definition */
+    public static final Skill TigerStance = new Skill(RiotChampionData.Udyr, 1);
 
-    /** The skill name. */
-    public static final Skill LivingShadow = new Skill("Living Shadow", W);
+    /** Turtle Stance Definition */
+    public static final Skill TurtleStance = new Skill(RiotChampionData.Udyr, 2);
 
-    /** The skill name. */
-    public static final Skill ShadowSlash = new Skill("Shadow Slash", E);
+    /** Bear Stance Definition */
+    public static final Skill BearStance = new Skill(RiotChampionData.Udyr, 3);
 
-    /** The skill name. */
-    public static final Skill DeathMark = new Skill("Death Mark", R);
+    /** Phoenix Stance Definition */
+    public static final Skill PhoenixStance = new Skill(RiotChampionData.Udyr, 4);
 
-    /** The skill name. */
-    public static final Skill ShortFuse = new Skill("Short Fuse", Passive);
+    /** Zaun-Touched Bolt Augmenter Definition */
+    public static final Skill ZaunTouchedBoltAugmenter = new Skill(RiotChampionData.Urgot, 0);
 
-    /** The skill name. */
-    public static final Skill BouncingBomb = new Skill("Bouncing Bomb", Q);
+    /** Acid Hunter Definition */
+    public static final Skill AcidHunter = new Skill(RiotChampionData.Urgot, 1);
 
-    /** The skill name. */
-    public static final Skill SatchelCharge = new Skill("Satchel Charge", W);
+    /** Terror Capacitor Definition */
+    public static final Skill TerrorCapacitor = new Skill(RiotChampionData.Urgot, 2);
 
-    /** The skill name. */
-    public static final Skill HexplosiveMinefield = new Skill("Hexplosive Minefield", E);
+    /** Noxian Corrosive Charge Definition */
+    public static final Skill NoxianCorrosiveCharge = new Skill(RiotChampionData.Urgot, 3);
 
-    /** The skill name. */
-    public static final Skill MegaInfernoBomb = new Skill("Mega Inferno Bomb", R);
+    /** Hyper-Kinetic Position Reverser Definition */
+    public static final Skill HyperKineticPositionReverser = new Skill(RiotChampionData.Urgot, 4);
 
-    /** The skill name. */
-    public static final Skill HeightenedLearning = new Skill("Heightened Learning", Passive);
+    /** Living Vengeance Definition */
+    public static final Skill LivingVengeance = new Skill(RiotChampionData.Varus, 0);
 
-    /** The skill name. */
-    public static final Skill TimeBomb = new Skill("Time Bomb", Q);
+    /** Piercing Arrow Definition */
+    public static final Skill PiercingArrow = new Skill(RiotChampionData.Varus, 1);
 
-    /** The skill name. */
-    public static final Skill Rewind = new Skill("Rewind", W);
+    /** Blighted Quiver Definition */
+    public static final Skill BlightedQuiver = new Skill(RiotChampionData.Varus, 2);
 
-    /** The skill name. */
-    public static final Skill TimeWarp = new Skill("Time Warp", E);
+    /** Hail of Arrows Definition */
+    public static final Skill HailOfArrows = new Skill(RiotChampionData.Varus, 3);
 
-    /** The skill name. */
-    public static final Skill ChronoShift = new Skill("Chrono Shift", R);
+    /** Chain of Corruption Definition */
+    public static final Skill ChainOfCorruption = new Skill(RiotChampionData.Varus, 4);
 
-    /** The skill name. */
-    public static final Skill RiseOftheThorns = new Skill("Rise of the Thorns", Passive);
+    /** Night Hunter Definition */
+    public static final Skill NightHunter = new Skill(RiotChampionData.Vayne, 0);
 
-    /** The skill name. */
-    public static final Skill DeadlyBloom = new Skill("Deadly Bloom", Q);
+    /** Tumble Definition */
+    public static final Skill Tumble = new Skill(RiotChampionData.Vayne, 1);
 
-    /** The skill name. */
-    public static final Skill RampantGrowth = new Skill("Rampant Growth", W);
+    /** Silver Bolts Definition */
+    public static final Skill SilverBolts = new Skill(RiotChampionData.Vayne, 2);
 
-    /** The skill name. */
-    public static final Skill GraspingRoots = new Skill("Grasping Roots", E);
+    /** Condemn Definition */
+    public static final Skill Condemn = new Skill(RiotChampionData.Vayne, 3);
 
-    /** The skill name. */
-    public static final Skill Stranglethorns = new Skill("Stranglethorns", R);
+    /** Final Hour Definition */
+    public static final Skill FinalHour = new Skill(RiotChampionData.Vayne, 4);
 
-    /** The skill name. */
-    public static final Skill Harrier = new Skill("Harrier", Passive);
+    /** Equilibrium Definition */
+    public static final Skill Equilibrium = new Skill(RiotChampionData.Veigar, 0);
 
-    /** The skill name. */
-    public static final Skill BlindingAssault = new Skill("Blinding Assault", Q);
+    /** Baleful Strike Definition */
+    public static final Skill BalefulStrike = new Skill(RiotChampionData.Veigar, 1);
 
-    /** The skill name. */
-    public static final Skill HeightenedSenses = new Skill("Heightened Senses", W);
+    /** Dark Matter Definition */
+    public static final Skill DarkMatter = new Skill(RiotChampionData.Veigar, 2);
 
-    /** The skill name. */
-    public static final Skill Vault = new Skill("Vault", E);
+    /** Event Horizon Definition */
+    public static final Skill EventHorizon = new Skill(RiotChampionData.Veigar, 3);
 
-    /** The skill name. */
-    public static final Skill TagTeam = new Skill("Tag Team", R);
+    /** Primordial Burst Definition */
+    public static final Skill PrimordialBurst = new Skill(RiotChampionData.Veigar, 4);
 
-    /** The skill name. */
-    public static final Skill CellDivision = new Skill("Cell Division", Passive);
+    /** Organic Deconstruction Definition */
+    public static final Skill OrganicDeconstruction = new Skill(RiotChampionData.Velkoz, 0);
 
-    /** The skill name. */
-    public static final Skill StretchingStrike = new Skill("Stretching Strike", Q);
+    /** Plasma Fission Definition */
+    public static final Skill PlasmaFission = new Skill(RiotChampionData.Velkoz, 1);
 
-    /** The skill name. */
-    public static final Skill UnstableMatter = new Skill("Unstable Matter", W);
+    /** Void Rift Definition */
+    public static final Skill VoidRift = new Skill(RiotChampionData.Velkoz, 2);
 
-    /** The skill name. */
-    public static final Skill ElasticSlingshot = new Skill("Elastic Slingshot", E);
+    /** Tectonic Disruption Definition */
+    public static final Skill TectonicDisruption = new Skill(RiotChampionData.Velkoz, 3);
 
-    /** The skill name. */
-    public static final Skill LetsBounce = new Skill("Let's Bounce!", R);
+    /** Life Form Disintegration Ray Definition */
+    public static final Skill LifeFormDisintegrationRay = new Skill(RiotChampionData.Velkoz, 4);
 
-    /** The skill name. */
-    public static final Skill Iceborn = new Skill("Iceborn", Passive);
+    /** Blast Shield Definition */
+    public static final Skill BlastShield = new Skill(RiotChampionData.Vi, 0);
 
-    /** The skill name. */
-    public static final Skill IceShard = new Skill("Ice Shard", Q);
+    /** Vault Breaker Definition */
+    public static final Skill VaultBreaker = new Skill(RiotChampionData.Vi, 1);
 
-    /** The skill name. */
-    public static final Skill RingOfFrost = new Skill("Ring of Frost", W);
+    /** Denting Blows Definition */
+    public static final Skill DentingBlows = new Skill(RiotChampionData.Vi, 2);
 
-    /** The skill name. */
-    public static final Skill GlacialPath = new Skill("Glacial Path", E);
+    /** Excessive Force Definition */
+    public static final Skill ExcessiveForce = new Skill(RiotChampionData.Vi, 3);
 
-    /** The skill name. */
-    public static final Skill FrozenTomb = new Skill("Frozen Tomb", R);
+    /** Assault and Battery Definition */
+    public static final Skill AssaultandBattery = new Skill(RiotChampionData.Vi, 4);
 
-    /** The skill name. */
-    public static final Skill BloodWell = new Skill("Blood Well", Passive);
+    /** Glorious Evolution Definition */
+    public static final Skill GloriousEvolution = new Skill(RiotChampionData.Viktor, 0);
 
-    /** The skill name. */
-    public static final Skill DarkFlight = new Skill("Dark Flight", Q);
+    /** Siphon Power Definition */
+    public static final Skill SiphonPower = new Skill(RiotChampionData.Viktor, 1);
 
-    /** The skill name. */
-    public static final Skill BloodThirst = new Skill("Blood Thirst", W);
+    /** Gravity Field Definition */
+    public static final Skill GravityField = new Skill(RiotChampionData.Viktor, 2);
 
-    /** The skill name. */
-    public static final Skill BloodPrice = new Skill("Blood Price", W);
+    /** Death Ray Definition */
+    public static final Skill DeathRay = new Skill(RiotChampionData.Viktor, 3);
 
-    /** The skill name. */
-    public static final Skill BladesOfTorment = new Skill("Blades of Torment", E);
+    /** Chaos Storm Definition */
+    public static final Skill ChaosStorm = new Skill(RiotChampionData.Viktor, 4);
 
-    /** The skill name. */
-    public static final Skill Massacre = new Skill("Massacre", R);
+    /** Crimson Pact Definition */
+    public static final Skill CrimsonPact = new Skill(RiotChampionData.Vladimir, 0);
 
-    /** The skill name. */
-    public static final Skill Lightslinger = new Skill("Lightslinger", Passive);
+    /** Transfusion Definition */
+    public static final Skill Transfusion = new Skill(RiotChampionData.Vladimir, 1);
 
-    /** The skill name. */
-    public static final Skill PiercingLight = new Skill("Piercing Light", Q);
+    /** Sanguine Pool Definition */
+    public static final Skill SanguinePool = new Skill(RiotChampionData.Vladimir, 2);
 
-    /** The skill name. */
-    public static final Skill ArdentBlaze = new Skill("Ardent Blaze", W);
+    /** Tides of Blood Definition */
+    public static final Skill TidesOfBlood = new Skill(RiotChampionData.Vladimir, 3);
 
-    /** The skill name. */
-    public static final Skill RelentlessPursuit = new Skill("Relentless Pursuit", E);
+    /** Hemoplague Definition */
+    public static final Skill Hemoplague = new Skill(RiotChampionData.Vladimir, 4);
 
-    /** The skill name. */
-    public static final Skill TheCulling = new Skill("The Culling", R);
+    /** Chosen of the Storm Definition */
+    public static final Skill ChosenOfTheStorm = new Skill(RiotChampionData.Volibear, 0);
 
-    /** The skill name. */
-    public static final Skill GetExcited = new Skill("Get Excited!", Passive);
+    /** Rolling Thunder Definition */
+    public static final Skill RollingThunder = new Skill(RiotChampionData.Volibear, 1);
 
-    /** The skill name. */
-    public static final Skill Switcheroo = new Skill("Switcheroo!", Q);
+    /** Frenzy Definition */
+    public static final Skill Frenzy = new Skill(RiotChampionData.Volibear, 2);
 
-    /** The skill name. */
-    public static final Skill Zap = new Skill("Zap!", W);
+    /** Majestic Roar Definition */
+    public static final Skill MajesticRoar = new Skill(RiotChampionData.Volibear, 3);
 
-    /** The skill name. */
-    public static final Skill FlameChompers = new Skill("Flame Chompers!", E);
+    /** Thunder Claws Definition */
+    public static final Skill ThunderClaws = new Skill(RiotChampionData.Volibear, 4);
 
-    /** The skill name. */
-    public static final Skill SuperMegaDeathRocket = new Skill("Super Mega Death Rocket!", R);
+    /** Eternal Thirst Definition */
+    public static final Skill EternalThirst = new Skill(RiotChampionData.Warwick, 0);
 
-    /** The skill name. */
-    public static final Skill WayOfTheWanderer = new Skill("Way of the Wanderer", Passive);
+    /** Hungering Strike Definition */
+    public static final Skill HungeringStrike = new Skill(RiotChampionData.Warwick, 1);
 
-    /** The skill name. */
-    public static final Skill SteelTempest = new Skill("Steel Tempest", Q);
+    /** Hunters Call Definition */
+    public static final Skill HuntersCall = new Skill(RiotChampionData.Warwick, 2);
 
-    /** The skill name. */
-    public static final Skill WindWall = new Skill("Wind Wall", W);
+    /** Blood Scent Definition */
+    public static final Skill BloodScent = new Skill(RiotChampionData.Warwick, 3);
 
-    /** The skill name. */
-    public static final Skill SweepingBlade = new Skill("Sweeping Blade", E);
+    /** Infinite Duress Definition */
+    public static final Skill InfiniteDuress = new Skill(RiotChampionData.Warwick, 4);
 
-    /** The skill name. */
-    public static final Skill LastBreath = new Skill("Last Breath", R);
+    /** Mana Surge Definition */
+    public static final Skill ManaSurge = new Skill(RiotChampionData.Xerath, 0);
 
-    /** The skill name. */
-    public static final Skill OrganicDeconstruction = new Skill("Organic Deconstruction", Passive);
+    /** Arcanopulse Definition */
+    public static final Skill Arcanopulse = new Skill(RiotChampionData.Xerath, 1);
 
-    /** The skill name. */
-    public static final Skill PlasmaFission = new Skill("Plasma Fission", Q);
+    /** Eye of Destruction Definition */
+    public static final Skill EyeOfDestruction = new Skill(RiotChampionData.Xerath, 2);
 
-    /** The skill name. */
-    public static final Skill VoidRift = new Skill("Void Rift", W);
+    /** Shocking Orb Definition */
+    public static final Skill ShockingOrb = new Skill(RiotChampionData.Xerath, 3);
 
-    /** The skill name. */
-    public static final Skill TectonicDisruption = new Skill("Tectonic Disruption", E);
+    /** Rite of the Arcane Definition */
+    public static final Skill RiteOfTheArcane = new Skill(RiotChampionData.Xerath, 4);
 
-    /** The skill name. */
-    public static final Skill LifeFormDisintegrationRay = new Skill("Life Form Disintegration Ray", R);
+    /** Challenge Definition */
+    public static final Skill Challenge = new Skill(RiotChampionData.XinZhao, 0);
 
-    /** The skill name. */
-    public String name;
+    /** Three Talon Strike Definition */
+    public static final Skill ThreeTalonStrike = new Skill(RiotChampionData.XinZhao, 1);
 
-    /** The localized skill name. */
-    public String localized;
+    /** Battle Cry Definition */
+    public static final Skill BattleCry = new Skill(RiotChampionData.XinZhao, 2);
 
-    /** The skill owner. */
-    public Champion owner;
+    /** Audacious Charge Definition */
+    public static final Skill AudaciousCharge = new Skill(RiotChampionData.XinZhao, 3);
+
+    /** Crescent Sweep Definition */
+    public static final Skill CrescentSweep = new Skill(RiotChampionData.XinZhao, 4);
+
+    /** Way of the Wanderer Definition */
+    public static final Skill WayOfTheWanderer = new Skill(RiotChampionData.Yasuo, 0);
+
+    /** Steel Tempest Definition */
+    public static final Skill SteelTempest = new Skill(RiotChampionData.Yasuo, 1);
+
+    /** Wind Wall Definition */
+    public static final Skill WindWall = new Skill(RiotChampionData.Yasuo, 2);
+
+    /** Sweeping Blade Definition */
+    public static final Skill SweepingBlade = new Skill(RiotChampionData.Yasuo, 3);
+
+    /** Last Breath Definition */
+    public static final Skill LastBreath = new Skill(RiotChampionData.Yasuo, 4);
+
+    /** Unholy Covenant Definition */
+    public static final Skill UnholyCovenant = new Skill(RiotChampionData.Yorick, 0);
+
+    /** Omen of War Definition */
+    public static final Skill OmenOfWar = new Skill(RiotChampionData.Yorick, 1);
+
+    /** Omen of Pestilence Definition */
+    public static final Skill OmenOfPestilence = new Skill(RiotChampionData.Yorick, 2);
+
+    /** Omen of Famine Definition */
+    public static final Skill OmenOfFamine = new Skill(RiotChampionData.Yorick, 3);
+
+    /** Omen of Death Definition */
+    public static final Skill OmenOfDeath = new Skill(RiotChampionData.Yorick, 4);
+
+    /** Cell Division Definition */
+    public static final Skill CellDivision = new Skill(RiotChampionData.Zac, 0);
+
+    /** Stretching Strike Definition */
+    public static final Skill StretchingStrike = new Skill(RiotChampionData.Zac, 1);
+
+    /** Unstable Matter Definition */
+    public static final Skill UnstableMatter = new Skill(RiotChampionData.Zac, 2);
+
+    /** Elastic Slingshot Definition */
+    public static final Skill ElasticSlingshot = new Skill(RiotChampionData.Zac, 3);
+
+    /** Let's Bounce! Definition */
+    public static final Skill LetsBounce = new Skill(RiotChampionData.Zac, 4);
+
+    /** Contempt for the Weak Definition */
+    public static final Skill ContemptforTheWeak = new Skill(RiotChampionData.Zed, 0);
+
+    /** Razor Shuriken Definition */
+    public static final Skill RazorShuriken = new Skill(RiotChampionData.Zed, 1);
+
+    /** Living Shadow Definition */
+    public static final Skill LivingShadow = new Skill(RiotChampionData.Zed, 2);
+
+    /** Shadow Slash Definition */
+    public static final Skill ShadowSlash = new Skill(RiotChampionData.Zed, 3);
+
+    /** Death Mark Definition */
+    public static final Skill DeathMark = new Skill(RiotChampionData.Zed, 4);
+
+    /** Short Fuse Definition */
+    public static final Skill ShortFuse = new Skill(RiotChampionData.Ziggs, 0);
+
+    /** Bouncing Bomb Definition */
+    public static final Skill BouncingBomb = new Skill(RiotChampionData.Ziggs, 1);
+
+    /** Satchel Charge Definition */
+    public static final Skill SatchelCharge = new Skill(RiotChampionData.Ziggs, 2);
+
+    /** Hexplosive Minefield Definition */
+    public static final Skill HexplosiveMinefield = new Skill(RiotChampionData.Ziggs, 3);
+
+    /** Mega Inferno Bomb Definition */
+    public static final Skill MegaInfernoBomb = new Skill(RiotChampionData.Ziggs, 4);
+
+    /** Heightened Learning Definition */
+    public static final Skill HeightenedLearning = new Skill(RiotChampionData.Zilean, 0);
+
+    /** Time Bomb Definition */
+    public static final Skill TimeBomb = new Skill(RiotChampionData.Zilean, 1);
+
+    /** Rewind Definition */
+    public static final Skill Rewind = new Skill(RiotChampionData.Zilean, 2);
+
+    /** Time Warp Definition */
+    public static final Skill TimeWarp = new Skill(RiotChampionData.Zilean, 3);
+
+    /** Chronoshift Definition */
+    public static final Skill Chronoshift = new Skill(RiotChampionData.Zilean, 4);
+
+    /** Rise of the Thorns Definition */
+    public static final Skill RiseOfTheThorns = new Skill(RiotChampionData.Zyra, 0);
+
+    /** Deadly Bloom Definition */
+    public static final Skill DeadlyBloom = new Skill(RiotChampionData.Zyra, 1);
+
+    /** Rampant Growth Definition */
+    public static final Skill RampantGrowth = new Skill(RiotChampionData.Zyra, 2);
+
+    /** Grasping Roots Definition */
+    public static final Skill GraspingRoots = new Skill(RiotChampionData.Zyra, 3);
+
+    /** Stranglethorns Definition */
+    public static final Skill Stranglethorns = new Skill(RiotChampionData.Zyra, 4);
 
     /** The skill key type. */
     public final SkillKey key;
+
+    /** The owner data. */
+    private final RiotChampionData data;
 
     /**
      * <p>
@@ -1867,9 +1979,31 @@ public class Skill extends Describable<SkillDescriptor> {
      * 
      * @param name
      */
-    Skill(String name, SkillKey key) {
-        this.name = name;
-        this.key = key;
+    Skill(RiotChampionData data, int key) {
+        this.data = data;
+
+        switch (key) {
+        case 0:
+            this.key = SkillKey.Passive;
+            break;
+
+        case 1:
+            this.key = SkillKey.Q;
+            break;
+
+        case 2:
+            this.key = SkillKey.W;
+            break;
+
+        case 3:
+            this.key = SkillKey.E;
+            break;
+
+        case 4:
+        default:
+            this.key = SkillKey.R;
+            break;
+        }
     }
 
     /**
@@ -1882,13 +2016,46 @@ public class Skill extends Describable<SkillDescriptor> {
 
     /**
      * <p>
+     * Retrieve the skill name.
+     * </p>
+     * 
+     * @return A name of this skill.
+     */
+    public String getName() {
+        return data.skills[key.ordinal()];
+    }
+
+    /**
+     * <p>
+     * Retrieve the localized skill name.
+     * </p>
+     * 
+     * @return A localized name of this skill.
+     */
+    public String getLocalizedName() {
+        return data.skillLocalized[key.ordinal()];
+    }
+
+    /**
+     * <p>
      * Returns icon image path.
      * </p>
      * 
      * @return
      */
     public String getIcon() {
-        return "src/main/resources/teemowork/skill/" + owner.systemName + ".jpg";
+        return "src/main/resources/teemowork/skill/" + data.name() + ".jpg";
+    }
+
+    /**
+     * <p>
+     * Returns icon image path.
+     * </p>
+     * 
+     * @return
+     */
+    public float getIconPosition() {
+        return key.ordinal() / (data.skills.length - 1) * 100;
     }
 
     /**
@@ -1896,7 +2063,7 @@ public class Skill extends Describable<SkillDescriptor> {
      */
     @Override
     public String toString() {
-        return name;
+        return getName();
     }
 
     /**
@@ -1911,7 +2078,7 @@ public class Skill extends Describable<SkillDescriptor> {
             return 1;
         }
 
-        if (this == SpiderForm || this == HumanForm || this == TransformMercuryCannon || this == TransformMercuryHammer) {
+        if (this == SpiderForm || this == HumanForm || this == MercuryCannonMercuryHammer || this == MercuryHammer) {
             return 1;
         }
         return 0;
@@ -1930,7 +2097,7 @@ public class Skill extends Describable<SkillDescriptor> {
             return 0;
         }
 
-        if (this == SpiderForm || this == HumanForm || this == TransformMercuryCannon || this == TransformMercuryHammer || this == Mantra) {
+        if (this == SpiderForm || this == HumanForm || this == MercuryCannonMercuryHammer || this == MercuryHammer || this == Mantra) {
             return 4;
         }
 
@@ -2096,7 +2263,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(60, 10)
                 .cd(12, -1)
                 .range(750);
-        Smokescreen.update()
+        SmokeScreen.update()
                 .active("指定地点にスモーク弾を発射し範囲内の敵ユニットに{1}を与え、4秒間持続する煙幕を残す。煙幕内にいる敵Championに視界低下と{2}を与える。")
                 .variable(1, MagicDamage, 60, 50, ap(0.6))
                 .variable(2, MSSlowRatio, 15, 5)
@@ -2199,7 +2366,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .passive("Transformを使用すると1.25秒の間{1}し、{2}を得る。")
                 .variable(-1, MS, 40)
                 .variable(2, IgnoreUnitCollision);
-        ToTheSkies.update()
+        ToTheSkiesShockBlast.update()
                 .active("対象の敵ユニットに飛びかかり、対象と周囲の敵ユニットに{1}と2秒間{2}を与える。")
                 .variable(1, PhysicalDamage, 20, 45, bounusAD(1))
                 .variable(2, MSSlowRatio, 30, 5)
@@ -2215,7 +2382,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .cd(8)
                 .range(1050);
         ShockBlast.update(P309).variable(3, MissileSpeed, 1450);
-        LightningField.update()
+        LightningFieldHyperCharge.update()
                 .passive("通常攻撃ごとに{1}する。")
                 .variable(1, RestoreMana, 6, 2)
                 .active("4秒間雷のオーラを身にまとい、{2}の敵ユニットに毎秒{3}を与える。")
@@ -2228,7 +2395,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(1, Percentage, 70, 15)
                 .mana(40)
                 .cd(14, -2);
-        ThunderingBlow.update()
+        ThunderingBlowAccelerationGate.update()
                 .active("対象の敵ユニットに{1}と短い距離のノックバックを与える。ミニオンやモンスターに対しては{2}が上限。")
                 .variable(1, MagicDamage, 0, 0, bounusAD(1), amplify(TargetMaxHealthRatio, 8, 3))
                 .variable(2, MagicDamage, 200, 100)
@@ -2242,21 +2409,21 @@ public class Skill extends Describable<SkillDescriptor> {
                 .cd(14, -1)
                 .range(650);
         AccelerationGate.update(P309).cd(16);
-        TransformMercuryCannon.update()
+        MercuryCannonMercuryHammer.update()
                 .active("射程が500(Ranged)になる。また、次の通常攻撃は５秒間{1}と{2}を与える。")
                 .variable(1, ARReductionRatio, 10, 5)
                 .variable(2, MRReductionRatio, 10, 5)
                 .cd(6);
-        TransformMercuryCannon.update(P309)
+        MercuryCannonMercuryHammer.update(P309)
                 .active("射程が500(Ranged)になる。また、次の通常攻撃は５秒間{1}と{2}を与える。{3}。")
                 .variable(3, NotSpellCast);
-        TransformMercuryHammer.update()
+        MercuryHammer.update()
                 .active("射程が125(Melee)になり、その間は{1}と{2}を得る。また、次の通常攻撃に追加{3}を付与する。")
                 .variable(1, AR, 5, 10)
                 .variable(2, MR, 5, 10)
                 .variable(3, MagicDamage, 20, 40)
                 .cd(6);
-        TransformMercuryHammer.update(P309)
+        MercuryHammer.update(P309)
                 .active("射程が125(Melee)になり、その間は{1}と{2}を得る。また、次の通常攻撃に追加{3}を付与する。{4}。")
                 .variable(4, NotSpellCast);
 
@@ -2386,7 +2553,7 @@ public class Skill extends Describable<SkillDescriptor> {
 
         /** Katarina */
         Voracity.update().passive("敵Championキル/アシスト時に、すべてのスキルの{1}する。").variable(1, CDDecrease, 15);
-        BouncingBlade.update()
+        BouncingBlades.update()
                 .active("対象の敵ユニットにナイフを飛ばし{1}と４秒間Debuffを与える。ナイフは近くの敵ユニット({2})に4回まで跳ね返り、その度にダメージとDebuffを与える。ナイフが与えるダメージは跳ね返る度に10%低下する。Debuffが付与された敵ユニットにKatarinaが通常攻撃またはスキルでダメージを与えると、付与されたDebuffを消費して{3}を与える。")
                 .variable(1, MagicDamage, 60, 25, ap(0.15))
                 .variable(2, Radius, 400)
@@ -2421,12 +2588,12 @@ public class Skill extends Describable<SkillDescriptor> {
         Kayle();
 
         /** Kennen */
-        MarkOftheStorm.update()
+        MarkOfTheStorm.update()
                 .passive("スキルヒット時対象に雷スタックを追加する。スタックが3つ溜まると対象を{1}させ、{2}する。スタックは8秒間増加がないと0になる。同一の敵Championを7秒以内に2度スタンさせると、{3}を与える。")
                 .variable(1, Stun, 1)
                 .variable(2, RestoreEnergy, 25)
                 .variable(3, Stun, 0.5);
-        MarkOftheStorm.update(P309)
+        MarkOfTheStorm.update(P309)
                 .passive("スキルヒット時対象に雷スタックを追加する。スタックが3つ溜まると対象を{1}させ、{2}する。スタックは6秒間増加がないと0になる。同一の敵Championを7秒以内に2度スタンさせると、{3}を与える。");
         ThunderingShuriken.update()
                 .active("指定方向に手裏剣を飛ばし、当たった敵ユニットに{1}と雷スタックを与える。")
@@ -2505,15 +2672,15 @@ public class Skill extends Describable<SkillDescriptor> {
                 .passive("HPが40%以下になったとき0.5秒間ステルス状態になり、自分の分身を作り出す。分身は8秒間持続し、分身が敵にダメージを与えることはできない。{1}。")
                 .variable(1, CDRUnaware)
                 .cd(-60);
-        SigilOfSilence.update()
+        SigilOfMalice.update()
                 .active("対象の敵ユニットに{1}と3.5秒間持続するマークを付与する。マークが付いている間に再度スキルでダメージを与えると、マークを消費して追加{2}と{3}を付与する。")
                 .variable(1, MagicDamage, 70, 40, ap(0.6))
                 .variable(2, MagicDamage, 20, 20, ap(0.2))
                 .variable(3, Silence, 2)
                 .mana(70, 5)
                 .cd(6)
-                .range(700);
-        SigilOfSilence.update(P309)
+                .range(700)
+                .update(P309)
                 .variable(1, MagicDamage, 55, 25, ap(0.4))
                 .variable(2, MagicDamage, 55, 25, ap(0.4))
                 .variable(3, Silence, 1.5)
@@ -2664,17 +2831,17 @@ public class Skill extends Describable<SkillDescriptor> {
 
         /** Malzahar */
         SummonVoidling.update()
-                .passive("スキルを4回使う度にVoidlingを召喚する。Voidlingは21秒間持続し、7秒後にADとARが1.5倍、14秒後にASが2倍に増加する。任意の操作不可。攻撃対象は、Ultを掛けた相手、" + MaleficVisions.name + "を掛けた相手、Malzaharがターゲットしている相手の順。<br>Health: {1}<br>AD: {2}<br>AR: 30<br>MR: 50<br>AS: 0.831<br>MS: 451")
+                .passive("スキルを4回使う度にVoidlingを召喚する。Voidlingは21秒間持続し、7秒後にADとARが1.5倍、14秒後にASが2倍に増加する。任意の操作不可。攻撃対象は、Ultを掛けた相手、" + MaleficVisions + "を掛けた相手、Malzaharがターゲットしている相手の順。<br>Health: {1}<br>AD: {2}<br>AR: 30<br>MR: 50<br>AS: 0.831<br>MS: 451")
                 .variable(1, Value, 200, 0, amplify(Lv, 40))
                 .variable(2, Value, 20, 0, amplify(Lv, 5), bounusAD(1));
-        CallOftheVoid.update()
+        CallOfTheVoid.update()
                 .active("指定した地点の左右から挟み込む様に2本の波動が出現し、当たった敵ユニットに{1}と{2}を与える。また、指定した場所の視界を得る。")
                 .variable(1, MagicDamage, 80, 55, ap(0.8))
                 .variable(2, Silence, 1.4, 0.4)
                 .mana(80, 10)
                 .cd(9)
                 .range(900);
-        CallOftheVoid.update(P306).mana(80, 5);
+        CallOfTheVoid.update(P306).mana(80, 5);
         NullZone.update()
                 .active("指定地点に5秒間持続する{1}のダメージゾーンを発生させ、上にいる敵ユニットに毎秒{2}を与える。(Minionに対しては毎秒120DMが上限)")
                 .variable(1, Radius, 250)
@@ -2804,7 +2971,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .cd(6)
                 .range(700)
                 .cost(Health, 24, 12);
-        ChildrenOftheGrave.update()
+        ChildrenOfTheGrave.update()
                 .active("対象の敵Championに{1}を与え、その後10秒間、毎秒{2}を与える。10秒間で総計{4}を与え、{3}する。効果中に対象が死ぬとThe Spiritを生成し30秒間従わせる。(RまたはALT押しながらクリックで任意の操作可能)　The Spirit AD: 元になったChampのAD + MordekaiserのADの75%AP: 元になったChampのAP + MordekaiserのAPの75%HP: 元になったChampのHP + MordekaiserのHPの15%行動範囲: 1125 また、The Spiritを従えている間、Mordekaiserは元になったChampのADとAPの20％を得る。")
                 .variable(1, MagicDamage, 0, 0, amplify(TargetMaxHealthRatio, 12, 2.5, ap(0.02)))
                 .variable(2, MagicDamage, 0, 0, amplify(TargetMaxHealthRatio, 1.2, 0.25, ap(0.002)))
@@ -3055,8 +3222,8 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(2, MSSlowRatio, 15, 5);
 
         /** Sejuani */
-        FrostArnor.update().passive("通常攻撃にFrostを付与する。Frost状態の敵ユニットは3秒間{1}になる。").variable(1, MSSlowRatio, 30);
-        FrostArnor.update(P306)
+        Frost.update().passive("通常攻撃にFrostを付与する。Frost状態の敵ユニットは3秒間{1}になる。").variable(1, MSSlowRatio, 30);
+        Frost.update(P306)
                 .passive("通常攻撃かスキルによりダメージを与えると、2秒間{1}と{2}を得る。この効果時間は最大8秒までスタックする。")
                 .variable(1, AR, new Per5LevelForSejuani(10, 5))
                 .variable(2, MSSlowReductionRatio, new Per5LevelForSejuani(10, 5));
@@ -3226,30 +3393,30 @@ public class Skill extends Describable<SkillDescriptor> {
         InsanityPotion.update(P304).active("25秒間{1}、{2}、{3}、{4}、{5}を得て、{7}する。");
 
         /** Sion */
-        FeelNoPain.update()
+        GloryinDeath.update()
                 .passive("40%の確率で{1}する。この軽減は防御力計算より先に行われる。")
                 .variable(1, AttackDamageReduction, new Per6Level(30, 10));
-        CrypticGaze.update()
+        DecimatingSmash.update()
                 .active("対象の敵ユニットに{1}と{2}を与える。")
                 .variable(1, MagicDamage, 70, 55, ap(0.9))
                 .variable(2, Stun, 1.5)
                 .mana(100)
                 .cd(12, -1)
                 .range(550);
-        DeathsCaress.update()
+        SoulFurnace.update()
                 .active("{1}を得る。10秒間シールドが残っていた場合、シールドが破裂し{2}の敵ユニットに{3}を与える。使用から4秒後以降に再度使用で、即座にシールドを破裂させる。")
                 .variable(1, Shield, 100, 50, ap(0.9))
                 .variable(2, Radius, 550)
                 .variable(3, MagicDamage, 100, 50, ap(0.9))
                 .mana(70, 10)
                 .cd(8);
-        Enrage.update()
+        RoarOfTheSlayer.update()
                 .active("{1}を得る。使用中にLHをとるとSionの最大HPが{2}増加する。対象が敵Champion/SiegeまたはSuperMinion/Buffを持った中立クリープの場合、増加値は2倍になる。")
                 .variable(1, AD, 25, 10)
                 .variable(2, Count, 1, 0.5)
                 .cost(Health, 6, 2)
                 .type(SkillType.Toggle);
-        Cannibalism.update()
+        UnstoppableOnslaught.update()
                 .active("20秒間{1}を得て{2}し、通常攻撃をするたびに{4}の味方ユニットは{3}する。")
                 .variable(1, LS, 50, 25)
                 .variable(2, ASRatio, 50)
@@ -3281,7 +3448,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(80)
                 .cd(22, -2)
                 .range(800);
-        ExplosiveShot.update()
+        ExplosiveCharge.update()
                 .passive("通常攻撃で敵ユニットを倒した時にそのユニットの{1}の敵ユニットに{2}を与える。")
                 .variable(1, Radius, 150)
                 .variable(2, MagicDamage, 50, 25, ap(0.25))
@@ -3316,7 +3483,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .active("次の通常攻撃は{1}と0.1秒間{4}を与える。8秒間{2}を得て、攻撃を受けたユニットは{3}する。建物には無効。")
                 .variable(1, PhysicalDamage, 20, 20, amplify(AD, 1, 0.05))
                 .variable(4, MSSlowRatio, 75);
-        FrozenKingdom.update()
+        FrozenDomain.update()
                 .active("指定した地点の{1}に8秒間持続する呪いを振りまく。範囲内に入っている間、{2}、{3}して{4}を得る。")
                 .variable(1, Radius, 1000)
                 .variable(2, ASRatio, 20, 10)
@@ -3325,7 +3492,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(60)
                 .cd(15)
                 .range(900);
-        FrozenKingdom.update(P306)
+        FrozenDomain.update(P306)
                 .active("指定した地点の{1}に8秒間持続する呪いを振りまく。範囲内に入っている間、{2}、{3}、{4}する。")
                 .variable(2, ASRatio, 20, 15)
                 .variable(4, RestoreHealthRatio, 8, 3);
@@ -3411,14 +3578,14 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(50)
                 .cd(13, -1)
                 .range(950);
-        Expunge.update()
+        Contaminate.update()
                 .active("毒をスタックされている{1}の敵ユニットに{2}を与える。")
                 .variable(1, Radius, 1200)
                 .variable(2, PhysicalDamage, 40, 10, amplify(Stack, 15, 5, ap(0.2), bounusAD(0.25)))
                 .mana(50, 10)
                 .cd(12, -1);
-        Expunge.update(P310A).variable(2, PhysicalDamage, 20, 15, amplify(Stack, 15, 5, ap(0.2), bounusAD(0.25)));
-        SprayandPray.update()
+        Contaminate.update(P310A).variable(2, PhysicalDamage, 20, 15, amplify(Stack, 15, 5, ap(0.2), bounusAD(0.25)));
+        RatTaTatTat.update()
                 .active("7秒間射程が850になり{1}を得て、通常攻撃が敵ユニットを貫通するようになる。対象との直線上にいる敵ユニットにもダメージと毒スタックを与える。ダメージは敵に当たるごとに20%減少する。最小で40%。")
                 .variable(1, AD, 20, 8)
                 .mana(100, 25)
@@ -3632,7 +3799,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .range(700);
 
         /** Volibear */
-        ChosenOftheStorm.update()
+        ChosenOfTheStorm.update()
                 .passive("VolibearのHPが30%以下になったとき、6秒間かけて{1}する。{2}。")
                 .variable(1, RestoreHealth, 0, 0, amplify(Health, 0.3))
                 .variable(2, CDRUnaware)
@@ -3814,7 +3981,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(80)
                 .cd(20)
                 .range(700);
-        ChronoShift.update()
+        Chronoshift.update()
                 .active("対象の味方Championが使用してから7秒以内に死亡した場合、2秒後にその場で{1}して復活する。")
                 .variable(1, RestoreHealth, 600, 150, ap(2))
                 .mana(125, 25)
@@ -3845,7 +4012,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .cd(16, -1)
                 .cost(CurrentHealthRatio, 10, 0)
                 .range(650);
-        BloodThirst.update()
+        BloodThirstBloodPrice.update()
                 .passive("通常攻撃3回ごとに{1}する。Healthが50%以下の場合、{2}する。ToggleOnの間、この効果は失われる。")
                 .variable(1, RestoreHealth, 20, 5, bounusAD(0.25))
                 .variable(2, RestoreHealth, 60, 15, bounusAD(0.75))
@@ -3946,7 +4113,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .passive("{1}を得る。また通常攻撃に{2}が付与される。")
                 .variable(1, SV, 6, 0, bounusAD(0.167))
                 .variable(2, MagicDamage, 0, 0, amplify(AD, 0.06, 0, ap(0.00167)));
-        MarkOftheAssassin.update()
+        MarkOfTheAssassin.update()
                 .active("対象の敵ユニットにカマを投げつけ{1}と6秒間マークを与える。マークが付いた対象に通常攻撃またはCrescent Slashでダメージを与えたとき、マークを消費して{2}を与え、{3}する。")
                 .variable(1, MagicDamage, 45, 25, ap(0.4))
                 .variable(2, MagicDamage, 45, 25, ap(0.4))
@@ -4061,13 +4228,14 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(4, CDDecrease, 0.5)
                 .mana(35)
                 .cd(10, -1);
-        CurseOftheSadMummy.update()
+        CurseOfTheSadMummy.update()
                 .active("{2}の敵ユニットに{1}を与え、2秒間通常攻撃と移動を封じる。")
                 .variable(1, MagicDamage, 150, 100, ap(0.8))
                 .variable(2, Radius, 600)
                 .mana(100, 50)
-                .cd(150, -20);
-        CurseOftheSadMummy.update(P303).variable(2, Radius, 550);
+                .cd(150, -20)
+                .update(P303)
+                .variable(2, Radius, 550);
     }
 
     private static void Anivia() {
@@ -4089,7 +4257,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .range(1100)
                 .update(P401)
                 .mana(80, 10);
-        Crystalize.update()
+        Crystallize.update()
                 .active("指定地点に5秒間{1}の壁を作りユニットを通れなくする。また、指定地点の{2}。")
                 .variable(1, Length, 400, 100)
                 .variable(2, Visionable)
@@ -4169,12 +4337,12 @@ public class Skill extends Describable<SkillDescriptor> {
     }
 
     private static void Ashe() {
-        Focus.update().passive("3秒毎に{1}する(最大100%)。通常攻撃を行うとリセットされる。").variable(-1, Critical, new Per3Level(3, 3));
-        Focus.update(P308)
+        FrostShot.update().passive("3秒毎に{1}する(最大100%)。通常攻撃を行うとリセットされる。").variable(-1, Critical, new Per3Level(3, 3));
+        FrostShot.update(P308)
                 .passive("3秒間通常攻撃を行わないと毎秒{1}増加していく(最大100)。スタックが100の時、建物以外に通常攻撃を行うと、スタックをすべて消費して通常攻撃がクリティカルになり、スタックの値がクリティカル率と同じ値となる。")
                 .variable(1, Stack, new Per5LevelForAshe(3, 1));
-        Focus.update(P310).variable(1, Stack, new Per5LevelForAshe(4, 1));
-        FrostShot.update()
+        FrostShot.update(P310).variable(1, Stack, new Per5LevelForAshe(4, 1));
+        RangersFocus.update()
                 .active("通常攻撃に2秒間の{1}を付与する。")
                 .variable(1, MSSlowRatio, 15, 5)
                 .mana(8)
@@ -4288,7 +4456,7 @@ public class Skill extends Describable<SkillDescriptor> {
     }
 
     private static void Cassiopeia() {
-        DeadlyCadence.update().passive("スキル使用後の5秒間、全てのスキルのコストが1スタックにつき10%低減する。");
+        AspectOfTheSerpent.update().passive("スキル使用後の5秒間、全てのスキルのコストが1スタックにつき10%低減する。");
         NoxiousBlast.update()
                 .active("指定地点に0.5秒後に毒を発生させ、{1}の敵ユニットに毒を与え3秒かけて{2}を与える。このスキルがChampionにヒットした場合、3秒間{3}する。")
                 .variable(1, Radius, 75)
@@ -4657,35 +4825,35 @@ public class Skill extends Describable<SkillDescriptor> {
     }
 
     private static void Elise() {
-        SpiderSwarm.update()
+        SpiderQueen.update()
                 .passive("Human Form時に使用したスキルが敵ユニットに命中するとSpiderlingのチャージを1得る。Spider Formになるとチャージ数に比例したSpiderlingを召喚する。召喚される数はSpider Formのレベルに比例し増加する。召喚されたSpiderlingは死亡するとチャージが減るが、再度Human Formに戻ると再度チャージ状態に戻る。<br>Health: {1}<br>AD: {2}<br>AS: 0.665<br>AR: {3}<br>MR: {4}<br>MS: 370<br>AoEスキルのダメージを{5}低減")
                 .variable(1, Value, 100, 0, amplify(Lv, 25))
                 .variable(2, Value, new Refer(SpiderForm, 10, 10), ap(0.1), null)
                 .variable(3, Value, 30)
                 .variable(4, Value, 50)
                 .variable(5, Percentage, 25);
-        SpiderSwarm.update(P310)
+        SpiderQueen.update(P310)
                 .variable(1, Value, 80, 0, amplify(Lv, 10))
                 .variable(3, Value, new Refer(SpiderForm, 30, 20))
                 .variable(4, Value, new Refer(SpiderForm, 50, 20))
                 .variable(5, Percentage, new Refer(SpiderForm, 10, 10));
-        Neurotoxin.update()
+        NeurotoxinVenomousBite.update()
                 .active("対象の敵ユニットに毒を放ち{1}を与える。")
                 .variable(1, MagicDamage, 50, 45, amplify(TargetCurrentHealthRatio, 8, 0, ap(0.03)))
                 .mana(80, 5)
                 .cd(6)
                 .range(650);
-        Neurotoxin.update(P304)
+        NeurotoxinVenomousBite.update(P304)
                 .variable(1, MagicDamage, 40, 40, amplify(Status.TargetCurrentHealthRatio, 8, 0, ap(0.03)))
                 .range(625);
-        VolatileSpiderling.update()
+        VolatileSpiderlingSkitteringFrenzy.update()
                 .active("指定地点に蜘蛛を放つ。蜘蛛は敵ユニットに当たるか3秒間経過すると爆発し、範囲内の敵ユニットに{1}を与える。蜘蛛は指定地点に移動した後、最も近くにいる敵ユニットに向かって移動する。また{2}。")
                 .variable(1, MagicDamage, 75, 50, ap(0.8))
                 .variable(2, Visionable)
                 .mana(60, 10)
                 .cd(12)
                 .range(950);
-        Cocoon.update()
+        CocoonRappel.update()
                 .active("指定方向に糸を飛ばし当たった敵ユニットに{1}を与え、{2}。")
                 .variable(1, Stun, 1.5)
                 .variable(2, Visionable)
@@ -4704,21 +4872,22 @@ public class Skill extends Describable<SkillDescriptor> {
         SpiderForm.update(P309)
                 .active("EliseがSpider Formに変身し射程125のMeleeになる。その間は通常攻撃に追加{1}が付与され、{4}する。またこのスキルに比例しSpiderlingの最大チャージ数、攻撃力が増加し、Spiderlingが受けるAoEダメージが低減される。{5}。")
                 .variable(5, NotSpellCast);
-        VenomousBite.update()
+        VenomousBiteNeurotoxin.update()
                 .active("対象の敵ユニットに飛びつき{1}を与える。")
                 .variable(1, MagicDamage, 50, 45, amplify(TargetMissingHealthRatio, 8, 0, ap(0.03)))
                 .cd(6)
                 .range(475);
-        VenomousBite.update(P304).variable(1, MagicDamage, 60, 50, amplify(TargetMissingHealthRatio, 8, 0, ap(0.03)));
-        SkitteringFrenzy.update()
+        VenomousBiteNeurotoxin.update(P304)
+                .variable(1, MagicDamage, 60, 50, amplify(TargetMissingHealthRatio, 8, 0, ap(0.03)));
+        SkitteringFrenzyVolatileSpiderling.update()
                 .passive("Spiderlingの{1}する。")
                 .variable(1, ASRatio, 5, 5)
                 .active("3秒間EliseとSpiderlingの{2}する。また、その間Spiderlingが攻撃を行うたびにEliseの{3}する。")
                 .variable(2, ASRatio, 60, 20)
                 .variable(3, RestoreHealth, 4, 0, ap(0.02))
                 .cd(12);
-        SkitteringFrenzy.update(P307).variable(3, RestoreHealth, 4, 0, ap(0.04));
-        Rappel.update()
+        SkitteringFrenzyVolatileSpiderling.update(P307).variable(3, RestoreHealth, 4, 0, ap(0.04));
+        RappelCocoon.update()
                 .active("EliseとSpiderlingが上空に退避し(ターゲット不可になる)指定の方法で降下する。上空にいる間は射程内の視界を得る地面をクリックした場合: 最大2秒間上空に待機し、初期位置へ降下する。この間、敵ユニットをターゲットし裏側に降下できる。敵ユニットをクリックした場合: 即座に下降し裏側に降り立つ。")
                 .cd(26, -2)
                 .range(1075);
@@ -4866,7 +5035,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(40)
                 .cd(10);
         SeastoneTrident.update(P313).variable(2, MagicDamage, 10, 5, ap(0.15));
-        Playful.update()
+        PlayfulTrickster.update()
                 .active("指定地点にジャンプする。ジャンプ中はターゲットされない状態になる。0.75秒後にその場に降下し、{1}の敵ユニットに{2}と2秒間{3}を与える。また、ジャンプ中に再使用することで降下する場所を別の指定地点に変更しできる。その場合、{4}の敵ユニットに{5}を与える。")
                 .variable(1, Radius, 250)
                 .variable(2, MagicDamage, 70, 50, ap(0.75))
@@ -5031,16 +5200,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(70, 10)
                 .cd(11)
                 .range(1100);
-        CH1ConcussionGrenade.update()
-                .active("指定地点に手榴弾を投げ、破裂した{1}にいる敵ユニットに{2}と{3}を与え、真ん中のユニットにはさらに{4}を与える。また指定地点の視界を得る。")
-                .variable(1, Radius, 250)
-                .variable(2, MagicDamage, 80, 55, ap(0.6))
-                .variable(3, Blind, 1, 0.5)
-                .variable(4, Stun, 1)
-                .mana(80, 10)
-                .cd(13, -1)
-                .range(925);
-        CH1ConcussionGrenade.update(P313)
+        CH2ElectronStormGrenade.update()
                 .active("指定地点に手榴弾を投げ、破裂した{1}にいる敵ユニットに{2}と2秒間{3}を与え、真ん中のユニットにはさらに{4}を与える。また指定地点の{5}。")
                 .variable(1, Radius, 210)
                 .variable(2, MagicDamage, 60, 40, ap(0.6))
@@ -5048,15 +5208,9 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(4, Stun, 1.25)
                 .variable(5, Visionable)
                 .mana(85)
-                .cd(18, -2);
+                .cd(18, -2)
+                .range(925);
         UPGRADE.update()
-                .passive("{1}を得る。")
-                .variable(1, CDR, 10, 5)
-                .active("設置したTurretのHPが最大まで回復し、10秒間Turretの攻撃に{2}が付与され、Hextech Micro-Rocketsの同時攻撃可能数が5体に増加し、CH-1 Concussion Grenadeの弾速が増加(+250)する。")
-                .variable(2, MSSlowRatio, 20, 5)
-                .mana(90)
-                .cd(120, -15);
-        UPGRADE.update(P313)
                 .active("次に使用するスキルの効果を強化する。強化されたスキルは一切のコストなしで使用でき、効果はこのスキルのLvに依存する。発動してから3秒間に何も使わない場合は再発動可能になり、もう一度使用するとCD3秒でキャンセルする。<br>H-28Q Apex Turret<br>8秒間持続する。砲撃に100%のスプラッシュダメージと{1}が付与される。<br>HP:{3}<br>砲撃:{4}　{5}<br>ビーム:{6}　{7}　（6秒毎）<br><br>Hextech Rocket Swarm<br>指定地点に目掛けて、5本のミサイルを扇状に4回発射する。命中すると{8}を与える。同一対象に対して複数命中し、2発目以降は本来の20%分のDMを与える(同一対象に20発命中すると{9})。<br><br>CH-3X Lightning Grenade<br>2回までバウンドしつつ3回放電する手榴弾を投げる。作動した箇所にいる{10}にいる敵ユニットに{11}と2秒間{12}を与え、真ん中のユニットにはさらに{13}を与える。")
                 .variable(1, MSSlowRatio, 25)
                 .variable(3, Value, 600, 0, amplify(Lv, 50))
@@ -5400,7 +5554,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .passive("スキルを使用すると{1}し通常攻撃の度に{2}する。この効果は3秒経つか2回通常攻撃を行うと解消される。")
                 .variable(-1, ASRatio, 40)
                 .variable(2, RestoreEnergy, 15);
-        SonicWave.update()
+        SonicWaveResonatingStrike.update()
                 .active("指定方向に気を飛ばし当たった敵ユニットに{1}を与える。このスキルが敵ユニットに当たった場合、3秒間対象の視界を得て、下記のスキルを使用できる。<br><br>{2}を消費して、Sonic Waveが当たった{3}の敵ユニットにダッシュし、{4}を与える。(追加ダメージはMinionに対して400DMが上限)")
                 .variable(1, PhysicalDamage, 50, 30, bounusAD(0.9))
                 .variable(2, Energy, 30)
@@ -5409,7 +5563,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .cd(11, -1)
                 .range(1100)
                 .cost(Energy, 50, 0);
-        Safeguard.update()
+        SafeguardIronWill.update()
                 .active("対象の味方ユニットまで移動する。自身及び対象（味方Championに限る）は５秒間{1}を得る。このスキル使用後3秒間、下記のスキルが使用できる。<br><br>{2}を消費して、5秒間{3}と{4}を得る。")
                 .variable(1, Shield, 40, 40, ap(0.8))
                 .variable(2, Energy, 30)
@@ -5418,7 +5572,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .cd(9)
                 .cost(Energy, 50, 0)
                 .range(700);
-        Tempest.update()
+        TempestCripple.update()
                 .active("{1}の敵ユニットに{2}を与え、4秒間そのユニットの{3}。このスキルが敵ユニットに当たった場合、3秒間下記のスキルが使用できる。<br><br>{4}を消費して、Tempestが当たった{5}の敵ユニットに４秒間{6}を与える。これらの速度低下は時間と共に戻っていく。")
                 .variable(1, Radius, 450)
                 .variable(2, MagicDamage, 60, 35, bounusAD(1))
@@ -5501,13 +5655,13 @@ public class Skill extends Describable<SkillDescriptor> {
                 .cd(18, -2)
                 .range(425);
         RelentlessPursuit.update()
-                .active("指定方向にダッシュし、自身にかかっているスローを解除する。" + TheCulling.name + "発動中に敵Championをキルかアシストした場合このスキルの{1}する。")
+                .active("指定方向にダッシュし、自身にかかっているスローを解除する。" + TheCulling + "発動中に敵Championをキルかアシストした場合このスキルの{1}する。")
                 .variable(1, CDDecrease)
                 .mana(60, -15)
                 .cd(18, -2)
                 .range(425);
         TheCulling.update()
-                .active("3秒間、指定方向に{1}発の弾を連射し一発毎に{2}を与える（最大で{3}）。銃を連射している間は移動と" + RelentlessPursuit.name + "のみが可能であり、ミニオンに対しては400%のダメージを与える。また連射中にこのスキルを再使用することで連射を解除できる。")
+                .active("3秒間、指定方向に{1}発の弾を連射し一発毎に{2}を与える（最大で{3}）。銃を連射している間は移動と" + RelentlessPursuit + "のみが可能であり、ミニオンに対しては400%のダメージを与える。また連射中にこのスキルを再使用することで連射を解除できる。")
                 .variable(1, Value, 7.5, 0, amplify(AS, 7.5, 1.5))
                 .variable(2, PhysicalDamage, 40, 10, ap(0.1), bounusAD(0.25))
                 .variable(3, PhysicalDamage, 1040, 460, amplify(AP, 2.6, 0.4), amplify(BounusAD, 6.5, 1.0))
@@ -5634,7 +5788,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(100)
                 .cd(75);
         Highlander.update(P310)
-                .passive("Championを倒すと" + Highlander.name + "以外のスキルは{5}する。（アシストの場合は{6}）")
+                .passive("Championを倒すと" + Highlander + "以外のスキルは{5}する。（アシストの場合は{6}）")
                 .variable(5, CDDecrease, 18)
                 .variable(6, CDDecrease, 9)
                 .active("{4}間{1}、{2}し、{3}を得る。効果中にChampionを倒すと効果時間が{7}延長する。")
@@ -5643,7 +5797,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(4, Time, 10)
                 .variable(7, Time, 4);
         Highlander.update(P310A)
-                .passive("Championを倒すと（アシストを含む）" + Highlander.name + "以外のスキルは{5}する。")
+                .passive("Championを倒すと（アシストを含む）" + Highlander + "以外のスキルは{5}する。")
                 .variable(5, CDDecreaseRatio, 70);
     }
 
@@ -5760,7 +5914,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(70, 15)
                 .cd(12)
                 .range(650);
-        FuryOftheSands.update()
+        FuryOfTheSands.update()
                 .active("15秒間自身の周りに砂嵐を発生させ{1}増加し、周囲の敵ユニットに毎秒{2}を与える。また効果中は通常攻撃の{3}し、スキルの{4}し、このスキルで与えたダメージの5%を自身の攻撃力に加える。毎秒ダメージの上限は240、増加攻撃力の上限は300。")
                 .variable(1, Health, 300, 150)
                 .variable(2, MagicDamage, 0, 0, amplify(TargetMaxHealthRatio, 3, 1, ap(0.01)))
@@ -5814,20 +5968,20 @@ public class Skill extends Describable<SkillDescriptor> {
 
     private static void Nidalee() {
         Prowl.update().passive("茂みに入ると{1}する。この効果は茂みから出ても2秒間持続する。").variable(-1, MSRatio, 15);
-        JavelinToss.update()
+        JavelinTossTakedown.update()
                 .active("指定方向に槍を投げて当たった敵ユニットに{1}を与える。槍が命中した時のNidaleeとターゲットの間の距離に比例して与えるダメージが増加する。最大で{2}。")
                 .variable(1, MagicDamage, 55, 40, ap(0.65))
                 .variable(2, MagicDamage, 137.5, 100, ap(1.625))
                 .mana(50, 10)
                 .cd(5)
                 .range(1500);
-        JavelinToss.update(P314).active("指定方向に槍を投げて当たった敵ユニットに{1}を与える。槍が投げた距離に比例して与えるダメージが増加する。最大で{2}。");
+        JavelinTossTakedown.update(P314).active("指定方向に槍を投げて当たった敵ユニットに{1}を与える。槍が投げた距離に比例して与えるダメージが増加する。最大で{2}。");
         Takedown.update()
                 .active("次に行う通常攻撃のダメージが{1}増加する。対象が受けているダメージに比例してダメージが増加する。最大で{2}。")
                 .variable(1, PhysicalDamage, 40, 30)
                 .variable(2, PhysicalDamage, 120, 90, ad(2))
                 .cd(5);
-        Bushwhack.update()
+        BushwhackPounce.update()
                 .active("指定地点に罠を仕掛ける。敵ユニットが罠を踏むと発動し、対象の敵ユニットとその周囲の敵ユニットに2秒かけて{1}を与え、{5}間{2}と{3}を与え{4}。罠は4分間持続する。罠を設置してから2秒間の間は罠は発動しない。")
                 .variable(1, MagicDamage, 80, 45, ap(0.4))
                 .variable(2, ARReductionRatio, 20, 5)
@@ -5837,13 +5991,13 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(60, 15)
                 .cd(18)
                 .range(900);
-        Bushwhack.update(P314).variable(5, Time, 8);
+        BushwhackPounce.update(P314).variable(5, Time, 8);
         Pounce.update()
                 .active("前方に飛びかかり着地地点の敵ユニットに{1}を与える。")
                 .variable(1, MagicDamage, 125, 50, ap(0.4))
                 .cd(3.5)
                 .range(350);
-        PrimalSurge.update()
+        PrimalSurgeSwipe.update()
                 .active("対象の味方Championの{1}し、7秒間{2}する。")
                 .variable(1, RestoreHealth, 50, 35, ap(0.7))
                 .variable(2, ASRatio, 20, 10)
@@ -6029,7 +6183,7 @@ public class Skill extends Describable<SkillDescriptor> {
     private static void Rammus() {
         SpikedShell.update().passive("{1}を得る。").variable(1, AD, 0, 0, amplify(AR, 0.45));
         Powerball.update()
-                .active("7秒間徐々に移動速度が増加し、最大で{5}する。最初に当たった敵ユニットと自身の周囲({1})にいる敵ユニットに{2}、{3}、3秒間の{4}を与える。スキルを再使用するか" + DefensiveBallCurl.name + "を使用するとキャンセルされる。")
+                .active("7秒間徐々に移動速度が増加し、最大で{5}する。最初に当たった敵ユニットと自身の周囲({1})にいる敵ユニットに{2}、{3}、3秒間の{4}を与える。スキルを再使用するか" + DefensiveBallCurl + "を使用するとキャンセルされる。")
                 .variable(1, Radius, 200)
                 .variable(2, MagicDamage, 100, 50, ap(1))
                 .variable(3, Knockup, 0.75)
@@ -6038,7 +6192,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(70, 10)
                 .cd(10)
                 .update(P315)
-                .active("7秒間徐々に移動速度が増加し、最大で{5}する。最初に当たった敵ユニットと自身の周囲({1})にいる敵ユニットに{2}、{3}、3秒間の{4}を与える。" + DefensiveBallCurl.name + "を使用するとキャンセルされる。");
+                .active("7秒間徐々に移動速度が増加し、最大で{5}する。最初に当たった敵ユニットと自身の周囲({1})にいる敵ユニットに{2}、{3}、3秒間の{4}を与える。" + DefensiveBallCurl + "を使用するとキャンセルされる。");
         DefensiveBallCurl.update()
                 .active("6秒間{1}と{2}を得て、Rammusを通常攻撃した敵ユニットに{3}を与える。効果中にPowerballを使用すると効果がキャンセルされる。また、このスキルを再使用することで効果をキャンセルできる。")
                 .variable(1, AR, 40, 20)
@@ -6098,7 +6252,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(3, Snare, 1)
                 .cd(12, -1)
                 .range(575);
-        ThrillOftheHunt.update()
+        ThrillOfTheHunt.update()
                 .active("1秒後に{1}になり、{2}の敵Champion全員の{3}。ステルス準備中に攻撃を行うかダメージを受ける度に、ステルス状態になるのに必要な時間が1秒増加する。ステルス準備開始から3秒経過するとダメージを受けていてもステルス状態になる。ステルス状態の間は{4}し、0.75秒毎に1 Ferocityを得る。これらの効果はステルス状態が解除されると終了する。")
                 .variable(1, Stealth, 7)
                 .variable(2, Radius, 2000, 1000)
@@ -6143,7 +6297,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(3, Time, 1.5)
                 .update(P402)
                 .variable(2, Shield, 90, 30, bounusAD(1));
-        BladeOftheExile.update()
+        BladeOfTheExile.update()
                 .active("15秒間折れた剣の刃を再生させ、{1}増加し、射程が増加する(通常攻撃: {2} Broken Wings: {3} Ki Burst: {4})。また、このスキルを再度使用することで一度だけ0.5秒後に指定方向に巨大な衝撃波を発生させ、範囲内の敵ユニットに{5}与える。対象が受けているダメージに比例して与えるダメージが増加して、最大DMは{6}。")
                 .variable(1, AD, 0, 0, ad(0.2))
                 .variable(2, Range, 200)
@@ -6210,7 +6364,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .passive("敵Championに通常攻撃でダメージを与えると、2秒間{1}する。")
                 .variable(-1, MSRatio, 50)
                 .update(P306)
-                .passive(("敵Championに通常攻撃か" + BoomerangBlade.name + "もしくは" + Ricochet.name + "でダメージを与えると、2秒間{1}する。"))
+                .passive(("敵Championに通常攻撃か" + BoomerangBlade + "もしくは" + Ricochet + "でダメージを与えると、2秒間{1}する。"))
                 .update(P315)
                 .variable(-1, MSRatio, new Per5LevelWith18(30, 5));
         BoomerangBlade.update()
@@ -6272,7 +6426,7 @@ public class Skill extends Describable<SkillDescriptor> {
     }
 
     private static void Skarner() {
-        Energize.update()
+        CrystallizingSting.update()
                 .passive("通常攻撃を行うたびに、 Skarnerのすべてのスキルの{1}される(対象がChampionの場合は{2})。建物に対しては無効。")
                 .variable(1, CDDecrease, 0.5)
                 .variable(2, CDDecrease, 1);
@@ -6331,7 +6485,7 @@ public class Skill extends Describable<SkillDescriptor> {
 
     private static void Sona() {
         PowerChord.update()
-                .passive("Auraを切り替えても、以前のAuraの効果が1秒間持続する。切替時は他のAuraスキルが0.5秒間CDになる。また、3回スキルを使用した後の通常攻撃に{1}と、そのとき展開しているAuraに応じた追加効果が発生する。<br>" + HymnOfValor.name + " : 追加{1}を与える。<br>" + AriaOfPerseverance.name + " : {3}間対象が与えるダメージが{4}減少するDebuffを与える。<br>" + SongOfCelerity.name + " : 2秒間{2}を与える。")
+                .passive("Auraを切り替えても、以前のAuraの効果が1秒間持続する。切替時は他のAuraスキルが0.5秒間CDになる。また、3回スキルを使用した後の通常攻撃に{1}と、そのとき展開しているAuraに応じた追加効果が発生する。<br>" + HymnOfValor + " : 追加{1}を与える。<br>" + AriaOfPerseverance + " : {3}間対象が与えるダメージが{4}減少するDebuffを与える。<br>" + SongOfCelerity + " : 2秒間{2}を与える。")
                 .variable(1, MagicDamage, 8, 0, amplify(Lv, 10))
                 .variable(2, MSSlowRatio, 40)
                 .variable(3, Time, 4)
@@ -6346,7 +6500,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(4, Percentage, 20, 0, ap(0.02))
                 .variable(2, MSSlowRatio, 40, 0, ap(0.04));
         HymnOfValor.update()
-                .active("最も近い敵ユニット2体に{4}を与える。Sonaの通常攻撃範囲内に敵Championがいる場合、それらを優先して狙う。" + Crescendo.name + "以外の別のスキルを使うまで{1}の味方Championは{2}と{3}を得る。")
+                .active("最も近い敵ユニット2体に{4}を与える。Sonaの通常攻撃範囲内に敵Championがいる場合、それらを優先して狙う。" + Crescendo + "以外の別のスキルを使うまで{1}の味方Championは{2}と{3}を得る。")
                 .variable(1, Radius, 1000)
                 .variable(2, AD, 4, 4)
                 .variable(3, AP, 4, 4)
@@ -6356,7 +6510,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .range(700);
         HymnOfValor.update(P314).variable(4, MagicDamage, 50, 50, ap(0.5));
         AriaOfPerseverance.update()
-                .active("近くにいる最もHPが減っている味方Champion1体とSonaは{1}し、3秒間{2}と{3}を得る。" + Crescendo.name + "以外の別のスキルを使うまで{4}の味方Championは{5}と{6}を得る。")
+                .active("近くにいる最もHPが減っている味方Champion1体とSonaは{1}し、3秒間{2}と{3}を得る。" + Crescendo + "以外の別のスキルを使うまで{4}の味方Championは{5}と{6}を得る。")
                 .variable(1, RestoreHealth, 40, 20, ap(0.25))
                 .variable(2, AR, 8, 3)
                 .variable(3, MR, 8, 3)
@@ -6373,7 +6527,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(6, MR, 6, 1);
         AriaOfPerseverance.update(P314).variable(1, RestoreHealth, 40, 15, ap(0.25));
         SongOfCelerity.update()
-                .active("1.5秒間{1}の味方ユニットは{2}する。" + Crescendo.name + "以外の別のスキルを使うまで{1}の味方Championは{3}する")
+                .active("1.5秒間{1}の味方ユニットは{2}する。" + Crescendo + "以外の別のスキルを使うまで{1}の味方Championは{3}する")
                 .variable(1, Radius, 1000)
                 .variable(2, MSRatio, 6, 2)
                 .variable(3, MSRatio, 4, 4)
@@ -6403,12 +6557,12 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(20, 15)
                 .cd(2.5);
         Starcall.update(P314)
-                .active("{1}の敵ユニットに{2}と{3}を与える。この減少効果は5秒間持続し最大10回まで累積する。また、このスキルが敵Championに命中すると、" + AstralBlessing + "の{4}する。")
+                .active("{1}の敵ユニットに{2}と{3}を与える。この減少効果は5秒間持続し最大10回まで累積する。また、このスキルが敵Championに命中すると、" + AstralInfusion + "の{4}する。")
                 .variable(2, MagicDamage, 60, 35, ap(0.4))
                 .variable(3, MRReduction, 6, 0, ap(0.01))
                 .variable(4, CDDecreaseRatio, 5, 1.25)
                 .mana(30, 10);
-        AstralBlessing.update()
+        AstralInfusion.update()
                 .active("対象の味方ユニットは{1}し、{3}間{2}を得る。")
                 .variable(1, RestoreHealth, 70, 70, ap(0.45))
                 .variable(2, AR, 25, 20)
@@ -6416,19 +6570,19 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(80, 30)
                 .cd(20)
                 .range(750);
-        AstralBlessing.update(P314)
+        AstralInfusion.update(P314)
                 .variable(1, RestoreHealth, 70, 50, ap(0.35))
                 .variable(2, AR, 50, 15, ap(0.15))
                 .variable(3, Time, 2)
                 .mana(80, 20);
-        Infuse.update()
+        Equinox.update()
                 .active("対象の味方Championに使用すると{1}する。敵ユニットに使用すると{2}と{3}を与える。このスキルはSoraka自身を対象とすることが出来ない。")
                 .variable(1, RestoreMana, 40, 40)
                 .variable(2, MagicDamage, 50, 50, ap(0.6))
                 .variable(3, Silence, 1.5, 0.25)
                 .cd(10)
                 .range(725);
-        Infuse.update(P314)
+        Equinox.update(P314)
                 .active("対象の味方Championに使用すると{1}し、Sorakaは{4}を失う。敵ユニットに使用すると{2}と{3}を与える。このスキルはSoraka自身を対象とすることが出来ない。")
                 .variable(1, RestoreMana, 20, 20, amplify(Mana, 0.05))
                 .variable(2, MagicDamage, 40, 30, ap(0.4), amplify(Mana, 0.05))
@@ -6729,7 +6883,7 @@ public class Skill extends Describable<SkillDescriptor> {
 
     private static void Thresh() {
         Damnation.update()
-                .passive("{1}で敵ユニットが死んだ場合、一定の確率で魂を落とす。魂へ近づくか" + DarkPassage.name + "のランタンを魂の近くに置くとその魂を回収し、{2}と{3}を得る。落とした魂は15秒間持続し、敵チームがThreshの視界を得ていた場合、敵チームからも視認することができる。")
+                .passive("{1}で敵ユニットが死んだ場合、一定の確率で魂を落とす。魂へ近づくか" + DarkPassage + "のランタンを魂の近くに置くとその魂を回収し、{2}と{3}を得る。落とした魂は15秒間持続し、敵チームがThreshの視界を得ていた場合、敵チームからも視認することができる。")
                 .variable(1, Radius, 2000)
                 .variable(2, AR, 0, 0, amplify(Stack, 1))
                 .variable(3, AP, 0, 0, amplify(Stack, 1));
@@ -6911,7 +7065,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .range(850);
 
         LifeFormDisintegrationRay.update(P403)
-                .active("最大2.5秒間カーソルの場所目掛けて貫通するレーザーを放ち、0.25秒毎に{1}にいる敵ユニットに{2}と1秒間{3}を与える（2.5秒間当て続けた場合は{4}）。また0.5秒毎に" + OrganicDeconstruction.name + "のスタックが増加する。スキルを再使用することで中断できる。ミニオン(モンスターには無効)に対しては500%のダメージを与える。")
+                .active("最大2.5秒間カーソルの場所目掛けて貫通するレーザーを放ち、0.25秒毎に{1}にいる敵ユニットに{2}と1秒間{3}を与える（2.5秒間当て続けた場合は{4}）。また0.5秒毎に" + OrganicDeconstruction + "のスタックが増加する。スキルを再使用することで中断できる。ミニオン(モンスターには無効)に対しては500%のダメージを与える。")
                 .variable(1, Radius)
                 .variable(2, MagicDamage, 50, 20, ap(0.06))
                 .variable(3, MSSlowRatio, 20)
@@ -6923,7 +7077,7 @@ public class Skill extends Describable<SkillDescriptor> {
     }
 
     private static void Viktor() {
-        EvolvingTechnology.update()
+        GloriousEvolution.update()
                 .passive("Hex Coreという、自身のステータスとスキルの効果を強化するアイテムを所持している。Hex Coreは1度だけショップで1000Gを消費して以下の３通りのいずれかにアップグレードすることが出来る。Hex CoreはViktorのアイテムスロットを1つ占有し、売却することは出来ない。<br>Hex Core : {1}を得る。<br>Augment Power : {1}、{2}、{3}を得る。また、Power Transfer使用・命中時に移動速度が3秒間30%増加する。<br>Augment Gravity : {1}、{4}、{5}、{6}を得る。また、Gravity Fieldの射程が30%増加する。<br>Augment Death : {1}、{7}を得る。また、Death Rayにダメージの30%分の追加魔法DMが付与される。このダメージは4秒間かけて与える。")
                 .variable(-1, AP, 0, 0, amplify(Lv, 3))
                 .variable(-2, Health, 220)
@@ -6932,7 +7086,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .variable(-5, CDR, 10)
                 .variable(-6, Mreg, 5)
                 .variable(-7, AP, 45);
-        PowerTransfer.update()
+        SiphonPower.update()
                 .active("対象の敵ユニットに{1}を与え、3秒間{2}を得る。")
                 .variable(1, MagicDamage, 80, 45, ap(0.65))
                 .variable(2, Shield, 0, 0, amplify(DealtDamageRatio, 40))
@@ -6967,7 +7121,7 @@ public class Skill extends Describable<SkillDescriptor> {
     }
 
     private static void Xerath() {
-        AscendedForm.update()
+        ManaSurge.update()
                 .passive("{1}を得る。")
                 .variable(1, AR, 0, 0, ap(0.15))
                 .update(P402)
@@ -6987,7 +7141,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .cd(9, -1)
                 .mana(80, 10)
                 .range(750);
-        LocusOfPower.update()
+        EyeOfDestruction.update()
                 .active("0.5秒詠唱後に移動が不可能になる代わりに、全てのスキルの射程が400増加し、{1}を得る。この効果は8秒経過するか、再度このスキルを使用する事で解除される。このスキルが解除された時に2秒間{2}する。")
                 .variable(1, MRPenRatio, 16, 6)
                 .variable(2, MSRatio, 35)
@@ -7052,7 +7206,7 @@ public class Skill extends Describable<SkillDescriptor> {
                         215, 250, 290, 340, 400, 470}));
 
         SteelTempest.update(P315)
-                .active("指定した方向の直線上にいる全ての敵({1})に{2}を与える。" + WhirlingDeath.name + "の使用中に起動した場合、{3}の敵にダメージを与える。このスキルは3回まで連続して使用でき、3度目の使用では{4}になり{5}を追加で与える。このスキルは通常攻撃として扱われ(クリティカル適用)、固定のCDを持つが、増加AS1.72%毎に再使用時間が1%減少する（最大で66%）。{6}。")
+                .active("指定した方向の直線上にいる全ての敵({1})に{2}を与える。" + WhirlingDeath + "の使用中に起動した場合、{3}の敵にダメージを与える。このスキルは3回まで連続して使用でき、3度目の使用では{4}になり{5}を追加で与える。このスキルは通常攻撃として扱われ(クリティカル適用)、固定のCDを持つが、増加AS1.72%毎に再使用時間が1%減少する（最大で66%）。{6}。")
                 .variable(1, Distance, 475)
                 .variable(2, PhysicalDamage, 20, 20, ad(1))
                 .variable(3, Radius, 375)
@@ -7062,7 +7216,7 @@ public class Skill extends Describable<SkillDescriptor> {
                 .cd(-6, 0.5);
 
         WindWall.update(P315)
-                .passive(SweepingBlade.name + "か" + LastBreath.name + "を使用すると最大値の{1}のFlowを得る。")
+                .passive(SweepingBlade + "か" + LastBreath + "を使用すると最大値の{1}のFlowを得る。")
                 .variable(1, Percentage, 4, 4)
                 .active("3.75秒間持続する{2}の壁を作り出す。この壁はタワー攻撃を除く全ての投射物をブロックする。")
                 .variable(2, Length, 300, 50)
@@ -7303,7 +7457,7 @@ public class Skill extends Describable<SkillDescriptor> {
     }
 
     private static void Zyra() {
-        RiseOftheThorns.update()
+        RiseOfTheThorns.update()
                 .passive("死亡すると2秒後にその場で植物に変形し、指定方向に一度だけ貫通する光線を放つことができる。光線に当たった敵ユニットに{1}を与える。")
                 .variable(1, TrueDamage, 80, 0, amplify(Lv, 20))
                 .range(1500);
