@@ -9,7 +9,7 @@
  */
 package teemowork.model;
 
-import static teemowork.api.RiotChampionData.*;
+import static teemowork.model.Champion.*;
 import static teemowork.model.SkillKey.*;
 import static teemowork.model.Status.*;
 import static teemowork.model.Version.*;
@@ -41,19 +41,19 @@ import teemowork.model.variable.VariableResolver.Refer;
 public class Skill extends Describable<SkillDescriptor> {
 
     /** The skill data. */
-    private final String name;
+    public final String name;
 
     /** The skill data. */
-    private final String localized;
+    public final String localized;
+
+    /** The skill key type. */
+    public final SkillKey key;
 
     /** The owner champion. */
     private final String owner;
 
     /** The icon position. */
     private final float iconPosition;
-
-    /** The skill key type. */
-    public final SkillKey key;
 
     /**
      * The skill definition.
