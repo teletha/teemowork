@@ -543,7 +543,7 @@ public class Item extends Describable<ItemDescriptor> {
             ability.passive("モンスターに対する攻撃命中時に2秒間かけて{1}を与える。また、モンスターとの戦闘中、毎秒{2}、{3}する（非好戦的なモンスターの場合、自動回復効果はなし）。")
                     .variable(1, MagicDamage, 30)
                     .variable(2, RestoreHealth, 7)
-                    .variable(3, RestoreMana, 3);
+                    .variable(3, RestoreMana, 4);
         });
     });
 
@@ -1431,8 +1431,15 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Zeke's Herald */
-    public static final Item ZekesHerald = new Item(RiotItemData.ZekesHerald, item -> {
-        item.health(250).cooldownReduction(20).add(Ability.ZekesHeraldAura);
+    public static final Item ZekesHarbinger = new Item(RiotItemData.ZekesHarbinger, item -> {
+        item.mana(250).armor(30).abilityPower(50).cooldownReduction(10).add(ability -> {
+            ability.passive("{1}にConduitを使用した味方がいる場合、チャージを生成する。攻撃もしくはスキルを使用することで追加のチャージを生成する。最大100チャージまで貯まり、8秒間持続する。最大チャージ時にダメージを与えると、全てのチャージを消費して6秒間あなたと対象の味方は{2}し{3}する。")
+                    .variable(1, Radius, 1000)
+                    .variable(2, APRatio, 20)
+                    .variable(3, Critical, 50);
+        }).add(ability -> {
+            ability.active("味方チャンピオンを指定する。以前の対象との関係は破棄される。{1}。").variable(1, ItemCD, 60);
+        });
     });
 
     /** Zephyr */

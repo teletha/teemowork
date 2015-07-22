@@ -22,34 +22,34 @@ public class RiotItemData {
     public static final RiotItemData RejuvenationBead = new RiotItemData("Rejuvenation Bead", "再生の珠", 1006, 180, 180, 126, null, new int[] {3077, 3112, 2051, 2053, 3105, 3801}, 0, 96, 0, 0);
 
     /** Giant's Belt Definition */
-    public static final RiotItemData GiantsBelt = new RiotItemData("Giant's Belt", "巨人のベルト", 1011, 600, 1000, 700, new int[] {1028}, new int[] {3083, 3143, 3116, 3022, 3084}, 0, 144, 0, 2);
+    public static final RiotItemData GiantsBelt = new RiotItemData("Giant's Belt", "巨人のベルト", 1011, 600, 1000, 700, new int[] {1028}, new int[] {3083, 3143, 3116, 3022, 3084, 3742}, 0, 144, 0, 2);
 
     /** Cloak of Agility Definition */
-    public static final RiotItemData CloakofAgility = new RiotItemData("Cloak of Agility", "敏捷のマント", 1018, 730, 730, 511, null, new int[] {3046, 3031, 3104, 3185}, 0, 192, 0, 0);
+    public static final RiotItemData CloakofAgility = new RiotItemData("Cloak of Agility", "敏捷のマント", 1018, 730, 730, 511, null, new int[] {3046, 3031, 3104, 3185, 3150}, 0, 192, 0, 0);
 
     /** Blasting Wand Definition */
-    public static final RiotItemData BlastingWand = new RiotItemData("Blasting Wand", "破裂の杖", 1026, 850, 850, 595, null, new int[] {3001, 3135, 3027, 3029, 3089, 3124, 3151, 3286}, 0, 240, 0, 0);
+    public static final RiotItemData BlastingWand = new RiotItemData("Blasting Wand", "破裂の杖", 1026, 850, 850, 595, null, new int[] {3001, 3135, 3027, 3029, 3089, 3124, 3151}, 0, 240, 0, 0);
 
     /** Sapphire Crystal Definition */
     public static final RiotItemData SapphireCrystal = new RiotItemData("Sapphire Crystal", "サファイアクリスタル", 1027, 400, 400, 280, null, new int[] {3057, 3070, 3073, 3010, 3024}, 0, 288, 0, 0);
 
     /** Ruby Crystal Definition */
-    public static final RiotItemData RubyCrystal = new RiotItemData("Ruby Crystal", "ルビークリスタル", 1028, 400, 400, 280, null, new int[] {1011, 2049, 2045, 2051, 3010, 3022, 3044, 3067, 3105, 3211, 3751, 3801, 3102, 3136}, 0, 336, 0, 0);
+    public static final RiotItemData RubyCrystal = new RiotItemData("Ruby Crystal", "ルビークリスタル", 1028, 400, 400, 280, null, new int[] {1011, 2049, 2045, 2051, 3010, 3022, 3044, 3067, 3105, 3211, 3751, 3801, 3102, 3136, 3829}, 0, 336, 0, 0);
 
     /** Cloth Armor Definition */
     public static final RiotItemData ClothArmor = new RiotItemData("Cloth Armor", "布の鎧", 1029, 300, 300, 210, null, new int[] {3047, 1031, 3191, 3024, 3082, 3075, 2053}, 0, 384, 0, 0);
 
     /** Chain Vest Definition */
-    public static final RiotItemData ChainVest = new RiotItemData("Chain Vest", "チェインベスト", 1031, 450, 750, 525, new int[] {1029}, new int[] {3075, 3068, 3026}, 0, 432, 0, 2);
+    public static final RiotItemData ChainVest = new RiotItemData("Chain Vest", "チェインベスト", 1031, 450, 750, 525, new int[] {1029}, new int[] {3075, 3068, 3026, 3742}, 0, 432, 0, 2);
 
     /** Null-Magic Mantle Definition */
     public static final RiotItemData NullMagicMantle = new RiotItemData("Null-Magic Mantle", "抗魔のマント", 1033, 500, 500, 350, null, new int[] {3111, 3211, 1057, 3028, 3140, 3155, 3105, 3091}, 0, 0, 48, 0);
 
     /** Long Sword Definition */
-    public static final RiotItemData LongSword = new RiotItemData("Long Sword", "ロングソード", 1036, 360, 360, 252, null, new int[] {1053, 3044, 3134, 3155, 3077, 3035, 3154, 3141, 3144, 3122, 3159}, 0, 48, 48, 0);
+    public static final RiotItemData LongSword = new RiotItemData("Long Sword", "ロングソード", 1036, 360, 360, 252, null, new int[] {1053, 3044, 3134, 3155, 3077, 3035, 3154, 3141, 3144, 3122, 3159, 3924}, 0, 48, 48, 0);
 
     /** Pickaxe Definition */
-    public static final RiotItemData Pickaxe = new RiotItemData("Pickaxe", "ツルハシ", 1037, 875, 875, 613, null, new int[] {3035, 3124, 3031, 3156, 3077, 3104, 3184, 3004, 3008, 3022, 3172, 3181}, 0, 96, 48, 0);
+    public static final RiotItemData Pickaxe = new RiotItemData("Pickaxe", "ツルハシ", 1037, 875, 875, 613, null, new int[] {3035, 3124, 3031, 3156, 3077, 3104, 3184, 3004, 3008, 3022, 3150, 3172, 3181, 3652}, 0, 96, 48, 0);
 
     /** B. F. Sword Definition */
     public static final RiotItemData BFSword = new RiotItemData("B. F. Sword", "B. F. ソード", 1038, 1550, 1550, 1085, null, new int[] {3031, 3072, 3139, 3508}, 0, 144, 48, 0);
@@ -58,7 +58,7 @@ public class RiotItemData {
     public static final RiotItemData HuntersMachete = new RiotItemData("Hunter's Machete", "狩人の山刀", 1039, 400, 400, 280, null, new int[] {3706, 3711, 3715, 3713}, 0, 192, 48, 0);
 
     /** Dagger Definition */
-    public static final RiotItemData Dagger = new RiotItemData("Dagger", "ダガー", 1042, 450, 450, 315, null, new int[] {3006, 3106, 3086, 3101, 1043, 3085, 3046, 3154, 3091, 3159}, 0, 240, 48, 0);
+    public static final RiotItemData Dagger = new RiotItemData("Dagger", "ダガー", 1042, 450, 450, 315, null, new int[] {3006, 3106, 3086, 3101, 1043, 3085, 3046, 3154, 3091, 3159, 3652}, 0, 240, 48, 0);
 
     /** Recurve Bow Definition */
     public static final RiotItemData RecurveBow = new RiotItemData("Recurve Bow", "速射の弓", 1043, 200, 1100, 770, new int[] {1042, 1042}, new int[] {3091, 3153, 3085, 3710, 3718, 3726, 3722}, 0, 288, 48, 2);
@@ -67,10 +67,10 @@ public class RiotItemData {
     public static final RiotItemData BrawlersGloves = new RiotItemData("Brawler's Gloves", "喧嘩屋の手袋", 1051, 400, 400, 280, null, new int[] {3086, 3093, 3122}, 0, 336, 48, 0);
 
     /** Amplifying Tome Definition */
-    public static final RiotItemData AmplifyingTome = new RiotItemData("Amplifying Tome", "増魔の書", 1052, 435, 435, 305, null, new int[] {3108, 3191, 3057, 3136, 3135, 3145, 3113, 3090, 3116, 3151, 3041, 3089, 3165, 3174}, 0, 384, 48, 0);
+    public static final RiotItemData AmplifyingTome = new RiotItemData("Amplifying Tome", "増魔の書", 1052, 435, 435, 305, null, new int[] {3108, 3191, 3057, 3136, 3135, 3145, 3113, 3090, 3116, 3041, 3050, 3089, 3165, 3174, 3430, 3431, 3434, 3744}, 0, 384, 48, 0);
 
     /** Vampiric Scepter Definition */
-    public static final RiotItemData VampiricScepter = new RiotItemData("Vampiric Scepter", "吸血の権杖", 1053, 440, 800, 560, new int[] {1036}, new int[] {3144, 3181, 3072, 3074, 3508, 3050}, 0, 432, 48, 2);
+    public static final RiotItemData VampiricScepter = new RiotItemData("Vampiric Scepter", "吸血の権杖", 1053, 440, 800, 560, new int[] {1036}, new int[] {3144, 3181, 3072, 3074, 3508, 3150, 3924}, 0, 432, 48, 2);
 
     /** Doran's Shield Definition */
     public static final RiotItemData DoransShield = new RiotItemData("Doran's Shield", "ドランの盾", 1054, 440, 440, 176, null, null, 0, 0, 96, 0);
@@ -192,8 +192,29 @@ public class RiotItemData {
     /** Enchantment: Homeguard Definition */
     public static final RiotItemData IonianBootsofLucidityHomeguard = new RiotItemData("Ionian Boots of Lucidity [Homeguard]", "アイオニアブーツ [防衛]", 1334, 475, 1475, 1033, new int[] {3158}, null, 3, 192, 0, 3);
 
+    /** Enchantment: Teleport Definition */
+    public static final RiotItemData BerserkersGreavesTeleport = new RiotItemData("Berserker's Greaves [Teleport]", "バーサーカーのブーツ [Teleport]", 1335, 600, 1600, 1120, new int[] {3006}, null, 3, 192, 48, 3);
+
+    /** Enchantment: Teleport Definition */
+    public static final RiotItemData BootsofSwiftnessTeleport = new RiotItemData("Boots of Swiftness [Teleport]", "迅速のブーツ [Teleport]", 1336, 600, 1600, 1120, new int[] {3009}, null, 3, 240, 48, 3);
+
+    /** Enchantment: Teleport Definition */
+    public static final RiotItemData SorcerersShoesTeleport = new RiotItemData("Sorcerer's Shoes [Teleport]", "魔道士の靴 [Teleport]", 1337, 600, 1700, 1190, new int[] {3020}, null, 3, 288, 48, 3);
+
+    /** Enchantment: Teleport Definition */
+    public static final RiotItemData NinjaTabiTeleport = new RiotItemData("Ninja Tabi [Teleport]", "忍者足袋 [Teleport]", 1338, 600, 1600, 1120, new int[] {3047}, null, 3, 336, 48, 3);
+
+    /** Enchantment: Teleport Definition */
+    public static final RiotItemData MercurysTreadsTeleport = new RiotItemData("Mercury's Treads [Teleport]", "マーキュリーの靴 [Teleport]", 1339, 600, 1800, 1260, new int[] {3111}, null, 3, 384, 48, 3);
+
+    /** Enchantment: Teleport Definition */
+    public static final RiotItemData BootsofMobilityTeleport = new RiotItemData("Boots of Mobility [Teleport]", "踏破のブーツ [Teleport]", 1340, 600, 1400, 980, new int[] {3117}, null, 3, 432, 48, 3);
+
+    /** Enchantment: Teleport Definition */
+    public static final RiotItemData IonianBootsofLucidityTeleport = new RiotItemData("Ionian Boots of Lucidity [Teleport]", "アイオニアブーツ [Teleport]", 1341, 600, 1600, 1120, new int[] {3158}, null, 3, 0, 96, 3);
+
     /** Health Potion Definition */
-    public static final RiotItemData HealthPotion = new RiotItemData("Health Potion", "ライフポーション", 2003, 35, 35, 14, null, null, 0, 0, 144, 0);
+    public static final RiotItemData HealthPotion = new RiotItemData("Health Potion", "体力ポーション", 2003, 35, 35, 14, null, null, 0, 0, 144, 0);
 
     /** Mana Potion Definition */
     public static final RiotItemData ManaPotion = new RiotItemData("Mana Potion", "マナポーション", 2004, 35, 35, 14, null, null, 0, 48, 144, 0);
@@ -250,16 +271,16 @@ public class RiotItemData {
     public static final RiotItemData Manamune = new RiotItemData("Manamune", "マナ・ムネ", 3004, 605, 2200, 1540, new int[] {3070, 1037}, new int[] {3042}, 0, 48, 240, 3);
 
     /** Berserker's Greaves Definition */
-    public static final RiotItemData BerserkersGreaves = new RiotItemData("Berserker's Greaves", "バーサーカーのブーツ", 3006, 225, 1000, 700, new int[] {1001, 1042}, new int[] {1301, 1303, 1300, 1302, 1304}, 0, 96, 240, 2);
+    public static final RiotItemData BerserkersGreaves = new RiotItemData("Berserker's Greaves", "バーサーカーのブーツ", 3006, 225, 1000, 700, new int[] {1001, 1042}, new int[] {1301, 1303, 1300, 1302, 1304, 1335}, 0, 96, 240, 2);
 
     /** Boots of Swiftness Definition */
-    public static final RiotItemData BootsofSwiftness = new RiotItemData("Boots of Swiftness", "迅速のブーツ", 3009, 675, 1000, 700, new int[] {1001}, new int[] {1306, 1308, 1305, 1307, 1309}, 0, 240, 240, 2);
+    public static final RiotItemData BootsofSwiftness = new RiotItemData("Boots of Swiftness", "迅速のブーツ", 3009, 675, 1000, 700, new int[] {1001}, new int[] {1306, 1308, 1305, 1307, 1309, 1336}, 0, 240, 240, 2);
 
     /** Catalyst the Protector Definition */
     public static final RiotItemData CatalysttheProtector = new RiotItemData("Catalyst the Protector", "守護の触媒", 3010, 400, 1200, 840, new int[] {1028, 1027}, new int[] {3027, 3029, 3180, 3800}, 0, 288, 240, 2);
 
     /** Sorcerer's Shoes Definition */
-    public static final RiotItemData SorcerersShoes = new RiotItemData("Sorcerer's Shoes", "魔道士の靴", 3020, 775, 1100, 770, new int[] {1001}, new int[] {1311, 1313, 1310, 1312, 1314}, 0, 336, 240, 2);
+    public static final RiotItemData SorcerersShoes = new RiotItemData("Sorcerer's Shoes", "魔道士の靴", 3020, 775, 1100, 770, new int[] {1001}, new int[] {1311, 1313, 1310, 1312, 1314, 1337}, 0, 336, 240, 2);
 
     /** Frozen Mallet Definition */
     public static final RiotItemData FrozenMallet = new RiotItemData("Frozen Mallet", "氷結の大槌", 3022, 1025, 3300, 2310, new int[] {1028, 1011, 1037}, null, 0, 384, 240, 3);
@@ -268,7 +289,7 @@ public class RiotItemData {
     public static final RiotItemData TwinShadows = new RiotItemData("Twin Shadows", "双子の亡霊", 3023, 730, 2400, 1680, new int[] {3108, 3113}, null, 0, 432, 240, 3);
 
     /** Glacial Shroud Definition */
-    public static final RiotItemData GlacialShroud = new RiotItemData("Glacial Shroud", "氷河の盾", 3024, 250, 950, 665, new int[] {1027, 1029}, new int[] {3110, 3025, 3187}, 0, 0, 288, 2);
+    public static final RiotItemData GlacialShroud = new RiotItemData("Glacial Shroud", "氷河の盾", 3024, 250, 950, 665, new int[] {1027, 1029}, new int[] {3110, 3025, 3050, 3187}, 0, 0, 288, 2);
 
     /** Iceborn Gauntlet Definition */
     public static final RiotItemData IcebornGauntlet = new RiotItemData("Iceborn Gauntlet", "アイスボーンの籠手", 3025, 750, 2900, 2030, new int[] {3057, 3024}, null, 0, 48, 288, 3);
@@ -280,7 +301,7 @@ public class RiotItemData {
     public static final RiotItemData RodofAges = new RiotItemData("Rod of Ages", "歳月の杖", 3027, 650, 2700, 1890, new int[] {3010, 1026}, null, 0, 144, 288, 3);
 
     /** Chalice of Harmony Definition */
-    public static final RiotItemData ChaliceofHarmony = new RiotItemData("Chalice of Harmony", "調和の聖杯", 3028, 40, 900, 630, new int[] {1004, 1033, 1004}, new int[] {3174, 3222}, 0, 192, 288, 2);
+    public static final RiotItemData ChaliceofHarmony = new RiotItemData("Chalice of Harmony", "調和の聖杯", 3028, 40, 900, 630, new int[] {1004, 1033, 1004}, new int[] {3174, 3222, 3744, 3745}, 0, 192, 288, 2);
 
     /** Infinity Edge Definition */
     public static final RiotItemData InfinityEdge = new RiotItemData("Infinity Edge", "無限の神剣", 3031, 645, 3800, 2660, new int[] {1038, 1037, 1018}, null, 0, 288, 288, 2);
@@ -304,10 +325,10 @@ public class RiotItemData {
     public static final RiotItemData PhantomDancer = new RiotItemData("Phantom Dancer", "幻影の踊り手", 3046, 520, 2800, 1960, new int[] {1018, 3086, 1042}, null, 0, 144, 336, 3);
 
     /** Ninja Tabi Definition */
-    public static final RiotItemData NinjaTabi = new RiotItemData("Ninja Tabi", "忍者足袋", 3047, 375, 1000, 700, new int[] {1001, 1029}, new int[] {1316, 1318, 1315, 1317, 1319}, 0, 192, 336, 2);
+    public static final RiotItemData NinjaTabi = new RiotItemData("Ninja Tabi", "忍者足袋", 3047, 375, 1000, 700, new int[] {1001, 1029}, new int[] {1316, 1318, 1315, 1317, 1319, 1338}, 0, 192, 336, 2);
 
-    /** Zeke's Herald Definition */
-    public static final RiotItemData ZekesHerald = new RiotItemData("Zeke's Herald", "ジークの使者", 3050, 800, 2450, 1715, new int[] {3067, 1053}, null, 0, 288, 336, 3);
+    /** Zeke's Harbinger Definition */
+    public static final RiotItemData ZekesHarbinger = new RiotItemData("Zeke's Harbinger", "ジークの使者", 3050, 480, 2300, 1610, new int[] {1052, 3024, 1052}, null, 0, 288, 336, 3);
 
     /** Ohmwrecker Definition */
     public static final RiotItemData Ohmwrecker = new RiotItemData("Ohmwrecker", "撹乱石", 3056, 750, 2600, 1820, new int[] {2053, 3067}, null, 0, 336, 336, 3);
@@ -322,7 +343,7 @@ public class RiotItemData {
     public static final RiotItemData SpiritVisage = new RiotItemData("Spirit Visage", "精霊の鎧", 3065, 700, 2750, 1925, new int[] {3211, 3067}, null, 0, 0, 384, 3);
 
     /** Kindlegem Definition */
-    public static final RiotItemData Kindlegem = new RiotItemData("Kindlegem", "点火石", 3067, 450, 850, 595, new int[] {1028}, new int[] {3187, 3190, 3401, 3065, 3050, 3056, 3071}, 0, 48, 384, 2);
+    public static final RiotItemData Kindlegem = new RiotItemData("Kindlegem", "点火石", 3067, 450, 850, 595, new int[] {1028}, new int[] {3187, 3190, 3401, 3065, 3056, 3071, 3745, 3911}, 0, 48, 384, 2);
 
     /** Sunfire Cape Definition */
     public static final RiotItemData SunfireCape = new RiotItemData("Sunfire Cape", "灼熱の鎧", 3068, 850, 2600, 1820, new int[] {1031, 3751}, null, 0, 96, 384, 3);
@@ -400,19 +421,19 @@ public class RiotItemData {
     public static final RiotItemData AegisoftheLegion = new RiotItemData("Aegis of the Legion", "イージスの盾", 3105, 820, 1900, 1330, new int[] {1028, 1033, 1006}, new int[] {3190, 3060}, 1, 0, 48, 2);
 
     /** Fiendish Codex Definition */
-    public static final RiotItemData FiendishCodex = new RiotItemData("Fiendish Codex", "悪魔の古書", 3108, 385, 820, 574, new int[] {1052}, new int[] {3174, 3092, 3115, 3023, 3165, 3152, 3060, 3290}, 1, 96, 48, 2);
+    public static final RiotItemData FiendishCodex = new RiotItemData("Fiendish Codex", "悪魔の古書", 3108, 385, 820, 574, new int[] {1052}, new int[] {3174, 3092, 3115, 3023, 3165, 3152, 3060, 3290, 3433}, 1, 96, 48, 2);
 
     /** Frozen Heart Definition */
     public static final RiotItemData FrozenHeart = new RiotItemData("Frozen Heart", "凍れる心臓", 3110, 450, 2450, 1715, new int[] {3082, 3024}, null, 1, 144, 48, 3);
 
     /** Mercury's Treads Definition */
-    public static final RiotItemData MercurysTreads = new RiotItemData("Mercury's Treads", "マーキュリーの靴", 3111, 375, 1200, 840, new int[] {1001, 1033}, new int[] {1321, 1323, 1320, 1322, 1324}, 1, 192, 48, 2);
+    public static final RiotItemData MercurysTreads = new RiotItemData("Mercury's Treads", "マーキュリーの靴", 3111, 375, 1200, 840, new int[] {1001, 1033}, new int[] {1321, 1323, 1320, 1322, 1324, 1339}, 1, 192, 48, 2);
 
     /** Aether Wisp Definition */
-    public static final RiotItemData AetherWisp = new RiotItemData("Aether Wisp", "鬼火", 3113, 415, 850, 595, new int[] {1052}, new int[] {3023, 3290, 3100, 3285, 3286, 3504}, 1, 288, 48, 2);
+    public static final RiotItemData AetherWisp = new RiotItemData("Aether Wisp", "鬼火", 3113, 415, 850, 595, new int[] {1052}, new int[] {3023, 3290, 3100, 3285, 3504}, 1, 288, 48, 2);
 
     /** Forbidden Idol Definition */
-    public static final RiotItemData ForbiddenIdol = new RiotItemData("Forbidden Idol", "禁じられた偶像", 3114, 240, 600, 420, new int[] {1004, 1004}, new int[] {3069, 3165, 3222, 3504}, 1, 336, 48, 2);
+    public static final RiotItemData ForbiddenIdol = new RiotItemData("Forbidden Idol", "禁じられた偶像", 3114, 240, 600, 420, new int[] {1004, 1004}, new int[] {3069, 3165, 3222, 3433, 3504, 3840}, 1, 336, 48, 2);
 
     /** Nashor's Tooth Definition */
     public static final RiotItemData NashorsTooth = new RiotItemData("Nashor's Tooth", "ナッシャーの歯牙", 3115, 930, 3000, 2100, new int[] {3101, 3108}, null, 1, 384, 48, 3);
@@ -421,7 +442,7 @@ public class RiotItemData {
     public static final RiotItemData RylaisCrystalScepter = new RiotItemData("Rylai's Crystal Scepter", "リーライのクリスタル権杖", 3116, 315, 3000, 2100, new int[] {1058, 1052, 1011}, null, 1, 432, 48, 3);
 
     /** Boots of Mobility Definition */
-    public static final RiotItemData BootsofMobility = new RiotItemData("Boots of Mobility", "踏破のブーツ", 3117, 475, 800, 560, new int[] {1001}, new int[] {1326, 1328, 1325, 1327, 1329}, 1, 0, 96, 2);
+    public static final RiotItemData BootsofMobility = new RiotItemData("Boots of Mobility", "踏破のブーツ", 3117, 475, 800, 560, new int[] {1001}, new int[] {1326, 1328, 1325, 1327, 1329, 1340}, 1, 0, 96, 2);
 
     /** Guinsoo's Rageblade Definition */
     public static final RiotItemData GuinsoosRageblade = new RiotItemData("Guinsoo's Rageblade", "グインソーの荒ぶる刃", 3124, 865, 2590, 1813, new int[] {1026, 1037}, null, 1, 96, 96, 2);
@@ -433,7 +454,7 @@ public class RiotItemData {
     public static final RiotItemData VoidStaff = new RiotItemData("Void Staff", "ヴォイドの杖", 3135, 1215, 2500, 1750, new int[] {1026, 1052}, null, 1, 192, 96, 2);
 
     /** Haunting Guise Definition */
-    public static final RiotItemData HauntingGuise = new RiotItemData("Haunting Guise", "悲愴な仮面", 3136, 665, 1500, 1050, new int[] {1028, 1052}, new int[] {3151}, 1, 240, 96, 2);
+    public static final RiotItemData HauntingGuise = new RiotItemData("Haunting Guise", "悲愴な仮面", 3136, 665, 1500, 1050, new int[] {1028, 1052}, new int[] {3151, 3829}, 1, 240, 96, 2);
 
     /** Mercurial Scimitar Definition */
     public static final RiotItemData MercurialScimitar = new RiotItemData("Mercurial Scimitar", "水銀の三日月刀", 3139, 900, 3700, 2590, new int[] {1038, 3140}, null, 1, 336, 96, 3);
@@ -459,6 +480,9 @@ public class RiotItemData {
     /** Hextech Gunblade Definition */
     public static final RiotItemData HextechGunblade = new RiotItemData("Hextech Gunblade", "ヘクステック・ガンブレード", 3146, 800, 3400, 2380, new int[] {3144, 3145}, null, 1, 192, 144, 4);
 
+    /** Mirage Blade Definition */
+    public static final RiotItemData MirageBlade = new RiotItemData("Mirage Blade", "Mirage Blade", 3150, 795, 3200, 2240, new int[] {1053, 1037, 1018}, null, 3, 48, 96, 3);
+
     /** Liandry's Torment Definition */
     public static final RiotItemData LiandrysTorment = new RiotItemData("Liandry's Torment", "ライアンドリーの苦悶", 3151, 650, 3000, 2100, new int[] {3136, 1026}, null, 1, 240, 144, 3);
 
@@ -478,7 +502,7 @@ public class RiotItemData {
     public static final RiotItemData ZhonyasHourglass = new RiotItemData("Zhonya's Hourglass", "ゾーニャの砂時計", 3157, 550, 3000, 2100, new int[] {3191, 1058}, null, 1, 48, 192, 3);
 
     /** Ionian Boots of Lucidity Definition */
-    public static final RiotItemData IonianBootsofLucidity = new RiotItemData("Ionian Boots of Lucidity", "アイオニアブーツ", 3158, 675, 1000, 700, new int[] {1001}, new int[] {1331, 1333, 1330, 1332, 1334}, 1, 96, 192, 2);
+    public static final RiotItemData IonianBootsofLucidity = new RiotItemData("Ionian Boots of Lucidity", "アイオニアブーツ", 3158, 675, 1000, 700, new int[] {1001}, new int[] {1331, 1333, 1330, 1332, 1334, 1341}, 1, 96, 192, 2);
 
     /** Morellonomicon Definition */
     public static final RiotItemData Morellonomicon = new RiotItemData("Morellonomicon", "モレロの死書", 3165, 445, 2300, 1610, new int[] {3108, 3114, 1052}, null, 1, 192, 192, 3);
@@ -528,6 +552,9 @@ public class RiotItemData {
     /** Enchantment: Homeguard Definition */
     public static final RiotItemData EnchantmentHomeguard = new RiotItemData("Enchantment: Homeguard", "追加特性: 防衛", 3244, 475, 475, 333, null, null, 3, 432, 0, 0);
 
+    /** Enchantment: Teleport Definition */
+    public static final RiotItemData EnchantmentTeleport = new RiotItemData("Enchantment: Teleport", "Enchantment: Teleport", 3245, 600, 600, 420, null, new int[] {3006, 3047, 3020, 3158, 3111, 3117, 3009}, 3, 96, 96, 0);
+
     /** Luden's Echo Definition */
     public static final RiotItemData LudensEcho = new RiotItemData("Luden's Echo", "ルーデンの共鳴", 3285, 900, 3000, 2100, new int[] {1058, 3113}, null, 2, 288, 288, 3);
 
@@ -567,6 +594,18 @@ public class RiotItemData {
     /** Face of the Mountain Definition */
     public static final RiotItemData FaceoftheMountain = new RiotItemData("Face of the Mountain", "山の相貌", 3401, 485, 2200, 880, new int[] {3097, 3067}, null, 2, 192, 48, 3);
 
+    /** Rite of Ruin Definition */
+    public static final RiotItemData RiteofRuin = new RiotItemData("Rite of Ruin", "Rite of Ruin", 3430, 765, 3000, 2100, new int[] {3433, 1052}, null, 3, 144, 96, 4);
+
+    /** Netherstride Grimoire Definition */
+    public static final RiotItemData NetherstrideGrimoire = new RiotItemData("Netherstride Grimoire", "Netherstride Grimoire", 3431, 765, 3000, 2100, new int[] {3433, 1052}, null, 3, 192, 96, 4);
+
+    /** Lost Chapter Definition */
+    public static final RiotItemData LostChapter = new RiotItemData("Lost Chapter", "Lost Chapter", 3433, 380, 1800, 1260, new int[] {3108, 3114}, new int[] {3430, 3431, 3434}, 3, 240, 96, 3);
+
+    /** Pox Arcana Definition */
+    public static final RiotItemData PoxArcana = new RiotItemData("Pox Arcana", "Pox Arcana", 3434, 765, 3000, 2100, new int[] {3433, 1052}, null, 3, 288, 96, 4);
+
     /** Ardent Censer Definition */
     public static final RiotItemData ArdentCenser = new RiotItemData("Ardent Censer", "情愛の香炉", 3504, 650, 2100, 1470, new int[] {3114, 3113}, null, 2, 0, 192, 3);
 
@@ -579,14 +618,56 @@ public class RiotItemData {
     /** The Black Spear Definition */
     public static final RiotItemData TheBlackSpear = new RiotItemData("The Black Spear", "復讐の槍", 3599, 0, 0, 0, null, null, 2, 144, 192, 0);
 
+    /** Razorfin Definition */
+    public static final RiotItemData Razorfin = new RiotItemData("Razorfin", "Razorfin", 3611, 0, 0, 0, null, null, 3, 336, 96, 0);
+
+    /** Ironback Definition */
+    public static final RiotItemData Ironback = new RiotItemData("Ironback", "Ironback", 3612, 0, 0, 0, null, null, 3, 384, 96, 0);
+
+    /** Plundercrab Definition */
+    public static final RiotItemData Plundercrab = new RiotItemData("Plundercrab", "Plundercrab", 3613, 0, 0, 0, null, null, 3, 432, 96, 0);
+
+    /** Ocklepod Definition */
+    public static final RiotItemData Ocklepod = new RiotItemData("Ocklepod", "Ocklepod", 3614, 0, 0, 0, null, null, 3, 0, 144, 0);
+
+    /** Mercenary Upgrade 1 Definition */
+    public static final RiotItemData MercenaryUpgrade1 = new RiotItemData("Mercenary Upgrade 1", "Mercenary Upgrade 1", 3615, 0, 0, 0, null, null, 3, 48, 144, 0);
+
+    /** Mercenary Upgrade 2 Definition */
+    public static final RiotItemData MercenaryUpgrade2 = new RiotItemData("Mercenary Upgrade 2", "Mercenary Upgrade 2", 3616, 0, 0, 0, null, null, 3, 96, 144, 0);
+
+    /** Mercenary Upgrade 3 Definition */
+    public static final RiotItemData MercenaryUpgrade3 = new RiotItemData("Mercenary Upgrade 3", "Mercenary Upgrade 3", 3617, 0, 0, 0, null, null, 3, 144, 144, 0);
+
+    /** Offense Upgrade 1 Definition */
+    public static final RiotItemData OffenseUpgrade1 = new RiotItemData("Offense Upgrade 1", "Offense Upgrade 1", 3621, 0, 0, 0, null, null, 3, 192, 144, 0);
+
+    /** Offense Upgrade 2 Definition */
+    public static final RiotItemData OffenseUpgrade2 = new RiotItemData("Offense Upgrade 2", "Offense Upgrade 2", 3622, 0, 0, 0, null, null, 3, 240, 144, 0);
+
+    /** Offense Upgrade 3 Definition */
+    public static final RiotItemData OffenseUpgrade3 = new RiotItemData("Offense Upgrade 3", "Offense Upgrade 3", 3623, 0, 0, 0, null, null, 3, 288, 144, 0);
+
+    /** Defense Upgrade 1 Definition */
+    public static final RiotItemData DefenseUpgrade1 = new RiotItemData("Defense Upgrade 1", "Defense Upgrade 1", 3624, 0, 0, 0, null, null, 3, 336, 144, 0);
+
+    /** Defense Upgrade 2 Definition */
+    public static final RiotItemData DefenseUpgrade2 = new RiotItemData("Defense Upgrade 2", "Defense Upgrade 2", 3625, 0, 0, 0, null, null, 3, 384, 144, 0);
+
+    /** Defense Upgrade 3 Definition */
+    public static final RiotItemData DefenseUpgrade3 = new RiotItemData("Defense Upgrade 3", "Defense Upgrade 3", 3626, 0, 0, 0, null, null, 3, 432, 144, 0);
+
+    /** Typhoon Claws Definition */
+    public static final RiotItemData TyphoonClaws = new RiotItemData("Typhoon Claws", "Typhoon Claws", 3652, 675, 2000, 1400, new int[] {1037, 1042}, null, 3, 0, 192, 2);
+
     /** Stalker's Blade Definition */
     public static final RiotItemData StalkersBlade = new RiotItemData("Stalker's Blade", "追跡の鋭刃", 3706, 450, 850, 595, new int[] {1039}, new int[] {3707, 3708, 3709, 3710}, 2, 192, 192, 2);
 
     /** Enchantment: Warrior Definition */
-    public static final RiotItemData StalkersBladeWarrior = new RiotItemData("Stalker's Blade [Warrior]", "追跡の鋭刃 [戦士]", 3707, 63, 2250, 1575, new int[] {3706, 3134}, null, 2, 240, 192, 3);
+    public static final RiotItemData StalkersBladeWarrior = new RiotItemData("Stalker's Blade [Warrior]", "追跡の鋭刃 [戦士]", 3707, 165, 2352, 1646, new int[] {3706, 3134}, null, 2, 240, 192, 3);
 
     /** Enchantment: Runeglaive Definition */
-    public static final RiotItemData StalkersBladeRuneglaive = new RiotItemData("Stalker's Blade [Runeglaive]", "追跡の鋭刃 [魔術師]", 3708, 200, 2250, 1575, new int[] {3706, 3057}, null, 2, 288, 192, 3);
+    public static final RiotItemData StalkersBladeRuneglaive = new RiotItemData("Stalker's Blade [Runeglaive]", "追跡の鋭刃 [古代文字の剣]", 3708, 200, 2250, 1575, new int[] {3706, 3057}, null, 2, 288, 192, 3);
 
     /** Enchantment: Cinderhulk Definition */
     public static final RiotItemData StalkersBladeCinderhulk = new RiotItemData("Stalker's Blade [Cinderhulk]", "追跡の鋭刃 [護炎石]", 3709, 400, 2250, 1575, new int[] {3706, 3751}, null, 2, 336, 192, 3);
@@ -601,13 +682,13 @@ public class RiotItemData {
     public static final RiotItemData RangersTrailblazer = new RiotItemData("Ranger's Trailblazer", "狩猟の手斧", 3713, 450, 850, 595, new int[] {1039}, new int[] {3723, 3724, 3725, 3726}, 2, 0, 240, 2);
 
     /** Enchantment: Warrior Definition */
-    public static final RiotItemData SkirmishersSabreWarrior = new RiotItemData("Skirmisher's Sabre [Warrior]", "一騎のサーベル [戦士]", 3714, 63, 2250, 1575, new int[] {3715, 3134}, null, 2, 48, 240, 3);
+    public static final RiotItemData SkirmishersSabreWarrior = new RiotItemData("Skirmisher's Sabre [Warrior]", "一騎のサーベル [戦士]", 3714, 165, 2352, 1646, new int[] {3715, 3134}, null, 2, 48, 240, 3);
 
     /** Skirmisher's Sabre Definition */
     public static final RiotItemData SkirmishersSabre = new RiotItemData("Skirmisher's Sabre", "一騎のサーベル", 3715, 450, 850, 595, new int[] {1039}, new int[] {3714, 3716, 3717, 3718}, 2, 96, 240, 2);
 
     /** Enchantment: Runeglaive Definition */
-    public static final RiotItemData SkirmishersSabreRuneglaive = new RiotItemData("Skirmisher's Sabre [Runeglaive]", "一騎のサーベル [魔術師]", 3716, 200, 2250, 1575, new int[] {3715, 3057}, null, 2, 144, 240, 3);
+    public static final RiotItemData SkirmishersSabreRuneglaive = new RiotItemData("Skirmisher's Sabre [Runeglaive]", "一騎のサーベル [古代文字の剣]", 3716, 200, 2250, 1575, new int[] {3715, 3057}, null, 2, 144, 240, 3);
 
     /** Enchantment: Cinderhulk Definition */
     public static final RiotItemData SkirmishersSabreCinderhulk = new RiotItemData("Skirmisher's Sabre [Cinderhulk]", "一騎のサーベル [護炎石]", 3717, 400, 2250, 1575, new int[] {3715, 3751}, null, 2, 192, 240, 3);
@@ -616,10 +697,10 @@ public class RiotItemData {
     public static final RiotItemData SkirmishersSabreDevourer = new RiotItemData("Skirmisher's Sabre [Devourer]", "一騎のサーベル [貪食者]", 3718, 300, 2250, 1575, new int[] {3715, 1043}, new int[] {3931}, 2, 240, 240, 3);
 
     /** Enchantment: Warrior Definition */
-    public static final RiotItemData PoachersKnifeWarrior = new RiotItemData("Poacher's Knife [Warrior]", "略奪の短剣 [戦士]", 3719, 63, 2250, 1575, new int[] {3711, 3134}, null, 2, 288, 240, 3);
+    public static final RiotItemData PoachersKnifeWarrior = new RiotItemData("Poacher's Knife [Warrior]", "略奪の短剣 [戦士]", 3719, 165, 2352, 1646, new int[] {3711, 3134}, null, 2, 288, 240, 3);
 
     /** Enchantment: Runeglaive Definition */
-    public static final RiotItemData PoachersKnifeRuneglaive = new RiotItemData("Poacher's Knife [Runeglaive]", "略奪の短剣 [魔術師]", 3720, 200, 2250, 1575, new int[] {3711, 3057}, null, 2, 336, 240, 3);
+    public static final RiotItemData PoachersKnifeRuneglaive = new RiotItemData("Poacher's Knife [Runeglaive]", "略奪の短剣 [古代文字の剣]", 3720, 200, 2250, 1575, new int[] {3711, 3057}, null, 2, 336, 240, 3);
 
     /** Enchantment: Cinderhulk Definition */
     public static final RiotItemData PoachersKnifeCinderhulk = new RiotItemData("Poacher's Knife [Cinderhulk]", "略奪の短剣 [護炎石]", 3721, 400, 2250, 1575, new int[] {3711, 3751}, null, 2, 384, 240, 3);
@@ -628,16 +709,25 @@ public class RiotItemData {
     public static final RiotItemData PoachersKnifeDevourer = new RiotItemData("Poacher's Knife [Devourer]", "略奪の短剣 [貪食者]", 3722, 300, 2250, 1575, new int[] {3711, 1043}, new int[] {3932}, 2, 432, 240, 3);
 
     /** Enchantment: Warrior Definition */
-    public static final RiotItemData RangersTrailblazerWarrior = new RiotItemData("Ranger's Trailblazer [Warrior]", "狩猟の手斧 [戦士]", 3723, 63, 2250, 1575, new int[] {3713, 3134}, null, 2, 0, 288, 3);
+    public static final RiotItemData RangersTrailblazerWarrior = new RiotItemData("Ranger's Trailblazer [Warrior]", "狩猟の手斧 [戦士]", 3723, 165, 2352, 1646, new int[] {3713, 3134}, null, 2, 0, 288, 3);
 
     /** Enchantment: Runeglaive Definition */
-    public static final RiotItemData RangersTrailblazerRuneglaive = new RiotItemData("Ranger's Trailblazer [Runeglaive]", "狩猟の手斧 [魔術師]", 3724, 200, 2250, 1575, new int[] {3713, 3057}, null, 2, 48, 288, 3);
+    public static final RiotItemData RangersTrailblazerRuneglaive = new RiotItemData("Ranger's Trailblazer [Runeglaive]", "狩猟の手斧 [古代文字の剣]", 3724, 200, 2250, 1575, new int[] {3713, 3057}, null, 2, 48, 288, 3);
 
     /** Enchantment: Cinderhulk Definition */
     public static final RiotItemData RangersTrailblazerCinderhulk = new RiotItemData("Ranger's Trailblazer [Cinderhulk]", "狩猟の手斧 [護炎石]", 3725, 400, 2250, 1575, new int[] {3713, 3751}, null, 2, 96, 288, 3);
 
     /** Enchantment: Devourer Definition */
     public static final RiotItemData RangersTrailblazerDevourer = new RiotItemData("Ranger's Trailblazer [Devourer]", "狩猟の手斧 [貪食者]", 3726, 300, 2250, 1575, new int[] {3713, 1043}, new int[] {3933}, 2, 144, 288, 3);
+
+    /** Dead Man's Plate Definition */
+    public static final RiotItemData DeadMansPlate = new RiotItemData("Dead Man's Plate", "Dead Man's Plate", 3742, 1000, 2750, 1925, new int[] {1031, 1011}, null, 3, 48, 192, 3);
+
+    /** Staff of Flowing Water Definition */
+    public static final RiotItemData StaffofFlowingWater = new RiotItemData("Staff of Flowing Water", "Staff of Flowing Water", 3744, 300, 1635, 1145, new int[] {3028, 1052}, null, 3, 96, 192, 3);
+
+    /** Puppeteer Definition */
+    public static final RiotItemData Puppeteer = new RiotItemData("Puppeteer", "Puppeteer", 3745, 450, 2200, 1540, new int[] {3028, 3067}, null, 3, 144, 192, 3);
 
     /** Bami's Cinder Definition */
     public static final RiotItemData BamisCinder = new RiotItemData("Bami's Cinder", "バミの残り火", 3751, 600, 1000, 700, new int[] {1028}, new int[] {3068, 3709, 3717, 3721, 3725}, 2, 336, 288, 2);
@@ -646,19 +736,46 @@ public class RiotItemData {
     public static final RiotItemData RighteousGlory = new RiotItemData("Righteous Glory", "正義の栄光", 3800, 700, 2500, 1750, new int[] {3010, 3801}, null, 2, 192, 288, 3);
 
     /** Crystalline Bracer Definition */
-    public static final RiotItemData CrystallineBracer = new RiotItemData("Crystalline Bracer", "クリスタルの籠手", 3801, 20, 600, 420, new int[] {1028, 1006}, new int[] {3083, 3084, 3800}, 2, 240, 288, 2);
+    public static final RiotItemData CrystallineBracer = new RiotItemData("Crystalline Bracer", "クリスタルの籠手", 3801, 20, 600, 420, new int[] {1028, 1006}, new int[] {3083, 3084, 3800, 3911}, 2, 240, 288, 2);
+
+    /** Trickster's Glass Definition */
+    public static final RiotItemData TrickstersGlass = new RiotItemData("Trickster's Glass", "Trickster's Glass", 3829, 215, 2115, 1481, new int[] {3136, 1028}, null, 3, 192, 192, 3);
+
+    /** Globe of Trust Definition */
+    public static final RiotItemData GlobeofTrust = new RiotItemData("Globe of Trust", "Globe of Trust", 3840, 635, 2100, 840, new int[] {3841, 3114}, null, 3, 240, 192, 3);
+
+    /** Swindler's Orb Definition */
+    public static final RiotItemData SwindlersOrb = new RiotItemData("Swindler's Orb", "Swindler's Orb", 3841, 500, 865, 346, new int[] {3844}, new int[] {3840}, 3, 288, 192, 2);
+
+    /** Murksphere Definition */
+    public static final RiotItemData Murksphere = new RiotItemData("Murksphere", "Murksphere", 3844, 365, 365, 146, null, new int[] {3841}, 3, 336, 192, 0);
+
+    /** Fire at Will Definition */
+    public static final RiotItemData FireatWill = new RiotItemData("Fire at Will", "Fire at Will", 3901, 0, 0, 0, null, null, 3, 384, 192, 0);
+
+    /** Death's Daughter Definition */
+    public static final RiotItemData DeathsDaughter = new RiotItemData("Death's Daughter", "Death's Daughter", 3902, 0, 0, 0, null, null, 3, 432, 192, 0);
+
+    /** Raise Morale Definition */
+    public static final RiotItemData RaiseMorale = new RiotItemData("Raise Morale", "士気上昇", 3903, 0, 0, 0, null, null, 3, 0, 240, 0);
+
+    /** Martyr's Gambit Definition */
+    public static final RiotItemData MartyrsGambit = new RiotItemData("Martyr's Gambit", "Martyr's Gambit", 3911, 400, 1850, 1295, new int[] {3801, 3067}, null, 3, 48, 240, 3);
+
+    /** Flesheater (Melee Only) Definition */
+    public static final RiotItemData FlesheaterMeleeOnly = new RiotItemData("Flesheater (Melee Only)", "Flesheater (Melee Only)", 3924, 300, 1460, 1022, new int[] {1053, 1036}, null, 3, 96, 240, 3);
 
     /** Enchantment: Sated Devourer Definition */
-    public static final RiotItemData StalkersBladeSatedDevourer = new RiotItemData("Stalker's Blade [Sated Devourer]", "追跡の鋭刃 [Sated Devourer]", 3930, 2250, 2250, 3150, new int[] {3710}, null, 3, 0, 48, 4);
+    public static final RiotItemData StalkersBladeSatedDevourer = new RiotItemData("Stalker's Blade [Sated Devourer]", "追跡の鋭刃 [貪食者] [満たされた食欲]", 3930, 2250, 2250, 3150, new int[] {3710}, null, 3, 0, 48, 4);
 
     /** Enchantment: Sated Devourer Definition */
-    public static final RiotItemData SkirmishersSabreSatedDevourer = new RiotItemData("Skirmisher's Sabre [Sated Devourer]", "一騎のサーベル [Sated Devourer]", 3931, 2250, 2250, 3150, new int[] {3718}, null, 3, 48, 48, 4);
+    public static final RiotItemData SkirmishersSabreSatedDevourer = new RiotItemData("Skirmisher's Sabre [Sated Devourer]", "一騎のサーベル [貪食者] [満たされた食欲]", 3931, 2250, 2250, 3150, new int[] {3718}, null, 3, 48, 48, 4);
 
     /** Enchantment: Sated Devourer Definition */
-    public static final RiotItemData PoachersKnifeSatedDevourer = new RiotItemData("Poacher's Knife [Sated Devourer]", "略奪の短剣 [Sated Devourer]", 3932, 2250, 2250, 3150, new int[] {3722}, null, 3, 96, 48, 4);
+    public static final RiotItemData PoachersKnifeSatedDevourer = new RiotItemData("Poacher's Knife [Sated Devourer]", "略奪の短剣 [貪食者] [満たされた食欲]", 3932, 2250, 2250, 3150, new int[] {3722}, null, 3, 96, 48, 4);
 
     /** Enchantment: Sated Devourer Definition */
-    public static final RiotItemData RangersTrailblazerSatedDevourer = new RiotItemData("Ranger's Trailblazer [Sated Devourer]", "狩猟の手斧 [Sated Devourer]", 3933, 2250, 2250, 3150, new int[] {3726}, null, 3, 144, 48, 4);
+    public static final RiotItemData RangersTrailblazerSatedDevourer = new RiotItemData("Ranger's Trailblazer [Sated Devourer]", "狩猟の手斧 [貪食者] [満たされた食欲]", 3933, 2250, 2250, 3150, new int[] {3726}, null, 3, 144, 48, 4);
 
     /** Item status. */
     public final String name;

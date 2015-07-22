@@ -121,21 +121,21 @@ public class RiotChampionData {
     /** Ekko Definition */
     public static final Champion Ekko = new Champion("Ekko", "エコー", "Ekko", 580.0F, 80.0F, 9.0F, 0.9F, 280.0F, 50.0F, 6.0F, 0.8F, 59.0F, 3.0F, 0.0F, 3.3F, 0.0F, 0.0F, 27.0F, 3.0F, 32.0F, 0.0F, 340.0F, 125.0F, new String[] {
             "Z-Drive Resonance", "Timewinder", "Parallel Convergence", "Phase Dive",
-            "Chronobreak"}, new String[] {"ゼロ・ドライブ共振", "時空ワインダー", "パラレルタイムトラップ", "亜空間ダイブ", "クロノブレイク"}, false);
+            "Chronobreak"}, new String[] {"ゼロ・ドライブ", "タイムワインダー", "パラレルトラップ", "フェイズダイブ", "クロノブレイク"}, false);
 
     /** Elise Definition */
     public static final Champion Elise = new Champion("Elise", "エリス", "Elise", 529.4F, 80.0F, 5.705F, 0.6F, 324.0F, 50.0F, 6.0F, 0.8F, 50.54F, 3.0F, 0.0F, 1.75F, 0.0F, 0.0F, 22.128F, 3.35F, 30.0F, 0.0F, 330.0F, 550.0F, new String[] {
             "Spider Queen", "Neurotoxin / Venomous Bite", "Volatile Spiderling / Skittering Frenzy", "Cocoon / Rappel",
             "Spider Form", "Venomous Bite / Neurotoxin", "Skittering Frenzy / Volatile Spiderling", "Rappel / Cocoon",
-            "Human Form"}, new String[] {"孵化", "神経毒/毒牙", "子蜘蛛爆弾/猛食", "繭化/蜘蛛の糸", "蜘蛛形態", "毒牙/神経毒", "猛食/子蜘蛛爆弾", "蜘蛛の糸/繭化",
-                    "ヒト形態"}, false);
+            "Human Form"}, new String[] {"蜘蛛の女王", "神経毒/毒牙", "子蜘蛛爆弾/猛食", "繭化/蜘蛛の糸", "蜘蛛形態", "毒牙/神経毒", "猛食/子蜘蛛爆弾",
+                    "蜘蛛の糸/繭化", "ヒト形態"}, false);
 
     /** Elise Definition */
     public static final Champion EliseTransformed = new Champion("Elise", "エリス", "Elise", 529.4F, 80.0F, 5.705F, 0.6F, 324.0F, 50.0F, 6.0F, 0.8F, 50.54F, 3.0F, 0.0F, 1.75F, 0.0F, 0.0F, 22.128F, 3.35F, 30.0F, 0.0F, 330.0F, 550.0F, new String[] {
             "Spider Queen", "Neurotoxin / Venomous Bite", "Volatile Spiderling / Skittering Frenzy", "Cocoon / Rappel",
             "Spider Form", "Venomous Bite / Neurotoxin", "Skittering Frenzy / Volatile Spiderling", "Rappel / Cocoon",
-            "Human Form"}, new String[] {"孵化", "神経毒/毒牙", "子蜘蛛爆弾/猛食", "繭化/蜘蛛の糸", "蜘蛛形態", "毒牙/神経毒", "猛食/子蜘蛛爆弾", "蜘蛛の糸/繭化",
-                    "ヒト形態"}, true);
+            "Human Form"}, new String[] {"蜘蛛の女王", "神経毒/毒牙", "子蜘蛛爆弾/猛食", "繭化/蜘蛛の糸", "蜘蛛形態", "毒牙/神経毒", "猛食/子蜘蛛爆弾",
+                    "蜘蛛の糸/繭化", "ヒト形態"}, true);
 
     /** Evelynn Definition */
     public static final Champion Evelynn = new Champion("Evelynn", "エヴェリン", "Evelynn", 531.2F, 90.0F, 9.82F, 0.55F, 265.6F, 45.0F, 8.105F, 0.6F, 53.88F, 3.5F, 0.0F, 3.6F, 0.0F, 0.0F, 26.5F, 3.8F, 32.1F, 0.0F, 340.0F, 125.0F, new String[] {
@@ -168,9 +168,9 @@ public class RiotChampionData {
             "Idol of Durand"}, new String[] {"ルーンの加護", "懲罰の視線", "忠義の防壁", "正義の追い風", "デュランドの偶像"}, false);
 
     /** Gangplank Definition */
-    public static final Champion Gangplank = new Champion("Gangplank", "ガングプランク", "Gangplank", 631.08F, 81.0F, 5.51F, 0.75F, 282.2F, 40.0F, 7.675F, 0.7F, 59.04F, 3.0F, -0.04F, 2.75F, 0.0F, 0.0F, 26.044F, 3.3F, 32.1F, 0.0F, 345.0F, 125.0F, new String[] {
-            "Grog-Soaked Blade", "Parrrley", "Remove Scurvy", "Raise Morale",
-            "Cannon Barrage"}, new String[] {"酒浸りの剣", "偽りの発砲", "壊血病治癒", "士気上昇", "一斉砲撃"}, false);
+    public static final Champion Gangplank = new Champion("Gangplank", "ガングプランク", "Gangplank", 631.08F, 79.0F, 6.0F, 0.6F, 282.0F, 40.0F, 7.5F, 0.7F, 56.0F, 3.0F, 0.0F, 3.2F, 0.0F, 0.0F, 26.0F, 3.0F, 32.1F, 0.0F, 345.0F, 125.0F, new String[] {
+            "Trial by Fire", "Parrrley", "Remove Scurvy", "Powder Keg",
+            "Cannon Barrage"}, new String[] {"酒浸りの剣", "Parrrley", "壊血病治癒", "Powder Keg", "一斉砲撃"}, false);
 
     /** Garen Definition */
     public static final Champion Garen = new Champion("Garen", "ガレン", "Garen", 616.28F, 96.0F, 7.84F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 57.88F, 3.5F, 0.0F, 2.9F, 0.0F, 0.0F, 27.536F, 2.7F, 32.1F, 0.0F, 345.0F, 125.0F, new String[] {
@@ -185,7 +185,7 @@ public class RiotChampionData {
     /** Gragas Definition */
     public static final Champion Gragas = new Champion("Gragas", "グラガス", "Gragas", 583.52F, 89.0F, 5.5F, 0.5F, 400.0F, 47.0F, 6.0F, 0.8F, 61.38F, 3.5F, -0.04F, 2.05F, 0.0F, 0.0F, 26.048F, 3.6F, 32.1F, 0.0F, 330.0F, 125.0F, new String[] {
             "Happy Hour", "Barrel Roll", "Drunken Rage", "Body Slam",
-            "Explosive Cask"}, new String[] {"ほろ酔い", "タル転がし", "飲みすぎ注意", "腹の肉", "タル爆弾"}, false);
+            "Explosive Cask"}, new String[] {"ふわふわタイム", "タル転がし", "飲みすぎ注意", "腹の肉", "タル爆弾"}, false);
 
     /** Graves Definition */
     public static final Champion Graves = new Champion("Graves", "グレイヴズ", "Graves", 551.12F, 84.0F, 6.675F, 0.7F, 322.2F, 40.0F, 7.925F, 0.7F, 54.208F, 3.1F, 0.0F, 2.9F, 0.0F, 0.0F, 24.376F, 3.2F, 30.0F, 0.0F, 330.0F, 525.0F, new String[] {
@@ -297,7 +297,7 @@ public class RiotChampionData {
     /** Lee Sin Definition */
     public static final Champion LeeSin = new Champion("Lee Sin", "リー・シン", "LeeSin", 570.8F, 85.0F, 7.425F, 0.7F, 200.0F, 0.0F, 50.0F, 0.0F, 61.176F, 3.2F, -0.04F, 3.0F, 0.0F, 0.0F, 24.216F, 3.7F, 32.1F, 0.0F, 350.0F, 125.0F, new String[] {
             "Flurry", "Sonic Wave / Resonating Strike", "Safeguard / Iron Will", "Tempest / Cripple",
-            "Dragon's Rage"}, new String[] {"乱舞", "音の波動/共鳴拳", "守りの型/鉄の意志", "破風/縛脚", "龍の怒り"}, false);
+            "Dragon's Rage"}, new String[] {"練気", "音撃破/共鳴拳", "守りの型/鉄の意志", "破風/縛脚", "龍の怒り"}, false);
 
     /** Leona Definition */
     public static final Champion Leona = new Champion("Leona", "レオナ", "Leona", 576.16F, 87.0F, 8.425F, 0.85F, 302.2F, 40.0F, 6.0F, 0.8F, 60.04F, 3.0F, 0.0F, 2.9F, 0.0F, 0.0F, 27.208F, 3.1F, 32.1F, 0.0F, 335.0F, 125.0F, new String[] {
@@ -357,8 +357,8 @@ public class RiotChampionData {
     /** Mordekaiser Definition */
     public static final Champion Mordekaiser = new Champion("Mordekaiser", "モルデカイザー", "Mordekaiser", 555.4F, 80.0F, 3.37F, 0.55F, 120.0F, 0.0F, 0.0F, 0.0F, 57.58F, 3.5F, -0.1F, 3.0F, 0.0F, 0.0F, 24.88F, 3.5F, 32.1F, 0.0F, 340.0F, 125.0F, new String[] {
             "Iron Man", "Mace of Spades", "Creeping Death", "Siphon of Destruction",
-            "Children of the Grave"}, new String[] {"アイアンマン", "メイス・オブ・スペーズ", "クリーピング・デス", "サイフォン・オブ・デストラクション",
-                    "チルドレン・オブ・ザ・グレイヴ"}, false);
+            "Children of the Grave"}, new String[] {"アイアンマン", "メイス・オブ・スペーズ", "クリーピング・デス", "ハンド・オブ・ルーイン",
+                    "グレイブ・チルドレン"}, false);
 
     /** Morgana Definition */
     public static final Champion Morgana = new Champion("Morgana", "モルガナ", "Morgana", 547.48F, 86.0F, 5.705F, 0.6F, 340.8F, 60.0F, 6.0F, 0.8F, 55.46F, 3.5F, 0.0F, 1.53F, 0.0F, 0.0F, 25.384F, 3.8F, 30.0F, 0.0F, 335.0F, 450.0F, new String[] {
@@ -400,7 +400,7 @@ public class RiotChampionData {
     /** Nunu Definition */
     public static final Champion Nunu = new Champion("Nunu", "ヌヌ", "Nunu", 598.28F, 90.0F, 8.39F, 0.8F, 283.56F, 42.0F, 7.44F, 0.5F, 56.856F, 3.45F, 0.0F, 2.25F, 0.0F, 0.0F, 26.38F, 3.5F, 32.1F, 0.0F, 350.0F, 125.0F, new String[] {
             "Visionary", "Consume", "Blood Boil", "Ice Blast",
-            "Absolute Zero"}, new String[] {"幻想", "丸飲み", "熱血", "氷弾", "アブソリュート・ゼロ"}, false);
+            "Absolute Zero"}, new String[] {"幻想", "丸かじり", "熱血", "氷弾", "アブソリュート・ゼロ"}, false);
 
     /** Olaf Definition */
     public static final Champion Olaf = new Champion("Olaf", "オラフ", "Olaf", 597.24F, 93.0F, 8.51F, 0.9F, 265.6F, 45.0F, 7.465F, 0.575F, 59.98F, 3.5F, -0.1F, 2.7F, 0.0F, 0.0F, 26.04F, 3.0F, 32.1F, 0.0F, 350.0F, 125.0F, new String[] {
@@ -505,7 +505,7 @@ public class RiotChampionData {
     /** Sona Definition */
     public static final Champion Sona = new Champion("Sona", "ソナ", "Sona", 482.36F, 77.0F, 5.42F, 0.55F, 340.6F, 45.0F, 9.0F, 0.4F, 50.04F, 3.0F, -0.03F, 2.3F, 0.0F, 0.0F, 20.544F, 3.3F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {
             "Power Chord", "Hymn of Valor", "Aria of Perseverance", "Song of Celerity",
-            "Crescendo"}, new String[] {"パワーコード", "義勇の賛歌", "堅忍のアリア", "疾風の歌", "クレッシェンド"}, false);
+            "Crescendo"}, new String[] {"パワーコード", "ヒム・オブ・ヴァロー", "パーセヴァランス", "セレニティ", "クレッシェンド"}, false);
 
     /** Soraka Definition */
     public static final Champion Soraka = new Champion("Soraka", "ソラカ", "Soraka", 529.04F, 78.0F, 2.5F, 0.5F, 350.8F, 60.0F, 9.0F, 0.4F, 50.04F, 3.0F, 0.0F, 2.14F, 0.0F, 0.0F, 23.384F, 3.8F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {
@@ -523,9 +523,9 @@ public class RiotChampionData {
             "Unleashed Power"}, new String[] {"絶大なる魔力", "闇の魔珠", "魔力の制御", "魔力四散", "魔力解放"}, false);
 
     /** Tahm Kench Definition */
-    public static final Champion TahmKench = new Champion("Tahm Kench", "Tahm Kench", "TahmKench", 610.0F, 95.0F, 6.5F, 0.55F, 325.0F, 40.0F, 5.5F, 1.0F, 56.0F, 3.2F, 0.0F, 2.5F, 0.0F, 0.0F, 27.0F, 3.0F, 32.1F, 0.0F, 335.0F, 200.0F, new String[] {
-            "An Acquired Taste", "Tongue Lash", "Devour", "Thick Skin", "Abyssal Voyage"}, new String[] {
-                    "An Acquired Taste", "Tongue Lash", "Devour", "Thick Skin", "Abyssal Voyage"}, false);
+    public static final Champion TahmKench = new Champion("Tahm Kench", "タム・ケンチ", "TahmKench", 610.0F, 95.0F, 6.5F, 0.55F, 325.0F, 40.0F, 5.5F, 1.0F, 56.0F, 3.2F, 0.0F, 2.5F, 0.0F, 0.0F, 27.0F, 3.0F, 32.1F, 0.0F, 335.0F, 200.0F, new String[] {
+            "An Acquired Taste", "Tongue Lash", "Devour", "Thick Skin",
+            "Abyssal Voyage"}, new String[] {"味見", "舌のムチ", "丸呑み", "硬質化", "船旅"}, false);
 
     /** Talon Definition */
     public static final Champion Talon = new Champion("Talon", "タロン", "Talon", 582.8F, 85.0F, 8.51F, 0.75F, 327.2F, 40.0F, 7.59F, 0.5F, 55.208F, 3.1F, -0.065F, 2.7F, 0.0F, 0.0F, 26.88F, 3.5F, 32.1F, 0.0F, 350.0F, 125.0F, new String[] {
@@ -558,7 +558,7 @@ public class RiotChampionData {
             "Subjugate"}, new String[] {"王への貢物", "噛み付き", "凍てつく大地", "氷冷の柱", "暴虐なる搾取"}, false);
 
     /** Tryndamere Definition */
-    public static final Champion Tryndamere = new Champion("Tryndamere", "トリンダミア", "Tryndamere", 625.64F, 98.0F, 8.51F, 0.9F, 100.0F, 0.0F, 0.0F, 0.0F, 61.376F, 3.2F, -0.0672F, 2.9F, 0.0F, 0.0F, 24.108F, 3.1F, 32.1F, 0.0F, 345.0F, 125.0F, new String[] {
+    public static final Champion Tryndamere = new Champion("Tryndamere", "トリンダメア", "Tryndamere", 625.64F, 98.0F, 8.51F, 0.9F, 100.0F, 0.0F, 0.0F, 0.0F, 61.376F, 3.2F, -0.0672F, 2.9F, 0.0F, 0.0F, 24.108F, 3.1F, 32.1F, 0.0F, 345.0F, 125.0F, new String[] {
             "Battle Fury", "Bloodlust", "Mocking Shout", "Spinning Slash",
             "Undying Rage"}, new String[] {"戦場の咆哮", "血の欲望", "嘲りの叫び", "旋回斬り", "不死の憤激"}, false);
 
@@ -666,7 +666,7 @@ public class RiotChampionData {
     /** Zilean Definition */
     public static final Champion Zilean = new Champion("Zilean", "ジリアン", "Zilean", 499.28F, 77.0F, 5.44F, 0.5F, 360.8F, 60.0F, 6.0F, 0.8F, 51.64F, 3.0F, 0.0F, 2.13F, 0.0F, 0.0F, 19.134F, 3.8F, 30.0F, 0.0F, 335.0F, 550.0F, new String[] {
             "Heightened Learning", "Time Bomb", "Rewind", "Time Warp",
-            "Chronoshift"}, new String[] {"ハイスピードラーニング", "タイムボム", "リ・ウィンド", "タイムワープ", "クロノシフト"}, false);
+            "Chronoshift"}, new String[] {"ハイスピードラーニング", "タイムボム", "Rewind", "タイムワープ", "クロノシフト"}, false);
 
     /** Zyra Definition */
     public static final Champion Zyra = new Champion("Zyra", "ザイラ", "Zyra", 479.32F, 74.0F, 5.69F, 0.5F, 334.0F, 50.0F, 6.0F, 0.8F, 53.376F, 3.2F, 0.0F, 2.11F, 0.0F, 0.0F, 20.04F, 3.0F, 30.0F, 0.0F, 325.0F, 575.0F, new String[] {

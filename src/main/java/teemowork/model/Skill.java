@@ -96,6 +96,7 @@ public class Skill extends Describable<SkillDescriptor> {
      * @return
      */
     public String getIcon() {
+        if (!initialized) initilaize();
         return "src/main/resources/teemowork/skill/" + owner + ".jpg";
     }
 
@@ -194,6 +195,7 @@ public class Skill extends Describable<SkillDescriptor> {
         Fiddlesticks();
         Fiora();
         Fizz();
+        Gangplank();
 
         /** Galio */
         Galio.P.update().passive("{1}を得る。").variable(1, AP, 0, 0, amplify(MR, 0.5));
@@ -231,46 +233,6 @@ public class Skill extends Describable<SkillDescriptor> {
                 .cd(170, -20)
                 .type(SkillType.Channel);
         Galio.R.update(P311).cd(150, -15).mana(100);
-
-        /** Gangplank */
-        Gangplank.P.update()
-                .passive("通常攻撃時に対象にスタックを付与し、1スタックにつき毎秒{1}と{2}を与える。この効果は3秒間持続し、3回までスタックする。")
-                .variable(1, MagicDamage, 3, 0, amplify(Lv, 1))
-                .variable(2, MSSlowRatio, 7);
-        Gangplank.Q.update()
-                .active("対象の敵ユニットに{1}(クリティカルあり)を与える。このスキルで敵ユニットを倒すと消費マナの半分のマナが回復し、追加で{2}得る。{3}。")
-                .variable(1, PhysicalDamage, 20, 25, ad(1))
-                .variable(2, Gold, 4, 1)
-                .variable(3, OnHitEffect)
-                .mana(50, 5)
-                .cd(5)
-                .range(625);
-        Gangplank.W.update()
-                .active("自身のCC(Stun, Slow, Taunt, Fear, Snare, Silence, Suppression, Blind)を取り除き{1}する。StunなどのDisable中でも使用可能。")
-                .variable(1, RestoreHealth, 80, 70, ap(1))
-                .mana(65)
-                .cd(22, -1);
-        Gangplank.E.update()
-                .passive("{1}を得て、{2}する。")
-                .variable(1, AD, 8, 2)
-                .variable(2, MSRatio, 3, 1)
-                .active("7秒間{7}を得て、{3}する。{6}内の味方Championは{4}を得て{5}する。効果中はPassiveの効果が無効になる。")
-                .variable(6, Radius, 1200)
-                .variable(7, AD, 12, 7)
-                .variable(3, MSRatio, 8, 3)
-                .variable(4, AD, 6, 3.5)
-                .variable(5, MSRatio, 4, 1.1)
-                .mana(50, 5)
-                .cd(25);
-        Gangplank.R.update()
-                .active("MAP内の指定した地点に砲撃を行い、その地点の視界({1})を得る。範囲内には7秒間砲弾が降り注ぎ(場所はランダム、計25発)、着弾した{2}にいる敵ユニットに{4}と1.25秒間{3}を与える。")
-                .variable(1, Radius, 575)
-                .variable(2, Radius, 275)
-                .variable(3, MSSlowRatio, 25)
-                .variable(4, MagicDamage, 75, 45, ap(0.2))
-                .mana(100)
-                .cd(120, -5)
-                .range(-1);
 
         /** Garen */
         Garen.P.update()
@@ -2508,6 +2470,54 @@ public class Skill extends Describable<SkillDescriptor> {
                 .mana(100)
                 .cd(90, -15)
                 .range(2000, 500);
+    }
+
+    private static void Gangplank() {
+        Gangplank.P.update()
+                .passive("通常攻撃時に1.5秒間かけて{1}を与え、2秒間{2}する。" + Gangplank.E + "を破壊するとこのスキルの{3}し、2秒間{2}する。{4}。")
+                .variable(1, TrueDamage, 20, 0, ad(1.2), amplify(Lv, 10))
+                .variable(2, MSRatio, 30)
+                .variable(3, CDDecrease)
+                .variable(4, CDRUnaware)
+                .cd(-15);
+        Gangplank.Q.update()
+                .active("対象の敵ユニットに{1}(クリティカルあり)を与える。このスキルで敵ユニットを倒すと{4}し、{2}を得る。{3}(ただし" + Gangplank.P + "は除く)。")
+                .variable(1, PhysicalDamage, 20, 25, ad(1))
+                .variable(2, Gold, 4, 1)
+                .variable(3, OnHitEffect)
+                .variable(4, RestoreMana, 25)
+                .mana(50)
+                .cd(5)
+                .range(625);
+        Gangplank.W.update()
+                .active("自身のDebuffを取り除き{1}する。StunなどのDisable中でも使用可能。")
+                .variable(1, RestoreHealth, 50, 25, ap(0.9), amplify(MissingHealthRatio, 15))
+                .mana(60, 10)
+                .cd(22, -2);
+        Gangplank.E.update()
+                .passive("{1}毎に火薬樽が貯まる。最大値は{2}。")
+                .variable(1, Time, 18, -1)
+                .variable(2, Value, new Refer(Gangplank.R, 2, 1))
+                .active("60秒間火薬樽を指定の位置に設置する。樽はHP3を持ち、自身か敵チャンピオンが攻撃する若しくは{3}毎にHP1まで1ずつ減少する。HP1の樽を敵が攻撃すると樽は解除される。自身が攻撃すると爆発して、その攻撃が{4}の敵への" + ARPen + "60%を持つ物理範囲攻撃となり、2秒間{5}を与える。敵チャンピオンに対しては追加で{6}を与える。{7}に火薬樽がある場合、爆発は連鎖していく。")
+                .variable(3, Time, new Per6Level(2, -0.5))
+                .variable(4, Radius, 400)
+                .variable(5, Status.MSSlowRatio, 60)
+                .variable(6, PhysicalDamage, 80, 30)
+                .variable(7, Radius, 650)
+                .range(1000)
+                .cd(25);
+        Gangplank.R.update()
+                .passive(Gangplank.E + "のスタック最大値が{1]増加する。")
+                .variable(1, Value, 0, 1)
+                .active("MAP内の指定した地点に砲撃を行い、{3}の{2}。8秒間2秒に3回砲弾が降り注ぎ、{4}と0.5秒間{5}を与える。全段命中すると{6}。")
+                .variable(2, Status.Visionable)
+                .variable(3, Radius, 600)
+                .variable(4, MagicDamage, 50, 20, ap(0.1))
+                .variable(5, MSSlowRatio, 30)
+                .variable(6, MagicDamage, 600, 240, ap(1.2))
+                .mana(100)
+                .cd(120, -5)
+                .range(-1);
     }
 
     private static void Cassiopeia() {

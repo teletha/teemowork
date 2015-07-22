@@ -490,11 +490,12 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability SpellbladeRuneglaive = new Ability("追撃", ability -> {
-        ability.passive("スキル使用後の通常攻撃は魔法ダメージに変換され、対象の{1}の敵に追加{2}を与える({3})。またモンスターに対して攻撃した際には{4}する。")
-                .variable(1, Radius)
-                .variable(2, MagicDamage, 0, 0, amplify(BaseAD, 1), amplify(AP, 0.3))
-                .variable(3, CD, 1.5)
-                .variable(4, RestoreMana, 0, 0, amplify(MissingManaRatio, 8));
+        ability.passive("スキル使用後の通常攻撃に、{1}を付与する。{2}。モンスターに対して攻撃した際には{3}を与え{4}し、{5}のモンスターに{1}を与える。")
+                .variable(1, MagicDamage, 0, 0, amplify(BaseAD, 1), amplify(AP, 0.3))
+                .variable(2, CD, 1.5)
+                .variable(3, MagicDamage, 0, 0, amplify(BaseAD, 2), amplify(AP, 0.3))
+                .variable(4, RestoreMana, 0, 0, amplify(MissingManaRatio, 8))
+                .variable(5, Radius);
     });
 
     /** The ability. */
