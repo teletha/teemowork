@@ -111,7 +111,7 @@ public class ChampionSelectWidget extends Widget {
         };
 
         static ValueStyle<Champion> IconPosition = chmapion -> {
-            background.position(chmapion.id / (Champion.size() - 1) * 100, percent, 0, percent);
+            background.horizontal(chmapion.getIconPosition());
         };
 
         static Style Title = () -> {

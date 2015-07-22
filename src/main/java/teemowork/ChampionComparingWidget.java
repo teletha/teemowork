@@ -76,7 +76,7 @@ public class ChampionComparingWidget extends Widget {
                         ChampionStatus championStatus = champion.getStatus(Version.Latest);
 
                         〡.nbox.〡(Icon.with(() -> {
-                            background.horizontal(champion.id / (Champion.size() - 1) * 100, percent);
+                            background.horizontal(champion.getIconPosition());
                         }));
                         〡.nbox.〡(null, STATUS, status -> {
                             〡.nbox.〡(StatusView, championStatus.get(status));

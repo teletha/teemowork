@@ -77,7 +77,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         box.size(SkillIconSize, px);
         border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
         background.image(BackgroundImage.url(skill.getIcon())
-                .horizontal(skill.getIconPosition(), percent)
+                .horizontal(skill.getIconPosition())
                 .cover()
                 .borderBox()
                 .noRepeat());
@@ -184,8 +184,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
         cursor.pointer();
         position.relative();
-        background.image("src/main/resources/teemowork/champions.jpg")
-                .horizontal(champion.id / (Champion.size() - 1) * 100, percent);
+        background.image(champion.getIcon()).horizontal(champion.getIconPosition());
 
     };
 

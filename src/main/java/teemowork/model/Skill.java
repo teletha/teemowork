@@ -9,11 +9,13 @@
  */
 package teemowork.model;
 
-import static teemowork.model.Champion.*;
+import static teemowork.api.RiotChampionData.*;
 import static teemowork.model.SkillKey.*;
 import static teemowork.model.Status.*;
 import static teemowork.model.Version.*;
 
+import jsx.style.value.Numeric;
+import jsx.style.value.Unit;
 import teemowork.model.variable.VariableResolver.Diff;
 import teemowork.model.variable.VariableResolver.Fixed;
 import teemowork.model.variable.VariableResolver.Per1Level;
@@ -41,19 +43,19 @@ import teemowork.model.variable.VariableResolver.Refer;
 public class Skill extends Describable<SkillDescriptor> {
 
     /** The skill data. */
-    public final String name;
+    private final String name;
 
     /** The skill data. */
-    public final String localized;
-
-    /** The skill key type. */
-    public final SkillKey key;
+    private final String localized;
 
     /** The owner champion. */
     private final String owner;
 
     /** The icon position. */
-    private final float iconPosition;
+    private final Numeric iconPosition;
+
+    /** The skill key type. */
+    public final SkillKey key;
 
     /**
      * The skill definition.
@@ -62,7 +64,7 @@ public class Skill extends Describable<SkillDescriptor> {
         this.name = name;
         this.localized = localized;
         this.owner = owner;
-        this.iconPosition = id / (size - 1) * 100;
+        this.iconPosition = new Numeric(id / (size - 1) * 100, Unit.percent);
         this.key = SkillKey.values()[id < 5 ? id : id - 4];
     }
 
@@ -104,7 +106,7 @@ public class Skill extends Describable<SkillDescriptor> {
      * 
      * @return
      */
-    public float getIconPosition() {
+    public Numeric getIconPosition() {
         return iconPosition;
     }
 
