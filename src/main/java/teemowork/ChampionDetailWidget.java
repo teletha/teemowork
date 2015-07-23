@@ -318,7 +318,9 @@ public class ChampionDetailWidget extends Widget1<Build> {
         @Override
         protected void virtualize(VirtualStructure $〡) {
             $〡.hbox.〡(ItemIconBase, () -> {
-                $〡.hbox.〡(ItemIcon.of(model1.position));
+                if (model1 != null) {
+                    $〡.hbox.〡(ItemIcon.of(model1.position));
+                }
             });
         }
     }

@@ -227,7 +227,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
     static Style ItemIconBase = () -> {
         display.block();
         box.size(ItemIconSize);
-        background.image(BackgroundImage.url("src/main/resources/teemowork/item/empty.png").contain().noRepeat());
+        background.image(BackgroundImage.url("src/main/resources/teemowork/empty.png").contain().noRepeat());
         padding.size(3, px);
     };
 
@@ -236,6 +236,11 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         box.size(100, percent);
         background.horizontal(id / (Item.size() - 1) * 100, percent)
                 .image(BackgroundImage.url("src/main/resources/teemowork/items.jpg").cover().borderBox().noRepeat());
+    };
+
+    static Style ItemEmptyIcon = () -> {
+        display.block();
+        box.size(100, percent);
     };
 
     static Style ItemIconBox = () -> {
