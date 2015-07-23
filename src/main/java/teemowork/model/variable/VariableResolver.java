@@ -465,6 +465,31 @@ public abstract class VariableResolver {
     }
 
     /**
+     * @version 2013/02/14 18:22:02
+     */
+    public static class BardChimes extends Fixed {
+
+        /** The fixed values. */
+        private final double[] number;
+
+        /**
+         * @param values
+         */
+        public BardChimes(double[] number, double[] values) {
+            super(values);
+            this.number = number;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String getLevelDescription(int skillLevel) {
+            return number[skillLevel - 1] + "個";
+        }
+    }
+
+    /**
      * @version 2013/02/15 13:05:53
      */
     public static class Diff extends VariableResolver {

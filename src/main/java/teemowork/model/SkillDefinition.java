@@ -13,6 +13,7 @@ import static teemowork.model.Describable.*;
 import static teemowork.model.Status.*;
 import static teemowork.model.Version.*;
 
+import teemowork.model.variable.VariableResolver.BardChimes;
 import teemowork.model.variable.VariableResolver.Diff;
 import teemowork.model.variable.VariableResolver.Fixed;
 import teemowork.model.variable.VariableResolver.Per1Level;
@@ -464,14 +465,101 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Azir(Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update()
+                .passive("{1}にある味方もしくは敵のタワーの跡地を右クリックすると、その跡地にThe Sun Discを召喚する。The Sun Discは通常のタワーのように振る舞い、60秒後に消失する。敵のNexusおよびInhibitor Turretに対してはこのスキルは使用できない。{2}。")
+                .variable(1, Radius, 400)
+                .variable(2, CDRUnaware)
+                .cd(-180);
 
+        Q.update()
+                .active("全ての砂兵士を指定した地点に集結させる。砂兵士は進路上でぶつかった敵に{1}と1秒間{2}を与える。このスロー効果は累積する。")
+                .variable(1, MagicDamage, 65, 20, ap(0.5))
+                .variable(2, MSSlowRatio, 25)
+                .range(875)
+                .cd(10, -1)
+                .mana(70);
+
+        W.update()
+                .passive("{4}する。")
+                .variable(4, AS, 20, 10)
+                .active("9秒持続する砂兵士1体を召喚する。自身が兵士の射程距離内にいる敵を攻撃すると、兵士が自身に代わってその敵を攻撃し、直線上にいる敵に{1}を与える。複数の兵士が同じ敵を攻撃した場合、2人目以降の兵士のダメージは25%になる。たとえ標的が自身の通常攻撃の射程内にいなくても、兵士自身の射程に入っていれば兵士が攻撃を行う。兵士は最大2体まで、{2}毎に補充される。兵士から離れすぎるとその兵士は動かなくなる。敵タワーの近くでは、兵士の持続時間は通常の半分になる。兵士をタワーの真上に召喚することで、その兵士を犠牲にしてタワーに{3}を与える。")
+                .variable(1, MagicDamage, new Per1Level(new double[] {45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 110,
+                        120, 130, 140, 150, 160, 170}), ap(0.6), null)
+                .variable(2, CDRAwareTime, 12, -1)
+                .variable(3, MagicDamage, 50, 0, ap(0.4), amplify(Lv, 10))
+                .range(450)
+                .mana(40)
+                .cd(1.5);
+
+        E.update()
+                .active("砂兵士1体に向かってダッシュし、進路上にいる敵に{1}を与える。敵チャンピオンに衝突した場合、そこで停止して4秒間{2}を得る。")
+                .variable(1, MagicDamage, 60, 30, ap(0.4))
+                .variable(2, Shield, 80, 40, amplify(BounusHealth, 0.15))
+                .range(1100)
+                .cd(19, -1)
+                .mana(60);
+
+        R.update()
+                .active("兵士{1}体の壁を召喚する。兵士たちは前方に突進し、衝突した敵に{2}と{3}を与える。壁その後{4}間持続し、敵はブリンク以外の手段でこの壁をすり抜けることはできないが、味方は自由に壁を通過でき、また壁を通過した際に1秒間{5}する。")
+                .variable(1, Value, 4, 1)
+                .variable(2, Knockback)
+                .variable(3, MagicDamage, 150, 75, ap(0.6))
+                .variable(4, Time, 5, 1)
+                .variable(5, MSRatio, 20)
+                .range(250)
+                .mana(100)
+                .cd(140, -20);
     }
 
     /**
      * Define skill.
      */
     public static void Bard(Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update()
+                .passive("鐘が50秒毎に2個ずつ、自身から一定の範囲内に出現する(2回目と3回目は1個のみ。また、試合開始から5分経過すると、敵ジャングル内にも出現し始める)。鐘を取ると、非戦闘時に7秒間{1}し(5回までスタック)、{2}（経過時間に比例）を得て、{3}する。鐘は10分経つと消滅する。<br>通常攻撃の際、スタックを消費して{4}を与える。取得した鐘の数で性能が強化される。<br>5個：1秒間{5}<br>25：ターゲットの後方にも追加効果<br>65：効果範囲が拡大")
+                .variable(1, MSRatio)
+                .variable(2, Experiment, 20)
+                .variable(3, RestoreMana, 0, 0, amplify(Mana, 0.12))
+                .variable(4, MagicDamage, new BardChimes(new double[] {0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110,
+                        120, 130, 140, 150}, new double[] {35, 55, 80, 110, 140, 175, 210, 245, 280, 315, 345, 375, 400,
+                                425, 445, 465}), ap(0.3), null)
+                .variable(5, MSSlowRatio, new BardChimes(new double[] {5, 45, 85, 115, 135}, new double[] {25, 45, 60,
+                        75, 80}));
 
+        Q.update()
+                .active("{1}の貫通するエネルギー弾を飛ばし、1体目のターゲットに{2}と{3}間{4}を与える。エネルギー弾が別の敵にも命中するか({5})、壁に当たった場合、スキルが命中したすべての敵に{6}を与える。")
+                .variable(1, MissileSpeed, 1500)
+                .variable(2, MagicDamage, 80, 45, ap(0.65))
+                .variable(3, Time, 1, 0.2)
+                .variable(4, MSSlowRatio, 60)
+                .variable(5, Radius, 450)
+                .variable(6, Stun, 1, 0.2)
+                .range(950)
+                .mana(60)
+                .cd(10, -1);
+
+        W.update()
+                .active("治癒効果のある結界を設置し、接触した味方は{1}する。設置から10秒間かけて治癒効果が向上して、最大で{2}するとともに{3}する。この効果は1.5秒かけて減衰する。結界は一度に3個まで発生させることができ、味方のチャンピオンが接触するか、敵が通過すると消滅する。")
+                .variable(1, RestoreHealth, 30, 30, ap(0.2))
+                .variable(2, RestoreHealth, 70, 40, ap(0.45))
+                .variable(3, MSRatio, 50)
+                .range(1000)
+                .mana(100, 5)
+                .cd(5);
+
+        E.update()
+                .active("付近の壁に一方通行の穴を開け、近くで穴のどこかを右クリックすると通り抜けられる。敵も使用できるが、味方のほうが{1}速く通り抜ける。")
+                .variable(1, Percentage, 10, 10)
+                .range(900)
+                .mana(30)
+                .cd(20, -1);
+
+        R.update()
+                .active("指定した地点へ弓なりに魔力を射出し、着弾と同時に{1}のすべてのチャンピオン、ミニオン、モンスター、タワーを2.5秒間、行動不能にする。ただし、その間、対象ユニットは無敵状態となり、ターゲットもされなくなる。")
+                .variable(1, Radius, 350)
+                .range(3400)
+                .mana(100)
+                .cd(130, -15);
     }
 
     /**
@@ -513,7 +601,48 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Braum(Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update()
+                .passive("通常攻撃時に対象にスタックを付与する。自身を含む味方チャンピオンがスタック付きの対象に通常攻撃を行う度にスタックが1増加し、4スタックになるとスタックを全て消費し対象に{1}と{2}を与える。スタックは4秒間増加が無いと0になる。" + Stun + "が発動すると、その対象が{3}間耐性を得て、スタックが付与できなくなる。代わりに自身が耐性がついた対象に通常攻撃するか" + Q + "を当てると{4}を与える。")
+                .variable(1, Stun, new Per6Level(1.25, 0.25))
+                .variable(2, MagicDamage, 32, 0, amplify(Lv, 8))
+                .variable(3, Time, 8, -1)
+                .variable(4, MagicDamage, 6.4, 0, amplify(Lv, 1.6));
 
+        Q.update()
+                .active("盾から氷の塊を発射し、命中した敵に" + P + "のスタック、{1}と2秒間かけて減衰する{2}を与える。")
+                .variable(1, MagicDamage, 70, 45, amplify(Health, 0.025))
+                .variable(2, MSSlowRatio, 70)
+                .range(1000)
+                .mana(45, 5)
+                .cd(10, -1);
+
+        W.update()
+                .active("対象の味方のユニットのそばに素早く移動する。移動完了後3秒間、自分と味方は{1}と{2}を得る。")
+                .variable(1, AR, 15, 2.5, amplify(BounusAR, 0.1, 0.015))
+                .variable(2, MR, 15, 2.5, amplify(BounusMR, 0.1, 0.015))
+                .range(650)
+                .mana(50, 5)
+                .cd(14, -1);
+
+        E.update()
+                .active("{1}間、盾を掲げて{3}を得て{4}する。盾を向けている方向から受けた最初の攻撃のダメージを無効化する。それ以降も効果時間中は受ける攻撃のダメージを{2}する。敵の遠距離攻撃を盾によって、食い止める。効果時間中はブラームの移動速度が10％上昇する")
+                .variable(1, Time, 3, 0.25)
+                .variable(2, DamageReductionRatio, 30, 2.5)
+                .variable(3, IgnoreUnitCollision)
+                .variable(4, MSRatio, 10)
+                .mana(30, 5)
+                .cd(18, -2);
+
+        R.update()
+                .active("盾を地面にたたきつけて地割れを起こし、{1}にいる敵と前方のライン上にいる敵に{2}と{3}を与える。前方に伸びた地割れは4間持続し、触れた敵に{5}を与える。最初に命中した敵チャンピオンには{4}を与える。")
+                .variable(1, Radius)
+                .variable(2, MagicDamage, 150, 100, ap(0.6))
+                .variable(3, Knockup, 0.25)
+                .variable(4, Knockup, 1.5)
+                .variable(5, MSSlowRatio, 40, 10)
+                .range(1250)
+                .mana(100)
+                .cd(140, -20);
     }
 
     /**
