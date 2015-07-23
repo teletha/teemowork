@@ -185,6 +185,7 @@ public class Build extends Publishable implements StatusCalculator {
         case Value:
         case Distance:
         case DealtDamage:
+        case ReceivedDamage4SecRatio:
             return new Computed(0, 0, status);
 
         case BounusAD:

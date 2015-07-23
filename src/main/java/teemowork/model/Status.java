@@ -38,7 +38,8 @@ public enum Status {
     DealtDamage("与えたDM"), DealtDamageRatio(DealtDamage),
 
     /** Received Damage */
-    ReceivedDamage("受けたDM"), ReceivedDamageRatio(ReceivedDamage), ReceivedOriginalDamageRatio("軽減前の受けたDM"),
+    ReceivedDamage("受けたDM"), ReceivedDamageRatio(ReceivedDamage), ReceivedDamage4SecRatio(
+            "4秒以内に" + ReceivedDamage), ReceivedOriginalDamageRatio("軽減前の受けたDM"),
 
     /** Received Damage */
     PreventedDamage("軽減したDM"), PreventedDamageRatio(ReceivedDamage),

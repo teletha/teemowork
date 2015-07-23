@@ -1044,7 +1044,51 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Ekko(Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update()
+                .passive("通常攻撃かスキルでダメージを与えた敵ユニットにスタックを付与する。スタックは4秒間持続し、スタック数が3になるとスタックを消費し対象に{1}と{2}間{3}を与える。対象がチャンピオンの場合、更に{2}間{4}する。同一の対象には3秒に一度しか発動しない。建物には無効。")
+                .variable(1, MagicDamage, 10, 0, ap(0.7), amplify(Lv, 10))
+                .variable(2, Time, new Per5Level3Times(2, 0.5))
+                .variable(3, MSSlowRatio, new Per5Level(40, 10))
+                .variable(4, MSRatio, new Per5Level(40, 40));
 
+        Q.update()
+                .active("特殊な装置を投げ、貫通した敵に{1}を与える。投げられた装置は最初に命中したチャンピオンの位置にフィールドを展開し、この範囲を通過するすべての対象に{2}を与える。その一瞬後、装置は自身のいる位置に戻り、その際貫通した敵に{3}を与える。2回とも当たった場合は合計{4}となる。")
+                .variable(1, MagicDamage, 60, 15, ap(0.1))
+                .variable(2, MSSlowRatio, 32, 7)
+                .variable(3, MagicDamage, 60, 25, ap(0.6))
+                .variable(4, MagicDamage, 120, 40, ap(0.7))
+                .range(1075)
+                .mana(50, 10)
+                .cd(11, -1);
+
+        W.update()
+                .passive("通常攻撃時、体力が最大値の30％未満の敵に対し、{1}を与える。ミニオンやモンスターに対しては最大150ダメージ。")
+                .variable(1, MagicDamage, 0, 0, amplify(TargetMissingHealthRatio, 5, 0, ap(0.0222)))
+                .active("発動3秒後、指定した地点の{2}の敵に{3}を与える。自身がこの地点に入ると起爆し、2秒間{4}を得て、全ての敵に{5}を与える。")
+                .variable(2, Radius)
+                .variable(3, MSSlowRatio, 40)
+                .variable(4, Shield, 150, 45, ap(0.8))
+                .variable(5, Stun, 2.25)
+                .range(1600)
+                .mana(50, 5)
+                .cd(22, -2);
+
+        E.update()
+                .active("指定した方向にダッシュする。次の通常攻撃に{1}を付与し{2}する。攻撃が命中すると対象の元までテレポートする。")
+                .variable(1, MagicDamage, 50, 30, ap(0.2))
+                .variable(2, Range, 300)
+                .range(325)
+                .mana(40, 10)
+                .cd(13, -1.5);
+
+        R.update()
+                .active("自身が無敵状態になり、敵からターゲット不能になる。さらに時間を撒き戻し、4秒前にいた地点にテレポートする。その際、{1}し、到着地点の{2}にいる敵に{3}を与える。")
+                .variable(1, RestoreHealth, 100, 50, amplify(ReceivedDamage4SecRatio, 20, 5, ap(0.0333)))
+                .variable(2, Radius)
+                .variable(3, MagicDamage, 200, 150, ap(1.3))
+                .range(-1)
+                .mana(100)
+                .cd(110, -20);
     }
 
     /**
