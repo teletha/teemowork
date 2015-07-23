@@ -920,45 +920,48 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Darius(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("通常攻撃またはスキルでダメージを与えた敵ユニットに出血スタックを付与する。出血スタックが付与された敵ユニットは毎秒{1}を受ける。出血スタックは最大5回までスタックし、5秒間持続する。また、出血スタックを受けている敵Champion数に応じて{2}していく。")
-                .variable(1, MagicDamage, 2.4, 0, amplify(Lv, 0.3), bounusAD(0.06))
-                .variable(-2, MSRatio, 5);
-        Q.update()
+        P.update(P514)
+                .passive("通常攻撃またはスキルでダメージを与えた敵ユニットに出血スタックを付与する。出血スタックが付与された敵ユニットに5秒間かけて{1}を与える。出血スタックは5秒間持続して最大5回までスタックし最大{2}を与える。また、出血スタックを受けている敵Champion数に応じて{3}する。")
+                .variable(1, MagicDamage, new Per2Level(12, 3), amplify(BounusAD, 0.3), null)
+                .variable(2, MagicDamage, new Per2Level(60, 15), amplify(BounusAD, 1.5), null)
+                .variable(-3, MSRatio, 5);
+
+        Q.update(P514)
                 .active("斧を振り回し{3}の敵ユニットに{1}を与える。斧の刃に当たった敵Championに対しては{2}を与える。")
                 .variable(1, PhysicalDamage, 70, 35, bounusAD(0.7))
                 .variable(2, PhysicalDamage, 105, 52.5, bounusAD(1.05))
                 .variable(3, Radius, 425)
                 .mana(40)
                 .cd(9, -1);
-        W.update()
-                .active("次の通常攻撃に{1}を追加し、2秒間{3}と{4}が付与される。対象の出血スタック数1個につき、このスキルの{5}する。")
-                .variable(1, PhysicalDamage, 0, 0, ad(0.2))
-                .variable(3, ASSlowRatio, 20, 5)
-                .variable(4, MSSlowRatio, 20, 5)
-                .variable(5, CDDecrease, 1)
+
+        W.update(P514)
+                .active("次の通常攻撃に{1}を追加し、2秒間{2}と{3}が付与される。対象の出血スタック数1個につき、このスキルの{4}する。")
+                .variable(1, PhysicalDamage, 0, 0, amplify(AD, 0.2, 0.2))
+                .variable(2, ASSlowRatio, 20, 5)
+                .variable(3, MSSlowRatio, 20, 5)
+                .variable(4, CDDecrease, 1)
                 .mana(30, 5)
-                .cd(8);
-        E.update()
+                .cd(8)
+                .range(145);
+
+        E.update(P514)
                 .passive("{1}を得る。")
                 .variable(1, ARPenRatio, 5, 5)
-                .active("前方範囲内の敵ユニットをDariusがいる方向に引き寄せる。")
+                .active("前方範囲内の敵ユニットをDariusがいる方向に引き寄せ、{2}。")
+                .variable(2, Visionable)
                 .mana(45)
                 .cd(24, -3)
                 .range(550);
-        R.update()
-                .active("対象の敵Championに跳躍し、{1}を与える。対象の出血スタック数1個につき、このスキルのダメージが20%増加する(最大でダメージ2倍)。このスキルで敵Championのキルを取った場合、{3}する。")
+
+        R.update(P514)
+                .active("対象の敵Championに跳躍し、{1}を与える。対象の出血スタック数1個につき、このスキルのダメージが20%増加する(最大でダメージ2倍)。このスキルで敵Championのキルを取った場合、{2}し{3}間再使用することが出来る（ランク3であれば{4}）。この効果はキルを取るたびに適用される。")
                 .variable(1, TrueDamage, 160, 90, bounusAD(0.75))
-                .variable(3, CDDecrease)
+                .variable(2, RestoreMana, new Fixed(new double[] {25, 50, 100}))
+                .variable(3, Time, 20)
+                .variable(4, CDDecrease)
                 .mana(100)
-                .cd(100, -10)
-                .range(475)
-                .update(P303)
-                .active("対象の敵Championに跳躍し、{1}を与える。対象の出血スタック数1個につき、このスキルのダメージが20%増加する(最大でダメージ2倍)。このスキルで敵Championのキルを取った場合、{4}間再使用することが出来る。この効果はキルを取るたびに適用される。")
-                .variable(4, Time, 12)
                 .cd(120, -20)
-                .update(P401)
-                .variable(4, Time, 20);
+                .range(475);
     }
 
     /**
