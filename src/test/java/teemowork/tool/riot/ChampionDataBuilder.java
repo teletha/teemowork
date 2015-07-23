@@ -19,6 +19,7 @@ import java.util.Map;
 
 import kiss.I;
 import teemowork.model.Champion;
+import teemowork.model.Skill;
 import teemowork.model.Version;
 import teemowork.tool.ClassWriter;
 
@@ -49,12 +50,14 @@ public class ChampionDataBuilder {
 
             code.write();
             code.write("/** ", champion.name, " Definition", " */");
-            code.write("public static final ", Champion.class, " ", champion.id, " = new ", Champion.class, param(string(champion.name), string(localized.name), string(champion.id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, array(champion.skill), array(champion.skillLocalized), false), ";");
+            code.write("public static final ", Champion.class, " ", champion.id, " = new ", Champion.class, param(string(champion.name), string(localized.name), string(champion.id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, array(champion.skill), array(champion.skillLocalized), methodRef(Skill.class, champion.id), false), ";");
 
             if (isTransformer(champion.name)) {
+                String id = champion.id + "Transformed";
+
                 code.write();
                 code.write("/** ", champion.name, " Definition", " */");
-                code.write("public static final ", Champion.class, " ", champion.id + "Transformed", " = new ", Champion.class, param(string(champion.name), string(localized.name), string(champion.id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, array(champion.skill), array(champion.skillLocalized), true), ";");
+                code.write("public static final ", Champion.class, " ", id, " = new ", Champion.class, param(string(champion.name), string(localized.name), string(champion.id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, array(champion.skill), array(champion.skillLocalized), methodRef(Skill.class, id), true), ";");
             }
         }
         code.write("}");
