@@ -689,29 +689,31 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Caitlyn(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("通常攻撃{1}回毎にダメージが増加する(Minionには250%、チャンピオンには150%)。茂みから通常攻撃を行うと2回分としてカウントされる。")
-                .variable(1, Count, new Per6Level(8, -1))
-                .update(P307)
-                .passive("通常攻撃{1}回毎にダメージが増加する(Minionには250%、チャンピオンには150%、建物への攻撃は無効)。茂みから通常攻撃を行うと2回分としてカウントされる。");
-        Q.update()
+        P.update(P514)
+                .passive("通常攻撃{1}回毎にダメージが増加する(Minionには150%増加、チャンピオンには50%増加して{2}を付与、建物への攻撃は無効)。茂みから通常攻撃を行うと2回分としてカウントされる。")
+                .variable(1, Count, new Per6Level(7, -1))
+                .variable(2, BounusARPenRatio, 50)
+                .update(P307);
+
+        Q.update(P514)
                 .active("1秒詠唱後、指定方向に貫通する弾を発射し当たった敵ユニットに{1}を与える。ダメージは敵に当たるごとに10%減少していき最小で{2}を与える。")
                 .variable(1, PhysicalDamage, 20, 40, ad(1.3))
                 .variable(2, PhysicalDamage, 10, 20, ad(0.65))
                 .mana(50, 10)
                 .cd(10, -1)
                 .range(1250);
-        W.update()
-                .active("指定地点に罠を仕掛ける。敵チャンピオンが罠の{4}に入ると発動して、対象に{1}かけて{2}と{3}を与え、9秒間対象の{5}。罠は3個まで置け、4分間持続する。")
-                .variable(1, Time, 1.5)
+
+        W.update(P514)
+                .active("指定地点に罠を仕掛ける。敵チャンピオンが罠の{4}に入ると発動して、対象に1.5秒かけて{2}と{3}を与え、9秒間対象の{5}。罠は3個まで置け、4分間持続する。")
                 .variable(2, MagicDamage, 80, 50, ap(0.6))
                 .variable(3, Snare, 1.5)
-                .variable(4, Radius, 135)
+                .variable(4, Radius, 67.5)
                 .variable(5, Visionable)
                 .mana(50)
                 .cd(20, -3)
                 .range(800);
-        E.update()
+
+        E.update(P514)
                 .active("指定方向にネットを飛ばし当たった敵ユニットに{1}と{3}間{2}を与え、Caitlynはネットを飛ばした方向の反対側にジャンプ({4})する。")
                 .variable(1, MagicDamage, 80, 50, ap(0.8))
                 .variable(2, MSSlowRatio, 50)
@@ -719,8 +721,9 @@ public interface SkillDefinition {
                 .variable(4, Distance, 400)
                 .mana(75)
                 .cd(18, -2)
-                .range(850);
-        R.update()
+                .range(950);
+
+        R.update(P514)
                 .active("0.5秒詠唱後に対象の敵チャンピオンの視界を得て、更に1秒詠唱後対象に目掛けて敵チャンピオンにのみ当たる弾を発射し、当たった敵チャンピオンに{1}を与える。ターゲットとの射線を遮ると間に入った敵チャンピオンに当たる。")
                 .variable(1, PhysicalDamage, 250, 225, bounusAD(2))
                 .mana(100)
