@@ -5675,59 +5675,45 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Yasuo(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P315)
+        P.update(P514)
                 .passive("一定距離({1})を移動すると最大値の1%のFlowを得る。{2}するがクリティカルダメージは10%減少する。この減少効果はダメージ増減算の前に適用される。(例：本来200%のクリティカルダメージは(100 - 10) x 2 = 180%になり、" + Item.InfinityEdge.name + "を持った場合本来250%のダメージが(100 - 10) * 2.5 = 225%になる)。Flowが最大値の時、敵チャンピオンかモンスターからダメージを受けると全てのFlowを消費して{5}間{3}を得る。")
-                .variable(1, Value, 40)
+                .variable(1, Value, new Per6Level(59, -7))
                 .variable(2, Critical, 0, 0, amplify(Critical, 1))
-                .variable(3, Shield, new Per1Level(new double[] {60, 65, 70, 75, 85, 95, 110, 125, 145, 170, 200, 240,
-                        290, 350, 420, 500, 590, 690}))
-                .variable(5, Time, 2)
-                .update(P402)
-                .variable(1, Value, 46)
-                .update(P403)
-                .variable(5, Time, 1.5)
-                .variable(3, Shield, new Per1Level(new double[] {60, 65, 70, 75, 80, 90, 100, 110, 125, 140, 160, 185,
-                        215, 250, 290, 340, 400, 470}));
+                .variable(3, Shield, new Per1Level(new double[] {100, 105, 110, 115, 120, 130, 140, 150, 165, 180, 200,
+                        225, 255, 290, 330, 380, 440, 510}))
+                .variable(5, Time, 1);
 
-        Q.update(P315)
-                .active("指定した方向の直線上にいる全ての敵({1})に{2}を与える。" + E + "の使用中に起動した場合、{3}の敵にダメージを与える。このスキルは3回まで連続して使用でき、3度目の使用では{4}になり{5}を追加で与える。このスキルは通常攻撃として扱われ(クリティカル適用)、固定のCDを持つが、増加AS1.72%毎に再使用時間が1%減少する（最大で66%）。{6}。")
+        Q.update(P514)
+                .active("指定した方向の直線上にいる全ての敵({1})に{2}を与える。" + E + "の使用中に起動した場合、{3}の敵にダメージを与える。このスキルは3回まで連続して使用でき、3度目の使用では{4}になり{5}を追加で与える。このスキルは通常攻撃として扱われ(クリティカル適用)、固定のCDを持つが、増加AS1.71%毎に再使用時間が1%減少する（最大で66%）。{6}。")
                 .variable(1, Distance, 475)
                 .variable(2, PhysicalDamage, 20, 20, ad(1))
                 .variable(3, Radius, 375)
                 .variable(4, Distance, 900)
                 .variable(5, Knockup)
                 .variable(6, OnHitEffect)
-                .cd(-6, 0.5);
+                .cd(4);
 
-        W.update(P315)
-                .passive(E + "か" + R + "を使用すると最大値の{1}のFlowを得る。")
-                .variable(1, Percentage, 4, 4)
-                .active("3.75秒間持続する{2}の壁を作り出す。この壁はタワー攻撃を除く全ての投射物をブロックする。")
-                .variable(2, Length, 300, 50)
+        W.update(P514)
+                .active("3.75秒間持続する{1}の壁を作り出す。この壁はタワー攻撃を除く全ての投射物をブロックする。")
+                .variable(1, Length, 300, 50)
                 .cd(26, -2)
-                .range(400)
-                .update(P402)
-                .variable(1, Percentage, 3, 3);
+                .range(400);
 
-        E.update(P315)
-                .active("マークの付いていない対象の敵の方向に飛び込み一定距離({2})移動する。対象に{1}を与え{3}間マークを付与する。スキル使用時にスタックが増加し、1スタックごとに基礎ダメージが25%増加していく。(最大4スタックで{4})")
+        E.update(P514)
+                .active("マークの付いていない対象の敵の方向に飛び込み({2})移動する。対象に{1}を与え{3}間マークを付与する。スキル使用時にスタックが増加し、1スタックごとに基礎ダメージが25%増加していく。(最大2スタックで{4})")
                 .variable(1, MagicDamage, 70, 20, ap(0.6))
-                .variable(2, Value, 475)
+                .variable(2, Distance, 475)
                 .variable(3, Time, 10, -1)
-                .variable(4, MagicDamage, 140, 40, ap(0.6))
-                .cd(0.5, -0.1)
+                .variable(4, MagicDamage, 105, 35, ap(0.6))
+                .cd(-0.5, 0.1)
                 .range(475);
 
-        R.update(P315)
-                .active("近くの空中にいる敵チャンピオンまで瞬時に移動して、対象と{1}にいる敵チャンピオンを1秒間空中に留めて{2}を与える。地面に着地すると、15秒間{3}を得る。")
-                .variable(1, Radius, 400)
-                .variable(2, PhysicalDamage, 200, 100, bounusAD(1.5))
+        R.update(P514)
+                .active("打ち上げられている敵チャンピオンのもとへ瞬間移動し、{1}を与える。さらに、{2}の打ち上げられ中の全ての敵をもう1秒間、打ち上げ直す。発動と同時にFlowが満タンになるが、" + Q + "のスタックは解消される。また、15秒間、{3}を得る。")
+                .variable(1, PhysicalDamage, 200, 100, bounusAD(1.5))
+                .variable(2, Radius, 400)
                 .variable(3, BounusARPenRatio, 50)
                 .cd(80, -25)
-                .range(1300)
-                .update(P401)
-                .active("Flowが最大となる。近くの空中にいる敵チャンピオンまで瞬時に移動して、対象と{1}にいる敵チャンピオンを1秒間空中に留めて{2}を与える。地面に着地すると、15秒間{3}を得る。")
-                .update(P402)
                 .range(1200);
     }
 
