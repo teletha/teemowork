@@ -21,6 +21,8 @@ import java.util.Locale;
 import java.util.StringJoiner;
 
 import kiss.I;
+import teemowork.api.RiotChampionData;
+import teemowork.model.Champion;
 import teemowork.model.Item;
 import teemowork.model.MasterySeason4;
 import teemowork.model.Version;
@@ -93,8 +95,8 @@ public class ImageBuilder {
     public void buildChampionIconSet() throws Exception {
         EditableImage container = new EditableImage();
 
-        for (ChampionDefinition definition : definitions.data.values()) {
-            EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/champion/", definition.id, ".png"));
+        for (Champion definition : collect(RiotChampionData.class, Champion.class)) {
+            EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/champion/", definition.systemName, ".png"));
             image.trim(7).resize(70);
 
             container.concat(image);
@@ -111,21 +113,45 @@ public class ImageBuilder {
      */
     public void buildSkillIconSet() throws Exception {
         for (ChampionDefinition definition : definitions.data.values()) {
-            EditableImage container = new EditableImage();
+            List<String> skills = definition.skillSystem;
 
-            for (int i = 0; i < definition.skillSystem.size(); i++) {
-                String file = (definition.skillSystem.get(i) + ".png").replaceAll("\\s", "%20");
-                String directory = i == 0 ? "passive" : "spell";
+            buildSkillIconSet(definition.id, skills.get(0), skills.get(1), skills.get(2), skills.get(3), skills.get(4));
 
-                EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/", directory, "/", file));
-                image.resize(45);
+            if (definition.isTransformer()) {
+                String id = definition.id + "Transformed";
 
-                container.concat(image);
+                if (skills.size() == 9) {
+                    buildSkillIconSet(id, skills.get(0), skills.get(5), skills.get(6), skills.get(7), skills.get(8));
+                } else {
+                    buildSkillIconSet(id, skills.get(0), skills.get(5), skills.get(6), skills.get(7), skills.get(4));
+                }
             }
-            container.write(Resources.resolve("skill/" + definition.id + ".jpg"));
-
-            log("Create ", definition.id, " skill icon set.");
         }
+    }
+
+    /**
+     * <p>
+     * Create specified champion's skill icon set.
+     * </p>
+     * 
+     * @param champion
+     * @param skills
+     */
+    private void buildSkillIconSet(String champion, String... skills) {
+        EditableImage container = new EditableImage();
+
+        for (int i = 0; i < skills.length; i++) {
+            String file = (skills[i] + ".png").replaceAll("\\s", "%20");
+            String directory = i == 0 ? "passive" : "spell";
+
+            EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/", directory, "/", file));
+            image.resize(45);
+
+            container.concat(image);
+        }
+        container.write(Resources.resolve("skill/" + champion + ".jpg"));
+
+        log("Create ", champion, " skill icon set.");
     }
 
     /**
@@ -166,9 +192,21 @@ public class ImageBuilder {
      * @return
      */
     private <M> List<M> collect(Class<M> model) {
+        return collect(model, model);
+    }
+
+    /**
+     * <p>
+     * Collect all defined model in the specified definition class.
+     * </p>
+     * 
+     * @param model
+     * @return
+     */
+    private <M> List<M> collect(Class definition, Class<M> model) {
         List<M> items = new ArrayList();
 
-        for (Field field : model.getFields()) {
+        for (Field field : definition.getFields()) {
             if (field.getType() == model) {
                 try {
                     items.add((M) field.get(null));
@@ -225,8 +263,8 @@ public class ImageBuilder {
      */
     public static void main(String[] args) throws Exception {
         ImageBuilder builder = new ImageBuilder(Version.Latest);
-        builder.buildItemIconSet();
-        builder.buildChampionIconSet();
+        // builder.buildItemIconSet();
+        // builder.buildChampionIconSet();
         builder.buildSkillIconSet();
     }
 }

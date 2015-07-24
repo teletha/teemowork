@@ -12,10 +12,10 @@ package teemowork.tool.riot;
 import static teemowork.tool.ClassWriter.*;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ConcurrentSkipListMap;
 
 import kiss.I;
 import teemowork.model.Champion;
@@ -50,14 +50,14 @@ public class ChampionDataBuilder {
 
             code.write();
             code.write("/** ", champion.name, " Definition", " */");
-            code.write("public static final ", Champion.class, " ", champion.id, " = new ", Champion.class, param(string(champion.name), string(localized.name), string(champion.id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, array(champion.skill), array(champion.skillLocalized), methodRef(SkillDefinition.class, champion.id), false), ";");
+            code.write("public static final ", Champion.class, " ", champion.id, " = new ", Champion.class, param(string(champion.name), string(localized.name), string(champion.id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, skills(champion.skill, false), skills(champion.skillLocalized, false), methodRef(SkillDefinition.class, champion.id), false), ";");
 
-            if (isTransformer(champion.name)) {
+            if (champion.isTransformer()) {
                 String id = champion.id + "Transformed";
 
                 code.write();
                 code.write("/** ", champion.name, " Definition", " */");
-                code.write("public static final ", Champion.class, " ", id, " = new ", Champion.class, param(string(champion.name), string(localized.name), string(champion.id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, array(champion.skill), array(champion.skillLocalized), methodRef(SkillDefinition.class, id), true), ";");
+                code.write("public static final ", Champion.class, " ", id, " = new ", Champion.class, param(string(champion.name), string(localized.name), string(id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperle, status.movespeed, status.attackrange, skills(champion.skill, true), skills(champion.skillLocalized, true), methodRef(SkillDefinition.class, id), true), ";");
             }
         }
         code.write("}");
@@ -65,11 +65,38 @@ public class ChampionDataBuilder {
     }
 
     /**
-     * @param name
+     * <p>
+     * Choose correct skill set.
+     * </p>
+     * 
+     * @param skills
+     * @param transformer
      * @return
      */
-    private static boolean isTransformer(String name) {
-        return name.equals("Elise") || name.equals("Jayce") || name.equals("Nidalee");
+    private static String skills(List<String> skills, boolean transformer) {
+        int size = skills.size();
+
+        if (transformer == false) {
+            return array(skills.toArray(new String[size]));
+        }
+
+        if (size == 9) {
+            if (transformer) {
+                return array(new String[] {skills.get(0), skills.get(5), skills.get(6), skills.get(7), skills.get(8)});
+            } else {
+                return array(new String[] {skills.get(0), skills.get(1), skills.get(2), skills.get(3), skills.get(4)});
+            }
+        } else if (size == 8) {
+            if (transformer) {
+                return array(new String[] {skills.get(0), skills.get(5), skills.get(6), skills.get(7), skills.get(4)});
+            } else {
+                return array(new String[] {skills.get(0), skills.get(1), skills.get(2), skills.get(3), skills.get(4)});
+            }
+        }
+
+        // If this exception will be thrown, it is bug of this program. So we must rethrow the
+        // wrapped error in here.
+        throw new Error();
     }
 
     /**
@@ -78,7 +105,7 @@ public class ChampionDataBuilder {
     static class ChampionDefinitions {
 
         /** The champion data store. */
-        public LinkedHashMap<String, ChampionDefinition> data;
+        public ConcurrentSkipListMap<String, ChampionDefinition> data;
     }
 
     /**
@@ -124,17 +151,43 @@ public class ChampionDataBuilder {
             Detail info = RiotAPI.parse(path, Details.class, Version.Latest, Locale.US).data.get(id);
             Detail local = RiotAPI.parse(path, Details.class, Version.Latest, Locale.JAPAN).data.get(id);
 
-            skill.add(info.passive.name);
-            skillLocalized.add(local.passive.name);
-            skillSystem.add(info.passive.image.full.replaceAll("\\.png", ""));
+            addSkill(info.passive.name, local.passive.name, info.passive.image.full);
 
             for (int i = 0; i < info.spells.size(); i++) {
                 Spell spell = info.spells.get(i);
 
-                skill.add(spell.name);
-                skillLocalized.add(local.spells.get(i).name);
-                skillSystem.add(spell.image.full.replaceAll("\\.png", ""));
+                addSkill(spell.name, local.spells.get(i).name, spell.image.full);
             }
+
+            if (isTransformer()) {
+
+            }
+        }
+
+        /**
+         * <p>
+         * Check whether this champion can transform or not.
+         * </p>
+         * 
+         * @return
+         */
+        boolean isTransformer() {
+            return name.equals("Elise") || name.equals("Jayce") || name.equals("Nidalee");
+        }
+
+        /**
+         * <p>
+         * Register skill.
+         * </p>
+         * 
+         * @param name
+         * @param localized
+         * @param system
+         */
+        private void addSkill(String name, String localized, String system) {
+            skill.add(name);
+            skillLocalized.add(localized);
+            skillSystem.add(system.replaceAll("\\.png", ""));
         }
     }
 

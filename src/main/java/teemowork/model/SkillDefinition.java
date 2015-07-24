@@ -1099,80 +1099,79 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Elise(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("Human Form時に使用したスキルが敵ユニットに命中するとSpiderlingのチャージを1得る。Spider Formになるとチャージ数に比例したSpiderlingを召喚する。召喚される数はSpider Formのレベルに比例し増加する。召喚されたSpiderlingは死亡するとチャージが減るが、再度Human Formに戻ると再度チャージ状態に戻る。<br>Health: {1}<br>AD: {2}<br>AS: 0.665<br>AR: {3}<br>MR: {4}<br>MS: 370<br>AoEスキルのダメージを{5}低減")
-                .variable(1, Value, 100, 0, amplify(Lv, 25))
-                .variable(2, Value, new Refer(R, 10, 10), ap(0.1), null)
-                .variable(3, Value, 30)
-                .variable(4, Value, 50)
-                .variable(5, Percentage, 25);
-        P.update(P310)
-                .variable(1, Value, 80, 0, amplify(Lv, 10))
-                .variable(3, Value, new Refer(R, 30, 20))
-                .variable(4, Value, new Refer(R, 50, 20))
-                .variable(5, Percentage, new Refer(R, 10, 10));
-        Q.update()
-                .active("対象の敵ユニットに毒を放ち{1}を与える。")
-                .variable(1, MagicDamage, 40, 35, amplify(Status.TargetCurrentHealthRatio, 8, 0, ap(0.03)))
+        P.update(P514).passive("使用したスキルが敵ユニットに命中すると子蜘蛛のチャージが1増加する。");
+
+        Q.update(P514)
+                .active("対象の敵ユニットに毒を放ち{1}を与える。ミニオンとモンスターに対しては{2}が上限。")
+                .variable(1, MagicDamage, 40, 35, amplify(TargetCurrentHealthRatio, 8, 0, ap(0.03)))
+                .variable(2, MagicDamage, 110, 60)
                 .mana(80, 5)
                 .cd(6)
                 .range(625);
-        W.update()
-                .active("指定地点に蜘蛛を放つ。蜘蛛は敵ユニットに当たるか3秒間経過すると爆発し、範囲内の敵ユニットに{1}を与える。蜘蛛は指定地点に移動した後、最も近くにいる敵ユニットに向かって移動する。また{2}。")
+
+        W.update(P514)
+                .active("指定地点に蜘蛛を放つ。蜘蛛は敵ユニットに当たるか3秒間経過すると爆発し、範囲内の敵ユニットに{1}を与える。蜘蛛は指定地点に移動した後、最も近くにいる敵ユニットに向かって移動する。{2}。")
                 .variable(1, MagicDamage, 75, 50, ap(0.8))
                 .variable(2, Visionable)
                 .mana(60, 10)
                 .cd(12)
                 .range(950);
-        E.update()
-                .active("指定方向に糸を飛ばし当たった敵ユニットに{1}を与え、{2}。")
-                .variable(1, Stun, 1.5)
+
+        E.update(P514)
+                .active("指定方向に糸を飛ばし当たった敵ユニットに{1}を与え、1秒間{2}。")
+                .variable(1, Stun, 1.6, 0.1)
                 .variable(2, Visionable)
                 .mana(50)
                 .cd(14, -1)
                 .range(1075);
-        R.update()
-                .active("EliseがSpider Formに変身し射程125のMeleeになる。その間は通常攻撃に追加{1}が付与され、{2}と{3}を得て、{4}する。またこのスキルに比例しSpiderlingの最大チャージ数、攻撃力が増加し、Spiderlingが受けるAoEダメージが低減される。")
-                .variable(1, MagicDamage, 10, 10, ap(0.3))
-                .variable(2, AR, 10, 5)
-                .variable(3, MR, 10, 5)
-                .variable(4, MS, 10)
+
+        R.update(P514)
+                .passive("子蜘蛛の最大チャージ数は{1}。")
+                .variable(1, Value, 2, 1)
+                .active("Spider Formに変身する。射程が125、移動速度が555になる。また通常攻撃に追加効果を付与する。")
+                .variable(-2, MS, 25)
                 .cd(4);
-        R.update(P307)
-                .active("EliseがSpider Formに変身し射程125のMeleeになる。その間は通常攻撃に追加{1}が付与され、{4}する。またこのスキルに比例しSpiderlingの最大チャージ数、攻撃力が増加し、Spiderlingが受けるAoEダメージが低減される。");
-        R.update(P309)
-                .active("EliseがSpider Formに変身し射程125のMeleeになる。その間は通常攻撃に追加{1}が付与され、{4}する。またこのスキルに比例しSpiderlingの最大チャージ数、攻撃力が増加し、Spiderlingが受けるAoEダメージが低減される。{5}。")
-                .variable(5, NotSpellCast);
     }
 
     /**
      * Define skill.
      */
     public static void EliseTransformed(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        Q.update()
-                .active("対象の敵ユニットに飛びつき{1}を与える。")
-                .variable(1, MagicDamage, 50, 45, amplify(TargetMissingHealthRatio, 8, 0, ap(0.03)))
+        P.update(P514)
+                .passive("{3}し{4}する。通常攻撃は追加で{1}を与え、{2}する。")
+                .variable(1, MagicDamage, new Refer(R, 10, 10), ap(0.3), null)
+                .variable(2, RestoreHealth, new Refer(R, 4, 2), ap(0.1), null)
+                .variable(3, MS, 25)
+                .variable(4, Range, -425);
+
+        Q.update(P514)
+                .active("対象の敵ユニットに飛びつき{1}を与える。ミニオンとモンスターに対しては{2}が上限。")
+                .variable(1, MagicDamage, 60, 40, amplify(TargetMissingHealthRatio, 8, 0, ap(0.03)))
+                .variable(2, MagicDamage, 135, 65)
                 .cd(6)
                 .range(475);
-        Q.update(P304).variable(1, MagicDamage, 60, 50, amplify(TargetMissingHealthRatio, 8, 0, ap(0.03)));
-        W.update()
-                .passive("Spiderlingの{1}する。")
+
+        W.update(P514)
+                .passive("子蜘蛛の{1}する。")
                 .variable(1, ASRatio, 5, 5)
-                .active("3秒間EliseとSpiderlingの{2}する。また、その間Spiderlingが攻撃を行うたびにEliseの{3}する。")
+                .active("3秒間自身と子蜘蛛の{2}する。")
                 .variable(2, ASRatio, 60, 20)
-                .variable(3, RestoreHealth, 4, 0, ap(0.02))
                 .cd(12);
-        W.update(P307).variable(3, RestoreHealth, 4, 0, ap(0.04));
-        E.update()
-                .active("EliseとSpiderlingが上空に退避し(ターゲット不可になる)指定の方法で降下する。上空にいる間は射程内の視界を得る地面をクリックした場合: 最大2秒間上空に待機し、初期位置へ降下する。この間、敵ユニットをターゲットし裏側に降下できる。敵ユニットをクリックした場合: 即座に下降し裏側に降り立つ。")
-                .cd(26, -2)
-                .range(1075);
-        R.update()
-                .passive("通常攻撃に追加{1}が付与される。")
-                .variable(1, MagicDamage, 10, 10, ap(0.3))
-                .active("EliseがHuman Formに変身し射程550のRangedになる。")
-                .cd(4);
-        R.update(P307).passive("通常攻撃に追加{1}が付与される。{2}。").variable(2, NotSpellCast);
+
+        E.update(P514)
+                .active("自身と子蜘蛛が上空に退避し(ターゲット不可になる)指定の方法で降下する。上空にいる間は射程内の{1}。<br>地面をクリックした場合: 最大2秒間上空に待機し、初期位置へ降下する。この間、敵ユニットをターゲットし裏側に降下できる。<br>敵ユニットをクリックした場合: 即座に下降し裏側に降り立つ。")
+                .variable(1, Visionable)
+                .cd(26, -3)
+                .range(750);
+
+        R.update(P514)
+                .passive("変身時にチャージ数に応じた子蜘蛛を召喚する。召喚された子蜘蛛は死亡するとチャージが減るが、Human Formに戻ると再度チャージ状態に戻る。<br>Health: {1}<br>AD: {2}<br>AS: 0.665<br>AR: {3}<br>MR: {4}<br>MS: 355<br>AoEスキルのダメージを{5}低減")
+                .variable(1, Value, 85, 0, amplify(Lv, 10))
+                .variable(2, Value, 10, 10, ap(0.15))
+                .variable(3, Value, 30, 20)
+                .variable(4, Value, 50, 20)
+                .variable(5, Percentage, 20, 5)
+                .active("Human Formに変身する。射程が550、移動速度が530になる。また通常攻撃の追加効果がなくなる。");
     }
 
     /**

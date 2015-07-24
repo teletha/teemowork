@@ -54,7 +54,8 @@ public class Build extends Publishable implements StatusCalculator {
             .observableArrayList(0, 0, 0, 0, 0));
 
     /** The skill level. */
-    private boolean[] skillActivation = {false, false, false, false, false};
+    public final ListProperty<Boolean> skillActivation = new SimpleListProperty(FXCollections
+            .observableArrayList(false, false, false, false, false));
 
     /** The mastery. */
     private MasterySet mastery;
@@ -355,10 +356,6 @@ public class Build extends Publishable implements StatusCalculator {
             double value = champion.getStatus(version)
                     .get(status) + champion.getStatus(version).get(status.per()) * level.get();
 
-            if (champion == Champion.EliseTransformed) {
-                value += computeVariable(status, Champion.Elise.R);
-            }
-
             if (champion == Champion.NidaleeTransformed) {
                 value += computeVariable(status, Champion.Nidalee.R);
             }
@@ -423,7 +420,7 @@ public class Build extends Publishable implements StatusCalculator {
             sum = status.compute(sum, sum(skillStatus.getPassive(), skill, status));
 
             // from active
-            if (skillActivation[i]) {
+            if (skillActivation.get(i)) {
                 sum = status.compute(sum, sum(skillStatus.getActive(), skill, status));
             }
         }
@@ -552,10 +549,10 @@ public class Build extends Publishable implements StatusCalculator {
      */
     public void active(SkillKey key) {
         int index = key.ordinal();
-        skillActivation[index] = !skillActivation[index];
+        skillActivation.set(index, !skillActivation.get(index));
 
         // assure minimun skill level
-        if (skillActivation[index] && skillLevel.get(index) == 0) {
+        if (skillActivation.get(index) && skillLevel.get(index) == 0) {
             skillLevel.set(index, 1);
         }
 
@@ -591,7 +588,7 @@ public class Build extends Publishable implements StatusCalculator {
      * @return
      */
     public boolean isActive(Skill skill) {
-        return skillActivation[skill.key.ordinal()];
+        return skillActivation.get(skill.key.ordinal());
     }
 
     /**

@@ -15,6 +15,7 @@ import static teemowork.model.Status.*;
 
 import java.util.List;
 
+import js.dom.UIAction;
 import js.math.Mathematics;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget1;
@@ -56,6 +57,11 @@ public class ChampionDetailWidget extends Widget1<Build> {
         levelDown.to(v -> build.levelDown());
         skillUp.to(v -> build.levelUp(v));
         skillDown.to(v -> build.levelDown(v));
+
+        // TODO FIXME
+        on(UIAction.Key_R, ChampionIconBox).to(e -> {
+            build.active(SkillKey.R);
+        });
     }
 
     /**

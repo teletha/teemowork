@@ -208,7 +208,7 @@ public enum Status {
     // Other Status Related
     // ==================================================
     /** Range */
-    Range("射程"), RangePerLv, RangeRatio("射程"),
+    Range("射程"), RangePerLv, RangeRatio(Range),
 
     /** Grow Body Size */
     Grow("サイズ"),
@@ -570,7 +570,7 @@ public enum Status {
             return "10秒毎に" + formatValue(computed) + "Gold";
 
         case Range:
-            return "射程が" + formatValue(computed) + "増加";
+            return "射程が" + formatValue(Math.abs(computed)) + (0 < computed ? "増加" : "減少");
 
         case Knockback:
             String length = formatValue(computed);

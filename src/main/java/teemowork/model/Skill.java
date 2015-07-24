@@ -12,8 +12,6 @@ package teemowork.model;
 import static teemowork.api.RiotChampionData.*;
 import static teemowork.model.SkillKey.*;
 
-import java.util.function.Consumer;
-
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
 
@@ -40,23 +38,12 @@ public class Skill extends Describable<SkillDescriptor> {
     /**
      * The skill definition.
      */
-    public Skill(String name, String localized, String owner, int id, int size) {
+    public Skill(String name, String localized, String owner, int id) {
         this.name = name;
         this.localized = localized;
         this.owner = owner;
-        this.iconPosition = new Numeric(id / (size - 1) * 100, Unit.percent);
-        this.key = SkillKey.values()[id < 5 ? id : id - 4];
-    }
-
-    /**
-     * The skill definition.
-     */
-    public Skill(String name, String localized, String owner, int id, int size, Consumer<SkillDescriptor> definition) {
-        this.name = name;
-        this.localized = localized;
-        this.owner = owner;
-        this.iconPosition = new Numeric(id / (size - 1) * 100, Unit.percent);
-        this.key = SkillKey.values()[id < 5 ? id : id - 4];
+        this.iconPosition = new Numeric(id / 4 * 100, Unit.percent);
+        this.key = SkillKey.values()[id];
     }
 
     /**

@@ -80,7 +80,7 @@ public class SkillStatusTest {
          * 
          */
         private EmptySkill() {
-            super("name", "name", "owner", 0, 1);
+            super("name", "name", "owner", 0);
 
             update();
         }
@@ -89,7 +89,7 @@ public class SkillStatusTest {
          * 
          */
         private EmptySkill(SkillKey key) {
-            super("name", "name", "owner", key.ordinal(), 1);
+            super("name", "name", "owner", key.ordinal());
         }
     }
 }

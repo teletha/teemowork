@@ -12,6 +12,7 @@ package teemowork.tool;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -231,6 +232,21 @@ public class ClassWriter {
             builder.add(type == String.class ? string(item) : item.toString());
         }
         return builder.toString();
+    }
+
+    /**
+     * <p>
+     * Helper method to write string literal.
+     * </p>
+     * 
+     * @param values
+     * @return
+     */
+    public static <E> String array(Object[] list) {
+        if (list == null) {
+            return "null";
+        }
+        return array(Arrays.asList(list));
     }
 
     /**

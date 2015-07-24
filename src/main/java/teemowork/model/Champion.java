@@ -71,10 +71,10 @@ public class Champion extends RiotChampionData {
      * @param name
      */
     public Champion(String name, String localized, String system, float hp, float hpPer, float hreg, float hregPer, float mp, float mpPer, float mreg, float mregPer, float ad, float adPer, float as, float asPer, float crit, float critPer, float ar, float arPer, float mr, float mrPer, float ms, float range, String[] skillNames, String[] skillLocalized, SkillDefinition skillDefinition, boolean transformed) {
-        this.id = transformed ? counter : counter++;
+        this.id = counter++;
 
         for (int i = 0; i < skills.length; i++) {
-            this.skills[i] = new Skill(skillNames[i], skillLocalized[i], system, i, skillNames.length);
+            this.skills[i] = new Skill(skillNames[i], skillLocalized[i], system, i);
         }
 
         this.P = this.skills[0];
