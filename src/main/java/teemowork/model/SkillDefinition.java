@@ -1216,7 +1216,7 @@ public interface SkillDefinition {
                 .range(225);
 
         R.update(P514)
-                .active("指定地点の{1}の敵ユニットに{2}と2秒間の{3}を与え、このスキルを命中させた敵チャンピオン毎に6秒間{4}を得る。")
+                .active("指定地点の{1}の敵ユニットに{2}と2秒間の{3}を与え、このスキルを命中させた敵チャンピオンごとに6秒間{4}を得る。")
                 .variable(1, Radius, 250)
                 .variable(2, MagicDamage, 0, 0, amplify(TargetCurrentHealthRatio, 15, 5, ap(0.01)))
                 .variable(3, MSSlowRatio, 40, 20)
@@ -2086,7 +2086,45 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Kalista(Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive("専用アイテムを使用して、味方チャンピオンに使用すると「魂盟の同志」となる。この効果は試合開始3分までは、他のチャンピオンに付け直すことができる。通常攻撃の" + Damage + "が10%低下しキャンセル不可能になるが、通常攻撃を行った直後、又は" + P + "を使用した直後に移動を行うと、移動の代わりに一定距離ステップする。ステップの距離は所有している靴アイテムのランクにより増加する。<br>靴なし: 250<br>" + Item.BootsOfSpeed + ": 300<br>それ以外: 350");
 
+        Q.update(P514)
+                .active("槍を投げ、命中した敵に{1}を与える。このスキルの攻撃は、" + P + "、" + W + "、および" + E + "の効果を発動する。命中した敵を倒すと槍が貫通し、次に命中した敵に{1}と倒した敵に貯まっていた" + E + "のスタックを与える。")
+                .variable(1, PhysicalDamage, 10, 60, ad(1))
+                .cd(8)
+                .mana(50, 5)
+                .range(1200);
+
+        W.update(P514)
+                .passive("自身と「魂盟の同志」が同じ対象に対し2秒以内に通常攻撃をすると、{1}を与える。ミニオンとモンスターに対しては{2}が上限。この効果は同一の対象には6秒に一度しか発動しない。")
+                .variable(1, MagicDamage, 0, 0, amplify(TargetMaxHealthRatio, 12, 2))
+                .variable(2, MagicDamage, 75, 50)
+                .active("スタックを1消費し、指定地点を偵察する霊魂を放つ。霊魂は攻撃能力を持たないが、スキルを使用した地点から指定した地点の間を巡回し、敵チャンピオンに接触した場合、4秒間対象の{3}。スタックの最大値は2、{4}ごとに1増加する。霊魂は7往復後に消滅。")
+                .variable(3, Visionable)
+                .variable(4, CDRAwareTime, 90, -10)
+                .mana(25)
+                .cd(30)
+                .range(5000);
+
+        E.update(P514)
+                .passive("通常攻撃か" + P + "が命中すると対象に4秒間槍スタックが貯まる。(CD中を除く)。")
+                .active("槍スタックが付与されている全ての敵のスタックを消費し、{1}と2秒間{2}を与える。槍スタックが2以上の場合、それぞれにつきダメージが50％上昇する。このスキルで敵ユニットを倒した場合、このスキルの{3}、倒した敵ユニット一体につき{4}する（上限40）。")
+                .variable(1, PhysicalDamage, 20, 10, ad(0.6))
+                .variable(2, MSSlowRatio, 25, 5)
+                .variable(3, CDDecrease)
+                .variable(4, RestoreMana, 20)
+                .mana(40)
+                .cd(14, -1.5);
+
+        R.update(P514)
+                .active("「魂盟の同志」を自分の元へ引き寄せる。引き寄せられた同士はその後4秒間敵からターゲットされなくなるが、その間は行動不能になる。 魂盟の同志はマウスでクリックした地点({3})に向かって跳躍する。このとき、最初に命中した敵のチャンピオンの位置で停止し、{1}の敵全員に{2}を与える。同士はその後、敵の射程距離の限界点に着地する。自身と魂盟の同志の間の距離が1400以内のときのみ発動できる。")
+                .variable(1, Radius)
+                .variable(2, Knockup, 1.5, 0.25)
+                .variable(3, Radius, 1200)
+                .mana(100)
+                .cd(90, -15)
+                .range(1400);
     }
 
     /**
