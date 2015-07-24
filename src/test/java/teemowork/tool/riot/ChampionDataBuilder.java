@@ -185,9 +185,26 @@ public class ChampionDataBuilder {
          * @param system
          */
         private void addSkill(String name, String localized, String system) {
-            skill.add(name);
-            skillLocalized.add(localized);
+            skill.add(skill(name));
+            skillLocalized.add(skill(localized));
             skillSystem.add(system.replaceAll("\\.png", ""));
+        }
+
+        /**
+         * <p>
+         * Normalize skill name.
+         * </p>
+         * 
+         * @param name
+         * @return
+         */
+        private String skill(String name) {
+            int index = name.indexOf("/");
+
+            if (index != -1) {
+                name = name.substring(0, index).trim();
+            }
+            return name;
         }
     }
 

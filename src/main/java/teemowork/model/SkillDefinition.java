@@ -1128,8 +1128,9 @@ public interface SkillDefinition {
         R.update(P514)
                 .passive("子蜘蛛の最大チャージ数は{1}。")
                 .variable(1, Value, 2, 1)
-                .active("Spider Formに変身する。射程が125、移動速度が555になる。また通常攻撃に追加効果を付与する。")
+                .active("Spider Formに変身する。射程が125、移動速度が555になる。また通常攻撃に追加効果を付与する。{3}。")
                 .variable(-2, MS, 25)
+                .variable(3, NotSpellCast)
                 .cd(4);
     }
 
@@ -1171,7 +1172,8 @@ public interface SkillDefinition {
                 .variable(3, Value, 30, 20)
                 .variable(4, Value, 50, 20)
                 .variable(5, Percentage, 20, 5)
-                .active("Human Formに変身する。射程が550、移動速度が530になる。また通常攻撃の追加効果がなくなる。");
+                .active("Human Formに変身する。射程が550、移動速度が530になる。また通常攻撃の追加効果がなくなる。{6}。")
+                .variable(6, NotSpellCast);
     }
 
     /**
@@ -1940,74 +1942,93 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Jayce(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("Transformを使用すると1.25秒の間{1}し、{2}を得る。").variable(-1, MS, 40).variable(2, IgnoreUnitCollision);
-        Q.update()
-                .active("対象の敵ユニットに飛びかかり、対象と周囲の敵ユニットに{1}と2秒間{2}を与える。")
-                .variable(1, PhysicalDamage, 20, 45, bounusAD(1))
-                .variable(2, MSSlowRatio, 30, 5)
+        P.update(P514)
+                .passive("{1}と{2}を得る。" + R + "を使用すると1.25秒間{3}し{4}を得る。")
+                .variable(1, AR, new Refer(R, 5, 10))
+                .variable(2, MR, new Refer(R, 5, 10))
+                .variable(-3, MS, 40)
+                .variable(4, IgnoreUnitCollision);
+
+        Q.update(P514)
+                .active("対象の敵ユニットに飛びかかり、対象と{1}の敵ユニットに{2}と2秒間{3}を与える。")
+                .variable(1, Radius)
+                .variable(2, PhysicalDamage, 30, 40, bounusAD(1))
+                .variable(3, MSSlowRatio, 30, 5)
                 .mana(40, 5)
                 .cd(16, -2)
                 .range(600);
-        W.update()
-                .passive("通常攻撃ごとに{1}する。")
+
+        W.update(P514)
+                .passive("通常攻撃すると{1}する。")
                 .variable(1, RestoreMana, 6, 2)
                 .active("4秒間雷のオーラを身にまとい、{2}の敵ユニットに毎秒{3}を与える。")
                 .variable(2, Radius, 285)
-                .variable(3, MagicDamage, 25, 17.5, ap(0.25))
+                .variable(3, MagicDamage, 25, 15, ap(0.25))
                 .mana(40)
                 .cd(10);
-        E.update()
-                .active("対象の敵ユニットに{1}と短い距離のノックバックを与える。ミニオンやモンスターに対しては{2}が上限。")
-                .variable(1, MagicDamage, 0, 0, bounusAD(1), amplify(TargetMaxHealthRatio, 8, 3))
+
+        E.update(P514)
+                .active("対象の敵ユニットに{1}と0.75秒{3}を与える。ミニオンやモンスターに対しては{2}が上限。")
+                .variable(1, MagicDamage, 0, 0, bounusAD(1), amplify(TargetMaxHealthRatio, 8, 2.4))
                 .variable(2, MagicDamage, 200, 100)
-                .mana(40)
-                .cd(14, -1)
+                .variable(3, Knockback)
+                .mana(40, 10)
+                .cd(15, -1)
                 .range(240);
 
-        R.update()
+        R.update(P514)
                 .active("射程が500(Ranged)になる。また、次の通常攻撃は５秒間{1}と{2}を与える。")
                 .variable(1, ARReductionRatio, 10, 5)
                 .variable(2, MRReductionRatio, 10, 5)
                 .cd(6);
-        R.update(P309).active("射程が500(Ranged)になる。また、次の通常攻撃は５秒間{1}と{2}を与える。{3}。").variable(3, NotSpellCast);
 
+        R.update(P514)
+                .active("射撃形態に変身する。射程が500になり、次の通常攻撃は５秒間{1}と{2}を与える。{3}。")
+                .variable(1, ARPenRatio, 10, 5)
+                .variable(2, MRPenRatio, 10, 5)
+                .variable(3, NotSpellCast);
     }
 
     /**
      * Define skill.
      */
     public static void JayceTransformed(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        Q.update()
-                .active("指定方向に{3}の雷のオーブを飛ばし、敵ユニットに命中するか一定距離で爆発し、周囲の敵ユニット{1}を与える。オーブがAcceleration Gateによって生成されたゲートを通過した場合、弾速、射程距離、爆発範囲、与えるDMが各40%増加する。{2}")
-                .variable(1, PhysicalDamage, 60, 55, bounusAD(1.2))
-                .variable(2, PhysicalDamage, 84, 77, bounusAD(1.68))
-                .variable(3, MissileSpeed, 1350)
+        P.update(P514)
+                .passive("{1}する。" + R + "を使用すると1.25秒間{2}し{3}を得る。")
+                .variable(1, Range, 375)
+                .variable(-2, MS, 40)
+                .variable(3, IgnoreUnitCollision);
+
+        Q.update(P514)
+                .active("指定方向に{3}の雷のオーブを飛ばし、敵ユニットに命中するか一定距離で爆発し、{4}の敵ユニットに{1}を与える。オーブがAcceleration Gateによって生成されたゲートを通過した場合、弾速、射程距離、爆発範囲、ダメージが各40%増加し{2}を与える。")
+                .variable(1, PhysicalDamage, 70, 50, bounusAD(1.2))
+                .variable(2, PhysicalDamage, 98, 70, bounusAD(1.68))
+                .variable(3, MissileSpeed, 1450)
+                .variable(4, Radius)
                 .mana(55, 5)
                 .cd(8)
                 .range(1050);
-        Q.update(P309).variable(3, MissileSpeed, 1450);
 
-        W.update()
-                .active("Jayceの攻撃速度が最大まで上昇する。3回通常攻撃を行うと効果が解消される。また効果中は通常攻撃で与えるダメージが{1}%になる。")
-                .variable(1, Percentage, 70, 15)
+        W.update(P514)
+                .active("４秒間攻撃速度が最大まで上昇する。3回通常攻撃を行うと効果が終了する。また効果中は通常攻撃で与えるダメージが{1}%になる。")
+                .variable(1, Percentage, 70, 8)
                 .mana(40)
-                .cd(14, -2);
+                .cd(13, -1.6);
 
-        E.update()
+        E.update(P514)
                 .active("4秒間持続するゲート(通りぬけ可能)を生成し、触れた味方ユニットは3秒間{1}する。移動速度は3秒かけて元に戻る。")
                 .variable(1, MSRatio, 30, 5)
                 .mana(50)
-                .cd(14, -1)
+                .cd(16)
                 .range(650);
-        E.update(P309).cd(16);
 
-        R.update()
-                .active("射程が125(Melee)になり、その間は{1}と{2}を得る。また、次の通常攻撃に追加{3}を付与する。")
-                .variable(1, AR, 5, 10)
-                .variable(2, MR, 5, 10)
-                .variable(3, MagicDamage, 20, 40)
+        R.update(P514)
+                .active("近接形態に変身する。射程が125になり、その間は{1}と{2}を得る。また、次の通常攻撃に{3}を付与する。{4}。")
+                .variable(-1, AR, 5, 10)
+                .variable(-2, MR, 5, 10)
+                .variable(3, MagicDamage, 20, 40, ap(0.4))
+                .variable(4, NotSpellCast)
                 .cd(6);
-        R.update(P309).active("射程が125(Melee)になり、その間は{1}と{2}を得る。また、次の通常攻撃に追加{3}を付与する。{4}。").variable(4, NotSpellCast);
     }
 
     /**

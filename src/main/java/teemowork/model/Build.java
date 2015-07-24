@@ -359,10 +359,6 @@ public class Build extends Publishable implements StatusCalculator {
             if (champion == Champion.NidaleeTransformed) {
                 value += computeVariable(status, Champion.Nidalee.R);
             }
-
-            if (champion == Champion.Jayce) {
-                value += computeVariable(status, Champion.JayceTransformed.R);
-            }
             return value;
         }
     }
