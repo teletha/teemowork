@@ -774,41 +774,46 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Chogath(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("敵ユニットを倒すと{1}、{2}する。")
                 .variable(1, RestoreHealth, 17, 0, amplify(Lv, 3))
                 .variable(2, RestoreMana, 3.25, 0, amplify(Lv, 0.25));
-        Q.update()
-                .active("指定地点に0.5秒後にトゲを出現させ、{1}の敵ユニットに{2}、{3}を与えて、3秒間{5}にする。また指定地点の視界を得る。")
+
+        Q.update(P514)
+                .active("指定地点に0.5秒後にトゲを出現させ、{1}の敵ユニットに{2}、{3}を与えて、1.5秒間{5}にする。また指定地点の{4}。")
                 .variable(1, Radius, 175)
                 .variable(2, MagicDamage, 80, 55, ap(1))
                 .variable(3, Knockup, 1)
+                .variable(4, Visionable)
                 .variable(5, MSSlowRatio, 60)
                 .mana(90)
                 .cd(9)
                 .range(950);
-        W.update()
+
+        W.update(P514)
                 .active("前方扇形60°の領域の敵ユニットに{1}と{2}を与える。")
                 .variable(1, MagicDamage, 75, 50, ap(0.7))
                 .variable(2, Silence, 1.5, 0.25)
                 .mana(70, 10)
                 .cd(13)
                 .range(700);
-        E.update()
+
+        E.update(P514)
                 .active("通常攻撃時に前方にトゲを飛ばし当たった敵ユニットに{1}を与える。トゲを飛ばす範囲はUltのスタック数に比例し増加する。")
                 .variable(1, MagicDamage, 20, 15, ap(0.3))
                 .cd(0.5)
                 .range(500)
                 .type(SkillType.Toggle);
-        R.update()
+
+        R.update(P514)
                 .active("対象の敵ユニットに{1}を与える。対象がチャンピオン以外の場合は{2}を与える。このスキルで敵を倒すとスタックが1増えて{3}と{4}を得る。死亡するとスタックが半分(端数切り上げ)消失する。")
                 .variable(1, TrueDamage, 300, 175, ap(0.7))
                 .variable(2, TrueDamage, 1000, 0, ap(0.7))
                 .variable(3, Health, 0, 0, amplify(Stack, 90, 30))
-                .variable(4, Range, 0, 0, amplify(Stack, 4, 2.15))
+                .variable(4, Range, 0, 0, amplify(Stack, 3.8, 2.25))
                 .mana(100)
-                .cd(60)
-                .range(150);
+                .cd(80)
+                .range(175);
     }
 
     /**
