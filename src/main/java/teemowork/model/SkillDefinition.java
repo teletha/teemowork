@@ -25,7 +25,6 @@ import teemowork.model.variable.VariableResolver.Per4Level;
 import teemowork.model.variable.VariableResolver.Per4LevelForTrundle;
 import teemowork.model.variable.VariableResolver.Per5Level;
 import teemowork.model.variable.VariableResolver.Per5Level3Times;
-import teemowork.model.variable.VariableResolver.Per5LevelForAshe;
 import teemowork.model.variable.VariableResolver.Per5LevelForHeimer;
 import teemowork.model.variable.VariableResolver.Per5LevelForSejuani;
 import teemowork.model.variable.VariableResolver.Per5LevelForYoric;
@@ -423,33 +422,37 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Ashe(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("3秒毎に{1}する(最大100%)。通常攻撃を行うとリセットされる。")
-                .variable(-1, Critical, new Per3Level(3, 3))
-                .update(P308)
-                .passive("3秒間通常攻撃を行わないと毎秒{1}増加していく(最大100)。スタックが100の時、建物以外に通常攻撃を行うと、スタックをすべて消費して通常攻撃がクリティカルになり、スタックの値がクリティカル率と同じ値となる。")
-                .variable(1, Stack, new Per5LevelForAshe(3, 1))
-                .update(P310)
-                .variable(1, Stack, new Per5LevelForAshe(4, 1));
-        Q.update().active("通常攻撃に2秒間の{1}を付与する。").variable(1, MSSlowRatio, 15, 5).mana(8).type(SkillType.ToggleForAttack);
-        W.update()
-                .active("指定方向扇形57.5°の方向に非貫通の矢7本を飛ばし当たった敵ユニットに{1}と{2}(" + Q + "のLvに依存)を与える。" + Q + "を覚えていない場合はスローは発生しない。")
-                .variable(1, PhysicalDamage, 40, 10, ad(1))
-                .variable(2, MSSlowRatio, 0)
-                .mana(60)
-                .cd(16, -3)
+        P.update(P514)
+                .passive("スキルと通常攻撃は対象に2秒間{1}を与える。またこのスキルで" + MSSlow + "を付与した対象に通常攻撃を行う場合、常にクリティカルが発生する。この" + Damage + "は" + Critical + "によって上昇する。その代わり通常状態の敵へのクリティカルは発生しない。")
+                .variable(1, MSSlowRatio, new Per3Level(5, 6));
+
+        Q.update(P514)
+                .passive("スキルもしくは通常攻撃が敵に命中することで4秒間「フォーカス」のチャージを獲得。最大で5チャージ。")
+                .active("「フォーカス」の全チャージを消費して4秒間" + P + "による" + MSSlow + "効果が{1}になり、{2}する。5チャージ消費されると、通常攻撃が5回に分けて合計{3}を与えるようになる。On-Hit Effectsは5連射の初撃のみ有効(Hurricaneは5回発動)。")
+                .variable(1, MSSlowRatio, new Per3Level(6, 7.2))
+                .variable(2, ASRatio, 20, 5)
+                .variable(3, PhysicalDamage, 0, 0, amplify(AD, 1.15, 0.05))
+                .mana(50)
+                .cd(12, -2)
                 .range(1200);
-        E.update()
-                .passive("敵を倒した際に追加で{1}を得る。")
-                .variable(1, Gold, 1, 1)
-                .active("指定地点に偵察鷹を放つ。鷹は5秒間指定した地点の{2}。また飛行中の鷹も{2}。")
-                .variable(2, Visionable)
-                .cd(60)
-                .range(2500, 750)
-                .update(P402)
-                .cd(60, -5)
-                .variable(1, Gold, 3);
-        R.update()
+
+        W.update(P514)
+                .active("非貫通の矢を扇状に発射し、それぞれ敵に命中するごとに{1}を与える。敵はこのスキルによって放たれる矢を複数遮ることができるが、ダメージは最初に当たった矢の分のみ受ける。")
+                .variable(1, PhysicalDamage, 20, 15, ad(1))
+                .range(1200)
+                .cd(12, -2)
+                .mana(40);
+
+        E.update(P514)
+                .active("マップ上どこでも、ターゲット位置まで鷹を飛ばすことができ5秒間通過した{2}の{1}。スタックは最大2で{3}毎に増加する。")
+                .variable(1, Visionable)
+                .variable(2, Radius, 1000)
+                .variable(3, CDRAwareTime, 90, -10)
+                .cost(Stack, 1, 0)
+                .cd(5)
+                .range(-1);
+
+        R.update(P514)
                 .active("指定方向に敵チャンピオンにのみ当たる矢を飛ばし、当たった敵チャンピオンに{1}と{2}(飛距離に比例して１～3.5秒)と3秒間の{4}を与える。また敵チャンピオン命中時に矢が爆発し、{5}の敵ユニットに{6}と3秒間の{4}を与える。飛行中の矢は{3}。")
                 .variable(1, MagicDamage, 250, 175, ap(1))
                 .variable(2, Stun, 0)
@@ -457,10 +460,9 @@ public interface SkillDefinition {
                 .variable(4, MSSlowRatio, 50)
                 .variable(5, Radius, 250)
                 .variable(6, MagicDamage, 125, 87.5, ap(0.5))
-                .mana(150)
+                .mana(100)
                 .cd(100, -10)
                 .range(-1);
-        R.update(P313).mana(100);
     }
 
     /**
