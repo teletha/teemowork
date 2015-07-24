@@ -369,52 +369,48 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Annie(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("スキルを使用するたびにスタックが1貯まり、4スタック時に" + E + "以外のスキルを使用すると、スタックを全て消費してそのスキルに{1}が追加される。")
-                .variable(1, Stun, 1.75)
-                .update(P401)
                 .variable(1, Stun, new Per5Level3Times(1.25, 0.25));
-        Q.update()
-                .active("対象の敵ユニットに{1}を与える。このスキルでLHを取ると{2}する。")
-                .variable(1, MagicDamage, 85, 40, ap(0.7))
+
+        Q.update(P514)
+                .active("対象の敵ユニットに{1}を与える。このスキルでキルを取ると{2}し、{3}する。")
+                .variable(1, MagicDamage, 80, 35, ap(0.8))
                 .variable(2, RestoreMana, 60, 5)
+                .variable(3, CDDecrease, 2)
                 .mana(60, 5)
                 .cd(4)
                 .range(625);
-        W.update()
-                .active("指定方向扇形45°の{1}の敵ユニットに{2}を与える。")
+
+        W.update(P514)
+                .active("指定方向扇形50°の{1}の敵ユニットに{2}を与える。")
                 .variable(1, Radius, 625)
-                .variable(2, MagicDamage, 80, 50, ap(0.75))
+                .variable(2, MagicDamage, 70, 45, ap(0.85))
                 .mana(70, 10)
                 .cd(8);
-        E.update()
-                .active("{1}間{2}と{3}を得て、効果時間中に通常攻撃をしてきた敵ユニットに{4}を与える。")
-                .variable(1, Time, 5)
-                .variable(2, AR, 20, 10)
-                .variable(3, MR, 20, 10)
+
+        E.update(P514)
+                .active("5秒間{2}と{3}を得て、効果時間中に通常攻撃をしてきた敵ユニットに{4}を与える。また" + R + "が召喚されている間は、" + R + "にも" + E + "の効果が付加され移動速度が300増加する(0.75sで減衰)。")
+                .variable(2, AR, 10, 10)
+                .variable(3, MR, 10, 10)
                 .variable(4, MagicDamage, 20, 10, ap(0.2))
                 .mana(20)
                 .cd(10);
-        R.update()
-                .active("指定地点の{1}の敵ユニットに{2}を与え、操作可能なTibbersを召喚する。Tibbersは{3}間持続し、{4}の敵ユニットに毎秒{5}を与える。TibbersはALT押しながら右クリックで任意の操作が可能で以下のステータスを持つ。<br>Health : {6}<br>通常攻撃 : {7}<br>AR : {8}<br>MR : {9}<br>MS : {10}")
-                .variable(1, Radius, 150)
-                .variable(2, MagicDamage, 200, 125, ap(0.7))
+
+        R.update(P514)
+                .active("指定地点の{1}の敵ユニットに{2}を与え、操作可能なTibbersを召喚する。Tibbersは{3}間持続し、{4}の敵ユニットに毎秒{5}を与える。<br>Health : {6}<br>通常攻撃 : {7}<br>AR : {8}<br>MR : {9}<br>MS : {10}")
+                .variable(1, Radius, 290)
+                .variable(2, MagicDamage, 175, 125, ap(0.8))
                 .variable(3, Time, 45, 0)
                 .variable(4, Radius, 200)
-                .variable(5, MagicDamage, 35, 0, ap(0.2))
-                .variable(6, Value, 1200, 400)
+                .variable(5, MagicDamage, 20, 10, ap(0.2))
+                .variable(6, Value, 1200, 900)
                 .variable(7, MagicDamage, 80, 25)
                 .variable(8, Value, 30, 20)
-                .variable(9, Value, 25, 20)
-                .variable(10, Value, 350)
-                .mana(125, 50)
-                .cd(120)
-                .range(600)
-                .update(P308)
-                .variable(6, Value, 1200, 900)
                 .variable(9, Value, 30, 20)
+                .variable(10, Value, 350)
+                .range(600)
                 .mana(100)
-                .update(P401)
                 .cd(120, -20);
     }
 

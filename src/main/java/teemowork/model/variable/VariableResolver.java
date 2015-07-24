@@ -274,19 +274,6 @@ public abstract class VariableResolver {
     }
 
     /**
-     * @version 2013/07/31 9:50:44
-     */
-    public static class Per5LevelForAshe extends PerLevel {
-
-        /**
-         * @param values
-         */
-        public Per5LevelForAshe(double base, double diff) {
-            super(new int[] {1, 5, 10, 15}, base, diff);
-        }
-    }
-
-    /**
      * @version 2013/02/12 11:37:34
      */
     public static class Per4Level extends PerLevel {
