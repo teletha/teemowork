@@ -278,7 +278,7 @@ public enum Status {
     MS("移動速度"), MSPerLv, MSRatio("移動速度"), BounusMS("増加移動速度"),
 
     /** Ignore Slow */
-    IgnoreSlow(MSSlowRatio.name + "無効"),
+    IgnoreSlow(MSSlowRatio.name + "無効化"),
 
     /** Ignore Unit Collision */
     IgnoreUnitCollision("ユニット衝突無効"),
