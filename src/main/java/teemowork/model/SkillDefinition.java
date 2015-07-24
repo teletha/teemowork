@@ -3977,44 +3977,41 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Rumble(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("Ult以外のスキルを使うとHeatが20増加し、それが50以上になると「Danger Zone」状態に入り全てのスキルに追加効果がつくようになる。Heatが100になると6秒間スキルが使用不可能になり、通常攻撃に追加{1}が付与される。Heatは時間によって減少していく。追加魔法DMは建物には無効。")
-                .variable(1, MagicDamage, 20, 0, ap(0.3), amplify(Lv, 5));
-        Q.update()
-                .active("3秒間前方の範囲を火炎放射器で焼き払い、範囲内の敵ユニットに毎秒{1}を与える。minionに与えるダメージは半分。Danger Zone中は{2}を与える。")
-                .variable(1, MagicDamage, 30, 23.3, ap(0.45))
-                .variable(2, MagicDamage, 37.5, 29.1, ap(0.56))
+        P.update(P514)
+                .passive("Ult以外のスキルを使うとHeatが20増加し、それが50以上になると「Danger Zone」状態に入り全てのスキルに追加効果がつくようになる。Heatが100になると6秒間スキルが使用不可能になり、通常攻撃に{1}が付与される（建物には無効）。4秒間スキルを使用しないとHeatは減少していく。")
+                .variable(1, MagicDamage, 20, 0, ap(0.25), amplify(Lv, 5));
+
+        Q.update(P514)
+                .active("目の前の敵を焼き払い、3秒間毎秒{1}を与える。ミニオンやモンスターに対してはダメージが半減。Danger Zone中は{2}を与える。")
+                .variable(1, MagicDamage, 25, 20, ap(0.33))
+                .variable(2, MagicDamage, 37.5, 30, ap(0.5))
                 .cd(6)
                 .range(600);
-        Q.update(P307).variable(1, MagicDamage, 25, 20, ap(0.33)).variable(2, MagicDamage, 37.5, 30, ap(0.5));
-        W.update()
-                .active("2秒間{1}を得て1秒間{2}する。Danger Zone中は{3}を得て1秒間{4}する。")
+
+        W.update(P514)
+                .active("2秒間{1}を得て1秒間{2}する。Danger Zone中は2秒間{3}を得て1秒間{4}する。")
                 .variable(1, Shield, 50, 30, ap(0.4))
                 .variable(2, MSRatio, 10, 5)
-                .variable(3, Shield, 62.5, 37.5, ap(0.5))
-                .variable(4, MSRatio, 12.5, 6.25)
+                .variable(3, Shield, 75, 45, ap(0.6))
+                .variable(4, MSRatio, 15, 7.5)
                 .cd(6);
+
         E.update()
-                .active("指定方向に銛を放ち当たった敵ユニットに{1}と3秒間{2}を与える。このスキルは3秒の間、2回まで連続して使用できる(但し、一度使用する度に1秒のCDが発生する)。2発目はHeatが増加しない。また、このスキルによるスローはスタックする。Danger Zone中では{3}と3秒間{4}を与える。")
-                .variable(1, MagicDamage, 55, 30, ap(0.5))
+                .active("指定方向に銛を放ち当たった敵ユニットに{1}と3秒間{2}を与える。このスキルは3秒間、再使用できる(但し、一度使用する度に1秒のCDが発生する)。2発目はHeatが増加しない。また、このスキルによるスローはスタックする。Danger Zone中では{3}と3秒間{4}を与える。")
+                .variable(1, MagicDamage, 45, 25, ap(0.4))
                 .variable(2, MSSlowRatio, 15, 5)
-                .variable(3, MagicDamage, 68.75, 37.5, ap(0.625))
-                .variable(4, MSSlowRatio, 18.75, 6.25)
+                .variable(3, MagicDamage, 67.5, 37.5, ap(0.6))
+                .variable(4, MSSlowRatio, 22.5, 7.5)
                 .cd(10)
                 .range(850);
-        E.update(P307).variable(1, MagicDamage, 45, 25, ap(0.4));
-        R.update()
-                .active("指定した位置から指定方向({4})にロケットを打ち出し、当たった敵ユニットに{1}と{2}を与える。また5秒間ロケットの着弾した地面に炎が残り、その上にいる敵ユニットに毎秒{3}と{2}を与える。")
-                .variable(1, MagicDamage, 150, 75, ap(0.5))
+
+        R.update(P514)
+                .active("指定した位置から指定方向({4})にロケットを打ち出し、当たった地面を5秒間炎上させる。炎上した地面の上にいる敵ユニットに毎秒{3}と{2}を与える。")
                 .variable(2, MSSlowRatio, 35)
-                .variable(3, MagicDamage, 100, 40, ap(0.2))
+                .variable(3, MagicDamage, 130, 55, ap(0.3))
                 .variable(4, Distance, 1000)
                 .cd(105, -15)
-                .range(1750);
-        R.update(P305)
-                .active("指定した位置から指定方向({4})にロケットを打ち出し、当たった地面を5秒間炎上させる。炎上した地面の上にいる敵ユニットに毎秒{3}と{2}を与える。")
-                .variable(3, MagicDamage, 130, 55, ap(0.5))
-                .variable(2, MSSlowRatio, 15, 5);
+                .range(1700);
     }
 
     /**
