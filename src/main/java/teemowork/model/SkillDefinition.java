@@ -5267,32 +5267,35 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Vayne(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("敵チャンピオンに向かって移動する際に{1}する。").variable(-1, MS, 30);
-        Q.update()
-                .active("指定地点にローリングし、次の通常攻撃に追加{1}を付与する。6秒間攻撃を行わないとCDになる。")
+        P.update(P514).passive("敵チャンピオンに向かって移動する際に{1}する。").variable(-1, MS, 30);
+
+        Q.update(P514)
+                .active("指定地点にローリングし、次の通常攻撃に{1}を付与する。6秒間攻撃を行わないとCDになる。")
                 .variable(1, PhysicalDamage, 0, 0, amplify(AD, 0.3, 0.05))
-                .mana(40)
+                .range(300)
+                .mana(30)
                 .cd(6, -1);
-        Q.update(P303).mana(30);
-        W.update()
+
+        W.update(P514)
                 .passive("同じターゲットに3回連続して通常攻撃またはスキルで攻撃すると、{1}を与える。（モンスターやミニオンに対しては上限200）")
-                .variable(1, TrueDamage, 20, 10, amplify(TargetMaxHealthRatio, 3, 1));
-        E.update()
+                .variable(1, TrueDamage, 20, 10, amplify(TargetMaxHealthRatio, 4, 1));
+
+        E.update(P514)
                 .active("対象の敵ユニットをヘビークロスボウで狙撃し{1}と{2}を与える。ノックバックした敵が壁等に当たると追加で{1}と{3}を与える。")
                 .variable(1, PhysicalDamage, 45, 35, bounusAD(0.5))
                 .variable(2, Knockback, 470)
                 .variable(3, Stun, 1.5)
                 .mana(90)
                 .cd(20, -2)
-                .range(650);
-        E.update(P310).range(550);
-        R.update()
-                .active("{1}間{2}を得て、Tumbleを使うと{3}になり、Night Hunterの移動速度増加が3倍になる。")
+                .range(550);
+
+        R.update(P514)
+                .active("{1}間{2}を得て、" + Q + "を使うと{3}になり、" + P + "の移動速度増加が3倍になる。")
                 .variable(1, Time, 8, 2)
-                .variable(2, AD, 25, 15)
+                .variable(2, AD, 30, 20)
                 .variable(3, Stealth, 1)
                 .mana(80)
-                .cd(70);
+                .cd(100, -15);
     }
 
     /**
