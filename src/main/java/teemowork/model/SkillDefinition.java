@@ -876,14 +876,13 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Diana(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("{1}する。通常攻撃3回毎に周囲にいる敵ユニットに{2}を与える。")
                 .variable(1, ASRatio, 20)
-                .variable(2, MagicDamage, new Per1Level(new double[] {20, 25, 30, 40, 50, 65, 80, 95, 110, 125, 140,
-                        155, 175, 195, 215, 240, 265, 290}));
-        P.update(P307).variable(2, MagicDamage, new Per1Level(new double[] {20, 25, 30, 35, 40, 50, 60, 70, 80, 90, 105,
-                120, 135, 155, 175, 200, 225, 250}));
-        Q.update()
+                .variable(2, MagicDamage, new Per1Level(new double[] {20, 25, 30, 35, 40, 50, 60, 70, 80, 90, 105, 120,
+                        135, 155, 175, 200, 225, 250}), ap(0.8), null);
+
+        Q.update(P514)
                 .active("指定地点に弧を描くエネルギーを放ち、当たった敵ユニットと{2}のユニットに{1}とMoonlight(3秒)を与える。またMoonlightが付与されている敵ユニットの{3}。")
                 .variable(1, MagicDamage, 60, 35, ap(0.7))
                 .variable(2, Radius, 50)
@@ -891,25 +890,24 @@ public interface SkillDefinition {
                 .mana(55)
                 .cd(10, -1)
                 .range(830);
-        W.update()
-                .active("5秒間{1}を張ると同時に、Dianaの周りを回る3つの球体を召喚する。敵ユニットが触れた球体は爆発し、{2}の敵ユニットに{3}を与える。球体が全て爆発すると{1}が張りなおされる。")
-                .variable(1, Shield, 55, 25, ap(0.45))
-                .variable(2, Radius, 400)
-                .variable(3, MagicDamage, 20, 14, ap(0.2))
+
+        W.update(P514)
+                .active("5秒間{1}を張ると同時に、自身の周りを回る3つの球体を召喚する。敵ユニットが触れた球体は爆発し、{2}の敵ユニットに{3}を与える。球体が全て爆発すると{1}が追加される。")
+                .variable(1, Shield, 40, 15, ap(0.3))
+                .variable(2, Radius, 200)
+                .variable(3, MagicDamage, 22, 12, ap(0.2))
                 .mana(60, 10)
                 .cd(10);
-        W.update(P307)
-                .active("5秒間{1}を張ると同時に、Dianaの周りを回る3つの球体を召喚する。敵ユニットが触れた球体は爆発し、{2}の敵ユニットに{3}を与える。球体が全て爆発すると{1}が追加される。")
-                .variable(1, Shield, 40, 15, ap(0.3))
-                .variable(3, MagicDamage, 22, 12, ap(0.2));
-        E.update()
-                .active("{1}にいるすべての敵ユニットをDianaがいる方向に引き寄せた後、2秒間{3}を与える。")
-                .variable(1, Radius, 500)
-                .variable(3, MSSlowRatio, 35, 5)
+
+        E.update(P514)
+                .active("{1}にいる全ての敵ユニットを自身がいる方向に引き寄せ、2秒間{2}を与える。")
+                .variable(1, Radius, 350)
+                .variable(2, MSSlowRatio, 35, 5)
                 .mana(70)
                 .cd(26, -2);
-        R.update()
-                .active("対象の敵ユニットの元までテレポートし、{1}を与える。対象にMoonlightが付与されていた場合、すべての敵ユニットに付与されたMoonlightを消費してこのスキルの{2}する。")
+
+        R.update(P514)
+                .active("対象の敵ユニットの元までテレポートし、{1}を与える。対象にMoonlightが付与されていた場合、全ての敵ユニットに付与されたMoonlightを消費してこのスキルの{2}する。")
                 .variable(1, MagicDamage, 100, 60, ap(0.6))
                 .variable(2, CDDecrease)
                 .mana(50, 15)
