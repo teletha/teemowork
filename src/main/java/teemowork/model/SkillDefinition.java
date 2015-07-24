@@ -4018,54 +4018,46 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Ryze(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("スキルを使用すると使用した以外のスキルの{1}する。").variable(1, CDDecrease, 1);
+        P.update(P514)
+                .passive("スキル使用時に6秒間、スタックを得る。5スタック時に、{1}間フルチャージ状態になり、{2}を得て、スキルを使用するたびに使用したスキル以外のスキルのCDが「" + Q + "のCD数値分」解消される。")
+                .variable(1, Time, new ReferPlus(Q, 2.5, 0.5))
+                .variable(2, Shield, 20, 0, amplify(Lv, 5), amplify(Mana, 0.08));
 
-        Q.update()
-                .active("対象の敵ユニットに{1}を与える。")
-                .passive("{2}を得る。")
-                .variable(1, MagicDamage, 60, 25, ap(0.4), amplify(Mana, 0.065))
-                .variable(2, CDR, 2, 2)
-                .mana(60)
-                .cd(3.5)
-                .range(650)
-                .update(P310)
-                .range(600)
-                .update(P403)
-                .range(625);
+        Q.update(P514)
+                .passive(P + "がフルチャージした際の効果時間が{2}増加する。")
+                .variable(2, Time, 0.5, 0.5)
+                .active("オーブを放ち、最初に命中した敵に{1}を与える。")
+                .variable(1, MagicDamage, 60, 25, ap(0.55), amplify(Mana, 0.02, 0.005))
+                .mana(40)
+                .cd(4)
+                .range(900);
 
-        W.update()
+        W.update(P514)
                 .active("対象の敵ユニットに{1}と{2}を与える。")
-                .variable(1, MagicDamage, 60, 35, ap(0.6), amplify(Mana, 0.045))
-                .variable(2, Snare, 0.75, 0.25)
-                .mana(80, 10)
+                .variable(1, MagicDamage, 80, 20, ap(0.4), amplify(Mana, 0.025))
+                .variable(2, Snare, 1, 0.1)
                 .cd(14)
-                .range(625)
-                .update(P310)
                 .mana(60, 10)
                 .range(600);
 
-        E.update()
-                .active("対象の敵ユニットに魔法弾を飛ばし{1}と{2}を与える。魔法弾は{3}の敵ユニット及び自身に4回まで跳ね返る(最大5hit)。この跳ね返りは同一ユニットに何度も跳ね返り、また自身から跳ね返った弾は敵チャンピオンを優先で狙う。")
-                .variable(1, MagicDamage, 50, 20, ap(0.35), amplify(Mana, 0.01))
-                .variable(2, MRReduction, 12, 3)
-                .variable(3, Radius, 400)
+        E.update(P514)
+                .active("対象の敵ユニットにオーブを放ち{1}と5秒間{2} (効果は3回まで累積)を与える。命中後、周囲の敵と自身(ターゲット以外で最大6体)に跳ね返り、最終的に最初のターゲットに戻る。最初のターゲットに命中した後は、跳ね返るごとに{3}を与える。最大で{4}。")
+                .variable(1, MagicDamage, 36, 16, ap(0.2), amplify(Mana, 0.02))
+                .variable(2, MRReductionRatio, 8, 1)
+                .variable(3, MagicDamage, 18, 8, ap(0.1), amplify(Mana, 0.01))
+                .variable(4, MagicDamage, 144, 64, ap(0.8), amplify(Mana, 0.08))
                 .mana(60, 10)
-                .cd(14)
-                .range(675)
-                .update(P310)
+                .cd(7)
                 .range(600);
 
-        R.update()
-                .active("{1}間、{2}を得て{3}する。更にスキルに50%のスプラッシュダメージ({4})が付与される。")
-                .variable(1, Time, 5, 1)
+        R.update(P514)
+                .passive("{1}を得る。")
+                .variable(1, CDR, 10, 10)
+                .active("6秒間{2}を得て{3}する。更にスキルに50%のスプラッシュダメージ({4})が付与される。")
                 .variable(2, SV, 15, 5)
-                .variable(3, MS, 35, 10)
+                .variable(3, MS, 80)
                 .variable(4, Radius, 200)
-                .cd(70, -10)
-                .update(P310)
-                .variable(3, MS, 60, 10)
-                .update(P312)
-                .variable(3, MS, 80);
+                .cd(80, -20);
     }
 
     /**
