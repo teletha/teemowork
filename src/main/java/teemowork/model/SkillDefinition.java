@@ -4670,7 +4670,46 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void TahmKench(Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive("通常攻撃もしくはスキルで" + Damage + "を与えた敵チャンピオンに対して、「舌慣らし」スタックを付与する(最大3スタック)。3スタックが付与された対象にスキルを使用すると、各スキルは追加効果を得る。通常攻撃で最後にスタックを与えた場合は5秒後、" + Q + "の場合は7秒後から0.5秒おきにスタックが減少する。");
 
+        Q.update(P514)
+                .active("最初に命中した敵に{1}と2秒間{2}を与える。「舌慣らし」が3スタック溜まっている敵のチャンピオンには、さらに{3}を与える。舌が飛び出している最中に" + W + "を発動することで、遠くにいるモンスターやミニオンを食らうことができる。")
+                .variable(1, MagicDamage, 80, 45, ap(0.7))
+                .variable(2, MSSlowRatio, 30, 10)
+                .variable(3, Stun, 1.5)
+                .mana(50)
+                .cd(6)
+                .range(800);
+
+        W.update(P514)
+                .active("対象を{1}間食らう。対象が敵の場合、{2}を与える(ミニオンと中立モンスターへは{3}が上限)。食べた対象は吐き出すまでの間、行動不能かつターゲット不可になる。また、食べたユニットに応じて以下の効果を与える。<br>敵ミニオン及びモンスター：指定した方向に吐き出し({6})、命中した敵ユニットに{4}を与える。<br>味方チャンピオン：敵チャンピオンに向かって移動する際に{5}を得る。<br>敵チャンピオン：要「舌慣らし」3スタック。効果時間が半分になり、自身は95％のスローになる。")
+                .variable(1, Time, 4, 0.5)
+                .variable(2, MagicDamage, 0, 0, amplify(TargetMaxHealthRatio, 20, 3, ap(0.02)))
+                .variable(3, MagicDamage, 400, 50)
+                .variable(4, MagicDamage, 100, 50, ap(0.6))
+                .variable(-5, MSRatio, 30, 5)
+                .variable(6, Radius, 650)
+                .mana(90)
+                .cd(14, -1)
+                .range(250);
+
+        E.update(P514)
+                .passive("受けたダメージを灰色の体力に変換する(クールダウン中は無効)。2.5秒間" + Damage + "を受けなければ、{1}する。")
+                .variable(1, RestoreHealth, 0, 0, amplify(ReceivedDamageRatio, 20, 6))
+                .active("{2}。このシールドは6秒間持続するが時間と共に急激に減少していく。")
+                .variable(2, Shield, 0, 0, amplify(ReceivedDamageRatio, 100))
+                .mana(50)
+                .cd(16, -1);
+
+        R.update(P514)
+                .passive("通常攻撃及びスキルに{1}を付与する。")
+                .variable(1, MagicDamage, 20, 0, amplify(BounusHealth, 0.04, 0.02))
+                .active("最大15秒間、口を大きく開けてその場で詠唱を開始する。味方チャンピオンが入るか、このスキルを再使用することで、2秒詠唱後に指定した地点までワープする。この詠唱は" + Damage + "を受けると解除される。")
+                .mana(100)
+                .cd(120, -10)
+                .range(4000, 1000)
+                .type(SkillType.Channel);
     }
 
     /**
