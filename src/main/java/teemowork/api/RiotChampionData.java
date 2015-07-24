@@ -15,7 +15,7 @@ import teemowork.model.Champion;
 public class RiotChampionData {
 
     /** Aatrox Definition */
-    public static final Champion Aatrox = new Champion("Aatrox", "エイトロックス", "Aatrox", 537.8F, 85.0F, 6.59F, 0.5F, 105.6F, 45.0F, 0.0F, 0.0F, 60.376F, 3.2F, -0.04F, 3.0F, 0.0F, 0.0F, 24.384F, 3.8F, 32.1F, 0.0F, 345.0F, 150.0F, new String[] {"Blood Well", "Dark Flight", "Blood Thirst", "Blades of Torment", "Massacre"}, new String[] {"血の泉", "闇の翼", "血の渇望", "嘆きの刃", "大虐殺"}, SkillDefinition::Aatrox, false);
+    public static final Champion Aatrox = new Champion("Aatrox", "エイトロックス", "Aatrox", 537.8F, 85.0F, 6.59F, 0.5F, 105.6F, 45.0F, 0.0F, 0.0F, 60.376F, 3.2F, -0.04F, 3.0F, 0.0F, 0.0F, 24.384F, 3.8F, 32.1F, 0.0F, 345.0F, 150.0F, new String[] {"Blood Well", "Dark Flight", "Blood Thirst / Blood Price", "Blades of Torment", "Massacre"}, new String[] {"血の泉", "闇の翼", "血の渇望/血の代償", "嘆きの刃", "大虐殺"}, SkillDefinition::Aatrox, false);
 
     /** Ahri Definition */
     public static final Champion Ahri = new Champion("Ahri", "アーリ", "Ahri", 514.4F, 80.0F, 6.505F, 0.6F, 334.0F, 50.0F, 6.0F, 0.8F, 53.04F, 3.0F, -0.065F, 2.0F, 0.0F, 0.0F, 20.88F, 3.5F, 30.0F, 0.0F, 330.0F, 550.0F, new String[] {"Essence Theft", "Orb of Deception", "Fox-Fire", "Charm", "Spirit Rush"}, new String[] {"精気吸引", "幻惑の宝珠", "狐火", "魅了", "妖狐演舞"}, SkillDefinition::Ahri, false);
@@ -99,7 +99,7 @@ public class RiotChampionData {
     public static final Champion Fiora = new Champion("Fiora", "フィオラ", "Fiora", 592.8F, 85.0F, 6.84F, 0.8F, 287.2F, 40.0F, 7.59F, 0.5F, 59.876F, 3.2F, -0.07F, 3.0F, 0.0F, 0.0F, 24.88F, 3.5F, 32.1F, 0.0F, 350.0F, 125.0F, new String[] {"Duelist", "Lunge", "Riposte", "Burst of Speed", "Blade Waltz"}, new String[] {"デュエリスト", "ファント", "リポスト", "スピードバースト", "ブレードワルツ"}, SkillDefinition::Fiora, false);
 
     /** Fizz Definition */
-    public static final Champion Fizz = new Champion("Fizz", "フィズ", "Fizz", 558.48F, 86.0F, 8.175F, 0.7F, 267.2F, 40.0F, 6.0F, 0.8F, 58.04F, 3.0F, -0.05F, 3.1F, 0.0F, 0.0F, 22.412F, 3.4F, 32.1F, 0.0F, 335.0F, 175.0F, new String[] {"Nimble Fighter", "Urchin Strike", "Seastone Trident", "Playful", "Chum the Waters"}, new String[] {"シーファイター", "ウニトゲ・ストライク", "シートライデント", "プレイ", "フィッシング"}, SkillDefinition::Fizz, false);
+    public static final Champion Fizz = new Champion("Fizz", "フィズ", "Fizz", 558.48F, 86.0F, 8.175F, 0.7F, 267.2F, 40.0F, 6.0F, 0.8F, 58.04F, 3.0F, -0.05F, 3.1F, 0.0F, 0.0F, 22.412F, 3.4F, 32.1F, 0.0F, 335.0F, 175.0F, new String[] {"Nimble Fighter", "Urchin Strike", "Seastone Trident", "Playful / Trickster", "Chum the Waters"}, new String[] {"シーファイター", "ウニトゲ・ストライク", "シートライデント", "プレイ/トリックスター", "フィッシング"}, SkillDefinition::Fizz, false);
 
     /** Galio Definition */
     public static final Champion Galio = new Champion("Galio", "ガリオ", "Galio", 577.8F, 85.0F, 8.71F, 0.75F, 319.0F, 50.0F, 6.0F, 0.8F, 61.97F, 3.375F, -0.02F, 1.2F, 0.0F, 0.0F, 26.88F, 3.5F, 32.1F, 0.0F, 335.0F, 125.0F, new String[] {"Runic Skin", "Resolute Smite", "Bulwark", "Righteous Gust", "Idol of Durand"}, new String[] {"ルーンの加護", "懲罰の視線", "忠義の防壁", "正義の追い風", "デュランドの偶像"}, SkillDefinition::Galio, false);
@@ -111,7 +111,7 @@ public class RiotChampionData {
     public static final Champion Garen = new Champion("Garen", "ガレン", "Garen", 616.28F, 96.0F, 7.84F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 57.88F, 3.5F, 0.0F, 2.9F, 0.0F, 0.0F, 27.536F, 2.7F, 32.1F, 0.0F, 345.0F, 125.0F, new String[] {"Perseverance", "Decisive Strike", "Courage", "Judgment", "Demacian Justice"}, new String[] {"忍耐", "断固たる一撃", "勇気の護り", "断罪剣", "デマーシアの正義"}, SkillDefinition::Garen, false);
 
     /** Gnar Definition */
-    public static final Champion Gnar = new Champion("Gnar", "ナー", "Gnar", 540.0F, 65.0F, 2.5F, 0.5F, 100.0F, 0.0F, 0.0F, 0.0F, 48.0F, 3.0F, 0.0F, 6.0F, 0.0F, 0.0F, 23.0F, 2.5F, 30.0F, 0.0F, 325.0F, 150.0F, new String[] {"Rage Gene", "Boomerang Throw", "Hyper", "Hop", "GNAR!"}, new String[] {"ぷんすこ", "ブーメラン", "ごきげん", "ぴょんぴょん", "ナー！"}, SkillDefinition::Gnar, false);
+    public static final Champion Gnar = new Champion("Gnar", "ナー", "Gnar", 540.0F, 65.0F, 2.5F, 0.5F, 100.0F, 0.0F, 0.0F, 0.0F, 48.0F, 3.0F, 0.0F, 6.0F, 0.0F, 0.0F, 23.0F, 2.5F, 30.0F, 0.0F, 325.0F, 150.0F, new String[] {"Rage Gene", "Boomerang Throw / Boulder Toss", "Hyper / Wallop", "Hop / Crunch", "GNAR!"}, new String[] {"ぷんすこ", "ブーメラン/ぽいっ", "ごきげん/こてんぱん", "ぴょんぴょん/ドガン！", "ナー！"}, SkillDefinition::Gnar, false);
 
     /** Gragas Definition */
     public static final Champion Gragas = new Champion("Gragas", "グラガス", "Gragas", 583.52F, 89.0F, 5.5F, 0.5F, 400.0F, 47.0F, 6.0F, 0.8F, 61.38F, 3.5F, -0.04F, 2.05F, 0.0F, 0.0F, 26.048F, 3.6F, 32.1F, 0.0F, 330.0F, 125.0F, new String[] {"Happy Hour", "Barrel Roll", "Drunken Rage", "Body Slam", "Explosive Cask"}, new String[] {"ふわふわタイム", "タル転がし", "飲みすぎ注意", "腹の肉", "タル爆弾"}, SkillDefinition::Gragas, false);
@@ -177,7 +177,7 @@ public class RiotChampionData {
     public static final Champion Leblanc = new Champion("LeBlanc", "ルブラン", "Leblanc", 516.0F, 75.0F, 7.42F, 0.55F, 334.0F, 50.0F, 6.0F, 0.8F, 54.88F, 3.5F, 0.0F, 1.4F, 0.0F, 0.0F, 21.88F, 3.5F, 30.0F, 0.0F, 335.0F, 525.0F, new String[] {"Mirror Image", "Sigil of Malice", "Distortion", "Ethereal Chains", "Mimic"}, new String[] {"鏡像", "悪意の印", "空間歪曲", "霊妙な鎖", "再演"}, SkillDefinition::Leblanc, false);
 
     /** Lee Sin Definition */
-    public static final Champion LeeSin = new Champion("Lee Sin", "リー・シン", "LeeSin", 570.8F, 85.0F, 7.425F, 0.7F, 200.0F, 0.0F, 50.0F, 0.0F, 61.176F, 3.2F, -0.04F, 3.0F, 0.0F, 0.0F, 24.216F, 3.7F, 32.1F, 0.0F, 350.0F, 125.0F, new String[] {"Flurry", "Sonic Wave", "Safeguard", "Tempest", "Dragon's Rage"}, new String[] {"練気", "音撃破", "守りの型", "破風", "龍の怒り"}, SkillDefinition::LeeSin, false);
+    public static final Champion LeeSin = new Champion("Lee Sin", "リー・シン", "LeeSin", 570.8F, 85.0F, 7.425F, 0.7F, 200.0F, 0.0F, 50.0F, 0.0F, 61.176F, 3.2F, -0.04F, 3.0F, 0.0F, 0.0F, 24.216F, 3.7F, 32.1F, 0.0F, 350.0F, 125.0F, new String[] {"Flurry", "Sonic Wave / Resonating Strike", "Safeguard / Iron Will", "Tempest / Cripple", "Dragon's Rage"}, new String[] {"練気", "音撃破/共鳴拳", "守りの型/鉄の意志", "破風/縛脚", "龍の怒り"}, SkillDefinition::LeeSin, false);
 
     /** Leona Definition */
     public static final Champion Leona = new Champion("Leona", "レオナ", "Leona", 576.16F, 87.0F, 8.425F, 0.85F, 302.2F, 40.0F, 6.0F, 0.8F, 60.04F, 3.0F, 0.0F, 2.9F, 0.0F, 0.0F, 27.208F, 3.1F, 32.1F, 0.0F, 335.0F, 125.0F, new String[] {"Sunlight", "Shield of Daybreak", "Eclipse", "Zenith Blade", "Solar Flare"}, new String[] {"太陽の輝き", "暁の盾", "煌光破", "天陽の剣", "太陽の一閃"}, SkillDefinition::Leona, false);
@@ -258,7 +258,7 @@ public class RiotChampionData {
     public static final Champion Rammus = new Champion("Rammus", "ラムス", "Rammus", 564.48F, 86.0F, 7.92F, 0.55F, 310.44F, 33.0F, 7.84F, 0.5F, 55.88F, 3.5F, 0.0F, 2.215F, 0.0F, 0.0F, 31.384F, 3.8F, 32.1F, 0.0F, 335.0F, 125.0F, new String[] {"Spiked Shell", "Powerball", "Defensive Ball Curl", "Puncturing Taunt", "Tremors"}, new String[] {"トゲトゲ", "ころころ", "大防御", "ちくちく", "ドスンドスン"}, SkillDefinition::Rammus, false);
 
     /** Rek'Sai Definition */
-    public static final Champion RekSai = new Champion("Rek'Sai", "レク＝サイ", "RekSai", 570.0F, 90.0F, 7.34F, 0.65F, 100.0F, 0.0F, 0.0F, 0.0F, 55.628F, 3.35F, 0.0F, 2.0F, 0.0F, 0.0F, 28.3F, 3.75F, 32.1F, 0.0F, 335.0F, 175.0F, new String[] {"Fury of the Xer'Sai", "Queen's Wrath", "Burrow", "Furious Bite", "Void Rush"}, new String[] {"ゼル＝サイの怒り", "女王の怒り", "潜伏", "激情の牙", "ヴォイドの猛攻"}, SkillDefinition::RekSai, false);
+    public static final Champion RekSai = new Champion("Rek'Sai", "レク＝サイ", "RekSai", 570.0F, 90.0F, 7.34F, 0.65F, 100.0F, 0.0F, 0.0F, 0.0F, 55.628F, 3.35F, 0.0F, 2.0F, 0.0F, 0.0F, 28.3F, 3.75F, 32.1F, 0.0F, 335.0F, 175.0F, new String[] {"Fury of the Xer'Sai", "Queen's Wrath / Prey Seeker", "Burrow / Un-burrow", "Furious Bite / Tunnel", "Void Rush"}, new String[] {"ゼル＝サイの怒り", "女王の怒り/獲物定め", "潜伏/襲撃", "激情の牙/掘削", "ヴォイドの猛攻"}, SkillDefinition::RekSai, false);
 
     /** Renekton Definition */
     public static final Champion Renekton = new Champion("Renekton", "レネクトン", "Renekton", 572.16F, 87.0F, 7.96F, 0.75F, 100.0F, 0.0F, 0.0F, 0.0F, 58.328F, 3.1F, -0.06F, 2.65F, 0.0F, 0.0F, 25.584F, 3.8F, 32.1F, 0.0F, 345.0F, 125.0F, new String[] {"Reign of Anger", "Cull the Meek", "Ruthless Predator", "Slice and Dice", "Dominus"}, new String[] {"怒りの支配", "肉削ぎ", "無慈悲な連撃", "斬り切り舞", "凶暴化"}, SkillDefinition::Renekton, false);

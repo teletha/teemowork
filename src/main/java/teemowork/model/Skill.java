@@ -107,7 +107,8 @@ public class Skill extends Describable<SkillDescriptor> {
             return 1;
         }
 
-        if (key == R && (owner.startsWith("Elise") || owner.startsWith("Jayce") || owner.startsWith("Karma"))) {
+        if (key == R && (owner.startsWith("Elise") || owner.startsWith("Jayce") || owner.startsWith("Nidalee") || owner
+                .startsWith("Karma"))) {
             return 1;
         }
         return 0;
@@ -132,6 +133,8 @@ public class Skill extends Describable<SkillDescriptor> {
             case "EliseTransformed":
             case "Jayce":
             case "JayceTransformed":
+            case "Nidalee":
+            case "NidaleeTransformed":
             case "Karma":
                 return 4;
 
@@ -141,10 +144,6 @@ public class Skill extends Describable<SkillDescriptor> {
             default:
                 return 3;
             }
-        }
-
-        if (owner.equals("NidaleeTransoformed")) {
-            return 3;
         }
         return 5;
     }

@@ -353,13 +353,8 @@ public class Build extends Publishable implements StatusCalculator {
             return champion.getStatus(version).get(status);
 
         default:
-            double value = champion.getStatus(version)
+            return champion.getStatus(version)
                     .get(status) + champion.getStatus(version).get(status.per()) * level.get();
-
-            if (champion == Champion.NidaleeTransformed) {
-                value += computeVariable(status, Champion.Nidalee.R);
-            }
-            return value;
         }
     }
 

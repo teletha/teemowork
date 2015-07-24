@@ -34,6 +34,7 @@ import teemowork.model.variable.VariableResolver.Per6Level;
 import teemowork.model.variable.VariableResolver.Per6LevelForVi;
 import teemowork.model.variable.VariableResolver.Per6LevelForZed;
 import teemowork.model.variable.VariableResolver.Refer;
+import teemowork.model.variable.VariableResolver.ReferFixed;
 import teemowork.model.variable.VariableResolver.ReferPlus;
 
 /**
@@ -1128,9 +1129,8 @@ public interface SkillDefinition {
         R.update(P514)
                 .passive("子蜘蛛の最大チャージ数は{1}。")
                 .variable(1, Value, 2, 1)
-                .active("Spider Formに変身する。射程が125、移動速度が555になる。また通常攻撃に追加効果を付与する。{3}。")
-                .variable(-2, MS, 25)
-                .variable(3, NotSpellCast)
+                .active("Spider Formに変身する。射程が125、移動速度が555になる。また通常攻撃に追加効果を付与する。{2}。")
+                .variable(2, NotSpellCast)
                 .cd(4);
     }
 
@@ -3354,66 +3354,80 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Nidalee(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("茂みに入ると{1}する。この効果は茂みから出ても2秒間持続する。").variable(-1, MSRatio, 15);
-        Q.update()
-                .active("指定方向に槍を投げて当たった敵ユニットに{1}を与える。槍が命中した時のNidaleeとターゲットの間の距離に比例して与えるダメージが増加する。最大で{2}。")
-                .variable(1, MagicDamage, 55, 40, ap(0.65))
-                .variable(2, MagicDamage, 137.5, 100, ap(1.625))
-                .mana(50, 10)
-                .cd(5)
-                .range(1500);
-        Q.update(P314).active("指定方向に槍を投げて当たった敵ユニットに{1}を与える。槍が投げた距離に比例して与えるダメージが増加する。最大で{2}。");
-
-        W.update()
-                .active("指定地点に罠を仕掛ける。敵ユニットが罠を踏むと発動し、対象の敵ユニットとその周囲の敵ユニットに2秒かけて{1}を与え、{5}間{2}と{3}を与え{4}。罠は4分間持続する。罠を設置してから2秒間の間は罠は発動しない。")
-                .variable(1, MagicDamage, 80, 45, ap(0.4))
-                .variable(2, ARReductionRatio, 20, 5)
-                .variable(3, MRReductionRatio, 20, 5)
+        P.update(P514)
+                .passive("茂みに入ると{1}する。さらに敵チャンピオンの方へ移動していると{2}する({3})。この効果は茂みから出ても2秒間持続する。敵チャンピオン及びモンスターに" + Q + "で" + Damage + "を与えると、４秒間対象にHuntedを付与し、対象の{4}。対象がモンスターの場合、{5}を与える。Huntedが付与された対象に向かって移動する際は{1}し{6}を得る。")
+                .variable(-1, MSRatio, 15)
+                .variable(-2, MSRatio, 30)
+                .variable(3, Radius, 5500)
                 .variable(4, Visionable)
-                .variable(5, Time, 12)
-                .mana(60, 15)
-                .cd(18)
-                .range(900);
-        W.update(P314).variable(5, Time, 8);
+                .variable(5, Snare, 2)
+                .variable(6, IgnoreUnitCollision);
 
-        E.update()
-                .active("対象の味方Championの{1}し、7秒間{2}する。")
-                .variable(1, RestoreHealth, 50, 35, ap(0.7))
+        Q.update(P514)
+                .active("指定方向に槍を投げて当たった敵ユニットに{1}を与える。槍が投げた距離に比例して与えるダメージが増加する。最大で{2}。")
+                .variable(1, MagicDamage, 50, 25, ap(0.4))
+                .variable(2, MagicDamage, 150, 75, ap(1.2))
+                .mana(50, 10)
+                .cd(6)
+                .range(1500);
+
+        W.update(P514)
+                .active("指定地点に罠を仕掛ける。敵ユニットが罠を踏むと発動し、対象の敵ユニットとその周囲の敵ユニットに4秒かけて{1}を与え、{2}。罠は2分間持続する。")
+                .variable(1, MagicDamage, 40, 40, ap(0.2))
+                .variable(2, Visionable)
+                .variable(5, Time, 12)
+                .mana(40, 5)
+                .cd(13, -1)
+                .range(900);
+
+        E.update(P514)
+                .active("対象の味方チャンピオンは{1}し、7秒間{2}する。")
+                .variable(1, RestoreHealth, 45, 40, ap(0.5))
                 .variable(2, ASRatio, 20, 10)
-                .mana(60, 20)
-                .cd(10)
+                .mana(60, 15)
+                .cd(12)
                 .range(600);
 
-        R.update()
-                .active("HumanからCougarに変身する。Cougar時はスキルの効果が変わり、通常攻撃の射程距離が125(Melee)になり、{1}を得る。Cougarスキルはこのスキルのレベルに比例し威力が増加する。{2}。")
-                .variable(1, MS, 20)
-                .variable(2, NotSpellCast)
-                .variable(3, MR, 10, 10)
-                .cd(4);
+        R.update(P514).active("Cougarに変身する。射程が125になる。{1}。").variable(1, NotSpellCast).cd(3);
     }
 
     /**
      * Define skill.
      */
     public static void NidaleeTransformed(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        Q.update()
-                .active("次に行う通常攻撃のダメージが{1}増加する。対象が受けているダメージに比例してダメージが増加する。最大で{2}。")
-                .variable(1, PhysicalDamage, 40, 30)
-                .variable(2, PhysicalDamage, 120, 90, ad(2))
+        P.update(P514)
+                .passive("{7}する。茂みに入ると{1}する。さらに敵チャンピオンの方へ移動していると{2}する({3})。この効果は茂みから出ても2秒間持続する。敵チャンピオン及びモンスターに" + Q + "で" + Damage + "を与えると、４秒間対象にHuntedを付与し、対象の{4}。対象がモンスターの場合、{5}を与える。Huntedが付与された対象に向かって移動する際は{1}し{6}を得る。")
+                .variable(-1, MSRatio, 15)
+                .variable(-2, MSRatio, 30)
+                .variable(3, Radius, 5500)
+                .variable(4, Visionable)
+                .variable(5, Snare, 2)
+                .variable(6, IgnoreUnitCollision)
+                .variable(7, Range, -400);
+
+        Q.update(P514)
+                .active("次の通常攻撃は{1}し、{2}を与える。この攻撃は対象の失っている" + Health + "に応じて増加し、最大で{3}を与える。対象がHuntedを付与されていた場合、ダメージが33%上昇し、最大で{4}を与える。")
+                .variable(1, Range, 75)
+                .variable(2, MagicDamage, new ReferFixed(R, new double[] {4, 16, 50, 90}), ad(0.75), ap(0.36))
+                .variable(3, MagicDamage, new ReferFixed(R, new double[] {10, 50, 125, 225}), ad(1.875), ap(0.9))
+                .variable(4, MagicDamage, new ReferFixed(R, new double[] {13, 67, 167, 300}), ad(2.5), ap(1.2))
                 .cd(5);
 
-        W.update().active("前方に飛びかかり着地地点の敵ユニットに{1}を与える。").variable(1, MagicDamage, 125, 50, ap(0.4)).cd(3.5).range(350);
+        W.update(P514)
+                .active("前方に飛びかかり（飛距離375固定）着地地点{2}の敵ユニットに{1}を与える。ユニットを倒すとこのスキルのCDが{3}になるまで減少する。対象付近にHuntedを付与された敵がいた場合、飛距離が750となってその対象めがけて跳躍するようになり、このスキルのCDが{3}になるまで減少する。この効果は初撃のみ発動する。")
+                .variable(1, MagicDamage, new Refer(R, 50, 50), ap(0.3), null)
+                .variable(2, Radius, 75)
+                .variable(3, CDRAwareTime, 1.5)
+                .cd(5)
+                .range(375);
 
-        E.update()
+        E.update(P514)
                 .active("前方扇形180°{2}の敵ユニットに{1}を与える。")
-                .variable(1, MagicDamage, 150, 75, ap(0.4))
+                .variable(1, MagicDamage, new Refer(R, 70, 60), ap(0.45), null)
                 .variable(2, Radius, 300)
-                .cd(6);
-        E.update().variable(1, MagicDamage, 150, 75, ap(0.6));
-        R.update()
-                .active("CougarからHumanに変身する。Human時はスキルの効果が変わり、通常攻撃の射程距離が525(Ranged)になる。{1}。")
-                .variable(1, NotSpellCast)
-                .cd(4);
+                .cd(5);
+
+        R.update(P514).active("Humanに変身する。射程が525になる。{1}。").variable(1, NotSpellCast).cd(3);
     }
 
     /**

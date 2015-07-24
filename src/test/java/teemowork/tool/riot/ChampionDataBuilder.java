@@ -199,6 +199,10 @@ public class ChampionDataBuilder {
          * @return
          */
         private String skill(String name) {
+            if (!isTransformer()) {
+                return name;
+            }
+
             int index = name.indexOf("/");
 
             if (index != -1) {

@@ -575,6 +575,9 @@ public abstract class VariableResolver {
         }
     }
 
+    /**
+     * @version 2015/07/24 18:23:21
+     */
     public static class ReferPlus extends Diff {
 
         /** The referenced skill. */
@@ -613,6 +616,50 @@ public abstract class VariableResolver {
         @Override
         public String getLevelDescription(int skillLevel) {
             return reference + " Level " + (skillLevel - 1);
+        }
+    }
+
+    /**
+     * @version 2013/03/28 23:27:41
+     */
+    public static class ReferFixed extends Fixed {
+
+        /** The referenced skill. */
+        public final Skill reference;
+
+        /**
+         * @param reference
+         * @param base
+         * @param diff
+         */
+        public ReferFixed(Skill reference, double[] values) {
+            super(values);
+
+            this.reference = reference;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public boolean isSkillLevelBased() {
+            return false;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public int convertLevel(StatusCalculator calculator) {
+            return calculator.getLevel(reference);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String getLevelDescription(int skillLevel) {
+            return reference + " Level " + skillLevel;
         }
     }
 }
