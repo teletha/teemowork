@@ -58,16 +58,17 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Aatrox(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("スキルを使用時に消費したHealthをBlood Wellとしてスタックし(最大スタック量は{1})、5秒間戦闘状態でなくなると毎秒2%ずつ失われていく。スタックが2%貯まる毎に{2}する(最大で{3})。Healthが0になると3秒かけて{4}する(最大で{5})。{6}。")
-                .variable(1, Stack, 30, 0, amplify(Lv, 45))
+                .variable(1, Stack, new Per1Level(105, 138, 171, 207, 244, 283, 323, 365, 408, 453, 500, 548, 598, 649, 702, 756, 813, 870))
                 .variable(-2, ASRatio, 0, 0, amplify(StackPercentage, new Per3Level(0.6, 0.1)))
                 .variable(-3, ASRatio, new Per3Level(30, 5))
-                .variable(4, RestoreHealth, 10.5, 0, amplify(Lv, 15.75), amplify(Stack, 1))
+                .variable(4, RestoreHealth, 0, 0, amplify(Lv, 15.75), amplify(Stack, 1))
                 .variable(5, RestoreHealth, 40.5, 0, amplify(Lv, 60.75))
                 .variable(6, CDRUnaware)
                 .cd(-225);
-        Q.update()
+
+        Q.update(P514)
                 .active("指定地点に飛びかかり、{1}の敵ユニットに{2}を与える。範囲内の中心にいる敵ユニットに対しては更に{3}を与える。")
                 .variable(1, Radius)
                 .variable(2, PhysicalDamage, 70, 45, bounusAD(0.6))
@@ -75,7 +76,8 @@ public interface SkillDefinition {
                 .cd(16, -1)
                 .cost(CurrentHealthRatio, 10, 0)
                 .range(650);
-        W.update()
+
+        W.update(P514)
                 .passive("通常攻撃3回ごとに{1}する。Healthが50%以下の場合、{2}する。ToggleOnの間、この効果は失われる。")
                 .variable(1, RestoreHealth, 20, 5, bounusAD(0.25))
                 .variable(2, RestoreHealth, 60, 15, bounusAD(0.75))
@@ -84,7 +86,8 @@ public interface SkillDefinition {
                 .variable(4, LoseHealth, 15, 8.75, bounusAD(0.25))
                 .cd(0.5)
                 .type(SkillType.Toggle);
-        E.update()
+
+        E.update(P514)
                 .active("指定方向に貫通するエネルギーを放ち、当たった敵ユニットに{1}と{2}間{3}を与える。")
                 .variable(1, MagicDamage, 75, 45, ap(0.6), bounusAD(0.6))
                 .variable(2, Time, 1.75, 0.25)
@@ -94,7 +97,8 @@ public interface SkillDefinition {
                 .range(1000)
                 .update(P313)
                 .variable(1, MagicDamage, 75, 35, ap(0.6), bounusAD(0.6));
-        R.update()
+
+        R.update(P514)
                 .active("{1}の敵チャンピオンに{2}を与え、12秒間{3}し、通常攻撃の射程が325に増加する。")
                 .variable(1, Radius)
                 .variable(2, MagicDamage, 200, 100, ap(1))
@@ -806,7 +810,7 @@ public interface SkillDefinition {
                 .type(SkillType.Toggle);
 
         R.update(P514)
-                .active("対象の敵ユニットに{1}を与える。対象がチャンピオン以外の場合は{2}を与える。このスキルで敵を倒すとスタックが1増えて{3}と{4}を得る。死亡するとスタックが半分(端数切り上げ)消失する。")
+                .active("対象の敵ユニットに{1}を与える。対象がチャンピオン以外の場合は{2}を与える。このスキルで敵を倒すとスタックが1増えて{3}と{4}する。最大スタック数は6で、死亡するとスタックが半分(端数切り上げ)消失する。")
                 .variable(1, TrueDamage, 300, 175, ap(0.7))
                 .variable(2, TrueDamage, 1000, 0, ap(0.7))
                 .variable(3, Health, 0, 0, amplify(Stack, 90, 30))

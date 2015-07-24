@@ -362,7 +362,7 @@ public abstract class VariableResolver {
         /**
          * @param values
          */
-        public Per1Level(double[] values) {
+        public Per1Level(double... values) {
             this.values = values;
         }
 

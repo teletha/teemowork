@@ -570,7 +570,7 @@ public enum Status {
             return "10秒毎に" + formatValue(computed) + "Gold";
 
         case Range:
-            return "射程が" + formatValue(Math.abs(computed)) + (0 < computed ? "増加" : "減少");
+            return "射程が" + formatValue(Math.abs(computed)) + (0 <= computed ? "増加" : "減少");
 
         case Knockback:
             String length = formatValue(computed);
