@@ -21,8 +21,6 @@ import java.util.Locale;
 import java.util.StringJoiner;
 
 import kiss.I;
-import teemowork.api.RiotChampionData;
-import teemowork.model.Champion;
 import teemowork.model.Item;
 import teemowork.model.MasterySeason4;
 import teemowork.model.Version;
@@ -95,11 +93,15 @@ public class ImageBuilder {
     public void buildChampionIconSet() throws Exception {
         EditableImage container = new EditableImage();
 
-        for (Champion definition : collect(RiotChampionData.class, Champion.class)) {
-            EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/champion/", definition.systemName, ".png"));
+        for (ChampionDefinition definition : definitions.data.values()) {
+            EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/champion/", definition.id, ".png"));
             image.trim(7).resize(70);
 
             container.concat(image);
+
+            if (definition.isTransformer()) {
+                container.concat(image);
+            }
         }
         container.write(Resources.resolve("champions.jpg"));
 
@@ -264,7 +266,7 @@ public class ImageBuilder {
     public static void main(String[] args) throws Exception {
         ImageBuilder builder = new ImageBuilder(Version.Latest);
         // builder.buildItemIconSet();
-        // builder.buildChampionIconSet();
-        builder.buildSkillIconSet();
+        builder.buildChampionIconSet();
+        // builder.buildSkillIconSet();
     }
 }

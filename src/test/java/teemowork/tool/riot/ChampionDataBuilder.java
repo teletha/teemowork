@@ -12,10 +12,10 @@ package teemowork.tool.riot;
 import static teemowork.tool.ClassWriter.*;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.ConcurrentSkipListMap;
 
 import kiss.I;
 import teemowork.model.Champion;
@@ -105,7 +105,7 @@ public class ChampionDataBuilder {
     static class ChampionDefinitions {
 
         /** The champion data store. */
-        public ConcurrentSkipListMap<String, ChampionDefinition> data;
+        public LinkedHashMap<String, ChampionDefinition> data;
     }
 
     /**
