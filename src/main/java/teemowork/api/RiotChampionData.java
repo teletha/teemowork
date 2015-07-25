@@ -9,8 +9,8 @@
  */
 package teemowork.api;
 
-import teemowork.model.SkillDefinition;
 import teemowork.model.Champion;
+import teemowork.model.SkillDefinition;
 
 public class RiotChampionData {
 
