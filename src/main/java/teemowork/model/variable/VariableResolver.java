@@ -86,26 +86,35 @@ public abstract class VariableResolver {
     /**
      * @version 2013/02/12 13:10:53
      */
-    public static abstract class PerLevel extends VariableResolver {
+    public static class PerLevel extends VariableResolver {
 
         /** The level pattern. */
         public final int[] levels;
 
         /** The values. */
-        private final double base;
-
-        /** The values. */
-        private final double diff;
+        private final double[] values;
 
         /**
          * @param levels
          * @param base
          * @param diff
          */
-        private PerLevel(int[] levels, double base, double diff) {
+        public PerLevel(int[] levels, double base, double diff) {
             this.levels = levels;
-            this.base = base;
-            this.diff = diff;
+            this.values = new double[levels.length];
+
+            for (int i = 0; i < levels.length; i++) {
+                this.values[i] = base + diff * i;
+            }
+        }
+
+        /**
+         * @param levels
+         * @param values
+         */
+        public PerLevel(int[] levels, double... values) {
+            this.levels = levels;
+            this.values = values;
         }
 
         /**
@@ -121,7 +130,7 @@ public abstract class VariableResolver {
          */
         @Override
         public double compute(int skillLevel) {
-            return base + diff * (skillLevel - 1);
+            return values[skillLevel - 1];
         }
 
         /**
@@ -231,6 +240,19 @@ public abstract class VariableResolver {
          */
         public Per5LevelWith18(double base, double diff) {
             super(new int[] {1, 6, 11, 16, 18}, base, diff);
+        }
+    }
+
+    /**
+     * @version 2013/06/11 19:50:49
+     */
+    public static class Per5LevelForGaren extends PerLevel {
+
+        /**
+         * @param values
+         */
+        public Per5LevelForGaren(double base, double diff) {
+            super(new int[] {1, 11, 16}, base, diff);
         }
     }
 
@@ -430,7 +452,7 @@ public abstract class VariableResolver {
         /**
          * @param values
          */
-        public Fixed(double[] values) {
+        public Fixed(double... values) {
             this.values = values;
         }
 

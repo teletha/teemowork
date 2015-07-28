@@ -32,6 +32,7 @@ import teemowork.model.variable.VariableResolver.Per5LevelWith18;
 import teemowork.model.variable.VariableResolver.Per6Level;
 import teemowork.model.variable.VariableResolver.Per6LevelForVi;
 import teemowork.model.variable.VariableResolver.Per6LevelForZed;
+import teemowork.model.variable.VariableResolver.PerLevel;
 import teemowork.model.variable.VariableResolver.Refer;
 import teemowork.model.variable.VariableResolver.ReferFixed;
 import teemowork.model.variable.VariableResolver.ReferPlus;
@@ -1467,37 +1468,42 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Garen(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("9秒間敵Minion以外からダメージを受けない状態が続くと、以降敵Minion以外からダメージを受けるまで毎秒{1}し続ける。")
-                .variable(1, RestoreHealth, 0, 0, amplify(Health, 0.005));
-        P.update(P303).variable(1, RestoreHealth, 0, 0, amplify(Health, 0.004));
-        Q.update()
+        P.update(P514)
+                .passive("{1}間敵Minion以外からダメージを受けない状態が続くと、以降敵ミニオン（Lv11からはバロン・ドラゴン以外のモンスター）以外からダメージを受けるまで毎秒{2}する。")
+                .variable(1, Time, new PerLevel(new int[] {1, 11, 16}, new double[] {9, 6, 4}))
+                .variable(2, RestoreHealth, 0, 0, amplify(Health, new PerLevel(new int[] {1, 11,
+                        16}, 0.004, 0.008, 0.02)));
+
+        Q.update(P514)
                 .active("{1}間{2}し、スキル使用後6秒間に行った次の通常攻撃に追加{3}と{4}が付与される。またこのスキル使用時に自身にかかっているスローを解除する。")
                 .variable(1, Time, 1.5, 0.75)
                 .variable(2, MSRatio, 35)
                 .variable(3, PhysicalDamage, 30, 25, ad(0.4))
                 .variable(4, Silence, 1.5, 0.25)
                 .cd(8);
-        W.update()
+
+        W.update(P514)
                 .passive("{1}し{2}する。")
-                .variable(1, AR, 0, 0, amplify(AR, 0.2))
-                .variable(2, MR, 0, 0, amplify(MR, 0.2))
+                .variable(1, AR, 0, 0, amplify(BounusAR, 0.2))
+                .variable(2, MR, 0, 0, amplify(BounusMR, 0.2))
                 .active("{3}間{4}し、{5}を得る。")
                 .variable(3, Time, 2, 1)
                 .variable(4, DamageReductionRatio, 30)
                 .variable(5, Tenacity, 30)
                 .cd(24, -1);
-        W.update(P303).variable(1, AR, 0, 0, amplify(BounusAR, 0.2)).variable(2, MR, 0, 0, amplify(BounusMR, 0.2));
-        E.update()
-                .active("Garenが3秒間回転し、その間近くの敵ユニットに0.5秒毎に{1}を与える(最大6hit)。このスキルにはクリティカル判定があり、クリティカル時は追加{2}を与える。回転中は{3}を得るが、敵Minionをすり抜けている間は移動速度が20%低下する。Minionに与えるダメージは通常の75%。")
-                .variable(1, PhysicalDamage, 10, 12.5, ad(0.35))
-                .variable(2, PhysicalDamage, 0, 0, ad(0.175))
-                .variable(3, IgnoreUnitCollision)
+
+        E.update(P514)
+                .active("Garenが3秒間回転し、{5}の敵ユニットに0.5秒毎に{1}を与える(最大6hitで{2})。このスキルにはクリティカル判定があり、クリティカル時は追加{3}を与える。回転中は{4}を得るが、敵ミニオンをすり抜けている間は移動速度が20%低下し、ミニオンに与えるダメージは通常の75%。")
+                .variable(1, PhysicalDamage, 10, 12.5, amplify(AD, 0.35, 0.05))
+                .variable(2, PhysicalDamage, 60, 75, amplify(AD, 2.1, 0.3))
+                .variable(3, PhysicalDamage, 0, 0, amplify(AD, 0.175, 0.025))
+                .variable(4, IgnoreUnitCollision)
+                .variable(5, Radius, 300)
                 .cd(13, -1);
-        R.update()
+
+        R.update(P514)
                 .active("対象の敵チャンピオンに{1}を与える。")
-                .variable(1, MagicDamage, 175, 175, amplify(TargetMissingHealthRatio, new Fixed(new double[] {28.6,
-                        33.3, 40})))
+                .variable(1, MagicDamage, 175, 175, amplify(TargetMissingHealthRatio, new Fixed(28.57, 33.3, 40)))
                 .cd(160, -40)
                 .range(400);
     }
