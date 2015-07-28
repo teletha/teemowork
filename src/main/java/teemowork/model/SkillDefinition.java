@@ -1814,57 +1814,44 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Janna(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("全ての味方チャンピオンは{1}する。").variable(1, MSRatio, 3);
-        P.update(P314).passive("{2}の全ての味方チャンピオンは{1}する。").variable(1, MSRatio, 5).variable(2, Radius, 800);
-        Q.update()
-                .active("指定方向に竜巻を発生させ、触れた敵ユニットに{1}と{2}を与える。竜巻は設置後に再度スキル使用ですぐに飛ばすことができるが、溜めた時間に比例して魔法DM、射程距離、打ち上げ時間が増加する。")
-                .variable(1, MagicDamage, 60, 25, ap(0.75), amplify(Duration, new Fixed(new double[] {25, 30, 40, 50,
-                        60})))
-                .variable(2, Knockup, 0.8, 0, amplify(Duration, 0.1))
+        P.update(P514).passive("{1}の全ての味方チャンピオンは{2}する。").variable(1, Range, 1250).variable(2, MSRatio, 8);
+
+        Q.update(P514)
+                .active("指定方向に竜巻を発生させ、触れた敵ユニットに{1}と{2}を与える。竜巻は3秒経過するか再度スキル使用で飛ばすことができるが、溜めた時間に比例して" + MagicDamage + "、射程距離、打ち上げ時間が増加する。")
+                .variable(1, MagicDamage, 60, 25, ap(0.35), amplify(Duration, 15, 5, ap(0.1)))
+                .variable(2, Knockup, 0.5, 0, amplify(Duration, 0.25))
                 .mana(90, 15)
                 .cd(14, -1)
-                .range(1100);
-        Q.update(P304).variable(2, Knockup, 0.8, 0, amplify(Duration, 0.066));
-        Q.update(P314).variable(1, MagicDamage, 60, 25, ap(0.35), amplify(Duration, 15, 5, ap(0.1)));
-        W.update()
+                .range(new Diff(1100, 0, 1), amplify(Duration, 200));
+
+        W.update(P514)
                 .passive("{1}し{2}を得る。")
-                .variable(1, MSRatio, 4, 3)
-                .variable(2, IgnoreUnitCollision, 0)
-                .active("対象の敵ユニットに{3}と3秒間{4}を与える。またこのスキルがCDの間はPassiveの効果が無くなる。")
-                .variable(3, MagicDamage, 60, 55, ap(0.6))
-                .variable(4, MSSlowRatio, 24, 6)
-                .mana(40, 10)
-                .cd(12, -1)
-                .range(600);
-        W.update(P314)
+                .variable(1, MSRatio, 9, 2, ap(0.02))
+                .variable(2, IgnoreUnitCollision)
                 .active("対象の敵ユニットに{3}と3秒間{4}を与える（最大で80%）。またこのスキルがCDの間はPassiveの効果が無くなる。")
-                .variable(1, MSRatio, 4, 2, ap(0.02))
                 .variable(3, MagicDamage, 60, 55, ap(0.5))
-                .variable(4, MSSlowRatio, 24, 4, ap(0.06));
-        E.update()
+                .variable(4, MSSlowRatio, 24, 4, ap(0.06))
+                .mana(40, 10)
+                .cd(12)
+                .range(600);
+
+        E.update(P514)
                 .active("対象の味方チャンピオンか塔に5秒間{1}を付与する。シールドが持続している間は対象は{2}を得る。")
-                .variable(1, Shield, 80, 40, ap(0.9))
-                .variable(2, AD, 14, 9)
+                .variable(1, Shield, 80, 40, ap(0.7))
+                .variable(2, AD, 14, 9, ap(0.1))
                 .mana(70, 10)
                 .cd(10)
-                .range(800);
-        E.update(P314).variable(1, Shield, 80, 40, ap(0.7)).variable(2, AD, 14, 9, ap(0.1));
-        R.update()
-                .active("0.25秒後に{1}の敵ユニットを{2}して4秒間詠唱する。詠唱中は{1}の味方ユニットは毎秒{3}する。最大で{4}する。")
+                .range(725);
+
+        R.update(P514)
+                .active("{1}の敵ユニットを{2}して3秒間詠唱する。詠唱中は{1}の味方ユニットは毎秒{3}する。最大で{4}する。")
                 .variable(1, Radius, 725)
                 .variable(2, Knockback, 875)
-                .variable(3, RestoreHealth, 70, 40, ap(0.35))
-                .variable(4, RestoreHealth, 280, 160, ap(1.4))
-                .mana(150, 75)
-                .cd(150, -15)
-                .update(P303)
-                .mana(100, 50)
-                .update(P315)
-                .mana(100)
-                .update(P401)
-                .active("{1}の敵ユニットを{2}して3秒間詠唱する。詠唱中は{1}の味方ユニットは毎秒{3}する。最大で{4}する。")
                 .variable(3, RestoreHealth, 100, 50, ap(0.6))
-                .variable(4, RestoreHealth, 300, 150, ap(1.8));
+                .variable(4, RestoreHealth, 300, 150, ap(1.8))
+                .mana(100)
+                .cd(150, -15)
+                .type(SkillType.Channel);
     }
 
     /**
