@@ -804,62 +804,42 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Corki(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("通常攻撃に{1}が付与される。建物には無効。").variable(1, TrueDamage, 0, 0, ad(0.1));
-        Q.update()
-                .active("指定した{1}の敵ユニットに{2}を与え、6秒間指定地点の{3}。また、チャンピオンに当たった場合、6秒間そのチャンピオンの{3}。このスキルで敵のステルスを看破する事はできない。")
-                .variable(1, Radius, 150)
-                .variable(2, MagicDamage, 80, 50, ap(0.5))
-                .variable(3, Visionable)
-                .mana(80, 10)
-                .cd(8)
-                .range(600)
-                .update(P314)
+        P.update(P514).passive("通常攻撃に{1}が付与される。建物には無効。").variable(1, TrueDamage, 0, 0, ad(0.1));
+
+        Q.update(P514)
                 .active("指定地点に爆弾を発射し、着弾時に{1}の敵ユニットに{2}を与え、6秒間指定地点の{3}。爆弾にも視界がある。また、チャンピオンに当たった場合、6秒間そのチャンピオンの{3}。このスキルで敵のステルスを看破する事はできない。")
                 .variable(1, Radius, 250)
-                .variable(2, MagicDamage, 80, 50, ap(0.5))
+                .variable(2, MagicDamage, 80, 50, ap(0.5), bounusAD(0.5))
+                .variable(3, Visionable)
+                .cd(8)
                 .mana(60, 10)
-                .range(825)
-                .update(P403)
-                .variable(2, MagicDamage, 80, 50, ap(0.5), bounusAD(0.5));
+                .range(825);
 
-        W.update()
-                .active("指定地点まで高速で移動し、通過地点を2.5秒間炎上させる。炎上地点の上にいる敵ユニットに毎秒{2}を与える。")
-                .variable(2, MagicDamage, 60, 30, ap(0.4))
+        W.update(P514)
+                .active("指定地点まで高速で移動し、通過地点を2.5秒間炎上させる。炎上地点の上にいる敵ユニットに0.5秒毎に{2}を与える。")
+                .variable(2, MagicDamage, 30, 15, ap(0.2))
                 .mana(100)
                 .cd(26, -3)
-                .range(800)
-                .update(P309)
-                .mana(50);
-        E.update()
-                .active("4秒間、Corkiの前方にいる敵ユニットに0.5秒毎に{1}を与える(最大8hit)。ダメージを与える度に対象ユニットに{2}を与える。この効果は2秒間持続し、8回までスタックする。")
+                .range(800);
+
+        E.update(P514)
+                .active("4秒間、Corkiの前方扇形35°にいる敵ユニットに0.5秒毎に{1}を与える(最大8hit)。ダメージを与える度に対象ユニットに{2}を与える。この効果は2秒間持続し、8回までスタックする。")
                 .variable(1, PhysicalDamage, 10, 6, bounusAD(0.02))
                 .variable(2, ARReduction, 1, 1)
-                .mana(60, 5)
+                .mana(50)
                 .cd(16)
-                .range(600)
-                .update(P314)
-                .mana(50);
-        R.update()
-                .active("スタックを消費して、指定方向にミサイルを発射し当たった敵ユニットの{1}に{2}を与える。スタックは{3}毎に増加する（最大数7）。4発毎に大きいミサイルを発射する({4}に{5})。スタック増加時間はCD低減の影響を受ける。")
-                .variable(1, Radius, 150)
-                .variable(2, MagicDamage, 120, 70, ap(0.3), ad(0.2))
-                .variable(3, CDRAwareTime, 12)
-                .variable(4, Radius, 300)
-                .variable(5, MagicDamage, 180, 105, ap(0.45), ad(0.3))
-                .mana(30, 5)
-                .cd(1.2)
-                .range(1225)
-                .update(P305)
+                .range(600);
+
+        R.update(P514)
                 .active("スタックを消費して、指定方向にミサイルを発射し当たった敵ユニットの{1}に{2}を与える。スタックは{3}毎に増加する（最大数7）。3発毎に大きいミサイル({4}に{5})を発射させる。スタック増加時間はCD低減の影響を受ける。")
+                .variable(1, Radius, 75)
+                .variable(2, MagicDamage, 100, 80, ap(0.3), amplify(AD, 0.2, 0.1))
                 .variable(3, CDRAwareTime, 12, -2)
-                .update(P309)
+                .variable(4, Radius, 150)
+                .variable(5, MagicDamage, 150, 120, ap(0.45), amplify(AD, 0.3, 0.15))
                 .mana(20)
-                .update(P313)
-                .variable(2, MagicDamage, 100, 80, ap(0.3), ad(0.02))
                 .cd(-2)
-                .update(P314)
-                .variable(2, MagicDamage, 120, 70, ap(0.3), amplify(AD, 0.2, 0.1))
-                .variable(5, MagicDamage, 180, 105, ap(0.45), amplify(AD, 0.3, 0.15));
+                .range(1225);
     }
 
     /**
