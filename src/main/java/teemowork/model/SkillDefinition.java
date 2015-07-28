@@ -1333,7 +1333,7 @@ public interface SkillDefinition {
                 .range(550);
 
         W.update(P514)
-                .passive("通常攻撃に{1}が付与される。このダメージは0.5秒毎に3秒間かけて与えられる。(Minionに対しては300DMが上限)")
+                .passive("通常攻撃に{1}が付与される。このダメージは0.5秒毎に3秒間かけて与えられる。")
                 .variable(1, MagicDamage, 20, 10, ap(0.45), amplify(TargetMissingHealthRatio, 4, 1))
                 .active("6秒間通常攻撃に{2}を付与する。")
                 .variable(2, MagicDamage, 10, 10, ap(0.25))
@@ -1368,41 +1368,44 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Galio(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("{1}を得る。").variable(1, AP, 0, 0, amplify(MR, 0.5));
-        Q.update()
+        P.update(P514).passive("{1}を得る。").variable(1, AP, 0, 0, amplify(MR, 0.5));
+
+        Q.update(P514)
                 .active("指定地点に魔法弾を飛ばし、{1}の敵ユニットに{2}と2.5秒間{3}を与える。")
-                .variable(1, Radius, 175)
+                .variable(1, Radius, 235)
                 .variable(2, MagicDamage, 80, 55, ap(0.6))
                 .variable(3, MSSlowRatio, 24, 4)
                 .mana(60, 5)
                 .cd(7)
-                .range(900);
-        W.update()
-                .active("4秒間対象のチャンピオンは{1}と{2}を得て、効果中にその対象のチャンピオンがダメージを受ける度にGalioの{3}する。自身に使用した場合はダメージを受けてから回復される。")
+                .range(940);
+
+        W.update(P514)
+                .active("4秒間対象のチャンピオンは{1}と{2}を得て、効果中にその対象のチャンピオンがダメージを受ける度に自身の{3}する。自身に使用した場合はダメージを受けてから回復される。")
                 .variable(1, AR, 30, 15)
                 .variable(2, MR, 30, 15)
                 .variable(3, RestoreHealth, 25, 15, ap(0.3))
                 .mana(60)
                 .cd(13)
                 .range(800);
-        E.update()
+
+        E.update(P514)
                 .active("指定方向に風を発生させ、当たった敵ユニットに{1}を与える。このスキルを使用すると指定した方向に5秒間持続する風が残り、その風の進行方向上にいる味方ユニットは{2}する。")
                 .variable(1, MagicDamage, 60, 45, ap(0.5))
                 .variable(2, MSRatio, 20, 8)
                 .mana(70, 5)
-                .cd(12)
-                .range(1000);
-        R.update()
-                .active("{1}の敵ユニットに{2}を与え、さらに2秒間詠唱を行う。詠唱中Galioは{3}して、詠唱中にGalioがダメージを受ける度にこのスキルのダメージが5%ずつ増加していく(最大40%増加)。また詠唱中にBulwarkを使用することが出来る。詠唱完了またはキャンセル時に、周囲の敵ユニットのTauntを解除するとともに{4}を与える。最大DMは{5}。")
+                .cd(13, -1)
+                .range(1180);
+
+        R.update(P514)
+                .active("{1}の敵ユニットに{2}を与え、さらに2秒間詠唱を行う。詠唱中は{3}して、ダメージを受ける度にこのスキルのダメージが最大80％まで10%ずつ増加していく。詠唱中に" + W + "を使用することが出来る。詠唱完了またはキャンセル時に、周囲の敵ユニットの" + Taunt + "を解除するとともに{4}を与える。最大ダメージは{5}。キャンセル時は効果範囲が575に減少する。なお、このスキルの" + Taunt + "の効果時間は" + Tenacity + "の影響を受けない。")
                 .variable(1, Radius, 600)
                 .variable(2, Taunt, 2)
                 .variable(3, DamageReductionRatio, 50)
-                .variable(4, MagicDamage, 220, 110, ap(0.6))
-                .variable(5, MagicDamage, 308, 154, ap(0.84))
-                .mana(100, 50)
-                .cd(170, -20)
+                .variable(4, MagicDamage, 200, 100, ap(0.6))
+                .variable(5, MagicDamage, 360, 540, ap(1.08))
+                .mana(100)
+                .cd(150, -15)
                 .type(SkillType.Channel);
-        R.update(P311).cd(150, -15).mana(100);
     }
 
     /**
