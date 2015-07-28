@@ -195,12 +195,13 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Alistar(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("スキルを使用すると3秒間{1}を得て、{2}の敵ユニットと建物に毎秒{3}を与える。ミニオンに対しては与えるダメージが2倍になる。")
-                .variable(3, MagicDamage, 6, 0, ap(0.1), amplify(Lv, 1))
-                .variable(2, Radius, 182.5)
-                .variable(1, IgnoreUnitCollision);
-        Q.update()
+        P.update(P514)
+                .passive("スキルを使用すると3秒間{1}を得て、{2}の敵ユニットと建物に毎秒{3}を与える。ミニオンに対してはダメージが2倍になる。")
+                .variable(1, IgnoreUnitCollision)
+                .variable(2, Radius, 300)
+                .variable(3, MagicDamage, 6, 0, ap(0.1), amplify(Lv, 1));
+
+        Q.update(P514)
                 .active("{4}の敵ユニットに{1}を与え、{2}後に{3}を与える。")
                 .variable(1, MagicDamage, 60, 45, ap(0.5))
                 .variable(2, Knockup, 1)
@@ -208,14 +209,17 @@ public interface SkillDefinition {
                 .variable(4, Radius, 365)
                 .cd(17, -1)
                 .mana(65, 5);
-        W.update()
-                .active("対象の敵ユニットに突撃し{1}と{2}を与える。")
+
+        W.update(P514)
+                .active("対象の敵ユニットに突撃し{1}と{2}、{3}を与える。")
                 .variable(1, MagicDamage, 55, 55, ap(0.7))
-                .variable(2, Knockback, 650)
+                .variable(2, Knockback)
+                .variable(3, Stun, 1)
                 .cd(14, -1)
                 .mana(65, 5)
                 .range(650);
-        E.update()
+
+        E.update(P514)
                 .active("{1}する。{3}の味方ユニットは{2}する。近くの敵ユニットが死ぬと{4}する。")
                 .variable(1, RestoreHealth, 60, 30, ap(0.2))
                 .variable(2, RestoreHealth, 30, 15, ap(0.1))
@@ -223,8 +227,9 @@ public interface SkillDefinition {
                 .variable(4, CDDecrease, 2)
                 .cd(12, 0)
                 .mana(40, 10);
-        R.update()
-                .active("7秒間Alistarは{1}を得て、{2}する。Disable中でも使用可能。使用時に自身にかかっているCCを全て解除する。")
+
+        R.update(P514)
+                .active("7秒間{1}を得て、{2}する。Disable中でも使用可能。使用時に自身にかかっているCCを全て解除する。")
                 .variable(1, AD, 60, 15)
                 .variable(2, DamageReductionRatio, 70)
                 .cd(120, -20)
