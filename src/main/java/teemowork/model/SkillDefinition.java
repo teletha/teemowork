@@ -1655,54 +1655,46 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Hecarim(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("{2}と{1}を得る。")
-                .variable(1, AD, amplify(BounusMS, new Per3LevelAdditional(0.1, 0.025)))
+                .variable(1, AD, amplify(BounusMS, new Per3LevelAdditional(0.15, 0.025)))
                 .variable(2, IgnoreUnitCollision);
-        Q.update()
-                .active("武器を振り回し{2}の敵ユニットに{1}を与える。このスキルが敵ユニットに命中した場合、Hecarimは短時間の間1スタックを得て、1スタックにつきこのスキルの{4}する(最大2スタック)。スタックは6秒間増加がないと0になる。ミニオンやモンスターには{3}を与える。")
-                .variable(1, PhysicalDamage, 50, 35, bounusAD(0.6))
-                .variable(2, Radius, 200)
-                .variable(3, PhysicalDamage, 18.5, 11.5, bounusAD(0.2))
-                .variable(4, CDDecrease, 1)
-                .mana(25)
-                .cd(4)
-                .update(P303)
+
+        Q.update(P514)
+                .active("武器を振り回し{2}の敵ユニットに{1}を与える。このスキルが敵ユニットに命中した場合1スタックを得て、1スタックにつきこのスキルの{4}する(最大2スタック)。スタックは8秒間増加がないと0になる。ミニオンには{3}を与える。")
                 .variable(1, PhysicalDamage, 60, 35, bounusAD(0.6))
-                .update(P309)
-                .mana(24, 4);
-        W.update()
-                .active("4秒間{1}の敵ユニットに毎秒{2}を与える。この効果を受けている敵ユニットがダメージを受けた場合、そのダメージの値に応じて{3}する。")
-                .variable(1, Radius, 575)
-                .variable(2, MagicDamage, 20, 11.25, ap(0.2))
-                .variable(3, RestoreHealth, amplify(DealtDamageRatio, 10, 5))
+                .variable(2, Radius, 350)
+                .variable(3, PhysicalDamage, 40, 23.3, bounusAD(0.4))
+                .variable(4, CDDecrease, 1)
+                .mana(32, 2)
+                .cd(4);
+
+        W.update(P514)
+                .active("4秒間{1}の敵ユニットに毎秒{2}を与える。この効果を受けている敵ユニットがダメージを受けた場合、{3}する（ミニオン及びモンスターに対しては{4}が上限）。")
+                .variable(1, Radius, 525)
+                .variable(2, MagicDamage, 20, 10, ap(0.2))
+                .variable(3, RestoreHealth, amplify(DealtDamageRatio, 20))
+                .variable(4, Value, 90, 30)
                 .mana(50, 10)
-                .cd(14)
-                .update(P303)
-                .variable(3, RestoreHealth, amplify(DealtDamageRatio, 20, 0))
-                .cd(20, -1.5)
-                .update(P305)
                 .cd(22, -1);
-        E.update()
-                .active("3秒間{1}して(最大75%)、その後1秒間その移動速度を維持する。また次の通常攻撃のダメージはこのスキルを使用してからHecarimが移動した距離に比例し最小で{3}、最大で{4}を与えるようになり、{2}が付与される。")
+
+        E.update(P514)
+                .active("3秒間{1}して(最大75%)、その後1秒間その移動速度を維持する。また次の通常攻撃のダメージはこのスキルを使用してから移動した距離に比例し最小で{3}、最大で{4}を与えるようになり、{2}が付与される。")
                 .variable(1, MSRatio, 20, 0, amplify(Duration, 18.3))
                 .variable(2, Knockback, 300)
                 .variable(3, PhysicalDamage, 40, 35, bounusAD(0.5))
                 .variable(4, PhysicalDamage, 80, 70, bounusAD(1))
                 .mana(60)
                 .cd(24, -2);
-        R.update()
-                .active("亡霊の騎兵隊を従え指定地点に突撃し、Hecarimと騎兵に触れた敵ユニットに{1}を与える。指定した地点に到着すると衝撃波を放ち、{2}の敵ユニットに{3}と{4}を与える。Hecarimが指定した地点に到着しても、騎兵隊は常に最大距離まで突撃する。" + Terrified + "に陥ったユニットは強制的にHecarimから遠ざかるように移動する。この時、Hecarimとの距離に比例して移動速度が変化する。")
-                .variable(1, MagicDamage, 100, 100, ap(0.8))
+
+        R.update(P514)
+                .active("亡霊の騎兵隊を従え指定地点に突撃し、Hecarimと騎兵に触れた敵ユニットに{1}を与える。指定した地点に到着すると衝撃波を放ち、{2}の敵ユニットに{4}を与える。Hecarimが指定した地点に到着しても、騎兵隊は常に最大距離まで突撃する。" + Terrified + "に陥ったユニットは強制的にHecarimから遠ざかるように移動する。この時、Hecarimとの距離に比例して移動速度が変化する。")
+                .variable(1, MagicDamage, 150, 100, ap(1))
                 .variable(2, Radius)
-                .variable(3, MagicDamage, 50, 75, ap(0.4))
                 .variable(4, Terrified, 1)
                 .mana(100)
                 .cd(140, -20)
-                .range(1000)
-                .update(P308)
-                .active("亡霊の騎兵隊を従え指定地点に突撃し、Hecarimと騎兵に触れた敵ユニットに{1}を与える。指定した地点に到着すると衝撃波を放ち、{2}の敵ユニットに{4}を与える。Hecarimが指定した地点に到着しても、騎兵隊は常に最大距離まで突撃する。" + Terrified + "に陥ったユニットは強制的にHecarimから遠ざかるように移動する。この時、Hecarimとの距離に比例して移動速度が変化する。")
-                .variable(1, MagicDamage, 150, 100, ap(1));
+                .range(1000);
     }
 
     /**
