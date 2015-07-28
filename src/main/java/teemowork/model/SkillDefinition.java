@@ -937,36 +937,38 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void DrMundo(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("毎秒{1}する。").variable(1, RestoreHealth, 0, 0, amplify(Health, 0.003));
-        Q.update()
-                .active("指定方向に包丁を投げ（{7}）、当たった敵ユニットに{1}と2秒間の{3}を与える。最小で{4}。ミニオンやモンスターへの最大DMは{5}。命中すると{6}する。")
+        P.update(P514).passive("毎秒{1}する。").variable(1, RestoreHealth, 0, 0, amplify(Health, 0.003));
+
+        Q.update(P514)
+                .active("指定方向に包丁を投げ（{7}）、当たった敵ユニットに{1}と2秒間{3}を与える。最小で{4}。ミニオンやモンスターへは{5}が上限。命中すると{6}する。")
                 .variable(1, MagicDamage, 0, 0, amplify(TargetCurrentHealthRatio, 15, 3))
                 .variable(3, MSSlowRatio, 40)
                 .variable(4, MagicDamage, 80, 50)
                 .variable(5, MagicDamage, 300, 100)
                 .variable(6, RestoreHealth, 25, 5)
-                .variable(7, MissileWidth, 80)
+                .variable(7, MissileWidth, 60)
                 .cost(Health, 50, 10)
                 .cd(4)
-                .range(1000)
-                .update(P402)
-                .variable(7, MissileWidth, 60);
-        W.update()
+                .range(1000);
+
+        W.update(P514)
                 .active("{1}の敵ユニットに毎秒{2}を与える。また{3}を得る。")
-                .variable(1, Radius, 325)
+                .variable(1, Radius, 162.5)
                 .variable(2, MagicDamage, 35, 15, ap(0.2))
                 .variable(3, Tenacity, 10, 5)
                 .cost(Health, 10, 5)
                 .cd(4)
                 .type(SkillType.Toggle);
-        E.update()
+
+        E.update(P514)
                 .active("5秒間{1}を得る。")
                 .variable(1, AD, 40, 15, amplify(MissingHealthPercentage, 0.4, 0.15))
-                .cost(Health, 35, 10)
+                .cost(Health, 25, 10)
                 .cd(7);
-        R.update()
+
+        R.update(P514)
                 .active("12秒かけて{1}し、{2}する。")
-                .variable(1, RestoreHealth, 0, 0, amplify(Health, 0.4, 0.15))
+                .variable(1, RestoreHealth, 0, 0, amplify(Health, 0.4, 0.1))
                 .variable(2, MSRatio, 15, 10)
                 .cd(75)
                 .cost(CurrentHealthRatio, 20, 0);
