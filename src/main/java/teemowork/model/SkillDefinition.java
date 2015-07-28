@@ -240,39 +240,41 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Amumu(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("通常攻撃した対象に3秒間{1}を与える。").variable(1, MRReduction, new Per6Level(15, 5));
-        Q.update()
+        P.update(P514).passive("通常攻撃した対象に3秒間{1}を与える。").variable(1, MRReduction, new Per6Level(15, 5));
+
+        Q.update(P514)
                 .active("指定方向に包帯を飛ばし、当たった敵ユニットに{1}及び{2}を与え、そこまで移動する。")
-                .variable(1, MagicDamage, 80, 60, ap(0.7))
+                .variable(1, MagicDamage, 80, 50, ap(0.7))
                 .variable(2, Stun, 1)
                 .mana(80, 10)
                 .cd(16, -2)
                 .range(1100);
-        Q.update(P303).variable(1, MagicDamage, 80, 50, ap(0.7));
-        W.update()
+
+        W.update(P514)
                 .active("毎秒、{2}の敵ユニットに{1}を与える。")
                 .variable(1, MagicDamage, 8, 4, amplify(TargetMaxHealthRatio, 1, 0.5, ap(0.01)))
-                .variable(2, Radius, 350)
+                .variable(2, Radius, 300)
                 .mana(8)
                 .cd(1)
                 .type(SkillType.Toggle);
-        E.update()
+
+        E.update(P514)
                 .passive("{1}する。")
                 .variable(1, PhysicalDamageReduction, 2, 2)
-                .active("{3}の敵ユニットに{2}を与える。Amumuが通常攻撃でダメージを受けるたびに{4}。")
+                .active("{3}の敵ユニットに{2}を与える。通常攻撃でダメージを受けるたびに{4}。")
                 .variable(2, MagicDamage, 75, 25, ap(0.5))
-                .variable(3, Radius, 400)
+                .variable(3, Radius, 350)
                 .variable(4, CDDecrease, 0.5)
                 .mana(35)
                 .cd(10, -1);
-        R.update()
-                .active("{2}の敵ユニットに{1}を与え、2秒間通常攻撃と移動を封じる。")
-                .variable(1, MagicDamage, 150, 100, ap(0.8))
-                .variable(2, Radius, 600)
+
+        R.update(P514)
+                .active("{1}の敵ユニットに{2}と{3}を与え、通常攻撃を封じる。")
+                .variable(1, Radius, 550)
+                .variable(2, MagicDamage, 150, 100, ap(0.8))
+                .variable(3, Snare, 2)
                 .mana(100, 50)
-                .cd(150, -20)
-                .update(P303)
-                .variable(2, Radius, 550);
+                .cd(150, -20);
     }
 
     /**
