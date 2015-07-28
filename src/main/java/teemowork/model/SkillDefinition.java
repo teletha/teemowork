@@ -2171,24 +2171,26 @@ public interface SkillDefinition {
                 .cd(10, -0.5)
                 .range(800);
 
-        R.update(P514).active("8秒以内に使用する次のスキルに" + R + "を付与する").cd(45, -3);
+        R.update(P514).active("8秒以内に使用する次のスキルに" + R + "を付与する。").cd(45, -3);
     }
 
     /**
      * Define skill.
      */
     public static void Karthus(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("死亡後7秒間スキルが使用可能。この状態ではスキルコストがなくなる。");
-        Q.update()
+        P.update(P514).passive("死亡後7秒間スキルが使用可能。この状態ではスキルコストがなくなる。");
+
+        Q.update(P514)
                 .active("指定地点を0.5秒後に爆発させ{1}の敵ユニットに{2}を与える。対象が1体の場合は{3}を与える。また、指定地点の{4}。")
-                .variable(1, Radius, 100)
+                .variable(1, Radius, 50)
                 .variable(2, MagicDamage, 40, 20, ap(0.3))
                 .variable(3, MagicDamage, 80, 40, ap(0.6))
                 .variable(4, Visionable)
                 .mana(20, 6)
                 .cd(1)
                 .range(875);
-        W.update()
+
+        W.update(P514)
                 .active("指定地点に{3}の通りぬけ可能な壁を5秒間生成し、触れた敵ユニットに５秒間{1}と{2}を与える。スローの効果は5秒かけて元に戻る。また、指定地点の{4}。")
                 .variable(1, MRReductionRatio, 15)
                 .variable(2, MSSlowRatio, 40, 10)
@@ -2197,17 +2199,18 @@ public interface SkillDefinition {
                 .mana(100)
                 .cd(18)
                 .range(1000);
-        E.update()
+
+        E.update(P514)
                 .passive("敵ユニットを倒すと{1}する。")
                 .variable(1, RestoreMana, 20, 7)
                 .active("{2}の敵ユニットに毎秒{3}を与える。")
-                .variable(2, Radius, 550)
-                .variable(3, MagicDamage, 30, 20, ap(0.25))
+                .variable(2, Radius, 425)
+                .variable(3, MagicDamage, 30, 20, ap(0.2))
                 .mana(30, 12)
                 .cd(0.5)
                 .type(SkillType.Toggle);
-        E.update(P310).variable(3, MagicDamage, 30, 20, ap(0.2));
-        R.update()
+
+        R.update(P514)
                 .active("3秒詠唱後にすべての敵チャンピオンに{1}を与える。")
                 .variable(1, MagicDamage, 250, 150, ap(0.6))
                 .mana(150, 25)
