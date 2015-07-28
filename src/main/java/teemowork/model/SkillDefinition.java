@@ -1611,35 +1611,41 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Graves(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("戦闘状態になると1秒ごとにスタックが1増加し、スタック数に比例して{1}と{2}を得る。この効果は10回までスタックし、3秒間戦闘を行わないとスタックが0になる。")
+        P.update(P514)
+                .passive("戦闘状態になると1秒ごとにスタックが1増加し、スタック数に比例して{1}と{2}を得る。スタックは10回まで累積し、3秒間戦闘を行わないと0になる。")
                 .variable(1, AR, new Per6Level(1, 1))
                 .variable(2, MR, new Per6Level(1, 1));
-        Q.update()
-                .active("指定方向扇形の範囲に貫通する弾を3発発射し、当たった敵ユニットに{1}を与える。同一対象に対して複数hitし、2発目以降は本来の35%分の物理DMを与える(3発hitで合計{2})。")
-                .variable(1, PhysicalDamage, 60, 35, bounusAD(0.8))
-                .variable(2, PhysicalDamage, 102, 59.5, bounusAD(1.36))
+
+        Q.update(P514)
+                .active("指定方向扇形の範囲に貫通する弾を3発発射し、当たった敵ユニットに{1}を与える。同一対象に対して複数hitし、2発目以降は本来の50%分の" + Damage + "を与える(3発hitで合計{2})。")
+                .variable(1, PhysicalDamage, 60, 30, bounusAD(0.75))
+                .variable(2, PhysicalDamage, 120, 60, bounusAD(1.5))
                 .mana(60, 10)
                 .cd(12, -1)
-                .range(750);
-        W.update()
-                .active("指定地点にスモーク弾を発射し範囲内の敵ユニットに{1}を与え、4秒間持続する煙幕を残す。煙幕内にいる敵チャンピオンに視界低下と{2}を与える。")
+                .range(950);
+
+        W.update(P514)
+                .active("指定地点にスモーク弾を発射し{3}の敵ユニットに{1}を与え、4秒間持続する煙幕を残す。煙幕内にいる敵チャンピオンに視界低下と{2}を与える。")
                 .variable(1, MagicDamage, 60, 50, ap(0.6))
                 .variable(2, MSSlowRatio, 15, 5)
-                .mana(70)
+                .variable(3, Radius, 250)
+                .mana(70, 5)
                 .cd(20, -1)
-                .range(700);
-        E.update()
+                .range(950);
+
+        E.update(P514)
                 .active("指定方向にダッシュし4秒間{1}する。このスキルは自身が通常攻撃を行う毎に{2}する。対象が建物の場合は無効。")
                 .variable(1, ASRatio, 30, 10)
                 .variable(2, CDDecrease, 1)
-                .mana(50)
+                .mana(40)
                 .cd(22, -2)
                 .range(425);
-        R.update()
-                .active("指定方向にMinionを貫通する爆発弾を発射し、hitした敵ユニットに{1}を与える。敵チャンピオンにhitするか最大距離飛ぶとターゲット後方に扇形に爆発が広がり、範囲内の敵ユニットに{2}を与える。")
-                .variable(1, PhysicalDamage, 250, 100, bounusAD(1.4))
-                .variable(2, PhysicalDamage, 140, 110, bounusAD(1.2))
+
+        R.update(P514)
+                .active("指定方向にミニオンを貫通する爆発弾を発射し、hitした敵ユニットに{1}を与える。敵チャンピオンにhitするか最大距離飛ぶとターゲット後方に扇形に爆発が広がり、{3}の敵ユニットに{2}を与える。")
+                .variable(1, PhysicalDamage, 250, 150, bounusAD(1.5))
+                .variable(2, PhysicalDamage, 200, 120, bounusAD(1.2))
+                .variable(3, Radius, 800)
                 .mana(100)
                 .cd(100, -10)
                 .range(1000);
