@@ -20,7 +20,6 @@ import teemowork.model.variable.VariableResolver.Per1Level;
 import teemowork.model.variable.VariableResolver.Per2Level;
 import teemowork.model.variable.VariableResolver.Per3Level;
 import teemowork.model.variable.VariableResolver.Per3LevelAdditional;
-import teemowork.model.variable.VariableResolver.Per3LevelForKarma;
 import teemowork.model.variable.VariableResolver.Per4Level;
 import teemowork.model.variable.VariableResolver.Per4LevelForAnivia;
 import teemowork.model.variable.VariableResolver.Per4LevelForTrundle;
@@ -2133,89 +2132,46 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Karma(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("{1}を得る。")
-                .variable(1, AP, amplify(MissingHealthPercentage, new Per3LevelForKarma(0.3, 0.2)));
-        P.update(P305)
-                .passive("敵チャンピオンにスキルでダメージを与えた場合Mantraの{1}し、通常攻撃でダメージを与えた場合は{2}する。")
-                .variable(1, CDDecrease, new Per6Level(1, 0.5))
-                .variable(2, CDDecrease, new Per6Level(0.5, 0.25));
-        P.update(P3051).variable(1, CDDecrease, 2).variable(2, CDDecrease, 1);
-        Q.update()
-                .active("指定方向扇形60°の{1}の敵ユニットに{2}を与える。Mantra Bonus:自身と効果範囲内の味方ユニットは{3}する。回復量は対象のHP残量によって変化する。")
-                .variable(1, Radius, 600)
-                .variable(2, MagicDamage, 70, 40, ap(0.6))
-                .variable(3, RestoreHealth, 35, 20, amplify(MissingHealthRatio, 0.05, 0, ap(0.02)))
-                .mana(70, 5)
-                .cd(6);
-        Q.update(P305)
-                .active("指定方向に炎を飛ばし、命中した敵と{1}の敵ユニットに{2}と1.5秒間{3}を与える。Mantraを付与した場合、追加の{4}を与え、更に炎が命中した地点にフィールドを発生させ、フィールドの上にいる敵ユニットに{5}を与える。フィールドは1.5秒後に爆発し、フィールドの上にいる敵ユニットに{6}を与える。炎が敵ユニットに命中しなかった場合、最大距離まで飛んだ後にフィールドが発生する。")
-                .variable(1, Radius, 230)
-                .variable(2, MagicDamage, 60, 50, ap(0.6))
+        P.update(P514)
+                .passive("敵チャンピオンにスキルでダメージを与えた場合" + R + "の{1}し、通常攻撃でダメージを与えた場合は{2}する。")
+                .variable(1, CDDecrease, new Per6Level(2, 0.5))
+                .variable(2, CDDecrease, new Per6Level(1, 0.25));
+
+        Q.update(P514)
+                .active("指定方向に炎を飛ばし、命中した敵と{1}の敵ユニットに{2}と1.5秒間{3}を与える。" + R + "を付与した場合、追加の{4}を与え、更に炎が命中した地点にフィールドを発生させ、フィールドの上にいる敵ユニットに{5}を与える。フィールドは1.5秒後に爆発し、フィールドの上にいる敵ユニットに{6}を与える。炎が敵ユニットに命中しなかった場合、最大距離まで飛んだ後にフィールドが発生する。")
+                .variable(1, Radius, 250)
+                .variable(2, MagicDamage, 80, 45, ap(0.6))
                 .variable(3, MSSlowRatio, 25)
-                .variable(4, MagicDamage, new Refer(R, 25, 50), ap(0.3), null)
+                .variable(4, MagicDamage, new Refer(R, 25, 50), ap(0.3))
                 .variable(5, MSSlowRatio, 50)
-                .variable(6, MagicDamage, new Refer(R, 50, 100), ap(0.6), null)
-                .mana(50, 10)
+                .variable(6, MagicDamage, new Refer(R, 50, 100), ap(0.6))
+                .mana(50, 5)
                 .cd(7, -0.5)
                 .range(950);
-        Q.update(P306).variable(2, MagicDamage, 80, 45, ap(0.6));
-        Q.update(P308).variable(1, Radius, 250).mana(50, 5);
-        W.update()
-                .active("対象のユニットと自身を繋ぐビームを発生させる。ビームは5秒間持続し、自身及び味方ユニットは{1}し、敵ユニットには{2}を与える。ビームに触れたチャンピオン(敵味方問わず)にも同様の効果を与え、それが敵ユニットだった場合は更に{3}を与える。ビームを繋ぐ対象がステルス状態または距離1000まで離れた場合、効果が途切れる。Mantra Bonus:MS増加/MS低下の効果が2倍になる。")
-                .variable(1, MSRatio, 10, 2)
-                .variable(2, MSSlowRatio, 10, 2)
-                .variable(3, MagicDamage, 80, 45, ap(0.7))
+
+        W.update(P514)
+                .active("対象の敵チャンピオンかモンスターと自身を繋ぐビームを発生させる。0.66秒毎に{1}を与え、2秒間ビームが持続していた場合{2}を与える。" + R + "を付与した場合、{3}する。2秒間ビームが持続していた場合、追加で{3}し、" + Snare + "の時間が{4}増加する。")
+                .variable(1, MagicDamage, 20, 50 / 3, ap(0.3))
+                .variable(2, Snare, 1, 0.25)
+                .variable(3, RestoreHealth, amplify(MissingHealthRatio, 20, 0, ap(0.01)))
+                .variable(4, Time, new Refer(R, 0.5, 0.25))
                 .mana(65, 10)
                 .cd(15, -1)
-                .range(800);
-        W.update(P305)
-                .active("対象の敵チャンピオンと自身を繋ぐビームを発生させる。0.33秒毎に{1}を与え、2秒間ビームが持続していた場合{2}を与える。Mantraを付与した場合、追加の{3}を与え、{4}するようになる。")
-                .variable(1, MagicDamage, 10, 50 / 6, ap(0.1))
-                .variable(2, Snare, 1, 0.25)
-                .variable(3, MagicDamage, new Refer(R, 75 / 6, 75 / 6), ap(0.1), null)
-                .variable(4, RestoreHealth, amplify(MissingHealthRatio, 25, 0, ap(0.01)))
-                .mana(70, 10)
-                .cd(16, -0.5);
-        W.update(P3051)
-                .active("対象の敵チャンピオンと自身を繋ぐビームを発生させる。0.66秒毎に{1}を与え、2秒間ビームが持続していた場合{2}を与える。Mantraを付与した場合、追加の{3}を与え、{4}するようになる。ダメージを与えるたびにGathering Fireの効果が発生する。")
-                .variable(1, MagicDamage, 20, 50 / 3, ap(0.2))
-                .variable(2, Snare, 1, 0.25)
-                .variable(3, MagicDamage, new Refer(R, 75 / 3, 75 / 3), ap(0.2), null)
-                .variable(4, RestoreHealth, amplify(MissingHealthRatio, 25, 0, ap(0.01)))
-                .mana(70, 5);
-        W.update(P306).cd(16, -1);
-        W.update(P308)
-                .active("対象の敵チャンピオンと自身を繋ぐビームを発生させる。0.66秒毎に{1}を与え、2秒間ビームが持続していた場合{2}を与える。Mantraを付与した場合、追加の{3}を与え、{4}するようになる。2秒間ビームが持続していた場合、追加で{4}する。ダメージを与えるたびにGathering Fireの効果が発生する。")
-                .variable(4, RestoreHealth, amplify(MissingHealthRatio, 20, 0, ap(0.01)));
-        E.update()
-                .active("対象の味方ユニットに5秒間持続する{1}を付与する。Mantra Bonus:味方ユニットにシールドを付与した際、その味方ユニットの{2}にいる敵ユニットに{3}を与える。")
-                .variable(1, Shield, 80, 40, ap(0.8))
-                .variable(2, Radius, 600)
-                .variable(3, MagicDamage, 80, 40, ap(0.8))
-                .mana(80, 10)
-                .cd(10)
-                .range(650);
-        E.update(P305)
-                .active("対象の味方は4秒間{1}を得て{6}間{2}する。Mantraを付与した場合、味方ユニットにシールドを付与した際に{3}の味方ユニットは{4}を得て{7}し、敵ユニットには{5}を与える。対象とした味方ユニットは通常のシールドとMantraによるシールド両方の効果を得られる。")
-                .variable(1, Shield, 80, 40, ap(0.5))
-                .variable(2, MSRatio, 20, 10)
+                .range(675);
+
+        E.update(P514)
+                .active("対象の味方は4秒間{1}を得て1.5秒間{2}する。" + R + "を付与した場合、対象の味方ユニットは追加の{5}を得て、{3}の味方ユニットには最初の対象に付与された" + Shield + "の半分の量の" + Shield + "が付与される。1.5秒間、シールドを付与されたチャンピオン全員の{4}する。")
+                .variable(1, Shield, 80, 30, ap(0.5))
+                .variable(2, MSRatio, 40, 5)
                 .variable(3, Radius, 600)
-                .variable(4, Shield, new Refer(R, 30, 40), ap(0.3), null)
-                .variable(5, MagicDamage, new Refer(R, 60, 80), ap(0.6), null)
-                .variable(6, Time, 1.25)
-                .variable(7, MSRatio, 20, 10)
-                .mana(60, 10)
-                .cd(12)
+                .variable(4, MSRatio, 60)
+                .variable(5, Shield, new Refer(R, 30, 60), ap(0.3))
+                .variable(7, MSRatio, 60)
+                .mana(60, 5)
+                .cd(10, -0.5)
                 .range(800);
-        E.update(P3051).variable(3, Radius, 700).variable(6, Time, 1.5).variable(7, MSRatio, 60);
-        E.update(P306).variable(2, MSRatio, 40, 5).cd(10);
-        R.update()
-                .active("次に使用するスキルにMantra Bonusを付与する。Lv1から使用でき、スキルポイントを割り振ることはできない。{1}毎にスタック数が1つ増加し最大で2つまでスタックされる。スタック増加時間はCD低減の影響を受ける。")
-                .variable(1, CDRAwareTime, new Per6Level(30, -5))
-                .cd(0.25);
-        R.update(P305).active("8秒以内に使用する次のスキルにMantraを付与する。追加効果はMnatraのスキルレベルを参照する。").cd(45);
-        R.update(P306).cd(45, -3);
+
+        R.update(P514).active("8秒以内に使用する次のスキルに" + R + "を付与する").cd(45, -3);
     }
 
     /**

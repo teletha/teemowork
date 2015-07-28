@@ -315,6 +315,21 @@ public abstract class Descriptor<T extends Descriptor> {
      * @param status A variable type.
      * @param resolver A resolver.
      * @param first A first amplifier.
+     * @return Chainable API.
+     */
+    protected final T variable(int id, Status status, VariableResolver resolver, Variable first) {
+        return variable(id, status, resolver, first, null);
+    }
+
+    /**
+     * <p>
+     * Set new variable.
+     * </p>
+     * 
+     * @param id A variable identifier.
+     * @param status A variable type.
+     * @param resolver A resolver.
+     * @param first A first amplifier.
      * @param second A second amplifier.
      * @return Chainable API.
      */
