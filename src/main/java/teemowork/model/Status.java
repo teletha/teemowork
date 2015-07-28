@@ -333,6 +333,8 @@ public enum Status {
 
     Takedown("キルするかアシストする"),
 
+    ResetAATimer("通常攻撃タイマーを解消する"),
+
     Value("", 0),
 
     Percentage(""),

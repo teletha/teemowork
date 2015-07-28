@@ -529,34 +529,45 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Blitzcrank(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive(" HPが20%以下になると、10秒間持続する{1}を張る。")
+        P.update(P514)
+                .passive(" HPが20%以下になると、10秒間{1}を張る。")
                 .variable(1, Shield, 0, 0, amplify(CurrentManaRatio, 50))
                 .cd(90);
-        Q.update()
+
+        Q.update(P514)
                 .active("指定方向に腕を飛ばし、当たった敵ユニットに{1}と{2}を与え自分の位置まで引き寄せる。またこのスキル命中時に対象の{3}。")
                 .variable(1, MagicDamage, 80, 55, ap(1))
-                .variable(2, Stun, 1)
+                .variable(2, Stun, 0.5)
                 .variable(3, Visionable)
-                .mana(120)
+                .mana(100)
                 .cd(20, -1)
                 .range(925);
-        W.update().active("8秒間{1}、{2}する。").variable(1, MSRatio, 16, 4).variable(2, ASRatio, 30, 8).mana(75).cd(15);
-        E.update()
-                .active("次の通常攻撃に追加{1}を付与し、対象に{2}を与える。")
+
+        W.update(P514)
+                .active("5秒間{1}、{2}する。" + MS + "上昇量は時間と共に10%まで減衰し、効果終了時に自身に1.5秒間{3}を与える。")
+                .variable(1, MSRatio, 70, 5)
+                .variable(2, ASRatio, 30, 8)
+                .variable(3, MSSlowRatio, 30)
+                .mana(75)
+                .cd(15);
+
+        E.update(P514)
+                .active("次の通常攻撃に{1}を付与し、対象に{2}を与える。{3}。")
                 .variable(1, PhysicalDamage, 0, 0, ad(1))
                 .variable(2, Knockup, 1, 0)
+                .variable(3, ResetAATimer)
                 .mana(25)
                 .cd(9, -1);
-        R.update()
+
+        R.update(P514)
                 .passive("{1}の敵ユニット1体(対象はランダム)に2.5秒ごとに{2}を与える。")
                 .variable(1, Radius, 450)
-                .variable(2, MagicDamage, 100, 100, ap(0.25))
+                .variable(2, MagicDamage, 100, 100, ap(0.2))
                 .active("{3}の敵ユニットに{4}と{5}を与える。効果後はCDが解消されるまでPassiveの効果がなくなる。")
                 .variable(3, Radius, 600)
                 .variable(4, MagicDamage, 250, 125, ap(1))
                 .variable(5, Silence, 0.5)
-                .mana(150)
+                .mana(100)
                 .cd(30);
     }
 
