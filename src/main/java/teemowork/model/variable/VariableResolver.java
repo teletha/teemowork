@@ -526,6 +526,13 @@ public abstract class VariableResolver {
         /**
          * @param values
          */
+        public PerChampion(double base, double diff) {
+            super(base, diff);
+        }
+
+        /**
+         * @param values
+         */
         public PerChampion(double... values) {
             super(values);
         }

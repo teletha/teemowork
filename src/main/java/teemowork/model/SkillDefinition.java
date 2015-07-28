@@ -1858,44 +1858,43 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void JarvanIV(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("通常攻撃に{1}(最大400DM)が付与される。同一の対象には6秒に一度しか発動しない。")
-                .variable(1, PhysicalDamage, amplify(TargetCurrentHealthRatio, new Per6Level(6, 2)));
-        Q.update()
-                .active("槍を突き出して直線上の敵ユニットに{1}を与え、3秒間{2}を与える。また、Demacian Standardの旗にヒットした場合、旗の位置まで突進し、進路上の敵ユニット({4})に{3}を与える。")
-                .variable(1, PhysicalDamage, 70, 45, bounusAD(1.1))
+        P.update(P514)
+                .passive("通常攻撃に{1}を付与する（400" + Damage + "が上限）。同一の対象には{2}に一度しか発動しない。")
+                .variable(1, PhysicalDamage, amplify(TargetCurrentHealthRatio, 10))
+                .variable(2, Time, new Per6Level(10, -2));
+
+        Q.update(P514)
+                .active("槍を突き出して直線上の敵ユニットに{1}を与え、3秒間{2}を与える。" + E + "の旗にヒットした場合、旗の位置まで突進し、進路上の敵ユニット({4})に{3}を与える。")
+                .variable(1, PhysicalDamage, 70, 45, bounusAD(1.2))
                 .variable(2, ARReductionRatio, 10, 4)
                 .variable(3, Knockup, 0.75)
-                .variable(4, Radius, 260)
+                .variable(4, Radius, 180)
                 .mana(45, 5)
                 .cd(10, -1)
                 .range(770);
-        Q.update(P313).variable(4, Radius, 180);
-        W.update()
-                .active("5秒間{1}を付与すると同時に、{2}の敵ユニットに２秒間{3}を与える。")
-                .variable(1, Shield, 50, 40, amplify(EnemyChampion, 20, 5))
-                .variable(2, Radius, 600)
+
+        W.update(P514)
+                .active("5秒間{1}を得て、{2}の敵ユニットに２秒間{3}を与える。")
+                .variable(1, Shield, 50, 40, amplify(EnemyChampion, 20, 10))
+                .variable(2, Radius, 300)
                 .variable(3, MSSlowRatio, 15, 5)
-                .mana(65)
+                .mana(30)
                 .cd(20, -2);
-        W.update(P304).variable(1, Shield, 50, 40, amplify(EnemyChampion, 20, 10)).mana(45, 5);
-        E.update()
-                .passive("{1}し{2}を得る。")
+
+        E.update(P514)
+                .passive("{1}する。")
                 .variable(1, ASRatio, 10, 3)
-                .variable(2, AR, 10, 3)
-                .active("指定地点に旗を投げ、{3}の敵ユニットに{4}を与える。旗は8秒間その場に残り{6}の{7}とともに、{5}の味方チャンピオンにPassiveの効果を与える。(Jarvan IV自身はPassiveと合わせて倍の効果を受ける)")
-                .variable(3, Radius, 150)
+                .active("指定地点に旗を投げ、{3}の敵ユニットに{4}を与える。旗は8秒間その場に残り{6}の{7}ともに、{5}の味方チャンピオンは{1}する。(自身はPassiveと合わせて倍の効果を受ける)")
+                .variable(3, Radius, 75)
                 .variable(4, MagicDamage, 60, 45, ap(0.8))
-                .variable(5, Radius, 1200)
-                .variable(6, Radius, 850)
+                .variable(5, Radius, 600)
+                .variable(6, Radius, 700)
                 .variable(7, Visionable)
                 .mana(55)
-                .cd(13)
+                .cd(13, -0.5)
                 .range(830);
-        E.update(P307).variable(6, Radius, 700);
-        E.update(P304)
-                .active("指定地点に旗を投げ、{3}の敵ユニットに{4}を与える。旗は8秒間その場に残り視界を確保するとともに、{5}の味方チャンピオンは{1}する。(Jarvan IV自身はPassiveと合わせて倍の効果を受ける)");
-        R.update()
+
+        R.update(P514)
                 .active("対象の敵チャンピオンまで跳躍して{1}を与え、3.5秒間その周囲に通行不可能の円形の地形を作る。再度このスキルを使用すると地形を破壊できる。")
                 .variable(1, PhysicalDamage, 200, 125, bounusAD(1.5))
                 .mana(100, 25)
