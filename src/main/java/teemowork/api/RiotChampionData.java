@@ -9,8 +9,8 @@
  */
 package teemowork.api;
 
-import teemowork.model.Champion;
 import teemowork.model.SkillDefinition;
+import teemowork.model.Champion;
 
 public class RiotChampionData {
 
@@ -71,11 +71,11 @@ public class RiotChampionData {
     /** Diana Definition */
     public static final Champion Diana = new Champion("Diana", "ダイアナ", "Diana", 589.2F, 90.0F, 7.425F, 0.85F, 297.2F, 40.0F, 6.0F, 0.8F, 53.04F, 3.0F, 0.0F, 2.25F, 0.0F, 0.0F, 26.048F, 3.6F, 32.1F, 0.0F, 345.0F, 150.0F, new String[] {"Moonsilver Blade", "Crescent Strike", "Pale Cascade", "Moonfall", "Lunar Rush"}, new String[] {"銀月の刃", "月影", "朧月の羽衣", "瞬月", "月下美刃"}, SkillDefinition::Diana, false);
 
-    /** Draven Definition */
-    public static final Champion Draven = new Champion("Draven", "ドレイヴン", "Draven", 557.76F, 82.0F, 6.175F, 0.7F, 310.56F, 42.0F, 8.04F, 0.65F, 50.38F, 3.5F, -0.08F, 2.7F, 0.0F, 0.0F, 25.544F, 3.3F, 30.0F, 0.0F, 330.0F, 550.0F, new String[] {"League of Draven", "Spinning Axe", "Blood Rush", "Stand Aside", "Whirling Death"}, new String[] {"リーグ・オブ・ドレイヴン", "回転斬斧", "血の疼き", "薙ぎ払い", "死の車輪"}, SkillDefinition::Draven, false);
-
     /** Dr. Mundo Definition */
     public static final Champion DrMundo = new Champion("Dr. Mundo", "ドクター・ムンド", "DrMundo", 582.52F, 89.0F, 7.76F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F, 61.27F, 3.0F, 0.0F, 2.8F, 0.0F, 0.0F, 26.88F, 3.5F, 32.1F, 0.0F, 345.0F, 125.0F, new String[] {"Adrenaline Rush", "Infected Cleaver", "Burning Agony", "Masochism", "Sadism"}, new String[] {"アドレナリンラッシュ", "ホウチョウ", "バーニングペイン", "マゾヒズム", "サディズム"}, SkillDefinition::DrMundo, false);
+
+    /** Draven Definition */
+    public static final Champion Draven = new Champion("Draven", "ドレイヴン", "Draven", 557.76F, 82.0F, 6.175F, 0.7F, 310.56F, 42.0F, 8.04F, 0.65F, 50.38F, 3.5F, -0.08F, 2.7F, 0.0F, 0.0F, 25.544F, 3.3F, 30.0F, 0.0F, 330.0F, 550.0F, new String[] {"League of Draven", "Spinning Axe", "Blood Rush", "Stand Aside", "Whirling Death"}, new String[] {"リーグ・オブ・ドレイヴン", "回転斬斧", "血の疼き", "薙ぎ払い", "死の車輪"}, SkillDefinition::Draven, false);
 
     /** Ekko Definition */
     public static final Champion Ekko = new Champion("Ekko", "エコー", "Ekko", 580.0F, 80.0F, 9.0F, 0.9F, 280.0F, 50.0F, 6.0F, 0.8F, 59.0F, 3.0F, 0.0F, 3.3F, 0.0F, 0.0F, 27.0F, 3.0F, 32.0F, 0.0F, 340.0F, 125.0F, new String[] {"Z-Drive Resonance", "Timewinder", "Parallel Convergence", "Phase Dive", "Chronobreak"}, new String[] {"ゼロ・ドライブ", "タイムワインダー", "パラレルトラップ", "フェイズダイブ", "クロノブレイク"}, SkillDefinition::Ekko, false);
@@ -208,9 +208,6 @@ public class RiotChampionData {
 
     /** Miss Fortune Definition */
     public static final Champion MissFortune = new Champion("Miss Fortune", "フォーチュン", "MissFortune", 577.8F, 85.0F, 6.19F, 0.65F, 275.84F, 38.0F, 8.04F, 0.65F, 49.54F, 3.0F, -0.04734F, 3.01F, 0.0F, 0.0F, 24.04F, 3.0F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {"Strut", "Double Up", "Impure Shots", "Make It Rain", "Bullet Time"}, new String[] {"ステップアップ", "ダブルアップ", "ダーティショット", "レイニングバレット", "バレットタイム"}, SkillDefinition::MissFortune, false);
-
-    /** Wukong Definition */
-    public static final Champion MonkeyKing = new Champion("Wukong", "ウーコン", "MonkeyKing", 577.8F, 85.0F, 6.19F, 0.65F, 265.84F, 38.0F, 8.04F, 0.65F, 59.876F, 3.2F, -0.05F, 3.0F, 0.0F, 0.0F, 24.88F, 3.5F, 32.1F, 0.0F, 345.0F, 175.0F, new String[] {"Stone Skin", "Crushing Blow", "Decoy", "Nimbus Strike", "Cyclone"}, new String[] {"岩の皮膚", "強棒打", "隠れ蓑の術", "残像撃", "輪舞旋風"}, SkillDefinition::MonkeyKing, false);
 
     /** Mordekaiser Definition */
     public static final Champion Mordekaiser = new Champion("Mordekaiser", "モルデカイザー", "Mordekaiser", 555.4F, 80.0F, 3.37F, 0.55F, 120.0F, 0.0F, 0.0F, 0.0F, 57.58F, 3.5F, -0.1F, 3.0F, 0.0F, 0.0F, 24.88F, 3.5F, 32.1F, 0.0F, 340.0F, 125.0F, new String[] {"Iron Man", "Mace of Spades", "Creeping Death", "Siphon of Destruction", "Children of the Grave"}, new String[] {"アイアンマン", "メイス・オブ・スペーズ", "クリーピング・デス", "ハンド・オブ・ルーイン", "グレイブ・チルドレン"}, SkillDefinition::Mordekaiser, false);
@@ -373,6 +370,9 @@ public class RiotChampionData {
 
     /** Warwick Definition */
     public static final Champion Warwick = new Champion("Warwick", "ワーウィック", "Warwick", 592.64F, 98.0F, 8.39F, 0.8F, 240.4F, 30.0F, 8.105F, 0.6F, 62.43F, 3.375F, -0.08F, 2.88F, 0.0F, 0.0F, 25.88F, 3.5F, 32.1F, 0.0F, 345.0F, 125.0F, new String[] {"Eternal Thirst", "Hungering Strike", "Hunters Call", "Blood Scent", "Infinite Duress"}, new String[] {"永遠の渇き", "餓狼", "狩りの遠吠え", "血の香", "無慈悲な狼撃"}, SkillDefinition::Warwick, false);
+
+    /** Wukong Definition */
+    public static final Champion MonkeyKing = new Champion("Wukong", "ウーコン", "MonkeyKing", 577.8F, 85.0F, 6.19F, 0.65F, 265.84F, 38.0F, 8.04F, 0.65F, 59.876F, 3.2F, -0.05F, 3.0F, 0.0F, 0.0F, 24.88F, 3.5F, 32.1F, 0.0F, 345.0F, 175.0F, new String[] {"Stone Skin", "Crushing Blow", "Decoy", "Nimbus Strike", "Cyclone"}, new String[] {"岩の皮膚", "強棒打", "隠れ蓑の術", "残像撃", "輪舞旋風"}, SkillDefinition::MonkeyKing, false);
 
     /** Xerath Definition */
     public static final Champion Xerath = new Champion("Xerath", "ゼラス", "Xerath", 514.4F, 80.0F, 5.42F, 0.55F, 316.96F, 47.0F, 6.0F, 0.8F, 54.7F, 3.0F, 0.0F, 1.36F, 0.0F, 0.0F, 21.88F, 3.5F, 30.0F, 0.0F, 340.0F, 525.0F, new String[] {"Mana Surge", "Arcanopulse", "Eye of Destruction", "Shocking Orb", "Rite of the Arcane"}, new String[] {"マナ吸引", "魔力の波動", "破滅の瞳", "衝撃の宝珠", "深淵の儀式"}, SkillDefinition::Xerath, false);

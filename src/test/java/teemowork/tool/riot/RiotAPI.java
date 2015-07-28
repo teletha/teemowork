@@ -12,6 +12,10 @@ package teemowork.tool.riot;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
@@ -37,6 +41,33 @@ public class RiotAPI {
 
     /** The Riot API key. */
     private static final String key = "ad37a9e0-2e34-4849-979b-effce8a8a477";
+
+    /**
+     * <p>
+     * Retrieve sorted champion list.
+     * </p>
+     * 
+     * @return
+     */
+    public static List<ChampionDefinition> champions() {
+        ChampionDefinitions definitions = parse(ChampionDefinitions.class, Version.Latest, Locale.US);
+        ChampionDefinitions localized = parse(ChampionDefinitions.class, Version.Latest, Locale.JAPAN);
+
+        List<ChampionDefinition> list = new ArrayList();
+
+        for (ChampionDefinition champion : definitions.data.values()) {
+            champion.analyze();
+            champion.localizedName = localized.data.get(champion.id).name;
+
+            list.add(champion);
+        }
+
+        // by english name
+        Collections.sort(list);
+
+        // API definition
+        return list;
+    }
 
     /**
      * <p>
@@ -70,7 +101,7 @@ public class RiotAPI {
 
             M m = I.make(modelClass);
             Model model = Model.load(m.getClass());
-            return parase(model, m, Json
+            return parse(model, m, Json
                     .createReader(new InputStreamReader(new URL(uri).openConnection().getInputStream())).readObject());
         } catch (Exception e) {
             throw I.quiet(e);
@@ -88,7 +119,7 @@ public class RiotAPI {
      * @param js A javascript value.
      * @return A restored java object.
      */
-    private static <M> M parase(Model model, M java, JsonValue js) {
+    private static <M> M parse(Model model, M java, JsonValue js) {
         switch (js.getValueType()) {
         case ARRAY:
             JsonArray array = (JsonArray) js;
@@ -136,7 +167,7 @@ public class RiotAPI {
                     value = I.transform(js.toString(), type);
                 }
             } else {
-                value = parase(property.model, I.make(type), js);
+                value = parse(property.model, I.make(type), js);
             }
 
             model.set(java, property, value);
@@ -189,5 +220,14 @@ public class RiotAPI {
         public String toString() {
             return "ChampionInfo [id=" + id + ", name=" + name + "]";
         }
+    }
+
+    /**
+     * @version 2015/07/13 14:31:48
+     */
+    private static class ChampionDefinitions {
+
+        /** The champion data store. */
+        public LinkedHashMap<String, ChampionDefinition> data;
     }
 }

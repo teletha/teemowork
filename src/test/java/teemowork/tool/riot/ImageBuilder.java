@@ -17,7 +17,6 @@ import java.nio.file.Path;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.StringJoiner;
 
 import kiss.I;
@@ -25,8 +24,6 @@ import teemowork.model.Item;
 import teemowork.model.MasterySeason4;
 import teemowork.model.Version;
 import teemowork.tool.image.EditableImage;
-import teemowork.tool.riot.ChampionDataBuilder.ChampionDefinition;
-import teemowork.tool.riot.ChampionDataBuilder.ChampionDefinitions;
 
 /**
  * @version 2015/07/22 2:39:54
@@ -43,7 +40,7 @@ public class ImageBuilder {
     private final Path temporary;
 
     /** The champion list. */
-    private final ChampionDefinitions definitions;
+    private final List<ChampionDefinition> champions;
 
     /**
      * @param latest
@@ -55,11 +52,7 @@ public class ImageBuilder {
             temporary = I.locateTemporary();
             Files.createDirectories(temporary);
 
-            definitions = RiotAPI.parse(ChampionDefinitions.class, version, Locale.US);
-
-            for (ChampionDefinition definition : definitions.data.values()) {
-                definition.analyze();
-            }
+            champions = RiotAPI.champions();
         } catch (IOException e) {
             throw I.quiet(e);
         }
@@ -93,13 +86,13 @@ public class ImageBuilder {
     public void buildChampionIconSet() throws Exception {
         EditableImage container = new EditableImage();
 
-        for (ChampionDefinition definition : definitions.data.values()) {
-            EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/champion/", definition.id, ".png"));
+        for (ChampionDefinition champion : champions) {
+            EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/champion/", champion.id, ".png"));
             image.trim(7).resize(70);
 
             container.concat(image);
 
-            if (definition.isTransformer()) {
+            if (champion.isTransformer()) {
                 container.concat(image);
             }
         }
@@ -114,13 +107,13 @@ public class ImageBuilder {
      * </p>
      */
     public void buildSkillIconSet() throws Exception {
-        for (ChampionDefinition definition : definitions.data.values()) {
-            List<String> skills = definition.skillSystem;
+        for (ChampionDefinition champion : champions) {
+            List<String> skills = champion.skillSystem;
 
-            buildSkillIconSet(definition.id, skills.get(0), skills.get(1), skills.get(2), skills.get(3), skills.get(4));
+            buildSkillIconSet(champion.id, skills.get(0), skills.get(1), skills.get(2), skills.get(3), skills.get(4));
 
-            if (definition.isTransformer()) {
-                String id = definition.id + "Transformed";
+            if (champion.isTransformer()) {
+                String id = champion.getTransformedName();
 
                 if (skills.size() == 9) {
                     buildSkillIconSet(id, skills.get(0), skills.get(5), skills.get(6), skills.get(7), skills.get(8));
@@ -137,7 +130,7 @@ public class ImageBuilder {
      * </p>
      * 
      * @param champion
-     * @param skills
+     * @param spells
      */
     private void buildSkillIconSet(String champion, String... skills) {
         EditableImage container = new EditableImage();
