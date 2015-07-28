@@ -22,10 +22,10 @@ import teemowork.model.variable.VariableResolver.Per3Level;
 import teemowork.model.variable.VariableResolver.Per3LevelAdditional;
 import teemowork.model.variable.VariableResolver.Per3LevelForKarma;
 import teemowork.model.variable.VariableResolver.Per4Level;
+import teemowork.model.variable.VariableResolver.Per4LevelForAnivia;
 import teemowork.model.variable.VariableResolver.Per4LevelForTrundle;
 import teemowork.model.variable.VariableResolver.Per5Level;
 import teemowork.model.variable.VariableResolver.Per5Level3Times;
-import teemowork.model.variable.VariableResolver.Per5LevelForHeimer;
 import teemowork.model.variable.VariableResolver.Per5LevelForSejuani;
 import teemowork.model.variable.VariableResolver.Per5LevelForYoric;
 import teemowork.model.variable.VariableResolver.Per5LevelWith18;
@@ -284,8 +284,8 @@ public interface SkillDefinition {
     public static void Anivia(Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P514)
                 .passive("死亡時に卵になり6秒かけて復活する。復活中は{1}及び{2}を得る。復活中にHPが0になった場合は死亡する。{3}。")
-                .variable(-1, AR, new Per4Level(-40, 15))
-                .variable(-2, MR, new Per4Level(-40, 15))
+                .variable(-1, AR, new Per4LevelForAnivia(-40, 15))
+                .variable(-2, MR, new Per4LevelForAnivia(-40, 15))
                 .variable(3, CDRUnaware)
                 .cd(-240);
 
@@ -1701,75 +1701,63 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Heimerdinger(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("{1}の味方ユニットとTurretは{2}を得る。")
-                .variable(1, Radius, 800)
-                .variable(2, Hreg, new Per5LevelForHeimer(10, 5));
-        P.update(P313)
-                .passive("{1}の味方ユニットとH-28G Evolution Turretは{2}を得る。")
+        P.update(P514)
+                .passive("{1}の味方ユニットと" + P + "は{2}を得る。")
                 .variable(1, Radius, 1000)
                 .variable(2, Hreg, new Per4Level(10, 5));
-        Q.update()
-                .active("指定地点にTurretを設置する。使用時にスタックを消費する。設置後6秒間はTurretの攻撃速度が1.5倍になる。{1}毎にスタックが1つ増加し最大2つまでスタックされる。スタック増加時間はCD低減の影響を受ける。Turretが塔に与えるダメージは半分になる。Debuff(CCのみ)を無効化、Heimerdingerが攻撃するor攻撃されている場合、その対象を優先で攻撃。Lv2.攻撃したユニットに{6}と{7}を与える。この効果は2秒間持続し、50回までスタックする。Lv3.Turretの最大スタック数と設置できる上限が2に増える。Lv4.Turretの最大HP+125。Lv5.50%のスプラッシュダメージが付与される。　<br>HP:{2}<br>ダメージ:{3}<br>射程:525<br>AR:{4}<br>MR:{5}<br>AS:1.25<br>視界:625")
-                .variable(1, CDRAwareTime, 25)
-                .variable(2, Count, 295, 0, level(15))
-                .variable(3, MagicDamage, 30, 8, ap(0.2))
-                .variable(4, Count, 30, 0, level(1))
-                .variable(5, Count, 80, 0, level(1))
-                .variable(6, ARReduction, 1)
-                .variable(7, MRReduction, 1)
-                .mana(70, 10)
-                .cd(1)
-                .range(250);
-        Q.update(P313)
-                .active("スタックを消費して指定地点にTurretを最大3つまで設置する。スタックは{1}毎に増加し、最大{2}まで貯めることが出来る。スタック増加時間はCD低減の影響を受ける。塔に与えるダメージは半分。Heimerdingerが攻撃する若しくは攻撃されている場合、その対象を優先で攻撃。8秒間砲台と距離1000以上離れていた場合、砲台の動作が停止する。<br>HP:{3}<br>砲撃:{4}　{5}<br>ビーム:{6}　{7}　（12秒毎）<br>AR:10<br>MR:25<br>AS:1.75<br>視界:625")
+
+        Q.update(P514)
+                .active("スタックを消費して指定地点にTurretを最大3つまで設置する。スタックは{1}毎に増加し、最大{2}まで貯めることが出来る。塔に与えるダメージは半分。Heimerdingerが攻撃する若しくは攻撃されている場合、その対象を優先で攻撃。8秒間砲台と距離1000以上離れていた場合、砲台の動作が停止する。<br>HP：{3}<br>砲撃：{4}　{5}<br>ビーム：{6}　{7}　（16秒毎）<br>AR：{8}<br>MR：{9}<br>AS：1.75<br>視界：525")
                 .variable(1, CDRAwareTime, 24, -1)
                 .variable(2, Stack, new Fixed(new double[] {1, 1, 2, 2, 3}))
-                .variable(3, Value, 150, 0, level(25))
+                .variable(3, Value, 125, 0, level(25), amplify(AP, new PerLevel(new int[] {1, 9, 10, 11, 12, 13, 14, 15,
+                        16, 17, 18}, 5, 3.5)))
                 .variable(4, Radius, 525)
-                .variable(5, MagicDamage, 15, 7, ap(0.125))
+                .variable(5, MagicDamage, 12, 6, ap(0.15))
                 .variable(6, Radius, 1100)
-                .variable(7, MagicDamage, 50, 25, ap(0.5))
+                .variable(7, MagicDamage, 40, 20, ap(0.55))
+                .variable(8, AR, new PerLevel(new int[] {1, 7, 9, 11, 12, 13, 14, 15, 16, 17,
+                        18}, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 80))
+                .variable(9, MR, new PerLevel(new int[] {1, 9, 11, 13, 14, 15, 16, 17, 18}, 25, 5))
                 .mana(20)
                 .cd(1)
                 .range(450);
-        W.update()
-                .active("視界内にいる最も近い敵ユニット3体に{1}を与える。")
-                .variable(1, MagicDamage, 85, 50, ap(0.55))
-                .mana(65, 20)
-                .cd(10)
-                .range(1000);
-        W.update(P313)
+
+        W.update(P514)
                 .active("指定地点に目掛けて、5本のミサイルを扇状に発射する。ミサイルが指定地点を通過する後も一直線に飛行し続ける。命中すると{1}を与える。同一対象に対して複数命中し、2発目以降は本来の20%分のDMを与える(同一対象に5発命中すると{2})。Minionに対しては60%のダメージを与える。")
                 .variable(1, MagicDamage, 60, 30, ap(0.45))
                 .variable(2, MagicDamage, 108, 54, ap(0.81))
                 .mana(70, 10)
                 .cd(11)
                 .range(1100);
-        E.update()
-                .active("指定地点に手榴弾を投げ、破裂した{1}にいる敵ユニットに{2}と2秒間{3}を与え、真ん中のユニットにはさらに{4}を与える。また指定地点の{5}。")
+
+        E.update(P514)
+                .active("指定地点に手榴弾を投げ、破裂した{1}にいる敵ユニットに{2}と2秒間{3}を与え、{6}のユニットにはさらに{4}を与える。また指定地点の{5}。")
                 .variable(1, Radius, 210)
                 .variable(2, MagicDamage, 60, 40, ap(0.6))
                 .variable(3, MSSlowRatio, 35)
                 .variable(4, Stun, 1.25)
                 .variable(5, Visionable)
+                .variable(6, Radius, 135)
                 .mana(85)
                 .cd(18, -2)
                 .range(925);
-        R.update()
-                .active("次に使用するスキルの効果を強化する。強化されたスキルは一切のコストなしで使用でき、効果はこのスキルのLvに依存する。発動してから3秒間に何も使わない場合は再発動可能になり、もう一度使用するとCD3秒でキャンセルする。<br>H-28Q Apex Turret<br>8秒間持続する。砲撃に100%のスプラッシュダメージと{1}が付与される。<br>HP:{3}<br>砲撃:{4}　{5}<br>ビーム:{6}　{7}　（6秒毎）<br><br>Hextech Rocket Swarm<br>指定地点に目掛けて、5本のミサイルを扇状に4回発射する。命中すると{8}を与える。同一対象に対して複数命中し、2発目以降は本来の20%分のDMを与える(同一対象に20発命中すると{9})。<br><br>CH-3X Lightning Grenade<br>2回までバウンドしつつ3回放電する手榴弾を投げる。作動した箇所にいる{10}にいる敵ユニットに{11}と2秒間{12}を与え、真ん中のユニットにはさらに{13}を与える。")
+
+        R.update(P514)
+                .active("次に使用するスキルの効果を強化する。強化されたスキルは一切のコストなしで使用でき、効果はこのスキルのLvに依存する。発動してから3秒間何も使わない場合は再発動可能になり、もう一度使用するとCD3秒でキャンセルする。<br>" + Q + "<br>Turretの上限を無視する特殊なTurretを1個設置する。8秒間持続する。砲撃に100%のスプラッシュダメージと1秒間{1}が付与される。<br>HP：{3}<br>砲撃：{4}　{5}<br>ビーム：{6}　{7}　（6秒毎）<br><br>" + W + "<br>指定地点に目掛けて、5本のミサイルを扇状に4回発射する。命中すると{8}を与える。同一対象に対して複数命中し、2発目以降は本来の20%分のDMを与える(同一対象に20発命中すると{9})。<br><br>" + E + "<br>2回までバウンドしつつ3回放電する手榴弾を投げる。作動した箇所にいる{10}にいる敵ユニットに{11}と2秒間{12}を与え、真ん中のユニットにはさらに{13}を与える。")
                 .variable(1, MSSlowRatio, 25)
-                .variable(3, Value, 600, 0, level(50))
+                .variable(3, Value, 550, 0, level(50), amplify(AP, new PerLevel(new int[] {1, 9, 10, 11, 12, 13, 14, 15,
+                        16, 17, 18}, 0.25, 0.175)))
                 .variable(4, Radius, 525)
-                .variable(5, MagicDamage, 90, 20, ap(0.33))
+                .variable(5, MagicDamage, 70, 20, ap(0.3))
                 .variable(6, Radius, 1100)
-                .variable(7, MagicDamage, 225, 75, ap(0.8))
+                .variable(7, MagicDamage, 180, 60, ap(0.7))
                 .variable(8, MagicDamage, 135, 45, ap(0.45))
-                .variable(9, MagicDamage, 550, 140, ap(1.83))
+                .variable(9, MagicDamage, 648, 216, ap(2.16))
                 .variable(10, Radius, 420)
                 .variable(11, MagicDamage, 150, 50, ap(0.6))
                 .variable(12, MSSlowRatio, 80)
-                .variable(13, Stack, 1.25)
+                .variable(13, Stun, 1.25)
                 .mana(100)
                 .cd(100, -20);
     }

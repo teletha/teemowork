@@ -311,6 +311,19 @@ public abstract class VariableResolver {
          * @param values
          */
         public Per4Level(double base, double diff) {
+            super(new int[] {1, 5, 9, 13, 17}, base, diff);
+        }
+    }
+
+    /**
+     * @version 2013/02/12 11:37:34
+     */
+    public static class Per4LevelForAnivia extends PerLevel {
+
+        /**
+         * @param values
+         */
+        public Per4LevelForAnivia(double base, double diff) {
             super(new int[] {1, 5, 8, 12, 15}, base, diff);
         }
     }
