@@ -574,6 +574,47 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
+    public static void Brand(Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive("スキルが当たった敵ユニットを炎上させ、4秒間毎秒{1}与える。炎上している敵ユニットにスキルが命中すると追加効果が発生する。(ミニオンやモンスターに対しては毎秒80ダメージが上限)")
+                .variable(1, MagicDamage, 0, 0, amplify(TargetMaxHealthRatio, 2));
+
+        Q.update(P514)
+                .active("指定方向に火球を投射し、当たった敵ユニットに{1}を与える。敵が炎上していた場合、{2}を与える。")
+                .variable(1, MagicDamage, 80, 40, ap(0.65))
+                .variable(2, Stun, 2)
+                .mana(50)
+                .cd(8, -0.5)
+                .range(1050);
+
+        W.update(P514)
+                .active("指定地点に炎の柱を作り出し、0.625秒後に{1}の敵ユニットに{2}を与える。敵が炎上していた場合、代わりに{3}を与える。")
+                .variable(1, Radius, 250)
+                .variable(2, MagicDamage, 75, 45, ap(0.6))
+                .variable(3, MagicDamage, 94, 56, ap(0.75))
+                .mana(70, 5)
+                .cd(10)
+                .range(900);
+
+        E.update(P514)
+                .active("対象の敵ユニットに{1}を与える。敵が炎上していた場合、{2}の敵にも{1}を与える。")
+                .variable(1, MagicDamage, 70, 35, ap(0.55))
+                .variable(2, Radius, 300)
+                .mana(70, 5)
+                .cd(12, -1)
+                .range(625);
+
+        R.update(P514)
+                .active("対象の敵ユニットに火炎弾を放つ。火炎弾は近くの敵ユニットに4回まで跳ね、その度に{1}を与える(最大5hit)。この跳ね返りは同一ユニットに何度も跳ね返る。敵が炎上していた場合、敵チャンピオンに優先して跳ね返るようになる。")
+                .variable(1, MagicDamage, 150, 100, ap(0.5))
+                .mana(100)
+                .cd(105, -15)
+                .range(750);
+    }
+
+    /**
+     * Define skill.
+     */
     public static void Braum(Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P514)
                 .passive("通常攻撃時に対象にスタックを付与する。自身を含む味方チャンピオンがスタック付きの対象に通常攻撃を行う度にスタックが1増加し、4スタックになるとスタックを全て消費し対象に{1}と{2}を与える。スタックは4秒間増加が無いと0になる。" + Stun + "が発動すると、その対象が{3}間耐性を得て、スタックが付与できなくなる。代わりに自身が耐性がついた対象に通常攻撃するか" + Q + "を当てると{4}を与える。")
@@ -617,46 +658,6 @@ public interface SkillDefinition {
                 .range(1250)
                 .mana(100)
                 .cd(140, -20);
-    }
-
-    /**
-     * Define skill.
-     */
-    public static void Brand(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("スキルが当たった敵ユニットを炎上させ、毎秒{1}与える。この効果は4秒間続く。炎上している敵ユニットにスキルが命中すると追加効果が発生する。(Minionに対しては毎秒80DMが上限)")
-                .variable(1, MagicDamage, 0, 0, amplify(TargetMaxHealthRatio, 2));
-        Q.update()
-                .active("指定方向に火球を投射し、当たった敵ユニットに{1}を与える。敵が炎上していた場合、{2}を与える。")
-                .variable(1, MagicDamage, 80, 40, ap(0.65))
-                .variable(2, Stun, 2)
-                .mana(50)
-                .cd(8, -0.5)
-                .range(1025);
-        W.update()
-                .active("指定地点に炎の柱を作り出し、0.5秒後に{1}の敵ユニットに{2}を与える。敵が炎上していた場合、代わりに{3}を与える。")
-                .variable(1, Radius, 175)
-                .variable(2, MagicDamage, 75, 45, ap(0.6))
-                .variable(3, MagicDamage, 94, 56, ap(0.75))
-                .mana(70, 10)
-                .cd(10)
-                .range(900);
-        W.update(P309).mana(70, 5);
-        E.update()
-                .active("対象の敵ユニットに{1}を与える。敵が炎上していた場合、{2}の敵にも{1}を与える。")
-                .variable(1, MagicDamage, 70, 35, ap(0.55))
-                .variable(2, Radius, 200)
-                .mana(60, 5)
-                .cd(12, -1)
-                .range(625);
-        E.update(P309).mana(70, 5);
-        R.update()
-                .active("対象の敵ユニットに火炎弾を放つ。火炎弾は近くの敵ユニットに4回まで跳ね、その度に{1}を与える(最大5hit)。この跳ね返りは同一ユニットに何度も跳ね返る。敵が炎上していた場合、敵チャンピオンに優先して跳ね返るようになる。")
-                .variable(1, MagicDamage, 150, 100, ap(0.5))
-                .mana(100, 50)
-                .cd(105, -15)
-                .range(750);
-        R.update(P309).mana(100);
     }
 
     /**
