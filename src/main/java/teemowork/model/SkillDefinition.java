@@ -281,48 +281,48 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Anivia(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("死亡時に卵になり6秒かけて復活する。復活中は{1}及び{2}を得る。復活中にHPが0になった場合は死亡する。{3}。")
                 .variable(-1, AR, new Per4Level(-40, 15))
                 .variable(-2, MR, new Per4Level(-40, 15))
                 .variable(3, CDRUnaware)
                 .cd(-240);
-        Q.update()
+
+        Q.update(P514)
                 .active("指定方向に貫通する氷を飛ばし、氷に触れた敵ユニットに{1}と3秒間{2}を与え、{4}状態にする。氷が飛んでいる最中に再度スキルを使用するか、最大距離まで飛ぶと氷が破裂し、破裂地点の{6}の敵ユニットにさらに{1}と{5}と3秒間{2}を与え、{4}状態にする。")
                 .variable(1, MagicDamage, 60, 30, ap(0.5))
                 .variable(2, MSSlowRatio, 20)
                 .variable(4, Chill, 0)
                 .variable(5, Stun, 1)
-                .variable(6, Radius, 150)
-                .mana(80, 20)
+                .variable(6, Radius, 75)
+                .mana(80, 10)
                 .cd(12, -1)
-                .range(1100)
-                .update(P401)
-                .mana(80, 10);
-        W.update()
+                .range(1075);
+
+        W.update(P514)
                 .active("指定地点に5秒間{1}の壁を作りユニットを通れなくする。また、指定地点の{2}。")
                 .variable(1, Length, 400, 100)
                 .variable(2, Visionable)
-                .mana(70, 20)
+                .mana(70)
                 .cd(25)
-                .range(1000)
-                .update(P401)
-                .mana(70);
-        E.update()
+                .range(1000);
+
+        E.update(P514)
                 .active("対象の敵ユニットに{1}を与える。対象が" + Chill + "の場合は{2}を与える。")
                 .variable(1, MagicDamage, 55, 30, ap(0.5))
                 .variable(2, MagicDamage, 110, 60, ap(1.0))
                 .mana(50, 10)
                 .cd(5)
                 .range(650);
-        R.update()
+
+        R.update(P514)
                 .active("指定地点の{6}の敵ユニットに毎秒{1}、1秒間の{2}と{3}を与え、{5}状態にする。")
                 .variable(1, MagicDamage, 80, 40, ap(0.25))
                 .variable(2, ASSlowRatio, 20, 0)
                 .variable(3, MSSlowRatio, 20)
                 .variable(5, Chill, 0)
                 .variable(6, Radius, 300)
-                .mana(75)
+                .mana(40, 10)
                 .cd(6)
                 .range(625)
                 .type(SkillType.Toggle);
