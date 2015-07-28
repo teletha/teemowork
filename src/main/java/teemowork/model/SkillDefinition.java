@@ -710,39 +710,48 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Cassiopeia(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("スキル使用後の5秒間、全てのスキルのコストが1スタックにつき10%低減する。");
-        Q.update()
-                .active("指定地点に0.5秒後に毒を発生させ、{1}の敵ユニットに毒を与え3秒かけて{2}を与える。このスキルがチャンピオンにヒットした場合、3秒間{3}する。")
+        P.update(P514)
+                .passive("6秒毎に1スタックを得る。敵チャンピオンに毒を与えている間は毎秒1スタックを得る。スタック数に応じて能力を得る。<br>100：{1}する。" + E + "を敵に当てるたびに{2}する。<br>250：{3}する。{4}を得る。<br>500：{5}する。")
+                .variable(-1, APRatio, 5)
+                .variable(2, RestoreHealth, new Refer(E, 6, 2), ap(0.06), null)
+                .variable(-3, APRatio, 5)
+                .variable(-4, CDR, 25)
+                .variable(-5, APRatio, 20);
+
+        Q.update(P514)
+                .active("指定地点に0.4秒後に毒を発生させ、{1}の敵ユニットに毒を与え3秒かけて{2}を与える。このスキルがチャンピオンにヒットした場合、3秒間{3}する。")
                 .variable(1, Radius, 75)
-                .variable(2, MagicDamage, 75, 40, ap(0.8))
-                .variable(3, MSRatio, 15, 2.5)
-                .mana(35, 10)
-                .cd(3)
+                .variable(2, MagicDamage, 75, 40, ap(0.45))
+                .variable(3, MSRatio, 20)
+                .mana(40, 10)
+                .cd(4)
                 .range(850);
-        W.update()
-                .active("指定地点に7秒間持続する毒霧を吹き出す。毒霧は徐々に範囲(100～175)が広がり、毒霧の上を通過した敵に2秒間持続する毒を付与し{1}と2秒間{3}を与える。また指定地点の{4}。")
-                .variable(1, MagicDamage, 25, 10, ap(0.15))
-                .variable(3, MSSlowRatio, 15, 5)
+
+        W.update(P514)
+                .active("指定地点に7秒間持続する毒霧を吹き出す。毒霧は徐々に範囲(125～250)が広がり、毒霧の上を通過した敵に2秒間持続する毒を付与し毎秒{1}と2秒間{3}を与える。また指定地点の{4}。")
+                .variable(1, MagicDamage, 10, 5, ap(0.1))
+                .variable(3, MSSlowRatio, 25, 5)
                 .variable(4, Visionable)
-                .mana(70, 10)
-                .cd(9)
+                .mana(40, 10)
+                .cd(14, -1)
                 .range(850);
-        E.update()
-                .active("対象の敵ユニットに{1}を与える。対象が毒を受けている場合、CDが0.5秒になる。")
-                .variable(1, MagicDamage, 50, 35, ap(0.55))
+
+        E.update(P514)
+                .active("対象の敵ユニットに{1}を与える。対象が毒を受けている場合、{2}。")
+                .variable(1, MagicDamage, 55, 25, ap(0.55))
+                .variable(2, CD, 0.5)
                 .mana(50, 10)
                 .cd(5)
                 .range(700);
-        R.update()
-                .active("眼からビームを放ち、指定方向扇形83°の範囲内の敵ユニットに{1}を与え、こちらを向いている敵に更に{2}を与える。後ろを向いていた場合2秒間{4}を与える。")
-                .variable(1, MagicDamage, 200, 125, ap(0.6))
+
+        R.update(P514)
+                .active("眼からビームを放ち、指定方向扇形80°の範囲内の敵ユニットに{1}を与え、こちらを向いている敵に更に{2}を与える。後ろを向いていた場合2秒間{4}を与える。")
+                .variable(1, MagicDamage, 150, 100, ap(0.5))
                 .variable(2, Stun, 2)
                 .variable(4, MSSlowRatio, 60)
-                .mana(120, 40)
-                .cd(130, -10)
-                .range(750)
-                .update(P312)
-                .mana(100);
+                .mana(100)
+                .cd(120, -10)
+                .range(825);
     }
 
     /**

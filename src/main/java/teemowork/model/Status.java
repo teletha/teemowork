@@ -480,6 +480,7 @@ public enum Status {
         case Wounds:
         case Knockup:
         case Suppression:
+        case CD:
         case CDRAwareTime:
         case CDDecrease:
             return "秒";
@@ -557,6 +558,9 @@ public enum Status {
         case RestoreHealth:
         case RestoreMana:
             return name + "が" + formatValue(computed) + "回復";
+
+        case CD:
+            return "CDが" + formatValue(computed) + "になる";
 
         case CDDecrease:
         case CDDecreaseRatio:
