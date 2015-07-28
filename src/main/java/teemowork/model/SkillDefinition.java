@@ -2302,53 +2302,38 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Kayle(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("敵チャンピオンに通常攻撃を行う度に、{1}と{2}を与える。この効果は5秒間持続し、5回までスタックする。")
                 .variable(1, ARReductionRatio, 3)
                 .variable(2, MRReductionRatio, 3);
-        Q.update()
-                .active("{4}の光の玉を撃ち対象の敵ユニットに{1}と4秒間{2}を与える。このスキルのスローがかかった敵ユニットに対しては、Kayleが対象のユニットに与える{3}する。")
-                .variable(1, MagicDamage, 60, 50, ap(1), bounusAD(1))
-                .variable(2, MSSlowRatio, 35)
-                .variable(3, DamageRatio, 6, 1)
-                .variable(4, MissileSpeed, 1300)
+
+        Q.update(P514)
+                .active("{1}の光の弾を放ち、対象の敵ユニットに{2}、3秒間{3}と" + P + "のDebuffを与える。")
+                .variable(1, MissileSpeed, 1500)
+                .variable(2, MagicDamage, 60, 50, ap(0.6), bounusAD(1))
+                .variable(3, MSSlowRatio, 35, 5)
                 .mana(70, 5)
                 .cd(8)
-                .range(650)
-                .update(P303)
-                .active("{4}の光の玉を撃ち対象の敵ユニットに{1}と3秒間{2}、HolyFervorのスタックをひとつ与える。")
-                .variable(2, MSSlowRatio, 35, 5)
-                .variable(4, MissileSpeed, 1500)
-                .update(P402)
-                .variable(1, MagicDamage, 60, 50, ap(0.6), bounusAD(1));;
-        W.update()
+                .range(650);
+
+        W.update(P514)
                 .active("対象の味方チャンピオンは{1}し、3秒間{2}する。")
-                .variable(1, RestoreHealth, 60, 45, ap(0.35))
-                .variable(2, MSRatio, 18, 3)
+                .variable(1, RestoreHealth, 60, 45, ap(0.45))
+                .variable(2, MSRatio, 18, 3, ap(0.07))
                 .mana(60, 10)
                 .cd(15)
-                .range(1000)
-                .update(P3051)
-                .range(900)
-                .update(P402)
-                .variable(1, RestoreHealth, 60, 45, ap(0.45))
-                .variable(2, MSRatio, 18, 3, ap(0.07));
-        E.update()
-                .active("10秒間Kayleの通常攻撃の射程が525に伸びる(Ranged)。更に通常攻撃に追加{1}が付与され、スプラッシュ効果{2}が付く。塔を攻撃する時はスプラッシュ効果は発生しない。")
-                .variable(1, MagicDamage, 20, 10, ap(0.4), amplify(AD, 0.2, 0.05))
-                .variable(2, Radius, 300)
+                .range(900);
+
+        E.update(P514)
+                .passive("通常攻撃に{1}を付与する。")
+                .variable(1, MagicDamage, 10, 5, ap(0.15))
+                .active("10秒間{2}する。更に通常攻撃に{1}が付与され、{3}のスプラッシュ効果が付く。塔を攻撃する時はスプラッシュ効果は発生しない。")
+                .variable(2, Range, 400)
+                .variable(3, Radius, 150)
                 .mana(45)
                 .cd(16);
-        R.update()
-                .active("対象の味方チャンピオンを{1}間無敵(ダメージ無効)にする。")
-                .variable(1, Time, 2, 0.5)
-                .mana(100, -25)
-                .cd(90, -15)
-                .range(1200)
-                .update(P3051)
-                .range(900)
-                .update(P402)
-                .mana(0);
+
+        R.update(P514).active("対象の味方チャンピオンを{1}間無敵(ダメージ無効)にする。").variable(1, Time, 2, 0.5).cd(90, -15).range(900);
     }
 
     /**
