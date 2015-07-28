@@ -1552,7 +1552,7 @@ public interface SkillDefinition {
                 .range(475);
 
         R.update(P514)
-                .active("Mega Gnar<br>{1}にいる敵ユニットを指定した方向に{2}し{3}と{4}間{5}を与える。" + Knockback + "した敵ユニットが壁等に当たると与える" + Damage + "が{6}になり、" + MSSlow + "の代わりに{7}を与える。")
+                .active("Mega Gnar<br>{1}にいる敵ユニットを指定した方向に{2}し{3}と{4}間{5}を与える。" + Knockback + "した敵ユニットが壁等に当たると{6}と{7}を与える。")
                 .variable(1, Radius, 590)
                 .variable(2, Knockback)
                 .variable(3, PhysicalDamage, 200, 100, bounusAD(0.2), ap(0.5))
@@ -1567,48 +1567,44 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Gragas(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("スキル使用後に4秒かけて{1}する。").variable(1, RestoreHealth, amplify(Health, 0.02));
-        Q.update()
-                .active("指定地点に樽を転がし、爆発時に{1}の敵ユニットに{2}と3秒間{3}を与える。樽は5秒経つか、スキルを再度使用すると爆発する。")
-                .variable(1, Radius, 375)
-                .variable(2, MagicDamage, 85, 50, ap(0.9))
-                .variable(3, ASSlowRatio, 20, 5)
-                .mana(80, 10)
-                .cd(12, -1)
-                .range(1100);
-        Q.update(P314).range(950);
-        W.update()
-                .active("{1}する。さらに1秒詠唱後に20秒間{2}を得て、{3}するようになる。")
-                .variable(1, RestoreMana, 30, 15)
-                .variable(2, AD, 30, 10)
-                .variable(3, DamageReductionRatio, 10, 2)
-                .cd(25);
-        E.update()
-                .active("指定方向に突進し、衝突した敵ユニットとその周囲にいる敵ユニットに{1}と2.5秒間{2}を与える。衝突時に突進は止まる。衝突地点に複数の敵ユニットがいた場合、{3}を与える。")
-                .variable(1, MagicDamage, 80, 40, ap(0.5), ad(0.66))
-                .variable(2, MSSlowRatio, 35)
-                .variable(3, MagicDamage, 50, 25, ap(0.5))
-                .mana(75)
-                .cd(7)
-                .range(650)
-                .update(P314)
-                .active("指定方向に突進し、衝突した敵ユニットとその周囲にいる敵ユニットに{1}と2.5秒間{2}を与える。衝突時に突進は止まる。ユニットに当たった場合{3}する。")
-                .variable(3, CDDecreaseRatio, 50)
-                .cd(12)
-                .update(P403)
-                .variable(1, MagicDamage, 80, 40, ap(0.5), amplify(AD, 0.3, 0.1));
+        P.update(P514).passive("スキルを使用すると{1}する。").variable(1, RestoreHealth, amplify(Health, 0.04)).cd(-8);
 
-        R.update()
+        Q.update(P514)
+                .active("指定地点に樽を転がし、爆発時に{1}の敵ユニットに{2}と1.3秒間{3}及び{4}を与える。樽は4秒経つか、スキルを再度使用すると爆発する。樽は設置後、2秒かけて" + Damage + "と" + MSSlow + "及び" + ASSlow + "の効果が最大50%まで増加していく。樽は設置場所の{5}。ミニオンに対しては70％の" + Damage + "を与える。")
+                .variable(1, Radius, 375)
+                .variable(2, MagicDamage, 80, 40, ap(0.6))
+                .variable(3, MSSlowRatio, 40, 5)
+                .variable(4, ASSlowRatio, 40, 5)
+                .variable(5, Visionable)
+                .mana(60, 5)
+                .cd(11, -1)
+                .range(850);
+
+        W.update(P514)
+                .active("2.5秒間{1}を得る。1s詠唱後に次の5秒以内の通常攻撃に{2}が付与される。モンスターに対しては上限300。")
+                .variable(1, DamageReductionRatio, 10, 2)
+                .variable(2, MagicDamage, 20, 30, ap(0.3), amplify(TargetMaxHealthRatio, 8, 1))
+                .cd(8, -1)
+                .mana(30);
+
+        E.update(P514)
+                .active("指定方向に突進し、衝突した敵ユニットと{4}の敵ユニットに{1}と{2}、{3}を与える。衝突時に突進は止まる。ユニットに当たった場合{4}する。")
+                .variable(1, MagicDamage, 80, 40, ap(0.6))
+                .variable(2, Knockback)
+                .variable(3, Stun, 1)
+                .variable(4, CDDecrease, 3)
+                .mana(50)
+                .cd(12)
+                .range(600);
+
+        R.update(P514)
                 .active("指定地点に爆発する樽を投げ、{1}内の敵ユニットに{2}を与え、{3}させる。")
                 .variable(1, Radius, 400)
-                .variable(2, MagicDamage, 200, 125, ap(1))
-                .variable(3, Knockback, 800)
-                .mana(100, 25)
+                .variable(2, MagicDamage, 200, 100, ap(0.7))
+                .variable(3, Knockback, 600)
+                .mana(100)
                 .cd(100, -10)
-                .range(1050)
-                .update(P403)
-                .variable(2, MagicDamage, 200, 125, ap(0.9))
-                .mana(100);
+                .range(1150);
     }
 
     /**
