@@ -1906,33 +1906,38 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Jax(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("通常攻撃を行う度にスタックが1増加し、スタック数に比例して{1}する(最大6スタック)。スタックは2.5秒増加がないと0になる。")
                 .variable(-1, ASRatio, new Per3Level(4, 2));
-        Q.update()
+
+        Q.update(P514)
                 .active("対象のユニットまで飛びかかる。対象が敵ユニットの場合、{1}を与える。")
                 .variable(1, PhysicalDamage, 70, 40, ap(0.6), bounusAD(1))
                 .mana(65)
                 .cd(10, -1)
                 .range(700);
-        W.update()
-                .active("使用後に最初に行った通常攻撃かLeap Strikeに追加{1}を付与する。建物には無効。")
+
+        W.update(P514)
+                .active("次の通常攻撃か" + Q + "に{1}を付与する。建物には無効。{2}。")
                 .variable(1, MagicDamage, 40, 35, ap(0.6))
+                .variable(2, ResetAATimer)
                 .mana(30)
                 .cd(7, -1);
-        E.update()
+
+        E.update(P514)
                 .active("2秒間、Jaxが受けるタワー以外の通常攻撃を無効化し、AoEダメージを25%低減、さらに効果終了時に{1}の敵ユニットに{2}と{3}を与える。スキルを使用してから1秒経つと再使用できるようになり、任意に効果を終了できる。通常攻撃を回避する度にこのスキルのダメージが20%ずつ増加する(上限は100%、最大で2倍ダメージ)。")
-                .variable(1, Radius, 375)
+                .variable(1, Radius, 187.5)
                 .variable(2, PhysicalDamage, 50, 25, bounusAD(0.5))
                 .variable(3, Stun, 1)
                 .mana(70, 5)
-                .cd(18, -2);
-        R.update()
-                .passive("通常攻撃3回目ごとに追加で{1}を与える。建物には無効。")
+                .cd(16, -2);
+
+        R.update(P514)
+                .passive("通常攻撃3回毎に{1}を与える。建物には無効。")
                 .variable(1, MagicDamage, 100, 60, ap(0.7))
                 .active("8秒間{2}と{3}を得る。")
-                .variable(2, AR, 25, 10, bounusAD(0.3))
-                .variable(3, MR, 25, 10, ap(0.2))
+                .variable(2, AR, 30, 20, bounusAD(0.5))
+                .variable(3, MR, 30, 20, ap(0.2))
                 .mana(100)
                 .cd(80);
     }
