@@ -519,6 +519,27 @@ public abstract class VariableResolver {
     }
 
     /**
+     * @version 2013/02/14 18:22:02
+     */
+    public static class PerChampion extends Fixed {
+
+        /**
+         * @param values
+         */
+        public PerChampion(double... values) {
+            super(values);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String getLevelDescription(int skillLevel) {
+            return "敵チャンピオン" + skillLevel + "人";
+        }
+    }
+
+    /**
      * @version 2013/02/15 13:05:53
      */
     public static class Diff extends VariableResolver {

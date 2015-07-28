@@ -32,6 +32,7 @@ import teemowork.model.variable.VariableResolver.Per5LevelWith18;
 import teemowork.model.variable.VariableResolver.Per6Level;
 import teemowork.model.variable.VariableResolver.Per6LevelForVi;
 import teemowork.model.variable.VariableResolver.Per6LevelForZed;
+import teemowork.model.variable.VariableResolver.PerChampion;
 import teemowork.model.variable.VariableResolver.PerLevel;
 import teemowork.model.variable.VariableResolver.Refer;
 import teemowork.model.variable.VariableResolver.ReferFixed;
@@ -1766,34 +1767,40 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Irelia(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("Ireliaの視界内(範囲1200)に敵チャンピオンがいる数に応じて{1}を得る。効果の上限は最大3人まで。")
-                .variable(-1, Tenacity, new Fixed(new double[] {10, 25, 40}));
-        Q.update()
-                .active("対象の敵ユニットに突進し、{1}を与える。このスキルで敵を倒したとき、このスキルの{2}されManaが35回復する。{3}。")
+        P.update(P514)
+                .passive("視界内の敵チャンピオン数に応じて{1}を得る。")
+                .variable(-1, Tenacity, new PerChampion(10, 25, 40))
+                .range(1200);
+
+        Q.update(P514)
+                .active("対象の敵ユニットに突進し、{1}を与える。このスキルで敵を倒したとき、このスキルの{2}され{3}する。{4}。")
                 .variable(1, PhysicalDamage, 20, 30, ad(1))
                 .variable(2, CDDecrease)
-                .variable(3, OnHitEffect)
+                .variable(3, RestoreMana, 35)
+                .variable(4, OnHitEffect)
                 .mana(60, 5)
                 .cd(14, -2)
                 .range(650);
-        W.update()
+
+        W.update(P514)
                 .passive("通常攻撃を行う度に{1}する。")
                 .variable(1, RestoreHealth, 5, 2)
                 .active("6秒間通常攻撃に{2}が付与され、PassiveのHP回復量が倍になる。")
                 .variable(2, TrueDamage, 15, 15)
                 .mana(40)
                 .cd(15);
-        E.update()
-                .active("対象の敵ユニットに{1}を与える。対象の残HP%がIreliaより高かった場合{2}を与え、低かった場合は{4}間{3}を与える。")
-                .variable(1, MagicDamage, 80, 50)
-                .variable(2, Stun, 1, 0.25)
+
+        E.update(P514)
+                .active("対象の敵ユニットに{1}を与える。対象の残HPの割合がIreliaより高かった場合{2}間{3}を与え、低かった場合は{4}を与える。")
+                .variable(1, MagicDamage, 80, 40, ap(0.5))
+                .variable(2, Time, 1, 0.25)
                 .variable(3, MSSlowRatio, 60, 0)
-                .variable(4, Time, 1, 0.25)
+                .variable(4, Stun, 1, 0.25)
                 .mana(50, 5)
                 .cd(8)
                 .range(425);
-        R.update()
+
+        R.update(P514)
                 .active("指定方向に貫通する刃を飛ばし、当たった敵ユニットに{1}を与える。このスキルは15秒の間、4回まで連続して使用できる(但し、一度使用する度に0.5秒のCDが発生する)。2〜4発目はマナコスト無しで使用可能。ミニオンやモンスターにダメージを与えると{2}し、チャンピオンにダメージを与えると{3}する。")
                 .variable(1, PhysicalDamage, 80, 40, ap(0.5), bounusAD(0.6))
                 .variable(2, RestoreHealth, amplify(DealtDamageRatio, 10))
