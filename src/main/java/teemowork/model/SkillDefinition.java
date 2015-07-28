@@ -1278,33 +1278,37 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Fiora(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("通常攻撃またはLungeでダメージを与えると、6秒かけて{1}する。対象がチャンピオンの場合、この効果は4回までスタックする。")
+        P.update(P514)
+                .passive("通常攻撃または" + Q + "でダメージを与えると、6秒かけて{1}する。対象がチャンピオンの場合、この効果は4回までスタックする。")
                 .variable(1, RestoreHealth, 7, 0, amplify(Lv, 1));
-        Q.update()
+
+        Q.update(P514)
                 .active("対象の敵ユニットへダッシュし{1}を与える。このスキルは4秒の間、もう1度だけ使用できる。2度目は消費MN無しで使用可能。")
                 .variable(1, PhysicalDamage, 40, 25, bounusAD(0.6))
                 .mana(60)
                 .cd(16, -2)
                 .range(600);
-        W.update()
+
+        W.update(P514)
                 .passive("{1}を得る。")
                 .variable(1, AD, 15, 5)
                 .active("1.5秒の間に受ける通常攻撃を一度だけ無効化し、その相手に{2}を与える。この効果は一部のミニオンとモンスターには発生しない。")
                 .variable(2, MagicDamage, 60, 50, ap(1))
                 .mana(45)
                 .cd(10, -1);
-        E.update()
+
+        E.update(P514)
                 .active("3秒間{1}する。効果中に通常攻撃を行うかまたはLungeを使用すると3秒間{2}する。移動速度の増加は3回までスタックする。敵チャンピオンを倒すとこのスキルの{3}する。")
                 .variable(1, ASRatio, 60, 15)
                 .variable(2, MSRatio, 7, 2)
                 .variable(3, CDDecrease)
                 .mana(55)
                 .cd(15, -1);
-        R.update()
-                .active("対象の敵チャンピオンにダッシュし{1}を与え、範囲内にいる敵チャンピオンをランダムに対象とし4回{1}を与える(合計5回)。最後の攻撃は最初に対象とした敵チャンピオンで固定。同一ユニットに複数回DMを与える場合、2回目以降は25%のダメージになる。単一対象への最大DMは{2}。{3}。")
-                .variable(1, PhysicalDamage, 160, 170, bounusAD(1.15))
-                .variable(2, PhysicalDamage, 320, 340, bounusAD(2.3))
+
+        R.update(P514)
+                .active("対象の敵チャンピオンにダッシュし{1}を与え、範囲内にいる敵チャンピオンをランダムに対象とし4回{1}を与える(合計5回)。最後の攻撃は最初に対象とした敵チャンピオンで固定。同一ユニットに複数回ダメージを与える場合、2回目以降は40%のダメージになる。単一対象への最大ダメージは{2}。{3}。")
+                .variable(1, PhysicalDamage, 120, 130, bounusAD(0.9))
+                .variable(2, PhysicalDamage, 312, 338, bounusAD(2.34))
                 .variable(3, OnHitEffect)
                 .mana(100)
                 .cd(130, -10)
