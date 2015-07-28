@@ -831,7 +831,7 @@ public interface SkillDefinition {
                 .range(600);
 
         R.update(P514)
-                .active("スタックを消費して、指定方向にミサイルを発射し当たった敵ユニットの{1}に{2}を与える。スタックは{3}毎に増加する（最大数7）。3発毎に大きいミサイル({4}に{5})を発射させる。スタック増加時間はCD低減の影響を受ける。")
+                .active("スタックを消費して、指定方向にミサイルを発射し当たった敵ユニットの{1}に{2}を与える。スタックは{3}毎に増加する（最大数7）。3発毎に大きいミサイル({4}に{5})を発射する。")
                 .variable(1, Radius, 75)
                 .variable(2, MagicDamage, 100, 80, ap(0.3), amplify(AD, 0.2, 0.1))
                 .variable(3, CDRAwareTime, 12, -2)
@@ -936,47 +936,6 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
-    public static void Draven(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("クリティカル時または" + Q + "使用時の通常攻撃に毎秒{1}が付与される。毎秒ダメージは4秒間持続する。")
-                .variable(1, PhysicalDamage, 7.5, 0, amplify(Lv, 1));
-        P.update(P309)
-                .passive("Spinning Axeをキャッチするか、ミニオンかモンスターを倒すと、スタックを得る。敵チャンピオンを倒すと、スタックの半分を消費して{1}を得る。死亡時にスタックを半分失う。")
-                .variable(1, Gold, 0, 0, amplify(ConsumedStack, 3));
-        P.update(P311)
-                .passive("Spinning Axeをキャッチするか、ミニオンかモンスターを倒すと、スタックを得る。敵チャンピオンを倒すと、スタックを消費して{1}を得る。死亡時にスタックを半分失う。")
-                .variable(1, Gold, 50, 0, amplify(ConsumedStack, 2));
-        Q.update()
-                .active("次に行う通常攻撃に追加{1}が付与される。このスキルによる通常攻撃が敵ユニットに命中すると、斧がDravenの近くに跳ね返る。その斧をキャッチするとBlood RushのCDが解消され、更に次の通常攻撃もSpinning Axeの効果を受けるようになる。このスキルは連続で使用する事で最大2回分までチャージできる。")
-                .variable(1, PhysicalDamage, 0, 0, amplify(AD, 0.45, 0.1))
-                .mana(45)
-                .cd(12, -1);
-        W.update()
-                .active("1.5秒間{1}し、3秒間{2}する。移動速度増加は1.5秒かけて元に戻る。")
-                .variable(1, MSRatio, 40, 5)
-                .variable(2, ASRatio, 20, 5)
-                .mana(40)
-                .cd(12);
-        E.update()
-                .active("指定方向に貫通する斧を投げ、当たった敵ユニットに{1}と{2}と2秒間{3}を与える。このノックバックは斧から弾かれる形で左右に吹き飛ぶ。")
-                .variable(1, PhysicalDamage, 70, 35, bounusAD(0.5))
-                .variable(2, Knockback, 0)
-                .variable(3, MSSlowRatio, 20, 5)
-                .mana(70)
-                .cd(18, -1)
-                .range(1050);
-        R.update()
-                .active("指定方向に地面を這う貫通する斧を投げ、当たった敵ユニットに{1}を与える。ダメージは敵に当たるごとに8%ずつ減り、最大で40%まで低下する。行きと帰りそれぞれに攻撃判定があり、斧が飛んでいる最中に再度このスキルを使用するか、敵チャンピオンに命中した時点で斧が反転してDravenの元に戻ってくる。反転した際、低下ダメージはリセットされる。また移動中の斧は{2}。")
-                .variable(1, PhysicalDamage, 175, 100, bounusAD(1.1))
-                .variable(2, Visionable)
-                .mana(120)
-                .cd(110)
-                .range(-1);
-    }
-
-    /**
-     * Define skill.
-     */
     public static void DrMundo(Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update().passive("毎秒{1}する。").variable(1, RestoreHealth, 0, 0, amplify(Health, 0.003));
         Q.update()
@@ -1011,6 +970,46 @@ public interface SkillDefinition {
                 .variable(2, MSRatio, 15, 10)
                 .cd(75)
                 .cost(CurrentHealthRatio, 20, 0);
+    }
+
+    /**
+     * Define skill.
+     */
+    public static void Draven(Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive(P + "をキャッチするかミニオンかモンスターを倒すか建物を破壊するとスタックを得る。敵チャンピオンを倒すと、スタックを消費して{1}を得る。死亡時にスタックを半分失う。")
+                .variable(1, Gold, 50, 0, amplify(ConsumedStack, 2));
+
+        Q.update(P514)
+                .active("次に行う通常攻撃に{1}を付与する。このスキルによる通常攻撃が敵ユニットに命中すると、斧が近くに跳ね返る。その斧をキャッチすると" + W + "の{2}し、更に次の通常攻撃も" + Q + "の効果を受けるようになる。このスキルは連続で使用する事で最大2回分までチャージできる。")
+                .variable(1, PhysicalDamage, 0, 0, amplify(AD, 0.45, 0.1))
+                .variable(2, CDDecrease)
+                .mana(45)
+                .cd(12, -1);
+
+        W.update(P514)
+                .active("1.5秒間{1}し、3秒間{2}する。移動速度増加は1.5秒かけて元に戻る。")
+                .variable(1, MSRatio, 40, 5)
+                .variable(2, ASRatio, 20, 5)
+                .mana(40)
+                .cd(12);
+
+        E.update(P514)
+                .active("指定方向に貫通する斧を投げ、当たった敵ユニットに{1}と{2}と2秒間{3}を与える。このノックバックは斧から弾かれる形で左右に吹き飛ぶ。")
+                .variable(1, PhysicalDamage, 70, 35, bounusAD(0.5))
+                .variable(2, Knockback, 0)
+                .variable(3, MSSlowRatio, 20, 5)
+                .mana(70)
+                .cd(18, -1)
+                .range(1050);
+
+        R.update(P514)
+                .active("指定方向に地面を這う貫通する斧を投げ、当たった敵ユニットに{1}を与える。ダメージは敵に当たるごとに8%ずつ減り、最大で40%まで低下する。行きと帰りそれぞれに攻撃判定があり、斧が飛んでいる最中に再度このスキルを使用するか、敵チャンピオンに命中した時点で斧が反転して自身の元に戻ってくる。反転した際、低下ダメージはリセットされる。また移動中の斧は{2}。")
+                .variable(1, PhysicalDamage, 175, 100, bounusAD(1.1))
+                .variable(2, Visionable)
+                .mana(120)
+                .cd(110, -10)
+                .range(-1);
     }
 
     /**
