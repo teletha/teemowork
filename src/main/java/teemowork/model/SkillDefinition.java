@@ -2340,30 +2340,31 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Kennen(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("スキルヒット時対象に雷スタックを追加する。スタックが3つ溜まると対象を{1}させ、{2}する。スタックは8秒間増加がないと0になる。同一の敵チャンピオンを7秒以内に2度スタンさせると、{3}を与える。")
-                .variable(1, Stun, 1)
+        P.update(P514)
+                .passive("スキルヒット時対象に雷スタックを追加する。スタックが3つ溜まると対象を{1}させ、{2}する。スタックは6秒間増加がないと0になる。同一の敵チャンピオンを7秒以内に2度スタンさせると、{3}を与える。")
+                .variable(1, Stun, 1.25)
                 .variable(2, RestoreEnergy, 25)
                 .variable(3, Stun, 0.5);
-        P.update(P309)
-                .passive("スキルヒット時対象に雷スタックを追加する。スタックが3つ溜まると対象を{1}させ、{2}する。スタックは6秒間増加がないと0になる。同一の敵チャンピオンを7秒以内に2度スタンさせると、{3}を与える。");
-        Q.update()
+
+        Q.update(P514)
                 .active("指定方向に手裏剣を飛ばし、当たった敵ユニットに{1}と雷スタックを与える。")
                 .variable(1, MagicDamage, 75, 40, ap(0.75))
                 .cd(8, -1)
-                .range(900)
+                .range(1050)
                 .cost(Energy, 65, -5);
-        W.update()
-                .passive("5回毎の通常攻撃時に追加{1}と雷スタックを与える効果を追加する。")
+
+        W.update(P514)
+                .passive("通常攻撃5回毎に{1}と雷スタックを与える。")
                 .variable(1, MagicDamage, 0, 0, ad(0.4))
                 .active("{3}の雷スタックの付与されている敵ユニットに{2}と雷スタックを与える。")
                 .variable(3, Radius, 800)
                 .variable(2, MagicDamage, 65, 30, ap(0.55))
                 .cd(14, -2)
                 .cost(Energy, 45, 0);
-        E.update()
-                .active("2.5秒間{1}し、{6}を得る。この間は通常攻撃が不可能になり、Kennenに触れた敵ユニットに{2}と雷スタックを与え、一度だけ{3}する。また、このスキルを使用すると4秒間{4}と{5}を得る。Minionに与えるダメージは半分。")
-                .variable(1, MS, 230)
+
+        E.update(P514)
+                .active("2秒間{1}し{6}を得る。この間は通常攻撃が不可能になり、Kennenに触れた敵ユニットに{2}と雷スタックを与え、一度だけ{3}する。また、4秒間{4}と{5}を得る。ミニオンやモンスターに与えるダメージは半分になる。")
+                .variable(1, MSRatio, 100)
                 .variable(2, MagicDamage, 85, 40, ap(0.6))
                 .variable(3, RestoreEnergy, 40)
                 .variable(4, AR, 10, 10)
@@ -2371,10 +2372,10 @@ public interface SkillDefinition {
                 .variable(6, IgnoreUnitCollision)
                 .cd(10, -1)
                 .cost(Energy, 100, -5);
-        R.update()
-                .active("{1}に嵐を発生させ、{4}間{2}毎に範囲内にいる敵チャンピオン一人をランダムに雷を落とし{3}と雷スタックを与える。同一の対象には3回までヒットし、最大DMは{5}。また、範囲内に複数の対象がいる場合、同一の対象に連続してはヒットしない。雷スタックはヒットする毎に蓄積する。")
+
+        R.update(P514)
+                .active("{1}に嵐を発生させ、{4}間0.25秒毎に範囲内にいる敵チャンピオン一人をランダムに雷を落とし{3}と雷スタックを与える。同一の対象には3回までヒットし、最大" + Damage + "は{5}。また、範囲内に複数の対象がいる場合、同一の対象に連続してはヒットしない。雷スタックはヒットする毎に蓄積する。")
                 .variable(1, Radius, 550)
-                .variable(2, Time, new Fixed(new double[] {0.5, 0.4, 0.33}))
                 .variable(3, MagicDamage, 80, 65, ap(0.4))
                 .variable(4, Time, 3, 1)
                 .variable(5, MagicDamage, 240, 195, ap(1.2))
