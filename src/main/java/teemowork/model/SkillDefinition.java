@@ -1319,44 +1319,46 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Fizz(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("{2}を得て、{1}する。この軽減は防御力計算より先に行われる。")
+        P.update(P514)
+                .passive("{2}を得て、{1}する。この軽減は防御力計算後に行われる。")
                 .variable(1, AttackDamageReduction, new Per3Level(4, 2))
                 .variable(2, IgnoreUnitCollision);
-        Q.update()
-                .active("対象の敵ユニットに追加{1}が付与された通常攻撃を与え、その方向に駆け抜ける。移動距離は固定。{2}。")
-                .variable(1, MagicDamage, 10, 30, ap(0.6))
+
+        Q.update(P514)
+                .active("対象の敵ユニットに{1}が付与された通常攻撃を与え、その方向に駆け抜ける。移動距離は固定。{2}。")
+                .variable(1, MagicDamage, 10, 15, ap(0.3))
                 .variable(2, OnHitEffect)
                 .mana(50, 5)
                 .cd(10, -1)
                 .range(550);
-        W.update()
+
+        W.update(P514)
                 .passive("通常攻撃に{1}が付与される。このダメージは0.5秒毎に3秒間かけて与えられる。(Minionに対しては300DMが上限)")
-                .variable(1, MagicDamage, 30, 10, ap(0.35), amplify(TargetMissingHealthRatio, 4, 1))
-                .active("5秒間通常攻撃に{2}と{3}を付与する。このダメージはPassiveと重複する。")
-                .variable(2, MagicDamage, 10, 5, ap(0.35))
-                .variable(3, Wounds, 3)
+                .variable(1, MagicDamage, 20, 10, ap(0.45), amplify(TargetMissingHealthRatio, 4, 1))
+                .active("6秒間通常攻撃に{2}を付与する。")
+                .variable(2, MagicDamage, 10, 10, ap(0.25))
                 .mana(40)
                 .cd(10);
-        W.update(P313).variable(2, MagicDamage, 10, 5, ap(0.15));
-        E.update()
+
+        E.update(P514)
                 .active("指定地点にジャンプする。ジャンプ中はターゲットされない状態になる。0.75秒後にその場に降下し、{1}の敵ユニットに{2}と2秒間{3}を与える。また、ジャンプ中に再使用することで降下する場所を別の指定地点に変更しできる。その場合、{4}の敵ユニットに{5}を与える。")
-                .variable(1, Radius, 250)
+                .variable(1, Radius, 330)
                 .variable(2, MagicDamage, 70, 50, ap(0.75))
                 .variable(3, MSSlowRatio, 40, 5)
-                .variable(4, Radius, 150)
+                .variable(4, Radius, 270)
                 .variable(5, MagicDamage, 70, 50, ap(0.75))
                 .mana(90, 10)
                 .cd(16, -2)
                 .range(400);
-        R.update()
+
+        R.update(P514)
                 .active("指定地点に敵チャンピオンのみに命中する魚を投げ、命中した敵チャンピオンに魚がくっつき、{1}を与える。その1.5秒後に地面から鮫が現れ、魚が命中した対象を襲い、対象とその周囲({2})の敵ユニットに{3}を与え、{4}後に1.5秒間{5}を与える。魚がくっついていた敵チャンピオン以外のユニットには{4}の代わりに{6}を与える。魚がチャンピオンに当たらなかった場合は指定地点に魚が残り、その地点に鮫が現れる。また魚は視界を確保し、その上を敵チャンピオンが通り過ぎると、当たった場合と同様にその敵チャンピオンにくっつき、鮫が襲いかかる。")
                 .variable(1, MSSlowRatio, 50, 10)
                 .variable(2, Radius, 250)
                 .variable(3, MagicDamage, 200, 125, ap(1))
-                .variable(4, Knockup, 0)
+                .variable(4, Knockup)
                 .variable(5, MSSlowRatio, 50, 10)
-                .variable(6, Knockback, 0)
+                .variable(6, Knockback)
                 .mana(100)
                 .cd(100, -15)
                 .range(1275);
