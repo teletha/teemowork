@@ -130,10 +130,9 @@ public interface SkillDefinition {
                 .range(550);
 
         E.update(P514)
-                .active("指定方向に投げキッスを放ち、当たった敵ユニットに{1}と{2}を与え自分の方向に移動させる。また" + Status.Charm + "した対象には{3}を与える。")
+                .active("指定方向に投げキッスを放ち、当たった敵ユニットに{1}と{2}を与え自分の方向に移動させる。")
                 .variable(1, MagicDamage, 60, 35, ap(0.5))
                 .variable(2, Charm, 1, 0.25)
-                .variable(3, MSSlowRatio, 50)
                 .cd(12)
                 .mana(85)
                 .range(975);
@@ -152,59 +151,43 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Akali(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("{1}を得る。また通常攻撃に{2}が付与される。")
                 .variable(1, SV, 6, 0, bounusAD(0.167))
                 .variable(2, MagicDamage, 0, 0, amplify(AD, 0.06, 0, ap(0.00167)));
-        Q.update()
-                .active("対象の敵ユニットにカマを投げつけ{1}と6秒間マークを与える。マークが付いた対象に通常攻撃またはCrescent Slashでダメージを与えたとき、マークを消費して{2}を与え、{3}する。")
-                .variable(1, MagicDamage, 45, 25, ap(0.4))
-                .variable(2, MagicDamage, 45, 25, ap(0.4))
+
+        Q.update(P514)
+                .active("対象の敵ユニットにカマを投げつけ{1}と6秒間マークを与える。マークが付いた対象に通常攻撃でダメージを与えたとき、マークを消費して{1}を与え、{3}する。")
+                .variable(1, MagicDamage, 35, 20, ap(0.4))
                 .variable(3, RestoreEnergy, 20, 5)
                 .cd(6, -0.5)
                 .cost(Energy, 60, 0)
-                .range(600)
-                .update(P3051)
-                .variable(1, MagicDamage, 35, 20, ap(0.4))
-                .variable(2, MagicDamage, 45, 25, ap(0.5))
-                .update(P506)
-                .active("対象の敵ユニットにカマを投げつけ{1}と6秒間マークを与える。マークが付いた対象に通常攻撃でダメージを与えたとき、マークを消費して{2}を与え、{3}する。");
-        W.update()
-                .active("指定地点に8秒間煙を発生させ{1}のユニットに以下の効果を与える。Akaliは{2}と{3}、{5}を得る。敵ユニットには{4}を与える。")
-                .variable(1, Radius, 300)
-                .variable(2, AR, 10, 10)
-                .variable(3, MR, 10, 10)
-                .variable(4, MSSlowRatio, 14, 4)
-                .variable(5, Stealth)
-                .cd(20)
-                .cost(Energy, 80, -5)
-                .range(700)
-                .update(P307)
-                .active("指定地点に8秒間煙を発生させ{1}のユニットに以下の効果を与えて{5}。Akaliは{2}と{3}、{5}を得る。敵ユニットには{4}を与える。")
-                .variable(5, Visionable)
-                .update(P506)
+                .range(600);
+
+        W.update(P514)
                 .active("指定地点に8秒間煙を発生させ{1}のユニットに以下の効果を与える。自身は{2}と{3}を得て、敵ユニットには{4}を与える。ステルスはスキル使用または通常攻撃時に解除され、再度ステルス化するのに0.65秒かかる。")
                 .variable(1, Radius, 400)
                 .variable(2, Stealth)
-                .variable(3, MSRatio, 20, 20);
-        E.update()
+                .variable(3, MSRatio, 20, 20)
+                .variable(4, MSSlowRatio, 14, 4)
+                .variable(5, Visionable)
+                .cd(20)
+                .cost(Energy, 80, -5)
+                .range(700);
+
+        E.update(P514)
                 .active("{2}の敵ユニットに{1}を与える。")
-                .variable(1, PhysicalDamage, 30, 25, ap(0.3), ad(0.6))
-                .variable(2, Radius, 325, 0)
-                .cd(7, -1)
+                .variable(1, PhysicalDamage, 30, 25, ap(0.4), ad(0.6))
+                .variable(2, Radius, 325)
+                .cd(5, -1)
                 .cost(Energy, 60, -5);
-        R.update()
-                .active("対象の敵ユニットまで高速で移動し{1}を与える。使用時にチャージを消費する。チャージは{2}毎に又は敵チャンピオンキル/アシストで増加し最大で3つまでチャージされる。チャージ増加時間はCD低減の影響を受ける。")
+
+        R.update(P514)
+                .active("対象の敵ユニットを通過して後方200の位置に移動し（" + Q + "のマークが付いている場合は後方100の位置）{1}を与える。使用時にチャージを消費する。チャージは{2}毎に又は敵チャンピオンを{3}で増加し最大で3つまでチャージされる。")
                 .variable(1, MagicDamage, 100, 75, ap(0.5))
-                .variable(2, CDRAwareTime, 25, -5)
-                .cd(2, -0.5)
-                .cost(Charge, 1, 0)
-                .range(800)
-                .update(P3051)
-                .variable(2, CDRAwareTime, 35, -10)
-                .update(P307)
                 .variable(2, CDRAwareTime, 30, -7.5)
-                .update(P506)
+                .variable(3, Takedown)
+                .cd(2, -0.5)
                 .range(700);
     }
 
