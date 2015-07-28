@@ -2039,47 +2039,45 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Jinx(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P312).passive("攻撃した敵チャンピオンまたはタワーが3秒以内に死亡/破壊された場合、4秒間{1}する。移動速度は4秒かけて元に戻る。").variable(-1, MSRatio, 175);
-        Q.update(P312)
-                .passive("通常攻撃毎に{1}する。この効果は2.5秒間持続し、3回までスタックし、最大で{5}。攻撃を行わないと、スタックは2.5秒毎に1つずつ減少していく。このスキルを使用するとスタックによる攻撃速度増加は無効になる。")
-                .variable(-1, ASRatio, 16.6, 6.7)
-                .variable(-5, ASRatio, 50, 20)
-                .active("通常攻撃は{2}し{4}が付与され、対象の{3}にいる敵にも同様のダメージを与えるようになる。")
-                .variable(2, Range, 50, 20)
-                .variable(3, Radius, 150)
+        P.update(P514).passive("攻撃した敵チャンピオンまたはタワーが3秒以内に死亡/破壊された場合、4秒間{1}する。移動速度は4秒かけて減衰する。").variable(-1, MSRatio, 175);
+
+        Q.update(P514)
+                .passive("通常攻撃毎にスタックが貯まる。スタック2.5秒持続して最大3スタックで{1}し、また{2}する。" + AS + "の増加量はスタック1で5割、スタック2で7割5分、スタック3で10割となる。攻撃を行わないと、2.5秒毎に1つずつ減少していく。このスキルを使用するとスタックによる攻撃速度増加は無効になる。")
+                .variable(-1, ASRatio, 30, 10)
+                .variable(-2, ASRatio, new Per1Level(0, 2, 4, 6, 8, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70))
+                .active("通常攻撃は{3}し{4}が付与され、対象の{5}にいる敵にも同様のダメージを与えるようになる。")
+                .variable(3, Range, 75, 25)
                 .variable(4, PhysicalDamage, 0, 0, ad(0.1))
+                .variable(5, Radius, 150)
                 .mana(20)
-                .cd(1)
+                .cd(0.9)
                 .type(SkillType.ToggleForAttack);
-        Q.update(P313).variable(-1, ASRatio, 10, 8.3).variable(-2, ASRatio, 30, 130);
-        W.update(P312)
-                .active("約0.6秒詠唱後、指定方向に電撃を放ち、当たった敵ユニットに{1}と2秒間{2}を与え、2秒間そのユニットの{3}。")
-                .variable(1, PhysicalDamage, 30, 45, ad(1.4))
+
+        W.update(P514)
+                .active("0.6秒詠唱後、指定方向に電撃を放ち、当たった敵ユニットに{1}と2秒間{2}を与え、2秒間そのユニットの{3}。")
+                .variable(1, PhysicalDamage, 10, 50, ad(1.4))
                 .variable(2, MSSlowRatio, 30, 10)
                 .variable(3, Visionable)
-                .mana(45, 10)
+                .mana(50, 10)
                 .cd(10, -1)
-                .range(1450);
-        W.update(P313).variable(1, PhysicalDamage, 10, 50, ad(1.4)).mana(50, 10);
-        E.update(P312)
+                .range(1500);
+
+        E.update(P514)
                 .active("指定地点に3つの罠を仕掛ける。敵チャンピオンが罠に触れると爆発し、{1}にいる敵ユニットに1.5秒かけて{2}を与え、更に罠に触れた敵チャンピオンに{3}を与える。罠は設置から{6}経過しないと反応せず、ひとつづつしか反応しない。一人のチャンピオンが３つ全ての罠にかかった場合は{5}を与える。罠は5秒経過すると自動的に爆発する。また罠は{4}。")
                 .variable(1, Radius, 50)
-                .variable(2, MagicDamage, 100, 50, ap(1))
+                .variable(2, MagicDamage, 80, 55, ap(1))
                 .variable(3, Snare, 1.5)
                 .variable(4, Visionable)
-                .variable(5, MagicDamage, 300, 150, ap(3))
-                .variable(6, Time, 0.5, 0.06)
+                .variable(5, MagicDamage, 240, 165, ap(3))
+                .variable(6, Time, 0.7)
                 .mana(50)
                 .cd(24, -2)
-                .range(950)
-                .update(P401)
-                .variable(2, MagicDamage, 80, 55, ap(1))
-                .variable(5, MagicDamage, 240, 165, ap(3))
-                .variable(6, Time, 0.7);
-        R.update(P312)
-                .active("指定方向にロケットを放つ。ロケットが敵チャンピオンに命中すると爆発し、{1}の敵ユニットに{2}を与える。ロケットが発射から当たるまでの時間に比例してダメージが増加する(1秒で最大値になり{3}を与える、またミニオンに対しては300DMが上限)。ロケットの爆風に当たった敵ユニットには80%のダメージを与える。")
+                .range(900);
+
+        R.update(P514)
+                .active("指定方向にロケットを放つ。ロケットが敵チャンピオンに命中すると爆発し、{1}の敵ユニットに{2}を与える。ロケットが発射から当たるまでの時間に比例してダメージが増加する(1秒で最大値になり{3}を与える、またミニオンに対しては300" + Damage + "が上限)。ロケットの爆風に当たった敵ユニットには80%のダメージを与える。")
                 .variable(1, Radius, 225)
-                .variable(2, PhysicalDamage, 125, 50, bounusAD(0.5), amplify(TargetMissingHealthRatio, 25, 5))
+                .variable(2, PhysicalDamage, 25, 10, bounusAD(0.1), amplify(TargetMissingHealthRatio, 25, 5))
                 .variable(3, PhysicalDamage, 250, 100, bounusAD(1), amplify(TargetMissingHealthRatio, 25, 5))
                 .mana(100)
                 .cd(90, -15)
