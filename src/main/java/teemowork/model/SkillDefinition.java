@@ -1239,51 +1239,39 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void FiddleSticks(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("{1}の敵ユニットに{2}を与える。").variable(1, Radius, 1000).variable(2, Status.MRReduction, 10);
+        P.update(P514).passive(MagicDamage + "を与えるか" + Q + "を使用した敵ユニットに2.5秒間{1}を与える。").variable(1, MRReduction, 10);
 
-        Q.update()
-                .active("対象の敵ユニットに{1}を与える。")
-                .variable(1, Fear, 1, 0.5)
-                .mana(65, 10)
-                .cd(15, -1)
-                .range(575)
-                .update(P315)
-                .variable(1, Fear, 1.25, 0.25)
-                .mana(65);
+        Q.update(P514).active("対象の敵ユニットに{1}を与える。").variable(1, Fear, 1.25, 0.25).mana(65).cd(15, -1).range(575);
 
-        W.update()
-                .active("対象の敵ユニットに最大5秒間毎秒{1}を与え、{2}する。敵が離れる({3})と詠唱が中断される。")
+        W.update(P514)
+                .active("対象の敵ユニットに5秒間毎秒{1}を与え、{2}する。敵が離れる({3})と詠唱が中断される。")
                 .variable(1, MagicDamage, 60, 30, ap(0.45))
                 .variable(2, RestoreHealth, 0, 0, amplify(DealtDamageRatio, 60, 5))
-                .variable(3, Radius, 750)
+                .variable(3, Radius, 650)
                 .mana(80, 10)
                 .cd(10, -1)
-                .range(475)
-                .type(SkillType.Channel)
-                .update(P403)
-                .range(575);
+                .range(575)
+                .type(SkillType.Channel);
 
-        E.update()
-                .active("対象の敵ユニットにカラスを飛ばし{1}と{2}を与える。カラスは{4}の敵ユニットに4回まで跳ね返りその度に効果を与える(最大5hit)。この跳ね返りは同一ユニットに何度も跳ね返る。ミニオンとモンスターに対しては{3}を与える。")
+        E.update(P514)
+                .active("対象の敵ユニットにカラスを飛ばし{1}と{2}を与える。カラスは{4}の敵ユニットに4回まで跳ね返り、同一対象にも跳ね返る。ミニオンとモンスターに対しては{3}を与える。")
                 .variable(1, MagicDamage, 65, 20, ap(0.45))
-                .variable(2, Silence, 1.2)
+                .variable(2, Silence, 1.25)
                 .variable(3, MagicDamage, 97.5, 30, ap(0.675))
                 .variable(4, Radius, 450)
                 .mana(50, 20)
                 .cd(15, -1)
                 .range(750);
 
-        R.update()
-                .active("1.5秒詠唱後に指定地点にテレポートし、{1}の敵ユニットに5秒間毎秒{2}を与える。最大DMは{3}となる。")
+        R.update(P514)
+                .active("1.5秒詠唱後に指定地点にテレポートし、{1}の敵ユニットに5秒間毎秒{2}を与える。最大ダメージは{3}。")
                 .variable(1, Radius, 600)
                 .variable(2, MagicDamage, 125, 100, ap(0.45))
                 .variable(3, MagicDamage, 625, 500, ap(2.25))
-                .mana(150, 50)
+                .mana(100)
                 .cd(150, -10)
                 .range(800)
-                .type(SkillType.Channel)
-                .update(P315)
-                .mana(100);
+                .type(SkillType.Channel);
     }
 
     /**
