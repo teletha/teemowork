@@ -2222,52 +2222,43 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Kassadin(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("自身が受ける{1}して、4秒間軽減した分のダメージを攻撃速度(%)に加算する。").variable(1, MagicDamageReductionRatio, 15);
+        P.update(P514)
+                .passive("{1}を得て、{2}する。")
+                .variable(1, IgnoreUnitCollision)
+                .variable(2, MagicDamageReductionRatio, 15);
 
-        Q.update()
-                .active("対象の敵ユニットに{1}と{2}を与える。")
-                .variable(1, MagicDamage, 80, 50, ap(0.7))
-                .variable(2, Silence, 1, 0.4)
-                .mana(70, 10)
-                .cd(9)
-                .range(650)
-                .update(P313)
-                .variable(1, MagicDamage, 80, 35, ap(0.7))
-                .variable(2, Silence, 1.5, 0.25)
+        Q.update(P514)
+                .active("対象の敵ユニットに{1}を与え、詠唱及びチャネリングを解除する。1.5秒間{2}を得る。")
+                .variable(1, MagicDamage, 70, 25, ap(0.7))
+                .variable(2, MagicShield, 40, 30, ap(0.3))
                 .mana(70, 5)
-                .update(P403)
-                .variable(1, MagicDamage, 80, 30, ap(0.7))
-                .variable(2, Silence, 1, 0.25);
+                .cd(9)
+                .range(650);
 
-        W.update()
-                .passive("通常攻撃ごとに{1}する。対象がチャンピオンの場合は{2}する。")
-                .variable(1, RestoreMana, 8, 3)
-                .variable(2, RestoreMana, 16, 6)
-                .active("5秒間、通常攻撃に追加{3}が付与される。建物には無効。")
-                .variable(3, MagicDamage, 30, 15, ap(0.3))
-                .mana(25)
-                .cd(12);
+        W.update(P514)
+                .passive("通常攻撃に{1}を付与する。建物には無効。")
+                .variable(1, MagicDamage, 20, 0, ap(0.1))
+                .active("次の通常攻撃は射程が50伸び、{2}を与え{3}する。対象がチャンピオンの場合は回復量が5倍になる。建物には無効。")
+                .variable(2, MagicDamage, 40, 25, ap(0.6))
+                .variable(3, RestoreMana, 0, 0, amplify(MissingManaRatio, 4, 1))
+                .cd(9);
 
-        E.update()
-                .active("指定方向扇形80°の{1}の敵ユニットに{2}と3秒間{3}を与える。近くのチャンピオン(敵味方自分問わず)がスキルを使用するとスタックが増え、6スタックまで溜まると使用可能。スキル使用時にスタックは0になる。")
+        E.update(P514)
+                .active("指定方向扇形80°の{1}の敵ユニットに{2}と1秒間{3}を与える。近くのチャンピオン(敵味方自分問わず)がスキルを使用するとスタックが増え、6スタックまで溜まると使用可能。スキル使用時にスタックは0になる。")
                 .variable(1, Radius, 700)
-                .variable(2, MagicDamage, 80, 50, ap(0.7))
-                .variable(3, MSSlowRatio, 30, 5)
+                .variable(2, MagicDamage, 80, 25, ap(0.7))
+                .variable(3, MSSlowRatio, 50, 10)
                 .mana(80)
-                .cd(6)
-                .update(P403)
-                .variable(2, MagicDamage, 80, 40, ap(0.7));
+                .cd(6);
 
-        R.update()
-                .active("指定地点にテレポートし、テレポート先の{1}の敵ユニットに{2}を与える。スキル使用時にスタックが増加し、1スタックごとに消費MNと魔法DMが増加していく。(最大10スタック)スタックは8秒間増加がないと0になる。")
+        R.update(P514)
+                .active("指定地点にテレポートし、テレポート先の{1}の敵ユニットに{2}を与える。スキル使用時にスタックが増加し、1スタックごとに追加で{3}を与え、マナコストが倍増する(最大4スタック)。スタックは15秒間増加がないと0になる。")
                 .variable(1, Radius, 150)
-                .variable(2, MagicDamage, 60, 10, ap(0.8), amplify(Stack, 60, 10))
-                .cost(Mana, new Diff(100, 0, 1), amplify(Stack, 100))
-                .cd(7, -1)
-                .range(700)
-                .update(P313)
-                .active("指定地点にテレポートし、テレポート先の{1}の敵ユニットに{2}を与える。スキル使用時にスタックが増加し、1スタックごとに消費マナと魔法DMが増加していく。(最大10スタック)スタックは8秒間増加がないと0になる。敵チャンピオンにダメージを与えると使用時のマナの半分が回復する。")
-                .variable(2, MagicDamage, 80, 20, ap(0.8), amplify(Stack, 50, 5, ap(0.1)));
+                .variable(2, MagicDamage, 80, 20, amplify(Mana, 0.02), amplify(Stack, 50, 5, ap(0.1)))
+                .variable(3, MagicDamage, 40, 10, amplify(Mana, 0.01))
+                .mana(50)
+                .cd(6, -2)
+                .range(500);
     }
 
     /**
