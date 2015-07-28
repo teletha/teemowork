@@ -1199,30 +1199,34 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Ezreal(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("ユニット(敵味方問わず)にスキルを当てる度に5秒間{1}する。この効果は5回分までスタックする。").variable(-1, ASRatio, 10);
-        Q.update()
-                .active("指定方向に魔法の矢を飛ばし、当たった敵ユニットに{1}を与える。このスキルが命中すると、Ezrealのすべてのスキルの{2}。{3}")
-                .variable(1, PhysicalDamage, 35, 20, ap(0.2), ad(1))
+        P.update(P514).passive("ユニット(敵味方問わず)にスキルを当てる度に6秒間{1}する。この効果は5回まで累積する。").variable(-1, ASRatio, 10);
+
+        Q.update(P514)
+                .active("指定方向に魔法の矢を飛ばし、当たった敵ユニットに{1}を与える。このスキルが命中すると、全てのスキルの{2}。{3}")
+                .variable(1, PhysicalDamage, 35, 20, ap(0.4), ad(1.1))
                 .variable(2, CDDecrease, 1)
                 .variable(3, OnHitEffect)
                 .mana(28, 3)
                 .cd(6, -0.5)
                 .range(1150);
-        W.update()
-                .active("指定方向にチャンピオンにのみ当たる貫通するエネルギーを飛ばし、当たった味方チャンピオンには5秒間{1}し、敵チャンピオンには{2}を与える。")
+
+        W.update(P514)
+                .active("指定方向にチャンピオンにのみ当たる貫通するエネルギーを飛ばし、当たった味方チャンピオンは5秒間{1}し、敵チャンピオンには{2}を与える。")
                 .variable(1, ASRatio, 20, 5)
                 .variable(2, MagicDamage, 70, 45, ap(0.8))
                 .mana(50, 10)
                 .cd(9)
                 .range(1000);
-        E.update()
+
+        E.update(P514)
                 .active("指定地点にテレポートし、テレポート先から一番近い敵ユニット({1})1体に{2}を与える。")
                 .variable(1, Radius, 750)
                 .variable(2, MagicDamage, 75, 50, ap(0.75))
                 .mana(90)
                 .cd(19, -2)
                 .range(475);
-        R.update()
+
+        R.update(P514)
                 .active("1秒詠唱後、指定方向に射程無限の貫通する魔法の矢を飛ばし当たった敵ユニットに{1}を与える。ダメージは敵に当たるごとに10%ずつ減り、最大で30%まで低下する。また飛行中の矢は{2}。")
                 .variable(1, MagicDamage, 350, 150, ap(0.9), bounusAD(1))
                 .variable(2, Visionable)
