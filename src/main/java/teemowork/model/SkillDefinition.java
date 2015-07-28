@@ -2265,38 +2265,37 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Katarina(Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("敵チャンピオンキル/アシスト時に、すべてのスキルの{1}する。").variable(1, CDDecrease, 15);
-        Q.update()
-                .active("対象の敵ユニットにナイフを飛ばし{1}と４秒間Debuffを与える。ナイフは近くの敵ユニット({2})に4回まで跳ね返り、その度にダメージとDebuffを与える。ナイフが与えるダメージは跳ね返る度に10%低下する。Debuffが付与された敵ユニットにKatarinaが通常攻撃またはスキルでダメージを与えると、付与されたDebuffを消費して{3}を与える。")
-                .variable(1, MagicDamage, 60, 25, ap(0.15))
+        P.update(P514).passive(Damage + "を与えてから3秒以内に敵チャンピオンが死亡すると、全てのスキルの{1}する。").variable(1, CDDecrease, 15);
+
+        Q.update(P514)
+                .active("対象の敵ユニットにナイフを飛ばし{1}と４秒間Debuffを与える。ナイフは近くの敵ユニット({2})に4回まで跳ね返り、その度にダメージとDebuffを与える。ナイフが与えるダメージは跳ね返る度に10%低下する。Debuffが付与された敵ユニットに通常攻撃またはスキルでダメージを与えると、付与されたDebuffを消費して{3}を与える。")
+                .variable(1, MagicDamage, 60, 25, ap(0.45))
                 .variable(2, Radius, 400)
                 .variable(3, MagicDamage, 15, 15, ap(0.15))
                 .cd(10, -0.5)
                 .range(675);
-        W.update()
+
+        W.update(P514)
                 .active("{1}にいる敵ユニットに{2}を与える。このスキルが敵チャンピオンに命中した場合、1秒間{3}する。")
-                .variable(2, MagicDamage, 40, 35, ap(0.25))
                 .variable(1, Radius, 375)
+                .variable(2, MagicDamage, 40, 35, ap(0.25), bounusAD(0.6))
                 .variable(3, MSRatio, 15, 5)
                 .cd(4);
-        E.update()
-                .active("対象のユニットの後方までワープし、それが敵ユニットの場合は{1}を与える。またこのスキル使用後、Katarinaが受ける{2}する。この効果は1.5秒間持続する。")
-                .variable(1, MagicDamage, 60, 25, ap(0.5))
+
+        E.update(P514)
+                .active("対象のユニットの後方までワープし、それが敵ユニットの場合は{1}を与える。また1.5秒間{2}する。")
+                .variable(1, MagicDamage, 40, 30, ap(0.25))
                 .variable(2, DamageReductionRatio, 15)
                 .cd(12, -1.5)
                 .range(700);
-        R.update()
-                .active("最大2秒間回転する。その間は0.2秒毎に{2}にいる最も近い敵チャンピオン3体にナイフを連続で飛ばし、都度{1}と3秒間HP回復量-50%を与える。敵一体に与える最大DMは{3}。")
-                .variable(1, MagicDamage, 40, 10, ap(0.2), bounusAD(0.3))
-                .variable(2, Radius, 550)
-                .variable(3, MagicDamage, 400, 100, ap(2), bounusAD(3))
-                .cd(60, -5)
-                .type(SkillType.Channel);
-        R.update(P312)
+
+        R.update(P514)
                 .active("最大2.5秒間回転する。その間は0.25秒毎に{2}にいる最も近い敵チャンピオン3体にナイフを連続で飛ばし、都度{1}と3秒間HP回復量-50%を与える。敵一体に与える最大DMは{3}。")
-                .variable(1, MagicDamage, 40, 17.5, ap(0.25), bounusAD(0.375))
-                .variable(3, MagicDamage, 400, 175, ap(2.5), bounusAD(3.75))
-                .cd(60, -7.5);
+                .variable(1, MagicDamage, 35, 20, ap(0.25), bounusAD(0.375))
+                .variable(2, Radius, 550)
+                .variable(3, MagicDamage, 350, 200, ap(2.5), bounusAD(3.75))
+                .cd(90, -30)
+                .type(SkillType.Channel);
     }
 
     /**
