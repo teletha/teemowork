@@ -10,6 +10,7 @@
 package teemowork.model;
 
 import static teemowork.model.Status.*;
+
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
 import teemowork.model.variable.VariableResolver.Diff;
@@ -92,6 +93,18 @@ public abstract class Describable<T extends Descriptor> {
 
         // API definition
         return descriptor;
+    }
+
+    /**
+     * <p>
+     * Create skill AP amplifier. This pattern is used frequently.
+     * </p>
+     * 
+     * @param rate An AP rate.
+     * @return
+     */
+    protected static final Variable level(double rate) {
+        return amplify(Lv, rate);
     }
 
     /**

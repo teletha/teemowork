@@ -228,6 +228,13 @@ public abstract class VariableResolver {
         public Per5Level3Times(double base, double diff) {
             super(new int[] {1, 6, 11}, base, diff);
         }
+
+        /**
+         * @param values
+         */
+        public Per5Level3Times(double... values) {
+            super(new int[] {1, 6, 11}, values);
+        }
     }
 
     /**

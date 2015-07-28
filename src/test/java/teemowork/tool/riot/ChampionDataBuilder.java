@@ -84,9 +84,8 @@ public class ChampionDataBuilder {
                 return array(new String[] {skills.get(0), skills.get(1), skills.get(2), skills.get(3), skills.get(4)});
             }
         }
-
         // If this exception will be thrown, it is bug of this program. So we must rethrow the
         // wrapped error in here.
-        throw new Error();
+        throw new Error(skills.toString());
     }
 }
