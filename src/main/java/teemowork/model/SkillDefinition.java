@@ -3169,42 +3169,40 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Nasus(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("{1}を得る。").variable(1, LS, new Per6Level(14, 3));
-        P.update(P314).variable(1, LS, new Per6Level(10, 5));
-        Q.update()
-                .active("次に行う通常攻撃に{1}を付与する。このスキルを使用しLHをとると増加ダメージが+3されていく。対象が敵チャンピオン/SiegeまたはSuperMinion/Buffを持った中立クリープの場合、増加値は2倍(+6)になる。")
+        P.update(P514).passive("{1}を得る。").variable(1, LS, new Per6Level(10, 5));
+
+        Q.update(P514)
+                .active("次に行う通常攻撃に{1}を付与する。このスキルを使用しLHをとると増加ダメージが+3されていく。対象が敵チャンピオン/SiegeまたはSuperMinion/Buffを持った中立クリープの場合、増加値は+6になる。")
                 .variable(1, PhysicalDamage, 30, 20, amplify(Stack, 3))
-                .mana(20, 5)
+                .mana(20)
                 .cd(8, -1);
-        W.update()
+
+        W.update(P514)
                 .active("対象の敵チャンピオンに5秒間{1}と{2}を与える。")
-                .variable(1, ASSlowRatio, 35, 0, amplify(Duration, 3, 3))
+                .variable(1, ASSlowRatio, 17.5, 0, amplify(Duration, 1.5, 1.5))
                 .variable(2, MSSlowRatio, 35, 0, amplify(Duration, 3, 3))
                 .mana(80)
                 .cd(15, -1)
-                .range(700)
-                .update(P401)
                 .range(600);
-        W.update(P306).variable(1, ASSlowRatio, 17.5, 0, amplify(Duration, 1.5, 1.5));
-        E.update()
+
+        E.update(P514)
                 .active("指定地点に魔法陣を呼び出し{1}の敵ユニットに{2}を与える。魔方陣は5秒間持続し、上にいる敵ユニットに{3}と毎秒{4}を与える。")
                 .variable(1, Radius, 400)
                 .variable(2, MagicDamage, 55, 40, ap(0.6))
-                .variable(3, Status.ARReduction, 20, 5)
+                .variable(3, ARReduction, 20, 5)
                 .variable(4, MagicDamage, 11, 8, ap(0.12))
                 .mana(70, 15)
                 .cd(12)
                 .range(650);
-        R.update()
-                .active("15秒間自身の周りに砂嵐を発生させ{1}増加し、周囲の敵ユニットに毎秒{2}を与える。また効果中は通常攻撃の{3}し、スキルの{4}し、このスキルで与えたダメージの5%を自身の攻撃力に加える。毎秒ダメージの上限は240、増加攻撃力の上限は300。")
+
+        R.update(P514)
+                .active("15秒間自身の周りに砂嵐を発生させ{1}を得て、{5}の敵ユニットに毎秒{2}を与える。また効果中は通常攻撃の{3}し、このスキルで与えたダメージの6.375%を自身の攻撃力に加える。毎秒ダメージの上限は240、増加攻撃力の上限は300。")
                 .variable(1, Health, 300, 150)
                 .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 3, 1, ap(0.01)))
                 .variable(3, Range, 50)
-                .variable(-4, Range, 100)
-                .mana(150)
-                .cd(120)
-                .update(P401)
-                .active("15秒間自身の周りに砂嵐を発生させ{1}増加し、周囲の敵ユニットに毎秒{2}を与える。また効果中は通常攻撃の{3}し、このスキルで与えたダメージの5%を自身の攻撃力に加える。毎秒ダメージの上限は240、増加攻撃力の上限は300。");
+                .variable(5, Radius, 350)
+                .mana(100)
+                .cd(120);
     }
 
     /**
