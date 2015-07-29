@@ -3523,33 +3523,36 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Pantheon(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("通常攻撃を行うかスキルを使用するたびにスタックが1増加(最大4スタック)し、4スタック時に40DM以上の通常攻撃を受けるとスタックを消費して通常攻撃のダメージを無効化する。");
-        Q.update()
+        P.update(P514)
+                .passive("通常攻撃を行うかスキルを使用するたびにスタックが1増加し、4スタック時に40" + Damage + "以上の通常攻撃またはタワーの攻撃を受けるとスタックを消費してダメージを無効化する。");
+
+        Q.update(P514)
                 .active("対象の敵ユニットに槍を投げ{1}を与える。")
                 .variable(1, PhysicalDamage, 65, 40, bounusAD(1.4))
                 .mana(45)
                 .cd(4)
                 .range(600);
-        W.update()
-                .active("対象の敵チャンピオンに飛びかかり{1}と{2}を与え、Aegis Protectionを発動する。")
+
+        W.update(P514)
+                .active("対象の敵ユニットに飛びかかり{1}と{2}を与え、" + P + "を発動する。")
                 .variable(1, MagicDamage, 50, 25, ap(1))
                 .variable(2, Stun, 1)
                 .mana(55)
                 .cd(13, -1)
-                .range(600)
-                .update(P315)
-                .active("対象の敵ユニットに飛びかかり{1}と{2}を与え、Aegis Protectionを発動する。");
-        E.update()
-                .passive("敵ユニットのHPが15%以下の時は通常攻撃が必ずクリティカルになり、またSpear Shotのダメージが1.5倍になる。")
-                .active("指定方向に0.75秒間槍を突き出し、範囲内の敵ユニットに{1}を最大3回与える(0.25秒毎に1ヒット)。対象がチャンピオンの場合、与えるダメージが{2}になる。")
+                .range(600);
+
+        E.update(P514)
+                .passive("敵ユニットのHPが15%以下の時は通常攻撃が必ずクリティカルになり、また" + Q + "のダメージが1.5倍になる。")
+                .active("指定方向に槍を突き出し、範囲内の敵ユニットに0.75秒間0.25秒毎に{1}を与える。対象がチャンピオンの場合、{2}を与える。")
                 .variable(1, PhysicalDamage, 13, 10, bounusAD(0.6))
                 .variable(2, PhysicalDamage, 26, 20, bounusAD(1.2))
                 .mana(45, 5)
                 .cd(10, -1)
-                .range(400)
+                .range(600)
                 .type(SkillType.Channel);
-        R.update()
-                .active("地点を指定して2秒後にジャンプし、その1.5秒後に指定地点の{1}に{2}と1秒間{3}を与えつつ落下する。DMは指定地点から離れるほど低減され、範囲最端では50%となる。ジャンプ前にキャンセルすると、消費した分のマナが回復し、このスキルのCDは10秒になる。")
+
+        R.update(P514)
+                .active("地点を指定して2秒後にジャンプし、その1.5秒後に指定地点の{1}に{2}と1秒間{3}を与えつつ落下する。" + Damage + "は指定地点から離れるほど低減され、範囲最端では50%となる。ジャンプ前にキャンセルすると、消費した分のマナが回復し、このスキルのCDは10秒になる。")
                 .variable(1, Radius, 1000)
                 .variable(2, MagicDamage, 400, 300, ap(1))
                 .variable(3, MSSlowRatio, 35)
