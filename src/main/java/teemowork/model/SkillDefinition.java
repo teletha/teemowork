@@ -2988,50 +2988,6 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
-    public static void Morgana(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("{1}を得る。").variable(1, SV, new Per6Level(10, 5));
-        Q.update()
-                .active("指定方向に魔法弾を飛ばし、当たった敵ユニットに{1}と{2}を与える。")
-                .variable(1, MagicDamage, 80, 55, ap(0.9))
-                .variable(2, Snare, 2, 0.25)
-                .mana(60, 15)
-                .cd(11)
-                .range(1300);
-        Q.update(P3051).mana(50, 10);
-        W.update()
-                .active("指定地点に5秒間持続する黒い沼({3})を発生させ、上にいる敵ユニットに毎秒{1}と{2}を与える。MR低下は2秒間持続し、5回までスタックする。")
-                .variable(1, MagicDamage, 25, 15, ap(0.2))
-                .variable(2, MRReduction, 4, 1)
-                .variable(3, Radius, 350)
-                .mana(70, 15)
-                .cd(10)
-                .range(900);
-        W.update(P313)
-                .active("指定地点に5秒間持続する黒い沼({3})を発生させ、上にいる敵ユニットに0.5秒毎に{1}を与える（最大で{2}）。対象が失っているHP1%につき、このスキルのダメージが0.5%上昇する(最大で1.5倍)。")
-                .variable(1, MagicDamage, 12, 7, ap(0.11))
-                .variable(2, MagicDamage, 120, 70, ap(1.1));
-        E.update()
-                .active("対象の味方チャンピオンは5秒間{1}と{2}を得る。")
-                .variable(1, MagicShield, 95, 65, ap(0.7))
-                .variable(2, IgnoreCC)
-                .mana(50)
-                .cd(23, -2)
-                .range(750);
-        R.update()
-                .active("周囲の敵チャンピオンに{1}と３秒間{2}を与え対象と糸で繋がれる。3秒間対象が糸の範囲内({3})に留まっていた場合、対象に{1}と{4}を与える。")
-                .variable(1, MagicDamage, 175, 75, ap(0.7))
-                .variable(2, MSSlowRatio, 20)
-                .variable(3, Radius, 1000)
-                .variable(4, Stun, 1.5)
-                .mana(100, 50)
-                .cd(120, -10)
-                .range(600);
-        R.update(P3051).mana(100);
-    }
-
-    /**
-     * Define skill.
-     */
     public static void MissFortune(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P514)
                 .passive("5秒間ダメージを受けないと{1}する。以後徐々に増加して8秒後に{2}する。ダメージを受けると解除される。")
@@ -3081,6 +3037,96 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
+    public static void Mordekaiser(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive("スキルで与えたダメージの17.5%(チャンピオンに対しては35%)をシールドに変換する(最大で{1})。1秒毎に3%ずつ低下していく。")
+                .variable(1, Shield, 90, 0, level(30));
+
+        Q.update(P514)
+                .active("次の通常攻撃は{1}し対象とその{2}の敵3体に{3}を与える。対象が1体だけの場合は{4}与える。")
+                .variable(1, Range, 75)
+                .variable(2, Radius, 600)
+                .variable(3, MagicDamage, 80, 30, ap(0.4), bounusAD(1))
+                .variable(4, MagicDamage, 132, 49.5, ap(0.66), bounusAD(1.65))
+                .cd(8, -1)
+                .cost(Health, 20, 5);
+
+        W.update(P514)
+                .active("対象の味方ユニットに6秒間持続するシールドを付与する。自身へ使用した場合、最も近くに居る味方チャンピオンにもその効果を与える。付与されたユニットは{1}と{2}を得て、{3}の敵ユニットに毎秒{4}を与える。また、付与されたユニット同士が近づくと{5}する。")
+                .variable(1, AR, 10, 5)
+                .variable(2, MR, 10, 5)
+                .variable(3, Radius, 250)
+                .variable(4, MagicDamage, 20, 12, ap(0.15))
+                .variable(5, MS, 60)
+                .cd(20, -2)
+                .range(750)
+                .cost(Health, 20, 5);
+
+        E.update(P514)
+                .active("指定方向扇形の{2}の敵ユニットに{1}を与える。")
+                .variable(1, MagicDamage, 70, 45, ap(0.6))
+                .variable(2, Radius)
+                .cd(6)
+                .range(700)
+                .cost(Health, 24, 12);
+
+        R.update(P514)
+                .active("対象の敵チャンピオンに{1}を与え、その後10秒間、毎秒{2}を与える。10秒間で総計{4}を与え、{3}する。効果中に対象が死ぬとThe Spiritを生成し30秒間従わせる。(RまたはALT押しながらクリックで任意の操作可能)<br>The Spirit<br>AD: 元になったChampのAD + MordekaiserのADの75%<br>AP: 元になったChampのAP + MordekaiserのAPの75%<br>HP: 元になったChampのHP + MordekaiserのHPの15%<br>行動範囲: 1125<br>また、The Spiritを従えている間、Mordekaiserは元になったChampのADとAPの20％を得る。")
+                .variable(1, MagicDamage, amplify(TargetMaxHealthRatio, 12, 2.5, ap(0.01)))
+                .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 1.2, 0.25, ap(0.002)))
+                .variable(3, RestoreHealth, amplify(DealtDamageRatio, 100))
+                .variable(4, MagicDamage, amplify(TargetMaxHealthRatio, 24, 5, ap(0.03)))
+                .cd(120, -15)
+                .range(850);
+    }
+
+    /**
+     * Define skill.
+     */
+    public static void Morgana(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update().passive("{1}を得る。").variable(1, SV, new Per6Level(10, 5));
+        Q.update()
+                .active("指定方向に魔法弾を飛ばし、当たった敵ユニットに{1}と{2}を与える。")
+                .variable(1, MagicDamage, 80, 55, ap(0.9))
+                .variable(2, Snare, 2, 0.25)
+                .mana(60, 15)
+                .cd(11)
+                .range(1300);
+        Q.update(P3051).mana(50, 10);
+        W.update()
+                .active("指定地点に5秒間持続する黒い沼({3})を発生させ、上にいる敵ユニットに毎秒{1}と{2}を与える。MR低下は2秒間持続し、5回までスタックする。")
+                .variable(1, MagicDamage, 25, 15, ap(0.2))
+                .variable(2, MRReduction, 4, 1)
+                .variable(3, Radius, 350)
+                .mana(70, 15)
+                .cd(10)
+                .range(900);
+        W.update(P313)
+                .active("指定地点に5秒間持続する黒い沼({3})を発生させ、上にいる敵ユニットに0.5秒毎に{1}を与える（最大で{2}）。対象が失っているHP1%につき、このスキルのダメージが0.5%上昇する(最大で1.5倍)。")
+                .variable(1, MagicDamage, 12, 7, ap(0.11))
+                .variable(2, MagicDamage, 120, 70, ap(1.1));
+        E.update()
+                .active("対象の味方チャンピオンは5秒間{1}と{2}を得る。")
+                .variable(1, MagicShield, 95, 65, ap(0.7))
+                .variable(2, IgnoreCC)
+                .mana(50)
+                .cd(23, -2)
+                .range(750);
+        R.update()
+                .active("周囲の敵チャンピオンに{1}と３秒間{2}を与え対象と糸で繋がれる。3秒間対象が糸の範囲内({3})に留まっていた場合、対象に{1}と{4}を与える。")
+                .variable(1, MagicDamage, 175, 75, ap(0.7))
+                .variable(2, MSSlowRatio, 20)
+                .variable(3, Radius, 1000)
+                .variable(4, Stun, 1.5)
+                .mana(100, 50)
+                .cd(120, -10)
+                .range(600);
+        R.update(P3051).mana(100);
+    }
+
+    /**
+     * Define skill.
+     */
     public static void MonkeyKing(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update()
                 .passive("Wukongの視界内{1}にいる敵チャンピオンの数に比例して、{2}と{3}を得る。")
@@ -3120,45 +3166,6 @@ public interface SkillDefinition {
                 .variable(6, MSRatio, 40)
                 .mana(100)
                 .cd(120, -15);
-    }
-
-    /**
-     * Define skill.
-     */
-    public static void Mordekaiser(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("スキルで与えたダメージの17.5%(チャンピオンに対しては35%)をシールドに変換して(最大で{1})受けたダメージはHPより先にシールドがくらってくれる。1秒毎に3%ずつ低下していく。")
-                .variable(1, Shield, 90, 0, level(30));
-        Q.update()
-                .active("次に行う通常攻撃が{1}になり、更に近くの敵ユニット3体({2})にもダメージを与える。対象が1体だけの場合は{3}与える。")
-                .variable(1, MagicDamage, 80, 30, ap(0.4), bounusAD(1))
-                .variable(2, Radius, 600)
-                .variable(3, MagicDamage, 132, 49.5, ap(0.66), bounusAD(1.65))
-                .cd(8, -1)
-                .cost(Health, 20, 5);
-        W.update()
-                .active("対象の味方ユニットに6秒間持続するシールドを付与する。付与されたユニットは{1}と{2}を得て、{3}の敵ユニットに毎秒{4}を与える。")
-                .variable(1, AR, 10, 5)
-                .variable(2, MR, 10, 5)
-                .variable(3, Radius, 250)
-                .variable(4, MagicDamage, 24, 12, ap(0.2))
-                .cd(20, -2)
-                .range(750)
-                .cost(Health, 26, 6);
-        E.update()
-                .active("指定方向扇形の範囲内の敵ユニットに{1}を与える。")
-                .variable(1, MagicDamage, 70, 45, ap(0.6))
-                .cd(6)
-                .range(700)
-                .cost(Health, 24, 12);
-        R.update()
-                .active("対象の敵チャンピオンに{1}を与え、その後10秒間、毎秒{2}を与える。10秒間で総計{4}を与え、{3}する。効果中に対象が死ぬとThe Spiritを生成し30秒間従わせる。(RまたはALT押しながらクリックで任意の操作可能)　The Spirit AD: 元になったChampのAD + MordekaiserのADの75%AP: 元になったChampのAP + MordekaiserのAPの75%HP: 元になったChampのHP + MordekaiserのHPの15%行動範囲: 1125 また、The Spiritを従えている間、Mordekaiserは元になったChampのADとAPの20％を得る。")
-                .variable(1, MagicDamage, amplify(TargetMaxHealthRatio, 12, 2.5, ap(0.02)))
-                .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 1.2, 0.25, ap(0.002)))
-                .variable(3, RestoreHealth, amplify(DealtDamageRatio, 100))
-                .variable(4, MagicDamage, amplify(TargetMaxHealthRatio, 24, 5, ap(0.04)))
-                .cd(120, -15)
-                .range(850);
     }
 
     /**
