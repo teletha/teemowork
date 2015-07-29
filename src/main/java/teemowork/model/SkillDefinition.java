@@ -3241,11 +3241,13 @@ public interface SkillDefinition {
                 .cd(10);
 
         R.update(P514)
-                .active("対象の敵チャンピオンに衝撃波を放ち、移動中の衝撃波に当たった敵ユニットに{1}と{2}を与える。衝撃波が対象の敵チャンピオンに当たると爆発し、対象とその周囲にいる敵ユニットに{3}と{2}を与える。対象の敵チャンピオンには{2}と同時に{4}を与える。")
+                .active("敵のチャンピオン1体を追尾する衝撃波を発射し、追尾中に巻き込んだ敵全員に{1}と{2}を与える。衝撃波は発動時のターゲットに命中すると爆発し、ターゲットとその{3}にいる敵に{4}、{5}と{6}を与える。")
                 .variable(1, MagicDamage, 125, 50, ap(0.4))
-                .variable(2, Knockup, 1)
-                .variable(3, MagicDamage, 200, 125, ap(0.8))
-                .variable(4, Stun, 1, 0.5)
+                .variable(2, Knockup, 0.5)
+                .variable(3, Radius)
+                .variable(4, MagicDamage, 200, 125, ap(0.8))
+                .variable(5, Knockup, 1)
+                .variable(6, Stun, 1, 0.5)
                 .mana(100)
                 .cd(140, -30)
                 .range(825);
@@ -3334,56 +3336,6 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
-    public static void Nunu(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("通常攻撃を行うたびにスタックが増加する(最大5スタック)。5スタックの状態でスキルを使用すると、スタックを消費して対象のスキルの消費マナが0になる。");
-        Q.update()
-                .active("対象の敵MinionかPet及びモンスター1体に{1}を与え、{2}する。")
-                .variable(1, TrueDamage, 500, 100)
-                .variable(2, RestoreHealth, 125, 55, ap(1))
-                .mana(60)
-                .cd(16, -2)
-                .range(125);
-        Q.update(P307)
-                .active("対象の敵MinionかPet及びモンスター1体に{1}を与え、{2}する。特定のモンスターを対象とした場合{3}間、以下の追加効果を得る。<br>ゴーレム : {4}を得て{5}する。<br>リザード : 通常攻撃かスキルでダメージを与えると、{6}を与える。<br>レイス/ウルフ : 敵ユニットを倒すと3秒間{7}する。")
-                .variable(1, TrueDamage, 600, 100)
-                .variable(2, RestoreHealth, 90, 40, ap(0.75))
-                .variable(3, Time, 120, 30)
-                .variable(4, Health, amplify(Health, 0.1))
-                .variable(5, Grow)
-                .variable(6, MagicDamage, amplify(Health, 0.01))
-                .variable(7, MSRatio, 15);
-        Q.update(P309).variable(1, TrueDamage, 500, 125);
-        Q.update(P314).variable(1, TrueDamage, 400, 150).variable(2, RestoreHealth, 70, 45, ap(0.75)).cd(13, -1);
-        W.update()
-                .active("12秒間対象の味方ユニットは{1}し{2}する。自分以外に使用した場合は自身にも同様の効果が発生する。")
-                .variable(1, ASRatio, 25, 5)
-                .variable(2, MSRatio, 8, 1)
-                .mana(50)
-                .cd(15)
-                .range(700);
-        E.update()
-                .active("対象の敵ユニットに{1}と3秒間{2}、{3}を与える。")
-                .variable(1, MagicDamage, 85, 45, ap(1))
-                .variable(2, ASSlowRatio, 25)
-                .variable(3, MSSlowRatio, 20, 10)
-                .mana(75, 10)
-                .cd(6)
-                .range(550);
-        R.update()
-                .active("最大3秒詠唱を行い、詠唱完了またはキャンセル時に{1}の敵ユニットに{2}を与える。ダメージは詠唱した時間に比例して最大で{3}。また詠唱中は範囲内の敵ユニットに{4}と{5}を与える。")
-                .variable(1, Radius, 550)
-                .variable(2, MagicDamage, 78, 31, ap(0.3))
-                .variable(3, MagicDamage, 625, 250, ap(2.5))
-                .variable(4, ASSlowRatio, 25)
-                .variable(5, MSSlowRatio, 50)
-                .mana(150)
-                .cd(150, -30);
-        R.update(P3051).cd(110, -10).mana(100);
-    }
-
-    /**
-     * Define skill.
-     */
     public static void Nocturne(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update()
                 .passive("10秒に1度、通常攻撃のダメージが120%に増加し、{1}の敵ユニットにダメージを与える範囲攻撃になる。この効果がヒットした敵の数に応じて{2}する。また、通常攻撃を行うごとに、このスキルの{3}する。建物を攻撃する時はこの効果は発生しない。")
@@ -3423,6 +3375,53 @@ public interface SkillDefinition {
                 .cd(180, -40)
                 .range(2000, 750);
 
+    }
+
+    /**
+     * Define skill.
+     */
+    public static void Nunu(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514).passive("通常攻撃を行うたびにスタックが増加する(最大5スタック)。5スタックの状態でスキルを使用すると、スタックを消費してスキルの消費マナが0になる。");
+
+        Q.update(P514)
+                .active("対象の敵ミニオンかペット及びモンスターに{1}を与え、{2}する。特定のモンスターを対象とした場合{3}間、以下の追加効果を得る。<br>精霊系 : {4}を得て{5}する。<br>動物系またはアンデッド系 : 敵ユニットを倒すと3秒間{7}する。<br>それ以外 : 通常攻撃かスキルでダメージを与えると、{6}を与える。")
+                .variable(1, TrueDamage, 400, 150)
+                .variable(2, RestoreHealth, 70, 45, ap(0.75))
+                .variable(3, Time, 120, 30)
+                .variable(4, Health, amplify(Health, 0.1))
+                .variable(5, Grow)
+                .variable(6, MagicDamage, amplify(Health, 0.01))
+                .variable(7, MSRatio, 15)
+                .cd(13, -1)
+                .mana(60)
+                .range(125);
+
+        W.update(P514)
+                .active("12秒間自身と指定した味方は{1}し{2}する。自分に対し発動した場合、もっとも近くにいる味方のチャンピオンを対象とする。")
+                .variable(1, ASRatio, 25, 5)
+                .variable(2, MSRatio, 8, 1)
+                .mana(50)
+                .cd(15)
+                .range(700);
+
+        E.update(P514)
+                .active("対象の敵ユニットに{1}と3秒間{2}、{3}を与える。")
+                .variable(1, MagicDamage, 85, 45, ap(1))
+                .variable(2, ASSlowRatio, 25)
+                .variable(3, MSSlowRatio, 20, 10)
+                .mana(75, 10)
+                .cd(6)
+                .range(550);
+
+        R.update(P514)
+                .active("{1}の熱を最大3秒まで吸い込み、エリア内の全て敵に{2}と{3}を与える。詠唱終了時（もしくは移動、中断された時）にエリア内の敵に{4}、３秒間{1}と{2}を与える。ダメージ量は詠唱した時間に比例し下限は{5}。")
+                .variable(1, Radius, 650)
+                .variable(2, ASSlowRatio, 25)
+                .variable(3, MSSlowRatio, 50)
+                .variable(4, MagicDamage, 625, 250, ap(2.5))
+                .variable(5, MagicDamage, 78, 31, ap(0.3))
+                .mana(100)
+                .cd(110, -10);
     }
 
     /**
