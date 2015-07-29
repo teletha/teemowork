@@ -2759,25 +2759,28 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Lux(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("スキルでダメージを与えた敵ユニットに6秒間持続するDebuffを付与する。この敵ユニットに対して通常攻撃かFinal Sparkでダメージを与えると、付与されたDebuffを消費して追加{1}を与える。")
-                .variable(1, MagicDamage, 10, 0, level(10));
-        Q.update()
+        P.update(P514)
+                .passive("スキルでダメージを与えた敵ユニットに6秒間持続するDebuffを付与する。この敵ユニットに対して通常攻撃か" + R + "でダメージを与えると、付与されたDebuffを消費して{1}を与える。")
+                .variable(1, MagicDamage, 10, 0, level(8), ap(0.2));
+
+        Q.update(P514)
                 .active("指定方向に光の玉を飛ばし、当たった敵ユニットに{1}と{2}を与える。光の玉は一度だけ敵ユニットを貫通し、2体目のユニットには{3}と{4}を与える。")
                 .variable(1, MagicDamage, 60, 50, ap(0.7))
                 .variable(2, Snare, 2)
-                .variable(3, MagicDamage, 50, 25, ap(0.35))
+                .variable(3, MagicDamage, 30, 25, ap(0.35))
                 .variable(4, Snare, 1)
                 .mana(50, 10)
                 .cd(15, -1)
                 .range(1175);
-        W.update()
-                .active("指定方向に杖を投げ、自身と当たった味方チャンピオンに{1}を付与する。行きと帰りそれぞれに判定があり、シールドは3秒間持続する。")
+
+        W.update(P514)
+                .active("指定方向に杖を投げ、自身と当たった味方チャンピオンに{1}を付与する。行きと帰りそれぞれに判定があり、シールドは3秒間持続する。このシールドはスタックしない。")
                 .variable(1, Shield, 80, 25, ap(0.35))
                 .mana(60)
                 .cd(14, -1)
-                .range(1000);
-        E.update()
+                .range(1075);
+
+        E.update(P514)
                 .active("指定地点に光の玉を設置し、{1}の敵ユニットに{2}を与える。光の玉は5秒経つか再度スキルを使用する事で爆発し、{1}の敵ユニットに{3}を与える。光の玉は{4}。")
                 .variable(1, Radius, 350)
                 .variable(2, MSSlowRatio, 20, 4)
@@ -2786,13 +2789,14 @@ public interface SkillDefinition {
                 .mana(70, 15)
                 .cd(10)
                 .range(1100);
-        R.update()
-                .active("1秒詠唱後、指定方向の直線状にいるすべての敵ユニットに{1}を与える。また効果範囲内の視界を確保する。Hitした敵がIlluminationのデバフを受けていた場合はその分の追加ダメージを与えたうえ、新たにIlluminationのデバフを与える。")
+
+        R.update(P514)
+                .active("0.5秒詠唱後、指定方向の直線状にいるすべての敵ユニットに{1}を与える。また効果範囲内の{2}。")
                 .variable(1, MagicDamage, 300, 100, ap(0.75))
+                .variable(2, Visionable)
                 .mana(100)
-                .cd(80, -20)
-                .range(3000);
-        R.update(P3051).cd(80, -15);
+                .cd(80, -15)
+                .range(3340);
     }
 
     /**
