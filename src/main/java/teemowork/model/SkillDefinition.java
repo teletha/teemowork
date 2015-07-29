@@ -2667,40 +2667,44 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Lucian(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("スキル使用した後の通常攻撃が2回攻撃になる。この効果は通常攻撃を行うか、6秒経過すると解消される。2回目の攻撃は50%のダメージとなるが、対象がMinionの場合は100%のダメージを与える。またon-hitエフェクトは通常通り適用され、クリティカルも発生する。");
-        Q.update()
-                .active("対象の敵ユニットに向けて0.35秒後に光のボルトを放ち、対象とその直線状({1})にいるすべての敵ユニットに{2}を与える(ミニオンに対しては75%)。")
+        P.update(P514)
+                .passive("スキルを使用した次の通常攻撃が2回攻撃になる。この効果は通常攻撃を行うか、3秒経過すると解消される。2回目の攻撃は{1}を与えるが、対象がミニオンかモンスターの場合は2倍になる。2回攻撃の1発目で対象が死亡した場合、2発目は近くのユニットを攻撃する。")
+                .variable(1, PhysicalDamage, amplify(AD, new Per6Level(30, 10)));
+
+        Q.update(P514)
+                .active("対象の敵ユニットに向けて0.35秒後に光のボルトを放ち、対象とその直線状({1})にいるすべての敵ユニットに{2}を与える。")
                 .variable(1, Length, 1100)
-                .variable(2, PhysicalDamage, 80, 40, amplify(BounusAD, 0.6, 0.15))
-                .variable(3, PhysicalDamage)
-                .mana(60, 5)
-                .cd(9, -1)
-                .range(570)
-                .update(P315)
                 .variable(2, PhysicalDamage, 80, 30, amplify(BounusAD, 0.6, 0.15))
+                .mana(50, 5)
+                .cd(9, -1)
                 .range(550);
-        W.update()
+
+        W.update(P514)
                 .active("指定方向に爆発する弾を放つ。敵ユニットに当たるか最大距離まで飛ぶと十字型に爆風が広がり、範囲内の敵ユニットに{1}と6秒間マークを与える。マークを受けている敵ユニットにダメージを与えると、2秒間{2}する。また爆風が発生した地点の{3}。")
-                .variable(1, MagicDamage, 60, 40, ap(0.9), bounusAD(0.8))
-                .variable(2, MS, 40)
+                .variable(1, MagicDamage, 60, 40, ap(0.9))
+                .variable(2, MS, 40, 5)
                 .variable(3, Visionable)
                 .mana(60)
-                .cd(18, -2)
-                .range(425);
-        E.update()
-                .active("指定方向にダッシュし、自身にかかっているスローを解除する。" + R + "発動中に敵チャンピオンをキルかアシストした場合このスキルの{1}する。")
+                .cd(14, -1)
+                .range(1000);
+
+        E.update(P514)
+                .active("指定方向にダッシュする。" + P + "による通常攻撃がヒットする度に、このスキルの{2}し、対象が敵チャンピオンの場合は{3}。{4}。")
                 .variable(1, CDDecrease)
-                .mana(60, -15)
-                .cd(18, -2)
+                .variable(2, CDDecrease, 1)
+                .variable(3, CDDecrease, 2)
+                .variable(4, ResetAATimer)
+                .mana(40, -10)
+                .cd(18, -1)
                 .range(425);
-        R.update()
-                .active("3秒間、指定方向に{1}発の弾を連射し一発毎に{2}を与える（最大で{3}）。銃を連射している間は移動と" + E + "のみが可能であり、ミニオンに対しては400%のダメージを与える。また連射中にこのスキルを再使用することで連射を解除できる。")
-                .variable(1, Value, 7.5, 0, amplify(AS, 7.5, 1.5))
-                .variable(2, PhysicalDamage, 40, 10, ap(0.1), bounusAD(0.25))
+
+        R.update(P514)
+                .active("一定方向に3秒間高速連射する。連射中は自由に移動可能。弾は敵を貫通せず、1発あたり{1}を与える。発砲する弾数は{2}。銃を連射している間は移動と" + E + "のみが可能。また連射中にこのスキルを再使用することで連射を解除できる。ミニオンに対しては400%のダメージを与える。")
+                .variable(1, PhysicalDamage, 40, 10, ap(0.1), bounusAD(0.25))
+                .variable(2, Value, 7.5, 0, amplify(AS, 750, 150))
                 .variable(3, PhysicalDamage, 1040, 460, amplify(AP, 2.6, 0.4), amplify(BounusAD, 6.5, 1.0))
                 .mana(100)
-                .cd(100, -25)
+                .cd(110, -10)
                 .range(1400);
     }
 
