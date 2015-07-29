@@ -2802,6 +2802,51 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
+    public static void Malphite(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive("{2}間ダメージを受けないと{1}を得る。")
+                .variable(1, Shield, amplify(Health, 0.1))
+                .variable(2, Time, new Per6Level(10, -2));
+
+        Q.update(P514)
+                .active("対象の敵ユニットに{1}と4秒間{2}を与える。また、このスキルで減少させた移動速度を自身の移動速度に加算する。")
+                .variable(1, MagicDamage, 70, 50, ap(0.6))
+                .variable(2, MSSlowRatio, 14, 3)
+                .mana(70, 5)
+                .cd(8)
+                .range(625);
+
+        W.update(P514)
+                .passive("{1}する。")
+                .variable(1, ARRatio, 10, 5)
+                .variable(2, PhysicalDamage, amplify(AD, 0.3, 0.08))
+                .active("6秒間、通常攻撃時に対象と{2}のユニットに対して、{3}を与える。")
+                .variable(2, Radius, 225)
+                .variable(3, PhysicalDamage, 15, 15, ap(0.1), amplify(AR, 0.1))
+                .mana(25)
+                .cd(14);
+
+        E.update(P514)
+                .active("{1}の敵ユニットに{2}と3秒間{3}を与える。")
+                .variable(1, Radius, 200)
+                .variable(2, MagicDamage, 60, 40, ap(0.2), amplify(AR, 0.3))
+                .variable(3, ASSlowRatio, 30, 5)
+                .mana(50, 5)
+                .cd(7);
+
+        R.update(P514)
+                .active("指定地点に突撃し{1}の敵ユニットに{2}と3}を与える。")
+                .variable(1, Radius, 300)
+                .variable(2, MagicDamage, 200, 100, ap(1))
+                .variable(3, Knockup, 1.5)
+                .mana(100)
+                .cd(130, -15)
+                .range(1000);
+    }
+
+    /**
+     * Define skill.
+     */
     public static void MasterYi(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update().passive("通常攻撃7回毎に2回分ダメージを与える。対象が建物の場合も有効。");
         P.update(P310).passive("連続した通常攻撃4回毎に2回攻撃をする。この追加攻撃は50%のダメージを与える。");
@@ -2916,45 +2961,6 @@ public interface SkillDefinition {
                 .cd(120, -10)
                 .range(600);
         R.update(P3051).mana(100);
-    }
-
-    /**
-     * Define skill.
-     */
-    public static void Malphite(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("10秒間ダメージを受けないと{1}を得る。").variable(1, Shield, amplify(Health, 0.1));
-        Q.update()
-                .active("対象の敵ユニットに{1}と4秒間{2}を与える。また、このスキルで減少させた移動速度を自身の移動速度に加算する。移動速度増加は4秒間持続する。")
-                .variable(1, MagicDamage, 70, 50, ap(0.6))
-                .variable(2, MSSlowRatio, 14, 3)
-                .mana(70, 5)
-                .cd(8)
-                .range(625);
-        W.update()
-                .passive("通常攻撃時に対象の{1}にいる敵ユニットに{2}を与える。建物を攻撃する際にはスプラッシュ効果は発生しない。")
-                .variable(1, Radius, 200)
-                .variable(2, PhysicalDamage, amplify(AD, 0.3, 0.08))
-                .active("6秒間{3}、{4}する。")
-                .variable(3, ADRatio, 20, 5)
-                .variable(4, ARRatio, 20, 5)
-                .mana(50, 5)
-                .cd(14);
-        E.update()
-                .active("{1}の敵ユニットに{2}と3秒間{3}を与える。")
-                .variable(1, Radius, 400)
-                .variable(2, MagicDamage, 60, 40, ap(0.2), amplify(AR, 0.3))
-                .variable(3, ASSlowRatio, 30, 5)
-                .mana(50, 5)
-                .cd(7);
-        R.update()
-                .active("指定地点に突撃し{1}の敵ユニットに{2}を与えると共に{3}後、{4}を与える。")
-                .variable(1, Radius, 325)
-                .variable(2, MagicDamage, 200, 100, ap(1))
-                .variable(3, Knockup, 1)
-                .variable(4, Stun, 0.5)
-                .mana(100)
-                .cd(130, -15)
-                .range(1000);
     }
 
     /**
