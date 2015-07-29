@@ -3606,49 +3606,49 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Quinn(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("ValorがQuinnの周辺に存在する敵ユニット一体(チャンピオン優先)に自動的に4.5秒間持続するマークを付与する。マークが付与された敵ユニットにQuinnが通常攻撃を行うと、付与されたマークを消費して{1}を与える。またマークが付与された敵ユニットの{2}。Valorと交代している間はこのスキルは無効になる。")
-                .variable(1, PhysicalDamage, new Per1Level(new double[] {25, 35, 45, 55, 65, 75, 85, 95, 105, 115, 125,
-                        135, 145, 155, 170, 185, 190, 215}), bounusAD(0.5), null)
+        P.update(P514)
+                .passive("Valorが" + champion + "の周辺に存在する敵ユニット一体(チャンピオン優先)に自動的に4.5秒間持続するマークを付与する。マークが付与された敵ユニットに" + champion + "が通常攻撃を行うと、付与されたマークを消費して{1}を与える。またマークが付与された敵ユニットの{2}。Valorと交代している間はこのスキルは無効になる。")
+                .variable(1, PhysicalDamage, new Per1Level(25, 35, 45, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145, 155, 170, 185, 190, 215), bounusAD(0.5))
                 .variable(2, Visionable)
-                .cd(10);
-        Q.update()
-                .active("指定方向にValorを突撃させ、最初に当たった敵ユニットと{1}の敵ユニットに{2}と{3}を与える。Tag Team時は自身の{1}の敵ユニットに{2}と{3}を与える。")
-                .variable(1, Radius, 200)
-                .variable(2, PhysicalDamage, 70, 40, bounusAD(0.65))
+                .cd(-10);
+
+        Q.update(P514)
+                .active("指定方向にValorを突撃させ、最初に当たった敵ユニットと{1}の敵ユニットに{2}と{3}を与える。<br>Tag Team時は自身の{4}の敵ユニットに{2}と{3}を与える。")
+                .variable(1, Radius, 210)
+                .variable(2, PhysicalDamage, 70, 40, bounusAD(0.65), ap(0.5))
                 .variable(3, Blind, 1.5)
-                .mana(60, 5)
+                .variable(4, Radius, 275)
+                .mana(50, 5)
                 .cd(11, -1)
                 .range(1025);
-        Q.update(P306).variable(2, PhysicalDamage, 70, 40, bounusAD(0.65), ap(0.5));
-        W.update()
-                .passive("Harrierによってマークが付与された敵ユニットに通常攻撃を行うと、3秒間{1}する。Tag Team時は{2}する。")
-                .variable(1, ASRatio, 20, 5)
-                .variable(-2, ASRatio, 40, 10)
-                .active("2秒間{3}の視界を得る。")
-                .variable(3, Radius, 2100)
-                .cd(50, -5);
-        W.update(P306)
+
+        W.update(P514)
                 .passive("Harrierによってマークが付与された敵ユニットに通常攻撃を行うと、3秒間{1}、{3}する。Tag Team時は{2}する。")
-                .variable(3, MS, 20, 10);
-        E.update()
-                .active("対象の敵ユニットまでダッシュし{1}と2秒間{2}を与える。スローの効果は2秒かけて元に戻る。ダッシュ後、Quinnは自身の通常攻撃の最大射程(距離525)までジャンプして対象と距離を離す。また、同時に対象にはHarrierのマークが付与される。Tag Team時はダッシュ後に距離を離さなくなる。")
+                .variable(-1, ASRatio, 20, 5)
+                .variable(-2, ASRatio, 40, 10)
+                .variable(3, MS, 20, 10)
+                .active("2秒間{4}の視界を得る。")
+                .variable(4, Radius, 2100)
+                .cd(50, -5);
+
+        E.update(P514)
+                .active("対象の敵ユニットまでダッシュし{1}と2秒かけて減衰する{2}を与える。ダッシュ後、" + champion + "の通常攻撃の最大射程(距離525)までジャンプして対象と距離を離す。また、同時に対象には" + P + "のマークが付与される。Tag Team時はダッシュ後に距離を離さなくなる。")
                 .variable(1, PhysicalDamage, 40, 30, bounusAD(0.2))
                 .variable(2, MSSlowRatio, 50)
-                .range(750)
+                .range(700)
                 .mana(50)
                 .cd(12, -1);
-        R.update()
-                .active("20秒間ValorがQuinnと入れ替わり戦闘に参加する。Valorは射程125のMeleeであり、専用のスキルが与えられるがスキルのCDはQuinnと共有する。Valorは{1}を得て{2}する。戦闘状態に入ると{3}する。このスキルを再度使用するか、20秒経過するとValorがQuinnと入れ替わり、{4}に敵ユニットに{5}を与える。対象が受けているダメージに比例して与えるダメージが増加し、最大で{6}を与える。")
+
+        R.update(P514)
+                .active("20秒間Valorが" + champion + "と入れ替わり戦闘に参加する。Valorは射程125のMeleeであり、専用のスキルが与えられるがスキルのCDは" + champion + "と共有する。Valorは{1}を得て{2}する。戦闘状態に入ると{3}する。このスキルを再度使用するか、20秒経過するとValorが" + champion + "と入れ替わり、{4}に敵ユニットに{5}を与える。対象が受けているダメージに比例して与えるダメージが増加し、最大で{6}を与える。")
                 .variable(1, IgnoreUnitCollision)
-                .variable(-2, MSRatio, 80)
-                .variable(3, MSRatio, 20)
+                .variable(-2, MSRatio, 80, 10)
+                .variable(3, MSRatio, 20, 10)
                 .variable(4, Radius, 700)
                 .variable(5, PhysicalDamage, 100, 50, bounusAD(0.5))
                 .variable(6, PhysicalDamage, 200, 100, bounusAD(1))
-                .cd(140, -20)
-                .mana(100);
-        R.update(P306).variable(-2, MSRatio, 80, 10).variable(3, MSRatio, 20, 10).cd(140, -30);
+                .mana(100)
+                .cd(140, -30);
     }
 
     /**
