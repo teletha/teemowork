@@ -2883,11 +2883,60 @@ public interface SkillDefinition {
                 .active("対象の敵チャンピオンに2.5秒間0.5秒毎に{1}を与え（合計{2}）、{3}を与える。")
                 .variable(1, MagicDamage, 50, 30, ap(0.26))
                 .variable(2, MagicDamage, 250, 150, ap(1.3))
-                .variable(2, Suppression, 2.5)
+                .variable(3, Suppression, 2.5)
                 .mana(100)
                 .cd(120, -20)
                 .range(700)
                 .type(SkillType.Channel);
+    }
+
+    /**
+     * Define skill.
+     */
+    public static void Maokai(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive("近くのチャンピオン(敵味方自分問わず)がスキルを使用するとスタックが増え、5スタックまで溜まった状態で通常攻撃を行うとスタックを消費して{1}する。建物を攻撃した場合は発動しない。")
+                .variable(1, RestoreHealth, amplify(Health, new Per6Level(0.05, 0.01)));
+
+        Q.update(P514)
+                .active("{1}の敵ユニットと指定方向の敵ユニットに{2}と1.5秒間{3}を与える。{4}の敵ユニットには更に{5}を与える。")
+                .variable(1, Radius)
+                .variable(2, MagicDamage, 70, 45, ap(0.4))
+                .variable(3, MSSlowRatio, 20, 7)
+                .variable(4, Radius, 100)
+                .variable(5, Knockback)
+                .mana(45)
+                .cd(6)
+                .range(600);
+
+        W.update(P514)
+                .active("対象の敵ユニットまで高速移動し{1}と{2}を与える（ミニオンやモンスターに対しては300ダメージが上限）。移動中はターゲット不可状態になる。")
+                .variable(1, MagicDamage, 0, 0, amplify(TargetMaxHealthRatio, 9, 1, ap(0.03)))
+                .variable(2, Snare, 1, 0.25)
+                .mana(75)
+                .cd(13, -1)
+                .range(525);
+
+        E.update(P514)
+                .active("指定地点に苗木を投げ、{1}の敵ユニットに{2}を与える。苗木は最大35秒間その場で待機し、敵ユニットが近付く({4})と相手に向かって移動を開始する、敵に接触するか数秒経つと爆発して{1}に{3}と1秒間{5}を与える。")
+                .variable(1, Radius, 175)
+                .variable(2, MagicDamage, 40, 20, ap(0.4))
+                .variable(3, MagicDamage, 80, 40, ap(0.6))
+                .variable(4, Radius, 350)
+                .variable(5, MSSlowRatio, 50)
+                .mana(60, 10)
+                .cd(12)
+                .range(1100);
+
+        R.update(P514)
+                .passive("指定地点の{1}にシールドを展開し、範囲内の味方チャンピオンは{2}を得る(タワーからの攻撃以外)。10秒経過するか再度スキルを使用すると解除され、範囲内の敵ユニットに{3}を与える（増加ダメージは{4}が上限）。")
+                .variable(1, Radius)
+                .variable(2, DamageReductionRatio, 20)
+                .variable(3, MagicDamage, 100, 50, ap(0.5), amplify(ReceivedDamageRatio, 0.1))
+                .variable(4, Value, 100, 50)
+                .cost(Mana, new Fixed(40), amplify(Duration, 30))
+                .cd(40, -10)
+                .range(475);
     }
 
     /**
@@ -3007,48 +3056,6 @@ public interface SkillDefinition {
                 .cd(120, -10)
                 .range(600);
         R.update(P3051).mana(100);
-    }
-
-    /**
-     * Define skill.
-     */
-    public static void Maokai(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("近くのチャンピオン(敵味方自分問わず)がスキルを使用するとスタックが増え、5スタックまで溜まった状態で通常攻撃を行うと{1}する。このスキル発動時にスタックは0になる。建物を攻撃した場合は発動しない。")
-                .variable(1, RestoreHealth, amplify(Health, 0.07));
-        Q.update()
-                .active("{1}の敵ユニットと指定方向の敵ユニットに{2}と2秒間{3}を与える。{4}の敵ユニットには更に{5}を与える。")
-                .variable(1, Radius, 0)
-                .variable(2, MagicDamage, 70, 45, ap(0.4))
-                .variable(3, MSSlowRatio, 20, 7)
-                .variable(4, Radius, 200)
-                .variable(5, Knockback, 0)
-                .mana(55)
-                .cd(6)
-                .range(700);
-        W.update()
-                .active("対象の敵ユニットまで高速移動し{1}と{2}を与える。")
-                .variable(1, MagicDamage, 80, 35, ap(0.8))
-                .variable(2, Snare, 1, 0.25)
-                .mana(75, 5)
-                .cd(13)
-                .range(650);
-        E.update()
-                .active("指定地点に苗木を投げ、{1}の敵ユニットに{2}を与える。苗木は最大35秒間その場で待機し、敵ユニットが近付く({4})と相手に向かって移動を開始する、敵に接触するか数秒経つと爆発して{1}に{3}を与える。")
-                .variable(1, Radius, 350)
-                .variable(2, MagicDamage, 40, 35, ap(0.4))
-                .variable(3, MagicDamage, 80, 50, ap(0.6))
-                .variable(4, Radius, 500)
-                .mana(70, 10)
-                .cd(12)
-                .range(1100);
-        R.update()
-                .passive("指定地点の{1}にシールドを展開し、範囲内の味方チャンピオンが受けるダメージを20%低減させる(タワーからの攻撃以外)。解除すると範囲内の敵ユニットに{2}を与える。低減したダメージ量に比例して与えるダメージが増加する。")
-                .variable(1, Radius, 0)
-                .variable(2, MagicDamage, 100, 50, ap(0.5))
-                .mana(75)
-                .cd(40, -10)
-                .range(575);
     }
 
     /**
