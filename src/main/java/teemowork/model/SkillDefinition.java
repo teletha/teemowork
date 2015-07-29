@@ -3477,38 +3477,42 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Orianna(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("通常攻撃に追加{1}が付与される。4秒以内に同一の対象を連続して攻撃すると、追加魔法DMが20%上昇していく(最大+40%)。建物には無効。")
-                .variable(1, MagicDamage, new Per3Level(10, 8), ap(0.15), null);
-        Q.update()
-                .active("指定した地点にBallを移動させ、移動中のBallに触れた敵ユニットと指定{1}にいる敵ユニットに{2}を与える。ダメージは敵に当たるごとに10%づつ減少する(最大60%減少)。BallはOriannaから一定距離離れなければその場に待機して{3}。")
-                .variable(1, Radius)
+        P.update(P514)
+                .passive("通常攻撃に{1}が付与される。4秒以内に同一の対象を連続して攻撃すると、" + MagicDamage + "が20%上昇する(最大40%)。建物には無効。")
+                .variable(1, MagicDamage, new Per3Level(10, 8), ap(0.15));
+
+        Q.update(P514)
+                .active("指定した地点にBallを移動させ、移動中のBallに触れた敵ユニットと指定{1}にいる敵ユニットに{2}を与える。ダメージは敵に当たるごとに10%づつ減少する(最大60%減少)。Ballは" + champion + "から一定距離離れなければその場に待機して{3}。")
+                .variable(1, Radius, 175)
                 .variable(2, MagicDamage, 60, 30, ap(0.5))
                 .variable(3, Visionable)
                 .mana(50)
                 .cd(6, -0.75)
                 .range(825);
-        W.update()
-                .active("Ballの存在する地点にフィールドを展開しBallの{1}にいる敵ユニットに{2}を与える。フィールドは3秒間持続し、フィールドの上の味方ユニットは{3}し、敵ユニットには{4}を与える。フィールドから出た場合、この効果は2秒かけて元に戻る。")
+
+        W.update(P514)
+                .active("Ballの存在する地点にフィールドを展開しBallの{1}にいる敵ユニットに{2}を与える。フィールドは3秒間持続し、フィールドの上の味方ユニットは{3}し、敵ユニットには{4}を与える。フィールドから出た場合、この効果は2秒かけて減衰する。")
                 .variable(1, Radius, 250)
                 .variable(2, MagicDamage, 70, 45, ap(0.7))
                 .variable(3, MSRatio, 20, 5)
                 .variable(4, MSSlowRatio, 20, 5)
                 .mana(70, 10)
                 .cd(9);
-        E.update()
+
+        E.update(P514)
                 .passive("Ballが付いている味方チャンピオンは{1}と{2}を得る。")
                 .variable(1, AR, 10, 5)
                 .variable(2, MR, 10, 5)
-                .active("対象の味方チャンピオンまでBallを移動させ、4秒間持続する{3}を付与する。また、移動中のBallに触れた敵ユニットに{4}を与える。Ballは対象がOriannaから一定距離離れなければ貼り付き続ける。")
+                .active("対象の味方チャンピオンまでBallを移動させ、4秒間持続する{3}を付与する。また、移動中のBallに触れた敵ユニットに{4}を与える。Ballは対象が" + champion + "から一定距離離れなければ貼り付き続ける。")
                 .variable(3, Shield, 80, 40, ap(0.4))
                 .variable(4, MagicDamage, 60, 30, ap(0.3))
                 .mana(60)
                 .cd(9)
-                .range(1120);
-        R.update()
-                .active("約0.5秒詠唱後にBallから衝撃波を発生させ、Ballの{1}にいる敵ユニットに{2}を与えると共に、Ballの方向に{3}させる。")
-                .variable(1, Radius, 400)
+                .range(1100);
+
+        R.update(P514)
+                .active("0.75秒詠唱後にBallから衝撃波を発生させ、Ballの{1}にいる敵ユニットに{2}を与えると共に、Ballの方向に{3}させる。")
+                .variable(1, Radius, 325)
                 .variable(2, MagicDamage, 150, 75, ap(0.7))
                 .variable(3, Knockback, 350)
                 .mana(100, 25)
