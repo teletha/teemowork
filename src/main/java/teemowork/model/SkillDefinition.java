@@ -3655,42 +3655,39 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Rammus(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("{1}を得る。").variable(1, AD, amplify(AR, 0.45));
-        Q.update()
-                .active("7秒間徐々に移動速度が増加し、最大で{5}する。最初に当たった敵ユニットと自身の周囲({1})にいる敵ユニットに{2}、{3}、3秒間の{4}を与える。スキルを再使用するか" + W + "を使用するとキャンセルされる。")
+        P.update(P514).passive("{1}を得る。").variable(1, AD, amplify(AR, 0.25));
+
+        Q.update(P514)
+                .active("7秒間徐々に移動速度が増加し、最大で{5}する。最初に当たった敵ユニットと自身の周囲({1})にいる敵ユニットに{2}、{3}、3秒間の{4}を与える。" + W + "を使用するとキャンセルされる。")
                 .variable(1, Radius, 200)
                 .variable(2, MagicDamage, 100, 50, ap(1))
                 .variable(3, Knockup, 0.75)
                 .variable(4, MSSlowRatio, 20, 5)
                 .variable(5, MSRatio, 85)
-                .mana(70, 10)
-                .cd(10)
-                .update(P315)
-                .active("7秒間徐々に移動速度が増加し、最大で{5}する。最初に当たった敵ユニットと自身の周囲({1})にいる敵ユニットに{2}、{3}、3秒間の{4}を与える。" + W + "を使用するとキャンセルされる。");
-        W.update()
-                .active("6秒間{1}と{2}を得て、Rammusを通常攻撃した敵ユニットに{3}を与える。効果中にPowerballを使用すると効果がキャンセルされる。また、このスキルを再使用することで効果をキャンセルできる。")
+                .mana(60, 5)
+                .cd(16, -1.5);
+
+        W.update(P514)
+                .active("6秒間{1}と{2}を得て、" + champion + "を通常攻撃した敵ユニットに{3}を与える。効果中に" + Q + "を使用すると効果がキャンセルされる。また、このスキルを再使用することで効果をキャンセルできる。")
                 .variable(1, AR, 40, 20)
                 .variable(2, MR, 40, 20)
                 .variable(3, MagicDamage, 15, 10, amplify(AR, 0.1))
                 .mana(40)
                 .cd(14);
-        E.update()
+
+        E.update(P514)
                 .active("対象の敵ユニットに{1}と{2}を与える。")
-                .variable(1, Taunt, 1, 0.5)
-                .variable(2, ARReduction, 10, 5)
-                .mana(50, 10)
+                .variable(1, Taunt, 1.25, 0.25)
+                .variable(2, ARReduction, 5, 5)
                 .cd(12)
                 .range(325)
-                .update(P315)
-                .variable(1, Taunt, 1.25, 0.25)
                 .mana(50);
-        R.update()
+
+        R.update(P514)
                 .active("8秒間地震を発生させ{1}の敵ユニット及び建物に毎秒{2}を与える。")
                 .variable(1, Radius, 300)
                 .variable(2, MagicDamage, 65, 65, ap(0.3))
-                .mana(120)
                 .cd(60)
-                .update(P315)
                 .mana(100);
     }
 
