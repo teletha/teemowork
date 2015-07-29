@@ -2623,40 +2623,44 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Lissandra(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("18秒毎に次に使うスキルのコストが0になる。Glacial Path以外のスキルを敵ユニットに命中させるたびに、このスキルのCDが1秒解消される。");
-        Q.update()
-                .active("指定方向に貫通する氷の槍を飛ばし、当たった敵ユニットに{1}を与える。このスキルが最初に命中した敵ユニットには更に1.5秒間{2}を与える。")
-                .variable(1, MagicDamage, 75, 35, ap(0.65))
+        P.update(P514)
+                .passive("次に使うスキルのコストが0になる。" + E + "以外のスキルを敵ユニットに命中させるたびに、このスキルの{1}。")
+                .variable(1, CDDecrease, 1)
+                .cd(-18);
+
+        Q.update(P514)
+                .active("指定方向に敵に当たると砕ける氷の槍を飛ばし、当たった敵ユニットに{1}と1.5秒間{2}を与える。槍の破片は貫通し、後方{3}の敵に{1}を与える。")
+                .variable(1, MagicDamage, 70, 30, ap(0.65))
                 .variable(2, MSSlowRatio, 16, 3)
+                .variable(3, Radius, 100)
                 .mana(85)
-                .cd(6, -0.5)
+                .cd(6, -0.75)
                 .range(725);
-        W.update()
-                .active("{1}にいるすべての敵ユニットに{2}と{3}を与える。")
-                .variable(1, Radius)
-                .variable(2, MagicDamage, 70, 40, ap(0.6))
+
+        W.update(P514)
+                .active("{1}にいる全ての敵ユニットに{2}と{3}を与える。")
+                .variable(1, Radius, 450)
+                .variable(2, MagicDamage, 70, 40, ap(0.4))
                 .variable(3, Snare, 1.1, 0.1)
-                .mana(70)
-                .cd(18, -2);
-        W.update(P308).cd(14, -1).mana(50);
-        E.update()
+                .mana(50)
+                .cd(14, -1);
+
+        E.update(P514)
                 .active("指定方向に貫通する氷の爪を飛ばし、当たった敵ユニットに{1}を与える。氷の爪が出ている間にこのスキルを再度使用すると、氷の爪の位置までワープし氷の爪が消滅する。")
                 .variable(1, MagicDamage, 70, 45, ap(0.6))
                 .mana(80, 5)
                 .cd(24, -3)
                 .range(1050);
-        R.update()
-                .active("対象の敵チャンピオンに{1}と{2}を与え、同時に対象の敵チャンピオンの周囲に3秒間持続するDark Iceを呼び出し、Dark Iceに触れた敵ユニットに{1}と{3}を与える。このスキルは自身を対象とする事が可能で、自身を対象とした場合は{4}間行動出来なくなる代わりに、ダメージを無効化かつターゲット不可状態になり、自身の周囲からDark Iceが出現する。")
-                .variable(1, MagicDamage, 150, 150, ap(0.7))
-                .variable(2, Stun, 1.5)
-                .variable(3, MSSlowRatio, 20)
-                .variable(4, Time, 1.5)
-                .mana(100)
-                .cd(130, -25);
-        R.update(P308)
+
+        R.update(P514)
+                .active("対象の敵チャンピオンに{1}と{2}を与え、同時に対象の周囲に3秒間持続するDark Iceを呼び出し、Dark Iceに触れた敵ユニットに{1}と{3}を与える。このスキルは自身を対象とする事が可能で、自身を対象とした場合は{4}間行動出来なくなる代わりに、ダメージを無効化かつターゲット不可状態になり、自身の周囲からDark Iceが出現する。")
                 .variable(1, MagicDamage, 150, 100, ap(0.7))
-                .variable(3, MSSlowRatio, 20, 10)
-                .variable(4, Time, 2.5);
+                .variable(2, Stun, 1.5)
+                .variable(3, MSSlowRatio, 30, 15)
+                .variable(4, Time, 2.5)
+                .mana(100)
+                .cd(130, -25)
+                .range(550);
     }
 
     /**
