@@ -3433,70 +3433,44 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Olaf(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("{1}する。").variable(1, ASRatio, amplify(MissingHealthPercentage, 1));
-        Q.update()
-                .active("指定地点に貫通する斧を投げ、当たった敵ユニットに{1}と{4}間{2}を与える。このスローは2.5秒かけて元に戻る。投げた斧は指定地点に7秒間留まり、斧を回収するとこのスキルの{3}する。")
-                .variable(1, PhysicalDamage, 80, 45, bounusAD(1))
-                .variable(2, MSSlowRatio, 24, 4)
-                .variable(3, CDDecrease, 4.5)
-                .variable(4, Time, 2.5)
-                .mana(55, 5)
-                .cd(8)
-                .range(1000)
-                .update(P312)
-                .active("指定地点に貫通する斧を投げ(最短飛距離400)、当たった敵ユニットに{1}と{4}間{2}を与える。投げた斧は指定地点に7秒間留まり、斧を回収するとこのスキルの{3}する。")
+        P.update(P514).passive("{1}する。").variable(1, ASRatio, amplify(MissingHealthPercentage, 1));
+
+        Q.update(P514)
+                .active("指定地点に貫通する斧を投げ(最短飛距離400)、当たった敵ユニットに{1}と{4}間{2}を与える。投げた斧は指定地点に7秒間留まり、斧を回収するとこのスキルの{3}する。また" + champion + "は斧に当たったモンスターをすり抜けることができる。")
                 .variable(1, PhysicalDamage, 70, 45, bounusAD(1))
-                .variable(2, MSSlowRatio, 35, 5)
-                .variable(4, Time, 1, 0, amplify(Distance, 1))
-                .update(P313)
+                .variable(2, MSSlowRatio, 29, 4)
+                .variable(3, CDDecrease, 4.5)
                 .variable(4, Time, 1.5, 0, amplify(Distance, 1))
                 .mana(60)
-                .update(P401)
-                .variable(2, MSSlowRatio, 29, 4);
-        W.update()
-                .active("6秒間{1}と{2}と{3}を得る。")
-                .variable(1, AD, 7, 7, amplify(Health, 0.01))
+                .cd(7)
+                .range(1000);
+
+        W.update(P514)
+                .active("6秒間{1}し、{2}を得る。また{3}する。")
+                .variable(1, ASRatio, 40, 10)
                 .variable(2, LS, 9, 3)
-                .variable(3, SV, 9, 3)
-                .mana(40, 5)
+                .variable(3, RestoreHealthRatio, amplify(MissingHealthPercentage, 0.5))
                 .cd(16)
-                .update(P312)
-                .active("6秒間{4}し、{2}を得る。また{5}する。")
-                .variable(4, ASRatio, 20, 15)
-                .variable(5, RestoreHealthRatio, amplify(MissingHealthPercentage, 0.4))
-                .mana(30)
-                .update(P313)
-                .variable(4, ASRatio, 40, 10);
-        E.update()
-                .active("対象の敵ユニットに{1}を与える。")
-                .variable(1, TrueDamage, 100, 60)
-                .cost(Health, 40, 24)
-                .cd(9, -1)
-                .range(325)
-                .update(P312)
-                .active("対象の敵ユニットに{1}を与える。このスキルで対象を倒した場合、使用コストとして消費したHealthは返還される。通常攻撃をする度にこのスキルの{2}する。")
+                .mana(30);
+
+        E.update(P514)
+                .active("対象の敵ユニットに{1}を与える。このスキルで対象を倒した場合、{2}する。通常攻撃をする度にこのスキルの{3}する。")
                 .variable(1, TrueDamage, 70, 45, ad(0.4))
-                .variable(2, CDDecrease, 1)
-                .cd(12, -1)
-                .cost(Health, new Diff(28, 18, 5), ad(0.16))
-                .update(P313)
-                .cost(Health, new Diff(21, 13.5, 5), ad(0.12));
-        R.update()
-                .active("6秒間{1}、{2}、{3}と{4}を得る。既にCCを受けていた場合はそれらを解除する。StunなどのDisable中でも使用可能。")
-                .variable(1, ARPen, 10, 10)
-                .variable(2, AR, 30, 15)
-                .variable(3, MR, 30, 15)
-                .variable(4, IgnoreCC)
-                .mana(100, -25)
-                .cd(100)
-                .update(P312)
-                .passive("{2}と{3}を得る。")
-                .variable(2, AR, 10, 10)
-                .variable(3, MR, 10, 10)
-                .active("6秒間パッシブの効果が消失して、{1}と{4}を得る。既にCCを受けていた場合はそれらを解除する。StunなどのDisable中でも使用可能。")
-                .variable(1, AD, 40, 20)
-                .cd(120, -20)
-                .mana(0);
+                .variable(2, RestoreHealth, new Diff(21, 13.5, 5), ad(0.12))
+                .variable(3, CDDecrease, 1)
+                .cost(Health, new Diff(21, 13.5, 5), ad(0.12))
+                .range(325)
+                .cd(12, -1);
+
+        R.update(P514)
+                .passive("{1}と{2}を得る。")
+                .variable(1, AR, 10, 10)
+                .variable(2, MR, 10, 10)
+                .active("6秒間パッシブの効果が消失して、{3}と{4}を得る。また、最初の1秒間は敵チャンピオンに向かって移動する際に{5}する。")
+                .variable(3, IgnoreCC)
+                .variable(4, AD, 40, 20)
+                .variable(5, MSRatio, 50, 10)
+                .cd(100, -10);
     }
 
     /**
