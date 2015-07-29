@@ -3337,13 +3337,14 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Nocturne(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("10秒に1度、通常攻撃のダメージが120%に増加し、{1}の敵ユニットにダメージを与える範囲攻撃になる。この効果がヒットした敵の数に応じて{2}する。また、通常攻撃を行うごとに、このスキルの{3}する。建物を攻撃する時はこの効果は発生しない。")
                 .variable(1, Radius, 200)
                 .variable(2, RestoreHealth, new Per6Level(10, 8))
                 .variable(3, CDDecrease, 1)
-                .cd(10);
-        Q.update()
+                .cd(-10);
+
+        Q.update(P514)
                 .active("指定方向に影の刃を投げて当たった敵ユニットに{1}を与える。刃の軌跡には5秒間持続するDusk Trailが残り、刃がヒットした敵チャンピオンの動いた軌道上にもDusk Trailが残るようになる。Dusk Trailの上ではNocturneは{2}と{3}を得て、{4}する。")
                 .variable(1, PhysicalDamage, 60, 45, bounusAD(0.75))
                 .variable(2, AD, 15, 10)
@@ -3352,29 +3353,33 @@ public interface SkillDefinition {
                 .mana(60, 5)
                 .cd(10)
                 .range(1200);
-        W.update()
+
+        W.update(P514)
                 .passive("{1}する。")
                 .variable(1, ASRatio, 20, 5)
-                .active("Nocturneに1.5秒間持続する{2}を付与し、その間一度だけ敵のスキルを無効化する。無効化した場合、5秒間Passiveの増加攻撃速度が2倍になる。")
-                .variable(2, Status.SpellShield)
+                .active("1.5秒間{2}を付与し、その間一度だけ敵のスキルを無効化する。無効化した場合、5秒間Passiveの増加攻撃速度が2倍になる。")
+                .variable(2, SpellShield)
                 .mana(50)
                 .cd(20, -2);
-        E.update()
-                .active("対象の敵ユニットに2秒間0.5秒毎に{1}、合計で{3}を与え、2秒間対象が一定範囲内(範囲465)に留まり続けていれば、更に{2}を与える。")
-                .variable(1, MagicDamage, 12.5, 12.5, ap(0.25))
-                .variable(2, Fear, 1, 0.25)
-                .variable(3, MagicDamage, 50, 50, ap(1))
+
+        E.update(P514)
+                .passive("恐怖状態の敵に向かっていく際、{1}する。")
+                .variable(-1, MS, 335)
+                .active("対象の敵ユニットに2秒間0.5秒毎に{2}、合計で{4}を与え、2秒間対象が一定範囲内(範囲465)に留まり続けていれば、更に{3}を与える。")
+                .variable(2, MagicDamage, 20, 10, ap(0.25))
+                .variable(3, Fear, 1, 0.25)
+                .variable(4, MagicDamage, 80, 40, ap(1))
                 .mana(60, 5)
                 .cd(15, -1)
                 .range(425);
-        R.update()
-                .active("4秒間すべての敵チャンピオンに{1}を与え、また自分以外の視界を得られなくする。効果中に範囲内にいる敵チャンピオンを指定すると対象の位置まで移動し、到着時に対象に{2}を与える。")
+
+        R.update(P514)
+                .active("4秒間すべての敵チャンピオンに{1}を与え、また自分以外の視界を得られなくする。再度スキルを使用すると、指定した敵チャンピオンの位置まで移動し、{2}を与える。")
                 .variable(1, Foggy, 300)
                 .variable(2, PhysicalDamage, 150, 100, bounusAD(1.2))
                 .mana(100)
-                .cd(180, -40)
+                .cd(150, -425)
                 .range(2000, 750);
-
     }
 
     /**
@@ -3414,7 +3419,7 @@ public interface SkillDefinition {
                 .range(550);
 
         R.update(P514)
-                .active("{1}の熱を最大3秒まで吸い込み、エリア内の全て敵に{2}と{3}を与える。詠唱終了時（もしくは移動、中断された時）にエリア内の敵に{4}、３秒間{1}と{2}を与える。ダメージ量は詠唱した時間に比例し下限は{5}。")
+                .active("{1}の熱を最大3秒まで吸い込み、エリア内の全て敵に{2}と{3}を与える。詠唱終了時（もしくは移動、中断された時）にエリア内の敵に{4}、３秒間{2}と{3}を与える。ダメージ量は詠唱した時間に比例し下限は{5}。")
                 .variable(1, Radius, 650)
                 .variable(2, ASSlowRatio, 25)
                 .variable(3, MSSlowRatio, 50)
