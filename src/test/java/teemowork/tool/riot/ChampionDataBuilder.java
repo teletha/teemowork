@@ -67,25 +67,13 @@ public class ChampionDataBuilder {
     private static String skills(List<String> skills, boolean transformer) {
         int size = skills.size();
 
-        if (transformer == false) {
-            return array(skills.toArray(new String[size]));
-        }
-
         if (size == 9) {
             if (transformer) {
                 return array(new String[] {skills.get(0), skills.get(5), skills.get(6), skills.get(7), skills.get(8)});
             } else {
                 return array(new String[] {skills.get(0), skills.get(1), skills.get(2), skills.get(3), skills.get(4)});
             }
-        } else if (size == 8) {
-            if (transformer) {
-                return array(new String[] {skills.get(0), skills.get(5), skills.get(6), skills.get(7), skills.get(4)});
-            } else {
-                return array(new String[] {skills.get(0), skills.get(1), skills.get(2), skills.get(3), skills.get(4)});
-            }
         }
-        // If this exception will be thrown, it is bug of this program. So we must rethrow the
-        // wrapped error in here.
-        throw new Error(skills.toString());
+        return array(skills.toArray(new String[size]));
     }
 }

@@ -62,7 +62,7 @@ class ChampionDefinition implements Comparable<ChampionDefinition> {
      * @return
      */
     public boolean isTransformer() {
-        return name.equals("Elise") || name.equals("Jayce") || name.equals("Nidalee");
+        return id.equals("Elise") || id.equals("Jayce") || id.equals("Nidalee") || id.equals("RekSai");
     }
 
     /**
@@ -84,11 +84,40 @@ class ChampionDefinition implements Comparable<ChampionDefinition> {
         Detail info = RiotAPI.parse(path, Details.class, Version.Latest, Locale.US).data.get(id);
         Detail local = RiotAPI.parse(path, Details.class, Version.Latest, Locale.JAPAN).data.get(id);
 
+        // passive
         addSkill(info.passive.name, local.passive.name, info.passive.image.full);
+
         for (int i = 0; i < info.spells.size(); i++) {
-            Skill spell = info.spells.get(i);
+            Spell spell = info.spells.get(i);
 
             addSkill(spell.name, local.spells.get(i).name, spell.image.full);
+        }
+
+        // extra
+        for (int i : findExtra()) {
+            Spell spell = info.spells.get(i);
+
+            addSkill(spell.getSecondary(), local.spells.get(i).getSecondary(), spell.getSecondaryImage());
+        }
+    }
+
+    /**
+     * <p>
+     * List up all extra skills.
+     * </p>
+     * 
+     * @return
+     */
+    private int[] findExtra() {
+        switch (id) {
+        case "RekSai":
+            return new int[] {0, 1, 2, 3};
+
+        case "Nidalee":
+            return new int[] {3};
+
+        default:
+            return new int[0];
         }
     }
 
@@ -247,18 +276,20 @@ class ChampionDefinition implements Comparable<ChampionDefinition> {
 
         public String partype;
 
-        public Skill passive;
+        public Spell passive;
 
-        public List<Skill> spells;
+        public List<Spell> spells;
 
     }
 
     /**
      * @version 2015/07/20 21:47:28
      */
-    private class Skill {
+    private class Spell {
 
         public Image image;
+
+        public List<Image> altimages;
 
         public String name;
 
@@ -276,5 +307,14 @@ class ChampionDefinition implements Comparable<ChampionDefinition> {
 
         public int maxrank;
 
+        private String getSecondary() {
+            int index = name.indexOf("/");
+
+            return index == -1 ? name : name.substring(index + 1).trim();
+        }
+
+        private String getSecondaryImage() {
+            return altimages == null ? image.full : altimages.get(0).full;
+        }
     }
 }

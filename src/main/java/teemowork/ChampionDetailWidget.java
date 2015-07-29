@@ -61,6 +61,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
         // TODO FIXME
         on(UIAction.Key_R, ChampionIconBox).to(e -> {
             build.active(SkillKey.R);
+            build.active(SkillKey.W);
         });
     }
 

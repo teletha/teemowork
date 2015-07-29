@@ -568,6 +568,14 @@ public class Build extends Publishable implements StatusCalculator {
             }
         }
 
+        if (key == SkillKey.W) {
+            if (champion == Champion.RekSai) {
+                champion = Champion.RekSaiTransformed;
+            } else if (champion == Champion.RekSaiTransformed) {
+                champion = Champion.RekSai;
+            }
+        }
+
         publish(this);
     }
 

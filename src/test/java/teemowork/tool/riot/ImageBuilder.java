@@ -115,11 +115,7 @@ public class ImageBuilder {
             if (champion.isTransformer()) {
                 String id = champion.getTransformedName();
 
-                if (skills.size() == 9) {
-                    buildSkillIconSet(id, skills.get(0), skills.get(5), skills.get(6), skills.get(7), skills.get(8));
-                } else {
-                    buildSkillIconSet(id, skills.get(0), skills.get(5), skills.get(6), skills.get(7), skills.get(4));
-                }
+                buildSkillIconSet(id, skills.get(0), skills.get(5), skills.get(6), skills.get(7), skills.get(8));
             }
         }
     }
@@ -260,6 +256,6 @@ public class ImageBuilder {
         ImageBuilder builder = new ImageBuilder(Version.Latest);
         // builder.buildItemIconSet();
         builder.buildChampionIconSet();
-        // builder.buildSkillIconSet();
+        builder.buildSkillIconSet();
     }
 }

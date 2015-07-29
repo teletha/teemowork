@@ -3695,7 +3695,28 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void RekSai(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive("通常攻撃で敵ユニットに" + Damage + "を与える度に5、スキルで敵ユニットに" + Damage + "を与える度に10のFuryを得る。地面から飛び出した直後の攻撃は追加で15のFuryを得る。Furyを得ている状態でBurrow状態になると、毎秒20Furyを消費して{1}する。一定時間戦闘を行わないと、Furyは毎秒20ずつ減少していく。")
+                .variable(1, RestoreHealth, 0, 0, level(5));
 
+        Q.update(P514)
+                .active("5秒以内に発動される3回の通常攻撃は{1}の敵に{2}を与える。")
+                .variable(1, Radius, 325)
+                .variable(2, PhysicalDamage, 15, 10, bounusAD(0.2));
+    }
+
+    /**
+     * Define skill.
+     */
+    public static void RekSaiTransformed(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive("通常攻撃で敵ユニットに" + Damage + "を与える度に5、スキルで敵ユニットに" + Damage + "を与える度に10のFuryを得る。地面から飛び出した直後の攻撃は追加で15のFuryを得る。Furyを得ている状態でBurrow状態になると、毎秒20Furyを消費して{1}する。一定時間戦闘を行わないと、Furyは毎秒20ずつ減少していく。")
+                .variable(1, RestoreHealth, 0, 0, level(5));
+
+        Q.update(P514)
+                .active("大地を打ち上げ、最初に命中したユニットとその{1}のユニットに{2}を与える。これらのユニットは、ステルス状態ではない場合、2.5秒間可視状態になる。")
+                .variable(1, Radius, 325)
+                .variable(2, PhysicalDamage, 15, 10, bounusAD(0.2));
     }
 
     /**
