@@ -2701,7 +2701,7 @@ public interface SkillDefinition {
         R.update(P514)
                 .active("一定方向に3秒間高速連射する。連射中は自由に移動可能。弾は敵を貫通せず、1発あたり{1}を与える。発砲する弾数は{2}。銃を連射している間は移動と" + E + "のみが可能。また連射中にこのスキルを再使用することで連射を解除できる。ミニオンに対しては400%のダメージを与える。")
                 .variable(1, PhysicalDamage, 40, 10, ap(0.1), bounusAD(0.25))
-                .variable(2, Value, 7.5, 0, amplify(AS, 750, 150))
+                .variable(2, Value, 7.5, 0, amplify(AS, 7.5, 1.5))
                 .variable(3, PhysicalDamage, 1040, 460, amplify(AP, 2.6, 0.4), amplify(BounusAD, 6.5, 1.0))
                 .mana(100)
                 .cd(110, -10)
@@ -2712,60 +2712,47 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Lulu(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("Pixという妖精がお供になる。Pixが付いている味方チャンピオンが通常攻撃を行った場合、Pixは同一の敵ユニットの方向に3発の弾を放ち1発毎に{1}を与える。この弾は敵ユニットを追尾するが、弾の進行方向上にいる敵ユニットにも当たる。建物を攻撃した場合はPixは弾を撃たない。")
-                .variable(1, MagicDamage, 1, 0, level(2))
-                .update(P314)
-                .variable(1, MagicDamage, new Per2Level(3, 3), ap(0.05), null)
-                .update(P315)
                 .variable(1, MagicDamage, new Per2Level(3, 4), ap(0.05), null);
-        Q.update()
-                .active("指定方向に貫通するエネルギーを発射し当たった敵ユニットに{1}と{2}間{3}を与える。この効果は時間と共に元に戻る。またPixがいる位置からもこのスキルが発射される(Pixが放つ方向はPixから見て指定した地点)。同一の対象に2回ヒットはしない。")
+
+        Q.update(P514)
+                .active("指定方向に貫通するエネルギーを発射し当たった敵ユニットに{1}と{2}間かけて減衰する{3}を与える。Pixがいる位置からもこのスキルが発射される(Pixが放つ方向はPixから見て指定した地点)。同一の対象に2回ヒットはしない。")
                 .variable(1, MagicDamage, 80, 45, ap(0.5))
                 .variable(2, Time, 1, 0.25)
                 .variable(3, MSSlowRatio, 80)
-                .mana(40, 10)
+                .mana(60, 5)
                 .cd(7)
                 .range(925);
-        Q.update(P306).mana(60, 5);
-        Q.update(P314)
-                .active("指定方向に貫通するエネルギーを発射し当たった敵ユニットに{1}と{2}間{3}を与える。この効果は時間と共に{4}まで減少する。またPixがいる位置からもこのスキルが発射される(Pixが放つ方向はPixから見て指定した地点)。同一の対象に2回ヒットはしない。")
-                .variable(4, Percentage, 0, 0, ap(0.133));
-        W.update()
-                .active("対象の味方チャンピオンに使用した場合、5秒間対象の味方チャンピオンは{1}し{2}を得る。敵チャンピオンに使用した場合、{3}間無力な動物に変化させ(Polymorph)、その間通常攻撃とスキルを封じ、{4}する。")
-                .variable(1, MSRatio, 35)
-                .variable(2, AP, 20, 10)
-                .variable(3, Time, 1.5, 0.25)
+
+        W.update(P514)
+                .active("味方チャンピオンに使用した場合、対象の味方チャンピオンは{1}間{2}を得る。敵チャンピオンに使用した場合、{3}間無力な動物に変化させ(Polymorph)、その間通常攻撃とスキルを封じ、{4}する。")
+                .variable(1, Time, 3, 0.5)
+                .variable(2, MSRatio, 30, 0, ap(0.1))
+                .variable(3, Time, 1.25, 0.25)
                 .variable(4, MSReduction, 60)
-                .mana(65, 5)
+                .mana(65)
                 .cd(18, -1.5)
                 .range(650);
-        W.update(P314)
-                .active("対象の味方チャンピオンに使用した場合、5秒間対象の味方チャンピオンは{1}を得る。敵チャンピオンに使用した場合、{3}間無力な動物に変化させ(Polymorph)、その間通常攻撃とスキルを封じ、{4}する。")
-                .variable(1, MSRatio, 30, 0, ap(0.1));
-        E.update()
-                .active("対象の味方ユニットに使用した場合、6秒間対象の味方ユニットにPixを付けると同時に{1}を付与する。敵ユニットに使用した場合、Pixが敵ユニットに付くと同時に{2}を与え、6秒間その敵ユニットの{3}。")
-                .variable(1, Shield, 60, 45, ap(0.6))
-                .variable(2, MagicDamage, 80, 50, ap(0.6))
+
+        E.update(P514)
+                .active("味方ユニットに使用した場合、6秒間対象の味方ユニットにPixを付けると同時に{1}を付与する。敵ユニットに使用した場合、Pixが敵ユニットに付くと同時に{2}を与え、4秒間その敵ユニットの{3}。")
+                .variable(1, Shield, 80, 40, ap(0.6))
+                .variable(2, MagicDamage, 80, 30, ap(0.4))
                 .variable(3, Visionable)
                 .mana(60, 10)
                 .cd(10)
-                .range(650)
-                .update(P314)
-                .variable(2, MagicDamage, 80, 50, ap(0.4))
-                .update(P315)
-                .variable(1, Shield, 80, 40, ap(0.6));
-        R.update()
+                .range(650);
+
+        R.update(P514)
                 .active("対象の味方チャンピオンを7秒間巨大化させ、同時に対象の{3}の敵ユニットに{1}を与える。巨大化した味方チャンピオンは{2}を得て、{3}の敵ユニットに継続的に{4}を与える。スローの効果は範囲内から出ても1秒間持続する。")
                 .variable(1, Knockup, 1.5)
                 .variable(2, Health, 300, 150, ap(0.5))
-                .variable(3, Radius, 0)
+                .variable(3, Radius, 150)
                 .variable(4, MSSlowRatio, 30, 15)
-                .mana(150)
+                .mana(100)
                 .cd(110, -15)
-                .range(900)
-                .update(P315)
-                .mana(100);
+                .range(900);
     }
 
     /**
