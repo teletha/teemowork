@@ -2847,6 +2847,52 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
+    public static void Malzahar(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive("スキルを4回使う度にVoidlingを召喚する。Voidlingは21秒間持続し、7秒後にADとARが1.5倍、14秒後にASが2倍に増加する。任意の操作不可。攻撃対象は、" + R + "を掛けた相手、" + E + "を掛けた相手、" + champion + "がターゲットしている相手の順。<br>Health: {1}<br>AD: {2}<br>AR: 30<br>MR: 50<br>AS: 0.831<br>MS: 451")
+                .variable(1, Value, 200, 0, level(50))
+                .variable(2, Value, 20, 0, level(5), bounusAD(1));
+
+        Q.update(P514)
+                .active("指定した地点の左右から挟み込む様に2本の波動が出現し、当たった敵ユニットに{1}と{2}を与える。また、指定した場所の{3}。")
+                .variable(1, MagicDamage, 80, 55, ap(0.8))
+                .variable(2, Silence, 1.4, 0.4)
+                .variable(3, Visionable)
+                .mana(80, 5)
+                .cd(9)
+                .range(900);
+
+        W.update(P514)
+                .active("指定地点に5秒間持続する{1}のダメージゾーンを発生させ、上にいる敵ユニットに毎秒{2}を与える。(ミニオンやモンスターに対しては毎秒120ダメージが上限)")
+                .variable(1, Radius, 250)
+                .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 4, 1, ap(0.01)))
+                .mana(90, 5)
+                .cd(14)
+                .range(800);
+
+        E.update(P514)
+                .active("対象の敵ユニットに4秒間0.5秒毎に{1}を与える（合計{2}）。効果中に敵ユニットが死亡した場合、{3}し、近くの敵ユニットに効果が移り変わる。移る度に4秒のタイマーはリセットされる。")
+                .variable(1, MagicDamage, 10, 7.5, ap(0.1))
+                .variable(2, MagicDamage, 80, 60, ap(0.8))
+                .variable(3, RestoreMana, 10, 4)
+                .mana(60, 15)
+                .cd(15, -2)
+                .range(650);
+
+        R.update(P514)
+                .active("対象の敵チャンピオンに2.5秒間0.5秒毎に{1}を与え（合計{2}）、{3}を与える。")
+                .variable(1, MagicDamage, 50, 30, ap(0.26))
+                .variable(2, MagicDamage, 250, 150, ap(1.3))
+                .variable(2, Suppression, 2.5)
+                .mana(100)
+                .cd(120, -20)
+                .range(700)
+                .type(SkillType.Channel);
+    }
+
+    /**
+     * Define skill.
+     */
     public static void MasterYi(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update().passive("通常攻撃7回毎に2回分ダメージを与える。対象が建物の場合も有効。");
         P.update(P310).passive("連続した通常攻撃4回毎に2回攻撃をする。この追加攻撃は50%のダメージを与える。");
@@ -2961,47 +3007,6 @@ public interface SkillDefinition {
                 .cd(120, -10)
                 .range(600);
         R.update(P3051).mana(100);
-    }
-
-    /**
-     * Define skill.
-     */
-    public static void Malzahar(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("スキルを4回使う度にVoidlingを召喚する。Voidlingは21秒間持続し、7秒後にADとARが1.5倍、14秒後にASが2倍に増加する。任意の操作不可。攻撃対象は、Ultを掛けた相手、" + E + "を掛けた相手、Malzaharがターゲットしている相手の順。<br>Health: {1}<br>AD: {2}<br>AR: 30<br>MR: 50<br>AS: 0.831<br>MS: 451")
-                .variable(1, Value, 200, 0, level(40))
-                .variable(2, Value, 20, 0, level(5), bounusAD(1));
-        Q.update()
-                .active("指定した地点の左右から挟み込む様に2本の波動が出現し、当たった敵ユニットに{1}と{2}を与える。また、指定した場所の視界を得る。")
-                .variable(1, MagicDamage, 80, 55, ap(0.8))
-                .variable(2, Silence, 1.4, 0.4)
-                .mana(80, 10)
-                .cd(9)
-                .range(900);
-        Q.update(P306).mana(80, 5);
-        W.update()
-                .active("指定地点に5秒間持続する{1}のダメージゾーンを発生させ、上にいる敵ユニットに毎秒{2}を与える。(Minionに対しては毎秒120DMが上限)")
-                .variable(1, Radius, 250)
-                .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 4, 1, ap(0.01)))
-                .mana(90, 10)
-                .cd(14)
-                .range(800);
-        W.update(P306).mana(90, 5);
-        E.update()
-                .active("対象の敵ユニットに4秒かけて{1}を与える。効果中に敵ユニットが死亡した場合、{2}し、近くの敵ユニットに効果が移り変わる。移る度に4秒のタイマーはリセットされる。")
-                .variable(1, MagicDamage, 80, 60, ap(0.8))
-                .variable(2, RestoreMana, 10, 4)
-                .mana(60, 15)
-                .cd(15, -2)
-                .range(650);
-        R.update()
-                .active("対象の敵チャンピオンに2.5秒かけて{1}と{2}を与える。ダメージは0.5秒毎に計5回の判定がある。")
-                .variable(1, MagicDamage, 250, 150, ap(1.3))
-                .variable(2, Suppression, 2.5)
-                .mana(150)
-                .cd(120, -20)
-                .range(700)
-                .type(SkillType.Channel);
     }
 
     /**
