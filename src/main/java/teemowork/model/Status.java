@@ -319,7 +319,7 @@ public enum Status {
 
     Duration("経過秒数"),
 
-    Count("", 3), Radius("範囲"),
+    Count("", 3), Radius("周囲"),
 
     Length("長さ"),
 

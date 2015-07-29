@@ -2943,75 +2943,46 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void MasterYi(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("通常攻撃7回毎に2回分ダメージを与える。対象が建物の場合も有効。");
-        P.update(P310).passive("連続した通常攻撃4回毎に2回攻撃をする。この追加攻撃は50%のダメージを与える。");
-        Q.update()
-                .active("対象の敵ユニットと近くの敵ユニット3体({1})をランダムに対象とし{2}を与え、対象の近くにワープする。minionの場合は50%の確率で追加{3}を与える。")
+        P.update(P514)
+                .passive("通常攻撃4回毎に2回連続で攻撃を行い{1}を与える。対象が建物の場合も有効。通常攻撃を4秒間しなかった場合、カウントがリセットされる。")
+                .variable(1, PhysicalDamage, ad(0.5));
+
+        Q.update(P514)
+                .active("ターゲット不可状態になり対象の敵ユニットと近くの敵ユニット3体({1})をランダムに対象とし{2}を与え(クリティカル発生時は{5})、対象の近くにワープする。ミニオンやモンスターには{3}を追加で与える。通常攻撃をする毎に{4}する。")
                 .variable(1, Radius, 600)
-                .variable(2, MagicDamage, 100, 50, ap(1))
-                .variable(3, MagicDamage, 260, 60)
-                .mana(60, 10)
-                .cd(18, -2)
-                .range(600);
-        Q.update(P310)
-                .active("対象の敵ユニットと近くの敵ユニット3体({1})をランダムに対象とし{2}を与え(クリティカル発生時は{5})、対象の近くにワープする。ミニオンには追加{3}を与える。通常攻撃をする毎に{4}する。")
                 .variable(2, PhysicalDamage, 25, 35, ad(1))
                 .variable(3, PhysicalDamage, 75, 25)
                 .variable(4, CDDecrease, 1)
                 .variable(5, PhysicalDamage, 25, 35, ad(1.6))
                 .mana(70, 10)
-                .cd(18, -1);
-        Q.update(P313)
-                .active("ターゲット不可状態になり対象の敵ユニットと近くの敵ユニット3体({1})をランダムに対象とし{2}を与え(クリティカル発生時は{5})、対象の近くにワープする。ミニオンには追加{3}を与える。通常攻撃をする毎に{4}する。");
-        W.update()
-                .active("5秒間詠唱を行い、毎秒{1}し、詠唱中は{2}と{3}を得る。")
-                .variable(1, RestoreHealth, 40, 30, ap(0.4))
-                .variable(2, AR, 100, 50)
-                .variable(3, MR, 100, 50)
-                .mana(50, 15)
+                .cd(18, -1)
+                .range(600);
+
+        W.update(P514)
+                .active("4秒間詠唱し、毎秒{1}する。この効果は自分の体力欠損分1％ごとに1％増加する。詠唱中は{2}する（タワーに対しては効果半減）。")
+                .variable(1, RestoreHealth, 30, 20, ap(0.3))
+                .variable(2, DamageReductionRatio, 50, 5)
                 .cd(35)
+                .mana(50)
                 .type(SkillType.Channel);
-        W.update(P310)
-                .active("4秒間詠唱を行い、{1}を得る（タワーに対しては{2}）。また、毎秒{3}する。この効果は失われているHealth1%に毎に1%増加する。")
-                .variable(1, DamageReductionRatio, 40, 5)
-                .variable(2, DamageReduction, 20, 2.5)
-                .variable(3, RestoreHealth, 30, 20, ap(0.3));
-        W.update(P310A).variable(1, DamageReductionRatio, 50, 5);
-        W.update(P313).mana(50);
-        E.update()
-                .passive("{1}を得る。")
-                .variable(1, AD, 15, 5)
-                .active("10秒間{2}を得る。CDが解消されるまでPassiveの増加ダメージがなくなる。")
-                .variable(2, AD, 30, 10)
-                .mana(40)
-                .cd(25, -2);
-        E.update(P310)
+
+        E.update(P514)
                 .passive("{1}を得る。CD中この効果は失われる。")
-                .variable(1, AD, amplify(AD, 0.07, 0.02))
-                .active("5秒間通常攻撃に{2}が追加される。")
+                .variable(1, AD, ad(0.1))
+                .active("5秒間通常攻撃に{2}が追加される。建物に対しては無効。")
                 .variable(2, TrueDamage, 10, 5, amplify(AD, 0.1, 0.025))
-                .mana(0)
                 .cd(18, -1);
-        E.update(P310A).variable(1, AD, amplify(AD, 0.1));
-        R.update()
-                .active("{4}間{1}、{2}し、{3}を得る。効果中に敵チャンピオンを倒すとすべてのスキルの{5}する。")
-                .variable(1, MSRatio, 40)
-                .variable(2, ASRatio, 40)
-                .variable(3, IgnoreSlow)
-                .variable(4, Time, 8, 2)
-                .variable(5, CDDecrease)
+
+        R.update(P514)
+                .passive("チャンピオンを{1}と" + R + "以外のスキルは{2}する。")
+                .variable(1, Takedown)
+                .variable(2, CDDecreaseRatio, 70)
+                .active("10秒間{3}、{4}し、{5}を得る。効果中にチャンピオンを{1}と効果時間が4秒延長する。")
+                .variable(3, MSRatio, 25, 10)
+                .variable(4, ASRatio, 30, 25)
+                .variable(5, IgnoreSlow)
                 .mana(100)
                 .cd(75);
-        R.update(P310)
-                .passive("チャンピオンを倒すと" + R + "以外のスキルは{5}する。（アシストの場合は{6}）")
-                .variable(5, CDDecrease, 18)
-                .variable(6, CDDecrease, 9)
-                .active("{4}間{1}、{2}し、{3}を得る。効果中にチャンピオンを倒すと効果時間が{7}延長する。")
-                .variable(1, MSRatio, 25, 10)
-                .variable(2, ASRatio, 30, 25)
-                .variable(4, Time, 10)
-                .variable(7, Time, 4);
-        R.update(P310A).passive("チャンピオンを倒すと（アシストを含む）" + R + "以外のスキルは{5}する。").variable(5, CDDecreaseRatio, 70);
     }
 
     /**
