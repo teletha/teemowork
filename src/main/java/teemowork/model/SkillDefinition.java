@@ -2530,31 +2530,35 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void LeeSin(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("スキルを使用すると{1}し通常攻撃の度に{2}する。この効果は3秒経つか2回通常攻撃を行うと解消される。")
                 .variable(-1, ASRatio, 40)
                 .variable(2, RestoreEnergy, 15);
-        Q.update()
-                .active("指定方向に気を飛ばし当たった敵ユニットに{1}を与える。このスキルが敵ユニットに当たった場合、3秒間対象の視界を得て、下記のスキルを使用できる。<br><br>{2}を消費して、Sonic Waveが当たった{3}の敵ユニットにダッシュし、{4}を与える。(追加ダメージはMinionに対して400DMが上限)")
+
+        Q.update(P514)
+                .active("指定方向に気を飛ばし当たった敵ユニットに{1}を与える。このスキルが敵ユニットに当たった場合、3秒間対象の{5}、下記のスキルを使用できる。<br><br>{2}を消費して、" + Q + "が当たった{3}の敵ユニットにダッシュし、{4}を与える。(追加ダメージはミニオンやモンスターに対して400ダメージが上限)")
                 .variable(1, PhysicalDamage, 50, 30, bounusAD(0.9))
                 .variable(2, Energy, 30)
                 .variable(3, Radius, 1300)
-                .variable(4, PhysicalDamage, 50, 0, bounusAD(0.5), amplify(Status.TargetMissingHealthRatio, 8))
+                .variable(4, PhysicalDamage, 50, 30, bounusAD(0.9), amplify(Status.TargetMissingHealthRatio, 8))
+                .variable(5, Visionable)
                 .cd(11, -1)
                 .range(1100)
                 .cost(Energy, 50, 0);
-        W.update()
+
+        W.update(P514)
                 .active("対象の味方ユニットまで移動する。自身及び対象（味方チャンピオンに限る）は５秒間{1}を得る。このスキル使用後3秒間、下記のスキルが使用できる。<br><br>{2}を消費して、5秒間{3}と{4}を得る。")
                 .variable(1, Shield, 40, 40, ap(0.8))
                 .variable(2, Energy, 30)
                 .variable(3, LS, 5, 5)
                 .variable(4, SV, 5, 5)
-                .cd(9)
+                .cd(14)
                 .cost(Energy, 50, 0)
                 .range(700);
-        E.update()
-                .active("{1}の敵ユニットに{2}を与え、4秒間そのユニットの{3}。このスキルが敵ユニットに当たった場合、3秒間下記のスキルが使用できる。<br><br>{4}を消費して、Tempestが当たった{5}の敵ユニットに４秒間{6}を与える。これらの速度低下は時間と共に戻っていく。")
-                .variable(1, Radius, 450)
+
+        E.update(P514)
+                .active("{1}の敵ユニットに{2}を与え、4秒間そのユニットの{3}。このスキルが敵ユニットに当たった場合、3秒間下記のスキルが使用できる。<br><br>{4}を消費して、" + E + "が当たった{5}の敵ユニットに４秒間かけて減衰する{6}を与える。")
+                .variable(1, Radius, 350)
                 .variable(2, MagicDamage, 60, 35, bounusAD(1))
                 .variable(3, Visionable)
                 .variable(4, Energy, 30)
@@ -2562,7 +2566,8 @@ public interface SkillDefinition {
                 .variable(6, MSSlowRatio, 20, 10)
                 .cd(10)
                 .cost(Energy, 50, 0);
-        R.update()
+
+        R.update(P514)
                 .active("対象の敵チャンピオンに{1}を与え、{2}させる。ノックバックした対象に触れた敵ユニットにも{1}を与え、{3}を与える。")
                 .variable(1, PhysicalDamage, 200, 200, bounusAD(2))
                 .variable(2, Knockback, 1200)
