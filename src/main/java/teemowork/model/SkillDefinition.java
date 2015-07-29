@@ -3696,27 +3696,69 @@ public interface SkillDefinition {
      */
     public static void RekSai(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P514)
-                .passive("通常攻撃で敵ユニットに" + Damage + "を与える度に5、スキルで敵ユニットに" + Damage + "を与える度に10のFuryを得る。地面から飛び出した直後の攻撃は追加で15のFuryを得る。Furyを得ている状態でBurrow状態になると、毎秒20Furyを消費して{1}する。一定時間戦闘を行わないと、Furyは毎秒20ずつ減少していく。")
-                .variable(1, RestoreHealth, 0, 0, level(5));
+                .passive("通常攻撃で敵ユニットに" + Damage + "を与える度に5、スキルで敵ユニットに" + Damage + "を与える度に10のFuryを得る。地面から飛び出した直後の攻撃は追加で15のFuryを得る。一定時間戦闘を行わないと、Furyは毎秒20ずつ減少していく。");
 
         Q.update(P514)
                 .active("5秒以内に発動される3回の通常攻撃は{1}の敵に{2}を与える。")
                 .variable(1, Radius, 325)
-                .variable(2, PhysicalDamage, 15, 10, bounusAD(0.2));
+                .variable(2, PhysicalDamage, 15, 10, bounusAD(0.2))
+                .cd(4);
+
+        W.update(P514)
+                .active("地中に潜る。この間は通常攻撃が不可能になり、視界が大幅に狭まるが、" + R + "以外のスキルが変化し、{1}にいる移動中の敵ユニットの場所にソナーが発生し位置を特定できるようになる。また{2}を得て{3}する。")
+                .variable(1, Radius, 1300)
+                .variable(2, IgnoreUnitCollision)
+                .variable(3, MS, new Per5Level(15, 5))
+                .cd(4);
+
+        E.update(P514)
+                .active("ターゲットにかみつき{1}を与える。" + Damage + "は得ているFury1につき1%増加し(最大2倍)、Furyが100の場合は" + PhysicalDamage + "の代わりに" + TrueDamage + "を与える。")
+                .variable(1, PhysicalDamage, 0, 0, amplify(AD, 0.8, 0.1))
+                .cd(12)
+                .range(250);
+
+        R.update(P514)
+                .passive("{1}する。")
+                .variable(1, ASRatio, 20, 20)
+                .active("MAP上にあるトンネルを指定すると、1.5秒詠唱後に指定したトンネルの元まで高速で移動する。スキル発動後は地面に潜った状態となる。このスキルによる詠唱は敵チャンピオンまたは敵タワーから" + Damage + "を受けると中断される。")
+                .cd(150, -40)
+                .range(-1);
     }
 
     /**
      * Define skill.
      */
     public static void RekSaiTransformed(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P514)
-                .passive("通常攻撃で敵ユニットに" + Damage + "を与える度に5、スキルで敵ユニットに" + Damage + "を与える度に10のFuryを得る。地面から飛び出した直後の攻撃は追加で15のFuryを得る。Furyを得ている状態でBurrow状態になると、毎秒20Furyを消費して{1}する。一定時間戦闘を行わないと、Furyは毎秒20ずつ減少していく。")
-                .variable(1, RestoreHealth, 0, 0, level(5));
+        P.update(P514).passive("毎秒20Furyを消費して{1}する。").variable(1, RestoreHealth, 0, 0, level(5));
 
         Q.update(P514)
-                .active("大地を打ち上げ、最初に命中したユニットとその{1}のユニットに{2}を与える。これらのユニットは、ステルス状態ではない場合、2.5秒間可視状態になる。")
-                .variable(1, Radius, 325)
-                .variable(2, PhysicalDamage, 15, 10, bounusAD(0.2));
+                .active("ビームを放ち、最初に命中したユニットとその{1}の敵ユニットに{2}を与え、{3}。")
+                .variable(1, Radius)
+                .variable(2, MagicDamage, 60, 30, ap(0.7))
+                .variable(3, Visionable)
+                .cd(11, -1)
+                .range(1650);
+
+        W.update(P514)
+                .active("地上に飛び出し、{1}にいる敵に{2}と{3}を与える。打ち上げ時間は、" + champion + "に近い敵ほど長くなる。一度" + W + "の効果を受けたユニットは、以後{4}経過するまで再度効果を受けない。")
+                .variable(1, Radius, 160)
+                .variable(2, PhysicalDamage, 40, 40, bounusAD(0.4))
+                .variable(3, Knockup, 1)
+                .variable(4, Time, 10, -0.5)
+                .cd(1);
+
+        E.update(P514)
+                .active("指定した地点まで一定距離掘り進んだ後、スキルを使用した地点と止まった地点にトンネルの出入り口を作成する。" + champion + "がトンネルの出入り口をクリックすると、トンネルを経由してもう一つの出入り口まで移動できる。移動には1.5秒かかり、一度トンネルによる移動を行うと、{1}間はトンネルが使用できなくなる。トンネルは10分間持続し、一度に8箇所まで作成できるが、敵チャンピオンが出入り口の上に立ち1.5秒経過すると、トンネルは破壊される。")
+                .variable(1, Time, 10, -1)
+                .cd(20, -0.5)
+                .range(250);
+
+        R.update(P514)
+                .passive("{1}する。")
+                .variable(1, ASRatio, 20, 20)
+                .active("MAP上にあるトンネルを指定すると、1.5秒詠唱後に指定したトンネルの元まで高速で移動する。スキル発動後は地面に潜った状態となる。このスキルによる詠唱は敵チャンピオンまたは敵タワーから" + Damage + "を受けると中断される。")
+                .cd(150, -40)
+                .range(-1);
     }
 
     /**
