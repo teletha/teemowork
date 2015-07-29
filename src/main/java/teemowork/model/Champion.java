@@ -104,7 +104,8 @@ public class Champion extends RiotChampionData {
                 .set(MS, ms)
                 .set(Range, range);
 
-        skillDefinition.define(P, Q, W, E, R);
+        // expose this instance, so we must call at last
+        skillDefinition.define(this, P, Q, W, E, R);
     }
 
     /**
@@ -204,6 +205,14 @@ public class Champion extends RiotChampionData {
         versions[version.ordinal()] = status;
 
         return status;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return name;
     }
 
     /**
