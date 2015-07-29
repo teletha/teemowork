@@ -2442,38 +2442,42 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void KogMaw(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("死亡すると4秒後に自爆して周囲の敵ユニットに{1}を与える。自爆するまでの間は徐々に移動速度が増加する(最大時40%増加)。")
                 .variable(1, TrueDamage, 100, 0, level(25));
-        Q.update()
+
+        Q.update(P514)
                 .passive("{1}する。")
                 .variable(1, ASRatio, 10, 5)
                 .active("対象の敵ユニットに{2}を与え、4秒間{3}と{4}を与える。")
-                .variable(2, MagicDamage, 60, 50, ap(0.7))
-                .variable(3, ARReduction, 5, 5)
-                .variable(4, MRReduction, 5, 5)
+                .variable(2, MagicDamage, 80, 50, ap(0.5))
+                .variable(3, ARReductionRatio, 12, 4)
+                .variable(4, MRReductionRatio, 12, 4)
                 .mana(60)
                 .cd(8)
-                .range(625);
-        W.update()
+                .range(1000);
+
+        W.update(P514)
                 .active("8秒間通常攻撃の{1}し、通常攻撃時に{2}を追加で与える。")
                 .variable(1, Range, 130, 20)
                 .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 2, 1, ap(0.01)))
                 .mana(50)
-                .cd(17)
-                .range(130, 20);
-        E.update()
-                .active("指定方向に貫通する弾を発射し、当たった敵ユニットに{1}を与える。弾の通過点に4秒間持続する液体が残り、その上にいる敵ユニットに{2}を与える。")
+                .cd(17);
+
+        E.update(P514)
+                .active("指定方向に貫通する弾を発射し、当たった敵ユニットに{1}と1秒間{2}を与える。弾の通過点に4秒間持続する液体が残り、その上にいる敵ユニットに{2}を与える。")
                 .variable(1, MagicDamage, 60, 50, ap(0.7))
                 .variable(2, MSSlowRatio, 20, 8)
                 .mana(80, 10)
                 .cd(12)
-                .range(1400);
-        R.update()
-                .active("指定地点を砲撃し、{1}の敵ユニットに{2}を敵チャンピオンには{3}を与え、4秒間そのユニットの視界を得る。このスキルを使うたびにスタックが増加し、1スタックにつきこのスキルの消費マナが40ずつ増加していく。スタックは6秒間持続する。")
+                .range(1280);
+
+        R.update(P514)
+                .active("指定地点を砲撃し、0.6秒後に{1}の敵ユニットに{2}を与える。敵チャンピオンには{3}を与える。4秒間そのユニットの{4}。このスキルを使うたびにスタックが増加し、1スタックにつきこのスキルの消費マナが40ずつ増加していく。スタックは6秒間持続し最大10。")
                 .variable(1, Radius, 200)
                 .variable(2, MagicDamage, 80, 40, ap(0.3), bounusAD(0.5))
-                .variable(3, MagicDamage, 180, 90, ap(0.3), bounusAD(0.5))
+                .variable(3, MagicDamage, 160, 80, ap(0.3), bounusAD(0.5))
+                .variable(4, Visionable)
                 .cost(Mana, new Diff(40, 0, 1), amplify(Stack, 40))
                 .cd(2, -0.5)
                 .range(1400, 300);
