@@ -3565,30 +3565,35 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Poppy(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("現在HPの10%を超えるダメージを受けた際、その超過分のダメージを50%低減する。塔の攻撃には無効。");
-        Q.update()
-                .active("次に行う通常攻撃が魔法DMになり、追加{1}が付与される。")
+        P.update(P514).passive("現在HPの10%を超えるダメージを受けた際、その超過分のダメージを50%低減する。塔の攻撃には無効。");
+
+        Q.update(P514)
+                .active("次の通常攻撃が" + MagicDamage + "になり、{1}が付与される。{2}。")
                 .variable(1, MagicDamage, 20, 20, ap(0.6), amplify(TargetMaxHealthRatio, 8))
+                .variable(2, ResetAATimer)
                 .mana(55)
                 .cd(8, -1);
-        W.update()
-                .passive("通常攻撃を行うか、ダメージを受ける度にスタックが1増加する(最大10)。スタック数に比例して{1}と{2}を得る。スタックは5秒間増加がないと0になる。")
-                .variable(-1, AD, 1.5, 0, amplify(Stack, 0.5))
-                .variable(-2, AR, 1.5, 0, amplify(Stack, 0.5))
+
+        W.update(P514)
+                .passive("通常攻撃を行うか、通常攻撃を受ける度にスタックが1増加する(最大10)。スタック数に比例して{1}と{2}を得る。スタックは5秒間増加がないと0になる。")
+                .variable(-1, AD, 0, 0, amplify(Stack, 1.5, 0.5))
+                .variable(-2, AR, 0, 0, amplify(Stack, 1.5, 0.5))
                 .active("スタックを最大(10)まで増加させ、5秒間{3}する。")
                 .variable(3, MSRatio, 17, 2)
                 .mana(70, 5)
                 .cd(12);
-        E.update()
+
+        E.update(P514)
                 .active("対象の敵ユニットに突撃し{1}と{2}を与える。ノックバック時に壁にぶつかった場合、追加{3}と{4}を与える。")
-                .variable(1, Knockback)
+                .variable(1, Knockback, 300)
                 .variable(2, MagicDamage, 50, 25, ap(0.4))
                 .variable(3, MagicDamage, 75, 50, ap(0.4))
                 .variable(4, Stun, 1.5)
                 .mana(60, 5)
                 .cd(12, -1)
                 .range(525);
-        R.update()
+
+        R.update(P514)
                 .active("対象の敵チャンピオンを{2}秒間ターゲットし、その対象に与える{1}する。効果中は対象以外からのすべての攻撃を無効化する(対象のPetからはダメージを受ける)。")
                 .variable(1, DamageRatio, 20, 10)
                 .variable(2, Time, 6, 1)
