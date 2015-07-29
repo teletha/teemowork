@@ -3378,7 +3378,7 @@ public interface SkillDefinition {
                 .variable(1, Foggy, 300)
                 .variable(2, PhysicalDamage, 150, 100, bounusAD(1.2))
                 .mana(100)
-                .cd(150, -425)
+                .cd(150, -25)
                 .range(2000, 750);
     }
 
