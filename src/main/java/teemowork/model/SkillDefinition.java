@@ -3084,44 +3084,43 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Morgana(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("{1}を得る。").variable(1, SV, new Per6Level(10, 5));
-        Q.update()
+        P.update(P514).passive("{1}を得る。").variable(1, SV, new Per6Level(10, 5));
+
+        Q.update(P514)
                 .active("指定方向に魔法弾を飛ばし、当たった敵ユニットに{1}と{2}を与える。")
                 .variable(1, MagicDamage, 80, 55, ap(0.9))
                 .variable(2, Snare, 2, 0.25)
-                .mana(60, 15)
+                .mana(50, 10)
                 .cd(11)
-                .range(1300);
-        Q.update(P3051).mana(50, 10);
-        W.update()
-                .active("指定地点に5秒間持続する黒い沼({3})を発生させ、上にいる敵ユニットに毎秒{1}と{2}を与える。MR低下は2秒間持続し、5回までスタックする。")
-                .variable(1, MagicDamage, 25, 15, ap(0.2))
-                .variable(2, MRReduction, 4, 1)
-                .variable(3, Radius, 350)
+                .range(1175);
+
+        W.update(P514)
+                .active("指定地点に5秒間持続する黒い沼({3})を発生させ、上にいる敵ユニットに0.5秒毎に{1}を与える（最大で{2}）。対象が失っているHP1%につき、このスキルのダメージが0.5%上昇する(最大で1.5倍)。")
+                .variable(1, MagicDamage, 8, 8, ap(0.11))
+                .variable(2, MagicDamage, 80, 80, ap(1.1))
+                .variable(3, Radius, 175)
                 .mana(70, 15)
                 .cd(10)
                 .range(900);
-        W.update(P313)
-                .active("指定地点に5秒間持続する黒い沼({3})を発生させ、上にいる敵ユニットに0.5秒毎に{1}を与える（最大で{2}）。対象が失っているHP1%につき、このスキルのダメージが0.5%上昇する(最大で1.5倍)。")
-                .variable(1, MagicDamage, 12, 7, ap(0.11))
-                .variable(2, MagicDamage, 120, 70, ap(1.1));
-        E.update()
+
+        E.update(P514)
                 .active("対象の味方チャンピオンは5秒間{1}と{2}を得る。")
-                .variable(1, MagicShield, 95, 65, ap(0.7))
+                .variable(1, MagicShield, 70, 70, ap(0.7))
                 .variable(2, IgnoreCC)
-                .mana(50)
+                .mana(55)
                 .cd(23, -2)
                 .range(750);
-        R.update()
-                .active("周囲の敵チャンピオンに{1}と３秒間{2}を与え対象と糸で繋がれる。3秒間対象が糸の範囲内({3})に留まっていた場合、対象に{1}と{4}を与える。")
-                .variable(1, MagicDamage, 175, 75, ap(0.7))
-                .variable(2, MSSlowRatio, 20)
-                .variable(3, Radius, 1000)
-                .variable(4, Stun, 1.5)
-                .mana(100, 50)
+
+        R.update(P514)
+                .active("{1}の敵チャンピオンに{2}と３秒間{3}を与え対象と糸で繋がれる。3秒間対象が{4}に留まっていた場合、{1}と{5}を与える。")
+                .variable(1, Radius, 600)
+                .variable(2, MagicDamage, 175, 75, ap(0.7))
+                .variable(3, MSSlowRatio, 20)
+                .variable(4, Radius, 1050)
+                .variable(5, Stun, 1.5)
+                .mana(100)
                 .cd(120, -10)
                 .range(600);
-        R.update(P3051).mana(100);
     }
 
     /**
