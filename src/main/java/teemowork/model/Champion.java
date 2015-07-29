@@ -133,17 +133,6 @@ public class Champion extends RiotChampionData {
 
     /**
      * <p>
-     * Returns splash art path.
-     * </p>
-     * 
-     * @return
-     */
-    public String getSplashArt() {
-        return "src/main/resources/teemowork/splash/" + getSystemName() + ".jpg";
-    }
-
-    /**
-     * <p>
      * Returns icon image path.
      * </p>
      * 

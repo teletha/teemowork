@@ -481,7 +481,7 @@ public interface SkillDefinition {
      */
     public static void Bard(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P514)
-                .passive("鐘が50秒毎に2個ずつ、自身から一定の範囲内に出現する(2回目と3回目は1個のみ。また、試合開始から5分経過すると、敵ジャングル内にも出現し始める)。鐘を取ると、非戦闘時に7秒間{1}し(5回までスタック)、{2}（経過時間に比例）を得て、{3}する。鐘は10分経つと消滅する。<br>通常攻撃の際、スタックを消費して{4}を与える。取得した鐘の数で性能が強化される。<br>5個：1秒間{5}<br>25：ターゲットの後方にも追加効果<br>65：効果範囲が拡大")
+                .passive("鐘が50秒毎に2個ずつ、自身から一定の範囲内に出現する(2回目と3回目は1個のみ。また、試合開始から5分経過すると、敵ジャングル内にも出現し始める)。鐘を取ると、非戦闘時に7秒間{1}し(5回までスタック)、{2}（経過時間に比例）を得て、{3}する。鐘は10分経つと消滅する。<br>通常攻撃の際、スタックを消費して{4}を与える。取得した鐘の数で性能が強化される。<br>5個: 1秒間{5}<br>25: ターゲットの後方にも追加効果<br>65: 効果範囲が拡大")
                 .variable(-1, MSRatio)
                 .variable(2, Experiment, 20)
                 .variable(3, RestoreMana, amplify(Mana, 0.12))
@@ -710,7 +710,7 @@ public interface SkillDefinition {
      */
     public static void Cassiopeia(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P514)
-                .passive("6秒毎に1スタックを得る。敵チャンピオンに毒を与えている間は毎秒1スタックを得る。スタック数に応じて能力を得る。<br>100：{1}する。" + E + "を敵に当てるたびに{2}する。<br>250：{3}する。{4}を得る。<br>500：{5}する。")
+                .passive("6秒毎に1スタックを得る。敵チャンピオンに毒を与えている間は毎秒1スタックを得る。スタック数に応じて能力を得る。<br>100: {1}する。" + E + "を敵に当てるたびに{2}する。<br>250: {3}する。{4}を得る。<br>500: {5}する。")
                 .variable(-1, APRatio, 5)
                 .variable(2, RestoreHealth, new Refer(E, 6, 2), ap(0.06), null)
                 .variable(-3, APRatio, 5)
@@ -1510,7 +1510,7 @@ public interface SkillDefinition {
      */
     public static void Gnar(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P514)
-                .passive("Mini Gnarの時に戦闘を行うと3秒間かけてRage{1}を得る。通常攻撃と" + Q + "で" + Damage + "を与えると追加で{2}のRageを得る(ミニオン、モンスター及び建物との戦闘の場合は25%)。13秒間戦闘を行わないとRageは減衰していく。Rageが100になった時にスキルを使用または5秒経過すると、Mega Gnarに変身する。Mega Gnarでは近接攻撃になり、スキルが変化する。15秒間経過するとMini Gnarに戻り、Rageは0になる。Mini Gnarに戻ると15秒間Rageが増加しなくなる。<br>Mini Gnar<br>MS：{3}<br>Range：{4}<br>AS：{5}<br>Mega Gnar<br>HP：{6}<br>AR：{7}<br>MR：{8}<br>Hreg：{9}<br>AD：{10}")
+                .passive("Mini Gnarの時に戦闘を行うと3秒間かけてRage{1}を得る。通常攻撃と" + Q + "で" + Damage + "を与えると追加で{2}のRageを得る(ミニオン、モンスター及び建物との戦闘の場合は25%)。13秒間戦闘を行わないとRageは減衰していく。Rageが100になった時にスキルを使用または5秒経過すると、Mega Gnarに変身する。Mega Gnarでは近接攻撃になり、スキルが変化する。15秒間経過するとMini Gnarに戻り、Rageは0になる。Mini Gnarに戻ると15秒間Rageが増加しなくなる。<br>Mini Gnar<br>MS: {3}<br>Range: {4}<br>AS: {5}<br>Mega Gnar<br>HP: {6}<br>AR: {7}<br>MR: {8}<br>Hreg: {9}<br>AD: {10}")
                 .variable(1, Value, new Per5Level3Times(4, 7, 11))
                 .variable(2, Value, new Per5Level3Times(2, 3, 5))
                 .variable(3, MS, 9, 0, level(1))
@@ -1708,7 +1708,7 @@ public interface SkillDefinition {
                 .variable(2, Hreg, new Per4Level(10, 5));
 
         Q.update(P514)
-                .active("スタックを消費して指定地点にTurretを最大3つまで設置する。スタックは{1}毎に増加し、最大{2}まで貯めることが出来る。塔に与えるダメージは半分。Heimerdingerが攻撃する若しくは攻撃されている場合、その対象を優先で攻撃。8秒間砲台と距離1000以上離れていた場合、砲台の動作が停止する。<br>HP：{3}<br>砲撃：{4}　{5}<br>ビーム：{6}　{7}　（16秒毎）<br>AR：{8}<br>MR：{9}<br>AS：1.75<br>視界：525")
+                .active("スタックを消費して指定地点にTurretを最大3つまで設置する。スタックは{1}毎に増加し、最大{2}まで貯めることが出来る。塔に与えるダメージは半分。Heimerdingerが攻撃する若しくは攻撃されている場合、その対象を優先で攻撃。8秒間砲台と距離1000以上離れていた場合、砲台の動作が停止する。<br>HP: {3}<br>砲撃: {4}　{5}<br>ビーム: {6}　{7}　（16秒毎）<br>AR: {8}<br>MR: {9}<br>AS: 1.75<br>視界: 525")
                 .variable(1, CDRAwareTime, 24, -1)
                 .variable(2, Stack, new Fixed(new double[] {1, 1, 2, 2, 3}))
                 .variable(3, Value, 125, 0, level(25), amplify(AP, new PerLevel(new int[] {1, 9, 10, 11, 12, 13, 14, 15,
@@ -1745,7 +1745,7 @@ public interface SkillDefinition {
                 .range(925);
 
         R.update(P514)
-                .active("次に使用するスキルの効果を強化する。強化されたスキルは一切のコストなしで使用でき、効果はこのスキルのLvに依存する。発動してから3秒間何も使わない場合は再発動可能になり、もう一度使用するとCD3秒でキャンセルする。<br>" + Q + "<br>Turretの上限を無視する特殊なTurretを1個設置する。8秒間持続する。砲撃に100%のスプラッシュダメージと1秒間{1}が付与される。<br>HP：{3}<br>砲撃：{4}　{5}<br>ビーム：{6}　{7}　（6秒毎）<br><br>" + W + "<br>指定地点に目掛けて、5本のミサイルを扇状に4回発射する。命中すると{8}を与える。同一対象に対して複数命中し、2発目以降は本来の20%分のDMを与える(同一対象に20発命中すると{9})。<br><br>" + E + "<br>2回までバウンドしつつ3回放電する手榴弾を投げる。作動した箇所にいる{10}にいる敵ユニットに{11}と2秒間{12}を与え、真ん中のユニットにはさらに{13}を与える。")
+                .active("次に使用するスキルの効果を強化する。強化されたスキルは一切のコストなしで使用でき、効果はこのスキルのLvに依存する。発動してから3秒間何も使わない場合は再発動可能になり、もう一度使用するとCD3秒でキャンセルする。<br>" + Q + "<br>Turretの上限を無視する特殊なTurretを1個設置する。8秒間持続する。砲撃に100%のスプラッシュダメージと1秒間{1}が付与される。<br>HP: {3}<br>砲撃: {4}　{5}<br>ビーム: {6}　{7}　（6秒毎）<br><br>" + W + "<br>指定地点に目掛けて、5本のミサイルを扇状に4回発射する。命中すると{8}を与える。同一対象に対して複数命中し、2発目以降は本来の20%分のDMを与える(同一対象に20発命中すると{9})。<br><br>" + E + "<br>2回までバウンドしつつ3回放電する手榴弾を投げる。作動した箇所にいる{10}にいる敵ユニットに{11}と2秒間{12}を与え、真ん中のユニットにはさらに{13}を与える。")
                 .variable(1, MSSlowRatio, 25)
                 .variable(3, Value, 550, 0, level(50), amplify(AP, new PerLevel(new int[] {1, 9, 10, 11, 12, 13, 14, 15,
                         16, 17, 18}, 0.25, 0.175)))
@@ -2443,8 +2443,9 @@ public interface SkillDefinition {
      */
     public static void KogMaw(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P514)
-                .passive("死亡すると4秒後に自爆して周囲の敵ユニットに{1}を与える。自爆するまでの間は徐々に移動速度が増加する(最大時40%増加)。")
-                .variable(1, TrueDamage, 100, 0, level(25));
+                .passive("死亡すると4秒後に自爆して{2}の敵ユニットに{1}を与える。自爆するまでの間は徐々に移動速度が増加する(最大時40%増加)。")
+                .variable(1, TrueDamage, 100, 0, level(25))
+                .variable(2, Radius);
 
         Q.update(P514)
                 .passive("{1}する。")
@@ -2487,53 +2488,42 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Leblanc(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("HPが40%以下になったとき0.5秒間ステルス状態になり、自分の分身を作り出す。分身は8秒間持続し、分身が敵にダメージを与えることはできない。{1}。")
+        P.update(P514)
+                .passive("HPが40%以下になったとき{2}状態になり、自分の分身を作り出す。分身は8秒間持続し、分身が敵にダメージを与えることはできない。{1}。")
                 .variable(1, CDRUnaware)
+                .variable(2, Stealth, 1)
                 .cd(-60);
-        Q.update()
-                .active("対象の敵ユニットに{1}と3.5秒間持続するマークを付与する。マークが付いている間に再度スキルでダメージを与えると、マークを消費して追加{2}と{3}を付与する。")
-                .variable(1, MagicDamage, 70, 40, ap(0.6))
-                .variable(2, MagicDamage, 20, 20, ap(0.2))
-                .variable(3, Silence, 2)
-                .mana(70, 5)
-                .cd(6)
-                .range(700)
-                .update(P309)
+
+        Q.update(P514)
+                .active("対象の敵ユニットに{1}と3.5秒間持続するマークを付与する。マークが付いている間に再度スキルでダメージを与えると、マークを消費して{1}を与える。")
                 .variable(1, MagicDamage, 55, 25, ap(0.4))
-                .variable(2, MagicDamage, 55, 25, ap(0.4))
-                .variable(3, Silence, 1.5)
-                .mana(50, 10);
-        W.update()
+                .mana(50, 10)
+                .cd(6)
+                .range(700);
+
+        W.update(P514)
                 .active("指定地点まで高速で移動し、移動先の{1}にいる敵ユニットに{2}を与える。3秒間以内にもう一度このスキルを使用すると元居た地点に戻る。")
                 .variable(1, Radius, 250)
                 .variable(2, MagicDamage, 85, 40, ap(0.6))
-                .mana(80)
+                .mana(80, 5)
                 .cd(18, -2)
                 .range(600);
-        W.update(P309).mana(80, 10);
-        E.update()
-                .active("指定方向に鎖を放ち、当たった敵ユニットに{1}と{5}間{2}を与え対象と鎖で繋がれる。{5}間対象が鎖の範囲内(範囲1000)に留まっていた場合、対象に追加{3}と{4}を与える。")
+
+        E.update(P514)
+                .active("指定方向に鎖を放ち、当たった敵ユニットに{1}を与え対象と鎖で繋がれ、その間{2}を与える。1.5秒間対象が鎖の範囲内(範囲1000)に留まっていた場合、対象に{1}と{3}を与える。")
                 .variable(1, MagicDamage, 40, 25, ap(0.5))
                 .variable(2, MSSlowRatio, 25)
-                .variable(3, MagicDamage, 40, 25, ap(0.5))
-                .variable(4, Snare, 1, 0.3)
-                .variable(5, Time, 2)
+                .variable(3, Snare, 1.5)
                 .mana(80)
-                .cd(10)
+                .cd(14, -1.5)
                 .range(950);
-        E.update(P309).variable(5, Time, 1.5).variable(4, Snare, 1.5).cd(14, -1);
-        R.update()
-                .active("直前に使ったスキルを、威力を{1}増した状態で再使用する。Distortionとして使用した場合、それぞれDistortionとDistortion:Mimicを使用した地点に戻る事ができる。")
-                .variable(1, Percentage, 10, 15)
-                .mana(100, -50)
+
+        R.update(P514)
+                .active("直前に使ったスキルをコピーする。(ダメージ値が下記のように変化する)<br>" + Q + ": {1}<br>" + W + ": {2}<br>" + E + ": {3}")
+                .variable(1, MagicDamage, 100, 100, ap(0.6))
+                .variable(2, MagicDamage, 150, 150, ap(0.9))
+                .variable(3, MagicDamage, 100, 100, ap(0.6))
                 .cd(40, -8);
-        R.update(P309)
-                .active("直前に使ったスキルをコピーする。(ダメージ値が下記のように変化する)<br>Sigil of Silence: {1}<br>Distortion: {2}<br>Ethereal Chains: {3}")
-                .variable(1, MagicDamage, 100, 100, ap(0.65))
-                .variable(2, MagicDamage, 150, 150, ap(0.975))
-                .variable(3, MagicDamage, 100, 100, ap(0.65))
-                .mana(0);
     }
 
     /**
@@ -4605,7 +4595,7 @@ public interface SkillDefinition {
                 .range(800);
 
         W.update(P514)
-                .active("対象を{1}間食らう。対象が敵の場合、{2}を与える(ミニオンと中立モンスターへは{3}が上限)。食べた対象は吐き出すまでの間、行動不能かつターゲット不可になる。また、食べたユニットに応じて以下の効果を与える。<br>敵ミニオン及びモンスター：指定した方向に吐き出し({6})、命中した敵ユニットに{4}を与える。<br>味方チャンピオン：敵チャンピオンに向かって移動する際に{5}を得る。<br>敵チャンピオン：要「舌慣らし」3スタック。効果時間が半分になり、自身は95％のスローになる。")
+                .active("対象を{1}間食らう。対象が敵の場合、{2}を与える(ミニオンと中立モンスターへは{3}が上限)。食べた対象は吐き出すまでの間、行動不能かつターゲット不可になる。また、食べたユニットに応じて以下の効果を与える。<br>敵ミニオン及びモンスター: 指定した方向に吐き出し({6})、命中した敵ユニットに{4}を与える。<br>味方チャンピオン: 敵チャンピオンに向かって移動する際に{5}を得る。<br>敵チャンピオン: 要「舌慣らし」3スタック。効果時間が半分になり、自身は95％のスローになる。")
                 .variable(1, Time, 4, 0.5)
                 .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 20, 3, ap(0.02)))
                 .variable(3, MagicDamage, 400, 50)
@@ -5598,7 +5588,7 @@ public interface SkillDefinition {
      */
     public static void Yasuo(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P514)
-                .passive("一定距離({1})を移動すると最大値の1%のFlowを得る。{2}するがクリティカルダメージは10%減少する。この減少効果はダメージ増減算の前に適用される。(例：本来200%のクリティカルダメージは(100 - 10) x 2 = 180%になり、" + Item.InfinityEdge.name + "を持った場合本来250%のダメージが(100 - 10) * 2.5 = 225%になる)。Flowが最大値の時、敵チャンピオンかモンスターからダメージを受けると全てのFlowを消費して{5}間{3}を得る。")
+                .passive("一定距離({1})を移動すると最大値の1%のFlowを得る。{2}するがクリティカルダメージは10%減少する。この減少効果はダメージ増減算の前に適用される。(例: 本来200%のクリティカルダメージは(100 - 10) x 2 = 180%になり、" + Item.InfinityEdge.name + "を持った場合本来250%のダメージが(100 - 10) * 2.5 = 225%になる)。Flowが最大値の時、敵チャンピオンかモンスターからダメージを受けると全てのFlowを消費して{5}間{3}を得る。")
                 .variable(1, Value, new Per6Level(59, -7))
                 .variable(2, Critical, amplify(Critical, 1))
                 .variable(3, Shield, new Per1Level(new double[] {100, 105, 110, 115, 120, 130, 140, 150, 165, 180, 200,
