@@ -3196,7 +3196,7 @@ public interface SkillDefinition {
                 .range(650);
 
         R.update(P514)
-                .active("15秒間自身の周りに砂嵐を発生させ{1}を得て、{5}の敵ユニットに毎秒{2}を与える。また効果中は通常攻撃の{3}し、このスキルで与えたダメージの6.375%を自身の攻撃力に加える。毎秒ダメージの上限は240、増加攻撃力の上限は300。")
+                .active("15秒間{1}を得て{3}し、自身の周りに砂嵐を発生させ{5}の敵ユニットに毎秒{2}を与える。このスキルで与えたダメージの6.375%を自身の攻撃力に加える。毎秒ダメージの上限は240、増加攻撃力の上限は300。")
                 .variable(1, Health, 300, 150)
                 .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 3, 1, ap(0.01)))
                 .variable(3, Range, 50)
@@ -3209,35 +3209,38 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Nautilus(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("通常攻撃に{1}と{2}が付与される。同一の対象には12秒に一度しか発動しない。")
+        P.update(P514)
+                .passive("通常攻撃に{1}と{2}が付与される。同一の対象には{3}に一度しか発動しない。")
                 .variable(1, PhysicalDamage, 2, 0, level(6))
-                .variable(2, Snare, new Per6Level(0.5, 0.25));
-        P.update(P314).variable(2, Snare, new Per5LevelWith18(0.5, 0.25));
-        Q.update()
-                .active("指定方向に錨を投げ、最初に命中した敵ユニットに{1}を与えNautilusの方向に引き寄せる。またNautilus自身も敵ユニットの方向に移動する。錨が壁に命中した場合、壁の方向にNautilusが移動しこのスキルのCDが半分になる。")
+                .variable(2, Snare, new Per5LevelWith18(0.5, 0.25))
+                .variable(3, Time, new Per5Level(9, -1));
+
+        Q.update(P514)
+                .active("指定方向に錨を投げ、最初に命中した敵ユニットに{1}を与え自身の方向に引き寄せる。また自身も敵ユニットの方向に移動する。錨が壁に命中した場合、壁の方向に移動しこのスキルの{2}。")
                 .variable(1, MagicDamage, 60, 45, ap(0.75))
+                .variable(2, CDDecreaseRatio, 50)
                 .mana(60, 10)
                 .cd(18, -2)
-                .range(950);
-        W.update()
-                .active("10秒間{1}を得る。シールドが持続している間は通常攻撃時に対象とその周囲({2})にいる敵ユニットに{3}を与える。この魔法DMは2秒間かけて与えられる。")
-                .variable(1, Shield, 100, 50, amplify(BounusHealth, 0.1))
-                .variable(2, Radius, 350)
-                .variable(3, MagicDamage, 30, 25, ap(0.4))
+                .range(1100);
+
+        W.update(P514)
+                .active("10秒間{1}を得る。シールドが持続している間は通常攻撃時に対象とその周囲({2})にいる敵ユニットに2秒かけて{3}を与える。")
+                .variable(1, Shield, 65, 5, amplify(Health, 0.09, 0.02))
+                .variable(2, Radius, 175)
+                .variable(3, MagicDamage, 30, 10, ap(0.4))
                 .mana(80)
-                .cd(26, -2);
-        W.update(P3051).cd(22, -1);
-        W.update(P308).variable(3, MagicDamage, 40, 15, ap(0.4));
-        E.update()
-                .active("周囲を爆発させ命中した敵ユニットに{1}と２秒間{2}を与える。スローの効果は2秒かけて元に戻る。爆発はNautilusを中心に3回まで発生し、同一対象に対して複数hitする。2発目以降は本来の50%分の魔法DMを与える(3発hitで{3})。")
-                .variable(1, MagicDamage, 60, 40, ap(0.5))
+                .cd(18);
+
+        E.update(P514)
+                .active("{1}を爆発させ命中した敵ユニットに{1}と1.5秒かけて減衰する{2}を与える。爆発は3回発生し、同一対象に対して複数hitする。2発目以降は本来の50%分の" + MagicDamage + "を与える(3発hitで{3})。")
+                .variable(1, Radius, 600)
+                .variable(1, MagicDamage, 60, 35, ap(0.3))
                 .variable(2, MSSlowRatio, 30, 5)
-                .variable(3, MagicDamage, 120, 80, ap(1))
+                .variable(3, MagicDamage, 120, 70, ap(0.6))
                 .mana(60, 10)
-                .cd(10)
-                .range(400);
-        R.update()
+                .cd(10);
+
+        R.update(P514)
                 .active("対象の敵チャンピオンに衝撃波を放ち、移動中の衝撃波に当たった敵ユニットに{1}と{2}を与える。衝撃波が対象の敵チャンピオンに当たると爆発し、対象とその周囲にいる敵ユニットに{3}と{2}を与える。対象の敵チャンピオンには{2}と同時に{4}を与える。")
                 .variable(1, MagicDamage, 125, 50, ap(0.4))
                 .variable(2, Knockup, 1)
@@ -3245,7 +3248,7 @@ public interface SkillDefinition {
                 .variable(4, Stun, 1, 0.5)
                 .mana(100)
                 .cd(140, -30)
-                .range(850);
+                .range(825);
     }
 
     /**
