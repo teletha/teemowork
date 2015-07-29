@@ -3112,7 +3112,7 @@ public interface SkillDefinition {
                 .range(750);
 
         R.update(P514)
-                .active("{1}の敵チャンピオンに{2}と３秒間{3}を与え対象と糸で繋がれる。3秒間対象が{4}に留まっていた場合、{1}と{5}を与える。")
+                .active("{1}の敵チャンピオンに{2}と３秒間{3}を与え対象と繋がれる。繋がれた対象が3秒間{4}に留まっていた場合、{1}と{5}を与える。")
                 .variable(1, Radius, 600)
                 .variable(2, MagicDamage, 175, 75, ap(0.7))
                 .variable(3, MSSlowRatio, 20)
@@ -3126,93 +3126,43 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
-    public static void MonkeyKing(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("Wukongの視界内{1}にいる敵チャンピオンの数に比例して、{2}と{3}を得る。")
-                .variable(1, Radius, 1400)
-                .variable(2, AR, amplify(EnemyChampion, new Per6Level(4, 2)))
-                .variable(3, MR, amplify(EnemyChampion, new Per6Level(4, 2)));
-        Q.update()
-                .active("次の通常攻撃は射程が125増加して追加の{1}と3秒間の{2}を与える。")
-                .variable(1, PhysicalDamage, 30, 30, ad(0.1))
-                .variable(2, ARReductionRatio, 30)
-                .mana(40)
-                .cd(9, -1)
-                .range(300);
-        W.update()
-                .active("{1}になり{2}を得る。同時にWukongがいた場所に分身(操作不可能)を作り出す。分身は1.5秒経過すると消滅し、その際に分身の{3}の敵に{4}を与える。")
-                .variable(1, Stealth, 1.5)
-                .variable(2, IgnoreUnitCollision)
-                .variable(3, Radius, 350)
-                .variable(4, MagicDamage, 70, 45, ap(0.6))
-                .mana(50, 5)
-                .cd(18, -2);
-        E.update()
-                .active("対象の敵ユニットまでダッシュし{1}を与える。対象の敵ユニットの{3}の敵ユニット2体にもWukongの幻影が飛び、{1}を与える。また、スキル使用後4秒間{2}する。")
-                .variable(1, PhysicalDamage, 60, 45, bounusAD(0.8))
-                .variable(2, ASRatio, 30, 5)
-                .variable(3, Radius, 325)
-                .mana(45, 5)
-                .cd(8)
-                .range(625);
-        R.update()
-                .active("4秒間Wukongが回転する。回転中は{1}の敵ユニットに0.5秒毎に{2}と{3}を与える。打ち上げ効果は同一の対象に1度までしか発生しない。また、このスキルを使用してから0.5秒毎に{5}する。最大で{4}を与え、{6}する。")
-                .variable(1, Radius, 325)
-                .variable(2, PhysicalDamage, 10, 45, ad(0.6))
-                .variable(3, Knockup, 1.5)
-                .variable(4, PhysicalDamage, 80, 360, ad(4.8))
-                .variable(-5, MSRatio, 5)
-                .variable(6, MSRatio, 40)
-                .mana(100)
-                .cd(120, -15);
-    }
-
-    /**
-     * Define skill.
-     */
     public static void Nami(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("スキルが味方チャンピオンに命中した際に、対象は1.5秒間{1}する。").variable(-1, MS, new Per6Level(30, 5));
-        P.update(P307).variable(-1, MS, 40);
-        P.update(P314).variable(-1, MS, 40, 0, ap(0.1));
-        Q.update()
+        P.update(P514).passive("スキルが味方チャンピオンに命中した際に、対象は1.5秒間{1}する。").variable(-1, MS, 40, 0, ap(0.1));
+
+        Q.update(P514)
                 .active("指定地点に泡を投げ、範囲内の敵ユニットに{1}と{2}を与える。")
-                .variable(1, MagicDamage, 75, 55, ap(0.65))
-                .variable(2, Stun, 1.25)
+                .variable(1, MagicDamage, 75, 55, ap(0.5))
+                .variable(2, Stun, 1.5)
                 .mana(60)
                 .cd(14, -1)
                 .range(875);
-        Q.update(P307).variable(2, Stun, 1.5);
-        Q.update(P314).variable(1, MagicDamage, 75, 55, ap(0.5));
-        W.update()
-                .active("対象の味方チャンピオンまたは敵チャンピオンに、チャンピオンにのみ3回まで跳ね返る({3})水流を発射する。水流が味方チャンピオンに命中した場合は{1}し、敵チャンピオンに命中した場合は{2}を与える。水流は同一のチャンピオンには一度しか跳ね返らず、味方チャンピオンに命中した場合は一番近くの敵チャンピオンに、敵チャンピオンに命中した場合は一番近くの味方チャンピオンに跳ね返る。")
+
+        W.update(P514)
+                .active("味方チャンピオンと敵チャンピオンの間で交互に跳ね返る水流を発射する。<br>味方命中時: {1}し、{2}の敵のチャンピオンに跳ね返る。<br>敵命中時: {3}を与え、{2}の味方のチャンピオンに跳ね返る。<br>同じターゲットに2回以上命中することはなく、最大3体に命中。1度跳ね返るごとに、効果量に{4} の補正がかかる。")
                 .variable(1, RestoreHealth, 65, 30, ap(0.3))
-                .variable(2, MagicDamage, 70, 40, ap(0.5))
-                .variable(3, Radius, 875)
+                .variable(2, Radius, 875)
+                .variable(3, MagicDamage, 70, 40, ap(0.5))
+                .variable(4, Percentage, -15, 0, ap(0.075))
                 .mana(70, 15)
-                .cd(9)
+                .cd(10)
                 .range(725);
-        W.update(P314)
-                .active("対象の味方チャンピオンまたは敵チャンピオンに、チャンピオンにのみ3回まで跳ね返る({3})水流を発射する。水流が味方チャンピオンに命中した場合は{1}し、敵チャンピオンに命中した場合は{2}を与える。水流は同一のチャンピオンには一度しか跳ね返らず、味方チャンピオンに命中した場合は一番近くの敵チャンピオンに、敵チャンピオンに命中した場合は一番近くの味方チャンピオンに跳ね返る。跳ね返るたびに効果は{4}増減する。")
-                .variable(4, Percentage, -15, 0, ap(0.15));
-        E.update()
-                .active("対象の味方チャンピオンの通常攻撃に{1}と1秒間の{2}を付与する。この効果は5秒経つか3回通常攻撃を行うと解消される。")
+
+        E.update(P514)
+                .active("対象の味方のチャンピオンは6秒間 (または通常攻撃3回分) 通常攻撃に{1}が付与され、ターゲットを1秒間{2}にする。")
                 .variable(1, MagicDamage, 25, 15, ap(0.2))
-                .variable(2, MSSlowRatio, 15, 5)
+                .variable(2, MSSlowRatio, 15, 5, ap(0.05))
                 .mana(55, 5)
                 .cd(11)
                 .range(800);
-        E.update(P304).active("対象の味方チャンピオンの通常攻撃に{1}と1秒間の{2}を付与する。この効果は6秒経つか3回通常攻撃を行うと解消される。");
-        E.update(P314).variable(2, MSSlowRatio, 15, 5, ap(0.05));
-        R.update()
-                .active("指定方向に津波を発生させ、命中した敵ユニットに{1}と{2}を与えた後2～4秒間{3}与える。スローの効果時間は当たるまでの津波の移動距離に比例して効果時間が長くなる。")
+
+        R.update(P514)
+                .active("指定方向に津波を発生させ、命中した敵ユニットに{1}と{2}を与えた後2～4秒間{3}与える。スローの効果時間は当たるまでの津波の移動距離に比例する。")
                 .variable(1, Knockup, 1)
-                .variable(2, MagicDamage, 150, 100, ap(0.7))
+                .variable(2, MagicDamage, 150, 100, ap(0.6))
                 .variable(3, MSSlowRatio, 50, 10)
-                .mana(100, 50)
-                .cd(140, -20)
-                .range(2500);
-        R.update(P3051).range(2750).cd(120, -10).mana(100);
-        R.update(P314).variable(2, MagicDamage, 150, 100, ap(0.6));
+                .mana(100)
+                .cd(120, -10)
+                .range(2750);
     }
 
     /**
@@ -5508,6 +5458,50 @@ public interface SkillDefinition {
                 .range(700);
         R.update(P307).active("対象の敵チャンピオンに突撃し{2}を与えて、その間{3}を得て0.3秒毎に{1}を、計5回で{4}を与える。{5}。");
 
+    }
+
+    /**
+     * Define skill.
+     */
+    public static void MonkeyKing(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update()
+                .passive("Wukongの視界内{1}にいる敵チャンピオンの数に比例して、{2}と{3}を得る。")
+                .variable(1, Radius, 1400)
+                .variable(2, AR, amplify(EnemyChampion, new Per6Level(4, 2)))
+                .variable(3, MR, amplify(EnemyChampion, new Per6Level(4, 2)));
+        Q.update()
+                .active("次の通常攻撃は射程が125増加して追加の{1}と3秒間の{2}を与える。")
+                .variable(1, PhysicalDamage, 30, 30, ad(0.1))
+                .variable(2, ARReductionRatio, 30)
+                .mana(40)
+                .cd(9, -1)
+                .range(300);
+        W.update()
+                .active("{1}になり{2}を得る。同時にWukongがいた場所に分身(操作不可能)を作り出す。分身は1.5秒経過すると消滅し、その際に分身の{3}の敵に{4}を与える。")
+                .variable(1, Stealth, 1.5)
+                .variable(2, IgnoreUnitCollision)
+                .variable(3, Radius, 350)
+                .variable(4, MagicDamage, 70, 45, ap(0.6))
+                .mana(50, 5)
+                .cd(18, -2);
+        E.update()
+                .active("対象の敵ユニットまでダッシュし{1}を与える。対象の敵ユニットの{3}の敵ユニット2体にもWukongの幻影が飛び、{1}を与える。また、スキル使用後4秒間{2}する。")
+                .variable(1, PhysicalDamage, 60, 45, bounusAD(0.8))
+                .variable(2, ASRatio, 30, 5)
+                .variable(3, Radius, 325)
+                .mana(45, 5)
+                .cd(8)
+                .range(625);
+        R.update()
+                .active("4秒間Wukongが回転する。回転中は{1}の敵ユニットに0.5秒毎に{2}と{3}を与える。打ち上げ効果は同一の対象に1度までしか発生しない。また、このスキルを使用してから0.5秒毎に{5}する。最大で{4}を与え、{6}する。")
+                .variable(1, Radius, 325)
+                .variable(2, PhysicalDamage, 10, 45, ad(0.6))
+                .variable(3, Knockup, 1.5)
+                .variable(4, PhysicalDamage, 80, 360, ad(4.8))
+                .variable(-5, MSRatio, 5)
+                .variable(6, MSRatio, 40)
+                .mana(100)
+                .cd(120, -15);
     }
 
     /**
