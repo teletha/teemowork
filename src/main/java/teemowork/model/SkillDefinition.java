@@ -2580,42 +2580,43 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Leona(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("スキルでダメージを与えた敵ユニットに、3.5秒間持続するDebuffを付与する。この敵ユニットに対してLeona以外の味方チャンピオンがダメージを与えると、付与されたDebuffを消費して追加{1}を与える。")
+        P.update(P514)
+                .passive("スキルでダメージを与えた敵ユニットに、3.5秒間持続するDebuffを付与する。この敵ユニットに対して" + champion + "以外の味方チャンピオンがダメージを与えると、付与されたDebuffを消費して{1}を与える。")
                 .variable(1, MagicDamage, new Per2Level(20, 15));
-        Q.update()
-                .active("次の通常攻撃に追加{1}と{2}が付与される。")
+
+        Q.update(P514)
+                .active("次の通常攻撃に{1}と{2}を付与する。")
                 .variable(1, MagicDamage, 40, 30, ap(0.3))
                 .variable(2, Stun, 1.25)
                 .mana(45, 5)
                 .cd(11, -1);
-        W.update()
-                .active("3秒間{1}と{2}を得て、効果終了時に{3}の敵ユニットに{4}を与える。魔法DMが敵ユニットに命中した場合、ARとMR増加の効果時間が3秒延長される。")
-                .variable(1, AR, 30, 10)
-                .variable(2, MR, 30, 10)
-                .variable(3, Radius, 450)
+
+        W.update(P514)
+                .active("3秒間{1}と{2}を得て、効果終了時に{3}の敵ユニットに{4}を与える。" + MagicDamage + "が敵ユニットに命中した場合、効果時間が3秒延長される。")
+                .variable(1, AR, 20, 10, amplify(BounusAR, 0.2))
+                .variable(2, MR, 30, 10, amplify(BounusMR, 0.2))
+                .variable(3, Radius, 275)
                 .variable(4, MagicDamage, 60, 50, ap(0.4))
                 .mana(60)
                 .cd(14);
-        W.update(P314).variable(1, AR, 25, 10, amplify(BounusAR, 0.2)).variable(2, MR, 25, 10, amplify(BounusMR, 0.2));
-        E.update()
-                .active("指定方向に貫通するエネルギーを飛ばし当たった敵ユニットに{1}を与える。このスキルが敵チャンピオンに命中した場合、その敵チャンピオンの元までLeonaが移動する。また移動中は対象の敵チャンピオンにSnareを与える。複数の敵チャンピオンに命中した場合は最後に命中した敵チャンピオンの元に移動する。")
+
+        E.update(P514)
+                .active("指定方向に貫通するエネルギーを飛ばし当たった敵ユニットに{1}を与える。このスキルが敵チャンピオンに命中した場合、その敵チャンピオンの元まで移動する。また移動中は対象の敵チャンピオンに" + Snare + "を与える。複数の敵チャンピオンに命中した場合は最後に命中した敵チャンピオンの元に移動する。")
                 .variable(1, MagicDamage, 60, 40, ap(0.4))
                 .mana(60)
                 .cd(13, -1)
                 .range(875);
-        R.update()
-                .active("わずかな間をおいて、指定地点を中心として{1}の敵ユニットに{2}を、{5}の敵ユニットに1.5秒間{3}を、{6}の敵ユニットに{4}を与える。")
-                .variable(1, Radius, 125)
+
+        R.update(P514)
+                .active("0.625秒後、指定地点を中心として{1}の敵ユニットに{2}と1.5秒間{3}を、{5}の敵ユニットに{4}を与える。")
+                .variable(1, Radius, 250)
                 .variable(2, MagicDamage, 150, 100, ap(0.8))
-                .variable(5, Radius, 350)
                 .variable(3, MSSlowRatio, 80)
-                .variable(6, Radius, 50)
+                .variable(5, Radius, 100)
                 .variable(4, Stun, 1.5)
-                .mana(100, 50)
+                .mana(100)
                 .cd(90, -15)
                 .range(1200);
-        R.update(P313).mana(100);
     }
 
     /**
