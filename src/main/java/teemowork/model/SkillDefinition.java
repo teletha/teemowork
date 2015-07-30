@@ -4119,6 +4119,46 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
+    public static void Shyvana(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive("{1}と{2}を得る。この効果はDragon Form時には2倍になる。")
+                .variable(1, AR, new Per5Level(5, 5))
+                .variable(2, MR, new Per5Level(5, 5));
+
+        Q.update(P514)
+                .active("次に行う通常攻撃が二回攻撃になり、ニ回目の攻撃は{1}を与える。Dragon Form時は対象の前方にいる敵ユニットにも同様の効果を与える。建物以外の対象を通常攻撃する毎に{2}する。{3}。")
+                .variable(1, PhysicalDamage, amplify(AD, 0.8, 0.05))
+                .variable(2, CDDecrease, 0.5)
+                .variable(3, OnHitEffect)
+                .cd(10, -1);
+
+        W.update(P514)
+                .active("3秒間{1}の敵ユニットに毎秒{2}を与え、{3}する（モンスターに対してはダメージが20％増加）。通常攻撃をする毎に効果時間が1秒延長し最大4秒延長でき{4}を与える。移動速度上昇は時間経過と共に減少する。Dragon Form時" + champion + "の通り道を5秒間炎上させ、その上にいる敵ユニットにも毎秒{2}を与える。")
+                .variable(1, Radius, 325)
+                .variable(2, MagicDamage, 20, 13, bounusAD(0.2))
+                .variable(3, MSRatio, 30, 5)
+                .variable(4, MagicDamage, 5, 3.25, bounusAD(0.05))
+                .cd(12);
+
+        E.update(P514)
+                .active("指定方向に貫通する火球を放ち当たった敵ユニットに{1}と5秒間Debuffを与える。Debuffを受けている敵に通常攻撃をする毎に{2}を与える（モンスターに対しては100ダメージが上限）。Dragon Form時" + champion + "の前方の扇状の範囲を巻き込む範囲攻撃となる。")
+                .variable(1, MagicDamage, 60, 40, ap(0.6))
+                .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 2.5))
+                .cd(12, -1)
+                .range(925);
+
+        R.update(P514)
+                .passive("Human Formの時には1.5秒毎に{1}Furyを得る。また、このスキルのLv1取得時に100Furyを得る。")
+                .variable(1, Value, 1, 1)
+                .active("このスキルはHuman Formで" + Fury + "が100貯まった時のみ使用可能。Dragon Formに変身し、指定地点まで飛んで移動する。その際の移動経路上にいる敵ユニットに{3}を与え、移動地点の方向に{4}を与える。Dragon Formでは毎秒5Fury減少し、0になるとHuman Formに戻る。")
+                .variable(3, MagicDamage, 175, 125, ap(0.7))
+                .variable(4, Knockback)
+                .range(1000);
+    }
+
+    /**
+     * Define skill.
+     */
     public static void Sivir(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update()
                 .passive("敵チャンピオンに通常攻撃でダメージを与えると、2秒間{1}する。")
@@ -4544,65 +4584,6 @@ public interface SkillDefinition {
                 .mana(100)
                 .cd(100, -10)
                 .range(675);
-    }
-
-    /**
-     * Define skill.
-     */
-    public static void Shyvana(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("Shyvanaは通常攻撃時に次の効果を得る。Twin BiteのCDを0.5秒解消する。対象が建物の場合は無効。Burnoutの効果時間が1秒延長される。最大4秒延長できる。対象が建物の場合も有効。Flame BreathのAR低下を受けている敵ユニットに対し、Flame Breathのダメージの15%分の追加魔法DMが発生する。Dragon's Descent通常攻撃時に2Furyを得る。また、Human formの時には1.5秒毎に1Furyを得る。");
-        P.update(P309)
-                .passive("{1}と{2}を得る。この効果はDragon Form時には2倍になる。")
-                .variable(1, AR, new Per5Level(5, 5))
-                .variable(2, MR, new Per5Level(5, 5));
-
-        Q.update(P514)
-                .active("次に行う通常攻撃が二回攻撃になり、ニ回目の攻撃は{1}を与える。Dragon Form時は対象の周囲にいる敵ユニットにも同様の効果を与える。")
-                .variable(1, PhysicalDamage, amplify(AD, 0.8, 0.05))
-                .variable(2, CDDecrease, 0.5)
-                .cd(10, -1);
-        Q.update(P309)
-                .active("次に行う通常攻撃が二回攻撃になり、ニ回目の攻撃は{1}を与える。Dragon Form時は対象の周囲にいる敵ユニットにも同様の効果を与える。建物以外の対象を通常攻撃する毎に{2}する。{3}。")
-                .variable(3, OnHitEffect);
-
-        W.update(P514)
-                .active("3秒間{1}の敵ユニットに毎秒{2}を与え、{3}する。移動速度上昇は時間経過と共に減少する。Dragon Form時Shyvanaの通り道を5秒間炎上させ、その上にいる敵ユニットにも毎秒{2}を与える。")
-                .variable(1, Radius, 325)
-                .variable(2, MagicDamage, 25, 15, bounusAD(0.2))
-                .variable(3, MSRatio, 30, 5)
-                .cd(12)
-                .update(P309)
-                .active("3秒間{1}の敵ユニットに毎秒{2}を与え、{3}する。通常攻撃をする毎に効果時間が1秒延長される(最大4秒増加)。移動速度上昇は時間経過と共に減少する。Dragon Form時Shyvanaの通り道を5秒間炎上させ、その上にいる敵ユニットにも毎秒{2}を与える。")
-                .update(P401)
-                .variable(2, MagicDamage, 20, 15, bounusAD(0.2));
-
-        E.update(P514)
-                .active("指定方向に火球を放ち当たった敵ユニットに{1}と４秒間{2}を与える。Dragon Form時Shyvanaの前方の扇状の範囲を巻き込む範囲攻撃となる。")
-                .variable(1, MagicDamage, 80, 45, ap(0.6))
-                .variable(2, ARReductionRatio, 15)
-                .cd(12, -1)
-                .range(700)
-                .update(P309)
-                .active("指定方向に貫通する火球を放ち当たった敵ユニットに{1}と5秒間Debuffを与える。Debuffを受けている敵に通常攻撃をする毎に{2}を与える。Dragon Form時Shyvanaの前方の扇状の範囲を巻き込む範囲攻撃となる。")
-                .variable(1, MagicDamage, 80, 35, ap(0.6))
-                .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 2))
-                .update(P401)
-                .variable(1, MagicDamage, 60, 40, ap(0.6));
-
-        R.update(P514)
-                .passive("{1}と{2}を得る。 Dragon Formの時は2倍になる。また、このスキルのLv1取得時に100Furyを得る。")
-                .variable(1, AR, 10, 5)
-                .variable(2, MR, 10, 5)
-                .active("このスキルはHuman formでFuryが100貯まった時のみ使用可能。Dragon Formに変身し、指定地点まで飛んで移動する。その際の移動経路上にいる敵ユニットに{3}を与え、移動地点の方向に{4}を与える。Dragon Formでは毎秒6Fury減少し、0になるとHuman Formに戻る。")
-                .variable(3, MagicDamage, 175, 125, ap(0.7))
-                .variable(4, Knockback)
-                .range(1000);
-        R.update(P309)
-                .passive("Human formの時には1.5秒毎に{1}Furyを得る。また、このスキルのLv1取得時に100Furyを得る。")
-                .variable(1, Value, 1, 1)
-                .active("このスキルはHuman formでFuryが100貯まった時のみ使用可能。Dragon Formに変身し、指定地点まで飛んで移動する。その際の移動経路上にいる敵ユニットに{3}を与え、移動地点の方向に{4}を与える。Dragon Formでは毎秒5Fury減少し、0になるとHuman Formに戻る。");
-
     }
 
     /**
