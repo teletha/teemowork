@@ -4038,7 +4038,7 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Shaco(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("対象の背後から攻撃した場合に{1}する。").variable(1, DamageRatio, 20);
+        P.update(P514).passive("対象の背後から攻撃した場合に{1}する。").variable(1, DamageRatio, 20);
 
         Q.update(P514)
                 .active("指定地点にテレポートし、{1}になる。また、スキル使用後6秒以内に通常攻撃を行うと必ずクリティカルになる。その際のクリティカルダメージは{2}になる。")
@@ -4053,7 +4053,7 @@ public interface SkillDefinition {
                 .variable(1, Stealth)
                 .variable(2, Fear, 0.5, 0.25)
                 .variable(3, MagicDamage, 35, 15, ap(0.2))
-                .mana(60)
+                .mana(50, 5)
                 .cd(16)
                 .range(425);
 
