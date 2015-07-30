@@ -3905,7 +3905,7 @@ public interface SkillDefinition {
      */
     public static void Rumble(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P514)
-                .passive("Ult以外のスキルを使うとHeatが20増加し、それが50以上になると「Danger Zone」状態に入り全てのスキルに追加効果がつくようになる。Heatが100になると6秒間スキルが使用不可能になり、通常攻撃に{1}が付与される（建物には無効）。4秒間スキルを使用しないとHeatは減少していく。")
+                .passive(R + "以外のスキルを使うとHeatが20増加し、それが50以上になると「Danger Zone」状態に入り全てのスキルに追加効果がつくようになる。Heatが100になると6秒間スキルが使用不可能になり、通常攻撃に{1}が付与される（建物には無効）。4秒間スキルを使用しないとHeatは減少していく。")
                 .variable(1, MagicDamage, 20, 0, ap(0.25), level(5));
 
         Q.update(P514)
@@ -3991,73 +3991,47 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Sejuani(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("通常攻撃にFrostを付与する。Frost状態の敵ユニットは3秒間{1}になる。").variable(1, MSSlowRatio, 30);
-        P.update(P306)
+        P.update(P514)
                 .passive("通常攻撃かスキルによりダメージを与えると、2秒間{1}と{2}を得る。この効果時間は最大8秒までスタックする。")
                 .variable(1, AR, new Per5LevelForSejuani(10, 5))
                 .variable(2, MSSlowReductionRatio, new Per5LevelForSejuani(10, 5));
 
         Q.update(P514)
-                .active("指定方向に突進し、接触した全ての敵ユニットに{1}とFrostを与え、対象がMinionの場合は更に{2}させる。敵チャンピオンに当たるか最大距離だけ移動すると突進は止まる。")
-                .variable(1, MagicDamage, 60, 30, ap(0.4))
-                .variable(2, Knockback)
-                .mana(70, 5)
-                .cd(19, -2)
-                .range(700);
-        Q.update(P306)
-                .active("指定方向に突進し、接触した全ての敵ユニットに{1}と{2}を与える（モンスターには最大300ダメージ）。敵チャンピオンに当たると突進は止まる。")
+                .active("指定方向に突進し、接触した全ての敵ユニットに{1}と{2}を与える。敵チャンピオンに当たると突進は止まる。")
                 .variable(1, Knockup)
-                .variable(2, MagicDamage, 40, 30, ap(0.4), amplify(TargetMaxHealthRatio, 4, 2))
+                .variable(2, MagicDamage, 80, 55, ap(0.4))
                 .mana(80, 5)
                 .cd(15, -1)
                 .range(650);
 
         W.update(P514)
-                .active("6秒間極寒の嵐を周囲に召還し、{1}の敵ユニットに毎秒{2}を与える。魔法DMは敵ユニットがFrostまたはPermafrostの時には50%増加する。")
+                .active("次の通常攻撃は、対象と{1}の敵に{2}を与える。また通常攻撃するか4秒経過するか再度スキルを使用すると4秒間{1}の敵に毎秒{3}を与える。")
                 .variable(1, Radius, 350)
-                .variable(2, MagicDamage, 12, 6, ap(0.1), amplify(Health, 0.01, 0.0025))
-                .mana(40)
-                .cd(10);
-        W.update(P306)
-                .active("次の通常攻撃は、対象と{1}の敵達に{2}を与える。また4秒間{1}の敵に毎秒{3}を与える。(最大で{4})")
-                .variable(1, Radius, 350)
-                .variable(2, MagicDamage, 40, 20, ap(0.3))
-                .variable(3, MagicDamage, 20, 10, ap(0.15), amplify(BounusHealth, 0.04))
-                .variable(4, MagicDamage, 120, 60, ap(0.9), amplify(BounusHealth, 0.16))
-                .cd(11, -1);
-        W.update(P308).variable(4, MagicDamage, 120, 60, ap(0.9), amplify(BounusHealth, 0.1));
+                .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 4, 0.5, ap(0.03)))
+                .variable(3, MagicDamage, 10, 7.5, ap(0.15), amplify(Health, 0.01, 0.005))
+                .cd(11, -1)
+                .mana(40, -5);
 
         E.update(P514)
-                .active("{0}の敵ユニットのFrostをPermafrostにし、{1}を与える。Permafrost状態の敵ユニットは3秒間{2}を受ける。")
-                .variable(0, Radius, 1000)
-                .variable(1, MagicDamage, 60, 50, ap(0.5))
-                .variable(2, MSSlowRatio, 30, 10)
-                .mana(55)
-                .cd(11);
-        E.update(P306)
                 .passive("通常攻撃かスキルによりダメージを与えると、対象を4秒間Frost状態にする。")
-                .active("{0}のFrost状態の敵ユニットに{1}と{2}間{3}を与える。")
+                .active("{0}のFrost状態の敵ユニットに{1}と1.5秒間{2}を与える。")
                 .variable(0, Radius, 1000)
-                .variable(1, MagicDamage, 60, 50, ap(0.5))
-                .variable(2, Time, 2, 0.25)
-                .variable(3, MSSlowRatio, 50, 5);
-        E.update(P308).variable(2, Time, 1.5, 0.25);
+                .variable(1, MagicDamage, 60, 30, ap(0.5))
+                .variable(2, MSSlowRatio, 50, 5)
+                .range(1000)
+                .mana(55)
+                .cd(10, -1);
 
         R.update(P514)
-                .active("指定方向に武器を投げ、最大距離飛ぶか敵チャンピオンに命中するとその場で氷が爆発し、{1}の敵ユニットに{2}と{3}を与え、Frostにする。武器が直撃した敵チャンピオンには{4}を与える。")
-                .variable(1, Radius, 450)
-                .variable(2, MagicDamage, 150, 100, ap(0.8))
-                .variable(3, Stun, 1)
-                .variable(4, Stun, 2)
-                .mana(100)
-                .cd(130, -15)
-                .range(1150);
-        R.update(P306)
                 .active("指定方向に武器を投げ、敵チャンピオンに命中するとその場で爆発し、{1}の敵ユニットに{2}と{3}を与える。命中しなかった場合、最大射程で爆発し{1}の敵ユニットに{2}と{5}間{4}を与える。")
-                .variable(3, Stun, 1.5, 0.25)
-                .variable(4, MSSlowRatio, 90)
-                .variable(5, Time, 1.5, 0.25);
-        R.update(P308).variable(3, Stun, 1.25, 0.25).variable(5, Time, 1.25, 0.25);
+                .variable(1, Radius)
+                .variable(2, MagicDamage, 150, 100, ap(0.8))
+                .variable(3, Stun, 1.25, 0.25)
+                .variable(4, MSSlowRatio, 30)
+                .variable(5, Time, 1.25, 0.25)
+                .range(1175)
+                .mana(100)
+                .cd(130, -15);
     }
 
     /**
