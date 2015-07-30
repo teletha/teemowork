@@ -124,7 +124,7 @@ public enum Status {
     AS(3), ASPerLv(3), ASRatio("攻撃速度"),
 
     /** life Steal */
-    LS("Life Steal"), LSPerLv, LSRatio,
+    LS("Life Steal"), LSPerLv(LS), LSRatio(LS),
 
     /** Critical Chance */
     Critical("Critical Chance"), CriticalPerLv, CriticalRatio,
@@ -532,6 +532,7 @@ public enum Status {
         case ManaRatio:
         case HregRatio:
         case MregRatio:
+        case LSRatio:
         case ExperimentRatio:
         case RestoreHealthRatio:
         case Grow:

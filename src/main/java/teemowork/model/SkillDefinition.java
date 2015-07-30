@@ -4201,6 +4201,61 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
+    public static void Sion(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive("死亡後にHPが最大の状態で復活する。復活後は移動と通常攻撃のみが可能でHPが毎秒{1}減少する。また、{2}し、ASが1.75に固定され、通常攻撃に{3}が付与される（チャンピオン以外には75ダメージが上限）。復活中はすべてのスキルがDeath Surgeに置き換わる。<br><br>Death Surge<br> 1.5秒間" + MS + "が50%増加する。この効果1.5秒かけて減衰する。")
+                .variable(1, Value, 4, 0, level(4))
+                .variable(-2, LSRatio, 100)
+                .variable(3, PhysicalDamage, amplify(TargetMaxHealthRatio, 10));
+
+        Q.update(P514)
+                .active("最初にスキルを使用するとチャージを行い、この間は移動できなくなる。再度スキルを使用するか2秒経過すると斧を振り下ろし、{1}の敵ユニットに{2}と0.25秒{3}を与える（2秒チャージすると{5}）。チャージを行って1秒間経過した場合は" + MSSlow + "の代わりに{4}を与える。ミニオンに対しては" + Damage + "が40%減少し、モンスターに対しては" + Damage + "が20%減少する。")
+                .variable(1, Radius, 300, 0, amplify(Duration, 150))
+                .variable(2, PhysicalDamage, 16, 16, amplify(AD, 0.52))
+                .variable(3, MSSlowRatio, 50)
+                .variable(4, Knockup, 1.25, 0, amplify(Duration, 0.5))
+                .variable(5, PhysicalDamage, 48, 48, ad(1.56))
+                .mana(45)
+                .cd(10, -1)
+                .range(new Fixed(300), amplify(Duration, 150));
+
+        W.update(P514)
+                .passive("敵を倒す度に" + Health + "が2増加する。大型ミニオンやモンスター、敵チャンピオンを{1}と10増加する。")
+                .variable(1, Takedown)
+                .active("6秒間{2}を得る。3秒後以降に再度スキルを使用するか6秒経過するとシールドが破裂し{3}の敵ユニットに{4}を与える。")
+                .variable(2, Shield, 30, 25, ap(0.4), amplify(Health, 0.06, 0.01))
+                .variable(3, Radius, 550)
+                .variable(4, MagicDamage, 40, 25, ap(0.4), amplify(TargetMaxHealthRatio, 10, 1))
+                .mana(65, 5)
+                .cd(13);
+
+        E.update(P514)
+                .active("指定方向に咆哮を放ち、最初に命中した敵ユニットに{1}、2.5秒間{2}と{3}を与える。このスキルが敵チャンピオン以外に命中した場合、対象の敵ユニットに{4}を与え、衝突した敵ユニットに{5}と2.5秒間{2}を与える。")
+                .variable(1, MagicDamage, 70, 35, ap(0.4))
+                .variable(2, MSSlowRatio, 40, 5)
+                .variable(3, ARReductionRatio, 20)
+                .variable(4, Knockback)
+                .variable(5, MagicDamage, 91, 45.5, ap(0.52))
+                .mana(35, 5)
+                .cd(12, -1)
+                .range(1500);
+
+        R.update(P514)
+                .active("マウスカーソルの方向へ最大8秒間突進する。突進中はサモナースペルの使用が不可能になる代わりに、" + MS + "が950になり、{1}を得る。このスキルを再使用するか、敵チャンピオンまたは壁に衝突すると{2}の敵ユニットに{3}と{4}を与える（移動距離に比例して最大で{6}と{7}）。衝突地点から離れた敵ユニットには" + Knockup + "の代わりに3秒間{5}を与える。")
+                .variable(1, IgnoreCC)
+                .variable(2, Radius)
+                .variable(3, PhysicalDamage, 150, 150, bounusAD(0.4))
+                .variable(4, Knockup, 1.25)
+                .variable(5, MSSlowRatio, 40, 5)
+                .variable(6, PhysicalDamage, 300, 300, bounusAD(0.8))
+                .variable(7, Knockup, 2.25)
+                .mana(100)
+                .cd(140, -40);
+    }
+
+    /**
+     * Define skill.
+     */
     public static void Sivir(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update()
                 .passive("敵チャンピオンに通常攻撃でダメージを与えると、2秒間{1}する。")
@@ -4267,47 +4322,6 @@ public interface SkillDefinition {
                 .variable(5, Time, 8)
                 .variable(6, Time, 2, 1)
                 .cd(120, -20);
-    }
-
-    /**
-     * Define skill.
-     */
-    public static void Sion(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("40%の確率で{1}する。この軽減は防御力計算より先に行われる。")
-                .variable(1, AttackDamageReduction, new Per6Level(30, 10));
-
-        Q.update(P514)
-                .active("対象の敵ユニットに{1}と{2}を与える。")
-                .variable(1, MagicDamage, 70, 55, ap(0.9))
-                .variable(2, Stun, 1.5)
-                .mana(100)
-                .cd(12, -1)
-                .range(550);
-
-        W.update(P514)
-                .active("{1}を得る。10秒間シールドが残っていた場合、シールドが破裂し{2}の敵ユニットに{3}を与える。使用から4秒後以降に再度使用で、即座にシールドを破裂させる。")
-                .variable(1, Shield, 100, 50, ap(0.9))
-                .variable(2, Radius, 550)
-                .variable(3, MagicDamage, 100, 50, ap(0.9))
-                .mana(70, 10)
-                .cd(8);
-
-        E.update(P514)
-                .active("{1}を得る。使用中にLHをとるとSionの最大HPが{2}増加する。対象が敵チャンピオン/SiegeまたはSuperMinion/Buffを持った中立クリープの場合、増加値は2倍になる。")
-                .variable(1, AD, 25, 10)
-                .variable(2, Count, 1, 0.5)
-                .cost(Health, 6, 2)
-                .type(SkillType.Toggle);
-
-        R.update(P514)
-                .active("20秒間{1}を得て{2}し、通常攻撃をするたびに{4}の味方ユニットは{3}する。")
-                .variable(1, LS, 50, 25)
-                .variable(2, ASRatio, 50)
-                .variable(3, RestoreHealth, amplify(AttackDamageRatio, 25, 12.5))
-                .variable(4, Radius, 200)
-                .mana(100)
-                .cd(90);
     }
 
     /**
