@@ -341,6 +341,8 @@ public enum Status {
 
     Charge,
 
+    Fury("Fury"),
+
     Stack("スタック"), ConsumedStack("消費したスタック"), StackPercentage("");
 
     /** The status name. */

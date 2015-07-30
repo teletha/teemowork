@@ -3764,6 +3764,54 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
+    public static void Renekton(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive("通常攻撃ごとにFuryが5増加する。12秒間戦闘を行わないとFuryは毎秒4減少する。Furyの最大値は100、Furyが50以上ある場合にスキルを使用すると、Furyを50消費してスキルが強化される。また、" + champion + "の" + Health + "が50%以下になるとFuryの増加量が50%増加する。建物を攻撃した場合はFuryは増加しない。");
+
+        Q.update(P514)
+                .active("武器を振り回し{1}の敵ユニットに{2}を与え、{3}する。対象がチャンピオンの場合は{4}する。回復値の上限は{5}。当たったユニット1体につきFuryが2.5（チャンピオンの場合は10）増加する(最大25)。<br><br>" + Fury + "50以上時: {6}を与え、{7}する。対象がチャンピオンの場合は{8}する。回復値の上限は{9}。" + Fury + "増加効果は無くなる。")
+                .variable(1, Radius, 225)
+                .variable(2, PhysicalDamage, 60, 30, bounusAD(0.8))
+                .variable(3, RestoreHealth, 3, 1.5, bounusAD(0.04))
+                .variable(4, RestoreHealth, 9, 4.5, bounusAD(0.12))
+                .variable(5, Value, 50, 25)
+                .variable(6, PhysicalDamage, 90, 45, bounusAD(1.2))
+                .variable(7, RestoreHealth, 9, 4.5, bounusAD(0.12))
+                .variable(8, RestoreHealth, 27, 13.5, bounusAD(0.36))
+                .variable(9, Value, 150, 75)
+                .cd(8);
+
+        W.update(P514)
+                .active("次の通常攻撃は{1}して2回攻撃になり、1撃ごとに{2}を与え（合計{3}）、さらに{4}を与える。{5}。対象がチャンピオンであった場合、追加で" + Fury + "10を得る。<br><br>" + Fury + "50以上時: 攻撃回数が3回に増え、ターゲットに合計{6}と{7}を与える。" + Fury + "増加効果は無くなる。")
+                .variable(1, Range, 50)
+                .variable(2, PhysicalDamage, 5, 10, ad(0.75))
+                .variable(3, PhysicalDamage, 10, 20, ad(1.5))
+                .variable(4, Stun, 0.75)
+                .variable(5, OnHitEffect)
+                .variable(6, PhysicalDamage, 15, 30, ad(2.25))
+                .variable(7, Stun, 1.5)
+                .cd(13, -1);
+
+        E.update(P514)
+                .active("一撃目: " + champion + "がダッシュして敵を斬りつけ{1}を与える。攻撃命中後は4秒以内に「二撃目」の発動が可能になる。<br><br>二撃目: " + champion + "がダッシュして敵を斬りつけ{1}を与える。さらに攻撃が敵1体に命中するごとに" + Fury + "2.5 (対象がチャンピオンの場合は10で最大で30)を生成する。<br><br>" + Fury + "50以上時の二撃目: {3}と4秒間{2}を与える。" + Fury + "増加効果はなくなる。")
+                .variable(1, PhysicalDamage, 30, 30, bounusAD(0.9))
+                .variable(2, ARReductionRatio, 15, 5)
+                .variable(3, PhysicalDamage, 45, 45, bounusAD(1.35))
+                .cd(18, -1)
+                .range(450);
+
+        R.update(P514)
+                .active("15秒間{4}、{1}を得て{2}の敵ユニットに毎秒{3}を与える。また、毎秒5Furyを得る。")
+                .variable(1, Health, new Fixed(200, 400, 800))
+                .variable(2, Radius, 175)
+                .variable(3, MagicDamage, 40, 30, ap(0.1))
+                .variable(4, Grow)
+                .cd(120);
+    }
+
+    /**
+     * Define skill.
+     */
     public static void Rengar(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update()
                 .passive("ステルス状態または茂みの中から相手を攻撃する際には、通常攻撃は{1}になり相手に飛びつくようになる。この効果はステルス状態が解除された、また茂みから出た後0.5秒の間でも発生し、またステルス状態や茂みの中の視界が取られていた場合でも発生する。また、Rengarがスキルで敵ユニットにダメージを与える度に1 Ferocityを得て、5 Ferocity貯まると全てを消費して強化されたスキルを使用することが出来る。")
@@ -3803,39 +3851,6 @@ public interface SkillDefinition {
                 .variable(3, Visionable)
                 .variable(4, MSRatio, 20, 5)
                 .cd(140, -35);
-    }
-
-    /**
-     * Define skill.
-     */
-    public static void Renekton(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("通常攻撃ごとにFuryが5増加する。12秒間戦闘を行わないとFuryは毎秒2.5減少する。Furyの最大値は100、Furyが50以上ある場合にスキルを使用すると、Furyを50消費してスキルが強化される。また、RenektonのHPが50%以下になるとFuryの増加量が50%増加する。建物を攻撃した場合はFuryは増加しない。");
-        Q.update()
-                .active("武器を振り回し{1}の敵ユニットに{2}を与え、{3}する(上限あり)。対象がチャンピオンの場合、{4}する。当たったユニット1体につきFuryが5増加する(最大25)。Fury消費すると与えるダメージが50%増加し、HP回復量が2倍、回復上限が3倍に増加する。但し、Fury増加効果は無くなる。")
-                .variable(1, Radius, 450)
-                .variable(2, PhysicalDamage, 60, 30, bounusAD(0.8))
-                .variable(3, RestoreHealth, amplify(DealtDamageRatio, 5))
-                .variable(4, RestoreHealth, amplify(DealtDamageRatio, 20))
-                .cd(8);
-        W.update()
-                .active("次に行う通常攻撃が2回攻撃になり、{1}が付与される。Fury消費すると攻撃回数が3回に増加し、{2}を付与する。但し、Fury増加効果は無くなる。{3}。")
-                .variable(1, Stun, 0.75)
-                .variable(2, Stun, 1.5)
-                .variable(3, OnHitEffect)
-                .cd(13, -1);
-        E.update()
-                .active("指定方向にダッシュし触れた敵ユニットに{1}を与える(Slice)。このスキルが敵にヒットした場合、4秒間の間だけ再度使用できる(Dice)。Fury消費時:Diceで与えるダメージが50%増加し、4秒間{2}を与える。SliceではFuryを消費しない。")
-                .variable(1, PhysicalDamage, 30, 30, bounusAD(0.9))
-                .variable(2, ARReductionRatio, 15, 5)
-                .cd(18, -1)
-                .range(450);
-        R.update()
-                .active("15秒間サイズが大きくなり、スキルの射程が増加する。更に{1}を得て{2}の敵ユニットに毎秒{3}を与える。また、毎秒5Furyを得る。")
-                .variable(1, Health, 300, 150)
-                .variable(2, Radius, 350)
-                .variable(3, MagicDamage, 40, 30, ap(0.1))
-                .cd(120);
     }
 
     /**
