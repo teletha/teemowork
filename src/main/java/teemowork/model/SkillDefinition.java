@@ -4078,10 +4078,11 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Shen(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("9秒に1度通常攻撃に追加{1}が付与され、{2}する。このスキルはShenが通常攻撃を行う度にCDが1秒解消される。CD解消は建物を攻撃した場合は発生しない。LV1/7/13で「気」回復量が増加する。")
+        P.update(P514)
+                .passive("{3}に1度通常攻撃に追加{1}が付与され、{2}する。このスキルはShenが通常攻撃を行う度にCDが1秒解消される。CD解消は建物を攻撃した場合は発生しない。LV1/7/13で「気」回復量が増加する。")
                 .variable(1, MagicDamage, 4, 0, level(4), amplify(BounusHealth, 0.1))
-                .variable(2, RestoreEnergy, new Per6Level(10, 10));
+                .variable(2, RestoreEnergy, new Per6Level(10, 10))
+                .variable(3, Time, new Per6Level(9, -1));
 
         Q.update(P514)
                 .active("対象の敵ユニットに{1}と5秒間持続するDebuffを与える。Debuffが付与された対象に通常攻撃またはダメージスペルで攻撃をすると、攻撃した味方チャンピオンは3秒かけて{2}する。このスキルでLHを取った場合、{3}する。")
@@ -4093,30 +4094,26 @@ public interface SkillDefinition {
                 .range(475);
 
         W.update(P514)
-                .active("3秒間{1}を得る。シールドが持続している間はKi StrikeのCD解消効果が1秒から2秒になる。")
-                .variable(1, Shield, 70, 45, ap(0.6))
+                .active("3秒間{1}を得る。シールドが持続している間は" + P + "のCD解消効果が1秒から2秒になる。")
+                .variable(1, Shield, 60, 45, ap(0.6))
                 .cd(9, -1)
                 .cost(Energy, 50, 0);
-        W.update(P310A).variable(1, Shield, 60, 40, ap(0.6));
 
         E.update(P514)
-                .active("指定地点まで素早く移動し接触した敵チャンピオンに{1}と{2}を与える。ShenはTaunt効果中の対象から受ける物理DMを半減する。またこのスキルが敵チャンピオンに命中する度に{3}する。")
+                .active("指定地点まで素早く移動し接触した敵チャンピオンに{1}と{2}を与える。" + champion + "は" + Taunt + "効果中の対象から受ける{4}する。またこのスキルが敵チャンピオンに命中する度に{3}する。")
                 .variable(1, MagicDamage, 50, 35, ap(0.5))
                 .variable(2, Taunt, 1.5)
                 .variable(3, RestoreEnergy, 40)
+                .variable(4, DamageReductionRatio, 50)
                 .cd(16, -2)
-                .cost(Energy, 120, 0)
+                .cost(Energy, 100, -5)
                 .range(600);
-        E.update(P312)
-                .active("指定地点まで素早く移動し接触した敵チャンピオンに{1}と{2}を与える。ShenはTaunt効果中の対象から受ける通常攻撃のDMを半減する。またこのスキルが敵チャンピオンに命中する度に{3}する。");
 
         R.update(P514)
-                .active("対象の味方チャンピオンに5秒間{1}を付与し、3秒詠唱後そこまでワープする。")
-                .variable(1, Shield, 250, 300, ap(1.5))
-                .cd(200, -20)
+                .active("対象の味方チャンピオンに5秒間{1}を付与し、3秒詠唱後そこまでワープする。詠唱中にスロー以外のCCを受けると中断される。")
+                .variable(1, Shield, 250, 300, ap(1.35))
+                .cd(180, -20)
                 .range(-1);
-        R.update(P310A).active("対象の味方チャンピオンに5秒間{1}を付与し、3秒詠唱後そこまでワープする。詠唱中にスロー以外のCCを受けると中断される。");
-
     }
 
     /**
