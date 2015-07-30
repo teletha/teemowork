@@ -182,6 +182,7 @@ public class Build extends Publishable implements StatusCalculator {
         case Energy:
         case Ereg:
         case EnemyChampion:
+        case DamagedChampion:
         case Time:
         case Value:
         case Distance:
