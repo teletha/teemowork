@@ -4159,6 +4159,48 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
+    public static void Singed(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514).passive("{1}を得る。").variable(1, Health, amplify(Mana, 0.25));
+
+        Q.update(P514)
+                .active("Singedの通り道に3.25秒間持続する毒を撒き、触れた敵ユニットに3秒間毎秒{1}を与える。")
+                .variable(1, MagicDamage, 22, 0, ap(0.3))
+                .mana(13)
+                .cd(1)
+                .type(SkillType.Toggle);
+
+        W.update(P514)
+                .active("指定地点に5秒間持続する粘着剤を撒き、{1}の敵ユニットに{2}を与え続ける。この効果は範囲外に出てからも1秒間持続する。")
+                .variable(1, Radius, 350)
+                .variable(2, MSSlowRatio, 35, 10)
+                .mana(70, 10)
+                .cd(14)
+                .range(1000);
+
+        E.update(P514)
+                .active("対象の敵ユニット{1}を与え、後ろに投げ飛ばす({2})。もし対象を" + W + "の範囲内に投げ飛ばした場合、対象に{3}を与える。")
+                .variable(1, MagicDamage, 50, 15, ap(0.75), amplify(TargetMaxHealthRatio, 6, 0.5))
+                .variable(2, Distance, 550)
+                .variable(3, Snare, 1, 0.25)
+                .mana(100, 10)
+                .cd(10)
+                .range(125);
+
+        R.update(P514)
+                .active("25秒間{1}、{2}、{3}、{4}、{5}を得て、{6}する。")
+                .variable(1, AP, 35, 15)
+                .variable(2, AR, 35, 15)
+                .variable(3, MR, 35, 15)
+                .variable(4, Hreg, 35, 15)
+                .variable(5, Mreg, 35, 15)
+                .variable(6, MS, 35, 15)
+                .mana(150)
+                .cd(100);
+    }
+
+    /**
+     * Define skill.
+     */
     public static void Sivir(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update()
                 .passive("敵チャンピオンに通常攻撃でダメージを与えると、2秒間{1}する。")
@@ -4225,50 +4267,6 @@ public interface SkillDefinition {
                 .variable(5, Time, 8)
                 .variable(6, Time, 2, 1)
                 .cd(120, -20);
-    }
-
-    /**
-     * Define skill.
-     */
-    public static void Singed(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("{1}を得る。").variable(1, Health, amplify(Mana, 0.25));
-
-        Q.update(P514)
-                .active("Singedの通り道に3.25秒間持続する毒を撒き、触れた敵ユニットに3秒間毎秒{1}を与える。")
-                .variable(1, MagicDamage, 22, 0, ap(0.3))
-                .mana(13)
-                .cd(1)
-                .type(SkillType.Toggle);
-
-        W.update(P514)
-                .active("指定地点に5秒間持続する粘着剤を撒き、{1}の敵ユニットに{2}を与え続ける。この効果は範囲外に出てからも1秒間持続する。")
-                .variable(1, Radius, 350)
-                .variable(2, MSSlowRatio, 35, 10)
-                .mana(70, 10)
-                .cd(14)
-                .range(1000);
-
-        E.update(P514)
-                .active("対象の敵ユニット{1}を与え、Singedの後ろに投げ飛ばす({2})。")
-                .variable(1, MagicDamage, 100, 50, ap(1))
-                .variable(2, Distance, 550)
-                .mana(100, 10)
-                .cd(10)
-                .range(125);
-        E.update(P304).variable(1, MagicDamage, 80, 45, ap(0.75));
-
-        R.update(P514)
-                .active("25秒間{1}、{2}、{3}、{4}、{5}、{6}を得て、{7}する。")
-                .variable(1, AP, 35, 15)
-                .variable(2, AR, 35, 15)
-                .variable(3, MR, 35, 15)
-                .variable(4, Hreg, 35, 15)
-                .variable(5, Mreg, 35, 15)
-                .variable(6, Tenacity, 10, 5)
-                .variable(7, MSRatio, 35, 15)
-                .mana(150)
-                .cd(100);
-        R.update(P304).active("25秒間{1}、{2}、{3}、{4}、{5}を得て、{7}する。");
     }
 
     /**
