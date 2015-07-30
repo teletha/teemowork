@@ -3862,25 +3862,19 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Riven(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("スキルを使用するごとに1チャージを得る。チャージがある状態で通常攻撃を行うと、チャージを消費して通常攻撃に{1}が付与される。チャージは最大3スタックされ、通常攻撃ごとに1チャージずつ消費される。チャージは5秒間増加または消費がないと0になる。建物には無効。")
                 .variable(1, PhysicalDamage, amplify(AD, new Per3LevelAdditional(0.2, 0.05)));
 
         Q.update(P514)
-                .active("前方にステップし、{1}の敵ユニットを剣で切りつけて{2}を与える。このスキルは短期間の間、3回まで連続して使用できる。3度目の使用でジャンプを行い、着地時に{3}の敵ユニットに{2}と{4}を与える。また、スキルを使用する度にオートアタックタイマーがリセットされる。最大DMは{5}。")
-                .variable(1, Radius, 112.5)
-                .variable(2, PhysicalDamage, 30, 25, bounusAD(0.7))
-                .variable(3, Radius, 150)
-                .variable(4, Knockback, 225)
-                .variable(5, PhysicalDamage, 90, 75, bounusAD(2.1))
-                .cd(1)
-                .range(260)
-                .update(P310A)
                 .active("前方にステップし、{1}の敵ユニットを剣で切りつけて{2}を与える。このスキルは短期間の間、3回まで連続して使用できる。3度目の使用でジャンプを行い、着地時に{3}の敵ユニットに{2}と{4}を与える。また、スキルを使用する度にオートアタックタイマーがリセットされる。最大DMは{5}。3度目のジャンプのみ壁を飛び越えられる。")
-                .variable(4, Knockup)
-                .update(P401)
+                .variable(1, Radius, 112.5)
                 .variable(2, PhysicalDamage, 10, 20, amplify(AD, 0.4, 0.05))
-                .variable(5, PhysicalDamage, 30, 60, amplify(AD, 1.2, 0.15));
+                .variable(3, Radius, 150)
+                .variable(4, Knockup)
+                .variable(5, PhysicalDamage, 30, 60, amplify(AD, 1.2, 0.15))
+                .cd(1)
+                .range(260);
 
         W.update(P514)
                 .active("{1}の敵ユニットに{2}と{3}を与える。")
@@ -3890,23 +3884,17 @@ public interface SkillDefinition {
                 .cd(11, -1);
 
         E.update(P514)
-                .active("指定方向にダッシュ({1})し、{3}間{2}が付与される。")
-                .variable(1, Distance, 325)
-                .variable(2, Shield, 70, 30, bounusAD(1))
-                .variable(3, Time, 2.5)
-                .cd(10, -1)
-                .range(325)
-                .update(P401)
+                .active("指定方向にダッシュし、{3}間{2}が付与される。")
+                .variable(2, Shield, 90, 30, bounusAD(1))
                 .variable(3, Time, 1.5)
-                .update(P402)
-                .variable(2, Shield, 90, 30, bounusAD(1));
+                .cd(10, -1)
+                .range(325);
 
         R.update(P514)
-                .active("15秒間折れた剣の刃を再生させ、{1}増加し、射程が増加する(通常攻撃: {2} Broken Wings: {3} Ki Burst: {4})。また、このスキルを再度使用することで一度だけ0.5秒後に指定方向に巨大な衝撃波を発生させ、範囲内の敵ユニットに{5}与える。対象が受けているダメージに比例して与えるダメージが増加して、最大DMは{6}。")
-                .variable(1, AD, 0, 0, ad(0.2))
-                .variable(2, Range, 200)
-                .variable(3, Range, 325)
-                .variable(4, Range, 270)
+                .active("15秒間折れた剣の刃を再生させ、{1}を得て{2}する。また、このスキルを再度使用することで一度だけ0.5秒後に指定方向に巨大な衝撃波を発生させ、{3}の敵ユニットに{5}与える。対象が受けているダメージに比例して与えるダメージが増加して、最大" + Damage + "は{6}。")
+                .variable(1, AD, ad(0.2))
+                .variable(2, Range, 75)
+                .variable(3, Radius, 900)
                 .variable(5, PhysicalDamage, 80, 40, bounusAD(0.6))
                 .variable(6, PhysicalDamage, 240, 120, bounusAD(1.8))
                 .cd(110, -30);
