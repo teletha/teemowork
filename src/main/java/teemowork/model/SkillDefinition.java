@@ -5140,39 +5140,41 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Veigar(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("{1}する。").variable(1, MregRatio, amplify(MissingManaPercentage, 0.01));
+        P.update(P514).passive("{1}する。").variable(1, MregRatio, amplify(MissingManaPercentage, 0.01));
 
         Q.update(P514)
                 .passive("敵チャンピオンを倒すと{1}を得る。")
                 .variable(-1, AP, 1, 1)
-                .active("対象の敵ユニットに{2}を与える。このスキルでLHを取るとAPが1増加する。対象が敵チャンピオン/SiegeまたはSuperMinion/Buffを持った中立クリープの場合、増加値は2倍(+2)になる。")
+                .active("闇のエネルギーを発射し、命中した最初の2体の敵に{2}を与える。倒した敵1体につき{3}を得る。倒したターゲットがチャンピオン、大型ミニオンまたは大型モンスターの場合は{4}を得る。")
                 .variable(2, MagicDamage, 80, 45, ap(0.6))
+                .variable(-3, AP, 1)
+                .variable(-4, AP, 2)
                 .mana(60, 5)
-                .cd(8, -1)
-                .range(650);
+                .cd(7, -0.5)
+                .range(950);
 
         W.update(P514)
-                .active("指定地点に1.2秒後に隕石を降らし、{1}の敵ユニットに{2}を与える。また隕石が落下するまでの間、指定地点の{3}。")
+                .active("指定地点に1.25秒後に隕石を降らし、{1}の敵ユニットに{2}を与える。また隕石が落下するまでの間、指定地点の{3}。")
                 .variable(1, Radius, 225)
                 .variable(2, MagicDamage, 120, 50, ap(1))
                 .variable(3, Visionable)
-                .mana(70, 10)
-                .cd(10)
+                .mana(70, 5)
+                .cd(10, -0.5)
                 .range(900);
 
         E.update(P514)
-                .active("指定した{1}に3秒間魔法陣を呼び出し、魔法陣の縁に触れた敵ユニットに{2}を与える。")
+                .active("0.5秒後に指定した{1}に3秒間魔法陣を呼び出し、魔法陣の縁に触れた敵ユニットに{2}を与える。")
                 .variable(1, Radius, 425)
                 .variable(2, Stun, 1.5, 0.25)
-                .mana(80, 10)
-                .cd(20, -1)
-                .range(600);
+                .mana(80, 5)
+                .cd(18, -1)
+                .range(700);
 
         R.update(P514)
                 .active("対象の敵チャンピオンに{1}を与える。")
-                .variable(1, MagicDamage, 250, 125, ap(1.2), amplify(TargetAP, 0.8))
-                .mana(125, 50)
-                .cd(130, -20)
+                .variable(1, MagicDamage, 250, 125, ap(1), amplify(TargetAP, 0.8))
+                .mana(125)
+                .cd(120, -20)
                 .range(650);
     }
 
