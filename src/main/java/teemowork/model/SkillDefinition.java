@@ -5374,8 +5374,8 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Volibear(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("VolibearのHPが30%以下になったとき、6秒間かけて{1}する。{2}。")
+        P.update(P514)
+                .passive(champion + "の" + Health + "が30%以下になったとき、6秒間かけて{1}する。{2}。")
                 .variable(1, RestoreHealth, amplify(Health, 0.3))
                 .variable(2, CDRUnaware)
                 .cd(-120);
@@ -5383,11 +5383,10 @@ public interface SkillDefinition {
         Q.update(P514)
                 .active("4秒間{1}する。敵チャンピオンに向かって移動する場合は{2}する。また次の通常攻撃に追加{3}を付与し、対象をVolibearの後ろに投げ飛ばす。4秒間攻撃を行わないとCDになる。")
                 .variable(1, MSRatio, 15)
-                .variable(-2, MSRatio, 45)
+                .variable(-2, MSRatio, 30, 5)
                 .variable(3, PhysicalDamage, 30, 30)
                 .mana(40)
                 .cd(12, -1);
-        Q.update(P3051).variable(-2, MSRatio, 30, 5);
 
         W.update(P514)
                 .passive("通常攻撃でダメージを与える度にスタックが1増加し(最大3スタック)、{1}する。スタックは4秒持続する。")
@@ -5395,11 +5394,11 @@ public interface SkillDefinition {
                 .active("スタックが最大まで溜まった時のみ使用可能。対象の敵ユニットに{2}を与える。対象が失っているHP1%につきダメージが1%上昇する。")
                 .variable(2, PhysicalDamage, 80, 45, amplify(BounusHealth, 0.15))
                 .mana(35)
-                .cd(17)
+                .cd(18)
                 .range(400);
 
         E.update(P514)
-                .active("{1}の敵ユニットに{2}と3秒間{3}を与える。対象がMinionの場合、さらに{4}を与える。")
+                .active("{1}の敵ユニットに{2}と3秒間{3}を与える。対象がミニオンの場合、さらに{4}を与える。")
                 .variable(1, Radius, 425)
                 .variable(2, MagicDamage, 60, 45, ap(0.6))
                 .variable(3, MSSlowRatio, 30, 5)
@@ -5408,7 +5407,7 @@ public interface SkillDefinition {
                 .cd(11);
 
         R.update(P514)
-                .active("12秒間Volibearが通常攻撃した対象に雷を放ち{1}を与える。雷は対象の{2}の敵ユニット(敵チャンピオンを優先)3体にも連鎖し同様のダメージを与える。建物を攻撃する時は効果は発生しない。")
+                .active("12秒間通常攻撃した対象に雷を放ち{1}を与える。雷は対象の{2}の敵ユニット(敵チャンピオンを優先)3体にも連鎖し同様のダメージを与える。建物を攻撃する時は効果は発生しない。")
                 .variable(1, MagicDamage, 75, 40, ap(0.3))
                 .variable(2, Radius, 300)
                 .mana(100)
