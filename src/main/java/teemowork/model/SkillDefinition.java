@@ -4490,38 +4490,37 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Syndra(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("各スキルを最高ランクまで上げると追加効果が発生する。");
+        P.update(P514).passive("各スキルを最高ランクまで上げると追加効果が発生する。");
 
         Q.update(P514)
                 .active("指定地点にDark Sphereを召喚し、{1}の敵ユニットに{2}を与える。Dark Sphereはその後6秒間持続する。Lv5になるとチャンピオンに対して{3}を与える。")
-                .variable(1, Radius, 350)
-                .variable(2, MagicDamage, 70, 40, ap(0.6))
+                .variable(1, Radius, 175)
+                .variable(2, MagicDamage, 50, 45, ap(0.6))
                 .variable(3, MagicDamage, 264.5, 0, ap(0.69))
                 .mana(40, 10)
                 .cd(4)
                 .range(800);
 
         W.update(P514)
-                .active("指定したDark Sphereか敵minionまたは中立モンスター(DragonとBaronには無効)のいずれかを自身まで引き寄せ、最大5秒間引っ張り続ける。この際Dark Sphereを引き寄せた場合、そのDark Sphereの持続時間は引き寄せてから6秒間に更新される。その後再度地点を指定({5})することで指定地点に引き寄せたものを投げ、{1}の敵ユニットに{2}と1.5秒間{3}を与える。また指定地点の{4}。Lv5になるとスローの効果時間が2秒になる。")
-                .variable(1, Radius, 400)
+                .active("指定したDark Sphereか敵ミニオンまたはモンスター(DragonとBaronには無効)のいずれかを自身まで引き寄せ、最大5秒間引っ張り続ける。この際Dark Sphereを引き寄せた場合、そのDark Sphereの持続時間は引き寄せてから6秒間に更新される。その後再度地点を指定({5})することで指定地点に引き寄せたものを投げ、{1}の敵ユニットに{2}と1.5秒間{3}を与える。また指定地点の{4}。Lv5になるとスローの効果時間が2秒になる。")
+                .variable(1, Radius, 200)
                 .variable(2, MagicDamage, 80, 40, ap(0.7))
                 .variable(3, MSSlowRatio, 25, 5)
                 .variable(4, Visionable)
-                .variable(5, Radius, 900)
+                .variable(5, Radius, 950)
                 .mana(60, 10)
                 .cd(12, -1)
                 .range(925);
 
         E.update(P514)
-                .active("指定方向扇形の{1}にいる敵ユニットに{2}と{3}を与える。ノックバック距離はSyndraに近い地点にいるほど増加する。扇形の範囲内にDark Sphereがあった場合同様にノックバックさせ、それに当たった敵ユニットに{2}(このスキルのDMとは重複しない)と{4}を与える。Lv5になると範囲の横幅が50%増加する。")
+                .active("指定方向扇形の{1}にいる敵ユニットに{2}と{3}を与える。ノックバック距離は" + champion + "に近い地点にいるほど増加する。扇形の範囲内にDark Sphereがあった場合同様にノックバックさせ、それに当たった敵ユニットに{2}(このスキルの" + Damage + "とは重複しない)と{4}を与える。Lv5になると範囲の横幅が50%増加する。")
                 .variable(1, Radius)
                 .variable(2, MagicDamage, 70, 45, ap(0.4))
                 .variable(3, Knockback)
                 .variable(4, Stun, 1.5)
                 .mana(50)
                 .cd(18, -1.5)
-                .range(650);
-        E.update(P313).range(700);
+                .range(700);
 
         R.update(P514)
                 .active("自身の周辺にDark Sphereを3つ召喚し、指定した敵チャンピオンに向けて自身の周囲に存在する全てのDark Sphereを向かわせ、{1}を与える。3個で{2}、7個で{3}になる。この際に召喚したDark Sphereは6秒間持続する。Lv3になると射程が75増加する。")
