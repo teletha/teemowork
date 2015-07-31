@@ -4581,6 +4581,46 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
+    public static void Talon(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514).passive("スロー、スタン、スネア、サプレッションを受けている状態の敵ユニットに対しては{1}する。").variable(1, AttackDamageRatio, 10);
+
+        Q.update(P514)
+                .active("次の通常攻撃に{1}が付与される。対象がチャンピオンの場合、更に6秒間対象を出血させその間毎秒{2}を与える。また出血中の対象の{3}。")
+                .variable(1, PhysicalDamage, 30, 30, bounusAD(0.3))
+                .variable(2, PhysicalDamage, 10, 10, bounusAD(1))
+                .variable(3, Visionable)
+                .mana(40, 5)
+                .cd(8, -1);
+
+        W.update(P514)
+                .active("前方指定範囲に飛んだ後すぐ戻る刃を投げ当たった敵ユニットに{1}と2秒間{2}を与える。刃は戻り際にも判定がある。")
+                .variable(1, PhysicalDamage, 30, 25, bounusAD(0.6))
+                .variable(2, MSSlowRatio, 20, 5)
+                .mana(60, 5)
+                .cd(10)
+                .range(600);
+
+        E.update(P514)
+                .active("対象の敵ユニットの背後に跳躍し0.25秒{1}と3秒間マークを与える。マークがついた敵ユニットに対しては{2}する。")
+                .variable(1, MSSlowRatio, 90)
+                .variable(2, DamageRatio, 3, 3)
+                .mana(35, 5)
+                .cd(18, -2)
+                .range(700);
+
+        R.update(P514)
+                .active("{4}に8本の刃を投げ当たった敵ユニットに{1}を与え、同時に{2}になり{3}する。ステルスが解除されるか敵ユニットを攻撃すると刃が" + champion + "の元に戻ってきて、当たった敵ユニットに{1}を与える。")
+                .variable(1, PhysicalDamage, 120, 50, bounusAD(0.75))
+                .variable(2, Stealth, 2.5)
+                .variable(3, MSRatio, 40)
+                .variable(4, Radius, 500)
+                .mana(80, 10)
+                .cd(75, -10);
+    }
+
+    /**
+     * Define skill.
+     */
     public static void Taric(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update().passive("通常攻撃をすると{1}する。").variable(1, RestoreMana, amplify(DealtDamageRatio, 0.075));
         P.update(P303)
@@ -4654,48 +4694,6 @@ public interface SkillDefinition {
                 .mana(100)
                 .cd(60);
         R.update(P314).variable(2, MagicDamage, 150, 100, ap(0.5)).cd(75);
-    }
-
-    /**
-     * Define skill.
-     */
-    public static void Talon(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("スロー、スタン、スネア、サプレッションを受けている状態の敵ユニットに対しては{1}する。").variable(1, AttackDamageRatio, 10);
-
-        Q.update(P514)
-                .active("次の通常攻撃に{1}が付与される。対象がチャンピオンの場合、更に6秒間対象を出血させその間毎秒{2}を与える。また出血中の対象の{3}。")
-                .variable(1, PhysicalDamage, 30, 30, bounusAD(0.3))
-                .variable(2, PhysicalDamage, 10, 10, bounusAD(1))
-                .variable(3, Visionable)
-                .mana(40, 5)
-                .cd(8, -1);
-
-        W.update(P514)
-                .active("前方指定範囲に飛んだ後すぐ戻る刃を投げ当たった敵ユニットに{1}と2秒間{2}を与える。刃は戻り際にも判定がある。")
-                .variable(1, PhysicalDamage, 30, 25, bounusAD(0.6))
-                .variable(2, MSSlowRatio, 20, 5)
-                .mana(60, 5)
-                .cd(10)
-                .range(600);
-
-        E.update(P514)
-                .active("対象の敵ユニットに跳躍し{1}と3秒間マークを与える。マークがついた敵ユニットに対しては{2}する。")
-                .variable(1, Silence, 1)
-                .variable(2, DamageRatio, 3, 3)
-                .mana(35, 5)
-                .cd(18, -2)
-                .range(700)
-                .update(P401)
-                .active("対象の敵ユニットの背後に跳躍し{1}と3秒間マークを与える。マークがついた敵ユニットに対しては{2}する。");
-
-        R.update(P514)
-                .active("周囲に8本の刃を投げ当たった敵ユニットに{1}を与え、同時に{2}になり{3}する。ステルスが解除される、または敵ユニットを攻撃すると刃がTalonの元に戻ってくる。刃は戻り際にも判定がある。")
-                .variable(1, PhysicalDamage, 120, 50, bounusAD(0.75))
-                .variable(2, Stealth, 2.5)
-                .variable(3, MSRatio, 40)
-                .mana(80, 10)
-                .cd(75, -10)
-                .range(1000);
     }
 
     /**
