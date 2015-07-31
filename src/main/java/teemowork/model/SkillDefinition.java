@@ -5796,16 +5796,11 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Ziggs(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("12秒毎に通常攻撃に追加{1}が付与される。Ziggsがスキルを使う度に{2}する。建物に対しては1.5倍のDMを与える。")
-                .variable(1, MagicDamage, 13, 0, ap(0.35), level(7))
+        P.update(P514)
+                .passive("12秒毎に通常攻撃に追加{1}が付与される。スキルを使う度に{2}する。建物に対しては1.5倍の" + Damage + "を与える。")
+                .variable(1, MagicDamage, new Per1Level(20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 80, 88, 100, 112, 124, 136, 148, 160), amplify(AP, new Per6Level(0.25, 0.05)))
                 .variable(2, CDDecrease, 4)
-                .update(P313)
-                .variable(1, MagicDamage, new Per1Level(new double[] {20, 27, 34, 41, 48, 56, 64, 72, 80, 88, 96, 105,
-                        114, 123, 132, 141, 150, 160}), ap(0.35), null)
-                .update(P402)
-                .variable(1, MagicDamage, new Per1Level(new double[] {20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 80, 88,
-                        100, 112, 124, 136, 148, 160}), amplify(AP, new Per6Level(0.25, 0.05)), null);
+                .cd(-12);
 
         Q.update(P514)
                 .active("指定地点に跳ねながら転がる爆弾を投げ、爆発時に{1}の敵ユニットに{2}を与える。敵に当たらなかった場合には投げた方向に2回までバウンドする。")
@@ -5816,43 +5811,36 @@ public interface SkillDefinition {
                 .range(850);
 
         W.update(P514)
-                .active("指定地点に{6}で火薬を投げ、爆発時に{1}の敵ユニットに{2}を与え、{3}させる。Ziggsが範囲内にいた場合は自分も{3}する(Ziggsにダメージは無し)。火薬は4秒経つか、スキルを再度使用すると爆発する。また火薬は{5}。")
-                .variable(1, Radius, 275)
+                .active("指定地点に{6}で火薬を投げ、爆発時に{1}の敵ユニットに{2}を与え、{3}させる。" + champion + "が範囲内にいた場合は自分も{3}する(" + champion + "にダメージは無し)。火薬は4秒経つか、スキルを再度使用すると爆発する。また火薬は{5}。")
+                .variable(1, Radius, 325)
                 .variable(2, MagicDamage, 70, 35, ap(0.35))
-                .variable(3, Knockback, 350)
+                .variable(3, Knockback, 400)
                 .variable(5, Visionable)
-                .variable(6, MissileSpeed, 1600)
+                .variable(6, MissileSpeed, 1750)
                 .mana(65)
                 .cd(26, -2)
                 .range(1000);
-        W.update(P309).variable(6, MissileSpeed, 1750).variable(3, Knockback, 400);
-        W.update(P313).variable(1, Radius, 325);
 
         E.update(P514)
-                .active("指定地点の{4}に11個の近接地雷を円形にばら撒き、敵ユニットが地雷に触れる({5})と{1}と1.5秒間{2}を与える。ミニオン以外の同ユニットが2個目以降に踏むと{3}を与える。地雷は爆発するか10秒経つと消滅する。")
+                .active("指定地点の{4}に11個の近接地雷を円形にばら撒き、敵ユニットが地雷に触れる({5})と{1}と1.5秒間{2}を与える。同ユニットが2個目以降に踏むと{3}を与える。地雷は爆発するか10秒経つと消滅する。")
                 .variable(1, MagicDamage, 40, 25, ap(0.3))
                 .variable(2, MSSlowRatio, 20, 5)
                 .variable(3, MagicDamage, 16, 10, ap(0.12))
                 .variable(4, Radius, 400)
-                .variable(5, Radius, 135)
+                .variable(5, Radius, 150)
                 .mana(70, 10)
                 .cd(16)
-                .range(900)
-                .update(P313)
-                .variable(5, Radius, 150)
-                .update(P402)
-                .active("指定地点の{4}に11個の近接地雷を円形にばら撒き、敵ユニットが地雷に触れる({5})と{1}と1.5秒間{2}を与える。同ユニットが2個目以降に踏むと{3}を与える。地雷は爆発するか10秒経つと消滅する。");
+                .range(900);
 
         R.update(P514)
-                .active("指定地点に巨大な爆弾を投下し、{1}の敵ユニットに{2}を与え、{3}の敵ユニットに{4}を与える。")
+                .active("指定地点に巨大な爆弾を投下し、{1}の敵ユニットに{2}を与え、{3}の敵ユニットに{4}を与える。ミニオンやモンスターには2倍のダメージを与える。")
                 .variable(1, Radius, 250)
                 .variable(2, MagicDamage, 250, 125, ap(0.9))
                 .variable(3, Radius, 750)
                 .variable(4, MagicDamage, 200, 100, ap(0.72))
                 .mana(100)
-                .cd(120, -15)
+                .cd(120)
                 .range(5300);
-        R.update(P313).active("指定地点に巨大な爆弾を投下し、{1}の敵ユニットに{2}を与え、{3}の敵ユニットに{4}を与える。ミニオンやモンスターには2倍のダメージを与える。");
     }
 
     /**
