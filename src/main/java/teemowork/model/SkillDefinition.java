@@ -5749,57 +5749,47 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Zed(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("HPが50%以下の敵ユニットへの通常攻撃に{1}を付与する。同一の対象には10秒に一度しか発動しない。")
+        P.update(P514)
+                .passive(Health + "が50%以下の敵ユニットへの通常攻撃に{1}を付与する。同一の対象には10秒に一度しか発動しない。")
                 .variable(1, MagicDamage, amplify(TargetMaxHealthRatio, new Per6LevelForZed(6, 2)));
 
         Q.update(P514)
-                .active("Zedと「影」から指定方向に貫通する手裏剣を飛ばし、当たった敵ユニットに{1}を与える。手裏剣は一度敵ユニットに当たるとそれ以降の敵ユニットには{3}を与える。Zedと「影」が同一の対象に手裏剣を命中させた場合、2発目以降は{2}を与える。")
-                .variable(1, PhysicalDamage, 75, 35, bounusAD(1))
+                .active(champion + "と「影」から指定方向に貫通する手裏剣を飛ばし、当たった敵ユニットに{1}を与える。手裏剣は一度敵ユニットに当たるとそれ以降の敵ユニットには{3}を与える。" + champion + "と「影」が同一の対象に手裏剣を命中させた場合、2発目以降は{2}を与える。")
+                .variable(1, PhysicalDamage, 75, 40, bounusAD(1))
                 .variable(2, PhysicalDamage, 37.5, 20, bounusAD(0.5))
-                .variable(3, PhysicalDamage, 60, 32, bounusAD(0.8))
+                .variable(3, PhysicalDamage, 45, 24, bounusAD(0.6))
                 .cost(Energy, 75, -5)
                 .cd(6)
                 .range(900);
-        Q.update(P303).variable(1, PhysicalDamage, 75, 40, bounusAD(1));
-        Q.update(P307).variable(3, PhysicalDamage, 45, 24, bounusAD(0.6));
 
         W.update(P514)
                 .passive("{1}を得る。")
                 .variable(1, AD, amplify(BounusAD, 0.05, 0.05))
-                .active("Zedの「影」が指定方向にダッシュし({5})、4秒間その場に留まり{2}の{3}。再度このスキルを使用するとZedと「影」の位置が入れ替わる。「影」はZedが通常スキルを使用すると同時に同じスキルを使用する。この時スキルがZedのスキルと同一の敵ユニットに命中した場合、{4}する。回復効果はスキル1回毎に1度のみ発動する。")
-                .variable(2, Radius, 1300)
+                .active("「影」が指定方向にダッシュし({5})、4秒間その場に留まり{2}の{3}。再度このスキルを使用すると" + champion + "と「影」の位置が入れ替わる。「影」は" + champion + "が通常スキルを使用すると同時に同じスキルを使用する。この時スキルが" + champion + "のスキルと同一の敵ユニットに命中した場合、{4}する。回復効果はスキル1回毎に1度のみ発動する。")
+                .variable(2, Radius, 700)
                 .variable(3, Visionable)
                 .variable(4, RestoreEnergy, 20, 5)
-                .variable(5, MissileSpeed, 2500)
+                .variable(5, MissileSpeed, 1500)
                 .cost(Energy, 40, -5)
-                .cd(22, -1.5)
+                .cd(18, -1)
                 .range(550);
-        W.update(P306).cd(18, -1);
-        W.update(P307).variable(2, Radius, 700);
-        W.update(P313).variable(5, MissileSpeed, 1500);
 
         E.update(P514)
-                .active("Zedと「影」から衝撃波を発生させ、{1}の敵ユニットに{2}を与える。ZedのShadow Slashは敵ユニットに当たる度にLiving ShadowのCDを1秒解消させる。「影」のShadow Slashはダメージと共に敵ユニットに1.5秒間{3}を与える。Zedと「影」が同一の対象にShadow Slashを命中させた場合、DMは重複しないがスローの効果が上昇する。")
+                .active(champion + "と「影」から衝撃波を発生させ、{1}の敵ユニットに{2}を与える。" + champion + "の" + E + "は敵チャンピオンに当たる度に" + W + "の{4}。「影」の" + E + "はダメージと共に敵ユニットに1.5秒間{3}を与える。" + champion + "と「影」が同一の対象にShadow Slashを命中させた場合、" + Damage + "は重複しないがスローの効果が上昇する。")
                 .variable(1, Radius, 290)
-                .variable(2, PhysicalDamage, 60, 35, bounusAD(0.9))
+                .variable(2, PhysicalDamage, 60, 30, bounusAD(0.9))
                 .variable(3, MSSlowRatio, 30, 7.5)
+                .variable(4, CDDecrease, 2)
                 .cost(Energy, 50, 0)
-                .cd(3);
-        E.update(P303).variable(2, PhysicalDamage, 60, 30, bounusAD(0.9));
-        E.update(P306)
-                .active("Zedと「影」から衝撃波を発生させ、{1}の敵ユニットに{2}を与える。ZedのShadow Slashは敵チャンピオンに当たる度にLiving ShadowのCDを2秒解消させる。「影」のShadow Slashはダメージと共に敵ユニットに1.5秒間{3}を与える。Zedと「影」が同一の対象にShadow Slashを命中させた場合、DMは重複しないがスローの効果が上昇する。");
-        E.update(P307).cd(4);
+                .cd(4)
+                .range(290);
 
         R.update(P514)
-                .active("対象の敵チャンピオンにダッシュしマークを付与する。ダッシュ中は0.35秒間ターゲット不可状態になる。また対象の背後に4秒間持続する「影」を召喚する。再度このスキルを使用するとZedと「影」の位置が入れ替わる({2})。付与から3秒後にマークは消費され、対象にマークが付与されている間にZedと「影」が与えた物理DMと魔法DMの合計に比例し{1}を与える。")
+                .active("対象の敵チャンピオンにダッシュしマークを付与する。ダッシュ中は0.75秒間ターゲット不可状態になる。また詠唱地点に6秒間持続する「影」を召喚する。再度このスキルを使用すると" + champion + "と「影」の位置が入れ替わる({2})。付与から3秒後にマークは消費され、対象にマークが付与されている間に" + champion + "と「影」が与えた" + TrueDamage + "以外のダメージの合計に比例し{1}を与える。")
                 .variable(1, PhysicalDamage, 0, 0, ad(1), amplify(DealtDamageRatio, 20, 15))
-                .variable(2, Radius, 1100)
+                .variable(2, Radius, 2000)
                 .cd(120, -20)
                 .range(625);
-        R.update(P313)
-                .active("対象の敵チャンピオンにダッシュしマークを付与する。ダッシュ中は0.75秒間ターゲット不可状態になる。また詠唱地点に6秒間持続する「影」を召喚する。再度このスキルを使用するとZedと「影」の位置が入れ替わる({2})。付与から3秒後にマークは消費され、対象にマークが付与されている間にZedと「影」が与えた物理DMと魔法DMの合計に比例し{1}を与える。")
-                .variable(2, Radius, 2000);
     }
 
     /**
