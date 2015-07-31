@@ -4720,55 +4720,46 @@ public interface SkillDefinition {
     public static void Thresh(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update()
                 .passive("{1}で敵ユニットが死んだ場合、一定の確率で魂を落とす。魂へ近づくか" + W + "のランタンを魂の近くに置くとその魂を回収し、{2}と{3}を得る。落とした魂は15秒間持続し、敵チームがThreshの視界を得ていた場合、敵チームからも視認することができる。")
-                .variable(1, Radius, 2000)
-                .variable(2, AR, amplify(Stack, 1))
-                .variable(3, AP, amplify(Stack, 1));
-        P.update(P310).variable(2, AR, amplify(Stack, 0.75)).variable(3, AP, amplify(Stack, 0.75));
+                .variable(1, Radius, 1900)
+                .variable(2, AR, amplify(Stack, 0.75))
+                .variable(3, AP, amplify(Stack, 0.75));
 
         Q.update(P514)
-                .active("指定方向に鎌を投げ、命中した敵ユニットに{1}と{2}を与え、対象を1.5秒かけて自身の方へ引き寄せる。このスキルを再度使用すると対象のユニットへ飛びつく。")
-                .variable(1, MagicDamage, 80, 30, ap(0.5))
-                .variable(2, Stun, 1.5)
-                .mana(80)
-                .cd(18, -1.5)
-                .range(1075);
-        Q.update(P306).variable(1, MagicDamage, 80, 40, ap(0.5));
-        Q.update(P312)
                 .active("指定方向に鎌を投げ、命中した敵ユニットに{1}と{2}を与え、対象を1.5秒かけて自身の方へ引き寄せる。このスキルを再度使用すると対象のユニットへ飛びつく。鎌が敵に命中した場合、このスキルの{3}する。")
+                .variable(1, MagicDamage, 80, 40, ap(0.5))
+                .variable(2, Stack, 1.5)
                 .variable(3, CDDecrease, 3)
-                .cd(20, -2);
+                .cd(20, -2)
+                .mana(80)
+                .range(1100);
 
         W.update(P514)
                 .active("指定地点に6秒間持続するランタンを設置する。味方チャンピオンがランタンを指定すると、ランタンとその味方チャンピオンが自身の方へと引き寄せられる。更にランタンの周囲にいる魂を自動的に回収し、{1}の味方チャンピオンは{2}を得る。。シールドを得られるのは1ユニットにつき1回のみ。自身がランタンから距離1500以上離れるとランタンは自動的に自身の下へと戻る。")
                 .variable(1, Radius)
-                .variable(2, Shield, 60, 40, ap(0.4))
-                .mana(40)
+                .variable(2, Shield, 60, 35, ap(0.4))
+                .mana(50, 5)
                 .cd(22, -1.5)
                 .range(950);
 
         E.update(P514)
+                .passive("通常攻撃に{3}を付与する。この" + Damage + "は" + P + "のスタック数と、自身が前回敵ユニットに通常攻撃をしてから経過した時間に比例して増加し最大で{4}。建物を攻撃した場合は追加" + MagicDamage + "は発生せず、時間がリセットされる事もない。")
+                .variable(3, MagicDamage, amplify(Stack, 1))
+                .variable(4, MagicDamage, 0, 0, amplify(Stack, 1), amplify(AD, 0.8, 0.3))
                 .active("自身後方から前方への帯状領域内の敵ユニットに{1}を与える。また自身後方にいる敵ユニットは自身に近づく向きに、自身前方にいる敵ユニットには自身から遠ざかる向きにノックバックさせ、1.5秒間{2}を与える。")
-                .variable(1, MagicDamage, 65, 40, ap(0.4))
+                .variable(1, MagicDamage, 65, 30, ap(0.4))
                 .variable(2, MSSlowRatio, 20, 5)
                 .mana(60, 5)
                 .cd(9)
                 .range(400);
-        E.update(P306)
-                .passive("通常攻撃に{3}を付与する。このDMはDamnationのスタック数と、自身が前回敵ユニットに通常攻撃をしてから経過した時間に比例して増加する。建物を攻撃した場合は追加魔法DMは発生せず、時間がリセットされる事もない。")
-                .variable(2, MagicDamage, 65, 30, ap(0.4))
-                .variable(3, MagicDamage, amplify(Stack, 1));
 
         R.update(P514)
-                .active("{5}後、{4}に五角形の壁を創り出し、最初に壁に触れた敵チャンピオンに{1}と2秒間{2}を与える。2つ目以降の壁に触れた敵チャンピオンには{3}と1秒間{2}を与える。敵が触れた部分の壁は破壊され消滅する。")
+                .active("0.75後、{4}に五角形の壁を創り出し、最初に壁に触れた敵チャンピオンに{1}と2秒間{2}を与える。2つ目以降の壁に触れた敵チャンピオンには1秒間{2}を与える。敵が触れた部分の壁は破壊され消滅する。")
                 .variable(1, MagicDamage, 250, 150, ap(1))
                 .variable(2, MSSlowRatio, 99)
-                .variable(3, MagicDamage, 125, 75, ap(0.5))
                 .variable(4, Radius, 450)
-                .variable(5, Time, 0.5)
                 .mana(100)
                 .cd(150, -10)
-                .update(P401)
-                .variable(5, Time, 0.75);
+                .range(450);
     }
 
     /**
