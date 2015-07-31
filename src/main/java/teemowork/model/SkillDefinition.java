@@ -4442,12 +4442,14 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Swain(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        /** Swain */
-        P.update().passive("敵ユニットを倒す毎に{1}する。").variable(1, RestoreMana, 9, 0, level(1));
-        P.update(P313).passive("敵ユニットを倒す毎に{1}する。キルもしくはアシストする毎に{2}する。").variable(2, RestoreMana, amplify(Mana, 0.09));
+        P.update(P514)
+                .passive("敵ユニットを倒す毎に{1}する。{3}ごとに{2}する。")
+                .variable(1, RestoreMana, 9, 0, level(1))
+                .variable(2, RestoreMana, amplify(Mana, 0.09))
+                .variable(3, Takedown);
 
         Q.update(P514)
-                .active("Swainの位置にビームを吐くカラスを設置し、対象の敵ユニットに毎秒{1}と{2}を与える。3秒経つか対象のユニットがカラスの有効範囲外({3})に移動すると効果が切れる。")
+                .active(champion + "の位置にビームを吐くカラスを設置し、対象の敵ユニットに毎秒{1}と{2}を与える。3秒経つか対象のユニットがカラスの有効範囲外({3})に移動すると効果が切れる。")
                 .variable(1, MagicDamage, 25, 15, ap(0.3))
                 .variable(2, MSSlowRatio, 20, 5)
                 .variable(3, Radius, 900)
@@ -4456,15 +4458,16 @@ public interface SkillDefinition {
                 .range(625);
 
         W.update(P514)
-                .active("地点を指定した0.5秒後に範囲内の敵ユニットに{1}と{2}を与える。")
+                .active("地点を指定した0.875秒後に{3}の敵ユニットに{1}と{2}を与える。")
                 .variable(1, MagicDamage, 80, 40, ap(0.7))
                 .variable(2, Snare, 2)
+                .variable(3, Radius, 250)
                 .mana(80, 10)
                 .cd(18, -2)
                 .range(900);
 
         E.update(P514)
-                .active("対象の敵ユニットに4秒かけて{1}を与える。また、効果中はSwainが対象のユニットに与える{2}する。")
+                .active("対象の敵ユニットに4秒かけて{1}を与える。また、効果中は" + champion + "が対象のユニットに与える{2}する。")
                 .variable(1, MagicDamage, 75, 40, ap(0.8))
                 .variable(2, DamageRatio, 8, 3)
                 .mana(65, 5)
@@ -4478,6 +4481,7 @@ public interface SkillDefinition {
                 .variable(2, RestoreHealth, amplify(DealtDamageRatio, 0.25))
                 .variable(3, RestoreHealth, amplify(DealtDamage, 0.75))
                 .cd(8)
+                .range(700)
                 .cost(Mana, new Diff(25, 0, 1), amplify(Duration, 5, 1))
                 .type(SkillType.Toggle);
     }
