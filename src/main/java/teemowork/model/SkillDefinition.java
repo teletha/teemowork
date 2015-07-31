@@ -4902,8 +4902,7 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void TwistedFate(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("味方チャンピオンが敵を倒した時に追加で{1}を得るようになる。").variable(1, Gold, 2);
-        P.update(P310).passive("ユニットを倒すたびに追加の{1}(1~6でランダム、但し期待値は3.5よりも大きくなる)を得る。").variable(1, Gold);
+        P.update(P514).passive("ユニットを倒すたびに追加の{1}(1~6でランダム、但し期待値は3.5よりも大きくなる)を得る。").variable(1, Gold);
 
         Q.update(P514)
                 .active("指定向き3方向に貫通するカードを飛ばし、当たった敵ユニットに{1}を与える。")
@@ -4913,48 +4912,43 @@ public interface SkillDefinition {
                 .range(1450);
 
         W.update(P514)
-                .active("使用するとBlue、Red、Goldの3種のカードを選択し始め、再度使用でカードが決定する。決定したカードにより次の通常攻撃が魔法DMに変換され、以下の効果が追加される。<br>Blue Card: {2}を与え{3}する。<br>Red Card: {4}の敵に{5}と2.5秒間{6}を与える。<br>Gold Card: {7}と{8}を与える。")
-                .variable(2, MagicDamage, 40, 20, ap(0.4), ad(1))
-                .variable(3, RestoreMana, 26, 13, ad(0.65))
+                .active("3種類のカードが順番に出現し、8秒以内に再度使用してカードを決定する。4秒以内の次の通常攻撃が魔法DMに変換され、以下の効果が追加される。<br>Blue Card: {2}を与え{3}する。<br>Red Card: {4}の敵に{5}と2.5秒間{6}を与える。<br>Gold Card: {7}と{8}を与える。")
+                .variable(2, MagicDamage, 40, 20, ap(0.5), ad(1))
+                .variable(3, RestoreMana, 50, 25)
                 .variable(4, Radius, 100)
-                .variable(5, MagicDamage, 30, 15, ap(0.4), ad(1))
+                .variable(5, MagicDamage, 30, 15, ap(0.5), ad(1))
                 .variable(6, MSSlowRatio, 30, 5)
-                .variable(7, MagicDamage, 15, 7.5, ap(0.4), ad(1))
+                .variable(7, MagicDamage, 15, 7.5, ap(0.5), ad(1))
                 .variable(8, Stun, 1.2, 0.2)
                 .mana(40, 15)
                 .cd(6);
-        W.update(P307).variable(3, RestoreMana, 50, 25);
-        W.update(P310)
-                .active("3種類のカードが順番に出現し、8秒以内に再度使用してカードを決定する。4秒以内の次の通常攻撃が魔法DMに変換され、以下の効果が追加される。<br>Blue Card: {2}を与え{3}する。<br>Red Card: {4}の敵に{5}と2.5秒間{6}を与える。<br>Gold Card: {7}と{8}を与える。");
 
         E.update(P514)
-                .passive("{1}を得て{2}する。通常攻撃4回毎に追加{3}を与える。")
-                .variable(1, CDR, 3, 3)
-                .variable(2, ASRatio, 3, 3)
-                .variable(3, MagicDamage, 55, 25, ap(0.4));
-        E.update(P307).passive("{2}する。通常攻撃4回毎に追加{3}を与える。").variable(2, ASRatio, 10, 5);
+                .passive("{1}する。通常攻撃4回毎に追加{2}を与える。")
+                .variable(1, ASRatio, 10, 5)
+                .variable(2, MagicDamage, 55, 25, ap(0.5));
 
         R.update(P514)
                 .active("{1}間すべての敵チャンピオン(ステルス中のチャンピオン含む)の視界を得る。効果中に再度使用すると2秒間移動・攻撃が不可能になった後、指定した地点にワープする。。効果中は敵チャンピオンの頭上にアイコンが表示される。")
                 .variable(1, Time, 6, 2)
                 .mana(150, -25)
-                .cd(150, -15)
+                .cd(180, -30)
                 .range(5500);
-        R.update(P307).cd(180, -30);
     }
 
     /**
      * Define skill.
      */
     public static void Twitch(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("通常攻撃時に毒を付与し、６秒間かけて{1}を与える。毒は6回までスタックする。").variable(1, TrueDamage, new Per5Level(12, 12));
+        P.update(P514).passive("通常攻撃時に毒を付与し、6秒間毎秒{1}を与える。毒は6回までスタックする。").variable(1, TrueDamage, new Per4Level(2, 1));
 
         Q.update(P514)
-                .active("使用から1.25秒後に{1}になる。ステルス状態では{2}し、ステルスを解除すると5秒間{3}する。ステルス準備中に攻撃を行うかダメージを受けると、ステルス状態になるのに再度1.25秒必要になる。ステルス準備開始から5秒経過するとダメージを受けていてもステルス状態になる。")
+                .active("使用から1.5秒後に{1}になる。ステルス状態では{2}し、ステルスを解除すると5秒間{3}する。ステルス準備中に攻撃を行うかダメージを受けると、ステルス状態になるのに再度1.25秒必要になる。ステルス準備開始から5秒経過するとダメージを受けていてもステルス状態になる。")
                 .variable(1, Stealth, 4, 1)
                 .variable(2, MSRatio, 20)
                 .variable(3, ASRatio, 30, 10)
-                .mana(60);
+                .mana(60)
+                .cd(16);
 
         W.update(P514)
                 .active("指定地点に{1}で毒の入った瓶を投げつけ、範囲内の敵ユニットに3秒間{2}と毒を2スタック分与える。また、指定した地点の{3}。")
@@ -4968,14 +4962,15 @@ public interface SkillDefinition {
         E.update(P514)
                 .active("毒をスタックされている{1}の敵ユニットに{2}を与える。")
                 .variable(1, Radius, 1200)
-                .variable(2, PhysicalDamage, 40, 10, amplify(Stack, 15, 5, ap(0.2), bounusAD(0.25)))
+                .variable(2, PhysicalDamage, 20, 15, amplify(Stack, 15, 5, ap(0.2), bounusAD(0.25)))
                 .mana(50, 10)
-                .cd(12, -1);
-        E.update(P310A).variable(2, PhysicalDamage, 20, 15, amplify(Stack, 15, 5, ap(0.2), bounusAD(0.25)));
+                .cd(12, -1)
+                .range(1200);
 
         R.update(P514)
-                .active("7秒間射程が850になり{1}を得て、通常攻撃が敵ユニットを貫通するようになる。対象との直線上にいる敵ユニットにもダメージと毒スタックを与える。ダメージは敵に当たるごとに20%減少する。最小で40%。")
+                .active("7秒間{2}し{1}を得て、通常攻撃が敵ユニットを貫通するようになる。対象との直線上にいる敵ユニットにもダメージと毒スタックを与える。ダメージは敵に当たるごとに20%減少する。最小で40%。")
                 .variable(1, AD, 20, 8)
+                .variable(2, Range, 300)
                 .mana(100, 25)
                 .cd(120, -10);
     }
