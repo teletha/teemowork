@@ -5847,32 +5847,37 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Zilean(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("すべての味方チャンピオンが取得する{1}する。").variable(1, ExperimentRatio, 8);
+        P.update(P514).passive("{2}の味方チャンピオンが取得する{1}する。").variable(1, ExperimentRatio, 8).variable(2, Radius, 1500);
 
         Q.update(P514)
-                .active("対象のユニットに爆弾をつけ、4秒後に対象(味方ユニットの場合ダメージ無し)とその周辺{1}の敵ユニットに{2}を与える。対象が死亡した場合は即座に爆発する。")
-                .variable(1, Radius, 330)
-                .variable(2, MagicDamage, 90, 55, ap(0.9))
-                .mana(70, 15)
-                .cd(10)
-                .range(700);
+                .active("指定した場所に時限式の爆弾を投げ、{1}に入った最初のユニットに爆弾がくっつく（チャンピオン優先）。3秒後に爆発し、{2}にいるすべての敵に{3}を与える。同じユニットに2個目の爆弾を仕掛けると1個目の爆弾はすぐに爆発し、爆風の中ににいるすべての敵に{4}を与える。")
+                .variable(1, Radius, 100)
+                .variable(2, Radius, 300)
+                .variable(3, MagicDamage, 75, 40, ap(0.9))
+                .variable(4, Stun, 1.1, 0.1)
+                .mana(60, 5)
+                .cd(10, -0.5)
+                .range(900);
 
-        W.update(P514).active(W + "以外のスキルのCDを10秒解消する。").mana(50).cd(18, -3);
+        W.update(P514)
+                .active(Q + "と" + E + "の{1}する。このスキルはどちらかのスキルがCD中のみ使用できる。")
+                .variable(1, CDDecrease, 10)
+                .mana(35)
+                .cd(14, -2);
 
         E.update(P514)
-                .active("味方チャンピオンに使用した場合は{2}間{1}増加し、敵チャンピオンに使用した場合は{2}間{3}を与える。")
-                .variable(1, MSRatio, 55)
-                .variable(2, Time, 2.5, 0.75)
-                .variable(3, MSSlowRatio, 55)
-                .mana(80)
-                .cd(20)
-                .range(700);
+                .active("味方チャンピオンに使用した場合は2.5秒間{1}増加し、敵チャンピオンに使用した場合は2.5秒間{2}を与える。")
+                .variable(1, MSRatio, 40, 15)
+                .variable(2, MSSlowRatio, 40, 15)
+                .mana(50)
+                .cd(15)
+                .range(550);
 
         R.update(P514)
                 .active("対象の味方チャンピオンが使用してから7秒以内に死亡した場合、2秒後にその場で{1}して復活する。")
                 .variable(1, RestoreHealth, 600, 150, ap(2))
                 .mana(125, 25)
-                .cd(180)
+                .cd(120, -30)
                 .range(900);
     }
 
