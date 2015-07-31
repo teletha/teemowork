@@ -37,6 +37,9 @@ public enum Status {
     /** Dealt Damage */
     DealtDamage("与えたDM"), DealtDamageRatio(DealtDamage),
 
+    /** Dealt Damage Reduction */
+    DamageDecreaseRatio("与えるダメージ"),
+
     /** Received Damage */
     ReceivedDamage("受けたDM"), ReceivedDamageRatio(ReceivedDamage), ReceivedDamage4SecRatio(
             "4秒以内に" + ReceivedDamage), ReceivedOriginalDamageRatio("軽減前の受けたDM"),
@@ -554,6 +557,7 @@ public enum Status {
 
         case ADReduction:
         case MSReduction:
+        case DamageDecreaseRatio:
             return name + "が" + formatValue(computed) + "減少";
 
         case LoseHealth:

@@ -4362,11 +4362,11 @@ public interface SkillDefinition {
                 .range(850);
 
         W.update(P514)
-                .active("近くにいる最も" + Health + "が減っている味方チャンピオン1体と" + champion + "は{1}する。回復する対象の減少している" + Health + "1%につき回復量が0.5%増加し最大で{2}する。<br>オーラ: 味方チャンピオンは1.5秒間{3}得る。<br>追加効果: 3秒間対象が与える{4}する。")
+                .active("近くにいる最も" + Health + "が減っている味方チャンピオン1体と" + champion + "は{1}する。回復する対象の減少している" + Health + "1%につき回復量が0.5%増加し最大で{2}する。<br>オーラ: 味方チャンピオンは1.5秒間{3}得る。<br>追加効果: 対象は3秒間{4}する。")
                 .variable(1, RestoreHealth, 30, 20, ap(0.2))
                 .variable(2, RestoreHealth, 45, 30, ap(0.3))
                 .variable(3, Shield, 35, 20, ap(0.2), new ReferFixed(R, 10, 20, 40))
-                .variable(4, DamageRatio, -20, 0, ap(-0.02))
+                .variable(4, DamageDecreaseRatio, 20, 0, ap(0.02))
                 .mana(80, 5)
                 .cd(10)
                 .range(1000);
@@ -5022,18 +5022,18 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Urgot(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("通常攻撃またはAcid Hunterでダメージを与えた対象に、与えるダメージを15%低下するDebuffを付与する。この効果は2.5秒間持続する。");
+        P.update(P514).passive("通常攻撃または" + Q + "でダメージを与えた対象は2.5秒間{1}する。").variable(1, DamageDecreaseRatio, 15);
 
         Q.update(P514)
-                .active("指定方向にミサイルを飛ばし当たった敵ユニットに{1}を与える。Noxian Corrosive Chargeの効果を受けている敵ユニットの近くを指定して使用すると、その敵ユニット目掛けてミサイルが飛んでいく。")
+                .active("指定方向にミサイルを飛ばし当たった敵ユニットに{1}を与える。" + E + "の効果を受けている敵ユニットの近くを指定して使用すると、その敵ユニット目掛けてミサイルが飛んでいく。")
                 .variable(1, PhysicalDamage, 10, 30, ad(0.85))
                 .mana(40)
                 .cd(2)
                 .range(1000);
 
         W.update(P514)
-                .active("7秒間{1}を得る。シールドが残っている間は通常攻撃とAcid Hunterに1秒間{2}が付与される。")
-                .variable(1, Shield, 80, 40, ap(0.8))
+                .active("7秒間{1}を得る。シールドが残っている間は通常攻撃と" + Q + "は1.5秒間{2}を与える。")
+                .variable(1, Shield, 60, 40, ap(0.8), amplify(Mana, 0.08))
                 .variable(2, MSSlowRatio, 20, 5)
                 .mana(55, 5)
                 .cd(16, -1);
@@ -5042,7 +5042,7 @@ public interface SkillDefinition {
                 .active("指定地点に爆弾を飛ばし{1}の敵ユニットに5秒間かけて{2}と{3}を与える。また指定地点の{4}。")
                 .variable(1, Radius, 300)
                 .variable(2, PhysicalDamage, 75, 55, bounusAD(0.6))
-                .variable(3, MSSlowRatio, 12, 2)
+                .variable(3, ARReductionRatio, 12, 2)
                 .variable(4, Visionable)
                 .mana(50, 5)
                 .cd(15, -1)
@@ -5054,8 +5054,8 @@ public interface SkillDefinition {
                 .variable(2, AR, 60, 30)
                 .variable(3, MR, 60, 30)
                 .variable(4, MSSlowRatio, 40)
-                .mana(120)
-                .cd(120)
+                .mana(100)
+                .cd(120, -20)
                 .range(550, 150);
     }
 
