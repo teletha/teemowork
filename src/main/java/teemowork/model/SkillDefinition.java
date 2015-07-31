@@ -4866,37 +4866,35 @@ public interface SkillDefinition {
      */
     public static void Tryndamere(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update()
-                .passive("{1}する。通常攻撃時に5Fury、クリティカル時に10Fury、Spinning Slashが敵ユニットに命中するたびに2Furyを得る。敵ユニットを倒すと追加で10Furyを得る。Furyの上限は100、8秒間戦闘を行わないと毎秒5Furyずつ減少していく。建物を攻撃した場合はFuryは増加しない。")
+                .passive("{1}する。通常攻撃時に5Fury、クリティカル時に10Fury、" + E + "が敵ユニットに命中するたびに2Furyを得る。敵ユニットを倒すと追加で10Furyを得る。Furyの上限は100、8秒間戦闘を行わないと毎秒5Furyずつ減少していく。建物を攻撃した場合はFuryは増加しない。")
                 .variable(-1, Critical, amplify(Stack, 0.35));
 
         Q.update(P514)
                 .passive("{1}を得る。")
                 .variable(1, AD, 5, 5, amplify(MissingHealthPercentage, 0.15, 0.05))
                 .active("Furyをすべて消費し{2}する。")
-                .variable(2, RestoreHealth, 30, 10, ap(1.5), amplify(Stack, 0.5, 0.45))
+                .variable(2, RestoreHealth, 30, 10, ap(0.3), amplify(Stack, 0.5, 0.45, ap(0.012)))
                 .cd(12);
-        Q.update(P303).variable(2, RestoreHealth, 30, 10, ap(0.3), amplify(Stack, 0.5, 0.45, ap(0.012)));
 
         W.update(P514)
                 .active("4秒間近くの敵チャンピオンに{1}を与え、後ろを向いている敵チャンピオンには更に4秒間{2}を与える。")
                 .variable(1, ASSlowRatio, 20, 15)
                 .variable(2, MSSlowRatio, 30, 7.5)
                 .cd(14)
-                .range(850);
+                .range(400);
 
         E.update(P514)
-                .active("指定地点まで武器を振り回しながら移動し、当たった敵ユニットに{1}を与える。このスキルはクリティカルが発生するたびに{2}する。")
+                .active("指定地点まで武器を振り回しながら移動し、当たった敵ユニットに{1}を与える。このスキルはクリティカルが発生するたびに{2}する。(敵チャンピオンの場合は{3}する)")
                 .variable(1, PhysicalDamage, 70, 30, ap(1), bounusAD(1.2))
-                .variable(2, CDDecrease, 2)
+                .variable(2, CDDecrease, 1)
+                .variable(3, CDDecrease, 2)
                 .cd(13, -1)
                 .range(660);
-        E.update(P313)
-                .active("指定地点まで武器を振り回しながら移動し、当たった敵ユニットに{1}を与える。このスキルはクリティカルが発生するたびに{2}する。(ミニオンやモンスターに対して発生した場合は{3}する)")
-                .variable(3, CDDecrease, 1);
 
         R.update(P514)
-                .active("5秒間HPが1未満にならなくなる(死ななくなる)。また、このスキル使用時にFuryが{1}増加する。このスキルの使用は状態異常によって阻害されない。")
+                .active("5秒間HPが1未満にならなくなる(死ななくなる)。また、このスキル使用時にFuryが{1}増加する。このスキルの使用は状態異常によって阻害されない。5秒後、" + champion + "の" + Health + "が3%以下の場合{2}する。")
                 .variable(1, Count, 50, 25)
+                .variable(2, RestoreHealth, amplify(Health, 0.05))
                 .cd(110, -10);
     }
 
