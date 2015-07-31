@@ -664,7 +664,7 @@ public interface SkillDefinition {
      */
     public static void Caitlyn(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P514)
-                .passive("通常攻撃{1}回毎にダメージが増加する(Minionには150%増加、チャンピオンには50%増加して{2}を付与、建物への攻撃は無効)。茂みから通常攻撃を行うと2回分としてカウントされる。")
+                .passive("通常攻撃{1}回毎にダメージが増加する(ミニオンには150%増加、チャンピオンには50%増加して{2}を付与、建物への攻撃は無効)。茂みから通常攻撃を行うと2回分としてカウントされる。")
                 .variable(1, Count, new Per6Level(7, -1))
                 .variable(2, BounusARPenRatio, 50)
                 .update(P307);
@@ -1467,7 +1467,7 @@ public interface SkillDefinition {
      */
     public static void Garen(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P514)
-                .passive("{1}間敵Minion以外からダメージを受けない状態が続くと、以降敵ミニオン（Lv11からはバロン・ドラゴン以外のモンスター）以外からダメージを受けるまで毎秒{2}する。")
+                .passive("{1}間敵ミニオン以外からダメージを受けない状態が続くと、以降敵ミニオン（Lv11からはバロン・ドラゴン以外のモンスター）以外からダメージを受けるまで毎秒{2}する。")
                 .variable(1, Time, new PerLevel(new int[] {1, 11, 16}, new double[] {9, 6, 4}))
                 .variable(2, RestoreHealth, amplify(Health, new PerLevel(new int[] {1, 11, 16}, 0.004, 0.008, 0.02)));
 
@@ -1725,7 +1725,7 @@ public interface SkillDefinition {
                 .range(450);
 
         W.update(P514)
-                .active("指定地点に目掛けて、5本のミサイルを扇状に発射する。ミサイルが指定地点を通過する後も一直線に飛行し続ける。命中すると{1}を与える。同一対象に対して複数命中し、2発目以降は本来の20%分のDMを与える(同一対象に5発命中すると{2})。Minionに対しては60%のダメージを与える。")
+                .active("指定地点に目掛けて、5本のミサイルを扇状に発射する。ミサイルが指定地点を通過する後も一直線に飛行し続ける。命中すると{1}を与える。同一対象に対して複数命中し、2発目以降は本来の20%分のDMを与える(同一対象に5発命中すると{2})。ミニオンに対しては60%のダメージを与える。")
                 .variable(1, MagicDamage, 60, 30, ap(0.45))
                 .variable(2, MagicDamage, 108, 54, ap(0.81))
                 .mana(70, 10)
@@ -3172,7 +3172,7 @@ public interface SkillDefinition {
         P.update(P514).passive("{1}を得る。").variable(1, LS, new Per6Level(10, 5));
 
         Q.update(P514)
-                .active("次に行う通常攻撃に{1}を付与する。このスキルを使用しLHをとると増加ダメージが+3されていく。対象が敵チャンピオン/SiegeまたはSuperMinion/Buffを持った中立クリープの場合、増加値は+6になる。")
+                .active("次に行う通常攻撃に{1}を付与する。このスキルを使用しLHをとると増加ダメージが+3されていく。対象が敵チャンピオン/SiegeまたはSuperミニオン/Buffを持った中立クリープの場合、増加値は+6になる。")
                 .variable(1, PhysicalDamage, 30, 20, amplify(Stack, 3))
                 .mana(20)
                 .cd(8, -1);
@@ -5236,7 +5236,7 @@ public interface SkillDefinition {
                 .cd(new Per6LevelForVi(18, -5));
 
         Q.update(P514)
-                .active("発動すると自身の移動速度が15%減少し、このスキルのダメージと射程が徐々に増加する(1.25秒で最大)。再度使用で指定した方向へとダッシュし(最小{3}、最大{4})、命中した全ての敵ユニットに{1}を与える(最大で{2})。ダッシュ中に敵チャンピオンに衝突するとその時点で停止し、対象をノックバックさせる。このスキルにはDenting Blowsの効果が適用され、Minionや中立クリープに与えるダメージは75%に減少する。途中で詠唱を停止させられた場合、このスキルのCDは3秒になり、消費したmanaの半分が回復する。")
+                .active("発動すると自身の移動速度が15%減少し、このスキルのダメージと射程が徐々に増加する(1.25秒で最大)。再度使用で指定した方向へとダッシュし(最小{3}、最大{4})、命中した全ての敵ユニットに{1}を与える(最大で{2})。ダッシュ中に敵チャンピオンに衝突するとその時点で停止し、対象をノックバックさせる。このスキルにはDenting Blowsの効果が適用され、ミニオンや中立クリープに与えるダメージは75%に減少する。途中で詠唱を停止させられた場合、このスキルのCDは3秒になり、消費したmanaの半分が回復する。")
                 .variable(1, PhysicalDamage, 50, 25, bounusAD(0.8))
                 .variable(2, PhysicalDamage, 100, 50, bounusAD(1.6))
                 .variable(3, Distance, 250)
@@ -5701,18 +5701,14 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Zac(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("Zacのスキルが敵ユニットに命中する度に小型のスライムが出現する。スライム({5})を自身が回収すると{1}し、敵が回収すると消滅する。また、ZacのHealthが0になった時4つのスライムに分裂し一定時間かけて復活する。復活中にすべてのスライムが死亡するとZacも死亡する。復活時のHealthは生きているスライムの数に比例し増加(10-50%)する。スライムは以下のステータスを持つ。<br>Health : {2}<br>AR : {3}<br>MR : {4}")
+        P.update(P514)
+                .passive("スキルが敵ユニットに命中する度に小型のスライムが出現する。スライム({5})を自身が回収すると{1}し、敵が回収すると消滅する。また、" + Health + "が0になった時4つのスライムに分裂し一定時間かけて復活する。復活中にすべてのスライムが死亡すると" + champion + "も死亡する。復活時の" + Health + "は生きているスライムの数に比例し増加(10-50%)する。スライムは以下のステータスを持つ。<br>Health : {2}<br>AR : {3}<br>MR : {4}")
                 .variable(1, RestoreHealth, amplify(Health, 0.04))
                 .variable(2, Value, amplify(Health, 0.12))
                 .variable(3, Value, amplify(AR, 0.5))
                 .variable(4, Value, amplify(MR, 0.5))
-                .variable(5, Radius, 100)
-                .cd(300)
-                .update(P310)
-                .variable(5, Radius, 25)
-                .update(P403)
-                .variable(5, Radius, 50);
+                .variable(5, Radius, 50)
+                .cd(300);
 
         Q.update(P514)
                 .active("指定方向に腕を伸ばし範囲内にいる敵ユニットに{1}と2秒間{2}を与える。")
@@ -5723,34 +5719,30 @@ public interface SkillDefinition {
                 .range(550);
 
         W.update(P514)
-                .active("{1}にいる敵ユニットに{2}を与える。(Minionに対しては200DMが上限)")
+                .active("{1}にいる敵ユニットに{2}を与える。(ミニオンに対しては200ダメージが上限)")
                 .variable(1, Radius, 350)
                 .variable(2, MagicDamage, 40, 15, amplify(TargetMaxHealthRatio, 4, 1, ap(0.02)))
                 .cost(CurrentHealthRatio, 4, 0)
                 .cd(4);
 
         E.update(P514)
-                .active("発動するとZacがその場で停止しチャージを行う。チャージした時間に比例して射程が前方扇形範囲で徐々に増加する。再度使用で指定した地点にジャンプし、着地時に範囲内にいる敵ユニットに{1}と{2}を与える。チャージは移動を行う事でキャンセルできる。")
+                .active("その場で停止しチャージを行う。チャージした時間に比例して射程が前方扇形範囲で徐々に増加する。再度使用で指定した地点にジャンプし、着地時に範囲内にいる敵ユニットに{1}と{2}を与える。チャージは移動を行う事でキャンセルできる。")
                 .variable(1, MagicDamage, 80, 50, ap(0.7))
                 .variable(2, Knockback)
                 .cost(CurrentHealthRatio, 4, 0)
                 .cd(24, -3)
-                .range(1150, 100)
-                .update(P310)
-                .variable(1, MagicDamage, 80, 40, ap(0.7));
+                .range(1150, 100);
 
         R.update(P514)
-                .active("Zacが4回飛び跳ね、その度に周囲にいる敵ユニットに{1}と{2}と1秒間{3}を与える。ノックバックは同一の対象に1度までしか発生せず、同一ユニットに複数回DMを与える場合、2回目以降は50%のダメージになる。このスキルが発動している間はUnstable Matterと移動のみが可能であり、また徐々に移動速度が増加する(20-50%増加)。使用中は{4}を得る。またこのスキル使用時に自身にかかっているスローを解除する。")
-                .variable(1, MagicDamage, 160, 80, ap(0.25))
-                .variable(2, Knockback)
+                .active("4回飛び跳ね、その度に{6}にいる敵ユニットに{1}と{2}と1秒間{3}を与える。ノックバックは同一の対象に1度までしか発生せず、同一ユニットに複数回DMを与える場合、2回目以降は50%のダメージになる。このスキルが発動している間は" + W + "と移動のみが可能であり、また徐々に移動速度が増加する(20-50%増加)。{5}。")
+                .variable(1, MagicDamage, 140, 70, ap(0.4))
+                .variable(2, Knockback, 400)
                 .variable(3, MSSlowRatio, 20)
                 .variable(4, Tenacity, 75)
+                .variable(5, IgnoreSlow)
+                .variable(6, Radius, 300)
                 .cd(130, -15)
-                .range(300)
-                .update(P307)
-                .variable(1, MagicDamage, 140, 70, ap(0.4))
-                .update(P310A)
-                .active("Zacが4回飛び跳ね、その度に周囲にいる敵ユニットに{1}と{2}と1秒間{3}を与える。ノックバックは同一の対象に1度までしか発生せず、同一ユニットに複数回DMを与える場合、2回目以降は50%のダメージになる。このスキルが発動している間はUnstable Matterと移動のみが可能であり、また徐々に移動速度が増加する(20-50%増加)。またこのスキル使用時に自身にかかっているスローを解除する。");
+                .range(300);
     }
 
     /**
