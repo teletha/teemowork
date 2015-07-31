@@ -5513,22 +5513,12 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Xerath(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("{1}を得る。")
-                .variable(1, AR, 0, 0, ap(0.15))
-                .update(P402)
+        P.update(P514)
                 .passive("通常攻撃を行うと{1}する。チャンピオンを攻撃した場合は回復量が2倍になる。建物に対しては無効。")
-                .variable(1, RestoreMana, new Per1Level(new double[] {30, 33, 36, 42, 48, 54, 6372, 81, 90, 102, 114,
-                        126, 138, 150, 165, 180.195}))
+                .variable(1, RestoreMana, new Per1Level(30, 33, 36, 42, 48, 54, 6372, 81, 90, 102, 114, 126, 138, 150, 165, 180.195))
                 .cd(-12);
 
         Q.update(P514)
-                .active("0.75秒詠唱後指定方向にビームを放ち、直線状の敵ユニットすべてに{1}を与える。")
-                .variable(1, MagicDamage, 75, 40, ap(0.6))
-                .mana(65, 5)
-                .cd(7, -0.5)
-                .range(900)
-                .update(P402)
                 .active("最初にスキルを使用するとチャージを行う。この間は通常攻撃や他のスキルを使用できなくなり、移動速度が徐々に低下(最大で-50%)するが、チャージしている間は徐々にこのスキルの射程距離が増加していき、1.5秒後に最大射程1400に到達。再度このスキルを使用することで指定方向に電撃を放ち、直線状にいる敵ユニットに{1}を与える。チャージを行って3秒間経過した場合はこのスキルは失敗しCDになるが、消費したマナの半分が回復する。")
                 .variable(1, MagicDamage, 80, 40, ap(0.75))
                 .cd(9, -1)
@@ -5536,11 +5526,6 @@ public interface SkillDefinition {
                 .range(750);
 
         W.update(P514)
-                .active("0.5秒詠唱後に移動が不可能になる代わりに、全てのスキルの射程が400増加し、{1}を得る。この効果は8秒経過するか、再度このスキルを使用する事で解除される。このスキルが解除された時に2秒間{2}する。")
-                .variable(1, MRPenRatio, 16, 6)
-                .variable(2, MSRatio, 35)
-                .cd(20, -4)
-                .update(P402)
                 .active("0.5秒後に指定地点の{1}の敵ユニットに{2}と2.5秒間{3}を与える。中心点にいる敵ユニットに対しては{4}と2.5秒間{5}を与える（2.5秒かけて10%まで減衰）。また、指定地点の{6}。")
                 .variable(1, Radius, 200)
                 .variable(2, MagicDamage, 60, 30, ap(0.6))
@@ -5553,13 +5538,6 @@ public interface SkillDefinition {
                 .range(1100);
 
         E.update(P514)
-                .active("対象の敵ユニットに{1}と3秒間マークを与える。マークがついている敵ユニットにXerathのスキルが命中した場合、マークを消費して対象に{2}を与える。")
-                .variable(1, MagicDamage, 70, 50, ap(0.8))
-                .variable(2, Stun, 1.5)
-                .mana(70, 5)
-                .cd(12, -1)
-                .range(600)
-                .update(P402)
                 .active("指定方向に雷のオーブを放ち、当たった敵ユニットに{1}と{2}を与える。飛距離に比例してスタンの効果時間が延長する（0.75秒から2秒）。")
                 .variable(1, MagicDamage, 80, 30, ap(0.45))
                 .variable(2, Stun)
@@ -5568,14 +5546,6 @@ public interface SkillDefinition {
                 .range(1050);
 
         R.update(P514)
-                .active("0.5秒後に指定地点の{1}の敵ユニットに{2}を与える。このスキルは12秒の間、3回まで連続して使用できる(但し、一度使用する度に0.35秒のCDが発生する)。2〜3発目はマナコスト無しで使用可能。また、指定地点の視界{3}を得る。")
-                .variable(1, Radius, 200)
-                .variable(2, MagicDamage, 125, 75, ap(0.6))
-                .variable(3, Radius, 300)
-                .mana(150, 30)
-                .cd(80, -10)
-                .range(900)
-                .update(P402)
                 .active("最大10秒間通常攻撃、移動、スキル使用が不可能になる。最大3回、指定地点に砲撃を行い、0.5秒後に{1}の敵ユニットに{2}を与える。一度使用する度に0.35秒のCDが発生する。また、指定地点の{3}。砲撃を行う前に行動不可状態を解除した場合、このスキルの{4}する。")
                 .variable(1, Radius)
                 .variable(2, MagicDamage, 190, 55, ap(0.43))
