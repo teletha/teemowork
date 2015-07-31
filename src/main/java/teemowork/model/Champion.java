@@ -91,7 +91,7 @@ public class Champion extends RiotChampionData {
         this.localized = localized;
         this.systemName = system;
 
-        this.update(Version.P0000)
+        this.update(Version.Latest)
                 .set(Health, hp, hpPer)
                 .set(Hreg, hreg, hregPer)
                 .set(Mana, mp, mpPer)

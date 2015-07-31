@@ -9,6 +9,8 @@
  */
 package teemowork.tool.riot;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -229,6 +231,19 @@ class ChampionDefinition implements Comparable<ChampionDefinition> {
 
         /** The status. */
         public float attackspeedperlevel;
+
+        /**
+         * <p>
+         * Calculate base attack speed.
+         * </p>
+         * 
+         * @return
+         */
+        public float attackspeed() {
+            return new BigDecimal(0.625)
+                    .divide(BigDecimal.ONE.add(new BigDecimal(attackspeedoffset)), 3, RoundingMode.HALF_UP)
+                    .floatValue();
+        }
     }
 
     /**
