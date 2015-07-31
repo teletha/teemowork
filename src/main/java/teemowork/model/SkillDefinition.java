@@ -5885,50 +5885,44 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Zyra(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("死亡すると2秒後にその場で植物に変形し、指定方向に一度だけ貫通する光線を放つことができる。光線に当たった敵ユニットに{1}を与える。")
                 .variable(1, TrueDamage, 80, 0, level(20))
                 .range(1500);
 
         Q.update(P514)
                 .active("地面から棘を出現させ、指定範囲内の敵ユニットに{1}を与える。種にHitした場合Thorn Spitterに成長し、{3}の敵を自動攻撃して{2}を与える。Thorn Spitterは10秒間持続する。")
-                .variable(1, MagicDamage, 75, 40, ap(0.6))
-                .variable(2, MagicDamage, 26, 0, level(6), ap(0.2))
-                .variable(3, Radius, 650)
-                .mana(75, 5)
-                .cd(7, -0.5)
-                .range(825);
-        Q.update(P313)
                 .variable(1, MagicDamage, 70, 35, ap(0.65))
                 .variable(2, MagicDamage, 23, 0, level(6.5), ap(0.2))
+                .variable(3, Radius, 750)
+                .mana(75, 5)
+                .cd(7, -0.5)
                 .range(800);
 
         W.update(P514)
                 .passive("{1}を得る。")
-                .variable(1, CDR, 4, 4)
-                .active("指定地点に30秒持続する種を植える。他のスキルを種に当てることで成長させることができる。敵チャンピオンが種を踏んだ場合、視界を2秒間得る。{2}毎にチャージが1つ増加し最大2つまでチャージされる。種が植物に成長し、同一ユニットに複数の植物がDMを与える場合、2体目以降は50%のダメージを与える。")
+                .variable(1, CDR, 2, 2)
+                .active("指定地点に30秒持続する種を植える。他のスキルを種に当てることで成長させることができる。敵チャンピオンが種を踏んだ場合、視界を2秒間得る。{2}毎にチャージが1つ増加し最大2つまでチャージされる。種が植物に成長し、同一ユニットに複数の植物が" + Damage + "を与える場合、2体目以降は50%の" + Damage + "を与える。")
                 .variable(2, CDRAwareTime, 17, -1)
-                .range(825)
+                .range(850)
                 .cost(Charge, 1, 0);
-        W.update(P313).variable(1, CDR, 2, 2);
 
         E.update(P514)
                 .active("指定方向に蔓を放ち、当たった全ての敵ユニットに{1}と{2}を与える。種にHitした場合Vine Lasherに成長し、{3}の敵を自動攻撃して{4}と2秒間{5}を与える。Vine Lasherは10秒間持続する。")
                 .variable(1, MagicDamage, 60, 35, ap(0.5))
                 .variable(2, Snare, 0.75, 0.25)
-                .variable(3, Radius, 250)
-                .variable(4, MagicDamage, 26, 0, level(6), ap(0.2))
+                .variable(3, Radius, 400)
+                .variable(4, MagicDamage, 23, 0, level(6.5), ap(0.2))
                 .variable(5, MSSlowRatio, 30)
                 .mana(70, 5)
-                .cd(14, -1)
+                .cd(12)
                 .range(1100);
-        E.update(P313).variable(4, MagicDamage, 23, 0, level(6.5), ap(0.2));
 
         R.update(P514)
                 .active("指定地点に藪を召還し、{1}の全ての敵に{2}を与え、2秒後に{3}。成長した植物にHitした場合、その植物の攻撃速度が50%増加する。")
-                .variable(1, Radius, 700)
-                .variable(2, MagicDamage, 180, 85, ap(0.75))
-                .variable(3, Knockup, 0)
+                .variable(1, Radius)
+                .variable(2, MagicDamage, 180, 85, ap(0.7))
+                .variable(3, Knockup, 1)
                 .mana(100, 20)
                 .cd(130, -10)
                 .range(700);
