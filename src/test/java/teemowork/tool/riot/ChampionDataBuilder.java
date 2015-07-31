@@ -49,8 +49,8 @@ public class ChampionDataBuilder {
 
                 code.write();
                 code.write("/** ", champion.name, " Definition", " */");
-                code.write("public static final ", Champion.class, " ", id, " = new ", Champion.class, param(string(champion.name), string(champion.localizedName), string(id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status.attackspeedoffset, status
-                        .attackspeed(), status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperlevel, status.movespeed, status.attackrange, skills(champion.skill, true), skills(champion.skillLocalized, true), methodRef(SkillDefinition.class, id), true), ";");
+                code.write("public static final ", Champion.class, " ", id, " = new ", Champion.class, param(string(champion.name), string(champion.localizedName), string(id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status
+                        .attackspeed(), status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperlevel, status.movespeed, status.attackrange, skills(champion.skill, true), skills(champion.skillLocalized, true), methodRef(SkillDefinition.class, id), true), ";");
             }
         }
         code.write("}");
