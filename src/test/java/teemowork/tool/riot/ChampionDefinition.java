@@ -197,7 +197,7 @@ class ChampionDefinition implements Comparable<ChampionDefinition> {
         public float spellblock;
 
         /** The status. */
-        public float spellblockperle;
+        public float spellblockperlevel;
 
         /** The status. */
         public float attackrange;
