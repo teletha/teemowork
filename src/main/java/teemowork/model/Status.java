@@ -48,7 +48,7 @@ public enum Status {
     // Health Related
     // ==================================================
     /** Health */
-    Health("体力"), HealthPerLv, HealthRatio(Health), BounusHealth("増加体力"),
+    Health("Health"), HealthPerLv, HealthRatio(Health), BounusHealth("増加Health"),
 
     /** Health Regeneration */
     Hreg(2), HregPerLv(2), HregRatio("Hreg", 2),
@@ -60,7 +60,7 @@ public enum Status {
     // Mana Related
     // ==================================================
     /** Mana */
-    Mana("マナ"), ManaPerLv, ManaRatio(Mana), BounusMana("増加マナ"),
+    Mana("Mana"), ManaPerLv, ManaRatio(Mana), BounusMana("増加Mana"),
 
     /** Mana Regeneration */
     Mreg(2), MregPerLv(2), MregRatio("Mreg", 2),
@@ -77,18 +77,18 @@ public enum Status {
     // ==================================================
     // My Health Reference
     // ==================================================
-    CurrentHealthRatio("現在の体力"),
+    CurrentHealthRatio("現在のHealth力"),
 
-    MissingHealthRatio("失った体力"),
+    MissingHealthRatio("失ったHealth"),
 
-    MissingHealthPercentage("体力損耗率"),
+    MissingHealthPercentage("Health損耗率"),
 
     // ==================================================
     // Target Health Reference
     // ==================================================
-    TargetMaxHealthRatio("対象の最大体力"),
+    TargetMaxHealthRatio("対象の最大Health"),
 
-    TargetCurrentHealthRatio("対象の現在の体力"),
+    TargetCurrentHealthRatio("対象の現在のHealth"),
 
     TargetMissingHealthRatio("対象の減っているHealth"),
 

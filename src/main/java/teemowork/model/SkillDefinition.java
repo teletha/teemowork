@@ -4815,62 +4815,50 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Trundle(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("{1}以内で敵ユニットが死んだとき、{2}する。")
-                .variable(1, Radius, 1000)
+        P.update(P514)
+                .passive("{1}で敵ユニットが死んだとき、{2}する。")
+                .variable(1, Radius, 1400)
                 .variable(2, RestoreHealth, amplify(TargetMaxHealthRatio, new Per4LevelForTrundle(2, 1)));
 
         Q.update(P514)
-                .active("次の通常攻撃で与えるダメージは{1}になる。8秒間{2}を得て、攻撃を受けたユニットは{3}する。建物には無効。")
-                .variable(1, PhysicalDamage, 30, 15, amplify(AD, 0.8, 0.1))
-                .variable(2, AD, 20, 5)
-                .variable(3, ADReduction, 10, 2.5)
-                .mana(30)
-                .cd(4);
-        Q.update(P306)
                 .active("次の通常攻撃は{1}と0.1秒間{4}を与える。8秒間{2}を得て、攻撃を受けたユニットは{3}する。建物には無効。")
                 .variable(1, PhysicalDamage, 20, 20, amplify(AD, 1, 0.05))
-                .variable(4, MSSlowRatio, 75);
+                .variable(2, AD, 20, 5)
+                .variable(3, ADReduction, 10, 2.5)
+                .variable(4, MSSlowRatio, 75)
+                .mana(30)
+                .cd(4);
 
         W.update(P514)
-                .active("指定した地点の{1}に8秒間持続する呪いを振りまく。範囲内に入っている間、{2}、{3}して{4}を得る。")
-                .variable(1, Radius, 1000)
-                .variable(2, ASRatio, 20, 10)
+                .active("指定した地点の{1}に8秒間持続する呪いを振りまく。範囲内に入っている間、{2}、{3}、{4}する。")
+                .variable(1, Radius, 500)
+                .variable(2, ASRatio, 20, 15)
                 .variable(3, MSRatio, 20, 5)
-                .variable(4, Tenacity, 20, 5)
+                .variable(4, RestoreHealthRatio, 20)
                 .mana(60)
                 .cd(15)
                 .range(900);
-        W.update(P306)
-                .active("指定した地点の{1}に8秒間持続する呪いを振りまく。範囲内に入っている間、{2}、{3}、{4}する。")
-                .variable(2, ASRatio, 20, 15)
-                .variable(4, RestoreHealthRatio, 8, 3);
 
         E.update(P514)
-                .active("指定地点に{0}間持続する通行不可能なビーコンを設置し、ビーコンの{1}にいる敵ユニットに{2}を与える。また、{3}の視界を得る。")
-                .variable(0, Time, 7)
+                .active("指定地点に6秒間持続する通行不可能なビーコンを設置し、ビーコンの{1}にいる敵ユニットに{2}を与える。また、{3}の視界を得る。")
                 .variable(1, Radius, 375)
-                .variable(2, MSSlowRatio, 25, 5)
+                .variable(2, MSSlowRatio, 30, 5)
                 .variable(3, Radius, 1200)
                 .mana(60)
                 .cd(23, -3)
                 .range(1000);
-        E.update(P306).variable(0, Time, 6);
 
         R.update(P514)
-                .active("対象の敵ユニットに{1}を{2}、{3}を与える。その後6秒間かけて更に{1}と{2}、{3}を与える。このスキルでダメージを与えると{4}する。")
-                .variable(1, MagicDamage, 100, 75, ap(0.6))
-                .variable(2, ARReductionRatio, 15, 5)
-                .variable(3, MRReductionRatio, 15, 5)
+                .active("敵のチャンピオン1体に{1}、{2}と{3}を与え、続けて4秒かけて{1}、{2}と{3}を与える。 " + champion + "は全ての効果を吸収する({4}し、減少させた" + AR + "及び" + MR + "に等しい量の{5}と{6}を得る)。吸収効果は4秒かけて元に戻る。")
+                .variable(1, MagicDamage, amplify(TargetMaxHealthRatio, 10, 3.75, ap(0.01)))
+                .variable(2, ARReductionRatio, 20)
+                .variable(3, MRReductionRatio, 20)
                 .variable(4, RestoreHealth, amplify(DealtDamage, 1))
-                .mana(75)
+                .variable(5, AR)
+                .variable(6, MR)
+                .mana(80)
                 .cd(80, -10)
                 .range(700);
-        R.update(P306)
-                .active("対象の敵ユニットに{1}を与え、4秒間かけて{2}、{3}を与えて減少させた分の値を自身のARとMRに加算する、この効果はその後4秒間持続する。")
-                .variable(1, MagicDamage, amplify(TargetMaxHealthRatio, 20, 2, ap(0.02)))
-                .variable(2, ARReductionRatio, 20)
-                .variable(3, MRReductionRatio, 20);
     }
 
     /**
