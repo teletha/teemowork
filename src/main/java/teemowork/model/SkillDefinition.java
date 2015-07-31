@@ -5649,8 +5649,8 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Yorick(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("召喚中のGhoulの数に比例して{1}し{2}する。召喚したGhoulは5秒間持続し、毎秒最大HPの20%が減少していく。同じ種類のGhoulを召喚した場合、先に召喚したGhoulが消滅する。任意の操作不可、スロー無効化、AoEスキルのダメージを50%低減し敵ユニットの通行を妨げない。<br>Health : {3}<br>AD : {4}<br>AR : {5}<br>MR : {6}<br>AS : 0.670<br>MS : {7}<br>Kill : {8}")
+        P.update(P514)
+                .passive("召喚中のGhoulの数に比例して{1}し{2}する。召喚したGhoulは5秒間持続し、毎秒最大HPの20%が減少していく。同じ種類のGhoulを召喚した場合、先に召喚したGhoulが消滅する。任意の操作不可、AoEスキルのダメージを50%低減し敵ユニットの通行を妨げない。<br>Health : {3}<br>AD : {4}<br>AR : {5}<br>MR : {6}<br>AS : 0.670<br>MS : {7}<br>Kill : {8}")
                 .variable(1, DamageReductionRatio, amplify(Stack, 5))
                 .variable(2, AttackDamageRatio, amplify(Stack, 5))
                 .variable(3, Value, amplify(Health, 0.35))
@@ -5658,15 +5658,14 @@ public interface SkillDefinition {
                 .variable(5, Value, 10, 0, level(2))
                 .variable(6, Value, 20, 0, level(2))
                 .variable(7, Value, new Per5LevelForYoric(300, 40))
-                .variable(8, Gold, 5)
-                .update(P402)
-                .passive("召喚中のGhoulの数に比例して{1}し{2}する。召喚したGhoulは5秒間持続し、毎秒最大HPの20%が減少していく。同じ種類のGhoulを召喚した場合、先に召喚したGhoulが消滅する。任意の操作不可、AoEスキルのダメージを50%低減し敵ユニットの通行を妨げない。<br>Health : {3}<br>AD : {4}<br>AR : {5}<br>MR : {6}<br>AS : 0.670<br>MS : {7}<br>Kill : {8}");
+                .variable(8, Gold, 5);
 
         Q.update(P514)
-                .active("次の通常攻撃は{1}を与えると同時にSpectral Ghoulを召喚する。Spectral Ghoulは{3}を得る。Spectral Ghoulが生存している間、Ghoulと自身の{q2}する。")
+                .active("次の通常攻撃は{4}し{1}を与えると同時にSpectral Ghoulを召喚する。Spectral Ghoulは{3}を得る。Spectral Ghoulが生存している間、Ghoulと自身の{q2}する。")
                 .variable(1, PhysicalDamage, 30, 30, ad(1.2))
                 .variable(2, MSRatio, 15, 5)
                 .variable(-3, AD, 8, 8)
+                .variable(4, Range, 50)
                 .mana(40)
                 .cd(9, -1);
 
