@@ -5515,7 +5515,7 @@ public interface SkillDefinition {
     public static void Xerath(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P514)
                 .passive("通常攻撃を行うと{1}する。チャンピオンを攻撃した場合は回復量が2倍になる。建物に対しては無効。")
-                .variable(1, RestoreMana, new Per1Level(30, 33, 36, 42, 48, 54, 6372, 81, 90, 102, 114, 126, 138, 150, 165, 180.195))
+                .variable(1, RestoreMana, new Per1Level(30, 33, 36, 42, 48, 54, 63, 72, 81, 90, 102, 114, 126, 138, 150, 165, 180, 195))
                 .cd(-12);
 
         Q.update(P514)
@@ -5554,6 +5554,49 @@ public interface SkillDefinition {
                 .cd(130, -15)
                 .mana(100)
                 .range(3200, 1200);
+    }
+
+    /**
+     * Define skill.
+     */
+    public static void XinZhao(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive("通常攻撃または" + E + "で指定した敵ユニットに{1}を与える。この効果はスタックせず、3秒間持続し、また1体の敵ユニットにしか発動しない。")
+                .variable(1, ARReductionRatio, 15);
+
+        Q.update(P514)
+                .active("次の3回の通常攻撃に{1}が追加され、3回目の攻撃で{2}を与える。効果中に通常攻撃を行う度に、このスキル以外のCDが1秒解消される。")
+                .variable(1, PhysicalDamage, 15, 15, ad(0.2))
+                .variable(2, Knockup, 1)
+                .mana(30)
+                .cd(9, -1);
+
+        W.update(P514)
+                .passive("通常攻撃3回ごとに{1}する。")
+                .variable(1, RestoreHealth, 30, 5, ap(0.6))
+                .active("5秒間{2}増加する。")
+                .variable(2, ASRatio, 40, 10)
+                .mana(40)
+                .cd(16, -1);
+
+        E.update(P514)
+                .active("対象の敵ユニットに突進し、{1}の敵ユニットに{2}と2秒間{3}を与える。")
+                .variable(1, Radius, 225)
+                .variable(2, MagicDamage, 70, 40, ap(0.6))
+                .variable(3, MSSlowRatio, 25, 5)
+                .mana(60)
+                .cd(14, -1)
+                .range(600);
+
+        R.update(P514)
+                .active("槍を振り回し{3}の敵ユニットに{1}と{2}を与え、このスキルを命中させた敵チャンピオンの数に比例して6秒間{4}と{5}を得る。" + P + "効果中の敵ユニットに対しては" + Knockback + "は発動しない。")
+                .variable(1, PhysicalDamage, 75, 100, bounusAD(1), amplify(TargetCurrentHealthRatio, 0.15))
+                .variable(2, Knockback, 0)
+                .variable(3, Radius, 375)
+                .variable(4, AR, 15, 5)
+                .variable(5, MR, 15, 5)
+                .mana(100)
+                .cd(120, -10);
     }
 
     /**
@@ -5653,53 +5696,6 @@ public interface SkillDefinition {
                 .mana(100)
                 .cd(120, -15)
                 .range(900);
-    }
-
-    /**
-     * Define skill.
-     */
-    public static void XinZhao(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("通常攻撃または" + E + "で指定した敵ユニットに{1}を与える。この効果はスタックせず、3秒間持続し、また1体の敵ユニットにしか発動しない。")
-                .variable(1, ARReductionRatio, 15);
-
-        Q.update(P514)
-                .active("次の3回の通常攻撃に{1}が追加され、3回目の攻撃で{2}を与える。効果中に通常攻撃を行う度に、このスキル以外のCDが1秒解消される。")
-                .variable(1, PhysicalDamage, 15, 15, ad(0.2))
-                .variable(2, Knockup, 1)
-                .mana(30)
-                .cd(9, -1);
-
-        W.update(P514)
-                .passive("通常攻撃3回ごとに{1}する。")
-                .variable(1, RestoreHealth, 26, 6, ap(0.7))
-                .active("5秒間{2}増加する。")
-                .variable(2, ASRatio, 40, 10)
-                .mana(40)
-                .cd(16, -1);
-
-        E.update(P514)
-                .active("対象の敵ユニットに突進し、{1}の敵ユニットに{2}と2秒間{3}を与える。")
-                .variable(1, Radius, 225)
-                .variable(2, MagicDamage, 70, 40, ap(0.6))
-                .variable(3, MSSlowRatio, 25, 5)
-                .mana(70)
-                .cd(13, -1)
-                .range(600);
-        E.update(P303).variable(2, MagicDamage, 70, 35, ap(0.6)).cd(14, -1);
-
-        R.update(P514)
-                .active("槍を振り回し{3}の敵ユニットに{1}と{2}を与え、このスキルを命中させた敵チャンピオンの数に比例して6秒間{4}と{5}を得る。" + P + "効果中の敵ユニットに対しては" + Knockback + "は発動しない。")
-                .variable(1, PhysicalDamage, 125, 100, bounusAD(1), amplify(TargetCurrentHealthRatio, 0.15))
-                .variable(2, Knockback, 0)
-                .variable(3, Radius, 375)
-                .variable(4, AR, 15, 5)
-                .variable(5, MR, 15, 5)
-                .mana(100)
-                .cd(100, -10);
-        R.update(P303)
-                .variable(1, PhysicalDamage, 75, 100, bounusAD(1), amplify(TargetCurrentHealthRatio, 0.15))
-                .cd(120, -10);
     }
 
     /**
