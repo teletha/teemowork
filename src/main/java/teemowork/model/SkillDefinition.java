@@ -4257,71 +4257,42 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Sivir(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("敵チャンピオンに通常攻撃でダメージを与えると、2秒間{1}する。")
-                .variable(-1, MSRatio, 50)
-                .update(P306)
-                .passive(("敵チャンピオンに通常攻撃か" + Q + "もしくは" + W + "でダメージを与えると、2秒間{1}する。"))
-                .update(P315)
+        P.update(P514)
+                .passive("敵チャンピオンに通常攻撃かスキルでダメージを与えると、2秒間{1}する。")
                 .variable(-1, MSRatio, new Per5LevelWith18(30, 5));
 
         Q.update(P514)
                 .active("指定方向にブーメランを投げ、当たった敵ユニットに{1}を与える。ダメージは敵に当たるごとに{2}ずつ減り、最大で40%まで低下する。行きと帰りそれぞれに攻撃判定がある。")
-                .variable(1, PhysicalDamage, 60, 45, ap(0.5), bounusAD(1.1))
-                .variable(2, Percentage, 20)
+                .variable(1, PhysicalDamage, 25, 20, amplify(AD, 0.7, 0.1), ap(0.5))
+                .variable(2, Percentage, 10)
                 .mana(70, 10)
                 .cd(9)
-                .range(1200);
-        Q.update(P314).variable(1, PhysicalDamage, 25, 20, amplify(AD, 0.7, 0.1)).variable(2, Percentage, 10);
+                .range(1250);
 
         W.update(P514)
-                .active("次に行う通常攻撃に追加{1}が付与され、5回跳ね返る({2})ようになる。この追加ダメージはCriticalHitによって増幅される。On-Hit Effectsの効果は最初に当たったユニットにのみ発動し、跳ね返る毎にダメージが20%ずつ低下する。")
-                .variable(1, PhysicalDamage, 20, 15)
-                .variable(2, Radius, 450)
-                .mana(40)
-                .cd(7, -1);
-        W.update(P313)
-                .active("次の3回の通常攻撃が{1}の全ての敵に跳ねるようになる。この跳ねは一番近くのユニットに跳ね、同一ユニットには一度しか当たらない。2匹目以降の敵には{2}を与える。On-Hit Effectsの効果は最初に当たったユニットにのみ発動する。")
+                .active("次の3回の通常攻撃が{1}の全ての敵に跳ねるようになる。この跳ねは一番近くのユニットに跳ね、同一ユニットには一度しか当たらない。2匹目以降の敵には{2}を与える。{3}。")
                 .variable(1, Radius, 450)
-                .variable(2, PhysicalDamage, amplify(AD, 0.5, 0.1))
+                .variable(2, PhysicalDamage, amplify(AD, 0.5, 0.05))
+                .variable(3, ResetAATimer)
+                .mana(60)
                 .cd(9, -1);
 
         E.update(P514)
-                .active("{3}間、一度だけ敵のスキルを無効化する{1}を得る。無効化した場合{2}する。")
-                .variable(1, Status.SpellShield)
-                .variable(2, RestoreMana, 150)
-                .variable(3, Time, 3)
-                .mana(75)
-                .cd(22, -3)
-                .update(P313)
-                .mana(0)
-                .variable(2, RestoreMana, 60, 15)
-                .update(P315)
-                .variable(3, Time, 1.5);
+                .active("1.5秒間、一度だけ敵のスキルを無効化する{1}を得る。無効化した場合{2}する。")
+                .variable(1, SpellShield)
+                .variable(2, RestoreMana, 80, 15)
+                .cd(22, -3);
 
         R.update(P514)
-                .active("{5}間以下の能力をもつ{1}のオーラを発生させる。{2}し、自身は{3}、近くの味方ユニットは{4}する。一度範囲内に入れば、Sivirから離れても効果が持続する。")
-                .variable(1, Radius, 1200)
-                .variable(2, MSRatio, 20)
-                .variable(3, ASRatio, 30, 15)
-                .variable(4, ASRatio, 15, 7.5)
-                .variable(5, Time, 10)
-                .mana(100)
-                .cd(100, -10)
-                .range(1200)
-                .update(P313)
-                .passive("Ricochetの起動中は{1}する。")
+                .passive(W + "の起動中は{1}する。")
                 .variable(-1, ASRatio, 40, 20)
-                .active("{5}間{2}の味方は{3}する。一度範囲内に入れば、Sivirから離れても効果が持続する。増加移動速度は{6}かけて20%まで減少する。")
+                .active("8秒間{2}の味方は{3}する。一度範囲内に入れば、" + champion + "から離れても効果が持続する。増加移動速度は{3}かけて20%まで減少する。")
                 .variable(2, Radius, 1000)
                 .variable(3, MSRatio, 60)
-                .variable(6, Time, 4)
-                .range(0)
-                .cd(120, -30)
-                .update(P315)
-                .variable(5, Time, 8)
-                .variable(6, Time, 2, 1)
-                .cd(120, -20);
+                .variable(3, Time, 2, 1)
+                .mana(100)
+                .cd(120, -20)
+                .range(1000);
     }
 
     /**
