@@ -111,7 +111,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
                             〡.nbox.〡(Text, () -> {
                                 int level = build.getLevel(skill);
 
-                                〡.nbox.〡(SkillTypeInfo, "PASSIVE");
+                                〡.nbox.〡(SkillTypeInfo, SkillType.Passive);
                                 〡.nbox.〡(null, status.getPassive(), text -> {
                                     if (text instanceof Variable) {
                                         writeVariable(〡, (Variable) text, level);
@@ -126,7 +126,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
                             〡.nbox.〡(Text, () -> {
                                 int level = build.getLevel(skill);
 
-                                〡.nbox.〡(SkillTypeInfo, status.getType().toString());
+                                〡.nbox.〡(SkillTypeInfo, status.getType());
                                 〡.nbox.〡(null, status.getActive(), text -> {
                                     if (text instanceof Variable) {
                                         writeVariable(〡, (Variable) text, level);

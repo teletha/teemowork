@@ -14,9 +14,9 @@ package teemowork.model;
  */
 public enum SkillType {
 
-    Passive,
+    Passive("PASSIVE"),
 
-    Active(""),
+    Active("ACTIVE"),
 
     Toggle,
 

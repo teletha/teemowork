@@ -119,7 +119,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
 
     static Style Text = () -> {
         display.block();
-        margin.top(0.4, em);
+        margin.top(0.3, em).bottom(0.7, em);
         line.height(140, percent);
         font.size.smaller();
     };
