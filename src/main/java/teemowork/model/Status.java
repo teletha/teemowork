@@ -20,7 +20,7 @@ public enum Status {
     // Damage Type
     // ==================================================
     /** Any Damage */
-    Damage("与えるダメージ"), DamageRatio(Damage), CriticalDamageRatio("クリティカルダメージ", 2),
+    Damage("ダメージ"), DamageRatio(Damage), CriticalDamageRatio("クリティカルダメージ", 2),
 
     /** Physical Daname */
     PhysicalDamage("物理DM"),
@@ -48,7 +48,7 @@ public enum Status {
     // Health Related
     // ==================================================
     /** Health */
-    Health, HealthPerLv, HealthRatio("Health"), BounusHealth("増加Health"),
+    Health("体力"), HealthPerLv, HealthRatio(Health), BounusHealth("増加体力"),
 
     /** Health Regeneration */
     Hreg(2), HregPerLv(2), HregRatio("Hreg", 2),
@@ -60,7 +60,7 @@ public enum Status {
     // Mana Related
     // ==================================================
     /** Mana */
-    Mana("Mana"), ManaPerLv, ManaRatio("Mana"), BounusMana("増加Mana"),
+    Mana("マナ"), ManaPerLv, ManaRatio(Mana), BounusMana("増加マナ"),
 
     /** Mana Regeneration */
     Mreg(2), MregPerLv(2), MregRatio("Mreg", 2),
@@ -77,18 +77,18 @@ public enum Status {
     // ==================================================
     // My Health Reference
     // ==================================================
-    CurrentHealthRatio("現在のHealth"),
+    CurrentHealthRatio("現在の体力"),
 
-    MissingHealthRatio("失ったHealth"),
+    MissingHealthRatio("失った体力"),
 
-    MissingHealthPercentage("Health損耗率"),
+    MissingHealthPercentage("体力損耗率"),
 
     // ==================================================
     // Target Health Reference
     // ==================================================
-    TargetMaxHealthRatio("対象の最大Health"),
+    TargetMaxHealthRatio("対象の最大体力"),
 
-    TargetCurrentHealthRatio("対象の現在のHealth"),
+    TargetCurrentHealthRatio("対象の現在の体力"),
 
     TargetMissingHealthRatio("対象の減っているHealth"),
 
@@ -267,7 +267,7 @@ public enum Status {
 
     ASSlow("攻撃速度低下"), ASSlowRatio(ASSlow),
 
-    Wounds("HP回復量半減"),
+    Wounds("重傷"),
 
     Foggy("視界低下"),
 

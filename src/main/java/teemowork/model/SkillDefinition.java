@@ -4362,7 +4362,7 @@ public interface SkillDefinition {
                 .range(850);
 
         W.update(P514)
-                .active("近くにいる最も" + Health + "が減っている味方チャンピオン1体と" + champion + "は{1}する。回復する対象の減少している" + Health + "1%につき回復量が0.5%増加し最大で{2}する。<br>オーラ: 味方チャンピオンは1.5秒間{3}得る。<br>追加効果: 3秒間対象が{4}する。")
+                .active("近くにいる最も" + Health + "が減っている味方チャンピオン1体と" + champion + "は{1}する。回復する対象の減少している" + Health + "1%につき回復量が0.5%増加し最大で{2}する。<br>オーラ: 味方チャンピオンは1.5秒間{3}得る。<br>追加効果: 3秒間対象が与える{4}する。")
                 .variable(1, RestoreHealth, 30, 20, ap(0.2))
                 .variable(2, RestoreHealth, 45, 30, ap(0.3))
                 .variable(3, Shield, 35, 20, ap(0.2), new ReferFixed(R, 10, 20, 40))
@@ -4393,57 +4393,49 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Soraka(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("{1}の味方チャンピオンは{2}を得る。").variable(1, Radius, 1000).variable(2, MR, 16);
-        P.update(P314).passive("スキルによるHealth及びMana回復は、回復する対象の減少しているHealth/Mana2%につき、1%増加する(最大でHealth/Mana回復量1.5倍)。");
+        P.update(P514)
+                .passive(W + "の範囲外かつ範囲2500以内の" + Health + "が40%未満になっている味方チャンピオンに向かって移動する時、{1}する。")
+                .variable(1, MSRatio, 70);
 
         Q.update(P514)
-                .active("{1}の敵ユニットに{2}を与え、スタックを1つ増加させる。スタック1つにつき{3}を与える。スタックは5秒間持続し最大10まで増加する。")
-                .variable(1, Radius, 675)
-                .variable(2, MagicDamage, 60, 25, ap(0.4))
-                .variable(3, MRReduction, 8, 1)
-                .mana(20, 15)
-                .cd(2.5);
-        Q.update(P314)
-                .active("{1}の敵ユニットに{2}と{3}を与える。この減少効果は5秒間持続し最大10回まで累積する。また、このスキルが敵チャンピオンに命中すると、" + W + "の{4}する。")
-                .variable(2, MagicDamage, 60, 35, ap(0.4))
-                .variable(3, MRReduction, 6, 0, ap(0.01))
-                .variable(4, CDDecreaseRatio, 5, 1.25)
-                .mana(30, 10);
+                .active("指定した地点に流星を落下させ、{1}の敵に{2}を与える。中心部の敵には{3}と2秒間{4}を与える。星が降ってくる速度は距離に比例する(近距離ほど発動が早く、遠距離ほど遅い)。指定地点の{5}。")
+                .variable(1, Radius)
+                .variable(2, MagicDamage, 70, 40, ap(0.35))
+                .variable(3, MagicDamage, 105, 60, ap(0.525))
+                .variable(4, MSSlowRatio, 30, 5)
+                .variable(5, Visionable)
+                .mana(70, 5)
+                .cd(7, -0.5)
+                .range(970);
 
         W.update(P514)
-                .active("対象の味方ユニットは{1}し、{3}間{2}を得る。")
-                .variable(1, RestoreHealth, 70, 70, ap(0.45))
-                .variable(2, AR, 25, 20)
-                .variable(3, Time, 3)
-                .mana(80, 30)
-                .cd(20)
-                .range(750);
-        W.update(P314)
-                .variable(1, RestoreHealth, 70, 50, ap(0.35))
-                .variable(2, AR, 50, 15, ap(0.15))
-                .variable(3, Time, 2)
-                .mana(80, 20);
+                .passive(Q + "が敵のチャンピオンにヒットするたび、{1}する。" + champion + "が失っている" + Health + "1%につき回復量が1%増加し最大で{2}する。")
+                .variable(1, RestoreHealth, 25, 10, ap(0.4))
+                .variable(2, RestoreHealth, 50, 20, ap(0.8))
+                .active("指定した味方は{3}する。" + champion + "の" + Health + "が5％以下の時は発動できない。このスキルは自身には使用出来ず、使用時に" + Health + "を{4}を失う。")
+                .variable(3, RestoreHealth, 120, 30, ap(0.6))
+                .variable(4, Value, amplify(Health, 0.1))
+                .mana(20, 5)
+                .cd(4, -0.5)
+                .range(550);
 
         E.update(P514)
-                .active("対象の味方チャンピオンに使用すると{1}する。敵ユニットに使用すると{2}と{3}を与える。このスキルはSoraka自身を対象とすることが出来ない。")
-                .variable(1, RestoreMana, 40, 40)
-                .variable(2, MagicDamage, 50, 50, ap(0.6))
-                .variable(3, Silence, 1.5, 0.25)
-                .cd(10)
-                .range(725);
-        E.update(P314)
-                .active("対象の味方チャンピオンに使用すると{1}し、Sorakaは{4}を失う。敵ユニットに使用すると{2}と{3}を与える。このスキルはSoraka自身を対象とすることが出来ない。")
-                .variable(1, RestoreMana, 20, 20, amplify(Mana, 0.05))
-                .variable(2, MagicDamage, 40, 30, ap(0.4), amplify(Mana, 0.05))
-                .variable(4, Mana, amplify(Mana, 0.05));
+                .active("指定した地点に1.5秒間、時空の渦を発生させ、{1}の敵のチャンピオンに{2}を与える。敵のチャンピオンが範囲内にいる間、{3}を与える。渦が消滅した瞬間、範囲内にいるすべての敵のチャンピオンに{2}と{4}を与える。")
+                .variable(1, Radius)
+                .variable(2, MagicDamage, 70, 40, ap(0.6))
+                .variable(3, Silence)
+                .variable(4, Snare, 1, 0.25)
+                .cd(24, -2)
+                .mana(70)
+                .range(925);
 
         R.update(P514)
-                .active("全ての味方チャンピオンは{1}する。")
-                .variable(1, RestoreHealth, 200, 120, ap(0.7))
-                .mana(100, 75)
-                .cd(160, -15);
-        R.update(P313).mana(100);
-        R.update(P314).variable(1, RestoreHealth, 150, 100, ap(0.55));
+                .active("すべての味方のチャンピオンは{1}する。" + Wounds + "を受けている場合はその効果も解消する。" + Health + "が40％以下のチャンピオンに対しては{2}する。")
+                .variable(1, RestoreHealth, 150, 100, ap(0.55))
+                .variable(2, RestoreHealth, 225, 150, ap(0.825))
+                .mana(100)
+                .cd(160, -15)
+                .range(-1);
     }
 
     /**
