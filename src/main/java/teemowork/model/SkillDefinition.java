@@ -3132,7 +3132,7 @@ public interface SkillDefinition {
         Q.update(P514)
                 .active("指定地点に泡を投げ、範囲内の敵ユニットに{1}と{2}を与える。")
                 .variable(1, MagicDamage, 75, 55, ap(0.5))
-                .variable(2, Stun, 1.5)
+                .variable(2, Suspension, 1.5)
                 .mana(60)
                 .cd(14, -1)
                 .range(875);
@@ -5182,11 +5182,11 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Velkoz(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P403)
+        P.update(P514)
                 .passive("スキルで敵ユニットにダメージを与える度に対象にスタックを付与し、対象のスタックが3になるとスタックを全て消費して{1}を与える。スタックは7秒間持続する。通常攻撃を行うと、既に存在しているスタックの持続時間を7秒に戻す。")
                 .variable(1, TrueDamage, 25, 0, level(10));
 
-        Q.update(P403)
+        Q.update(P514)
                 .active("指定方向にプラズマを放ち、当たった敵ユニットに{1}と{2}かけて減衰する{3}を与える。スキルを再使用するか、プラズマが敵ユニットに命中するとプラズマが90度の方向に分裂し、分裂したプラズマに当たった敵ユニットにも同様の効果を与える。")
                 .variable(1, MagicDamage, 80, 40, ap(0.6))
                 .variable(2, Time, 1, 0.25)
@@ -5195,7 +5195,7 @@ public interface SkillDefinition {
                 .cd(7)
                 .range(1050);
 
-        W.update(P403)
+        W.update(P514)
                 .active("スタックを1消費して、ビームで指定方向に裂け目を発生させ、直線状にいる敵ユニットに{1}を与える。裂け目は0.25秒後に爆発し、{2}にいる敵ユニットに{3}を与える。スタックは{4}毎に増加する（最大2）。")
                 .variable(1, MagicDamage, 30, 20, ap(0.25))
                 .variable(2, Radius)
@@ -5205,8 +5205,8 @@ public interface SkillDefinition {
                 .cd(-1.5)
                 .range(1050);
 
-        E.update(P403)
-                .active("指定地点を爆発させ、{1}の敵ユニットに{2}と{3}を与える。命中した敵はVel'Kozから遠ざかるように吹き飛ぶ。")
+        E.update(P514)
+                .active("指定地点を爆発させ、{1}の敵ユニットに{2}と{3}を与える。命中した敵は" + champion + "から遠ざかるように吹き飛ぶ。")
                 .variable(1, Radius)
                 .variable(2, MagicDamage, 70, 30, ap(0.5))
                 .variable(3, Suspension, 0.75)
@@ -5214,7 +5214,7 @@ public interface SkillDefinition {
                 .cd(16, -1)
                 .range(850);
 
-        R.update(P403)
+        R.update(P514)
                 .active("最大2.5秒間カーソルの場所目掛けて貫通するレーザーを放ち、0.25秒毎に{1}にいる敵ユニットに{2}と1秒間{3}を与える（2.5秒間当て続けた場合は{4}）。また0.5秒毎に" + P + "のスタックが増加する。スキルを再使用することで中断できる。ミニオン(モンスターには無効)に対しては500%のダメージを与える。")
                 .variable(1, Radius)
                 .variable(2, MagicDamage, 50, 20, ap(0.06))
