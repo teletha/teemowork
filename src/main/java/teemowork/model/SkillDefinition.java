@@ -5465,31 +5465,31 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void MonkeyKing(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("Wukongの視界内{1}にいる敵チャンピオンの数に比例して、{2}と{3}を得る。")
+        P.update(P514)
+                .passive("視界内{1}にいる敵チャンピオンの数に比例して、{2}と{3}を得る。")
                 .variable(1, Radius, 1400)
                 .variable(2, AR, amplify(EnemyChampion, new Per6Level(4, 2)))
                 .variable(3, MR, amplify(EnemyChampion, new Per6Level(4, 2)));
 
         Q.update(P514)
-                .active("次の通常攻撃は射程が125増加して追加の{1}と3秒間の{2}を与える。")
+                .active("次の通常攻撃は{3}して追加の{1}と3秒間{2}を与える。")
                 .variable(1, PhysicalDamage, 30, 30, ad(0.1))
-                .variable(2, ARReductionRatio, 30)
+                .variable(2, ARReductionRatio, 10, 5)
+                .variable(3, Range, 125)
                 .mana(40)
-                .cd(9, -1)
-                .range(300);
+                .cd(9, -1);
 
         W.update(P514)
-                .active("{1}になり{2}を得る。同時にWukongがいた場所に分身(操作不可能)を作り出す。分身は1.5秒経過すると消滅し、その際に分身の{3}の敵に{4}を与える。")
+                .active("{1}になり{2}を得る。同時に" + champion + "がいた場所に分身(操作不可能)を作り出す。分身は1.5秒経過すると消滅し、その際に分身の{3}の敵に{4}を与える。")
                 .variable(1, Stealth, 1.5)
                 .variable(2, IgnoreUnitCollision)
-                .variable(3, Radius, 350)
+                .variable(3, Radius, 175)
                 .variable(4, MagicDamage, 70, 45, ap(0.6))
                 .mana(50, 5)
                 .cd(18, -2);
 
         E.update(P514)
-                .active("対象の敵ユニットまでダッシュし{1}を与える。対象の敵ユニットの{3}の敵ユニット2体にもWukongの幻影が飛び、{1}を与える。また、スキル使用後4秒間{2}する。")
+                .active("対象の敵ユニットまでダッシュし{1}を与える。対象の敵ユニットの{3}の敵ユニット2体にも" + champion + "の幻影が飛び、{1}を与える。また、スキル使用後4秒間{2}する。")
                 .variable(1, PhysicalDamage, 60, 45, bounusAD(0.8))
                 .variable(2, ASRatio, 30, 5)
                 .variable(3, Radius, 325)
@@ -5498,11 +5498,11 @@ public interface SkillDefinition {
                 .range(625);
 
         R.update(P514)
-                .active("4秒間Wukongが回転する。回転中は{1}の敵ユニットに0.5秒毎に{2}と{3}を与える。打ち上げ効果は同一の対象に1度までしか発生しない。また、このスキルを使用してから0.5秒毎に{5}する。最大で{4}を与え、{6}する。")
+                .active("4秒間" + champion + "が回転する。回転中は{1}の敵ユニットに1秒毎に{2}と{3}を与える。" + Knockup + "は同一の対象に1度までしか発生しない。また、このスキルを使用してから0.5秒毎に{5}する。最大で{4}を与え、{6}する。")
                 .variable(1, Radius, 325)
-                .variable(2, PhysicalDamage, 10, 45, ad(0.6))
+                .variable(2, PhysicalDamage, 20, 90, ad(1.1))
                 .variable(3, Knockup, 1.5)
-                .variable(4, PhysicalDamage, 80, 360, ad(4.8))
+                .variable(4, PhysicalDamage, 80, 360, ad(4.4))
                 .variable(-5, MSRatio, 5)
                 .variable(6, MSRatio, 40)
                 .mana(100)
