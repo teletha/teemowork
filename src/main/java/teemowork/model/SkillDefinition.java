@@ -4753,7 +4753,7 @@ public interface SkillDefinition {
                 .range(400);
 
         R.update(P514)
-                .active("0.75後、{4}に五角形の壁を創り出し、最初に壁に触れた敵チャンピオンに{1}と2秒間{2}を与える。2つ目以降の壁に触れた敵チャンピオンには1秒間{2}を与える。敵が触れた部分の壁は破壊され消滅する。")
+                .active("0.75秒後、{4}に五角形の壁を創り出し、最初に壁に触れた敵チャンピオンに{1}と2秒間{2}を与える。2つ目以降の壁に触れた敵チャンピオンには1秒間{2}を与える。敵が触れた部分の壁は破壊され消滅する。")
                 .variable(1, MagicDamage, 250, 150, ap(1))
                 .variable(2, MSSlowRatio, 99)
                 .variable(4, Radius, 450)
@@ -4766,39 +4766,49 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Tristana(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("通常攻撃とExplosive Shotは追加の{1}を得る。").variable(1, Range, new Per1Level(0, 9));
+        P.update(P514).passive("通常攻撃、" + E + "と" + R + "は{1}する。").variable(1, Range, new Fixed(-7), level(7));
 
-        Q.update(P514).active("7秒間{1}する。").variable(1, ASRatio, 30, 15).mana(50).cd(20);
+        Q.update(P514)
+                .passive(E + "がスタックしている敵に" + champion + "の通常攻撃が命中するたび、このスキルの{1}する。" + Q + "を発動中、" + champion + "の通常攻撃が命中するたび、" + E + "の{2}する (チャンピオンへの攻撃時は{1}する)。")
+                .variable(1, CDDecrease, 1)
+                .variable(2, CDDecrease, 0.5)
+                .active("5秒間{1}する。")
+                .variable(1, ASRatio, 30, 20)
+                .cd(20);
 
         W.update(P514)
-                .active("指定地点にジャンプしジャンプ先の{1}の敵ユニットに{2}と2.5秒間{3}を与える。キルかアシストをとるとこのスキルの{4}する。")
+                .active("地面を砲撃して指定した地点へジャンプし、着地と同時に{1}の敵ユニットに{2}と{3}間{4}を与える。" + E + "のスタックが付与されている敵に対しては1スタックごとに20%ダメージが増加し最大で{5}。{6}とこのスキルの{7}する。")
                 .variable(1, Radius)
-                .variable(2, MagicDamage, 70, 45, ap(0.8))
-                .variable(3, MSSlowRatio, 60)
-                .variable(4, CDDecrease)
-                .mana(80)
+                .variable(2, MagicDamage, 80, 25, ap(0.5))
+                .variable(3, Time, 1, 0.5)
+                .variable(4, MSSlowRatio, 60)
+                .variable(5, MagicDamage, 160, 50, ap(1))
+                .variable(6, Takedown)
+                .variable(7, CDDecrease)
+                .mana(60)
                 .cd(22, -2)
-                .range(800);
+                .range(900);
 
         E.update(P514)
                 .passive("通常攻撃で敵ユニットを倒した時にそのユニットの{1}の敵ユニットに{2}を与える。")
-                .variable(1, Radius, 150)
+                .variable(1, Radius, 75)
                 .variable(2, MagicDamage, 50, 25, ap(0.25))
-                .active("対象の敵ユニットに5秒かけて{3}と{4}を与える。")
-                .variable(3, MagicDamage, 110, 40, ap(1))
-                .variable(4, Wounds)
-                .mana(50, 10)
-                .cd(16)
-                .range(new Diff(616, 0, 1), level(9));
+                .active("詠唱後、対象の敵ユニット・タワーにグレネードを投げる。グレネードは4秒後に爆発し対象と{3}の敵ユニットに{4}を与える。爆発までの4秒間に対象に通常攻撃を行うと、最大で4スタックするDebuffを付与し、1スタック毎に爆発時の" + Damage + "が30%増加し最大で{5}。既に4スタック溜まっている対象に" + W + "または通常攻撃を行うと、即座に爆発させる。詠唱時間はASによって減少する。")
+                .variable(3, Radius)
+                .variable(4, PhysicalDamage, 60, 10, ap(0.5), amplify(BounusAD, 0.5, 0.15))
+                .variable(5, PhysicalDamage, 132, 22, ap(1.1), amplify(BounusAD, 1.1, 0.33))
+                .mana(75, 5)
+                .cd(16, -0.5)
+                .range(new Fixed(543), level(7));
 
         R.update(P514)
                 .active("対象の敵ユニットに{1}を与え、対象と{2}の敵ユニットを{3}させる。")
-                .variable(1, MagicDamage, 300, 100, ap(1.5))
+                .variable(1, MagicDamage, 300, 100, ap(1))
                 .variable(2, Radius, 200)
                 .variable(3, Knockback, 600, 200)
                 .mana(100)
-                .cd(60)
-                .range(700);
+                .cd(100, -15)
+                .range(new Fixed(543), level(7));
     }
 
     /**
