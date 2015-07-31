@@ -5418,12 +5418,10 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Warwick(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("通常攻撃で対象にスタックを付与し、追加{1}を与え{2}する。スタックは4秒持続し、最大3つまでスタックされる。建物を攻撃した場合は無効。")
-                .variable(1, MagicDamage, amplify(Stack, new Per1Level(new double[] {3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7,
-                        8, 9, 10, 11, 12, 13, 14, 15, 16})))
-                .variable(2, RestoreHealth, amplify(Stack, new Per1Level(new double[] {3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5,
-                        7, 8, 9, 10, 11, 12, 13, 14, 15, 16})));
+                .variable(1, MagicDamage, amplify(Stack, new Per1Level(3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)))
+                .variable(2, RestoreHealth, amplify(Stack, new Per1Level(3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)));
 
         Q.update(P514)
                 .active("対象の敵ユニットに{1}を与え、{2}する。対象がチャンピオンの場合は{3}と比較し大きいほうのDMを与える。")
@@ -5435,33 +5433,32 @@ public interface SkillDefinition {
                 .range(400);
 
         W.update(P514)
-                .active("10秒間{2}し、{1}の味方チャンピオンは{3}する。")
-                .variable(1, Radius, 1200)
+                .active("6秒間{2}し、{1}の味方チャンピオンは{3}する。")
+                .variable(1, Radius, 1250)
                 .variable(2, ASRatio, 40, 10)
                 .variable(-3, ASRatio, 20, 5)
                 .mana(35)
                 .cd(24, -2);
 
         E.update(P514)
-                .passive("{1}して、{2}内にいるHPが50%以下の敵チャンピオンの{3}。このスキルで敵のステルスを看破する事はできず、ステルス中の敵チャンピオンの視界を得ることもできない。")
+                .active("{2}に" + Health + "が50%以下の敵チャンピオンがいると{1}して、対象の{3}。このスキルで敵のステルスを看破する事はできず、ステルス中の敵チャンピオンの視界を得ることもできない。")
                 .variable(1, MSRatio, 20, 5)
                 .variable(2, Radius, 1500, 800)
                 .variable(3, Visionable)
-                .cd(4);
+                .cd(4)
+                .type(SkillType.Toggle);
 
         R.update(P514)
-                .active("対象の敵チャンピオンに突撃し{2}を与えて、その間{3}を得て0.42秒毎に{1}を、計5回で{4}を与える。{5}。")
-                .variable(1, MagicDamage, 50, 17, bounusAD(0.4))
+                .active("対象の敵チャンピオンに突撃し{2}を与えて、その間{3}を得て0.3秒毎に{1}を、計5回で{4}を与える。{5}。")
+                .variable(1, MagicDamage, 30, 20, bounusAD(0.4))
                 .variable(2, Suppression, 1.8)
                 .variable(3, LS, 30)
-                .variable(4, MagicDamage, 250, 85, bounusAD(2))
+                .variable(4, MagicDamage, 150, 100, bounusAD(2))
                 .variable(5, OnHitEffect)
                 .type(SkillType.Channel)
                 .mana(100, 25)
-                .cd(90, -10)
+                .cd(110, -20)
                 .range(700);
-        R.update(P307).active("対象の敵チャンピオンに突撃し{2}を与えて、その間{3}を得て0.3秒毎に{1}を、計5回で{4}を与える。{5}。");
-
     }
 
     /**
