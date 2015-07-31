@@ -5222,8 +5222,53 @@ public interface SkillDefinition {
                 .variable(4, MagicDamage, 500, 200, ap(0.6))
                 .mana(100)
                 .cd(130, -20)
-                .range(1575)
+                .range(1550)
                 .type(SkillType.Channel);
+    }
+
+    /**
+     * Define skill.
+     */
+    public static void Vi(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P514)
+                .passive("敵ユニットにスキルでダメージを与えると、3秒間{1}を得る。")
+                .variable(1, Shield, amplify(Health, 0.1))
+                .cd(new Per6LevelForVi(18, -5));
+
+        Q.update(P514)
+                .active("発動すると自身の移動速度が15%減少し、このスキルのダメージと射程が徐々に増加する(1.25秒で最大)。再度使用で指定した方向へとダッシュし(最小{3}、最大{4})、命中した全ての敵ユニットに{1}を与える(最大で{2})。ダッシュ中に敵チャンピオンに衝突するとその時点で停止し、対象をノックバックさせる。このスキルにはDenting Blowsの効果が適用され、Minionや中立クリープに与えるダメージは75%に減少する。途中で詠唱を停止させられた場合、このスキルのCDは3秒になり、消費したmanaの半分が回復する。")
+                .variable(1, PhysicalDamage, 50, 25, bounusAD(0.8))
+                .variable(2, PhysicalDamage, 100, 50, bounusAD(1.6))
+                .variable(3, Distance, 250)
+                .variable(4, Distance, 725)
+                .mana(50, 10)
+                .cd(18, -2.5)
+                .range(250);
+
+        W.update(P514)
+                .passive("同一対象に3回連続して通常攻撃を行うと、{1}と4秒間{2}を与え、4秒間{3}する。(ミニオンやモンスターへは最大300ダメージが上限)")
+                .variable(1, PhysicalDamage, amplify(TargetMaxHealthRatio, 4, 1.5, bounusAD(0.03)))
+                .variable(2, ARReductionRatio, 20)
+                .variable(3, ASRatio, 30, 5);
+
+        E.update(P514)
+                .active("チャージを1つ消費することで、次の通常攻撃は{1}し対象とその後方扇形{2}にいる敵ユニットに{3}を与る。チャージは{4}毎に増加し、最大2つまでスタックされる。")
+                .variable(1, Range, 50)
+                .variable(2, Radius, 600)
+                .variable(3, PhysicalDamage, 5, 15, ad(1.15), ap(0.7))
+                .variable(4, CDRAwareTime, 14, -1.5)
+                .mana(60)
+                .cd(1);
+
+        R.update(P514)
+                .active("対象の敵チャンピオンに突撃し、{1}と{2}を与える。一連の動作中は{4}を得て、また対象のチャンピオン以外で" + champion + "に触れた敵ユニットには{3}を与え、左右に吹き飛ばす。")
+                .variable(1, PhysicalDamage, 150, 150, bounusAD(1.4))
+                .variable(2, Knockup, 1.25)
+                .variable(3, PhysicalDamage, 117.5, 126.25, bounusAD(1.05))
+                .variable(4, IgnoreCC)
+                .mana(100, 25)
+                .cd(150, -35)
+                .range(800);
     }
 
     /**
@@ -5275,53 +5320,6 @@ public interface SkillDefinition {
                 .cd(120)
                 .range(700);
         R.update(P313).mana(100);
-    }
-
-    /**
-     * Define skill.
-     */
-    public static void Vi(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("敵ユニットにスキルでダメージを与えると、3秒間{1}を得る。")
-                .variable(1, Shield, amplify(Health, 0.1))
-                .cd(new Per6LevelForVi(18, -5));
-
-        Q.update(P514)
-                .active("発動すると自身の移動速度が15%減少し、このスキルのダメージと射程が徐々に増加する(1.25秒で最大)。再度使用で指定した方向へとダッシュし(最小{3}、最大{4})、命中した全ての敵ユニットに{1}を与える(最大で{2})。ダッシュ中に敵チャンピオンに衝突するとその時点で停止し、対象をノックバックさせる。このスキルにはDenting Blowsの効果が適用され、Minionや中立クリープに与えるダメージは75%に減少する。")
-                .variable(1, PhysicalDamage, 50, 30, bounusAD(0.7))
-                .variable(2, PhysicalDamage, 100, 60, bounusAD(1.4))
-                .variable(3, Distance, 50)
-                .variable(4, Distance, 600)
-                .mana(50, 10)
-                .cd(18, -2.5)
-                .range(50);
-        Q.update(P303)
-                .active("発動すると自身の移動速度が15%減少し、このスキルのダメージと射程が徐々に増加する(1.25秒で最大)。再度使用で指定した方向へとダッシュし(最小{3}、最大{4})、命中した全ての敵ユニットに{1}を与える(最大で{2})。ダッシュ中に敵チャンピオンに衝突するとその時点で停止し、対象をノックバックさせる。このスキルにはDenting Blowsの効果が適用され、Minionや中立クリープに与えるダメージは75%に減少する。途中で詠唱を停止させられた場合、このスキルのCDは3秒になり、消費したmanaの半分が回復する。");
-
-        W.update(P514)
-                .passive("同一対象に3回連続して通常攻撃を行うと、{1}と4秒間{2}を与え、4秒間{3}する。(ミニオンやモンスターへは最大300DMを与える)")
-                .variable(1, PhysicalDamage, amplify(TargetMaxHealthRatio, 6, 1, bounusAD(0.03)))
-                .variable(2, ARReductionRatio, 20)
-                .variable(3, ASRatio, 30, 5);
-        W.update(P303).variable(1, PhysicalDamage, amplify(TargetMaxHealthRatio, 4, 1.5, bounusAD(0.03)));
-
-        E.update(P514)
-                .active("チャージを1つ消費することで、次の通常攻撃に追加{1}を付与し、対象とその後方扇形{2}にいる敵ユニットにもダメージを与える範囲攻撃になる。チャージは{3}毎に増加し、最大2つまでスタックされる。")
-                .variable(1, PhysicalDamage, 5, 15, ad(1.15), ap(0.7))
-                .variable(2, Radius, 600)
-                .variable(3, CDRAwareTime, 14, -1.5)
-                .mana(60)
-                .cd(1);
-
-        R.update(P514)
-                .active("対象の敵チャンピオンに突撃し、{1}と{2}を与える。一連の動作中は{4}を得て、また対象のチャンピオン以外でViに触れた敵ユニットには{3}を与え、左右に吹き飛ばす。")
-                .variable(1, PhysicalDamage, 200, 125, bounusAD(1.4))
-                .variable(2, Knockup, 1.25)
-                .variable(3, PhysicalDamage, 150, 112.5, bounusAD(1.05))
-                .variable(4, IgnoreCC)
-                .mana(100, 25)
-                .cd(130, -25)
-                .range(700);
     }
 
     /**
