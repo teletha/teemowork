@@ -4299,60 +4299,46 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Skarner(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("通常攻撃を行うたびに、 Skarnerのすべてのスキルの{1}される(対象がチャンピオンの場合は{2})。建物に対しては無効。")
-                .variable(1, CDDecrease, 0.5)
-                .variable(2, CDDecrease, 1);
+        P.update(P514)
+                .passive(Q + "か" + E + "で" + Damage + "を与えると、対象に5秒間3回までスタックするDebuffを付与する。3スタックが付与された対象に通常攻撃を行うと、スタックをすべて消費し{1}と{2}を与える。この効果発生した対象には6秒間Debuffが付与できない。")
+                .variable(1, MagicDamage, 15, 0, level(5))
+                .variable(2, Stun, new Per6Level(0.5, 0.25));
 
         Q.update(P514)
-                .active("{4}の敵ユニットに{1}を与える。このスキルが命中した場合、5秒間Crystal Energyのスタックを得る。スタックがある状態で再度このスキルを使用すると、追加{2}と2秒間{3}が付与される。")
-                .variable(1, PhysicalDamage, 25, 15, bounusAD(0.8))
-                .variable(2, MagicDamage, 24, 12, ap(0.4))
-                .variable(3, MSSlowRatio, 20, 5)
+                .active("{4}の敵ユニットに{1}を与える。このスキルが命中した場合、5秒間{2}し{3}する。この効果は3回までスタックする。スタックがある状態で再度このスキルを使用すると、{5}を与える。通常攻撃を行うたびに、このスキルの{6}する(対象がチャンピオンの場合は{7}し、建物に対しては無効)。")
+                .variable(1, PhysicalDamage, 20, 10, bounusAD(0.4))
+                .variable(2, ASRatio, 8, 2)
+                .variable(3, MSRatio, 2, 1)
                 .variable(4, Radius, 350)
-                .mana(20, 2)
+                .variable(5, MagicDamage, 20, 10, ap(0.2))
+                .variable(6, CDDecrease, 0.5)
+                .variable(7, CDDecrease, 1)
+                .mana(16, 1)
                 .cd(3.5)
-                .update(P402)
-                .active("{4}の敵ユニットに{1}を与える。このスキルが命中した場合、5秒間{3}得る。この効果は3回までスタックする。スタックがある状態で再度このスキルを使用すると、{2}を与える。")
-                .variable(3, ASRatio, 8, 2)
-                .update(P403)
-                .mana(16, 2);
+                .range(350);
 
         W.update(P514)
-                .active("6秒間{1}を張る。シールドが残っている間{2}し、{3}する。")
-                .variable(1, Shield, 70, 45, ap(0.6))
-                .variable(2, MSRatio, 15, 2)
-                .variable(3, ASRatio, 30, 5)
-                .mana(60)
-                .cd(18)
-                .update(P402)
                 .active("6秒間{1}を張る。シールドが残っている間3秒かけて{2}する。")
                 .variable(1, Shield, 80, 55, ap(0.8))
                 .variable(2, MSRatio, 16, 4)
-                .cd(16);
+                .mana(60)
+                .cd(13, -0.5);
 
         E.update(P514)
-                .active("指定方向に貫通するエネルギーを飛ばし、当たった敵ユニットに{1}と6秒間持続するマークを付与する。自身がマークが付いた敵ユニットを攻撃するか、このスキルで敵ユニットを倒した場合、マークを消費して{2}する。HP回復量はマークを消費する度に50%ずつ低下していく。")
-                .variable(1, MagicDamage, 80, 40, ap(0.7))
-                .variable(2, RestoreHealth, 30, 15, ap(0.3))
-                .mana(50, 5)
-                .cd(10)
-                .range(600)
-                .update(P402)
                 .active("指定方向に貫通するエネルギーを飛ばし、当たった敵ユニットに{1}と2.5秒間{2}を付与する。")
-                .variable(2, MSSlowRatio, 30, 5)
-                .cd(14)
-                .range(1000)
-                .update(P403)
-                .variable(2, MSSlowRatio, 45, 5);
+                .variable(1, MagicDamage, 40, 35, ap(0.4))
+                .variable(2, MSSlowRatio, 45, 5)
+                .cd(12, -0.5)
+                .mana(50, 5)
+                .range(1000);
 
         R.update(P514)
-                .active("対象の敵チャンピオンに{1}と{2}を与える。効果中は対象の敵チャンピオンを引っ張る事が出来る。また、効果終了時に追加{3}を与える。")
+                .active("対象の敵チャンピオンに{1}と{2}を与える。効果中は対象の敵チャンピオンを引っ張る事が出来き、効果終了時に{1}を与える。対象に" + P + "のDebuffが付与されていた場合、スタックを全て消費して{3}を与える。")
                 .variable(1, MagicDamage, 100, 50, ap(0.5))
                 .variable(2, Suppression, 1.75)
-                .variable(3, MagicDamage, 100, 50, ap(0.5))
+                .variable(3, MagicDamage, amplify(Stack, 50, 25))
                 .mana(100, 25)
-                .cd(130, -10)
+                .cd(110, -10)
                 .range(350);
     }
 
