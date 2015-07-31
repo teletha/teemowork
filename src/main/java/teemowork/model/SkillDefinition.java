@@ -5063,19 +5063,19 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Varus(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("敵ユニットを倒すと3秒間{1}する。敵チャンピオンをキル/アシストすると6秒間{2}する。この効果はスタックしない。")
+        P.update(P514)
+                .passive("敵ユニットを倒すと3秒間{1}する。{3}と6秒間{2}する。この効果はスタックしない。")
                 .variable(-1, ASRatio, 20)
-                .variable(-2, ASRatio, 40);
+                .variable(-2, ASRatio, 40)
+                .variable(3, Takedown);
 
         Q.update(P514)
-                .active("最初にスキルを使用すると狙いを付ける。この間は通常攻撃や他のスキルを使用できなくなり、Varusの移動速度が20%低下するが、狙いを付けている間は徐々にこのスキルのダメージと射程距離が増加していく(2秒で最大)。再度このスキルを使用することで指定方向に貫通する矢を放ち、当たった敵ユニットに{1}を与える(最大で{2})。ダメージは敵に当たるごとに15%減少する。最小で33%。狙いを付けて4秒間経過した場合はこのスキルは失敗しCDになるが、消費したマナの半分が回復する。")
-                .variable(1, PhysicalDamage, 10, 33, ad(1))
-                .variable(2, PhysicalDamage, 15, 50, ad(1.65))
+                .active("最初にスキルを使用すると狙いを付ける。この間は通常攻撃や他のスキルを使用できなくなり、" + champion + "の移動速度が20%低下するが、狙いを付けている間は徐々にこのスキルのダメージと射程距離が増加していく(2秒で最大)。再度このスキルを使用することで指定方向に貫通する矢を放ち、当たった敵ユニットに{1}を与える(最大で{2})。ダメージは敵に当たるごとに15%減少する。最小で33%。狙いを付けて4秒間経過した場合はこのスキルは失敗しCDになるが、消費したマナの半分が回復する。")
+                .variable(1, PhysicalDamage, 10, 37, ad(1))
+                .variable(2, PhysicalDamage, 15, 55, ad(1.65))
                 .mana(70, 5)
                 .cd(16, -2)
-                .range(new Diff(850, 0, 1), amplify(Duration, 200));
-        Q.update(P307).variable(1, PhysicalDamage, 10, 37, ad(1)).variable(2, PhysicalDamage, 15, 55, ad(1.65));
+                .range(new Fixed(925), amplify(Duration, 350));
 
         W.update(P514)
                 .passive("通常攻撃に追加{1}と6秒間持続する疫病が付与される。疫病は3回までスタックする。疫病のスタックが付与されている敵ユニットにVarusの他のスキルが命中した場合、疫病のスタックを全て消費して1スタック毎に{2}を与える。")
@@ -5084,23 +5084,21 @@ public interface SkillDefinition {
 
         E.update(P514)
                 .active("指定地点に矢の雨を放ち、範囲内の敵ユニットに{1}を与える。指定地点は4秒間呪われ、範囲内の敵ユニットに{2}と{3}を付与する。")
-                .variable(1, PhysicalDamage, 65, 40, bounusAD(0.6))
+                .variable(1, PhysicalDamage, 65, 35, bounusAD(0.6))
                 .variable(2, MSSlowRatio, 25, 5)
                 .variable(3, Wounds)
                 .mana(80)
                 .cd(18, -2)
                 .range(925);
-        E.update(P307).variable(1, PhysicalDamage, 65, 35, bounusAD(0.6));
 
         R.update(P514)
                 .active("指定方向に腐敗の蔓を投げつけ、当たった敵チャンピオンに{1}と{2}を与える。当たった敵チャンピオンからは徐々に腐敗が広がり({3})、腐敗に触れた敵チャンピオンにも同様の効果を与える。")
                 .variable(1, MagicDamage, 150, 100, ap(1))
                 .variable(2, Snare, 2)
                 .variable(3, Radius, 550)
-                .mana(120)
+                .mana(100)
                 .cd(120, -15)
                 .range(1075);
-        R.update(P313).mana(100);
     }
 
     /**
