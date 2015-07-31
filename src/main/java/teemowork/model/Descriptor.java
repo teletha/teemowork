@@ -241,7 +241,7 @@ public abstract class Descriptor<T extends Descriptor> {
      * @return A chainable API.
      */
     protected final T variable(int id, Status status, double base, double diff) {
-        return variable(id, status, base, diff, null, null);
+        return variable(id, status, base, diff, null, (Variable) null);
     }
 
     /**
@@ -286,7 +286,7 @@ public abstract class Descriptor<T extends Descriptor> {
      * @return Chainable API.
      */
     protected final T variable(int id, Status status, double base, double diff, Variable amplifier) {
-        return variable(id, status, base, diff, amplifier, null);
+        return variable(id, status, base, diff, amplifier, (Variable) null);
     }
 
     /**
@@ -304,6 +304,23 @@ public abstract class Descriptor<T extends Descriptor> {
      */
     protected final T variable(int id, Status status, double base, double diff, Variable first, Variable second) {
         return variable(id, status, new Diff(base, diff, describable.getMaxLevel()), first, second);
+    }
+
+    /**
+     * <p>
+     * Set new variable.
+     * </p>
+     * 
+     * @param id A variable identifier.
+     * @param status A variable type.
+     * @param base A base value.
+     * @param diff A diff value.
+     * @param first A first amplifier.
+     * @param second A second amplifier.
+     * @return Chainable API.
+     */
+    protected final T variable(int id, Status status, double base, double diff, Variable first, VariableResolver second) {
+        return variable(id, status, base, diff, first, new Variable(Status.Value, second));
     }
 
     /**

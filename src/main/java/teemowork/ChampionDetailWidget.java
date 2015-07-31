@@ -295,7 +295,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
                     〡.nbox.〡(NormalValue, () -> {
                         〡.style.〡(Current, size != 1 && i + 1 == current);
                         〡.style.〡(ChampionLevelIndicator, "title", resolver.getLevelDescription(i + 1));
-                        〡.〡(Mathematics.round(amplifier.calculate(i + 1, build), 4));
+                        〡.〡(Mathematics.round(amplifier.calculate(i + 1, build, true), 4));
                     });
 
                     if (i + 1 != size) {

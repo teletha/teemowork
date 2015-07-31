@@ -4346,65 +4346,47 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Sona(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("Auraを切り替えても、以前のAuraの効果が1秒間持続する。切替時は他のAuraスキルが0.5秒間CDになる。また、3回スキルを使用した後の通常攻撃に{1}と、そのとき展開しているAuraに応じた追加効果が発生する。<br>" + Q + " : 追加{1}を与える。<br>" + W + " : {3}間対象が与えるダメージが{4}減少するDebuffを与える。<br>" + E + " : 2秒間{2}を与える。")
-                .variable(1, MagicDamage, 8, 0, level(10))
-                .variable(2, MSSlowRatio, 40)
-                .variable(3, Time, 4)
-                .variable(4, Percentage, 20);
-        P.update(P308)
-                .variable(1, MagicDamage, new Per1Level(new double[] {13, 20, 27, 35, 43, 52, 62, 72, 82, 92, 102, 112,
-                        122, 132, 147, 162, 177, 192}))
-                .variable(3, Time, 3);
-        P.update(P314)
-                .variable(1, MagicDamage, new Per1Level(new double[] {13, 20, 27, 35, 43, 52, 62, 72, 82, 92, 102, 112,
-                        122, 132, 147, 162, 177, 192}), ap(0.2), null)
-                .variable(4, Percentage, 20, 0, ap(0.02))
-                .variable(2, MSSlowRatio, 40, 0, ap(0.04));
+        P.update(P514)
+                .passive(R + "以外のスキル使用時に3秒間オーラを纏い、{1}の味方を1人支援するたび持続時間が0.5秒延びる。<br>スキルを使用する度にスタックが増加し、3スタック時に通常攻撃を行うと、スタックを消費して通常攻撃に{2}と、そのとき展開しているオーラに応じた追加効果が発生する。")
+                .variable(1, Radius, 350)
+                .variable(2, MagicDamage, new Per1Level(13, 20, 27, 35, 43, 52, 62, 72, 82, 92, 102, 112, 122, 132, 147, 162, 177, 192), ap(0.2));
 
         Q.update(P514)
-                .active("最も近い敵ユニット2体に{4}を与える。Sonaの通常攻撃範囲内に敵チャンピオンがいる場合、それらを優先して狙う。" + R + "以外の別のスキルを使うまで{1}の味方チャンピオンは{2}と{3}を得る。")
-                .variable(1, Radius, 1000)
-                .variable(2, AD, 4, 4)
-                .variable(3, AP, 4, 4)
-                .variable(4, MagicDamage, 50, 50, ap(0.7))
+                .active("{1}の敵2体 (チャンピオンを優先) に{2}を与える。<br>オーラ: 味方の3秒以内の次の通常攻撃に{3}を付与する。<br>追加効果: オーラの" + Damage + "が{4}になる。")
+                .variable(1, Radius, 850)
+                .variable(2, MagicDamage, 40, 40, ap(0.5))
+                .variable(3, MagicDamage, 20, 10, ap(0.2), new ReferFixed(R, 10, 20, 40))
+                .variable(4, MagicDamage, 28, 14, ap(0.28), new ReferFixed(R, 14, 28, 56))
                 .mana(45, 5)
-                .cd(7)
-                .range(700);
-        Q.update(P314).variable(4, MagicDamage, 50, 50, ap(0.5));
+                .cd(8)
+                .range(850);
 
         W.update(P514)
-                .active("近くにいる最もHPが減っている味方チャンピオン1体とSonaは{1}し、3秒間{2}と{3}を得る。" + R + "以外の別のスキルを使うまで{4}の味方チャンピオンは{5}と{6}を得る。")
-                .variable(1, RestoreHealth, 40, 20, ap(0.25))
-                .variable(2, AR, 8, 3)
-                .variable(3, MR, 8, 3)
-                .variable(4, Radius, 1000)
-                .variable(5, AR, 3, 3)
-                .variable(6, MR, 3, 3)
-                .mana(60, 5)
-                .cd(7)
+                .active("近くにいる最も" + Health + "が減っている味方チャンピオン1体と" + champion + "は{1}する。回復する対象の減少している" + Health + "1%につき回復量が0.5%増加し最大で{2}する。<br>オーラ: 味方チャンピオンは1.5秒間{3}得る。<br>追加効果: 3秒間対象が{4}する。")
+                .variable(1, RestoreHealth, 30, 20, ap(0.2))
+                .variable(2, RestoreHealth, 45, 30, ap(0.3))
+                .variable(3, Shield, 35, 20, ap(0.2), new ReferFixed(R, 10, 20, 40))
+                .variable(4, DamageRatio, -20, 0, ap(-0.02))
+                .mana(80, 5)
+                .cd(10)
                 .range(1000);
-        W.update(P308).variable(2, AR, 6, 1).variable(3, MR, 6, 1).variable(5, AR, 6, 1).variable(6, MR, 6, 1);
-        W.update(P314).variable(1, RestoreHealth, 40, 15, ap(0.25));
 
         E.update(P514)
-                .active("1.5秒間{1}の味方ユニットは{2}する。" + R + "以外の別のスキルを使うまで{1}の味方チャンピオンは{3}する")
-                .variable(1, Radius, 1000)
-                .variable(2, MSRatio, 6, 2)
-                .variable(3, MSRatio, 4, 4)
+                .active("3秒間{1}する。この効果は3秒かけて減衰する。<br>オーラ: " + champion + "以外の味方チャンピオンは1.5秒間{2}する。<br>追加効果: 対象に2秒間{3}を与える。")
+                .variable(1, MSRatio, 13, 1, ap(0.075), new Refer(R, 2, 2))
+                .variable(2, MSRatio, 10, 1, ap(0.035), new Refer(R, 2, 2))
+                .variable(3, MSSlowRatio, 40, 0, ap(0.04))
                 .mana(65)
-                .cd(7)
-                .range(1000);
-        E.update(P314).variable(2, MSRatio, 4, 2, ap(0.02));
+                .cd(12);
 
         R.update(P514)
                 .active("前方{1}の敵チャンピオンに{2}と{3}を与える。")
-                .variable(1, Radius, 1000)
-                .variable(2, MagicDamage, 150, 100, ap(0.8))
+                .variable(1, Radius, 900)
+                .variable(2, MagicDamage, 150, 100, ap(0.5))
                 .variable(3, Stun, 1.5)
-                .mana(100, 50)
-                .cd(140, -20);
-        R.update(P314).variable(2, MagicDamage, 150, 100, ap(0.5));
+                .mana(100)
+                .cd(140, -20)
+                .range(900);
     }
 
     /**

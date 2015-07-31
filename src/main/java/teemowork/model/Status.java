@@ -20,7 +20,7 @@ public enum Status {
     // Damage Type
     // ==================================================
     /** Any Damage */
-    Damage("ダメージ"), DamageRatio(Damage), CriticalDamageRatio("クリティカルダメージ", 2),
+    Damage("与えるダメージ"), DamageRatio(Damage), CriticalDamageRatio("クリティカルダメージ", 2),
 
     /** Physical Daname */
     PhysicalDamage("物理DM"),
@@ -537,7 +537,7 @@ public enum Status {
         case RestoreHealthRatio:
         case Grow:
         case AttackTowerDamageRatio:
-            return name + "が" + formatValue(computed) + "増加";
+            return name + "が" + formatValue(Math.abs(computed)) + (0 <= computed ? "増加" : "減少");
 
         case DamageReduction:
         case DamageReductionRatio:

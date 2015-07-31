@@ -126,7 +126,6 @@ public class Variable {
 
     private Set set = new HashSet();
 
-
     /**
      * <p>
      * Calculate value by using the specified calculator.
@@ -137,6 +136,19 @@ public class Variable {
      * @return A calculated value.
      */
     public double calculate(int level, StatusCalculator calculator) {
+        return calculate(level, calculator, false);
+    }
+
+    /**
+     * <p>
+     * Calculate value by using the specified calculator.
+     * </p>
+     * 
+     * @param level A level.
+     * @param calculator A status calculator.
+     * @return A calculated value.
+     */
+    public double calculate(int level, StatusCalculator calculator, boolean enforceLevel) {
         if (calculator == null) {
             calculator = EMPTY;
         }
@@ -145,10 +157,11 @@ public class Variable {
             return 0;
         }
 
-        double value = resolver.compute(level);
+        double value = resolver
+                .compute(enforceLevel || resolver.isSkillLevelBased() ? level : resolver.convertLevel(calculator));
 
         for (Variable amplifier : amplifiers) {
-            value += amplifier.calculate(level, calculator) * calculator.calculate(amplifier.getStatus());
+            value += amplifier.calculate(level, calculator, enforceLevel) * calculator.calculate(amplifier.getStatus());
         }
 
         if (status == CD || status == CDRAwareTime) {

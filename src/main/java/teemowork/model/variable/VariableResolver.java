@@ -481,7 +481,7 @@ public abstract class VariableResolver {
          */
         @Override
         public double compute(int skillLevel) {
-            return values[skillLevel - 1];
+            return skillLevel == 0 ? 0 : values[skillLevel - 1];
         }
 
         /**
@@ -689,7 +689,7 @@ public abstract class VariableResolver {
          * @param base
          * @param diff
          */
-        public ReferFixed(Skill reference, double[] values) {
+        public ReferFixed(Skill reference, double... values) {
             super(values);
 
             this.reference = reference;
