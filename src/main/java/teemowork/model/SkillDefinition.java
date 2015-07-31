@@ -4622,78 +4622,53 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Taric(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update().passive("通常攻撃をすると{1}する。").variable(1, RestoreMana, amplify(DealtDamageRatio, 0.075));
-        P.update(P303)
-                .passive("通常攻撃に追加{1}を付与する。敵チャンピオンに対しては{2}を与える。建物には無効。")
-                .variable(1, MagicDamage, amplify(Mana, 0.02))
-                .variable(2, MagicDamage, amplify(Mana, 0.04));
-        P.update(P314)
-                .passive("スキルを使用した次の通常攻撃は追加{1}を与え、全スキルの{2}する。この効果は通常攻撃を行うか、一定時間経過すると解消される。")
-                .variable(1, MagicDamage, amplify(AR, 0.3))
-                .variable(2, CDDecrease, 2)
-                .update(P315)
-                .variable(1, MagicDamage, amplify(AR, 0.2));
+        P.update(P514)
+                .passive("スキルを使用した次の通常攻撃は追加{1}を与え、全スキルの{2}する。この効果は通常攻撃を行うか、一定時間経過すると解消される。建物には無効。")
+                .variable(1, MagicDamage, amplify(AR, 0.2))
+                .variable(2, CDDecrease, 2);
 
         Q.update(P514)
-                .active("対象の味方ユニットとTaricの{1}する。自身に使用した場合は{2}する。このスキルは自身が通常攻撃を行う毎にCDが1秒解消される。対象が敵チャンピオンの場合は3秒解消される。")
-                .variable(1, RestoreHealth, 60, 40, ap(0.6))
-                .variable(2, RestoreHealth, 84, 56, ap(0.84))
-                .mana(80, 15)
-                .cd(20, -1)
-                .range(750);
-        Q.update(P314)
-                .active("対象の味方ユニットとTaricの{1}する。自身に使用した場合は{2}する。")
+                .active("対象の味方ユニットと" + champion + "の{1}する。自身に使用した場合は{2}する。")
                 .variable(1, RestoreHealth, 60, 40, ap(0.3), amplify(BounusHealth, 0.05))
                 .variable(2, RestoreHealth, 84, 56, ap(0.42), amplify(BounusHealth, 0.07))
-                .mana(60, 20)
-                .cd(18, -1);
+                .mana(60, 10)
+                .cd(18, -1)
+                .range(750);
 
         W.update(P514)
-                .passive("Taricは{1}を得て、味方チャンピオンの{1}を増加させる{2}のAuraを得る。(Taric自身はAuraと合わせて2倍の効果を得る)")
+                .passive("{1}を得る（CD中は効果が消滅）。{2}の味方チャンピオンは{3}をを得る。自身は両方の効果を得る。")
                 .variable(1, AR, 10, 5)
-                .variable(2, Radius, 1000)
-                .active("{4}の敵ユニットに{5}を与え、4秒間{6}を与える。効果後はCDが解消されるまでPassiveのTaric自身の増加ARが無くなる。")
-                .variable(4, Radius, 400)
-                .variable(5, MagicDamage, 60, 45, ap(0.6))
-                .variable(6, ARReduction, 10, 5)
-                .mana(50, 10)
-                .cd(10);
-        W.update(P303)
-                .passive("Taricは{1}を得て、味方チャンピオンの{3}を増加させる{2}のAuraを得る。(Taric自身はAuraと両方の効果を得る)")
+                .variable(2, Radius, 500)
                 .variable(3, AR, amplify(AR, 0.12))
-                .variable(5, MagicDamage, 60, 45, ap(0.6), amplify(AR, 0.3))
-                .mana(50);
-        W.update(P304).variable(5, MagicDamage, 50, 40, ap(0.6), amplify(AR, 0.2));
-        W.update(P314).variable(5, MagicDamage, 40, 40, amplify(AR, 0.3));
-        W.update(P315)
-                .variable(1, AR, 5, 5)
-                .variable(3, AR, amplify(AR, 0.05))
-                .variable(5, MagicDamage, 40, 40, amplify(AR, 0.2));
+                .active("{4}の敵ユニットに{5}を与え、4秒間{6}を与える。")
+                .variable(4, Radius, 375)
+                .variable(5, MagicDamage, 40, 40, amplify(AR, 0.2))
+                .variable(6, ARReduction, 5, 5, amplify(AR, 0.05))
+                .mana(50)
+                .cd(10)
+                .range(375);
 
         E.update(P514)
-                .active("対象の敵ユニットに{1}と{2}を与える。魔法DMは対象との距離が近いほど増加し、距離が遠いほど低下する。最小DMは{3}。")
-                .variable(1, MagicDamage, 80, 60, ap(0.8))
-                .variable(2, Stun, 1.5)
-                .variable(3, MagicDamage, 40, 30, ap(0.4))
-                .mana(95)
-                .cd(14, -1)
+                .active("対象の敵ユニットに{1}と{2}を与える。" + Damage + "は対象との距離が近いほど増加し、距離が遠いほど低下し、最大で{3}。")
+                .variable(1, MagicDamage, 40, 30, ap(0.2))
+                .variable(2, Stun, 1.2, 0.1)
+                .variable(3, MagicDamage, 80, 60, ap(0.4))
+                .mana(75)
+                .cd(1, -1)
                 .range(625);
-        E.update(P303).mana(75);
-        E.update(P304).variable(2, Stun, 1.2, 0.1);
-        E.update(P314).variable(1, MagicDamage, 80, 60, ap(0.4)).variable(3, MagicDamage, 40, 30, ap(0.2)).cd(18, -1);
 
         R.update(P514)
-                .active("{1}の敵ユニットに{2}を与える。スキル使用後の10秒間、{3}と{4}を得て、更に近くの味方チャンピオンの{5}と{6}を増加させるAura({7})を展開する。")
-                .variable(1, Radius, 400)
-                .variable(2, MagicDamage, 150, 100, ap(0.7))
+                .active("{1}の敵ユニットに{2}を与える。スキル使用後の10秒間、{3}と{4}を得て、{7}の味方チャンピオンは{5}と{6}を得る。")
+                .variable(1, Radius, 375)
+                .variable(2, MagicDamage, 150, 100, ap(0.5))
                 .variable(3, AD, 30, 20)
                 .variable(4, AP, 30, 20)
-                .variable(5, AD, 15, 10)
-                .variable(6, AP, 15, 10)
-                .variable(7, Radius, 1000)
+                .variable(-5, AD, 15, 10)
+                .variable(-6, AP, 15, 10)
+                .variable(7, Radius, 500)
                 .mana(100)
-                .cd(60);
-        R.update(P314).variable(2, MagicDamage, 150, 100, ap(0.5)).cd(75);
+                .cd(75)
+                .range(375);
     }
 
     /**
