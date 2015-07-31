@@ -5276,50 +5276,55 @@ public interface SkillDefinition {
      */
     public static void Viktor(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update()
-                .passive("Hex Coreという、自身のステータスとスキルの効果を強化するアイテムを所持している。Hex Coreは1度だけショップで1000Gを消費して以下の３通りのいずれかにアップグレードすることが出来る。Hex CoreはViktorのアイテムスロットを1つ占有し、売却することは出来ない。<br>Hex Core : {1}を得る。<br>Augment Power : {1}、{2}、{3}を得る。また、Power Transfer使用・命中時に移動速度が3秒間30%増加する。<br>Augment Gravity : {1}、{4}、{5}、{6}を得る。また、Gravity Fieldの射程が30%増加する。<br>Augment Death : {1}、{7}を得る。また、Death Rayにダメージの30%分の追加魔法DMが付与される。このダメージは4秒間かけて与える。")
+                .passive(champion + "は最初から" + Item.PrototypeHexCore + "という、自身のステータスを強化するアイテムを所持している。" + Item.PrototypeHexCore + "はショップで1000Gを消費して3回アップグレードできる。" + Item.PrototypeHexCore + "はアイテムスロットを1つ占有し、売却することは出来ない。<br>" + Item.PrototypeHexCore + " : {1}を得る。<br>" + Item.TheHexCoremk1 + " : {2}、{3}を得る。<br>" + Item.TheHexCoremk2 + " : {4}、{5}を得る。<br>" + Item.PerfectHexCore + " : {6}、{7}を得る。")
                 .variable(-1, AP, level(3))
-                .variable(-2, Health, 220)
-                .variable(-3, Hreg, 6)
-                .variable(-4, Mana, 200)
-                .variable(-5, CDR, 10)
-                .variable(-6, Mreg, 5)
-                .variable(-7, AP, 45);
+                .variable(-2, AP, 20, 0, level(4))
+                .variable(-3, Mana, 150)
+                .variable(-4, AP, 40, 0, level(5))
+                .variable(-5, Mana, 300)
+                .variable(-6, AP, 60, 0, level(6))
+                .variable(-7, Mana, 500);
 
         Q.update(P514)
-                .active("対象の敵ユニットに{1}を与え、3秒間{2}を得る。")
-                .variable(1, MagicDamage, 80, 45, ap(0.65))
-                .variable(2, Shield, amplify(DealtDamageRatio, 40))
+                .active("対象の敵ユニットに{1}を与え、2.5秒間{2}を得る。また、次の3.5秒以内の通常攻撃が" + MagicDamage + "に変換され{3}を与える。<br>強化: スキル使用時に{4}する。")
+                .variable(1, MagicDamage, 40, 20, ap(0.2))
+                .variable(2, Shield, 30, 20, ap(0.2))
+                .variable(3, MagicDamage, new Per1Level(20, 25, 30, 35, 40, 45, 50, 55, 60, 70, 80, 90, 110, 130, 150, 170, 190, 210), ap(0.5), ad(1))
+                .variable(4, MSRatio, 30)
                 .mana(45, 5)
-                .cd(9, -1)
+                .cd(10, -1.5)
                 .range(600);
 
         W.update(P514)
-                .active("0.25秒詠唱後、指定範囲に4秒間持続する重力束縛装置を呼び出し、範囲内の敵ユニットに{1}を与え、0.5秒毎にスタックを付与する。スタックが3溜まった敵ユニットに{2}を与える。")
+                .active("0.25秒詠唱後、指定範囲に4秒間持続する重力束縛装置を呼び出し、{3}の敵ユニットに{1}を与え、0.5秒毎にスタックを付与する。スタックが3溜まった敵ユニットに{2}を与える。<br>強化: " + Stun + "した敵を中心部へ{4}する。")
                 .variable(1, MSSlowRatio, 28, 4)
                 .variable(2, Stun, 1.5)
+                .variable(3, Radius)
+                .variable(4, Knockback)
                 .mana(65)
                 .cd(17, -1)
-                .range(625);
-
-        E.update(P514)
-                .active("指定地点から指定方向にビームを発射し、ビームが通過する線上の敵ユニットに{1}を与える。また、ビームが通過した地点の{2}。")
-                .variable(1, MagicDamage, 70, 45, ap(0.7))
-                .variable(2, Visionable)
-                .mana(70, 10)
-                .cd(13, -1)
                 .range(700);
 
+        E.update(P514)
+                .active("指定地点から指定方向にビームを発射し、ビームが通過する線上の敵ユニットに{1}を与える。また、ビームが通過した地点の{2}。<br>強化: " + E + "の通過した場所で爆発が発生し{3}の敵ユニットに{1}を与える。既に" + E + "に当たった敵ユニットには40%のダメージを与える(合計{4})。")
+                .variable(1, MagicDamage, 70, 45, ap(0.7))
+                .variable(2, Visionable)
+                .variable(3, Radius)
+                .variable(4, MagicDamage, 98, 63, ap(0.98))
+                .mana(70, 10)
+                .cd(13, -1)
+                .range(525);
+
         R.update(P514)
-                .active("指定地点に7秒間持続する特異点を呼び出し、{1}の敵ユニットに{2}と{3}を与える。特異点は周囲の敵ユニットに毎秒{4}を与え、また近くにいる敵チャンピオンを自動的に追尾する。このスキルがActiveの間に再度地点を指定することで、特異点を指定した地点に手動で移動させる事が出来る。最大で{5}を与える。")
+                .active("指定地点に7秒間持続する特異点を呼び出し、{1}の敵ユニットに{2}と{3}を与える。特異点は周囲の敵ユニットに毎秒{4}を与え、また近くにいる敵チャンピオンを自動的に追尾する。このスキルがActiveの間に再度地点を指定することで、特異点を指定した地点に手動で移動させる事が出来る。最大で{5}を与える。<br>強化: " + R + "の移動速度が20%増加する。")
                 .variable(1, Radius)
                 .variable(2, MagicDamage, 150, 100, ap(0.55))
                 .variable(3, Silence, 0.5)
-                .variable(4, MagicDamage, 40, 20, ap(0.25))
-                .variable(5, MagicDamage, 430, 240, ap(2.23))
-                .mana(125, 50)
-                .cd(120)
+                .variable(4, MagicDamage, 30, 30, ap(0.2))
+                .variable(5, MagicDamage, 360, 310, ap(1.95))
+                .mana(100)
+                .cd(120, -10)
                 .range(700);
-        R.update(P313).mana(100);
     }
 
     /**
