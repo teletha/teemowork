@@ -4979,64 +4979,43 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Udyr(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive("スキルを使用する度に{1}、{2}、{3}する。この効果は5秒間持続し、3回までスタックする。また、スキルを使用するとその他のCD待ちでないスキルが1秒間のCDになる。")
+        P.update(P514)
+                .passive("スキルを使用する度に{1}、{2}する。この効果は5秒間持続し、3回までスタックする。また、スキルを使用するとその他のCD待ちでないスキルが1秒CDになる。")
                 .variable(-1, ASRatio, 10)
-                .variable(-2, ARRatio, 4)
-                .variable(-3, MRRatio, 4);
-        P.update(P305)
-                .passive("スキルを使用する度に{1}、{4}する。この効果は5秒間持続し、3回までスタックする。また、スキルを使用するとその他のCD待ちでないスキルが1秒間のCDになる。")
-                .variable(4, MS, 5);
+                .variable(-2, MS, 5);
 
         Q.update(P514)
-                .active("次の通常攻撃は2秒間かけて追加の{2}を与えるようになり（建物には無効）、5秒間{3}する。別のスキルを使うまで{1}する。")
-                .variable(-1, ASRatio, 20, 5)
-                .variable(2, MagicDamage, 30, 50, ad(1.5))
-                .variable(3, ASRatio, 15, 5)
-                .mana(55, -5)
-                .cd(6);
-        Q.update(P305).mana(47, -3);
-        Q.update(P306)
                 .active("次の通常攻撃は2秒間かけて追加の{2}を与えるようになり（建物には無効）、5秒間{3}する。別のスキルを使うまで通常攻撃は追加{1}を与える。")
                 .variable(1, PhysicalDamage, 0, 0, ad(0.15))
                 .variable(2, PhysicalDamage, 30, 50, amplify(AD, 1.2, 0.1))
-                .variable(3, ASRatio, 30, 10);
+                .variable(3, ASRatio, 30, 10)
+                .mana(47, -3)
+                .cd(6);
 
         W.update(P514)
-                .active("5秒間{1}を得る。別のスキルを使うまで通常攻撃でクリティカルが発生しなくなるが、通常攻撃するごとに{2}し{3}する。")
-                .variable(1, Shield, 60, 36, ap(0.5))
-                .variable(2, RestoreHealth, amplify(DealtDamageRatio, 10, 2))
-                .variable(3, RestoreMana, amplify(DealtDamageRatio, 5, 1))
-                .mana(55, -5)
+                .active("5秒間{1}を得る。別のスキルを使うまで{2}を得る。")
+                .variable(1, Shield, 60, 40, ap(0.5))
+                .variable(2, LS, 10, 2)
+                .mana(47, -3)
                 .cd(6);
-        W.update(P305).active("5秒間{1}を得る。別のスキルを使うまで通常攻撃するごとに{2}する。").variable(1, Shield, 60, 40, ap(0.5)).mana(47, -3);
 
         E.update(P514)
-                .active("{1}間{2}する。別のスキルを使うまで通常攻撃は{3}を与える。この効果は同一の対象に6秒に1度しか発動しない。")
-                .variable(1, Time, 2, 0.5)
-                .variable(2, MSRatio, 15, 3)
-                .variable(3, Stun, 1)
-                .mana(55, -5)
-                .cd(6);
-        E.update(P305)
-                .active("{1}間{2}し{4}を得る。別のスキルを使うまで通常攻撃は{3}を与える。この効果は同一の対象に6秒に1度しか発動しない。")
+                .active("{1}間{2}し{4}を得る。別のスキルを使うまで通常攻撃は{3}を与える。敵チャンピオンに" + Stun + "を与える際、対象に向かって短い距離をダッシュする。この効果は同一の対象に5秒に1度しか発動しない。")
                 .variable(1, Time, 2, 0.25)
                 .variable(2, MSRatio, 15, 5)
+                .variable(3, Stun, 1)
                 .variable(4, IgnoreUnitCollision)
-                .mana(47, -3);
+                .mana(47, -3)
+                .cd(6);
 
         R.update(P514)
-                .active("5秒間周囲の敵ユニットに毎秒{1}を与え、{2}と{3}を得る。別のスキル使うまで通常攻撃を3回行うごとに火を吹き前方の敵ユニットに{4}を与える。")
+                .active("5秒間周囲の敵ユニットに毎秒{1}を与え、次の通常攻撃に前方の敵ユニットに{4}を与える効果を付与する。別のスキル使うまで通常攻撃を3回行うごとに火を吹き前方の敵ユニットに{4}を与える。")
                 .variable(1, MagicDamage, 15, 10, ap(0.25))
                 .variable(2, AD, 8, 4)
                 .variable(3, AP, 16, 8)
-                .variable(4, MagicDamage, 40, 40, ap(0.25))
-                .mana(55, -5)
-                .cd(6);
-        R.update(P305)
-                .active("5秒間周囲の敵ユニットに毎秒{1}を与え、次の通常攻撃に前方の敵ユニットに{4}を与える効果を付与する。別のスキル使うまで通常攻撃を3回行うごとに火を吹き前方の敵ユニットに{4}を与える。")
                 .variable(4, MagicDamage, 40, 40, ap(0.45))
-                .mana(47, -3);
+                .mana(47, -3)
+                .cd(6);
     }
 
     /**
