@@ -4675,7 +4675,7 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Teemo(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("2秒間動かないと{1}になる。何か行動を行うか、強制的に移動させられるとステルスが解除され、ステルス解除後3秒間{2}する。")
                 .variable(1, Stealth)
                 .variable(-2, ASRatio, 40);
@@ -4686,7 +4686,7 @@ public interface SkillDefinition {
                 .variable(2, Blind, 1.5, 0.25)
                 .mana(70, 10)
                 .cd(8)
-                .range(680);
+                .range(580);
 
         W.update(P514)
                 .passive("{1}する。敵チャンピオンかタワーからダメージを受けると5秒間効果が切れる。")
@@ -4702,20 +4702,16 @@ public interface SkillDefinition {
                 .variable(3, MagicDamage, 34, 34, ap(0.7));
 
         R.update(P514)
-                .active("指定地点に10分間持続するキノコの罠を仕掛ける(設置後1秒で{1}になる)。使用時にスタックを消費する。敵ユニットがステルス状態の罠を踏むと破裂し、{2}のユニットに4秒かけて{3}と4秒間{4}を与える。{5}毎にスタック数が1つ増加し最大3つまでスタックされる。スタック増加時間はCD低減の影響を受ける。設置したキノコはチャンピオンの通常攻撃でのみダメージを与えられる。")
+                .active("指定地点に10分間持続するキノコの罠を仕掛ける(設置後1秒で{1}になる)。使用時にスタックを消費する。敵ユニットがステルス状態の罠を踏むと破裂し、{2}のユニットに4秒かけて{3}と4秒間{4}を与える。{5}毎にスタック数が1つ増加し最大3つまでスタックされる。スタック増加時間はCD低減の影響を受ける。設置したキノコはチャンピオンの通常攻撃でのみダメージを与えられ、破壊すると{6}を得る。")
                 .variable(1, Stealth)
                 .variable(2, Radius, 400)
-                .variable(3, MagicDamage, 200, 125, ap(0.8))
+                .variable(3, MagicDamage, 200, 125, ap(0.5))
                 .variable(4, MSSlowRatio, 30, 10)
                 .variable(5, CDRAwareTime, 35, -4)
+                .variable(6, Gold, 10)
                 .cd(1)
                 .mana(75, 25)
-                .range(230)
-                .update(P312)
-                .active("指定地点に10分間持続するキノコの罠を仕掛ける(設置後1秒で{1}になる)。使用時にスタックを消費する。敵ユニットがステルス状態の罠を踏むと破裂し、{2}のユニットに4秒かけて{3}と4秒間{4}を与える。{5}毎にスタック数が1つ増加し最大3つまでスタックされる。スタック増加時間はCD低減の影響を受ける。設置したキノコはチャンピオンの通常攻撃でのみダメージを与えられ、破壊すると{6}を得る。")
-                .variable(6, Gold, 10)
-                .update(P403)
-                .variable(3, MagicDamage, 200, 125, ap(0.5));
+                .range(230);
     }
 
     /**
