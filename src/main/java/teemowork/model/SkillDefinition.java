@@ -5276,7 +5276,7 @@ public interface SkillDefinition {
      */
     public static void Viktor(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update()
-                .passive(champion + "は最初から" + Item.PrototypeHexCore + "という、自身のステータスを強化するアイテムを所持している。" + Item.PrototypeHexCore + "はショップで1000Gを消費して3回アップグレードできる。" + Item.PrototypeHexCore + "はアイテムスロットを1つ占有し、売却することは出来ない。<br>" + Item.PrototypeHexCore + " : {1}を得る。<br>" + Item.TheHexCoremk1 + " : {2}、{3}を得る。<br>" + Item.TheHexCoremk2 + " : {4}、{5}を得る。<br>" + Item.PerfectHexCore + " : {6}、{7}を得る。")
+                .passive(champion + "は最初から" + Item.PrototypeHexCore + "という、自身のステータスを強化するアイテムを所持している。" + Item.PrototypeHexCore + "はショップで1000Gを消費して3回アップグレードでき、その都度スキルを一回強化できる。" + Item.PrototypeHexCore + "はアイテムスロットを1つ占有し、売却することは出来ない。<br>" + Item.PrototypeHexCore + " : {1}を得る。<br>" + Item.TheHexCoremk1 + " : {2}、{3}を得る。<br>" + Item.TheHexCoremk2 + " : {4}、{5}を得る。<br>" + Item.PerfectHexCore + " : {6}、{7}を得る。")
                 .variable(-1, AP, level(3))
                 .variable(-2, AP, 20, 0, level(4))
                 .variable(-3, Mana, 150)
@@ -5331,10 +5331,10 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Vladimir(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
-                .passive(BounusHealth + "に比例して{1}を、" + AP + "に比例して{2}を得る。")
+        P.update(P514)
+                .passive("{1}と{2}を得る。")
                 .variable(1, AP, amplify(BounusHealth, 0.025))
-                .variable(2, Health, 0, 0, ap(1.4));
+                .variable(2, Health, ap(1.4));
 
         Q.update(P514)
                 .active("対象の敵ユニットに{1}を与え、{2}する。")
@@ -5344,7 +5344,7 @@ public interface SkillDefinition {
                 .range(600);
 
         W.update(P514)
-                .active("Vladimirが2秒間血の海に沈む。その間はターゲットされなくなり、{1}内にいる敵ユニットに0.5秒毎に{2}と{3}間の{4}を与え続ける。また、与えたダメージの12.5%Healthが回復する。")
+                .active("2秒間血の海に沈む。その間はターゲットされなくなり、{1}内にいる敵ユニットに0.5秒毎に{2}と{3}間の{4}を与え続ける。また、与えたダメージの12.5%Healthが回復する。")
                 .variable(1, Radius, 300)
                 .variable(2, MagicDamage, 20, 13.75, amplify(BounusHealth, 0.00375))
                 .variable(3, Time, 1)
@@ -5353,17 +5353,17 @@ public interface SkillDefinition {
                 .cd(26, -3);
 
         E.update(P514)
-                .active("{1}の敵ユニットに{2}を与える。使用する度にスタックが増加し、1スタックにつきこのスキルの基礎魔法DMとHPコストが25%増加し、{4}するく(最大4スタック)。スタックは10秒増加が無いと0になる。このスキルは周囲に敵ユニットがいなくても使用可能。")
+                .active("{1}の敵ユニットに{2}を与える。使用する度にスタックが1ずつ最大4まで増加し、10秒増加が無いと0になる。このスキルは周囲に敵ユニットがいなくても使用可能。")
                 .variable(1, Radius, 0)
-                .variable(2, MagicDamage, 60, 25, ap(0.45))
+                .variable(2, MagicDamage, 60, 25, ap(0.45), amplify(Stack, 15, 6.25))
                 .variable(4, RestoreHealthRatio, 4, 1)
-                .cost(Health, 30, 10)
+                .cost(Health, new Diff(30, 10, 5), amplify(Stack, 7.5, 2.5))
                 .cd(4.5)
-                .range(620);
+                .range(610);
 
         R.update(P514)
                 .active("指定地点の{1}の敵ユニットに疫病を付与し、その敵ユニットは5秒間受けるダメージが12%増加する。効果終了時に{2}を与える。ダメージ増加効果のため実際には{3}を与える。")
-                .variable(1, Radius, 300)
+                .variable(1, Radius, 150)
                 .variable(2, MagicDamage, 150, 100, ap(0.7))
                 .variable(3, MagicDamage, 168, 112, ap(0.784))
                 .cd(150, -15)
