@@ -1446,7 +1446,7 @@ public interface SkillDefinition {
 
         R.update(P514)
                 .passive(E + "のスタック最大値が{1}増加する。")
-                .variable(1, Value, 0, 1)
+                .variable(1, Value, 1, 1)
                 .active("MAP内の指定した地点に砲撃を行い、{3}の{2}。8秒間2秒に3回砲弾が降り注ぎ、{4}と0.5秒間{5}を与える。全段命中すると{6}。")
                 .variable(2, Status.Visionable)
                 .variable(3, Radius, 600)
