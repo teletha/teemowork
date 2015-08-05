@@ -1434,7 +1434,7 @@ public interface SkillDefinition {
         E.update(P514)
                 .passive("{1}毎に火薬樽が貯まる。最大値は{2}。")
                 .variable(1, Time, 18, -1)
-                .variable(2, Value, new Refer(R, 2, 1))
+                .variable(2, Value, new ReferPlus(R, 2, 1))
                 .active("60秒間火薬樽を指定の位置に設置する。樽はHP3を持ち、自身か敵チャンピオンが攻撃する若しくは{3}毎にHP1まで1ずつ減少する。HP1の樽を敵が攻撃すると樽は解除される。自身が攻撃すると爆発して、その攻撃が{4}の敵への" + ARPen + "60%を持つ物理範囲攻撃となり、2秒間{5}を与える。敵チャンピオンに対しては追加で{6}を与える。{7}に火薬樽がある場合、爆発は連鎖していく。")
                 .variable(3, Time, new Per6Level(2, -0.5))
                 .variable(4, Radius, 400)
