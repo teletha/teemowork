@@ -96,7 +96,7 @@ public class RiotChampionData {
     public static final Champion FiddleSticks = new Champion("Fiddlesticks", "フィドル", "FiddleSticks", 524.4F, 80.0F, 5.605F, 0.6F, 350.12F, 59.0F, 6.0F, 0.8F, 48.36F, 2.625F, 0.625F, 2.11F, 0.0F, 0.0F, 20.88F, 3.5F, 30.0F, 0.0F, 335.0F, 480.0F, new String[] {"Dread", "Terrify", "Drain", "Dark Wind", "Crowstorm"}, new String[] {"ドレッド", "テラー", "ドレイン", "ダークウィンド", "クロウストーム"}, SkillDefinition::FiddleSticks, false);
 
     /** Fiora Definition */
-    public static final Champion Fiora = new Champion("Fiora", "フィオラ", "Fiora", 592.8F, 85.0F, 6.84F, 0.8F, 287.2F, 40.0F, 7.59F, 0.5F, 59.876F, 3.2F, 0.672F, 3.0F, 0.0F, 0.0F, 24.88F, 3.5F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"Duelist", "Lunge", "Riposte", "Burst of Speed", "Blade Waltz"}, new String[] {"デュエリスト", "ファント", "リポスト", "スピードバースト", "ブレードワルツ"}, SkillDefinition::Fiora, false);
+    public static final Champion Fiora = new Champion("Fiora", "フィオラ", "Fiora", 570.0F, 80.0F, 8.25F, 0.55F, 300.0F, 40.0F, 8.0F, 0.7F, 60.0F, 2.5F, 0.625F, 3.2F, 0.0F, 0.0F, 27.0F, 3.5F, 32.1F, 1.25F, 345.0F, 150.0F, new String[] {"Duelist's Dance", "Lunge", "Riposte", "Bladework", "Grand Challenge"}, new String[] {"デュエリスト", "ファント", "game_spell_displayname_FioraW", "game_spell_displayname_FioraE", "game_spell_displayname_FioraR"}, SkillDefinition::Fiora, false);
 
     /** Fizz Definition */
     public static final Champion Fizz = new Champion("Fizz", "フィズ", "Fizz", 558.48F, 86.0F, 8.175F, 0.7F, 267.2F, 40.0F, 6.0F, 0.8F, 58.04F, 3.0F, 0.658F, 3.1F, 0.0F, 0.0F, 22.412F, 3.4F, 32.1F, 1.25F, 335.0F, 175.0F, new String[] {"Nimble Fighter", "Urchin Strike", "Seastone Trident", "Playful / Trickster", "Chum the Waters"}, new String[] {"シーファイター", "ウニトゲ・ストライク", "シートライデント", "プレイ/トリックスター", "フィッシング"}, SkillDefinition::Fizz, false);
@@ -216,7 +216,7 @@ public class RiotChampionData {
     public static final Champion Morgana = new Champion("Morgana", "モルガナ", "Morgana", 547.48F, 86.0F, 5.705F, 0.6F, 340.8F, 60.0F, 6.0F, 0.8F, 55.46F, 3.5F, 0.625F, 1.53F, 0.0F, 0.0F, 25.384F, 3.8F, 30.0F, 0.0F, 335.0F, 450.0F, new String[] {"Soul Siphon", "Dark Binding", "Tormented Soil", "Black Shield", "Soul Shackles"}, new String[] {"魂吸引", "闇の束縛", "苦悶の沼", "漆黒の盾", "魂の足枷"}, SkillDefinition::Morgana, false);
 
     /** Nami Definition */
-    public static final Champion Nami = new Champion("Nami", "ナミ", "Nami", 489.32F, 74.0F, 5.42F, 0.55F, 377.24F, 43.0F, 9.0F, 0.4F, 51.208F, 3.1F, 0.644F, 2.61F, 0.0F, 0.0F, 19.72F, 4.0F, 30.0F, 0.0F, 335.0F, 550.0F, new String[] {"Surging Tides", "Aqua Prison", "Ebb and Flow", "Tidecaller's Blessing", "Tidal Wave"}, new String[] {"激流", "水の監獄", "潮流", "潮使いの祝福", "大海嘯"}, SkillDefinition::Nami, false);
+    public static final Champion Nami = new Champion("Nami", "ナミ", "Nami", 489.32F, 74.0F, 5.42F, 0.55F, 377.24F, 43.0F, 9.0F, 0.4F, 51.208F, 3.1F, 0.644F, 2.61F, 0.0F, 0.0F, 19.72F, 4.0F, 30.0F, 0.0F, 335.0F, 550.0F, new String[] {"Surging Tides", "Aqua Prison", "Ebb and Flow", "Tidecaller's Blessing", "Tidal Wave"}, new String[] {"激流", "水の監獄", "潮流", "潮使いの祝福", "海神の舞"}, SkillDefinition::Nami, false);
 
     /** Nasus Definition */
     public static final Champion Nasus = new Champion("Nasus", "ナサス", "Nasus", 561.2F, 90.0F, 9.01F, 0.9F, 275.6F, 45.0F, 7.44F, 0.5F, 59.18F, 3.5F, 0.638F, 3.48F, 0.0F, 0.0F, 24.88F, 3.5F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"Soul Eater", "Siphoning Strike", "Wither", "Spirit Fire", "Fury of the Sands"}, new String[] {"魂の統括", "吸魂撃", "風化", "輪廻の炎", "憤怒の熱砂"}, SkillDefinition::Nasus, false);

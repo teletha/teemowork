@@ -71,20 +71,13 @@ public class Item extends Describable<ItemDescriptor> {
         item.cooldownReduction(10).abilityPower(40).manaRegenRatio(100).add(ability -> {
             ability.passive("{1}する。").variable(1, MSRatio, 8);
         }).add(ability -> {
-            ability.passive("他ユニットを回復したりシールドを付与すると、対象ユニットは6秒間{1}し、攻撃命中時に{2}を与える。")
-                    .variable(-1, ASRatio, 15)
-                    .variable(2, MagicDamage, 30);
+            ability.passive("他ユニットを回復したりシールドを付与すると、対象ユニットは6秒間{1}し、攻撃命中時に{2}を与える。").variable(-1, ASRatio, 15).variable(2, MagicDamage, 30);
         });
     });
 
     /** Athene's Unholy Grail */
     public static final Item AthenesUnholyGrail = new Item(RiotItemData.AthenesUnholyGrail, item -> {
-        item.abilityPower(60)
-                .manaRegenRatio(100)
-                .magicRegist(25)
-                .cooldownReduction(20)
-                .add(Ability.ManaFont)
-                .add(ability -> {
+        item.abilityPower(60).manaRegenRatio(100).magicRegist(25).cooldownReduction(20).add(Ability.ManaFont).add(ability -> {
             ability.passive("{2}毎にに{1}する。").variable(1, RestoreMana, 0, 0, amplify(Mana, 0.3)).variable(2, Takedown);
         });
     });
@@ -106,12 +99,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Banner of Command */
     public static final Item BannerOfCommand = new Item(RiotItemData.BannerofCommand, item -> {
-        item.abilityPower(60)
-                .cooldownReduction(10)
-                .health(200)
-                .magicRegist(20)
-                .add(Ability.Legion)
-                .add(Ability.Promote);
+        item.abilityPower(60).cooldownReduction(10).health(200).magicRegist(20).add(Ability.Legion).add(Ability.Promote);
     });
 
     /** Banshee's Veil */
@@ -307,9 +295,7 @@ public class Item extends Describable<ItemDescriptor> {
     /** Crystalline Flask */
     public static final Item CrystallineFlask = new Item(RiotItemData.CrystallineFlask, item -> {
         item.add(ability -> {
-            ability.active("チャージを1つ消費して12秒かけて{1}し、{2}する。")
-                    .variable(1, Status.RestoreHealth, 120)
-                    .variable(2, RestoreMana, 60);
+            ability.active("チャージを1つ消費して12秒かけて{1}し、{2}する。").variable(1, Status.RestoreHealth, 120).variable(2, RestoreMana, 60);
         }).add(ability -> {
             ability.passive("ショップを訪れる度に3つのチャージを得る。");
         });
@@ -776,12 +762,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Nomad's Medallion */
     public static final Item NomadsMedallion = new Item(RiotItemData.NomadsMedallion, item -> {
-        item.healthRegenRatio(25)
-                .manaRegenRatio(50)
-                .goldGeneration(2)
-                .set(MS, 10)
-                .add(Ability.GoldIncome)
-                .add(Ability.FavorLevel2);
+        item.healthRegenRatio(25).manaRegenRatio(50).goldGeneration(2).set(MS, 10).add(Ability.GoldIncome).add(Ability.FavorLevel2);
     });
 
     /** Null-Magic Mantle */
@@ -977,12 +958,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Ravenous Hydra */
     public static final Item RavenousHydra = new Item(RiotItemData.RavenousHydraMeleeOnly, item -> {
-        item.lifeSteal(12)
-                .attackDamage(75)
-                .healthRegenRatio(100)
-                .add(Ability.Cleave)
-                .add(Ability.Crescent)
-                .add(ability -> {
+        item.lifeSteal(12).attackDamage(75).healthRegenRatio(100).add(Ability.Cleave).add(Ability.Crescent).add(ability -> {
             ability.ununique().passive("このアイテムによって与えられたダメージはLife Stealの効果を受ける。");
         });
     });
@@ -1276,9 +1252,7 @@ public class Item extends Describable<ItemDescriptor> {
     /** Sunfire Cape */
     public static final Item SunfireCape = new Item(RiotItemData.SunfireCape, item -> {
         item.health(450).armor(45).add("猛火", ability -> {
-            ability.passive("{1}の敵に毎秒{2}を与える。")
-                    .variable(1, Radius, 400)
-                    .variable(2, MagicDamage, 25, 0, amplify(Lv, 1));
+            ability.passive("{1}の敵に毎秒{2}を与える。").variable(1, Radius, 400).variable(2, MagicDamage, 25, 0, amplify(Lv, 1));
         });
     });
 
@@ -1306,10 +1280,7 @@ public class Item extends Describable<ItemDescriptor> {
                 .add(Ability.GoldIncome)
                 .add(Ability.FavorLevel2)
                 .add(ability -> {
-            ability.active("{1}の味方は3秒間{2}する。{3}。")
-                    .variable(1, Radius, 600)
-                    .variable(2, MSRatio, 40)
-                    .variable(3, ItemCD, 40);
+            ability.active("{1}の味方は3秒間{2}する。{3}。").variable(1, Radius, 600).variable(2, MSRatio, 40).variable(3, ItemCD, 40);
         });
     });
 
@@ -1329,8 +1300,7 @@ public class Item extends Describable<ItemDescriptor> {
     /** Thornmail */
     public static final Item Thornmail = new Item(RiotItemData.Thornmail, item -> {
         item.armor(100).add(ability -> {
-            ability.passive("敵の通常攻撃受けるとその攻撃者に{1}を与える。")
-                    .variable(1, MagicDamage, 0, 0, amplify(ReceivedOriginalDamageRatio, 30));
+            ability.passive("敵の通常攻撃受けるとその攻撃者に{1}を与える。").variable(1, MagicDamage, 0, 0, amplify(ReceivedOriginalDamageRatio, 30));
         });
     });
 
@@ -1418,10 +1388,7 @@ public class Item extends Describable<ItemDescriptor> {
     /** Youmuu's Ghostblade */
     public static final Item YoumuusGhostblade = new Item(RiotItemData.YoumuusGhostblade, item -> {
         item.attackDamage(30).cooldownReduction(10).critical(15).add(Ability.ARPen20).add(ability -> {
-            ability.active("6秒間{1}と{2}を得る。{3}。")
-                    .variable(1, MSRatio, 20)
-                    .variable(2, ASRatio, 40)
-                    .variable(3, ItemCD, 45);
+            ability.active("6秒間{1}と{2}を得る。{3}。").variable(1, MSRatio, 20).variable(2, ASRatio, 40).variable(3, ItemCD, 45);
         });
     });
 
@@ -1433,7 +1400,7 @@ public class Item extends Describable<ItemDescriptor> {
     /** Zeke's Herald */
     public static final Item ZekesHarbinger = new Item(RiotItemData.ZekesHarbinger, item -> {
         item.mana(250).armor(30).abilityPower(50).cooldownReduction(10).add(ability -> {
-            ability.passive("{1}にConduitを使用した味方がいる場合、チャージを生成する。攻撃もしくはスキルを使用することで追加のチャージを生成する。最大100チャージまで貯まり、8秒間持続する。最大チャージ時にダメージを与えると、全てのチャージを消費して6秒間あなたと対象の味方は{2}し{3}する。")
+            ability.passive("{1}にConduitを使用した味方がいる場合、チャージを生成する。攻撃もしくはスキルを使用することで追加のチャージを生成する。最大100チャージまで貯まり、8秒間持続する。最大チャージ時にダメージを与えると、全てのチャージを消費して8秒間あなたと対象の味方は{2}し{3}する。")
                     .variable(1, Radius, 1000)
                     .variable(2, APRatio, 20)
                     .variable(3, Critical, 50);
