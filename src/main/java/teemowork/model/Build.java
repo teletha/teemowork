@@ -84,9 +84,9 @@ public class Build extends Publishable implements StatusCalculator {
             skillLevel.set(i, champion.skills[i].getMinLevel());
         }
 
-        items[0] = Item.Bloodthirster;
-        items[1] = Item.LongSword;
-        items[2] = Item.LongSword;
+        // items[0] = Item.Bloodthirster;
+        // items[1] = Item.LongSword;
+        // items[2] = Item.LongSword;
         // items[3] = Item.SorcerersShoes;
         // items[4] = Item.WarmogsArmor;
         // items[5] = Item.TrinityForce;
