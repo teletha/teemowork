@@ -76,11 +76,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         display.block();
         box.size(SkillIconSize, px);
         border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
-        background.image(BackgroundImage.url(skill.getIcon())
-                .horizontal(skill.getIconPosition())
-                .cover()
-                .borderBox()
-                .noRepeat());
+        background.image(BackgroundImage.url(skill.getIcon()).horizontal(skill.getIconPosition()).cover().borderBox().noRepeat());
     };
 
     static Style LevelBox = () -> {
@@ -96,8 +92,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         flexItem.grow(1);
         box.height(LevelBoxHeight, px);
         border.left.solid().color(Black).width(1, px);
-        background.image(BackgroundImage
-                .of(linear(rgba(240, 192, 28, state ? 1 : 0.5), rgba(160, 123, 1, state ? 1 : 0.5))));
+        background.image(BackgroundImage.of(linear(rgba(240, 192, 28, state ? 1 : 0.5), rgba(160, 123, 1, state ? 1 : 0.5))));
     };
 
     /**
@@ -192,7 +187,7 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         display.block();
         box.size(22, px);
         font.size(20, px).color(240, 240, 240).weight.bold().family("Arial");
-        text.align.center().shadow(shadow().blurRadius(1, px).color(rgba(0, 0, 0, 1))).unselectable();
+        text.align.center().unselectable().outline(rgb(240, 240, 240), 0.8);
         position.absolute().bottom(4, px).right(4, px);
         cursor.pointer();
     };
