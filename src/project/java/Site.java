@@ -14,6 +14,7 @@ import java.nio.file.Files;
 
 import bee.api.Command;
 import bee.api.Task;
+import booton.util.HTMLWriter;
 import kiss.I;
 import kiss.XML;
 
@@ -43,7 +44,7 @@ public class Site extends Task {
         for (XML css : xml.find("link[href=\"application.css\"]")) {
             css.attr("href", "site.css");
         }
-        xml.to(Files.newBufferedWriter(I.locate("index.html"), StandardCharsets.UTF_8));
+        xml.to(new HTMLWriter(Files.newBufferedWriter(I.locate("index.html"), StandardCharsets.UTF_8)));
 
         ui.talk("Update application related files, plz commit these files.");
     }
