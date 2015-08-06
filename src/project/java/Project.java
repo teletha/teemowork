@@ -15,9 +15,7 @@ public class Project extends bee.api.Project {
         require("npc", "booton", "0.1");
         require("org.glassfish", "javax.json", "1.0.4");
         require("icy.manipulator", "IcyManipulator", "0.1");
-
-        require("com.google.code.gson", "gson", "2.3.1");
-        require("org.eclipse.mylyn.github", "org.eclipse.egit.github.core", "4.0.0.201506090130-r");
+        require("org.eclipse.jgit", "org.eclipse.jgit", "4.0.1.201506240215-r");
 
         repository("https://repo.eclipse.org/content/repositories/egit-releases/");
     }
