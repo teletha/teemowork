@@ -18,10 +18,17 @@ import kiss.I;
 import kiss.XML;
 
 /**
- * @version 2015/08/06 20:35:56
+ * @version 2015/08/06 23:36:34
  */
 public class Site extends Task {
 
+    /**
+     * <p>
+     * Update application related files.
+     * </p>
+     * 
+     * @throws Exception
+     */
     @Command("Update application related files.")
     public void update() throws Exception {
         I.copy(I.locate("application.js"), I.locate("site.js"));
