@@ -5,8 +5,8 @@
 /.settings/
 target/
 
+application.html
 application.js
 application.css
-index.html
 live.js
 /.apt_generated/

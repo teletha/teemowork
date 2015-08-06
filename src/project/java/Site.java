@@ -9,42 +9,35 @@
  *          http://opensource.org/licenses/mit-license.php
  */
 
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
-
-import org.eclipse.jgit.api.AddCommand;
-import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.lib.Repository;
-import org.eclipse.jgit.lib.RepositoryBuilder;
 
 import bee.api.Command;
 import bee.api.Task;
 import kiss.I;
+import kiss.XML;
 
 /**
  * @version 2015/08/06 20:35:56
  */
 public class Site extends Task {
 
-    @Command("Upload application to the Github Pages.")
-    public void upload() throws Exception {
-        Path gitDirectory = I.locate(".git").toAbsolutePath();
-        System.out.println(gitDirectory.toAbsolutePath());
+    @Command("Update application related files.")
+    public void update() throws Exception {
+        I.copy(I.locate("application.js"), I.locate("site.js"));
+        I.copy(I.locate("application.css"), I.locate("site.css"));
 
-        if (Files.notExists(gitDirectory)) {
-            throw new Error(".git directory is not found.");
+        XML xml = I.xml(I.locate("application.html"));
+
+        for (XML js : xml.find("script[src='application.js']")) {
+            js.attr("src", "site.js");
         }
 
-        Repository repository = new RepositoryBuilder().readEnvironment().findGitDir(gitDirectory.toFile()).build();
-
-        try (Git git = new Git(repository)) {
-            AddCommand add = git.add();
-            add.addFilepattern("index.html");
-            add.addFilepattern("application.js");
-            add.addFilepattern("apllication.css");
-            add.call();
-
-            git.commit().setMessage("Update application.").call();
+        for (XML css : xml.find("link[href='application.css']")) {
+            css.attr("href", "site.css");
         }
+        xml.to(Files.newBufferedWriter(I.locate("index.html"), StandardCharsets.UTF_8));
+
+        ui.talk("Update application related files, plz commit these files.");
     }
 }
