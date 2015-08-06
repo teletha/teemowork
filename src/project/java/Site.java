@@ -28,13 +28,14 @@ public class Site extends Task {
 
     @Command("Upload application to the Github Pages.")
     public void upload() throws Exception {
-        Path gitDirectory = I.locate(".git");
+        Path gitDirectory = I.locate(".git").toAbsolutePath();
+        System.out.println(gitDirectory.toAbsolutePath());
 
         if (Files.notExists(gitDirectory)) {
             throw new Error(".git directory is not found.");
         }
 
-        Repository repository = new RepositoryBuilder().setGitDir(gitDirectory.toFile()).readEnvironment().findGitDir().build();
+        Repository repository = new RepositoryBuilder().readEnvironment().findGitDir(gitDirectory.toFile()).build();
 
         try (Git git = new Git(repository)) {
             AddCommand add = git.add();
