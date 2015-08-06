@@ -80,7 +80,7 @@ public enum Status {
     // ==================================================
     // My Health Reference
     // ==================================================
-    CurrentHealthRatio("現在のHealth力"),
+    CurrentHealthRatio("現在のHealth"),
 
     MissingHealthRatio("失ったHealth"),
 
