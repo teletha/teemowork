@@ -29,11 +29,11 @@ public class Site extends Task {
 
         XML xml = I.xml(I.locate("application.html"));
 
-        for (XML js : xml.find("script[src='application.js']")) {
+        for (XML js : xml.find("script[src=\"application.js\"]")) {
             js.attr("src", "site.js");
         }
 
-        for (XML css : xml.find("link[href='application.css']")) {
+        for (XML css : xml.find("link[href=\"application.css\"]")) {
             css.attr("href", "site.css");
         }
         xml.to(Files.newBufferedWriter(I.locate("index.html"), StandardCharsets.UTF_8));
