@@ -10,7 +10,6 @@
 package teemowork.model;
 
 import static teemowork.model.Status.*;
-import static teemowork.model.Version.*;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -375,33 +374,6 @@ public class Item extends Describable<ItemDescriptor> {
         item.cooldownReduction(10).attackDamage(80).lifeSteal(10).add(ability -> {
             ability.passive("通常攻撃で与えたダメージの2％～8％をマナとして回復する。この効果は失ったマナ量に比例して増える。");
         });
-    });
-
-    /** Face of the Mountain */
-    public static final Item FaceOfTheMountain = new Item(RiotItemData.FaceoftheMountain, item -> {
-        item.health(500)
-                .healthRegenRatio(100)
-                .cooldownReduction(10)
-                .add(Ability.GoldIncome)
-                .add(Ability.SpoilsofWarLevel3)
-                .add("Deadly Phalanx", ability -> {
-            ability.active("あなたは{1}を失う。対象の味方は4秒間{2}を得る。また、4秒後にその味方の周囲の敵に{3}を与える。{4}")
-                    .variable(1, CurrentHealthRatio, 20)
-                    .variable(2, Shield, 0, 0, amplify(Health, 0.1))
-                    .variable(3, MagicDamage, 0, 0, amplify(Health, 0.1))
-                    .variable(4, ItemCD, 60)
-
-                    .update(P403)
-                    .active("対象の味方は4秒間{2}を得る。また、4秒後にその味方の周囲の敵に{3}を与える。{4}")
-                    .variable(1, HealthRatio, 10)
-                    .variable(2, Shield, 0, 0, amplify(Health, 0.1))
-                    .variable(3, MagicDamage, 0, 0, amplify(TargetAD, 1), amplify(TargetAP, 0.3))
-                    .variable(4, ItemCD, 60);
-        })
-
-                .update(P403)
-
-        ;
     });
 
     /** Faerie Charm */

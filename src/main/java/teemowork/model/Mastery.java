@@ -9,8 +9,6 @@
  */
 package teemowork.model;
 
-import static teemowork.model.Version.*;
-
 /**
  * @version 2013/03/13 14:34:14
  */
@@ -118,9 +116,6 @@ public abstract class Mastery extends Describable<MasteryDescriptor> {
      * @return
      */
     public static Mastery[] getMastery(Version version) {
-        if (version.isLessThan(P314)) {
-            return MasterySeason3.Masteries;
-        }
         return MasterySeason4.Masteries;
     }
 
@@ -133,9 +128,6 @@ public abstract class Mastery extends Describable<MasteryDescriptor> {
      * @return
      */
     public static Mastery[][][] getMasteryTree(Version version) {
-        if (version.isLessThan(P314)) {
-            return MasterySeason3.Trees;
-        }
         return MasterySeason4.Trees;
     }
 }

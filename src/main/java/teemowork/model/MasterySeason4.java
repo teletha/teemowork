@@ -10,7 +10,6 @@
 package teemowork.model;
 
 import static teemowork.model.Status.*;
-import static teemowork.model.Version.*;
 
 /**
  * @version 2013/03/13 14:34:14
@@ -92,12 +91,9 @@ public class MasterySeason4 extends Mastery {
         MentalForce.update().passive("{1}を得る。").variable(1, AP, 0, 0, amplify(Lv, 0.33, 0.28));
         Feast.update().passive("敵を倒す毎に{1}し{2}する。").variable(1, RestoreHealth, 2).variable(2, RestoreMana, 1);
         SpellWeaving.update().passive("通常攻撃でChampionにダメージを与えると、5秒間自身のスキルの与ダメージが1%増加する。この効果は3回までスタックする。");
-        MartialMastery.update().passive("{1}を得る。").variable(1, AD, 5).update(P315).variable(1, AD, 4);
-        ArcaneMastery.update().passive("{1}を得る。").variable(1, AP, 8).update(P315).variable(1, AP, 6);
-        Executioner.update()
-                .passive("対象のHealthが{1}以下の時、{2}する。")
-                .variable(1, Percentage, 20, 15)
-                .variable(2, DamageRatio, 5);
+        MartialMastery.update().passive("{1}を得る。").variable(1, AD, 4);
+        ArcaneMastery.update().passive("{1}を得る。").variable(1, AP, 6);
+        Executioner.update().passive("対象のHealthが{1}以下の時、{2}する。").variable(1, Percentage, 20, 15).variable(2, DamageRatio, 5);
         BladeWeaving.update().passive("スキルでChampionにダメージを与えると、5秒間自身の通常攻撃の与ダメージが1%増加する。この効果は3回までスタックする。");
         Warlord.update().passive("{1}を得る。").variable(1, AD, 0, 0, amplify(BounusAD, 0.02, 0.015));
         Archmage.update().passive("{1}する。").variable(1, APRatio, 2, 1.5);
@@ -181,31 +177,21 @@ public class MasterySeason4 extends Mastery {
                 .variable(1, DamageReduction, 2)
                 .variable(2, DamageReduction, 1);
         VeteranScars.update().passive("{1}を得る。").variable(1, Health, 12, 12);
-        BladedArmor.update()
-                .passive("攻撃してきたモンスターを出血状態にし、毎秒{1}を与える。")
-                .variable(1, TrueDamage, 0, 0, amplify(TargetCurrentHealthRatio, 1));
+        BladedArmor.update().passive("攻撃してきたモンスターを出血状態にし、毎秒{1}を与える。").variable(1, TrueDamage, 0, 0, amplify(TargetCurrentHealthRatio, 1));
         Oppression.update().passive("スタン,スロー, タウント, フィアー, スネア, 打ち上げ, ノックバック,もしくはサプレッションを受けている敵ユニットから受ける被ダメージが3%減少する。");
         Juggernaut.update().passive("{1}する。").variable(1, HealthRatio, 3);
         Hardiness.update().passive("{1}を得る。").variable(1, AR, 2, 1.5);
         Resistance.update().passive("{1}を得る。").variable(1, MR, 2, 1.5);
-        Perseverance.update()
-                .passive("{1}を得る。")
-                .variable(1, Hreg, 0, 0, amplify(MissingHealthPercentage, 1, 1))
-                .update(P315)
-                .variable(1, Hreg, 0, 0, amplify(MissingHealthPercentage, 0.7, 0.65))
-                .update(P402)
-                .variable(1, Hreg, 0, 0, amplify(MissingHealthPercentage, 0.35, 0.325));
+        Perseverance.update().passive("{1}を得る。").variable(1, Hreg, 0, 0, amplify(MissingHealthPercentage, 0.35, 0.325));
         Swiftness.update().passive("{1}する。").variable(1, MSSlowReductionRatio, 10);
         ReinforcedArmor.update().passive("クリティカルヒットから受ける{1}する。").variable(1, DamageReductionRatio, 10);
         Evasive.update().passive("AoEスキルから受ける{1}する。").variable(1, DamageReductionRatio, 10);
         SecondWind.update().passive("Healthが25%以下の時、{1}する。").variable(1, RestoreHealthRatio, 10);
         LegendaryGuardian.update()
                 .passive("{1}に敵Championがいる場合、{2}と{3}を得る。")
-                .variable(1, Radius, 900)
+                .variable(1, Radius, 700)
                 .variable(2, AR, 0, 0, amplify(EnemyChampion, 1, 1))
-                .variable(3, MR, 0, 0, amplify(EnemyChampion, 0.5, 0.5))
-                .update(P315)
-                .variable(1, Radius, 700);
+                .variable(3, MR, 0, 0, amplify(EnemyChampion, 0.5, 0.5));
         RunicShield.update().passive("ゲーム開始時とRespawnする時、{1}を得る。").variable(1, Shield, 50);
         Tenacious.update().passive("{1}を得る。").variable(1, Tenacity, 15);
     }
@@ -284,10 +270,7 @@ public class MasterySeason4 extends Mastery {
                 .passive("Melee : キルもしくはアシストを取ると{1}を得る。<br>Ranged : 敵Championに通常攻撃でダメージを与える毎に{2}を得る。CDは5秒。")
                 .variable(1, Gold, 15)
                 .variable(2, Gold, 3);
-        Intelligence.update()
-                .passive("{1}を得る。また、アイテムのActiveのCDが{2}減少する。")
-                .variable(1, CDR, 2, 1.5)
-                .variable(2, Percentage, 4, 3);
+        Intelligence.update().passive("{1}を得る。また、アイテムのActiveのCDが{2}減少する。").variable(1, CDR, 2, 1.5).variable(2, Percentage, 4, 3);
         Wanderer.update().passive("非戦闘時、{1}する。").variable(1, MSRatio, 5);
     }
 
@@ -296,19 +279,17 @@ public class MasterySeason4 extends Mastery {
      */
     static final Mastery[][][] Trees = {
             // ============ Offense ============ //
-            { {DoubleEdgedSword, Fury, Sorcery, Butcher}, {ExposeWeakness, BruteForce, MentalForce, Feast},
-                    {SpellWeaving, MartialMastery, ArcaneMastery, Executioner},
-                    {BladeWeaving, Warlord, Archmage, DangerousGame}, {Frenzy, DevastatingStrikes, null, ArcaneBlade},
-                    {null, Havoc, null, null}},
+            {{DoubleEdgedSword, Fury, Sorcery, Butcher}, {ExposeWeakness, BruteForce, MentalForce, Feast},
+                    {SpellWeaving, MartialMastery, ArcaneMastery, Executioner}, {BladeWeaving, Warlord, Archmage, DangerousGame},
+                    {Frenzy, DevastatingStrikes, null, ArcaneBlade}, {null, Havoc, null, null}},
 
             // ============ Defense ============ //
-            { {Block, Recovery, EnchantedArmor, ToughSkin}, {Unyielding, VeteranScars, null, BladedArmor},
-                    {Oppression, Juggernaut, Hardiness, Resistance},
-                    {Perseverance, Swiftness, ReinforcedArmor, Evasive},
+            {{Block, Recovery, EnchantedArmor, ToughSkin}, {Unyielding, VeteranScars, null, BladedArmor},
+                    {Oppression, Juggernaut, Hardiness, Resistance}, {Perseverance, Swiftness, ReinforcedArmor, Evasive},
                     {SecondWind, LegendaryGuardian, RunicShield, null}, {null, Tenacious, null, null}},
 
             // ============ Utility ============ //
-            { {Phasewalker, FleetOfFoot, Meditation, Scout}, {null, SummonersInsight, StrengthOfSpirit, Alchemist},
+            {{Phasewalker, FleetOfFoot, Meditation, Scout}, {null, SummonersInsight, StrengthOfSpirit, Alchemist},
                     {Greed, RunicAffinity, Vampirism, CulinaryMaster}, {Scavenger, Wealth, ExpandedMind, Inspiration},
                     {null, Bandit, Intelligence, null}, {null, Wanderer, null, null}}};
 
@@ -348,6 +329,7 @@ public class MasterySeason4 extends Mastery {
      * 
      * @return
      */
+    @Override
     public String getIcon() {
         return "src/main/resources/teemowork/mastery/s4/" + system + ".png";
     }
@@ -359,6 +341,7 @@ public class MasterySeason4 extends Mastery {
      * 
      * @return
      */
+    @Override
     public String getSpriteImage() {
         return "src/main/resources/teemowork/masteryS4.jpg";
     }

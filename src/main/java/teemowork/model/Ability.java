@@ -10,7 +10,6 @@
 package teemowork.model;
 
 import static teemowork.model.Status.*;
-import static teemowork.model.Version.*;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -20,16 +19,6 @@ import java.util.function.Consumer;
  * @version 2013/12/01 12:39:34
  */
 public class Ability extends Describable<AbilityDescriptor> {
-
-    /** The ability. */
-    public static final Ability AegisValor = new Ability("Valor", ability -> {
-        ability.aura("{1}の味方ユニットは{2}を得る。味方ミニオンは与えるダメージが15%増加する。")
-                .variable(1, Radius)
-                .variable(2, Hreg, 10)
-
-                .update(P314)
-                .passive("{1}の味方ミニオンは与えるダメージが15%増加する。");
-    });
 
     /** The ability. */
     public static final Ability Aid = new Ability("Aid", ability -> {
@@ -101,15 +90,6 @@ public class Ability extends Describable<AbilityDescriptor> {
                 .variable(2, AR, 10)
                 .variable(3, MR, 25)
                 .variable(4, Hreg, 10);
-    });
-
-    /** The ability. */
-    public static final Ability Butcher = new Ability("Butcher", ability -> {
-        ability.passive("中立モンスターに対するダメージが{1}上昇する。")
-                .variable(1, Percentage, 25)
-
-                .update(P308)
-                .variable(1, Percentage, 30);
     });
 
     /** The ability. */
@@ -303,24 +283,17 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability Legion = new Ability("Legion", ability -> {
-        ability.aura("{1}の味方ユニットは{2}得て、{3}する。")
-                .variable(1, Radius, 1100)
-                .variable(2, MR, 20)
-                .variable(3, HregRatio, 75);
+        ability.aura("{1}の味方ユニットは{2}得て、{3}する。").variable(1, Radius, 1100).variable(2, MR, 20).variable(3, HregRatio, 75);
     });
 
     /** The ability. */
     public static final Ability LifelineLevel1 = new Ability("ライフライン", ability -> {
-        ability.passive("魔法ダメージを受けて自身のHealthが30%以下になった場合、5秒間{1}を得る。{2}。")
-                .variable(1, MagicShield, 250)
-                .variable(2, ItemCD, 90);
+        ability.passive("魔法ダメージを受けて自身のHealthが30%以下になった場合、5秒間{1}を得る。{2}。").variable(1, MagicShield, 250).variable(2, ItemCD, 90);
     });
 
     /** The ability. */
     public static final Ability LifelineLevel2 = new Ability("ライフライン", ability -> {
-        ability.passive("魔法ダメージを受けて自身のHealthが30%以下になった場合、5秒間{1}を得る。{2}。")
-                .variable(1, MagicShield, 400)
-                .variable(2, ItemCD, 90);
+        ability.passive("魔法ダメージを受けて自身のHealthが30%以下になった場合、5秒間{1}を得る。{2}。").variable(1, MagicShield, 400).variable(2, ItemCD, 90);
     });
 
     /** The ability. */
@@ -334,24 +307,8 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
-    public static final Ability MaimForMadredsRazors = new Ability("Maim", ability -> {
-        ability.passive("ミニオンやモンスターに対して通常攻撃をした際、25%の確率で{1}を与える。")
-                .variable(1, MagicDamage, 500)
-
-                .update(P308)
-                .passive("モンスターへ通常攻撃をする度に{1}を与える。")
-                .variable(1, MagicDamage, 60)
-
-                .update(P314)
-                .passive("モンスターへ通常攻撃をする度に{1}を与え、{2}する。")
-                .variable(2, RestoreHealth, 5);
-    });
-
-    /** The ability. */
     public static final Ability MaladyPassive = new Ability(ability -> {
-        ability.passive("通常攻撃に{1}と{2}を与える。MR減少は7回までスタックし、8秒間持続する。")
-                .variable(1, MagicDamage, 15, 0, ap(0.1))
-                .variable(2, MRReduction, 4);
+        ability.passive("通常攻撃に{1}と{2}を与える。MR減少は7回までスタックし、8秒間持続する。").variable(1, MagicDamage, 15, 0, ap(0.1)).variable(2, MRReduction, 4);
     });
 
     /** The ability. */
@@ -387,27 +344,6 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
-    public static final Ability ManaWarp = new Ability("Mana Warp", ability -> {
-        ability.aura("{1}の味方Championは{2}を得る。")
-                .variable(1, Radius, 1100)
-                .variable(2, Hreg, 6)
-
-                .update(P307)
-                .variable(2, Hreg, 5);
-    });
-
-    /** The ability. */
-    public static final Ability MikaelsCrucibleActive = new Ability(ability -> {
-        ability.active("対象の味方Champion({1})のStun, Snare, Taunt, Fear, Silence, Slowを全て解除し、{2}する。{3}")
-                .variable(1, Radius, 800)
-                .variable(2, RestoreHealth, 150, 0, amplify(TargetMissingHealthRatio, 15))
-                .variable(3, ItemCD, 180)
-
-                .update(P307)
-                .variable(2, RestoreHealth, 150, 0, amplify(TargetMaxHealthRatio, 10));
-    });
-
-    /** The ability. */
     public static final Ability MorellonomiconPassive = new Ability(ability -> {
         ability.passive("HPが40%以下の敵Championに魔法DMを与えると{1}を与える。").variable(1, Wounds, 4);
     });
@@ -415,17 +351,6 @@ public class Ability extends Describable<AbilityDescriptor> {
     /** The ability. */
     public static final Ability OhmwreckerActive = new Ability(ability -> {
         ability.active("一番近くのTowerからの攻撃を2.5秒間防ぐ。この効果は同一のTowerに対して7.5秒に一度しか使えない。{1}。").variable(1, ItemCD, 120);
-    });
-
-    /** The ability. */
-    public static final Ability OraclesElixirActive = new Ability(ability -> {
-        ability.ununique()
-                .active("このアイテムを消費して{1}のStealth状態の敵が味方に見えるようになる。5分経つか、死亡すると効果が切れる。")
-                .variable(1, Radius, 750)
-
-                .update(P309)
-                .active("このアイテムを消費して{1}のStealth状態の敵が味方に見えるようになる。4分経つと効果が切れる。")
-                .variable(1, Radius, 600);
     });
 
     /** The ability. */
@@ -445,9 +370,7 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability Rage = new Ability("疾風怒濤", ability -> {
-        ability.passive("通常攻撃をする毎に2秒間{1}する。敵ユニットを倒すと2秒間{2}する。遠隔攻撃型のチャンピオンの場合、この移動速度ボーナスは半分になる。")
-                .variable(1, MS, 20)
-                .variable(2, MS, 60);
+        ability.passive("通常攻撃をする毎に2秒間{1}する。敵ユニットを倒すと2秒間{2}する。遠隔攻撃型のチャンピオンの場合、この移動速度ボーナスは半分になる。").variable(1, MS, 20).variable(2, MS, 60);
     });
 
     /** The ability. */
@@ -500,27 +423,17 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability SpellbladeSheen = new Ability("追撃", ability -> {
-        ability.passive("スキル使用後の通常攻撃に、{1}を付与する。{2}。")
-                .variable(1, PhysicalDamage, 0, 0, amplify(BaseAD, 1))
-                .variable(2, ItemCD, 1.5);
+        ability.passive("スキル使用後の通常攻撃に、{1}を付与する。{2}。").variable(1, PhysicalDamage, 0, 0, amplify(BaseAD, 1)).variable(2, ItemCD, 1.5);
     });
 
     /** The ability. */
     public static final Ability SpellbladeTrinityForce = new Ability("追撃", ability -> {
-        ability.passive("スキル使用後の通常攻撃に、{1}を付与する。{2}。")
-                .variable(1, PhysicalDamage, 0, 0, amplify(BaseAD, 2))
-                .variable(2, ItemCD, 1.5)
-
-                .update(P310A)
-                .variable(1, PhysicalDamage, 0, 0, amplify(BaseAD, 2));
+        ability.passive("スキル使用後の通常攻撃に、{1}を付与する。{2}。").variable(1, PhysicalDamage, 0, 0, amplify(BaseAD, 2)).variable(2, ItemCD, 1.5);
     });
 
     /** The ability. */
     public static final Ability ShurelyasReverieAvtive = new Ability(ability -> {
-        ability.active("{1}の味方Championは3秒間{2}する。{3}。")
-                .variable(1, Radius, 600)
-                .variable(2, MSRatio, 40)
-                .variable(3, ItemCD, 60);
+        ability.active("{1}の味方Championは3秒間{2}する。{3}。").variable(1, Radius, 600).variable(2, MSRatio, 40).variable(3, ItemCD, 60);
     });
 
     /** The ability. */
@@ -609,18 +522,6 @@ public class Ability extends Describable<AbilityDescriptor> {
     /** The ability. */
     public static final Ability ZekesHeraldAura = new Ability(ability -> {
         ability.aura("{1}の味方Championは{2}と{3}を得る。").variable(1, Radius, 1200).variable(2, AD, 20).variable(3, LS, 10);
-    });
-
-    /** The ability. */
-    public static final Ability Spirit = new Ability(ability -> {
-        ability.passive("モンスターにダメージを与えると{1}し{2}する。(範囲攻撃の場合は効果が半減する)")
-                .variable(1, RestoreHealth, 0, 0, amplify(DealtDamage, 0.08))
-                .variable(2, RestoreMana, 0, 0, amplify(DealtDamage, 0.04))
-
-                .update(P403)
-                .passive("モンスターにダメージを与えると{1}し{2}する。")
-                .variable(1, RestoreHealth, 0, 0, amplify(DealtDamage, 0.06))
-                .variable(2, RestoreMana, 0, 0, amplify(DealtDamage, 0.03));
     });
 
     // lazy initialization

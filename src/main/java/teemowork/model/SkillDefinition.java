@@ -665,8 +665,7 @@ public interface SkillDefinition {
         P.update(P514)
                 .passive("通常攻撃{1}回毎にダメージが増加する(ミニオンには150%増加、チャンピオンには50%増加して{2}を付与、建物への攻撃は無効)。茂みから通常攻撃を行うと2回分としてカウントされる。")
                 .variable(1, Count, new Per6Level(7, -1))
-                .variable(2, BounusARPenRatio, 50)
-                .update(P307);
+                .variable(2, BounusARPenRatio, 50);
 
         Q.update(P514)
                 .active("1秒詠唱後、指定方向に貫通する弾を発射し当たった敵ユニットに{1}を与える。ダメージは敵に当たるごとに10%減少していき最小で{2}を与える。")
