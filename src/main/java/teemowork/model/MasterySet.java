@@ -10,6 +10,7 @@
 package teemowork.model;
 
 import static teemowork.model.Mastery.*;
+
 import jsx.event.Publishable;
 
 /**
@@ -168,10 +169,10 @@ public class MasterySet extends Publishable {
      */
     public int getSum(int type) {
         switch (type) {
-        case MasterySeason3.Offense:
+        case MasterySeason4.Offense:
             return offense;
 
-        case MasterySeason3.Defense:
+        case MasterySeason4.Defense:
             return defense;
 
         default:

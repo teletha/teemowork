@@ -11,6 +11,7 @@ package teemowork;
 
 import static js.lang.Global.*;
 import static teemowork.MasteryBuilderStyle.*;
+
 import js.dom.DocumentFragment;
 import js.dom.Element;
 import js.dom.Image;
@@ -25,7 +26,7 @@ import kiss.I;
 import teemowork.model.Describable;
 import teemowork.model.DescriptionView;
 import teemowork.model.Mastery;
-import teemowork.model.MasterySeason3;
+import teemowork.model.MasterySeason4;
 import teemowork.model.MasterySet;
 import teemowork.model.Version;
 
@@ -134,9 +135,9 @@ public class MasteryBuilder extends Page {
     public void receive() {
         reset.label(String.valueOf(30 - masterySet.getSum()));
 
-        offense.text("OFFENSE　" + masterySet.getSum(MasterySeason3.Offense));
-        defense.text("DEFENSE　" + masterySet.getSum(MasterySeason3.Defense));
-        utility.text("UTILITY　" + masterySet.getSum(MasterySeason3.Utility));
+        offense.text("OFFENSE　" + masterySet.getSum(MasterySeason4.Offense));
+        defense.text("DEFENSE　" + masterySet.getSum(MasterySeason4.Defense));
+        utility.text("UTILITY　" + masterySet.getSum(MasterySeason4.Utility));
 
         history.replaceState("", "", "#" + getPageId());
     }
