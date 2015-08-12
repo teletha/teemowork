@@ -95,9 +95,6 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         background.image(BackgroundImage.of(linear(rgba(240, 192, 28, state ? 1 : 0.5), rgba(160, 123, 1, state ? 1 : 0.5))));
     };
 
-    /**
-     * @version 2013/02/02 11:27:13
-     */
     static Style IconBox = () -> {
         margin.right(SkillIconSize / 5, px);
         cursor.pointer();
@@ -107,6 +104,11 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
     static Style Name = () -> {
         margin.right(0.5, em);
         font.weight.bold();
+    };
+
+    static Style VersionDisplay = () -> {
+        margin.left(1, em);
+        font.weight.bold().color(rgb(190, 190, 190));
     };
 
     static Style Info = () -> {
@@ -119,9 +121,6 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
         font.size.smaller();
     };
 
-    /**
-     * @version 2013/02/06 20:03:25
-     */
     static Style ComputedValue = () -> {
         font.weight.bolder();
     };

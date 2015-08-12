@@ -37,16 +37,15 @@ import teemowork.model.variable.VariableResolver;
 public class ChampionDetailWidget extends Widget1<Build> {
 
     /** The displayable status. */
-    private static final Status[] VISIBLE = {Health, Hreg, Mana, Mreg, AD, ARPen, AS, LS, Critical, AP, MRPen, CDR, SV,
-            AR, MR, MS, Range, Tenacity};
+    private static final Status[] VISIBLE = {Health, Hreg, Mana, Mreg, AD, ARPen, AS, LS, Critical, AP, MRPen, CDR, SV, AR, MR, MS, Range,
+            Tenacity};
 
     /** The your custom build. */
     private final Build build = model1;
 
     public final Events<Champion> levelUp = on(Click, ChampionIconBox).merge(on(MouseWheelUp, ChampionIconBox));
 
-    public final Events<Champion> levelDown = on(ClickRight, ChampionIconBox)
-            .merge(on(MouseWheelDown, ChampionIconBox));
+    public final Events<Champion> levelDown = on(ClickRight, ChampionIconBox).merge(on(MouseWheelDown, ChampionIconBox));
 
     public final Events<Skill> skillUp = on(Click, IconBox, Skill.class);
 
@@ -100,7 +99,10 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
                     〡.vbox.〡(() -> {
                         SkillDescriptor status = skill.getDescriptor(build.getVersion());
-                        〡.nbox.〡(Name, skill);
+                        〡.hbox.〡(() -> {
+                            〡.nbox.〡(Name, skill);
+                            〡.nbox.〡(VersionDisplay, status.version.name);
+                        });
                         〡.nbox.〡(() -> {
                             writeStatusValue(〡, skill, status, status.getRange());
                             writeStatusValue(〡, skill, status, status.getCooldown());

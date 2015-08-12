@@ -10,6 +10,7 @@
 package teemowork.model;
 
 import static teemowork.model.Status.*;
+
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
 import teemowork.model.variable.VariableResolver.Diff;

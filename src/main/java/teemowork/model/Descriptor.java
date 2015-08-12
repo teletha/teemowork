@@ -27,7 +27,7 @@ public abstract class Descriptor<T extends Descriptor> {
     protected final Describable describable;
 
     /** The version of this descriptor. */
-    protected final Version version;
+    public final Version version;
 
     /** The previous version. */
     private final Descriptor<T> previous;
