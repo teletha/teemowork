@@ -21,11 +21,6 @@ import java.util.function.Consumer;
 public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
-    public static final Ability Aid = new Ability("Aid", ability -> {
-        ability.passive("サモナースペルのHeal, Clairvoyance, ClarityのCDを30%減少させる。");
-    });
-
-    /** The ability. */
     public static final Ability ArcticEmbrace = new Ability("Arctic Embrace", ability -> {
         ability.active("対象（{1}）とその{2}の敵に{3}と2秒かけて減衰する{4}を与える。{5}")
                 .variable(1, Radius, 850)
@@ -497,11 +492,6 @@ public class Ability extends Describable<AbilityDescriptor> {
         ability.passive("チャンピオンまたは建造物に対してスキル攻撃ないし通常攻撃を行うと、{1}を与え、{2}を得る。この効果は最大で30秒間に3回まで発生する。ミニオンを倒すと、これらの効果は12秒間無効となる。")
                 .variable(1, TrueDamage, 15)
                 .variable(2, Gold, 10);
-    });
-
-    /** The ability. */
-    public static final Ability Valor = new Ability("Valor", ability -> {
-        ability.aura("{1}の味方ユニットは{2}を得る。").variable(1, Radius).variable(2, Hreg, 7);
     });
 
     /** The ability. */
