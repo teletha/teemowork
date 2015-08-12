@@ -6,7 +6,7 @@ import icy.manipulator.Manipulatable;
 /**
  * {@link Manipulatable} model for {@link IcyBuildModel}.
  *
- * @version 2015-08-11T00:21:53.292
+ * @version 2015-08-12T23:28:23.707
  */
 public abstract class IcyBuild extends IcyBuildModel implements Manipulatable<IcyBuild> {
 
