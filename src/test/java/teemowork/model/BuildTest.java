@@ -37,7 +37,7 @@ public class BuildTest {
     @Test
     public void chmpion() throws Exception {
         Champion champion = new EmptyChampion();
-        champion.update(Version.P0000).set(AD, 20);
+        champion.update(Version.P301).set(AD, 20);
 
         Build build = new Build(champion);
         assertStatus(build, AD, 20, 0);
@@ -128,7 +128,7 @@ public class BuildTest {
      */
     private Item createItem(Status status, double value) {
         Item item = new EmptyItem();
-        item.update(Version.P0000).set(status, value);
+        item.update(Version.P301).set(status, value);
 
         return item;
     }
@@ -147,7 +147,7 @@ public class BuildTest {
         });
 
         Item item = new EmptyItem();
-        item.update(Version.P0000);
+        item.update(Version.P301);
 
         return item;
     }
@@ -166,7 +166,7 @@ public class BuildTest {
         });
 
         Item item = new EmptyItem();
-        item.update(Version.P0000);
+        item.update(Version.P301);
 
         return item;
     }
@@ -214,7 +214,7 @@ public class BuildTest {
 
             });
 
-            update(Version.P0000);
+            update(Version.P301);
         }
     }
 
