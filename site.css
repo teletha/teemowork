@@ -729,6 +729,12 @@
   margin-right: 0.8em;
 }
 
+.teemowork_ChampionDetailStyle___VersionDisplay {
+  margin-left: 1em;
+  font-weight: bold;
+  color: hsl(0,0%,75%);
+}
+
 .teemowork_ChampionSelectWidget_CSS___Container {
   position: relative;
   display: block;
