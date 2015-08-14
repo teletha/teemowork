@@ -243,9 +243,9 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Amumu(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P514).passive("通常攻撃した対象に3秒間{1}を与える。").variable(1, MRReduction, new Per6Level(15, 5));
+        P.update(P301).passive("通常攻撃した対象に3秒間{1}を与える。").variable(1, MRReduction, new Per6Level(15, 5));
 
-        Q.update(P514)
+        Q.update(P303)
                 .active("指定方向に包帯を飛ばし、当たった敵ユニットに{1}及び{2}を与え、そこまで移動する。")
                 .variable(1, MagicDamage, 80, 50, ap(0.7))
                 .variable(2, Stun, 1)
@@ -253,7 +253,7 @@ public interface SkillDefinition {
                 .cd(16, -2)
                 .range(1100);
 
-        W.update(P514)
+        W.update(P506)
                 .active("毎秒、{2}の敵ユニットに{1}を与える。")
                 .variable(1, MagicDamage, 8, 4, amplify(TargetMaxHealthRatio, 1, 0.5, ap(0.01)))
                 .variable(2, Radius, 300)
@@ -261,7 +261,7 @@ public interface SkillDefinition {
                 .cd(1)
                 .type(SkillType.Toggle);
 
-        E.update(P514)
+        E.update(P301)
                 .passive("{1}する。")
                 .variable(1, PhysicalDamageReduction, 2, 2)
                 .active("{3}の敵ユニットに{2}を与える。通常攻撃でダメージを受けるたびに{4}。")
@@ -271,7 +271,7 @@ public interface SkillDefinition {
                 .mana(35)
                 .cd(10, -1);
 
-        R.update(P514)
+        R.update(P303)
                 .active("{1}の敵ユニットに{2}と{3}を与え、通常攻撃を封じる。")
                 .variable(1, Radius, 550)
                 .variable(2, MagicDamage, 150, 100, ap(0.8))
@@ -284,14 +284,14 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Anivia(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P514)
+        P.update(P302)
                 .passive("死亡時に卵になり6秒かけて復活する。復活中は{1}及び{2}を得る。復活中にHPが0になった場合は死亡する。{3}。")
                 .variable(-1, AR, new Per4LevelForAnivia(-40, 15))
                 .variable(-2, MR, new Per4LevelForAnivia(-40, 15))
                 .variable(3, CDRUnaware)
                 .cd(-240);
 
-        Q.update(P514)
+        Q.update(P419)
                 .active("指定方向に貫通する氷を飛ばし、氷に触れた敵ユニットに{1}と3秒間{2}を与え、{4}状態にする。氷が飛んでいる最中に再度スキルを使用するか、最大距離まで飛ぶと氷が破裂し、破裂地点の{6}の敵ユニットにさらに{1}と{5}と3秒間{2}を与え、{4}状態にする。")
                 .variable(1, MagicDamage, 60, 30, ap(0.5))
                 .variable(2, MSSlowRatio, 20)
@@ -302,7 +302,7 @@ public interface SkillDefinition {
                 .cd(12, -1)
                 .range(1075);
 
-        W.update(P514)
+        W.update(P401)
                 .active("指定地点に5秒間{1}の壁を作りユニットを通れなくする。また、指定地点の{2}。")
                 .variable(1, Length, 400, 100)
                 .variable(2, Visionable)
@@ -310,7 +310,7 @@ public interface SkillDefinition {
                 .cd(25)
                 .range(1000);
 
-        E.update(P514)
+        E.update(P301)
                 .active("対象の敵ユニットに{1}を与える。対象が" + Chill + "の場合は{2}を与える。")
                 .variable(1, MagicDamage, 55, 30, ap(0.5))
                 .variable(2, MagicDamage, 110, 60, ap(1.0))
@@ -318,7 +318,7 @@ public interface SkillDefinition {
                 .cd(5)
                 .range(650);
 
-        R.update(P514)
+        R.update(P405)
                 .active("指定地点の{6}の敵ユニットに毎秒{1}、1秒間の{2}と{3}を与え、{5}状態にする。")
                 .variable(1, MagicDamage, 80, 40, ap(0.25))
                 .variable(2, ASSlowRatio, 20, 0)
@@ -335,11 +335,11 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Annie(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P514)
+        P.update(P401)
                 .passive("スキルを使用するたびにスタックが1貯まり、4スタック時に" + E + "以外のスキルを使用すると、スタックを全て消費してそのスキルに{1}が追加される。")
                 .variable(1, Stun, new Per5Level3Times(1.25, 0.25));
 
-        Q.update(P514)
+        Q.update(P404)
                 .active("対象の敵ユニットに{1}を与える。このスキルでキルを取ると{2}し、{3}する。")
                 .variable(1, MagicDamage, 80, 35, ap(0.8))
                 .variable(2, RestoreMana, 60, 5)
@@ -348,14 +348,14 @@ public interface SkillDefinition {
                 .cd(4)
                 .range(625);
 
-        W.update(P514)
+        W.update(P404)
                 .active("指定方向扇形50°の{1}の敵ユニットに{2}を与える。")
                 .variable(1, Radius, 625)
                 .variable(2, MagicDamage, 70, 45, ap(0.85))
                 .mana(70, 10)
                 .cd(8);
 
-        E.update(P514)
+        E.update(P502)
                 .active("5秒間{2}と{3}を得て、効果時間中に通常攻撃をしてきた敵ユニットに{4}を与える。また" + R + "が召喚されている間は、" + R + "にも" + E + "の効果が付加され移動速度が300増加する(0.75sで減衰)。")
                 .variable(2, AR, 10, 10)
                 .variable(3, MR, 10, 10)
@@ -363,7 +363,7 @@ public interface SkillDefinition {
                 .mana(20)
                 .cd(10);
 
-        R.update(P514)
+        R.update(P506)
                 .active("指定地点の{1}の敵ユニットに{2}を与え、操作可能なTibbersを召喚する。Tibbersは{3}間持続し、{4}の敵ユニットに毎秒{5}を与える。<br>Health : {6}<br>通常攻撃 : {7}<br>AR : {8}<br>MR : {9}<br>MS : {10}")
                 .variable(1, Radius, 290)
                 .variable(2, MagicDamage, 175, 125, ap(0.8))
@@ -384,11 +384,11 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Ashe(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P514)
+        P.update(P512)
                 .passive("スキルと通常攻撃は対象に2秒間{1}を与える。またこのスキルで" + MSSlow + "を付与した対象に通常攻撃を行う場合、常にクリティカルが発生する。この" + Damage + "は" + Critical + "によって上昇する。その代わり通常状態の敵へのクリティカルは発生しない。")
                 .variable(1, MSSlowRatio, new Per3Level(5, 6));
 
-        Q.update(P514)
+        Q.update(P511)
                 .passive("スキルもしくは通常攻撃が敵に命中することで4秒間「フォーカス」のチャージを獲得。最大で5チャージ。")
                 .active("「フォーカス」の全チャージを消費して4秒間" + P + "による" + MSSlow + "効果が{1}になり、{2}する。5チャージ消費されると、通常攻撃が5回に分けて合計{3}を与えるようになる。On-Hit Effectsは5連射の初撃のみ有効(Hurricaneは5回発動)。")
                 .variable(1, MSSlowRatio, new Per3Level(6, 7.2))
@@ -398,14 +398,14 @@ public interface SkillDefinition {
                 .cd(12, -2)
                 .range(1200);
 
-        W.update(P514)
+        W.update(P511)
                 .active("非貫通の矢を扇状に発射し、それぞれ敵に命中するごとに{1}を与える。敵はこのスキルによって放たれる矢を複数遮ることができるが、ダメージは最初に当たった矢の分のみ受ける。")
                 .variable(1, PhysicalDamage, 20, 15, ad(1))
                 .range(1200)
                 .cd(12, -2)
                 .mana(40);
 
-        E.update(P514)
+        E.update(P511)
                 .active("マップ上どこでも、ターゲット位置まで鷹を飛ばすことができ5秒間通過した{2}の{1}。スタックは最大2で{3}毎に増加する。")
                 .variable(1, Visionable)
                 .variable(2, Radius, 1000)
@@ -414,7 +414,7 @@ public interface SkillDefinition {
                 .cd(5)
                 .range(-1);
 
-        R.update(P514)
+        R.update(P511)
                 .active("指定方向に敵チャンピオンにのみ当たる矢を飛ばし、当たった敵チャンピオンに{1}と{2}(飛距離に比例して１～3.5秒)と3秒間の{4}を与える。また敵チャンピオン命中時に矢が爆発し、{5}の敵ユニットに{6}と3秒間の{4}を与える。飛行中の矢は{3}。")
                 .variable(1, MagicDamage, 250, 175, ap(1))
                 .variable(2, Stun, 0)
@@ -437,7 +437,7 @@ public interface SkillDefinition {
                 .variable(2, CDRUnaware)
                 .cd(-180);
 
-        Q.update(P514)
+        Q.update(P503)
                 .active("全ての砂兵士を指定した地点に集結させる。砂兵士は進路上でぶつかった敵に{1}と1秒間{2}を与える。このスロー効果は累積する。")
                 .variable(1, MagicDamage, 65, 20, ap(0.5))
                 .variable(2, MSSlowRatio, 25)
@@ -465,7 +465,7 @@ public interface SkillDefinition {
                 .cd(19, -1)
                 .mana(60);
 
-        R.update(P514)
+        R.update(P421)
                 .active("兵士{1}体の壁を召喚する。兵士たちは前方に突進し、衝突した敵に{2}と{3}を与える。壁その後{4}間持続し、敵はブリンク以外の手段でこの壁をすり抜けることはできないが、味方は自由に壁を通過でき、また壁を通過した際に1秒間{5}する。")
                 .variable(1, Value, 4, 1)
                 .variable(2, Knockback)
