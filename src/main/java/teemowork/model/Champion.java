@@ -11,7 +11,6 @@ package teemowork.model;
 
 import static teemowork.model.Status.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import js.dom.Element;
@@ -26,9 +25,6 @@ public class Champion extends RiotChampionData {
 
     /** The counter for id. */
     private static int counter = 0;
-
-    /** The champion manager. */
-    private static final List<Champion> champions = new ArrayList();
 
     /** The champion id. */
     public final int id;
@@ -212,9 +208,9 @@ public class Champion extends RiotChampionData {
      * @return
      */
     public static List<Champion> getAll() {
-        if (champions.isEmpty()) {
-            Object o = new RiotChampionData();
-        }
+        // if (champions.isEmpty()) {
+        // Object o = new RiotChampionData();
+        // }
         return champions;
     }
 
