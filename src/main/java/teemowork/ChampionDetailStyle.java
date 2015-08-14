@@ -107,8 +107,8 @@ class ChampionDetailStyle extends StyleRuleDescriptor {
     };
 
     static Style VersionDisplay = () -> {
-        margin.left(1, em);
-        font.weight.bold().color(rgb(190, 190, 190));
+        font.color(rgb(200, 200, 200)).size.smaller();
+        flexItem.alignSelf.end();
     };
 
     static Style Info = () -> {
