@@ -208,9 +208,6 @@ public class Champion extends RiotChampionData {
      * @return
      */
     public static List<Champion> getAll() {
-        // if (champions.isEmpty()) {
-        // Object o = new RiotChampionData();
-        // }
         return champions;
     }
 

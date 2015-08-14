@@ -11,6 +11,7 @@ package teemowork.tool.riot;
 
 import static teemowork.tool.ClassWriter.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import kiss.I;
@@ -35,6 +36,9 @@ public class ChampionDataBuilder {
     public static void main(String[] args) throws Exception {
         ClassWriter code = new ClassWriter("teemowork.api", "RiotChampionData");
         code.write("public class ", code.className, " {");
+        code.write();
+        code.write("/** Champion Manager */");
+        code.write("protected static final ", generic(List.class, Champion.class), " champions = new ", ArrayList.class, "();");
 
         for (ChampionDefinition champion : RiotAPI.champions()) {
             Status status = champion.stats;
