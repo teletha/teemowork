@@ -1277,8 +1277,8 @@ public interface SkillDefinition {
                 .variable(1, PhysicalDamage, 65, 10, amplify(BounusAD, 0.55, 0.15))
                 .variable(2, CDDecreaseRatio, 60)
                 .variable(3, OnHitEffect)
-                .mana(25, 5)
-                .cd(18, -2)
+                .mana(20, 5)
+                .cd(16, -2)
                 .range(400);
 
         W.update(P515)
@@ -1288,7 +1288,7 @@ public interface SkillDefinition {
                 .variable(3, ASSlowRatio, 50)
                 .variable(4, Stun)
                 .mana(50)
-                .cd(21, -1.5);
+                .cd(19, -1);
 
         E.update(P515)
                 .active("2回通常攻撃するまで{1}する。一度目の攻撃はクリティカルにならない代わりに1秒間{2}を与える。二度目の攻撃は必ずクリティカルになり{3}を与える。{4}。")
