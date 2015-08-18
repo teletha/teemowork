@@ -4041,10 +4041,11 @@ public interface SkillDefinition {
      */
     public static void Shen(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P511)
-                .passive("{3}に1度通常攻撃に追加{1}が付与され、{2}する。このスキルはShenが通常攻撃を行う度にCDが1秒解消される。CD解消は建物を攻撃した場合は発生しない。LV1/7/13で「気」回復量が増加する。")
+                .passive("{3}に1度通常攻撃に追加{1}が付与され、{2}する。通常攻撃を行う度に{4}する（建物には無効、" + W + "の効果時間中は2倍）。")
                 .variable(1, MagicDamage, 4, 0, level(4), amplify(BounusHealth, 0.1))
                 .variable(2, RestoreEnergy, new Per6Level(10, 10))
-                .variable(3, Time, new Per6Level(9, -1));
+                .variable(3, Time, new Per6Level(9, -1))
+                .variable(4, CDDecrease, 1);
 
         Q.update(P301)
                 .active("対象の敵ユニットに{1}と5秒間持続するDebuffを与える。Debuffが付与された対象に通常攻撃またはダメージスペルで攻撃をすると、攻撃した味方チャンピオンは3秒かけて{2}する。このスキルでLHを取った場合、{3}する。")
