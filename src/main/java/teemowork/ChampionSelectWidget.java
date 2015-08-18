@@ -11,7 +11,6 @@ package teemowork;
 
 import static js.dom.UIAction.*;
 
-import jsx.application.Application;
 import jsx.style.Style;
 import jsx.style.StyleRuleDescriptor;
 import jsx.style.ValueStyle;
@@ -23,12 +22,15 @@ import jsx.ui.Widget;
 import jsx.ui.piece.Input;
 import jsx.ui.piece.UI;
 import kiss.Events;
+import kiss.I;
 import teemowork.model.Champion;
 
 /**
  * @version 2015/01/30 14:27:54
  */
 public class ChampionSelectWidget extends Widget {
+
+    private final NewTeemowork application = I.make(NewTeemowork.class);
 
     private Input input = UI.input().placeholder("Champion Name");
 
@@ -38,7 +40,7 @@ public class ChampionSelectWidget extends Widget {
      * 
      */
     public ChampionSelectWidget() {
-        select.to(champion -> Application.show(new ChampionDetail2(champion.systemName)));
+        select.to(champion -> application.champion(champion));
     }
 
     /**

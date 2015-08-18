@@ -20,6 +20,6 @@ public class TeemoworkLauncher {
      * @param args
      */
     public static void main(String[] args) {
-        Booton.launch(Teemowork.class);
+        Booton.launch(NewTeemowork.class);
     }
 }
