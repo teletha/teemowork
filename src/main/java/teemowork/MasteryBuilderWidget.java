@@ -12,14 +12,12 @@ package teemowork;
 import static js.lang.Global.*;
 import static teemowork.MasteryBuilderStyle.*;
 
-import js.dom.Element;
-import js.dom.Image;
 import js.dom.UIAction;
-import jsx.event.Subscribe;
 import jsx.model.SelectableModel;
 import jsx.style.Style;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
+import kiss.Events;
 import teemowork.model.DescriptionViewWidget;
 import teemowork.model.Mastery;
 import teemowork.model.MasteryDescriptor;
@@ -34,6 +32,18 @@ public class MasteryBuilderWidget extends Widget {
     private MasteryManager masteryManager;
 
     private final MasterySet masterySet = new MasterySet("");
+
+    private final Events<Mastery> up = when(UIAction.Click, MasteryPane, Mastery.class);
+
+    private final Events<Mastery> down = when(UIAction.ClickRight, MasteryPane, Mastery.class);
+
+    /**
+     * 
+     */
+    public MasteryBuilderWidget() {
+        up.to(mastery -> masterySet.up(mastery));
+        down.to(mastery -> masterySet.down(mastery));
+    }
 
     /**
      * {@inheritDoc}
@@ -89,7 +99,7 @@ public class MasteryBuilderWidget extends Widget {
                                 MasteryDescriptor descriptor = mastery.getDescriptor(Version.Latest);
 
                                 〡.nbox.〡(MasteryName, mastery.name);
-                                〡.nbox.〡(null, Widget.of(MasteryDescriptionView.class, mastery, null, descriptor.getPassive()));
+                                〡.〡(Widget.of(MasteryWidget.class, mastery, null, descriptor.getPassive()));
 
                                 // FORMAT
                             });
@@ -111,7 +121,7 @@ public class MasteryBuilderWidget extends Widget {
     /**
      * @version 2015/08/19 14:19:47
      */
-    private static class MasteryDescriptionView extends DescriptionViewWidget<Mastery> {
+    private class MasteryWidget extends DescriptionViewWidget<Mastery> {
 
         /**
          * {@inheritDoc}
@@ -131,93 +141,7 @@ public class MasteryBuilderWidget extends Widget {
     }
 
     /**
-     * @version 2013/03/23 14:05:25
-     */
-    private class MasteryView {
-
-        private final int size = 45;
-
-        /** The associated mastery. */
-        private final Mastery mastery;
-
-        /** The root element. */
-        private final Element root;
-
-        /** The icon image. */
-        private final Image image;
-
-        /** The value element. */
-        private final Element currentLevel;
-
-        /** The popup element. */
-        private final Element popup;
-
-        /**
-         * <p>
-         * Create mastery view.
-         * </p>
-         * 
-         * @param root
-         * @param mastery
-         */
-        private MasteryView(final Element root, final Mastery mastery) {
-            this.root = root;
-            this.mastery = mastery;
-
-            // Icon Pane
-            image = root.image(IconImage).src(mastery.getIcon()).clip(mastery.id * size, 0, size, size);
-
-            // Mastery Level Pane
-            Element levelPane = root.child(LevelPane);
-            currentLevel = levelPane.child(LevelValue).text(0);
-            levelPane.child(LevelSeparator).text("/");
-            levelPane.child(LevelValue).text(mastery.getMaxLevel());
-
-            // Mastery Description Pane
-            popup = root.child(PopupPane);
-            popup.child(MasteryName).text(mastery.name);
-            // masterySet.subscribe(new MasteryDescriptionView(popup, mastery));
-
-            // Event Handlers
-            root.subscribe(UIAction.Click, event -> {
-                event.preventDefault();
-                masterySet.up(mastery);
-            }).subscribe(UIAction.ClickRight, event -> {
-                event.preventDefault();
-                masterySet.down(mastery);
-            });
-        }
-
-        /**
-         * 
-         */
-        @Subscribe(MasterySet.class)
-        public void receive() {
-            int current = masterySet.getLevel(mastery);
-
-            // Update current level
-            currentLevel.text(current);
-
-            // Switch enable / disable
-            if (current != 0 || masterySet.isAvailable(mastery)) {
-                image.saturate(0.8);
-                root.remove(Unavailable);
-            } else {
-                image.grayscale(0.4);
-                root.add(Unavailable);
-            }
-
-            // Switch complete / incomplete
-            if (masterySet.isMax(mastery)) {
-                root.add(Completed);
-            } else {
-                root.remove(Completed);
-            }
-        }
-    }
-
-    /**
-     * @version 2013/10/04 13:04:34
+     * @version 2015/08/19 18:29:05
      */
     private static class MasteryManager extends SelectableModel<MasterySet> {
     }

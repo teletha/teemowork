@@ -32,7 +32,7 @@ import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
 
 /**
- * @version 2015/02/06 16:14:08
+ * @version 2015/08/19 18:35:00
  */
 public class ChampionDetailWidget extends Widget1<Build> {
 
