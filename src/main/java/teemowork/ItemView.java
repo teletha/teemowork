@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Nameless Production Committee
+ * Copyright (C) 2015 Nameless Production Committee
  *
  * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,111 +12,100 @@ package teemowork;
 import static teemowork.ItemViewStyle.*;
 import static teemowork.model.Status.*;
 
-import js.dom.Element;
-import js.dom.UIAction;
-import jsx.application.Application;
-import jsx.bwt.UI;
-import teemowork.model.Ability;
+import java.util.List;
+
+import jsx.ui.VirtualStructure;
+import jsx.ui.Widget;
+import jsx.ui.Widget1;
 import teemowork.model.AbilityDescriptor;
-import teemowork.model.Describable;
-import teemowork.model.DescriptionView;
+import teemowork.model.DescriptionViewWidget;
 import teemowork.model.Item;
 import teemowork.model.ItemDescriptor;
 import teemowork.model.Status;
-import teemowork.model.StatusCalculator;
 import teemowork.model.Version;
 
 /**
- * @version 2013/06/09 19:05:04
+ * @version 2015/08/19 13:16:22
  */
-public class ItemView extends UI {
+public class ItemView extends Widget1<Item> {
 
-    private static final Status[] VISIBLE = {Health, Hreg, Mana, Mreg, AD, ASRatio, ARPen, LS, Critical, AP, CDR, SV,
-            MRPen, AR, MR, MSRatio, GoldPer10Sec};
-
-    /** The status calculator. */
-    private final StatusCalculator calculator;
+    private static final Status[] VISIBLE = {Health, Hreg, Mana, Mreg, AD, ASRatio, ARPen, LS, Critical, AP, CDR, SV, MRPen, AR, MR,
+            MSRatio, GoldPer10Sec};
 
     /**
-     * @param item
+     * {@inheritDoc}
      */
-    public ItemView(Item item, ItemDescriptor itemDescriptor, StatusCalculator calculator) {
-        this.calculator = calculator;
-        root.add(Root);
+    @Override
+    protected void virtualize(VirtualStructure 〡) {
+        ItemDescriptor descriptor = model1.getDescriptor(Version.Latest);
 
-        // Icon Area
-        Element icons = root.child(IconArea);
-        // icons.child(Icon.class).backgound(item.getIcon());
-        item.applyIcon(icons.child(Icon));
+        〡.nbox.〡(Root, () -> {
+            〡.nbox.〡(IconArea, () -> {
+                〡.nbox.〡(Icon.of(model1));
+                〡.nbox.〡(Materials, descriptor.getBuildItem(), material -> {
+                    〡.nbox.〡(Material.of(material));
+                });
+            });
+            〡.nbox.〡(DescriptionArea, () -> {
+                // Name and Cost
+                double cost = model1.getBaseCost();
+                double total = model1.getTotalCost();
 
-        Element materials = icons.child(Materials);
+                〡.nbox.〡(Heading, () -> {
+                    〡.nbox.〡(Name, model1.name);
+                    〡.nbox.〡(TotalCost, total);
+                    if (cost != total) {
+                        〡.nbox.〡(ItemViewStyle.Cost, "(", cost, ")");
+                    }
+                });
 
-        for (int id : itemDescriptor.getBuild()) {
-            System.out.println(id);
-            Item material = Item.getById(id);
+                // Status
+                〡.nbox.〡(null, VISIBLE, status -> {
+                    double value = descriptor.get(status);
 
-            material.applyIcon(materials.child(Material)
-                    .attr("title", material)
-                    .subscribe(UIAction.Click, v -> Application.show(new ItemDetail(material.name))));
-        }
+                    if (value != 0) {
+                        〡.nbox.〡(StatusValue, value, status.getUnit(), " ", status.name);
+                    }
+                });
 
-        // Description Area
-        Element descriptions = root.child(DescriptionArea);
+                〡.nbox.〡(DescriptionArea, () -> {
+                    〡.nbox.〡(null, descriptor.getAbilities(), ability -> {
+                        AbilityDescriptor abilityDescriptor = ability.getDescriptor(Version.Latest);
 
-        // Name and Cost
-        double cost = itemDescriptor.get(Status.Cost);
-        double total = item.getTotalCost();
+                        〡.nbox.〡(AbilityArea, () -> {
+                            if (abilityDescriptor.isUnique()) {
+                                〡.nbox.〡(UniqueAbility, "UNIQUE");
 
-        Element heading = descriptions.child(Heading);
-        heading.child(Name).text(item.name);
-        heading.child(TotalCost).text(total);
-        if (cost != total) {
-            heading.child(ItemViewStyle.Cost).text("(" + cost + ")");
-        }
+                                // FORMAT
+                            }
 
-        // Status
-        for (Status status : VISIBLE) {
-            double value = itemDescriptor.get(status);
+                            if (abilityDescriptor.isAura()) {
+                                〡.nbox.〡(UniqueAbility, "AURA");
+                            }
 
-            if (value != 0) {
-                descriptions.child(StatusValue).text(value + status.getUnit() + " " + status.name);
-            }
-        }
+                            〡.nbox.〡(UniqueAbility, abilityDescriptor.isActive() ? "Active" : "Passive");
 
-        // Ability
-        for (Ability ability : itemDescriptor.getAbilities()) {
-            AbilityDescriptor abilityDescriptor = ability.getDescriptor(Version.Latest);
-            Element element = descriptions.child(AbilityArea);
+                            if (!ability.name.startsWith("#")) {
+                                〡.nbox.〡(UniqueAbility, "[", ability.name, "]");
 
-            if (abilityDescriptor.isUnique()) {
-                element.child(UniqueAbility).text("UNIQUE");
-            }
+                                // FORMAT
+                            }
 
-            if (abilityDescriptor.isAura()) {
-                element.child(UniqueAbility).text("AURA");
-            }
+                            List token = abilityDescriptor.isActive() ? abilityDescriptor.getActive() : abilityDescriptor.getPassive();
+                            〡.nbox.〡(null, Widget.of(AbilityDescriptionView.class, ability, null, token));
 
-            element.child(UniqueAbility).text(abilityDescriptor.isActive() ? "Active" : "Passive");
-
-            if (!ability.name.startsWith("#")) {
-                element.child(UniqueAbility).text("[" + ability.name + "]");
-            }
-            new AbilityDescriptionView(element, ability, calculator, abilityDescriptor.isActive()).receive();
-        }
+                            // FORMAT
+                        });
+                    });
+                });
+            });
+        });
     }
 
     /**
-     * @version 2013/06/04 23:33:05
+     * @version 2015/08/19 13:16:08
      */
-    private static class AbilityDescriptionView extends DescriptionView {
-
-        /**
-         * @param root
-         * @param describable
-         */
-        private AbilityDescriptionView(Element root, Describable describable, StatusCalculator calculator, boolean active) {
-            super(root, describable, calculator, !active);
-        }
+    private static class AbilityDescriptionView extends DescriptionViewWidget {
 
         /**
          * {@inheritDoc}

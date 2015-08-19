@@ -51,30 +51,19 @@ class DescriptionViewStyle extends StyleRuleDescriptor {
         margin.horizontal(1, px);
     };
 
-    /**
-     * @version 2013/02/06 20:03:25
-     */
-    static Style Current = () ->
-
-    {
+    static Style Current = () -> {
         font.color(rgba(160, 123, 1, 1));
     };
 
-    /**
-     * @version 2013/02/06 20:03:25
-     */
-    static Style Passive = () ->
-
-    {
+    static Style Passive = () -> {
         margin.right(1, em);
     };
 
-    /**
-     * @version 2013/02/06 20:03:25
-     */
-    static Style Amplifier = () ->
+    static Style Indicator = () -> {
+        cursor.help();
+    };
 
-    {
+    static Style Amplifier = () -> {
         font.color(25, 111, 136);
 
         inBackOf(Value, () -> {

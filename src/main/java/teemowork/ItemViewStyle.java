@@ -11,7 +11,10 @@ package teemowork;
 
 import jsx.style.Style;
 import jsx.style.StyleRuleDescriptor;
+import jsx.style.ValueStyle;
+import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Font;
+import teemowork.model.Item;
 
 /**
  * @version 2013/06/09 19:05:20
@@ -45,12 +48,13 @@ public class ItemViewStyle extends StyleRuleDescriptor {
     /**
      * @version 2013/02/16 10:00:01
      */
-    static Style Icon = () -> {
+    static ValueStyle<Item> Icon = item -> {
         display.block();
         margin.bottom(IconSize / 5, px);
         cursor.pointer();
         box.size(44, px);
         border.radius(5, px).color(rgb(50, 50, 50)).width(1, px).solid();
+        background.image(BackgroundImage.url(item.getIcon()).horizontal(item.getIconPosition()).cover().borderBox().noRepeat());
     };
 
     /**
@@ -63,20 +67,12 @@ public class ItemViewStyle extends StyleRuleDescriptor {
         box.width(IconSize, px);
     };
 
-    /**
-     * @version 2013/06/13 13:57:38
-     */
-    static Style Material = () ->
-
-    {
+    static ValueStyle<Item> Material = item -> {
         display.block();
         cursor.pointer();
         box.size(22, px).opacity(0.7);
         border.radius(3, px).color(rgb(50, 50, 50)).width(1, px).solid();
-
-        transit().duration(0.3, s).easeInOut().whenHover(() -> {
-            box.opacity(1);
-        });
+        background.image(BackgroundImage.url(item.getIcon()).horizontal(item.getIconPosition()).cover().borderBox().noRepeat());
     };
 
     /**

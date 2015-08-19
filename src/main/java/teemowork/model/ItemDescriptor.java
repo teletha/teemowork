@@ -272,6 +272,22 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
 
     /**
      * <p>
+     * Get build items.
+     * </p>
+     * 
+     * @return items.
+     */
+    public Item[] getBuildItem() {
+        Item[] items = new Item[build.length];
+
+        for (int i = 0; i < items.length; i++) {
+            items[i] = Item.getById(build[i]);
+        }
+        return items;
+    }
+
+    /**
+     * <p>
      * Set build items.
      * </p>
      * 

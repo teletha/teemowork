@@ -9,6 +9,13 @@
  */
 package teemowork;
 
+import static js.lang.Global.*;
+import static teemowork.TeemoworkTheme.*;
+
+import java.util.function.Supplier;
+
+import jsx.application.Header;
+import jsx.application.Header.Menu;
 import jsx.application.NewApplication;
 import jsx.application.Route;
 import jsx.ui.Widget;
@@ -21,12 +28,33 @@ import teemowork.model.Champion;
 public class NewTeemowork extends NewApplication {
 
     /**
-     * Application entry point.
+     * 
      */
-    public static void main(String[] args) {
-        initialize(NewTeemowork.class, (config, application) -> {
-            config.defaultPage(application::champion);
-        });
+    private NewTeemowork() {
+        document.documentElement().add(HTML);
+        document.getElementById("Content").add(Content);
+
+        Header nav = new Header();
+        nav.add("< ^ v ^ > Teemowork", "");
+        nav.add("Patch", "#history");
+
+        Menu sub = nav.add("champion", "#");
+        sub.add("Compare", "#championCompare");
+        sub.add("Item", "#items");
+        sub.add("Mastery", "#Mastery");
+        sub.add("Rune", "#");
+
+        nav.add("Builder", "#GridTest");
+        nav.add("About", "#items");
+        nav.add("Contact", "#");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Supplier<Widget> defaultWidget() {
+        return this::champion;
     }
 
     @Route
@@ -45,7 +73,14 @@ public class NewTeemowork extends NewApplication {
     }
 
     @Route
-    public Widget item() {
+    public Widget items() {
         return Widget.of(ItemCatalogWidget.class);
+    }
+
+    /**
+     * Application entry point.
+     */
+    public static void main(String[] args) {
+        initialize(NewTeemowork.class);
     }
 }

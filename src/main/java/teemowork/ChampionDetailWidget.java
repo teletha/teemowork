@@ -138,6 +138,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
                                 });
                             });
                         }
+                        // END
                     });
                 });
             });

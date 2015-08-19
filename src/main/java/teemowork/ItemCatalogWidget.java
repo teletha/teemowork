@@ -11,6 +11,7 @@ package teemowork;
 
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
+import teemowork.model.Item;
 
 /**
  * @version 2013/06/12 12:45:51
@@ -22,5 +23,6 @@ public class ItemCatalogWidget extends Widget {
      */
     @Override
     protected void virtualize(VirtualStructure 〡) {
+        〡.nbox.〡(null, ItemView.class, Item.getAll());
     }
 }

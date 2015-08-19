@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import js.dom.Element;
+import jsx.style.value.Numeric;
+import jsx.style.value.Unit;
 import teemowork.api.RiotItemData;
 
 /**
@@ -1458,6 +1460,28 @@ public class Item extends Describable<ItemDescriptor> {
 
     /**
      * <p>
+     * Returns icon image path.
+     * </p>
+     * 
+     * @return
+     */
+    public String getIcon() {
+        return "src/main/resources/teemowork/items.jpg";
+    }
+
+    /**
+     * <p>
+     * Returns icon image path.
+     * </p>
+     * 
+     * @return
+     */
+    public Numeric getIconPosition() {
+        return new Numeric(position / (counter - 1) * 100, Unit.percent);
+    }
+
+    /**
+     * <p>
      * Apply icon image.
      * </p>
      */
@@ -1486,10 +1510,20 @@ public class Item extends Describable<ItemDescriptor> {
 
     /**
      * <p>
+     * Calcurate item base cost.
+     * </p>
+     * 
+     * @return
+     */
+    public double getBaseCost() {
+        return data.buyBase;
+    }
+
+    /**
+     * <p>
      * Calcurate item total cost.
      * </p>
      * 
-     * @param version
      * @return
      */
     public double getTotalCost() {
