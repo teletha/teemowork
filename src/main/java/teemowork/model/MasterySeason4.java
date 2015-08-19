@@ -11,6 +11,9 @@ package teemowork.model;
 
 import static teemowork.model.Status.*;
 
+import jsx.style.value.Numeric;
+import jsx.style.value.Unit;
+
 /**
  * @version 2013/03/13 14:34:14
  */
@@ -323,11 +326,7 @@ public class MasterySeason4 extends Mastery {
     }
 
     /**
-     * <p>
-     * Compute full path to icon image.
-     * </p>
-     * 
-     * @return
+     * {@inheritDoc}
      */
     @Override
     public String getIcon() {
@@ -335,15 +334,11 @@ public class MasterySeason4 extends Mastery {
     }
 
     /**
-     * <p>
-     * Compute full path to icon image.
-     * </p>
-     * 
-     * @return
+     * {@inheritDoc}
      */
     @Override
-    public String getSpriteImage() {
-        return "src/main/resources/teemowork/masteryS4.jpg";
+    public Numeric getIconPosition() {
+        return new Numeric(id / (counter - 1) * 100, Unit.percent);
     }
 
     /**

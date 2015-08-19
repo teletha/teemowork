@@ -30,7 +30,7 @@ import teemowork.model.Champion;
  */
 public class ChampionSelectWidget extends Widget {
 
-    private final NewTeemowork application = I.make(NewTeemowork.class);
+    private final Teemowork application = I.make(Teemowork.class);
 
     private Input input = UI.input().placeholder("Champion Name");
 

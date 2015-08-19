@@ -197,7 +197,7 @@ public class MasteryBuilder extends Page {
             this.mastery = mastery;
 
             // Icon Pane
-            image = root.image(IconImage).src(mastery.getSpriteImage()).clip(mastery.id * size, 0, size, size);
+            image = root.image(IconImage).src(mastery.getIcon()).clip(mastery.id * size, 0, size, size);
 
             // Mastery Level Pane
             Element levelPane = root.child(LevelPane);

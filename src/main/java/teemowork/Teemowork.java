@@ -25,12 +25,12 @@ import teemowork.model.Champion;
 /**
  * @version 2015/08/18 10:28:01
  */
-public class NewTeemowork extends NewApplication {
+public class Teemowork extends NewApplication {
 
     /**
      * 
      */
-    private NewTeemowork() {
+    private Teemowork() {
         document.documentElement().add(HTML);
         document.getElementById("Content").add(Content);
 
@@ -40,12 +40,12 @@ public class NewTeemowork extends NewApplication {
 
         Menu sub = nav.add("champion", "#");
         sub.add("Compare", "#championCompare");
-        sub.add("Item", "#items");
-        sub.add("Mastery", "#Mastery");
+        sub.add("Item", "#item");
+        sub.add("Mastery", "#mastery");
         sub.add("Rune", "#");
 
         nav.add("Builder", "#GridTest");
-        nav.add("About", "#items");
+        nav.add("About", "#item");
         nav.add("Contact", "#");
     }
 
@@ -73,14 +73,19 @@ public class NewTeemowork extends NewApplication {
     }
 
     @Route
-    public Widget items() {
+    public Widget item() {
         return Widget.of(ItemCatalogWidget.class);
+    }
+
+    @Route
+    public Widget mastery() {
+        return Widget.of(MasteryBuilderWidget.class);
     }
 
     /**
      * Application entry point.
      */
     public static void main(String[] args) {
-        initialize(NewTeemowork.class);
+        initialize(Teemowork.class);
     }
 }

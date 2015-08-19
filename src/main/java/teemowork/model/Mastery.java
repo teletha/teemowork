@@ -9,6 +9,8 @@
  */
 package teemowork.model;
 
+import jsx.style.value.Numeric;
+
 /**
  * @version 2013/03/13 14:34:14
  */
@@ -97,7 +99,7 @@ public abstract class Mastery extends Describable<MasteryDescriptor> {
      * 
      * @return
      */
-    public abstract String getSpriteImage();
+    public abstract Numeric getIconPosition();
 
     /**
      * {@inheritDoc}

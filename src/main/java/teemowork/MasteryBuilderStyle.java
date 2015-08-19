@@ -11,11 +11,13 @@ package teemowork;
 
 import jsx.style.Style;
 import jsx.style.StyleRuleDescriptor;
+import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.LinearGradient;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
+import teemowork.model.Mastery;
 
 /**
  * @version 2013/03/13 15:05:12
@@ -44,8 +46,7 @@ class MasteryBuilderStyle extends StyleRuleDescriptor {
 
     private static Color Blue = new Color(220, 50, 85);
 
-    private static LinearGradient transparent = new LinearGradient()
-            .color(new Color(0, 100, 100, 0.6), new Color(0, 100, 100, 0));
+    private static LinearGradient transparent = new LinearGradient().color(new Color(0, 100, 100, 0.6), new Color(0, 100, 100, 0));
 
     private static String noise = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAABlBMVEUAAAAAAAClZ7nPAAAAAnRSTlMAGovxNEIAAAAoSURBVDhPYxBEAgIMSkhAgcEFCTgwdCCBBoZRfaP6RvWN6hvVR5Y+APADQlQnmrINAAAAAElFTkSuQmCC";
 
@@ -100,6 +101,7 @@ class MasteryBuilderStyle extends StyleRuleDescriptor {
     };
 
     static Style IconImage = () -> {
+        display.block();
         box.size(IconSize, px);
         border.color(AvailableColor).width(IconBorderSize, px).solid().radius(Corner, px);
 
@@ -110,6 +112,10 @@ class MasteryBuilderStyle extends StyleRuleDescriptor {
         insideOf(Completed, () -> {
             border.color(CompleteColor);
         });
+    };
+
+    static ValueStyle<Mastery> MasteryImage = mastery -> {
+        background.image(BackgroundImage.url(mastery.getIcon()).horizontal(mastery.getIconPosition()).cover().borderBox().noRepeat());
     };
 
     static Style LevelPane = () -> {
