@@ -10,13 +10,20 @@
 package teemowork;
 
 import static js.dom.UIAction.*;
-import static teemowork.ChampionDetailStyle.*;
 import static teemowork.model.Status.*;
 
 import java.util.List;
 
 import js.dom.UIAction;
 import js.math.Mathematics;
+import jsx.style.BinaryStyle;
+import jsx.style.Style;
+import jsx.style.StyleRuleDescriptor;
+import jsx.style.ValueStyle;
+import jsx.style.property.Background.BackgroundImage;
+import jsx.style.value.Color;
+import jsx.style.value.Numeric;
+import jsx.style.value.Unit;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget1;
 import kiss.Events;
@@ -32,7 +39,7 @@ import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
 
 /**
- * @version 2015/08/19 18:35:00
+ * @version 2015/08/20 15:53:24
  */
 public class ChampionDetailWidget extends Widget1<Build> {
 
@@ -43,13 +50,13 @@ public class ChampionDetailWidget extends Widget1<Build> {
     /** The your custom build. */
     private final Build build = model1;
 
-    public final Events<Champion> levelUp = on(Click, ChampionIconBox).merge(on(MouseWheelUp, ChampionIconBox));
+    public final Events<Champion> levelUp = on(Click, $.ChampionIconBox).merge(on(MouseWheelUp, $.ChampionIconBox));
 
-    public final Events<Champion> levelDown = on(ClickRight, ChampionIconBox).merge(on(MouseWheelDown, ChampionIconBox));
+    public final Events<Champion> levelDown = on(ClickRight, $.ChampionIconBox).merge(on(MouseWheelDown, $.ChampionIconBox));
 
-    public final Events<Skill> skillUp = on(Click, IconBox, Skill.class);
+    public final Events<Skill> skillUp = on(Click, $.IconBox, Skill.class);
 
-    public final Events<Skill> skillDown = on(ClickRight, IconBox, Skill.class);
+    public final Events<Skill> skillDown = on(ClickRight, $.IconBox, Skill.class);
 
     public ChampionDetailWidget() {
         levelUp.to(v -> build.levelUp());
@@ -58,7 +65,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
         skillDown.to(v -> build.levelDown(v));
 
         // TODO FIXME
-        on(UIAction.Key_R, ChampionIconBox).to(e -> {
+        on(UIAction.Key_R, $.ChampionIconBox).to(e -> {
             build.active(SkillKey.R);
             build.active(SkillKey.W);
         });
@@ -68,77 +75,76 @@ public class ChampionDetailWidget extends Widget1<Build> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure 〡) {
-        〡.hbox.ⅼ(UpperInfo, () -> {
-            〡.hbox.ⅼ(ChampionIconBox.of(build.champion), () -> {
-                〡.nbox.ⅼ(Level, build.getLevel());
+    protected void virtualize(VirtualStructure ⅼ) {
+        ⅼ.hbox.ⅼ($.UpperInfo, () -> {
+            ⅼ.hbox.ⅼ($.ChampionIconBox.of(build.champion), () -> {
+                ⅼ.nbox.ⅼ($.Level, build.getLevel());
             });
             // 〡.nbox.〡(null, ChampionFace.class, build.champion);
-            〡.hbox.ⅼ(ItemViewBox, ItemBoxWidget.class, build.items);
+            ⅼ.hbox.ⅼ($.ItemViewBox, ItemBoxWidget.class, build.items);
         });
 
-        〡.hbox.ⅼ(Container, () -> {
-            〡.vbox.ⅼ(StatusViewBox, VISIBLE, status -> {
-                〡.hbox.ⅼ(StatusBox, () -> {
-                    〡.hbox.ⅼ(StatusName, status.name());
-                    〡.hbox.ⅼ(StatusValue, computeStatusValue(status));
+        ⅼ.hbox.ⅼ($.Container, () -> {
+            ⅼ.vbox.ⅼ($.StatusViewBox, VISIBLE, status -> {
+                ⅼ.hbox.ⅼ($.StatusBox, () -> {
+                    ⅼ.hbox.ⅼ($.StatusName, status.name());
+                    ⅼ.hbox.ⅼ($.StatusValue, computeStatusValue(status));
                 });
             });
 
-            〡.vbox.ⅼ(SkillTable, build.champion.skills, skill -> {
-                〡.hbox.ⅼ(SkillRow, () -> {
-                    〡.vbox.ⅼ(IconBox, () -> {
-                        〡.hbox.ⅼ(SkillIcon.of(skill));
+            ⅼ.vbox.ⅼ($.SkillTable, build.champion.skills, skill -> {
+                ⅼ.hbox.ⅼ($.SkillRow, () -> {
+                    ⅼ.vbox.ⅼ($.IconBox, () -> {
+                        ⅼ.hbox.ⅼ($.SkillIcon.of(skill));
 
                         if (skill.key != SkillKey.Passive) {
-                            〡.nbox.ⅼ(LevelBox, skill.getMaxLevel(), level -> {
-                                〡.nbox.ⅼ(LevelMark.of(level < build.getLevel(skill)));
+                            ⅼ.nbox.ⅼ($.LevelBox, skill.getMaxLevel(), level -> {
+                                ⅼ.nbox.ⅼ($.LevelMark.of(level < build.getLevel(skill)));
                             });
                         }
                     });
 
-                    〡.vbox.ⅼ(() -> {
+                    ⅼ.vbox.ⅼ(() -> {
                         SkillDescriptor status = skill.getDescriptor(build.getVersion());
-                        〡.hbox.ⅼ(() -> {
-                            〡.nbox.ⅼ(Name, skill);
-                            〡.nbox.ⅼ(VersionDisplay, status.version.name);
+                        ⅼ.hbox.ⅼ(() -> {
+                            ⅼ.nbox.ⅼ($.Name, skill);
+                            ⅼ.nbox.ⅼ($.VersionDisplay, status.version.name);
                         });
-                        〡.nbox.ⅼ(() -> {
-                            writeStatusValue(〡, skill, status, status.getRange());
-                            writeStatusValue(〡, skill, status, status.getCooldown());
-                            writeStatusValue(〡, skill, status, status.getCost());
+                        ⅼ.nbox.ⅼ(() -> {
+                            writeStatusValue(ⅼ, skill, status, status.getRange());
+                            writeStatusValue(ⅼ, skill, status, status.getCooldown());
+                            writeStatusValue(ⅼ, skill, status, status.getCost());
                         });
 
                         if (!status.getPassive().isEmpty()) {
-                            〡.nbox.ⅼ(Text, () -> {
+                            ⅼ.nbox.ⅼ($.Text, () -> {
                                 int level = build.getLevel(skill);
 
-                                〡.nbox.ⅼ(SkillTypeInfo, SkillType.Passive);
-                                〡.nbox.ⅼ(null, status.getPassive(), text -> {
+                                ⅼ.nbox.ⅼ($.SkillTypeInfo, SkillType.Passive);
+                                ⅼ.nbox.ⅼ(null, status.getPassive(), text -> {
                                     if (text instanceof Variable) {
-                                        writeVariable(〡, (Variable) text, level);
+                                        writeVariable(ⅼ, (Variable) text, level);
                                     } else {
-                                        〡.ⅼ(text);
+                                        ⅼ.ⅼ(text);
                                     }
                                 });
                             });
                         }
 
                         if (!status.getActive().isEmpty()) {
-                            〡.nbox.ⅼ(Text, () -> {
+                            ⅼ.nbox.ⅼ($.Text, () -> {
                                 int level = build.getLevel(skill);
 
-                                〡.nbox.ⅼ(SkillTypeInfo, status.getType());
-                                〡.nbox.ⅼ(null, status.getActive(), text -> {
+                                ⅼ.nbox.ⅼ($.SkillTypeInfo, status.getType());
+                                ⅼ.nbox.ⅼ(null, status.getActive(), text -> {
                                     if (text instanceof Variable) {
-                                        writeVariable(〡, (Variable) text, level);
+                                        writeVariable(ⅼ, (Variable) text, level);
                                     } else {
-                                        〡.ⅼ(text);
+                                        ⅼ.ⅼ(text);
                                     }
                                 });
                             });
                         }
-                        // END
                     });
                 });
             });
@@ -174,9 +180,9 @@ public class ChampionDetailWidget extends Widget1<Build> {
      * @param skill A current processing skill.
      * @param variable A target skill variable.
      */
-    private void writeStatusValue(VirtualStructure 〡, Skill sss, SkillDescriptor skill, Variable variable) {
+    private void writeStatusValue(VirtualStructure ⅼ, Skill sss, SkillDescriptor skill, Variable variable) {
         if (variable != null) {
-            〡.hbox.ⅼ(StatusBlock, () -> {
+            ⅼ.hbox.ⅼ($.StatusBlock, () -> {
                 Status status = variable.getStatus();
                 VariableResolver resolver = variable.getResolver();
 
@@ -197,31 +203,31 @@ public class ChampionDetailWidget extends Widget1<Build> {
                     }
                 }
 
-                〡.nbox.ⅼ(StatusLabel, label);
+                ⅼ.nbox.ⅼ($.StatusLabel, label);
 
                 // write values
                 int size = resolver.estimateSize();
                 int current = level;
 
-                〡.nbox.ⅼ(null, size, i -> {
+                ⅼ.nbox.ⅼ(null, size, i -> {
                     double value = status.round(variable.calculate(i + 1, build));
 
-                    〡.nbox.ⅼ(SkillStatusValue, () -> {
-                        〡.style.〡(Current, size != 1 && i + 1 == current);
-                        〡.style.〡(ChampionLevelIndicator, "title", resolver.getLevelDescription(i + 1));
-                        〡.ⅼ(value == -1 ? "∞" : value);
+                    ⅼ.nbox.ⅼ($.SkillStatusValue, () -> {
+                        ⅼ.style.〡($.Current, size != 1 && i + 1 == current);
+                        ⅼ.style.〡($.ChampionLevelIndicator, "title", resolver.getLevelDescription(i + 1));
+                        ⅼ.ⅼ(value == -1 ? "∞" : value);
                     });
 
                     if (i + 1 != size) {
-                        〡.nbox.ⅼ(Separator, "/");
+                        ⅼ.nbox.ⅼ($.Separator, "/");
                     }
                 });
 
                 // write amplifiers
-                writeAmplifier(〡, variable.getAmplifiers(), 0);
+                writeAmplifier(ⅼ, variable.getAmplifiers(), 0);
 
                 // write unit
-                〡.ⅼ(status.getUnit());
+                ⅼ.ⅼ(status.getUnit());
             });
         }
     }
@@ -234,7 +240,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
      * @param variable
      * @param level
      */
-    private void writeVariable(VirtualStructure 〡, Variable variable, int level) {
+    private void writeVariable(VirtualStructure ⅼ, Variable variable, int level) {
         VariableResolver resolver = variable.getResolver();
         Status status = variable.getStatus();
         List<Variable> amplifiers = variable.getAmplifiers();
@@ -244,28 +250,28 @@ public class ChampionDetailWidget extends Widget1<Build> {
         }
 
         // compute current value
-        〡.nbox.ⅼ(ComputedValue, status.format(variable.calculate(Math.max(1, level), build)));
+        ⅼ.nbox.ⅼ($.ComputedValue, status.format(variable.calculate(Math.max(1, level), build)));
 
         // All values
         int size = resolver.estimateSize();
         int current = level;
 
         if (1 < size || !amplifiers.isEmpty()) {
-            〡.ⅼ("(");
-            〡.nbox.ⅼ(null, size, i -> {
-                〡.nbox.ⅼ(NormalValue, () -> {
-                    〡.style.〡(Current, i + 1 == current);
-                    〡.style.〡(ChampionLevelIndicator, "title", resolver.getLevelDescription(i + 1));
-                    〡.ⅼ(Mathematics.round(resolver.compute(i + 1), 2));
+            ⅼ.ⅼ("(");
+            ⅼ.nbox.ⅼ(null, size, i -> {
+                ⅼ.nbox.ⅼ($.NormalValue, () -> {
+                    ⅼ.style.〡($.Current, i + 1 == current);
+                    ⅼ.style.〡($.ChampionLevelIndicator, "title", resolver.getLevelDescription(i + 1));
+                    ⅼ.ⅼ(Mathematics.round(resolver.compute(i + 1), 2));
                 });
 
                 if (i + 1 != size) {
-                    〡.nbox.ⅼ(Separator, "/");
+                    ⅼ.nbox.ⅼ($.Separator, "/");
                 }
             });
 
-            writeAmplifier(〡, amplifiers, level);
-            〡.ⅼ(")");
+            writeAmplifier(ⅼ, amplifiers, level);
+            ⅼ.ⅼ(")");
         }
     }
 
@@ -278,12 +284,12 @@ public class ChampionDetailWidget extends Widget1<Build> {
      * @param amplifiers A list of skill amplifiers.
      * @param level A current skill level.
      */
-    private void writeAmplifier(VirtualStructure 〡, List<Variable> amplifiers, int level) {
-        〡.nbox.ⅼ(null, amplifiers, amplifier -> {
-            〡.nbox.ⅼ(Amplifier, () -> {
+    private void writeAmplifier(VirtualStructure ⅼ, List<Variable> amplifiers, int level) {
+        ⅼ.nbox.ⅼ(null, amplifiers, amplifier -> {
+            ⅼ.nbox.ⅼ($.Amplifier, () -> {
                 int amp = level;
 
-                〡.ⅼ("+");
+                ⅼ.ⅼ("+");
 
                 VariableResolver resolver = amplifier.getResolver();
 
@@ -294,25 +300,25 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 int size = resolver.estimateSize();
                 int current = amp;
 
-                〡.nbox.ⅼ(null, size, i -> {
-                    〡.nbox.ⅼ(NormalValue, () -> {
-                        〡.style.〡(Current, size != 1 && i + 1 == current);
-                        〡.style.〡(ChampionLevelIndicator, "title", resolver.getLevelDescription(i + 1));
-                        〡.ⅼ(Mathematics.round(amplifier.calculate(i + 1, build, true), 4));
+                ⅼ.nbox.ⅼ(null, size, i -> {
+                    ⅼ.nbox.ⅼ($.NormalValue, () -> {
+                        ⅼ.style.〡($.Current, size != 1 && i + 1 == current);
+                        ⅼ.style.〡($.ChampionLevelIndicator, "title", resolver.getLevelDescription(i + 1));
+                        ⅼ.ⅼ(Mathematics.round(amplifier.calculate(i + 1, build, true), 4));
                     });
 
                     if (i + 1 != size) {
-                        〡.nbox.ⅼ(Separator, "/");
+                        ⅼ.nbox.ⅼ($.Separator, "/");
                     }
                 });
 
-                〡.ⅼ(amplifier.getStatus().getUnit());
+                ⅼ.ⅼ(amplifier.getStatus().getUnit());
                 if (!amplifier.getAmplifiers().isEmpty()) {
-                    〡.ⅼ("(");
-                    writeAmplifier(〡, amplifier.getAmplifiers(), current);
-                    〡.ⅼ(")");
+                    ⅼ.ⅼ("(");
+                    writeAmplifier(ⅼ, amplifier.getAmplifiers(), current);
+                    ⅼ.ⅼ(")");
                 }
-                〡.ⅼ(amplifier.getStatus().name);
+                ⅼ.ⅼ(amplifier.getStatus().name);
             });
         });
     }
@@ -326,12 +332,230 @@ public class ChampionDetailWidget extends Widget1<Build> {
          * {@inheritDoc}
          */
         @Override
-        protected void virtualize(VirtualStructure $〡) {
-            $〡.hbox.ⅼ(ItemIconBase, () -> {
+        protected void virtualize(VirtualStructure ⅼ) {
+            ⅼ.hbox.ⅼ($.ItemIconBase, () -> {
                 if (model1 != null) {
-                    $〡.hbox.ⅼ(ItemIcon.of(model1.position));
+                    ⅼ.hbox.ⅼ($.ItemIcon.of(model1.position));
                 }
             });
         }
+    }
+
+    /**
+     * @version 2015/08/20 15:49:48
+     */
+    private static class $ extends StyleRuleDescriptor {
+
+        /** The skill icon size. */
+        private static int SkillIconSize = 45;
+
+        /** The level box height. */
+        private static int LevelBoxHeight = 5;
+
+        static Style UpperInfo = () -> {
+            display.flex().alignItems.end();
+            margin.bottom(1, em);
+        };
+
+        static Style StatusLabel = () -> {
+            font.size.smaller();
+        };
+
+        static Style StatusBlock = () -> {
+            display.inlineBlock();
+            margin.right(0.8, em);
+        };
+
+        static Style SkillStatusValues = () -> {
+            display.inlineBlock();
+            margin.left(0.7, em);
+        };
+
+        static Style SkillStatusValue = () -> {
+            text.align.center();
+            box.opacity(0.7);
+            margin.horizontal(3, px);
+        };
+
+        static Style SkillTable = () -> {
+            display.block();
+            flexItem.basis(100, percent);
+        };
+
+        static Style Container = () -> {
+            display.flex();
+        };
+
+        static Style SkillRow = () -> {
+            display.flex();
+            margin.bottom(1, em);
+        };
+
+        static ValueStyle<Skill> SkillIcon = skill -> {
+            display.block();
+            box.size(SkillIconSize, px);
+            border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
+            background.image(BackgroundImage.url(skill.getIcon()).horizontal(skill.getIconPosition()).cover().borderBox().noRepeat());
+        };
+
+        static Style LevelBox = () -> {
+            display.flex();
+            box.width(SkillIconSize, px).height(LevelBoxHeight + 2, px);
+            border.width(1, px).solid().color(Color.Black);
+            border.left.none();
+            margin.top(2, px).bottom(5, px);
+        };
+
+        static BinaryStyle LevelMark = state -> {
+            display.block();
+            flexItem.grow(1);
+            box.height(LevelBoxHeight, px);
+            border.left.solid().color(Color.Black).width(1, px);
+            background.image(BackgroundImage.of(linear(rgba(240, 192, 28, state ? 1 : 0.5), rgba(160, 123, 1, state ? 1 : 0.5))));
+        };
+
+        static Style IconBox = () -> {
+            margin.right(SkillIconSize / 5, px);
+            cursor.pointer();
+            flexItem.shrink(0);
+        };
+
+        static Style Name = () -> {
+            margin.right(0.5, em);
+            font.weight.bold();
+        };
+
+        static Style VersionDisplay = () -> {
+            font.color(rgb(200, 200, 200)).size.smaller();
+            flexItem.alignSelf.end();
+        };
+
+        static Style Text = () -> {
+            display.block();
+            margin.top(0.3, em).bottom(0.7, em);
+            line.height(140, percent);
+            font.size.smaller();
+        };
+
+        static Style ComputedValue = () -> {
+            font.weight.bolder();
+        };
+
+        static Style NormalValue = () -> {
+            text.align.center();
+        };
+
+        static Style ChampionLevelIndicator = () -> {
+            cursor.help();
+        };
+
+        static Style Separator = () -> {
+            box.opacity(0.4);
+            margin.horizontal(1, px);
+        };
+
+        static Style Current = () -> {
+            font.color(rgba(160, 123, 1, 1));
+        };
+
+        static Style SkillTypeInfo = () -> {
+            margin.right(1, em);
+        };
+
+        static Style Amplifier = () -> {
+            font.color(25, 111, 136);
+
+            inBackOf(NormalValue, () -> {
+                margin.left(0.4, em);
+            });
+
+            // inBackOf(Amplifier, () -> {
+            // margin.left(0.4, em);
+            // });
+        };
+
+        static Style Active = () -> {
+            box.opacity(0.5);
+        };
+
+        private static Numeric ChampionIconSize = new Numeric(70, Unit.px);
+
+        static Style ChampionIcon = () -> {
+            display.block();
+            background.image(BackgroundImage.url("src/main/resources/teemowork/champions.jpg").cover().borderBox());
+            box.size(ChampionIconSize);
+            border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
+            position.relative();
+            cursor.pointer();
+        };
+
+        static ValueStyle<Champion> ChampionIconBox = champion -> {
+            box.size(ChampionIconSize);
+            border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
+            cursor.pointer();
+            position.relative();
+            background.image(champion.getIcon()).horizontal(champion.getIconPosition());
+
+        };
+
+        static Style Level = () -> {
+            display.block();
+            box.size(22, px);
+            font.size(20, px).color(240, 240, 240).weight.bold().family("Arial");
+            text.align.center().unselectable().outline(rgb(240, 240, 240), 0.8);
+            position.absolute().bottom(4, px).right(4, px);
+            cursor.pointer();
+        };
+
+        static Style StatusViewBox = () -> {
+            display.block();
+            box.width(13, em);
+            flexItem.shrink(0);
+        };
+
+        static Style StatusBox = () -> {
+            display.flex();
+            margin.bottom(4, px);
+        };
+
+        static Style StatusName = () -> {
+            box.width(5, em);
+        };
+
+        static Style StatusValue = () -> {
+            box.width(50, px);
+        };
+
+        private static Numeric ItemIconSize = ChampionIconSize.divide(5).multiply(3);
+
+        static Style ItemViewBox = () -> {
+            display.flex();
+            box.width(ItemIconSize.multiply(6));
+            margin.left(137, px);
+        };
+
+        static Style ItemIconBase = () -> {
+            display.block();
+            box.size(ItemIconSize);
+            background.image(BackgroundImage.url("src/main/resources/teemowork/empty.png").contain().noRepeat());
+            padding.size(3, px);
+        };
+
+        static ValueStyle<Integer> ItemIcon = id -> {
+            display.block();
+            box.size(100, percent);
+            background.horizontal(id / (Item.size() - 1) * 100, percent)
+                    .image(BackgroundImage.url("src/main/resources/teemowork/items.jpg").cover().borderBox().noRepeat());
+        };
+
+        static Style ItemEmptyIcon = () -> {
+            display.block();
+            box.size(100, percent);
+        };
+
+        static Style ItemIconBox = () -> {
+            box.size(ItemIconSize);
+            padding.size(3, px);
+        };
     }
 }
