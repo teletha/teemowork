@@ -172,6 +172,7 @@ public class Build extends Publishable implements StatusCalculator {
         case TargetCurrentHealthRatio:
         case TargetMissingHealthRatio:
         case TargetMissingHealthPercentage:
+        case TargetBounusHealthRatio:
         case AttackDamageRatio:
         case CurrentManaRatio:
         case Stack:

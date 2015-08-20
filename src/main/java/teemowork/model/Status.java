@@ -51,7 +51,7 @@ public enum Status {
     // Health Related
     // ==================================================
     /** Health */
-    Health("Health"), HealthPerLv, HealthRatio(Health), BounusHealth("増加Health"),
+    Health("Health"), HealthPerLv, HealthRatio(Health), HealthRatioPerLv(), BounusHealth("増加Health"),
 
     /** Health Regeneration */
     Hreg(2), HregPerLv(2), HregRatio("Hreg", 2),
@@ -96,6 +96,8 @@ public enum Status {
     TargetMissingHealthRatio("対象の減っているHealth"),
 
     TargetMissingHealthPercentage("対象のHealth損耗率"),
+
+    TargetBounusHealthRatio("対象の増加Health"),
 
     // ==================================================
     // My Mana Reference

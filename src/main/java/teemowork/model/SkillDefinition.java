@@ -3013,44 +3013,51 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Mordekaiser(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P301).passive("スキルで与えたダメージの17.5%(チャンピオンに対しては35%)をシールドに変換する(最大で{1})。1秒毎に3%ずつ低下していく。").variable(1, Shield, 90, 0, level(30));
+        P.update(P516)
+                .passive("スキルで与えたダメージの12.5%(チャンピオンに対しては25%)をシールドに変換する(最大で{1})。1秒毎に基礎体力の1.5%ずつ低下していき{2}まで減少する。")
+                .variable(1, Shield, amplify(HealthRatio, 25))
+                .variable(2, Shield, amplify(HealthRatio, 6.25));
 
-        Q.update(P504)
-                .active("次の通常攻撃は{1}し対象とその{2}の敵3体に{3}を与える。対象が1体だけの場合は{4}与える。")
-                .variable(1, Range, 75)
-                .variable(2, Radius, 600)
-                .variable(3, MagicDamage, 80, 30, ap(0.4), bounusAD(1))
-                .variable(4, MagicDamage, 132, 49.5, ap(0.66), bounusAD(1.65))
-                .cd(8, -1)
-                .cost(Health, 20, 5);
+        Q.update(P516)
+                .active("次の3回の通常攻撃は追加{1}を与える。このタメージは攻撃するたびに{2}倍になり、3発で{3}を与える。{4}。")
+                .variable(1, MagicDamage, 4, 4, amplify(AD, 0.25, 0.0125), ap(0.2))
+                .variable(2, Value, 2, 0.25)
+                .variable(3, MagicDamage, 28, 38.5, amplify(AD, 1.75, 0.432), amplify(AP, 1.4, 0.263))
+                .variable(4, ResetAATimer)
+                .cd(10, -1.5)
+                .cost(Health, 20, 3);
 
-        W.update(P508)
-                .active("対象の味方ユニットに6秒間持続するシールドを付与する。自身へ使用した場合、最も近くに居る味方チャンピオンにもその効果を与える。付与されたユニットは{1}と{2}を得て、{3}の敵ユニットに毎秒{4}を与える。また、付与されたユニット同士が近づくと{5}する。")
-                .variable(1, AR, 10, 5)
-                .variable(2, MR, 10, 5)
-                .variable(3, Radius, 250)
-                .variable(4, MagicDamage, 20, 12, ap(0.15))
-                .variable(5, MS, 60)
-                .cd(20, -2)
-                .range(750)
-                .cost(Health, 20, 5);
+        W.update(P516)
+                .passive(champion + "はミニオンから常に最大の経験値を得る。")
+                .active("4秒間 " + champion + "と対象の味方はお互いに向かって移動する時{1}する。また、{2}の敵に毎秒{3}を与える（このダメージは重複する）。スキルを再度使用すると、近くの3体の敵に{4}を与え、" + champion + "と味方は{5}する（ミニオンに当たった場合回復量は33%になる）。")
+                .variable(1, MS, 75)
+                .variable(2, Radius, 250)
+                .variable(3, MagicDamage, 35, 10, ap(0.15))
+                .variable(4, MagicDamage, 50, 20, ap(0.3))
+                .variable(5, RestoreHealth, 50, 20, ap(0.3))
+                .cd(12, -1);
 
-        E.update(P301)
+        E.update(P516)
                 .active("指定方向扇形の{2}の敵ユニットに{1}を与える。")
-                .variable(1, MagicDamage, 70, 45, ap(0.6))
+                .variable(1, MagicDamage, 35, 30, ad(0.6), ap(0.6))
                 .variable(2, Radius)
-                .cd(6)
-                .range(700)
+                .cd(6, -0.25)
+                .range(675)
                 .cost(Health, 24, 12);
 
-        R.update(P504)
-                .active("対象の敵チャンピオンに{1}を与え、その後10秒間、毎秒{2}を与える。10秒間で総計{4}を与え、{3}する。効果中に対象が死ぬとThe Spiritを生成し30秒間従わせる。(RまたはALT押しながらクリックで任意の操作可能)<br>The Spirit<br>AD: 元になったChampのAD + MordekaiserのADの75%<br>AP: 元になったChampのAP + MordekaiserのAPの75%<br>HP: 元になったChampのHP + MordekaiserのHPの15%<br>行動範囲: 1125<br>また、The Spiritを従えている間、Mordekaiserは元になったChampのADとAPの20％を得る。")
-                .variable(1, MagicDamage, amplify(TargetMaxHealthRatio, 12, 2.5, ap(0.01)))
-                .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 1.2, 0.25, ap(0.002)))
+        R.update(P516)
+                .passive("通常攻撃とスキルは10秒間ドラゴンに対して呪いをかける。")
+                .active("対象の敵チャンピオンを呪い{1}を与え、その後10秒間、毎秒{2}を与える。10秒間で総計{4}を与え、{3}する。呪われた対象が死ぬと幽霊を生成し{5}秒間従わせる。<br>Child of the Grave<br>AD: 対象のAD + {7}<br>AP: 対象のAP<br>HP: 対象のHP + " + champion + "のHPの15%<br>行動範囲: 1125<br>従えている間、" + champion + "は{8}と{9}を得る。")
+                .variable(1, MagicDamage, amplify(TargetMaxHealthRatio, 12.5, 2.5, ap(0.02)))
+                .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 1.3, 0.25, ap(0.002)))
                 .variable(3, RestoreHealth, amplify(DealtDamageRatio, 100))
-                .variable(4, MagicDamage, amplify(TargetMaxHealthRatio, 24, 5, ap(0.03)))
+                .variable(4, MagicDamage, amplify(TargetMaxHealthRatio, 25, 5, ap(0.04)))
+                .variable(5, Value, 45, 15)
+                .variable(7, Value, new Fixed(10, 25, 50))
+                .variable(8, Health, amplify(TargetBounusHealthRatio, 25))
+                .variable(9, AP, amplify(TargetAP, 0.3))
                 .cd(120, -15)
-                .range(850);
+                .range(650);
     }
 
     /**
