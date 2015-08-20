@@ -47,13 +47,13 @@ public class ChampionSelectWidget extends Widget {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure 〡) {
-        〡.nbox.〡(CSS.Root, () -> {
-            〡.nbox.〡(CSS.SearchByName, input);
-            〡.nbox.〡(CSS.ImageSet, Champion.getAll(), champion -> {
-                〡.nbox.〡(CSS.Container.with(CSS.Unselected.when(champion.match(input.value.get()))), () -> {
-                    〡.nbox.〡(CSS.IconImage.with(CSS.IconPosition.of(champion)));
-                    〡.nbox.〡(CSS.Title, champion.name);
+    protected void virtualize(VirtualStructure ⅼ) {
+        ⅼ.nbox.ⅼ(CSS.Root, () -> {
+            ⅼ.nbox.ⅼ(CSS.SearchByName, input);
+            ⅼ.nbox.ⅼ(CSS.ImageSet, Champion.getAll(), champion -> {
+                ⅼ.nbox.ⅼ(CSS.Container.with(CSS.Unselected.when(champion.match(input.value.get()))), () -> {
+                    ⅼ.nbox.ⅼ(CSS.IconImage.with(CSS.IconPosition.of(champion)));
+                    ⅼ.nbox.ⅼ(CSS.Title, champion.name);
                 });
             });
         });

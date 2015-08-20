@@ -63,23 +63,23 @@ public class ChampionComparingWidget extends Widget {
      */
     @Override
     protected void virtualize(VirtualStructure 〡) {
-        〡.nbox.〡(null, groups);
-        〡.vbox.〡(Table, () -> {
-            〡.nbox.〡(Head, () -> {
-                〡.nbox.〡(NoIcon);
-                〡.nbox.〡(null, Header.class, STATUS);
+        〡.nbox.ⅼ(null, groups);
+        〡.vbox.ⅼ(Table, () -> {
+            〡.nbox.ⅼ(Head, () -> {
+                〡.nbox.ⅼ(NoIcon);
+                〡.nbox.ⅼ(null, Header.class, STATUS);
             });
 
-            〡.nbox.〡(Body, () -> {
-                〡.vbox.〡(null, group.getValue().sortBy(comparator), champion -> {
-                    〡.hbox.〡(RowLine, () -> {
+            〡.nbox.ⅼ(Body, () -> {
+                〡.vbox.ⅼ(null, group.getValue().sortBy(comparator), champion -> {
+                    〡.hbox.ⅼ(RowLine, () -> {
                         ChampionStatus championStatus = champion.getStatus(Version.Latest);
 
-                        〡.nbox.〡(Icon.with(() -> {
+                        〡.nbox.ⅼ(Icon.with(() -> {
                             background.horizontal(champion.getIconPosition());
                         }));
-                        〡.nbox.〡(null, STATUS, status -> {
-                            〡.nbox.〡(StatusView, championStatus.get(status));
+                        〡.nbox.ⅼ(null, STATUS, status -> {
+                            〡.nbox.ⅼ(StatusView, championStatus.get(status));
                         });
                     });
                 });
@@ -137,7 +137,7 @@ public class ChampionComparingWidget extends Widget {
          */
         @Override
         protected void virtualize(VirtualStructure 〡) {
-            〡.nbox.〡(StatusView, status.name);
+            〡.nbox.ⅼ(StatusView, status.name);
         }
     }
 }

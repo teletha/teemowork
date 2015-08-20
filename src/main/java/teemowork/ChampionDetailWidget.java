@@ -69,71 +69,71 @@ public class ChampionDetailWidget extends Widget1<Build> {
      */
     @Override
     protected void virtualize(VirtualStructure 〡) {
-        〡.hbox.〡(UpperInfo, () -> {
-            〡.hbox.〡(ChampionIconBox.of(build.champion), () -> {
-                〡.nbox.〡(Level, build.getLevel());
+        〡.hbox.ⅼ(UpperInfo, () -> {
+            〡.hbox.ⅼ(ChampionIconBox.of(build.champion), () -> {
+                〡.nbox.ⅼ(Level, build.getLevel());
             });
             // 〡.nbox.〡(null, ChampionFace.class, build.champion);
-            〡.hbox.〡(ItemViewBox, ItemBoxWidget.class, build.items);
+            〡.hbox.ⅼ(ItemViewBox, ItemBoxWidget.class, build.items);
         });
 
-        〡.hbox.〡(Container, () -> {
-            〡.vbox.〡(StatusViewBox, VISIBLE, status -> {
-                〡.hbox.〡(StatusBox, () -> {
-                    〡.hbox.〡(StatusName, status.name());
-                    〡.hbox.〡(StatusValue, computeStatusValue(status));
+        〡.hbox.ⅼ(Container, () -> {
+            〡.vbox.ⅼ(StatusViewBox, VISIBLE, status -> {
+                〡.hbox.ⅼ(StatusBox, () -> {
+                    〡.hbox.ⅼ(StatusName, status.name());
+                    〡.hbox.ⅼ(StatusValue, computeStatusValue(status));
                 });
             });
 
-            〡.vbox.〡(SkillTable, build.champion.skills, skill -> {
-                〡.hbox.〡(SkillRow, () -> {
-                    〡.vbox.〡(IconBox, () -> {
-                        〡.hbox.〡(SkillIcon.of(skill));
+            〡.vbox.ⅼ(SkillTable, build.champion.skills, skill -> {
+                〡.hbox.ⅼ(SkillRow, () -> {
+                    〡.vbox.ⅼ(IconBox, () -> {
+                        〡.hbox.ⅼ(SkillIcon.of(skill));
 
                         if (skill.key != SkillKey.Passive) {
-                            〡.nbox.〡(LevelBox, skill.getMaxLevel(), level -> {
-                                〡.nbox.〡(LevelMark.of(level < build.getLevel(skill)));
+                            〡.nbox.ⅼ(LevelBox, skill.getMaxLevel(), level -> {
+                                〡.nbox.ⅼ(LevelMark.of(level < build.getLevel(skill)));
                             });
                         }
                     });
 
-                    〡.vbox.〡(() -> {
+                    〡.vbox.ⅼ(() -> {
                         SkillDescriptor status = skill.getDescriptor(build.getVersion());
-                        〡.hbox.〡(() -> {
-                            〡.nbox.〡(Name, skill);
-                            〡.nbox.〡(VersionDisplay, status.version.name);
+                        〡.hbox.ⅼ(() -> {
+                            〡.nbox.ⅼ(Name, skill);
+                            〡.nbox.ⅼ(VersionDisplay, status.version.name);
                         });
-                        〡.nbox.〡(() -> {
+                        〡.nbox.ⅼ(() -> {
                             writeStatusValue(〡, skill, status, status.getRange());
                             writeStatusValue(〡, skill, status, status.getCooldown());
                             writeStatusValue(〡, skill, status, status.getCost());
                         });
 
                         if (!status.getPassive().isEmpty()) {
-                            〡.nbox.〡(Text, () -> {
+                            〡.nbox.ⅼ(Text, () -> {
                                 int level = build.getLevel(skill);
 
-                                〡.nbox.〡(SkillTypeInfo, SkillType.Passive);
-                                〡.nbox.〡(null, status.getPassive(), text -> {
+                                〡.nbox.ⅼ(SkillTypeInfo, SkillType.Passive);
+                                〡.nbox.ⅼ(null, status.getPassive(), text -> {
                                     if (text instanceof Variable) {
                                         writeVariable(〡, (Variable) text, level);
                                     } else {
-                                        〡.〡(text);
+                                        〡.ⅼ(text);
                                     }
                                 });
                             });
                         }
 
                         if (!status.getActive().isEmpty()) {
-                            〡.nbox.〡(Text, () -> {
+                            〡.nbox.ⅼ(Text, () -> {
                                 int level = build.getLevel(skill);
 
-                                〡.nbox.〡(SkillTypeInfo, status.getType());
-                                〡.nbox.〡(null, status.getActive(), text -> {
+                                〡.nbox.ⅼ(SkillTypeInfo, status.getType());
+                                〡.nbox.ⅼ(null, status.getActive(), text -> {
                                     if (text instanceof Variable) {
                                         writeVariable(〡, (Variable) text, level);
                                     } else {
-                                        〡.〡(text);
+                                        〡.ⅼ(text);
                                     }
                                 });
                             });
@@ -176,7 +176,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
      */
     private void writeStatusValue(VirtualStructure 〡, Skill sss, SkillDescriptor skill, Variable variable) {
         if (variable != null) {
-            〡.hbox.〡(StatusBlock, () -> {
+            〡.hbox.ⅼ(StatusBlock, () -> {
                 Status status = variable.getStatus();
                 VariableResolver resolver = variable.getResolver();
 
@@ -197,23 +197,23 @@ public class ChampionDetailWidget extends Widget1<Build> {
                     }
                 }
 
-                〡.nbox.〡(StatusLabel, label);
+                〡.nbox.ⅼ(StatusLabel, label);
 
                 // write values
                 int size = resolver.estimateSize();
                 int current = level;
 
-                〡.nbox.〡(null, size, i -> {
+                〡.nbox.ⅼ(null, size, i -> {
                     double value = status.round(variable.calculate(i + 1, build));
 
-                    〡.nbox.〡(SkillStatusValue, () -> {
+                    〡.nbox.ⅼ(SkillStatusValue, () -> {
                         〡.style.〡(Current, size != 1 && i + 1 == current);
                         〡.style.〡(ChampionLevelIndicator, "title", resolver.getLevelDescription(i + 1));
-                        〡.〡(value == -1 ? "∞" : value);
+                        〡.ⅼ(value == -1 ? "∞" : value);
                     });
 
                     if (i + 1 != size) {
-                        〡.nbox.〡(Separator, "/");
+                        〡.nbox.ⅼ(Separator, "/");
                     }
                 });
 
@@ -221,7 +221,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 writeAmplifier(〡, variable.getAmplifiers(), 0);
 
                 // write unit
-                〡.〡(status.getUnit());
+                〡.ⅼ(status.getUnit());
             });
         }
     }
@@ -244,28 +244,28 @@ public class ChampionDetailWidget extends Widget1<Build> {
         }
 
         // compute current value
-        〡.nbox.〡(ComputedValue, status.format(variable.calculate(Math.max(1, level), build)));
+        〡.nbox.ⅼ(ComputedValue, status.format(variable.calculate(Math.max(1, level), build)));
 
         // All values
         int size = resolver.estimateSize();
         int current = level;
 
         if (1 < size || !amplifiers.isEmpty()) {
-            〡.〡("(");
-            〡.nbox.〡(null, size, i -> {
-                〡.nbox.〡(NormalValue, () -> {
+            〡.ⅼ("(");
+            〡.nbox.ⅼ(null, size, i -> {
+                〡.nbox.ⅼ(NormalValue, () -> {
                     〡.style.〡(Current, i + 1 == current);
                     〡.style.〡(ChampionLevelIndicator, "title", resolver.getLevelDescription(i + 1));
-                    〡.〡(Mathematics.round(resolver.compute(i + 1), 2));
+                    〡.ⅼ(Mathematics.round(resolver.compute(i + 1), 2));
                 });
 
                 if (i + 1 != size) {
-                    〡.nbox.〡(Separator, "/");
+                    〡.nbox.ⅼ(Separator, "/");
                 }
             });
 
             writeAmplifier(〡, amplifiers, level);
-            〡.〡(")");
+            〡.ⅼ(")");
         }
     }
 
@@ -279,11 +279,11 @@ public class ChampionDetailWidget extends Widget1<Build> {
      * @param level A current skill level.
      */
     private void writeAmplifier(VirtualStructure 〡, List<Variable> amplifiers, int level) {
-        〡.nbox.〡(null, amplifiers, amplifier -> {
-            〡.nbox.〡(Amplifier, () -> {
+        〡.nbox.ⅼ(null, amplifiers, amplifier -> {
+            〡.nbox.ⅼ(Amplifier, () -> {
                 int amp = level;
 
-                〡.〡("+");
+                〡.ⅼ("+");
 
                 VariableResolver resolver = amplifier.getResolver();
 
@@ -294,25 +294,25 @@ public class ChampionDetailWidget extends Widget1<Build> {
                 int size = resolver.estimateSize();
                 int current = amp;
 
-                〡.nbox.〡(null, size, i -> {
-                    〡.nbox.〡(NormalValue, () -> {
+                〡.nbox.ⅼ(null, size, i -> {
+                    〡.nbox.ⅼ(NormalValue, () -> {
                         〡.style.〡(Current, size != 1 && i + 1 == current);
                         〡.style.〡(ChampionLevelIndicator, "title", resolver.getLevelDescription(i + 1));
-                        〡.〡(Mathematics.round(amplifier.calculate(i + 1, build, true), 4));
+                        〡.ⅼ(Mathematics.round(amplifier.calculate(i + 1, build, true), 4));
                     });
 
                     if (i + 1 != size) {
-                        〡.nbox.〡(Separator, "/");
+                        〡.nbox.ⅼ(Separator, "/");
                     }
                 });
 
-                〡.〡(amplifier.getStatus().getUnit());
+                〡.ⅼ(amplifier.getStatus().getUnit());
                 if (!amplifier.getAmplifiers().isEmpty()) {
-                    〡.〡("(");
+                    〡.ⅼ("(");
                     writeAmplifier(〡, amplifier.getAmplifiers(), current);
-                    〡.〡(")");
+                    〡.ⅼ(")");
                 }
-                〡.〡(amplifier.getStatus().name);
+                〡.ⅼ(amplifier.getStatus().name);
             });
         });
     }
@@ -327,9 +327,9 @@ public class ChampionDetailWidget extends Widget1<Build> {
          */
         @Override
         protected void virtualize(VirtualStructure $〡) {
-            $〡.hbox.〡(ItemIconBase, () -> {
+            $〡.hbox.ⅼ(ItemIconBase, () -> {
                 if (model1 != null) {
-                    $〡.hbox.〡(ItemIcon.of(model1.position));
+                    $〡.hbox.ⅼ(ItemIcon.of(model1.position));
                 }
             });
         }

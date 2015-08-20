@@ -26,8 +26,8 @@ import kiss.I;
 import teemowork.model.Describable;
 import teemowork.model.DescriptionView;
 import teemowork.model.Mastery;
-import teemowork.model.MasterySeason4;
 import teemowork.model.MasterySet;
+import teemowork.model.MasteryType;
 import teemowork.model.Version;
 
 /**
@@ -135,9 +135,9 @@ public class MasteryBuilder extends Page {
     public void receive() {
         reset.label(String.valueOf(30 - masterySet.getSum()));
 
-        offense.text("OFFENSE　" + masterySet.getSum(MasterySeason4.Offense));
-        defense.text("DEFENSE　" + masterySet.getSum(MasterySeason4.Defense));
-        utility.text("UTILITY　" + masterySet.getSum(MasterySeason4.Utility));
+        offense.text("OFFENSE　" + masterySet.getSum(MasteryType.Offense));
+        defense.text("DEFENSE　" + masterySet.getSum(MasteryType.Defense));
+        utility.text("UTILITY　" + masterySet.getSum(MasteryType.Utility));
 
         history.replaceState("", "", "#" + getPageId());
     }

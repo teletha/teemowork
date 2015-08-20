@@ -53,11 +53,11 @@ public abstract class DescriptionViewWidget<D extends Describable> extends Widge
      */
     @Override
     protected void virtualize(VirtualStructure 〡) {
-        〡.nbox.〡(Passive, model3, text -> {
+        〡.nbox.ⅼ(Passive, model3, text -> {
             if (text instanceof Variable) {
                 writeVariable(〡, (Variable) text, getLevel());
             } else {
-                〡.〡(text);
+                〡.ⅼ(text);
             }
         });
     }
@@ -80,28 +80,28 @@ public abstract class DescriptionViewWidget<D extends Describable> extends Widge
         }
 
         // compute current value
-        〡.nbox.〡(ComputedValue, status.format(variable.calculate(Math.max(1, level), calculator)));
+        〡.nbox.ⅼ(ComputedValue, status.format(variable.calculate(Math.max(1, level), calculator)));
 
         // All values
         int size = resolver.estimateSize();
         int current = level;
 
         if (1 < size || !amplifiers.isEmpty()) {
-            〡.〡("(");
-            〡.nbox.〡(null, size, i -> {
-                〡.nbox.〡(Value, () -> {
+            〡.ⅼ("(");
+            〡.nbox.ⅼ(null, size, i -> {
+                〡.nbox.ⅼ(Value, () -> {
                     〡.style.〡(Current, i + 1 == current);
                     〡.style.〡(Indicator, "title", resolver.getLevelDescription(i + 1));
-                    〡.〡(Mathematics.round(resolver.compute(i + 1), 2));
+                    〡.ⅼ(Mathematics.round(resolver.compute(i + 1), 2));
                 });
 
                 if (i + 1 != size) {
-                    〡.nbox.〡(Separator, "/");
+                    〡.nbox.ⅼ(Separator, "/");
                 }
             });
 
             writeAmplifier(〡, amplifiers, level);
-            〡.〡(")");
+            〡.ⅼ(")");
 
             // FORMAT
         }
@@ -117,11 +117,11 @@ public abstract class DescriptionViewWidget<D extends Describable> extends Widge
      * @param level A current skill level.
      */
     private void writeAmplifier(VirtualStructure 〡, List<Variable> amplifiers, int level) {
-        〡.nbox.〡(null, amplifiers, amplifier -> {
-            〡.nbox.〡(Amplifier, () -> {
+        〡.nbox.ⅼ(null, amplifiers, amplifier -> {
+            〡.nbox.ⅼ(Amplifier, () -> {
                 int amp = level;
 
-                〡.〡("+");
+                〡.ⅼ("+");
 
                 VariableResolver resolver = amplifier.getResolver();
 
@@ -132,27 +132,27 @@ public abstract class DescriptionViewWidget<D extends Describable> extends Widge
                 int size = resolver.estimateSize();
                 int current = amp;
 
-                〡.nbox.〡(null, size, i -> {
-                    〡.nbox.〡(Value, () -> {
+                〡.nbox.ⅼ(null, size, i -> {
+                    〡.nbox.ⅼ(Value, () -> {
                         〡.style.〡(Current, size != 1 && i + 1 == current);
                         〡.style.〡(Indicator, "title", resolver.getLevelDescription(i + 1));
-                        〡.〡(Mathematics.round(amplifier.calculate(i + 1, calculator, true), 4));
+                        〡.ⅼ(Mathematics.round(amplifier.calculate(i + 1, calculator, true), 4));
 
                         // FORMAT
                     });
 
                     if (i + 1 != size) {
-                        〡.nbox.〡(Separator, "/");
+                        〡.nbox.ⅼ(Separator, "/");
                     }
                 });
 
-                〡.〡(amplifier.getStatus().getUnit());
+                〡.ⅼ(amplifier.getStatus().getUnit());
                 if (!amplifier.getAmplifiers().isEmpty()) {
-                    〡.〡("(");
+                    〡.ⅼ("(");
                     writeAmplifier(〡, amplifier.getAmplifiers(), current);
-                    〡.〡(")");
+                    〡.ⅼ(")");
                 }
-                〡.〡(amplifier.getStatus().name);
+                〡.ⅼ(amplifier.getStatus().name);
 
                 // FORMAT
             });

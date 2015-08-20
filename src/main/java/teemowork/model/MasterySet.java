@@ -167,12 +167,12 @@ public class MasterySet extends Publishable {
      * @param type A tree type.
      * @return A result.
      */
-    public int getSum(int type) {
+    public int getSum(MasteryType type) {
         switch (type) {
-        case MasterySeason4.Offense:
+        case Offense:
             return offense;
 
-        case MasterySeason4.Defense:
+        case Defense:
             return defense;
 
         default:
