@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Nameless Production Committee
+ * Copyright (C) 2015 Nameless Production Committee
  *
  * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
@@ -9,11 +9,11 @@
  */
 package teemowork.model;
 
-import static teemowork.model.DescriptionViewStyle.*;
-
 import java.util.List;
 
 import js.math.Mathematics;
+import jsx.style.Style;
+import jsx.style.StyleRuleDescriptor;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget3;
 import teemowork.model.variable.Variable;
@@ -52,12 +52,12 @@ public abstract class DescriptionViewWidget<D extends Describable> extends Widge
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure 〡) {
-        〡.nbox.ⅼ(Passive, model3, text -> {
+    protected void virtualize(VirtualStructure ⅼ) {
+        ⅼ.nbox.ⅼ($.Passive, model3, text -> {
             if (text instanceof Variable) {
-                writeVariable(〡, (Variable) text, getLevel());
+                writeVariable(ⅼ, (Variable) text, getLevel());
             } else {
-                〡.ⅼ(text);
+                ⅼ.ⅼ(text);
             }
         });
     }
@@ -70,7 +70,7 @@ public abstract class DescriptionViewWidget<D extends Describable> extends Widge
      * @param variable
      * @param level
      */
-    private void writeVariable(VirtualStructure 〡, Variable variable, int level) {
+    private void writeVariable(VirtualStructure ⅼ, Variable variable, int level) {
         VariableResolver resolver = variable.getResolver();
         Status status = variable.getStatus();
         List<Variable> amplifiers = variable.getAmplifiers();
@@ -80,30 +80,28 @@ public abstract class DescriptionViewWidget<D extends Describable> extends Widge
         }
 
         // compute current value
-        〡.nbox.ⅼ(ComputedValue, status.format(variable.calculate(Math.max(1, level), calculator)));
+        ⅼ.nbox.ⅼ($.ComputedValue, status.format(variable.calculate(Math.max(1, level), calculator)));
 
         // All values
         int size = resolver.estimateSize();
         int current = level;
 
         if (1 < size || !amplifiers.isEmpty()) {
-            〡.ⅼ("(");
-            〡.nbox.ⅼ(null, size, i -> {
-                〡.nbox.ⅼ(Value, () -> {
-                    〡.style.〡(Current, i + 1 == current);
-                    〡.style.〡(Indicator, "title", resolver.getLevelDescription(i + 1));
-                    〡.ⅼ(Mathematics.round(resolver.compute(i + 1), 2));
+            ⅼ.ⅼ("(");
+            ⅼ.nbox.ⅼ(null, size, i -> {
+                ⅼ.nbox.ⅼ($.Value, () -> {
+                    ⅼ.style.〡($.Current, i + 1 == current);
+                    ⅼ.style.〡($.Indicator, "title", resolver.getLevelDescription(i + 1));
+                    ⅼ.ⅼ(Mathematics.round(resolver.compute(i + 1), 2));
                 });
 
                 if (i + 1 != size) {
-                    〡.nbox.ⅼ(Separator, "/");
+                    ⅼ.nbox.ⅼ($.Separator, "/");
                 }
             });
 
-            writeAmplifier(〡, amplifiers, level);
-            〡.ⅼ(")");
-
-            // FORMAT
+            writeAmplifier(ⅼ, amplifiers, level);
+            ⅼ.ⅼ(")");
         }
     }
 
@@ -116,12 +114,12 @@ public abstract class DescriptionViewWidget<D extends Describable> extends Widge
      * @param amplifiers A list of skill amplifiers.
      * @param level A current skill level.
      */
-    private void writeAmplifier(VirtualStructure 〡, List<Variable> amplifiers, int level) {
-        〡.nbox.ⅼ(null, amplifiers, amplifier -> {
-            〡.nbox.ⅼ(Amplifier, () -> {
+    private void writeAmplifier(VirtualStructure ⅼ, List<Variable> amplifiers, int level) {
+        ⅼ.nbox.ⅼ(null, amplifiers, amplifier -> {
+            ⅼ.nbox.ⅼ($.Amplifier, () -> {
                 int amp = level;
 
-                〡.ⅼ("+");
+                ⅼ.ⅼ("+");
 
                 VariableResolver resolver = amplifier.getResolver();
 
@@ -132,30 +130,70 @@ public abstract class DescriptionViewWidget<D extends Describable> extends Widge
                 int size = resolver.estimateSize();
                 int current = amp;
 
-                〡.nbox.ⅼ(null, size, i -> {
-                    〡.nbox.ⅼ(Value, () -> {
-                        〡.style.〡(Current, size != 1 && i + 1 == current);
-                        〡.style.〡(Indicator, "title", resolver.getLevelDescription(i + 1));
-                        〡.ⅼ(Mathematics.round(amplifier.calculate(i + 1, calculator, true), 4));
-
-                        // FORMAT
+                ⅼ.nbox.ⅼ(null, size, i -> {
+                    ⅼ.nbox.ⅼ($.Value, () -> {
+                        ⅼ.style.〡($.Current, size != 1 && i + 1 == current);
+                        ⅼ.style.〡($.Indicator, "title", resolver.getLevelDescription(i + 1));
+                        ⅼ.ⅼ(Mathematics.round(amplifier.calculate(i + 1, calculator, true), 4));
                     });
 
                     if (i + 1 != size) {
-                        〡.nbox.ⅼ(Separator, "/");
+                        ⅼ.nbox.ⅼ($.Separator, "/");
                     }
                 });
 
-                〡.ⅼ(amplifier.getStatus().getUnit());
+                ⅼ.ⅼ(amplifier.getStatus().getUnit());
                 if (!amplifier.getAmplifiers().isEmpty()) {
-                    〡.ⅼ("(");
-                    writeAmplifier(〡, amplifier.getAmplifiers(), current);
-                    〡.ⅼ(")");
+                    ⅼ.ⅼ("(");
+                    writeAmplifier(ⅼ, amplifier.getAmplifiers(), current);
+                    ⅼ.ⅼ(")");
                 }
-                〡.ⅼ(amplifier.getStatus().name);
-
-                // FORMAT
+                ⅼ.ⅼ(amplifier.getStatus().name);
             });
         });
     }
+
+    /**
+     * @version 2015/08/20 15:59:24
+     */
+    private static class $ extends StyleRuleDescriptor {
+
+        static Style ComputedValue = () -> {
+            font.weight.bolder();
+        };
+
+        static Style Value = () -> {
+            text.align.center();
+        };
+
+        static Style Separator = () -> {
+            box.opacity(0.4);
+            margin.horizontal(1, px);
+        };
+
+        static Style Current = () -> {
+            font.color(rgba(160, 123, 1, 1));
+        };
+
+        static Style Passive = () -> {
+            margin.right(1, em);
+        };
+
+        static Style Indicator = () -> {
+            cursor.help();
+        };
+
+        static Style Amplifier = () -> {
+            font.color(25, 111, 136);
+
+            inBackOf(Value, () -> {
+                margin.left(0.4, em);
+            });
+
+            // inBackOf(Amplifier, () -> {
+            // margin.left(0.4, em);
+            // });
+        };
+    }
+
 }
