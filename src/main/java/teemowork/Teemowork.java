@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 
 import jsx.application.Header;
 import jsx.application.Header.Menu;
-import jsx.application.NewApplication;
+import jsx.application.Application;
 import jsx.application.Route;
 import jsx.ui.Widget;
 import teemowork.model.Build;
@@ -25,7 +25,7 @@ import teemowork.model.Champion;
 /**
  * @version 2015/08/18 10:28:01
  */
-public class Teemowork extends NewApplication {
+public class Teemowork extends Application {
 
     /**
      * 
