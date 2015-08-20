@@ -34,7 +34,7 @@ public class ChampionSelectWidget extends Widget {
 
     private Input input = UI.input().placeholder("Champion Name");
 
-    public Events<Champion> select = on(Click, CSS.Container, Champion.class);
+    public Events<Champion> select = on(Click, $.Container, Champion.class);
 
     /**
      * 
@@ -48,12 +48,12 @@ public class ChampionSelectWidget extends Widget {
      */
     @Override
     protected void virtualize(VirtualStructure ⅼ) {
-        ⅼ.nbox.ⅼ(CSS.Root, () -> {
-            ⅼ.nbox.ⅼ(CSS.SearchByName, input);
-            ⅼ.nbox.ⅼ(CSS.ImageSet, Champion.getAll(), champion -> {
-                ⅼ.nbox.ⅼ(CSS.Container.with(CSS.Unselected.when(champion.match(input.value.get()))), () -> {
-                    ⅼ.nbox.ⅼ(CSS.IconImage.with(CSS.IconPosition.of(champion)));
-                    ⅼ.nbox.ⅼ(CSS.Title, champion.name);
+        ⅼ.nbox.ⅼ($.Root, () -> {
+            ⅼ.nbox.ⅼ($.SearchByName, input);
+            ⅼ.nbox.ⅼ($.ImageSet, Champion.getAll(), champion -> {
+                ⅼ.nbox.ⅼ($.Container.with($.Unselected.when(champion.match(input.value.get()))), () -> {
+                    ⅼ.nbox.ⅼ($.IconImage.with($.IconPosition.of(champion)));
+                    ⅼ.nbox.ⅼ($.Title, champion.name);
                 });
             });
         });
@@ -62,7 +62,7 @@ public class ChampionSelectWidget extends Widget {
     /**
      * @version 2015/01/30 14:32:48
      */
-    private static class CSS extends StyleRuleDescriptor {
+    private static class $ extends StyleRuleDescriptor {
 
         private static final Color backColor = new Color(0, 10, 10);
 

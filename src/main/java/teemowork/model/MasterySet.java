@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Nameless Production Committee
+ * Copyright (C) 2015 Nameless Production Committee
  *
  * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
@@ -11,12 +11,10 @@ package teemowork.model;
 
 import static teemowork.model.Mastery.*;
 
-import jsx.event.Publishable;
-
 /**
- * @version 2013/03/15 16:51:59
+ * @version 2015/08/20 15:34:44
  */
-public class MasterySet extends Publishable {
+public class MasterySet {
 
     /** The human-readable name. */
     private String name = "";
@@ -99,8 +97,8 @@ public class MasterySet extends Publishable {
      * @param mastery
      */
     public void up(Mastery mastery) {
-        if (isAvailable(mastery) && changeLevel(mastery, 1)) {
-            publish(this);
+        if (isAvailable(mastery)) {
+            changeLevel(mastery, 1);;
         }
     }
 
@@ -112,8 +110,8 @@ public class MasterySet extends Publishable {
      * @param mastery
      */
     public void down(Mastery mastery) {
-        if (isUnavailable(mastery) && changeLevel(mastery, -1)) {
-            publish(this);
+        if (isUnavailable(mastery)) {
+            changeLevel(mastery, -1);
         }
     }
 
@@ -123,16 +121,8 @@ public class MasterySet extends Publishable {
      * </p>
      */
     public void reset() {
-        boolean changed = false;
-
         for (Mastery mastery : Mastery.getMastery(Version.Latest)) {
-            if (changeLevel(mastery, -4)) {
-                changed = true;
-            }
-        }
-
-        if (changed) {
-            publish(this);
+            changeLevel(mastery, -4);
         }
     }
 
@@ -432,7 +422,6 @@ public class MasterySet extends Publishable {
         if (serialized != null) {
             reset();
             decode(serialized);
-            publish(this);
         }
     }
 }
