@@ -1469,37 +1469,40 @@ public interface SkillDefinition {
                 .variable(1, Time, new PerLevel(new int[] {1, 11, 16}, new double[] {9, 6, 4}))
                 .variable(2, RestoreHealth, amplify(Health, new PerLevel(new int[] {1, 11, 16}, 0.004, 0.008, 0.02)));
 
-        Q.update(P303)
-                .active("{1}間{2}し、スキル使用後6秒間に行った次の通常攻撃に追加{3}と{4}が付与される。またこのスキル使用時に自身にかかっているスローを解除する。")
-                .variable(1, Time, 1.5, 0.75)
+        Q.update(P516)
+                .active("{1}間{2}し、スキル使用後6秒間に行った次の通常攻撃に追加{3}と{4}が付与される。またこのスキル使用時に自身にかかっているスローを解除する。{5}。")
+                .variable(1, Time, 1.5, 0.5)
                 .variable(2, MSRatio, 35)
                 .variable(3, PhysicalDamage, 30, 25, ad(0.4))
-                .variable(4, Silence, 1.5, 0.25)
+                .variable(4, Silence, 1.5)
+                .variable(5, ResetAATimer)
                 .cd(8);
 
-        W.update(P303)
-                .passive("{1}し{2}する。")
-                .variable(1, AR, amplify(BounusAR, 0.2))
-                .variable(2, MR, amplify(BounusMR, 0.2))
-                .active("{3}間{4}し、{5}を得る。")
+        W.update(P516)
+                .passive("敵を倒すとスタックが増加する（最大120、チャンピオンや大型モンスターを倒すと4スタック増加）。{1}と{2}を得る。")
+                .variable(1, AR, amplify(Stack, 0.25))
+                .variable(2, MR, amplify(Stack, 0.25))
+                .active("{3}間{4}する。")
                 .variable(3, Time, 2, 1)
                 .variable(4, DamageReductionRatio, 30)
-                .variable(5, Tenacity, 30)
                 .cd(24, -1);
 
-        E.update(P412)
-                .active("Garenが3秒間回転し、{5}の敵ユニットに0.5秒毎に{1}を与える(最大6hitで{2})。このスキルにはクリティカル判定があり、クリティカル時は追加{3}を与える。回転中は{4}を得るが、敵ミニオンをすり抜けている間は移動速度が20%低下し、ミニオンに与えるダメージは通常の75%。")
-                .variable(1, PhysicalDamage, 10, 12.5, amplify(AD, 0.35, 0.05))
-                .variable(2, PhysicalDamage, 60, 75, amplify(AD, 2.1, 0.3))
-                .variable(3, PhysicalDamage, amplify(AD, 0.175, 0.025))
-                .variable(4, IgnoreUnitCollision)
-                .variable(5, Radius, 300)
-                .cd(13, -1);
+        E.update(P516)
+                .active("3秒間回転し{1}を得て、{2}の敵ユニットに一定時間毎に{3}を与える（最大{5}回）。このスキルにはクリティカル判定がある。単一の敵に当たった場合、ダメージが33%増加し{4}を与える。")
+                .variable(1, IgnoreUnitCollision)
+                .variable(2, Radius, 300)
+                .variable(3, PhysicalDamage, 14, 4, amplify(AD, 0.34, 0.01))
+                .variable(4, PhysicalDamage, 20, 5, amplify(AD, 0.46, 0.01))
+                .variable(5, Value, new Per3Level(5, 1))
+                .cd(9);
 
-        R.update(P507)
-                .active("対象の敵チャンピオンに{1}を与える。")
-                .variable(1, MagicDamage, 175, 175, amplify(TargetMissingHealthRatio, new Fixed(28.57, 33.3, 40)))
-                .cd(160, -40)
+        R.update(P516)
+                .passive("味方チャンピオンを倒した敵は『悪役』になる（直近の1体のみ）。悪役に対する通常攻撃及び" + E + "は追加で{1}を与える。悪役との戦闘中に悪役が変更されることはない。")
+                .variable(1, TrueDamage, amplify(TargetMaxHealthRatio, 1))
+                .active("対象の敵チャンピオンに{3}を与える。悪役に対しては{4}を与える。")
+                .variable(3, MagicDamage, 175, 175, amplify(TargetMissingHealthRatio, new Fixed(28.6, 33.3, 40)))
+                .variable(4, TrueDamage, 175, 175, amplify(TargetMissingHealthRatio, new Fixed(28.6, 33.3, 40)))
+                .cd(120, -20)
                 .range(400);
     }
 
