@@ -102,6 +102,14 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
+    public static final Ability CleaveHealth = new Ability("なぎ払い", ability -> {
+        ability.passive("通常攻撃は追加で{2}を与える。更に{1}の敵に{3}を与える。")
+                .variable(1, Radius, 385)
+                .variable(2, PhysicalDamage, 5, 0, amplify(HealthRatio, 1))
+                .variable(3, PhysicalDamage, 40, 0, amplify(HealthRatio, 2.5));
+    });
+
+    /** The ability. */
     public static final Ability ColdSteel = new Ability("冷たい鋼", ability -> {
         ability.passive("通常攻撃を受けた際に対象に{2}間{1}を与える。").variable(1, ASSlowRatio, 15).variable(2, Time, 1);
     });
@@ -113,6 +121,15 @@ public class Ability extends Describable<AbilityDescriptor> {
                 .variable(2, PhysicalDamage, 0, 0, ad(1))
                 .variable(3, PhysicalDamage, 0, 0, amplify(AD, 0.6))
                 .variable(4, ItemCD, 10);
+    });
+
+    /** The ability. */
+    public static final Ability CrescentHealth = new Ability("三日月斬", ability -> {
+        ability.active("次の通常攻撃の" + CleaveHealth + "の効果は{1}のユニットに{2}を与える。{3}。{4}。")
+                .variable(1, Radius, 400)
+                .variable(2, PhysicalDamage, 40, 0, amplify(HealthRatio, 10))
+                .variable(3, ResetAATimer)
+                .variable(4, ItemCD, 20);
     });
 
     /** The ability. */
@@ -219,7 +236,7 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability Legion = new Ability("Legion", ability -> {
-        ability.aura("{1}の味方ユニットは{2}得て、{3}する。").variable(1, Radius, 1100).variable(2, MR, 20).variable(3, HregRatio, 75);
+        ability.aura("{1}の味方ユニットは{2}を得る。").variable(1, Radius, 1100).variable(2, MR, 15);
     });
 
     /** The ability. */
@@ -271,7 +288,7 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability PointRunner = new Ability("ポイントランナー", ability -> {
-        ability.passive("タワー（破壊されたものを含む）の{1}では、2秒間{2}する。").variable(1, Radius, 1300).variable(2, MSRatio, 30);
+        ability.passive("タワー（破壊されたものを含む）の{1}では、2秒かけて{2}する。この効果は範囲外に出ると2秒かけて減衰する。").variable(1, Radius, 1300).variable(2, MSRatio, 20);
     });
 
     /** The ability. */
@@ -439,5 +456,13 @@ public class Ability extends Describable<AbilityDescriptor> {
     @Override
     public int getMaxLevel() {
         return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return name;
     }
 }

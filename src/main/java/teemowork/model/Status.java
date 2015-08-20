@@ -192,6 +192,9 @@ public enum Status {
     /** Physical Damage Reduction */
     PhysicalDamageReduction(PhysicalDamage), PhysicalDamageReductionRatio(PhysicalDamage),
 
+    /** Critical Damage Reduction */
+    CriticalDamageReductionRatio("クリティカルダメージ"),
+
     /** Magic Damage Reduction */
     MagicDamageReduction(MagicDamage), MagicDamageReductionRatio(MagicDamage),
 
@@ -553,6 +556,7 @@ public enum Status {
         case MSSlowReduction:
         case MSSlowReductionRatio:
         case RespawnTimeReductionRatio:
+        case CriticalDamageReductionRatio:
             return name + "を" + formatValue(computed) + "軽減";
 
         case ADReduction:

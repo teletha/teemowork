@@ -42,7 +42,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Aegis of the Legion */
     public static final Item AegisOftheLegion = new Item(RiotItemData.AegisoftheLegion, item -> {
-        item.health(200).magicRegist(20).add(Ability.Legion);
+        item.health(200).healthRegenRatio(100).magicRegist(20).add(Ability.Legion);
     });
 
     /** Aether Wisp */
@@ -100,12 +100,18 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Banner of Command */
     public static final Item BannerOfCommand = new Item(RiotItemData.BannerofCommand, item -> {
-        item.abilityPower(60).cooldownReduction(10).health(200).magicRegist(20).add(Ability.Legion).add(Ability.Promote);
+        item.abilityPower(60)
+                .cooldownReduction(10)
+                .health(200)
+                .healthRegenRatio(100)
+                .magicRegist(20)
+                .add(Ability.Legion)
+                .add(Ability.Promote);
     });
 
     /** Banshee's Veil */
     public static final Item BansheesVeil = new Item(RiotItemData.BansheesVeil, item -> {
-        item.health(450).magicRegist(55).manaRegenRatio(100).add(ability -> {
+        item.health(450).magicRegist(60).manaRegenRatio(100).add(ability -> {
             ability.passive("敵Championのスキルを無効化するシールドを張る。シールドはスキルを無効化すると消費され、40秒間敵Championからダメージを受けないと再生する。");
         });
     });
@@ -309,8 +315,13 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** DeadMansPlate */
     public static final Item DeadMansPlate = new Item(RiotItemData.DeadMansPlate, item -> {
-        item.health(600).armor(50).add(ability -> {
-            ability.passive("移動するとチャージが貯まっていく（最大100）。 ");
+        item.health(600).armor(50).add("Dreadnought", ability -> {
+            ability.passive("移動するとチャージが貯まっていき、比例して移動速度が増加していく。チャージは最大で100まで貯まり、{1}する。チャージは移動阻害効果を受けると急激に減少し、" + MSSlow + "を受けると緩やかに減少する。")
+                    .variable(1, MS, 60);
+        }).add("Crushing Blow", ability -> {
+            ability.passive("通常攻撃を行うと全てのチャージを消費して{1}を与える。100チャージを消費した場合は、与えるダメージが2倍になる。近接攻撃をした場合はさらに1秒かけて減衰する{2}を与える。")
+                    .variable(1, PhysicalDamage, 0, 0, amplify(Charge, 0.5))
+                    .variable(2, MSSlowRatio, 75);
         });
     });
 
@@ -418,7 +429,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Frozen Heart */
     public static final Item FrozenHeart = new Item(RiotItemData.FrozenHeart, item -> {
-        item.cooldownReduction(20).armor(100).mana(400).add(ability -> {
+        item.cooldownReduction(20).armor(90).mana(400).add(ability -> {
             ability.aura("{1}の敵ユニットに{2}を与える。").variable(1, Radius, 700).variable(2, ASSlowRatio, 15);
         });
     });
@@ -583,10 +594,10 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Locket of the Iron Solari */
     public static final Item LocketOftheIronSolari = new Item(RiotItemData.LocketoftheIronSolari, item -> {
-        item.cooldownReduction(10).health(400).magicRegist(20).add(Ability.Legion).add(ability -> {
-            ability.active("{1}の味方に５秒間{2}を付与する。{3}。")
+        item.cooldownReduction(10).health(400).healthRegenRatio(100).magicRegist(20).add(Ability.Legion).add(ability -> {
+            ability.active("{1}の味方に2秒間{2}を付与する。{3}。")
                     .variable(1, Radius, 600)
-                    .variable(2, Shield, 50, 0, amplify(Lv, 10))
+                    .variable(2, Shield, 75, 0, amplify(Lv, 15))
                     .variable(3, ItemCD, 60);
         });
     });
@@ -753,7 +764,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Ohmwrecker */
     public static final Item Ohmwrecker = new Item(RiotItemData.Ohmwrecker, item -> {
-        item.cooldownReduction(10).health(300).healthRegenRatio(100).armor(50).add(Ability.PointRunner).add(ability -> {
+        item.cooldownReduction(10).health(300).healthRegenRatio(150).armor(50).add(Ability.PointRunner).add(ability -> {
             ability.active("周囲の敵タワーは3秒間攻撃できなくなる。同じタワーに対しては8秒に1回しか効果がない。{1}。").variable(1, ItemCD, 120);
         });
     });
@@ -786,8 +797,8 @@ public class Item extends Describable<ItemDescriptor> {
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ScavengingSmite)
                 .add(Ability.Jungler)
-                .health(300)
-                .set(BounusHealth, 25)
+                .health(400)
+                .set(BounusHealth, 15)
                 .add(Ability.ImmolateLevel2);
     });
 
@@ -864,12 +875,13 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Randuin's Omen */
     public static final Item RanduinsOmen = new Item(RiotItemData.RanduinsOmen, item -> {
-        item.health(500).armor(70).add(Ability.ColdSteel).add(ability -> {
-            ability.active("{1}の敵ユニットに{4}間{2}を与える。この効果時間は、自身のArmor+Magic Resistの値100につき1秒増加する。{3}。")
+        item.health(400).armor(60).add(ability -> {
+            ability.ununique().passive("{1}する。").variable(1, CriticalDamageReductionRatio, 10);
+        }).add(Ability.ColdSteel).add(ability -> {
+            ability.active("{1}の敵ユニットに4秒間{2}を与える。この効果時間は、自身のArmor+Magic Resistの値100につき1秒増加する。{3}。")
                     .variable(1, Radius, 500)
                     .variable(2, MSSlowRatio, 35)
-                    .variable(3, ItemCD, 60)
-                    .variable(4, Time, 2, 0, amplify(AR, 0.005), amplify(MR, 0.005));
+                    .variable(3, ItemCD, 60);
         });
     });
 
@@ -884,8 +896,8 @@ public class Item extends Describable<ItemDescriptor> {
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.BlastingSmite)
                 .add(Ability.Jungler)
-                .health(300)
-                .set(BounusHealth, 25)
+                .health(400)
+                .set(BounusHealth, 15)
                 .add(Ability.ImmolateLevel2);
     });
 
@@ -934,7 +946,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Raptor Cloak */
     public static final Item RaptorCloak = new Item(RiotItemData.RaptorCloak, item -> {
-        item.armor(40).healthRegenRatio(100).add(Ability.PointRunner);
+        item.armor(40).healthRegenRatio(150).add(Ability.PointRunner);
     });
 
     /** Ravenous Hydra */
@@ -961,7 +973,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Relic Shield */
     public static final Item RighteousGlory = new Item(RiotItemData.RighteousGlory, item -> {
-        item.health(500).healthRegenRatio(100).mana(300).add(Ability.ValorsReward).add(ability -> {
+        item.health(500).healthRegenRatio(100).mana(300).add(ability -> {
             ability.active("周囲の味方が敵または敵タワーに向かって移動する時、移動速度を3秒間{1}する。3秒後、周囲にいる敵のチャンピオンに1秒間{2}を与える。{3}。")
                     .variable(1, MSRatio, 60)
                     .variable(2, MSSlowRatio, 80)
@@ -1050,8 +1062,8 @@ public class Item extends Describable<ItemDescriptor> {
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ChallengingSmite)
                 .add(Ability.Jungler)
-                .health(300)
-                .set(BounusHealth, 25)
+                .health(400)
+                .set(BounusHealth, 15)
                 .add(Ability.ImmolateLevel2);
     });
 
@@ -1130,7 +1142,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Spectre's Cowl */
     public static final Item SpectresCowl = new Item(RiotItemData.SpectresCowl, item -> {
-        item.health(200).magicRegist(35).add(ability -> {
+        item.health(200).magicRegist(40).add(ability -> {
             ability.passive("チャンピオンからダメージを受けると10秒間{1}を得る。").variable(-1, HregRatio, 150);
         });
     });
@@ -1142,7 +1154,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Spirit Visage */
     public static final Item SpiritVisage = new Item(RiotItemData.SpiritVisage, item -> {
-        item.health(400).cooldownReduction(10).magicRegist(55).healthRegenRatio(100).add(ability -> {
+        item.health(400).cooldownReduction(10).magicRegist(60).healthRegenRatio(150).add(ability -> {
             ability.passive("{1}する。").variable(1, RestoreHealthRatio, 20);
         });
     });
@@ -1158,8 +1170,8 @@ public class Item extends Describable<ItemDescriptor> {
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ChillingSmite)
                 .add(Ability.Jungler)
-                .health(300)
-                .set(BounusHealth, 25)
+                .health(400)
+                .set(BounusHealth, 15)
                 .add(Ability.ImmolateLevel2);
     });
 
@@ -1217,7 +1229,16 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** SteraksGage */
     public static final Item SteraksGage = new Item(RiotItemData.SteraksGage, item -> {
-        item.health(500);
+        item.health(500).add(ability -> {
+            ability.ununique().passive("{1}を得る。").variable(1, AD, amplify(BaseAD, 0.25));
+        }).add(ability -> {
+            ability.passive("5秒以内に{1}のダメージを受けると8秒間Primal Rageの効果を得る。{2}。").variable(1, Value, 400, 0, level(82.35)).variable(2, ItemCD, 45);
+        }).add("Primal Rage", ability -> {
+            ability.passive("{1}が増加し、{2}を得て、急速に減衰する{3}を得る。")
+                    .variable(1, Grow)
+                    .variable(-2, AD, amplify(BaseAD, 0.25))
+                    .variable(3, Shield, amplify(HealthRatio, 30));
+        });
     });
 
     /** Sight Ward */
@@ -1286,7 +1307,8 @@ public class Item extends Describable<ItemDescriptor> {
     /** Thornmail */
     public static final Item Thornmail = new Item(RiotItemData.Thornmail, item -> {
         item.armor(100).add(ability -> {
-            ability.passive("敵の通常攻撃受けるとその攻撃者に{1}を与える。").variable(1, MagicDamage, 0, 0, amplify(ReceivedOriginalDamageRatio, 30));
+            ability.passive("敵の通常攻撃受けるとその攻撃者に{1}を与える。")
+                    .variable(1, MagicDamage, 0, 0, amplify(ReceivedOriginalDamageRatio, 15), amplify(BounusAR, 0.25));
         });
     });
 
@@ -1297,7 +1319,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** TitanicHydra */
     public static final Item TitanicHydra = new Item(RiotItemData.TitanicHydraMeleeOnly, item -> {
-        item.health(400).attackDamage(50).healthRegenRatio(100);
+        item.health(400).attackDamage(50).healthRegenRatio(100).add(Ability.CleaveHealth).add(Ability.CrescentHealth);
     });
 
     /** Trinity Force */
@@ -1352,10 +1374,9 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Warmog's Armor */
     public static final Item WarmogsArmor = new Item(RiotItemData.WarmogsArmor, item -> {
-        item.health(800).add(ability -> {
-            ability.passive("{1}を得る。8秒間ダメージを受けていなければ{2}を得る。")
-                    .variable(1, Hreg, 0, 0, amplify(Health, 0.01))
-                    .variable(2, Hreg, 0, 0, amplify(Health, 0.01));
+        item.health(800).healthRegenRatio(200).add("Warmog's Heart", ability -> {
+            ability.passive("8秒間ダメージを受けていなければ毎秒{1}する。この効果は最大" + Health + "が3000以上でないと発動しない。")
+                    .variable(1, RestoreHealth, amplify(HealthRatio, 3));
         });
     });
 
@@ -1414,7 +1435,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Item Definition */
     public static final Item ZzRotPortal = new Item(RiotItemData.ZzRotPortal, item -> {
-        item.healthRegenRatio(100).armor(60).magicRegist(60).add(Ability.PointRunner).add(ability -> {
+        item.healthRegenRatio(150).armor(60).magicRegist(60).add(Ability.PointRunner).add(ability -> {
             ability.active("指定した場所に、150秒間持続する「ヴォイドの扉」を召喚する。この扉は4秒ごとにヴォイドスポーンを産む。ヴォイドスポーンは最も近いレーンに進攻し、時間と共に消滅する。ヴォイドスポーンは、建造物を攻撃すると爆発する。ヴォイドスポーンは、チャンピオンおよびヴォイドの生物を攻撃することはない。最初の1匹と4匹ごとに出現するヴォイドスポーンは、追加{2}を与える。{1}。")
                     .variable(1, ItemCD, 150)
                     .variable(2, Damage, 0, 0, amplify(AR, 1), amplify(MR, 1));
