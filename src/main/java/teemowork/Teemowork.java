@@ -59,27 +59,27 @@ public class Teemowork extends Application {
 
     @Route
     public Widget champion() {
-        return Widget.of(ChampionSelectWidget.class);
+        return Widget.of(ChampionSelect.class);
     }
 
     @Route
     public Widget champion(Champion champion) {
-        return Widget.of(ChampionDetailWidget.class, new Build(champion));
+        return Widget.of(ChampionDetail.class, new Build(champion));
     }
 
     @Route
     public Widget championCompare() {
-        return Widget.of(ChampionComparingWidget.class);
+        return Widget.of(ChampionComparing.class);
     }
 
     @Route
     public Widget item() {
-        return Widget.of(ItemCatalogWidget.class);
+        return Widget.of(ItemCatalog.class);
     }
 
     @Route
     public Widget mastery() {
-        return Widget.of(MasteryBuilderWidget.class);
+        return Widget.of(MasteryBuilder.class);
     }
 
     /**

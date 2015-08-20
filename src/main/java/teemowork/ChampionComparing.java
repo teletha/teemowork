@@ -35,7 +35,7 @@ import teemowork.model.Version;
 /**
  * @version 2015/08/20 15:47:10
  */
-public class ChampionComparingWidget extends Widget {
+public class ChampionComparing extends Widget {
 
     private static final Status[] STATUS = {Health, Hreg, HregPerLv, Mana, AD, ADPerLv, AS, AR, MR, MS, Range};
 

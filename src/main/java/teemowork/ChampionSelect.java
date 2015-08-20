@@ -28,7 +28,7 @@ import teemowork.model.Champion;
 /**
  * @version 2015/01/30 14:27:54
  */
-public class ChampionSelectWidget extends Widget {
+public class ChampionSelect extends Widget {
 
     private final Teemowork application = I.make(Teemowork.class);
 
@@ -39,7 +39,7 @@ public class ChampionSelectWidget extends Widget {
     /**
      * 
      */
-    public ChampionSelectWidget() {
+    public ChampionSelect() {
         select.to(champion -> application.champion(champion));
     }
 

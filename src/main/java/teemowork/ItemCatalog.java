@@ -16,13 +16,13 @@ import teemowork.model.Item;
 /**
  * @version 2013/06/12 12:45:51
  */
-public class ItemCatalogWidget extends Widget {
+public class ItemCatalog extends Widget {
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected void virtualize(VirtualStructure 〡) {
-        〡.nbox.ⅼ(null, ItemViewWidget.class, Item.getAll());
+        〡.nbox.ⅼ(null, ItemView.class, Item.getAll());
     }
 }

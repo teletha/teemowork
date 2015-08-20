@@ -23,7 +23,7 @@ import jsx.style.value.Unit;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
 import kiss.Events;
-import teemowork.model.DescriptionViewWidget;
+import teemowork.model.DescriptionView;
 import teemowork.model.Mastery;
 import teemowork.model.MasteryDescriptor;
 import teemowork.model.MasterySet;
@@ -33,7 +33,7 @@ import teemowork.model.Version;
 /**
  * @version 2015/08/19 13:41:08
  */
-public class MasteryBuilderWidget extends Widget {
+public class MasteryBuilder extends Widget {
 
     private MasteryManager masteryManager;
 
@@ -46,7 +46,7 @@ public class MasteryBuilderWidget extends Widget {
     /**
      * 
      */
-    public MasteryBuilderWidget() {
+    public MasteryBuilder() {
         masteryManager = Global.localStorage.get(MasteryManager.class);
 
         if (masteryManager == null) {
@@ -143,7 +143,7 @@ public class MasteryBuilderWidget extends Widget {
     /**
      * @version 2015/08/19 14:19:47
      */
-    private class MasteryWidget extends DescriptionViewWidget<Mastery> {
+    private class MasteryWidget extends DescriptionView<Mastery> {
 
         /**
          * {@inheritDoc}

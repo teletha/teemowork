@@ -23,7 +23,7 @@ import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import teemowork.model.Ability;
 import teemowork.model.AbilityDescriptor;
-import teemowork.model.DescriptionViewWidget;
+import teemowork.model.DescriptionView;
 import teemowork.model.Item;
 import teemowork.model.ItemDescriptor;
 import teemowork.model.Status;
@@ -32,7 +32,7 @@ import teemowork.model.Version;
 /**
  * @version 2015/08/20 15:57:11
  */
-public class ItemViewWidget extends Widget1<Item> {
+public class ItemView extends Widget1<Item> {
 
     private static final Status[] VISIBLE = {Health, Hreg, Mana, Mreg, AD, ASRatio, ARPen, LS, Critical, AP, CDR, SV, MRPen, AR, MR,
             MSRatio, GoldPer10Sec};
@@ -104,7 +104,7 @@ public class ItemViewWidget extends Widget1<Item> {
     /**
      * @version 2015/08/19 13:16:08
      */
-    private static class AbilityDescriptionView extends DescriptionViewWidget<Ability> {
+    private static class AbilityDescriptionView extends DescriptionView<Ability> {
 
         /**
          * {@inheritDoc}

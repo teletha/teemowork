@@ -41,7 +41,7 @@ import teemowork.model.variable.VariableResolver;
 /**
  * @version 2015/08/20 15:53:24
  */
-public class ChampionDetailWidget extends Widget1<Build> {
+public class ChampionDetail extends Widget1<Build> {
 
     /** The displayable status. */
     private static final Status[] VISIBLE = {Health, Hreg, Mana, Mreg, AD, ARPen, AS, LS, Critical, AP, MRPen, CDR, SV, AR, MR, MS, Range,
@@ -58,7 +58,7 @@ public class ChampionDetailWidget extends Widget1<Build> {
 
     public final Events<Skill> skillDown = on(ClickRight, $.IconBox, Skill.class);
 
-    public ChampionDetailWidget() {
+    public ChampionDetail() {
         levelUp.to(v -> build.levelUp());
         levelDown.to(v -> build.levelDown());
         skillUp.to(v -> build.levelUp(v));

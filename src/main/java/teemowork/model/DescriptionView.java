@@ -22,7 +22,7 @@ import teemowork.model.variable.VariableResolver;
 /**
  * @version 2015/08/19 12:46:26
  */
-public abstract class DescriptionViewWidget<D extends Describable> extends Widget3<D, StatusCalculator, List> {
+public abstract class DescriptionView<D extends Describable> extends Widget3<D, StatusCalculator, List> {
 
     /** The target descriptor to view. */
     protected final Describable describable = model1;
