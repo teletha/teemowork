@@ -255,7 +255,7 @@ public class ImageBuilder {
     public static void main(String[] args) throws Exception {
         ImageBuilder builder = new ImageBuilder(Version.Latest);
         builder.buildItemIconSet();
-        // builder.buildChampionIconSet();
-        // builder.buildSkillIconSet();
+        builder.buildChampionIconSet();
+        builder.buildSkillIconSet();
     }
 }

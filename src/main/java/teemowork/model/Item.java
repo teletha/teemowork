@@ -307,6 +307,13 @@ public class Item extends Describable<ItemDescriptor> {
         item.attackSpeed(15);
     });
 
+    /** DeadMansPlate */
+    public static final Item DeadMansPlate = new Item(RiotItemData.DeadMansPlate, item -> {
+        item.health(600).armor(50).add(ability -> {
+            ability.passive("移動するとチャージが貯まっていく（最大100）。 ");
+        });
+    });
+
     /** Doran's Blade */
     public static final Item DoransBlade = new Item(RiotItemData.DoransBlade, item -> {
         item.attackDamage(7).health(70).lifeSteal(3);
@@ -1208,6 +1215,11 @@ public class Item extends Describable<ItemDescriptor> {
         });
     });
 
+    /** SteraksGage */
+    public static final Item SteraksGage = new Item(RiotItemData.SteraksGage, item -> {
+        item.health(500);
+    });
+
     /** Sight Ward */
     public static final Item StealthWard = new Item(RiotItemData.StealthWard, item -> {
         item.add(ability -> {
@@ -1281,6 +1293,11 @@ public class Item extends Describable<ItemDescriptor> {
     /** Tiamat */
     public static final Item Tiamat = new Item(RiotItemData.TiamatMeleeOnly, item -> {
         item.attackDamage(40).healthRegenRatio(100).add(Ability.Cleave).add(Ability.Crescent);
+    });
+
+    /** TitanicHydra */
+    public static final Item TitanicHydra = new Item(RiotItemData.TitanicHydraMeleeOnly, item -> {
+        item.health(400).attackDamage(50).healthRegenRatio(100);
     });
 
     /** Trinity Force */

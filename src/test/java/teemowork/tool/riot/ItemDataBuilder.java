@@ -65,9 +65,9 @@ public class ItemDataBuilder {
         }
 
         // Properties
-        Object[] properties = {String.class, "name", String.class, "localizedName", int.class, "id", int.class,
-                "buyBase", int.class, "buyTotal", int.class, "sell", int[].class, "from", int[].class, "to", int.class,
-                "imageNo", int.class, "imageX", int.class, "imageY", int.class, "depth"};
+        Object[] properties = {String.class, "name", String.class, "localizedName", int.class, "id", int.class, "buyBase", int.class,
+                "buyTotal", int.class, "sell", int[].class, "from", int[].class, "to", int.class, "imageNo", int.class, "imageX", int.class,
+                "imageY", int.class, "depth"};
 
         // Field
         for (int i = 0; i < properties.length; i++) {
@@ -115,8 +115,7 @@ public class ItemDataBuilder {
             Matcher matcher = pattern.matcher(description);
 
             root: while (matcher.find()) {
-                AbilityDefinition newer = new AbilityDefinition(item, matcher.group(1), matcher.group(2), matcher
-                        .group(3));
+                AbilityDefinition newer = new AbilityDefinition(item, matcher.group(1), matcher.group(2), matcher.group(3));
                 definitions.add(newer);
 
                 if (!newer.name.isEmpty()) {
@@ -239,9 +238,16 @@ public class ItemDataBuilder {
         case 2009: // 要らない
         case 3106: // 何故かMadred's Razorsのmap1=falseがないので除外する
         case 3154: // 何故かWrigglesLanternのmap1=falseがないので除外する
+        case 3290: // TwinShadows 見分けつかないので要らない方を除外
+        case 3048: // SeraphsEmbrace 見分けつかないので要らない方を除外
+        case 3043: // Muramana 見分けつかないので要らない方を除外
+        case 3348: // HextechSweeper 見分けつかないので要らない方を除外
             return false;
 
         default:
+            if (item.name.endsWith("(Crystal Scar)")) {
+                return false;
+            }
             return item.maps == null || item.maps.get(1) == null;
         }
     }
@@ -303,8 +309,7 @@ public class ItemDataBuilder {
             name = name.replaceAll("：", ": ");
 
             if (name.startsWith("Enchantment: Sated Devourer") && from != null) {
-                name = data.get(data.get(from.get(0)).from.get(0)).name + " [" + name
-                        .substring(name.indexOf(":") + 2) + "]";
+                name = data.get(data.get(from.get(0)).from.get(0)).name + " [" + name.substring(name.indexOf(":") + 2) + "]";
             } else if (from != null && (name.startsWith("Enchantment") || name.startsWith("追加特性"))) {
                 name = data.get(from.get(0)).name + " [" + name.substring(name.indexOf(":") + 2) + "]";
             }
