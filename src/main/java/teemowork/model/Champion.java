@@ -19,7 +19,7 @@ import jsx.style.value.Unit;
 import teemowork.api.RiotChampionData;
 
 /**
- * @version 2015/07/22 2:20:21
+ * @version 2015/08/20 20:47:25
  */
 public class Champion extends RiotChampionData {
 

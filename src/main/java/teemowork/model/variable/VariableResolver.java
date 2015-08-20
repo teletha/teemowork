@@ -507,6 +507,31 @@ public abstract class VariableResolver {
     }
 
     /**
+     * @version 2015/08/20 20:59:53
+     */
+    public static class FixedLevel extends Fixed {
+
+        /** The fixed values. */
+        private final double[] number;
+
+        /**
+         * @param values
+         */
+        public FixedLevel(double[] number, double[] values) {
+            super(values);
+            this.number = number;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String getLevelDescription(int skillLevel) {
+            return "Level " + number[skillLevel - 1];
+        }
+    }
+
+    /**
      * @version 2013/02/14 18:22:02
      */
     public static class BardChimes extends Fixed {

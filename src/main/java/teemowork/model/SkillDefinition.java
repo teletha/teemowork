@@ -16,6 +16,7 @@ import static teemowork.model.Version.*;
 import teemowork.model.variable.VariableResolver.BardChimes;
 import teemowork.model.variable.VariableResolver.Diff;
 import teemowork.model.variable.VariableResolver.Fixed;
+import teemowork.model.variable.VariableResolver.FixedLevel;
 import teemowork.model.variable.VariableResolver.Per1Level;
 import teemowork.model.variable.VariableResolver.Per2Level;
 import teemowork.model.variable.VariableResolver.Per3Level;
@@ -886,46 +887,48 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Darius(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P301)
-                .passive("通常攻撃またはスキルでダメージを与えた敵ユニットに出血スタックを付与する。出血スタックが付与された敵ユニットに5秒間かけて{1}を与える。出血スタックは5秒間持続して最大5回までスタックし最大{2}を与える。また、出血スタックを受けている敵チャンピオン数に応じて{3}する。")
-                .variable(1, MagicDamage, new Per2Level(12, 3), amplify(BounusAD, 0.3), null)
-                .variable(2, MagicDamage, new Per2Level(60, 15), amplify(BounusAD, 1.5), null)
-                .variable(-3, MSRatio, 5);
+        P.update(P516)
+                .passive("通常攻撃またはスキルでダメージを与えた敵ユニットに出血スタックを付与する。出血スタックが付与された敵ユニットに5秒間かけて{1}を与える。出血スタックは5秒間持続して最大5回までスタックし最大{2}を与える。スタックが5になるか" + R + "で敵チャンピオンを倒すと、" + champion + "は5秒間{3}を得て、常に5スタックを付与するようになる。")
+                .variable(1, PhysicalDamage, 9, 0, level(1), amplify(BounusAD, 0.3))
+                .variable(2, PhysicalDamage, 45, 0, level(5), amplify(BounusAD, 1.5))
+                .variable(-3, AD, new FixedLevel(new double[] {1, 3, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}, new double[] {40, 45, 50,
+                        60, 70, 80, 90, 100, 110, 120, 140, 160, 180, 200}));
 
-        Q.update(P301)
-                .active("斧を振り回し{3}の敵ユニットに{1}を与える。斧の刃に当たった敵チャンピオンに対しては{2}を与える。")
-                .variable(1, PhysicalDamage, 70, 35, bounusAD(0.7))
-                .variable(2, PhysicalDamage, 105, 52.5, bounusAD(1.05))
+        Q.update(P516)
+                .active("0.75秒後斧を振り回し{3}の敵ユニットに{1}を与える。斧の刃に当たった敵チャンピオンに対しては{2}を与え、1体毎に{4}する（最大30%）。")
+                .variable(1, PhysicalDamage, 10, 10, amplify(AD, 0.5, 0.05))
+                .variable(1, PhysicalDamage, 20, 20, amplify(AD, 1, 0.1))
                 .variable(3, Radius, 425)
-                .mana(40)
+                .variable(4, RestoreHealth, amplify(MissingHealthRatio, 10))
+                .mana(30)
                 .cd(9, -1);
 
-        W.update(P301)
-                .active("次の通常攻撃に{1}を追加し、2秒間{2}と{3}が付与される。対象の出血スタック数1個につき、このスキルの{4}する。")
-                .variable(1, PhysicalDamage, amplify(AD, 0.2, 0.2))
-                .variable(2, ASSlowRatio, 20, 5)
-                .variable(3, MSSlowRatio, 20, 5)
-                .variable(4, CDDecrease, 1)
-                .mana(30, 5)
-                .cd(8)
-                .range(145);
+        W.update(P516)
+                .active("次の通常攻撃に{1}を追加し、1秒間{2}と{3}が付与される。{4}。")
+                .variable(1, PhysicalDamage, ad(0.4))
+                .variable(2, ASSlowRatio, 90)
+                .variable(3, MSSlowRatio, 90)
+                .variable(4, ResetAATimer)
+                .mana(30)
+                .cd(9, -1);
 
-        E.update(P514)
+        E.update(P516)
                 .passive("{1}を得る。")
                 .variable(1, ARPenRatio, 5, 5)
-                .active("前方範囲内の敵ユニットをDariusがいる方向に引き寄せ、{2}。")
+                .active("前方範囲内の敵ユニットをDariusがいる方向に引き寄せ1秒間{3}を与え、{2}。")
                 .variable(2, Visionable)
+                .variable(3, MSSlowRatio, 90)
                 .mana(45)
                 .cd(24, -3)
                 .range(550);
 
-        R.update(P507)
-                .active("対象の敵チャンピオンに跳躍し、{1}を与える。対象の出血スタック数1個につき、このスキルのダメージが20%増加する(最大でダメージ2倍)。このスキルで敵チャンピオンのキルを取った場合、{2}し{3}間再使用することが出来る（ランク3であれば{4}）。この効果はキルを取るたびに適用される。")
-                .variable(1, TrueDamage, 160, 90, bounusAD(0.75))
-                .variable(2, RestoreMana, new Fixed(new double[] {25, 50, 100}))
+        R.update(P516)
+                .active("対象の敵チャンピオンに跳躍し、{1}を与える。対象の出血スタック数1個につき、このスキルのダメージが20%増加する(最大でダメージ2倍)。このスキルで敵チャンピオンのキルを取った場合、周囲のミニオンとモンスターに{2}を与え、20秒間マナを消費せずに再使用することが出来る（ランク3であれば{4}）。この効果はキルを取るたびに適用される。")
+                .variable(1, TrueDamage, 100, 100, bounusAD(0.75))
+                .variable(2, Fear)
                 .variable(3, Time, 20)
                 .variable(4, CDDecrease)
-                .mana(100)
+                .cost(Mana, new Fixed(100, 100, 0), null)
                 .cd(120, -20)
                 .range(475);
     }
