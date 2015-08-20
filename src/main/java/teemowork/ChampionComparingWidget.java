@@ -9,8 +9,6 @@
  */
 package teemowork;
 
-import static jsx.style.StyleDescriptor.*;
-import static teemowork.ChampionComparingStyle.*;
 import static teemowork.model.Status.*;
 
 import java.util.Comparator;
@@ -19,6 +17,9 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 
+import jsx.style.Style;
+import jsx.style.StyleRuleDescriptor;
+import jsx.style.ValueStyle;
 import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
@@ -32,7 +33,7 @@ import teemowork.model.Status;
 import teemowork.model.Version;
 
 /**
- * @version 2015/03/02 9:57:52
+ * @version 2015/08/20 15:47:10
  */
 public class ChampionComparingWidget extends Widget {
 
@@ -62,24 +63,22 @@ public class ChampionComparingWidget extends Widget {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure 〡) {
-        〡.nbox.ⅼ(null, groups);
-        〡.vbox.ⅼ(Table, () -> {
-            〡.nbox.ⅼ(Head, () -> {
-                〡.nbox.ⅼ(NoIcon);
-                〡.nbox.ⅼ(null, Header.class, STATUS);
+    protected void virtualize(VirtualStructure ⅼ) {
+        ⅼ.nbox.ⅼ(null, groups);
+        ⅼ.vbox.ⅼ($.Table, () -> {
+            ⅼ.nbox.ⅼ($.Head, () -> {
+                ⅼ.nbox.ⅼ($.NoIcon);
+                ⅼ.nbox.ⅼ(null, Header.class, STATUS);
             });
 
-            〡.nbox.ⅼ(Body, () -> {
-                〡.vbox.ⅼ(null, group.getValue().sortBy(comparator), champion -> {
-                    〡.hbox.ⅼ(RowLine, () -> {
+            ⅼ.nbox.ⅼ($.Body, () -> {
+                ⅼ.vbox.ⅼ(null, group.getValue().sortBy(comparator), champion -> {
+                    ⅼ.hbox.ⅼ($.RowLine, () -> {
                         ChampionStatus championStatus = champion.getStatus(Version.Latest);
 
-                        〡.nbox.ⅼ(Icon.with(() -> {
-                            background.horizontal(champion.getIconPosition());
-                        }));
-                        〡.nbox.ⅼ(null, STATUS, status -> {
-                            〡.nbox.ⅼ(StatusView, championStatus.get(status));
+                        ⅼ.nbox.ⅼ($.Icon.of(champion));
+                        ⅼ.nbox.ⅼ(null, STATUS, status -> {
+                            ⅼ.nbox.ⅼ($.StatusView, championStatus.get(status));
                         });
                     });
                 });
@@ -137,7 +136,44 @@ public class ChampionComparingWidget extends Widget {
          */
         @Override
         protected void virtualize(VirtualStructure 〡) {
-            〡.nbox.ⅼ(StatusView, status.name);
+            〡.nbox.ⅼ($.StatusView, status.name);
         }
+    }
+
+    /**
+     * @version 2015/08/20 15:44:41
+     */
+    private static class $ extends StyleRuleDescriptor {
+
+        private static Style Table = () -> {
+        };
+
+        private static Style Head = () -> {
+        };
+
+        private static Style Body = () -> {
+        };
+
+        private static Style RowLine = () -> {
+        };
+
+        private static ValueStyle<Champion> Icon = champion -> {
+            display.inlineBlock();
+            background.image("src/main/resources/teemowork/champions.jpg").cover().horizontal(champion.getIconPosition());
+            box.size(44, px);
+            border.radius(5, px).color(rgb(50, 50, 50)).width(1, px).solid();
+            cursor.pointer();
+        };
+
+        private static Style NoIcon = () -> {
+            display.inlineBlock();
+            box.size(40, px);
+        };
+
+        private static Style StatusView = () -> {
+            display.inlineBlock();
+            box.width(4, em);
+            text.verticalAlign.middle();
+        };
     }
 }
