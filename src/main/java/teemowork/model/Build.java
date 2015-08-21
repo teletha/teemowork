@@ -152,10 +152,13 @@ public class Build extends Publishable implements StatusCalculator {
      * @return A computed value.
      */
     public Computed get(Status status) {
-        switch (status) {
-        case BaseAD:
-            return new Computed(0, get(AD).base, status);
+        Status baseStatus = status.base();
 
+        if (baseStatus != null) {
+            return new Computed(0, get(baseStatus).base, status);
+        }
+
+        switch (status) {
         case Lv:
             return new Computed(level.get(), level.get(), Lv);
 

@@ -51,7 +51,10 @@ public enum Status {
     // Health Related
     // ==================================================
     /** Health */
-    Health("Health"), HealthPerLv, HealthRatio(Health), HealthRatioPerLv(), BounusHealth("増加Health"),
+    Health("Health"), HealthPerLv, HealthRatio(Health), HealthRatioPerLv(HealthRatio), BounusHealth("増加" + Health),
+
+    /** Base Health */
+    BaseHealth("基礎" + Health),
 
     /** Health Regeneration */
     Hreg(2), HregPerLv(2), HregRatio("Hreg", 2),
@@ -398,6 +401,20 @@ public enum Status {
     private Status(String name, int precision) {
         this.name = name == null ? name() : name;
         this.precision = precision;
+    }
+
+    /**
+     * <p>
+     * Find base status type.
+     * </p>
+     * 
+     * @return
+     */
+    public Status base() {
+        if (name().startsWith("Base")) {
+            return valueOf(name().substring(4));
+        }
+        return null;
     }
 
     /**

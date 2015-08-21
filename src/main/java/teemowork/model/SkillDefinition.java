@@ -3014,9 +3014,11 @@ public interface SkillDefinition {
      */
     public static void Mordekaiser(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P516)
-                .passive("スキルで与えたダメージの12.5%(チャンピオンに対しては25%)をシールドに変換する(最大で{1})。1秒毎に基礎体力の1.5%ずつ低下していき{2}まで減少する。")
-                .variable(1, Shield, amplify(HealthRatio, 25))
-                .variable(2, Shield, amplify(HealthRatio, 6.25));
+                .passive("スキルでダメージを与えると{1}を得る（チャンピオンに対しては{2}）。" + Shield + "の最大値は{3}で、1秒毎に{4}ずつ減少するが、{5}になると減少は止まる。")
+                .variable(1, Shield, amplify(DealtDamageRatio, 12.5))
+                .variable(2, Shield, amplify(DealtDamageRatio, 25))
+                .variable(3, Value, amplify(Health, 0.25))
+                .variable(4, Value, amplify(BaseHealth, 0.015));
 
         Q.update(P516)
                 .active("次の3回の通常攻撃は追加{1}を与える。このタメージは攻撃するたびに{2}倍になり、3発で{3}を与える。{4}。")
@@ -3028,8 +3030,8 @@ public interface SkillDefinition {
                 .cost(Health, 20, 3);
 
         W.update(P516)
-                .passive(champion + "はミニオンから常に最大の経験値を得る。")
-                .active("4秒間 " + champion + "と対象の味方はお互いに向かって移動する時{1}する。また、{2}の敵に毎秒{3}を与える（このダメージは重複する）。スキルを再度使用すると、近くの3体の敵に{4}を与え、" + champion + "と味方は{5}する（ミニオンに当たった場合回復量は33%になる）。")
+                .passive(champion + "が倒したミニオンから得る経験値は、周りに味方チャンピオンがいても減少することがない。味方チャンピオンは通常通り減少した経験値を得る。")
+                .active("4秒間 " + champion + "と対象の味方はお互いに向かって移動する時{1}する。それぞれの{2}にフィールドを生成し毎秒{3}を与える（このダメージは重複する）。スキルを再度使用するとそれぞれのフィールドが消失し、最寄りの3体の敵に{4}を与え、" + champion + "と味方は{5}する（ミニオンに当たった場合回復量は33%になる）。")
                 .variable(1, MS, 75)
                 .variable(2, Radius, 250)
                 .variable(3, MagicDamage, 35, 10, ap(0.15))
