@@ -3021,10 +3021,10 @@ public interface SkillDefinition {
                 .variable(4, Value, amplify(BaseHealth, 0.015));
 
         Q.update(P516)
-                .active("次の3回の通常攻撃は追加{1}を与える。このタメージは攻撃するたびに{2}倍になり、3発で{3}を与える。{4}。")
+                .active("次の3回の通常攻撃は追加{1}を与える。このタメージは攻撃するたびに{2}倍になり、3発で合計{3}を与える。{4}。")
                 .variable(1, MagicDamage, 4, 4, amplify(AD, 0.25, 0.0125), ap(0.2))
                 .variable(2, Value, 2, 0.25)
-                .variable(3, MagicDamage, 28, 38.5, amplify(AD, 1.75, 0.432), amplify(AP, 1.4, 0.263))
+                .variable(3, MagicDamage, new Fixed(28, 66.5, 117, 181, 260), amplify(AD, new Fixed(1.75, 2.182, 2.681, 3.196, 3.9)), amplify(AP, new Fixed(1.4, 1.663, 1.95, 2.263, 2.6)))
                 .variable(4, ResetAATimer)
                 .cd(10, -1.5)
                 .cost(Health, 20, 3);
