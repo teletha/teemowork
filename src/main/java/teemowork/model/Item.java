@@ -848,14 +848,14 @@ public class Item extends Describable<ItemDescriptor> {
     /** The Hex Core */
     public static final Item PrototypeHexCore = new Item(RiotItemData.PrototypeHexCore, item -> {
         item.add(ability -> {
-            ability.passive("{1}を得る。").variable(1, AP, 0, 0, amplify(Lv, 3));
+            ability.passive("{1}と{2}を得る。").variable(1, AP, level(1)).variable(2, Mana, level(10));
         });
     });
 
     /** The Hex Core */
     public static final Item PerfectHexCore = new Item(RiotItemData.PerfectHexCore, item -> {
-        item.abilityPower(60).mana(500).add(ability -> {
-            ability.passive("{1}を得る。").variable(1, AP, 0, 0, amplify(Lv, 6));
+        item.add(ability -> {
+            ability.passive("{1}と{2}を得る。").variable(1, AP, level(10)).variable(2, Mana, level(25));
         });
     });
 
@@ -1298,10 +1298,16 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Augment: Power */
     public static final Item TheHexCoremk1 = new Item(RiotItemData.TheHexCoremk1, item -> {
+        item.add(ability -> {
+            ability.passive("{1}と{2}を得る。").variable(1, AP, level(3)).variable(2, Mana, level(15));
+        });
     });
 
     /** Augment: Gravity */
     public static final Item TheHexCoremk2 = new Item(RiotItemData.TheHexCoremk2, item -> {
+        item.add(ability -> {
+            ability.passive("{1}と{2}を得る。").variable(1, AP, level(6)).variable(2, Mana, level(20));
+        });
     });
 
     /** Thornmail */
