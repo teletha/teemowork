@@ -23,6 +23,6 @@ public class ItemCatalog extends Widget {
      */
     @Override
     protected void virtualize(VirtualStructure 〡) {
-        〡.nbox.ⅼ(null, ItemView.class, Item.getAll());
+        〡.nbox.〡(null, ItemView.class, Item.getAll());
     }
 }

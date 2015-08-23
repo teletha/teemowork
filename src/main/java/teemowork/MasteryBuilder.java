@@ -68,7 +68,7 @@ public class MasteryBuilder extends Widget {
      */
     @Override
     protected void virtualize(VirtualStructure ⅼ) {
-        ⅼ.nbox.ⅼ($.Information, () -> {
+        ⅼ.nbox.〡($.Information, () -> {
 
         });
 
@@ -87,23 +87,23 @@ public class MasteryBuilder extends Widget {
      * @param root
      * @param set
      */
-    private void build(VirtualStructure ⅼ, Style style, Mastery[][] set, MasteryType type) {
-        ⅼ.nbox.ⅼ(style, () -> {
-            ⅼ.nbox.ⅼ(null, set, masteries -> {
-                ⅼ.nbox.ⅼ($.RankPane, masteries, mastery -> {
+    private void build(VirtualStructure 〡, Style style, Mastery[][] set, MasteryType type) {
+        〡.nbox.〡(style, () -> {
+            〡.nbox.〡(null, set, masteries -> {
+                〡.nbox.〡($.RankPane, masteries, mastery -> {
                     if (mastery == null) {
-                        ⅼ.nbox.ⅼ($.MasteryPane.with($.EmptyPane));
+                        〡.nbox.〡($.MasteryPane.with($.EmptyPane));
                     } else {
                         int current = masterySet.getLevel(mastery);
                         boolean available = current != 0 || masterySet.isAvailable(mastery);
 
-                        ⅼ.nbox.ⅼ($.MasteryPane.with($.Unavailable.when(!available)), () -> {
-                            ⅼ.e("s:svg", "width", "45px", "height", "45px").ⅼ($.IconImage, (Runnable) () -> {
-                                ⅼ.e("s:image", "x", "0", "y", "0", "width", "45", "height", "45", "xlink:href", mastery
+                        〡.nbox.〡($.MasteryPane.with($.Unavailable.when(!available)), () -> {
+                            〡.e("s:svg", "width", "45px", "height", "45px").〡($.IconImage, (Runnable) () -> {
+                                〡.e("s:image", "x", "0", "y", "0", "width", "45", "height", "45", "xlink:href", mastery
                                         .getIcon(), "preserveAspectRatio", "xMinYMin slice", "filter", available ? "" : "url('#test')");
 
-                                ⅼ.e("s:filter", "id", "test").ⅼ(() -> {
-                                    ⅼ.e("s:feColorMatrix", "type", "matrix", "values", grayscale(0.4));
+                                〡.e("s:filter", "id", "test").〡(() -> {
+                                    〡.e("s:feColorMatrix", "type", "matrix", "values", grayscale(0.4));
                                 });
                             });
                             // ⅼ.imageⅼ($.IconImage, mastery.getIcon(), img -> {
@@ -116,23 +116,23 @@ public class MasteryBuilder extends Widget {
                             // }
                             // });
 
-                            ⅼ.nbox.ⅼ($.LevelPane, () -> {
-                                ⅼ.nbox.ⅼ($.LevelValue, masterySet.getLevel(mastery));
-                                ⅼ.nbox.ⅼ($.LevelSeparator, "/");
-                                ⅼ.nbox.ⅼ($.LevelValue, mastery.getMaxLevel());
+                            〡.nbox.〡($.LevelPane, () -> {
+                                〡.nbox.〡($.LevelValue, masterySet.getLevel(mastery));
+                                〡.nbox.〡($.LevelSeparator, "/");
+                                〡.nbox.〡($.LevelValue, mastery.getMaxLevel());
                             });
 
-                            ⅼ.nbox.ⅼ($.PopupPane, () -> {
+                            〡.nbox.〡($.PopupPane, () -> {
                                 MasteryDescriptor descriptor = mastery.getDescriptor(Version.Latest);
 
-                                ⅼ.nbox.ⅼ($.MasteryName, mastery.name);
-                                ⅼ.ⅼ(Widget.of(MasteryWidget.class, mastery, null, descriptor.getPassive()));
+                                〡.nbox.〡($.MasteryName, mastery.name);
+                                〡.〡(Widget.of(MasteryWidget.class, mastery, null, descriptor.getPassive()));
                             });
                         });
                     }
                 });
             });
-            ⅼ.nbox.ⅼ($.SumPoint, type.name().toUpperCase(), "　", masterySet.getSum(type));
+            〡.nbox.〡($.SumPoint, type.name().toUpperCase(), "　", masterySet.getSum(type));
         });
     }
 

@@ -41,59 +41,59 @@ public class ItemView extends Widget1<Item> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure ⅼ) {
+    protected void virtualize(VirtualStructure 〡) {
         ItemDescriptor descriptor = model1.getDescriptor(Version.Latest);
 
-        ⅼ.nbox.ⅼ($.Root, () -> {
-            ⅼ.nbox.ⅼ($.IconArea, () -> {
-                ⅼ.nbox.ⅼ($.Icon.of(model1));
-                ⅼ.nbox.ⅼ($.Materials, descriptor.getBuildItem(), material -> {
-                    ⅼ.nbox.ⅼ($.Material.of(material));
+        〡.nbox.〡($.Root, () -> {
+            〡.nbox.〡($.IconArea, () -> {
+                〡.nbox.〡($.Icon.of(model1));
+                〡.nbox.〡($.Materials, descriptor.getBuildItem(), material -> {
+                    〡.nbox.〡($.Material.of(material));
                 });
             });
-            ⅼ.nbox.ⅼ($.DescriptionArea, () -> {
+            〡.nbox.〡($.DescriptionArea, () -> {
                 // Name and Cost
                 double cost = model1.getBaseCost();
                 double total = model1.getTotalCost();
 
-                ⅼ.nbox.ⅼ($.Heading, () -> {
-                    ⅼ.nbox.ⅼ($.Name, model1.name);
-                    ⅼ.nbox.ⅼ($.TotalCost, total);
+                〡.nbox.〡($.Heading, () -> {
+                    〡.nbox.〡($.Name, model1.name);
+                    〡.nbox.〡($.TotalCost, total);
                     if (cost != total) {
-                        ⅼ.nbox.ⅼ($.Cost, "(", cost, ")");
+                        〡.nbox.〡($.Cost, "(", cost, ")");
                     }
                 });
 
                 // Status
-                ⅼ.nbox.ⅼ(null, VISIBLE, status -> {
+                〡.nbox.〡(null, VISIBLE, status -> {
                     double value = descriptor.get(status);
 
                     if (value != 0) {
-                        ⅼ.nbox.ⅼ($.StatusValue, value, status.getUnit(), " ", status.name);
+                        〡.nbox.〡($.StatusValue, value, status.getUnit(), " ", status.name);
                     }
                 });
 
-                ⅼ.nbox.ⅼ($.DescriptionArea, () -> {
-                    ⅼ.nbox.ⅼ(null, descriptor.getAbilities(), ability -> {
+                〡.nbox.〡($.DescriptionArea, () -> {
+                    〡.nbox.〡(null, descriptor.getAbilities(), ability -> {
                         AbilityDescriptor abilityDescriptor = ability.getDescriptor(Version.Latest);
 
-                        ⅼ.nbox.ⅼ($.AbilityArea, () -> {
+                        〡.nbox.〡($.AbilityArea, () -> {
                             if (abilityDescriptor.isUnique()) {
-                                ⅼ.nbox.ⅼ($.UniqueAbility, "UNIQUE");
+                                〡.nbox.〡($.UniqueAbility, "UNIQUE");
                             }
 
                             if (abilityDescriptor.isAura()) {
-                                ⅼ.nbox.ⅼ($.UniqueAbility, "AURA");
+                                〡.nbox.〡($.UniqueAbility, "AURA");
                             }
 
-                            ⅼ.nbox.ⅼ($.UniqueAbility, abilityDescriptor.isActive() ? "Active" : "Passive");
+                            〡.nbox.〡($.UniqueAbility, abilityDescriptor.isActive() ? "Active" : "Passive");
 
                             if (!ability.name.startsWith("#")) {
-                                ⅼ.nbox.ⅼ($.UniqueAbility, "[", ability.name, "]");
+                                〡.nbox.〡($.UniqueAbility, "[", ability.name, "]");
                             }
 
                             List token = abilityDescriptor.isActive() ? abilityDescriptor.getActive() : abilityDescriptor.getPassive();
-                            ⅼ.nbox.ⅼ(null, Widget.of(AbilityDescriptionView.class, ability, null, token));
+                            〡.nbox.〡(null, Widget.of(AbilityDescriptionView.class, ability, null, token));
                         });
                     });
                 });

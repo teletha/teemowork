@@ -63,22 +63,22 @@ public class ChampionComparing extends Widget {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure ⅼ) {
-        ⅼ.nbox.ⅼ(null, groups);
-        ⅼ.vbox.ⅼ($.Table, () -> {
-            ⅼ.nbox.ⅼ($.Head, () -> {
-                ⅼ.nbox.ⅼ($.NoIcon);
-                ⅼ.nbox.ⅼ(null, Header.class, STATUS);
+    protected void virtualize(VirtualStructure 〡) {
+        〡.nbox.〡(null, groups);
+        〡.vbox.〡($.Table, () -> {
+            〡.nbox.〡($.Head, () -> {
+                〡.nbox.〡($.NoIcon);
+                〡.nbox.〡(null, Header.class, STATUS);
             });
 
-            ⅼ.nbox.ⅼ($.Body, () -> {
-                ⅼ.vbox.ⅼ(null, group.getValue().sortBy(comparator), champion -> {
-                    ⅼ.hbox.ⅼ($.RowLine, () -> {
+            〡.nbox.〡($.Body, () -> {
+                〡.vbox.〡(null, group.getValue().sortBy(comparator), champion -> {
+                    〡.hbox.〡($.RowLine, () -> {
                         ChampionStatus championStatus = champion.getStatus(Version.Latest);
 
-                        ⅼ.nbox.ⅼ($.Icon.of(champion));
-                        ⅼ.nbox.ⅼ(null, STATUS, status -> {
-                            ⅼ.nbox.ⅼ($.StatusView, championStatus.get(status));
+                        〡.nbox.〡($.Icon.of(champion));
+                        〡.nbox.〡(null, STATUS, status -> {
+                            〡.nbox.〡($.StatusView, championStatus.get(status));
                         });
                     });
                 });
@@ -136,7 +136,7 @@ public class ChampionComparing extends Widget {
          */
         @Override
         protected void virtualize(VirtualStructure 〡) {
-            〡.nbox.ⅼ($.StatusView, status.name);
+            〡.nbox.〡($.StatusView, status.name);
         }
     }
 

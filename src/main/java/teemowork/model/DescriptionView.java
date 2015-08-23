@@ -52,12 +52,12 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure ⅼ) {
-        ⅼ.nbox.ⅼ($.Passive, model3, text -> {
+    protected void virtualize(VirtualStructure 〡) {
+        〡.nbox.〡($.Passive, model3, text -> {
             if (text instanceof Variable) {
-                writeVariable(ⅼ, (Variable) text, getLevel());
+                writeVariable(〡, (Variable) text, getLevel());
             } else {
-                ⅼ.ⅼ(text);
+                〡.〡(text);
             }
         });
     }
@@ -70,7 +70,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
      * @param variable
      * @param level
      */
-    private void writeVariable(VirtualStructure ⅼ, Variable variable, int level) {
+    private void writeVariable(VirtualStructure 〡, Variable variable, int level) {
         VariableResolver resolver = variable.getResolver();
         Status status = variable.getStatus();
         List<Variable> amplifiers = variable.getAmplifiers();
@@ -80,28 +80,28 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
         }
 
         // compute current value
-        ⅼ.nbox.ⅼ($.ComputedValue, status.format(variable.calculate(Math.max(1, level), calculator)));
+        〡.nbox.〡($.ComputedValue, status.format(variable.calculate(Math.max(1, level), calculator)));
 
         // All values
         int size = resolver.estimateSize();
         int current = level;
 
         if (1 < size || !amplifiers.isEmpty()) {
-            ⅼ.ⅼ("(");
-            ⅼ.nbox.ⅼ(null, size, i -> {
-                ⅼ.nbox.ⅼ($.Value, () -> {
-                    ⅼ.style.〡($.Current, i + 1 == current);
-                    ⅼ.style.〡($.Indicator, "title", resolver.getLevelDescription(i + 1));
-                    ⅼ.ⅼ(Mathematics.round(resolver.compute(i + 1), 2));
+            〡.〡("(");
+            〡.nbox.〡(null, size, i -> {
+                〡.nbox.〡($.Value, () -> {
+                    〡.style.〡($.Current, i + 1 == current);
+                    〡.style.〡($.Indicator, "title", resolver.getLevelDescription(i + 1));
+                    〡.〡(Mathematics.round(resolver.compute(i + 1), 2));
                 });
 
                 if (i + 1 != size) {
-                    ⅼ.nbox.ⅼ($.Separator, "/");
+                    〡.nbox.〡($.Separator, "/");
                 }
             });
 
-            writeAmplifier(ⅼ, amplifiers, level);
-            ⅼ.ⅼ(")");
+            writeAmplifier(〡, amplifiers, level);
+            〡.〡(")");
         }
     }
 
@@ -114,12 +114,12 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
      * @param amplifiers A list of skill amplifiers.
      * @param level A current skill level.
      */
-    private void writeAmplifier(VirtualStructure ⅼ, List<Variable> amplifiers, int level) {
-        ⅼ.nbox.ⅼ(null, amplifiers, amplifier -> {
-            ⅼ.nbox.ⅼ($.Amplifier, () -> {
+    private void writeAmplifier(VirtualStructure 〡, List<Variable> amplifiers, int level) {
+        〡.nbox.〡(null, amplifiers, amplifier -> {
+            〡.nbox.〡($.Amplifier, () -> {
                 int amp = level;
 
-                ⅼ.ⅼ("+");
+                〡.〡("+");
 
                 VariableResolver resolver = amplifier.getResolver();
 
@@ -130,25 +130,25 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                 int size = resolver.estimateSize();
                 int current = amp;
 
-                ⅼ.nbox.ⅼ(null, size, i -> {
-                    ⅼ.nbox.ⅼ($.Value, () -> {
-                        ⅼ.style.〡($.Current, size != 1 && i + 1 == current);
-                        ⅼ.style.〡($.Indicator, "title", resolver.getLevelDescription(i + 1));
-                        ⅼ.ⅼ(Mathematics.round(amplifier.calculate(i + 1, calculator, true), 4));
+                〡.nbox.〡(null, size, i -> {
+                    〡.nbox.〡($.Value, () -> {
+                        〡.style.〡($.Current, size != 1 && i + 1 == current);
+                        〡.style.〡($.Indicator, "title", resolver.getLevelDescription(i + 1));
+                        〡.〡(Mathematics.round(amplifier.calculate(i + 1, calculator, true), 4));
                     });
 
                     if (i + 1 != size) {
-                        ⅼ.nbox.ⅼ($.Separator, "/");
+                        〡.nbox.〡($.Separator, "/");
                     }
                 });
 
-                ⅼ.ⅼ(amplifier.getStatus().getUnit());
+                〡.〡(amplifier.getStatus().getUnit());
                 if (!amplifier.getAmplifiers().isEmpty()) {
-                    ⅼ.ⅼ("(");
-                    writeAmplifier(ⅼ, amplifier.getAmplifiers(), current);
-                    ⅼ.ⅼ(")");
+                    〡.〡("(");
+                    writeAmplifier(〡, amplifier.getAmplifiers(), current);
+                    〡.〡(")");
                 }
-                ⅼ.ⅼ(amplifier.getStatus().name);
+                〡.〡(amplifier.getStatus().name);
             });
         });
     }
