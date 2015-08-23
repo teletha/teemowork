@@ -100,7 +100,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                 }
             });
 
-            writeAmplifier(〡, amplifiers, level);
+            writeAmplifier(〡, amplifiers, level, calculator);
             〡.〡(")");
         }
     }
@@ -114,7 +114,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
      * @param amplifiers A list of skill amplifiers.
      * @param level A current skill level.
      */
-    private void writeAmplifier(VirtualStructure 〡, List<Variable> amplifiers, int level) {
+    public static void writeAmplifier(VirtualStructure 〡, List<Variable> amplifiers, int level, StatusCalculator calculator) {
         〡.nbox.〡(null, amplifiers, amplifier -> {
             〡.nbox.〡($.Amplifier, () -> {
                 int amp = level;
@@ -145,7 +145,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                 〡.〡(amplifier.getStatus().getUnit());
                 if (!amplifier.getAmplifiers().isEmpty()) {
                     〡.〡("(");
-                    writeAmplifier(〡, amplifier.getAmplifiers(), current);
+                    writeAmplifier(〡, amplifier.getAmplifiers(), current, calculator);
                     〡.〡(")");
                 }
                 〡.〡(amplifier.getStatus().name);
@@ -158,32 +158,32 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
      */
     private static class $ extends StyleRuleDescriptor {
 
-        static Style ComputedValue = () -> {
+        private static Style ComputedValue = () -> {
             font.weight.bolder();
         };
 
-        static Style Value = () -> {
+        private static Style Value = () -> {
             text.align.center();
         };
 
-        static Style Separator = () -> {
+        private static Style Separator = () -> {
             box.opacity(0.4);
             margin.horizontal(1, px);
         };
 
-        static Style Current = () -> {
+        private static Style Current = () -> {
             font.color(rgba(160, 123, 1, 1));
         };
 
-        static Style Passive = () -> {
+        private static Style Passive = () -> {
             margin.right(1, em);
         };
 
-        static Style Indicator = () -> {
+        private static Style Indicator = () -> {
             cursor.help();
         };
 
-        static Style Amplifier = () -> {
+        private static Style Amplifier = () -> {
             font.color(25, 111, 136);
 
             inBackOf(Value, () -> {
