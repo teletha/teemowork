@@ -1303,7 +1303,7 @@ public interface SkillDefinition {
                 .cd(15, -2);
 
         R.update(P515)
-                .active("8秒間対象の敵チャンピオンの全ての急所(4箇所)が見えるようになる(この効果中は対象への" + P + "の効果は発動しない)。全ての急所を攻撃するか最低一つの急所を攻撃した上で対象が死ぬかした場合、{1}の全て味方は5秒間毎秒{2}する。対象の近くにいるか回復範囲内にいる場合、" + champion + "は{3}する。")
+                .active("8秒間対象の敵チャンピオンの全ての急所(4箇所)が見えるようになる(この効果中は対象への" + P + "の効果は発動しない)。全ての急所を攻撃するか最低一つの急所を攻撃した上で対象が死ぬと聖なる泉が発生して、{1}の全て味方は5秒間毎秒{2}する。対象の近くにいるか泉の範囲内にいる場合、" + champion + "は{3}する。")
                 .variable(1, Radius, 600)
                 .variable(2, RestoreHealth, 80, 30, bounusAD(0.6))
                 .variable(3, MSRatio, 30, 10)
@@ -3037,7 +3037,7 @@ public interface SkillDefinition {
                 .variable(2, Radius, 250)
                 .variable(3, MagicDamage, 35, 10, ap(0.15))
                 .variable(4, MagicDamage, 50, 20, ap(0.3))
-                .variable(5, RestoreHealth, 50, 20, ap(0.3))
+                .variable(5, RestoreHealth, amplify(DealtDamageRatio, 100))
                 .cd(12, -1);
 
         E.update(P516)

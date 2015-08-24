@@ -68,30 +68,30 @@ public class ChampionSelect extends Widget {
 
         private static final Numeric ImageSize = new Numeric(70, px);
 
-        static Style Root = () -> {
+        private static Style Root = () -> {
             display.block();
             margin.auto();
             line.height(0);
             box.width(ImageSize.multiply(10).add(2));
         };
 
-        static Style ImageSet = () -> {
+        private static Style ImageSet = () -> {
             display.inlineFlex().direction.row().wrap.enable();
             border.top.solid().width(2, px).color(backColor);
             border.left.solid().width(2, px).color(backColor);
         };
 
-        static Style Container = () -> {
+        private static Style Container = () -> {
             position.relative();
             display.block();
         };
 
-        static Style Unselected = () -> {
+        private static Style Unselected = () -> {
             box.opacity(0);
             margin.right(-70, px);
         };
 
-        static Style IconImage = () -> {
+        private static Style IconImage = () -> {
             display.block();
             box.size(ImageSize);
             border.bottom.solid().width(2, px).color(backColor);
@@ -112,11 +112,11 @@ public class ChampionSelect extends Widget {
             });
         };
 
-        static ValueStyle<Champion> IconPosition = chmapion -> {
+        private static ValueStyle<Champion> IconPosition = chmapion -> {
             background.horizontal(chmapion.getIconPosition());
         };
 
-        static Style Title = () -> {
+        private static Style Title = () -> {
             Numeric boxWidth = ImageSize.add(40);
             Color color = new Color(0, 98, 97, 1);
 
@@ -140,7 +140,7 @@ public class ChampionSelect extends Widget {
             });
         };
 
-        static Style SearchByName = () -> {
+        private static Style SearchByName = () -> {
             display.block();
             margin.bottom(10, px);
         };
