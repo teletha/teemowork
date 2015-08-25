@@ -40,15 +40,6 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
     protected abstract int getLevel();
 
     /**
-     * <p>
-     * Specify the current version of descriptor.
-     * </p>
-     * 
-     * @return
-     */
-    protected abstract Version getVersion();
-
-    /**
      * {@inheritDoc}
      */
     @Override

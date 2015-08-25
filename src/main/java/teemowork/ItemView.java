@@ -113,14 +113,6 @@ public class ItemView extends Widget1<Item> {
         protected int getLevel() {
             return calculator == null ? 0 : 1;
         }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected Version getVersion() {
-            return Version.Latest;
-        }
     }
 
     /**

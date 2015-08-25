@@ -152,14 +152,6 @@ public class MasteryBuilder extends Widget {
         protected int getLevel() {
             return masterySet.getLevel(model1);
         }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected Version getVersion() {
-            return Version.Latest;
-        }
     }
 
     /**

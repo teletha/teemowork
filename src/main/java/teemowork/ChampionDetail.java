@@ -12,7 +12,6 @@ package teemowork;
 import static js.dom.UIAction.*;
 import static teemowork.model.Status.*;
 
-import js.dom.UIAction;
 import jsx.style.BinaryStyle;
 import jsx.style.Style;
 import jsx.style.StyleRuleDescriptor;
@@ -34,7 +33,6 @@ import teemowork.model.SkillDescriptor;
 import teemowork.model.SkillKey;
 import teemowork.model.SkillType;
 import teemowork.model.Status;
-import teemowork.model.Version;
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
 
@@ -42,6 +40,8 @@ import teemowork.model.variable.VariableResolver;
  * @version 2015/08/20 15:53:24
  */
 public class ChampionDetail extends Widget1<Build> {
+
+    private static final CSS $ = new CSS();
 
     /** The displayable status. */
     private static final Status[] VISIBLE = {Health, Hreg, Mana, Mreg, AD, ARPen, AS, LS, Critical, AP, MRPen, CDR, SV, AR, MR, MS, Range,
@@ -65,7 +65,7 @@ public class ChampionDetail extends Widget1<Build> {
         skillDown.to(v -> build.levelDown(v));
 
         // TODO FIXME
-        on(UIAction.Key_R, $.ChampionIconBox).to(e -> {
+        on(Key_R, $.ChampionIconBox).to(e -> {
             build.active(SkillKey.R);
             build.active(SkillKey.W);
         });
@@ -80,7 +80,6 @@ public class ChampionDetail extends Widget1<Build> {
             〡.hbox.〡($.ChampionIconBox.of(build.champion), () -> {
                 〡.nbox.〡($.Level, build.getLevel());
             });
-            // 〡.nbox.〡(null, ChampionFace.class, build.champion);
             〡.hbox.〡($.ItemViewBox, ItemBoxWidget.class, build.items);
         });
 
@@ -246,69 +245,61 @@ public class ChampionDetail extends Widget1<Build> {
         protected int getLevel() {
             return build.getLevel(model1);
         }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected Version getVersion() {
-            return Version.Latest;
-        }
     }
 
     /**
      * @version 2015/08/20 15:49:48
      */
-    private static class $ extends StyleRuleDescriptor {
+    private static class CSS extends StyleRuleDescriptor {
 
         /** The skill icon size. */
-        private static int SkillIconSize = 45;
+        int SkillIconSize = 45;
 
         /** The level box height. */
-        private static int LevelBoxHeight = 5;
+        int LevelBoxHeight = 5;
 
-        private static Style UpperInfo = () -> {
+        Style UpperInfo = () -> {
             display.flex().alignItems.end();
             margin.bottom(1, em);
         };
 
-        private static Style StatusLabel = () -> {
+        Style StatusLabel = () -> {
             font.size.smaller();
         };
 
-        private static Style StatusBlock = () -> {
+        Style StatusBlock = () -> {
             display.inlineBlock();
             margin.right(0.8, em);
         };
 
-        private static Style SkillStatusValue = () -> {
+        Style SkillStatusValue = () -> {
             text.align.center();
             box.opacity(0.7);
             margin.horizontal(3, px);
         };
 
-        private static Style SkillTable = () -> {
+        Style SkillTable = () -> {
             display.block();
             flexItem.basis(100, percent);
         };
 
-        private static Style Container = () -> {
+        Style Container = () -> {
             display.flex();
         };
 
-        private static Style SkillRow = () -> {
+        Style SkillRow = () -> {
             display.flex();
             margin.bottom(1, em);
         };
 
-        private static ValueStyle<Skill> SkillIcon = skill -> {
+        ValueStyle<Skill> SkillIcon = skill -> {
             display.block();
             box.size(SkillIconSize, px);
             border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
             background.image(BackgroundImage.url(skill.getIcon()).horizontal(skill.getIconPosition()).cover().borderBox().noRepeat());
         };
 
-        private static Style LevelBox = () -> {
+        Style LevelBox = () -> {
             display.flex();
             box.width(SkillIconSize, px).height(LevelBoxHeight + 2, px);
             border.width(1, px).solid().color(Color.Black);
@@ -316,7 +307,7 @@ public class ChampionDetail extends Widget1<Build> {
             margin.top(2, px).bottom(5, px);
         };
 
-        private static BinaryStyle LevelMark = state -> {
+        BinaryStyle LevelMark = state -> {
             display.block();
             flexItem.grow(1);
             box.height(LevelBoxHeight, px);
@@ -324,49 +315,49 @@ public class ChampionDetail extends Widget1<Build> {
             background.image(BackgroundImage.of(linear(rgba(240, 192, 28, state ? 1 : 0.5), rgba(160, 123, 1, state ? 1 : 0.5))));
         };
 
-        private static Style IconBox = () -> {
+        Style IconBox = () -> {
             margin.right(SkillIconSize / 5, px);
             cursor.pointer();
             flexItem.shrink(0);
         };
 
-        private static Style Name = () -> {
+        Style Name = () -> {
             margin.right(0.5, em);
             font.weight.bold();
         };
 
-        private static Style VersionDisplay = () -> {
+        Style VersionDisplay = () -> {
             font.color(rgb(200, 200, 200)).size.smaller();
             flexItem.alignSelf.end();
         };
 
-        private static Style Text = () -> {
+        Style Text = () -> {
             display.block();
             margin.top(0.3, em).bottom(0.7, em);
             line.height(140, percent);
             font.size.smaller();
         };
 
-        private static Style ChampionLevelIndicator = () -> {
+        Style ChampionLevelIndicator = () -> {
             cursor.help();
         };
 
-        private static Style Separator = () -> {
+        Style Separator = () -> {
             box.opacity(0.4);
             margin.horizontal(1, px);
         };
 
-        private static Style Current = () -> {
+        Style Current = () -> {
             font.color(rgba(160, 123, 1, 1));
         };
 
-        private static Style SkillTypeInfo = () -> {
+        Style SkillTypeInfo = () -> {
             margin.right(1, em);
         };
 
-        private static Numeric ChampionIconSize = new Numeric(70, Unit.px);
+        Numeric ChampionIconSize = new Numeric(70, Unit.px);
 
-        private static ValueStyle<Champion> ChampionIconBox = champion -> {
+        ValueStyle<Champion> ChampionIconBox = champion -> {
             box.size(ChampionIconSize);
             border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
             cursor.pointer();
@@ -375,7 +366,7 @@ public class ChampionDetail extends Widget1<Build> {
 
         };
 
-        private static Style Level = () -> {
+        Style Level = () -> {
             display.block();
             box.size(22, px);
             font.size(20, px).color(240, 240, 240).weight.bold().family("Arial");
@@ -384,41 +375,41 @@ public class ChampionDetail extends Widget1<Build> {
             cursor.pointer();
         };
 
-        private static Style StatusViewBox = () -> {
+        Style StatusViewBox = () -> {
             display.block();
             box.width(13, em);
             flexItem.shrink(0);
         };
 
-        private static Style StatusBox = () -> {
+        Style StatusBox = () -> {
             display.flex();
             margin.bottom(4, px);
         };
 
-        private static Style StatusName = () -> {
+        Style StatusName = () -> {
             box.width(5, em);
         };
 
-        private static Style StatusValue = () -> {
+        Style StatusValue = () -> {
             box.width(50, px);
         };
 
-        private static Numeric ItemIconSize = ChampionIconSize.divide(5).multiply(3);
+        Numeric ItemIconSize = ChampionIconSize.divide(5).multiply(3);
 
-        private static Style ItemViewBox = () -> {
+        Style ItemViewBox = () -> {
             display.flex();
             box.width(ItemIconSize.multiply(6));
             margin.left(137, px);
         };
 
-        private static Style ItemIconBase = () -> {
+        Style ItemIconBase = () -> {
             display.block();
             box.size(ItemIconSize);
             background.image(BackgroundImage.url("src/main/resources/teemowork/empty.png").contain().noRepeat());
             padding.size(3, px);
         };
 
-        private static ValueStyle<Integer> ItemIcon = id -> {
+        ValueStyle<Integer> ItemIcon = id -> {
             display.block();
             box.size(100, percent);
             background.horizontal(id / (Item.size() - 1) * 100, percent)
