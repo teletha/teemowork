@@ -9,8 +9,7 @@
  */
 package teemowork;
 
-import static js.dom.UIAction.*;
-
+import js.dom.UIAction;
 import jsx.style.Style;
 import jsx.style.StyleRuleDescriptor;
 import jsx.style.ValueStyle;
@@ -34,7 +33,7 @@ public class ChampionSelect extends Widget {
 
     private Input input = UI.input().placeholder("Champion Name");
 
-    public Events<Champion> select = on(Click, $.Container, Champion.class);
+    public Events<Champion> select = on(UIAction.Click, $.Container, Champion.class);
 
     /**
      * 
