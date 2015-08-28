@@ -896,10 +896,10 @@ public interface SkillDefinition {
 
         Q.update(P516)
                 .active("0.75秒後斧を振り回し{3}の敵ユニットに{1}を与える。斧の刃に当たった敵チャンピオンに対しては{2}を与え、1体毎に{4}する（最大30%）。")
-                .variable(1, PhysicalDamage, 10, 10, amplify(AD, 0.5, 0.05))
-                .variable(1, PhysicalDamage, 20, 20, amplify(AD, 1, 0.1))
+                .variable(1, PhysicalDamage, 20, 12.5, amplify(AD, 0.5, 0.05))
+                .variable(1, PhysicalDamage, 40, 25, amplify(AD, 1, 0.1))
                 .variable(3, Radius, 425)
-                .variable(4, RestoreHealth, amplify(MissingHealthRatio, 10))
+                .variable(4, RestoreHealth, amplify(MissingHealthRatio, 15))
                 .mana(30)
                 .cd(9, -1);
 
@@ -4300,20 +4300,20 @@ public interface SkillDefinition {
 
         W.update(P516)
                 .active("6秒間{1}を張る。シールドが残っている間3秒かけて{2}する。")
-                .variable(1, Shield, 0, 0, ap(0.8), amplify(Health, 0.12, 0.01))
+                .variable(1, Shield, 0, 0, ap(0.8), amplify(Health, 0.1, 0.01))
                 .variable(2, MSRatio, 16)
                 .mana(60)
                 .cd(13, -0.5);
 
         E.update(P516)
                 .active("指定方向に貫通するエネルギーを飛ばし、当たった敵ユニットに{1}と2秒間{2}与え、5秒間マークする。マークされた敵に通常攻撃をするとマークを消費して、{3}と{4}を与える。スタンを与えるとこのスキルの{5}する。" + R + "を使用するとこのスキルの{6}する。")
-                .variable(1, MagicDamage, 40, 35, ap(0.4))
+                .variable(1, MagicDamage, 40, 25, ap(0.4))
                 .variable(2, MSSlowRatio, 45, 5)
-                .variable(3, PhysicalDamage, 25, 25)
+                .variable(3, PhysicalDamage, 25, 10)
                 .variable(4, Stun, 1)
                 .variable(5, CDDecrease, 1)
                 .variable(6, CDDecrease, 1.75)
-                .cd(13, -0.5)
+                .cd(14, -0.5)
                 .mana(55)
                 .range(1000);
 
