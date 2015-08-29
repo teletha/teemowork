@@ -11,8 +11,8 @@ package teemowork.api;
 
 import java.util.List;
 import java.util.ArrayList;
-import teemowork.model.Champion;
 import teemowork.model.SkillDefinition;
+import teemowork.model.Champion;
 
 public class RiotChampionData {
 
