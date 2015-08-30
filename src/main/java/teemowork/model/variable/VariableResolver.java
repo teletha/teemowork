@@ -519,12 +519,12 @@ public abstract class VariableResolver {
     public static class FixedLevel extends Fixed {
 
         /** The fixed values. */
-        private final double[] number;
+        private final int[] number;
 
         /**
          * @param values
          */
-        public FixedLevel(double[] number, double[] values) {
+        public FixedLevel(int[] number, double[] values) {
             super(values);
             this.number = number;
         }
@@ -536,6 +536,37 @@ public abstract class VariableResolver {
         public String getLevelDescription(int skillLevel) {
             return "Level " + number[skillLevel - 1];
         }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public boolean isSkillLevelBased() {
+            return false;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        protected int convertChampionLevel(int skillLevel) {
+            return number[skillLevel - 1];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public int convertLevel(StatusCalculator calculator) {
+            int level = calculator.getLevel();
+
+            for (int i = 0; i < number.length; i++) {
+                if (level < number[i]) {
+                    return i;
+                }
+            }
+            return number.length;
+        }
     }
 
     /**
@@ -544,12 +575,12 @@ public abstract class VariableResolver {
     public static class BardChimes extends Fixed {
 
         /** The fixed values. */
-        private final double[] number;
+        private final int[] number;
 
         /**
          * @param values
          */
-        public BardChimes(double[] number, double[] values) {
+        public BardChimes(int[] number, double[] values) {
             super(values);
             this.number = number;
         }

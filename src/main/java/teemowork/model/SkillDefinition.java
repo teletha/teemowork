@@ -487,9 +487,9 @@ public interface SkillDefinition {
                 .variable(-1, MSRatio)
                 .variable(2, Experiment, 20)
                 .variable(3, RestoreMana, amplify(Mana, 0.12))
-                .variable(4, MagicDamage, new BardChimes(new double[] {0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140,
+                .variable(4, MagicDamage, new BardChimes(new int[] {0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140,
                         150}, new double[] {35, 55, 80, 110, 140, 175, 210, 245, 280, 315, 345, 375, 400, 425, 445, 465}), ap(0.3), null)
-                .variable(5, MSSlowRatio, new BardChimes(new double[] {5, 45, 85, 115, 135}, new double[] {25, 45, 60, 75, 80}));
+                .variable(5, MSSlowRatio, new BardChimes(new int[] {5, 45, 85, 115, 135}, new double[] {25, 45, 60, 75, 80}));
 
         Q.update(P507)
                 .active("{1}の貫通するエネルギー弾を飛ばし、1体目のターゲットに{2}と{3}間{4}を与える。エネルギー弾が別の敵にも命中するか({5})、壁に当たった場合、スキルが命中したすべての敵に{6}を与える。")
@@ -888,10 +888,10 @@ public interface SkillDefinition {
      */
     public static void Darius(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P516)
-                .passive("通常攻撃またはスキルでダメージを与えた敵ユニットに出血スタックを付与する。出血スタックが付与された敵ユニットに5秒間かけて{1}を与える。出血スタックは5秒間持続して最大5回までスタックし最大{2}を与える。スタックが5になるか" + R + "で敵チャンピオンを倒すと、" + champion + "は5秒間{3}を得て、常に5スタックを付与するようになる。")
+                .passive("通常攻撃または" + Q + "の刃でダメージを与えた敵ユニットに出血スタックを付与する。出血スタックが付与された敵ユニットに1.25秒毎に5秒間かけて{1}を与える。出血スタックは5秒間持続して最大5回までスタックし最大{2}を与える。敵チャンピオンへのスタックが5になるか" + R + "で倒すと、" + champion + "は5秒間{3}を得て、常に5スタックを付与するようになる。")
                 .variable(1, PhysicalDamage, 9, 0, level(1), amplify(BounusAD, 0.3))
                 .variable(2, PhysicalDamage, 45, 0, level(5), amplify(BounusAD, 1.5))
-                .variable(-3, AD, new FixedLevel(new double[] {1, 3, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}, new double[] {40, 45, 50,
+                .variable(-3, AD, new FixedLevel(new int[] {1, 3, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}, new double[] {40, 45, 50,
                         60, 70, 80, 90, 100, 110, 120, 140, 160, 180, 200}));
 
         Q.update(P516)
