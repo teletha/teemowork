@@ -897,7 +897,7 @@ public interface SkillDefinition {
         Q.update(P516)
                 .active("0.75秒後斧を振り回し{3}の敵ユニットに{1}を与える。斧の刃に当たった敵チャンピオンに対しては{2}を与え、1体毎に{4}する（最大30%）。")
                 .variable(1, PhysicalDamage, 20, 12.5, amplify(AD, 0.5, 0.05))
-                .variable(1, PhysicalDamage, 40, 25, amplify(AD, 1, 0.1))
+                .variable(2, PhysicalDamage, 40, 25, amplify(AD, 1, 0.1))
                 .variable(3, Radius, 425)
                 .variable(4, RestoreHealth, amplify(MissingHealthRatio, 15))
                 .mana(30)
