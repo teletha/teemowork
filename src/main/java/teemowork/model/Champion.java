@@ -124,7 +124,7 @@ public class Champion extends RiotChampionData {
      * @return A result.
      */
     public boolean match(String name) {
-        return name != null && systemName.contains(name.toLowerCase());
+        return name == null || name.length() == 0 || systemName.toLowerCase().contains(name.toLowerCase());
     }
 
     /**

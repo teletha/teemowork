@@ -50,7 +50,7 @@ public class ChampionSelect extends Widget {
         〡.nbox.〡($.Root, () -> {
             〡.nbox.〡($.SearchByName, input);
             〡.nbox.〡($.ImageSet, Champion.getAll(), champion -> {
-                〡.nbox.〡($.Container.with($.Unselected.when(champion.match(input.value.get()))), () -> {
+                〡.nbox.〡($.Container.with($.Unselected.when(!champion.match(input.value.get()))), () -> {
                     〡.nbox.〡($.IconImage.with($.IconPosition.of(champion)));
                     〡.nbox.〡($.Title, champion.name);
                 });
