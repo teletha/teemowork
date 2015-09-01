@@ -123,10 +123,12 @@ public enum Version {
 
     P516("5.16", 2015, 8, 20),
 
+    P517("5.17", 2015, 9, 2),
+
     PBE("Public Beta Environment", 2013, 1, 26);
 
     /** The latest stable version. */
-    public static final Version Latest = P516;
+    public static final Version Latest = P517;
 
     /** The selected version. */
     private static Version selection = Latest;
