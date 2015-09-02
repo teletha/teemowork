@@ -11,7 +11,6 @@ package teemowork.model;
 
 import java.util.List;
 
-import js.math.Mathematics;
 import jsx.style.Style;
 import jsx.style.StyleRuleDescriptor;
 import jsx.ui.VirtualStructure;
@@ -83,7 +82,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                 〡.nbox.〡($.Value, () -> {
                     〡.style.〡($.Current, i + 1 == current);
                     〡.style.〡($.Indicator, "title", resolver.getLevelDescription(i + 1));
-                    〡.〡(Mathematics.round(resolver.compute(i + 1), 2));
+                    〡.〡(resolver.compute(i + 1));
                 });
 
                 if (i + 1 != size) {
@@ -125,7 +124,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                     〡.nbox.〡($.Value, () -> {
                         〡.style.〡($.Current, size != 1 && i + 1 == current);
                         〡.style.〡($.Indicator, "title", resolver.getLevelDescription(i + 1));
-                        〡.〡(Mathematics.round(amplifier.calculate(i + 1, calculator, true), 4));
+                        〡.〡(amplifier.calculate(i + 1, calculator, true));
                     });
 
                     if (i + 1 != size) {

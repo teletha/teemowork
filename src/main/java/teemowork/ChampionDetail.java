@@ -160,16 +160,16 @@ public class ChampionDetail extends Widget1<Build> {
      * </p>
      * 
      * @param root A element to write.
-     * @param skill A current processing skill.
+     * @param descriptor A current processing skill.
      * @param variable A target skill variable.
      */
-    private void writeStatusValue(VirtualStructure 〡, Skill sss, SkillDescriptor skill, Variable variable) {
+    private void writeStatusValue(VirtualStructure 〡, Skill skill, SkillDescriptor descriptor, Variable variable) {
         if (variable != null) {
             〡.hbox.〡($.StatusBlock, () -> {
                 Status status = variable.getStatus();
                 VariableResolver resolver = variable.getResolver();
 
-                int level = build.getLevel(sss);
+                int level = build.getLevel(skill);
 
                 if (!resolver.isSkillLevelBased()) {
                     level = resolver.convertLevel(build);
@@ -179,9 +179,9 @@ public class ChampionDetail extends Widget1<Build> {
                 String label = status.name;
 
                 if (status != Range && status != CD) {
-                    if (skill.getType() == SkillType.Toggle) {
+                    if (descriptor.getType() == SkillType.Toggle) {
                         label = "毎秒" + label;
-                    } else if (skill.getType() == SkillType.ToggleForAttack) {
+                    } else if (descriptor.getType() == SkillType.ToggleForAttack) {
                         label = "攻撃毎" + label;
                     }
                 }

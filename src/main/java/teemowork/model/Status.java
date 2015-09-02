@@ -9,8 +9,6 @@
  */
 package teemowork.model;
 
-import js.math.Mathematics;
-
 /**
  * @version 2013/12/02 13:28:33
  */
@@ -274,6 +272,8 @@ public enum Status {
 
     Knockback("ノックバック"),
 
+    Slow("移動及び攻撃速度低下"), SlowRatio(Slow),
+
     MSSlow("移動速度低下"), MSSlowRatio("スロー"),
 
     ASSlow("攻撃速度低下"), ASSlowRatio(ASSlow),
@@ -465,7 +465,8 @@ public enum Status {
      * @return
      */
     public double round(double value) {
-        return Mathematics.round(value, precision);
+        double factor = Math.pow(10, precision);
+        return Math.round(value * factor) / factor;
     }
 
     /**

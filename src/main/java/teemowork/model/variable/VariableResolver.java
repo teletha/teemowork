@@ -521,6 +521,10 @@ public abstract class VariableResolver {
         /** The fixed values. */
         private final int[] number;
 
+        public FixedLevel(double[] values) {
+            this(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}, values);
+        }
+
         /**
          * @param values
          */
@@ -559,8 +563,9 @@ public abstract class VariableResolver {
         @Override
         public int convertLevel(StatusCalculator calculator) {
             int level = calculator.getLevel();
-
+            System.out.println(level + "  " + number.length);
             for (int i = 0; i < number.length; i++) {
+                System.out.println(i + "  @");
                 if (level < number[i]) {
                     return i;
                 }
