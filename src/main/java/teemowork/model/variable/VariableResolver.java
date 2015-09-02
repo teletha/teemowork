@@ -118,6 +118,13 @@ public abstract class VariableResolver {
         }
 
         /**
+         * @param values
+         */
+        public PerLevel(double... values) {
+            this(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}, values);
+        }
+
+        /**
          * {@inheritDoc}
          */
         @Override
@@ -181,32 +188,6 @@ public abstract class VariableResolver {
     /**
      * @version 2013/02/12 11:37:34
      */
-    public static class Per6LevelForVi extends PerLevel {
-
-        /**
-         * @param values
-         */
-        public Per6LevelForVi(double base, double diff) {
-            super(new int[] {1, 7, 12}, base, diff);
-        }
-    }
-
-    /**
-     * @version 2013/02/12 11:37:34
-     */
-    public static class Per6LevelForZed extends PerLevel {
-
-        /**
-         * @param values
-         */
-        public Per6LevelForZed(double base, double diff) {
-            super(new int[] {1, 7, 17}, base, diff);
-        }
-    }
-
-    /**
-     * @version 2013/02/12 11:37:34
-     */
     public static class Per5Level extends PerLevel {
 
         /**
@@ -221,104 +202,6 @@ public abstract class VariableResolver {
          */
         public Per5Level(double... values) {
             super(new int[] {1, 6, 11, 16}, values);
-        }
-    }
-
-    /**
-     * @version 2014/01/15 11:04:07
-     */
-    public static class Per5Level3Times extends PerLevel {
-
-        /**
-         * @param values
-         */
-        public Per5Level3Times(double base, double diff) {
-            super(new int[] {1, 6, 11}, base, diff);
-        }
-
-        /**
-         * @param values
-         */
-        public Per5Level3Times(double... values) {
-            super(new int[] {1, 6, 11}, values);
-        }
-    }
-
-    /**
-     * @version 2015/08/05 21:31:34
-     */
-    public static class Per5LevelWith18 extends PerLevel {
-
-        /**
-         * @param values
-         */
-        public Per5LevelWith18(double base, double diff) {
-            super(new int[] {1, 6, 11, 16, 18}, base, diff);
-        }
-    }
-
-    /**
-     * @version 2015/08/05 21:32:07
-     */
-    public static class Per5LevelWith5 extends PerLevel {
-
-        /**
-         * @param values
-         */
-        public Per5LevelWith5(double base, double diff) {
-            super(new int[] {1, 5, 10, 15}, base, diff);
-        }
-    }
-
-    /**
-     * @version 2013/06/11 19:50:49
-     */
-    public static class Per5LevelForGaren extends PerLevel {
-
-        /**
-         * @param values
-         */
-        public Per5LevelForGaren(double base, double diff) {
-            super(new int[] {1, 11, 16}, base, diff);
-        }
-    }
-
-    /**
-     * @version 2013/06/11 19:50:49
-     */
-    public static class Per5LevelForYoric extends PerLevel {
-
-        /**
-         * @param values
-         */
-        public Per5LevelForYoric(double base, double diff) {
-            super(new int[] {1, 6, 9, 12}, base, diff);
-        }
-    }
-
-    /**
-     * @version 2013/02/12 11:37:34
-     */
-    public static class Per5LevelForHeimer extends PerLevel {
-
-        /**
-         * @param values
-         */
-        public Per5LevelForHeimer(double base, double diff) {
-            super(new int[] {1, 6, 11, 15}, base, diff);
-        }
-    }
-
-    /**
-     * @version 2013/02/12 11:37:34
-     */
-    public static class Per5LevelForSejuani extends PerLevel {
-
-        /**
-         * @param values
-         */
-        public Per5LevelForSejuani(double base, double diff) {
-            super(new int[] {1, 7, 12, 17}, base, diff);
         }
     }
 
@@ -338,32 +221,6 @@ public abstract class VariableResolver {
     /**
      * @version 2013/02/12 11:37:34
      */
-    public static class Per4LevelForAnivia extends PerLevel {
-
-        /**
-         * @param values
-         */
-        public Per4LevelForAnivia(double base, double diff) {
-            super(new int[] {1, 5, 8, 12, 15}, base, diff);
-        }
-    }
-
-    /**
-     * @version 2013/02/12 11:37:34
-     */
-    public static class Per4LevelForTrundle extends PerLevel {
-
-        /**
-         * @param values
-         */
-        public Per4LevelForTrundle(double base, double diff) {
-            super(new int[] {1, 5, 9, 12, 15}, base, diff);
-        }
-    }
-
-    /**
-     * @version 2013/02/12 11:37:34
-     */
     public static class Per3Level extends PerLevel {
 
         /**
@@ -371,32 +228,6 @@ public abstract class VariableResolver {
          */
         public Per3Level(double base, double diff) {
             super(new int[] {1, 4, 7, 10, 13, 16}, base, diff);
-        }
-    }
-
-    /**
-     * @version 2013/02/12 11:37:34
-     */
-    public static class Per3LevelForKarma extends PerLevel {
-
-        /**
-         * @param values
-         */
-        public Per3LevelForKarma(double base, double diff) {
-            super(new int[] {1, 3, 6, 9, 12, 15}, base, diff);
-        }
-    }
-
-    /**
-     * @version 2013/02/12 11:37:34
-     */
-    public static class Per3LevelAdditional extends PerLevel {
-
-        /**
-         * @param values
-         */
-        public Per3LevelAdditional(double base, double diff) {
-            super(new int[] {1, 3, 6, 9, 12, 15, 18}, base, diff);
         }
     }
 
@@ -414,77 +245,9 @@ public abstract class VariableResolver {
     }
 
     /**
-     * @version 2013/02/12 11:37:34
+     * @version 2015/09/02 22:52:13
      */
-    public static class Per1Level extends VariableResolver {
-
-        /** The values. */
-        private final double[] values;
-
-        /**
-         * @param values
-         */
-        public Per1Level(double... values) {
-            this.values = values;
-        }
-
-        /**
-         * @param values
-         */
-        public Per1Level(double base, double diff) {
-            double[] values = new double[18];
-
-            for (int i = 0; i < values.length; i++) {
-                values[i] = base + diff * i;
-            }
-            this.values = values;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public int estimateSize() {
-            return 18;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public double compute(int skillLevel) {
-            return values[skillLevel - 1];
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public boolean isSkillLevelBased() {
-            return false;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected int convertChampionLevel(int skillLevel) {
-            return skillLevel;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public int convertLevel(StatusCalculator calculator) {
-            return calculator.getLevel();
-        }
-    }
-
-    /**
-     * @version 2013/02/14 18:22:02
-     */
-    public static class Fixed extends VariableResolver {
+    public static class PerSkillLevel extends VariableResolver {
 
         /** The fixed values. */
         private final double[] values;
@@ -492,7 +255,7 @@ public abstract class VariableResolver {
         /**
          * @param values
          */
-        public Fixed(double... values) {
+        public PerSkillLevel(double... values) {
             this.values = values;
         }
 
@@ -514,31 +277,22 @@ public abstract class VariableResolver {
     }
 
     /**
-     * @version 2015/08/20 20:59:53
+     * @version 2015/09/02 22:57:51
      */
-    public static class FixedLevel extends Fixed {
+    public static class PerReferedSkillLevel extends PerSkillLevel {
 
-        /** The fixed values. */
-        private final int[] number;
-
-        public FixedLevel(double[] values) {
-            this(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}, values);
-        }
+        /** The referenced skill. */
+        public final Skill reference;
 
         /**
-         * @param values
+         * @param reference
+         * @param base
+         * @param diff
          */
-        public FixedLevel(int[] number, double[] values) {
+        public PerReferedSkillLevel(Skill reference, double... values) {
             super(values);
-            this.number = number;
-        }
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public String getLevelDescription(int skillLevel) {
-            return "Level " + number[skillLevel - 1];
+            this.reference = reference;
         }
 
         /**
@@ -553,31 +307,23 @@ public abstract class VariableResolver {
          * {@inheritDoc}
          */
         @Override
-        protected int convertChampionLevel(int skillLevel) {
-            return number[skillLevel - 1];
+        public int convertLevel(StatusCalculator calculator) {
+            return calculator.getLevel(reference);
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public int convertLevel(StatusCalculator calculator) {
-            int level = calculator.getLevel();
-            System.out.println(level + "  " + number.length);
-            for (int i = 0; i < number.length; i++) {
-                System.out.println(i + "  @");
-                if (level < number[i]) {
-                    return i;
-                }
-            }
-            return number.length;
+        public String getLevelDescription(int skillLevel) {
+            return reference + " Level " + skillLevel;
         }
     }
 
     /**
-     * @version 2013/02/14 18:22:02
+     * @version 2015/09/02 22:56:34
      */
-    public static class BardChimes extends Fixed {
+    public static class BardChimes extends PerSkillLevel {
 
         /** The fixed values. */
         private final int[] number;
@@ -595,21 +341,14 @@ public abstract class VariableResolver {
          */
         @Override
         public String getLevelDescription(int skillLevel) {
-            return number[skillLevel - 1] + "個";
+            return "取得した鐘の数 " + number[skillLevel - 1] + "個";
         }
     }
 
     /**
-     * @version 2013/02/14 18:22:02
+     * @version 2015/09/02 22:56:31
      */
-    public static class PerChampion extends Fixed {
-
-        /**
-         * @param values
-         */
-        public PerChampion(double base, double diff) {
-            super(base, diff);
-        }
+    public static class PerChampion extends PerSkillLevel {
 
         /**
          * @param values
@@ -631,16 +370,16 @@ public abstract class VariableResolver {
      * @version 2013/02/15 13:05:53
      */
     public static class Diff extends VariableResolver {
-
+    
         /** The base value of amplifier rate. */
         private final double base;
-
+    
         /** The diff value of amplifier rate. */
         private final double diff;
-
+    
         /** The variable size. */
         private final int size;
-
+    
         /**
          * @param base
          * @param diff
@@ -651,7 +390,7 @@ public abstract class VariableResolver {
             this.diff = diff;
             this.size = size;
         }
-
+    
         /**
          * {@inheritDoc}
          */
@@ -659,7 +398,7 @@ public abstract class VariableResolver {
         public double compute(int skillLevel) {
             return base + diff * (skillLevel - 1);
         }
-
+    
         /**
          * {@inheritDoc}
          */
@@ -754,50 +493,6 @@ public abstract class VariableResolver {
         @Override
         public String getLevelDescription(int skillLevel) {
             return reference + " Level " + (skillLevel - 1);
-        }
-    }
-
-    /**
-     * @version 2013/03/28 23:27:41
-     */
-    public static class ReferFixed extends Fixed {
-
-        /** The referenced skill. */
-        public final Skill reference;
-
-        /**
-         * @param reference
-         * @param base
-         * @param diff
-         */
-        public ReferFixed(Skill reference, double... values) {
-            super(values);
-
-            this.reference = reference;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public boolean isSkillLevelBased() {
-            return false;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public int convertLevel(StatusCalculator calculator) {
-            return calculator.getLevel(reference);
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public String getLevelDescription(int skillLevel) {
-            return reference + " Level " + skillLevel;
         }
     }
 }

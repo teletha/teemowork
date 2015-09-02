@@ -157,8 +157,7 @@ public class Variable {
             return 0;
         }
 
-        double value = resolver
-                .compute(enforceLevel || resolver.isSkillLevelBased() ? level : resolver.convertLevel(calculator));
+        double value = resolver.compute(enforceLevel || resolver.isSkillLevelBased() ? level : resolver.convertLevel(calculator));
 
         for (Variable amplifier : amplifiers) {
             value += amplifier.calculate(level, calculator, enforceLevel) * calculator.calculate(amplifier.getStatus());

@@ -78,11 +78,11 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
 
         if (1 < size || !amplifiers.isEmpty()) {
             〡.〡("(");
-            〡.nbox.〡(null, size, i -> {
+            〡.nbox.〡($.Variable, size, i -> {
                 〡.nbox.〡($.Value, () -> {
                     〡.style.〡($.Current, i + 1 == current);
                     〡.style.〡($.Indicator, "title", resolver.getLevelDescription(i + 1));
-                    〡.〡(resolver.compute(i + 1));
+                    〡.〡(round(resolver.compute(i + 1), 2));
                 });
 
                 if (i + 1 != size) {
@@ -124,7 +124,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                     〡.nbox.〡($.Value, () -> {
                         〡.style.〡($.Current, size != 1 && i + 1 == current);
                         〡.style.〡($.Indicator, "title", resolver.getLevelDescription(i + 1));
-                        〡.〡(amplifier.calculate(i + 1, calculator, true));
+                        〡.〡(round(amplifier.calculate(i + 1, calculator, true), 4));
                     });
 
                     if (i + 1 != size) {
@@ -144,6 +144,29 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
     }
 
     /**
+     * <p>
+     * Returns the closest {@code long} to the argument, with ties rounding up.
+     * </p>
+     * <p>
+     * Special cases:
+     * <ul>
+     * <li>If the argument is NaN, the result is 0.</li>
+     * <li>If the argument is negative infinity or any value less than or equal to the value of
+     * {@code Long.MIN_VALUE}, the result is equal to the value of {@code Long.MIN_VALUE}.</li>
+     * <li>If the argument is positive infinity or any value greater than or equal to the value of
+     * {@code Long.MAX_VALUE}, the result is equal to the value of {@code Long.MAX_VALUE}.</li>
+     * </ul>
+     * 
+     * @param value A floatingpoint value to be rounded.
+     * @param precision
+     * @return The value of the argument rounded to the nearest {@code int} value.
+     */
+    private static double round(double value, int precision) {
+        double factor = Math.pow(10, precision);
+        return Math.round(value * factor) / factor;
+    }
+
+    /**
      * @version 2015/08/20 15:59:24
      */
     private static class $ extends StyleRuleDescriptor {
@@ -157,7 +180,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
         };
 
         private static Style Separator = () -> {
-            box.opacity(0.4);
+            font.color(210, 210, 210);
             margin.horizontal(1, px);
         };
 
@@ -175,14 +198,16 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
 
         private static Style Amplifier = () -> {
             font.color(25, 111, 136);
-
-            inBackOf(Value, () -> {
-                margin.left(0.4, em);
-            });
+            margin.left(0.5, em);
+            box.opacity(0.8);
 
             // inBackOf(Amplifier, () -> {
             // margin.left(0.4, em);
             // });
+        };
+
+        private static Style Variable = () -> {
+            font.color(90, 90, 90);
         };
     }
 
