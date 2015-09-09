@@ -4888,7 +4888,7 @@ public interface SkillDefinition {
                 .range(1450);
 
         W.update(P405)
-                .active("3種類のカードが順番に出現し、8秒以内に再度使用してカードを決定する。4秒以内の次の通常攻撃が魔法DMに変換され、以下の効果が追加される。<br>Blue Card: {2}を与え{3}する。<br>Red Card: {4}の敵に{5}と2.5秒間{6}を与える。<br>Gold Card: {7}と{8}を与える。")
+                .active("3種類のカードが順番に出現し、6秒以内に再度使用してカードを決定する。6秒以内の次の通常攻撃が" + MagicDamage + "に変換され、以下の効果になる。<br>Blue Card: {2}を与え{3}する。<br>Red Card: {4}の敵に{5}と2.5秒間{6}を与える。<br>Gold Card: {7}と{8}を与える。")
                 .variable(2, MagicDamage, 40, 20, ap(0.5), ad(1))
                 .variable(3, RestoreMana, 50, 25)
                 .variable(4, Radius, 100)
@@ -4902,8 +4902,9 @@ public interface SkillDefinition {
         E.update(P503).passive("{1}する。通常攻撃4回毎に追加{2}を与える。").variable(1, ASRatio, 10, 5).variable(2, MagicDamage, 55, 25, ap(0.5));
 
         R.update(P503)
-                .active("{1}間すべての敵チャンピオン(ステルス中のチャンピオン含む)の視界を得る。効果中に再度使用すると2秒間移動・攻撃が不可能になった後、指定した地点にワープする。。効果中は敵チャンピオンの頭上にアイコンが表示される。")
+                .active("{1}間すべての敵チャンピオン(ステルス中のチャンピオン含む)の{2}。0.5秒後に再度使用することができるようになり、効果時間内に使用すると1.5秒間移動・攻撃が不可能になった後、指定地点にワープする。")
                 .variable(1, Time, 6, 2)
+                .variable(2, Visionable)
                 .mana(150, -25)
                 .cd(180, -30)
                 .range(5500);
