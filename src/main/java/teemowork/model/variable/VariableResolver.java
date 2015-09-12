@@ -370,16 +370,16 @@ public abstract class VariableResolver {
      * @version 2013/02/15 13:05:53
      */
     public static class Diff extends VariableResolver {
-    
+
         /** The base value of amplifier rate. */
         private final double base;
-    
+
         /** The diff value of amplifier rate. */
         private final double diff;
-    
+
         /** The variable size. */
         private final int size;
-    
+
         /**
          * @param base
          * @param diff
@@ -390,7 +390,7 @@ public abstract class VariableResolver {
             this.diff = diff;
             this.size = size;
         }
-    
+
         /**
          * {@inheritDoc}
          */
@@ -398,7 +398,7 @@ public abstract class VariableResolver {
         public double compute(int skillLevel) {
             return base + diff * (skillLevel - 1);
         }
-    
+
         /**
          * {@inheritDoc}
          */

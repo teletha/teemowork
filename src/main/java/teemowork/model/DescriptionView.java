@@ -79,9 +79,8 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
         if (1 < size || !amplifiers.isEmpty()) {
             〡.〡("(");
             〡.nbox.〡($.Variable, size, i -> {
-                〡.nbox.〡($.Value, () -> {
-                    〡.style.〡($.Current, i + 1 == current);
-                    〡.style.〡($.Indicator, "title", resolver.getLevelDescription(i + 1));
+                〡.nbox.〡($.Value.with($.Current, i + 1 == current), () -> {
+                    〡.attr.〡("title", resolver.getLevelDescription(i + 1), $.Indicator);
                     〡.〡(round(resolver.compute(i + 1), 2));
                 });
 
@@ -121,9 +120,8 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                 int current = amp;
 
                 〡.nbox.〡(null, size, i -> {
-                    〡.nbox.〡($.Value, () -> {
-                        〡.style.〡($.Current, size != 1 && i + 1 == current);
-                        〡.style.〡($.Indicator, "title", resolver.getLevelDescription(i + 1));
+                    〡.nbox.〡($.Value.with($.Current, size != 1 && i + 1 == current), () -> {
+                        〡.attr.〡("title", resolver.getLevelDescription(i + 1), $.Indicator);
                         〡.〡(round(amplifier.calculate(i + 1, calculator, true), 4));
                     });
 

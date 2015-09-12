@@ -195,9 +195,8 @@ public class ChampionDetail extends Widget1<Build> {
                 〡.nbox.〡(null, size, i -> {
                     double value = status.round(variable.calculate(i + 1, build));
 
-                    〡.nbox.〡($.SkillStatusValue, () -> {
-                        〡.style.〡($.Current, size != 1 && i + 1 == current);
-                        〡.style.〡($.ChampionLevelIndicator, "title", resolver.getLevelDescription(i + 1));
+                    〡.nbox.〡($.SkillStatusValue.with($.Current, size != 1 && i + 1 == current), () -> {
+                        〡.attr.〡("title", resolver.getLevelDescription(i + 1), $.ChampionLevelIndicator);
                         〡.〡(value == -1 ? "∞" : value);
                     });
 
