@@ -102,7 +102,7 @@ public class MasteryBuilder extends Widget {
                                 〡.e("s:image", "x", "0", "y", "0", "width", "45", "height", "45", "xlink:href", mastery
                                         .getIcon(), "preserveAspectRatio", "xMinYMin slice", "filter", available ? "" : "url('#test')");
 
-                                〡.e("s:filter", "id", "test").〡(() -> {
+                                〡.e("s:filter", "id", "test").〡($.NBox, () -> {
                                     〡.e("s:feColorMatrix", "type", "matrix", "values", grayscale(0.4));
                                 });
                             });

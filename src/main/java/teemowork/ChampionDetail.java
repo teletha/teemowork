@@ -76,25 +76,25 @@ public class ChampionDetail extends Widget1<Build> {
      */
     @Override
     protected void virtualize(VirtualStructure 〡) {
-        〡.hbox.〡($.UpperInfo, () -> {
-            〡.hbox.〡($.ChampionIconBox.of(build.champion), () -> {
+        〡.nbox.〡($.UpperInfo, () -> {
+            〡.nbox.〡($.ChampionIconBox.of(build.champion), () -> {
                 〡.nbox.〡($.Level, build.getLevel());
             });
-            〡.hbox.〡($.ItemViewBox, ItemBoxWidget.class, build.items);
+            〡.nbox.〡($.ItemViewBox, ItemBoxWidget.class, build.items);
         });
 
-        〡.hbox.〡($.Container, () -> {
+        〡.nbox.〡($.Container, () -> {
             〡.vbox.〡($.StatusViewBox, VISIBLE, status -> {
-                〡.hbox.〡($.StatusBox, () -> {
-                    〡.hbox.〡($.StatusName, status.name());
-                    〡.hbox.〡($.StatusValue, computeStatusValue(status));
+                〡.nbox.〡($.StatusBox, () -> {
+                    〡.nbox.〡($.StatusName, status.name());
+                    〡.nbox.〡($.StatusValue, computeStatusValue(status));
                 });
             });
 
             〡.vbox.〡($.SkillTable, build.champion.skills, skill -> {
-                〡.hbox.〡($.SkillRow, () -> {
+                〡.nbox.〡($.SkillRow, () -> {
                     〡.vbox.〡($.IconBox, () -> {
-                        〡.hbox.〡($.SkillIcon.of(skill));
+                        〡.nbox.〡($.SkillIcon.of(skill));
 
                         if (skill.key != SkillKey.Passive) {
                             〡.nbox.〡($.LevelBox, skill.getMaxLevel(), level -> {
@@ -103,13 +103,13 @@ public class ChampionDetail extends Widget1<Build> {
                         }
                     });
 
-                    〡.vbox.〡(() -> {
+                    〡.nbox.〡($.VBox, () -> {
                         SkillDescriptor status = skill.getDescriptor(build.getVersion());
-                        〡.hbox.〡(() -> {
+                        〡.nbox.〡($.HBox, () -> {
                             〡.nbox.〡($.Name, skill);
                             〡.nbox.〡($.VersionDisplay, status.version.name);
                         });
-                        〡.nbox.〡(() -> {
+                        〡.nbox.〡($.NBox, () -> {
                             writeStatusValue(〡, skill, status, status.getRange());
                             writeStatusValue(〡, skill, status, status.getCooldown());
                             writeStatusValue(〡, skill, status, status.getCost());
@@ -165,7 +165,7 @@ public class ChampionDetail extends Widget1<Build> {
      */
     private void writeStatusValue(VirtualStructure 〡, Skill skill, SkillDescriptor descriptor, Variable variable) {
         if (variable != null) {
-            〡.hbox.〡($.StatusBlock, () -> {
+            〡.nbox.〡($.StatusBlock, () -> {
                 Status status = variable.getStatus();
                 VariableResolver resolver = variable.getResolver();
 
@@ -224,9 +224,9 @@ public class ChampionDetail extends Widget1<Build> {
          */
         @Override
         protected void virtualize(VirtualStructure 〡) {
-            〡.hbox.〡($.ItemIconBase, () -> {
+            〡.nbox.〡($.ItemIconBase, () -> {
                 if (model1 != null) {
-                    〡.hbox.〡($.ItemIcon.of(model1.position));
+                    〡.nbox.〡($.ItemIcon.of(model1.position));
                 }
             });
         }
@@ -357,6 +357,7 @@ public class ChampionDetail extends Widget1<Build> {
         Numeric ChampionIconSize = new Numeric(70, Unit.px);
 
         ValueStyle<Champion> ChampionIconBox = champion -> {
+            display.flex();
             box.size(ChampionIconSize);
             border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
             cursor.pointer();

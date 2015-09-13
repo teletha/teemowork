@@ -48,7 +48,7 @@ public class ItemView extends Widget1<Item> {
             〡.nbox.〡($.IconArea, () -> {
                 〡.nbox.〡($.Icon.of(model1));
                 〡.nbox.〡($.Materials, descriptor.getBuildItem(), material -> {
-                    〡.nbox.〡($.Material.of(material));
+                    // 〡.nbox.〡($.Material.of(material));
                 });
             });
             〡.nbox.〡($.DescriptionArea, () -> {
@@ -125,28 +125,17 @@ public class ItemView extends Widget1<Item> {
         /** The skill icon size. */
         private static final int IconSize = 45;
 
-        /**
-         * @version 2013/02/16 9:52:23
-         */
-        static Style Root = () ->
-
-        {
+        static Style Root = () -> {
             display.flex();
             margin.bottom(25, px);
             box.maxWidth(600, px);
         };
 
-        /**
-         * @version 2013/02/16 10:00:01
-         */
         static Style IconArea = () -> {
             display.flex().direction.column();
             margin.right(1.2, em);
         };
 
-        /**
-         * @version 2013/02/16 10:00:01
-         */
         static ValueStyle<Item> Icon = item -> {
             display.block();
             margin.bottom(IconSize / 5, px);
@@ -156,12 +145,7 @@ public class ItemView extends Widget1<Item> {
             background.image(BackgroundImage.url(item.getIcon()).horizontal(item.getIconPosition()).cover().borderBox().noRepeat());
         };
 
-        /**
-         * @version 2013/06/13 13:57:38
-         */
-        static Style Materials = () ->
-
-        {
+        static Style Materials = () -> {
             display.flex().wrap.enable();
             box.width(IconSize, px);
         };
@@ -174,82 +158,41 @@ public class ItemView extends Widget1<Item> {
             background.image(BackgroundImage.url(item.getIcon()).horizontal(item.getIconPosition()).cover().borderBox().noRepeat());
         };
 
-        /**
-         * @version 2013/02/16 9:52:23
-         */
-        static Style DescriptionArea = () ->
-
-        {
+        static Style DescriptionArea = () -> {
             box.maxWidth(290, px);
         };
 
-        /**
-         * @version 2013/02/16 10:00:01
-         */
-        static Style Heading = () ->
-
-        {
+        static Style Heading = () -> {
             display.block();
             margin.bottom(0.4, em);
             font.family(Sans.name);
         };
 
-        /**
-         * @version 2013/02/16 10:00:01
-         */
-        static Style Name = () ->
-
-        {
+        static Style Name = () -> {
             margin.right(0.5, em);
             font.weight.bold();
         };
 
-        /**
-         * @version 2013/02/16 10:00:01
-         */
-        static Style TotalCost = () ->
-
-        {
+        static Style TotalCost = () -> {
             margin.right(0.5, em);
         };
 
-        /**
-         * @version 2013/02/16 10:00:01
-         */
-        static Style Cost = () ->
-
-        {
-
+        static Style Cost = () -> {
         };
 
-        /**
-         * @version 2013/02/16 10:00:01
-         */
-        static Style StatusValue = () ->
-
-        {
+        static Style StatusValue = () -> {
             display.block();
             margin.bottom(0.2, em);
             font.size.smaller().family(Sans.name);
         };
 
-        /**
-         * @version 2013/06/04 23:24:52
-         */
-        static Style AbilityArea = () ->
-
-        {
+        static Style AbilityArea = () -> {
             display.block();
             font.size.smaller();
             margin.top(0.4, em);
         };
 
-        /**
-         * @version 2013/06/04 23:24:52
-         */
-        static Style UniqueAbility = () ->
-
-        {
+        static Style UniqueAbility = () -> {
             font.color(205, 146, 0).weight.bolder();
             padding.right(0.5, em);
         };

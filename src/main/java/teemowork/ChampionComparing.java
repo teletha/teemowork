@@ -73,7 +73,7 @@ public class ChampionComparing extends Widget {
 
             〡.nbox.〡($.Body, () -> {
                 〡.vbox.〡(null, group.getValue().sortBy(comparator), champion -> {
-                    〡.hbox.〡($.RowLine, () -> {
+                    〡.nbox.〡($.RowLine, () -> {
                         ChampionStatus championStatus = champion.getStatus(Version.Latest);
 
                         〡.nbox.〡($.Icon.of(champion));
@@ -155,6 +155,7 @@ public class ChampionComparing extends Widget {
         };
 
         private static Style RowLine = () -> {
+            display.flex();
         };
 
         private static ValueStyle<Champion> Icon = champion -> {
