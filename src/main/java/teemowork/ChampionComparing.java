@@ -65,14 +65,14 @@ public class ChampionComparing extends Widget {
     @Override
     protected void virtualize(VirtualStructure 〡) {
         〡.nbox.〡(null, groups);
-        〡.vbox.〡($.Table, () -> {
+        〡.nbox.〡($.Table, () -> {
             〡.nbox.〡($.Head, () -> {
                 〡.nbox.〡($.NoIcon);
                 〡.nbox.〡(null, Header.class, STATUS);
             });
 
             〡.nbox.〡($.Body, () -> {
-                〡.vbox.〡(null, group.getValue().sortBy(comparator), champion -> {
+                〡.nbox.〡($.VBox, group.getValue().sortBy(comparator), champion -> {
                     〡.nbox.〡($.RowLine, () -> {
                         ChampionStatus championStatus = champion.getStatus(Version.Latest);
 
@@ -146,6 +146,7 @@ public class ChampionComparing extends Widget {
     private static class $ extends StyleRuleDescriptor {
 
         private static Style Table = () -> {
+            display.verticalBox();
         };
 
         private static Style Head = () -> {

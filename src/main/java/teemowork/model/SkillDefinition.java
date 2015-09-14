@@ -1183,7 +1183,7 @@ public interface SkillDefinition {
         P.update(P418).passive("ユニット(敵味方問わず)にスキルを当てる度に6秒間{1}する。この効果は5回まで累積する。").variable(-1, ASRatio, 10);
 
         Q.update(P513)
-                .active("指定方向に魔法の矢を飛ばし、当たった敵ユニットに{1}を与える。このスキルが命中すると、全てのスキルの{2}。{3}")
+                .active("指定方向に魔法の矢を飛ばし、当たった敵ユニットに{1}を与える。このスキルが命中すると、全てのスキルの{2}。{3}。")
                 .variable(1, PhysicalDamage, 35, 20, ap(0.4), ad(1.1))
                 .variable(2, CDDecrease, 1)
                 .variable(3, OnHitEffect)

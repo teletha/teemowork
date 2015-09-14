@@ -84,16 +84,16 @@ public class ChampionDetail extends Widget1<Build> {
         });
 
         〡.nbox.〡($.Container, () -> {
-            〡.vbox.〡($.StatusViewBox, VISIBLE, status -> {
+            〡.nbox.〡($.StatusViewBox, VISIBLE, status -> {
                 〡.nbox.〡($.StatusBox, () -> {
                     〡.nbox.〡($.StatusName, status.name());
                     〡.nbox.〡($.StatusValue, computeStatusValue(status));
                 });
             });
 
-            〡.vbox.〡($.SkillTable, build.champion.skills, skill -> {
+            〡.nbox.〡($.SkillTable, build.champion.skills, skill -> {
                 〡.nbox.〡($.SkillRow, () -> {
-                    〡.vbox.〡($.IconBox, () -> {
+                    〡.nbox.〡($.IconBox, () -> {
                         〡.nbox.〡($.SkillIcon.of(skill));
 
                         if (skill.key != SkillKey.Passive) {
@@ -315,6 +315,7 @@ public class ChampionDetail extends Widget1<Build> {
         };
 
         Style IconBox = () -> {
+            display.verticalBox();
             margin.right(SkillIconSize / 5, px);
             cursor.pointer();
             flexItem.shrink(0);
