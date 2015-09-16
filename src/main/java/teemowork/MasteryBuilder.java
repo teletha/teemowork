@@ -9,6 +9,8 @@
  */
 package teemowork;
 
+import static jsx.ui.VirtualStructure.Declarables.*;
+
 import js.dom.UIAction;
 import js.lang.Global;
 import jsx.model.SelectableModel;
@@ -97,13 +99,12 @@ public class MasteryBuilder extends Widget {
                         int current = masterySet.getLevel(mastery);
                         boolean available = current != 0 || masterySet.isAvailable(mastery);
 
-                        〡.nbox.〡($.MasteryPane.with($.Unavailable.when(!available)), () -> {
-                            〡.e("s:svg", "width", "45px", "height", "45px").〡($.IconImage, (Runnable) () -> {
-                                〡.e("s:image", "x", "0", "y", "0", "width", "45", "height", "45", "xlink:href", mastery
-                                        .getIcon(), "preserveAspectRatio", "xMinYMin slice", "filter", available ? "" : "url('#test')");
-
-                                〡.e("s:filter", "id", "test").〡($.NBox, () -> {
-                                    〡.e("s:feColorMatrix", "type", "matrix", "values", grayscale(0.4));
+                        box($.MasteryPane, $.Unavailable.when(!available), () -> {
+                            svg($.IconImage, size(45, 45), () -> {
+                                element("s:image", position(0, 0), size(45, 45), xlink(mastery
+                                        .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? "" : "url('#test')"));
+                                element("s:filter", $.NBox, id("test"), () -> {
+                                    element("s:feColorMatrix", type("matrix"), attr("values", grayscale(0.4)));
                                 });
                             });
                             // ⅼ.imageⅼ($.IconImage, mastery.getIcon(), img -> {
@@ -116,10 +117,16 @@ public class MasteryBuilder extends Widget {
                             // }
                             // });
 
-                            〡.nbox.〡($.LevelPane, () -> {
-                                〡.nbox.〡($.LevelValue, masterySet.getLevel(mastery));
-                                〡.nbox.〡($.LevelSeparator, "/");
-                                〡.nbox.〡($.LevelValue, mastery.getMaxLevel());
+                            box($.LevelPane, () -> {
+                                box($.LevelValue, () -> {
+                                    con(masterySet.getLevel(mastery));
+                                });
+                                box($.LevelSeparator, () -> {
+                                    con("/");
+                                });
+                                box($.LevelValue, () -> {
+                                    con(mastery.getMaxLevel());
+                                });
                             });
 
                             〡.nbox.〡($.PopupPane, () -> {
@@ -134,6 +141,7 @@ public class MasteryBuilder extends Widget {
             });
             〡.nbox.〡($.SumPoint, type.name().toUpperCase(), "　", masterySet.getSum(type));
         });
+
     }
 
     private String grayscale(double amount) {
