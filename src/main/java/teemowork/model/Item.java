@@ -830,7 +830,7 @@ public class Item extends Describable<ItemDescriptor> {
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ScavengingSmite)
                 .add(Ability.Jungler)
-                .attackDamage(40)
+                .attackDamage(45)
                 .cooldownReduction(10)
                 .set(ARPen, 10);
     });
@@ -929,7 +929,7 @@ public class Item extends Describable<ItemDescriptor> {
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.BlastingSmite)
                 .add(Ability.Jungler)
-                .attackDamage(40)
+                .attackDamage(45)
                 .cooldownReduction(10)
                 .set(ARPen, 10);
     });
@@ -1095,7 +1095,7 @@ public class Item extends Describable<ItemDescriptor> {
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ChallengingSmite)
                 .add(Ability.Jungler)
-                .attackDamage(40)
+                .attackDamage(45)
                 .cooldownReduction(10)
                 .set(ARPen, 10);
     });
@@ -1203,7 +1203,7 @@ public class Item extends Describable<ItemDescriptor> {
                 .add(Ability.LargeMonsterKill)
                 .add(Ability.ChillingSmite)
                 .add(Ability.Jungler)
-                .attackDamage(40)
+                .attackDamage(45)
                 .cooldownReduction(10)
                 .set(ARPen, 10);
     });
@@ -1418,7 +1418,7 @@ public class Item extends Describable<ItemDescriptor> {
     /** Zeke's Herald */
     public static final Item ZekesHarbinger = new Item(RiotItemData.ZekesHarbinger, item -> {
         item.mana(250).armor(30).abilityPower(50).cooldownReduction(10).add(ability -> {
-            ability.passive("{1}にConduitを使用した味方がいる場合、チャージを生成する。攻撃もしくはスキルを使用することで追加のチャージを生成する。最大100チャージまで貯まり、8秒間持続する。最大チャージ時にダメージを与えると、全てのチャージを消費して8秒間あなたと対象の味方は{2}し{3}する。")
+            ability.passive("{1}にConduitを使用した味方がいる場合、チャージを生成する。攻撃もしくはスキルを使用することで追加のチャージを生成する。最大100チャージまで貯まり、5秒間持続する。最大チャージ時にダメージを与えると、全てのチャージを消費して8秒間あなたと対象の味方は{2}し{3}する。")
                     .variable(1, Radius, 1000)
                     .variable(2, APRatio, 20)
                     .variable(3, Critical, 50);

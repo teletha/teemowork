@@ -135,7 +135,7 @@ public class Ability extends Describable<AbilityDescriptor> {
     /** The ability. */
     public static final Ability Devouring = new Ability("むさぼり食らう", ability -> {
         ability.active("通常攻撃ごとに{1}を与える。スタックは大型モンスターかチャンピオンを{2}と1、RiftScuttlerを{2}と2、DragonかBaronを{2}と5、増加する。スタックが30貯まると進化する。")
-                .variable(1, MagicDamage, 30, 0, amplify(Stack, 1))
+                .variable(1, MagicDamage, 30, 0, amplify(Stack, 0.67))
                 .variable(2, Takedown);
     });
 
@@ -283,7 +283,7 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability PhantomHit = new Ability("Phantom Hit", ability -> {
-        ability.passive("通常攻撃毎に追加で{1}を与える。また通常攻撃2回毎に、ダメージを持たない通常攻撃を追加で発生させる。").variable(1, MagicDamage, 60);
+        ability.passive("通常攻撃毎に追加で{1}を与える。また通常攻撃2回毎に、ダメージを持たない通常攻撃を追加で発生させる。").variable(1, MagicDamage, 50);
     });
 
     /** The ability. */

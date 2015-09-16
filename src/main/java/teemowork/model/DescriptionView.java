@@ -9,6 +9,8 @@
  */
 package teemowork.model;
 
+import static jsx.ui.VirtualStructure.Declarables.*;
+
 import java.util.List;
 
 import jsx.style.Style;
@@ -43,13 +45,13 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
      */
     @Override
     protected void virtualize(VirtualStructure 〡) {
-        〡.nbox.〡($.Passive, model3, text -> {
+        box($.Passive, contents(model3, text -> {
             if (text instanceof Variable) {
                 writeVariable(〡, (Variable) text, getLevel());
             } else {
-                〡.〡(text);
+                con(text);
             }
-        });
+        }));
     }
 
     /**
@@ -70,27 +72,29 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
         }
 
         // compute current value
-        〡.nbox.〡($.ComputedValue, status.format(variable.calculate(Math.max(1, level), calculator)));
+        text($.ComputedValue, status.format(variable.calculate(Math.max(1, level), calculator)));
 
         // All values
         int size = resolver.estimateSize();
         int current = level;
 
         if (1 < size || !amplifiers.isEmpty()) {
-            〡.〡("(");
-            〡.nbox.〡($.Variable, size, i -> {
-                〡.nbox.〡($.Value.with($.Current, i + 1 == current), () -> {
-                    〡.attr.〡("title", resolver.getLevelDescription(i + 1), $.Indicator);
-                    〡.〡(round(resolver.compute(i + 1), 2));
+            text("(");
+            box($.Variable, contents(size, i -> {
+                System.out.println(i + "   " + current);
+                String description = resolver.getLevelDescription(i + 1);
+
+                box($.Value, $.Current.when(i + 1 == current), $.Indicator.when(!description.isEmpty()), title(description), () -> {
+                    text(round(resolver.compute(i + 1), 2));
                 });
 
                 if (i + 1 != size) {
-                    〡.nbox.〡($.Separator, "/");
+                    text($.Separator, "/");
                 }
-            });
+            }));
 
-            writeAmplifier(〡, amplifiers, level, calculator);
-            〡.〡(")");
+            writeAmplifier(amplifiers, level, calculator);
+            text(")");
         }
     }
 
@@ -103,12 +107,12 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
      * @param amplifiers A list of skill amplifiers.
      * @param level A current skill level.
      */
-    public static void writeAmplifier(VirtualStructure 〡, List<Variable> amplifiers, int level, StatusCalculator calculator) {
-        〡.nbox.〡(null, amplifiers, amplifier -> {
-            〡.nbox.〡($.Amplifier, () -> {
+    public static void writeAmplifier(List<Variable> amplifiers, int level, StatusCalculator calculator) {
+        box(contents(amplifiers, amplifier -> {
+            box($.Amplifier, () -> {
                 int amp = level;
 
-                〡.〡("+");
+                text("+");
 
                 VariableResolver resolver = amplifier.getResolver();
 
@@ -119,26 +123,28 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                 int size = resolver.estimateSize();
                 int current = amp;
 
-                〡.nbox.〡(null, size, i -> {
-                    〡.nbox.〡($.Value.with($.Current, size != 1 && i + 1 == current), () -> {
-                        〡.attr.〡("title", resolver.getLevelDescription(i + 1), $.Indicator);
-                        〡.〡(round(amplifier.calculate(i + 1, calculator, true), 4));
+                box(contents(size, i -> {
+                    String description = resolver.getLevelDescription(i + 1);
+
+                    box($.Value, $.Current.when(size != 1 && i + 1 == current), $.Indicator
+                            .when(!description.isEmpty()), title(description), () -> {
+                        text(round(amplifier.calculate(i + 1, calculator, true), 4));
                     });
 
                     if (i + 1 != size) {
-                        〡.nbox.〡($.Separator, "/");
+                        text($.Separator, "/");
                     }
-                });
+                }));
 
-                〡.〡(amplifier.getStatus().getUnit());
+                text(amplifier.getStatus().getUnit());
                 if (!amplifier.getAmplifiers().isEmpty()) {
-                    〡.〡("(");
-                    writeAmplifier(〡, amplifier.getAmplifiers(), current, calculator);
-                    〡.〡(")");
+                    text("(");
+                    writeAmplifier(amplifier.getAmplifiers(), current, calculator);
+                    text(")");
                 }
-                〡.〡(amplifier.getStatus().name);
+                text(amplifier.getStatus().name);
             });
-        });
+        }));
     }
 
     /**

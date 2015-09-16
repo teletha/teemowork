@@ -127,7 +127,7 @@ public enum Status {
     AD, ADPerLv, ADRatio("AD"), BounusAD("増加AD"), BaseAD("基礎AD"), TargetAD("対象のAD"),
 
     /** Attack Speed */
-    AS(3), ASPerLv(3), ASRatio("攻撃速度"),
+    AS(3), ASPerLv(3), ASRatio("攻撃速度", 2),
 
     /** life Steal */
     LS("Life Steal"), LSPerLv(LS), LSRatio(LS),
@@ -145,7 +145,7 @@ public enum Status {
     AP, APPerLv, APRatio("AP", 2), TargetAP("対象のAP"),
 
     /** Cooldown Reduction */
-    CDR("CD減少"), CDRPerLv, CDRRatio, CDRUnaware("CD減少の影響を受けない"),
+    CDR("CD減少", 2), CDRPerLv, CDRRatio, CDRUnaware("CD減少の影響を受けない"),
 
     /** Spell Vamp */
     SV("Spell Vamp"), SVPerLv, SVRatio,

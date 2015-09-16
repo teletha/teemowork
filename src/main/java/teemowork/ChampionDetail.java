@@ -206,7 +206,7 @@ public class ChampionDetail extends Widget1<Build> {
                 });
 
                 // write amplifiers
-                DescriptionView.writeAmplifier(〡, variable.getAmplifiers(), 0, build);
+                DescriptionView.writeAmplifier(variable.getAmplifiers(), 0, build);
 
                 // write unit
                 〡.〡(status.getUnit());

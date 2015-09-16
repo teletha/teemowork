@@ -27,7 +27,6 @@ import jsx.ui.Widget;
 import kiss.Events;
 import teemowork.model.DescriptionView;
 import teemowork.model.Mastery;
-import teemowork.model.MasteryDescriptor;
 import teemowork.model.MasterySet;
 import teemowork.model.MasteryType;
 import teemowork.model.Version;
@@ -90,56 +89,38 @@ public class MasteryBuilder extends Widget {
      * @param set
      */
     private void build(VirtualStructure 〡, Style style, Mastery[][] set, MasteryType type) {
-        〡.nbox.〡(style, () -> {
-            〡.nbox.〡(null, set, masteries -> {
-                〡.nbox.〡($.RankPane, masteries, mastery -> {
+        box(style, () -> {
+            box(contents(set, masteries -> {
+                box($.RankPane, contents(masteries, mastery -> {
                     if (mastery == null) {
-                        〡.nbox.〡($.MasteryPane.with($.EmptyPane));
+                        box($.MasteryPane, $.EmptyPane);
                     } else {
-                        int current = masterySet.getLevel(mastery);
-                        boolean available = current != 0 || masterySet.isAvailable(mastery);
+                        boolean available = masterySet.getLevel(mastery) != 0 || masterySet.isAvailable(mastery);
 
                         box($.MasteryPane, $.Unavailable.when(!available), () -> {
-                            svg($.IconImage, size(45, 45), () -> {
+                            element("s:svg", $.IconImage, size(45, 45), () -> {
                                 element("s:image", position(0, 0), size(45, 45), xlink(mastery
-                                        .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? "" : "url('#test')"));
+                                        .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? ""
+                                                : "url('#test')"));
                                 element("s:filter", $.NBox, id("test"), () -> {
                                     element("s:feColorMatrix", type("matrix"), attr("values", grayscale(0.4)));
                                 });
                             });
-                            // ⅼ.imageⅼ($.IconImage, mastery.getIcon(), img -> {
-                            // img.clip(mastery.id * size, 0, size, size);
-                            //
-                            // if (current != 0 || available) {
-                            // img.saturate(0.8);
-                            // } else {
-                            // img.grayscale(0.4);
-                            // }
-                            // });
-
                             box($.LevelPane, () -> {
-                                box($.LevelValue, () -> {
-                                    con(masterySet.getLevel(mastery));
-                                });
-                                box($.LevelSeparator, () -> {
-                                    con("/");
-                                });
-                                box($.LevelValue, () -> {
-                                    con(mastery.getMaxLevel());
-                                });
+                                text($.LevelValue, masterySet.getLevel(mastery));
+                                text($.LevelSeparator, "/");
+                                text($.LevelValue, mastery.getMaxLevel());
                             });
 
-                            〡.nbox.〡($.PopupPane, () -> {
-                                MasteryDescriptor descriptor = mastery.getDescriptor(Version.Latest);
-
-                                〡.nbox.〡($.MasteryName, mastery.name);
-                                〡.〡(Widget.of(MasteryWidget.class, mastery, null, descriptor.getPassive()));
+                            box($.PopupPane, () -> {
+                                text($.MasteryName, mastery.name);
+                                box(Widget.of(MasteryWidget.class, mastery, null, mastery.getDescriptor(Version.Latest).getPassive()));
                             });
                         });
                     }
-                });
-            });
-            〡.nbox.〡($.SumPoint, type.name().toUpperCase(), "　", masterySet.getSum(type));
+                }));
+            }));
+            text($.SumPoint, type.name().toUpperCase(), "　", masterySet.getSum(type));
         });
 
     }
