@@ -1578,11 +1578,12 @@ public interface SkillDefinition {
                 .mana(30);
 
         E.update(P510)
-                .active("指定方向に突進し、衝突した敵ユニットと{4}の敵ユニットに{1}と{2}、{3}を与える。衝突時に突進は止まる。ユニットに当たった場合{4}する。")
+                .active("指定方向に突進し、衝突した敵ユニットと{5}の敵ユニットに{1}と{2}、{3}を与える。衝突時に突進は止まる。ユニットに当たった場合{4}する。")
                 .variable(1, MagicDamage, 80, 40, ap(0.6))
                 .variable(2, Knockback)
                 .variable(3, Stun, 1)
                 .variable(4, CDDecrease, 3)
+                .variable(5, Radius)
                 .mana(50)
                 .cd(12)
                 .range(600);

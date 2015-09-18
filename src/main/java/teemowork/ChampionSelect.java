@@ -9,6 +9,8 @@
  */
 package teemowork;
 
+import static jsx.ui.VirtualStructure.Declarables.*;
+
 import js.dom.UIAction;
 import jsx.style.Style;
 import jsx.style.StyleRuleDescriptor;
@@ -25,7 +27,7 @@ import kiss.I;
 import teemowork.model.Champion;
 
 /**
- * @version 2015/01/30 14:27:54
+ * @version 2015/09/18 14:05:30
  */
 public class ChampionSelect extends Widget {
 
@@ -33,7 +35,7 @@ public class ChampionSelect extends Widget {
 
     private Input input = UI.input().placeholder("Champion Name");
 
-    public Events<Champion> select = on(UIAction.Click, $.Container, Champion.class);
+    public Events<Champion> select = when(UIAction.Click, $.Container, Champion.class);
 
     /**
      * 
@@ -47,14 +49,14 @@ public class ChampionSelect extends Widget {
      */
     @Override
     protected void virtualize(VirtualStructure 〡) {
-        〡.nbox.〡($.Root, () -> {
-            〡.nbox.〡($.SearchByName, input);
-            〡.nbox.〡($.ImageSet, Champion.getAll(), champion -> {
-                〡.nbox.〡($.Container.with($.Unselected.when(!champion.match(input.value.get()))), () -> {
-                    〡.nbox.〡($.IconImage.with($.IconPosition.of(champion)));
-                    〡.nbox.〡($.Title, champion.name);
+        box($.Root, () -> {
+            box($.SearchByName, input);
+            box($.ImageSet, contents(Champion.getAll(), champion -> {
+                box($.Container, If(!champion.match(input.value.get()), $.Unselected), () -> {
+                    box($.IconImage, $.IconPosition.of(champion));
+                    text($.Title, champion.name);
                 });
-            });
+            }));
         });
     }
 

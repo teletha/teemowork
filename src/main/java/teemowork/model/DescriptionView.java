@@ -49,7 +49,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
             if (text instanceof Variable) {
                 writeVariable((Variable) text, getLevel());
             } else {
-                con(text);
+                text(text);
             }
         }));
     }
