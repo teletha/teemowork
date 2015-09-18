@@ -21,7 +21,7 @@ import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
 
 /**
- * @version 2015/08/19 12:46:26
+ * @version 2015/09/18 12:50:28
  */
 public abstract class DescriptionView<D extends Describable> extends Widget3<D, StatusCalculator, List> {
 
@@ -47,7 +47,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
     protected void virtualize(VirtualStructure 〡) {
         box($.Passive, contents(model3, text -> {
             if (text instanceof Variable) {
-                writeVariable(〡, (Variable) text, getLevel());
+                writeVariable((Variable) text, getLevel());
             } else {
                 con(text);
             }
@@ -62,7 +62,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
      * @param variable
      * @param level
      */
-    private void writeVariable(VirtualStructure 〡, Variable variable, int level) {
+    private void writeVariable(Variable variable, int level) {
         VariableResolver resolver = variable.getResolver();
         Status status = variable.getStatus();
         List<Variable> amplifiers = variable.getAmplifiers();
@@ -80,17 +80,12 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
 
         if (1 < size || !amplifiers.isEmpty()) {
             text("(");
-            box($.Variable, contents(size, i -> {
-                System.out.println(i + "   " + current);
-                String description = resolver.getLevelDescription(i + 1);
+            box($.Variable, contents(1, size, i -> {
+                String description = resolver.getLevelDescription(i);
 
-                box($.Value, $.Current.when(i + 1 == current), $.Indicator.when(!description.isEmpty()), title(description), () -> {
-                    text(round(resolver.compute(i + 1), 2));
+                box($.Value, If(i == current, $.Current), If(description, title(description), $.Indicator), () -> {
+                    text(round(resolver.compute(i), 2));
                 });
-
-                if (i + 1 != size) {
-                    text($.Separator, "/");
-                }
             }));
 
             writeAmplifier(amplifiers, level, calculator);
@@ -123,17 +118,12 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                 int size = resolver.estimateSize();
                 int current = amp;
 
-                box(contents(size, i -> {
-                    String description = resolver.getLevelDescription(i + 1);
+                box(contents(1, size, i -> {
+                    String description = resolver.getLevelDescription(i);
 
-                    box($.Value, $.Current.when(size != 1 && i + 1 == current), $.Indicator
-                            .when(!description.isEmpty()), title(description), () -> {
-                        text(round(amplifier.calculate(i + 1, calculator, true), 4));
+                    box($.Value, If(size != 1 && i == current, $.Current), If(description, title(description), $.Indicator), () -> {
+                        text(round(amplifier.calculate(i, calculator, true), 4));
                     });
-
-                    if (i + 1 != size) {
-                        text($.Separator, "/");
-                    }
                 }));
 
                 text(amplifier.getStatus().getUnit());
@@ -180,12 +170,13 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
         };
 
         private static Style Value = () -> {
-            text.align.center();
-        };
-
-        private static Style Separator = () -> {
-            font.color(210, 210, 210);
-            margin.horizontal(1, px);
+            notLastChild(() -> {
+                after(() -> {
+                    content.text("/");
+                    font.color(210, 210, 210);
+                    margin.horizontal(1, px);
+                });
+            });
         };
 
         private static Style Current = () -> {
