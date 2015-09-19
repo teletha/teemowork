@@ -9,7 +9,6 @@
  */
 package teemowork;
 
-import static jsx.ui.Declarables.*;
 import static teemowork.model.Status.*;
 
 import java.util.Comparator;
@@ -21,6 +20,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import jsx.style.Style;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
+import jsx.ui.Declarables;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.Select;
@@ -63,27 +63,32 @@ public class ChampionComparing extends Widget {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize2() {
-        widget(groups);
-        box($.Table, () -> {
-            box($.Head, () -> {
-                box($.NoIcon);
-                box(contents(Header.class, STATUS));
-            });
+    protected Declarables virtualize2() {
+        return new Declarables() {
 
-            box($.Body, () -> {
-                box($.VBox, contents(group.getValue().sortBy(comparator), champion -> {
-                    box($.RowLine, () -> {
-                        ChampionStatus championStatus = champion.getStatus(Version.Latest);
+            {
+                widget(groups);
+                box($.Table, () -> {
+                    box($.Head, () -> {
+                        box($.NoIcon);
+                        box(contents(Header.class, STATUS));
+                    });
 
-                        box($.Icon.of(champion));
-                        box(contents(STATUS, status -> {
-                            text($.StatusView, championStatus.get(status));
+                    box($.Body, () -> {
+                        box($.VBox, contents(group.getValue().sortBy(comparator), champion -> {
+                            box($.RowLine, () -> {
+                                ChampionStatus championStatus = champion.getStatus(Version.Latest);
+
+                                box($.Icon.of(champion));
+                                box(contents(STATUS, status -> {
+                                    text($.StatusView, championStatus.get(status));
+                                }));
+                            });
                         }));
                     });
-                }));
-            });
-        });
+                });
+            }
+        };
     }
 
     /**
@@ -135,8 +140,13 @@ public class ChampionComparing extends Widget {
          * {@inheritDoc}
          */
         @Override
-        protected void virtualize2() {
-            text($.StatusView, status.name);
+        protected Declarables virtualize2() {
+            return new Declarables() {
+
+                {
+                    text($.StatusView, status.name);
+                }
+            };
         }
     }
 

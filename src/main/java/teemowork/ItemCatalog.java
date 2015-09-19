@@ -9,8 +9,7 @@
  */
 package teemowork;
 
-import static jsx.ui.Declarables.*;
-
+import jsx.ui.Declarables;
 import jsx.ui.Widget;
 import teemowork.model.Item;
 
@@ -23,7 +22,12 @@ public class ItemCatalog extends Widget {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize2() {
-        box(contents(ItemView.class, Item.getAll()));
+    protected Declarables virtualize2() {
+        return new Declarables() {
+
+            {
+                box(contents(ItemView.class, Item.getAll()));
+            }
+        };
     }
 }
