@@ -9,16 +9,15 @@
  */
 package teemowork;
 
-import static jsx.ui.VirtualStructure.Declarables.*;
+import static jsx.ui.Declarables.*;
 
 import js.dom.UIAction;
 import jsx.style.Style;
-import jsx.style.StyleRuleDescriptor;
+import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
-import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
 import jsx.ui.piece.Input;
 import jsx.ui.piece.UI;
@@ -33,7 +32,7 @@ public class ChampionSelect extends Widget {
 
     private final Teemowork application = I.make(Teemowork.class);
 
-    private Input input = UI.input().placeholder("Champion Name");
+    private Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
 
     public Events<Champion> select = when(UIAction.Click, $.Container, Champion.class);
 
@@ -48,9 +47,9 @@ public class ChampionSelect extends Widget {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure 〡) {
+    protected void virtualize2() {
         box($.Root, () -> {
-            box($.SearchByName, input);
+            widget(input);
             box($.ImageSet, contents(Champion.getAll(), champion -> {
                 box($.Container, If(!champion.match(input.value.get()), $.Unselected), () -> {
                     box($.IconImage, $.IconPosition.of(champion));
@@ -63,7 +62,7 @@ public class ChampionSelect extends Widget {
     /**
      * @version 2015/01/30 14:32:48
      */
-    private static class $ extends StyleRuleDescriptor {
+    private static class $ extends StyleDescriptor {
 
         private static final Color backColor = new Color(0, 10, 10);
 

@@ -9,7 +9,8 @@
  */
 package teemowork;
 
-import jsx.ui.VirtualStructure;
+import static jsx.ui.Declarables.*;
+
 import jsx.ui.Widget;
 import teemowork.model.Item;
 
@@ -22,7 +23,7 @@ public class ItemCatalog extends Widget {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure 〡) {
-        〡.nbox.〡(null, ItemView.class, Item.getAll());
+    protected void virtualize2() {
+        box(contents(ItemView.class, Item.getAll()));
     }
 }

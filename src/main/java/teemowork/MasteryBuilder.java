@@ -9,20 +9,19 @@
  */
 package teemowork;
 
-import static jsx.ui.VirtualStructure.Declarables.*;
+import static jsx.ui.Declarables.*;
 
 import js.dom.UIAction;
 import js.lang.Global;
 import jsx.model.SelectableModel;
 import jsx.style.Style;
-import jsx.style.StyleRuleDescriptor;
+import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.LinearGradient;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
-import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
 import kiss.Events;
 import teemowork.model.DescriptionView;
@@ -40,9 +39,9 @@ public class MasteryBuilder extends Widget {
 
     private final MasterySet masterySet = new MasterySet("");
 
-    private final Events<Mastery> up = on(UIAction.Click, $.MasteryPane, Mastery.class);
+    private final Events<Mastery> up = when(UIAction.Click, $.MasteryPane, Mastery.class);
 
-    private final Events<Mastery> down = on(UIAction.ClickRight, $.MasteryPane, Mastery.class);
+    private final Events<Mastery> down = when(UIAction.ClickRight, $.MasteryPane, Mastery.class);
 
     /**
      * 
@@ -68,16 +67,16 @@ public class MasteryBuilder extends Widget {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure ⅼ) {
-        ⅼ.nbox.〡($.Information, () -> {
+    protected void virtualize2() {
+        box($.Information, () -> {
 
         });
 
         Mastery[][][] masteries = Mastery.getMasteryTree(Version.Latest);
 
-        build(ⅼ, $.Offense, masteries[0], MasteryType.Offense);
-        build(ⅼ, $.Defense, masteries[1], MasteryType.Defense);
-        build(ⅼ, $.Utility, masteries[2], MasteryType.Utility);
+        build($.Offense, masteries[0], MasteryType.Offense);
+        build($.Defense, masteries[1], MasteryType.Defense);
+        build($.Utility, masteries[2], MasteryType.Utility);
     }
 
     /**
@@ -88,7 +87,7 @@ public class MasteryBuilder extends Widget {
      * @param root
      * @param set
      */
-    private void build(VirtualStructure 〡, Style style, Mastery[][] set, MasteryType type) {
+    private void build(Style style, Mastery[][] set, MasteryType type) {
         box(style, () -> {
             box(contents(set, masteries -> {
                 box($.RankPane, contents(masteries, mastery -> {
@@ -97,11 +96,10 @@ public class MasteryBuilder extends Widget {
                     } else {
                         boolean available = masterySet.getLevel(mastery) != 0 || masterySet.isAvailable(mastery);
 
-                        box($.MasteryPane, $.Unavailable.when(!available), () -> {
+                        box($.MasteryPane, If(!available, $.Unavailable), () -> {
                             element("s:svg", $.IconImage, size(45, 45), () -> {
                                 element("s:image", position(0, 0), size(45, 45), xlink(mastery
-                                        .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? ""
-                                                : "url('#test')"));
+                                        .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? "" : "url('#test')"));
                                 element("s:filter", $.NBox, id("test"), () -> {
                                     element("s:feColorMatrix", type("matrix"), attr("values", grayscale(0.4)));
                                 });
@@ -114,7 +112,7 @@ public class MasteryBuilder extends Widget {
 
                             box($.PopupPane, () -> {
                                 text($.MasteryName, mastery.name);
-                                box(Widget.of(MasteryWidget.class, mastery, null, mastery.getDescriptor(Version.Latest).getPassive()));
+                                widget(Widget.of(MasteryWidget.class, mastery, null, mastery.getDescriptor(Version.Latest).getPassive()));
                             });
                         });
                     }
@@ -152,7 +150,7 @@ public class MasteryBuilder extends Widget {
     /**
      * @version 2013/03/13 15:05:12
      */
-    private static class $ extends StyleRuleDescriptor {
+    private static class $ extends StyleDescriptor {
 
         private static int TreeWidth = 240;
 

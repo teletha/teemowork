@@ -9,16 +9,16 @@
  */
 package teemowork;
 
+import static jsx.ui.Declarables.*;
 import static teemowork.model.Status.*;
 
 import java.util.List;
 
 import jsx.style.Style;
-import jsx.style.StyleRuleDescriptor;
+import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Font;
-import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import teemowork.model.Ability;
@@ -37,65 +37,67 @@ public class ItemView extends Widget1<Item> {
     private static final Status[] VISIBLE = {Health, Hreg, Mana, Mreg, AD, ASRatio, ARPen, LS, Critical, AP, CDR, SV, MRPen, AR, MR,
             MSRatio, GoldPer10Sec};
 
+    private final Item item = model1;
+
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure 〡) {
-        ItemDescriptor descriptor = model1.getDescriptor(Version.Latest);
+    protected void virtualize2() {
+        ItemDescriptor descriptor = item.getDescriptor(Version.Latest);
 
-        〡.nbox.〡($.Root, () -> {
-            〡.nbox.〡($.IconArea, () -> {
-                〡.nbox.〡($.Icon.of(model1));
-                〡.nbox.〡($.Materials, descriptor.getBuildItem(), material -> {
+        box($.Root, () -> {
+            box($.IconArea, () -> {
+                box($.Icon.of(item));
+                box($.Materials, contents(descriptor.getBuildItem(), material -> {
                     // 〡.nbox.〡($.Material.of(material));
-                });
+                }));
             });
-            〡.nbox.〡($.DescriptionArea, () -> {
+            box($.DescriptionArea, () -> {
                 // Name and Cost
-                double cost = model1.getBaseCost();
-                double total = model1.getTotalCost();
+                double cost = item.getBaseCost();
+                double total = item.getTotalCost();
 
-                〡.nbox.〡($.Heading, () -> {
-                    〡.nbox.〡($.Name, model1.name);
-                    〡.nbox.〡($.TotalCost, total);
+                box($.Heading, () -> {
+                    text($.Name, item.name);
+                    text($.TotalCost, total);
                     if (cost != total) {
-                        〡.nbox.〡($.Cost, "(", cost, ")");
+                        text($.Cost, "(", cost, ")");
                     }
                 });
 
                 // Status
-                〡.nbox.〡(null, VISIBLE, status -> {
+                box(contents(VISIBLE, status -> {
                     double value = descriptor.get(status);
 
                     if (value != 0) {
-                        〡.nbox.〡($.StatusValue, value, status.getUnit(), " ", status.name);
+                        text($.StatusValue, value, status.getUnit(), " ", status.name);
                     }
-                });
+                }));
 
-                〡.nbox.〡($.DescriptionArea, () -> {
-                    〡.nbox.〡(null, descriptor.getAbilities(), ability -> {
+                box($.DescriptionArea, () -> {
+                    box(contents(descriptor.getAbilities(), ability -> {
                         AbilityDescriptor abilityDescriptor = ability.getDescriptor(Version.Latest);
 
-                        〡.nbox.〡($.AbilityArea, () -> {
+                        box($.AbilityArea, () -> {
                             if (abilityDescriptor.isUnique()) {
-                                〡.nbox.〡($.UniqueAbility, "UNIQUE");
+                                text($.UniqueAbility, "UNIQUE");
                             }
 
                             if (abilityDescriptor.isAura()) {
-                                〡.nbox.〡($.UniqueAbility, "AURA");
+                                text($.UniqueAbility, "AURA");
                             }
 
-                            〡.nbox.〡($.UniqueAbility, abilityDescriptor.isActive() ? "Active" : "Passive");
+                            text($.UniqueAbility, abilityDescriptor.isActive() ? "Active" : "Passive");
 
-                            if (!ability.name.startsWith("#")) {
-                                〡.nbox.〡($.UniqueAbility, "[", ability.name, "]");
-                            }
+                            // if (!ability.name.startsWith("#")) {
+                            text($.UniqueAbility, "[", ability.name, "]");
+                            // }
 
                             List token = abilityDescriptor.isActive() ? abilityDescriptor.getActive() : abilityDescriptor.getPassive();
-                            〡.nbox.〡(null, Widget.of(AbilityDescriptionView.class, ability, null, token));
+                            widget(Widget.of(AbilityDescriptionView.class, ability, null, token));
                         });
-                    });
+                    }));
                 });
             });
         });
@@ -118,7 +120,7 @@ public class ItemView extends Widget1<Item> {
     /**
      * @version 2015/08/20 15:56:55
      */
-    private static class $ extends StyleRuleDescriptor {
+    private static class $ extends StyleDescriptor {
 
         private static Font Sans = new Font("http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600");
 

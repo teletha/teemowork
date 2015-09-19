@@ -10,18 +10,17 @@
 package teemowork;
 
 import static js.dom.UIAction.*;
-import static jsx.ui.VirtualStructure.Declarables.*;
+import static jsx.ui.Declarables.*;
 import static teemowork.model.Status.*;
 
 import jsx.style.BinaryStyle;
 import jsx.style.Style;
-import jsx.style.StyleRuleDescriptor;
+import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
-import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import kiss.Events;
@@ -51,9 +50,9 @@ public class ChampionDetail extends Widget1<Build> {
     /** The your custom build. */
     private final Build build = model1;
 
-    public final Events<Champion> levelUp = when(Click, $.ChampionIconBox).merge(on(MouseWheelUp, $.ChampionIconBox));
+    public final Events<Champion> levelUp = when(Click, $.ChampionIconBox).merge(when(MouseWheelUp, $.ChampionIconBox));
 
-    public final Events<Champion> levelDown = when(ClickRight, $.ChampionIconBox).merge(on(MouseWheelDown, $.ChampionIconBox));
+    public final Events<Champion> levelDown = when(ClickRight, $.ChampionIconBox).merge(when(MouseWheelDown, $.ChampionIconBox));
 
     public final Events<Skill> skillUp = when(Click, $.IconBox, Skill.class);
 
@@ -66,7 +65,7 @@ public class ChampionDetail extends Widget1<Build> {
         skillDown.to(v -> build.levelDown(v));
 
         // TODO FIXME
-        on(Key_R, $.ChampionIconBox).to(e -> {
+        when(Key_R, $.ChampionIconBox).to(e -> {
             build.active(SkillKey.R);
             build.active(SkillKey.W);
         });
@@ -76,7 +75,7 @@ public class ChampionDetail extends Widget1<Build> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure 〡) {
+    protected void virtualize2() {
         box($.UpperInfo, () -> {
             box($.ChampionIconBox.of(build.champion), () -> {
                 text($.Level, build.getLevel());
@@ -220,7 +219,7 @@ public class ChampionDetail extends Widget1<Build> {
          * {@inheritDoc}
          */
         @Override
-        protected void virtualize(VirtualStructure 〡) {
+        protected void virtualize2() {
             box($.ItemIconBase, () -> {
                 if (model1 != null) {
                     box($.ItemIcon.of(model1.position));
@@ -246,7 +245,7 @@ public class ChampionDetail extends Widget1<Build> {
     /**
      * @version 2015/08/20 15:49:48
      */
-    private static class CSS extends StyleRuleDescriptor {
+    private static class CSS extends StyleDescriptor {
 
         /** The skill icon size. */
         int SkillIconSize = 45;

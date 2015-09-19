@@ -10,13 +10,13 @@
 package teemowork;
 
 import jsx.style.Style;
-import jsx.style.StyleRuleDescriptor;
+import jsx.style.StyleDescriptor;
 import jsx.style.value.Font;
 
 /**
  * @version 2013/03/24 16:34:23
  */
-public class TeemoworkTheme extends StyleRuleDescriptor {
+public class TeemoworkTheme extends StyleDescriptor {
 
     /** The main font. */
     public static final Font Main = new Font("http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600");

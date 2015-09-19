@@ -9,13 +9,12 @@
  */
 package teemowork.model;
 
-import static jsx.ui.VirtualStructure.Declarables.*;
+import static jsx.ui.Declarables.*;
 
 import java.util.List;
 
 import jsx.style.Style;
-import jsx.style.StyleRuleDescriptor;
-import jsx.ui.VirtualStructure;
+import jsx.style.StyleDescriptor;
 import jsx.ui.Widget3;
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
@@ -44,7 +43,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure 〡) {
+    protected void virtualize2() {
         box($.Passive, contents(model3, text -> {
             if (text instanceof Variable) {
                 writeVariable((Variable) text, getLevel());
@@ -163,7 +162,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
     /**
      * @version 2015/08/20 15:59:24
      */
-    private static class $ extends StyleRuleDescriptor {
+    private static class $ extends StyleDescriptor {
 
         private static Style ComputedValue = () -> {
             font.weight.bolder();

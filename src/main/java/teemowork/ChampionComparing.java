@@ -9,6 +9,7 @@
  */
 package teemowork;
 
+import static jsx.ui.Declarables.*;
 import static teemowork.model.Status.*;
 
 import java.util.Comparator;
@@ -18,9 +19,8 @@ import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 
 import jsx.style.Style;
-import jsx.style.StyleRuleDescriptor;
+import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
-import jsx.ui.VirtualStructure;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.Select;
@@ -63,25 +63,25 @@ public class ChampionComparing extends Widget {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize(VirtualStructure 〡) {
-        〡.nbox.〡(null, groups);
-        〡.nbox.〡($.Table, () -> {
-            〡.nbox.〡($.Head, () -> {
-                〡.nbox.〡($.NoIcon);
-                〡.nbox.〡(null, Header.class, STATUS);
+    protected void virtualize2() {
+        widget(groups);
+        box($.Table, () -> {
+            box($.Head, () -> {
+                box($.NoIcon);
+                box(contents(Header.class, STATUS));
             });
 
-            〡.nbox.〡($.Body, () -> {
-                〡.nbox.〡($.VBox, group.getValue().sortBy(comparator), champion -> {
-                    〡.nbox.〡($.RowLine, () -> {
+            box($.Body, () -> {
+                box($.VBox, contents(group.getValue().sortBy(comparator), champion -> {
+                    box($.RowLine, () -> {
                         ChampionStatus championStatus = champion.getStatus(Version.Latest);
 
-                        〡.nbox.〡($.Icon.of(champion));
-                        〡.nbox.〡(null, STATUS, status -> {
-                            〡.nbox.〡($.StatusView, championStatus.get(status));
-                        });
+                        box($.Icon.of(champion));
+                        box(contents(STATUS, status -> {
+                            text($.StatusView, championStatus.get(status));
+                        }));
                     });
-                });
+                }));
             });
         });
     }
@@ -135,15 +135,15 @@ public class ChampionComparing extends Widget {
          * {@inheritDoc}
          */
         @Override
-        protected void virtualize(VirtualStructure 〡) {
-            〡.nbox.〡($.StatusView, status.name);
+        protected void virtualize2() {
+            text($.StatusView, status.name);
         }
     }
 
     /**
      * @version 2015/08/20 15:44:41
      */
-    private static class $ extends StyleRuleDescriptor {
+    private static class $ extends StyleDescriptor {
 
         private static Style Table = () -> {
             display.verticalBox();
