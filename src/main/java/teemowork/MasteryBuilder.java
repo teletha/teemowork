@@ -91,8 +91,8 @@ public class MasteryBuilder extends Widget {
              */
             private void build(Style style, Mastery[][] set, MasteryType type) {
                 box(style, () -> {
-                    box(contents(set, masteries -> {
-                        box($.RankPane, contents(masteries, mastery -> {
+                    box().contents(set, masteries -> {
+                        box($.RankPane).contents(masteries, mastery -> {
                             if (mastery == null) {
                                 box($.MasteryPane, $.EmptyPane);
                             } else {
@@ -101,8 +101,7 @@ public class MasteryBuilder extends Widget {
                                 box($.MasteryPane, If(!available, $.Unavailable), () -> {
                                     element("s:svg", $.IconImage, size(45, 45), () -> {
                                         element("s:image", position(0, 0), size(45, 45), xlink(mastery
-                                                .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? ""
-                                                        : "url('#test')"));
+                                                .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? "" : "url('#test')"));
                                         element("s:filter", $.NBox, id("test"), () -> {
                                             element("s:feColorMatrix", type("matrix"), attr("values", grayscale(0.4)));
                                         });
@@ -120,8 +119,8 @@ public class MasteryBuilder extends Widget {
                                     });
                                 });
                             }
-                        }));
-                    }));
+                        });
+                    });
                     text($.SumPoint, type.name().toUpperCase(), "　", masterySet.getSum(type));
                 });
 

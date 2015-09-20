@@ -52,9 +52,9 @@ public class ItemView extends Widget1<Item> {
                 box($.Root, () -> {
                     box($.IconArea, () -> {
                         box($.Icon.of(item));
-                        box($.Materials, contents(descriptor.getBuildItem(), material -> {
+                        box($.Materials).contents(descriptor.getBuildItem(), material -> {
                             // 〡.nbox.〡($.Material.of(material));
-                        }));
+                        });
                     });
                     box($.DescriptionArea, () -> {
                         // Name and Cost
@@ -70,16 +70,16 @@ public class ItemView extends Widget1<Item> {
                         });
 
                         // Status
-                        box(contents(VISIBLE, status -> {
+                        box().contents(VISIBLE, status -> {
                             double value = descriptor.get(status);
 
                             if (value != 0) {
                                 text($.StatusValue, value, status.getUnit(), " ", status.name);
                             }
-                        }));
+                        });
 
                         box($.DescriptionArea, () -> {
-                            box(contents(descriptor.getAbilities(), ability -> {
+                            box().contents(descriptor.getAbilities(), ability -> {
                                 AbilityDescriptor abilityDescriptor = ability.getDescriptor(Version.Latest);
 
                                 box($.AbilityArea, () -> {
@@ -97,11 +97,11 @@ public class ItemView extends Widget1<Item> {
                                     text($.UniqueAbility, "[", ability.name, "]");
                                     // }
 
-                                    List token = abilityDescriptor.isActive() ? abilityDescriptor.getActive()
-                                            : abilityDescriptor.getPassive();
+                                    List token = abilityDescriptor.isActive() ? abilityDescriptor.getActive() : abilityDescriptor
+                                            .getPassive();
                                     widget(Widget.of(AbilityDescriptionView.class, ability, null, token));
                                 });
-                            }));
+                            });
                         });
                     });
                 });

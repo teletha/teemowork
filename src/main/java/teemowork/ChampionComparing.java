@@ -71,20 +71,20 @@ public class ChampionComparing extends Widget {
                 box($.Table, () -> {
                     box($.Head, () -> {
                         box($.NoIcon);
-                        box(contents(Header.class, STATUS));
+                        box().contents(Header.class, STATUS);
                     });
 
                     box($.Body, () -> {
-                        box($.VBox, contents(group.getValue().sortBy(comparator), champion -> {
+                        box($.VBox).contents(group.getValue().sortBy(comparator), champion -> {
                             box($.RowLine, () -> {
                                 ChampionStatus championStatus = champion.getStatus(Version.Latest);
 
                                 box($.Icon.of(champion));
-                                box(contents(STATUS, status -> {
+                                box().contents(STATUS, status -> {
                                     text($.StatusView, championStatus.get(status));
-                                }));
+                                });
                             });
-                        }));
+                        });
                     });
                 });
             }

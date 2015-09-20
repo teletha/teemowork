@@ -153,26 +153,26 @@ public class ChampionDetail extends Widget1<Build> {
                 box($.ChampionIconBox.of(build.champion), () -> {
                     text($.Level, build.getLevel());
                 });
-                box($.ItemViewBox, contents(ItemBoxWidget.class, build.items));
+                box($.ItemViewBox).contents(ItemBoxWidget.class, build.items);
             });
 
             box($.Container, () -> {
-                box($.StatusViewBox, contents(VISIBLE, status -> {
+                box($.StatusViewBox).contents(VISIBLE, status -> {
                     box($.StatusBox, () -> {
                         text($.StatusName, status.name());
                         text($.StatusValue, computeStatusValue(status));
                     });
-                }));
+                });
 
-                box($.SkillTable, contents(build.champion.skills, skill -> {
+                box($.SkillTable).contents(build.champion.skills, skill -> {
                     box($.SkillRow, () -> {
                         box($.IconBox, () -> {
                             box($.SkillIcon.of(skill));
 
                             if (skill.key != SkillKey.Passive) {
-                                box($.LevelBox, contents(skill.getMaxLevel(), level -> {
+                                box($.LevelBox).contents(skill.getMaxLevel(), level -> {
                                     box($.LevelMark.of(level < build.getLevel(skill)));
-                                }));
+                                });
                             }
                         });
 
@@ -203,7 +203,7 @@ public class ChampionDetail extends Widget1<Build> {
                             }
                         });
                     });
-                }));
+                });
             });
         }
 
@@ -245,14 +245,14 @@ public class ChampionDetail extends Widget1<Build> {
                     int size = resolver.estimateSize();
                     int current = level;
 
-                    box(contents(1, size, i -> {
+                    box().contents(1, size, i -> {
                         double value = status.round(variable.calculate(i, build));
                         String desc = resolver.getLevelDescription(i);
 
                         box($.Value, If(size != 1 && i == current, $.Current), If(desc, title(desc), $.Indicator), () -> {
                             text(value == -1 ? "∞" : value);
                         });
-                    }));
+                    });
 
                     // write amplifiers
                     writeAmplifier(variable.getAmplifiers(), 0, build);

@@ -26,7 +26,7 @@ public class ItemCatalog extends Widget {
         return new Declarables() {
 
             {
-                box(contents(ItemView.class, Item.getAll()));
+                box().contents(ItemView.class, Item.getAll());
             }
         };
     }

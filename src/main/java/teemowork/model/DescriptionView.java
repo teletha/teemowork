@@ -110,13 +110,13 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
 
             if (1 < size || !amplifiers.isEmpty()) {
                 text("(");
-                box($.Variable, contents(1, size, i -> {
+                box($.Variable).contents(1, size, i -> {
                     String description = resolver.getLevelDescription(i);
 
                     box($.Value, If(i == current, $.Current), If(description, title(description), $.Indicator), () -> {
                         text(round(resolver.compute(i), 2));
                     });
-                }));
+                });
 
                 writeAmplifier(amplifiers, level, calculator);
                 text(")");
@@ -133,7 +133,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
          * @param level A current skill level.
          */
         protected void writeAmplifier(List<Variable> amplifiers, int level, StatusCalculator calculator) {
-            box(contents(amplifiers, amplifier -> {
+            box().contents(amplifiers, amplifier -> {
                 box($.Amplifier, () -> {
                     int amp = level;
 
@@ -148,13 +148,13 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                     int size = resolver.estimateSize();
                     int current = amp;
 
-                    box(contents(1, size, i -> {
+                    box().contents(1, size, i -> {
                         String description = resolver.getLevelDescription(i);
 
                         box($.Value, If(size != 1 && i == current, $.Current), If(description, title(description), $.Indicator), () -> {
                             text(round(amplifier.calculate(i, calculator, true), 4));
                         });
-                    }));
+                    });
 
                     text(amplifier.getStatus().getUnit());
                     if (!amplifier.getAmplifiers().isEmpty()) {
@@ -164,7 +164,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                     }
                     text(amplifier.getStatus().name);
                 });
-            }));
+            });
         }
     }
 
@@ -179,13 +179,13 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
         public HTML(StatusCalculator calculator) {
             super(calculator);
 
-            box($.Passive, contents(model3, text -> {
+            box($.Passive).contents(model3, text -> {
                 if (text instanceof Variable) {
                     writeVariable((Variable) text, getLevel());
                 } else {
                     text(text);
                 }
-            }));
+            });
         }
     }
 
