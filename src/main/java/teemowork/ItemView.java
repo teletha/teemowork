@@ -9,16 +9,16 @@
  */
 package teemowork;
 
+import static jsx.ui.StructureDescriptor.*;
 import static teemowork.model.Status.*;
 
 import java.util.List;
 
-import jsx.style.Style;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Font;
-import jsx.ui.Declarables;
+import jsx.ui.StructureDescriptor.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import teemowork.model.Ability;
@@ -43,70 +43,64 @@ public class ItemView extends Widget1<Item> {
      * {@inheritDoc}
      */
     @Override
-    protected Declarables virtualize2() {
-        return new Declarables() {
+    protected void virtualize2() {
+        ItemDescriptor descriptor = item.getDescriptor(Version.Latest);
 
-            {
-                ItemDescriptor descriptor = item.getDescriptor(Version.Latest);
+        box($.Root, () -> {
+            box($.IconArea, () -> {
+                box($.Icon.of(item));
+                box($.Materials, contents(descriptor.getBuildItem(), material -> {
+                    // 〡.nbox.〡($.Material.of(material));
+                }));
+            });
+            box($.DescriptionArea, () -> {
+                // Name and Cost
+                double cost = item.getBaseCost();
+                double total = item.getTotalCost();
 
-                box($.Root, () -> {
-                    box($.IconArea, () -> {
-                        box($.Icon.of(item));
-                        box($.Materials).contents(descriptor.getBuildItem(), material -> {
-                            // 〡.nbox.〡($.Material.of(material));
-                        });
-                    });
-                    box($.DescriptionArea, () -> {
-                        // Name and Cost
-                        double cost = item.getBaseCost();
-                        double total = item.getTotalCost();
-
-                        box($.Heading, () -> {
-                            text($.Name, item.name);
-                            text($.TotalCost, total);
-                            if (cost != total) {
-                                text($.Cost, "(", cost, ")");
-                            }
-                        });
-
-                        // Status
-                        box().contents(VISIBLE, status -> {
-                            double value = descriptor.get(status);
-
-                            if (value != 0) {
-                                text($.StatusValue, value, status.getUnit(), " ", status.name);
-                            }
-                        });
-
-                        box($.DescriptionArea, () -> {
-                            box().contents(descriptor.getAbilities(), ability -> {
-                                AbilityDescriptor abilityDescriptor = ability.getDescriptor(Version.Latest);
-
-                                box($.AbilityArea, () -> {
-                                    if (abilityDescriptor.isUnique()) {
-                                        text($.UniqueAbility, "UNIQUE");
-                                    }
-
-                                    if (abilityDescriptor.isAura()) {
-                                        text($.UniqueAbility, "AURA");
-                                    }
-
-                                    text($.UniqueAbility, abilityDescriptor.isActive() ? "Active" : "Passive");
-
-                                    // if (!ability.name.startsWith("#")) {
-                                    text($.UniqueAbility, "[", ability.name, "]");
-                                    // }
-
-                                    List token = abilityDescriptor.isActive() ? abilityDescriptor.getActive() : abilityDescriptor
-                                            .getPassive();
-                                    widget(Widget.of(AbilityDescriptionView.class, ability, null, token));
-                                });
-                            });
-                        });
-                    });
+                box($.Heading, () -> {
+                    text($.Name, item.name);
+                    text($.TotalCost, total);
+                    if (cost != total) {
+                        text($.Cost, "(", cost, ")");
+                    }
                 });
-            }
-        };
+
+                // Status
+                box(contents(VISIBLE, status -> {
+                    double value = descriptor.get(status);
+
+                    if (value != 0) {
+                        text($.StatusValue, value, status.getUnit(), " ", status.name);
+                    }
+                }));
+
+                box($.DescriptionArea, () -> {
+                    box(contents(descriptor.getAbilities(), ability -> {
+                        AbilityDescriptor abilityDescriptor = ability.getDescriptor(Version.Latest);
+
+                        box($.AbilityArea, () -> {
+                            if (abilityDescriptor.isUnique()) {
+                                text($.UniqueAbility, "UNIQUE");
+                            }
+
+                            if (abilityDescriptor.isAura()) {
+                                text($.UniqueAbility, "AURA");
+                            }
+
+                            text($.UniqueAbility, abilityDescriptor.isActive() ? "Active" : "Passive");
+
+                            // if (!ability.name.startsWith("#")) {
+                            text($.UniqueAbility, "[", ability.name, "]");
+                            // }
+
+                            List token = abilityDescriptor.isActive() ? abilityDescriptor.getActive() : abilityDescriptor.getPassive();
+                            widget(Widget.of(AbilityDescriptionView.class, ability, null, token));
+                        });
+                    }));
+                });
+            });
+        });
     }
 
     /**

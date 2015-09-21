@@ -9,14 +9,15 @@
  */
 package teemowork;
 
+import static jsx.ui.StructureDescriptor.*;
+
 import js.dom.UIAction;
-import jsx.style.Style;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
-import jsx.ui.Declarables;
+import jsx.ui.StructureDescriptor.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.Input;
 import jsx.ui.piece.UI;
@@ -46,22 +47,16 @@ public class ChampionSelect extends Widget {
      * {@inheritDoc}
      */
     @Override
-    protected Declarables virtualize2() {
-        return new Declarables() {
-
-            {
-                box($.Root, () -> {
-                    widget(input);
-                    box($.ImageSet).contents(Champion.getAll(), champion -> {
-                        box($.Container, If(!champion.match(input.value.get()), $.Unselected), () -> {
-                            box($.IconImage, $.IconPosition.of(champion));
-                            text($.Title, champion.name);
-                        });
-                    });
+    protected void virtualize2() {
+        box($.Root, () -> {
+            widget(input);
+            box($.ImageSet, contents(Champion.getAll(), champion -> {
+                box($.Container, If(!champion.match(input.value.get()), $.Unselected), () -> {
+                    box($.IconImage, $.IconPosition.of(champion));
+                    text($.Title, champion.name);
                 });
-            }
-        };
-
+            }));
+        });
     }
 
     /**

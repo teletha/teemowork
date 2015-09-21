@@ -10,31 +10,29 @@
 package teemowork;
 
 import static js.dom.UIAction.*;
+import static jsx.ui.StructureDescriptor.*;
 import static teemowork.model.Status.*;
 
 import jsx.style.BinaryStyle;
-import jsx.style.Style;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
-import jsx.ui.Declarables;
+import jsx.ui.StructureDescriptor.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import kiss.Events;
 import teemowork.model.Build;
 import teemowork.model.Champion;
 import teemowork.model.DescriptionView;
-import teemowork.model.DescriptionView.DescriptionDSL;
 import teemowork.model.Item;
 import teemowork.model.Skill;
 import teemowork.model.SkillDescriptor;
 import teemowork.model.SkillKey;
 import teemowork.model.SkillType;
 import teemowork.model.Status;
-import teemowork.model.StatusCalculator;
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
 
@@ -77,8 +75,119 @@ public class ChampionDetail extends Widget1<Build> {
      * {@inheritDoc}
      */
     @Override
-    protected Declarables virtualize2() {
-        return new HTML(build);
+    protected void virtualize2() {
+        box($.UpperInfo, () -> {
+            box($.ChampionIconBox.of(build.champion), () -> {
+                text($.Level, build.getLevel());
+            });
+            box($.ItemViewBox, contents(ItemBoxWidget.class, build.items));
+        });
+
+        box($.Container, () -> {
+            box($.StatusViewBox, contents(VISIBLE, status -> {
+                box($.StatusBox, () -> {
+                    text($.StatusName, status.name());
+                    text($.StatusValue, computeStatusValue(status));
+                });
+            }));
+
+            box($.SkillTable, contents(build.champion.skills, skill -> {
+                box($.SkillRow, () -> {
+                    box($.IconBox, () -> {
+                        box($.SkillIcon.of(skill));
+
+                        if (skill.key != SkillKey.Passive) {
+                            box($.LevelBox, contents(skill.getMaxLevel(), level -> {
+                                box($.LevelMark.of(level < build.getLevel(skill)));
+                            }));
+                        }
+                    });
+
+                    box($.VBox, () -> {
+                        SkillDescriptor status = skill.getDescriptor(build.getVersion());
+                        box($.HBox, () -> {
+                            text($.Name, skill);
+                            text($.VersionDisplay, status.version.name);
+                        });
+                        box(() -> {
+                            writeStatusValue(skill, status, status.getRange());
+                            writeStatusValue(skill, status, status.getCooldown());
+                            writeStatusValue(skill, status, status.getCost());
+                        });
+
+                        if (!status.getPassive().isEmpty()) {
+                            box($.Text, () -> {
+                                text($.SkillTypeInfo, SkillType.Passive);
+                                widget(Widget.of(SkillWidget.class, skill, build, status.getPassive()));
+                            });
+                        }
+
+                        if (!status.getActive().isEmpty()) {
+                            box($.Text, () -> {
+                                text($.SkillTypeInfo, status.getType());
+                                widget(Widget.of(SkillWidget.class, skill, build, status.getActive()));
+                            });
+                        }
+                    });
+                });
+            }));
+        });
+    }
+
+    /**
+     * <p>
+     * Write skill related status.
+     * </p>
+     * 
+     * @param root A element to write.
+     * @param descriptor A current processing skill.
+     * @param variable A target skill variable.
+     */
+    private void writeStatusValue(Skill skill, SkillDescriptor descriptor, Variable variable) {
+        if (variable != null) {
+            box($.StatusBlock, () -> {
+                Status status = variable.getStatus();
+                VariableResolver resolver = variable.getResolver();
+
+                int level = build.getLevel(skill);
+
+                if (!resolver.isSkillLevelBased()) {
+                    level = resolver.convertLevel(build);
+                }
+
+                // write label
+                String label = status.name;
+
+                if (status != Range && status != CD) {
+                    if (descriptor.getType() == SkillType.Toggle) {
+                        label = "毎秒" + label;
+                    } else if (descriptor.getType() == SkillType.ToggleForAttack) {
+                        label = "攻撃毎" + label;
+                    }
+                }
+
+                text($.StatusLabel, label);
+
+                // write values
+                int size = resolver.estimateSize();
+                int current = level;
+
+                box(contents(1, size, i -> {
+                    double value = status.round(variable.calculate(i, build));
+                    String desc = resolver.getLevelDescription(i);
+
+                    box($.Value, If(size != 1 && i == current, $.Current), If(desc, title(desc), $.Indicator), () -> {
+                        text(value == -1 ? "∞" : value);
+                    });
+                }));
+
+                // write amplifiers
+                DescriptionView.writeAmplifier(variable.getAmplifiers(), 0, build);
+
+                // write unit
+                text(status.getUnit());
+            });
+        }
     }
 
     /**
@@ -110,17 +219,12 @@ public class ChampionDetail extends Widget1<Build> {
          * {@inheritDoc}
          */
         @Override
-        protected Declarables virtualize2() {
-            return new Declarables() {
-
-                {
-                    box($.ItemIconBase, () -> {
-                        if (model1 != null) {
-                            box($.ItemIcon.of(model1.position));
-                        }
-                    });
+        protected void virtualize2() {
+            box($.ItemIconBase, () -> {
+                if (model1 != null) {
+                    box($.ItemIcon.of(model1.position));
                 }
-            };
+            });
         }
     }
 
@@ -135,132 +239,6 @@ public class ChampionDetail extends Widget1<Build> {
         @Override
         protected int getLevel() {
             return build.getLevel(model1);
-        }
-    }
-
-    /**
-     * @version 2015/09/20 0:33:49
-     */
-    private class HTML extends DescriptionDSL {
-
-        /**
-         * @param calculator
-         */
-        public HTML(StatusCalculator calculator) {
-            super(calculator);
-
-            box($.UpperInfo, () -> {
-                box($.ChampionIconBox.of(build.champion), () -> {
-                    text($.Level, build.getLevel());
-                });
-                box($.ItemViewBox).contents(ItemBoxWidget.class, build.items);
-            });
-
-            box($.Container, () -> {
-                box($.StatusViewBox).contents(VISIBLE, status -> {
-                    box($.StatusBox, () -> {
-                        text($.StatusName, status.name());
-                        text($.StatusValue, computeStatusValue(status));
-                    });
-                });
-
-                box($.SkillTable).contents(build.champion.skills, skill -> {
-                    box($.SkillRow, () -> {
-                        box($.IconBox, () -> {
-                            box($.SkillIcon.of(skill));
-
-                            if (skill.key != SkillKey.Passive) {
-                                box($.LevelBox).contents(skill.getMaxLevel(), level -> {
-                                    box($.LevelMark.of(level < build.getLevel(skill)));
-                                });
-                            }
-                        });
-
-                        box($.VBox, () -> {
-                            SkillDescriptor status = skill.getDescriptor(build.getVersion());
-                            box($.HBox, () -> {
-                                text($.Name, skill);
-                                text($.VersionDisplay, status.version.name);
-                            });
-                            box(() -> {
-                                writeStatusValue(skill, status, status.getRange());
-                                writeStatusValue(skill, status, status.getCooldown());
-                                writeStatusValue(skill, status, status.getCost());
-                            });
-
-                            if (!status.getPassive().isEmpty()) {
-                                box($.Text, () -> {
-                                    text($.SkillTypeInfo, SkillType.Passive);
-                                    widget(Widget.of(SkillWidget.class, skill, build, status.getPassive()));
-                                });
-                            }
-
-                            if (!status.getActive().isEmpty()) {
-                                box($.Text, () -> {
-                                    text($.SkillTypeInfo, status.getType());
-                                    widget(Widget.of(SkillWidget.class, skill, build, status.getActive()));
-                                });
-                            }
-                        });
-                    });
-                });
-            });
-        }
-
-        /**
-         * <p>
-         * Write skill related status.
-         * </p>
-         * 
-         * @param root A element to write.
-         * @param descriptor A current processing skill.
-         * @param variable A target skill variable.
-         */
-        private void writeStatusValue(Skill skill, SkillDescriptor descriptor, Variable variable) {
-            if (variable != null) {
-                box($.StatusBlock, () -> {
-                    Status status = variable.getStatus();
-                    VariableResolver resolver = variable.getResolver();
-
-                    int level = build.getLevel(skill);
-
-                    if (!resolver.isSkillLevelBased()) {
-                        level = resolver.convertLevel(build);
-                    }
-
-                    // write label
-                    String label = status.name;
-
-                    if (status != Range && status != CD) {
-                        if (descriptor.getType() == SkillType.Toggle) {
-                            label = "毎秒" + label;
-                        } else if (descriptor.getType() == SkillType.ToggleForAttack) {
-                            label = "攻撃毎" + label;
-                        }
-                    }
-
-                    text($.StatusLabel, label);
-
-                    // write values
-                    int size = resolver.estimateSize();
-                    int current = level;
-
-                    box().contents(1, size, i -> {
-                        double value = status.round(variable.calculate(i, build));
-                        String desc = resolver.getLevelDescription(i);
-
-                        box($.Value, If(size != 1 && i == current, $.Current), If(desc, title(desc), $.Indicator), () -> {
-                            text(value == -1 ? "∞" : value);
-                        });
-                    });
-
-                    // write amplifiers
-                    writeAmplifier(variable.getAmplifiers(), 0, build);
-
-                    // write unit
-                    text(status.getUnit());
-                });
-            }
         }
     }
 
