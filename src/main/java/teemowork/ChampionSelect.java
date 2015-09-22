@@ -47,7 +47,7 @@ public class ChampionSelect extends Widget {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize2() {
+    protected void virtualize() {
         box($.Root, () -> {
             widget(input);
             box($.ImageSet, contents(Champion.getAll(), champion -> {

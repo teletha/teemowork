@@ -67,7 +67,7 @@ public class MasteryBuilder extends Widget {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize2() {
+    protected void virtualize() {
         box($.Information, () -> {
 
         });

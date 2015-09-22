@@ -43,7 +43,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize2() {
+    protected void virtualize() {
         box($.Passive, contents(model3, text -> {
             if (text instanceof Variable) {
                 writeVariable((Variable) text, getLevel());

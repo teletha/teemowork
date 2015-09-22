@@ -1084,7 +1084,7 @@ public interface SkillDefinition {
         R.update(P512)
                 .passive("子蜘蛛の最大チャージ数は{1}。")
                 .variable(1, Value, 2, 1)
-                .active("Spider Formに変身する。射程が125、移動速度が555になる。また通常攻撃に追加効果を付与する。{2}。")
+                .active("Spider Formに変身する。射程が125、移動速度が355になる。また通常攻撃に追加効果を付与する。{2}。")
                 .variable(2, NotSpellCast)
                 .cd(4);
     }

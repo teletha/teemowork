@@ -75,7 +75,7 @@ public class ChampionDetail extends Widget1<Build> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize2() {
+    protected void virtualize() {
         box($.UpperInfo, () -> {
             box($.ChampionIconBox.of(build.champion), () -> {
                 text($.Level, build.getLevel());
@@ -219,7 +219,7 @@ public class ChampionDetail extends Widget1<Build> {
          * {@inheritDoc}
          */
         @Override
-        protected void virtualize2() {
+        protected void virtualize() {
             box($.ItemIconBase, () -> {
                 if (model1 != null) {
                     box($.ItemIcon.of(model1.position));

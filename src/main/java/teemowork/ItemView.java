@@ -43,7 +43,7 @@ public class ItemView extends Widget1<Item> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize2() {
+    protected void virtualize() {
         ItemDescriptor descriptor = item.getDescriptor(Version.Latest);
 
         box($.Root, () -> {

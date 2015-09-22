@@ -23,7 +23,7 @@ public class ItemCatalog extends Widget {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize2() {
+    protected void virtualize() {
         box(contents(ItemView.class, Item.getAll()));
     }
 }

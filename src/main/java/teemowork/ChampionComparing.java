@@ -63,7 +63,7 @@ public class ChampionComparing extends Widget {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize2() {
+    protected void virtualize() {
         widget(groups);
         box($.Table, () -> {
             box($.Head, () -> {
@@ -135,7 +135,7 @@ public class ChampionComparing extends Widget {
          * {@inheritDoc}
          */
         @Override
-        protected void virtualize2() {
+        protected void virtualize() {
             text($.StatusView, status.name);
         }
     }
