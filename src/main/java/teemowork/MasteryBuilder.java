@@ -21,7 +21,7 @@ import jsx.style.value.Color;
 import jsx.style.value.LinearGradient;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
-import jsx.ui.StructureDescriptor.Style;
+import jsx.ui.Style;
 import jsx.ui.Widget;
 import kiss.Events;
 import teemowork.model.DescriptionView;
@@ -97,11 +97,11 @@ public class MasteryBuilder extends Widget {
                         boolean available = masterySet.getLevel(mastery) != 0 || masterySet.isAvailable(mastery);
 
                         box($.MasteryPane, If(!available, $.Unavailable), () -> {
-                            element("s:svg", $.IconImage, size(45, 45), () -> {
-                                element("s:image", position(0, 0), size(45, 45), xlink(mastery
+                            element(SVG, "svg", $.IconImage, size(45, 45), () -> {
+                                element(SVG, "image", position(0, 0), size(45, 45), attr("xlink:href", mastery
                                         .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? "" : "url('#test')"));
-                                element("s:filter", $.NBox, id("test"), () -> {
-                                    element("s:feColorMatrix", type("matrix"), attr("values", grayscale(0.4)));
+                                element(SVG, "filter", $.NBox, id("test"), () -> {
+                                    element(SVG, "feColorMatrix", attr("type", "matrix"), attr("values", grayscale(0.4)));
                                 });
                             });
                             box($.LevelPane, () -> {

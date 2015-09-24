@@ -11,7 +11,7 @@ package teemowork;
 
 import jsx.style.StyleDescriptor;
 import jsx.style.value.Font;
-import jsx.ui.StructureDescriptor.Style;
+import jsx.ui.Style;
 
 /**
  * @version 2013/03/24 16:34:23

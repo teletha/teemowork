@@ -20,7 +20,7 @@ import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
-import jsx.ui.StructureDescriptor.Style;
+import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import kiss.Events;

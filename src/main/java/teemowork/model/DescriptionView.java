@@ -14,7 +14,7 @@ import static jsx.ui.StructureDescriptor.*;
 import java.util.List;
 
 import jsx.style.StyleDescriptor;
-import jsx.ui.StructureDescriptor.Style;
+import jsx.ui.Style;
 import jsx.ui.Widget3;
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;

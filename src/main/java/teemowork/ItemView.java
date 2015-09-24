@@ -18,7 +18,7 @@ import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Font;
-import jsx.ui.StructureDescriptor.Style;
+import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import teemowork.model.Ability;

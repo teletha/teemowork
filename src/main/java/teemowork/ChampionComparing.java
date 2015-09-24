@@ -20,7 +20,7 @@ import javafx.beans.property.SimpleObjectProperty;
 
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
-import jsx.ui.StructureDescriptor.Style;
+import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.Select;
