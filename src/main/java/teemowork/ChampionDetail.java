@@ -9,10 +9,10 @@
  */
 package teemowork;
 
-import static js.dom.UIAction.*;
 import static jsx.ui.StructureDescriptor.*;
 import static teemowork.model.Status.*;
 
+import js.dom.UIAction;
 import jsx.style.BinaryStyle;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
@@ -50,22 +50,22 @@ public class ChampionDetail extends Widget1<Build> {
     /** The your custom build. */
     private final Build build = model1;
 
-    public final Events<Champion> levelUp = when(Click, $.ChampionIconBox).merge(when(MouseWheelUp, $.ChampionIconBox));
+    public final Events<Skill> skillUp = when(UIAction.Click).at($.IconBox, Skill.class);
 
-    public final Events<Champion> levelDown = when(ClickRight, $.ChampionIconBox).merge(when(MouseWheelDown, $.ChampionIconBox));
+    public final Events<Skill> skillDown = when(UIAction.ClickRight).at($.IconBox, Skill.class);
 
-    public final Events<Skill> skillUp = when(Click, $.IconBox, Skill.class);
+    public final Events<Champion> championLevelUp = when(UIAction.Click, UIAction.MouseWheelUp).at($.ChampionIconBox);
 
-    public final Events<Skill> skillDown = when(ClickRight, $.IconBox, Skill.class);
+    public final Events<Champion> championLevelDown = when(UIAction.ClickRight, UIAction.MouseWheelDown).at($.ChampionIconBox);
 
     public ChampionDetail() {
-        levelUp.to(v -> build.levelUp());
-        levelDown.to(v -> build.levelDown());
-        skillUp.to(v -> build.levelUp(v));
-        skillDown.to(v -> build.levelDown(v));
+        championLevelUp.to(update(v -> build.levelUp()));
+        championLevelDown.to(update(v -> build.levelDown()));
+        skillUp.to(update(v -> build.levelUp(v)));
+        skillDown.to(update(v -> build.levelDown(v)));
 
         // TODO FIXME
-        when(Key_R, $.ChampionIconBox).to(e -> {
+        when(UIAction.Key_R).at($.ChampionIconBox).to(e -> {
             build.active(SkillKey.R);
             build.active(SkillKey.W);
         });

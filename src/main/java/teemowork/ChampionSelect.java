@@ -34,7 +34,7 @@ public class ChampionSelect extends Widget {
 
     private Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
 
-    public Events<Champion> select = when(UIAction.Click, $.Container, Champion.class);
+    public Events<Champion> select = when(UIAction.Click).at($.Container, Champion.class);
 
     /**
      * 

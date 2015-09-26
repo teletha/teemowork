@@ -39,9 +39,9 @@ public class MasteryBuilder extends Widget {
 
     private final MasterySet masterySet = new MasterySet("");
 
-    private final Events<Mastery> up = when(UIAction.Click, $.MasteryPane, Mastery.class);
+    private final Events<Mastery> up = when(UIAction.Click).at($.MasteryPane, Mastery.class);
 
-    private final Events<Mastery> down = when(UIAction.ClickRight, $.MasteryPane, Mastery.class);
+    private final Events<Mastery> down = when(UIAction.ClickRight).at($.MasteryPane, Mastery.class);
 
     /**
      * 
