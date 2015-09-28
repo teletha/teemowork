@@ -122,7 +122,7 @@ public class ItemView extends Widget1<Item> {
      */
     private static class $ extends StyleDescriptor {
 
-        private static Font Sans = new Font("http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600");
+        private static Font Sans = Font.fromGoogle("Source Sans Pro", "400", "600");
 
         /** The skill icon size. */
         private static final int IconSize = 45;

@@ -19,7 +19,7 @@ import kiss.I;
 import kiss.XML;
 
 /**
- * @version 2015/08/06 23:36:34
+ * @version 2015/09/29 3:02:24
  */
 public class Site extends Task {
 
@@ -33,16 +33,11 @@ public class Site extends Task {
     @Command("Update application related files.")
     public void update() throws Exception {
         I.copy(I.locate("application.js"), I.locate("site.js"));
-        I.copy(I.locate("application.css"), I.locate("site.css"));
 
         XML xml = I.xml(I.locate("application.html"));
 
         for (XML js : xml.find("script[src=\"application.js\"]")) {
             js.attr("src", "site.js");
-        }
-
-        for (XML css : xml.find("link[href=\"application.css\"]")) {
-            css.attr("href", "site.css");
         }
         xml.to(new HTMLWriter(Files.newBufferedWriter(I.locate("index.html"), StandardCharsets.UTF_8)));
 
