@@ -319,7 +319,7 @@ public class MasteryBuilder extends Widget {
             display.block();
             margin.bottom(0.7, em);
             text.unselectable();
-            font.size(16, px).weight.bolder().color(hsl(60, 100, 85)).family(TeemoworkTheme.Title.name);
+            font.size(16, px).weight.bolder().color(hsl(60, 100, 85)).family(TeemoworkTheme.Title);
         };
 
         static Style Description = () -> {

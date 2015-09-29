@@ -17,7 +17,6 @@ import java.util.List;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
-import jsx.style.value.Font;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
@@ -118,11 +117,9 @@ public class ItemView extends Widget1<Item> {
     }
 
     /**
-     * @version 2015/08/20 15:56:55
+     * @version 2015/09/29 10:04:06
      */
     private static class $ extends StyleDescriptor {
-
-        private static Font Sans = Font.fromGoogle("Source Sans Pro", "400", "600");
 
         /** The skill icon size. */
         private static final int IconSize = 45;
@@ -167,7 +164,7 @@ public class ItemView extends Widget1<Item> {
         static Style Heading = () -> {
             display.block();
             margin.bottom(0.4, em);
-            font.family(Sans.name);
+            font.family(TeemoworkTheme.Main);
         };
 
         static Style Name = () -> {
@@ -185,7 +182,7 @@ public class ItemView extends Widget1<Item> {
         static Style StatusValue = () -> {
             display.block();
             margin.bottom(0.2, em);
-            font.size.smaller().family(Sans.name);
+            font.size.smaller().family(TeemoworkTheme.Main);
         };
 
         static Style AbilityArea = () -> {
