@@ -283,7 +283,7 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability PhantomHit = new Ability("Phantom Hit", ability -> {
-        ability.passive("通常攻撃毎に追加で{1}を与える。また通常攻撃2回毎に、ダメージを持たない通常攻撃を追加で発生させる。").variable(1, MagicDamage, 50);
+        ability.passive("通常攻撃毎に追加で{1}を与える。また近接攻撃は通常攻撃2回毎に遠距離攻撃は通常攻撃4回毎に、ダメージを持たない通常攻撃を追加で発生させる。").variable(1, MagicDamage, 50);
     });
 
     /** The ability. */

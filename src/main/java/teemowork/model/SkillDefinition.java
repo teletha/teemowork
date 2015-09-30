@@ -2987,10 +2987,10 @@ public interface SkillDefinition {
                 .cd(14, -1)
                 .range(800);
 
-        R.update(P514)
+        R.update(P519)
                 .active("指定方向扇形の範囲に2秒間、弾幕砲火を浴びせて0.25秒毎に範囲内の敵ユニットに{1}と" + W + "のパッシブ効果を与える。同一の対象に8回までヒットし最大で{2}。")
-                .variable(1, PhysicalDamage, 50, 25, ap(0.2))
-                .variable(2, PhysicalDamage, 400, 200, ap(1.6))
+                .variable(1, PhysicalDamage, 50, 25, ap(0.2), amplify(BounusAD, 0.1, 0.075))
+                .variable(2, PhysicalDamage, 400, 200, ap(1.6), amplify(BounusAD, 0.8, 0.6))
                 .mana(100)
                 .cd(120, -10)
                 .range(1400)
