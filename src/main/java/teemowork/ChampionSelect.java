@@ -17,13 +17,16 @@ import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
+import jsx.ui.Declarable;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.Input;
+import jsx.ui.piece.Select;
 import jsx.ui.piece.UI;
 import kiss.Events;
 import kiss.I;
 import teemowork.model.Champion;
+import teemowork.model.Status;
 
 /**
  * @version 2015/09/18 14:05:30
@@ -34,13 +37,15 @@ public class ChampionSelect extends Widget {
 
     private Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
 
-    public Events<Champion> select = when(UIAction.Click).at($.Container, Champion.class);
+    public Events<Champion> selectChampion = when(UIAction.Click).at($.Container, Champion.class);
+
+    private Select<Condition> condition = UI.select(Condition.class);
 
     /**
      * 
      */
     public ChampionSelect() {
-        select.to(champion -> application.champion(champion));
+        selectChampion.to(champion -> application.champion(champion));
     }
 
     /**
@@ -50,6 +55,9 @@ public class ChampionSelect extends Widget {
     protected void virtualize() {
         box($.Root, () -> {
             widget(input);
+            box($.Details, () -> {
+                box(condition);
+            });
             box($.ImageSet, contents(Champion.getAll(), champion -> {
                 box($.Container, If(!champion.match(input.value.get()), $.Unselected), () -> {
                     box($.IconImage, $.IconPosition.of(champion));
@@ -57,6 +65,56 @@ public class ChampionSelect extends Widget {
                 });
             }));
         });
+    }
+
+    /**
+     * @version 2015/09/30 22:23:36
+     */
+    private static enum Condition {
+
+        Onhit("オンヒット効果"),
+
+        CDR("CD解消", Status.CDDecrease, Status.CDDecreaseRatio),
+
+        HealHealth(Status.Health + "回復", Status.RestoreHealth, Status.RestoreHealthRatio);
+
+        /** The human-readable condition name. */
+        private final String label;
+
+        /** The actual conditions. */
+        private final Status[] types;
+
+        /**
+         * <p>
+         * Create Condition.
+         * </p>
+         * 
+         * @param type
+         */
+        private Condition(Status type) {
+            this(type.name, type);
+        }
+
+        /**
+         * <p>
+         * Create Condition.
+         * </p>
+         * 
+         * @param label
+         * @param types
+         */
+        private Condition(String label, Status... types) {
+            this.label = label;
+            this.types = types;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String toString() {
+            return label;
+        }
     }
 
     /**
@@ -71,7 +129,6 @@ public class ChampionSelect extends Widget {
         private static Style Root = () -> {
             display.block();
             margin.auto();
-            line.height(0);
             box.width(ImageSize.multiply(10).add(2));
         };
 
@@ -143,6 +200,10 @@ public class ChampionSelect extends Widget {
         private static Style SearchByName = () -> {
             display.block();
             margin.bottom(10, px);
+        };
+
+        private static final Declarable Details = () -> {
+
         };
     }
 }
