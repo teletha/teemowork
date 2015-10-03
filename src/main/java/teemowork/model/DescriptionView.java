@@ -79,13 +79,16 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
 
         if (1 < size || !amplifiers.isEmpty()) {
             text("(");
-            box($.Variable, contents(1, size, i -> {
-                String description = resolver.getLevelDescription(i);
 
-                box($.Value, If(i == current, $.Current), If(description, title(description), $.Indicator), () -> {
-                    text(round(resolver.compute(i), 2));
-                });
-            }));
+            if (1 < size) {
+                box($.Variable, contents(1, size, i -> {
+                    String description = resolver.getLevelDescription(i);
+
+                    box($.Value, If(i == current, $.Current), If(description, title(description), $.Indicator), () -> {
+                        text(round(resolver.compute(i), 2));
+                    });
+                }));
+            }
 
             writeAmplifier(amplifiers, level, calculator);
             text(")");
@@ -102,38 +105,40 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
      * @param level A current skill level.
      */
     public static void writeAmplifier(List<Variable> amplifiers, int level, StatusCalculator calculator) {
-        box(contents(amplifiers, amplifier -> {
-            box($.Amplifier, () -> {
-                int amp = level;
+        if (!amplifiers.isEmpty()) {
+            box($.Amplifiers, contents(amplifiers, amplifier -> {
+                box($.Amplifier, () -> {
+                    int amp = level;
 
-                text("+");
+                    text("+");
 
-                VariableResolver resolver = amplifier.getResolver();
+                    VariableResolver resolver = amplifier.getResolver();
 
-                if (!resolver.isSkillLevelBased()) {
-                    amp = resolver.convertLevel(calculator);
-                }
+                    if (!resolver.isSkillLevelBased()) {
+                        amp = resolver.convertLevel(calculator);
+                    }
 
-                int size = resolver.estimateSize();
-                int current = amp;
+                    int size = resolver.estimateSize();
+                    int current = amp;
 
-                box(contents(1, size, i -> {
-                    String description = resolver.getLevelDescription(i);
+                    box(contents(1, size, i -> {
+                        String description = resolver.getLevelDescription(i);
 
-                    box($.Value, If(size != 1 && i == current, $.Current), If(description, title(description), $.Indicator), () -> {
-                        text(round(amplifier.calculate(i, calculator, true), 4));
-                    });
-                }));
+                        box($.Value, If(size != 1 && i == current, $.Current), If(description, title(description), $.Indicator), () -> {
+                            text(round(amplifier.calculate(i, calculator, true), 4));
+                        });
+                    }));
 
-                text(amplifier.getStatus().getUnit());
-                if (!amplifier.getAmplifiers().isEmpty()) {
-                    text("(");
-                    writeAmplifier(amplifier.getAmplifiers(), current, calculator);
-                    text(")");
-                }
-                text(amplifier.getStatus().name);
-            });
-        }));
+                    text(amplifier.getStatus().getUnit());
+                    if (!amplifier.getAmplifiers().isEmpty()) {
+                        text("(");
+                        writeAmplifier(amplifier.getAmplifiers(), current, calculator);
+                        text(")");
+                    }
+                    text(amplifier.getStatus().name);
+                });
+            }));
+        }
     }
 
     /**
@@ -172,7 +177,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
             notLastChild(() -> {
                 after(() -> {
                     content.text("/");
-                    font.color(210, 210, 210);
+                    font.color(170, 170, 170);
                     margin.horizontal(1, px);
                 });
             });
@@ -190,18 +195,23 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
             cursor.help();
         };
 
-        private static Style Amplifier = () -> {
-            font.color(25, 111, 136);
-            margin.left(0.5, em);
-            box.opacity(0.8);
-
-            // inBackOf(Amplifier, () -> {
-            // margin.left(0.4, em);
-            // });
-        };
-
         private static Style Variable = () -> {
             font.color(90, 90, 90);
+        };
+
+        private static Style Amplifiers = () -> {
+            inBackOf(Variable, () -> {
+                margin.left(0.4, em);
+            });
+        };
+
+        private static Style Amplifier = () -> {
+            font.color(25, 111, 136);
+            box.opacity(0.8);
+
+            notFirstChild(() -> {
+                margin.left(0.4, em);
+            });
         };
     }
 

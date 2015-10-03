@@ -22,14 +22,13 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 
-import jsx.event.Publishable;
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
 
 /**
- * @version 2013/03/28 23:46:05
+ * @version 2015/10/03 10:05:37
  */
-public class Build extends Publishable implements StatusCalculator {
+public class Build implements StatusCalculator {
 
     /** The selected champion. */
     public Champion champion;
@@ -116,8 +115,6 @@ public class Build extends Publishable implements StatusCalculator {
     public void setLevel(int level) {
         if (0 < level && level < 19) {
             this.level.set(level);
-
-            publish(this);
         }
     }
 
@@ -138,8 +135,6 @@ public class Build extends Publishable implements StatusCalculator {
     public void setVersion(Version version) {
         if (version != null) {
             this.version = version;
-
-            publish(this);
         }
     }
 
@@ -275,8 +270,6 @@ public class Build extends Publishable implements StatusCalculator {
         if (0 <= index && index <= 5) {
             items[index] = item;
             itemCounts[index] = 1;
-
-            publish(this);
         }
     }
 
@@ -319,8 +312,6 @@ public class Build extends Publishable implements StatusCalculator {
 
         if (now < skill.getMaxLevel()) {
             skillLevel.set(index, now + 1);
-
-            publish(this);
         }
     }
 
@@ -337,8 +328,6 @@ public class Build extends Publishable implements StatusCalculator {
 
         if (skill.getMinLevel() < now) {
             skillLevel.set(index, now - 1);
-
-            publish(this);
         }
     }
 
@@ -579,8 +568,6 @@ public class Build extends Publishable implements StatusCalculator {
                 champion = Champion.RekSai;
             }
         }
-
-        publish(this);
     }
 
     /**

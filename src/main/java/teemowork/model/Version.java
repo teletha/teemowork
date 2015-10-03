@@ -12,8 +12,6 @@ package teemowork.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import jsx.event.Publishable;
-
 /**
  * @version 2013/12/13 9:11:59
  */
@@ -202,8 +200,6 @@ public enum Version {
     public static void setSelection(Version version) {
         if (version != null) {
             selection = version;
-
-            Publishable.Global.publish(selection);
         }
     }
 

@@ -13,7 +13,6 @@ import static jsx.ui.StructureDescriptor.*;
 
 import js.dom.UIAction;
 import js.lang.Global;
-import jsx.model.SelectableModel;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
@@ -100,8 +99,7 @@ public class MasteryBuilder extends Widget {
                         box($.MasteryPane, If(!available, $.Unavailable), () -> {
                             element(SVG, "svg", $.IconImage, size(45, 45), () -> {
                                 element(SVG, "image", position(0, 0), size(45, 45), attr("xlink:href", mastery
-                                        .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? ""
-                                                : "url('#test')"));
+                                        .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? "" : "url('#test')"));
                                 element(SVG, "filter", $.NBox, id("test"), () -> {
                                     element(SVG, "feColorMatrix", attr("type", "matrix"), attr("values", grayscale(0.4)));
                                 });
@@ -145,7 +143,7 @@ public class MasteryBuilder extends Widget {
     /**
      * @version 2015/08/19 18:29:05
      */
-    private static class MasteryManager extends SelectableModel<MasterySet> {
+    private static class MasteryManager {
     }
 
     /**
