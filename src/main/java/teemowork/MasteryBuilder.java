@@ -12,7 +12,6 @@ package teemowork;
 import static jsx.ui.StructureDescriptor.*;
 
 import js.dom.UIAction;
-import js.lang.Global;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
@@ -46,7 +45,7 @@ public class MasteryBuilder extends Widget {
      * 
      */
     public MasteryBuilder() {
-        masteryManager = Global.localStorage.get(MasteryManager.class);
+        // masteryManager = Global.localStorage.get(MasteryManager.class);
 
         if (masteryManager == null) {
             masteryManager = new MasteryManager();
@@ -99,7 +98,8 @@ public class MasteryBuilder extends Widget {
                         box($.MasteryPane, If(!available, $.Unavailable), () -> {
                             element(SVG, "svg", $.IconImage, size(45, 45), () -> {
                                 element(SVG, "image", position(0, 0), size(45, 45), attr("xlink:href", mastery
-                                        .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? "" : "url('#test')"));
+                                        .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? ""
+                                                : "url('#test')"));
                                 element(SVG, "filter", $.NBox, id("test"), () -> {
                                     element(SVG, "feColorMatrix", attr("type", "matrix"), attr("values", grayscale(0.4)));
                                 });
