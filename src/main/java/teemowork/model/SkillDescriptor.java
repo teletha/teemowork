@@ -11,6 +11,10 @@ package teemowork.model;
 
 import static teemowork.model.Status.*;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
 import teemowork.model.variable.VariableResolver.Diff;
@@ -31,6 +35,9 @@ public class SkillDescriptor extends Descriptor<SkillDescriptor> {
 
     /** The skill type. */
     private SkillType type = SkillType.Active;
+
+    /** The used status types. */
+    private Set<Status> types;
 
     /**
      * @param name
@@ -225,5 +232,37 @@ public class SkillDescriptor extends Descriptor<SkillDescriptor> {
         this.type = type;
 
         return this;
+    }
+
+    /**
+     * <p>
+     * Collect all {@link Status} types in this skill.
+     * </p>
+     * 
+     * @return
+     */
+    public Set<Status> getAllStatusTypes() {
+        if (types == null) {
+            types = new HashSet();
+            collectStatusType(getPassive());
+            collectStatusType(getActive());
+        }
+        return types;
+    }
+
+    /**
+     * <p>
+     * Helper method to collect status.
+     * </p>
+     * 
+     * @param set
+     * @param tokens
+     */
+    private void collectStatusType(List tokens) {
+        for (Object token : tokens) {
+            if (token instanceof Variable) {
+                types.add(((Variable) token).getStatus());
+            }
+        }
     }
 }
