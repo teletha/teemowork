@@ -56,7 +56,7 @@ public class ChampionSelect extends Widget {
     private final SkillFilterGroup damage = new SkillFilterGroup("ダメージ", SkillFilter.PhysicalDamage, SkillFilter.MagicDamage, SkillFilter.TrueDamage, SkillFilter.AoE);
 
     /** The damage type filter. */
-    private final SkillFilterGroup CC = new SkillFilterGroup("CC", SkillFilter.MSSlow, SkillFilter.ASSlow, SkillFilter.Stun, SkillFilter.Snare, SkillFilter.Knockback, SkillFilter.Knockup, SkillFilter.Charm, SkillFilter.Fear, SkillFilter.Terrified, SkillFilter.Suppression, SkillFilter.Suspension, SkillFilter.Silence, SkillFilter.Blind);
+    private final SkillFilterGroup CC = new SkillFilterGroup("CC", SkillFilter.MSSlow, SkillFilter.ASSlow, SkillFilter.Stun, SkillFilter.Snare, SkillFilter.Taunt, SkillFilter.Knockback, SkillFilter.Knockup, SkillFilter.Charm, SkillFilter.Fear, SkillFilter.Terrified, SkillFilter.Suppression, SkillFilter.Suspension, SkillFilter.Silence, SkillFilter.Blind);
 
     /** The damage type filter. */
     private final SkillFilterGroup buff = new SkillFilterGroup("Buff", SkillFilter.Health, SkillFilter.Mana, SkillFilter.AD, SkillFilter.AP, SkillFilter.AR, SkillFilter.MR, SkillFilter.MS, SkillFilter.AS, SkillFilter.IgnoreCC, SkillFilter.IgnoreSlow, SkillFilter.IgnoreUnit);
@@ -233,6 +233,8 @@ public class ChampionSelect extends Widget {
         Stun(Status.Stun),
 
         Snare(Status.Snare),
+
+        Taunt(Status.Taunt),
 
         Knockup(Status.Knockup),
 
