@@ -179,9 +179,8 @@ public class ChampionSelect extends Widget {
             };
 
             private static Style Items = () -> {
-
+                display.flex().wrap.enable();
             };
-
         }
 
         /**
@@ -206,7 +205,6 @@ public class ChampionSelect extends Widget {
             private static class $ extends StyleDescriptor {
 
                 private static Style Filter = () -> {
-                    display.inlineFlex();
                     box.width(ChampionSelect.$.ImagesSize.divide(5));
                 };
             }
