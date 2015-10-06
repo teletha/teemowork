@@ -169,7 +169,6 @@ public class Build implements StatusCalculator {
         case TargetMaxHealthRatio:
         case TargetCurrentHealthRatio:
         case TargetMissingHealthRatio:
-        case TargetMissingHealthPercentage:
         case TargetBounusHealthRatio:
         case AttackDamageRatio:
         case CurrentManaRatio:

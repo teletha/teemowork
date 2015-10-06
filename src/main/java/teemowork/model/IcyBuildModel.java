@@ -115,7 +115,6 @@ public abstract class IcyBuildModel implements StatusCalculator {
         case TargetMaxHealthRatio:
         case TargetCurrentHealthRatio:
         case TargetMissingHealthRatio:
-        case TargetMissingHealthPercentage:
         case AttackDamageRatio:
         case CurrentManaRatio:
         case Stack:
@@ -164,8 +163,7 @@ public abstract class IcyBuildModel implements StatusCalculator {
             double baseAS = champion.getStatus(version).get(AS);
             double levelAS = champion.getStatus(version).get(ASPerLv) * (level - 1);
 
-            return new Computed(baseAS * (1 + levelAS / 100), Math
-                    .min(2.5, baseAS * (1 + (levelAS + sum(ASRatio)) / 100)), status);
+            return new Computed(baseAS * (1 + levelAS / 100), Math.min(2.5, baseAS * (1 + (levelAS + sum(ASRatio)) / 100)), status);
 
         default:
             double base = base(status);
@@ -192,8 +190,7 @@ public abstract class IcyBuildModel implements StatusCalculator {
             return champion.getStatus(version).get(status);
 
         default:
-            double value = champion.getStatus(version)
-                    .get(status) + champion.getStatus(version).get(status.per()) * level;
+            double value = champion.getStatus(version).get(status) + champion.getStatus(version).get(status.per()) * level;
 
             if (champion == Champion.EliseTransformed) {
                 value += computeVariable(status, Champion.Elise.R);

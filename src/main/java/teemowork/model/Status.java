@@ -94,9 +94,7 @@ public enum Status {
 
     TargetCurrentHealthRatio("対象の現在のHealth"),
 
-    TargetMissingHealthRatio("対象の減っているHealth"),
-
-    TargetMissingHealthPercentage("対象のHealth損耗率"),
+    TargetMissingHealthRatio("対象の失ったHealth"),
 
     TargetBounusHealthRatio("対象の増加Health"),
 
@@ -112,13 +110,7 @@ public enum Status {
     // ==================================================
     // Target Mana Related Reference
     // ==================================================
-    TargetManaRatio("対象の最大Mana"),
-
     TargetCurrentManaRatio("対象の現在のMana"),
-
-    TargetMissingManaRatio("対象の減っているMana"),
-
-    TargetMissingManaPercetage("対象のMana損耗率"),
 
     // ==================================================
     // Attack Related
@@ -237,13 +229,13 @@ public enum Status {
     // ==================================================
     // Heal Related
     // ==================================================
-    RestoreHealth("Health"),
+    RestoreHealth(Health),
 
     RestoreHealthRatio("Health回復量", 3),
 
-    RestoreMana("Mana"),
+    RestoreMana(Mana),
 
-    RestoreEnergy("気"),
+    RestoreEnergy(Energy),
 
     // ==================================================
     // Crowd Control and Debuff
@@ -288,21 +280,24 @@ public enum Status {
     /** Movement Speed */
     MS("移動速度"), MSPerLv, MSRatio("移動速度"), BounusMS("増加移動速度"),
 
+    /** Reduction. */
+    MSReduction(MS),
+
     /** Ignore Slow */
-    IgnoreSlow(MSSlowRatio.name + "無効化"),
+    IgnoreSlow(MSSlow.name + "無効"),
 
     /** Ignore Unit Collision */
     IgnoreUnitCollision("ユニット衝突無効"),
 
-    /** Reduction. */
-    MSReduction(MS),
+    /** Ignore Crowd Control */
+    IgnoreCC("CC無効"),
+
+    /** Remove Crowd Control */
+    RemoveCC("全てのCCを解除"),
 
     // ==================================================
     // State
     // ==================================================
-    /** Ignore Crowd Control */
-    IgnoreCC("CC無効"),
-
     Stealth("ステルス"),
 
     Visionable("視界を得る"),

@@ -12,9 +12,12 @@ package teemowork;
 import static jsx.ui.StructureDescriptor.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -32,17 +35,18 @@ import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.CheckBox;
 import jsx.ui.piece.Input;
-import jsx.ui.piece.Select;
 import jsx.ui.piece.UI;
 import kiss.Events;
 import kiss.I;
 import teemowork.model.Champion;
 import teemowork.model.Skill;
+import teemowork.model.SkillDescriptor;
 import teemowork.model.Status;
 import teemowork.model.Version;
+import teemowork.model.variable.Variable;
 
 /**
- * @version 2015/09/18 14:05:30
+ * @version 2015/10/07 2:56:10
  */
 public class ChampionSelect extends Widget {
 
@@ -53,21 +57,76 @@ public class ChampionSelect extends Widget {
     public Events<Champion> selectChampion = when(UIAction.Click).at($.Container, Champion.class);
 
     /** The damage type filter. */
-    private final SkillFilterGroup damage = new SkillFilterGroup("ダメージ", SkillFilter.PhysicalDamage, SkillFilter.MagicDamage, SkillFilter.TrueDamage, SkillFilter.AoE);
+    private static final SkillFilters damage = new SkillFilters("ダメージ").add(Status.PhysicalDamage)
+            .add(Status.MagicDamage)
+            .add(Status.TrueDamage)
+            .add("範囲攻撃", Status.Radius);
 
     /** The damage type filter. */
-    private final SkillFilterGroup CC = new SkillFilterGroup("CC", SkillFilter.MSSlow, SkillFilter.ASSlow, SkillFilter.Stun, SkillFilter.Snare, SkillFilter.Taunt, SkillFilter.Knockback, SkillFilter.Knockup, SkillFilter.Charm, SkillFilter.Fear, SkillFilter.Terrified, SkillFilter.Suppression, SkillFilter.Suspension, SkillFilter.Silence, SkillFilter.Blind);
+    private static final SkillFilters amplifier = new SkillFilters("参照")
+            .addReferSelf(Status.Health, Status.HealthRatio, Status.BounusHealth)
+            .addReferSelf(Status.Mana, Status.ManaRatio, Status.BounusMana)
+            .addReferSelf(Status.AD, Status.ADRatio, Status.BounusAD)
+            .addReferSelf(Status.AP, Status.APRatio)
+            .addReferSelf(Status.AR, Status.ARRatio, Status.BounusAR)
+            .addReferSelf(Status.MR, Status.MRRatio, Status.BounusMR)
+            .addReferSelf(Status.MS, Status.MSRatio, Status.BounusMS)
+            .addReferSelf(Status.CurrentHealthRatio)
+            .addReferSelf(Status.CurrentManaRatio)
+            .addReferSelf(Status.MissingHealthRatio)
+            .addReferSelf(Status.MissingManaRatio)
+            .addReferSelf(Status.MissingHealthPercentage)
+            .addReferSelf(Status.MissingManaPercentage)
+            .addReferEnemy(Status.TargetMaxHealthRatio)
+            .addReferEnemy(Status.TargetCurrentHealthRatio)
+            .addReferEnemy(Status.TargetBounusHealthRatio)
+            .addReferEnemy(Status.TargetMissingHealthRatio)
+            .addReferEnemy(Status.TargetAP);
 
     /** The damage type filter. */
-    private final SkillFilterGroup buff = new SkillFilterGroup("Buff", SkillFilter.Health, SkillFilter.Mana, SkillFilter.AD, SkillFilter.AP, SkillFilter.AR, SkillFilter.MR, SkillFilter.MS, SkillFilter.AS, SkillFilter.IgnoreCC, SkillFilter.IgnoreSlow, SkillFilter.IgnoreUnit);
+    private static final SkillFilters buff = new SkillFilters("Buff").add(Status.Health, Status.HealthRatio)
+            .add(Status.Mana, Status.ManaRatio)
+            .add(Status.AD, Status.ADRatio)
+            .add(Status.AP, Status.APRatio)
+            .add(Status.AR, Status.ARRatio)
+            .add(Status.MR, Status.MRRatio)
+            .add(Status.MS, Status.MSRatio)
+            .add(Status.AS, Status.ASRatio)
+            .add(Status.ARPen, Status.ARPenRatio)
+            .add(Status.MRPen, Status.MRPenRatio)
+            .add(Status.Shield)
+            .add(Status.IgnoreCC, Status.RemoveCC)
+            .add(Status.IgnoreSlow)
+            .add(Status.IgnoreUnitCollision);
 
     /** The damage type filter. */
-    private final SkillFilterGroup restore = new SkillFilterGroup("回復", SkillFilter.RestoreHealth, SkillFilter.RestoreMana, SkillFilter.RestoreEnegy);
+    private static final SkillFilters debuff = new SkillFilters("Debuff")
+            .add(Status.MSSlow, Status.MSSlowRatio, Status.Slow, Status.SlowRatio)
+            .add(Status.ASSlow, Status.ASRatio, Status.Slow, Status.SlowRatio)
+            .add(Status.Stun)
+            .add(Status.Snare)
+            .add(Status.Taunt)
+            .add(Status.Knockback)
+            .add(Status.Knockup)
+            .add(Status.Charm)
+            .add(Status.Fear)
+            .add(Status.Terrified)
+            .add(Status.Suppression)
+            .add(Status.Suspension)
+            .add(Status.Silence)
+            .add(Status.Blind);
 
     /** The damage type filter. */
-    private final SkillFilterGroup others = new SkillFilterGroup("その他", SkillFilter.AAReset, SkillFilter.Onhit, SkillFilter.CDR, SkillFilter.Visionable);
+    private static final SkillFilters restore = new SkillFilters("回復")
+            .add(Status.RestoreHealth, Status.RestoreHealthRatio, Status.Hreg, Status.HregPerLv, Status.HregRatio)
+            .add(Status.RestoreMana, Status.Mreg, Status.MregPerLv, Status.MregRatio)
+            .add(Status.RestoreEnergy, Status.EnergyPerLv, Status.EnergyRatio);
 
-    private Select<SkillFilter> condition = UI.select(SkillFilter.class);
+    /** The damage type filter. */
+    private static final SkillFilters others = new SkillFilters("その他").add("AAタイマー解消", Status.ResetAATimer)
+            .add("オンヒット効果", Status.OnHitEffect)
+            .add(Status.CDR, Status.CDRRatio, Status.CDDecrease, Status.CDDecreaseRatio)
+            .add(Status.Visionable);
 
     /**
      * 
@@ -84,10 +143,10 @@ public class ChampionSelect extends Widget {
         box($.Root, () -> {
             box($.Filters, input, () -> {
                 text($.FilterDetail, "スキルで絞込");
-                box($.SkillFilters, damage, buff, CC, restore, others);
+                box($.SkillFilters, damage, amplifier, buff, debuff, restore, others);
             });
             box($.ImageSet, contents(Champion.getAll(), champion -> {
-                box($.Container, If(!filterBySkill(champion) || !champion.match(input.value.get()), $.Unselected), () -> {
+                box($.Container, If(!filter(champion) || !champion.match(input.value.get()), $.Unselected), () -> {
                     box($.IconImage, $.IconPosition.of(champion));
                     text($.Title, champion.name);
                 });
@@ -97,33 +156,27 @@ public class ChampionSelect extends Widget {
 
     /**
      * <p>
-     * Filter by skill description.
+     * Filter by conditions.
      * </p>
      * 
      * @param champion
      * @return
      */
-    private boolean filterBySkill(Champion champion) {
-        List<SkillFilter> requires = new ArrayList();
+    private boolean filter(Champion champion) {
+        List<Predicate<Champion>> filters = new ArrayList();
 
-        for (SkillFilter condition : SkillFilter.values()) {
-            if (condition.condition.get()) {
-                requires.add(condition);
+        for (SkillFilter filter : SkillFilter.filters) {
+            if (filter.use.get()) {
+                filters.add(filter.filter);
             }
         }
 
-        if (requires.isEmpty()) {
+        if (filters.isEmpty()) {
             return true;
         }
 
-        Set<Status> all = new HashSet();
-
-        for (Skill skill : champion.skills) {
-            all.addAll(skill.getDescriptor(Version.Latest).getAllStatusTypes());
-        }
-
-        for (SkillFilter condition : requires) {
-            if (!condition.accpet(all)) {
+        for (Predicate<Champion> filter : filters) {
+            if (!filter.test(champion)) {
                 return false;
             }
         }
@@ -133,21 +186,121 @@ public class ChampionSelect extends Widget {
     /**
      * @version 2015/10/05 14:12:22
      */
-    private static class SkillFilterGroup extends Widget {
+    private static class SkillFilters extends Widget {
 
         /** A filter group name. */
         private final String name;
 
         /** The filter set. */
-        private final SkillFilter[] filters;
+        private final List<SkillFilter> filters = new ArrayList();
 
         /**
          * @param name
-         * @param filters
          */
-        private SkillFilterGroup(String name, SkillFilter... filters) {
+        private SkillFilters(String name) {
             this.name = name;
-            this.filters = filters;
+        }
+
+        /**
+         * <p>
+         * Add filter.
+         * </p>
+         * 
+         * @param statuses
+         * @return
+         */
+        private SkillFilters add(Status... statuses) {
+            return add(statuses[0].name, statuses);
+        }
+
+        /**
+         * <p>
+         * Add filter.
+         * </p>
+         * 
+         * @param statuses
+         * @return
+         */
+        private SkillFilters add(String name, Status... statuses) {
+            filters.add(new SkillFilter(name, champion -> {
+                SkillInfo info = SkillInfo.of(champion);
+
+                for (Status status : statuses) {
+                    if (info.types.contains(status)) {
+                        return true;
+                    }
+                }
+                return false;
+            }));
+            return this;
+        }
+
+        /**
+         * <p>
+         * Add filter.
+         * </p>
+         * 
+         * @param statuses
+         * @return
+         */
+        private SkillFilters addReferSelf(Status... statuses) {
+            return addReferSelf(statuses[0].name, statuses);
+        }
+
+        /**
+         * <p>
+         * Add filter.
+         * </p>
+         * 
+         * @param statuses
+         * @return
+         */
+        private SkillFilters addReferSelf(String name, Status... statuses) {
+            filters.add(new SkillFilter("自身の" + name, champion -> {
+                SkillInfo info = SkillInfo.of(champion);
+
+                for (Status status : statuses) {
+                    if (info.amplifiers.contains(status)) {
+                        return true;
+                    }
+                }
+                return false;
+            }));
+            return this;
+        }
+
+        /**
+         * <p>
+         * Add filter.
+         * </p>
+         * 
+         * @param statuses
+         * @return
+         */
+        private SkillFilters addReferEnemy(Status... statuses) {
+            return addReferEnemy(statuses[0].name, statuses);
+        }
+
+        /**
+         * <p>
+         * Add filter.
+         * </p>
+         * 
+         * @param statuses
+         * @return
+         */
+        private SkillFilters addReferEnemy(String name, Status... statuses) {
+            filters.add(new SkillFilter(name, champion -> {
+                SkillInfo info = SkillInfo.of(champion);
+
+                for (Status status : statuses) {
+                    if (info.amplifiers.contains(status)) {
+                        return true;
+                    }
+                }
+                return false;
+            }));
+            return this;
         }
 
         /**
@@ -189,7 +342,7 @@ public class ChampionSelect extends Widget {
         private static class SkillFilterWidget extends Widget1<SkillFilter> {
 
             /** The chech box. */
-            private CheckBox check = UI.checkbox(model1.condition, model1.label).style($.Filter);
+            private CheckBox check = UI.checkbox(model1.use, model1.name).style($.Filter);
 
             /**
              * {@inheritDoc}
@@ -212,134 +365,93 @@ public class ChampionSelect extends Widget {
     }
 
     /**
-     * @version 2015/09/30 22:23:36
+     * @version 2015/10/07 1:37:07
      */
-    private static enum SkillFilter {
+    private static class SkillFilter {
 
-        PhysicalDamage(Status.PhysicalDamage),
+        /** The filter manager. */
+        private static final List<SkillFilter> filters = new ArrayList();
 
-        MagicDamage(Status.MagicDamage),
+        /** The filter name. */
+        private final StringProperty name;
 
-        TrueDamage(Status.TrueDamage),
+        /** The actual filter. */
+        private final Predicate<Champion> filter;
 
-        AoE("範囲攻撃", Status.Radius),
-
-        MSSlow(Status.MSSlow, Status.MSSlowRatio, Status.Slow, Status.SlowRatio),
-
-        ASSlow(Status.ASSlow, Status.ASSlowRatio, Status.Slow, Status.SlowRatio),
-
-        Stun(Status.Stun),
-
-        Snare(Status.Snare),
-
-        Taunt(Status.Taunt),
-
-        Knockup(Status.Knockup),
-
-        Knockback(Status.Knockback),
-
-        Charm(Status.Charm),
-
-        Fear(Status.Fear),
-
-        Terrified(Status.Terrified),
-
-        Suppression(Status.Suppression),
-
-        Suspension(Status.Suspension),
-
-        Silence(Status.Silence),
-
-        Blind(Status.Blind),
-
-        Onhit("オンヒット効果", Status.OnHitEffect),
-
-        AAReset("攻撃タイマー解消", Status.ResetAATimer),
-
-        CDR("CD減少", Status.CDR, Status.CDRRatio, Status.CDDecrease, Status.CDDecreaseRatio),
-
-        Visionable("視界確保", Status.Visionable),
-
-        Health(Status.Health, Status.HealthRatio),
-
-        Mana(Status.Mana, Status.ManaRatio),
-
-        AD(Status.AD, Status.ADRatio),
-
-        AP(Status.AP, Status.APRatio),
-
-        AR(Status.AR, Status.ARRatio),
-
-        MR(Status.MR, Status.MRRatio),
-
-        MS("移動速度増加", Status.MS, Status.MSRatio),
-
-        AS("攻撃速度増加", Status.AS, Status.ASRatio, Status.ASPerLv),
-
-        IgnoreCC(Status.IgnoreCC),
-
-        IgnoreSlow(Status.IgnoreSlow),
-
-        IgnoreUnit(Status.IgnoreUnitCollision),
-
-        RestoreHealth(Status.Health + "回復", Status.RestoreHealth, Status.RestoreHealthRatio, Status.Hreg, Status.HregPerLv,
-                Status.HregRatio),
-
-        RestoreMana(Status.Mana + "回復", Status.RestoreMana, Status.Mreg, Status.MregPerLv, Status.MregRatio),
-
-        RestoreEnegy(Status.Energy + "回復", Status.RestoreEnergy, Status.EnergyPerLv, Status.EnergyRatio);
-
-        /** The human-readable condition name. */
-        private final StringProperty label;
-
-        /** The actual conditions. */
-        private final Status[] types;
-
-        private BooleanProperty condition = new SimpleBooleanProperty();
+        /** The filter usage. */
+        private final BooleanProperty use = new SimpleBooleanProperty();
 
         /**
-         * <p>
-         * Create Condition.
-         * </p>
-         * 
-         * @param type
+         * @param name
+         * @param filter
          */
-        private SkillFilter(Status... types) {
-            this(types[0].name, types);
+        private SkillFilter(String name, Predicate<Champion> filter) {
+            this.name = new SimpleStringProperty(name);
+            this.filter = filter;
+
+            filters.add(this);
+        }
+    }
+
+    /**
+     * @version 2015/10/07 0:04:51
+     */
+    private static class SkillInfo {
+
+        /** The cache. */
+        private static final Map<Champion, SkillInfo> infos = new HashMap();
+
+        /** The status index. */
+        private final Set<Status> types = new HashSet();
+
+        /** The status index. */
+        private final Set<Status> amplifiers = new HashSet();
+
+        /**
+         * @param champion
+         */
+        private SkillInfo(Champion champion) {
+            for (Skill skill : champion.skills) {
+                SkillDescriptor descriptor = skill.getDescriptor(Version.Latest);
+
+                parse(descriptor.getPassive());
+                parse(descriptor.getActive());
+            }
         }
 
         /**
          * <p>
-         * Create Condition.
+         * Helper method to parse status.
          * </p>
          * 
-         * @param label
-         * @param types
+         * @param tokens
          */
-        private SkillFilter(String label, Status... types) {
-            this.label = new SimpleStringProperty(label);
-            this.types = types;
-        }
+        private void parse(List tokens) {
+            for (Object token : tokens) {
+                if (token instanceof Variable) {
+                    Variable variable = (Variable) token;
+                    Status status = variable.getStatus();
+                    types.add(status);
 
-        /**
-         * @param all
-         * @return
-         */
-        private boolean accpet(Set<Status> all) {
-            for (Status type : types) {
-                if (all.contains(type)) {
-                    return true;
+                    List<Variable> amplifiers = variable.getAmplifiers();
+
+                    for (Variable amplifier : amplifiers) {
+                        this.amplifiers.add(amplifier.getStatus());
+                    }
                 }
             }
-            return false;
         }
 
         /**
-         * {@inheritDoc}
+         * <p>
+         * Retrieve {@link SkillInfo} for the specified champion.
+         * </p>
+         * 
+         * @param champion
+         * @return
          */
-        @Override
-        public String toString() {
-            return label.get();
+        private static SkillInfo of(Champion champion) {
+            return infos.computeIfAbsent(champion, SkillInfo::new);
         }
     }
 

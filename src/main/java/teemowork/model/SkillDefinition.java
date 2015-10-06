@@ -222,9 +222,10 @@ public interface SkillDefinition {
                 .mana(40, 10);
 
         R.update(P412)
-                .active("7秒間{1}を得て、{2}する。Disable中でも使用可能。使用時に自身にかかっているCCを全て解除する。")
-                .variable(1, AD, 60, 15)
-                .variable(2, DamageReductionRatio, 70)
+                .active("{1}し、その後7秒間{2}を得て、{3}する。Disable中でも使用可能。")
+                .variable(1, RemoveCC)
+                .variable(2, AD, 60, 15)
+                .variable(3, DamageReductionRatio, 70)
                 .cd(120, -20)
                 .mana(100, 0);
     }
@@ -751,7 +752,7 @@ public interface SkillDefinition {
                 .variable(2, RestoreMana, 3.25, 0, level(0.25));
 
         Q.update(P315)
-                .active("指定地点に0.5秒後にトゲを出現させ、{1}の敵ユニットに{2}、{3}を与えて、1.5秒間{5}にする。また指定地点の{4}。")
+                .active("指定地点に0.5秒後にトゲを出現させ、{1}の敵ユニットに{2}と{3}を与え、その後1.5秒間{5}にする。また指定地点の{4}。")
                 .variable(1, Radius, 175)
                 .variable(2, MagicDamage, 80, 55, ap(1))
                 .variable(3, Knockup, 1)
@@ -1417,8 +1418,9 @@ public interface SkillDefinition {
                 .range(625);
 
         W.update(P514)
-                .active("自身のDebuffを取り除き{1}する。StunなどのDisable中でも使用可能。")
-                .variable(1, RestoreHealth, 50, 25, ap(0.9), amplify(MissingHealthRatio, 15))
+                .active("{1}し{2}する。Disable中でも使用可能。")
+                .variable(1, RemoveCC)
+                .variable(2, RestoreHealth, 50, 25, ap(0.9), amplify(MissingHealthRatio, 15))
                 .mana(60, 10)
                 .cd(22, -2);
 
