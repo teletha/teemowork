@@ -87,7 +87,7 @@ public class ChampionSelect extends Widget {
                 box($.SkillFilters, damage, buff, CC, restore, others);
             });
             box($.ImageSet, contents(Champion.getAll(), champion -> {
-                box($.Container, If(!filterBySkill(champion), $.Unselected), () -> {
+                box($.Container, If(!filterBySkill(champion) || !champion.match(input.value.get()), $.Unselected), () -> {
                     box($.IconImage, $.IconPosition.of(champion));
                     text($.Title, champion.name);
                 });
