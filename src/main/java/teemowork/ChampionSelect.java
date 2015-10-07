@@ -55,73 +55,12 @@ public class ChampionSelect extends Widget {
 
     /** The skill filters. */
     private static final SkillFiltersWidget[] groups = {
-            new SkillFiltersWidget("ダメージ",
-                    type(Status.PhysicalDamage),
-                    type(Status.MagicDamage),
-                    type(Status.TrueDamage),
-                    type("範囲攻撃", Status.Radius)),
-            new SkillFiltersWidget("参照",
-                    referSelf(Status.Health, Status.HealthRatio, Status.BounusHealth, Status.BaseHealth),
-                    referSelf(Status.Mana, Status.ManaRatio, Status.BounusMana),
-                    referSelf(Status.AD, Status.ADRatio, Status.BounusAD, Status.BaseAD),
-                    referSelf(Status.AP, Status.APRatio),
-                    referSelf(Status.AR, Status.ARRatio, Status.BounusAR),
-                    referSelf(Status.MR, Status.MRRatio, Status.BounusMR),
-                    referSelf(Status.MS, Status.MSRatio, Status.BounusMS),
-                    referSelf(Status.CurrentHealthRatio),
-                    referSelf(Status.CurrentManaRatio),
-                    referSelf(Status.MissingHealthRatio),
-                    referSelf(Status.MissingManaRatio),
-                    referSelf(Status.MissingHealthPercentage),
-                    referSelf(Status.MissingManaPercentage),
-                    addReferEnemy(Status.TargetMaxHealthRatio),
-                    addReferEnemy(Status.TargetCurrentHealthRatio),
-                    addReferEnemy(Status.TargetBounusHealthRatio),
-                    addReferEnemy(Status.TargetMissingHealthRatio),
-                    addReferEnemy(Status.TargetAP)),
-            new SkillFiltersWidget("Buff",
-                    type(Status.Health, Status.HealthRatio),
-                    type(Status.Mana, Status.ManaRatio),
-                    type(Status.AD, Status.ADRatio),
-                    type(Status.AP, Status.APRatio),
-                    type(Status.AR, Status.ARRatio),
-                    type(Status.MR, Status.MRRatio),
-                    type(Status.MS, Status.MSRatio),
-                    type(Status.AS, Status.ASRatio),
-                    type(Status.CDR, Status.CDRRatio),
-                    type(Status.LS, Status.LSRatio),
-                    type(Status.SV, Status.SVRatio),
-                    type(Status.ARPen, Status.ARPenRatio),
-                    type(Status.MRPen, Status.MRPenRatio),
-                    type(Status.Shield, Status.PhysicalShield, Status.MagicShield),
-                    type("スキル無効", Status.SpellShield),
-                    type(Status.IgnoreCC, Status.RemoveCC),
-                    type(Status.IgnoreSlow),
-                    type(Status.IgnoreUnitCollision)),
-            new SkillFiltersWidget("Debuff",
-                    type(Status.MSSlow, Status.MSSlowRatio, Status.Slow, Status.SlowRatio),
-                    type(Status.ASSlow, Status.ASSlowRatio, Status.Slow, Status.SlowRatio),
-                    type(Status.Stun),
-                    type(Status.Snare),
-                    type(Status.Taunt),
-                    type(Status.Knockback),
-                    type(Status.Knockup),
-                    type(Status.Charm),
-                    type(Status.Fear),
-                    type(Status.Terrified),
-                    type(Status.Suppression),
-                    type(Status.Suspension),
-                    type(Status.Silence),
-                    type(Status.Blind)),
-            new SkillFiltersWidget("回復",
-                    type(Status.RestoreHealth, Status.RestoreHealthRatio, Status.Hreg, Status.HregPerLv, Status.HregRatio),
-                    type(Status.RestoreMana, Status.Mreg, Status.MregPerLv, Status.MregRatio),
-                    type(Status.RestoreEnergy, Status.EnergyPerLv, Status.EnergyRatio)),
-            new SkillFiltersWidget("その他",
-                    type("AAタイマー解消", Status.ResetAATimer),
-                    type("オンヒット効果", Status.OnHitEffect),
-                    type("CD解消", Status.CDDecrease, Status.CDDecreaseRatio, Status.CD),
-                    type(Status.Visionable))};
+            new SkillFiltersWidget("ダメージ", type(Status.PhysicalDamage), type(Status.MagicDamage), type(Status.TrueDamage), type("範囲攻撃", Status.Radius)),
+            new SkillFiltersWidget("参照", referSelf(Status.Health, Status.HealthRatio, Status.BounusHealth, Status.BaseHealth), referSelf(Status.Mana, Status.ManaRatio, Status.BounusMana), referSelf(Status.AD, Status.ADRatio, Status.BounusAD, Status.BaseAD), referSelf(Status.AP, Status.APRatio), referSelf(Status.AR, Status.ARRatio, Status.BounusAR), referSelf(Status.MR, Status.MRRatio, Status.BounusMR), referSelf(Status.MS, Status.MSRatio, Status.BounusMS), referSelf(Status.CurrentHealthRatio), referSelf(Status.CurrentManaRatio), referSelf(Status.MissingHealthRatio), referSelf(Status.MissingManaRatio), referSelf(Status.MissingHealthPercentage), referSelf(Status.MissingManaPercentage), addReferEnemy(Status.TargetMaxHealthRatio), addReferEnemy(Status.TargetCurrentHealthRatio), addReferEnemy(Status.TargetBounusHealthRatio), addReferEnemy(Status.TargetMissingHealthRatio), addReferEnemy(Status.TargetAP)),
+            new SkillFiltersWidget("Buff", type(Status.Health, Status.HealthRatio), type(Status.Mana, Status.ManaRatio), type(Status.AD, Status.ADRatio), type(Status.AP, Status.APRatio), type(Status.AR, Status.ARRatio), type(Status.MR, Status.MRRatio), type(Status.MS, Status.MSRatio), type(Status.AS, Status.ASRatio), type(Status.CDR, Status.CDRRatio), type(Status.LS, Status.LSRatio), type(Status.SV, Status.SVRatio), type(Status.ARPen, Status.ARPenRatio), type(Status.MRPen, Status.MRPenRatio), type(Status.Shield, Status.PhysicalShield, Status.MagicShield), type("スキル無効", Status.SpellShield), type(Status.IgnoreCC, Status.RemoveCC), type(Status.IgnoreSlow), type(Status.IgnoreUnitCollision)),
+            new SkillFiltersWidget("Debuff", type(Status.MSSlow, Status.MSSlowRatio, Status.Slow, Status.SlowRatio), type(Status.ASSlow, Status.ASSlowRatio, Status.Slow, Status.SlowRatio), type(Status.Stun), type(Status.Snare), type(Status.Taunt), type(Status.Knockback), type(Status.Knockup), type(Status.Charm), type(Status.Fear), type(Status.Terrified), type(Status.Suppression), type(Status.Suspension), type(Status.Silence), type(Status.Blind)),
+            new SkillFiltersWidget("回復", type(Status.RestoreHealth, Status.RestoreHealthRatio, Status.Hreg, Status.HregPerLv, Status.HregRatio), type(Status.RestoreMana, Status.Mreg, Status.MregPerLv, Status.MregRatio), type(Status.RestoreEnergy, Status.EnergyPerLv, Status.EnergyRatio)),
+            new SkillFiltersWidget("その他", type("AAタイマー解消", Status.ResetAATimer), type("オンヒット効果", Status.OnHitEffect), type("CD解消", Status.CDDecrease, Status.CDDecreaseRatio, Status.CD), type(Status.Visionable))};
 
     private Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
 
@@ -141,6 +80,13 @@ public class ChampionSelect extends Widget {
         Events<Events<Predicate<Champion>>> filterBySkills = Events.from(groups)
                 .flatMap(group -> Events.from(group.filters))
                 .map(filter -> filter.selectFilter);
+
+        Events<Predicate<Champion>> activateFilter = Events.from(groups)
+                .flatMap(group -> Events.from(group.filters))
+                .flatMap(filter -> filter.activateFilter);
+        Events<Predicate<Champion>> deactivateSkillFilter = Events.from(groups)
+                .flatMap(group -> Events.from(group.filters))
+                .flatMap(filter -> filter.deactivateFilter);
 
         selectedFilter = filterByName.collectLatest(filterBySkills);
         selectedFilters = selectedFilter.to();
@@ -352,6 +298,10 @@ public class ChampionSelect extends Widget {
         private CheckBox check = UI.checkbox(model1.use, model1.name).style($.Filter);
 
         private Events<Predicate<Champion>> selectFilter = I.observe(check.check).map(v -> v ? model1.filter : null);
+
+        private final Events<Predicate<Champion>> activateFilter = I.observe(check.check).filter(v -> v).map(model1.filter);
+
+        private final Events<Predicate<Champion>> deactivateFilter = I.observe(check.check).filter(v -> !v).map(model1.filter);
 
         /**
          * {@inheritDoc}
