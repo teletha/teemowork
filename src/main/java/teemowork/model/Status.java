@@ -587,9 +587,6 @@ public enum Status {
         case RestoreMana:
             return name + "が" + formatValue(computed) + "回復";
 
-        case CD:
-            return "CDが" + formatValue(computed) + "になる";
-
         case CDDecrease:
         case CDDecreaseRatio:
             return "CDが" + formatValue(computed) + "解消";

@@ -131,7 +131,7 @@ public interface SkillDefinition {
                 .range(975);
 
         R.update(P503)
-                .active("指定方向にダッシュした後、{2}の敵ユニット(敵チャンピオンを優先)3体に{1}を与える。このスキルは10秒の間、3回まで連続して使用できる(但し、一度使用する度に1秒の" + CD + "が発生する)。2～3発目はマナコスト無しで使用可能。同一対象に3発命中すると{3}。")
+                .active("指定方向にダッシュした後、{2}の敵ユニット(敵チャンピオンを優先)3体に{1}を与える。このスキルは10秒の間、3回まで連続して使用できる。2～3発目はマナコスト無しで使用可能。同一対象に3発命中すると{3}。")
                 .variable(1, MagicDamage, 70, 40, ap(0.3))
                 .variable(2, Radius, 600)
                 .variable(3, MagicDamage, 210, 120, ap(0.9))
@@ -724,9 +724,9 @@ public interface SkillDefinition {
                 .range(850);
 
         E.update(P510)
-                .active("対象の敵ユニットに{1}を与え、" + champion + "の毒による{3}する（この効果は2回まで累積する）。対象が毒を受けている場合、{2}。")
+                .active("対象の敵ユニットに{1}を与え、" + champion + "の毒による{3}する（この効果は2回まで累積する）。対象が毒を受けている場合、{2}が0.5秒になる。")
                 .variable(1, MagicDamage, 55, 25, ap(0.55))
-                .variable(2, CD, 0.5)
+                .variable(2, CD)
                 .variable(3, DamageRatio, 20)
                 .mana(50, 10)
                 .cd(5)
@@ -3918,9 +3918,10 @@ public interface SkillDefinition {
      */
     public static void Ryze(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P514)
-                .passive("スキル使用時に6秒間、スタックを得る。5スタック時に、{1}間フルチャージ状態になり、{2}を得て、スキルを使用するたびに使用したスキル以外のスキルのCDが「" + Q + "のCD数値分」解消される。")
+                .passive("スキル使用時に6秒間、スタックを得る。5スタック時に、{1}間フルチャージ状態になり、{2}を得て、スキルを使用するたびに使用したスキル以外のスキルの{3}が「" + Q + "のCD数値分」解消する。")
                 .variable(1, Time, new ReferPlus(Q, 2.5, 0.5))
-                .variable(2, Shield, 20, 0, level(5), amplify(Mana, 0.08));
+                .variable(2, Shield, 20, 0, level(5), amplify(Mana, 0.08))
+                .variable(3, CD);
 
         Q.update(P514)
                 .passive(P + "がフルチャージした際の効果時間が{2}増加する。")
