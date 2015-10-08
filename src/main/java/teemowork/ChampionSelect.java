@@ -31,6 +31,7 @@ import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
+import jsx.ui.Model;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
@@ -55,18 +56,83 @@ public class ChampionSelect extends Widget {
 
     /** The skill filters. */
     private static final SkillFiltersWidget[] groups = {
-            new SkillFiltersWidget("ダメージ", type(Status.PhysicalDamage), type(Status.MagicDamage), type(Status.TrueDamage), type("範囲攻撃", Status.Radius)),
-            new SkillFiltersWidget("参照", referSelf(Status.Health, Status.HealthRatio, Status.BounusHealth, Status.BaseHealth), referSelf(Status.Mana, Status.ManaRatio, Status.BounusMana), referSelf(Status.AD, Status.ADRatio, Status.BounusAD, Status.BaseAD), referSelf(Status.AP, Status.APRatio), referSelf(Status.AR, Status.ARRatio, Status.BounusAR), referSelf(Status.MR, Status.MRRatio, Status.BounusMR), referSelf(Status.MS, Status.MSRatio, Status.BounusMS), referSelf(Status.CurrentHealthRatio), referSelf(Status.CurrentManaRatio), referSelf(Status.MissingHealthRatio), referSelf(Status.MissingManaRatio), referSelf(Status.MissingHealthPercentage), referSelf(Status.MissingManaPercentage), addReferEnemy(Status.TargetMaxHealthRatio), addReferEnemy(Status.TargetCurrentHealthRatio), addReferEnemy(Status.TargetBounusHealthRatio), addReferEnemy(Status.TargetMissingHealthRatio), addReferEnemy(Status.TargetAP)),
-            new SkillFiltersWidget("Buff", type(Status.Health, Status.HealthRatio), type(Status.Mana, Status.ManaRatio), type(Status.AD, Status.ADRatio), type(Status.AP, Status.APRatio), type(Status.AR, Status.ARRatio), type(Status.MR, Status.MRRatio), type(Status.MS, Status.MSRatio), type(Status.AS, Status.ASRatio), type(Status.CDR, Status.CDRRatio), type(Status.LS, Status.LSRatio), type(Status.SV, Status.SVRatio), type(Status.ARPen, Status.ARPenRatio), type(Status.MRPen, Status.MRPenRatio), type(Status.Shield, Status.PhysicalShield, Status.MagicShield), type("スキル無効", Status.SpellShield), type(Status.IgnoreCC, Status.RemoveCC), type(Status.IgnoreSlow), type(Status.IgnoreUnitCollision)),
-            new SkillFiltersWidget("Debuff", type(Status.MSSlow, Status.MSSlowRatio, Status.Slow, Status.SlowRatio), type(Status.ASSlow, Status.ASSlowRatio, Status.Slow, Status.SlowRatio), type(Status.Stun), type(Status.Snare), type(Status.Taunt), type(Status.Knockback), type(Status.Knockup), type(Status.Charm), type(Status.Fear), type(Status.Terrified), type(Status.Suppression), type(Status.Suspension), type(Status.Silence), type(Status.Blind)),
-            new SkillFiltersWidget("回復", type(Status.RestoreHealth, Status.RestoreHealthRatio, Status.Hreg, Status.HregPerLv, Status.HregRatio), type(Status.RestoreMana, Status.Mreg, Status.MregPerLv, Status.MregRatio), type(Status.RestoreEnergy, Status.EnergyPerLv, Status.EnergyRatio)),
-            new SkillFiltersWidget("その他", type("AAタイマー解消", Status.ResetAATimer), type("オンヒット効果", Status.OnHitEffect), type("CD解消", Status.CDDecrease, Status.CDDecreaseRatio, Status.CD), type(Status.Visionable))};
+            new SkillFiltersWidget("ダメージ",
+                    type(Status.PhysicalDamage),
+                    type(Status.MagicDamage),
+                    type(Status.TrueDamage),
+                    type("範囲攻撃", Status.Radius)),
+            new SkillFiltersWidget("参照",
+                    referSelf(Status.Health, Status.HealthRatio, Status.BounusHealth, Status.BaseHealth),
+                    referSelf(Status.Mana, Status.ManaRatio, Status.BounusMana),
+                    referSelf(Status.AD, Status.ADRatio, Status.BounusAD, Status.BaseAD),
+                    referSelf(Status.AP, Status.APRatio),
+                    referSelf(Status.AR, Status.ARRatio, Status.BounusAR),
+                    referSelf(Status.MR, Status.MRRatio, Status.BounusMR),
+                    referSelf(Status.MS, Status.MSRatio, Status.BounusMS),
+                    referSelf(Status.CurrentHealthRatio),
+                    referSelf(Status.CurrentManaRatio),
+                    referSelf(Status.MissingHealthRatio),
+                    referSelf(Status.MissingManaRatio),
+                    referSelf(Status.MissingHealthPercentage),
+                    referSelf(Status.MissingManaPercentage),
+                    addReferEnemy(Status.TargetMaxHealthRatio),
+                    addReferEnemy(Status.TargetCurrentHealthRatio),
+                    addReferEnemy(Status.TargetBounusHealthRatio),
+                    addReferEnemy(Status.TargetMissingHealthRatio),
+                    addReferEnemy(Status.TargetAP)),
+            new SkillFiltersWidget("Buff",
+                    type(Status.Health, Status.HealthRatio),
+                    type(Status.Mana, Status.ManaRatio),
+                    type(Status.AD, Status.ADRatio),
+                    type(Status.AP, Status.APRatio),
+                    type(Status.AR, Status.ARRatio),
+                    type(Status.MR, Status.MRRatio),
+                    type(Status.MS, Status.MSRatio),
+                    type(Status.AS, Status.ASRatio),
+                    type(Status.CDR, Status.CDRRatio),
+                    type(Status.LS, Status.LSRatio),
+                    type(Status.SV, Status.SVRatio),
+                    type(Status.ARPen, Status.ARPenRatio),
+                    type(Status.MRPen, Status.MRPenRatio),
+                    type(Status.Shield, Status.PhysicalShield, Status.MagicShield),
+                    type("スキル無効", Status.SpellShield),
+                    type(Status.IgnoreCC, Status.RemoveCC),
+                    type(Status.IgnoreSlow),
+                    type(Status.IgnoreUnitCollision)),
+            new SkillFiltersWidget("Debuff",
+                    type(Status.MSSlow, Status.MSSlowRatio, Status.Slow, Status.SlowRatio),
+                    type(Status.ASSlow, Status.ASSlowRatio, Status.Slow, Status.SlowRatio),
+                    type(Status.Stun),
+                    type(Status.Snare),
+                    type(Status.Taunt),
+                    type(Status.Knockback),
+                    type(Status.Knockup),
+                    type(Status.Charm),
+                    type(Status.Fear),
+                    type(Status.Terrified),
+                    type(Status.Suppression),
+                    type(Status.Suspension),
+                    type(Status.Silence),
+                    type(Status.Blind)),
+            new SkillFiltersWidget("回復",
+                    type(Status.RestoreHealth, Status.RestoreHealthRatio, Status.Hreg, Status.HregPerLv, Status.HregRatio),
+                    type(Status.RestoreMana, Status.Mreg, Status.MregPerLv, Status.MregRatio),
+                    type(Status.RestoreEnergy, Status.EnergyPerLv, Status.EnergyRatio)),
+            new SkillFiltersWidget("その他",
+                    type("AAタイマー解消", Status.ResetAATimer),
+                    type("オンヒット効果", Status.OnHitEffect),
+                    type("CD解消", Status.CDDecrease, Status.CDDecreaseRatio, Status.CD),
+                    type(Status.Visionable))};
 
     private Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
 
     public Events<Champion> selectChampion = when(UIAction.Click).at($.Container, Champion.class);
 
+    @Model
     private final Events<Set<Predicate<Champion>>> selectedFilter;
+
+    @Model
+    private final Events<Boolean> useDetailFilter = when(UIAction.Click).at($.FilterDetail).scan(false, (v, e) -> !v).startWith(false);
 
     private final Property<Set<Predicate<Champion>>> selectedFilters;
 
@@ -81,19 +147,48 @@ public class ChampionSelect extends Widget {
                 .flatMap(group -> Events.from(group.filters))
                 .map(filter -> filter.selectFilter);
 
-        Events<Predicate<Champion>> activateFilter = Events.from(groups)
-                .flatMap(group -> Events.from(group.filters))
-                .flatMap(filter -> filter.activateFilter);
-        Events<Predicate<Champion>> deactivateSkillFilter = Events.from(groups)
-                .flatMap(group -> Events.from(group.filters))
-                .flatMap(filter -> filter.deactivateFilter);
-
         selectedFilter = filterByName.collectLatest(filterBySkills);
         selectedFilters = selectedFilter.to();
 
-        selectedFilter.to(update(values -> {
-            System.out.println(values);
-        }));
+        // selectedFilter.to(update(values -> {
+        // System.out.println(values);
+        // }));
+    }
+
+    void view(Set<Predicate<Champion>> filters, Boolean useDetailFilter) {
+        box($.Root, () -> {
+            box($.Filters, input, () -> {
+                text($.FilterDetail, "スキルで絞込");
+                box($.SkillFilters, If(useDetailFilter, $.ShowDetailFilter), contents(groups));
+            });
+            box($.ImageSet, contents(Champion.getAll(), champion -> {
+                box($.Container, If(!filter(filters, champion) || !champion.match(input.value.get()), $.Unselected), () -> {
+                    box($.IconImage, $.IconPosition.of(champion));
+                    text($.Title, champion.name);
+                });
+            }));
+        });
+    }
+
+    /**
+     * <p>
+     * Filter by conditions.
+     * </p>
+     * 
+     * @param champion
+     * @return
+     */
+    private boolean filter(Set<Predicate<Champion>> filters, Champion champion) {
+        if (filters.isEmpty()) {
+            return true;
+        }
+
+        for (Predicate<Champion> filter : filters) {
+            if (!filter.test(champion)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -299,10 +394,6 @@ public class ChampionSelect extends Widget {
 
         private Events<Predicate<Champion>> selectFilter = I.observe(check.check).map(v -> v ? model1.filter : null);
 
-        private final Events<Predicate<Champion>> activateFilter = I.observe(check.check).filter(v -> v).map(model1.filter);
-
-        private final Events<Predicate<Champion>> deactivateFilter = I.observe(check.check).filter(v -> !v).map(model1.filter);
-
         /**
          * {@inheritDoc}
          */
@@ -503,10 +594,21 @@ public class ChampionSelect extends Widget {
             margin.bottom(10, px);
         };
 
-        private static Style SkillFilters = () -> {
+        private static Style ShowDetailFilter = () -> {
             display.block();
+        };
+
+        private static Style SkillFilters = () -> {
             margin.top(1, em);
             font.size.smaller();
+
+            display.none();
+            box.height(0, px);
+
+            transit().duration(0.5, s).easeInOut().when(ShowDetailFilter, () -> {
+                display.block();
+                box.height(100, percent);
+            });
         };
 
         private static Style FilterDetail = () -> {
