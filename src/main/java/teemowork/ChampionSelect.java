@@ -20,7 +20,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.Property;
+import javafx.beans.property.SetProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -55,7 +55,7 @@ public class ChampionSelect extends Widget {
     private final Teemowork application = I.make(Teemowork.class);
 
     /** The skill filters. */
-    private static final SkillFiltersWidget[] groups = {
+    private final SkillFiltersWidget[] groups = {
             new SkillFiltersWidget("ダメージ",
                     type(Status.PhysicalDamage),
                     type(Status.MagicDamage),
@@ -124,17 +124,15 @@ public class ChampionSelect extends Widget {
                     type("CD解消", Status.CDDecrease, Status.CDDecreaseRatio, Status.CD),
                     type(Status.Visionable))};
 
-    private Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
+    private final Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
 
-    public Events<Champion> selectChampion = when(UIAction.Click).at($.Container, Champion.class);
-
-    @Model
-    private final Events<Set<Predicate<Champion>>> selectedFilter;
+    public final Events<Champion> selectChampion = when(UIAction.Click).at($.Container, Champion.class);
 
     @Model
-    private final Events<Boolean> useDetailFilter = when(UIAction.Click).at($.FilterDetail).scan(false, (v, e) -> !v).startWith(false);
+    private final SetProperty<Predicate<Champion>> selectedFilters = I.make(SetProperty.class);
 
-    private final Property<Set<Predicate<Champion>>> selectedFilters;
+    @Model
+    private final BooleanProperty showSkillFilters = new SimpleBooleanProperty();
 
     /**
      * 
@@ -142,53 +140,7 @@ public class ChampionSelect extends Widget {
     public ChampionSelect() {
         selectChampion.to(champion -> application.champion(champion));
 
-        Events<Predicate<Champion>> filterByName = I.observe(input.value).map(value -> champion -> champion.match(value));
-        Events<Events<Predicate<Champion>>> filterBySkills = Events.from(groups)
-                .flatMap(group -> Events.from(group.filters))
-                .map(filter -> filter.selectFilter);
-
-        selectedFilter = filterByName.collectLatest(filterBySkills);
-        selectedFilters = selectedFilter.to();
-
-        // selectedFilter.to(update(values -> {
-        // System.out.println(values);
-        // }));
-    }
-
-    void view(Set<Predicate<Champion>> filters, Boolean useDetailFilter) {
-        box($.Root, () -> {
-            box($.Filters, input, () -> {
-                text($.FilterDetail, "スキルで絞込");
-                box($.SkillFilters, If(useDetailFilter, $.ShowDetailFilter), contents(groups));
-            });
-            box($.ImageSet, contents(Champion.getAll(), champion -> {
-                box($.Container, If(!filter(filters, champion) || !champion.match(input.value.get()), $.Unselected), () -> {
-                    box($.IconImage, $.IconPosition.of(champion));
-                    text($.Title, champion.name);
-                });
-            }));
-        });
-    }
-
-    /**
-     * <p>
-     * Filter by conditions.
-     * </p>
-     * 
-     * @param champion
-     * @return
-     */
-    private boolean filter(Set<Predicate<Champion>> filters, Champion champion) {
-        if (filters.isEmpty()) {
-            return true;
-        }
-
-        for (Predicate<Champion> filter : filters) {
-            if (!filter.test(champion)) {
-                return false;
-            }
-        }
-        return true;
+        when(UIAction.Click).at($.FilterDetail).toggle().to(showSkillFilters::set);
     }
 
     /**
@@ -199,7 +151,7 @@ public class ChampionSelect extends Widget {
         box($.Root, () -> {
             box($.Filters, input, () -> {
                 text($.FilterDetail, "スキルで絞込");
-                box($.SkillFilters, contents(groups));
+                box($.SkillFilters, If(showSkillFilters, $.ShowDetailFilter), contents(groups));
             });
             box($.ImageSet, contents(Champion.getAll(), champion -> {
                 box($.Container, If(!filter(champion) || !champion.match(input.value.get()), $.Unselected), () -> {
@@ -219,11 +171,11 @@ public class ChampionSelect extends Widget {
      * @return
      */
     private boolean filter(Champion champion) {
-        if (selectedFilters.getValue().isEmpty()) {
+        if (selectedFilters.isEmpty()) {
             return true;
         }
 
-        for (Predicate<Champion> filter : selectedFilters.getValue()) {
+        for (Predicate<Champion> filter : selectedFilters) {
             if (!filter.test(champion)) {
                 return false;
             }
@@ -387,12 +339,16 @@ public class ChampionSelect extends Widget {
     /**
      * @version 2015/10/05 11:21:14
      */
-    private static class SkillFilterWidget extends Widget1<SkillFilter> {
+    private class SkillFilterWidget extends Widget1<SkillFilter> {
 
         /** The chech box. */
-        private CheckBox check = UI.checkbox(model1.use, model1.name).style($.Filter);
-
-        private Events<Predicate<Champion>> selectFilter = I.observe(check.check).map(v -> v ? model1.filter : null);
+        private CheckBox check = UI.checkbox(model1.use, model1.name).style($.Filter).change(on -> {
+            if (on) {
+                selectedFilters.add(model1.filter);
+            } else {
+                selectedFilters.remove(model1.filter);
+            }
+        });
 
         /**
          * {@inheritDoc}
@@ -402,15 +358,6 @@ public class ChampionSelect extends Widget {
             widget(check);
         }
 
-        /**
-         * @version 2015/10/05 14:31:07
-         */
-        private static class $ extends StyleDescriptor {
-
-            private static Style Filter = () -> {
-                box.width(ChampionSelect.$.ImagesSize.divide(5));
-            };
-        }
     }
 
     /**
@@ -616,6 +563,10 @@ public class ChampionSelect extends Widget {
             text.verticalAlign.bottom();
             margin.left(1, em);
             cursor.pointer();
+        };
+
+        private static Style Filter = () -> {
+            box.width(ChampionSelect.$.ImagesSize.divide(5));
         };
     }
 }
