@@ -11,7 +11,6 @@ package teemowork;
 
 import static jsx.ui.StructureDescriptor.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -34,8 +33,6 @@ import jsx.style.value.Numeric;
 import jsx.ui.Model;
 import jsx.ui.Style;
 import jsx.ui.Widget;
-import jsx.ui.Widget1;
-import jsx.ui.piece.CheckBox;
 import jsx.ui.piece.Input;
 import jsx.ui.piece.UI;
 import kiss.Events;
@@ -55,13 +52,13 @@ public class ChampionSelect extends Widget {
     private final Teemowork application = I.make(Teemowork.class);
 
     /** The skill filters. */
-    private final SkillFiltersWidget[] groups = {
-            new SkillFiltersWidget("ダメージ",
+    private final FilterGroup[] groups = {
+            new FilterGroup("ダメージ",
                     type(Status.PhysicalDamage),
                     type(Status.MagicDamage),
                     type(Status.TrueDamage),
                     type("範囲攻撃", Status.Radius)),
-            new SkillFiltersWidget("参照",
+            new FilterGroup("参照",
                     referSelf(Status.Health, Status.HealthRatio, Status.BounusHealth, Status.BaseHealth),
                     referSelf(Status.Mana, Status.ManaRatio, Status.BounusMana),
                     referSelf(Status.AD, Status.ADRatio, Status.BounusAD, Status.BaseAD),
@@ -80,7 +77,7 @@ public class ChampionSelect extends Widget {
                     addReferEnemy(Status.TargetBounusHealthRatio),
                     addReferEnemy(Status.TargetMissingHealthRatio),
                     addReferEnemy(Status.TargetAP)),
-            new SkillFiltersWidget("Buff",
+            new FilterGroup("Buff",
                     type(Status.Health, Status.HealthRatio),
                     type(Status.Mana, Status.ManaRatio),
                     type(Status.AD, Status.ADRatio),
@@ -99,7 +96,7 @@ public class ChampionSelect extends Widget {
                     type(Status.IgnoreCC, Status.RemoveCC),
                     type(Status.IgnoreSlow),
                     type(Status.IgnoreUnitCollision)),
-            new SkillFiltersWidget("Debuff",
+            new FilterGroup("Debuff",
                     type(Status.MSSlow, Status.MSSlowRatio, Status.Slow, Status.SlowRatio),
                     type(Status.ASSlow, Status.ASSlowRatio, Status.Slow, Status.SlowRatio),
                     type(Status.Stun),
@@ -114,11 +111,11 @@ public class ChampionSelect extends Widget {
                     type(Status.Suspension),
                     type(Status.Silence),
                     type(Status.Blind)),
-            new SkillFiltersWidget("回復",
+            new FilterGroup("回復",
                     type(Status.RestoreHealth, Status.RestoreHealthRatio, Status.Hreg, Status.HregPerLv, Status.HregRatio),
                     type(Status.RestoreMana, Status.Mreg, Status.MregPerLv, Status.MregRatio),
                     type(Status.RestoreEnergy, Status.EnergyPerLv, Status.EnergyRatio)),
-            new SkillFiltersWidget("その他",
+            new FilterGroup("その他",
                     type("AAタイマー解消", Status.ResetAATimer),
                     type("オンヒット効果", Status.OnHitEffect),
                     type("CD解消", Status.CDDecrease, Status.CDDecreaseRatio, Status.CD),
@@ -141,6 +138,14 @@ public class ChampionSelect extends Widget {
         selectChampion.to(champion -> application.champion(champion));
 
         when(UIAction.Click).at($.FilterDetail).toggle().to(showSkillFilters::set);
+
+        when(UIAction.Click).at($.Filter, SkillFilter.class).to(v -> {
+            if (selectedFilters.contains(v.filter)) {
+                selectedFilters.remove(v.filter);
+            } else {
+                selectedFilters.add(v.filter);
+            }
+        });
     }
 
     /**
@@ -151,7 +156,14 @@ public class ChampionSelect extends Widget {
         box($.Root, () -> {
             box($.Filters, input, () -> {
                 text($.FilterDetail, "スキルで絞込");
-                box($.SkillFilters, If(showSkillFilters, $.ShowDetailFilter), contents(groups));
+                box($.SkillFilters, If(showSkillFilters, $.ShowDetailFilter), contents(groups, group -> {
+                    box($.Group, () -> {
+                        text($.Name, group.name);
+                        box($.Items, contents(group.filters, filter -> {
+                            widget(UI.checkbox(filter.use, filter.name).style($.Filter));
+                        }));
+                    });
+                }));
             });
             box($.ImageSet, contents(Champion.getAll(), champion -> {
                 box($.Container, If(!filter(champion) || !champion.match(input.value.get()), $.Unselected), () -> {
@@ -283,90 +295,30 @@ public class ChampionSelect extends Widget {
     }
 
     /**
-     * @version 2015/10/05 14:12:22
+     * @version 2015/10/08 21:55:46
      */
-    private static class SkillFiltersWidget extends Widget {
+    private static class FilterGroup {
 
-        /** A filter group name. */
-        private final String name;
+        /** The group name. */
+        private String name;
 
-        /** The filter widgets. */
-        private final SkillFilterWidget[] filters;
+        /** The managed filters. */
+        private SkillFilter[] filters;
 
         /**
          * @param name
          * @param filters
          */
-        private SkillFiltersWidget(String name, SkillFilter... filters) {
+        private FilterGroup(String name, SkillFilter... filters) {
             this.name = name;
-            this.filters = Widget.of(SkillFilterWidget.class, filters);
+            this.filters = filters;
         }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize() {
-            box($.Group, () -> {
-                text($.Name, name);
-
-                box($.Items, contents(filters));
-            });
-        }
-
-        /**
-         * @version 2015/10/05 14:30:24
-         */
-        private static class $ extends StyleDescriptor {
-
-            private static Style Group = () -> {
-                display.block();
-                margin.bottom(0.8, em);
-            };
-
-            private static Style Name = () -> {
-                display.block();
-                font.weight.bold();
-                margin.bottom(0.4, em);
-            };
-
-            private static Style Items = () -> {
-                display.flex().wrap.enable();
-            };
-        }
-    }
-
-    /**
-     * @version 2015/10/05 11:21:14
-     */
-    private class SkillFilterWidget extends Widget1<SkillFilter> {
-
-        /** The chech box. */
-        private CheckBox check = UI.checkbox(model1.use, model1.name).style($.Filter).change(on -> {
-            if (on) {
-                selectedFilters.add(model1.filter);
-            } else {
-                selectedFilters.remove(model1.filter);
-            }
-        });
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize() {
-            widget(check);
-        }
-
     }
 
     /**
      * @version 2015/10/07 1:37:07
      */
     private static class SkillFilter {
-
-        /** The filter manager. */
-        private static final List<SkillFilter> filters = new ArrayList();
 
         /** The filter name. */
         private final StringProperty name;
@@ -384,8 +336,6 @@ public class ChampionSelect extends Widget {
         private SkillFilter(String name, Predicate<Champion> filter) {
             this.name = new SimpleStringProperty(name);
             this.filter = filter;
-
-            filters.add(this);
         }
     }
 
@@ -567,6 +517,21 @@ public class ChampionSelect extends Widget {
 
         private static Style Filter = () -> {
             box.width(ChampionSelect.$.ImagesSize.divide(5));
+        };
+
+        private static Style Group = () -> {
+            display.block();
+            margin.bottom(0.8, em);
+        };
+
+        private static Style Name = () -> {
+            display.block();
+            font.weight.bold();
+            margin.bottom(0.4, em);
+        };
+
+        private static Style Items = () -> {
+            display.flex().wrap.enable();
         };
     }
 }
