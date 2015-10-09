@@ -19,6 +19,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.Property;
 import javafx.beans.property.SetProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -35,8 +36,6 @@ import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.Input;
 import jsx.ui.piece.UI;
-import kiss.Events;
-import kiss.I;
 import teemowork.model.Champion;
 import teemowork.model.Skill;
 import teemowork.model.SkillDescriptor;
@@ -48,8 +47,6 @@ import teemowork.model.variable.Variable;
  * @version 2015/10/07 2:56:10
  */
 public class ChampionSelect extends Widget {
-
-    private final Teemowork application = I.make(Teemowork.class);
 
     /** The skill filters. */
     private final FilterGroup[] groups = {
@@ -123,29 +120,19 @@ public class ChampionSelect extends Widget {
 
     private final Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
 
-    public final Events<Champion> selectChampion = when(UIAction.Click).at($.Container, Champion.class);
+    /** The list of active filters. */
+    private final @Model SetProperty<Predicate<Champion>> activeFilters = when(UIAction.Click).at($.Filter, SkillFilter.class)
+            .map(v -> v.filter)
+            .toAlternate();
 
-    @Model
-    private final SetProperty<Predicate<Champion>> selectedFilters = I.make(SetProperty.class);
-
-    @Model
-    private final BooleanProperty showSkillFilters = new SimpleBooleanProperty();
+    /** The view state of skill filters. */
+    private final @Model Property<Boolean> showSkillFilters = when(UIAction.Click).at($.FilterDetail).toggle().to();
 
     /**
      * 
      */
-    public ChampionSelect() {
-        selectChampion.to(champion -> application.champion(champion));
-
-        when(UIAction.Click).at($.FilterDetail).toggle().to(showSkillFilters::set);
-
-        when(UIAction.Click).at($.Filter, SkillFilter.class).to(v -> {
-            if (selectedFilters.contains(v.filter)) {
-                selectedFilters.remove(v.filter);
-            } else {
-                selectedFilters.add(v.filter);
-            }
-        });
+    public ChampionSelect(Teemowork application) {
+        when(UIAction.Click).at($.Container, Champion.class).to(name -> application.champion(name));
     }
 
     /**
@@ -158,9 +145,9 @@ public class ChampionSelect extends Widget {
                 text($.FilterDetail, "スキルで絞込");
                 box($.SkillFilters, If(showSkillFilters, $.ShowDetailFilter), contents(groups, group -> {
                     box($.Group, () -> {
-                        text($.Name, group.name);
-                        box($.Items, contents(group.filters, filter -> {
-                            widget(UI.checkbox(filter.use, filter.name).style($.Filter));
+                        text($.GroupName, group.name);
+                        box($.GroupItems, contents(group.filters, filter -> {
+                            widget(UI.radiobox(group.name, filter.use, filter.name).style($.Filter));
                         }));
                     });
                 }));
@@ -183,11 +170,11 @@ public class ChampionSelect extends Widget {
      * @return
      */
     private boolean filter(Champion champion) {
-        if (selectedFilters.isEmpty()) {
+        if (activeFilters.isEmpty()) {
             return true;
         }
 
-        for (Predicate<Champion> filter : selectedFilters) {
+        for (Predicate<Champion> filter : activeFilters) {
             if (!filter.test(champion)) {
                 return false;
             }
@@ -510,13 +497,9 @@ public class ChampionSelect extends Widget {
 
         private static Style FilterDetail = () -> {
             font.size.small().color(Color.rgb(100, 100, 100));
-            text.verticalAlign.bottom();
+            text.verticalAlign.bottom().unselectable();
             margin.left(1, em);
             cursor.pointer();
-        };
-
-        private static Style Filter = () -> {
-            box.width(ChampionSelect.$.ImagesSize.divide(5));
         };
 
         private static Style Group = () -> {
@@ -524,14 +507,18 @@ public class ChampionSelect extends Widget {
             margin.bottom(0.8, em);
         };
 
-        private static Style Name = () -> {
+        private static Style GroupName = () -> {
             display.block();
             font.weight.bold();
             margin.bottom(0.4, em);
         };
 
-        private static Style Items = () -> {
+        private static Style GroupItems = () -> {
             display.flex().wrap.enable();
+        };
+
+        private static Style Filter = () -> {
+            box.width(ChampionSelect.$.ImagesSize.divide(5));
         };
     }
 }
