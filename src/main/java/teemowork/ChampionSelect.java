@@ -35,6 +35,7 @@ import jsx.ui.Model;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.Input;
+import jsx.ui.piece.RadioGroup;
 import jsx.ui.piece.UI;
 import teemowork.model.Champion;
 import teemowork.model.Skill;
@@ -121,7 +122,7 @@ public class ChampionSelect extends Widget {
     private final Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
 
     /** The list of active filters. */
-    private final @Model SetProperty<Predicate<Champion>> activeFilters = when(UIAction.Click).at($.Filter, SkillFilter.class)
+    private final @Model SetProperty<Predicate<Champion>> activeFilters = when(UIAction.Change).at($.Filter, SkillFilter.class)
             .map(v -> v.filter)
             .toAlternate();
 
@@ -147,7 +148,7 @@ public class ChampionSelect extends Widget {
                     box($.Group, () -> {
                         text($.GroupName, group.name);
                         box($.GroupItems, contents(group.filters, filter -> {
-                            widget(UI.radiobox(group.name, filter.use, filter.name).style($.Filter));
+                            widget(UI.radiobox(group, filter.use, filter.name).style($.Filter));
                         }));
                     });
                 }));
@@ -284,7 +285,7 @@ public class ChampionSelect extends Widget {
     /**
      * @version 2015/10/08 21:55:46
      */
-    private static class FilterGroup {
+    private static class FilterGroup extends RadioGroup {
 
         /** The group name. */
         private String name;
