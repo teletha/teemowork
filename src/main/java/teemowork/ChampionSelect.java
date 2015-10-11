@@ -126,8 +126,11 @@ public class ChampionSelect extends Widget {
             .map(v -> v.filter)
             .toAlternate();
 
-    /** The view state of skill filters. */
-    private final @Model Property<Boolean> showSkillFilters = when(UIAction.Click).at($.FilterDetail).toggle().to();
+    /** The view state of filters. */
+    private final @Model Property<Boolean> showSkillFilters = when(UIAction.Click).at($.FilterBySkill).toggle().to();
+
+    /** The view state of filters. */
+    private final @Model Property<Boolean> showChampionFilters = when(UIAction.Click).at($.FilterByChampion).toggle().to();
 
     /**
      * 
@@ -143,7 +146,8 @@ public class ChampionSelect extends Widget {
     protected void virtualize() {
         box($.Root, () -> {
             box($.Filters, input, () -> {
-                text($.FilterDetail, "スキルで絞込");
+                text($.FilterBySkill, "スキルで絞込");
+                // text($.FilterByChampion, "チャンピオンで絞込");
                 box($.SkillFilters, If(showSkillFilters, $.ShowDetailFilter), contents(groups, group -> {
                     box($.Group, () -> {
                         text($.GroupName, group.name);
@@ -152,6 +156,15 @@ public class ChampionSelect extends Widget {
                         }));
                     });
                 }));
+                // box($.SkillFilters, If(showChampionFilters, $.ShowDetailFilter), contents(groups,
+                // group -> {
+                // box($.Group, () -> {
+                // text($.GroupName, group.name);
+                // box($.GroupItems, contents(group.filters, filter -> {
+                // widget(UI.radiobox(group, filter.use, filter.name).style($.Filter));
+                // }));
+                // });
+                // }));
             });
             box($.ImageSet, contents(Champion.getAll(), champion -> {
                 box($.Container, If(!filter(champion) || !champion.match(input.value.get()), $.Unselected), () -> {
@@ -285,7 +298,7 @@ public class ChampionSelect extends Widget {
     /**
      * @version 2015/10/08 21:55:46
      */
-    private static class FilterGroup extends RadioGroup {
+    private static class FilterGroup extends RadioGroup<SkillFilter> {
 
         /** The group name. */
         private String name;
@@ -496,12 +509,18 @@ public class ChampionSelect extends Widget {
             });
         };
 
-        private static Style FilterDetail = () -> {
+        private static Style FilterBy = () -> {
             font.size.small().color(Color.rgb(100, 100, 100));
             text.verticalAlign.bottom().unselectable();
             margin.left(1, em);
             cursor.pointer();
         };
+
+        private static Style FilterBySkill = FilterBy.with(() -> {
+        });
+
+        private static Style FilterByChampion = FilterBy.with(() -> {
+        });
 
         private static Style Group = () -> {
             display.block();
