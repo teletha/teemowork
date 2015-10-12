@@ -18,12 +18,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.Property;
 import javafx.beans.property.SetProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 import js.dom.UIAction;
 import jsx.style.StyleDescriptor;
@@ -35,8 +31,8 @@ import jsx.ui.Model;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.Input;
-import jsx.ui.piece.RadioGroup;
 import jsx.ui.piece.UI;
+import kiss.I;
 import teemowork.model.Champion;
 import teemowork.model.Skill;
 import teemowork.model.SkillDescriptor;
@@ -122,9 +118,7 @@ public class ChampionSelect extends Widget {
     private final Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
 
     /** The list of active filters. */
-    private final @Model SetProperty<Predicate<Champion>> activeFilters = when(UIAction.Change).at($.Filter, SkillFilter.class)
-            .map(v -> v.filter)
-            .toAlternate();
+    private final @Model SetProperty<SkillFilter> activeFilters = I.make(SetProperty.class);
 
     /** The view state of filters. */
     private final @Model Property<Boolean> showSkillFilters = when(UIAction.Click).at($.FilterBySkill).toggle().to();
@@ -152,7 +146,7 @@ public class ChampionSelect extends Widget {
                     box($.Group, () -> {
                         text($.GroupName, group.name);
                         box($.GroupItems, contents(group.filters, filter -> {
-                            widget(UI.radiobox(group, filter.use, filter.name).style($.Filter));
+                            widget(UI.checkbox(activeFilters, filter, filter.name).style($.Filter));
                         }));
                     });
                 }));
@@ -188,8 +182,8 @@ public class ChampionSelect extends Widget {
             return true;
         }
 
-        for (Predicate<Champion> filter : activeFilters) {
-            if (!filter.test(champion)) {
+        for (SkillFilter filter : activeFilters) {
+            if (!filter.filter.test(champion)) {
                 return false;
             }
         }
@@ -298,7 +292,7 @@ public class ChampionSelect extends Widget {
     /**
      * @version 2015/10/08 21:55:46
      */
-    private static class FilterGroup extends RadioGroup<SkillFilter> {
+    private static class FilterGroup {
 
         /** The group name. */
         private String name;
@@ -322,20 +316,17 @@ public class ChampionSelect extends Widget {
     private static class SkillFilter {
 
         /** The filter name. */
-        private final StringProperty name;
+        private final String name;
 
         /** The actual filter. */
         private final Predicate<Champion> filter;
-
-        /** The filter usage. */
-        private final BooleanProperty use = new SimpleBooleanProperty();
 
         /**
          * @param name
          * @param filter
          */
         private SkillFilter(String name, Predicate<Champion> filter) {
-            this.name = new SimpleStringProperty(name);
+            this.name = name;
             this.filter = filter;
         }
     }
