@@ -50,6 +50,8 @@ public class ChampionDetail extends Widget1<Build> {
     /** The your custom build. */
     private final Build build = model1;
 
+    public final Events<Item> itemSelect = when(UIAction.Click).at($.ItemIconBase, Item.class);
+
     public final Events<Skill> skillUp = when(UIAction.Click).at($.IconBox, Skill.class);
 
     public final Events<Skill> skillDown = when(UIAction.ClickRight).at($.IconBox, Skill.class);
@@ -58,16 +60,17 @@ public class ChampionDetail extends Widget1<Build> {
 
     public final Events<Champion> championLevelDown = when(UIAction.ClickRight, UIAction.MouseWheelDown).at($.ChampionIconBox);
 
+    /**
+     * 
+     */
     public ChampionDetail() {
         championLevelUp.to(update(v -> build.levelUp()));
         championLevelDown.to(update(v -> build.levelDown()));
         skillUp.to(update(v -> build.levelUp(v)));
         skillDown.to(update(v -> build.levelDown(v)));
 
-        // TODO FIXME
-        when(UIAction.Key_R).at($.ChampionIconBox).to(e -> {
-            build.active(SkillKey.R);
-            build.active(SkillKey.W);
+        itemSelect.to(v -> {
+            System.out.println(v);
         });
     }
 
@@ -80,7 +83,13 @@ public class ChampionDetail extends Widget1<Build> {
             box($.ChampionIconBox.of(build.champion), () -> {
                 text($.Level, build.getLevel());
             });
-            box($.ItemViewBox, contents(ItemBoxWidget.class, build.items));
+            box($.ItemViewBox, contents(build.items, item -> {
+                box($.ItemIconBase, () -> {
+                    if (item != null) {
+                        box($.ItemIcon.of(item.position));
+                    }
+                });
+            }));
         });
 
         box($.Container, () -> {
@@ -207,24 +216,6 @@ public class ChampionDetail extends Widget1<Build> {
             return new String[] {value, " | ", build.getQualified(MRPenRatio)};
         } else {
             return new String[] {value};
-        }
-    }
-
-    /**
-     * @version 2015/09/18 13:28:55
-     */
-    private static class ItemBoxWidget extends Widget1<Item> {
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize() {
-            box($.ItemIconBase, () -> {
-                if (model1 != null) {
-                    box($.ItemIcon.of(model1.position));
-                }
-            });
         }
     }
 
@@ -406,6 +397,7 @@ public class ChampionDetail extends Widget1<Build> {
             box.size(ItemIconSize);
             background.image(BackgroundImage.url("src/main/resources/teemowork/empty.png").contain().noRepeat());
             padding.size(3, px);
+            cursor.pointer();
         };
 
         ValueStyle<Integer> ItemIcon = id -> {

@@ -155,7 +155,7 @@ public class ChampionSelect extends Widget {
                 // box($.Group, () -> {
                 // text($.GroupName, group.name);
                 // box($.GroupItems, contents(group.filters, filter -> {
-                // widget(UI.radiobox(group, filter.use, filter.name).style($.Filter));
+                // widget(UI.checkbox(activeFilters, filter, filter.name).style($.Filter));
                 // }));
                 // });
                 // }));
