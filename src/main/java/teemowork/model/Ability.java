@@ -202,7 +202,7 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability ImmolateLevel1 = new Ability("猛火", ability -> {
-        ability.passive("周囲{1}の敵に毎秒{2}を与える。モンスターに対しては{3}を与える。 ")
+        ability.passive("{1}の敵に毎秒{2}を与える。モンスターに対しては{3}を与える。 ")
                 .variable(1, Radius, 400)
                 .variable(2, MagicDamage, 5, 0, amplify(Lv, 1))
                 .variable(3, MagicDamage, 7.5, 0, amplify(Lv, 1.5));
@@ -210,7 +210,7 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability ImmolateLevel2 = new Ability("猛火", ability -> {
-        ability.passive("周囲{1}の敵に毎秒{2}を与える。モンスターに対しては{3}を与える。 ")
+        ability.passive("{1}の敵に毎秒{2}を与える。モンスターに対しては{3}を与える。 ")
                 .variable(1, Radius, 400)
                 .variable(2, MagicDamage, 15, 0, amplify(Lv, 0.6))
                 .variable(3, MagicDamage, 30, 0, amplify(Lv, 1.2));

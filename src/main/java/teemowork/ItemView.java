@@ -49,7 +49,7 @@ public class ItemView extends Widget1<Item> {
             box($.IconArea, () -> {
                 box($.Icon.of(item));
                 box($.Materials, contents(descriptor.getBuildItem(), material -> {
-                    // 〡.nbox.〡($.Material.of(material));
+                    // box($.Material.of(material));
                 }));
             });
             box($.DescriptionArea, () -> {
@@ -81,10 +81,6 @@ public class ItemView extends Widget1<Item> {
                         box($.AbilityArea, () -> {
                             if (abilityDescriptor.isUnique()) {
                                 text($.UniqueAbility, "UNIQUE");
-                            }
-
-                            if (abilityDescriptor.isAura()) {
-                                text($.UniqueAbility, "AURA");
                             }
 
                             text($.UniqueAbility, abilityDescriptor.isActive() ? "Active" : "Passive");
@@ -182,12 +178,12 @@ public class ItemView extends Widget1<Item> {
         static Style StatusValue = () -> {
             display.block();
             margin.bottom(0.2, em);
-            font.size.smaller().family(TeemoworkTheme.Main);
+            font.size.small().family(TeemoworkTheme.Main);
         };
 
         static Style AbilityArea = () -> {
             display.block();
-            font.size.smaller();
+            font.size.small();
             margin.top(0.4, em);
         };
 

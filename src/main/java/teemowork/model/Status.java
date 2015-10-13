@@ -339,7 +339,7 @@ public enum Status {
 
     DamagedChampion("ダメージを与えた敵チャンピオンの数"),
 
-    Takedown("キルするかアシストする"),
+    Takedown("キルかアシストをする"),
 
     ResetAATimer("通常攻撃タイマーを解消する"),
 

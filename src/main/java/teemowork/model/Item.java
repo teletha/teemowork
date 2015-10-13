@@ -79,7 +79,7 @@ public class Item extends Describable<ItemDescriptor> {
     /** Athene's Unholy Grail */
     public static final Item AthenesUnholyGrail = new Item(RiotItemData.AthenesUnholyGrail, item -> {
         item.abilityPower(60).manaRegenRatio(100).magicRegist(25).cooldownReduction(20).add(Ability.ManaFont).add(ability -> {
-            ability.passive("{2}毎にに{1}する。").variable(1, RestoreMana, 0, 0, amplify(Mana, 0.3)).variable(2, Takedown);
+            ability.passive("{2}と{1}する。").variable(1, RestoreMana, 0, 0, amplify(Mana, 0.3)).variable(2, Takedown);
         });
     });
 

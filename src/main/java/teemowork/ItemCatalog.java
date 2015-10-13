@@ -10,6 +10,7 @@
 package teemowork;
 
 import static jsx.ui.StructureDescriptor.*;
+import static teemowork.model.Status.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -21,11 +22,17 @@ import java.util.function.Predicate;
 import javafx.beans.property.SetProperty;
 
 import jsx.style.StyleDescriptor;
+import jsx.style.ValueStyle;
+import jsx.style.property.Background.BackgroundImage;
+import jsx.style.value.Color;
+import jsx.style.value.Numeric;
 import jsx.ui.Model;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.UI;
 import kiss.I;
+import teemowork.model.Ability;
+import teemowork.model.AbilityDescriptor;
 import teemowork.model.Item;
 import teemowork.model.ItemDescriptor;
 import teemowork.model.Status;
@@ -37,11 +44,33 @@ import teemowork.model.variable.Variable;
  */
 public class ItemCatalog extends Widget {
 
+    private static final Status[] VISIBLE = {Health, Hreg, HregRatio, Mana, Mreg, MregRatio, AD, ASRatio, ARPen, LS, Critical, AP, CDR, SV,
+            MRPen, AR, MR, MSRatio, GoldPer10Sec};
+
     private final FilterGroup[] groups = {
-            new FilterGroup("Defense", type(Status.Health), type(Status.AR), type(Status.MR), type(Status.Hreg), type(Status.Tenacity)),
-            new FilterGroup("Attack", type(Status.AD), type(Status.Critical), type(Status.AS), type(Status.LS)),
-            new FilterGroup("Magic", type(Status.AP), type(Status.CDR), type(Status.SV), type(Status.Mana), type(Status.Mreg)),
-            new FilterGroup("Boots", type(Status.MS))};
+            new FilterGroup("Defense",
+                    type(Status.Health),
+                    type(Status.AR),
+                    type(Status.MR),
+                    type(Status.Hreg, Status.HregRatio),
+                    type(Status.Tenacity)),
+            new FilterGroup("Attack",
+                    type(Status.AD, Status.ADRatio, Status.BaseAD),
+                    type(Status.Critical),
+                    type(Status.ASRatio),
+                    type(Status.LS)),
+            new FilterGroup("Magic",
+                    type(Status.AP),
+                    type(Status.CDR),
+                    type(Status.SV),
+                    type(Status.Mana),
+                    type(Status.Mreg, Status.MregRatio)),
+            new FilterGroup("Boots", type(Status.MS)), new FilterGroup("Other",
+                    type(Status.PhysicalDamage),
+                    type(Status.MagicDamage),
+                    type(Status.TrueDamage),
+                    type(Status.Shield, Status.MagicShield, Status.SpellShield),
+                    type(Status.MSSlowRatio))};
 
     private final @Model SetProperty<ItemFilter> activeFilters = I.make(SetProperty.class);
 
@@ -50,21 +79,70 @@ public class ItemCatalog extends Widget {
      */
     @Override
     protected void virtualize() {
-        box($.Groups, contents(groups, group -> {
-            text($.GroupName, group.name);
-            box($.Filters, contents(group.filters, filter -> {
-                widget(UI.checkbox(activeFilters, filter, filter.name).style($.FilterName));
+        box($.Root, () -> {
+            box($.Groups, contents(groups, group -> {
+                text($.GroupName, group.name);
+                box($.Filters, contents(group.filters, filter -> {
+                    widget(UI.checkbox(activeFilters, filter, filter.name).style($.FilterName));
+                }));
             }));
-        }));
+            box($.Items, contents(Item.getAll(), item -> {
+                if (show(item)) {
+                    box($.Item, () -> {
+                        widget(Widget.of(ItemView.class, item));
+                    });
+                }
+
+                // box($.Item, If(show(item), $.Selected), () -> {
+                // widget(Widget.of(ItemView.class, item));
+                // });
+            }));
+        });
+    }
+
+    /**
+     * <p>
+     * Apply filter.
+     * </p>
+     * 
+     * @param item
+     * @return
+     */
+    private boolean show(Item item) {
+        if (activeFilters.isEmpty()) {
+            return false;
+        }
+
+        for (ItemFilter filter : activeFilters) {
+            if (!filter.filter.test(item)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
      * @version 2015/10/12 21:55:48
      */
-    static class $ extends StyleDescriptor {
+    private static class $ extends StyleDescriptor {
+
+        /** The skill icon size. */
+        private static final Numeric IconSize = new Numeric(40, px);
+
+        private static final Color BorderColor = rgb(200, 200, 200);
+
+        private static final Numeric itemGap = new Numeric(5, px);
+
+        private static final Numeric ItemAreaWidth = new Numeric(560, px);
+
+        static Style Root = () -> {
+            display.flex();
+            font.size.small();
+        };
 
         static Style Groups = () -> {
             display.block();
+            margin.right(30, px);
         };
 
         static Style GroupName = () -> {
@@ -73,11 +151,64 @@ public class ItemCatalog extends Widget {
         };
 
         static Style Filters = () -> {
-            display.block();
+            display.flex().direction.column();
+            box.width(130, px);
+            margin.bottom(1, em);
         };
 
         static Style FilterName = () -> {
-            margin.left(1, em);
+            display.block();
+        };
+
+        static Style Items = () -> {
+            display.flex().wrap.enable().alignContent.start();
+            box.width(ItemAreaWidth);
+        };
+
+        static Style Item = () -> {
+            display.flex();
+            box.width(ItemAreaWidth.divide(2).subtract(itemGap.multiply(2)));
+            border.solid().color(BorderColor).width(1, px);
+            margin.right(10, px).bottom(10, px);
+            padding.size(itemGap);
+            cursor.pointer();
+        };
+
+        static Style Selected = () -> {
+            display.flex();
+        };
+
+        static Style ItemInfo = () -> {
+            display.flex().direction.column();
+        };
+
+        static Style ItemName = () -> {
+            margin.right(0.5, em);
+            font.weight.bold();
+            flexItem.alignSelf.start();
+        };
+
+        static Style ItemPrice = () -> {
+            display.block();
+        };
+
+        static Style ItemTotalPrice = () -> {
+            margin.right(0.5, em);
+        };
+
+        static ValueStyle<Item> ItemIcon = item -> {
+            display.block();
+            cursor.pointer();
+            box.size(IconSize);
+            margin.right(itemGap);
+            border.color(BorderColor).width(1, px).solid();
+            background.image(BackgroundImage.url(item.getIcon()).horizontal(item.getIconPosition()).cover().borderBox().noRepeat());
+        };
+
+        static Style StatusValue = () -> {
+            display.block();
+            margin.bottom(0.2, em);
+            font.size.smaller().family(TeemoworkTheme.Main);
         };
     }
 
@@ -102,8 +233,8 @@ public class ItemCatalog extends Widget {
      * @return
      */
     private static ItemFilter type(String name, Status... statuses) {
-        return new ItemFilter(name, champion -> {
-            Info info = Info.of(champion);
+        return new ItemFilter(name, item -> {
+            Info info = Info.of(item);
 
             for (Status status : statuses) {
                 if (info.types.contains(status)) {
@@ -176,8 +307,19 @@ public class ItemCatalog extends Widget {
         private Info(Item item) {
             ItemDescriptor descriptor = item.getDescriptor(Version.Latest);
 
-            parse(descriptor.getPassive());
-            parse(descriptor.getActive());
+            for (Status status : VISIBLE) {
+                double value = descriptor.get(status);
+
+                if (value != 0) {
+                    types.add(status);
+                }
+            }
+
+            for (Ability ability : descriptor.getAbilities()) {
+                AbilityDescriptor abilityDescriptor = ability.getDescriptor(Version.Latest);
+                parse(abilityDescriptor.getPassive());
+                parse(abilityDescriptor.getActive());
+            }
         }
 
         /**
