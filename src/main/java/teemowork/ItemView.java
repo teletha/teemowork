@@ -12,11 +12,10 @@ package teemowork;
 import static jsx.ui.StructureDescriptor.*;
 import static teemowork.model.Status.*;
 
-import java.util.List;
-
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
+import jsx.style.value.Numeric;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
@@ -29,7 +28,7 @@ import teemowork.model.Status;
 import teemowork.model.Version;
 
 /**
- * @version 2015/08/20 15:57:11
+ * @version 2015/10/14 11:02:40
  */
 public class ItemView extends Widget1<Item> {
 
@@ -47,9 +46,9 @@ public class ItemView extends Widget1<Item> {
 
         box($.Root, () -> {
             box($.IconArea, () -> {
-                box($.Icon.of(item));
+                box($.Icon, $.ItemImage.of(item));
                 box($.Materials, contents(descriptor.getBuildItem(), material -> {
-                    // box($.Material.of(material));
+                    box($.Material, $.ItemImage.of(material));
                 }));
             });
             box($.DescriptionArea, () -> {
@@ -66,7 +65,7 @@ public class ItemView extends Widget1<Item> {
                 });
 
                 // Status
-                box(contents(VISIBLE, status -> {
+                box($.StatusSet, contents(VISIBLE, status -> {
                     double value = descriptor.get(status);
 
                     if (value != 0) {
@@ -76,21 +75,15 @@ public class ItemView extends Widget1<Item> {
 
                 box($.DescriptionArea, () -> {
                     box(contents(descriptor.getAbilities(), ability -> {
-                        AbilityDescriptor abilityDescriptor = ability.getDescriptor(Version.Latest);
+                        AbilityDescriptor desc = ability.getDescriptor(Version.Latest);
 
                         box($.AbilityArea, () -> {
-                            if (abilityDescriptor.isUnique()) {
-                                text($.UniqueAbility, "UNIQUE");
+                            if (ability.name.startsWith("#")) {
+                                text($.AbilityInfo, desc.isUnique() ? "Unique " : "", desc.isActive() ? "Active" : "Passive");
+                            } else {
+                                text($.AbilityInfo, ability.name);
                             }
-
-                            text($.UniqueAbility, abilityDescriptor.isActive() ? "Active" : "Passive");
-
-                            // if (!ability.name.startsWith("#")) {
-                            text($.UniqueAbility, "[", ability.name, "]");
-                            // }
-
-                            List token = abilityDescriptor.isActive() ? abilityDescriptor.getActive() : abilityDescriptor.getPassive();
-                            widget(Widget.of(AbilityDescriptionView.class, ability, null, token));
+                            widget(Widget.of(AbilityDescriptionView.class, ability, null, desc.getDescription()));
                         });
                     }));
                 });
@@ -113,16 +106,21 @@ public class ItemView extends Widget1<Item> {
     }
 
     /**
-     * @version 2015/09/29 10:04:06
+     * @version 2015/10/14 11:02:34
      */
     private static class $ extends StyleDescriptor {
 
         /** The skill icon size. */
         private static final int IconSize = 45;
 
+        private static final Numeric gap = new Numeric(0.5, em);
+
+        static ValueStyle<Item> ItemImage = item -> {
+            background.image(BackgroundImage.url(item.getIcon()).horizontal(item.getIconPosition()).cover().borderBox().noRepeat());
+        };
+
         static Style Root = () -> {
             display.flex();
-            margin.bottom(25, px);
             box.maxWidth(600, px);
         };
 
@@ -131,13 +129,12 @@ public class ItemView extends Widget1<Item> {
             margin.right(1.2, em);
         };
 
-        static ValueStyle<Item> Icon = item -> {
+        static Style Icon = () -> {
             display.block();
             margin.bottom(IconSize / 5, px);
             cursor.pointer();
             box.size(44, px);
             border.radius(5, px).color(rgb(50, 50, 50)).width(1, px).solid();
-            background.image(BackgroundImage.url(item.getIcon()).horizontal(item.getIconPosition()).cover().borderBox().noRepeat());
         };
 
         static Style Materials = () -> {
@@ -145,12 +142,10 @@ public class ItemView extends Widget1<Item> {
             box.width(IconSize, px);
         };
 
-        static ValueStyle<Item> Material = item -> {
+        static Style Material = () -> {
             display.block();
-            cursor.pointer();
-            box.size(22, px).opacity(0.7);
-            border.radius(3, px).color(rgb(50, 50, 50)).width(1, px).solid();
-            background.image(BackgroundImage.url(item.getIcon()).horizontal(item.getIconPosition()).cover().borderBox().noRepeat());
+            box.size(22, px);
+            border.color(rgb(50, 50, 50)).width(1, px).solid();
         };
 
         static Style DescriptionArea = () -> {
@@ -159,7 +154,7 @@ public class ItemView extends Widget1<Item> {
 
         static Style Heading = () -> {
             display.block();
-            margin.bottom(0.4, em);
+            margin.bottom(gap);
             font.family(TeemoworkTheme.Main);
         };
 
@@ -175,9 +170,13 @@ public class ItemView extends Widget1<Item> {
         static Style Cost = () -> {
         };
 
+        static Style StatusSet = () -> {
+            line.height(1.1);
+            margin.bottom(gap);
+        };
+
         static Style StatusValue = () -> {
             display.block();
-            margin.bottom(0.2, em);
             font.size.small().family(TeemoworkTheme.Main);
         };
 
@@ -187,10 +186,9 @@ public class ItemView extends Widget1<Item> {
             margin.top(0.4, em);
         };
 
-        static Style UniqueAbility = () -> {
+        static Style AbilityInfo = () -> {
             font.color(205, 146, 0).weight.bolder();
             padding.right(0.5, em);
         };
     }
-
 }

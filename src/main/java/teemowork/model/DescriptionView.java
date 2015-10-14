@@ -188,6 +188,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
         };
 
         private static Style Passive = () -> {
+            display.block();
             margin.right(1, em);
         };
 

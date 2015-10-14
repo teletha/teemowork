@@ -9,6 +9,8 @@
  */
 package teemowork.model;
 
+import java.util.List;
+
 /**
  * @version 2013/01/29 1:55:25
  */
@@ -98,27 +100,12 @@ public class AbilityDescriptor extends Descriptor<AbilityDescriptor> {
 
     /**
      * <p>
-     * Describe this ability.
-     * </p>
-     * 
-     * @param text
-     * @return
-     */
-    public AbilityDescriptor description(String text) {
-        this.description = text;
-
-        return this;
-    }
-
-    /**
-     * <p>
      * Retrieve description.
      * </p>
      * 
      * @return
      */
-    public String getDescription() {
-        return description;
+    public final List getDescription() {
+        return isActive() ? getActive() : getPassive();
     }
-
 }

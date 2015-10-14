@@ -88,7 +88,7 @@ public class ItemCatalog extends Widget {
             }));
             box($.Items, contents(Item.getAll(), item -> {
                 if (show(item)) {
-                    box($.Item, () -> {
+                    html("div", $.Item, () -> {
                         widget(Widget.of(ItemView.class, item));
                     });
                 }
