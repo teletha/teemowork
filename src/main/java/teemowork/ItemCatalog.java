@@ -22,8 +22,6 @@ import java.util.function.Predicate;
 import javafx.beans.property.SetProperty;
 
 import jsx.style.StyleDescriptor;
-import jsx.style.ValueStyle;
-import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.ui.Model;
@@ -109,9 +107,9 @@ public class ItemCatalog extends Widget {
      * @return
      */
     private boolean show(Item item) {
-        if (activeFilters.isEmpty()) {
-            return false;
-        }
+        // if (activeFilters.isEmpty()) {
+        // return false;
+        // }
 
         for (ItemFilter filter : activeFilters) {
             if (!filter.filter.test(item)) {
@@ -126,14 +124,11 @@ public class ItemCatalog extends Widget {
      */
     private static class $ extends StyleDescriptor {
 
-        /** The skill icon size. */
-        private static final Numeric IconSize = new Numeric(40, px);
-
-        private static final Color BorderColor = rgb(200, 200, 200);
+        private static final Color BorderColor = rgb(220, 220, 220);
 
         private static final Numeric itemGap = new Numeric(5, px);
 
-        private static final Numeric ItemAreaWidth = new Numeric(560, px);
+        private static final Numeric ItemAreaWidth = new Numeric(580, px);
 
         static Style Root = () -> {
             display.flex();
@@ -172,43 +167,6 @@ public class ItemCatalog extends Widget {
             margin.right(10, px).bottom(10, px);
             padding.size(itemGap);
             cursor.pointer();
-        };
-
-        static Style Selected = () -> {
-            display.flex();
-        };
-
-        static Style ItemInfo = () -> {
-            display.flex().direction.column();
-        };
-
-        static Style ItemName = () -> {
-            margin.right(0.5, em);
-            font.weight.bold();
-            flexItem.alignSelf.start();
-        };
-
-        static Style ItemPrice = () -> {
-            display.block();
-        };
-
-        static Style ItemTotalPrice = () -> {
-            margin.right(0.5, em);
-        };
-
-        static ValueStyle<Item> ItemIcon = item -> {
-            display.block();
-            cursor.pointer();
-            box.size(IconSize);
-            margin.right(itemGap);
-            border.color(BorderColor).width(1, px).solid();
-            background.image(BackgroundImage.url(item.getIcon()).horizontal(item.getIconPosition()).cover().borderBox().noRepeat());
-        };
-
-        static Style StatusValue = () -> {
-            display.block();
-            margin.bottom(0.2, em);
-            font.size.smaller().family(TeemoworkTheme.Main);
         };
     }
 

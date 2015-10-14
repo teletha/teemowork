@@ -15,6 +15,7 @@ import static teemowork.model.Status.*;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
+import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.ui.Style;
 import jsx.ui.Widget;
@@ -108,12 +109,15 @@ public class ItemView extends Widget1<Item> {
     /**
      * @version 2015/10/14 11:02:34
      */
-    private static class $ extends StyleDescriptor {
+    static class $ extends StyleDescriptor {
 
-        /** The skill icon size. */
-        private static final int IconSize = 45;
+        /** The icon color. */
+        static final Color IconBorderColor = rgb(100, 100, 100);
 
-        private static final Numeric gap = new Numeric(0.5, em);
+        /** The icon size. */
+        private static final Numeric IconSize = new Numeric(40, px);
+
+        private static final Numeric gap = new Numeric(0.8, em);
 
         static ValueStyle<Item> ItemImage = item -> {
             background.image(BackgroundImage.url(item.getIcon()).horizontal(item.getIconPosition()).cover().borderBox().noRepeat());
@@ -126,26 +130,26 @@ public class ItemView extends Widget1<Item> {
 
         static Style IconArea = () -> {
             display.flex().direction.column();
-            margin.right(1.2, em);
+            margin.right(gap);
         };
 
         static Style Icon = () -> {
             display.block();
-            margin.bottom(IconSize / 5, px);
+            margin.bottom(IconSize.divide(5));
             cursor.pointer();
-            box.size(44, px);
-            border.radius(5, px).color(rgb(50, 50, 50)).width(1, px).solid();
+            box.size(IconSize);
+            border.radius(5, px).color(IconBorderColor).width(1, px).solid();
         };
 
         static Style Materials = () -> {
             display.flex().wrap.enable();
-            box.width(IconSize, px);
+            box.width(IconSize);
         };
 
         static Style Material = () -> {
             display.block();
-            box.size(22, px);
-            border.color(rgb(50, 50, 50)).width(1, px).solid();
+            box.size(IconSize.divide(2));
+            border.color(IconBorderColor).width(1, px).solid();
         };
 
         static Style DescriptionArea = () -> {
@@ -154,7 +158,6 @@ public class ItemView extends Widget1<Item> {
 
         static Style Heading = () -> {
             display.block();
-            margin.bottom(gap);
             font.family(TeemoworkTheme.Main);
         };
 
@@ -171,8 +174,9 @@ public class ItemView extends Widget1<Item> {
         };
 
         static Style StatusSet = () -> {
+            display.block();
             line.height(1.1);
-            margin.bottom(gap);
+            margin.top(gap);
         };
 
         static Style StatusValue = () -> {
@@ -183,7 +187,7 @@ public class ItemView extends Widget1<Item> {
         static Style AbilityArea = () -> {
             display.block();
             font.size.small();
-            margin.top(0.4, em);
+            margin.top(gap);
         };
 
         static Style AbilityInfo = () -> {
