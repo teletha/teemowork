@@ -175,6 +175,9 @@ public class RiotChampionData {
     /** Kha'Zix Definition */
     public static final Champion Khazix = new Champion("Kha'Zix", "カ＝ジックス", "Khazix", 572.8F, 85.0F, 7.51F, 0.75F, 327.2F, 40.0F, 7.59F, 0.5F, 55.208F, 3.1F, 0.668F, 2.7F, 0.0F, 0.0F, 24.04F, 3.0F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"Unseen Threat", "Taste Their Fear", "Void Spike", "Leap", "Void Assault"}, new String[] {"見えざる脅威", "甘美なる恐怖", "破裂の棘", "跳躍", "捕食の本能"}, SkillDefinition::Khazix, false);
 
+    /** Kindred Definition */
+    public static final Champion Kindred = new Champion("Kindred", "Kindred", "Kindred", 540.0F, 85.0F, 10.0F, 0.55F, 300.0F, 35.0F, 6.97F, 0.4F, 49.0F, 2.2F, 0.625F, 2.5F, 0.0F, 0.0F, 27.0F, 3.25F, 30.0F, 0.0F, 325.0F, 500.0F, new String[] {"Mark of the Kindred", "Dance of Arrows", "Wolf's Frenzy", "Mounting Dread", "Lamb's Respite"}, new String[] {"Mark of the Kindred", "Dance of Arrows", "Wolf's Frenzy", "Mounting Dread", "Lamb's Respite"}, SkillDefinition::Kindred, false);
+
     /** Kog'Maw Definition */
     public static final Champion KogMaw = new Champion("Kog'Maw", "コグ＝マウ", "KogMaw", 546.16F, 87.0F, 5.92F, 0.55F, 322.2F, 40.0F, 8.675F, 0.7F, 49.04F, 3.0F, 0.665F, 2.65F, 0.0F, 0.0F, 19.88F, 3.5F, 30.0F, 0.0F, 325.0F, 500.0F, new String[] {"Icathian Surprise", "Caustic Spittle", "Bio-Arcane Barrage", "Void Ooze", "Living Artillery"}, new String[] {"イカシアの自爆", "腐食粘液", "有機性魔力砲", "ヴォイド分泌液", "生体空撃砲"}, SkillDefinition::KogMaw, false);
 
@@ -356,7 +359,7 @@ public class RiotChampionData {
     public static final Champion Varus = new Champion("Varus", "ヴァルス", "Varus", 537.76F, 82.0F, 5.42F, 0.55F, 310.48F, 36.0F, 7.34F, 0.8F, 49.04F, 3.0F, 0.658F, 3.0F, 0.0F, 0.0F, 23.212F, 3.4F, 30.0F, 0.0F, 330.0F, 575.0F, new String[] {"Living Vengeance", "Piercing Arrow", "Blighted Quiver", "Hail of Arrows", "Chain of Corruption"}, new String[] {"復讐の化身", "渾身の一矢", "枯死の矢筒", "滅びの矢雨", "穢れの連鎖"}, SkillDefinition::Varus, false);
 
     /** Vayne Definition */
-    public static final Champion Vayne = new Champion("Vayne", "ヴェイン", "Vayne", 498.44F, 83.0F, 5.42F, 0.55F, 231.8F, 35.0F, 6.97F, 0.4F, 53.46F, 3.25F, 0.658F, 4.0F, 0.0F, 0.0F, 19.012F, 3.4F, 30.0F, 0.0F, 330.0F, 550.0F, new String[] {"Night Hunter", "Tumble", "Silver Bolts", "Condemn", "Final Hour"}, new String[] {"闇夜の狩人　", "転撃", "銀の矢", "制裁", "決戦"}, SkillDefinition::Vayne, false);
+    public static final Champion Vayne = new Champion("Vayne", "ヴェイン", "Vayne", 498.44F, 83.0F, 5.42F, 0.55F, 231.8F, 35.0F, 6.97F, 0.4F, 50.46F, 3.25F, 0.658F, 4.0F, 0.0F, 0.0F, 19.012F, 3.4F, 30.0F, 0.0F, 330.0F, 550.0F, new String[] {"Night Hunter", "Tumble", "Silver Bolts", "Condemn", "Final Hour"}, new String[] {"闇夜の狩人　", "転撃", "銀の矢", "制裁", "決戦"}, SkillDefinition::Vayne, false);
 
     /** Veigar Definition */
     public static final Champion Veigar = new Champion("Veigar", "ヴェイガー", "Veigar", 492.76F, 82.0F, 5.42F, 0.55F, 342.4F, 55.0F, 6.0F, 0.8F, 50.71F, 2.625F, 0.625F, 2.24F, 0.0F, 0.0F, 22.55F, 3.75F, 30.0F, 0.0F, 340.0F, 525.0F, new String[] {"Equilibrium", "Baleful Strike", "Dark Matter", "Event Horizon", "Primordial Burst"}, new String[] {"ワールドバランス", "イーヴィルストライク", "ダークマター", "イベントホライズン", "メテオバースト"}, SkillDefinition::Veigar, false);

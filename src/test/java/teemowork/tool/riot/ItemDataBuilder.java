@@ -46,7 +46,6 @@ public class ItemDataBuilder {
 
         for (Entry<Integer, ItemDefinition> entry : en.data.entrySet()) {
             int id = entry.getKey();
-
             ItemDefinition item = entry.getValue();
             ItemDefinition localized = ja.data.get(id);
             ItemGold gold = item.gold;
@@ -55,7 +54,6 @@ public class ItemDataBuilder {
             if (canUseInSummonersRift(id, item)) {
                 code.write();
                 code.write("/** ", item.name, " Definition", " */");
-
                 item.name(en.data);
                 localized.name(ja.data);
 
@@ -248,7 +246,7 @@ public class ItemDataBuilder {
             if (item.name.endsWith("(Crystal Scar)")) {
                 return false;
             }
-            return item.maps == null || item.maps.get(1) == null;
+            return item.maps == null || item.maps.get(1) == false;
         }
     }
 
