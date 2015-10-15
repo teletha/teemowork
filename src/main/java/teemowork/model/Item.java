@@ -452,10 +452,10 @@ public class Item extends Describable<ItemDescriptor> {
     /** Guardian Angel */
     public static final Item GuardianAngel = new Item(RiotItemData.GuardianAngel, item -> {
         item.armor(50).magicRegist(50).add(ability -> {
-            ability.passive("Healthが0になった際、4秒後に{1}と{2}を得て復活する。{3}。")
-                    .variable(-1, Health, 0, 0, amplify(Health, 0.3))
-                    .variable(-2, Mana, 0, 0, amplify(Mana, 0.3))
-                    .variable(3, ItemCD, 300);
+            ability.passive(Health + "が0になると、4秒後に{2}と{3}を得て復活する。{4}。")
+                    .variable(-2, Health, 0, 0, amplify(Health, 0.3))
+                    .variable(-3, Mana, 0, 0, amplify(Mana, 0.3))
+                    .variable(4, ItemCD, 300);
         });
     });
 
@@ -1435,7 +1435,7 @@ public class Item extends Describable<ItemDescriptor> {
     /** Zhonya's Hourglass */
     public static final Item ZhonyasHourglass = new Item(RiotItemData.ZhonyasHourglass, item -> {
         item.abilityPower(100).armor(50).add("停滞", ability -> {
-            ability.active("2.5秒間、自身を行動不能かつ無敵(ダメージ無効, ターゲット不可)にする。{1}。").variable(1, ItemCD, 90);
+            ability.active("2.5秒間{1}になる。{1}。").variable(1, Stasis).variable(2, ItemCD, 90);
         });
     });
 

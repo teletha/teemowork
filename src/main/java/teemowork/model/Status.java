@@ -289,11 +289,18 @@ public enum Status {
     /** Ignore Unit Collision */
     IgnoreUnitCollision("ユニット衝突無効"),
 
+    /** Ignore Unit Collision */
+    IgnoreDamage("ダメージ無効"),
+
     /** Ignore Crowd Control */
     IgnoreCC("CC無効"),
 
     /** Remove Crowd Control */
     RemoveCC("全てのCCを解除"),
+
+    Untargetable("対象不可"),
+
+    Stasis("対象及び操作不可"),
 
     // ==================================================
     // State

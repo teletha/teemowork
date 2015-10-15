@@ -87,6 +87,7 @@ public class ChampionSelect extends Widget {
                     type(Status.MRPen, Status.MRPenRatio),
                     type(Status.Shield, Status.PhysicalShield, Status.MagicShield),
                     type("スキル無効", Status.SpellShield),
+                    type(Status.IgnoreDamage),
                     type(Status.IgnoreCC, Status.RemoveCC),
                     type(Status.IgnoreSlow),
                     type(Status.IgnoreUnitCollision)),
@@ -113,7 +114,9 @@ public class ChampionSelect extends Widget {
                     type("AAタイマー解消", Status.ResetAATimer),
                     type("オンヒット効果", Status.OnHitEffect),
                     type("CD解消", Status.CDDecrease, Status.CDDecreaseRatio, Status.CD),
-                    type(Status.Visionable))};
+                    type(Status.Visionable),
+                    type(Status.Stasis),
+                    type(Status.Untargetable))};
 
     private final Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
 
