@@ -5915,7 +5915,7 @@ public interface SkillDefinition {
                 .variable(8, Gold, 5);
 
         Q.update(P506)
-                .active("次の通常攻撃は{4}し{1}を与えると同時にSpectral Ghoulを召喚する。Spectral Ghoulは{3}を得る。Spectral Ghoulが生存している間、Ghoulと自身の{q2}する。")
+                .active("次の通常攻撃は{4}し{1}を与えると同時にSpectral Ghoulを召喚する。Spectral Ghoulは{3}を得る。Spectral Ghoulが生存している間、Ghoulと自身の{2}する。")
                 .variable(1, PhysicalDamage, 30, 30, ad(1.2))
                 .variable(2, MSRatio, 15, 5)
                 .variable(-3, AD, 8, 8)
@@ -5944,8 +5944,9 @@ public interface SkillDefinition {
                 .range(550);
 
         R.update(P404)
-                .active("対象の味方チャンピオン一人の姿形を持ったRevenantを召喚する(ALT押しながら右クリックで任意の操作可能)。Revenantは10秒間持続し、対象の{1}の攻撃力を持つ。Revenantが生存している間に対象となった味方チャンピオンが死亡した場合、Revenantが消滅し、死亡した味方チャンピオンはHPとMNが最大の状態で蘇生される。蘇生した味方チャンピオンは10秒経過すると消滅する。")
+                .active("対象の味方チャンピオン一人の姿形を持ったRevenantを召喚する。Revenantは10秒間持続し、対象の{1}の攻撃力と{2}の" + Health + "を持つ。Revenantが生存している間に対象となった味方チャンピオンが死亡した場合、Revenantが消滅し、死亡した味方チャンピオンはHPとMNが最大の状態で蘇生される。蘇生した味方チャンピオンは10秒経過すると消滅する。")
                 .variable(1, Percentage, 45, 15)
+                .variable(2, Percentage, 50, 25)
                 .mana(100)
                 .cd(120, -15)
                 .range(900);
