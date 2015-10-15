@@ -24,7 +24,7 @@ import javafx.beans.property.SetProperty;
 import jsx.style.StyleDescriptor;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
-import jsx.ui.Model;
+import jsx.ui.ModelValue;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.UI;
@@ -70,7 +70,7 @@ public class ItemCatalog extends Widget {
                     type(Status.Shield, Status.MagicShield, Status.SpellShield),
                     type(Status.MSSlowRatio))};
 
-    private final @Model SetProperty<ItemFilter> activeFilters = I.make(SetProperty.class);
+    private final @ModelValue SetProperty<ItemFilter> activeFilters = I.make(SetProperty.class);
 
     /**
      * {@inheritDoc}

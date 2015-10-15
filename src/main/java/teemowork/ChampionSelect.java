@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import javafx.beans.property.Property;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SetProperty;
 
 import js.dom.UIAction;
@@ -27,7 +27,7 @@ import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
-import jsx.ui.Model;
+import jsx.ui.ModelValue;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.Input;
@@ -41,12 +41,12 @@ import teemowork.model.Version;
 import teemowork.model.variable.Variable;
 
 /**
- * @version 2015/10/07 2:56:10
+ * @version 2015/10/15 19:26:07
  */
 public class ChampionSelect extends Widget {
 
     /** The skill filters. */
-    private final FilterGroup[] groups = {
+    private static final FilterGroup[] groups = {
             new FilterGroup("ダメージ",
                     type(Status.PhysicalDamage),
                     type(Status.MagicDamage),
@@ -120,16 +120,17 @@ public class ChampionSelect extends Widget {
                     type("移動", Status.Blink, Status.BlinkExchange, Status.Dash),
                     type("移動(要対象)", Status.BlinkTarget, Status.DashTarget))};
 
+    /** The name filter. */
     private final Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
 
     /** The list of active filters. */
-    private final @Model SetProperty<SkillFilter> activeFilters = I.make(SetProperty.class);
+    private final @ModelValue SetProperty<SkillFilter> activeFilters = I.make(SetProperty.class);
 
     /** The view state of filters. */
-    private final @Model Property<Boolean> showSkillFilters = when(UIAction.Click).at($.FilterBySkill).toggle().to();
+    private final @ModelValue BooleanProperty showSkillFilters = when(UIAction.Click).at($.FilterBySkill).toBinary();
 
     /** The view state of filters. */
-    private final @Model Property<Boolean> showChampionFilters = when(UIAction.Click).at($.FilterByChampion).toggle().to();
+    private final @ModelValue BooleanProperty showChampionFilters = when(UIAction.Click).at($.FilterByChampion).toBinary();
 
     /**
      * 
