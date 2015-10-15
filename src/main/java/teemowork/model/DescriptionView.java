@@ -170,7 +170,6 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
     private static class $ extends StyleDescriptor {
 
         private static Style ComputedValue = () -> {
-            font.weight.bolder();
         };
 
         private static Style Value = () -> {
