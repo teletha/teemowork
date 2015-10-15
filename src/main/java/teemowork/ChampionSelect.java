@@ -337,7 +337,7 @@ public class ChampionSelect extends Widget {
     }
 
     /**
-     * @version 2015/10/07 0:04:51
+     * @version 2015/10/15 14:41:35
      */
     private static class Info {
 
@@ -354,12 +354,24 @@ public class ChampionSelect extends Widget {
          * @param champion
          */
         private Info(Champion champion) {
+            parse(champion);
+        }
+
+        /**
+         * <p>
+         * Helper method to parse champion status.
+         * </p>
+         * 
+         * @param champion
+         */
+        private void parse(Champion champion) {
             for (Skill skill : champion.skills) {
                 SkillDescriptor descriptor = skill.getDescriptor(Version.Latest);
 
                 parse(descriptor.getPassive());
                 parse(descriptor.getActive());
             }
+            champion.getTransformed().ifPresent(this::parse);
         }
 
         /**

@@ -12,6 +12,7 @@ package teemowork.model;
 import static teemowork.model.Status.*;
 
 import java.util.List;
+import java.util.Optional;
 
 import js.dom.Element;
 import jsx.style.value.Numeric;
@@ -19,7 +20,7 @@ import jsx.style.value.Unit;
 import teemowork.api.RiotChampionData;
 
 /**
- * @version 2015/08/20 20:47:25
+ * @version 2015/10/15 14:33:11
  */
 public class Champion extends RiotChampionData {
 
@@ -59,6 +60,9 @@ public class Champion extends RiotChampionData {
     /** The descriptor. */
     private final ChampionStatus[] versions = new ChampionStatus[Version.values().length];
 
+    /** The transformed champion. */
+    private Optional<Champion> transformed = Optional.empty();
+
     /**
      * <p>
      * Create new champion.
@@ -81,6 +85,8 @@ public class Champion extends RiotChampionData {
 
         if (!transformed) {
             champions.add(this);
+        } else {
+            getByName(system.substring(0, system.length() - 11)).transformed = Optional.of(this);
         }
 
         this.name = name;
@@ -159,6 +165,17 @@ public class Champion extends RiotChampionData {
                 .css("background-position", id / (counter - 1) * 100 + "% 0%")
                 .css("background-size", "cover")
                 .css("background-origin", "border-box");
+    }
+
+    /**
+     * <p>
+     * Retrieve the alternate version of this {@link Champion}.
+     * </p>
+     * 
+     * @return
+     */
+    public Optional<Champion> getTransformed() {
+        return transformed;
     }
 
     /**
