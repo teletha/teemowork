@@ -46,7 +46,7 @@ import teemowork.model.variable.Variable;
 public class ChampionSelect extends Widget {
 
     /** The skill filters. */
-    private static final FilterGroup[] groups = {
+    private final FilterGroup[] groups = {
             new FilterGroup("ダメージ",
                     type(Status.PhysicalDamage),
                     type(Status.MagicDamage),
