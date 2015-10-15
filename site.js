@@ -2739,26 +2739,26 @@ boot.define("J","","EM",{
 	KC:[1,,"J",,"J","and"],
 	KD:[1,,"J",,"J","or"],
 	KE:[1,,"J",,"J","xor"],
-	JQ:[1,,"J",,"J","subtract"],
 	KK:[10,,"u I","EP","J","from"],
-	JV:[2,,,,"Z","isOdd"],
 	Ju:[1,,"I",,"J","shiftRight"],
 	JT:[2,,,,"Z","isZero"],
 	JS:[1,,"J",,"J","multiply"],
 	JR:[1,,,,"J","negate"],
 	JW:[2,,,,"Z","isNegative"],
+	JQ:[1,,"J",,"J","subtract"],
+	JV:[2,,,,"Z","isOdd"],
 	JY:[1,,,,"D","toDouble"],
-	KF:[1,,"I",,"J","shiftRightUnsigned"],
-	BQ:[1,,"J",,"Z","greaterThanOrEqual"],
-	BP:[10,,"I I",,"J","fromBits"],
-	CW:[10,,"D",,"J","fromNumber"],
 	KB:[1,,"J",,"J","modulo"],
 	KG:[1,,,,"I","toInt"],
 	FS:[10,,"I",,"J","fromInt"],
 	BR:[1,,"J",,"Z","notEquals"],
 	KA:[1,,"J",,"Z","greaterThan"],
 	KJ:[1,,"J",,"Z","lessThanOrEqual"],
-	JX:[1,,"J",,"Z","lessThan"]
+	JX:[1,,"J",,"Z","lessThan"],
+	BP:[10,,"I I",,"J","fromBits"],
+	CW:[10,,"D",,"J","fromNumber"],
+	KF:[1,,"I",,"J","shiftRightUnsigned"],
+	BQ:[1,,"J",,"Z","greaterThanOrEqual"]
 });
 
 // class js.lang.JSMath "CU"
@@ -4151,30 +4151,30 @@ boot.define("y","NativeObject","",{
 	Ny:[1,,"I C",,"V","set"],
 	Nz:[1,,"I B",,"V","set"],
 	OA:[1,,"I D",,"V","set"],
-	OB:[1,,"I T:G",,"T:G","set"],
-	OC:[1,,"I J",,"V","set"],
-	OD:[1,,"I I",,"V","set"],
-	OE:[1,,"I S",,"V","set"],
+	OB:[1,,"I F",,"V","set"],
+	OC:[1,,"I I",,"V","set"],
+	OD:[1,,"I J",,"V","set"],
+	OE:[1,,"I T:G",,"T:G","set"],
 	OF:[1,,"I Z",,"V","set"],
-	OG:[1,,"I F",,"V","set"],
+	OG:[1,,"I S",,"V","set"],
 	OH:[1,,,,"y<T:G>","reverse"],
 	OI:[1,,"NativeFunction<>",,"y<T:G>","sort"],
 	OJ:[1,,,,"T:G","shift"],
-	OK:[1,,"I I",,"y<T:G>","slice"],
-	OL:[1,,"I",,"y<T:G>","slice"],
-	OM:[1,,,,"T:G","last"],
-	ON:[2,"X:G","I X:G",,"X:G","retrieve"],
-	OO:[1,,"I",,"D","getAsDouble"],
-	OP:[1,,"I",,"Z","getAsBoolean"],
-	OQ:[1,,"I I",,"I","getAsInt"],
-	OR:[1,,"I",,"I","getAsInt"],
-	OS:[1,,"I",,"J","getAsLong"],
-	OT:[1,,"I",,"F","getAsFloat"],
-	OU:[1,,"I",,"S","getAsShort"],
-	OV:[1,,"I",,"B","getAsByte"],
-	OW:[1,,"I",,"C","getAsChar"],
-	OX:[2,,"I",,"V","ensureSize"],
-	OY:[1,,"T:G",,"I","unshift"]
+	OK:[1,,"I",,"y<T:G>","slice"],
+	OL:[1,,"I I",,"y<T:G>","slice"],
+	OM:[2,"X:G","I X:G",,"X:G","retrieve"],
+	ON:[1,,,,"T:G","last"],
+	OO:[1,,"T:G",,"I","unshift"],
+	OP:[1,,"I",,"D","getAsDouble"],
+	OQ:[1,,"I",,"Z","getAsBoolean"],
+	OR:[1,,"I I",,"I","getAsInt"],
+	OS:[1,,"I",,"I","getAsInt"],
+	OT:[1,,"I",,"J","getAsLong"],
+	OU:[1,,"I",,"F","getAsFloat"],
+	OV:[1,,"I",,"S","getAsShort"],
+	OW:[1,,"I",,"B","getAsByte"],
+	OX:[1,,"I",,"C","getAsChar"],
+	OY:[2,,"I",,"V","ensureSize"]
 });
 
 // interface java.util.Collection "Dy"
@@ -5385,9 +5385,9 @@ boot.define("CY","","",{
 	JA:[9,"T:G","EB<> I",,"Cx<T:G>","spliteratorUnknownSize"],
 	SO:[9,"T:G",,,"Cx<T:G>","emptySpliterator"],
 	SP:[9,,,,"Cv","emptyIntSpliterator"],
-	SU:[10,,"I I I",,"V","checkFromToBounds"],
 	SQ:[9,,,,"DA","emptyLongSpliterator"],
-	SR:[9,,,,"Cz","emptyDoubleSpliterator"]
+	SR:[9,,,,"Cz","emptyDoubleSpliterator"],
+	SU:[10,,"I I I",,"V","checkFromToBounds"]
 });
 
 // interface java.util.Spliterator "Cx"
@@ -8879,7 +8879,7 @@ boot.define("Bz","","Dy",{
 	Iv:[1,,,,"Cx<E:G>","spliterator"],
 	IC:[1025,,"Dy<>",,"Z","addAll"],
 	Ov:[1025,,"I Dy<>",,"Z","addAll"],
-	OB:[1025,,"I E:G",,"E:G","set"],
+	OE:[1025,,"I E:G",,"E:G","set"],
 	IN:[1025,,"Dy<>",,"Z","containsAll"],
 	Ow:[1025,,"I",,"EC<E:G>","listIterator"],
 	Hw:[1025,,,,"EC<E:G>","listIterator"],
@@ -8989,7 +8989,7 @@ boot.define("BV","BW","Bz",{
 		return true
 	},
 	// java.util.AbstractList#set(int, java.lang.Object)
-	OB:function(A,B){
+	OE:function(A,B){
 		// 132
 		throw new boot.BQ(0)
 	},
@@ -9199,7 +9199,7 @@ boot.define("BV","BW","Bz",{
 	NZ:[1,,"G",,"I","lastIndexOf"],
 	CO:[1,,"I I",,"Bz<E:G>","subList"],
 	Ov:[1,,"I Dy<>",,"Z","addAll"],
-	OB:[1,,"I E:G",,"E:G","set"],
+	OE:[1,,"I E:G",,"E:G","set"],
 	Ow:[1,,"I",,"EC<E:G>","listIterator"],
 	Hw:[1,,,,"EC<E:G>","listIterator"],
 	XO:[4,,"I I",,"V","removeRange"],
@@ -9440,7 +9440,7 @@ boot.define("Gx","Gw","EC",{
 			this.XZ();
 			// 426
 			try {
-				this.g.OB(this.d,A);
+				this.g.OE(this.d,A);
 				// 427
 				this.e=this.g.d;
 				// 430
@@ -9544,13 +9544,13 @@ boot.define("HA","BV","",{
 		}
 	},
 	// java.util.SubList#set(int, java.lang.Object)
-	OB:function(A,B){
+	OE:function(A,B){
 		// 633
 		this.Xu(A);
 		// 634
 		this.XZ();
 		// 635
-		return this.e.OB(A+this.f,B)
+		return this.e.OE(A+this.f,B)
 	},
 	// java.util.SubList#get(int)
 	CK:function(A){
@@ -9730,7 +9730,7 @@ boot.define("HA","BV","",{
 	CO:[1,,"I I",,"Bz<E:G>","subList"],
 	Ov:[1,,"I Dy<>",,"Z","addAll"],
 	IC:[1,,"Dy<>",,"Z","addAll"],
-	OB:[1,,"I E:G",,"E:G","set"],
+	OE:[1,,"I E:G",,"E:G","set"],
 	Ow:[1,,"I",,"EC<E:G>","listIterator"],
 	XO:[4,,"I I",,"V","removeRange"],
 	XQ:[2,,"I",,"u","outOfBoundsMsg"],
@@ -9978,7 +9978,7 @@ boot.define("BU","BV","Bz",{
 		return this.e[A]
 	},
 	// js.util.ArrayList#set(int, java.lang.Object)
-	OB:function(A,B){
+	OE:function(A,B){
 		// 146
 		return this.e[A]=B
 	},
@@ -10053,7 +10053,7 @@ boot.define("BU","BV","Bz",{
 	NZ:[1,,"G",,"I","lastIndexOf"],
 	CN:[1,,,,"I","size"],
 	CO:[1,,"I I",,"Bz<E:G>","subList"],
-	OB:[1,,"I E:G",,"E:G","set"],
+	OE:[1,,"I E:G",,"E:G","set"],
 	NQ:[1,,,,"V","trimToSize"],
 	Ow:[1,,"I",,"EC<E:G>","listIterator"],
 	XJ:[2,,"I",,"V","checkRange"]
@@ -10900,8 +10900,8 @@ boot.define("HF","Bu","CJ",{
 	ZT:[1,,,,"I","signum"],
 	YZ:[1,,"HF",,"HF","divide"],
 	ZI:[1,,"I",,"HF","shiftLeft"],
-	ZQ:[1,,,,"I","bitLength"],
 	ZO:[1,,"HF",,"[HF","divideAndRemainder"],
+	ZQ:[1,,,,"I","bitLength"],
 	ZN:[1,,"HF",,"HF","multiply"],
 	ZP:[1,,,,"HF","negate"]
 });
@@ -11600,10 +11600,10 @@ boot.define("HI","","Hz",{
 	Iv:[1025,,,,"Cx<T:G>","spliterator"],
 	wK:[1025,,,,"V","close"],
 	vH:[1025,,,,"S:HI<T:G,S#>","parallel"],
+	vG:[1025,,"IA",,"S:HI<T:G,S#>","onClose"],
 	vE:[1025,,,,"Z","isParallel"],
 	vJ:[1025,,,,"S:HI<T:G,S#>","sequential"],
-	wL:[1025,,,,"S:HI<T:G,S#>","unordered"],
-	vG:[1025,,"IA",,"S:HI<T:G,S#>","onClose"]
+	wL:[1025,,,,"S:HI<T:G,S#>","unordered"]
 });
 
 // interface java.lang.Runnable "IA"
@@ -11743,26 +11743,26 @@ boot.define("DB","","HI",{
 	vI:[1025,,,,"DB","parallel"],
 	vA:[9,,"J J",,"DB","range"],
 	vZ:[1025,,"HX",,"DB","map"],
-	vu:[1025,,"HW",,"Z","allMatch"],
-	vv:[1025,,"HW",,"Z","anyMatch"],
-	vw:[1025,,,,"Cy","asDoubleStream"],
-	vx:[1025,,,,"HY","average"],
-	vy:[1025,,,,"Cw<CR>","boxed"],
-	vz:[1025,,,,"HU","findAny"],
-	wA:[1025,,,,"HU","findFirst"],
-	wB:[1025,,"HH",,"V","forEachOrdered"],
+	uu:[9,,,,"HY","builder"],
+	vu:[1025,,,,"DB","sorted"],
+	uz:[9,,"HZ",,"DB","generate"],
+	vv:[1025,,,,"DB","distinct"],
+	vw:[1025,,"Hu<>",,"DB","flatMap"],
+	vx:[1025,,"HW",,"Z","allMatch"],
+	vy:[1025,,"HW",,"Z","anyMatch"],
+	vz:[1025,,,,"Cy","asDoubleStream"],
+	wA:[1025,,,,"Hv","average"],
+	wB:[1025,,,,"Cw<CR>","boxed"],
+	wC:[1025,,,,"HU","findAny"],
+	wD:[1025,,,,"HU","findFirst"],
+	wE:[1025,,"HH",,"V","forEachOrdered"],
 	uy:[9,,"J HX",,"DB","iterate"],
-	wC:[1025,,"HZ",,"Cy","mapToDouble"],
-	wD:[1025,"U:G","Hu<>",,"Cw<U:G>","mapToObj"],
-	wE:[1025,,"HW",,"Z","noneMatch"],
+	wF:[1025,,"Hw",,"Cy","mapToDouble"],
+	wG:[1025,"U:G","Hu<>",,"Cw<U:G>","mapToObj"],
+	wH:[1025,,"HW",,"Z","noneMatch"],
 	vC:[9,,"J J",,"DB","rangeClosed"],
 	vK:[1025,,,,"DB","sequential"],
-	wF:[1025,,,,"Hv","summaryStatistics"],
-	uz:[9,,"Hw",,"DB","generate"],
-	uu:[9,,,,"Hx","builder"],
-	wG:[1025,,,,"DB","sorted"],
-	wH:[1025,,,,"DB","distinct"],
-	wI:[1025,,"Hu<>",,"DB","flatMap"],
+	wI:[1025,,,,"Hx","summaryStatistics"],
 	wJ:[1025,,"Hy",,"Cu","mapToInt"]
 });
 
@@ -11864,8 +11864,8 @@ boot.define("IE","","IA",{
 	wM:[1,,,,"V","run"]
 });
 
-// interface java.util.stream.LongStream$Builder "Hx"
-boot.define("Hx","","HH",{
+// interface java.util.stream.LongStream$Builder "HY"
+boot.define("HY","","HH",{
 	// java.util.stream.LongStream$Builder#add(long)
 	wO:function(A){
 		// 904
@@ -11875,13 +11875,13 @@ boot.define("Hx","","HH",{
 	}
 },{
 	$:[34313,"java.util.stream.LongStream$Builder",,,"HH"],
-	wO:[1,,"J",,"Hx","add"],
+	wO:[1,,"J",,"HY","add"],
 	uW:[1025,,"J",,"V","accept"],
 	wN:[1025,,,,"DB","build"]
 });
 
 // class java.util.stream.Streams$LongStreamBuilderImpl "HJ"
-boot.define("HJ","HK","Hx DA",{
+boot.define("HJ","HK","HY DA",{
 	d:boot.J.f,
 	// java.util.stream.Streams$LongStreamBuilderImpl#<init>()
 	$0:function(){
@@ -11993,7 +11993,7 @@ boot.define("HJ","HK","Hx DA",{
 		return boot.HK.prototype.TE.call(this)
 	}
 },{
-	$:[32792,"java.util.stream.Streams$LongStreamBuilderImpl",,"HK<CR,DA>","Hx DA"],
+	$:[32792,"java.util.stream.Streams$LongStreamBuilderImpl",,"HK<CR,DA>","HY DA"],
 	$0:[0],
 	$1:[0,,"J"],
 	d:[0,"first","J"],
@@ -12278,14 +12278,14 @@ boot.define("IC","ID","EJ",{
 	ww:[4,,,,"J","capacity"],
 	wy:[20,,"J",,"V","ensureCapacity"],
 	xB:[1,,"T_ARR:G I",,"V","copyInto"],
-	wZ:[1028,,"T_ARR:G",,"I","arrayLength"],
 	wY:[1028,,"T_ARR:G I I T_CONS:G",,"V","arrayForEach"],
 	wX:[1,,,,"T_ARR:G","asPrimitiveArray"],
 	wW:[4,,"J",,"I","chunkFor"],
 	wv:[1028,,"I",,"[T_ARR:G","newArrayArray"],
 	wU:[4,,,,"V","preAccept"],
 	xA:[4,,,,"V","increaseCapacity"],
-	wx:[2,,,,"V","inflateSpine"]
+	wx:[2,,,,"V","inflateSpine"],
+	wZ:[1028,,"T_ARR:G",,"I","arrayLength"]
 });
 
 // class java.util.stream.SpinedBuffer$OfLong "IB"
@@ -12430,9 +12430,9 @@ boot.define("IB","IC","HH",{
 	vD:[1,,,,"DA","spliterator"],
 	uW:[1,,"J",,"V","accept"],
 	Iz:[1,,"BG<>",,"V","forEach"],
-	wS:[4,,"[J",,"I","arrayLength"],
 	wT:[4,,"[J I I HH",,"V","arrayForEach"],
-	wQ:[4,,"I",,"[[J","newArrayArray"]
+	wQ:[4,,"I",,"[[J","newArrayArray"],
+	wS:[4,,"[J",,"I","arrayLength"]
 });
 
 // class js.util.stream.Tripwire "IF"
@@ -12602,10 +12602,10 @@ boot.define("IH","","GW",{
 	h:[4120,"$assertionsDisabled","Z"],
 	i:[4112,"this$0","IC"],
 	TP:[1,,"T_CONS:G",,"V","forEachRemaining"],
+	TH:[1,,,,"I","characteristics"],
 	xG:[1024,,"T_ARR:G I T_CONS:G",,"V","arrayForOne"],
 	xF:[1024,,"T_ARR:G I I",,"T_SPLITR:GW<E:G,T_CONS:G,T_SPLITR#>","arraySpliterator"],
 	xH:[1024,,"I I I I",,"T_SPLITR:GW<E:G,T_CONS:G,T_SPLITR#>","newSpliterator"],
-	TH:[1,,,,"I","characteristics"],
 	TG:[1,,,,"J","estimateSize"],
 	TQ:[1,,"T_CONS:G",,"Z","tryAdvance"],
 	TR:[1,,,,"T_SPLITR:GW<E:G,T_CONS:G,T_SPLITR#>","trySplit"]
@@ -12876,9 +12876,9 @@ boot.define("II","ID","BG EJ",{
 	ww:[4,,,,"J","capacity"],
 	wy:[20,,"J",,"V","ensureCapacity"],
 	xJ:[1,,"[E:G I",,"V","copyInto"],
-	xK:[1,,"IK<[E:G>",,"[E:G","asArray"],
 	xA:[4,,,,"V","increaseCapacity"],
-	wx:[2,,,,"V","inflateSpine"]
+	wx:[2,,,,"V","inflateSpine"],
+	xK:[1,,"IK<[E:G>",,"[E:G","asArray"]
 });
 
 // interface java.util.function.IntFunction "IK"
@@ -13335,14 +13335,14 @@ boot.define("HM","HN","DA",{
 	}
 },{
 	$:[32792,"java.util.stream.StreamSpliterators$InfiniteSupplyingSpliterator$OfLong",,"HN<CR>","DA"],
-	$0:[0,,"J Hw"],
-	d:[16,"s","Hw"],
+	$0:[0,,"J HZ"],
+	d:[16,"s","HZ"],
 	uV:[1,,"HH",,"Z","tryAdvance"],
 	uX:[1,,,,"DA","trySplit"]
 });
 
-// interface java.util.function.LongSupplier "Hw"
-boot.define("Hw","","",{
+// interface java.util.function.LongSupplier "HZ"
+boot.define("HZ","","",{
 },{
 	$:[1537,"java.util.function.LongSupplier",,,,{
 		DC :{
@@ -13494,8 +13494,8 @@ boot.define("HO","","DA",{
 	g:[26,"RIGHT_BALANCED_SPLIT_RATIO","J"],
 	h:[4120,"$assertionsDisabled","Z"],
 	uU:[1,,"HH",,"V","forEachRemaining"],
-	TH:[1,,,,"I","characteristics"],
 	xW:[2,,"J",,"J","splitPoint"],
+	TH:[1,,,,"I","characteristics"],
 	TG:[1,,,,"J","estimateSize"],
 	TI:[1,,,,"CL<>","getComparator"],
 	uV:[1,,"HH",,"Z","tryAdvance"],
@@ -13918,7 +13918,7 @@ boot.define("HU","","",{
 	xx:[1,,"J",,"J","orElse"],
 	xv:[1,,,,"Z","isPresent"],
 	xw:[1,,"HH",,"V","ifPresent"],
-	xy:[1,,"Hw",,"J","orElseGet"],
+	xy:[1,,"HZ",,"J","orElseGet"],
 	xz:[1,"X:BL","O<X:BL>","X:BL","J","orElseThrow"]
 });
 
@@ -14004,30 +14004,40 @@ boot.define("HW","","",{
 	yG:[1,,,,"HW","negate"]
 });
 
+// interface java.util.function.LongFunction "Hu"
+boot.define("Hu","","",{
+},{
+	$:[1537,"java.util.function.LongFunction","R:G",,,{
+		DC :{
+		}
+	}],
+	yK:[1025,,"J",,"R:G","apply"]
+});
+
 // interface java.util.stream.DoubleStream "Cy"
 boot.define("Cy","","HI",{
 	// java.util.stream.DoubleStream#builder()
-	_yK:function(){
+	_yL:function(){
 		// 727
 		return new boot.IN(0)
 	},
 	// java.util.stream.DoubleStream#empty()
-	_yL:function(){
+	_yM:function(){
 		// 736
 		return boot.CW.FZ(boot.CY.SR(),false)
 	},
 	// java.util.stream.DoubleStream#of(double)
-	_yM:function(A){
+	_yN:function(A){
 		// 746
 		return boot.CW.FZ(new boot.IN(A,1),false)
 	},
 	// java.util.stream.DoubleStream#of(double[])
-	_yN:function(A){
+	_yO:function(A){
 		// 756
 		return boot.CQ.XH(A)
 	},
 	// java.util.stream.DoubleStream#iterate(double, java.util.function.DoubleUnaryOperator)
-	_yO:function(A,C,D){
+	_yP:function(A,C,D){
 		// 776
 		boot.CN.DV(C);
 		// 777
@@ -14036,14 +14046,14 @@ boot.define("Cy","","HI",{
 		return boot.CW.FZ(boot.CY.Sz(D,1296),false)
 	},
 	// java.util.stream.DoubleStream#generate(java.util.function.DoubleSupplier)
-	_yP:function(A){
+	_yQ:function(A){
 		// 806
 		boot.CN.DV(A);
 		// 807
 		return boot.CW.FZ(new boot.IP(boot.J.BP(-1,2147483647),A,0),false)
 	},
 	// java.util.stream.DoubleStream#concat(java.util.stream.DoubleStream, java.util.stream.DoubleStream)
-	_yQ:function(A,B,C,D){
+	_yR:function(A,B,C,D){
 		// 829
 		boot.CN.DV(A);
 		// 830
@@ -14052,71 +14062,71 @@ boot.define("Cy","","HI",{
 	// java.util.stream.DoubleStream#parallel()
 	vH:function(){
 		// 77
-		return this.yS()
+		return this.yT()
 	},
 	// java.util.stream.DoubleStream#sequential()
 	vJ:function(){
 		// 77
-		return this.yT()
+		return this.yU()
 	},
 	// java.util.stream.DoubleStream#spliterator()
 	Iv:function(){
 		// 77
-		return this.yR()
+		return this.yS()
 	},
 	// java.util.stream.DoubleStream#iterator()
 	IH:function(){
 		// 77
-		return this.yU()
+		return this.yV()
 	}
 },{
 	$:[1537,"java.util.stream.DoubleStream",,,"HI<CT,Cy>"],
-	yV:[1025,,"IR",,"HY","reduce"],
-	yW:[1025,,"D IR",,"D","reduce"],
-	yX:[1025,,"J",,"Cy","limit"],
+	yW:[1025,,"IR",,"Hv","reduce"],
+	yX:[1025,,"D IR",,"D","reduce"],
+	yY:[1025,,"J",,"Cy","limit"],
 	vP:[1025,,,,"J","count"],
-	yY:[1025,,,,"HY","min"],
-	yZ:[1025,,,,"HY","max"],
-	yQ:[9,,"Cy Cy",,"Cy","concat"],
-	yU:[1025,,,,"GU","iterator"],
-	yu:[1025,,,,"[D","toArray"],
-	yR:[1025,,,,"Cz","spliterator"],
-	yv:[1025,"R:G","O<R:G> IS<R#> Fz<R#,R#>",,"R:G","collect"],
-	yw:[1025,,"HG",,"V","forEach"],
-	yx:[1025,,"J",,"Cy","skip"],
-	yy:[1025,,"HG",,"Cy","peek"],
-	yN:[137,,"[D",,"Cy","of"],
-	yM:[9,,"D",,"Cy","of"],
-	yz:[1025,,,,"D","sum"],
-	yL:[9,,,,"Cy","empty"],
-	zA:[1025,,"IT",,"Cy","filter"],
-	yS:[1025,,,,"Cy","parallel"],
-	zB:[1025,,"IU",,"Cy","map"],
-	zC:[1025,,"IT",,"Z","allMatch"],
-	zD:[1025,,"IT",,"Z","anyMatch"],
-	vx:[1025,,,,"HY","average"],
-	vy:[1025,,,,"Cw<CT>","boxed"],
-	zE:[1025,,,,"HY","findAny"],
-	zF:[1025,,,,"HY","findFirst"],
-	zG:[1025,,"HG",,"V","forEachOrdered"],
-	yO:[9,,"D IU",,"Cy","iterate"],
-	zH:[1025,,"IV",,"DB","mapToLong"],
-	zI:[1025,"U:G","IW<>",,"Cw<U:G>","mapToObj"],
-	zJ:[1025,,"IT",,"Z","noneMatch"],
-	yT:[1025,,,,"Cy","sequential"],
-	zK:[1025,,,,"IX","summaryStatistics"],
-	yP:[9,,"IY",,"Cy","generate"],
-	yK:[9,,,,"IZ","builder"],
-	zL:[1025,,,,"Cy","sorted"],
-	zM:[1025,,,,"Cy","distinct"],
-	zN:[1025,,"IW<>",,"Cy","flatMap"],
-	zO:[1025,,"Iu",,"Cu","mapToInt"]
+	yZ:[1025,,,,"Hv","min"],
+	yu:[1025,,,,"Hv","max"],
+	yR:[9,,"Cy Cy",,"Cy","concat"],
+	yV:[1025,,,,"GU","iterator"],
+	yv:[1025,,,,"[D","toArray"],
+	yS:[1025,,,,"Cz","spliterator"],
+	yw:[1025,"R:G","O<R:G> IS<R#> Fz<R#,R#>",,"R:G","collect"],
+	yx:[1025,,"HG",,"V","forEach"],
+	yy:[1025,,"J",,"Cy","skip"],
+	yz:[1025,,"HG",,"Cy","peek"],
+	yO:[137,,"[D",,"Cy","of"],
+	yN:[9,,"D",,"Cy","of"],
+	zA:[1025,,,,"D","sum"],
+	yM:[9,,,,"Cy","empty"],
+	zB:[1025,,"IT",,"Cy","filter"],
+	yT:[1025,,,,"Cy","parallel"],
+	zC:[1025,,"IU",,"Cy","map"],
+	yL:[9,,,,"IV","builder"],
+	zD:[1025,,,,"Cy","sorted"],
+	yQ:[9,,"IW",,"Cy","generate"],
+	zE:[1025,,,,"Cy","distinct"],
+	zF:[1025,,"IX<>",,"Cy","flatMap"],
+	zG:[1025,,"IT",,"Z","allMatch"],
+	zH:[1025,,"IT",,"Z","anyMatch"],
+	wA:[1025,,,,"Hv","average"],
+	wB:[1025,,,,"Cw<CT>","boxed"],
+	zI:[1025,,,,"Hv","findAny"],
+	zJ:[1025,,,,"Hv","findFirst"],
+	zK:[1025,,"HG",,"V","forEachOrdered"],
+	yP:[9,,"D IU",,"Cy","iterate"],
+	zL:[1025,,"IY",,"DB","mapToLong"],
+	zM:[1025,"U:G","IX<>",,"Cw<U:G>","mapToObj"],
+	zN:[1025,,"IT",,"Z","noneMatch"],
+	yU:[1025,,,,"Cy","sequential"],
+	zO:[1025,,,,"IZ","summaryStatistics"],
+	zP:[1025,,"Iu",,"Cu","mapToInt"]
 });
 
-// interface java.util.stream.DoubleStream$Builder "IZ"
-boot.define("IZ","","HG",{
+// interface java.util.stream.DoubleStream$Builder "IV"
+boot.define("IV","","HG",{
 	// java.util.stream.DoubleStream$Builder#add(double)
-	zQ:function(A){
+	zR:function(A){
 		// 878
 		this.uQ(A);
 		// 879
@@ -14124,13 +14134,13 @@ boot.define("IZ","","HG",{
 	}
 },{
 	$:[34313,"java.util.stream.DoubleStream$Builder",,,"HG"],
-	zQ:[1,,"D",,"IZ","add"],
+	zR:[1,,"D",,"IV","add"],
 	uQ:[1025,,"D",,"V","accept"],
-	zP:[1025,,,,"Cy","build"]
+	zQ:[1025,,,,"Cy","build"]
 });
 
 // class java.util.stream.Streams$DoubleStreamBuilderImpl "IN"
-boot.define("IN","HK","IZ Cz",{
+boot.define("IN","HK","IV Cz",{
 	d:0,
 	// java.util.stream.Streams$DoubleStreamBuilderImpl#<init>()
 	$0:function(){
@@ -14177,7 +14187,7 @@ boot.define("IN","HK","IZ Cz",{
 		// 653
 	},
 	// java.util.stream.Streams$DoubleStreamBuilderImpl#build()
-	zP:function(A){
+	zQ:function(A){
 		// 657
 		A=this.c;
 		// 658
@@ -14188,7 +14198,7 @@ boot.define("IN","HK","IZ Cz",{
 			// 660
 			this.c=(-(this.c))-1;
 			// 663
-			return A<2?boot.CW.FZ(this,false):boot.CW.FZ(this.e.yR(),false);
+			return A<2?boot.CW.FZ(this,false):boot.CW.FZ(this.e.yS(),false);
 		}
 	},
 	// java.util.stream.Streams$DoubleStreamBuilderImpl#tryAdvance(java.util.function.DoubleConsumer)
@@ -14242,14 +14252,14 @@ boot.define("IN","HK","IZ Cz",{
 		return boot.HK.prototype.TE.call(this)
 	}
 },{
-	$:[32792,"java.util.stream.Streams$DoubleStreamBuilderImpl",,"HK<CT,Cz>","IZ Cz"],
+	$:[32792,"java.util.stream.Streams$DoubleStreamBuilderImpl",,"HK<CT,Cz>","IV Cz"],
 	$0:[0],
 	$1:[0,,"D"],
 	d:[0,"first","D"],
 	e:[0,"buffer","Iv"],
 	uQ:[1,,"D",,"V","accept"],
 	uO:[1,,"HG",,"V","forEachRemaining"],
-	zP:[1,,,,"Cy","build"],
+	zQ:[1,,,,"Cy","build"],
 	uP:[1,,"HG",,"Z","tryAdvance"]
 });
 
@@ -14276,7 +14286,7 @@ boot.define("Iv","IC","HG",{
 				boot.IF.TS(this.N(),"{0} calling SpinedBuffer.OfDouble.forEach(Consumer)");
 			}
 			// 967
-			this.yR().Ox(A);
+			this.yS().Ox(A);
 		} else {
 			// 962
 			this.wP(A);
@@ -14284,22 +14294,22 @@ boot.define("Iv","IC","HG",{
 		// 969
 	},
 	// java.util.stream.SpinedBuffer$OfDouble#newArrayArray(int)
-	zR:function(A){
+	zS:function(A){
 		// 973
 		return Φ("[D",A,null)
 	},
 	// java.util.stream.SpinedBuffer$OfDouble#newArray(int)
-	zS:function(A){
+	zT:function(A){
 		// 978
 		return Φ("D",A,0)
 	},
 	// java.util.stream.SpinedBuffer$OfDouble#arrayLength(double[])
-	zT:function(A){
+	zU:function(A){
 		// 983
 		return A.length
 	},
 	// java.util.stream.SpinedBuffer$OfDouble#arrayForEach(double[], int, int, java.util.function.DoubleConsumer)
-	zU:function(A,B,C,D,E){
+	zV:function(A,B,C,D,E){
 		// 990
 		E=B;
 		for (; E<C; ++E) {
@@ -14317,7 +14327,7 @@ boot.define("Iv","IC","HG",{
 		// 998
 	},
 	// java.util.stream.SpinedBuffer$OfDouble#get(long)
-	zV:function(A,C){
+	zW:function(A,C){
 		// 1003
 		C=this.wW(A);
 		// 1004
@@ -14330,12 +14340,12 @@ boot.define("Iv","IC","HG",{
 		}
 	},
 	// java.util.stream.SpinedBuffer$OfDouble#iterator()
-	yU:function(){
+	yV:function(){
 		// 1012
-		return boot.CY.TD(this.yR())
+		return boot.CY.TD(this.yS())
 	},
 	// java.util.stream.SpinedBuffer$OfDouble#spliterator()
-	yR:function(){
+	yS:function(){
 		// 1041
 		return new boot.Iw(this,0,this.i,0,this.h,0)
 	},
@@ -14357,47 +14367,47 @@ boot.define("Iv","IC","HG",{
 	// java.util.stream.SpinedBuffer$OfDouble#arrayForEach(java.lang.Object, int, int, java.lang.Object)
 	wY:function(A,B,C,D){
 		// 950
-		this.zU(A,B,C,D);
+		this.zV(A,B,C,D);
 	},
 	// java.util.stream.SpinedBuffer$OfDouble#arrayLength(java.lang.Object)
 	wZ:function(A){
 		// 950
-		return this.zT(A)
+		return this.zU(A)
 	},
 	// java.util.stream.SpinedBuffer$OfDouble#newArray(int)
 	wu:function(A){
 		// 950
-		return this.zS(A)
+		return this.zT(A)
 	},
 	// java.util.stream.SpinedBuffer$OfDouble#newArrayArray(int)
 	wv:function(A){
 		// 950
-		return this.zR(A)
+		return this.zS(A)
 	},
 	// java.util.stream.SpinedBuffer$OfDouble#iterator()
 	IH:function(){
 		// 950
-		return this.yU()
+		return this.yV()
 	},
 	// java.util.stream.SpinedBuffer$OfDouble#spliterator()
 	Iv:function(){
 		// 950
-		return this.yR()
+		return this.yS()
 	}
 },{
 	$:[32776,"java.util.stream.SpinedBuffer$OfDouble",,"IC<CT,[D,HG>","HG"],
 	$0:[0],
 	$1:[0,,"I"],
-	zV:[1,,"J",,"D","get"],
+	zW:[1,,"J",,"D","get"],
 	W:[1,,,,"u","toString"],
-	zS:[1,,"I",,"[D","newArray"],
-	yU:[1,,,,"GU","iterator"],
-	yR:[1,,,,"Cz","spliterator"],
+	zT:[1,,"I",,"[D","newArray"],
+	yV:[1,,,,"GU","iterator"],
+	yS:[1,,,,"Cz","spliterator"],
 	uQ:[1,,"D",,"V","accept"],
 	Iz:[1,,"BG<>",,"V","forEach"],
-	zT:[4,,"[D",,"I","arrayLength"],
-	zU:[4,,"[D I I HG",,"V","arrayForEach"],
-	zR:[4,,"I",,"[[D","newArrayArray"]
+	zV:[4,,"[D I I HG",,"V","arrayForEach"],
+	zS:[4,,"I",,"[[D","newArrayArray"],
+	zU:[4,,"[D",,"I","arrayLength"]
 });
 
 // class java.util.stream.SpinedBuffer$OfDouble$1Splitr "Iw"
@@ -14411,35 +14421,35 @@ boot.define("Iw","IH","Cz",{
 		// 1022
 	},
 	// java.util.stream.SpinedBuffer$OfDouble$1Splitr#newSpliterator(int, int, int, int)
-	zW:function(A,B,C,D){
+	zX:function(A,B,C,D){
 		// 1027
 		return new boot.Iw(this.j,A,B,C,D,0)
 	},
 	// java.util.stream.SpinedBuffer$OfDouble$1Splitr#arrayForOne(double[], int, java.util.function.DoubleConsumer)
-	zX:function(A,B,C){
+	zY:function(A,B,C){
 		// 1033
 		C.uQ(A[B]);
 		// 1034
 	},
 	// java.util.stream.SpinedBuffer$OfDouble$1Splitr#arraySpliterator(double[], int, int)
-	zY:function(A,B,C){
+	zZ:function(A,B,C){
 		// 1038
 		return boot.CQ.XB(A,B,B+C)
 	},
 	// java.util.stream.SpinedBuffer$OfDouble$1Splitr#arraySpliterator(java.lang.Object, int, int)
 	xF:function(A,B,C){
 		// 1016
-		return this.zY(A,B,C)
+		return this.zZ(A,B,C)
 	},
 	// java.util.stream.SpinedBuffer$OfDouble$1Splitr#arrayForOne(java.lang.Object, int, java.lang.Object)
 	xG:function(A,B,C){
 		// 1016
-		this.zX(A,B,C);
+		this.zY(A,B,C);
 	},
 	// java.util.stream.SpinedBuffer$OfDouble$1Splitr#newSpliterator(int, int, int, int)
 	xH:function(A,B,C,D){
 		// 1016
-		return this.zW(A,B,C,D)
+		return this.zX(A,B,C,D)
 	},
 	// java.util.stream.SpinedBuffer$OfDouble$1Splitr#forEachRemaining(java.util.function.DoubleConsumer)
 	uO:function(A){
@@ -14460,9 +14470,9 @@ boot.define("Iw","IH","Cz",{
 	$:[131072,"java.util.stream.SpinedBuffer$OfDouble$1Splitr",,"IH<Cz>","Cz"],
 	$0:[0,,"Iv I I I I"],
 	j:[4112,"this$0","Iv"],
-	zX:[0,,"[D I HG",,"V","arrayForOne"],
-	zY:[0,,"[D I I",,"Cz","arraySpliterator"],
-	zW:[0,,"I I I I",,"Iw","newSpliterator"]
+	zY:[0,,"[D I HG",,"V","arrayForOne"],
+	zZ:[0,,"[D I I",,"Cz","arraySpliterator"],
+	zX:[0,,"I I I I",,"Iw","newSpliterator"]
 });
 
 // interface java.util.PrimitiveIterator$OfDouble "GU"
@@ -14472,19 +14482,19 @@ boot.define("GU","","IL",{
 		// 260
 		boot.CN.DV(A);
 		// 261
-		for (; this.IO()!=0; A.uQ(this.zZ())) {
+		for (; this.IO()!=0; A.uQ(this.zu())) {
 		}
 		// 263
 	},
 	// java.util.PrimitiveIterator$OfDouble#next()
-	zu:function(){
+	zv:function(){
 		// 273
 		if (boot.GX.c!=0) {
 			// 274
 			boot.GX.TS(this.N(),"{0} calling PrimitiveIterator.OfDouble.nextLong()");
 		}
 		// 275
-		return boot.CT.MG(this.zZ())
+		return boot.CT.MG(this.zu())
 	},
 	// java.util.PrimitiveIterator$OfDouble#forEachRemaining(java.util.function.Consumer)
 	Ox:function(A){
@@ -14513,12 +14523,12 @@ boot.define("GU","","IL",{
 	// java.util.PrimitiveIterator$OfDouble#next()
 	Hx:function(){
 		// 233
-		return this.zu()
+		return this.zv()
 	}
 },{
 	$:[34313,"java.util.PrimitiveIterator$OfDouble",,,"IL<CT,HG>"],
-	zu:[1,,,,"CT","next"],
-	zZ:[1025,,,,"D","nextDouble"],
+	zv:[1,,,,"CT","next"],
+	zu:[1025,,,,"D","nextDouble"],
 	uO:[1,,"HG",,"V","forEachRemaining"],
 	Ox:[1,,"BG<>",,"V","forEachRemaining"]
 });
@@ -14539,11 +14549,11 @@ boot.define("IO","","GU",{
 		return true
 	},
 	// java.util.stream.DoubleStream$1#nextDouble()
-	zZ:function(A){
+	zu:function(A){
 		// 787
 		A=this.c;
 		// 788
-		this.c=this.e.zv(this.c);
+		this.c=this.e.zw(this.c);
 		// 789
 		return A
 	}
@@ -14554,54 +14564,54 @@ boot.define("IO","","GU",{
 	d:[4112,"val$seed","D"],
 	e:[4112,"val$f","IU"],
 	IO:[1,,,,"Z","hasNext"],
-	zZ:[1,,,,"D","nextDouble"]
+	zu:[1,,,,"D","nextDouble"]
 });
 
 // interface java.util.function.DoubleUnaryOperator "IU"
 boot.define("IU","","",{
 	// java.util.function.DoubleUnaryOperator#compose(java.util.function.DoubleUnaryOperator)
-	zw:function(A){
+	zx:function(A){
 		// 65
 		boot.CN.DV(A);
 		// 66
-		return λ(boot.IU,"zv","zx",this,[A])
+		return λ(boot.IU,"zw","zy",this,[A])
 	},
 	// java.util.function.DoubleUnaryOperator#andThen(java.util.function.DoubleUnaryOperator)
-	zy:function(A){
+	zz:function(A){
 		// 83
 		boot.CN.DV(A);
 		// 84
-		return λ(boot.IU,"zv","zz",this,[A])
+		return λ(boot.IU,"zw","BAA",this,[A])
 	},
 	// java.util.function.DoubleUnaryOperator#identity()
-	_BAA:function(){
+	_BAB:function(){
 		// 93
-		return λ(boot.IU,"zv","BAB",boot.IU,[])
+		return λ(boot.IU,"zw","BAC",boot.IU,[])
 	},
 	// java.util.function.DoubleUnaryOperator#lambda$identity$38(double)
-	_BAB:function(A){
+	_BAC:function(A){
 		// 93
 		return A
 	},
 	// java.util.function.DoubleUnaryOperator#lambda$andThen$37(java.util.function.DoubleUnaryOperator, double)
-	zz:function(A,B){
+	BAA:function(A,B){
 		// 84
-		return A.zv(this.zv(B))
+		return A.zw(this.zw(B))
 	},
 	// java.util.function.DoubleUnaryOperator#lambda$compose$36(java.util.function.DoubleUnaryOperator, double)
-	zx:function(A,B){
+	zy:function(A,B){
 		// 66
-		return this.zv(A.zv(B))
+		return this.zw(A.zw(B))
 	}
 },{
 	$:[1537,"java.util.function.DoubleUnaryOperator",,,,{
 		DC :{
 		}
 	}],
-	BAA:[9,,,,"IU","identity"],
-	zv:[1025,,"D",,"D","applyAsDouble"],
-	zy:[1,,"IU",,"IU","andThen"],
-	zw:[1,,"IU",,"IU","compose"]
+	BAB:[9,,,,"IU","identity"],
+	zw:[1025,,"D",,"D","applyAsDouble"],
+	zz:[1,,"IU",,"IU","andThen"],
+	zx:[1,,"IU",,"IU","compose"]
 });
 
 // class java.util.stream.StreamSpliterators$InfiniteSupplyingSpliterator$OfDouble "IP"
@@ -14619,7 +14629,7 @@ boot.define("IP","HN","Cz",{
 		// 1429
 		boot.CN.DV(A);
 		// 1431
-		A.uQ(this.d.BAC());
+		A.uQ(this.d.BAD());
 		// 1432
 		return true
 	},
@@ -14651,20 +14661,20 @@ boot.define("IP","HN","Cz",{
 	}
 },{
 	$:[32792,"java.util.stream.StreamSpliterators$InfiniteSupplyingSpliterator$OfDouble",,"HN<CT>","Cz"],
-	$0:[0,,"J IY"],
-	d:[16,"s","IY"],
+	$0:[0,,"J IW"],
+	d:[16,"s","IW"],
 	uP:[1,,"HG",,"Z","tryAdvance"],
 	uR:[1,,,,"Cz","trySplit"]
 });
 
-// interface java.util.function.DoubleSupplier "IY"
-boot.define("IY","","",{
+// interface java.util.function.DoubleSupplier "IW"
+boot.define("IW","","",{
 },{
 	$:[1537,"java.util.function.DoubleSupplier",,,,{
 		DC :{
 		}
 	}],
-	BAC:[1025,,,,"D","getAsDouble"]
+	BAD:[1025,,,,"D","getAsDouble"]
 });
 
 // class java.util.stream.Streams$ConcatSpliterator$OfDouble "IQ"
@@ -14702,11 +14712,11 @@ boot.define("IR","","",{
 		DC :{
 		}
 	}],
-	BAD:[1025,,"D D",,"D","applyAsDouble"]
+	BAE:[1025,,"D D",,"D","applyAsDouble"]
 });
 
-// class java.util.OptionalDouble "HY"
-boot.define("HY","","",{
+// class java.util.OptionalDouble "Hv"
+boot.define("Hv","","",{
 	// java.util.OptionalDouble#<init>()
 	$0:function(){
 		// 68
@@ -14716,9 +14726,9 @@ boot.define("HY","","",{
 		// 70
 	},
 	// java.util.OptionalDouble#empty()
-	_BAE:function(){
+	_BAF:function(){
 		// 84
-		return boot.HY.c
+		return boot.Hv.c
 	},
 	// java.util.OptionalDouble#<init>(double)
 	$1:function(A){
@@ -14729,12 +14739,12 @@ boot.define("HY","","",{
 		// 95
 	},
 	// java.util.OptionalDouble#of(double)
-	_BAF:function(A){
+	_BAG:function(A){
 		// 104
-		return new boot.HY(A,1)
+		return new boot.Hv(A,1)
 	},
 	// java.util.OptionalDouble#getAsDouble()
-	BAC:function(){
+	BAD:function(){
 		// 117
 		if (this.d!=0) {
 			// 120
@@ -14750,7 +14760,7 @@ boot.define("HY","","",{
 		return this.d
 	},
 	// java.util.OptionalDouble#ifPresent(java.util.function.DoubleConsumer)
-	BAG:function(A){
+	BAH:function(A){
 		// 141
 		if (this.d!=0) {
 			// 142
@@ -14759,17 +14769,17 @@ boot.define("HY","","",{
 		// 143
 	},
 	// java.util.OptionalDouble#orElse(double)
-	BAH:function(A){
+	BAI:function(A){
 		// 152
 		return this.d!=0?this.e:A
 	},
 	// java.util.OptionalDouble#orElseGet(java.util.function.DoubleSupplier)
-	BAI:function(A){
+	BAJ:function(A){
 		// 166
-		return this.d!=0?this.e:A.BAC()
+		return this.d!=0?this.e:A.BAD()
 	},
 	// java.util.OptionalDouble#orElseThrow(java.util.function.Supplier)
-	BAJ:function(A){
+	BAK:function(A){
 		// 186
 		if (this.d==0) {
 			// 189
@@ -14784,7 +14794,7 @@ boot.define("HY","","",{
 		// 208
 		if (this!=A) {
 			// 212
-			if (A instanceof boot.HY!=0) {
+			if (A instanceof boot.Hv!=0) {
 				// 216
 				B=A;
 				return (this.d!=0&&B.d!=0)?boot.CT.GW(this.e,B.e)==0?1:0:this.d==B.d?1:0;
@@ -14809,26 +14819,26 @@ boot.define("HY","","",{
 	// java.util.OptionalDouble#<clinit>()
 	_:function(){
 		// 53
-		boot.HY.c=new boot.HY(0);
+		boot.Hv.c=new boot.Hv(0);
 	}
 },{
 	$:[17,"java.util.OptionalDouble",,"G"],
 	$0:[2],
 	$1:[2,,"D"],
-	c:[26,"EMPTY","HY"],
+	c:[26,"EMPTY","Hv"],
 	d:[18,"isPresent","Z"],
 	e:[18,"value","D"],
 	BK:[1,,"G",,"Z","equals"],
 	W:[1,,,,"u","toString"],
 	BJ:[1,,,,"I","hashCode"],
-	BAF:[9,,"D",,"HY","of"],
-	BAE:[9,,,,"HY","empty"],
-	BAC:[1,,,,"D","getAsDouble"],
-	BAH:[1,,"D",,"D","orElse"],
+	BAG:[9,,"D",,"Hv","of"],
+	BAF:[9,,,,"Hv","empty"],
+	BAD:[1,,,,"D","getAsDouble"],
+	BAI:[1,,"D",,"D","orElse"],
 	xv:[1,,,,"Z","isPresent"],
-	BAG:[1,,"HG",,"V","ifPresent"],
-	BAI:[1,,"IY",,"D","orElseGet"],
-	BAJ:[1,"X:BL","O<X:BL>","X:BL","D","orElseThrow"]
+	BAH:[1,,"HG",,"V","ifPresent"],
+	BAJ:[1,,"IW",,"D","orElseGet"],
+	BAK:[1,"X:BL","O<X:BL>","X:BL","D","orElseThrow"]
 });
 
 // interface java.util.function.ObjDoubleConsumer "IS"
@@ -14838,79 +14848,89 @@ boot.define("IS","","",{
 		DC :{
 		}
 	}],
-	BAK:[1025,,"T:G D",,"V","accept"]
+	BAL:[1025,,"T:G D",,"V","accept"]
 });
 
 // interface java.util.function.DoublePredicate "IT"
 boot.define("IT","","",{
 	// java.util.function.DoublePredicate#and(java.util.function.DoublePredicate)
-	BAL:function(A){
+	BAM:function(A){
 		// 69
 		boot.CN.DV(A);
 		// 70
-		return λ(boot.IT,"BAM","BAN",this,[A])
+		return λ(boot.IT,"BAN","BAO",this,[A])
 	},
 	// java.util.function.DoublePredicate#negate()
-	BAO:function(){
+	BAP:function(){
 		// 81
-		return λ(boot.IT,"BAM","BAP",this,[])
+		return λ(boot.IT,"BAN","BAQ",this,[])
 	},
 	// java.util.function.DoublePredicate#or(java.util.function.DoublePredicate)
-	BAQ:function(A){
+	BAR:function(A){
 		// 101
 		boot.CN.DV(A);
 		// 102
-		return λ(boot.IT,"BAM","BAR",this,[A])
+		return λ(boot.IT,"BAN","BAS",this,[A])
 	},
 	// java.util.function.DoublePredicate#lambda$or$35(java.util.function.DoublePredicate, double)
-	BAR:function(A,B){
-		return this.BAM(B)!=0||A.BAM(B)!=0
+	BAS:function(A,B){
+		return this.BAN(B)!=0||A.BAN(B)!=0
 	},
 	// java.util.function.DoublePredicate#lambda$negate$34(double)
-	BAP:function(A){
+	BAQ:function(A){
 		// 81
-		return this.BAM(A)==0
+		return this.BAN(A)==0
 	},
 	// java.util.function.DoublePredicate#lambda$and$33(java.util.function.DoublePredicate, double)
-	BAN:function(A,B){
+	BAO:function(A,B){
 		// 70
-		return this.BAM(B)!=0&&A.BAM(B)!=0
+		return this.BAN(B)!=0&&A.BAN(B)!=0
 	}
 },{
 	$:[1537,"java.util.function.DoublePredicate",,,,{
 		DC :{
 		}
 	}],
-	BAM:[1025,,"D",,"Z","test"],
-	BAL:[1,,"IT",,"IT","and"],
-	BAQ:[1,,"IT",,"IT","or"],
-	BAO:[1,,,,"IT","negate"]
+	BAN:[1025,,"D",,"Z","test"],
+	BAM:[1,,"IT",,"IT","and"],
+	BAR:[1,,"IT",,"IT","or"],
+	BAP:[1,,,,"IT","negate"]
+});
+
+// interface java.util.function.DoubleFunction "IX"
+boot.define("IX","","",{
+},{
+	$:[1537,"java.util.function.DoubleFunction","R:G",,,{
+		DC :{
+		}
+	}],
+	BAT:[1025,,"D",,"R:G","apply"]
 });
 
 // interface java.util.stream.Stream "Cw"
 boot.define("Cw","","HI",{
 	// java.util.stream.Stream#builder()
-	_BAS:function(){
+	_BAU:function(){
 		// 966
 		return new boot.Ix(0)
 	},
 	// java.util.stream.Stream#empty()
-	_BAT:function(){
+	_BAV:function(){
 		// 976
 		return boot.CW.FU(boot.CY.SO(),false)
 	},
 	// java.util.stream.Stream#of(java.lang.Object)
-	_BAU:function(A){
+	_BAW:function(A){
 		// 987
 		return boot.CW.FU(new boot.Ix(A,1),false)
 	},
 	// java.util.stream.Stream#of(java.lang.Object[])
-	_BAV:function(A){
+	_BAX:function(A){
 		// 1000
 		return boot.CQ.RI(A)
 	},
 	// java.util.stream.Stream#iterate(java.lang.Object, java.util.function.UnaryOperator)
-	_BAW:function(A,B,C){
+	_BAY:function(A,B,C){
 		// 1021
 		boot.CN.DV(B);
 		// 1022
@@ -14919,14 +14939,14 @@ boot.define("Cw","","HI",{
 		return boot.CW.FU(boot.CY.JA(C,1040),false)
 	},
 	// java.util.stream.Stream#generate(java.util.function.Supplier)
-	_BAX:function(A){
+	_BAZ:function(A){
 		// 1051
 		boot.CN.DV(A);
 		// 1052
 		return boot.CW.FU(new boot.Iz(boot.J.BP(-1,2147483647),A,0),false)
 	},
 	// java.util.stream.Stream#concat(java.util.stream.Stream, java.util.stream.Stream)
-	_BAY:function(A,B,C,D){
+	_BAu:function(A,B,C,D){
 		// 1075
 		boot.CN.DV(A);
 		// 1076
@@ -14934,54 +14954,54 @@ boot.define("Cw","","HI",{
 	}
 },{
 	$:[1537,"java.util.stream.Stream","T:G",,"HI<T:G,Cw<T#>>"],
-	BAZ:[1025,,"FQ<T:G>",,"JB<T:G>","reduce"],
-	BAu:[1025,"U:G","U:G Fy<U#,,U#> FQ<U#>",,"U:G","reduce"],
-	BAv:[1025,,"T:G FQ<T#>",,"T:G","reduce"],
-	BAw:[1025,,"J",,"Cw<T:G>","limit"],
+	BAv:[1025,,"FQ<T:G>",,"JB<T:G>","reduce"],
+	BAw:[1025,"U:G","U:G Fy<U#,,U#> FQ<U#>",,"U:G","reduce"],
+	BAx:[1025,,"T:G FQ<T#>",,"T:G","reduce"],
+	BAy:[1025,,"J",,"Cw<T:G>","limit"],
 	vP:[1025,,,,"J","count"],
-	BAx:[1025,,"CL<>",,"JB<T:G>","min"],
-	BAy:[1025,,"CL<>",,"JB<T:G>","max"],
-	BAY:[9,"T:G","Cw<> Cw<>",,"Cw<T:G>","concat"],
-	BAz:[1025,"A:G","IK<[A:G>",,"[A:G","toArray"],
+	BAz:[1025,,"CL<>",,"JB<T:G>","min"],
+	BBA:[1025,,"CL<>",,"JB<T:G>","max"],
+	BAu:[9,"T:G","Cw<> Cw<>",,"Cw<T:G>","concat"],
+	BBB:[1025,"A:G","IK<[A:G>",,"[A:G","toArray"],
 	Hu:[1025,,,,"[G","toArray"],
 	RN:[1025,"R:G A:G","JC<,A:G,R:G>",,"R:G","collect"],
-	BBA:[1025,"R:G","O<R:G> Fz<R#,> Fz<R#,R#>",,"R:G","collect"],
+	BBC:[1025,"R:G","O<R:G> Fz<R#,> Fz<R#,R#>",,"R:G","collect"],
 	Iz:[1025,,"BG<>",,"V","forEach"],
-	BBB:[1025,,"J",,"Cw<T:G>","skip"],
-	BBC:[1025,,"BG<>",,"Cw<T:G>","peek"],
-	BAV:[137,"T:G","[T:G",,"Cw<T:G>","of",{
+	BBD:[1025,,"J",,"Cw<T:G>","skip"],
+	BBE:[1025,,"BG<>",,"Cw<T:G>","peek"],
+	BAX:[137,"T:G","[T:G",,"Cw<T:G>","of",{
 		Dz :{
 		}
 	}],
-	BAU:[9,"T:G","T:G",,"Cw<T:G>","of"],
-	BAT:[9,"T:G",,,"Cw<T:G>","empty"],
-	BBD:[1025,,"EK<>",,"Cw<T:G>","filter"],
-	BBE:[1025,"R:G","DM<,>",,"Cw<R:G>","map"],
-	BBF:[1025,,"EK<>",,"Z","allMatch"],
-	BBG:[1025,,"EK<>",,"Z","anyMatch"],
-	BBH:[1025,,,,"JB<T:G>","findAny"],
-	BBI:[1025,,,,"JB<T:G>","findFirst"],
-	BBJ:[1025,,"BG<>",,"V","forEachOrdered"],
-	BAW:[9,"T:G","T:G ES<T#>",,"Cw<T:G>","iterate"],
-	BBK:[1025,,"DN<>",,"Cy","mapToDouble"],
-	BBL:[1025,,"DP<>",,"DB","mapToLong"],
-	BBM:[1025,,"EK<>",,"Z","noneMatch"],
-	BAX:[9,"T:G","O<T:G>",,"Cw<T:G>","generate"],
-	BAS:[9,"T:G",,,"JD<T:G>","builder"],
-	BBN:[1025,,"CL<>",,"Cw<T:G>","sorted"],
-	BBO:[1025,,,,"Cw<T:G>","sorted"],
-	BBP:[1025,,,,"Cw<T:G>","distinct"],
-	BBQ:[1025,"R:G","DM<,>",,"Cw<R:G>","flatMap"],
-	BBR:[1025,,"DM<,>",,"Cy","flatMapToDouble"],
-	BBS:[1025,,"DM<,>",,"Cu","flatMapToInt"],
-	BBT:[1025,,"DM<,>",,"DB","flatMapToLong"],
-	BBU:[1025,,"DO<>",,"Cu","mapToInt"]
+	BAW:[9,"T:G","T:G",,"Cw<T:G>","of"],
+	BAV:[9,"T:G",,,"Cw<T:G>","empty"],
+	BBF:[1025,,"EK<>",,"Cw<T:G>","filter"],
+	BBG:[1025,"R:G","DM<,>",,"Cw<R:G>","map"],
+	BAU:[9,"T:G",,,"JD<T:G>","builder"],
+	BBH:[1025,,"CL<>",,"Cw<T:G>","sorted"],
+	BBI:[1025,,,,"Cw<T:G>","sorted"],
+	BAZ:[9,"T:G","O<T:G>",,"Cw<T:G>","generate"],
+	BBJ:[1025,,,,"Cw<T:G>","distinct"],
+	BBK:[1025,"R:G","DM<,>",,"Cw<R:G>","flatMap"],
+	BBL:[1025,,"EK<>",,"Z","allMatch"],
+	BBM:[1025,,"EK<>",,"Z","anyMatch"],
+	BBN:[1025,,,,"JB<T:G>","findAny"],
+	BBO:[1025,,,,"JB<T:G>","findFirst"],
+	BBP:[1025,,"BG<>",,"V","forEachOrdered"],
+	BAY:[9,"T:G","T:G ES<T#>",,"Cw<T:G>","iterate"],
+	BBQ:[1025,,"DN<>",,"Cy","mapToDouble"],
+	BBR:[1025,,"DP<>",,"DB","mapToLong"],
+	BBS:[1025,,"EK<>",,"Z","noneMatch"],
+	BBT:[1025,,"DM<,>",,"Cy","flatMapToDouble"],
+	BBU:[1025,,"DM<,>",,"Cu","flatMapToInt"],
+	BBV:[1025,,"DM<,>",,"DB","flatMapToLong"],
+	BBW:[1025,,"DO<>",,"Cu","mapToInt"]
 });
 
 // interface java.util.stream.Stream$Builder "JD"
 boot.define("JD","","BG",{
 	// java.util.stream.Stream$Builder#add(java.lang.Object)
-	BBV:function(A){
+	BBX:function(A){
 		// 1129
 		this.X(A);
 		// 1130
@@ -14989,9 +15009,9 @@ boot.define("JD","","BG",{
 	}
 },{
 	$:[34313,"java.util.stream.Stream$Builder","T:G",,"BG<T:G>"],
-	BBV:[1,,"T:G",,"JD<T:G>","add"],
+	BBX:[1,,"T:G",,"JD<T:G>","add"],
 	X:[1025,,"T:G",,"V","accept"],
-	BBW:[1025,,,,"Cw<T:G>","build"]
+	BBY:[1025,,,,"Cw<T:G>","build"]
 });
 
 // class java.util.stream.Streams$StreamBuilderImpl "Ix"
@@ -15041,14 +15061,14 @@ boot.define("Ix","HK","JD",{
 		// 375
 	},
 	// java.util.stream.Streams$StreamBuilderImpl#add(java.lang.Object)
-	BBV:function(A){
+	BBX:function(A){
 		// 378
 		this.X(A);
 		// 379
 		return this
 	},
 	// java.util.stream.Streams$StreamBuilderImpl#build()
-	BBW:function(A){
+	BBY:function(A){
 		// 384
 		A=this.c;
 		// 385
@@ -15098,10 +15118,10 @@ boot.define("Ix","HK","JD",{
 	$1:[0,,"T:G"],
 	d:[0,"first","T:G"],
 	e:[0,"buffer","II<T:G>"],
-	BBV:[1,,"T:G",,"JD<T:G>","add"],
+	BBX:[1,,"T:G",,"JD<T:G>","add"],
 	X:[1,,"T:G",,"V","accept"],
 	Ox:[1,,"BG<>",,"V","forEachRemaining"],
-	BBW:[1,,,,"Cw<T:G>","build"],
+	BBY:[1,,,,"Cw<T:G>","build"],
 	TF:[1,,"BG<>",,"Z","tryAdvance"]
 });
 
@@ -15188,14 +15208,14 @@ boot.define("JA","HR","",{
 // interface java.util.function.BiFunction "Fy"
 boot.define("Fy","","",{
 	// java.util.function.BiFunction#andThen(java.util.function.Function)
-	BBv:function(A){
+	BBx:function(A){
 		// 69
 		boot.CN.DV(A);
 		// 70
-		return λ(boot.Fy,"RK","BBw",this,[A])
+		return λ(boot.Fy,"RK","BBy",this,[A])
 	},
 	// java.util.function.BiFunction#lambda$andThen$4(java.util.function.Function, java.lang.Object, java.lang.Object)
-	BBw:function(A,B,C){
+	BBy:function(A,B,C){
 		// 70
 		return A.Gv(this.RK(B,C))
 	}
@@ -15205,32 +15225,32 @@ boot.define("Fy","","",{
 		}
 	}],
 	RK:[1025,,"T:G U:G",,"R:G","apply"],
-	BBv:[1,"V:G","DM<,>",,"Fy<T:G,U:G,V:G>","andThen"]
+	BBx:[1,"V:G","DM<,>",,"Fy<T:G,U:G,V:G>","andThen"]
 });
 
 // interface java.util.function.BinaryOperator "FQ"
 boot.define("FQ","","Fy",{
 	// java.util.function.BinaryOperator#minBy(java.util.Comparator)
-	_BBX:function(A){
+	_BBZ:function(A){
 		// 58
 		boot.CN.DV(A);
 		// 59
-		return λ(boot.FQ,"RK","BBY",boot.FQ,[A])
+		return λ(boot.FQ,"RK","BBu",boot.FQ,[A])
 	},
 	// java.util.function.BinaryOperator#maxBy(java.util.Comparator)
-	_BBZ:function(A){
+	_BBv:function(A){
 		// 73
 		boot.CN.DV(A);
 		// 74
-		return λ(boot.FQ,"RK","BBu",boot.FQ,[A])
+		return λ(boot.FQ,"RK","BBw",boot.FQ,[A])
 	},
 	// java.util.function.BinaryOperator#lambda$maxBy$24(java.util.Comparator, java.lang.Object, java.lang.Object)
-	_BBu:function(A,B,C){
+	_BBw:function(A,B,C){
 		// 74
 		return A.DL(B,C)>=0?B:C
 	},
 	// java.util.function.BinaryOperator#lambda$minBy$23(java.util.Comparator, java.lang.Object, java.lang.Object)
-	_BBY:function(A,B,C){
+	_BBu:function(A,B,C){
 		// 59
 		return A.DL(B,C)<=0?B:C
 	}
@@ -15239,8 +15259,8 @@ boot.define("FQ","","Fy",{
 		DC :{
 		}
 	}],
-	BBZ:[9,"T:G","CL<>",,"FQ<T:G>","maxBy"],
-	BBX:[9,"T:G","CL<>",,"FQ<T:G>","minBy"]
+	BBv:[9,"T:G","CL<>",,"FQ<T:G>","maxBy"],
+	BBZ:[9,"T:G","CL<>",,"FQ<T:G>","minBy"]
 });
 
 // class java.util.Optional "JB"
@@ -15252,7 +15272,7 @@ boot.define("JB","","",{
 		// 69
 	},
 	// java.util.Optional#empty()
-	_BBx:function(A){
+	_BBz:function(A){
 		// 85
 		A=boot.JB.c;
 		// 86
@@ -15265,14 +15285,14 @@ boot.define("JB","","",{
 		// 97
 	},
 	// java.util.Optional#of(java.lang.Object)
-	_BBy:function(A){
+	_BCA:function(A){
 		// 108
 		return new boot.JB(A,1)
 	},
 	// java.util.Optional#ofNullable(java.lang.Object)
-	_BBz:function(A){
+	_BCB:function(A){
 		// 121
-		return A==null?boot.JB.BBx():boot.JB.BBy(A)
+		return A==null?boot.JB.BBz():boot.JB.BCA(A)
 	},
 	// java.util.Optional#get()
 	D:function(){
@@ -15291,7 +15311,7 @@ boot.define("JB","","",{
 		return this.d!=null
 	},
 	// java.util.Optional#ifPresent(java.util.function.Consumer)
-	BCA:function(A){
+	BCC:function(A){
 		// 158
 		if (this.d!=null) {
 			// 159
@@ -15300,33 +15320,33 @@ boot.define("JB","","",{
 		// 160
 	},
 	// java.util.Optional#filter(java.util.function.Predicate)
-	BCB:function(A){
+	BCD:function(A){
 		// 174
 		boot.CN.DV(A);
 		// 175
 		if (this.xv()!=0) {
 			// 178
-			return A.Iu(this.d)!=0?this:boot.JB.BBx();
+			return A.Iu(this.d)!=0?this:boot.JB.BBz();
 		} else {
 			// 176
 			return this;
 		}
 	},
 	// java.util.Optional#map(java.util.function.Function)
-	BCC:function(A){
+	BCE:function(A){
 		// 211
 		boot.CN.DV(A);
 		// 212
 		if (this.xv()!=0) {
 			// 215
-			return boot.JB.BBz(A.Gv(this.d));
+			return boot.JB.BCB(A.Gv(this.d));
 		} else {
 			// 213
-			return boot.JB.BBx();
+			return boot.JB.BBz();
 		}
 	},
 	// java.util.Optional#flatMap(java.util.function.Function)
-	BCD:function(A){
+	BCF:function(A){
 		// 237
 		boot.CN.DV(A);
 		// 238
@@ -15335,21 +15355,21 @@ boot.define("JB","","",{
 			return boot.CN.DV(A.Gv(this.d));
 		} else {
 			// 239
-			return boot.JB.BBx();
+			return boot.JB.BBz();
 		}
 	},
 	// java.util.Optional#orElse(java.lang.Object)
-	BCE:function(A){
+	BCG:function(A){
 		// 253
 		return this.d!=null?this.d:A
 	},
 	// java.util.Optional#orElseGet(java.util.function.Supplier)
-	BCF:function(A){
+	BCH:function(A){
 		// 267
 		return this.d!=null?this.d:A.D()
 	},
 	// java.util.Optional#orElseThrow(java.util.function.Supplier)
-	BCG:function(A){
+	BCI:function(A){
 		// 287
 		if (this.d==null) {
 			// 290
@@ -15402,61 +15422,61 @@ boot.define("JB","","",{
 	BK:[1,,"G",,"Z","equals"],
 	W:[1,,,,"u","toString"],
 	BJ:[1,,,,"I","hashCode"],
-	BBy:[9,"T:G","T:G",,"JB<T:G>","of"],
-	BBx:[9,"T:G",,,"JB<T:G>","empty"],
-	BCB:[1,,"EK<>",,"JB<T:G>","filter"],
-	BCC:[1,"U:G","DM<,>",,"JB<U:G>","map"],
-	BCD:[1,"U:G","DM<,JB<U:G>>",,"JB<U:G>","flatMap"],
-	BCE:[1,,"T:G",,"T:G","orElse"],
+	BCA:[9,"T:G","T:G",,"JB<T:G>","of"],
+	BBz:[9,"T:G",,,"JB<T:G>","empty"],
+	BCD:[1,,"EK<>",,"JB<T:G>","filter"],
+	BCE:[1,"U:G","DM<,>",,"JB<U:G>","map"],
+	BCF:[1,"U:G","DM<,JB<U:G>>",,"JB<U:G>","flatMap"],
+	BCG:[1,,"T:G",,"T:G","orElse"],
 	xv:[1,,,,"Z","isPresent"],
-	BCA:[1,,"BG<>",,"V","ifPresent"],
-	BBz:[9,"T:G","T:G",,"JB<T:G>","ofNullable"],
-	BCF:[1,,"O<>",,"T:G","orElseGet"],
-	BCG:[1,"X:BL","O<>","X:BL","T:G","orElseThrow"]
+	BCC:[1,,"BG<>",,"V","ifPresent"],
+	BCB:[9,"T:G","T:G",,"JB<T:G>","ofNullable"],
+	BCH:[1,,"O<>",,"T:G","orElseGet"],
+	BCI:[1,"X:BL","O<>","X:BL","T:G","orElseThrow"]
 });
 
 // interface java.util.function.Predicate "EK"
 boot.define("EK","","",{
 	// java.util.function.Predicate#and(java.util.function.Predicate)
-	BCH:function(A){
+	BCJ:function(A){
 		// 68
 		boot.CN.DV(A);
 		// 69
-		return λ(boot.EK,"Iu","BCI",this,[A])
+		return λ(boot.EK,"Iu","BCK",this,[A])
 	},
 	// java.util.function.Predicate#negate()
-	BCJ:function(){
+	BCL:function(){
 		// 80
-		return λ(boot.EK,"Iu","BCK",this,[])
+		return λ(boot.EK,"Iu","BCM",this,[])
 	},
 	// java.util.function.Predicate#or(java.util.function.Predicate)
-	BCL:function(A){
+	BCN:function(A){
 		// 100
 		boot.CN.DV(A);
 		// 101
-		return λ(boot.EK,"Iu","BCM",this,[A])
+		return λ(boot.EK,"Iu","BCO",this,[A])
 	},
 	// java.util.function.Predicate#isEqual(java.lang.Object)
-	_BCN:function(A){
+	_BCP:function(A){
 		// 115
-		return null==A?λ(boot.EK,"Iu","JL",boot.CN,[]):λ(boot.EK,"Iu","BCO",boot.EK,[A])
+		return null==A?λ(boot.EK,"Iu","JL",boot.CN,[]):λ(boot.EK,"Iu","BCQ",boot.EK,[A])
 	},
 	// java.util.function.Predicate#lambda$isEqual$13(java.lang.Object, java.lang.Object)
-	_BCO:function(A,B){
+	_BCQ:function(A,B){
 		// 117
 		return A.BK(B)
 	},
 	// java.util.function.Predicate#lambda$or$12(java.util.function.Predicate, java.lang.Object)
-	BCM:function(A,B){
+	BCO:function(A,B){
 		return this.Iu(B)!=0||A.Iu(B)!=0
 	},
 	// java.util.function.Predicate#lambda$negate$11(java.lang.Object)
-	BCK:function(A){
+	BCM:function(A){
 		// 80
 		return this.Iu(A)==0
 	},
 	// java.util.function.Predicate#lambda$and$10(java.util.function.Predicate, java.lang.Object)
-	BCI:function(A,B){
+	BCK:function(A,B){
 		// 69
 		return this.Iu(B)!=0&&A.Iu(B)!=0
 	}
@@ -15466,16 +15486,16 @@ boot.define("EK","","",{
 		}
 	}],
 	Iu:[1025,,"T:G",,"Z","test"],
-	BCH:[1,,"EK<>",,"EK<T:G>","and"],
-	BCL:[1,,"EK<>",,"EK<T:G>","or"],
-	BCN:[9,"T:G","G",,"EK<T:G>","isEqual"],
-	BCJ:[1,,,,"EK<T:G>","negate"]
+	BCJ:[1,,"EK<>",,"EK<T:G>","and"],
+	BCN:[1,,"EK<>",,"EK<T:G>","or"],
+	BCP:[9,"T:G","G",,"EK<T:G>","isEqual"],
+	BCL:[1,,,,"EK<T:G>","negate"]
 });
 
 // interface java.util.stream.Collector "JC"
 boot.define("JC","","",{
 	// java.util.stream.Collector#of(java.util.function.Supplier, java.util.function.BiConsumer, java.util.function.BinaryOperator, java.util.stream.Collector$Characteristics[])
-	_BCP:function(A,B,C,D,E){
+	_BCR:function(A,B,C,D,E){
 		// 264
 		boot.CN.DV(A);
 		// 265
@@ -15485,12 +15505,12 @@ boot.define("JC","","",{
 		// 267
 		boot.CN.DV(D);
 		// 268
-		E=(D.length==0?boot.FS.e:boot.DJ.HL(boot.JF.BCQ(boot.JE.g,D)));
+		E=(D.length==0?boot.FS.e:boot.DJ.HL(boot.JF.BCS(boot.JE.g,D)));
 		// 272
 		return new boot.JG(A,B,C,E,0)
 	},
 	// java.util.stream.Collector#of(java.util.function.Supplier, java.util.function.BiConsumer, java.util.function.BinaryOperator, java.util.function.Function, java.util.stream.Collector$Characteristics[])
-	_BCR:function(A,B,C,D,E,F){
+	_BCT:function(A,B,C,D,E,F){
 		// 296
 		boot.CN.DV(A);
 		// 297
@@ -15506,7 +15526,7 @@ boot.define("JC","","",{
 		// 302
 		if (E.length>0) {
 			// 303
-			F=boot.JF.BCS(boot.JE.$);
+			F=boot.JF.BCU(boot.JE.$);
 			// 304
 			boot.DJ.Gw(F,E);
 			// 305
@@ -15517,13 +15537,13 @@ boot.define("JC","","",{
 	}
 },{
 	$:[1537,"java.util.stream.Collector","T:G A:G R:G"],
-	BCT:[1025,,,,"FQ<A:G>","combiner"],
-	BCR:[137,"T:G A:G R:G","O<A:G> Fz<A#,T:G> FQ<A#> DM<A#,R:G> [JE",,"JC<T:G,A:G,R:G>","of"],
-	BCP:[137,"T:G R:G","O<R:G> Fz<R#,T:G> FQ<R#> [JE",,"JC<T:G,R:G,R#>","of"],
-	BCU:[1025,,,,"O<A:G>","supplier"],
-	BCV:[1025,,,,"Dx<JE>","characteristics"],
-	BCW:[1025,,,,"Fz<A:G,T:G>","accumulator"],
-	BCX:[1025,,,,"DM<A:G,R:G>","finisher"]
+	BCV:[1025,,,,"FQ<A:G>","combiner"],
+	BCT:[137,"T:G A:G R:G","O<A:G> Fz<A#,T:G> FQ<A#> DM<A#,R:G> [JE",,"JC<T:G,A:G,R:G>","of"],
+	BCR:[137,"T:G R:G","O<R:G> Fz<R#,T:G> FQ<R#> [JE",,"JC<T:G,R:G,R#>","of"],
+	BCW:[1025,,,,"O<A:G>","supplier"],
+	BCX:[1025,,,,"Dx<JE>","characteristics"],
+	BCY:[1025,,,,"Fz<A:G,T:G>","accumulator"],
+	BCZ:[1025,,,,"DM<A:G,R:G>","finisher"]
 });
 
 // class java.util.stream.Collectors "FS"
@@ -15533,67 +15553,67 @@ boot.define("FS","","",{
 		// 120
 	},
 	// java.util.stream.Collectors#throwingMerger()
-	_BCY:function(){
+	_BCu:function(){
 		// 133
-		return λ(boot.FQ,"RK","BCZ",boot.FS,[])
+		return λ(boot.FQ,"RK","BCv",boot.FS,[])
 	},
 	// java.util.stream.Collectors#castingIdentity()
-	_BCu:function(){
+	_BCw:function(){
 		// 138
-		return λ(boot.DM,"Gv","BCv",boot.FS,[])
+		return λ(boot.DM,"Gv","BCx",boot.FS,[])
 	},
 	// java.util.stream.Collectors#toCollection(java.util.function.Supplier)
-	_BCw:function(A){
+	_BCy:function(A){
 		// 213
-		return new boot.JG(A,λ(boot.Fz,"SD","CA"),λ(boot.FQ,"RK","BCx",boot.FS,[]),boot.FS.e,0)
+		return new boot.JG(A,λ(boot.Fz,"SD","CA"),λ(boot.FQ,"RK","BCz",boot.FS,[]),boot.FS.e,0)
 	},
 	// java.util.stream.Collectors#toList()
-	_BCy:function(){
+	_BDA:function(){
 		// 230
-		return new boot.JG(λ(boot.O,"D","$0",boot.BU.prototype,[]),λ(boot.Fz,"SD","CA"),λ(boot.FQ,"RK","BCz",boot.FS,[]),boot.FS.e,0)
+		return new boot.JG(λ(boot.O,"D","$0",boot.BU.prototype,[]),λ(boot.Fz,"SD","CA"),λ(boot.FQ,"RK","BDB",boot.FS,[]),boot.FS.e,0)
 	},
 	// java.util.stream.Collectors#toSet()
-	_BDA:function(){
+	_BDC:function(){
 		// 251
-		return new boot.JG(λ(boot.O,"D","$0",boot.DS.prototype,[]),λ(boot.Fz,"SD","CA"),λ(boot.FQ,"RK","BDB",boot.FS,[]),boot.FS.f,0)
+		return new boot.JG(λ(boot.O,"D","$0",boot.DS.prototype,[]),λ(boot.Fz,"SD","CA"),λ(boot.FQ,"RK","BDD",boot.FS,[]),boot.FS.f,0)
 	},
 	// java.util.stream.Collectors#joining()
-	_BDC:function(){
+	_BDE:function(){
 		// 264
-		return new boot.JG(λ(boot.O,"D","$1",boot.z.prototype,[]),λ(boot.Fz,"SD","MT"),λ(boot.FQ,"RK","BDD",boot.FS,[]),λ(boot.DM,"Gv","W"),boot.FS.g,1)
+		return new boot.JG(λ(boot.O,"D","$1",boot.z.prototype,[]),λ(boot.Fz,"SD","MT"),λ(boot.FQ,"RK","BDF",boot.FS,[]),λ(boot.DM,"Gv","W"),boot.FS.g,1)
 	},
 	// java.util.stream.Collectors#joining(java.lang.CharSequence)
-	_BDE:function(A){
+	_BDG:function(A){
 		// 279
-		return boot.FS.BDF(A,"","")
+		return boot.FS.BDH(A,"","")
 	},
 	// java.util.stream.Collectors#joining(java.lang.CharSequence, java.lang.CharSequence, java.lang.CharSequence)
-	_BDF:function(A,B,C){
+	_BDH:function(A,B,C){
 		// 298
-		return new boot.JG(λ(boot.O,"D","BDG",boot.FS,[A, B, C]),λ(boot.Fz,"SD","BDH"),λ(boot.FQ,"RK","BDI"),λ(boot.DM,"Gv","W"),boot.FS.g,1)
+		return new boot.JG(λ(boot.O,"D","BDI",boot.FS,[A, B, C]),λ(boot.Fz,"SD","BDJ"),λ(boot.FQ,"RK","BDK"),λ(boot.DM,"Gv","W"),boot.FS.g,1)
 	},
 	// java.util.stream.Collectors#mapMerger(java.util.function.BinaryOperator)
-	_BDJ:function(A){
+	_BDL:function(A){
 		// 318
-		return λ(boot.FQ,"RK","BDK",boot.FS,[A])
+		return λ(boot.FQ,"RK","BDM",boot.FS,[A])
 	},
 	// java.util.stream.Collectors#mapping(java.util.function.Function, java.util.stream.Collector)
-	_BDL:function(A,B,C){
+	_BDN:function(A,B,C){
 		// 353
-		C=B.BCW();
+		C=B.BCY();
 		// 357
-		return new boot.JG(B.BCU(),λ(boot.Fz,"SD","BDM",boot.FS,[C, A]),B.BCT(),B.BCX(),B.BCV(),1)
+		return new boot.JG(B.BCW(),λ(boot.Fz,"SD","BDO",boot.FS,[C, A]),B.BCV(),B.BCZ(),B.BCX(),1)
 	},
 	// java.util.stream.Collectors#collectingAndThen(java.util.stream.Collector, java.util.function.Function)
-	_BDN:function(A,B,C){
+	_BDP:function(A,B,C){
 		// 380
-		C=A.BCV();
+		C=A.BCX();
 		// 381
 		if (C.ID(boot.JE.g)!=0) {
 			// 382
 			if (C.CN()!=1) {
 				// 385
-				C=boot.JF.BDO(C);
+				C=boot.JF.BDQ(C);
 				// 386
 				C.IF(boot.JE.g);
 				// 387
@@ -15604,40 +15624,40 @@ boot.define("FS","","",{
 			}
 		}
 		// 393
-		return new boot.JG(A.BCU(),A.BCW(),A.BCT(),A.BCX().XW(B),C,1)
+		return new boot.JG(A.BCW(),A.BCY(),A.BCV(),A.BCZ().XW(B),C,1)
 	},
 	// java.util.stream.Collectors#counting()
-	_BDP:function(){
+	_BDR:function(){
 		// 413
-		return boot.FS.BDR(boot.CR.ZL(boot.J.BP(0,0)),λ(boot.DM,"Gv","BDQ",boot.FS,[]),λ(boot.FQ,"RK","Yz",boot.CR,[]))
+		return boot.FS.BDT(boot.CR.ZL(boot.J.BP(0,0)),λ(boot.DM,"Gv","BDS",boot.FS,[]),λ(boot.FQ,"RK","Yz",boot.CR,[]))
 	},
 	// java.util.stream.Collectors#minBy(java.util.Comparator)
-	_BDS:function(A){
+	_BDU:function(A){
 		// 432
-		return boot.FS.BDT(boot.FQ.BBX(A))
+		return boot.FS.BDV(boot.FQ.BBZ(A))
 	},
 	// java.util.stream.Collectors#maxBy(java.util.Comparator)
-	_BDU:function(A){
+	_BDW:function(A){
 		// 451
-		return boot.FS.BDT(boot.FQ.BBZ(A))
+		return boot.FS.BDV(boot.FQ.BBv(A))
 	},
 	// java.util.stream.Collectors#summingInt(java.util.function.ToIntFunction)
-	_BDV:function(A){
+	_BDX:function(A){
 		// 465
-		return new boot.JG(λ(boot.O,"D","BDW",boot.FS,[]),λ(boot.Fz,"SD","BDX",boot.FS,[A]),λ(boot.FQ,"RK","BDY",boot.FS,[]),λ(boot.DM,"Gv","BDZ",boot.FS,[]),boot.FS.g,1)
+		return new boot.JG(λ(boot.O,"D","BDY",boot.FS,[]),λ(boot.Fz,"SD","BDZ",boot.FS,[A]),λ(boot.FQ,"RK","BDu",boot.FS,[]),λ(boot.DM,"Gv","BDv",boot.FS,[]),boot.FS.g,1)
 	},
 	// java.util.stream.Collectors#summingLong(java.util.function.ToLongFunction)
-	_BDu:function(A){
+	_BDw:function(A){
 		// 483
-		return new boot.JG(λ(boot.O,"D","BDv",boot.FS,[]),λ(boot.Fz,"SD","BDw",boot.FS,[A]),λ(boot.FQ,"RK","BDx",boot.FS,[]),λ(boot.DM,"Gv","BDy",boot.FS,[]),boot.FS.g,1)
+		return new boot.JG(λ(boot.O,"D","BDx",boot.FS,[]),λ(boot.Fz,"SD","BDy",boot.FS,[A]),λ(boot.FQ,"RK","BDz",boot.FS,[]),λ(boot.DM,"Gv","BEA",boot.FS,[]),boot.FS.g,1)
 	},
 	// java.util.stream.Collectors#summingDouble(java.util.function.ToDoubleFunction)
-	_BDz:function(A){
+	_BEB:function(A){
 		// 516
-		return new boot.JG(λ(boot.O,"D","BEA",boot.FS,[]),λ(boot.Fz,"SD","BEB",boot.FS,[A]),λ(boot.FQ,"RK","BEC",boot.FS,[]),λ(boot.DM,"Gv","BED",boot.FS,[]),boot.FS.g,1)
+		return new boot.JG(λ(boot.O,"D","BEC",boot.FS,[]),λ(boot.Fz,"SD","BED",boot.FS,[A]),λ(boot.FQ,"RK","BEE",boot.FS,[]),λ(boot.DM,"Gv","BEF",boot.FS,[]),boot.FS.g,1)
 	},
 	// java.util.stream.Collectors#sumWithCompensation(double[], double)
-	_BEE:function(A,B,D,F,H){
+	_BEG:function(A,B,D,F,H){
 		// 539
 		D=(B-A[1]);
 		// 540
@@ -15652,7 +15672,7 @@ boot.define("FS","","",{
 		return A
 	},
 	// java.util.stream.Collectors#computeFinalSum(double[])
-	_BEF:function(A,B,D){
+	_BEH:function(A,B,D){
 		// 554
 		B=(A[0]+A[1]);
 		// 555
@@ -15667,68 +15687,68 @@ boot.define("FS","","",{
 		}
 	},
 	// java.util.stream.Collectors#averagingInt(java.util.function.ToIntFunction)
-	_BEG:function(A){
+	_BEI:function(A){
 		// 573
-		return new boot.JG(λ(boot.O,"D","BEH",boot.FS,[]),λ(boot.Fz,"SD","BEI",boot.FS,[A]),λ(boot.FQ,"RK","BEJ",boot.FS,[]),λ(boot.DM,"Gv","BEK",boot.FS,[]),boot.FS.g,1)
+		return new boot.JG(λ(boot.O,"D","BEJ",boot.FS,[]),λ(boot.Fz,"SD","BEK",boot.FS,[A]),λ(boot.FQ,"RK","BEL",boot.FS,[]),λ(boot.DM,"Gv","BEM",boot.FS,[]),boot.FS.g,1)
 	},
 	// java.util.stream.Collectors#averagingLong(java.util.function.ToLongFunction)
-	_BEL:function(A){
+	_BEN:function(A){
 		// 591
-		return new boot.JG(λ(boot.O,"D","BEM",boot.FS,[]),λ(boot.Fz,"SD","BEN",boot.FS,[A]),λ(boot.FQ,"RK","BEO",boot.FS,[]),λ(boot.DM,"Gv","BEP",boot.FS,[]),boot.FS.g,1)
+		return new boot.JG(λ(boot.O,"D","BEO",boot.FS,[]),λ(boot.Fz,"SD","BEP",boot.FS,[A]),λ(boot.FQ,"RK","BEQ",boot.FS,[]),λ(boot.DM,"Gv","BER",boot.FS,[]),boot.FS.g,1)
 	},
 	// java.util.stream.Collectors#averagingDouble(java.util.function.ToDoubleFunction)
-	_BEQ:function(A){
+	_BES:function(A){
 		// 628
-		return new boot.JG(λ(boot.O,"D","BER",boot.FS,[]),λ(boot.Fz,"SD","BES",boot.FS,[A]),λ(boot.FQ,"RK","BET",boot.FS,[]),λ(boot.DM,"Gv","BEU",boot.FS,[]),boot.FS.g,1)
+		return new boot.JG(λ(boot.O,"D","BET",boot.FS,[]),λ(boot.Fz,"SD","BEU",boot.FS,[A]),λ(boot.FQ,"RK","BEV",boot.FS,[]),λ(boot.DM,"Gv","BEW",boot.FS,[]),boot.FS.g,1)
 	},
 	// java.util.stream.Collectors#reducing(java.lang.Object, java.util.function.BinaryOperator)
-	_BEV:function(A,B){
+	_BEX:function(A,B){
 		// 659
-		return new boot.JG(boot.FS.BEW(A),λ(boot.Fz,"SD","BEX",boot.FS,[B]),λ(boot.FQ,"RK","BEY",boot.FS,[B]),λ(boot.DM,"Gv","BEZ",boot.FS,[]),boot.FS.g,1)
+		return new boot.JG(boot.FS.BEY(A),λ(boot.Fz,"SD","BEZ",boot.FS,[B]),λ(boot.FQ,"RK","BEu",boot.FS,[B]),λ(boot.DM,"Gv","BEv",boot.FS,[]),boot.FS.g,1)
 	},
 	// java.util.stream.Collectors#boxSupplier(java.lang.Object)
-	_BEW:function(A){
+	_BEY:function(A){
 		// 668
-		return λ(boot.O,"D","BEu",boot.FS,[A])
+		return λ(boot.O,"D","BEw",boot.FS,[A])
 	},
 	// java.util.stream.Collectors#reducing(java.util.function.BinaryOperator)
-	_BDT:function(A){
+	_BDV:function(A){
 		// 715
-		return new boot.JG(λ(boot.O,"D","BEv",boot.FS,[A]),λ(boot.Fz,"SD","X"),λ(boot.FQ,"RK","BEw",boot.FS,[]),λ(boot.DM,"Gv","BEx",boot.FS,[]),boot.FS.g,1)
+		return new boot.JG(λ(boot.O,"D","BEx",boot.FS,[A]),λ(boot.Fz,"SD","X"),λ(boot.FQ,"RK","BEy",boot.FS,[]),λ(boot.DM,"Gv","BEz",boot.FS,[]),boot.FS.g,1)
 	},
 	// java.util.stream.Collectors#reducing(java.lang.Object, java.util.function.Function, java.util.function.BinaryOperator)
-	_BDR:function(A,B,C){
+	_BDT:function(A,B,C){
 		// 760
-		return new boot.JG(boot.FS.BEW(A),λ(boot.Fz,"SD","BEy",boot.FS,[C, B]),λ(boot.FQ,"RK","BEz",boot.FS,[C]),λ(boot.DM,"Gv","BFA",boot.FS,[]),boot.FS.g,1)
+		return new boot.JG(boot.FS.BEY(A),λ(boot.Fz,"SD","BFA",boot.FS,[C, B]),λ(boot.FQ,"RK","BFB",boot.FS,[C]),λ(boot.DM,"Gv","BFC",boot.FS,[]),boot.FS.g,1)
 	},
 	// java.util.stream.Collectors#groupingBy(java.util.function.Function)
-	_BFB:function(A){
+	_BFD:function(A){
 		// 805
-		return boot.FS.BFC(A,boot.FS.BCy())
+		return boot.FS.BFE(A,boot.FS.BDA())
 	},
 	// java.util.stream.Collectors#groupingBy(java.util.function.Function, java.util.stream.Collector)
-	_BFC:function(A,B){
+	_BFE:function(A,B){
 		// 853
-		return boot.FS.BFD(A,λ(boot.O,"D","$0",boot.CB.prototype,[]),B)
+		return boot.FS.BFF(A,λ(boot.O,"D","$0",boot.CB.prototype,[]),B)
 	},
 	// java.util.stream.Collectors#groupingBy(java.util.function.Function, java.util.function.Supplier, java.util.stream.Collector)
-	_BFD:function(A,B,C,D,E,F,G,H,I,J){
+	_BFF:function(A,B,C,D,E,F,G,H,I,J){
 		// 904
-		D=C.BCU();
+		D=C.BCW();
 		// 905
-		E=C.BCW();
+		E=C.BCY();
 		// 906
-		F=λ(boot.Fz,"SD","BFE",boot.FS,[A, D, E]);
+		F=λ(boot.Fz,"SD","BFG",boot.FS,[A, D, E]);
 		// 911
-		G=boot.FS.BDJ(C.BCT());
+		G=boot.FS.BDL(C.BCV());
 		// 913
 		H=B;
 		// 915
-		if (C.BCV().ID(boot.JE.g)==0) {
+		if (C.BCX().ID(boot.JE.g)==0) {
 			// 920
-			I=C.BCX();
+			I=C.BCZ();
 			// 921
-			J=λ(boot.DM,"Gv","BFF",boot.FS,[I]);
+			J=λ(boot.DM,"Gv","BFH",boot.FS,[I]);
 			// 927
 			return new boot.JG(H,F,G,J,boot.FS.g,1);
 		} else {
@@ -15737,39 +15757,39 @@ boot.define("FS","","",{
 		}
 	},
 	// java.util.stream.Collectors#groupingByConcurrent(java.util.function.Function)
-	_BFG:function(A){
+	_BFI:function(A){
 		// 967
-		return boot.FS.BFH(A,λ(boot.O,"D","$0",boot.JH.prototype,[]),boot.FS.BCy())
+		return boot.FS.BFJ(A,λ(boot.O,"D","$0",boot.JH.prototype,[]),boot.FS.BDA())
 	},
 	// java.util.stream.Collectors#groupingByConcurrent(java.util.function.Function, java.util.stream.Collector)
-	_BFI:function(A,B){
+	_BFK:function(A,B){
 		// 1008
-		return boot.FS.BFH(A,λ(boot.O,"D","$0",boot.JH.prototype,[]),B)
+		return boot.FS.BFJ(A,λ(boot.O,"D","$0",boot.JH.prototype,[]),B)
 	},
 	// java.util.stream.Collectors#groupingByConcurrent(java.util.function.Function, java.util.function.Supplier, java.util.stream.Collector)
-	_BFH:function(A,B,C,D,E,F,G,H,I,J){
+	_BFJ:function(A,B,C,D,E,F,G,H,I,J){
 		// 1055
-		D=C.BCU();
+		D=C.BCW();
 		// 1056
-		E=C.BCW();
+		E=C.BCY();
 		// 1057
-		F=boot.FS.BDJ(C.BCT());
+		F=boot.FS.BDL(C.BCV());
 		// 1059
 		G=B;
 		// 1061
-		if (C.BCV().ID(boot.JE.e)==0) {
+		if (C.BCX().ID(boot.JE.e)==0) {
 			// 1069
-			H=λ(boot.Fz,"SD","BFK",boot.FS,[A, D, E]);
+			H=λ(boot.Fz,"SD","BFM",boot.FS,[A, D, E]);
 		} else {
 			// 1062
-			H=λ(boot.Fz,"SD","BFJ",boot.FS,[A, D, E]);
+			H=λ(boot.Fz,"SD","BFL",boot.FS,[A, D, E]);
 		}
 		// 1078
-		if (C.BCV().ID(boot.JE.g)==0) {
+		if (C.BCX().ID(boot.JE.g)==0) {
 			// 1083
-			I=C.BCX();
+			I=C.BCZ();
 			// 1084
-			J=λ(boot.DM,"Gv","BFL",boot.FS,[I]);
+			J=λ(boot.DM,"Gv","BFN",boot.FS,[I]);
 			// 1090
 			return new boot.JG(G,H,F,J,boot.FS.d,1);
 		} else {
@@ -15778,26 +15798,26 @@ boot.define("FS","","",{
 		}
 	},
 	// java.util.stream.Collectors#partitioningBy(java.util.function.Predicate)
-	_BFM:function(A){
+	_BFO:function(A){
 		// 1110
-		return boot.FS.BFN(A,boot.FS.BCy())
+		return boot.FS.BFP(A,boot.FS.BDA())
 	},
 	// java.util.stream.Collectors#partitioningBy(java.util.function.Predicate, java.util.stream.Collector)
-	_BFN:function(A,B,C,D,E,F,G,H){
+	_BFP:function(A,B,C,D,E,F,G,H){
 		// 1137
-		C=B.BCW();
+		C=B.BCY();
 		// 1138
-		D=λ(boot.Fz,"SD","BFO",boot.FS,[C, A]);
+		D=λ(boot.Fz,"SD","BFQ",boot.FS,[C, A]);
 		// 1140
-		E=B.BCT();
+		E=B.BCV();
 		// 1141
-		F=λ(boot.FQ,"RK","BFP",boot.FS,[E]);
+		F=λ(boot.FQ,"RK","BFR",boot.FS,[E]);
 		// 1144
-		G=λ(boot.O,"D","BFQ",boot.FS,[B]);
+		G=λ(boot.O,"D","BFS",boot.FS,[B]);
 		// 1147
-		if (B.BCV().ID(boot.JE.g)==0) {
+		if (B.BCX().ID(boot.JE.g)==0) {
 			// 1151
-			H=λ(boot.DM,"Gv","BFR",boot.FS,[B]);
+			H=λ(boot.DM,"Gv","BFT",boot.FS,[B]);
 			// 1154
 			return new boot.JG(G,D,F,H,boot.FS.g,1);
 		} else {
@@ -15806,134 +15826,134 @@ boot.define("FS","","",{
 		}
 	},
 	// java.util.stream.Collectors#toMap(java.util.function.Function, java.util.function.Function)
-	_BFS:function(A,B){
+	_BFU:function(A,B){
 		// 1212
-		return boot.FS.RM(A,B,boot.FS.BCY(),λ(boot.O,"D","$0",boot.CB.prototype,[]))
+		return boot.FS.RM(A,B,boot.FS.BCu(),λ(boot.O,"D","$0",boot.CB.prototype,[]))
 	},
 	// java.util.stream.Collectors#toMap(java.util.function.Function, java.util.function.Function, java.util.function.BinaryOperator)
-	_BFT:function(A,B,C){
+	_BFV:function(A,B,C){
 		// 1271
 		return boot.FS.RM(A,B,C,λ(boot.O,"D","$0",boot.CB.prototype,[]))
 	},
 	// java.util.stream.Collectors#toMap(java.util.function.Function, java.util.function.Function, java.util.function.BinaryOperator, java.util.function.Supplier)
 	_RM:function(A,B,C,D,E){
 		// 1319
-		E=λ(boot.Fz,"SD","BFU",boot.FS,[A, B, C]);
+		E=λ(boot.Fz,"SD","BFW",boot.FS,[A, B, C]);
 		// 1322
-		return new boot.JG(D,E,boot.FS.BDJ(C),boot.FS.e,0)
+		return new boot.JG(D,E,boot.FS.BDL(C),boot.FS.e,0)
 	},
 	// java.util.stream.Collectors#toConcurrentMap(java.util.function.Function, java.util.function.Function)
-	_BFV:function(A,B){
+	_BFX:function(A,B){
 		// 1375
-		return boot.FS.BFW(A,B,boot.FS.BCY(),λ(boot.O,"D","$0",boot.JH.prototype,[]))
+		return boot.FS.BFY(A,B,boot.FS.BCu(),λ(boot.O,"D","$0",boot.JH.prototype,[]))
 	},
 	// java.util.stream.Collectors#toConcurrentMap(java.util.function.Function, java.util.function.Function, java.util.function.BinaryOperator)
-	_BFX:function(A,B,C){
+	_BFZ:function(A,B,C){
 		// 1429
-		return boot.FS.BFW(A,B,C,λ(boot.O,"D","$0",boot.JH.prototype,[]))
+		return boot.FS.BFY(A,B,C,λ(boot.O,"D","$0",boot.JH.prototype,[]))
 	},
 	// java.util.stream.Collectors#toConcurrentMap(java.util.function.Function, java.util.function.Function, java.util.function.BinaryOperator, java.util.function.Supplier)
-	_BFW:function(A,B,C,D,E){
+	_BFY:function(A,B,C,D,E){
 		// 1471
-		E=λ(boot.Fz,"SD","BFY",boot.FS,[A, B, C]);
+		E=λ(boot.Fz,"SD","BFu",boot.FS,[A, B, C]);
 		// 1474
-		return new boot.JG(D,E,boot.FS.BDJ(C),boot.FS.c,0)
+		return new boot.JG(D,E,boot.FS.BDL(C),boot.FS.c,0)
 	},
 	// java.util.stream.Collectors#summarizingInt(java.util.function.ToIntFunction)
-	_BFZ:function(A){
+	_BFv:function(A){
 		// 1491
-		return new boot.JG(λ(boot.O,"D","$0",boot.JI.prototype,[]),λ(boot.Fz,"SD","BFu",boot.FS,[A]),λ(boot.FQ,"RK","BFv",boot.FS,[]),boot.FS.e,0)
+		return new boot.JG(λ(boot.O,"D","$0",boot.JI.prototype,[]),λ(boot.Fz,"SD","BFw",boot.FS,[A]),λ(boot.FQ,"RK","BFx",boot.FS,[]),boot.FS.e,0)
 	},
 	// java.util.stream.Collectors#summarizingLong(java.util.function.ToLongFunction)
-	_BFw:function(A){
+	_BFy:function(A){
 		// 1511
-		return new boot.JG(λ(boot.O,"D","$0",boot.Hv.prototype,[]),λ(boot.Fz,"SD","BFx",boot.FS,[A]),λ(boot.FQ,"RK","BFy",boot.FS,[]),boot.FS.e,0)
+		return new boot.JG(λ(boot.O,"D","$0",boot.Hx.prototype,[]),λ(boot.Fz,"SD","BFz",boot.FS,[A]),λ(boot.FQ,"RK","BGA",boot.FS,[]),boot.FS.e,0)
 	},
 	// java.util.stream.Collectors#summarizingDouble(java.util.function.ToDoubleFunction)
-	_BFz:function(A){
+	_BGB:function(A){
 		// 1531
-		return new boot.JG(λ(boot.O,"D","$0",boot.IX.prototype,[]),λ(boot.Fz,"SD","BGA",boot.FS,[A]),λ(boot.FQ,"RK","BGB",boot.FS,[]),boot.FS.e,0)
+		return new boot.JG(λ(boot.O,"D","$0",boot.IZ.prototype,[]),λ(boot.Fz,"SD","BGC",boot.FS,[A]),λ(boot.FQ,"RK","BGD",boot.FS,[]),boot.FS.e,0)
 	},
 	// java.util.stream.Collectors#lambda$summarizingDouble$179(java.util.DoubleSummaryStatistics, java.util.DoubleSummaryStatistics)
-	_BGB:function(A,B){
+	_BGD:function(A,B){
 		// 1534
-		A.BGC(B);return A
+		A.BGE(B);return A
 	},
 	// java.util.stream.Collectors#lambda$summarizingDouble$178(java.util.function.ToDoubleFunction, java.util.DoubleSummaryStatistics, java.lang.Object)
-	_BGA:function(A,B,C){
+	_BGC:function(A,B,C){
 		// 1533
 		B.uQ(A.GV(C));
 	},
 	// java.util.stream.Collectors#lambda$summarizingLong$177(java.util.LongSummaryStatistics, java.util.LongSummaryStatistics)
-	_BFy:function(A,B){
+	_BGA:function(A,B){
 		// 1514
-		A.BGD(B);return A
+		A.BGF(B);return A
 	},
 	// java.util.stream.Collectors#lambda$summarizingLong$176(java.util.function.ToLongFunction, java.util.LongSummaryStatistics, java.lang.Object)
-	_BFx:function(A,B,C){
+	_BFz:function(A,B,C){
 		// 1513
 		B.uW(A.GX(C));
 	},
 	// java.util.stream.Collectors#lambda$summarizingInt$175(java.util.IntSummaryStatistics, java.util.IntSummaryStatistics)
-	_BFv:function(A,B){
+	_BFx:function(A,B){
 		// 1494
-		A.BGE(B);return A
+		A.BGG(B);return A
 	},
 	// java.util.stream.Collectors#lambda$summarizingInt$174(java.util.function.ToIntFunction, java.util.IntSummaryStatistics, java.lang.Object)
-	_BFu:function(A,B,C){
+	_BFw:function(A,B,C){
 		// 1493
 		B.TN(A.GZ(C));
 	},
 	// java.util.stream.Collectors#lambda$toConcurrentMap$173(java.util.function.Function, java.util.function.Function, java.util.function.BinaryOperator, java.util.concurrent.ConcurrentMap, java.lang.Object)
-	_BFY:function(A,B,C,D,E){
+	_BFu:function(A,B,C,D,E){
 		// 1472
 		D.SN(A.Gv(E),B.Gv(E),C);
 	},
 	// java.util.stream.Collectors#lambda$toMap$172(java.util.function.Function, java.util.function.Function, java.util.function.BinaryOperator, java.util.Map, java.lang.Object)
-	_BFU:function(A,B,C,D,E){
+	_BFW:function(A,B,C,D,E){
 		// 1320
 		D.SN(A.Gv(E),B.Gv(E),C);
 	},
 	// java.util.stream.Collectors#lambda$partitioningBy$171(java.util.stream.Collector, java.util.stream.Collectors$Partition)
-	_BFR:function(A,B){
+	_BFT:function(A,B){
 		// 1153
-		return new boot.JJ(A.BCX().Gv(B.e),A.BCX().Gv(B.f),0)
+		return new boot.JJ(A.BCZ().Gv(B.e),A.BCZ().Gv(B.f),0)
 	},
 	// java.util.stream.Collectors#lambda$partitioningBy$170(java.util.stream.Collector)
-	_BFQ:function(A){
+	_BFS:function(A){
 		// 1146
-		return new boot.JJ(A.BCU().D(),A.BCU().D(),0)
+		return new boot.JJ(A.BCW().D(),A.BCW().D(),0)
 	},
 	// java.util.stream.Collectors#lambda$partitioningBy$169(java.util.function.BinaryOperator, java.util.stream.Collectors$Partition, java.util.stream.Collectors$Partition)
-	_BFP:function(A,B,C){
+	_BFR:function(A,B,C){
 		// 1143
 		return new boot.JJ(A.RK(B.e,C.e),A.RK(B.f,C.f),0)
 	},
 	// java.util.stream.Collectors#lambda$partitioningBy$168(java.util.function.BiConsumer, java.util.function.Predicate, java.util.stream.Collectors$Partition, java.lang.Object)
-	_BFO:function(A,B,C,D){
+	_BFQ:function(A,B,C,D){
 		// 1139
 		A.SD(B.Iu(D)!=0?C.e:C.f,D);
 	},
 	// java.util.stream.Collectors#lambda$groupingByConcurrent$167(java.util.function.Function, java.util.concurrent.ConcurrentMap)
-	_BFL:function(A,B,C){
+	_BFN:function(A,B,C){
 		// 1085
-		B.SE(λ(boot.Fy,"RK","BGF",boot.FS,[A]));
+		B.SE(λ(boot.Fy,"RK","BGH",boot.FS,[A]));
 		// 1087
 		C=B;
 		// 1088
 		return C
 	},
 	// java.util.stream.Collectors#lambda$null$166(java.util.function.Function, java.lang.Object, java.lang.Object)
-	_BGF:function(A,B,C){
+	_BGH:function(A,B,C){
 		// 1085
 		return A.Gv(C)
 	},
 	// java.util.stream.Collectors#lambda$groupingByConcurrent$165(java.util.function.Function, java.util.function.Supplier, java.util.function.BiConsumer, java.util.concurrent.ConcurrentMap, java.lang.Object)
-	_BFK:function(A,B,C,D,E,F,G,H,I){
+	_BFM:function(A,B,C,D,E,F,G,H,I){
 		// 1070
 		F=boot.CN.JK(A.Gv(E),"element cannot be mapped to a null key");
 		// 1071
-		G=D.SK(F,λ(boot.DM,"Gv","BGG",boot.FS,[B]));
+		G=D.SK(F,λ(boot.DM,"Gv","BGI",boot.FS,[B]));
 		// 1073
 		try {
 			C.SD(G,E);
@@ -15944,76 +15964,76 @@ boot.define("FS","","",{
 		}
 	},
 	// java.util.stream.Collectors#lambda$null$164(java.util.function.Supplier, java.lang.Object)
-	_BGG:function(A,B){
+	_BGI:function(A,B){
 		// 1071
 		return A.D()
 	},
 	// java.util.stream.Collectors#lambda$groupingByConcurrent$163(java.util.function.Function, java.util.function.Supplier, java.util.function.BiConsumer, java.util.concurrent.ConcurrentMap, java.lang.Object)
-	_BFJ:function(A,B,C,D,E,F,G){
+	_BFL:function(A,B,C,D,E,F,G){
 		// 1063
 		F=boot.CN.JK(A.Gv(E),"element cannot be mapped to a null key");
 		// 1064
-		G=D.SK(F,λ(boot.DM,"Gv","BGH",boot.FS,[B]));
+		G=D.SK(F,λ(boot.DM,"Gv","BGJ",boot.FS,[B]));
 		// 1065
 		C.SD(G,E);
 		// 1066
 	},
 	// java.util.stream.Collectors#lambda$null$162(java.util.function.Supplier, java.lang.Object)
-	_BGH:function(A,B){
+	_BGJ:function(A,B){
 		// 1064
 		return A.D()
 	},
 	// java.util.stream.Collectors#lambda$groupingBy$161(java.util.function.Function, java.util.Map)
-	_BFF:function(A,B,C){
+	_BFH:function(A,B,C){
 		// 922
-		B.SE(λ(boot.Fy,"RK","BGI",boot.FS,[A]));
+		B.SE(λ(boot.Fy,"RK","BGK",boot.FS,[A]));
 		// 924
 		C=B;
 		// 925
 		return C
 	},
 	// java.util.stream.Collectors#lambda$null$160(java.util.function.Function, java.lang.Object, java.lang.Object)
-	_BGI:function(A,B,C){
+	_BGK:function(A,B,C){
 		// 922
 		return A.Gv(C)
 	},
 	// java.util.stream.Collectors#lambda$groupingBy$159(java.util.function.Function, java.util.function.Supplier, java.util.function.BiConsumer, java.util.Map, java.lang.Object)
-	_BFE:function(A,B,C,D,E,F,G){
+	_BFG:function(A,B,C,D,E,F,G){
 		// 907
 		F=boot.CN.JK(A.Gv(E),"element cannot be mapped to a null key");
 		// 908
-		G=D.SK(F,λ(boot.DM,"Gv","BGJ",boot.FS,[B]));
+		G=D.SK(F,λ(boot.DM,"Gv","BGL",boot.FS,[B]));
 		// 909
 		C.SD(G,E);
 		// 910
 	},
 	// java.util.stream.Collectors#lambda$null$158(java.util.function.Supplier, java.lang.Object)
-	_BGJ:function(A,B){
+	_BGL:function(A,B){
 		// 908
 		return A.D()
 	},
 	// java.util.stream.Collectors#lambda$reducing$157(java.lang.Object[])
-	_BFA:function(A){
+	_BFC:function(A){
 		// 763
 		return A[0]
 	},
 	// java.util.stream.Collectors#lambda$reducing$156(java.util.function.BinaryOperator, java.lang.Object[], java.lang.Object[])
-	_BEz:function(A,B,C){
+	_BFB:function(A,B,C){
 		// 762
 		B[0]=A.RK(B[0],C[0]);return B
 	},
 	// java.util.stream.Collectors#lambda$reducing$155(java.util.function.BinaryOperator, java.util.function.Function, java.lang.Object[], java.lang.Object)
-	_BEy:function(A,B,C,D){
+	_BFA:function(A,B,C,D){
 		// 761
 		C[0]=A.RK(C[0],B.Gv(D));
 	},
 	// java.util.stream.Collectors#lambda$reducing$154(java.util.stream.Collectors$1OptionalBox)
-	_BEx:function(A){
+	_BEz:function(A){
 		// 718
-		return boot.JB.BBz(A.c)
+		return boot.JB.BCB(A.c)
 	},
 	// java.util.stream.Collectors#lambda$reducing$153(java.util.stream.Collectors$1OptionalBox, java.util.stream.Collectors$1OptionalBox)
-	_BEw:function(A,B){
+	_BEy:function(A,B){
 		if (B.d!=0) {
 			// 717
 			A.X(B.c);
@@ -16021,168 +16041,168 @@ boot.define("FS","","",{
 		return A
 	},
 	// java.util.stream.Collectors#lambda$reducing$152(java.util.function.BinaryOperator)
-	_BEv:function(A){
+	_BEx:function(A){
 		// 716
 		return new boot.JK(A,0)
 	},
 	// java.util.stream.Collectors#lambda$boxSupplier$151(java.lang.Object)
-	_BEu:function(A){
+	_BEw:function(A){
 		// 668
 		return Φ("G",[A])
 	},
 	// java.util.stream.Collectors#lambda$reducing$150(java.lang.Object[])
-	_BEZ:function(A){
+	_BEv:function(A){
 		// 662
 		return A[0]
 	},
 	// java.util.stream.Collectors#lambda$reducing$149(java.util.function.BinaryOperator, java.lang.Object[], java.lang.Object[])
-	_BEY:function(A,B,C){
+	_BEu:function(A,B,C){
 		// 661
 		B[0]=A.RK(B[0],C[0]);return B
 	},
 	// java.util.stream.Collectors#lambda$reducing$148(java.util.function.BinaryOperator, java.lang.Object[], java.lang.Object)
-	_BEX:function(A,B,C){
+	_BEZ:function(A,B,C){
 		// 660
 		B[0]=A.RK(B[0],C);
 	},
 	// java.util.stream.Collectors#lambda$averagingDouble$147(double[])
-	_BEU:function(A){
+	_BEW:function(A){
 		// 632
-		return boot.CT.MG(A[2]==0?0:boot.FS.BEF(A)/A[2])
+		return boot.CT.MG(A[2]==0?0:boot.FS.BEH(A)/A[2])
 	},
 	// java.util.stream.Collectors#lambda$averagingDouble$146(double[], double[])
-	_BET:function(A,B){
+	_BEV:function(A,B){
 		// 631
-		boot.FS.BEE(A,B[0]);boot.FS.BEE(A,B[1]);A[2]=(A[2]+B[2]);A[3]=(A[3]+B[3]);return A
+		boot.FS.BEG(A,B[0]);boot.FS.BEG(A,B[1]);A[2]=(A[2]+B[2]);A[3]=(A[3]+B[3]);return A
 	},
 	// java.util.stream.Collectors#lambda$averagingDouble$145(java.util.function.ToDoubleFunction, double[], java.lang.Object)
-	_BES:function(A,B,C){
+	_BEU:function(A,B,C){
 		// 630
-		boot.FS.BEE(B,A.GV(C));B[2]=(B[2]+1);B[3]=(B[3]+A.GV(C));
+		boot.FS.BEG(B,A.GV(C));B[2]=(B[2]+1);B[3]=(B[3]+A.GV(C));
 	},
 	// java.util.stream.Collectors#lambda$averagingDouble$144()
-	_BER:function(){
+	_BET:function(){
 		// 629
 		return Φ("D",4,0)
 	},
 	// java.util.stream.Collectors#lambda$averagingLong$143(long[])
-	_BEP:function(A){
+	_BER:function(A){
 		// 595
 		return boot.CT.MG(A[1].BR(boot.J.BP(0,0))==0?0:A[0].JY()/A[1].JY())
 	},
 	// java.util.stream.Collectors#lambda$averagingLong$142(long[], long[])
-	_BEO:function(A,B){
+	_BEQ:function(A,B){
 		// 594
 		A[0]=A[0].BS(B[0]);A[1]=A[1].BS(B[1]);return A
 	},
 	// java.util.stream.Collectors#lambda$averagingLong$141(java.util.function.ToLongFunction, long[], java.lang.Object)
-	_BEN:function(A,B,C){
+	_BEP:function(A,B,C){
 		// 593
 		B[0]=B[0].BS(A.GX(C));B[1]=B[1].BS(boot.J.BP(1,0));
 	},
 	// java.util.stream.Collectors#lambda$averagingLong$140()
-	_BEM:function(){
+	_BEO:function(){
 		// 592
 		return Φ("J",2,boot.J.f)
 	},
 	// java.util.stream.Collectors#lambda$averagingInt$139(long[])
-	_BEK:function(A){
+	_BEM:function(A){
 		// 577
 		return boot.CT.MG(A[1].BR(boot.J.BP(0,0))==0?0:A[0].JY()/A[1].JY())
 	},
 	// java.util.stream.Collectors#lambda$averagingInt$138(long[], long[])
-	_BEJ:function(A,B){
+	_BEL:function(A,B){
 		// 576
 		A[0]=A[0].BS(B[0]);A[1]=A[1].BS(B[1]);return A
 	},
 	// java.util.stream.Collectors#lambda$averagingInt$137(java.util.function.ToIntFunction, long[], java.lang.Object)
-	_BEI:function(A,B,C){
+	_BEK:function(A,B,C){
 		// 575
 		B[0]=B[0].BS(boot.J.FS(A.GZ(C)));B[1]=B[1].BS(boot.J.BP(1,0));
 	},
 	// java.util.stream.Collectors#lambda$averagingInt$136()
-	_BEH:function(){
+	_BEJ:function(){
 		// 574
 		return Φ("J",2,boot.J.f)
 	},
 	// java.util.stream.Collectors#lambda$summingDouble$135(double[])
-	_BED:function(A){
+	_BEF:function(A){
 		// 523
-		return boot.CT.MG(boot.FS.BEF(A))
+		return boot.CT.MG(boot.FS.BEH(A))
 	},
 	// java.util.stream.Collectors#lambda$summingDouble$134(double[], double[])
-	_BEC:function(A,B){
+	_BEE:function(A,B){
 		// 520
-		boot.FS.BEE(A,B[0]);
+		boot.FS.BEG(A,B[0]);
 		// 521
 		A[2]=(A[2]+B[2]);
 		// 522
-		return boot.FS.BEE(A,B[1])
+		return boot.FS.BEG(A,B[1])
 	},
 	// java.util.stream.Collectors#lambda$summingDouble$133(java.util.function.ToDoubleFunction, double[], java.lang.Object)
-	_BEB:function(A,B,C){
+	_BED:function(A,B,C){
 		// 518
-		boot.FS.BEE(B,A.GV(C));
+		boot.FS.BEG(B,A.GV(C));
 		// 519
 		B[2]=(B[2]+A.GV(C));
 	},
 	// java.util.stream.Collectors#lambda$summingDouble$132()
-	_BEA:function(){
+	_BEC:function(){
 		// 517
 		return Φ("D",3,0)
 	},
 	// java.util.stream.Collectors#lambda$summingLong$131(long[])
-	_BDy:function(A){
+	_BEA:function(A){
 		// 487
 		return boot.CR.ZL(A[0])
 	},
 	// java.util.stream.Collectors#lambda$summingLong$130(long[], long[])
-	_BDx:function(A,B){
+	_BDz:function(A,B){
 		// 486
 		A[0]=A[0].BS(B[0]);return A
 	},
 	// java.util.stream.Collectors#lambda$summingLong$129(java.util.function.ToLongFunction, long[], java.lang.Object)
-	_BDw:function(A,B,C){
+	_BDy:function(A,B,C){
 		// 485
 		B[0]=B[0].BS(A.GX(C));
 	},
 	// java.util.stream.Collectors#lambda$summingLong$128()
-	_BDv:function(){
+	_BDx:function(){
 		// 484
 		return Φ("J",1,boot.J.f)
 	},
 	// java.util.stream.Collectors#lambda$summingInt$127(int[])
-	_BDZ:function(A){
+	_BDv:function(A){
 		// 469
 		return boot.BZ.QB(A[0])
 	},
 	// java.util.stream.Collectors#lambda$summingInt$126(int[], int[])
-	_BDY:function(A,B){
+	_BDu:function(A,B){
 		// 468
 		A[0]=(A[0]+B[0]);return A
 	},
 	// java.util.stream.Collectors#lambda$summingInt$125(java.util.function.ToIntFunction, int[], java.lang.Object)
-	_BDX:function(A,B,C){
+	_BDZ:function(A,B,C){
 		// 467
 		B[0]=(B[0]+A.GZ(C));
 	},
 	// java.util.stream.Collectors#lambda$summingInt$124()
-	_BDW:function(){
+	_BDY:function(){
 		// 466
 		return Φ("I",1,0)
 	},
 	// java.util.stream.Collectors#lambda$counting$123(java.lang.Object)
-	_BDQ:function(A){
+	_BDS:function(A){
 		// 413
 		return boot.CR.ZL(boot.J.BP(1,0))
 	},
 	// java.util.stream.Collectors#lambda$mapping$122(java.util.function.BiConsumer, java.util.function.Function, java.lang.Object, java.lang.Object)
-	_BDM:function(A,B,C,D){
+	_BDO:function(A,B,C,D){
 		// 355
 		A.SD(C,B.Gv(D));
 	},
 	// java.util.stream.Collectors#lambda$mapMerger$121(java.util.function.BinaryOperator, java.util.Map, java.util.Map)
-	_BDK:function(A,B,C,D,E){
+	_BDM:function(A,B,C,D,E){
 		// 319
 		D=C.Rv().IH();
 		for (; D.IO()!=0; B.SN(E.Ry(),E.RZ(),A)) {
@@ -16192,55 +16212,55 @@ boot.define("FS","","",{
 		return B
 	},
 	// java.util.stream.Collectors#lambda$joining$120(java.lang.CharSequence, java.lang.CharSequence, java.lang.CharSequence)
-	_BDG:function(A,B,C){
+	_BDI:function(A,B,C){
 		// 299
 		return new boot.JL(A,B,C,0)
 	},
 	// java.util.stream.Collectors#lambda$joining$119(java.lang.StringBuilder, java.lang.StringBuilder)
-	_BDD:function(A,B){
+	_BDF:function(A,B){
 		// 266
 		A.MT(B);return A
 	},
 	// java.util.stream.Collectors#lambda$toSet$118(java.util.Set, java.util.Set)
-	_BDB:function(A,B){
+	_BDD:function(A,B){
 		// 252
 		A.IC(B);return A
 	},
 	// java.util.stream.Collectors#lambda$toList$117(java.util.List, java.util.List)
-	_BCz:function(A,B){
+	_BDB:function(A,B){
 		// 231
 		A.IC(B);return A
 	},
 	// java.util.stream.Collectors#lambda$toCollection$116(java.util.Collection, java.util.Collection)
-	_BCx:function(A,B){
+	_BCz:function(A,B){
 		// 214
 		A.IC(B);return A
 	},
 	// java.util.stream.Collectors#lambda$castingIdentity$115(java.lang.Object)
-	_BCv:function(A){
+	_BCx:function(A){
 		// 138
 		return A
 	},
 	// java.util.stream.Collectors#lambda$throwingMerger$114(java.lang.Object, java.lang.Object)
-	_BCZ:function(A,B){
+	_BCv:function(A,B){
 		// 133
 		throw new boot.BI(boot.u.Ez("Duplicate key %s",Φ("G",[A])),0)
 	},
 	// java.util.stream.Collectors#access$000()
-	_BGK:function(){
+	_BGM:function(){
 		// 104
-		return boot.FS.BCu()
+		return boot.FS.BCw()
 	},
 	// java.util.stream.Collectors#<clinit>()
 	_:function(){
 		// 107
-		boot.FS.c=boot.DJ.HL(boot.JF.BGL(boot.JE.e,boot.JE.f,boot.JE.g));
+		boot.FS.c=boot.DJ.HL(boot.JF.BGN(boot.JE.e,boot.JE.f,boot.JE.g));
 		// 111
-		boot.FS.d=boot.DJ.HL(boot.JF.BGM(boot.JE.e,boot.JE.f));
+		boot.FS.d=boot.DJ.HL(boot.JF.BGO(boot.JE.e,boot.JE.f));
 		// 114
-		boot.FS.e=boot.DJ.HL(boot.JF.BGN(boot.JE.g));
+		boot.FS.e=boot.DJ.HL(boot.JF.BGP(boot.JE.g));
 		// 116
-		boot.FS.f=boot.DJ.HL(boot.JF.BGM(boot.JE.f,boot.JE.g));
+		boot.FS.f=boot.DJ.HL(boot.JF.BGO(boot.JE.f,boot.JE.g));
 		// 118
 		boot.FS.g=boot.DJ.HG();
 	}
@@ -16252,49 +16272,49 @@ boot.define("FS","","",{
 	e:[24,"CH_ID","Dx<JE>"],
 	f:[24,"CH_UNORDERED_ID","Dx<JE>"],
 	g:[24,"CH_NOID","Dx<JE>"],
+	BFV:[9,"T:G K:G U:G","DM<,> DM<,> FQ<U:G>",,"JC<T:G,,CG<K:G,U:G>>","toMap"],
 	RM:[9,"T:G K:G U:G M:CG<K#,U#>","DM<,> DM<,> FQ<U:G> O<M:CG<K:G,U#>>",,"JC<T:G,,M:CG<K:G,U:G>>","toMap"],
-	BFT:[9,"T:G K:G U:G","DM<,> DM<,> FQ<U:G>",,"JC<T:G,,CG<K:G,U:G>>","toMap"],
-	BFS:[9,"T:G K:G U:G","DM<,> DM<,>",,"JC<T:G,,CG<K:G,U:G>>","toMap"],
-	BDA:[9,"T:G",,,"JC<T:G,,Dx<T#>>","toSet"],
-	BCy:[9,"T:G",,,"JC<T:G,,Bz<T#>>","toList"],
-	BDU:[9,"T:G","CL<>",,"JC<T:G,,JB<T#>>","maxBy"],
-	BDS:[9,"T:G","CL<>",,"JC<T:G,,JB<T#>>","minBy"],
-	BEQ:[9,"T:G","DN<>",,"JC<T:G,,CT>","averagingDouble"],
-	BEG:[9,"T:G","DO<>",,"JC<T:G,,CT>","averagingInt"],
-	BEL:[9,"T:G","DP<>",,"JC<T:G,,CT>","averagingLong"],
-	BEW:[10,"T:G","T:G",,"O<[T:G>","boxSupplier"],
-	BCu:[10,"I:G R:G",,,"DM<I:G,R:G>","castingIdentity"],
-	BDN:[9,"T:G A:G R:G RR:G","JC<T:G,A:G,R:G> DM<R#,RR:G>",,"JC<T:G,A:G,RR:G>","collectingAndThen"],
-	BEF:[8,,"[D",,"D","computeFinalSum"],
-	BDP:[9,"T:G",,,"JC<T:G,,CR>","counting"],
-	BFC:[9,"T:G K:G A:G D:G","DM<,> JC<,A:G,D:G>",,"JC<T:G,,CG<K:G,D:G>>","groupingBy"],
-	BFB:[9,"T:G K:G","DM<,>",,"JC<T:G,,CG<K:G,Bz<T#>>>","groupingBy"],
-	BFD:[9,"T:G K:G D:G A:G M:CG<K#,D#>","DM<,> O<M:CG<K:G,D:G>> JC<,A:G,D#>",,"JC<T:G,,M:CG<K:G,D:G>>","groupingBy"],
-	BFH:[9,"T:G K:G A:G D:G M:JM<K#,D#>","DM<,> O<M:JM<K:G,D:G>> JC<,A:G,D#>",,"JC<T:G,,M:JM<K:G,D:G>>","groupingByConcurrent"],
-	BFI:[9,"T:G K:G A:G D:G","DM<,> JC<,A:G,D:G>",,"JC<T:G,,JM<K:G,D:G>>","groupingByConcurrent"],
-	BFG:[9,"T:G K:G","DM<,>",,"JC<T:G,,JM<K:G,Bz<T#>>>","groupingByConcurrent"],
-	BDF:[9,,"CK CK CK",,"JC<CK,,u>","joining"],
-	BDC:[9,,,,"JC<CK,,u>","joining"],
-	BDE:[9,,"CK",,"JC<CK,,u>","joining"],
-	BDJ:[10,"K:G V:G M:CG<K#,V#>","FQ<V:G>",,"FQ<M:CG<K:G,V:G>>","mapMerger"],
-	BDL:[9,"T:G U:G A:G R:G","DM<,> JC<,A:G,R:G>",,"JC<T:G,,R:G>","mapping"],
-	BFN:[9,"T:G D:G A:G","EK<> JC<,A:G,D:G>",,"JC<T:G,,CG<Ez,D:G>>","partitioningBy"],
-	BFM:[9,"T:G","EK<>",,"JC<T:G,,CG<Ez,Bz<T#>>>","partitioningBy"],
-	BDT:[9,"T:G","FQ<T:G>",,"JC<T:G,,JB<T#>>","reducing"],
-	BEV:[9,"T:G","T:G FQ<T#>",,"JC<T:G,,T#>","reducing"],
-	BDR:[9,"T:G U:G","U:G DM<,> FQ<U#>",,"JC<T:G,,U:G>","reducing"],
-	BEE:[8,,"[D D",,"[D","sumWithCompensation"],
-	BFz:[9,"T:G","DN<>",,"JC<T:G,,IX>","summarizingDouble"],
-	BFZ:[9,"T:G","DO<>",,"JC<T:G,,JI>","summarizingInt"],
-	BFw:[9,"T:G","DP<>",,"JC<T:G,,Hv>","summarizingLong"],
-	BDz:[9,"T:G","DN<>",,"JC<T:G,,CT>","summingDouble"],
-	BDV:[9,"T:G","DO<>",,"JC<T:G,,BZ>","summingInt"],
-	BDu:[9,"T:G","DP<>",,"JC<T:G,,CR>","summingLong"],
-	BCY:[10,"T:G",,,"FQ<T:G>","throwingMerger"],
-	BCw:[9,"T:G C:Dy<T#>","O<C:Dy<T:G>>",,"JC<T:G,,C:Dy<T#>>","toCollection"],
-	BFV:[9,"T:G K:G U:G","DM<,> DM<,>",,"JC<T:G,,JM<K:G,U:G>>","toConcurrentMap"],
-	BFW:[9,"T:G K:G U:G M:JM<K#,U#>","DM<,> DM<,> FQ<U:G> O<M:JM<K:G,U#>>",,"JC<T:G,,M:JM<K:G,U:G>>","toConcurrentMap"],
-	BFX:[9,"T:G K:G U:G","DM<,> DM<,> FQ<U:G>",,"JC<T:G,,JM<K:G,U:G>>","toConcurrentMap"]
+	BFU:[9,"T:G K:G U:G","DM<,> DM<,>",,"JC<T:G,,CG<K:G,U:G>>","toMap"],
+	BES:[9,"T:G","DN<>",,"JC<T:G,,CT>","averagingDouble"],
+	BEI:[9,"T:G","DO<>",,"JC<T:G,,CT>","averagingInt"],
+	BEN:[9,"T:G","DP<>",,"JC<T:G,,CT>","averagingLong"],
+	BEY:[10,"T:G","T:G",,"O<[T:G>","boxSupplier"],
+	BCw:[10,"I:G R:G",,,"DM<I:G,R:G>","castingIdentity"],
+	BDP:[9,"T:G A:G R:G RR:G","JC<T:G,A:G,R:G> DM<R#,RR:G>",,"JC<T:G,A:G,RR:G>","collectingAndThen"],
+	BEH:[8,,"[D",,"D","computeFinalSum"],
+	BDR:[9,"T:G",,,"JC<T:G,,CR>","counting"],
+	BFE:[9,"T:G K:G A:G D:G","DM<,> JC<,A:G,D:G>",,"JC<T:G,,CG<K:G,D:G>>","groupingBy"],
+	BFD:[9,"T:G K:G","DM<,>",,"JC<T:G,,CG<K:G,Bz<T#>>>","groupingBy"],
+	BFF:[9,"T:G K:G D:G A:G M:CG<K#,D#>","DM<,> O<M:CG<K:G,D:G>> JC<,A:G,D#>",,"JC<T:G,,M:CG<K:G,D:G>>","groupingBy"],
+	BFK:[9,"T:G K:G A:G D:G","DM<,> JC<,A:G,D:G>",,"JC<T:G,,JM<K:G,D:G>>","groupingByConcurrent"],
+	BFJ:[9,"T:G K:G A:G D:G M:JM<K#,D#>","DM<,> O<M:JM<K:G,D:G>> JC<,A:G,D#>",,"JC<T:G,,M:JM<K:G,D:G>>","groupingByConcurrent"],
+	BFI:[9,"T:G K:G","DM<,>",,"JC<T:G,,JM<K:G,Bz<T#>>>","groupingByConcurrent"],
+	BDG:[9,,"CK",,"JC<CK,,u>","joining"],
+	BDE:[9,,,,"JC<CK,,u>","joining"],
+	BDH:[9,,"CK CK CK",,"JC<CK,,u>","joining"],
+	BDL:[10,"K:G V:G M:CG<K#,V#>","FQ<V:G>",,"FQ<M:CG<K:G,V:G>>","mapMerger"],
+	BDN:[9,"T:G U:G A:G R:G","DM<,> JC<,A:G,R:G>",,"JC<T:G,,R:G>","mapping"],
+	BFO:[9,"T:G","EK<>",,"JC<T:G,,CG<Ez,Bz<T#>>>","partitioningBy"],
+	BFP:[9,"T:G D:G A:G","EK<> JC<,A:G,D:G>",,"JC<T:G,,CG<Ez,D:G>>","partitioningBy"],
+	BEX:[9,"T:G","T:G FQ<T#>",,"JC<T:G,,T#>","reducing"],
+	BDV:[9,"T:G","FQ<T:G>",,"JC<T:G,,JB<T#>>","reducing"],
+	BDT:[9,"T:G U:G","U:G DM<,> FQ<U#>",,"JC<T:G,,U:G>","reducing"],
+	BEG:[8,,"[D D",,"[D","sumWithCompensation"],
+	BGB:[9,"T:G","DN<>",,"JC<T:G,,IZ>","summarizingDouble"],
+	BFv:[9,"T:G","DO<>",,"JC<T:G,,JI>","summarizingInt"],
+	BFy:[9,"T:G","DP<>",,"JC<T:G,,Hx>","summarizingLong"],
+	BEB:[9,"T:G","DN<>",,"JC<T:G,,CT>","summingDouble"],
+	BDX:[9,"T:G","DO<>",,"JC<T:G,,BZ>","summingInt"],
+	BDw:[9,"T:G","DP<>",,"JC<T:G,,CR>","summingLong"],
+	BCu:[10,"T:G",,,"FQ<T:G>","throwingMerger"],
+	BCy:[9,"T:G C:Dy<T#>","O<C:Dy<T:G>>",,"JC<T:G,,C:Dy<T#>>","toCollection"],
+	BFY:[9,"T:G K:G U:G M:JM<K#,U#>","DM<,> DM<,> FQ<U:G> O<M:JM<K:G,U#>>",,"JC<T:G,,M:JM<K:G,U:G>>","toConcurrentMap"],
+	BFZ:[9,"T:G K:G U:G","DM<,> DM<,> FQ<U:G>",,"JC<T:G,,JM<K:G,U:G>>","toConcurrentMap"],
+	BFX:[9,"T:G K:G U:G","DM<,> DM<,>",,"JC<T:G,,JM<K:G,U:G>>","toConcurrentMap"],
+	BDA:[9,"T:G",,,"JC<T:G,,Bz<T#>>","toList"],
+	BDC:[9,"T:G",,,"JC<T:G,,Dx<T#>>","toSet"],
+	BDW:[9,"T:G","CL<>",,"JC<T:G,,JB<T#>>","maxBy"],
+	BDU:[9,"T:G","CL<>",,"JC<T:G,,JB<T#>>","minBy"]
 });
 
 // class java.util.stream.Collectors$CollectorImpl "JG"
@@ -16316,31 +16336,31 @@ boot.define("JG","","JC",{
 	// java.util.stream.Collectors$CollectorImpl#<init>(java.util.function.Supplier, java.util.function.BiConsumer, java.util.function.BinaryOperator, java.util.Set)
 	$0:function(A,B,C,D){
 		// 170
-		boot.JG.prototype.$1.call(this,A,B,C,boot.FS.BGK(),D);
+		boot.JG.prototype.$1.call(this,A,B,C,boot.FS.BGM(),D);
 		// 171
 	},
 	// java.util.stream.Collectors$CollectorImpl#accumulator()
-	BCW:function(){
+	BCY:function(){
 		// 175
 		return this.d
 	},
 	// java.util.stream.Collectors$CollectorImpl#supplier()
-	BCU:function(){
+	BCW:function(){
 		// 180
 		return this.c
 	},
 	// java.util.stream.Collectors$CollectorImpl#combiner()
-	BCT:function(){
+	BCV:function(){
 		// 185
 		return this.e
 	},
 	// java.util.stream.Collectors$CollectorImpl#finisher()
-	BCX:function(){
+	BCZ:function(){
 		// 190
 		return this.f
 	},
 	// java.util.stream.Collectors$CollectorImpl#characteristics()
-	BCV:function(){
+	BCX:function(){
 		// 195
 		return this.g
 	}
@@ -16353,22 +16373,22 @@ boot.define("JG","","JC",{
 	e:[18,"combiner","FQ<A:G>"],
 	f:[18,"finisher","DM<A:G,R:G>"],
 	g:[18,"characteristics","Dx<JE>"],
-	BCT:[1,,,,"FQ<A:G>","combiner"],
-	BCU:[1,,,,"O<A:G>","supplier"],
-	BCV:[1,,,,"Dx<JE>","characteristics"],
-	BCW:[1,,,,"Fz<A:G,T:G>","accumulator"],
-	BCX:[1,,,,"DM<A:G,R:G>","finisher"]
+	BCV:[1,,,,"FQ<A:G>","combiner"],
+	BCW:[1,,,,"O<A:G>","supplier"],
+	BCX:[1,,,,"Dx<JE>","characteristics"],
+	BCY:[1,,,,"Fz<A:G,T:G>","accumulator"],
+	BCZ:[1,,,,"DM<A:G,R:G>","finisher"]
 });
 
 // class java.util.stream.Collector$Characteristics "JE"
 boot.define("JE","BF","",{
 	// java.util.stream.Collector$Characteristics#values()
-	_BGO:function(){
+	_BGQ:function(){
 		// 314
 		return boot.JE.h.BI()
 	},
 	// java.util.stream.Collector$Characteristics#valueOf(java.lang.String)
-	_BGP:function(A){
+	_BGR:function(A){
 		// 314
 		return boot.BF.PC(boot.JE.$,A)
 	},
@@ -16395,8 +16415,8 @@ boot.define("JE","BF","",{
 	f:[16409,"UNORDERED","JE"],
 	g:[16409,"IDENTITY_FINISH","JE"],
 	h:[4122,"$VALUES","[JE"],
-	BGO:[9,,,,"[JE","values"],
-	BGP:[9,,"u",,"JE","valueOf"]
+	BGQ:[9,,,,"[JE","values"],
+	BGR:[9,,"u",,"JE","valueOf"]
 });
 
 // class java.util.AbstractSet "DT"
@@ -16542,7 +16562,7 @@ boot.define("JF","DT","",{
 		return new boot.JN(this,0)
 	},
 	// js.util.EnumSet#add(java.lang.Enum)
-	BGQ:function(A,B){
+	BGS:function(A,B){
 		// 120
 		B=A.PE();
 		// 122
@@ -16590,7 +16610,7 @@ boot.define("JF","DT","",{
 		// 155
 	},
 	// js.util.EnumSet#allOf(java.lang.Class)
-	_BGR:function(A,B){
+	_BGT:function(A,B){
 		// 166
 		B=new boot.JF(A,0);
 		// 167
@@ -16601,7 +16621,7 @@ boot.define("JF","DT","",{
 		return B
 	},
 	// js.util.EnumSet#copyOf(java.util.EnumSet)
-	_BGS:function(A,B){
+	_BGU:function(A,B){
 		// 183
 		B=new boot.JF(A.d,0);
 		// 184
@@ -16610,16 +16630,16 @@ boot.define("JF","DT","",{
 		return B
 	},
 	// js.util.EnumSet#copyOf(java.util.Collection)
-	_BDO:function(A,B,C){
+	_BDQ:function(A,B,C){
 		// 203
 		if (A.EB()==0) {
 			// 207
 			B=A.IH();
 			// 208
-			C=boot.JF.BGN(B.Hx());
+			C=boot.JF.BGP(B.Hx());
 			// 210
 			// 210
-			for (; B.IO()!=0; C.BGQ(B.Hx())) {
+			for (; B.IO()!=0; C.BGS(B.Hx())) {
 			}
 			// 213
 			return C;
@@ -16629,9 +16649,9 @@ boot.define("JF","DT","",{
 		}
 	},
 	// js.util.EnumSet#complementOf(java.util.EnumSet)
-	_BGT:function(A,B,C){
+	_BGV:function(A,B,C){
 		// 226
-		B=boot.JF.BGS(A);
+		B=boot.JF.BGU(A);
 		// 228
 		C=0;
 		for (; C<B.f.length; ++C) {
@@ -16644,97 +16664,97 @@ boot.define("JF","DT","",{
 		return B
 	},
 	// js.util.EnumSet#noneOf(java.lang.Class)
-	_BCS:function(A){
+	_BCU:function(A){
 		// 245
 		return new boot.JF(A,0)
 	},
 	// js.util.EnumSet#of(java.lang.Enum)
-	_BGN:function(A,B){
+	_BGP:function(A,B){
 		// 261
 		B=new boot.JF(A.PG(),0);
 		// 262
-		B.BGQ(A);
+		B.BGS(A);
 		// 264
 		return B
 	},
 	// js.util.EnumSet#of(java.lang.Enum, java.lang.Enum)
-	_BGM:function(A,B,C){
+	_BGO:function(A,B,C){
 		// 281
 		C=new boot.JF(A.PG(),0);
 		// 282
-		C.BGQ(A);
+		C.BGS(A);
 		// 283
-		C.BGQ(B);
+		C.BGS(B);
 		// 285
 		return C
 	},
 	// js.util.EnumSet#of(java.lang.Enum, java.lang.Enum, java.lang.Enum)
-	_BGL:function(A,B,C,D){
+	_BGN:function(A,B,C,D){
 		// 303
 		D=new boot.JF(A.PG(),0);
 		// 304
-		D.BGQ(A);
+		D.BGS(A);
 		// 305
-		D.BGQ(B);
+		D.BGS(B);
 		// 306
-		D.BGQ(C);
+		D.BGS(C);
 		// 308
 		return D
 	},
 	// js.util.EnumSet#of(java.lang.Enum, java.lang.Enum, java.lang.Enum, java.lang.Enum)
-	_BGU:function(A,B,C,D,E){
+	_BGW:function(A,B,C,D,E){
 		// 327
 		E=new boot.JF(A.PG(),0);
 		// 328
-		E.BGQ(A);
+		E.BGS(A);
 		// 329
-		E.BGQ(B);
+		E.BGS(B);
 		// 330
-		E.BGQ(C);
+		E.BGS(C);
 		// 331
-		E.BGQ(D);
+		E.BGS(D);
 		// 333
 		return E
 	},
 	// js.util.EnumSet#of(java.lang.Enum, java.lang.Enum, java.lang.Enum, java.lang.Enum, java.lang.Enum)
-	_BGV:function(A,B,C,D,E,F){
+	_BGX:function(A,B,C,D,E,F){
 		// 353
 		F=new boot.JF(A.PG(),0);
 		// 354
-		F.BGQ(A);
+		F.BGS(A);
 		// 355
-		F.BGQ(B);
+		F.BGS(B);
 		// 356
-		F.BGQ(C);
+		F.BGS(C);
 		// 357
-		F.BGQ(D);
+		F.BGS(D);
 		// 358
-		F.BGQ(E);
+		F.BGS(E);
 		// 360
 		return F
 	},
 	// js.util.EnumSet#of(java.lang.Enum, java.lang.Enum[])
-	_BCQ:function(A,B,C,D,E,F,G){
+	_BCS:function(A,B,C,D,E,F,G){
 		// 378
 		C=new boot.JF(A.PG(),0);
 		// 379
-		C.BGQ(A);
+		C.BGS(A);
 		// 381
 		F=(G=B).length;E=0;
 		for (; E<F; ++E) {
 			D=G[E];
 			// 382
-			C.BGQ(D);
+			C.BGS(D);
 		}
 		// 384
 		return C
 	},
 	// js.util.EnumSet#range(java.lang.Enum, java.lang.Enum)
-	_BGW:function(A,B,C,D){
+	_BGY:function(A,B,C,D){
 		// 401
 		if (A.PF(B)<=0) {
 			// 405
-			C=boot.JF.BCS(A.PG());
+			C=boot.JF.BCU(A.PG());
 			// 407
 			D=A.PE();
 			for (; D<=B.PE(); ++D) {
@@ -16753,15 +16773,15 @@ boot.define("JF","DT","",{
 	// js.util.EnumSet#add(java.lang.Object)
 	CA:function(A){
 		// 1
-		return this.BGQ(A)
+		return this.BGS(A)
 	},
 	// js.util.EnumSet#access$1(js.util.EnumSet)
-	_BGX:function(A){
+	_BGZ:function(A){
 		// 32
 		return A.f
 	},
 	// js.util.EnumSet#access$2(js.util.EnumSet)
-	_BGY:function(A){
+	_BGu:function(A){
 		// 26
 		return A.d
 	}
@@ -16771,27 +16791,27 @@ boot.define("JF","DT","",{
 	d:[18,"type","A<E:BF<E#>>"],
 	e:[2,"size","I"],
 	f:[2,"items","[Z"],
-	BGQ:[1,,"E:BF<E#>",,"Z","add"],
+	BGS:[1,,"E:BF<E#>",,"Z","add"],
 	IF:[1,,"G",,"Z","remove"],
-	BDO:[9,"E:BF<E#>","Dy<E:BF<E#>>",,"JF<E:BF<E#>>","copyOf"],
-	BGS:[9,"E:BF<E#>","JF<E:BF<E#>>",,"JF<E:BF<E#>>","copyOf"],
+	BDQ:[9,"E:BF<E#>","Dy<E:BF<E#>>",,"JF<E:BF<E#>>","copyOf"],
+	BGU:[9,"E:BF<E#>","JF<E:BF<E#>>",,"JF<E:BF<E#>>","copyOf"],
 	IG:[1,,,,"V","clear"],
 	ID:[1,,"G",,"Z","contains"],
 	IH:[1,,,,"EB<E:BF<E#>>","iterator"],
 	CN:[1,,,,"I","size"],
-	BGL:[9,"E:BF<E#>","E:BF<E#> E# E#",,"JF<E:BF<E#>>","of"],
-	BGU:[9,"E:BF<E#>","E:BF<E#> E# E# E#",,"JF<E:BF<E#>>","of"],
-	BGV:[9,"E:BF<E#>","E:BF<E#> E# E# E# E#",,"JF<E:BF<E#>>","of"],
-	BCQ:[137,"E:BF<E#>","E:BF<E#> [E#",,"JF<E:BF<E#>>","of",{
+	BGN:[9,"E:BF<E#>","E:BF<E#> E# E#",,"JF<E:BF<E#>>","of"],
+	BGW:[9,"E:BF<E#>","E:BF<E#> E# E# E#",,"JF<E:BF<E#>>","of"],
+	BGX:[9,"E:BF<E#>","E:BF<E#> E# E# E# E#",,"JF<E:BF<E#>>","of"],
+	BCS:[137,"E:BF<E#>","E:BF<E#> [E#",,"JF<E:BF<E#>>","of",{
 		Dz :{
 		}
 	}],
-	BGM:[9,"E:BF<E#>","E:BF<E#> E#",,"JF<E:BF<E#>>","of"],
-	BGN:[9,"E:BF<E#>","E:BF<E#>",,"JF<E:BF<E#>>","of"],
-	BGW:[9,"E:BF<E#>","E:BF<E#> E#",,"JF<E:BF<E#>>","range"],
-	BCS:[9,"E:BF<E#>","A<E:BF<E#>>",,"JF<E:BF<E#>>","noneOf"],
-	BGR:[9,"E:BF<E#>","A<E:BF<E#>>",,"JF<E:BF<E#>>","allOf"],
-	BGT:[9,"E:BF<E#>","JF<E:BF<E#>>",,"JF<E:BF<E#>>","complementOf"]
+	BGO:[9,"E:BF<E#>","E:BF<E#> E#",,"JF<E:BF<E#>>","of"],
+	BGP:[9,"E:BF<E#>","E:BF<E#>",,"JF<E:BF<E#>>","of"],
+	BGY:[9,"E:BF<E#>","E:BF<E#> E#",,"JF<E:BF<E#>>","range"],
+	BCU:[9,"E:BF<E#>","A<E:BF<E#>>",,"JF<E:BF<E#>>","noneOf"],
+	BGT:[9,"E:BF<E#>","A<E:BF<E#>>",,"JF<E:BF<E#>>","allOf"],
+	BGV:[9,"E:BF<E#>","JF<E:BF<E#>>",,"JF<E:BF<E#>>","complementOf"]
 });
 
 // class js.util.EnumSet$1 "JN"
@@ -16811,9 +16831,9 @@ boot.define("JN","","EB",{
 	IO:function(A){
 		// 79
 		A=this.c;
-		for (; A<boot.JF.BGX(this.e).length; ++A) {
+		for (; A<boot.JF.BGZ(this.e).length; ++A) {
 			// 80
-			if (boot.JF.BGX(this.e)[A]==0) {
+			if (boot.JF.BGZ(this.e)[A]==0) {
 			} else {
 				// 81
 				return true;
@@ -16823,16 +16843,16 @@ boot.define("JN","","EB",{
 		return false
 	},
 	// js.util.EnumSet$1#next()
-	BGZ:function(){
+	BGv:function(){
 		// 92
-		for (; this.c<boot.JF.BGX(this.e).length; this.c=this.c+1) {
+		for (; this.c<boot.JF.BGZ(this.e).length; this.c=this.c+1) {
 			// 93
-			if (boot.JF.BGX(this.e)[this.c]==0) {
+			if (boot.JF.BGZ(this.e)[this.c]==0) {
 			} else {
 				// 94
 				this.d=this.c++;
 				// 95
-				return boot.JF.BGY(this.e).QI()[(this.c-1)];
+				return boot.JF.BGu(this.e).QI()[(this.c-1)];
 			}
 		}
 		// 98
@@ -16843,7 +16863,7 @@ boot.define("JN","","EB",{
 		// 106
 		if (this.d!=-1) {
 			// 109
-			boot.JF.BGX(this.e)[this.d]=0;
+			boot.JF.BGZ(this.e)[this.d]=0;
 			// 110
 			this.d=-1;
 			// 111
@@ -16855,7 +16875,7 @@ boot.define("JN","","EB",{
 	// js.util.EnumSet$1#next()
 	Hx:function(){
 		// 1
-		return this.BGZ()
+		return this.BGv()
 	}
 },{
 	$:[65536,"js.util.EnumSet$1",,"G","EB<E:BF<E#>>"],
@@ -16865,7 +16885,7 @@ boot.define("JN","","EB",{
 	e:[4112,"this$0","JF"],
 	IQ:[1,,,,"V","remove"],
 	IO:[1,,,,"Z","hasNext"],
-	BGZ:[1,,,,"E:BF<E#>","next"]
+	BGv:[1,,,,"E:BF<E#>","next"]
 });
 
 // interface java.lang.SafeVarargs "Dz"
@@ -16951,12 +16971,12 @@ boot.define("DH","","DD",{
 // class java.lang.annotation.ElementType "DI"
 boot.define("DI","BF","",{
 	// java.lang.annotation.ElementType#values()
-	_BGu:function(){
+	_BGw:function(){
 		// 73
 		return boot.DI.o.BI()
 	},
 	// java.lang.annotation.ElementType#valueOf(java.lang.String)
-	_BGv:function(A){
+	_BGx:function(A){
 		// 73
 		return boot.BF.PC(boot.DI.$,A)
 	},
@@ -17004,12 +17024,12 @@ boot.define("DI","BF","",{
 	m:[16409,"TYPE_PARAMETER","DI"],
 	n:[16409,"TYPE_USE","DI"],
 	o:[4122,"$VALUES","[DI"],
-	BGu:[9,,,,"[DI","values"],
-	BGv:[9,,"u",,"DI","valueOf"]
+	BGw:[9,,,,"[DI","values"],
+	BGx:[9,,"u",,"DI","valueOf"]
 });
 
-// class java.util.DoubleSummaryStatistics "IX"
-boot.define("IX","","HG",{
+// class java.util.DoubleSummaryStatistics "IZ"
+boot.define("IZ","","HG",{
 	c:boot.J.f,
 	d:0,
 	e:0,
@@ -17031,7 +17051,7 @@ boot.define("IX","","HG",{
 		// 86
 		this.f=this.f+A;
 		// 87
-		this.BGw(A);
+		this.BGy(A);
 		// 88
 		this.g=boot.CU.LX(this.g,A);
 		// 89
@@ -17039,15 +17059,15 @@ boot.define("IX","","HG",{
 		// 90
 	},
 	// java.util.DoubleSummaryStatistics#combine(java.util.DoubleSummaryStatistics)
-	BGC:function(A){
+	BGE:function(A){
 		// 100
 		this.c=this.c.BS(A.c);
 		// 101
 		this.f=this.f+A.f;
 		// 102
-		this.BGw(A.d);
+		this.BGy(A.d);
 		// 103
-		this.BGw(A.e);
+		this.BGy(A.e);
 		// 104
 		this.g=boot.CU.LX(this.g,A.g);
 		// 105
@@ -17055,7 +17075,7 @@ boot.define("IX","","HG",{
 		// 106
 	},
 	// java.util.DoubleSummaryStatistics#sumWithCompensation(double)
-	BGw:function(A,C,E){
+	BGy:function(A,C,E){
 		// 113
 		C=(A-this.e);
 		// 114
@@ -17067,12 +17087,12 @@ boot.define("IX","","HG",{
 		// 117
 	},
 	// java.util.DoubleSummaryStatistics#getCount()
-	BGx:function(){
+	BGz:function(){
 		// 125
 		return this.c
 	},
 	// java.util.DoubleSummaryStatistics#getSum()
-	BGy:function(A){
+	BHA:function(A){
 		// 153
 		A=(this.d+this.e);
 		// 154
@@ -17085,24 +17105,24 @@ boot.define("IX","","HG",{
 		}
 	},
 	// java.util.DoubleSummaryStatistics#getMin()
-	BGz:function(){
+	BHB:function(){
 		// 175
 		return this.g
 	},
 	// java.util.DoubleSummaryStatistics#getMax()
-	BHA:function(){
+	BHC:function(){
 		// 189
 		return this.h
 	},
 	// java.util.DoubleSummaryStatistics#getAverage()
-	BHB:function(){
+	BHD:function(){
 		// 212
-		return this.BGx().KJ(boot.J.BP(0,0))==0?this.BGy()/this.BGx().JY():0
+		return this.BGz().KJ(boot.J.BP(0,0))==0?this.BHA()/this.BGz().JY():0
 	},
 	// java.util.DoubleSummaryStatistics#toString()
 	W:function(){
 		// 224
-		return boot.u.Ez("%s{count=%d, sum=%f, min=%f, average=%f, max=%f}",Φ("G",[this.N().QX(),boot.CR.ZL(this.BGx()),boot.CT.MG(this.BGy()),boot.CT.MG(this.BGz()),boot.CT.MG(this.BHB()),boot.CT.MG(this.BHA())]))
+		return boot.u.Ez("%s{count=%d, sum=%f, min=%f, average=%f, max=%f}",Φ("G",[this.N().QX(),boot.CR.ZL(this.BGz()),boot.CT.MG(this.BHA()),boot.CT.MG(this.BHB()),boot.CT.MG(this.BHD()),boot.CT.MG(this.BHC())]))
 	}
 },{
 	$:[1,"java.util.DoubleSummaryStatistics",,"G","HG"],
@@ -17115,13 +17135,13 @@ boot.define("IX","","HG",{
 	h:[2,"max","D"],
 	W:[1,,,,"u","toString"],
 	uQ:[1,,"D",,"V","accept"],
-	BGC:[1,,"IX",,"V","combine"],
-	BGx:[17,,,,"J","getCount"],
-	BGw:[2,,"D",,"V","sumWithCompensation"],
-	BHB:[17,,,,"D","getAverage"],
-	BHA:[17,,,,"D","getMax"],
-	BGz:[17,,,,"D","getMin"],
-	BGy:[17,,,,"D","getSum"]
+	BGE:[1,,"IZ",,"V","combine"],
+	BGz:[17,,,,"J","getCount"],
+	BGy:[2,,"D",,"V","sumWithCompensation"],
+	BHD:[17,,,,"D","getAverage"],
+	BHC:[17,,,,"D","getMax"],
+	BHB:[17,,,,"D","getMin"],
+	BHA:[17,,,,"D","getSum"]
 });
 
 // interface java.util.function.ToDoubleFunction "DN"
@@ -17134,8 +17154,8 @@ boot.define("DN","","",{
 	GV:[1025,,"T:G",,"D","applyAsDouble"]
 });
 
-// class java.util.LongSummaryStatistics "Hv"
-boot.define("Hv","","HH GV",{
+// class java.util.LongSummaryStatistics "Hx"
+boot.define("Hx","","HH GV",{
 	c:boot.J.f,
 	d:boot.J.f,
 	e:boot.J.f,
@@ -17167,7 +17187,7 @@ boot.define("Hv","","HH GV",{
 		// 100
 	},
 	// java.util.LongSummaryStatistics#combine(java.util.LongSummaryStatistics)
-	BGD:function(A){
+	BGF:function(A){
 		// 110
 		this.c=this.c.BS(A.c);
 		// 111
@@ -17179,34 +17199,34 @@ boot.define("Hv","","HH GV",{
 		// 114
 	},
 	// java.util.LongSummaryStatistics#getCount()
-	BGx:function(){
+	BGz:function(){
 		// 122
 		return this.c
 	},
 	// java.util.LongSummaryStatistics#getSum()
-	BHC:function(){
+	BHE:function(){
 		// 132
 		return this.d
 	},
 	// java.util.LongSummaryStatistics#getMin()
-	BHD:function(){
+	BHF:function(){
 		// 142
 		return this.e
 	},
 	// java.util.LongSummaryStatistics#getMax()
-	BHE:function(){
+	BHG:function(){
 		// 152
 		return this.f
 	},
 	// java.util.LongSummaryStatistics#getAverage()
-	BHB:function(){
+	BHD:function(){
 		// 162
-		return this.BGx().KJ(boot.J.BP(0,0))==0?this.BHC().JY()/this.BGx().JY():0
+		return this.BGz().KJ(boot.J.BP(0,0))==0?this.BHE().JY()/this.BGz().JY():0
 	},
 	// java.util.LongSummaryStatistics#toString()
 	W:function(){
 		// 174
-		return boot.u.Ez("%s{count=%d, sum=%d, min=%d, average=%f, max=%d}",Φ("G",[this.N().QX(),boot.CR.ZL(this.BGx()),boot.CR.ZL(this.BHC()),boot.CR.ZL(this.BHD()),boot.CT.MG(this.BHB()),boot.CR.ZL(this.BHE())]))
+		return boot.u.Ez("%s{count=%d, sum=%d, min=%d, average=%f, max=%d}",Φ("G",[this.N().QX(),boot.CR.ZL(this.BGz()),boot.CR.ZL(this.BHE()),boot.CR.ZL(this.BHF()),boot.CT.MG(this.BHD()),boot.CR.ZL(this.BHG())]))
 	}
 },{
 	$:[1,"java.util.LongSummaryStatistics",,"G","HH GV"],
@@ -17218,12 +17238,12 @@ boot.define("Hv","","HH GV",{
 	W:[1,,,,"u","toString"],
 	TN:[1,,"I",,"V","accept"],
 	uW:[1,,"J",,"V","accept"],
-	BGD:[1,,"Hv",,"V","combine"],
-	BGx:[17,,,,"J","getCount"],
-	BHB:[17,,,,"D","getAverage"],
-	BHE:[17,,,,"J","getMax"],
-	BHD:[17,,,,"J","getMin"],
-	BHC:[17,,,,"J","getSum"]
+	BGF:[1,,"Hx",,"V","combine"],
+	BGz:[17,,,,"J","getCount"],
+	BHD:[17,,,,"D","getAverage"],
+	BHG:[17,,,,"J","getMax"],
+	BHF:[17,,,,"J","getMin"],
+	BHE:[17,,,,"J","getSum"]
 });
 
 // interface java.util.function.ToLongFunction "DP"
@@ -17263,7 +17283,7 @@ boot.define("JI","","GV",{
 		// 89
 	},
 	// java.util.IntSummaryStatistics#combine(java.util.IntSummaryStatistics)
-	BGE:function(A){
+	BGG:function(A){
 		// 98
 		this.c=this.c.BS(A.c);
 		// 99
@@ -17275,34 +17295,34 @@ boot.define("JI","","GV",{
 		// 102
 	},
 	// java.util.IntSummaryStatistics#getCount()
-	BGx:function(){
+	BGz:function(){
 		// 110
 		return this.c
 	},
 	// java.util.IntSummaryStatistics#getSum()
-	BHC:function(){
+	BHE:function(){
 		// 120
 		return this.d
 	},
 	// java.util.IntSummaryStatistics#getMin()
-	BHF:function(){
+	BHH:function(){
 		// 130
 		return this.e
 	},
 	// java.util.IntSummaryStatistics#getMax()
-	BHG:function(){
+	BHI:function(){
 		// 140
 		return this.f
 	},
 	// java.util.IntSummaryStatistics#getAverage()
-	BHB:function(){
+	BHD:function(){
 		// 150
-		return this.BGx().KJ(boot.J.BP(0,0))==0?this.BHC().JY()/this.BGx().JY():0
+		return this.BGz().KJ(boot.J.BP(0,0))==0?this.BHE().JY()/this.BGz().JY():0
 	},
 	// java.util.IntSummaryStatistics#toString()
 	W:function(){
 		// 162
-		return boot.u.Ez("%s{count=%d, sum=%d, min=%d, average=%f, max=%d}",Φ("G",[this.N().QX(),boot.CR.ZL(this.BGx()),boot.CR.ZL(this.BHC()),boot.BZ.QB(this.BHF()),boot.CT.MG(this.BHB()),boot.BZ.QB(this.BHG())]))
+		return boot.u.Ez("%s{count=%d, sum=%d, min=%d, average=%f, max=%d}",Φ("G",[this.N().QX(),boot.CR.ZL(this.BGz()),boot.CR.ZL(this.BHE()),boot.BZ.QB(this.BHH()),boot.CT.MG(this.BHD()),boot.BZ.QB(this.BHI())]))
 	}
 },{
 	$:[1,"java.util.IntSummaryStatistics",,"G","GV"],
@@ -17313,12 +17333,12 @@ boot.define("JI","","GV",{
 	f:[2,"max","I"],
 	W:[1,,,,"u","toString"],
 	TN:[1,,"I",,"V","accept"],
-	BGE:[1,,"JI",,"V","combine"],
-	BGx:[17,,,,"J","getCount"],
-	BHB:[17,,,,"D","getAverage"],
-	BHG:[17,,,,"I","getMax"],
-	BHF:[17,,,,"I","getMin"],
-	BHC:[17,,,,"J","getSum"]
+	BGG:[1,,"JI",,"V","combine"],
+	BGz:[17,,,,"J","getCount"],
+	BHD:[17,,,,"D","getAverage"],
+	BHI:[17,,,,"I","getMax"],
+	BHH:[17,,,,"I","getMin"],
+	BHE:[17,,,,"J","getSum"]
 });
 
 // interface java.util.function.ToIntFunction "DO"
@@ -17372,7 +17392,7 @@ boot.define("JM","","CG",{
 		// 276
 		boot.CN.DV(A);
 		// 277
-		this.SC(λ(boot.Fz,"SD","BHH",this,[A]));
+		this.SC(λ(boot.Fz,"SD","BHJ",this,[A]));
 		// 286
 	},
 	// java.util.concurrent.ConcurrentMap#computeIfAbsent(java.lang.Object, java.util.function.Function)
@@ -17502,7 +17522,7 @@ boot.define("JM","","CG",{
 		}
 	},
 	// java.util.concurrent.ConcurrentMap#lambda$replaceAll$8(java.util.function.BiFunction, java.lang.Object, java.lang.Object)
-	BHH:function(A,B,C){
+	BHJ:function(A,B,C){
 		// 278
 		while (this.SI(B,C,A.RK(B,C))==0) {
 			// 280
@@ -17564,9 +17584,9 @@ boot.define("JO","DT","",{
 	// java.util.stream.Collectors$Partition$1#iterator()
 	IH:function(A,B){
 		// 1556
-		A=new boot.JP(boot.Ez.BHI(false),this.d.f,0);
+		A=new boot.JP(boot.Ez.BHK(false),this.d.f,0);
 		// 1557
-		B=new boot.JP(boot.Ez.BHI(true),this.d.e,0);
+		B=new boot.JP(boot.Ez.BHK(true),this.d.e,0);
 		// 1558
 		return boot.CQ.UB(Φ("Fu",[A,B])).IH()
 	},
@@ -17603,11 +17623,11 @@ boot.define("Ez","","EM",{
 	// js.lang.JSBoolean#<init>(java.lang.String)
 	$1:function(A){
 		// 67
-		boot.Ez.prototype.$0.call(this,boot.Ez.BHJ(A));
+		boot.Ez.prototype.$0.call(this,boot.Ez.BHL(A));
 		// 68
 	},
 	// js.lang.JSBoolean#booleanValue()
-	BHK:function(){
+	BHM:function(){
 		// 76
 		return this.f
 	},
@@ -17622,12 +17642,12 @@ boot.define("Ez","","EM",{
 		return this.f!=0?"true":"false"
 	},
 	// js.lang.JSBoolean#getBoolean(java.lang.String)
-	_BHL:function(A,B,C){
+	_BHN:function(A,B,C){
 		// 129
 		B=0;
 		// 132
 		try {
-			B=boot.Ez.BHM(boot.BH.Cv(A));
+			B=boot.Ez.BHO(boot.BH.Cv(A));
 			// 133
 		} catch ($) {
 			$ = boot.BL.CQ($) ;
@@ -17643,27 +17663,27 @@ boot.define("Ez","","EM",{
 		return B
 	},
 	// js.lang.JSBoolean#parseBoolean(java.lang.String)
-	_BHM:function(A){
+	_BHO:function(A){
 		// 151
-		return boot.Ez.BHJ(A)
+		return boot.Ez.BHL(A)
 	},
 	// js.lang.JSBoolean#valueOf(java.lang.String)
-	_BHN:function(A){
+	_BHP:function(A){
 		// 163
-		return boot.Ez.BHI(boot.Ez.BHM(A))
+		return boot.Ez.BHK(boot.Ez.BHO(A))
 	},
 	// js.lang.JSBoolean#valueOf(boolean)
-	_BHI:function(A){
+	_BHK:function(A){
 		// 179
 		return A!=0?boot.Ez.c:boot.Ez.d
 	},
 	// js.lang.JSBoolean#toString(boolean)
-	_BHO:function(A){
+	_BHQ:function(A){
 		// 192
 		return A!=0?"true":"false"
 	},
 	// js.lang.JSBoolean#toBoolean(java.lang.String)
-	_BHJ:function(A){
+	_BHL:function(A){
 		return A!=null&&A.DY("true")!=0
 	}
 },{
@@ -17675,14 +17695,14 @@ boot.define("Ez","","EM",{
 	e:[25,"TYPE","A"],
 	f:[18,"value","Z"],
 	W:[1,,,,"u","toString"],
-	BHO:[9,,"Z",,"u","toString"],
-	BHL:[9,,"u",,"Z","getBoolean"],
-	BHK:[1,,,,"Z","booleanValue"],
-	BHI:[9,,"Z",,"Ez","valueOf"],
-	BHN:[9,,"u",,"Ez","valueOf"],
+	BHQ:[9,,"Z",,"u","toString"],
+	BHN:[9,,"u",,"Z","getBoolean"],
+	BHM:[1,,,,"Z","booleanValue"],
+	BHK:[9,,"Z",,"Ez","valueOf"],
+	BHP:[9,,"u",,"Ez","valueOf"],
 	valueOf:[1,,,,"Z","valueOf"],
-	BHM:[9,,"u",,"Z","parseBoolean"],
-	BHJ:[10,,"u",,"Z","toBoolean"]
+	BHO:[9,,"u",,"Z","parseBoolean"],
+	BHL:[10,,"u",,"Z","toBoolean"]
 });
 
 // class js.util.SimpleImmutableEntry "JP"
@@ -17816,7 +17836,7 @@ boot.define("JL","","",{
 		// 129
 	},
 	// java.util.StringJoiner#setEmptyValue(java.lang.CharSequence)
-	BHP:function(A){
+	BHR:function(A){
 		// 147
 		this.g=boot.CN.JK(A,"The empty value must not be null").W();
 		// 148
@@ -17846,14 +17866,14 @@ boot.define("JL","","",{
 		}
 	},
 	// java.util.StringJoiner#add(java.lang.CharSequence)
-	BDH:function(A){
+	BDJ:function(A){
 		// 185
-		this.BHQ().MT(A);
+		this.BHS().MT(A);
 		// 186
 		return this
 	},
 	// java.util.StringJoiner#merge(java.util.StringJoiner)
-	BDI:function(A,B,C){
+	BDK:function(A,B,C){
 		// 209
 		boot.CN.DV(A);
 		// 210
@@ -17861,7 +17881,7 @@ boot.define("JL","","",{
 			// 211
 			B=A.f.DO();
 			// 215
-			C=this.BHQ();
+			C=this.BHS();
 			// 216
 			C.MU(A.f,A.c.length,B);
 		}
@@ -17869,7 +17889,7 @@ boot.define("JL","","",{
 		return this
 	},
 	// java.util.StringJoiner#prepareBuilder()
-	BHQ:function(){
+	BHS:function(){
 		// 222
 		if (this.f==null) {
 			// 225
@@ -17895,38 +17915,38 @@ boot.define("JL","","",{
 	e:[18,"suffix","u"],
 	f:[2,"value","z"],
 	g:[2,"emptyValue","u"],
-	BDH:[1,,"CK",,"JL","add"],
+	BDJ:[1,,"CK",,"JL","add"],
 	W:[1,,,,"u","toString"],
 	DO:[1,,,,"I","length"],
-	BDI:[1,,"JL",,"JL","merge"],
-	BHQ:[2,,,,"z","prepareBuilder"],
-	BHP:[1,,"CK",,"JL","setEmptyValue"]
+	BDK:[1,,"JL",,"JL","merge"],
+	BHS:[2,,,,"z","prepareBuilder"],
+	BHR:[1,,"CK",,"JL","setEmptyValue"]
 });
 
 // interface java.util.stream.IntStream "Cu"
 boot.define("Cu","","HI",{
 	// java.util.stream.IntStream#builder()
-	_BHR:function(){
+	_BHT:function(){
 		// 693
 		return new boot.JQ(0)
 	},
 	// java.util.stream.IntStream#empty()
-	_BHS:function(){
+	_BHU:function(){
 		// 702
 		return boot.CW.FW(boot.CY.SP(),false)
 	},
 	// java.util.stream.IntStream#of(int)
-	_BHT:function(A){
+	_BHV:function(A){
 		// 712
 		return boot.CW.FW(new boot.JQ(A,1),false)
 	},
 	// java.util.stream.IntStream#of(int[])
-	_BHU:function(A){
+	_BHW:function(A){
 		// 722
 		return boot.CQ.XD(A)
 	},
 	// java.util.stream.IntStream#iterate(int, java.util.function.IntUnaryOperator)
-	_BHV:function(A,B,C){
+	_BHX:function(A,B,C){
 		// 742
 		boot.CN.DV(B);
 		// 743
@@ -17935,36 +17955,36 @@ boot.define("Cu","","HI",{
 		return boot.CW.FW(boot.CY.FR(C,1296),false)
 	},
 	// java.util.stream.IntStream#generate(java.util.function.IntSupplier)
-	_BHW:function(A){
+	_BHY:function(A){
 		// 772
 		boot.CN.DV(A);
 		// 773
 		return boot.CW.FW(new boot.JS(boot.J.BP(-1,2147483647),A,0),false)
 	},
 	// java.util.stream.IntStream#range(int, int)
-	_BHX:function(A,B){
+	_BHZ:function(A,B){
 		// 795
 		if (A<B) {
 			// 798
 			return boot.CW.FW(new boot.JT(A,B,false,0),false);
 		} else {
 			// 796
-			return boot.Cu.BHS();
+			return boot.Cu.BHU();
 		}
 	},
 	// java.util.stream.IntStream#rangeClosed(int, int)
-	_BHY:function(A,B){
+	_BHu:function(A,B){
 		// 821
 		if (A<=B) {
 			// 824
 			return boot.CW.FW(new boot.JT(A,B,true,0),false);
 		} else {
 			// 822
-			return boot.Cu.BHS();
+			return boot.Cu.BHU();
 		}
 	},
 	// java.util.stream.IntStream#concat(java.util.stream.IntStream, java.util.stream.IntStream)
-	_BHZ:function(A,B,C,D){
+	_BHv:function(A,B,C,D){
 		// 847
 		boot.CN.DV(A);
 		// 848
@@ -17973,75 +17993,75 @@ boot.define("Cu","","HI",{
 	// java.util.stream.IntStream#parallel()
 	vH:function(){
 		// 73
-		return this.BHv()
+		return this.BHx()
 	},
 	// java.util.stream.IntStream#sequential()
 	vJ:function(){
 		// 73
-		return this.BHw()
+		return this.BHy()
 	},
 	// java.util.stream.IntStream#spliterator()
 	Iv:function(){
 		// 73
-		return this.BHu()
+		return this.BHw()
 	},
 	// java.util.stream.IntStream#iterator()
 	IH:function(){
 		// 73
-		return this.BHx()
+		return this.BHz()
 	}
 },{
 	$:[1537,"java.util.stream.IntStream",,,"HI<BZ,Cu>"],
-	BHy:[1025,,"JV",,"JW","reduce"],
-	BHz:[1025,,"I JV",,"I","reduce"],
-	BIA:[1025,,"J",,"Cu","limit"],
+	BIA:[1025,,"JV",,"JW","reduce"],
+	BIB:[1025,,"I JV",,"I","reduce"],
+	BIC:[1025,,"J",,"Cu","limit"],
 	vP:[1025,,,,"J","count"],
-	BIB:[1025,,,,"JW","min"],
-	BIC:[1025,,,,"JW","max"],
-	BHZ:[9,,"Cu Cu",,"Cu","concat"],
-	BHx:[1025,,,,"GS","iterator"],
-	BID:[1025,,,,"[I","toArray"],
-	BHu:[1025,,,,"Cv","spliterator"],
-	BIE:[1025,"R:G","O<R:G> JX<R#> Fz<R#,R#>",,"R:G","collect"],
-	BIF:[1025,,"GV",,"V","forEach"],
-	BIG:[1025,,"J",,"Cu","skip"],
-	BIH:[1025,,"GV",,"Cu","peek"],
-	BHU:[137,,"[I",,"Cu","of"],
-	BHT:[9,,"I",,"Cu","of"],
-	BII:[1025,,,,"I","sum"],
-	BHS:[9,,,,"Cu","empty"],
-	BIJ:[1025,,"JY",,"Cu","filter"],
-	BHv:[1025,,,,"Cu","parallel"],
-	BHX:[9,,"I I",,"Cu","range"],
-	BIK:[1025,,"JZ",,"Cu","map"],
-	BIL:[1025,,"JY",,"Z","allMatch"],
-	BIM:[1025,,"JY",,"Z","anyMatch"],
-	vw:[1025,,,,"Cy","asDoubleStream"],
-	BIN:[1025,,,,"DB","asLongStream"],
-	vx:[1025,,,,"HY","average"],
-	vy:[1025,,,,"Cw<BZ>","boxed"],
-	BIO:[1025,,,,"JW","findAny"],
-	BIP:[1025,,,,"JW","findFirst"],
-	BIQ:[1025,,"GV",,"V","forEachOrdered"],
-	BHV:[9,,"I JZ",,"Cu","iterate"],
-	BIR:[1025,,"Ju",,"Cy","mapToDouble"],
-	BIS:[1025,,"Jv",,"DB","mapToLong"],
-	BIT:[1025,"U:G","IK<>",,"Cw<U:G>","mapToObj"],
-	BIU:[1025,,"JY",,"Z","noneMatch"],
-	BHY:[9,,"I I",,"Cu","rangeClosed"],
-	BHw:[1025,,,,"Cu","sequential"],
-	BIV:[1025,,,,"JI","summaryStatistics"],
-	BHW:[9,,"Jw",,"Cu","generate"],
-	BHR:[9,,,,"Jx","builder"],
-	BIW:[1025,,,,"Cu","sorted"],
-	BIX:[1025,,,,"Cu","distinct"],
-	BIY:[1025,,"IK<>",,"Cu","flatMap"]
+	BID:[1025,,,,"JW","min"],
+	BIE:[1025,,,,"JW","max"],
+	BHv:[9,,"Cu Cu",,"Cu","concat"],
+	BHz:[1025,,,,"GS","iterator"],
+	BIF:[1025,,,,"[I","toArray"],
+	BHw:[1025,,,,"Cv","spliterator"],
+	BIG:[1025,"R:G","O<R:G> JX<R#> Fz<R#,R#>",,"R:G","collect"],
+	BIH:[1025,,"GV",,"V","forEach"],
+	BII:[1025,,"J",,"Cu","skip"],
+	BIJ:[1025,,"GV",,"Cu","peek"],
+	BHW:[137,,"[I",,"Cu","of"],
+	BHV:[9,,"I",,"Cu","of"],
+	BIK:[1025,,,,"I","sum"],
+	BHU:[9,,,,"Cu","empty"],
+	BIL:[1025,,"JY",,"Cu","filter"],
+	BHx:[1025,,,,"Cu","parallel"],
+	BHZ:[9,,"I I",,"Cu","range"],
+	BIM:[1025,,"JZ",,"Cu","map"],
+	BHT:[9,,,,"Ju","builder"],
+	BIN:[1025,,,,"Cu","sorted"],
+	BHY:[9,,"Jv",,"Cu","generate"],
+	BIO:[1025,,,,"Cu","distinct"],
+	BIP:[1025,,"IK<>",,"Cu","flatMap"],
+	BIQ:[1025,,"JY",,"Z","allMatch"],
+	BIR:[1025,,"JY",,"Z","anyMatch"],
+	vz:[1025,,,,"Cy","asDoubleStream"],
+	BIS:[1025,,,,"DB","asLongStream"],
+	wA:[1025,,,,"Hv","average"],
+	wB:[1025,,,,"Cw<BZ>","boxed"],
+	BIT:[1025,,,,"JW","findAny"],
+	BIU:[1025,,,,"JW","findFirst"],
+	BIV:[1025,,"GV",,"V","forEachOrdered"],
+	BHX:[9,,"I JZ",,"Cu","iterate"],
+	BIW:[1025,,"Jw",,"Cy","mapToDouble"],
+	BIX:[1025,,"Jx",,"DB","mapToLong"],
+	BIY:[1025,"U:G","IK<>",,"Cw<U:G>","mapToObj"],
+	BIZ:[1025,,"JY",,"Z","noneMatch"],
+	BHu:[9,,"I I",,"Cu","rangeClosed"],
+	BHy:[1025,,,,"Cu","sequential"],
+	BIu:[1025,,,,"JI","summaryStatistics"]
 });
 
-// interface java.util.stream.IntStream$Builder "Jx"
-boot.define("Jx","","GV",{
+// interface java.util.stream.IntStream$Builder "Ju"
+boot.define("Ju","","GV",{
 	// java.util.stream.IntStream$Builder#add(int)
-	BIu:function(A){
+	BIw:function(A){
 		// 896
 		this.TN(A);
 		// 897
@@ -18049,13 +18069,13 @@ boot.define("Jx","","GV",{
 	}
 },{
 	$:[34313,"java.util.stream.IntStream$Builder",,,"GV"],
-	BIu:[1,,"I",,"Jx","add"],
+	BIw:[1,,"I",,"Ju","add"],
 	TN:[1025,,"I",,"V","accept"],
-	BIZ:[1025,,,,"Cu","build"]
+	BIv:[1025,,,,"Cu","build"]
 });
 
 // class java.util.stream.Streams$IntStreamBuilderImpl "JQ"
-boot.define("JQ","HK","Jx Cv",{
+boot.define("JQ","HK","Ju Cv",{
 	d:0,
 	// java.util.stream.Streams$IntStreamBuilderImpl#<init>()
 	$0:function(){
@@ -18102,7 +18122,7 @@ boot.define("JQ","HK","Jx Cv",{
 		// 471
 	},
 	// java.util.stream.Streams$IntStreamBuilderImpl#build()
-	BIZ:function(A){
+	BIv:function(A){
 		// 475
 		A=this.c;
 		// 476
@@ -18113,7 +18133,7 @@ boot.define("JQ","HK","Jx Cv",{
 			// 478
 			this.c=(-(this.c))-1;
 			// 481
-			return A<2?boot.CW.FW(this,false):boot.CW.FW(this.e.BHu(),false);
+			return A<2?boot.CW.FW(this,false):boot.CW.FW(this.e.BHw(),false);
 		}
 	},
 	// java.util.stream.Streams$IntStreamBuilderImpl#tryAdvance(java.util.function.IntConsumer)
@@ -18167,14 +18187,14 @@ boot.define("JQ","HK","Jx Cv",{
 		return boot.HK.prototype.TE.call(this)
 	}
 },{
-	$:[32792,"java.util.stream.Streams$IntStreamBuilderImpl",,"HK<BZ,Cv>","Jx Cv"],
+	$:[32792,"java.util.stream.Streams$IntStreamBuilderImpl",,"HK<BZ,Cv>","Ju Cv"],
 	$0:[0],
 	$1:[0,,"I"],
 	d:[0,"first","I"],
 	e:[0,"buffer","Jy"],
 	TN:[1,,"I",,"V","accept"],
 	TM:[1,,"GV",,"V","forEachRemaining"],
-	BIZ:[1,,,,"Cu","build"],
+	BIv:[1,,,,"Cu","build"],
 	TO:[1,,"GV",,"Z","tryAdvance"]
 });
 
@@ -18201,7 +18221,7 @@ boot.define("Jy","IC","GV",{
 				boot.IF.TS(this.N(),"{0} calling SpinedBuffer.OfInt.forEach(Consumer)");
 			}
 			// 739
-			this.BHu().Ox(A);
+			this.BHw().Ox(A);
 		} else {
 			// 734
 			this.wP(A);
@@ -18209,22 +18229,22 @@ boot.define("Jy","IC","GV",{
 		// 741
 	},
 	// java.util.stream.SpinedBuffer$OfInt#newArrayArray(int)
-	BIv:function(A){
+	BIx:function(A){
 		// 745
 		return Φ("[I",A,null)
 	},
 	// java.util.stream.SpinedBuffer$OfInt#newArray(int)
-	BIw:function(A){
+	BIy:function(A){
 		// 750
 		return Φ("I",A,0)
 	},
 	// java.util.stream.SpinedBuffer$OfInt#arrayLength(int[])
-	BIx:function(A){
+	BIz:function(A){
 		// 755
 		return A.length
 	},
 	// java.util.stream.SpinedBuffer$OfInt#arrayForEach(int[], int, int, java.util.function.IntConsumer)
-	BIy:function(A,B,C,D,E){
+	BJA:function(A,B,C,D,E){
 		// 762
 		E=B;
 		for (; E<C; ++E) {
@@ -18242,7 +18262,7 @@ boot.define("Jy","IC","GV",{
 		// 770
 	},
 	// java.util.stream.SpinedBuffer$OfInt#get(long)
-	BIz:function(A,C){
+	BJB:function(A,C){
 		// 775
 		C=this.wW(A);
 		// 776
@@ -18255,12 +18275,12 @@ boot.define("Jy","IC","GV",{
 		}
 	},
 	// java.util.stream.SpinedBuffer$OfInt#iterator()
-	BHx:function(){
+	BHz:function(){
 		// 784
-		return boot.CY.TB(this.BHu())
+		return boot.CY.TB(this.BHw())
 	},
 	// java.util.stream.SpinedBuffer$OfInt#spliterator()
-	BHu:function(){
+	BHw:function(){
 		// 813
 		return new boot.Jz(this,0,this.i,0,this.h,0)
 	},
@@ -18282,47 +18302,47 @@ boot.define("Jy","IC","GV",{
 	// java.util.stream.SpinedBuffer$OfInt#arrayForEach(java.lang.Object, int, int, java.lang.Object)
 	wY:function(A,B,C,D){
 		// 723
-		this.BIy(A,B,C,D);
+		this.BJA(A,B,C,D);
 	},
 	// java.util.stream.SpinedBuffer$OfInt#arrayLength(java.lang.Object)
 	wZ:function(A){
 		// 723
-		return this.BIx(A)
+		return this.BIz(A)
 	},
 	// java.util.stream.SpinedBuffer$OfInt#newArray(int)
 	wu:function(A){
 		// 723
-		return this.BIw(A)
+		return this.BIy(A)
 	},
 	// java.util.stream.SpinedBuffer$OfInt#newArrayArray(int)
 	wv:function(A){
 		// 723
-		return this.BIv(A)
+		return this.BIx(A)
 	},
 	// java.util.stream.SpinedBuffer$OfInt#iterator()
 	IH:function(){
 		// 723
-		return this.BHx()
+		return this.BHz()
 	},
 	// java.util.stream.SpinedBuffer$OfInt#spliterator()
 	Iv:function(){
 		// 723
-		return this.BHu()
+		return this.BHw()
 	}
 },{
 	$:[32776,"java.util.stream.SpinedBuffer$OfInt",,"IC<BZ,[I,GV>","GV"],
 	$0:[0],
 	$1:[0,,"I"],
-	BIz:[1,,"J",,"I","get"],
+	BJB:[1,,"J",,"I","get"],
 	W:[1,,,,"u","toString"],
-	BIw:[1,,"I",,"[I","newArray"],
-	BHx:[1,,,,"GS","iterator"],
-	BHu:[1,,,,"Cv","spliterator"],
+	BIy:[1,,"I",,"[I","newArray"],
+	BHz:[1,,,,"GS","iterator"],
+	BHw:[1,,,,"Cv","spliterator"],
 	TN:[1,,"I",,"V","accept"],
 	Iz:[1,,"BG<>",,"V","forEach"],
-	BIx:[4,,"[I",,"I","arrayLength"],
-	BIy:[4,,"[I I I GV",,"V","arrayForEach"],
-	BIv:[4,,"I",,"[[I","newArrayArray"]
+	BJA:[4,,"[I I I GV",,"V","arrayForEach"],
+	BIx:[4,,"I",,"[[I","newArrayArray"],
+	BIz:[4,,"[I",,"I","arrayLength"]
 });
 
 // class java.util.stream.SpinedBuffer$OfInt$1Splitr "Jz"
@@ -18336,35 +18356,35 @@ boot.define("Jz","IH","Cv",{
 		// 794
 	},
 	// java.util.stream.SpinedBuffer$OfInt$1Splitr#newSpliterator(int, int, int, int)
-	BJA:function(A,B,C,D){
+	BJC:function(A,B,C,D){
 		// 799
 		return new boot.Jz(this.j,A,B,C,D,0)
 	},
 	// java.util.stream.SpinedBuffer$OfInt$1Splitr#arrayForOne(int[], int, java.util.function.IntConsumer)
-	BJB:function(A,B,C){
+	BJD:function(A,B,C){
 		// 805
 		C.TN(A[B]);
 		// 806
 	},
 	// java.util.stream.SpinedBuffer$OfInt$1Splitr#arraySpliterator(int[], int, int)
-	BJC:function(A,B,C){
+	BJE:function(A,B,C){
 		// 810
 		return boot.CQ.Wx(A,B,B+C)
 	},
 	// java.util.stream.SpinedBuffer$OfInt$1Splitr#arraySpliterator(java.lang.Object, int, int)
 	xF:function(A,B,C){
 		// 788
-		return this.BJC(A,B,C)
+		return this.BJE(A,B,C)
 	},
 	// java.util.stream.SpinedBuffer$OfInt$1Splitr#arrayForOne(java.lang.Object, int, java.lang.Object)
 	xG:function(A,B,C){
 		// 788
-		this.BJB(A,B,C);
+		this.BJD(A,B,C);
 	},
 	// java.util.stream.SpinedBuffer$OfInt$1Splitr#newSpliterator(int, int, int, int)
 	xH:function(A,B,C,D){
 		// 788
-		return this.BJA(A,B,C,D)
+		return this.BJC(A,B,C,D)
 	},
 	// java.util.stream.SpinedBuffer$OfInt$1Splitr#forEachRemaining(java.util.function.IntConsumer)
 	TM:function(A){
@@ -18385,9 +18405,9 @@ boot.define("Jz","IH","Cv",{
 	$:[131072,"java.util.stream.SpinedBuffer$OfInt$1Splitr",,"IH<Cv>","Cv"],
 	$0:[0,,"Jy I I I I"],
 	j:[4112,"this$0","Jy"],
-	BJB:[0,,"[I I GV",,"V","arrayForOne"],
-	BJC:[0,,"[I I I",,"Cv","arraySpliterator"],
-	BJA:[0,,"I I I I",,"Jz","newSpliterator"]
+	BJD:[0,,"[I I GV",,"V","arrayForOne"],
+	BJE:[0,,"[I I I",,"Cv","arraySpliterator"],
+	BJC:[0,,"I I I I",,"Jz","newSpliterator"]
 });
 
 // interface java.util.PrimitiveIterator$OfInt "GS"
@@ -18397,19 +18417,19 @@ boot.define("GS","","IL",{
 		// 113
 		boot.CN.DV(A);
 		// 114
-		for (; this.IO()!=0; A.TN(this.BJD())) {
+		for (; this.IO()!=0; A.TN(this.BJF())) {
 		}
 		// 116
 	},
 	// java.util.PrimitiveIterator$OfInt#next()
-	BJE:function(){
+	BJG:function(){
 		// 126
 		if (boot.GX.c!=0) {
 			// 127
 			boot.GX.TS(this.N(),"{0} calling PrimitiveIterator.OfInt.nextInt()");
 		}
 		// 128
-		return boot.BZ.QB(this.BJD())
+		return boot.BZ.QB(this.BJF())
 	},
 	// java.util.PrimitiveIterator$OfInt#forEachRemaining(java.util.function.Consumer)
 	Ox:function(A){
@@ -18438,12 +18458,12 @@ boot.define("GS","","IL",{
 	// java.util.PrimitiveIterator$OfInt#next()
 	Hx:function(){
 		// 86
-		return this.BJE()
+		return this.BJG()
 	}
 },{
 	$:[34313,"java.util.PrimitiveIterator$OfInt",,,"IL<BZ,GV>"],
-	BJE:[1,,,,"BZ","next"],
-	BJD:[1025,,,,"I","nextInt"],
+	BJG:[1,,,,"BZ","next"],
+	BJF:[1025,,,,"I","nextInt"],
 	TM:[1,,"GV",,"V","forEachRemaining"],
 	Ox:[1,,"BG<>",,"V","forEachRemaining"]
 });
@@ -18464,11 +18484,11 @@ boot.define("JR","","GS",{
 		return true
 	},
 	// java.util.stream.IntStream$1#nextInt()
-	BJD:function(A){
+	BJF:function(A){
 		// 753
 		A=this.c;
 		// 754
-		this.c=this.e.BJF(this.c);
+		this.c=this.e.BJH(this.c);
 		// 755
 		return A
 	}
@@ -18479,54 +18499,54 @@ boot.define("JR","","GS",{
 	d:[4112,"val$seed","I"],
 	e:[4112,"val$f","JZ"],
 	IO:[1,,,,"Z","hasNext"],
-	BJD:[1,,,,"I","nextInt"]
+	BJF:[1,,,,"I","nextInt"]
 });
 
 // interface java.util.function.IntUnaryOperator "JZ"
 boot.define("JZ","","",{
 	// java.util.function.IntUnaryOperator#compose(java.util.function.IntUnaryOperator)
-	BJG:function(A){
+	BJI:function(A){
 		// 65
 		boot.CN.DV(A);
 		// 66
-		return λ(boot.JZ,"BJF","BJH",this,[A])
+		return λ(boot.JZ,"BJH","BJJ",this,[A])
 	},
 	// java.util.function.IntUnaryOperator#andThen(java.util.function.IntUnaryOperator)
-	BJI:function(A){
+	BJK:function(A){
 		// 83
 		boot.CN.DV(A);
 		// 84
-		return λ(boot.JZ,"BJF","BJJ",this,[A])
+		return λ(boot.JZ,"BJH","BJL",this,[A])
 	},
 	// java.util.function.IntUnaryOperator#identity()
-	_BJK:function(){
+	_BJM:function(){
 		// 93
-		return λ(boot.JZ,"BJF","BJL",boot.JZ,[])
+		return λ(boot.JZ,"BJH","BJN",boot.JZ,[])
 	},
 	// java.util.function.IntUnaryOperator#lambda$identity$21(int)
-	_BJL:function(A){
+	_BJN:function(A){
 		// 93
 		return A
 	},
 	// java.util.function.IntUnaryOperator#lambda$andThen$20(java.util.function.IntUnaryOperator, int)
-	BJJ:function(A,B){
+	BJL:function(A,B){
 		// 84
-		return A.BJF(this.BJF(B))
+		return A.BJH(this.BJH(B))
 	},
 	// java.util.function.IntUnaryOperator#lambda$compose$19(java.util.function.IntUnaryOperator, int)
-	BJH:function(A,B){
+	BJJ:function(A,B){
 		// 66
-		return this.BJF(A.BJF(B))
+		return this.BJH(A.BJH(B))
 	}
 },{
 	$:[1537,"java.util.function.IntUnaryOperator",,,,{
 		DC :{
 		}
 	}],
-	BJK:[9,,,,"JZ","identity"],
-	BJF:[1025,,"I",,"I","applyAsInt"],
-	BJI:[1,,"JZ",,"JZ","andThen"],
-	BJG:[1,,"JZ",,"JZ","compose"]
+	BJM:[9,,,,"JZ","identity"],
+	BJH:[1025,,"I",,"I","applyAsInt"],
+	BJK:[1,,"JZ",,"JZ","andThen"],
+	BJI:[1,,"JZ",,"JZ","compose"]
 });
 
 // class java.util.stream.StreamSpliterators$InfiniteSupplyingSpliterator$OfInt "JS"
@@ -18544,7 +18564,7 @@ boot.define("JS","HN","Cv",{
 		// 1379
 		boot.CN.DV(A);
 		// 1381
-		A.TN(this.d.BJM());
+		A.TN(this.d.BJO());
 		// 1382
 		return true
 	},
@@ -18576,20 +18596,20 @@ boot.define("JS","HN","Cv",{
 	}
 },{
 	$:[32792,"java.util.stream.StreamSpliterators$InfiniteSupplyingSpliterator$OfInt",,"HN<BZ>","Cv"],
-	$0:[0,,"J Jw"],
-	d:[16,"s","Jw"],
+	$0:[0,,"J Jv"],
+	d:[16,"s","Jv"],
 	TO:[1,,"GV",,"Z","tryAdvance"],
 	TL:[1,,,,"Cv","trySplit"]
 });
 
-// interface java.util.function.IntSupplier "Jw"
-boot.define("Jw","","",{
+// interface java.util.function.IntSupplier "Jv"
+boot.define("Jv","","",{
 },{
 	$:[1537,"java.util.function.IntSupplier",,,,{
 		DC :{
 		}
 	}],
-	BJM:[1025,,,,"I","getAsInt"]
+	BJO:[1025,,,,"I","getAsInt"]
 });
 
 // class java.util.stream.Streams$RangeIntSpliterator "JT"
@@ -18685,10 +18705,10 @@ boot.define("JT","","Cv",{
 		// 138
 		A=this.TG();
 		// 139
-		return A.KA(boot.J.BP(1,0))==0?null:new boot.JT(this.c,this.c=this.c+this.BJN(A),0,1)
+		return A.KA(boot.J.BP(1,0))==0?null:new boot.JT(this.c,this.c=this.c+this.BJP(A),0,1)
 	},
 	// java.util.stream.Streams$RangeIntSpliterator#splitPoint(long)
-	BJN:function(A,C){
+	BJP:function(A,C){
 		// 171
 		C=(A.BQ(boot.J.BP(16777216,0))==0?2:8);
 		// 175
@@ -18724,8 +18744,8 @@ boot.define("JT","","Cv",{
 	f:[26,"BALANCED_SPLIT_THRESHOLD","I"],
 	g:[26,"RIGHT_BALANCED_SPLIT_RATIO","I"],
 	TM:[1,,"GV",,"V","forEachRemaining"],
+	BJP:[2,,"J",,"I","splitPoint"],
 	TH:[1,,,,"I","characteristics"],
-	BJN:[2,,"J",,"I","splitPoint"],
 	TG:[1,,,,"J","estimateSize"],
 	TI:[1,,,,"CL<>","getComparator"],
 	TO:[1,,"GV",,"Z","tryAdvance"],
@@ -18767,7 +18787,7 @@ boot.define("JV","","",{
 		DC :{
 		}
 	}],
-	BJO:[1025,,"I I",,"I","applyAsInt"]
+	BJQ:[1025,,"I I",,"I","applyAsInt"]
 });
 
 // class java.util.OptionalInt "JW"
@@ -18781,7 +18801,7 @@ boot.define("JW","","",{
 		// 70
 	},
 	// java.util.OptionalInt#empty()
-	_BJP:function(){
+	_BJR:function(){
 		// 84
 		return boot.JW.c
 	},
@@ -18794,12 +18814,12 @@ boot.define("JW","","",{
 		// 95
 	},
 	// java.util.OptionalInt#of(int)
-	_BJQ:function(A){
+	_BJS:function(A){
 		// 104
 		return new boot.JW(A,1)
 	},
 	// java.util.OptionalInt#getAsInt()
-	BJM:function(){
+	BJO:function(){
 		// 117
 		if (this.d!=0) {
 			// 120
@@ -18815,7 +18835,7 @@ boot.define("JW","","",{
 		return this.d
 	},
 	// java.util.OptionalInt#ifPresent(java.util.function.IntConsumer)
-	BJR:function(A){
+	BJT:function(A){
 		// 141
 		if (this.d!=0) {
 			// 142
@@ -18824,17 +18844,17 @@ boot.define("JW","","",{
 		// 143
 	},
 	// java.util.OptionalInt#orElse(int)
-	BJS:function(A){
+	BJU:function(A){
 		// 152
 		return this.d!=0?this.e:A
 	},
 	// java.util.OptionalInt#orElseGet(java.util.function.IntSupplier)
-	BJT:function(A){
+	BJV:function(A){
 		// 166
-		return this.d!=0?this.e:A.BJM()
+		return this.d!=0?this.e:A.BJO()
 	},
 	// java.util.OptionalInt#orElseThrow(java.util.function.Supplier)
-	BJU:function(A){
+	BJW:function(A){
 		// 186
 		if (this.d==0) {
 			// 189
@@ -18887,14 +18907,14 @@ boot.define("JW","","",{
 	BK:[1,,"G",,"Z","equals"],
 	W:[1,,,,"u","toString"],
 	BJ:[1,,,,"I","hashCode"],
-	BJQ:[9,,"I",,"JW","of"],
-	BJP:[9,,,,"JW","empty"],
-	BJM:[1,,,,"I","getAsInt"],
-	BJS:[1,,"I",,"I","orElse"],
+	BJS:[9,,"I",,"JW","of"],
+	BJR:[9,,,,"JW","empty"],
+	BJO:[1,,,,"I","getAsInt"],
+	BJU:[1,,"I",,"I","orElse"],
 	xv:[1,,,,"Z","isPresent"],
-	BJR:[1,,"GV",,"V","ifPresent"],
-	BJT:[1,,"Jw",,"I","orElseGet"],
-	BJU:[1,"X:BL","O<X:BL>","X:BL","I","orElseThrow"]
+	BJT:[1,,"GV",,"V","ifPresent"],
+	BJV:[1,,"Jv",,"I","orElseGet"],
+	BJW:[1,"X:BL","O<X:BL>","X:BL","I","orElseThrow"]
 });
 
 // interface java.util.function.ObjIntConsumer "JX"
@@ -18904,93 +18924,83 @@ boot.define("JX","","",{
 		DC :{
 		}
 	}],
-	BJV:[1025,,"T:G I",,"V","accept"]
+	BJX:[1025,,"T:G I",,"V","accept"]
 });
 
 // interface java.util.function.IntPredicate "JY"
 boot.define("JY","","",{
 	// java.util.function.IntPredicate#and(java.util.function.IntPredicate)
-	BJW:function(A){
+	BJY:function(A){
 		// 69
 		boot.CN.DV(A);
 		// 70
-		return λ(boot.JY,"BJX","BJY",this,[A])
+		return λ(boot.JY,"BJZ","BJu",this,[A])
 	},
 	// java.util.function.IntPredicate#negate()
-	BJZ:function(){
+	BJv:function(){
 		// 81
-		return λ(boot.JY,"BJX","BJu",this,[])
+		return λ(boot.JY,"BJZ","BJw",this,[])
 	},
 	// java.util.function.IntPredicate#or(java.util.function.IntPredicate)
-	BJv:function(A){
+	BJx:function(A){
 		// 101
 		boot.CN.DV(A);
 		// 102
-		return λ(boot.JY,"BJX","BJw",this,[A])
+		return λ(boot.JY,"BJZ","BJy",this,[A])
 	},
 	// java.util.function.IntPredicate#lambda$or$18(java.util.function.IntPredicate, int)
-	BJw:function(A,B){
-		return this.BJX(B)!=0||A.BJX(B)!=0
+	BJy:function(A,B){
+		return this.BJZ(B)!=0||A.BJZ(B)!=0
 	},
 	// java.util.function.IntPredicate#lambda$negate$17(int)
-	BJu:function(A){
+	BJw:function(A){
 		// 81
-		return this.BJX(A)==0
+		return this.BJZ(A)==0
 	},
 	// java.util.function.IntPredicate#lambda$and$16(java.util.function.IntPredicate, int)
-	BJY:function(A,B){
+	BJu:function(A,B){
 		// 70
-		return this.BJX(B)!=0&&A.BJX(B)!=0
+		return this.BJZ(B)!=0&&A.BJZ(B)!=0
 	}
 },{
 	$:[1537,"java.util.function.IntPredicate",,,,{
 		DC :{
 		}
 	}],
-	BJX:[1025,,"I",,"Z","test"],
-	BJW:[1,,"JY",,"JY","and"],
-	BJv:[1,,"JY",,"JY","or"],
-	BJZ:[1,,,,"JY","negate"]
+	BJZ:[1025,,"I",,"Z","test"],
+	BJY:[1,,"JY",,"JY","and"],
+	BJx:[1,,"JY",,"JY","or"],
+	BJv:[1,,,,"JY","negate"]
 });
 
-// interface java.util.function.IntToDoubleFunction "Ju"
-boot.define("Ju","","",{
+// interface java.util.function.IntToDoubleFunction "Jw"
+boot.define("Jw","","",{
 },{
 	$:[1537,"java.util.function.IntToDoubleFunction",,,,{
 		DC :{
 		}
 	}],
-	BJx:[1025,,"I",,"D","applyAsDouble"]
+	BJz:[1025,,"I",,"D","applyAsDouble"]
 });
 
-// interface java.util.function.IntToLongFunction "Jv"
-boot.define("Jv","","",{
+// interface java.util.function.IntToLongFunction "Jx"
+boot.define("Jx","","",{
 },{
 	$:[1537,"java.util.function.IntToLongFunction",,,,{
 		DC :{
 		}
 	}],
-	BJy:[1025,,"I",,"J","applyAsLong"]
+	BKA:[1025,,"I",,"J","applyAsLong"]
 });
 
-// interface java.util.function.DoubleToLongFunction "IV"
-boot.define("IV","","",{
+// interface java.util.function.DoubleToLongFunction "IY"
+boot.define("IY","","",{
 },{
 	$:[1537,"java.util.function.DoubleToLongFunction",,,,{
 		DC :{
 		}
 	}],
-	BJz:[1025,,"D",,"J","applyAsLong"]
-});
-
-// interface java.util.function.DoubleFunction "IW"
-boot.define("IW","","",{
-},{
-	$:[1537,"java.util.function.DoubleFunction","R:G",,,{
-		DC :{
-		}
-	}],
-	BKA:[1025,,"D",,"R:G","apply"]
+	BKB:[1025,,"D",,"J","applyAsLong"]
 });
 
 // interface java.util.function.DoubleToIntFunction "Iu"
@@ -19000,27 +19010,17 @@ boot.define("Iu","","",{
 		DC :{
 		}
 	}],
-	BKB:[1025,,"D",,"I","applyAsInt"]
+	BKC:[1025,,"D",,"I","applyAsInt"]
 });
 
-// interface java.util.function.LongToDoubleFunction "HZ"
-boot.define("HZ","","",{
+// interface java.util.function.LongToDoubleFunction "Hw"
+boot.define("Hw","","",{
 },{
 	$:[1537,"java.util.function.LongToDoubleFunction",,,,{
 		DC :{
 		}
 	}],
-	BKC:[1025,,"J",,"D","applyAsDouble"]
-});
-
-// interface java.util.function.LongFunction "Hu"
-boot.define("Hu","","",{
-},{
-	$:[1537,"java.util.function.LongFunction","R:G",,,{
-		DC :{
-		}
-	}],
-	BKD:[1025,,"J",,"R:G","apply"]
+	BKD:[1025,,"J",,"D","applyAsDouble"]
 });
 
 // interface java.util.function.LongToIntFunction "Hy"
@@ -20247,7 +20247,7 @@ boot.define("Ew","Eu","",{
 											}
 										} else {
 											// 144
-											return boot.Ez.BHI(D);
+											return boot.Ez.BHK(D);
 										}
 									} else {
 										// 140
@@ -22494,7 +22494,7 @@ boot.define("GG","","Cv",{
 			// 1895
 			F=0;
 			do {
-				E[F]=A.BJD();
+				E[F]=A.BJF();
 			} while (++F<D&&A.IO()!=0)// 1897
 			this.h=F;
 			// 1898
@@ -22526,7 +22526,7 @@ boot.define("GG","","Cv",{
 				return false;
 			} else {
 				// 1915
-				A.TN(this.e.BJD());
+				A.TN(this.e.BJF());
 				// 1916
 				return true;
 			}
@@ -22798,7 +22798,7 @@ boot.define("GI","","Cz",{
 			// 2083
 			F=0;
 			do {
-				E[F]=A.zZ();
+				E[F]=A.zu();
 			} while (++F<D&&A.IO()!=0)// 2085
 			this.h=F;
 			// 2086
@@ -22830,7 +22830,7 @@ boot.define("GI","","Cz",{
 				return false;
 			} else {
 				// 2103
-				A.uQ(this.e.zZ());
+				A.uQ(this.e.zu());
 				// 2104
 				return true;
 			}
@@ -22980,7 +22980,7 @@ boot.define("GK","","GS GV",{
 		return this.c
 	},
 	// java.util.Spliterators$2Adapter#nextInt()
-	BJD:function(){
+	BJF:function(){
 		// 732
 		if (this.c!=0||this.IO()!=0) {
 			// 735
@@ -23000,7 +23000,7 @@ boot.define("GK","","GS GV",{
 	e:[4112,"val$spliterator","Cv"],
 	IO:[1,,,,"Z","hasNext"],
 	TN:[1,,"I",,"V","accept"],
-	BJD:[1,,,,"I","nextInt"]
+	BJF:[1,,,,"I","nextInt"]
 });
 
 // class java.util.Spliterators$3Adapter "GL"
@@ -23086,7 +23086,7 @@ boot.define("GM","","GU HG",{
 		return this.c
 	},
 	// java.util.Spliterators$4Adapter#nextDouble()
-	zZ:function(){
+	zu:function(){
 		// 822
 		if (this.c!=0||this.IO()!=0) {
 			// 825
@@ -23106,7 +23106,7 @@ boot.define("GM","","GU HG",{
 	e:[4112,"val$spliterator","Cz"],
 	IO:[1,,,,"Z","hasNext"],
 	uQ:[1,,"D",,"V","accept"],
-	zZ:[1,,,,"D","nextDouble"]
+	zu:[1,,,,"D","nextDouble"]
 });
 
 // class java.util.Spliterators$EmptySpliterator "GO"
@@ -23775,7 +23775,7 @@ boot.define("DU","DR","Bz",{
 		return this.c.CK(A)
 	},
 	// js.util.Collections$UnmodifiableList#set(int, java.lang.Object)
-	OB:function(A,B){
+	OE:function(A,B){
 		// 1359
 		throw new boot.BQ(0)
 	},
@@ -23831,7 +23831,7 @@ boot.define("DU","DR","Bz",{
 	NZ:[1,,"G",,"I","lastIndexOf"],
 	CO:[1,,"I I",,"Bz<E:G>","subList"],
 	Ov:[1,,"I Dy<>",,"Z","addAll"],
-	OB:[1,,"I E:G",,"E:G","set"],
+	OE:[1,,"I E:G",,"E:G","set"],
 	Ow:[1,,"I",,"EC<E:G>","listIterator"],
 	Hw:[1,,,,"EC<E:G>","listIterator"]
 });
@@ -24451,7 +24451,7 @@ boot.define("EE","","Dx",{
 	Iv:[1,,,,"Cx<E:G>","spliterator"],
 	BNz:[1025,,,,"E:G","first"],
 	BNv:[1025,,,,"CL<>","comparator"],
-	OM:[1025,,,,"E:G","last"],
+	ON:[1025,,,,"E:G","last"],
 	BNx:[1025,,"E:G",,"EE<E:G>","headSet"],
 	BNw:[1025,,"E:G E#",,"EE<E:G>","subSet"],
 	BNy:[1025,,"E:G",,"EE<E:G>","tailSet"]
@@ -24510,9 +24510,9 @@ boot.define("Dv","DQ","EE",{
 		return this.c.BNz()
 	},
 	// js.util.Collections$UnmodifiableSortedSet#last()
-	OM:function(){
+	ON:function(){
 		// 1309
-		return this.c.OM()
+		return this.c.ON()
 	},
 	// js.util.Collections$UnmodifiableSortedSet#<init>(java.util.SortedSet, js.util.Collections$UnmodifiableSortedSet)
 	$0:function(A,B){
@@ -24525,7 +24525,7 @@ boot.define("Dv","DQ","EE",{
 	$1:[2,,"EE<E:G>"],
 	BNz:[1,,,,"E:G","first"],
 	BNv:[1,,,,"CL<>","comparator"],
-	OM:[1,,,,"E:G","last"],
+	ON:[1,,,,"E:G","last"],
 	BNx:[1,,"E:G",,"EE<E:G>","headSet"],
 	BNw:[1,,"E:G E#",,"EE<E:G>","subSet"],
 	BNy:[1,,"E:G",,"EE<E:G>","tailSet"]
@@ -24886,8 +24886,8 @@ boot.define("KV","","EM",{
 	$:[1025,"js.dom.EventTarget","T:KV<T#>","G","EM"],
 	$0:[1],
 	addEventListener:[257,,"u NativeFunction",,"V","addEventListener"],
-	removeEventListener:[257,,"u NativeFunction",,"V","removeEventListener"],
-	dispatchEvent:[260,,"Ku",,"V","dispatchEvent"]
+	dispatchEvent:[260,,"Ku",,"V","dispatchEvent"],
+	removeEventListener:[257,,"u NativeFunction",,"V","removeEventListener"]
 });
 
 // class js.dom.UIEvent "Ku"
@@ -24960,13 +24960,13 @@ boot.define("Ku","","EM",{
 		}
 	}],
 	BOT:[1,,,,"u","value"],
-	stopPropagation:[257,,,,"V","stopPropagation"],
+	initEvent:[257,,"u Z Z",,"V","initEvent"],
 	preventDefault:[257,,,,"V","preventDefault"],
+	stopPropagation:[257,,,,"V","stopPropagation"],
 	isDefaultPrevented:[257,,,,"Z","isDefaultPrevented"],
 	isImmediatePropagationStopped:[257,,,,"Z","isImmediatePropagationStopped"],
 	isPropagationStopped:[257,,,,"Z","isPropagationStopped"],
-	stopImmediatePropagation:[257,,,,"V","stopImmediatePropagation"],
-	initEvent:[257,,"u Z Z",,"V","initEvent"]
+	stopImmediatePropagation:[257,,,,"V","stopImmediatePropagation"]
 },"Event");
 
 // class js.dom.Node "KY"
@@ -25131,16 +25131,16 @@ boot.define("KY","KV","EM",{
 	insertBefore:[1025,,"KY KY",,"KY","insertBefore"],
 	removeChild:[1025,"N:KY","N:KY",,"N:KY","removeChild"],
 	replaceChild:[1028,,"KY KY",,"KY","replaceChild"],
-	BPu:[4,,"G",,"KY","nodify"],
-	BQC:[1,,,,"Bz<KY>","childNodes"],
-	BQI:[1028,,,,"KY","parentNode"],
-	BQJ:[1028,,,,"LF","ownerDocument"],
+	BQI:[1028,,,,"LF","ownerDocument"],
+	BQJ:[1028,,,,"KY","parentNode"],
 	BQK:[1028,,,,"KY","firstChild"],
 	BQL:[1028,,,,"KY","lastChild"],
-	BQM:[1028,,,,"KY","nextSibling"],
-	BQN:[1028,,,,"KY","previousSibling"],
-	BQO:[1028,,"u",,"V","textContent"],
-	BQP:[1028,,,,"u","textContent"]
+	BQM:[1028,,,,"KY","previousSibling"],
+	BQN:[1028,,,,"KY","nextSibling"],
+	BPu:[4,,"G",,"KY","nodify"],
+	BQC:[1,,,,"Bz<KY>","childNodes"],
+	BQO:[1028,,,,"u","textContent"],
+	BQP:[1028,,"u",,"V","textContent"]
 },"Node");
 
 // class js.dom.Document "LF"
@@ -25161,12 +25161,12 @@ boot.define("LF","KY","EM",{
 	createElement:[257,,"u",,"KX","createElement"],
 	createElementNS:[257,,"u u",,"KX","createElementNS"],
 	getElementsByTagName:[273,,"u",,"LB<KX>","getElementsByTagName"],
-	createSVGElement:[257,,"u",,"LI","createSVGElement"],
-	getElementsByClassName:[273,,"Ky",,"LB<KX>","getElementsByClassName"],
-	createEvent:[257,,"u",,"Ku","createEvent"],
+	styleSheets:[257,,,,"NativeCSSStyleSheetList","styleSheets"],
 	querySelectorAll:[257,,"u",,"LB<KX>","querySelectorAll"],
+	createEvent:[257,,"u",,"Ku","createEvent"],
+	createSVGElement:[257,,"u",,"LI","createSVGElement"],
 	querySelector:[257,,"u",,"KX","querySelector"],
-	styleSheets:[257,,,,"NativeCSSStyleSheetList","styleSheets"]
+	getElementsByClassName:[273,,"Ky",,"LB<KX>","getElementsByClassName"]
 });
 
 // class js.dom.Element "KX"
@@ -25394,60 +25394,60 @@ boot.define("KX","KY","EM",{
 	$0:[1],
 	BOX:[145,,"[Ky",,"KX","add"],
 	A:[1,,"Ky",,"KX","add"],
-	BPM:[145,,"[Ky",,"KX","remove"],
-	BPL:[1,,"Ky",,"KX","remove"],
-	BPK:[1,,"u",,"KX","remove"],
 	BPJ:[1,,,,"KX","remove"],
+	BPK:[1,,"u",,"KX","remove"],
+	BPL:[1,,"Ky",,"KX","remove"],
+	BPM:[145,,"[Ky",,"KX","remove"],
 	BPF:[1,,,,"KX","parent"],
-	BPQ:[1028,,"u",,"V","value"],
 	BOT:[1028,,,,"u","value"],
+	BPQ:[1028,,"u",,"V","value"],
 	contains:[260,,"KX",,"Z","contains"],
 	matches:[260,,"u",,"Z","matches"],
 	BPE:[1,,,,"KX","next"],
 	BPG:[1,,,,"Kz","position"],
 	BPH:[1,,,,"KX","prev"],
-	BOu:[1,,"u u G",,"KX","attr"],
 	BOZ:[1,,"u G",,"KX","attr"],
+	BOu:[1,,"u u G",,"KX","attr"],
 	BOY:[1,,"u",,"u","attr"],
 	BC:[1,,,,"KX","empty"],
 	BPO:[1,,,,"u","val"],
 	BPP:[1,,"G",,"KX","val"],
-	BPD:[1,,"Ky",,"Kx","image"],
 	BPR:[1028,,,,"LA","attributes"],
 	getAttribute:[260,,"u",,"u","getAttribute"],
-	BOv:[1,,,,"Bz<KX>","children"],
+	setAttribute:[260,,"u u",,"V","setAttribute"],
 	getElementById:[276,,"u",,"KX","getElementById"],
 	style:[257,,,,"KZ","style"],
-	setAttribute:[260,,"u u",,"V","setAttribute"],
-	BPC:[145,,"[Ky",,"Z","has"],
-	BPB:[1,,"Ky",,"Z","has"],
-	BPA:[1,,"u",,"Z","has"],
-	BPI:[1,,"u G",,"KX","property"],
 	BOU:[1,,"u",,"G","property"],
+	BPI:[1,,"u G",,"KX","property"],
+	removeAttribute:[260,,"u",,"V","removeAttribute"],
+	BPB:[1,,"Ky",,"Z","has"],
+	BPC:[145,,"[Ky",,"Z","has"],
+	BPA:[1,,"u",,"Z","has"],
+	BPD:[1,,"Ky",,"Kx","image"],
 	getElementsByTagName:[276,,"u",,"LB<KX>","getElementsByTagName"],
 	setAttributeNS:[260,,"u u u",,"V","setAttributeNS"],
-	removeAttribute:[260,,"u",,"V","removeAttribute"],
-	BPN:[1,,"Ky",,"KX","toggle"],
+	querySelectorAll:[260,,"u",,"LB<KX>","querySelectorAll"],
 	BPS:[1028,,,,"u","tagName"],
-	removeAttributeNS:[260,,"u u",,"V","removeAttributeNS"],
-	getElementsByClassName:[1028,,"Ky",,"LB<KX>","getElementsByClassName"],
-	BPT:[1028,,,,"KX","firstElementChild"],
-	BPU:[1028,,,,"KX","previousElementSibling"],
-	BPV:[1028,,,,"KX","nextElementSibling"],
-	getBoundingClientRect:[260,,,,"Kz","getBoundingClientRect"],
 	getAttributeNS:[260,,"u u",,"u","getAttributeNS"],
 	hasAttribute:[260,,"u",,"Z","hasAttribute"],
 	hasAttributeNS:[260,,"u u",,"Z","hasAttributeNS"],
-	BPW:[1028,,,,"LC","classList"],
-	BPX:[1028,,,,"LD","childElements"],
-	BPY:[1028,,,,"KX","parentElement"],
-	BPZ:[1028,,,,"KX","lastElementChild"],
+	BPT:[1028,,,,"LC","classList"],
+	BPU:[1028,,,,"LD","childElements"],
+	BPV:[1028,,,,"KX","parentElement"],
+	BPW:[1028,,,,"KX","lastElementChild"],
 	offsetParent:[260,,,,"KX","offsetParent"],
 	scrollIntoView:[276,,,,"V","scrollIntoView"],
-	querySelectorAll:[260,,"u",,"LB<KX>","querySelectorAll"],
+	BOv:[1,,,,"Bz<KX>","children"],
+	removeAttributeNS:[260,,"u u",,"V","removeAttributeNS"],
+	BPN:[1,,"Ky",,"KX","toggle"],
 	querySelector:[260,,"u",,"KX","querySelector"],
 	BOw:[1,,"u",,"u","css"],
-	BOy:[1,,"u G",,"KX","css"]
+	BOy:[1,,"u G",,"KX","css"],
+	getElementsByClassName:[1028,,"Ky",,"LB<KX>","getElementsByClassName"],
+	BPX:[1028,,,,"KX","firstElementChild"],
+	BPY:[1028,,,,"KX","previousElementSibling"],
+	BPZ:[1028,,,,"KX","nextElementSibling"],
+	getBoundingClientRect:[260,,,,"Kz","getBoundingClientRect"]
 },"Element");
 
 // class js.dom.CSSStyleSheet "Kw"
@@ -26494,10 +26494,10 @@ boot.define("BC","","",{
 	BTO:[9,"M:G","CK M:G",,"M:G","read"],
 	BTJ:[10,"T:G","A<T:G>",,"Bz<A<>>","search"],
 	BSM:[10,,,,"V","initialize"],
+	BSX:[8,,"G",,"u","method"],
+	BSx:[9,"Param1:G Param2:G","Param1:G Param2:G",,"MO<Param1:G,Param2:G>","pair"],
 	BSw:[9,"Param1:G","Param1:G",,"MN<Param1:G>","pair"],
 	BSy:[9,"Param1:G Param2:G Param3:G","Param1:G Param2:G Param3:G",,"MP<Param1:G,Param2:G,Param3:G>","pair"],
-	BSx:[9,"Param1:G Param2:G","Param1:G Param2:G",,"MO<Param1:G,Param2:G>","pair"],
-	BSX:[8,,"G",,"u","method"],
 	BRu:[9,,"G",,"BJ","quiet"],
 	BSU:[10,,"A LX<Ew,DD>",,"V","define"],
 	BSO:[9,"E:LS","A<E:LS>",,"Bz<A<E:LS>>","findAs"],
@@ -26506,9 +26506,9 @@ boot.define("BC","","",{
 	BSu:[9,"E:G","NC<E:G>",,"MM<E:G>","observe"],
 	BSY:[9,"E:ND","E:ND",,"MM<E:ND>","observe"],
 	BSz:[9,"M:G","G A<M:G>",,"M:G","transform"],
-	BTU:[9,,"J NE Z IA",,"NF<>","schedule"],
-	BTT:[9,,"IA",,"NF<>","schedule"],
-	BTW:[9,,"J J NE Z IA",,"NF<>","schedule"],
+	BTT:[9,,"IA",,"NE<>","schedule"],
+	BTW:[9,,"J J NF Z IA",,"NE<>","schedule"],
+	BTU:[9,,"J NF Z IA",,"NE<>","schedule"],
 	BSK:[9,"M:CG<A,>","M:CG<A,>",,"M:CG<A,>","aware"]
 });
 
@@ -26674,10 +26674,10 @@ boot.define("LV","","",{
 	BUU:[9,,,,"NK","privilegedThreadFactory"],
 	BUR:[9,,"NL",,"NL","unconfigurableExecutorService"],
 	BUS:[9,,"NA",,"NA","unconfigurableScheduledExecutorService"],
-	BUM:[9,,,,"NL","newCachedThreadPool"],
 	BUN:[9,,"NK",,"NL","newCachedThreadPool"],
-	BUK:[9,,,,"NL","newSingleThreadExecutor"],
-	BUL:[9,,"NK",,"NL","newSingleThreadExecutor"]
+	BUM:[9,,,,"NL","newCachedThreadPool"],
+	BUL:[9,,"NK",,"NL","newSingleThreadExecutor"],
+	BUK:[9,,,,"NL","newSingleThreadExecutor"]
 });
 
 // interface java.util.concurrent.Executor "NR"
@@ -26692,25 +26692,25 @@ boot.define("NL","","NR",{
 },{
 	$:[1537,"java.util.concurrent.ExecutorService",,,"NR"],
 	BVA:[1025,,,,"V","shutdown"],
-	BVE:[1025,,"J NE","BS","Z","awaitTermination"],
+	BVE:[1025,,"J NF","BS","Z","awaitTermination"],
 	BVC:[1025,,,,"Z","isShutdown"],
 	BVD:[1025,,,,"Z","isTerminated"],
 	BVB:[1025,,,,"Bz<IA>","shutdownNow"],
-	BVJ:[1025,"T:G","Dy<> J NE","BS","Bz<NF<T:G>>","invokeAll"],
-	BVI:[1025,"T:G","Dy<>","BS","Bz<NF<T:G>>","invokeAll"],
+	BVJ:[1025,"T:G","Dy<> J NF","BS","Bz<NE<T:G>>","invokeAll"],
+	BVI:[1025,"T:G","Dy<>","BS","Bz<NE<T:G>>","invokeAll"],
 	BVK:[1025,"T:G","Dy<>","BS NO","T:G","invokeAny"],
-	BVL:[1025,"T:G","Dy<> J NE","BS NO NP","T:G","invokeAny"],
-	BVG:[1025,"T:G","IA T:G",,"NF<T:G>","submit"],
-	BVF:[1025,"T:G","NH<T:G>",,"NF<T:G>","submit"],
-	BVH:[1025,,"IA",,"NF<>","submit"]
+	BVL:[1025,"T:G","Dy<> J NF","BS NO NP","T:G","invokeAny"],
+	BVG:[1025,"T:G","IA T:G",,"NE<T:G>","submit"],
+	BVF:[1025,"T:G","NH<T:G>",,"NE<T:G>","submit"],
+	BVH:[1025,,"IA",,"NE<>","submit"]
 });
 
 // class java.util.concurrent.TimeUnit$1 "NV"
-boot.define("NV","NE","",{
+boot.define("NV","NF","",{
 	// java.util.concurrent.TimeUnit$1#<init>(java.lang.String, int)
 	$0:function(A,B){
 		// 75
-		boot.NE.prototype.$1.call(this,A,B,null);
+		boot.NF.prototype.$1.call(this,A,B,null);
 	},
 	// java.util.concurrent.TimeUnit$1#toNanos(long)
 	BVU:function(A){
@@ -26758,10 +26758,10 @@ boot.define("NV","NE","",{
 		return A.JQ(C.JS(boot.J.BP(1000000,0))).KG()
 	}
 },{
-	$:[81928,"java.util.concurrent.TimeUnit$1",,"NE"],
+	$:[81928,"java.util.concurrent.TimeUnit$1",,"NF"],
 	$0:[0,,"u I"],
 	BVU:[1,,"J",,"J","toNanos"],
-	BVT:[1,,"J NE",,"J","convert"],
+	BVT:[1,,"J NF",,"J","convert"],
 	BVO:[1,,"J",,"J","toMillis"],
 	BVv:[0,,"J J",,"I","excessNanos"],
 	BVZ:[1,,"J",,"J","toDays"],
@@ -26772,16 +26772,16 @@ boot.define("NV","NE","",{
 });
 
 // class java.util.concurrent.TimeUnit$2 "NW"
-boot.define("NW","NE","",{
+boot.define("NW","NF","",{
 	// java.util.concurrent.TimeUnit$2#<init>(java.lang.String, int)
 	$0:function(A,B){
 		// 90
-		boot.NE.prototype.$1.call(this,A,B,null);
+		boot.NF.prototype.$1.call(this,A,B,null);
 	},
 	// java.util.concurrent.TimeUnit$2#toNanos(long)
 	BVU:function(A){
 		// 91
-		return boot.NE.BVS(A,boot.J.BP(1000,0),boot.J.BP(-1511828489,2147483))
+		return boot.NF.BVS(A,boot.J.BP(1000,0),boot.J.BP(-1511828489,2147483))
 	},
 	// java.util.concurrent.TimeUnit$2#toMicros(long)
 	BVV:function(A){
@@ -26824,10 +26824,10 @@ boot.define("NW","NE","",{
 		return A.JS(boot.J.BP(1000,0)).JQ(C.JS(boot.J.BP(1000000,0))).KG()
 	}
 },{
-	$:[81928,"java.util.concurrent.TimeUnit$2",,"NE"],
+	$:[81928,"java.util.concurrent.TimeUnit$2",,"NF"],
 	$0:[0,,"u I"],
 	BVU:[1,,"J",,"J","toNanos"],
-	BVT:[1,,"J NE",,"J","convert"],
+	BVT:[1,,"J NF",,"J","convert"],
 	BVO:[1,,"J",,"J","toMillis"],
 	BVv:[0,,"J J",,"I","excessNanos"],
 	BVZ:[1,,"J",,"J","toDays"],
@@ -26838,21 +26838,21 @@ boot.define("NW","NE","",{
 });
 
 // class java.util.concurrent.TimeUnit$3 "NX"
-boot.define("NX","NE","",{
+boot.define("NX","NF","",{
 	// java.util.concurrent.TimeUnit$3#<init>(java.lang.String, int)
 	$0:function(A,B){
 		// 105
-		boot.NE.prototype.$1.call(this,A,B,null);
+		boot.NF.prototype.$1.call(this,A,B,null);
 	},
 	// java.util.concurrent.TimeUnit$3#toNanos(long)
 	BVU:function(A){
 		// 106
-		return boot.NE.BVS(A,boot.J.BP(1000000,0),boot.J.BP(2077252342,2147))
+		return boot.NF.BVS(A,boot.J.BP(1000000,0),boot.J.BP(2077252342,2147))
 	},
 	// java.util.concurrent.TimeUnit$3#toMicros(long)
 	BVV:function(A){
 		// 107
-		return boot.NE.BVS(A,boot.J.BP(1000,0),boot.J.BP(-1511828489,2147483))
+		return boot.NF.BVS(A,boot.J.BP(1000,0),boot.J.BP(-1511828489,2147483))
 	},
 	// java.util.concurrent.TimeUnit$3#toMillis(long)
 	BVO:function(A){
@@ -26890,10 +26890,10 @@ boot.define("NX","NE","",{
 		return 0
 	}
 },{
-	$:[81928,"java.util.concurrent.TimeUnit$3",,"NE"],
+	$:[81928,"java.util.concurrent.TimeUnit$3",,"NF"],
 	$0:[0,,"u I"],
 	BVU:[1,,"J",,"J","toNanos"],
-	BVT:[1,,"J NE",,"J","convert"],
+	BVT:[1,,"J NF",,"J","convert"],
 	BVO:[1,,"J",,"J","toMillis"],
 	BVv:[0,,"J J",,"I","excessNanos"],
 	BVZ:[1,,"J",,"J","toDays"],
@@ -26904,26 +26904,26 @@ boot.define("NX","NE","",{
 });
 
 // class java.util.concurrent.TimeUnit$4 "NY"
-boot.define("NY","NE","",{
+boot.define("NY","NF","",{
 	// java.util.concurrent.TimeUnit$4#<init>(java.lang.String, int)
 	$0:function(A,B){
 		// 120
-		boot.NE.prototype.$1.call(this,A,B,null);
+		boot.NF.prototype.$1.call(this,A,B,null);
 	},
 	// java.util.concurrent.TimeUnit$4#toNanos(long)
 	BVU:function(A){
 		// 121
-		return boot.NE.BVS(A,boot.J.BP(1000000000,0),boot.J.BP(633437444,2))
+		return boot.NF.BVS(A,boot.J.BP(1000000000,0),boot.J.BP(633437444,2))
 	},
 	// java.util.concurrent.TimeUnit$4#toMicros(long)
 	BVV:function(A){
 		// 122
-		return boot.NE.BVS(A,boot.J.BP(1000000,0),boot.J.BP(2077252342,2147))
+		return boot.NF.BVS(A,boot.J.BP(1000000,0),boot.J.BP(2077252342,2147))
 	},
 	// java.util.concurrent.TimeUnit$4#toMillis(long)
 	BVO:function(A){
 		// 123
-		return boot.NE.BVS(A,boot.J.BP(1000,0),boot.J.BP(-1511828489,2147483))
+		return boot.NF.BVS(A,boot.J.BP(1000,0),boot.J.BP(-1511828489,2147483))
 	},
 	// java.util.concurrent.TimeUnit$4#toSeconds(long)
 	BVW:function(A){
@@ -26956,10 +26956,10 @@ boot.define("NY","NE","",{
 		return 0
 	}
 },{
-	$:[81928,"java.util.concurrent.TimeUnit$4",,"NE"],
+	$:[81928,"java.util.concurrent.TimeUnit$4",,"NF"],
 	$0:[0,,"u I"],
 	BVU:[1,,"J",,"J","toNanos"],
-	BVT:[1,,"J NE",,"J","convert"],
+	BVT:[1,,"J NF",,"J","convert"],
 	BVO:[1,,"J",,"J","toMillis"],
 	BVv:[0,,"J J",,"I","excessNanos"],
 	BVZ:[1,,"J",,"J","toDays"],
@@ -26970,31 +26970,31 @@ boot.define("NY","NE","",{
 });
 
 // class java.util.concurrent.TimeUnit$5 "NZ"
-boot.define("NZ","NE","",{
+boot.define("NZ","NF","",{
 	// java.util.concurrent.TimeUnit$5#<init>(java.lang.String, int)
 	$0:function(A,B){
 		// 135
-		boot.NE.prototype.$1.call(this,A,B,null);
+		boot.NF.prototype.$1.call(this,A,B,null);
 	},
 	// java.util.concurrent.TimeUnit$5#toNanos(long)
 	BVU:function(A){
 		// 136
-		return boot.NE.BVS(A,boot.J.BP(-129542144,13),boot.J.BP(153722867,0))
+		return boot.NF.BVS(A,boot.J.BP(-129542144,13),boot.J.BP(153722867,0))
 	},
 	// java.util.concurrent.TimeUnit$5#toMicros(long)
 	BVV:function(A){
 		// 137
-		return boot.NE.BVS(A,boot.J.BP(60000000,0),boot.J.BP(-895955376,35))
+		return boot.NF.BVS(A,boot.J.BP(60000000,0),boot.J.BP(-895955376,35))
 	},
 	// java.util.concurrent.TimeUnit$5#toMillis(long)
 	BVO:function(A){
 		// 138
-		return boot.NE.BVS(A,boot.J.BP(60000,0),boot.J.BP(1692789776,35791))
+		return boot.NF.BVS(A,boot.J.BP(60000,0),boot.J.BP(1692789776,35791))
 	},
 	// java.util.concurrent.TimeUnit$5#toSeconds(long)
 	BVW:function(A){
 		// 139
-		return boot.NE.BVS(A,boot.J.BP(60,0),boot.J.BP(572662306,35791394))
+		return boot.NF.BVS(A,boot.J.BP(60,0),boot.J.BP(572662306,35791394))
 	},
 	// java.util.concurrent.TimeUnit$5#toMinutes(long)
 	BVX:function(A){
@@ -27022,10 +27022,10 @@ boot.define("NZ","NE","",{
 		return 0
 	}
 },{
-	$:[81928,"java.util.concurrent.TimeUnit$5",,"NE"],
+	$:[81928,"java.util.concurrent.TimeUnit$5",,"NF"],
 	$0:[0,,"u I"],
 	BVU:[1,,"J",,"J","toNanos"],
-	BVT:[1,,"J NE",,"J","convert"],
+	BVT:[1,,"J NF",,"J","convert"],
 	BVO:[1,,"J",,"J","toMillis"],
 	BVv:[0,,"J J",,"I","excessNanos"],
 	BVZ:[1,,"J",,"J","toDays"],
@@ -27036,36 +27036,36 @@ boot.define("NZ","NE","",{
 });
 
 // class java.util.concurrent.TimeUnit$6 "Nu"
-boot.define("Nu","NE","",{
+boot.define("Nu","NF","",{
 	// java.util.concurrent.TimeUnit$6#<init>(java.lang.String, int)
 	$0:function(A,B){
 		// 150
-		boot.NE.prototype.$1.call(this,A,B,null);
+		boot.NF.prototype.$1.call(this,A,B,null);
 	},
 	// java.util.concurrent.TimeUnit$6#toNanos(long)
 	BVU:function(A){
 		// 151
-		return boot.NE.BVS(A,boot.J.BP(817405952,838),boot.J.BP(2562047,0))
+		return boot.NF.BVS(A,boot.J.BP(817405952,838),boot.J.BP(2562047,0))
 	},
 	// java.util.concurrent.TimeUnit$6#toMicros(long)
 	BVV:function(A){
 		// 152
-		return boot.NE.BVS(A,boot.J.BP(-694967296,0),boot.J.BP(-1732919508,0))
+		return boot.NF.BVS(A,boot.J.BP(-694967296,0),boot.J.BP(-1732919508,0))
 	},
 	// java.util.concurrent.TimeUnit$6#toMillis(long)
 	BVO:function(A){
 		// 153
-		return boot.NE.BVS(A,boot.J.BP(3600000,0),boot.J.BP(-2047687697,596))
+		return boot.NF.BVS(A,boot.J.BP(3600000,0),boot.J.BP(-2047687697,596))
 	},
 	// java.util.concurrent.TimeUnit$6#toSeconds(long)
 	BVW:function(A){
 		// 154
-		return boot.NE.BVS(A,boot.J.BP(3600,0),boot.J.BP(1011703407,596523))
+		return boot.NF.BVS(A,boot.J.BP(3600,0),boot.J.BP(1011703407,596523))
 	},
 	// java.util.concurrent.TimeUnit$6#toMinutes(long)
 	BVX:function(A){
 		// 155
-		return boot.NE.BVS(A,boot.J.BP(60,0),boot.J.BP(572662306,35791394))
+		return boot.NF.BVS(A,boot.J.BP(60,0),boot.J.BP(572662306,35791394))
 	},
 	// java.util.concurrent.TimeUnit$6#toHours(long)
 	BVY:function(A){
@@ -27088,10 +27088,10 @@ boot.define("Nu","NE","",{
 		return 0
 	}
 },{
-	$:[81928,"java.util.concurrent.TimeUnit$6",,"NE"],
+	$:[81928,"java.util.concurrent.TimeUnit$6",,"NF"],
 	$0:[0,,"u I"],
 	BVU:[1,,"J",,"J","toNanos"],
-	BVT:[1,,"J NE",,"J","convert"],
+	BVT:[1,,"J NF",,"J","convert"],
 	BVO:[1,,"J",,"J","toMillis"],
 	BVv:[0,,"J J",,"I","excessNanos"],
 	BVZ:[1,,"J",,"J","toDays"],
@@ -27102,41 +27102,41 @@ boot.define("Nu","NE","",{
 });
 
 // class java.util.concurrent.TimeUnit$7 "Nv"
-boot.define("Nv","NE","",{
+boot.define("Nv","NF","",{
 	// java.util.concurrent.TimeUnit$7#<init>(java.lang.String, int)
 	$0:function(A,B){
 		// 165
-		boot.NE.prototype.$1.call(this,A,B,null);
+		boot.NF.prototype.$1.call(this,A,B,null);
 	},
 	// java.util.concurrent.TimeUnit$7#toNanos(long)
 	BVU:function(A){
 		// 166
-		return boot.NE.BVS(A,boot.J.BP(-1857093632,20116),boot.J.BP(106751,0))
+		return boot.NF.BVS(A,boot.J.BP(-1857093632,20116),boot.J.BP(106751,0))
 	},
 	// java.util.concurrent.TimeUnit$7#toMicros(long)
 	BVV:function(A){
 		// 167
-		return boot.NE.BVS(A,boot.J.BP(500654080,20),boot.J.BP(106751991,0))
+		return boot.NF.BVS(A,boot.J.BP(500654080,20),boot.J.BP(106751991,0))
 	},
 	// java.util.concurrent.TimeUnit$7#toMillis(long)
 	BVO:function(A){
 		// 168
-		return boot.NE.BVS(A,boot.J.BP(86400000,0),boot.J.BP(-622191233,24))
+		return boot.NF.BVS(A,boot.J.BP(86400000,0),boot.J.BP(-622191233,24))
 	},
 	// java.util.concurrent.TimeUnit$7#toSeconds(long)
 	BVW:function(A){
 		// 169
-		return boot.NE.BVS(A,boot.J.BP(86400,0),boot.J.BP(579025220,24855))
+		return boot.NF.BVS(A,boot.J.BP(86400,0),boot.J.BP(579025220,24855))
 	},
 	// java.util.concurrent.TimeUnit$7#toMinutes(long)
 	BVX:function(A){
 		// 170
-		return boot.NE.BVS(A,boot.J.BP(1440,0),boot.J.BP(381774870,1491308))
+		return boot.NF.BVS(A,boot.J.BP(1440,0),boot.J.BP(381774870,1491308))
 	},
 	// java.util.concurrent.TimeUnit$7#toHours(long)
 	BVY:function(A){
 		// 171
-		return boot.NE.BVS(A,boot.J.BP(24,0),boot.J.BP(1431655765,89478485))
+		return boot.NF.BVS(A,boot.J.BP(24,0),boot.J.BP(1431655765,89478485))
 	},
 	// java.util.concurrent.TimeUnit$7#toDays(long)
 	BVZ:function(A){
@@ -27154,10 +27154,10 @@ boot.define("Nv","NE","",{
 		return 0
 	}
 },{
-	$:[81928,"java.util.concurrent.TimeUnit$7",,"NE"],
+	$:[81928,"java.util.concurrent.TimeUnit$7",,"NF"],
 	$0:[0,,"u I"],
 	BVU:[1,,"J",,"J","toNanos"],
-	BVT:[1,,"J NE",,"J","convert"],
+	BVT:[1,,"J NF",,"J","convert"],
 	BVO:[1,,"J",,"J","toMillis"],
 	BVv:[0,,"J J",,"I","excessNanos"],
 	BVZ:[1,,"J",,"J","toDays"],
@@ -27167,17 +27167,17 @@ boot.define("Nv","NE","",{
 	BVW:[1,,"J",,"J","toSeconds"]
 });
 
-// class java.util.concurrent.TimeUnit "NE"
-boot.define("NE","BF","",{
+// class java.util.concurrent.TimeUnit "NF"
+boot.define("NF","BF","",{
 	// java.util.concurrent.TimeUnit#values()
 	_BVQ:function(){
 		// 71
-		return boot.NE.bd.BI()
+		return boot.NF.bd.BI()
 	},
 	// java.util.concurrent.TimeUnit#valueOf(java.lang.String)
 	_BVR:function(A){
 		// 71
-		return boot.BF.PC(boot.NE.$,A)
+		return boot.BF.PC(boot.NF.$,A)
 	},
 	// java.util.concurrent.TimeUnit#<init>(java.lang.String, int)
 	$0:function(A,B){
@@ -27281,38 +27281,38 @@ boot.define("NE","BF","",{
 	// java.util.concurrent.TimeUnit#<init>(java.lang.String, int, java.util.concurrent.TimeUnit$1)
 	$1:function(A,B,C){
 		// 71
-		boot.NE.prototype.$0.call(this,A,B);
+		boot.NF.prototype.$0.call(this,A,B);
 	},
 	// java.util.concurrent.TimeUnit#<clinit>()
 	_:function(){
 		// 75
-		boot.NE.e=new boot.NV("NANOSECONDS",0,0);
+		boot.NF.e=new boot.NV("NANOSECONDS",0,0);
 		// 90
-		boot.NE.f=new boot.NW("MICROSECONDS",1,0);
+		boot.NF.f=new boot.NW("MICROSECONDS",1,0);
 		// 105
-		boot.NE.g=new boot.NX("MILLISECONDS",2,0);
+		boot.NF.g=new boot.NX("MILLISECONDS",2,0);
 		// 120
-		boot.NE.h=new boot.NY("SECONDS",3,0);
+		boot.NF.h=new boot.NY("SECONDS",3,0);
 		// 135
-		boot.NE.i=new boot.NZ("MINUTES",4,0);
+		boot.NF.i=new boot.NZ("MINUTES",4,0);
 		// 150
-		boot.NE.j=new boot.Nu("HOURS",5,0);
+		boot.NF.j=new boot.Nu("HOURS",5,0);
 		// 165
-		boot.NE.k=new boot.Nv("DAYS",6,0);
+		boot.NF.k=new boot.Nv("DAYS",6,0);
 		// 71
-		boot.NE.bd=Φ("NE",[boot.NE.e,boot.NE.f,boot.NE.g,boot.NE.h,boot.NE.i,boot.NE.j,boot.NE.k]);
+		boot.NF.bd=Φ("NF",[boot.NF.e,boot.NF.f,boot.NF.g,boot.NF.h,boot.NF.i,boot.NF.j,boot.NF.k]);
 	}
 },{
-	$:[17409,"java.util.concurrent.TimeUnit",,"BF<NE>"],
+	$:[17409,"java.util.concurrent.TimeUnit",,"BF<NF>"],
 	$0:[2],
 	$1:[4096,,"u I NV"],
-	e:[16409,"NANOSECONDS","NE"],
-	f:[16409,"MICROSECONDS","NE"],
-	g:[16409,"MILLISECONDS","NE"],
-	h:[16409,"SECONDS","NE"],
-	i:[16409,"MINUTES","NE"],
-	j:[16409,"HOURS","NE"],
-	k:[16409,"DAYS","NE"],
+	e:[16409,"NANOSECONDS","NF"],
+	f:[16409,"MICROSECONDS","NF"],
+	g:[16409,"MILLISECONDS","NF"],
+	h:[16409,"SECONDS","NF"],
+	i:[16409,"MINUTES","NF"],
+	j:[16409,"HOURS","NF"],
+	k:[16409,"DAYS","NF"],
 	l:[24,"C0","J"],
 	m:[24,"C1","J"],
 	n:[24,"C2","J"],
@@ -27321,12 +27321,12 @@ boot.define("NE","BF","",{
 	ba:[24,"C5","J"],
 	bb:[24,"C6","J"],
 	bc:[24,"MAX","J"],
-	bd:[4122,"$VALUES","[NE"],
+	bd:[4122,"$VALUES","[NF"],
 	BVU:[1,,"J",,"J","toNanos"],
-	BVQ:[9,,,,"[NE","values"],
-	BVR:[9,,"u",,"NE","valueOf"],
+	BVQ:[9,,,,"[NF","values"],
+	BVR:[9,,"u",,"NF","valueOf"],
 	BVy:[1,,"J","BS","V","sleep"],
-	BVT:[1,,"J NE",,"J","convert"],
+	BVT:[1,,"J NF",,"J","convert"],
 	BVS:[8,,"J J J",,"J","x"],
 	BVO:[1,,"J",,"J","toMillis"],
 	BVv:[1024,,"J J",,"I","excessNanos"],
@@ -27716,15 +27716,15 @@ boot.define("BS","BK","",{
 	$1:[1,,"u"]
 });
 
-// interface java.util.concurrent.Future "NF"
-boot.define("NF","","",{
+// interface java.util.concurrent.Future "NE"
+boot.define("NE","","",{
 },{
 	$:[1537,"java.util.concurrent.Future","V:G"],
-	BWT:[1025,,"J NE","BS NO NP","V:G","get"],
+	BWT:[1025,,"J NF","BS NO NP","V:G","get"],
 	D:[1025,,,"BS NO","V:G","get"],
-	BWU:[1025,,,,"Z","isDone"],
-	BWV:[1025,,,,"Z","isCancelled"],
-	BWW:[1025,,"Z",,"Z","cancel"]
+	BWU:[1025,,,,"Z","isCancelled"],
+	BWV:[1025,,"Z",,"Z","cancel"],
+	BWW:[1025,,,,"Z","isDone"]
 });
 
 // class java.util.concurrent.ExecutionException "NO"
@@ -27793,23 +27793,23 @@ boot.define("NH","","",{
 boot.define("NA","","NL",{
 },{
 	$:[1537,"java.util.concurrent.ScheduledExecutorService",,,"NL"],
-	BTV:[1025,,"IA J NE",,"NQ<>","schedule"],
-	BVN:[1025,"V:G","NH<V:G> J NE",,"NQ<V:G>","schedule"],
-	BTX:[1025,,"IA J J NE",,"NQ<>","scheduleAtFixedRate"],
-	BVP:[1025,,"IA J J NE",,"NQ<>","scheduleWithFixedDelay"]
+	BTV:[1025,,"IA J NF",,"NQ<>","schedule"],
+	BVN:[1025,"V:G","NH<V:G> J NF",,"NQ<V:G>","schedule"],
+	BTX:[1025,,"IA J J NF",,"NQ<>","scheduleAtFixedRate"],
+	BVP:[1025,,"IA J J NF",,"NQ<>","scheduleWithFixedDelay"]
 });
 
 // interface java.util.concurrent.Delayed "Ny"
 boot.define("Ny","","CJ",{
 },{
 	$:[1537,"java.util.concurrent.Delayed",,,"CJ<Ny>"],
-	BWX:[1025,,"NE",,"J","getDelay"]
+	BWX:[1025,,"NF",,"J","getDelay"]
 });
 
 // interface java.util.concurrent.ScheduledFuture "NQ"
-boot.define("NQ","","Ny NF",{
+boot.define("NQ","","Ny NE",{
 },{
-	$:[1537,"java.util.concurrent.ScheduledFuture","V:G",,"Ny NF<V:G>"]
+	$:[1537,"java.util.concurrent.ScheduledFuture","V:G",,"Ny NE<V:G>"]
 });
 
 // class js.util.concurrent.ScheduledThreadPoolExecutor "NG"
@@ -27913,27 +27913,27 @@ boot.define("NG","","NA",{
 	$0:[0],
 	BVA:[1,,,,"V","shutdown"],
 	BRI:[1,,"IA",,"V","execute"],
-	BVE:[1,,"J NE","BS","Z","awaitTermination"],
+	BVE:[1,,"J NF","BS","Z","awaitTermination"],
 	BVC:[1,,,,"Z","isShutdown"],
 	BVD:[1,,,,"Z","isTerminated"],
 	BVB:[1,,,,"Bz<IA>","shutdownNow"],
-	BVI:[1,"T:G","Dy<>","BS","Bz<NF<T:G>>","invokeAll"],
-	BVJ:[1,"T:G","Dy<> J NE","BS","Bz<NF<T:G>>","invokeAll"],
+	BVI:[1,"T:G","Dy<>","BS","Bz<NE<T:G>>","invokeAll"],
+	BVJ:[1,"T:G","Dy<> J NF","BS","Bz<NE<T:G>>","invokeAll"],
 	BVK:[1,"T:G","Dy<>","BS NO","T:G","invokeAny"],
-	BVL:[1,"T:G","Dy<> J NE","BS NO NP","T:G","invokeAny"],
-	BVN:[1,"V:G","NH<V:G> J NE",,"NQ<V:G>","schedule"],
-	BTV:[1,,"IA J NE",,"NQ<>","schedule"],
-	BVH:[1,,"IA",,"NF<>","submit"],
-	BVG:[1,"T:G","IA T:G",,"NF<T:G>","submit"],
-	BVF:[1,"T:G","NH<T:G>",,"NF<T:G>","submit"],
-	BTX:[1,,"IA J J NE",,"NQ<>","scheduleAtFixedRate"],
-	BVP:[1,,"IA J J NE",,"NQ<>","scheduleWithFixedDelay"]
+	BVL:[1,"T:G","Dy<> J NF","BS NO NP","T:G","invokeAny"],
+	BVN:[1,"V:G","NH<V:G> J NF",,"NQ<V:G>","schedule"],
+	BTV:[1,,"IA J NF",,"NQ<>","schedule"],
+	BVH:[1,,"IA",,"NE<>","submit"],
+	BVG:[1,"T:G","IA T:G",,"NE<T:G>","submit"],
+	BVF:[1,"T:G","NH<T:G>",,"NE<T:G>","submit"],
+	BTX:[1,,"IA J J NF",,"NQ<>","scheduleAtFixedRate"],
+	BVP:[1,,"IA J J NF",,"NQ<>","scheduleWithFixedDelay"]
 });
 
 // interface java.util.concurrent.RunnableFuture "OA"
-boot.define("OA","","IA NF",{
+boot.define("OA","","IA NE",{
 },{
-	$:[1537,"java.util.concurrent.RunnableFuture","V:G",,"IA NF<V:G>"],
+	$:[1537,"java.util.concurrent.RunnableFuture","V:G",,"IA NE<V:G>"],
 	wM:[1025,,,,"V","run"]
 });
 
@@ -27961,7 +27961,7 @@ boot.define("NN","","OA",{
 		// 69
 	},
 	// js.util.concurrent.FutureTask#cancel(boolean)
-	BWW:function(A){
+	BWV:function(A){
 		// 76
 		if (this.e==0) {
 			// 80
@@ -27974,12 +27974,12 @@ boot.define("NN","","OA",{
 		}
 	},
 	// js.util.concurrent.FutureTask#isCancelled()
-	BWV:function(){
+	BWU:function(){
 		// 90
 		return this.d
 	},
 	// js.util.concurrent.FutureTask#isDone()
-	BWU:function(){
+	BWW:function(){
 		// 98
 		return this.e
 	},
@@ -28060,12 +28060,12 @@ boot.define("NN","","OA",{
 	f:[2,"id","I"],
 	g:[2,"result","V:G"],
 	wM:[1,,,,"V","run"],
-	BWT:[1,,"J NE","BS NO NP","V:G","get"],
+	BWT:[1,,"J NF","BS NO NP","V:G","get"],
 	D:[1,,,"BS NO","V:G","get"],
 	Hy:[4,,"V:G",,"V","set"],
-	BWU:[1,,,,"Z","isDone"],
-	BWV:[1,,,,"Z","isCancelled"],
-	BWW:[1,,"Z",,"Z","cancel"],
+	BWU:[1,,,,"Z","isCancelled"],
+	BWV:[1,,"Z",,"Z","cancel"],
+	BWW:[1,,,,"Z","isDone"],
 	BWu:[4,,,,"V","done"],
 	BWv:[4,,"BL",,"V","setException"],
 	BWw:[4,,,,"Z","runAndReset"]
@@ -28109,11 +28109,11 @@ boot.define("NM","NN","Nz",{
 		// 188
 	},
 	// js.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask#cancel(boolean)
-	BWW:function(A){
+	BWV:function(A){
 		// 195
 		clearTimeout(this.h);
 		// 197
-		return boot.NN.prototype.BWW.call(this,A)
+		return boot.NN.prototype.BWV.call(this,A)
 	},
 	// js.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask#getDelay(java.util.concurrent.TimeUnit)
 	BWX:function(A){
@@ -28146,9 +28146,9 @@ boot.define("NM","NN","Nz",{
 	$1:[2,,"NH<V:G> J"],
 	h:[2,"id","J"],
 	BWY:[1,,"Ny",,"I","compareTo"],
-	BWW:[1,,"Z",,"Z","cancel"],
+	BWV:[1,,"Z",,"Z","cancel"],
 	BWZ:[1,,,,"Z","isPeriodic"],
-	BWX:[1,,"NE",,"J","getDelay"]
+	BWX:[1,,"NF",,"J","getDelay"]
 });
 
 // interface java.security.PrivilegedAction "NJ"
@@ -28665,7 +28665,7 @@ boot.define("OC","","Bz",{
 		return this.c[A]
 	},
 	// js.util.concurrent.CopyOnWriteArrayList#set(int, java.lang.Object)
-	OB:function(A,B,C,D,E){
+	OE:function(A,B,C,D,E){
 		// 303
 		C=this.c;
 		// 304
@@ -28858,7 +28858,7 @@ boot.define("OC","","Bz",{
 	Hu:[1,,,,"[G","toArray"],
 	Ov:[1,,"I Dy<>",,"Z","addAll"],
 	IC:[1,,"Dy<>",,"Z","addAll"],
-	OB:[1,,"I E:G",,"E:G","set"],
+	OE:[1,,"I E:G",,"E:G","set"],
 	IN:[1,,"Dy<>",,"Z","containsAll"],
 	Ow:[1,,"I",,"EC<E:G>","listIterator"],
 	Hw:[1,,,,"EC<E:G>","listIterator"],
@@ -29650,10 +29650,10 @@ boot.define("MI","","",{
 	d:[25,"WRAPPERS","[A"],
 	BST:[9,,"A",,"LX<Ew,DD>","getAnnotations"],
 	BXy:[9,,"A",,"A","wrap"],
+	BTL:[9,,"A",,"Dx<A<>>","getTypes"],
 	BXw:[10,,"FE A FE",,"[A","getParameter"],
 	BTN:[9,,"FE A",,"[A","getParameter"],
-	BSV:[9,"T:G","A<T:G>",,"EZ<T:G>","getMiniConstructor"],
-	BTL:[9,,"A",,"Dx<A<>>","getTypes"]
+	BSV:[9,"T:G","A<T:G>",,"EZ<T:G>","getMiniConstructor"]
 });
 
 // interface java.lang.Cloneable "OI"
@@ -30547,8 +30547,8 @@ boot.define("OR","","OS OT BB My",{
 	BYT:[1,,"BL",,"V","error"],
 	BYR:[1,,"My",,"My","and"],
 	BYS:[1,,,,"V","complete"],
-	BYU:[1,,,,"OY","kind"],
-	BTy:[1,,,,"V","dispose"]
+	BTy:[1,,,,"V","dispose"],
+	BYU:[1,,,,"OY","kind"]
 },"e");
 
 // class java.text.Format "OW"
@@ -31079,9 +31079,9 @@ boot.define("Ou","","",{
 	W:[1,,,,"u","toString"],
 	BJ:[1,,,,"I","hashCode"],
 	BZv:[1,,,,"I","getIndex"],
-	BZx:[1,,"I",,"V","setErrorIndex"],
+	BZy:[1,,,,"I","getErrorIndex"],
 	BZw:[1,,"I",,"V","setIndex"],
-	BZy:[1,,,,"I","getErrorIndex"]
+	BZx:[1,,"I",,"V","setErrorIndex"]
 });
 
 // class java.text.ParseException "Ov"
@@ -31644,7 +31644,7 @@ boot.define("Ox","","",{
 			// 535
 			if (F!=-1) {
 				// 548
-				this.i[E].OB(F,B);
+				this.i[E].OE(F,B);
 			} else {
 				// 537
 				G=this.h[E].CN();
@@ -31898,24 +31898,24 @@ boot.define("Ox","","",{
 	i:[0,"runAttributeValues","[PG<G>"],
 	DN:[2,,"I",,"C","charAt"],
 	DO:[0,,,,"I","length"],
-	BuW:[1,,"[Oz",,"Oy","getIterator"],
-	BZI:[1,,,,"Oy","getIterator"],
 	BuV:[1,,"[Oz I I",,"Oy","getIterator"],
+	BZI:[1,,,,"Oy","getIterator"],
+	BuW:[1,,"[Oz",,"Oy","getIterator"],
+	BuO:[1,,"Oz G I I",,"V","addAttribute"],
+	BZL:[1,,"Oz G",,"V","addAttribute"],
+	BuX:[34,,"Oz I",,"G","getAttribute"],
 	BuP:[34,,"Oz G I I",,"V","addAttributeImpl"],
 	BuS:[2,,"Oz G I I",,"V","addAttributeRunData"],
 	BuQ:[1,,"CG<,> I I",,"V","addAttributes"],
 	BuA:[18,,"KE PJ",,"V","appendContents"],
 	Buv:[2,,"Dx<> I I",,"Z","attributeValuesMatch"],
 	BuG:[18,,,,"V","createRunAttributeDataVectors"],
-	BuT:[18,,"I Z",,"I","ensureRunBreak"],
 	BuR:[18,,"I",,"I","ensureRunBreak"],
+	BuT:[18,,"I Z",,"I","ensureRunBreak"],
 	BuZ:[2,,"Oz I I I",,"G","getAttributeCheckRange"],
 	BuD:[10,"K:G V:G","CG<K:G,V:G> CG<K#,V#>",,"Z","mapsDiffer"],
 	BuE:[2,,"CG<Oz,G> I",,"V","setAttributes"],
-	Buu:[26,,"G G",,"Z","valuesMatch"],
-	BZL:[1,,"Oz G",,"V","addAttribute"],
-	BuO:[1,,"Oz G I I",,"V","addAttribute"],
-	BuX:[34,,"Oz I",,"G","getAttribute"]
+	Buu:[26,,"G G",,"Z","valuesMatch"]
 });
 
 // interface java.text.CharacterIterator "PJ"
@@ -32383,7 +32383,7 @@ boot.define("PG","BV","Bz Gy OI ET",{
 		}
 	},
 	// java.util.Vector#set(int, java.lang.Object)
-	OB:function(A,B,C){
+	OE:function(A,B,C){
 		// 765
 		if (A<this.f) {
 			// 768
@@ -32740,7 +32740,7 @@ boot.define("PG","BV","Bz Gy OI ET",{
 	BuY:[33,,"I",,"E:G","elementAt"],
 	BvK:[1,,,,"EA<E:G>","elements"],
 	Iz:[33,,"BG<>",,"V","forEach"],
-	OB:[33,,"I E:G",,"E:G","set"],
+	OE:[33,,"I E:G",,"E:G","set"],
 	NN:[33,,,,"I","capacity"],
 	NO:[33,,"I",,"V","ensureCapacity"],
 	NQ:[33,,,,"V","trimToSize"],
@@ -32999,7 +32999,7 @@ boot.define("PL","PM","EC",{
 			try {
 				this.XZ();
 				// 1225
-				this.g.OB(this.d,A);
+				this.g.OE(this.d,A);
 				// 1227
 			} catch ($) {
 				$ = boot.BL.CQ($) ;
@@ -33288,7 +33288,7 @@ boot.define("PN","","",{
 		// 305
 	},
 	// js.util.BitSet#set(int, int)
-	OD:function(A,B,C,D,E,G,I){
+	OC:function(A,B,C,D,E,G,I){
 		// 318
 		boot.PN.Bvz(A,B);
 		if (A!=B) {
@@ -33334,7 +33334,7 @@ boot.define("PN","","",{
 			this.BwE(A,B);
 		} else {
 			// 361
-			this.OD(A,B);
+			this.OC(A,B);
 		}
 		// 364
 	},
@@ -33903,7 +33903,7 @@ boot.define("PN","","",{
 	DO:[1,,,,"I","length"],
 	CN:[1,,,,"I","size"],
 	BwQ:[1,,,,"Cu","stream"],
-	OD:[1,,"I I",,"V","set"],
+	OC:[1,,"I I",,"V","set"],
 	BwD:[1,,"I I Z",,"V","set"],
 	OF:[1,,"I Z",,"V","set"],
 	BvV:[1,,"I",,"V","set"],
@@ -34064,11 +34064,11 @@ boot.define("PO","","Cx",{
 	f:[2,"fence","I"],
 	g:[2,"expectedModCount","I"],
 	Ox:[1,,"BG<>",,"V","forEachRemaining"],
+	BwR:[2,,,,"I","getFence"],
 	TH:[1,,,,"I","characteristics"],
 	TG:[1,,,,"J","estimateSize"],
 	TF:[1,,"BG<>",,"Z","tryAdvance"],
-	TE:[1,,,,"Cx<E:G>","trySplit"],
-	BwR:[2,,,,"I","getFence"]
+	TE:[1,,,,"Cx<E:G>","trySplit"]
 });
 
 // class java.text.Annotation "PH"
@@ -34524,22 +34524,22 @@ boot.define("PI","","Oy",{
 	BuC:[1,,,,"CG<Oz,G>","getAttributes"],
 	BvF:[1,,,,"C","previous"],
 	BuI:[1,,,,"C","current"],
+	BuN:[1,,"Oz",,"G","getAttribute"],
 	BZv:[1,,,,"I","getIndex"],
 	BwT:[2,,,,"Ox","getString"],
 	BvG:[1,,,,"C","last"],
-	BuN:[1,,"Oz",,"G","getAttribute"],
 	BZP:[1,,,,"I","getBeginIndex"],
 	BZQ:[1,,,,"I","getEndIndex"],
-	BuK:[1,,,,"Dx<Oz>","getAllAttributeKeys"],
-	BvB:[1,,"Dx<>",,"I","getRunLimit"],
-	BuM:[1,,"Oz",,"I","getRunLimit"],
-	BuF:[1,,,,"I","getRunLimit"],
-	BvC:[1,,,,"I","getRunStart"],
-	BuL:[1,,"Oz",,"I","getRunStart"],
-	BvD:[1,,"Dx<>",,"I","getRunStart"],
 	BuB:[1,,"I",,"C","setIndex"],
 	BwU:[2,,"I",,"C","internalSetIndex"],
-	BwS:[2,,,,"V","updateRunInfo"]
+	BwS:[2,,,,"V","updateRunInfo"],
+	BuK:[1,,,,"Dx<Oz>","getAllAttributeKeys"],
+	BvB:[1,,"Dx<>",,"I","getRunLimit"],
+	BuF:[1,,,,"I","getRunLimit"],
+	BuM:[1,,"Oz",,"I","getRunLimit"],
+	BvC:[1,,,,"I","getRunStart"],
+	BvD:[1,,"Dx<>",,"I","getRunStart"],
+	BuL:[1,,"Oz",,"I","getRunStart"]
 });
 
 // class java.util.Dictionary "PQ"
@@ -36736,7 +36736,7 @@ boot.define("ON","MR","",{
 			}
 		}
 		// 79
-		D.OB(E,C);
+		D.OE(E,C);
 		// 80
 	},
 	// kiss.model.ListModel#walk(java.lang.Object, kiss.model.PropertyWalker)
@@ -36912,8 +36912,8 @@ boot.define("OH","","",{
 boot.define("ND","","",{
 },{
 	$:[1537,"javafx.beans.Observable"],
-	BUE:[1025,,"Mx",,"V","removeListener"],
-	BTx:[1025,,"Mx",,"V","addListener"]
+	BTx:[1025,,"Mx",,"V","addListener"],
+	BUE:[1025,,"Mx",,"V","removeListener"]
 });
 
 // interface javafx.beans.InvalidationListener "Mx"
@@ -36931,8 +36931,8 @@ boot.define("NC","","ND",{
 },{
 	$:[1537,"javafx.beans.value.ObservableValue","T:G",,"ND"],
 	RZ:[1025,,,,"T:G","getValue"],
-	BUF:[1025,,"Mz<>",,"V","removeListener"],
-	BUC:[1025,,"Mz<>",,"V","addListener"]
+	BUC:[1025,,"Mz<>",,"V","addListener"],
+	BUF:[1025,,"Mz<>",,"V","removeListener"]
 });
 
 // interface javafx.beans.value.ChangeListener "Mz"
@@ -36979,11 +36979,11 @@ boot.define("Ly","","Bz ND",{
 	Byv:[1153,,"[E:G",,"Z","retainAll"],
 	ByZ:[1025,,"Dy<>",,"Z","setAll"],
 	ByY:[1153,,"[E:G",,"Z","setAll"],
-	BzC:[1025,,"QV<>",,"V","removeListener"],
-	BzD:[1025,,"QV<>",,"V","addListener"],
+	BzC:[1025,,"QV<>",,"V","addListener"],
+	BzD:[1025,,"QV<>",,"V","removeListener"],
 	Byz:[1,,"EK<E:G>",,"QQ<E:G>","filtered"],
-	BzB:[1,,,,"QT<E:G>","sorted"],
-	BzA:[1,,"CL<E:G>",,"QT<E:G>","sorted"]
+	BzA:[1,,"CL<E:G>",,"QT<E:G>","sorted"],
+	BzB:[1,,,,"QT<E:G>","sorted"]
 });
 
 // class javafx.collections.ObservableListBase "QS"
@@ -37062,13 +37062,13 @@ boot.define("QS","BV","Ly",{
 		// 216
 	},
 	// javafx.collections.ObservableListBase#addListener(javafx.collections.ListChangeListener)
-	BzD:function(A){
+	BzC:function(A){
 		// 220
 		this.e=boot.RB.CAQ(this.e,A);
 		// 221
 	},
 	// javafx.collections.ObservableListBase#removeListener(javafx.collections.ListChangeListener)
-	BzC:function(A){
+	BzD:function(A){
 		// 225
 		this.e=boot.RB.CAR(this.e,A);
 		// 226
@@ -37126,10 +37126,10 @@ boot.define("QS","BV","Ly",{
 	Byv:[129,,"[E:G",,"Z","retainAll"],
 	ByY:[129,,"[E:G",,"Z","setAll"],
 	ByZ:[1,,"Dy<>",,"Z","setAll"],
-	BzC:[17,,"QV<>",,"V","removeListener"],
-	BUE:[17,,"Mx",,"V","removeListener"],
-	BzD:[17,,"QV<>",,"V","addListener"],
 	BTx:[17,,"Mx",,"V","addListener"],
+	BzC:[17,,"QV<>",,"V","addListener"],
+	BUE:[17,,"Mx",,"V","removeListener"],
+	BzD:[17,,"QV<>",,"V","removeListener"],
 	BzJ:[20,,,,"V","beginChange"],
 	BzQ:[20,,,,"V","endChange"],
 	CAD:[20,,"Qx<>",,"V","fireChange"],
@@ -37344,7 +37344,7 @@ boot.define("RA","","",{
 					C.e.IC(F.e);
 				}
 				// 166
-				A.OB(D,null);
+				A.OE(D,null);
 				// 167
 				++B;
 			}
@@ -38167,7 +38167,7 @@ boot.define("RE","DT","RH OI ET",{
 		return this.d.BOA()
 	},
 	// java.util.TreeSet#last()
-	OM:function(){
+	ON:function(){
 		// 401
 		return this.d.BOC()
 	},
@@ -38260,7 +38260,7 @@ boot.define("RE","DT","RH OI ET",{
 	CBL:[1,,"E:G",,"E:G","floor"],
 	BNv:[1,,,,"CL<>","comparator"],
 	BXu:[1,,,,"EB<E:G>","descendingIterator"],
-	OM:[1,,,,"E:G","last"],
+	ON:[1,,,,"E:G","last"],
 	BXM:[1,,,,"E:G","pollFirst"],
 	BSW:[1,,,,"E:G","pollLast"],
 	CBN:[1,,"E:G",,"E:G","ceiling"],
@@ -40017,7 +40017,7 @@ boot.define("RL","DT","RH",{
 		return this.d.BOA()
 	},
 	// java.util.TreeMap$KeySet#last()
-	OM:function(){
+	ON:function(){
 		// 1140
 		return this.d.BOC()
 	},
@@ -40104,7 +40104,7 @@ boot.define("RL","DT","RH",{
 	CBL:[1,,"E:G",,"E:G","floor"],
 	BNv:[1,,,,"CL<>","comparator"],
 	BXu:[1,,,,"EB<E:G>","descendingIterator"],
-	OM:[1,,,,"E:G","last"],
+	ON:[1,,,,"E:G","last"],
 	BXM:[1,,,,"E:G","pollFirst"],
 	BSW:[1,,,,"E:G","pollLast"],
 	CBN:[1,,"E:G",,"E:G","ceiling"],
@@ -40838,8 +40838,8 @@ boot.define("RV","","",{
 	f:[0,"side","I"],
 	g:[0,"est","I"],
 	h:[0,"expectedModCount","I"],
-	TG:[17,,,,"J","estimateSize"],
-	CDX:[16,,,,"I","getEstimate"]
+	CDX:[16,,,,"I","getEstimate"],
+	TG:[17,,,,"J","estimateSize"]
 });
 
 // class java.util.TreeMap$ValueSpliterator "Ru"
@@ -42731,14 +42731,14 @@ boot.define("RB","RC","",{
 },{
 	$:[1025,"com.sun.javafx.collections.ListListenerHelper","E:G","RC"],
 	$0:[1],
-	CAR:[9,"E:G","RB<E:G> QV<>",,"RB<E:G>","removeListener"],
-	CEL:[1028,,"QV<>",,"RB<E:G>","removeListener"],
-	CEJ:[1028,,"Mx",,"RB<E:G>","removeListener"],
-	CAP:[9,"E:G","RB<E:G> Mx",,"RB<E:G>","removeListener"],
-	CAO:[9,"E:G","RB<E:G> Mx",,"RB<E:G>","addListener"],
+	CAQ:[9,"E:G","RB<E:G> QV<>",,"RB<E:G>","addListener"],
 	CEI:[1028,,"Mx",,"RB<E:G>","addListener"],
 	CEK:[1028,,"QV<>",,"RB<E:G>","addListener"],
-	CAQ:[9,"E:G","RB<E:G> QV<>",,"RB<E:G>","addListener"],
+	CAO:[9,"E:G","RB<E:G> Mx",,"RB<E:G>","addListener"],
+	CEJ:[1028,,"Mx",,"RB<E:G>","removeListener"],
+	CEL:[1028,,"QV<>",,"RB<E:G>","removeListener"],
+	CAR:[9,"E:G","RB<E:G> QV<>",,"RB<E:G>","removeListener"],
+	CAP:[9,"E:G","RB<E:G> Mx",,"RB<E:G>","removeListener"],
 	CAT:[9,"E:G","RB<E:G>",,"Z","hasListeners"],
 	CAS:[9,"E:G","RB<E:G> Qx<>",,"V","fireValueChangedEvent"],
 	CEM:[1028,,"Qx<>",,"V","fireValueChangedEvent"]
@@ -42803,10 +42803,10 @@ boot.define("SG","RB","",{
 	$0:[4096,,"Mx SK"],
 	$1:[2,,"Mx"],
 	c:[18,"listener","Mx"],
-	CEL:[4,,"QV<>",,"RB<E:G>","removeListener"],
-	CEJ:[4,,"Mx",,"RB<E:G>","removeListener"],
 	CEK:[4,,"QV<>",,"RB<E:G>","addListener"],
 	CEI:[4,,"Mx",,"RB<E:G>","addListener"],
+	CEL:[4,,"QV<>",,"RB<E:G>","removeListener"],
+	CEJ:[4,,"Mx",,"RB<E:G>","removeListener"],
 	CEM:[4,,"Qx<>",,"V","fireValueChangedEvent"]
 });
 
@@ -43140,18 +43140,18 @@ boot.define("SJ","RB","",{
 	$1:[4096,,"Mx QV SK"],
 	$0:[4096,,"Mx Mx SK"],
 	$5:[4096,,"QV QV SK"],
-	$2:[2,,"Mx Mx"],
 	$3:[2,,"QV<> QV<>"],
+	$2:[2,,"Mx Mx"],
 	$4:[2,,"Mx QV<>"],
 	c:[2,"invalidationListeners","[Mx"],
 	d:[2,"changeListeners","[QV<>"],
 	e:[2,"invalidationSize","I"],
 	f:[2,"changeSize","I"],
 	g:[2,"locked","Z"],
-	CEL:[4,,"QV<>",,"RB<E:G>","removeListener"],
-	CEJ:[4,,"Mx",,"RB<E:G>","removeListener"],
 	CEP:[4,,"Mx",,"SJ<E:G>","addListener"],
 	CEK:[4,,"QV<>",,"RB<E:G>","addListener"],
+	CEL:[4,,"QV<>",,"RB<E:G>","removeListener"],
+	CEJ:[4,,"Mx",,"RB<E:G>","removeListener"],
 	CEM:[4,,"Qx<>",,"V","fireValueChangedEvent"]
 });
 
@@ -43214,10 +43214,10 @@ boot.define("SH","RB","",{
 	$0:[4096,,"QV SK"],
 	$1:[2,,"QV<>"],
 	c:[18,"listener","QV<>"],
-	CEL:[4,,"QV<>",,"RB<E:G>","removeListener"],
-	CEJ:[4,,"Mx",,"RB<E:G>","removeListener"],
 	CEK:[4,,"QV<>",,"RB<E:G>","addListener"],
 	CEI:[4,,"Mx",,"RB<E:G>","addListener"],
+	CEL:[4,,"QV<>",,"RB<E:G>","removeListener"],
+	CEJ:[4,,"Mx",,"RB<E:G>","removeListener"],
 	CEM:[4,,"Qx<>",,"V","fireValueChangedEvent"]
 });
 
@@ -43248,7 +43248,7 @@ boot.define("QR","QS","Ly",{
 			// 67
 			this.g=A;
 			// 68
-			A.BzD(new boot.Qz(this.CAG(),0));
+			A.BzC(new boot.Qz(this.CAG(),0));
 			// 69
 		} else {
 			// 65
@@ -43363,7 +43363,7 @@ boot.define("Qz","","QV SI",{
 		// 87
 		if (B==null) {
 			// 93
-			A.CEC().BzC(this);
+			A.CEC().BzD(this);
 		} else {
 			// 88
 			B.CAI(A);
@@ -43621,7 +43621,7 @@ boot.define("QQ","QR","",{
 		}
 	},
 	// javafx.collections.transformation.FilteredList#ensureSize(int)
-	OX:function(A,B){
+	OY:function(A,B){
 		// 207
 		if (this.i.length<A) {
 			// 208
@@ -43669,7 +43669,7 @@ boot.define("QQ","QR","",{
 		// 235
 		B=this.BzH();
 		// 236
-		this.OX(this.BzR().CN());
+		this.OY(this.BzR().CN());
 		// 237
 		C=this.BzU(A.BzW());
 		// 238
@@ -43732,7 +43732,7 @@ boot.define("QQ","QR","",{
 		// 281
 		B=this.BzH();
 		// 282
-		this.OX(this.BzR().CN());
+		this.OY(this.BzR().CN());
 		// 283
 		C=A.BzW();
 		// 284
@@ -43793,7 +43793,7 @@ boot.define("QQ","QR","",{
 	// javafx.collections.transformation.FilteredList#refilter()
 	CAB:function(A,B,C,D,E){
 		// 317
-		this.OX(this.BzR().CN());
+		this.OY(this.BzR().CN());
 		// 318
 		A=null;
 		// 319
@@ -43877,7 +43877,6 @@ boot.define("QQ","QR","",{
 	CK:[1,,"I",,"E:G","get"],
 	BzO:[2,,"Qx<>",,"V","update"],
 	CN:[1,,,,"I","size"],
-	OX:[2,,"I",,"V","ensureSize"],
 	BzP:[2,,"Qx<>",,"V","addRemove"],
 	BzU:[2,,"I",,"I","findPosition"],
 	BzG:[17,,,,"EK<>","getPredicate"],
@@ -43889,6 +43888,7 @@ boot.define("QQ","QR","",{
 	BzE:[17,,"EK<>",,"V","setPredicate"],
 	BzI:[4,,"Qx<>",,"V","sourceChanged"],
 	BzV:[2,,"I I",,"V","updateIndexes"],
+	OY:[2,,"I",,"V","ensureSize"],
 	BzF:[17,,,,"QY<EK<>>","predicateProperty"]
 });
 
@@ -43964,14 +43964,14 @@ boot.define("QN","","QP",{
 	$0:[1],
 	RZ:[1,,,,"T:G","getValue"],
 	ByR:[1,,,,"QG","isNull"],
-	CEz:[1,,"QP<>",,"QG","isEqualTo"],
-	CFB:[1,,"G",,"QG","isEqualTo"],
-	CFF:[1,,"u",,"QE","asString"],
-	ByV:[1,,,,"QE","asString"],
 	CFH:[1,,"CV u",,"QE","asString"],
+	ByV:[1,,,,"QE","asString"],
+	CFF:[1,,"u",,"QE","asString"],
 	CFE:[1,,"G",,"QG","isNotEqualTo"],
 	CFC:[1,,"QP<>",,"QG","isNotEqualTo"],
 	ByT:[1,,,,"QG","isNotNull"],
+	CEz:[1,,"QP<>",,"QG","isEqualTo"],
+	CFB:[1,,"G",,"QG","isEqualTo"],
 	CEy:[9,"T:G","QP<T:G>",,"QN<T:G>","objectExpression"]
 });
 
@@ -44115,14 +44115,14 @@ boot.define("QM","QN","SS",{
 	W:[1,,,,"u","toString"],
 	CFL:[1028,,,,"T:G","computeValue"],
 	CFQ:[17,,,,"Z","isValid"],
-	CFJ:[148,,"[ND",,"V","bind"],
 	CFP:[17,,,,"V","invalidate"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
-	CFK:[148,,"[ND",,"V","unbind"],
+	CFJ:[148,,"[ND",,"V","bind"],
 	BTx:[1,,"Mx",,"V","addListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
 	BTy:[1,,,,"V","dispose"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	CFK:[148,,"[ND",,"V","unbind"],
 	CFM:[1,,,,"Ly<>","getDependencies"],
 	CFO:[4,,,,"V","onInvalidating"]
 });
@@ -44202,14 +44202,14 @@ boot.define("SO","RC","",{
 	$0:[2,,"NC<T:G>"],
 	$1:[4096,,"NC SW"],
 	c:[20,"observable","NC<T:G>"],
-	CFS:[1028,,"Mx",,"SO<T:G>","removeListener"],
+	CFT:[1028,,"Mz<>",,"SO<T:G>","addListener"],
+	CFR:[1028,,"Mx",,"SO<T:G>","addListener"],
+	CET:[9,"T:G","SO<T:G> NC<T#> Mx",,"SO<T:G>","addListener"],
+	CEV:[9,"T:G","SO<T:G> NC<T#> Mz<>",,"SO<T:G>","addListener"],
 	CFU:[1028,,"Mz<>",,"SO<T:G>","removeListener"],
 	CEU:[9,"T:G","SO<T:G> Mx",,"SO<T:G>","removeListener"],
+	CFS:[1028,,"Mx",,"SO<T:G>","removeListener"],
 	CEW:[9,"T:G","SO<T:G> Mz<>",,"SO<T:G>","removeListener"],
-	CET:[9,"T:G","SO<T:G> NC<T#> Mx",,"SO<T:G>","addListener"],
-	CFT:[1028,,"Mz<>",,"SO<T:G>","addListener"],
-	CEV:[9,"T:G","SO<T:G> NC<T#> Mz<>",,"SO<T:G>","addListener"],
-	CFR:[1028,,"Mx",,"SO<T:G>","addListener"],
 	CEY:[9,"T:G","SO<T:G>",,"V","fireValueChangedEvent"],
 	CEX:[1028,,,,"V","fireValueChangedEvent"]
 });
@@ -44273,10 +44273,10 @@ boot.define("SU","SO","",{
 	$0:[4096,,"NC Mx SW"],
 	$1:[2,,"NC<T:G> Mx"],
 	d:[18,"listener","Mx"],
-	CFU:[4,,"Mz<>",,"SO<T:G>","removeListener"],
-	CFS:[4,,"Mx",,"SO<T:G>","removeListener"],
 	CFT:[4,,"Mz<>",,"SO<T:G>","addListener"],
 	CFR:[4,,"Mx",,"SO<T:G>","addListener"],
+	CFU:[4,,"Mz<>",,"SO<T:G>","removeListener"],
+	CFS:[4,,"Mx",,"SO<T:G>","removeListener"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
@@ -44630,8 +44630,8 @@ boot.define("SX","SO","",{
 	$1:[4096,,"NC Mx Mz SW"],
 	$0:[4096,,"NC Mx Mx SW"],
 	$5:[4096,,"NC Mz Mz SW"],
-	$2:[2,,"NC<T:G> Mx Mx"],
 	$3:[2,,"NC<T:G> Mz<> Mz<>"],
+	$2:[2,,"NC<T:G> Mx Mx"],
 	$4:[2,,"NC<T:G> Mx Mz<>"],
 	d:[2,"invalidationListeners","[Mx"],
 	e:[2,"changeListeners","[Mz<>"],
@@ -44639,10 +44639,10 @@ boot.define("SX","SO","",{
 	g:[2,"changeSize","I"],
 	h:[2,"locked","Z"],
 	i:[2,"currentValue","T:G"],
-	CFU:[4,,"Mz<>",,"SO<T:G>","removeListener"],
-	CFS:[4,,"Mx",,"SO<T:G>","removeListener"],
 	CFV:[4,,"Mx",,"SX<T:G>","addListener"],
 	CFT:[4,,"Mz<>",,"SO<T:G>","addListener"],
+	CFU:[4,,"Mz<>",,"SO<T:G>","removeListener"],
+	CFS:[4,,"Mx",,"SO<T:G>","removeListener"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
@@ -44717,10 +44717,10 @@ boot.define("SV","SO","",{
 	$1:[2,,"NC<T:G> Mz<>"],
 	d:[18,"listener","Mz<>"],
 	e:[2,"currentValue","T:G"],
-	CFU:[4,,"Mz<>",,"SO<T:G>","removeListener"],
-	CFS:[4,,"Mx",,"SO<T:G>","removeListener"],
 	CFT:[4,,"Mz<>",,"SO<T:G>","addListener"],
 	CFR:[4,,"Mx",,"SO<T:G>","addListener"],
+	CFU:[4,,"Mz<>",,"SO<T:G>","removeListener"],
+	CFS:[4,,"Mx",,"SO<T:G>","removeListener"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
@@ -45257,24 +45257,27 @@ boot.define("Lz","","",{
 	CGU:[9,,"Ly<>",,"V","shuffle"],
 	CGV:[9,,"Ly TN",,"V","shuffle"],
 	CGX:[10,,"[G I I",,"V","swap"],
-	BSE:[9,"E:G",,,"Ly<E:G>","observableArrayList"],
+	CFZ:[9,"E:G","Dx<E:G>",,"MH<E:G>","observableSet"],
+	BTu:[137,"E:G","[E:G",,"MH<E:G>","observableSet"],
+	CFX:[9,"E:G","Bz<E:G> TS<E#,[ND>",,"Ly<E:G>","observableList"],
+	CFW:[9,"E:G","Bz<E:G>",,"Ly<E:G>","observableList"],
+	CFY:[9,"K:G V:G","CG<K:G,V:G>",,"MD<K:G,V:G>","observableMap"],
 	CGE:[9,"E:G","TS<E:G,[ND>",,"Ly<E:G>","observableArrayList"],
+	BSE:[9,"E:G",,,"Ly<E:G>","observableArrayList"],
 	CGF:[137,"E:G","[E:G",,"Ly<E:G>","observableArrayList"],
 	CGG:[9,"E:G","Dy<>",,"Ly<E:G>","observableArrayList"],
 	BSG:[9,"K:G V:G",,,"MD<K:G,V:G>","observableHashMap"],
-	CFZ:[9,"E:G","Dx<E:G>",,"MH<E:G>","observableSet"],
-	BTu:[137,"E:G","[E:G",,"MH<E:G>","observableSet"],
 	Byw:[9,"E:G",,,"Ly<E:G>","emptyObservableList"],
 	CGJ:[9,"E:G","Ly<E:G> A<E#>",,"Ly<E:G>","checkedObservableList"],
 	CFv:[9,"K:G V:G","MD<K:G,V:G> A<K#> A<V#>",,"MD<K:G,V:G>","checkedObservableMap"],
 	CGM:[9,"E:G","MH<E:G> A<E#>",,"MH<E:G>","checkedObservableSet"],
 	CFx:[9,"K:G V:G",,,"MD<K:G,V:G>","emptyObservableMap"],
 	CGO:[9,"E:G",,,"MH<E:G>","emptyObservableSet"],
-	CGD:[9,,"TT",,"TT","observableFloatArray"],
-	CGB:[9,,,,"TT","observableFloatArray"],
 	CGC:[137,,"[F",,"TT","observableFloatArray"],
-	CGA:[9,,"TU",,"TU","observableIntegerArray"],
+	CGB:[9,,,,"TT","observableFloatArray"],
+	CGD:[9,,"TT",,"TT","observableFloatArray"],
 	CFz:[137,,"[I",,"TU","observableIntegerArray"],
+	CGA:[9,,"TU",,"TU","observableIntegerArray"],
 	CFy:[9,,,,"TU","observableIntegerArray"],
 	CFN:[9,"E:G","E:G",,"Ly<E:G>","singletonObservableList"],
 	CGK:[9,"E:G","Ly<E:G>",,"Ly<E:G>","synchronizedObservableList"],
@@ -45282,10 +45285,7 @@ boot.define("Lz","","",{
 	CGN:[9,"E:G","MH<E:G>",,"MH<E:G>","synchronizedObservableSet"],
 	CGI:[9,"E:G","Ly<E:G>",,"Ly<E:G>","unmodifiableObservableList"],
 	CFu:[9,"K:G V:G","MD<K:G,V:G>",,"MD<K:G,V:G>","unmodifiableObservableMap"],
-	CGL:[9,"E:G","MH<E:G>",,"MH<E:G>","unmodifiableObservableSet"],
-	CFW:[9,"E:G","Bz<E:G>",,"Ly<E:G>","observableList"],
-	CFX:[9,"E:G","Bz<E:G> TS<E#,[ND>",,"Ly<E:G>","observableList"],
-	CFY:[9,"K:G V:G","CG<K:G,V:G>",,"MD<K:G,V:G>","observableMap"]
+	CGL:[9,"E:G","MH<E:G>",,"MH<E:G>","unmodifiableObservableSet"]
 });
 
 // class javafx.collections.ModifiableObservableListBase "SZ"
@@ -45418,7 +45418,7 @@ boot.define("SZ","QS","",{
 		// 156
 	},
 	// javafx.collections.ModifiableObservableListBase#set(int, java.lang.Object)
-	OB:function(A,B,C){
+	OE:function(A,B,C){
 		// 160
 		C=this.CGx(A,B);
 		// 161
@@ -45476,7 +45476,7 @@ boot.define("SZ","QS","",{
 	CO:[1,,"I I",,"Bz<E:G>","subList"],
 	Ov:[1,,"I Dy<>",,"Z","addAll"],
 	IC:[1,,"Dy<>",,"Z","addAll"],
-	OB:[1,,"I E:G",,"E:G","set"],
+	OE:[1,,"I E:G",,"E:G","set"],
 	IP:[1,,"Dy<>",,"Z","removeAll"],
 	XO:[4,,"I I",,"V","removeRange"],
 	IW:[1,,"Dy<>",,"Z","retainAll"],
@@ -45633,9 +45633,9 @@ boot.define("TY","","Bz",{
 		return this.c.CK(A)
 	},
 	// javafx.collections.ModifiableObservableListBase$SubObservableList#set(int, java.lang.Object)
-	OB:function(A,B){
+	OE:function(A,B){
 		// 357
-		return this.c.OB(A,B)
+		return this.c.OE(A,B)
 	},
 	// javafx.collections.ModifiableObservableListBase$SubObservableList#add(int, java.lang.Object)
 	NS:function(A,B){
@@ -45713,7 +45713,7 @@ boot.define("TY","","Bz",{
 	Hu:[1,,,,"[G","toArray"],
 	Ov:[1,,"I Dy<>",,"Z","addAll"],
 	IC:[1,,"Dy<>",,"Z","addAll"],
-	OB:[1,,"I E:G",,"E:G","set"],
+	OE:[1,,"I E:G",,"E:G","set"],
 	IN:[1,,"Dy<>",,"Z","containsAll"],
 	Ow:[1,,"I",,"EC<E:G>","listIterator"],
 	Hw:[1,,,,"EC<E:G>","listIterator"],
@@ -45783,7 +45783,7 @@ boot.define("SY","SZ","Ly TO Gy",{
 	// com.sun.javafx.collections.ObservableListWrapper#doSet(int, java.lang.Object)
 	CGx:function(A,B,C){
 		// 106
-		C=this.g.OB(A,B);
+		C=this.g.OE(A,B);
 		// 107
 		if (this.h!=null) {
 			// 108
@@ -47254,8 +47254,8 @@ boot.define("UC","","",{
 	e:[0,"fence","I"],
 	f:[0,"est","I"],
 	g:[0,"expectedModCount","I"],
-	TG:[17,,,,"J","estimateSize"],
-	BwR:[16,,,,"I","getFence"]
+	BwR:[16,,,,"I","getFence"],
+	TG:[17,,,,"J","estimateSize"]
 });
 
 // class java.util.IdentityHashMap$KeySpliterator "UB"
@@ -48130,8 +48130,8 @@ boot.define("Tv","","",{
 	c:[0,"listener","Mx"],
 	d:[0,"counter","I"],
 	CHH:[1,,,,"V","increment"],
-	CHJ:[1,,,,"I","decrement"],
-	CHz:[2,,,,"Mx","getListener"]
+	CHz:[2,,,,"Mx","getListener"],
+	CHJ:[1,,,,"I","decrement"]
 });
 
 // class com.sun.javafx.collections.SortHelper "Qu"
@@ -49195,8 +49195,8 @@ boot.define("UM","","EC",{
 boot.define("MD","","CG ND",{
 },{
 	$:[1537,"javafx.collections.ObservableMap","K:G V:G",,"CG<K:G,V:G> ND"],
-	CIw:[1025,,"UU<,>",,"V","removeListener"],
-	CIu:[1025,,"UU<,>",,"V","addListener"]
+	CIu:[1025,,"UU<,>",,"V","addListener"],
+	CIw:[1025,,"UU<,>",,"V","removeListener"]
 });
 
 // interface javafx.collections.MapChangeListener "UU"
@@ -49435,10 +49435,10 @@ boot.define("Sv","","MD",{
 	Ru:[1,,,,"Dx<K:G>","keySet"],
 	Pv:[1,,"G",,"Z","containsKey"],
 	RY:[1,,"G",,"Z","containsValue"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	CIw:[1,,"UU<,>",,"V","removeListener"],
 	CIu:[1,,"UU<,>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
+	CIw:[1,,"UU<,>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
 	CIW:[4,,"UQ<K:G,V:G>",,"V","callObservers"]
 });
 
@@ -49511,14 +49511,14 @@ boot.define("UO","RC","",{
 },{
 	$:[1025,"com.sun.javafx.collections.MapListenerHelper","K:G V:G","RC"],
 	$0:[1],
-	CIx:[9,"K:G V:G","UO<K:G,V:G> UU<,>",,"UO<K:G,V:G>","removeListener"],
-	CJG:[1028,,"UU<,>",,"UO<K:G,V:G>","removeListener"],
-	CJE:[1028,,"Mx",,"UO<K:G,V:G>","removeListener"],
-	CIZ:[9,"K:G V:G","UO<K:G,V:G> Mx",,"UO<K:G,V:G>","removeListener"],
-	CIY:[9,"K:G V:G","UO<K:G,V:G> Mx",,"UO<K:G,V:G>","addListener"],
+	CIv:[9,"K:G V:G","UO<K:G,V:G> UU<,>",,"UO<K:G,V:G>","addListener"],
 	CJD:[1028,,"Mx",,"UO<K:G,V:G>","addListener"],
 	CJF:[1028,,"UU<,>",,"UO<K:G,V:G>","addListener"],
-	CIv:[9,"K:G V:G","UO<K:G,V:G> UU<,>",,"UO<K:G,V:G>","addListener"],
+	CIY:[9,"K:G V:G","UO<K:G,V:G> Mx",,"UO<K:G,V:G>","addListener"],
+	CJE:[1028,,"Mx",,"UO<K:G,V:G>","removeListener"],
+	CJG:[1028,,"UU<,>",,"UO<K:G,V:G>","removeListener"],
+	CIx:[9,"K:G V:G","UO<K:G,V:G> UU<,>",,"UO<K:G,V:G>","removeListener"],
+	CIZ:[9,"K:G V:G","UO<K:G,V:G> Mx",,"UO<K:G,V:G>","removeListener"],
 	CJI:[9,"K:G V:G","UO<K:G,V:G>",,"Z","hasListeners"],
 	CIX:[9,"K:G V:G","UO<K:G,V:G> UQ<,>",,"V","fireValueChangedEvent"],
 	CJH:[1028,,"UQ<,>",,"V","fireValueChangedEvent"]
@@ -49583,10 +49583,10 @@ boot.define("UV","UO","",{
 	$0:[4096,,"Mx UY"],
 	$1:[2,,"Mx"],
 	c:[18,"listener","Mx"],
-	CJG:[4,,"UU<,>",,"UO<K:G,V:G>","removeListener"],
-	CJE:[4,,"Mx",,"UO<K:G,V:G>","removeListener"],
 	CJF:[4,,"UU<,>",,"UO<K:G,V:G>","addListener"],
 	CJD:[4,,"Mx",,"UO<K:G,V:G>","addListener"],
+	CJG:[4,,"UU<,>",,"UO<K:G,V:G>","removeListener"],
+	CJE:[4,,"Mx",,"UO<K:G,V:G>","removeListener"],
 	CJH:[4,,"UQ<,>",,"V","fireValueChangedEvent"]
 });
 
@@ -49918,18 +49918,18 @@ boot.define("UX","UO","",{
 	$1:[4096,,"Mx UU UY"],
 	$0:[4096,,"Mx Mx UY"],
 	$5:[4096,,"UU UU UY"],
-	$2:[2,,"Mx Mx"],
 	$3:[2,,"UU<,> UU<,>"],
+	$2:[2,,"Mx Mx"],
 	$4:[2,,"Mx UU<,>"],
 	c:[2,"invalidationListeners","[Mx"],
 	d:[2,"changeListeners","[UU<,>"],
 	e:[2,"invalidationSize","I"],
 	f:[2,"changeSize","I"],
 	g:[2,"locked","Z"],
-	CJG:[4,,"UU<,>",,"UO<K:G,V:G>","removeListener"],
-	CJE:[4,,"Mx",,"UO<K:G,V:G>","removeListener"],
 	CJJ:[4,,"Mx",,"UX<K:G,V:G>","addListener"],
 	CJF:[4,,"UU<,>",,"UO<K:G,V:G>","addListener"],
+	CJG:[4,,"UU<,>",,"UO<K:G,V:G>","removeListener"],
+	CJE:[4,,"Mx",,"UO<K:G,V:G>","removeListener"],
 	CJH:[4,,"UQ<,>",,"V","fireValueChangedEvent"]
 });
 
@@ -49992,10 +49992,10 @@ boot.define("UW","UO","",{
 	$0:[4096,,"UU UY"],
 	$1:[2,,"UU<,>"],
 	c:[18,"listener","UU<,>"],
-	CJG:[4,,"UU<,>",,"UO<K:G,V:G>","removeListener"],
-	CJE:[4,,"Mx",,"UO<K:G,V:G>","removeListener"],
 	CJF:[4,,"UU<,>",,"UO<K:G,V:G>","addListener"],
 	CJD:[4,,"Mx",,"UO<K:G,V:G>","addListener"],
+	CJG:[4,,"UU<,>",,"UO<K:G,V:G>","removeListener"],
+	CJE:[4,,"Mx",,"UO<K:G,V:G>","removeListener"],
 	CJH:[4,,"UQ<,>",,"V","fireValueChangedEvent"]
 });
 
@@ -50799,8 +50799,8 @@ boot.define("Ux","","Fu",{
 boot.define("MH","","Dx ND",{
 },{
 	$:[1537,"javafx.collections.ObservableSet","E:G",,"Dx<E:G> ND"],
-	CJR:[1025,,"VD<>",,"V","removeListener"],
-	CJP:[1025,,"VD<>",,"V","addListener"]
+	CJP:[1025,,"VD<>",,"V","addListener"],
+	CJR:[1025,,"VD<>",,"V","removeListener"]
 });
 
 // interface javafx.collections.SetChangeListener "VD"
@@ -51040,10 +51040,10 @@ boot.define("Sw","","MH",{
 	IN:[1,,"Dy<>",,"Z","containsAll"],
 	IP:[1,,"Dy<>",,"Z","removeAll"],
 	IW:[1,,"Dy<>",,"Z","retainAll"],
-	CJR:[1,,"VD<>",,"V","removeListener"],
-	BUE:[1,,"Mx",,"V","removeListener"],
 	CJP:[1,,"VD<>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	CJR:[1,,"VD<>",,"V","removeListener"],
 	CJL:[2,,"VB<E:G>",,"V","callObservers"],
 	CJK:[2,,"Dy<> Z",,"Z","removeRetain"]
 });
@@ -51117,14 +51117,14 @@ boot.define("Uy","RC","",{
 },{
 	$:[1025,"com.sun.javafx.collections.SetListenerHelper","E:G","RC"],
 	$0:[1],
-	CJS:[9,"E:G","Uy<E:G> VD<>",,"Uy<E:G>","removeListener"],
-	CJw:[1028,,"VD<>",,"Uy<E:G>","removeListener"],
-	CJu:[1028,,"Mx",,"Uy<E:G>","removeListener"],
-	CJO:[9,"E:G","Uy<E:G> Mx",,"Uy<E:G>","removeListener"],
-	CJN:[9,"E:G","Uy<E:G> Mx",,"Uy<E:G>","addListener"],
+	CJQ:[9,"E:G","Uy<E:G> VD<>",,"Uy<E:G>","addListener"],
 	CJZ:[1028,,"Mx",,"Uy<E:G>","addListener"],
 	CJv:[1028,,"VD<>",,"Uy<E:G>","addListener"],
-	CJQ:[9,"E:G","Uy<E:G> VD<>",,"Uy<E:G>","addListener"],
+	CJN:[9,"E:G","Uy<E:G> Mx",,"Uy<E:G>","addListener"],
+	CJu:[1028,,"Mx",,"Uy<E:G>","removeListener"],
+	CJw:[1028,,"VD<>",,"Uy<E:G>","removeListener"],
+	CJS:[9,"E:G","Uy<E:G> VD<>",,"Uy<E:G>","removeListener"],
+	CJO:[9,"E:G","Uy<E:G> Mx",,"Uy<E:G>","removeListener"],
 	CJy:[9,"E:G","Uy<E:G>",,"Z","hasListeners"],
 	CJM:[9,"E:G","Uy<E:G> VB<>",,"V","fireValueChangedEvent"],
 	CJx:[1028,,"VB<>",,"V","fireValueChangedEvent"]
@@ -51189,10 +51189,10 @@ boot.define("VE","Uy","",{
 	$0:[4096,,"Mx VH"],
 	$1:[2,,"Mx"],
 	c:[18,"listener","Mx"],
-	CJw:[4,,"VD<>",,"Uy<E:G>","removeListener"],
-	CJu:[4,,"Mx",,"Uy<E:G>","removeListener"],
 	CJv:[4,,"VD<>",,"Uy<E:G>","addListener"],
 	CJZ:[4,,"Mx",,"Uy<E:G>","addListener"],
+	CJw:[4,,"VD<>",,"Uy<E:G>","removeListener"],
+	CJu:[4,,"Mx",,"Uy<E:G>","removeListener"],
 	CJx:[4,,"VB<>",,"V","fireValueChangedEvent"]
 });
 
@@ -51524,18 +51524,18 @@ boot.define("VG","Uy","",{
 	$1:[4096,,"Mx VD VH"],
 	$0:[4096,,"Mx Mx VH"],
 	$5:[4096,,"VD VD VH"],
-	$2:[2,,"Mx Mx"],
 	$3:[2,,"VD<> VD<>"],
+	$2:[2,,"Mx Mx"],
 	$4:[2,,"Mx VD<>"],
 	c:[2,"invalidationListeners","[Mx"],
 	d:[2,"changeListeners","[VD<>"],
 	e:[2,"invalidationSize","I"],
 	f:[2,"changeSize","I"],
 	g:[2,"locked","Z"],
-	CJw:[4,,"VD<>",,"Uy<E:G>","removeListener"],
-	CJu:[4,,"Mx",,"Uy<E:G>","removeListener"],
 	CJz:[4,,"Mx",,"VG<E:G>","addListener"],
 	CJv:[4,,"VD<>",,"Uy<E:G>","addListener"],
+	CJw:[4,,"VD<>",,"Uy<E:G>","removeListener"],
+	CJu:[4,,"Mx",,"Uy<E:G>","removeListener"],
 	CJx:[4,,"VB<>",,"V","fireValueChangedEvent"]
 });
 
@@ -51598,10 +51598,10 @@ boot.define("VF","Uy","",{
 	$0:[4096,,"VD VH"],
 	$1:[2,,"VD<>"],
 	c:[18,"listener","VD<>"],
-	CJw:[4,,"VD<>",,"Uy<E:G>","removeListener"],
-	CJu:[4,,"Mx",,"Uy<E:G>","removeListener"],
 	CJv:[4,,"VD<>",,"Uy<E:G>","addListener"],
 	CJZ:[4,,"Mx",,"Uy<E:G>","addListener"],
+	CJw:[4,,"VD<>",,"Uy<E:G>","removeListener"],
+	CJu:[4,,"Mx",,"Uy<E:G>","removeListener"],
 	CJx:[4,,"VB<>",,"V","fireValueChangedEvent"]
 });
 
@@ -51871,10 +51871,10 @@ boot.define("Sx","CC","MD",{
 	Ru:[1,,,,"Dx<K:G>","keySet"],
 	Pv:[1,,"G",,"Z","containsKey"],
 	RY:[1,,"G",,"Z","containsValue"],
-	CIw:[1,,"UU<,>",,"V","removeListener"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	CIu:[1,,"UU<,>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
+	CIu:[1,,"UU<,>",,"V","addListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	CIw:[1,,"UU<,>",,"V","removeListener"],
 	CIW:[2,,"UQ<,>",,"V","callObservers"]
 });
 
@@ -52174,11 +52174,11 @@ boot.define("Sy","CC","MD",{
 	Ru:[1,,,,"Dx<K:G>","keySet"],
 	Pv:[1,,"G",,"Z","containsKey"],
 	RY:[1,,"G",,"Z","containsValue"],
-	CKC:[0,,"G G",,"V","typeCheck"],
-	CIw:[1,,"UU<,>",,"V","removeListener"],
-	BUE:[1,,"Mx",,"V","removeListener"],
 	CIu:[1,,"UU<,>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	CIw:[1,,"UU<,>",,"V","removeListener"],
+	CKC:[0,,"G G",,"V","typeCheck"],
 	CIW:[2,,"UQ<,>",,"V","callObservers"]
 });
 
@@ -52961,10 +52961,10 @@ boot.define("Sz","TA","MD",{
 	h:[18,"backingMap","MD<K:G,V:G>"],
 	i:[2,"listenerHelper","UO"],
 	j:[18,"listener","UU<K:G,V:G>"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	CIw:[1,,"UU<,>",,"V","removeListener"],
 	CIu:[1,,"UU<,>",,"V","addListener"],
-	BTx:[1,,"Mx",,"V","addListener"]
+	BTx:[1,,"Mx",,"V","addListener"],
+	CIw:[1,,"UU<,>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"]
 });
 
 // interface javafx.collections.ObservableArray "VO"
@@ -52976,8 +52976,8 @@ boot.define("VO","","ND",{
 	NO:[1025,,"I",,"V","ensureCapacity"],
 	NQ:[1025,,,,"V","trimToSize"],
 	CKJ:[1025,,"I",,"V","resize"],
-	CLD:[1025,,"VQ<T:VO<T#>>",,"V","removeListener"],
-	CLB:[1025,,"VQ<T:VO<T#>>",,"V","addListener"]
+	CLB:[1025,,"VQ<T:VO<T#>>",,"V","addListener"],
+	CLD:[1025,,"VQ<T:VO<T#>>",,"V","removeListener"]
 });
 
 // interface javafx.collections.ArrayChangeListener "VQ"
@@ -53027,10 +53027,10 @@ boot.define("TC","","VO",{
 	$:[1025,"javafx.collections.ObservableArrayBase","T:VO<T#>","G","VO<T:VO<T#>>"],
 	$0:[1],
 	c:[2,"listenerHelper","VP<T:VO<T#>>"],
-	BUE:[17,,"Mx",,"V","removeListener"],
-	CLD:[17,,"VQ<T:VO<T#>>",,"V","removeListener"],
 	CLB:[17,,"VQ<T:VO<T#>>",,"V","addListener"],
 	BTx:[17,,"Mx",,"V","addListener"],
+	CLD:[17,,"VQ<T:VO<T#>>",,"V","removeListener"],
+	BUE:[17,,"Mx",,"V","removeListener"],
 	CKN:[20,,"Z I I",,"V","fireChange"]
 });
 
@@ -53106,14 +53106,14 @@ boot.define("VP","RC","",{
 	$:[1025,"com.sun.javafx.collections.ArrayListenerHelper","T:VO<T#>","RC"],
 	$0:[1,,"T:VO<T#>"],
 	c:[20,"observable","T:VO<T#>"],
+	CKz:[9,"T:VO<T#>","VP T:VO<T#> Mx",,"VP","addListener"],
+	CLH:[1028,,"Mx",,"VP","addListener"],
+	CLJ:[1028,,"VQ<T:VO<T#>>",,"VP","addListener"],
+	CLC:[9,"T:VO<T#>","VP T:VO<T#> VQ",,"VP","addListener"],
 	CLI:[1028,,"Mx",,"VP","removeListener"],
-	CLE:[9,,"VP VQ",,"VP","removeListener"],
 	CLA:[9,,"VP Mx",,"VP","removeListener"],
 	CLK:[1028,,"VQ<T:VO<T#>>",,"VP","removeListener"],
-	CLJ:[1028,,"VQ<T:VO<T#>>",,"VP","addListener"],
-	CLH:[1028,,"Mx",,"VP","addListener"],
-	CLC:[9,"T:VO<T#>","VP T:VO<T#> VQ",,"VP","addListener"],
-	CKz:[9,"T:VO<T#>","VP T:VO<T#> Mx",,"VP","addListener"],
+	CLE:[9,,"VP VQ",,"VP","removeListener"],
 	CLM:[9,,"VP",,"Z","hasListeners"],
 	CLL:[1028,,"Z I I",,"V","fireValueChangedEvent"],
 	CLF:[9,,"VP Z I I",,"V","fireValueChangedEvent"]
@@ -53178,10 +53178,10 @@ boot.define("VR","VP","",{
 	$0:[4096,,"VO Mx VU"],
 	$1:[2,,"T:VO<T#> Mx"],
 	d:[18,"listener","Mx"],
-	CLK:[4,,"VQ",,"VP","removeListener"],
-	CLI:[4,,"Mx",,"VP","removeListener"],
 	CLJ:[4,,"VQ",,"VP","addListener"],
 	CLH:[4,,"Mx",,"VP","addListener"],
+	CLK:[4,,"VQ",,"VP","removeListener"],
+	CLI:[4,,"Mx",,"VP","removeListener"],
 	CLL:[4,,"Z I I",,"V","fireValueChangedEvent"]
 });
 
@@ -53513,18 +53513,18 @@ boot.define("VT","VP","",{
 	$1:[4096,,"VO Mx VQ VU"],
 	$0:[4096,,"VO Mx Mx VU"],
 	$5:[4096,,"VO VQ VQ VU"],
-	$2:[2,,"T:VO<T#> Mx Mx"],
 	$3:[2,,"T:VO<T#> VQ VQ"],
+	$2:[2,,"T:VO<T#> Mx Mx"],
 	$4:[2,,"T:VO<T#> Mx VQ"],
 	d:[2,"invalidationListeners","[Mx"],
 	e:[2,"changeListeners","[VQ"],
 	f:[2,"invalidationSize","I"],
 	g:[2,"changeSize","I"],
 	h:[2,"locked","Z"],
-	CLK:[4,,"VQ<T:VO<T#>>",,"VP","removeListener"],
-	CLI:[4,,"Mx",,"VP","removeListener"],
 	CLN:[4,,"Mx",,"VT","addListener"],
 	CLJ:[4,,"VQ<T:VO<T#>>",,"VP","addListener"],
+	CLK:[4,,"VQ<T:VO<T#>>",,"VP","removeListener"],
+	CLI:[4,,"Mx",,"VP","removeListener"],
 	CLL:[4,,"Z I I",,"V","fireValueChangedEvent"]
 });
 
@@ -53587,10 +53587,10 @@ boot.define("VS","VP","",{
 	$0:[4096,,"VO VQ VU"],
 	$1:[2,,"T:VO<T#> VQ"],
 	d:[18,"listener","VQ"],
-	CLK:[4,,"VQ",,"VP","removeListener"],
-	CLI:[4,,"Mx",,"VP","removeListener"],
 	CLJ:[4,,"VQ",,"VP","addListener"],
 	CLH:[4,,"Mx",,"VP","addListener"],
+	CLK:[4,,"VQ",,"VP","removeListener"],
+	CLI:[4,,"Mx",,"VP","removeListener"],
 	CLL:[4,,"Z I I",,"V","fireValueChangedEvent"]
 });
 
@@ -53613,7 +53613,7 @@ boot.define("TU","","VO",{
 	CKQ:[1153,,"[I",,"V","addAll"],
 	CKu:[1025,,"I TU I I",,"V","set"],
 	CKZ:[1025,,"I [I I I",,"V","set"],
-	OD:[1025,,"I I",,"V","set"],
+	OC:[1025,,"I I",,"V","set"],
 	CKX:[1025,,"TU I I",,"V","setAll"],
 	CKH:[1153,,"[I",,"V","setAll"],
 	CKY:[1025,,"[I I I",,"V","setAll"],
@@ -53838,7 +53838,7 @@ boot.define("TB","TC","TU",{
 		return this.e[A]
 	},
 	// com.sun.javafx.collections.ObservableIntegerArrayImpl#set(int, int)
-	OD:function(A,B){
+	OC:function(A,B){
 		// 190
 		this.Xu(A+1);
 		// 191
@@ -54073,7 +54073,7 @@ boot.define("TB","TC","TU",{
 	CKQ:[129,,"[I",,"V","addAll"],
 	CKP:[1,,"TU",,"V","addAll"],
 	CKT:[1,,"[I I I",,"V","addAll"],
-	OD:[1,,"I I",,"V","set"],
+	OC:[1,,"I I",,"V","set"],
 	CKu:[1,,"I TU I I",,"V","set"],
 	CKZ:[1,,"I [I I I",,"V","set"],
 	NO:[1,,"I",,"V","ensureCapacity"],
@@ -54109,7 +54109,7 @@ boot.define("TT","","VO",{
 	CLU:[1153,,"[F",,"V","addAll"],
 	CLy:[1025,,"I TT I I",,"V","set"],
 	CLx:[1025,,"I [F I I",,"V","set"],
-	OG:[1025,,"I F",,"V","set"],
+	OB:[1025,,"I F",,"V","set"],
 	CLv:[1025,,"TT I I",,"V","setAll"],
 	CLO:[1153,,"[F",,"V","setAll"],
 	CLw:[1025,,"[F I I",,"V","setAll"],
@@ -54334,7 +54334,7 @@ boot.define("TD","TC","TT",{
 		return this.e[A]
 	},
 	// com.sun.javafx.collections.ObservableFloatArrayImpl#set(int, float)
-	OG:function(A,B){
+	OB:function(A,B){
 		// 190
 		this.Xu(A+1);
 		// 191
@@ -54569,7 +54569,7 @@ boot.define("TD","TC","TT",{
 	CLU:[129,,"[F",,"V","addAll"],
 	CLT:[1,,"TT",,"V","addAll"],
 	CLX:[1,,"[F I I",,"V","addAll"],
-	OG:[1,,"I F",,"V","set"],
+	OB:[1,,"I F",,"V","set"],
 	CLy:[1,,"I TT I I",,"V","set"],
 	CLx:[1,,"I [F I I",,"V","set"],
 	NO:[1,,"I",,"V","ensureCapacity"],
@@ -54603,7 +54603,7 @@ boot.define("TE","QS","Ly",{
 		// 928
 		this.h=λ(boot.QV,"CAI","CMD",this,[]);
 		// 931
-		this.g.BzD(new boot.Qz(this.h,0));
+		this.g.BzC(new boot.Qz(this.h,0));
 		// 932
 	},
 	// javafx.collections.FXCollections$UnmodifiableObservableListImpl#get(int)
@@ -54775,7 +54775,7 @@ boot.define("TF","QS","Ly",{
 			// 1272
 			this.i=λ(boot.QV,"CAI","CME",this,[]);
 			// 1275
-			A.BzD(new boot.Qz(this.i,0));
+			A.BzC(new boot.Qz(this.i,0));
 			// 1276
 		}
 	},
@@ -54891,11 +54891,11 @@ boot.define("TF","QS","Ly",{
 		return this.g.NZ(A)
 	},
 	// javafx.collections.FXCollections$CheckedObservableList#set(int, java.lang.Object)
-	OB:function(A,B){
+	OE:function(A,B){
 		// 1388
 		this.CMF(B);
 		// 1389
-		return this.g.OB(A,B)
+		return this.g.OE(A,B)
 	},
 	// javafx.collections.FXCollections$CheckedObservableList#add(int, java.lang.Object)
 	NS:function(A,B){
@@ -55077,7 +55077,7 @@ boot.define("TF","QS","Ly",{
 	Ov:[1,,"I Dy<>",,"Z","addAll"],
 	IC:[1,,"Dy<>",,"Z","addAll"],
 	ByX:[129,,"[T:G",,"Z","addAll"],
-	OB:[1,,"I T:G",,"T:G","set"],
+	OE:[1,,"I T:G",,"T:G","set"],
 	IN:[1,,"Dy<>",,"Z","containsAll"],
 	Ow:[1,,"I",,"EC<T:G>","listIterator"],
 	Hw:[1,,,,"EC<T:G>","listIterator"],
@@ -55282,7 +55282,7 @@ boot.define("TH","","Bz",{
 		return B
 	},
 	// javafx.collections.FXCollections$SynchronizedList#set(int, java.lang.Object)
-	OB:function(A,B,C,D){
+	OE:function(A,B,C,D){
 		return C
 	},
 	// javafx.collections.FXCollections$SynchronizedList#add(int, java.lang.Object)
@@ -55358,7 +55358,7 @@ boot.define("TH","","Bz",{
 	Hu:[1,,,,"[G","toArray"],
 	IC:[1,,"Dy<>",,"Z","addAll"],
 	Ov:[1,,"I Dy<>",,"Z","addAll"],
-	OB:[1,,"I T:G",,"T:G","set"],
+	OE:[1,,"I T:G",,"T:G","set"],
 	IN:[1,,"Dy<>",,"Z","containsAll"],
 	Ow:[1,,"I",,"EC<T:G>","listIterator"],
 	Hw:[1,,,,"EC<T:G>","listIterator"],
@@ -55377,7 +55377,7 @@ boot.define("TG","TH","Ly",{
 		// 1177
 		this.g=λ(boot.QV,"CAI","CMH",this,[]);
 		// 1180
-		this.f.BzD(new boot.Qz(this.g,0));
+		this.f.BzC(new boot.Qz(this.g,0));
 		// 1181
 	},
 	// javafx.collections.FXCollections$SynchronizedObservableList#<init>(javafx.collections.ObservableList)
@@ -55440,7 +55440,7 @@ boot.define("TG","TH","Ly",{
 		}
 	},
 	// javafx.collections.FXCollections$SynchronizedObservableList#addListener(javafx.collections.ListChangeListener)
-	BzD:function(A,B,C){
+	BzC:function(A,B,C){
 		// 1246
 		try {
 			this.e=boot.RB.CAQ(this.e,A);
@@ -55451,7 +55451,7 @@ boot.define("TG","TH","Ly",{
 		}
 	},
 	// javafx.collections.FXCollections$SynchronizedObservableList#removeListener(javafx.collections.ListChangeListener)
-	BzC:function(A,B,C){
+	BzD:function(A,B,C){
 		// 1253
 		try {
 			this.e=boot.RB.CAR(this.e,A);
@@ -55480,10 +55480,10 @@ boot.define("TG","TH","Ly",{
 	Byv:[129,,"[T:G",,"Z","retainAll"],
 	ByZ:[1,,"Dy<>",,"Z","setAll"],
 	ByY:[129,,"[T:G",,"Z","setAll"],
-	BUE:[17,,"Mx",,"V","removeListener"],
-	BzC:[1,,"QV<>",,"V","removeListener"],
-	BzD:[1,,"QV<>",,"V","addListener"],
-	BTx:[17,,"Mx",,"V","addListener"]
+	BzC:[1,,"QV<>",,"V","addListener"],
+	BTx:[17,,"Mx",,"V","addListener"],
+	BzD:[1,,"QV<>",,"V","removeListener"],
+	BUE:[17,,"Mx",,"V","removeListener"]
 });
 
 // class javafx.collections.FXCollections$SingletonObservableList "TI"
@@ -55541,11 +55541,11 @@ boot.define("TI","BV","Ly",{
 		// 886
 	},
 	// javafx.collections.FXCollections$SingletonObservableList#addListener(javafx.collections.ListChangeListener)
-	BzD:function(A){
+	BzC:function(A){
 		// 890
 	},
 	// javafx.collections.FXCollections$SingletonObservableList#removeListener(javafx.collections.ListChangeListener)
-	BzC:function(A){
+	BzD:function(A){
 		// 894
 	},
 	// javafx.collections.FXCollections$SingletonObservableList#size()
@@ -55588,10 +55588,10 @@ boot.define("TI","BV","Ly",{
 	Byv:[129,,"[E:G",,"Z","retainAll"],
 	ByZ:[1,,"Dy<>",,"Z","setAll"],
 	ByY:[129,,"[E:G",,"Z","setAll"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BzC:[1,,"QV<>",,"V","removeListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
-	BzD:[1,,"QV<>",,"V","addListener"]
+	BzC:[1,,"QV<>",,"V","addListener"],
+	BzD:[1,,"QV<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"]
 });
 
 // class javafx.collections.FXCollections$UnmodifiableObservableSet "TJ"
@@ -55716,10 +55716,10 @@ boot.define("TJ","DT","MH",{
 	IC:[1,,"Dy<>",,"Z","addAll"],
 	IP:[1,,"Dy<>",,"Z","removeAll"],
 	IW:[1,,"Dy<>",,"Z","retainAll"],
-	CJR:[1,,"VD<>",,"V","removeListener"],
-	BUE:[1,,"Mx",,"V","removeListener"],
 	CJP:[1,,"VD<>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	CJR:[1,,"VD<>",,"V","removeListener"],
 	CJL:[2,,"VB<>",,"V","callObservers"],
 	CMI:[2,,,,"V","initListener"]
 });
@@ -56039,11 +56039,11 @@ boot.define("TK","DT","MH",{
 	IN:[1,,"Dy<>",,"Z","containsAll"],
 	IP:[1,,"Dy<>",,"Z","removeAll"],
 	IW:[1,,"Dy<>",,"Z","retainAll"],
-	CMF:[0,,"G",,"V","typeCheck"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	CJR:[1,,"VD<>",,"V","removeListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
 	CJP:[1,,"VD<>",,"V","addListener"],
+	CJR:[1,,"VD<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	CMF:[0,,"G",,"V","typeCheck"],
 	CJL:[2,,"VB<>",,"V","callObservers"]
 });
 
@@ -56157,10 +56157,10 @@ boot.define("TL","TM","MH",{
 	e:[18,"backingSet","MH<E:G>"],
 	f:[2,"listenerHelper","Uy"],
 	g:[18,"listener","VD<E:G>"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	CJR:[1,,"VD<>",,"V","removeListener"],
 	CJP:[1,,"VD<>",,"V","addListener"],
-	BTx:[1,,"Mx",,"V","addListener"]
+	BTx:[1,,"Mx",,"V","addListener"],
+	CJR:[1,,"VD<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"]
 });
 
 // class js.util.Random "TN"
@@ -56170,7 +56170,7 @@ boot.define("TN","","",{
 		// 18
 	},
 	// js.util.Random#nextInt()
-	BJD:function(){
+	BJF:function(){
 		// 37
 		return this.CGW(2147483647)
 	},
@@ -56187,7 +56187,7 @@ boot.define("TN","","",{
 		// 112
 		while (B<C) {
 			// 113
-			D=this.BJD();
+			D=this.BJF();
 			E=boot.CU.FL(C-B,4);
 			for (; E-->0; D=(D>>8)) {
 				// 114
@@ -56200,7 +56200,7 @@ boot.define("TN","","",{
 	$:[0,"java.util.Random",,"G"],
 	$0:[0],
 	CGW:[1,,"I",,"I","nextInt"],
-	BJD:[1,,,,"I","nextInt"],
+	BJF:[1,,,,"I","nextInt"],
 	CMN:[1,,"[B",,"V","nextBytes"]
 });
 
@@ -56291,10 +56291,10 @@ boot.define("TP","CC","MD",{
 	Ru:[1,,,,"Dx<K:G>","keySet"],
 	Pv:[1,,"G",,"Z","containsKey"],
 	RY:[1,,"G",,"Z","containsValue"],
-	CIw:[1,,"UU<,>",,"V","removeListener"],
-	BUE:[1,,"Mx",,"V","removeListener"],
+	CIu:[1,,"UU<,>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
-	CIu:[1,,"UU<,>",,"V","addListener"]
+	BUE:[1,,"Mx",,"V","removeListener"],
+	CIw:[1,,"UU<,>",,"V","removeListener"]
 });
 
 // class javafx.collections.FXCollections$EmptyObservableList "TQ"
@@ -56314,11 +56314,11 @@ boot.define("TQ","BV","Ly",{
 		// 738
 	},
 	// javafx.collections.FXCollections$EmptyObservableList#addListener(javafx.collections.ListChangeListener)
-	BzD:function(A){
+	BzC:function(A){
 		// 743
 	},
 	// javafx.collections.FXCollections$EmptyObservableList#removeListener(javafx.collections.ListChangeListener)
-	BzC:function(A){
+	BzD:function(A){
 		// 747
 	},
 	// javafx.collections.FXCollections$EmptyObservableList#size()
@@ -56438,10 +56438,10 @@ boot.define("TQ","BV","Ly",{
 	Byv:[129,,"[E:G",,"Z","retainAll"],
 	ByZ:[1,,"Dy<>",,"Z","setAll"],
 	ByY:[129,,"[E:G",,"Z","setAll"],
-	BUE:[17,,"Mx",,"V","removeListener"],
-	BzC:[1,,"QV<>",,"V","removeListener"],
-	BzD:[1,,"QV<>",,"V","addListener"],
-	BTx:[17,,"Mx",,"V","addListener"]
+	BzC:[1,,"QV<>",,"V","addListener"],
+	BTx:[17,,"Mx",,"V","addListener"],
+	BzD:[1,,"QV<>",,"V","removeListener"],
+	BUE:[17,,"Mx",,"V","removeListener"]
 });
 
 // class javafx.collections.FXCollections$EmptyObservableList$1 "Vw"
@@ -56583,10 +56583,10 @@ boot.define("TR","DT","MH",{
 	Hu:[1,,,,"[G","toArray"],
 	CP:[1,"E:G","[E:G",,"[E:G","toArray"],
 	IN:[1,,"Dy<>",,"Z","containsAll"],
-	CJR:[1,,"VD<>",,"V","removeListener"],
-	BUE:[1,,"Mx",,"V","removeListener"],
 	CJP:[1,,"VD<>",,"V","addListener"],
-	BTx:[1,,"Mx",,"V","addListener"]
+	BTx:[1,,"Mx",,"V","addListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	CJR:[1,,"VD<>",,"V","removeListener"]
 });
 
 // class javafx.collections.FXCollections$EmptyObservableSet$1 "Vx"
@@ -58819,39 +58819,39 @@ boot.define("Py","","",{
 	CNZ:[9,,"uI D",,"WA","add"],
 	CNY:[9,,"uI uI",,"uJ","add"],
 	CNX:[138,,"uI uI [ND",,"uJ","add"],
+	COB:[9,,"J uI",,"uJ","add"],
 	COC:[9,,"uI I",,"uJ","add"],
 	COE:[9,,"I uI",,"uJ","add"],
-	COB:[9,,"J uI",,"uJ","add"],
 	CNz:[9,,"uI J",,"uJ","add"],
 	CNy:[9,,"F uI",,"uJ","add"],
 	CNw:[9,,"uI F",,"uJ","add"],
 	CNv:[9,,"D uI",,"WA","add"],
-	CRQ:[9,,"J uI",,"uJ","min"],
+	CRO:[9,,"F uI",,"uJ","min"],
 	CRP:[9,,"uI J",,"uJ","min"],
+	CRQ:[9,,"J uI",,"uJ","min"],
 	CRR:[9,,"uI I",,"uJ","min"],
 	CRS:[9,,"I uI",,"uJ","min"],
-	CRL:[9,,"uI D",,"WA","min"],
 	CRJ:[138,,"uI uI [ND",,"uJ","min"],
-	CRN:[9,,"uI F",,"uJ","min"],
-	CRM:[9,,"D uI",,"WA","min"],
-	CRO:[9,,"F uI",,"uJ","min"],
 	CRK:[9,,"uI uI",,"uJ","min"],
-	CRu:[9,,"J uI",,"uJ","max"],
+	CRL:[9,,"uI D",,"WA","min"],
+	CRM:[9,,"D uI",,"WA","min"],
+	CRN:[9,,"uI F",,"uJ","min"],
 	CRX:[9,,"uI F",,"uJ","max"],
 	CRY:[9,,"F uI",,"uJ","max"],
-	CRv:[9,,"uI I",,"uJ","max"],
-	CRw:[9,,"I uI",,"uJ","max"],
 	CRZ:[9,,"uI J",,"uJ","max"],
-	CRU:[9,,"uI uI",,"uJ","max"],
-	CRT:[138,,"uI uI [ND",,"uJ","max"],
+	CRw:[9,,"I uI",,"uJ","max"],
+	CRu:[9,,"J uI",,"uJ","max"],
+	CRv:[9,,"uI I",,"uJ","max"],
 	CRV:[9,,"uI D",,"WA","max"],
+	CRT:[138,,"uI uI [ND",,"uJ","max"],
 	CRW:[9,,"D uI",,"WA","max"],
+	CRU:[9,,"uI uI",,"uJ","max"],
 	CSC:[137,,"[G",,"QF","concat"],
 	CFI:[137,,"CV u [G",,"QF","format"],
 	CFG:[137,,"u [G",,"QF","format"],
+	CUO:[9,"K:G V:G","MD<K:G,V:G>",,"QG","isEmpty"],
 	CUE:[9,"E:G","MH<E:G>",,"QG","isEmpty"],
 	CTO:[9,"E:G","Ly<E:G>",,"QG","isEmpty"],
-	CUO:[9,"K:G V:G","MD<K:G,V:G>",,"QG","isEmpty"],
 	CTG:[9,,"uK",,"QG","isEmpty"],
 	CTF:[9,,"uK",,"WG","length"],
 	CTN:[9,"E:G","Ly<E:G>",,"WG","size"],
@@ -58860,223 +58860,223 @@ boot.define("Py","","",{
 	CUG:[9,,"VO",,"WG","size"],
 	COx:[9,,"uI F",,"uJ","divide"],
 	COy:[9,,"F uI",,"uJ","divide"],
-	COz:[9,,"uI J",,"uJ","divide"],
-	CPA:[9,,"J uI",,"uJ","divide"],
-	CPB:[9,,"uI I",,"uJ","divide"],
-	CPC:[9,,"I uI",,"uJ","divide"],
-	COv:[9,,"uI D",,"WA","divide"],
-	COu:[9,,"uI uI",,"uJ","divide"],
 	COZ:[138,,"uI uI [ND",,"uJ","divide"],
 	COw:[9,,"D uI",,"WA","divide"],
+	COv:[9,,"uI D",,"WA","divide"],
+	COu:[9,,"uI uI",,"uJ","divide"],
+	COz:[9,,"uI J",,"uJ","divide"],
+	CPC:[9,,"I uI",,"uJ","divide"],
+	CPB:[9,,"uI I",,"uJ","divide"],
+	CPA:[9,,"J uI",,"uJ","divide"],
 	ByS:[9,,"QP<>",,"QG","isNull"],
 	CRx:[9,,"uL uL",,"QG","and"],
 	CRy:[9,,"uL uL",,"QG","or"],
 	ByW:[9,,"NC<>",,"QF","convert"],
-	COH:[9,,"uI D",,"WA","subtract"],
-	COI:[9,,"D uI",,"WA","subtract"],
-	COJ:[9,,"uI F",,"uJ","subtract"],
-	COG:[9,,"uI uI",,"uJ","subtract"],
-	COF:[138,,"uI uI [ND",,"uJ","subtract"],
-	COO:[9,,"I uI",,"uJ","subtract"],
-	CON:[9,,"uI I",,"uJ","subtract"],
-	COM:[9,,"J uI",,"uJ","subtract"],
-	COL:[9,,"uI J",,"uJ","subtract"],
-	COK:[9,,"F uI",,"uJ","subtract"],
 	CRz:[9,,"uL",,"QG","not"],
-	COT:[9,,"uI F",,"uJ","multiply"],
-	COS:[9,,"D uI",,"WA","multiply"],
-	COR:[9,,"uI D",,"WA","multiply"],
-	COQ:[9,,"uI uI",,"uJ","multiply"],
-	COP:[138,,"uI uI [ND",,"uJ","multiply"],
-	COY:[9,,"I uI",,"uJ","multiply"],
-	COX:[9,,"uI I",,"uJ","multiply"],
 	COW:[9,,"J uI",,"uJ","multiply"],
+	COX:[9,,"uI I",,"uJ","multiply"],
+	COY:[9,,"I uI",,"uJ","multiply"],
+	COP:[138,,"uI uI [ND",,"uJ","multiply"],
+	COR:[9,,"uI D",,"WA","multiply"],
+	COS:[9,,"D uI",,"WA","multiply"],
+	COQ:[9,,"uI uI",,"uJ","multiply"],
 	COV:[9,,"uI J",,"uJ","multiply"],
 	COU:[9,,"F uI",,"uJ","multiply"],
+	COT:[9,,"uI F",,"uJ","multiply"],
 	CNW:[9,,"uI",,"uJ","negate"],
-	CPD:[138,,"uI uI D [ND",,"QG","equal"],
-	CPK:[9,,"uI J D",,"QG","equal"],
-	CSE:[138,,"uK uK [ND",,"QG","equal"],
-	CSF:[9,,"uK uK",,"QG","equal"],
-	CPE:[9,,"uI uI D",,"QG","equal"],
-	CPF:[9,,"uI uI",,"QG","equal"],
-	CSA:[9,,"uL uL",,"QG","equal"],
-	CTI:[138,,"QP<> QP<> [ND",,"QG","equal"],
+	CNU:[9,"K:G V:G","CG<K:G,V:G> MD<,>",,"V","bindContent"],
+	ByD:[9,"E:G","Bz<E:G> Ly<>",,"V","bindContent"],
+	CNS:[9,"E:G","Dx<E:G> MH<>",,"V","bindContent"],
+	ByF:[9,,"G G",,"V","unbindContent"],
+	ByU:[9,,"QP<>",,"QG","isNotNull"],
+	CPu:[9,,"uI J",,"QG","notEqual"],
+	CSJ:[138,,"uK uK [ND",,"QG","notEqual"],
+	CSK:[9,,"uK uK",,"QG","notEqual"],
+	CSL:[9,,"uK u",,"QG","notEqual"],
+	CPv:[9,,"J uI D",,"QG","notEqual"],
+	CPW:[9,,"D uI D",,"QG","notEqual"],
+	CPX:[9,,"uI F D",,"QG","notEqual"],
+	CPY:[9,,"F uI D",,"QG","notEqual"],
+	CPZ:[9,,"uI J D",,"QG","notEqual"],
+	CPV:[9,,"uI D D",,"QG","notEqual"],
+	CPU:[9,,"uI uI",,"QG","notEqual"],
+	CPT:[9,,"uI uI D",,"QG","notEqual"],
+	CSM:[9,,"u uK",,"QG","notEqual"],
+	CTL:[138,,"QP<> QP<> [ND",,"QG","notEqual"],
+	CFD:[9,,"QP<> QP<>",,"QG","notEqual"],
+	ByQ:[9,,"QP<> G",,"QG","notEqual"],
+	CTM:[9,,"G QP<>",,"QG","notEqual"],
+	CPS:[138,,"uI uI D [ND",,"QG","notEqual"],
+	CPw:[9,,"J uI",,"QG","notEqual"],
+	CPx:[9,,"uI I D",,"QG","notEqual"],
+	CPy:[9,,"uI I",,"QG","notEqual"],
+	CPz:[9,,"I uI D",,"QG","notEqual"],
+	CQA:[9,,"I uI",,"QG","notEqual"],
+	CSB:[9,,"uL uL",,"QG","notEqual"],
+	CUR:[9,"K:G V:G","MD<K:G,V:G> NC<>",,"QM<V:G>","valueAt"],
+	CUQ:[9,"K:G V:G","MD<K:G,V:G> K#",,"QM<V:G>","valueAt"],
+	ByM:[9,"E:G","Ly<E:G> QO",,"QM<E:G>","valueAt"],
+	CTQ:[9,"E:G","Ly<E:G> uI",,"QM<E:G>","valueAt"],
+	ByK:[9,"E:G","Ly<E:G> I",,"QM<E:G>","valueAt"],
 	CFA:[9,,"QP<> QP<>",,"QG","equal"],
-	ByO:[9,,"QP<> G",,"QG","equal"],
 	CTK:[9,,"G QP<>",,"QG","equal"],
+	ByO:[9,,"QP<> G",,"QG","equal"],
+	CTI:[138,,"QP<> QP<> [ND",,"QG","equal"],
 	CSI:[9,,"u uK",,"QG","equal"],
 	CSG:[9,,"uK u",,"QG","equal"],
-	CPN:[9,,"J uI",,"QG","equal"],
-	CPO:[9,,"uI I D",,"QG","equal"],
-	CPJ:[9,,"F uI D",,"QG","equal"],
-	CPP:[9,,"uI I",,"QG","equal"],
+	CSF:[9,,"uK uK",,"QG","equal"],
+	CSE:[138,,"uK uK [ND",,"QG","equal"],
+	CSA:[9,,"uL uL",,"QG","equal"],
+	CPQ:[9,,"I uI D",,"QG","equal"],
 	CPI:[9,,"uI F D",,"QG","equal"],
 	CPH:[9,,"D uI D",,"QG","equal"],
 	CPG:[9,,"uI D D",,"QG","equal"],
-	CPR:[9,,"I uI",,"QG","equal"],
-	CPQ:[9,,"I uI D",,"QG","equal"],
-	CPL:[9,,"uI J",,"QG","equal"],
+	CPJ:[9,,"F uI D",,"QG","equal"],
+	CPK:[9,,"uI J D",,"QG","equal"],
 	CPM:[9,,"J uI D",,"QG","equal"],
-	Bxu:[9,"T:G","Pw<T:G> Pw<T#>",,"V","bindBidirectional"],
+	CPN:[9,,"J uI",,"QG","equal"],
+	CPO:[9,,"uI I D",,"QG","equal"],
+	CPP:[9,,"uI I",,"QG","equal"],
+	CPE:[9,,"uI uI D",,"QG","equal"],
+	CPL:[9,,"uI J",,"QG","equal"],
+	CPD:[138,,"uI uI D [ND",,"QG","equal"],
+	CPR:[9,,"I uI",,"QG","equal"],
+	CPF:[9,,"uI uI",,"QG","equal"],
+	COM:[9,,"J uI",,"uJ","subtract"],
+	CON:[9,,"uI I",,"uJ","subtract"],
+	COO:[9,,"I uI",,"uJ","subtract"],
+	COG:[9,,"uI uI",,"uJ","subtract"],
+	COI:[9,,"D uI",,"WA","subtract"],
+	COH:[9,,"uI D",,"WA","subtract"],
+	COJ:[9,,"uI F",,"uJ","subtract"],
+	COF:[138,,"uI uI [ND",,"uJ","subtract"],
+	COL:[9,,"uI J",,"uJ","subtract"],
+	COK:[9,,"F uI",,"uJ","subtract"],
 	CNI:[9,,"Pw<u> Pw<> OW",,"V","bindBidirectional"],
+	Bxu:[9,"T:G","Pw<T:G> Pw<T#>",,"V","bindBidirectional"],
 	CNK:[9,"T:G","Pw<u> Pw<T:G> uM<T#>",,"V","bindBidirectional"],
 	CNG:[9,,"G G",,"V","unbindBidirectional"],
 	Bxw:[9,"T:G","Pw<T:G> Pw<T#>",,"V","unbindBidirectional"],
+	CNP:[9,"K:G V:G","MD<K:G,V:G> MD<K#,V#>",,"V","bindContentBidirectional"],
 	CNN:[9,"E:G","MH<E:G> MH<E#>",,"V","bindContentBidirectional"],
 	Bxz:[9,"E:G","Ly<E:G> Ly<E#>",,"V","bindContentBidirectional"],
-	CNP:[9,"K:G V:G","MD<K:G,V:G> MD<K#,V#>",,"V","bindContentBidirectional"],
 	ByB:[9,,"G G",,"V","unbindContentBidirectional"],
-	CNS:[9,"E:G","Dx<E:G> MH<>",,"V","bindContent"],
-	CNU:[9,"K:G V:G","CG<K:G,V:G> MD<,>",,"V","bindContent"],
-	ByD:[9,"E:G","Bz<E:G> Ly<>",,"V","bindContent"],
-	ByF:[9,,"G G",,"V","unbindContent"],
-	ByU:[9,,"QP<>",,"QG","isNotNull"],
-	CSB:[9,,"uL uL",,"QG","notEqual"],
-	CSK:[9,,"uK uK",,"QG","notEqual"],
-	CSM:[9,,"u uK",,"QG","notEqual"],
-	CSL:[9,,"uK u",,"QG","notEqual"],
-	CSJ:[138,,"uK uK [ND",,"QG","notEqual"],
-	CPT:[9,,"uI uI D",,"QG","notEqual"],
-	CPU:[9,,"uI uI",,"QG","notEqual"],
-	CPV:[9,,"uI D D",,"QG","notEqual"],
-	CPW:[9,,"D uI D",,"QG","notEqual"],
-	CPX:[9,,"uI F D",,"QG","notEqual"],
-	CTM:[9,,"G QP<>",,"QG","notEqual"],
-	CTL:[138,,"QP<> QP<> [ND",,"QG","notEqual"],
-	ByQ:[9,,"QP<> G",,"QG","notEqual"],
-	CFD:[9,,"QP<> QP<>",,"QG","notEqual"],
-	CPS:[138,,"uI uI D [ND",,"QG","notEqual"],
-	CPx:[9,,"uI I D",,"QG","notEqual"],
-	CPw:[9,,"J uI",,"QG","notEqual"],
-	CPv:[9,,"J uI D",,"QG","notEqual"],
-	CPu:[9,,"uI J",,"QG","notEqual"],
-	CPZ:[9,,"uI J D",,"QG","notEqual"],
-	CPY:[9,,"F uI D",,"QG","notEqual"],
-	CQA:[9,,"I uI",,"QG","notEqual"],
-	CPz:[9,,"I uI D",,"QG","notEqual"],
-	CPy:[9,,"uI I",,"QG","notEqual"],
-	CUR:[9,"K:G V:G","MD<K:G,V:G> NC<>",,"QM<V:G>","valueAt"],
-	CTQ:[9,"E:G","Ly<E:G> uI",,"QM<E:G>","valueAt"],
-	CUQ:[9,"K:G V:G","MD<K:G,V:G> K#",,"QM<V:G>","valueAt"],
-	ByM:[9,"E:G","Ly<E:G> QO",,"QM<E:G>","valueAt"],
-	ByK:[9,"E:G","Ly<E:G> I",,"QM<E:G>","valueAt"],
 	CMV:[137,"T:G","NC<> [u",,"QM<T:G>","select"],
 	CMw:[137,"T:G","G [u",,"QM<T:G>","select"],
-	CND:[9,,"uL",,"WT","when"],
-	CQV:[138,,"uI uI [ND",,"QG","greaterThanOrEqual"],
-	CQW:[9,,"uI uI",,"QG","greaterThanOrEqual"],
-	CQX:[9,,"uI D",,"QG","greaterThanOrEqual"],
-	CQY:[9,,"D uI",,"QG","greaterThanOrEqual"],
-	CSy:[9,,"uK uK",,"QG","greaterThanOrEqual"],
-	CSx:[138,,"uK uK [ND",,"QG","greaterThanOrEqual"],
-	CQw:[9,,"J uI",,"QG","greaterThanOrEqual"],
-	CSz:[9,,"uK u",,"QG","greaterThanOrEqual"],
-	CQx:[9,,"uI I",,"QG","greaterThanOrEqual"],
-	CQy:[9,,"I uI",,"QG","greaterThanOrEqual"],
-	CTA:[9,,"u uK",,"QG","greaterThanOrEqual"],
-	CQv:[9,,"uI J",,"QG","greaterThanOrEqual"],
-	CQu:[9,,"F uI",,"QG","greaterThanOrEqual"],
-	CQZ:[9,,"uI F",,"QG","greaterThanOrEqual"],
-	CSV:[138,,"uK uK [ND",,"QG","greaterThan"],
-	CQK:[9,,"I uI",,"QG","greaterThan"],
-	CQJ:[9,,"uI I",,"QG","greaterThan"],
-	CQI:[9,,"J uI",,"QG","greaterThan"],
-	CSW:[9,,"uK uK",,"QG","greaterThan"],
-	CSX:[9,,"uK u",,"QG","greaterThan"],
-	CSY:[9,,"u uK",,"QG","greaterThan"],
+	CQG:[9,,"F uI",,"QG","greaterThan"],
 	CQE:[9,,"D uI",,"QG","greaterThan"],
 	CQD:[9,,"uI D",,"QG","greaterThan"],
 	CQC:[9,,"uI uI",,"QG","greaterThan"],
-	CQB:[138,,"uI uI [ND",,"QG","greaterThan"],
-	CQH:[9,,"uI J",,"QG","greaterThan"],
-	CQG:[9,,"F uI",,"QG","greaterThan"],
+	CQJ:[9,,"uI I",,"QG","greaterThan"],
 	CQF:[9,,"uI F",,"QG","greaterThan"],
-	CTE:[9,,"u uK",,"QG","lessThanOrEqual"],
+	CQH:[9,,"uI J",,"QG","greaterThan"],
+	CQK:[9,,"I uI",,"QG","greaterThan"],
+	CSY:[9,,"u uK",,"QG","greaterThan"],
+	CSX:[9,,"uK u",,"QG","greaterThan"],
+	CQB:[138,,"uI uI [ND",,"QG","greaterThan"],
+	CSV:[138,,"uK uK [ND",,"QG","greaterThan"],
+	CQI:[9,,"J uI",,"QG","greaterThan"],
+	CSW:[9,,"uK uK",,"QG","greaterThan"],
 	CTD:[9,,"uK u",,"QG","lessThanOrEqual"],
 	CTC:[9,,"uK uK",,"QG","lessThanOrEqual"],
+	CTE:[9,,"u uK",,"QG","lessThanOrEqual"],
 	CTB:[138,,"uK uK [ND",,"QG","lessThanOrEqual"],
-	CRA:[9,,"uI uI",,"QG","lessThanOrEqual"],
-	CQz:[138,,"uI uI [ND",,"QG","lessThanOrEqual"],
-	CRF:[9,,"uI J",,"QG","lessThanOrEqual"],
+	CRD:[9,,"uI F",,"QG","lessThanOrEqual"],
 	CRC:[9,,"D uI",,"QG","lessThanOrEqual"],
+	CRB:[9,,"uI D",,"QG","lessThanOrEqual"],
+	CQz:[138,,"uI uI [ND",,"QG","lessThanOrEqual"],
+	CRA:[9,,"uI uI",,"QG","lessThanOrEqual"],
+	CRI:[9,,"I uI",,"QG","lessThanOrEqual"],
 	CRH:[9,,"uI I",,"QG","lessThanOrEqual"],
 	CRG:[9,,"J uI",,"QG","lessThanOrEqual"],
-	CRI:[9,,"I uI",,"QG","lessThanOrEqual"],
-	CRB:[9,,"uI D",,"QG","lessThanOrEqual"],
 	CRE:[9,,"F uI",,"QG","lessThanOrEqual"],
-	CRD:[9,,"uI F",,"QG","lessThanOrEqual"],
-	CSv:[9,,"uK u",,"QG","lessThan"],
-	CSw:[9,,"u uK",,"QG","lessThan"],
-	CQR:[9,,"uI J",,"QG","lessThan"],
-	CQS:[9,,"J uI",,"QG","lessThan"],
-	CQT:[9,,"uI I",,"QG","lessThan"],
-	CQP:[9,,"uI F",,"QG","lessThan"],
-	CQQ:[9,,"F uI",,"QG","lessThan"],
-	CQN:[9,,"uI D",,"QG","lessThan"],
-	CQM:[9,,"uI uI",,"QG","lessThan"],
-	CQL:[138,,"uI uI [ND",,"QG","lessThan"],
+	CRF:[9,,"uI J",,"QG","lessThanOrEqual"],
 	CQU:[9,,"I uI",,"QG","lessThan"],
+	CSw:[9,,"u uK",,"QG","lessThan"],
+	CQT:[9,,"uI I",,"QG","lessThan"],
+	CQS:[9,,"J uI",,"QG","lessThan"],
+	CSv:[9,,"uK u",,"QG","lessThan"],
 	CSu:[9,,"uK uK",,"QG","lessThan"],
 	CSZ:[138,,"uK uK [ND",,"QG","lessThan"],
 	CQO:[9,,"D uI",,"QG","lessThan"],
+	CQN:[9,,"uI D",,"QG","lessThan"],
+	CQM:[9,,"uI uI",,"QG","lessThan"],
+	CQL:[138,,"uI uI [ND",,"QG","lessThan"],
+	CQP:[9,,"uI F",,"QG","lessThan"],
+	CQQ:[9,,"F uI",,"QG","lessThan"],
+	CQR:[9,,"uI J",,"QG","lessThan"],
+	CQy:[9,,"I uI",,"QG","greaterThanOrEqual"],
+	CTA:[9,,"u uK",,"QG","greaterThanOrEqual"],
+	CSz:[9,,"uK u",,"QG","greaterThanOrEqual"],
+	CSy:[9,,"uK uK",,"QG","greaterThanOrEqual"],
+	CSx:[138,,"uK uK [ND",,"QG","greaterThanOrEqual"],
+	CQu:[9,,"F uI",,"QG","greaterThanOrEqual"],
+	CQv:[9,,"uI J",,"QG","greaterThanOrEqual"],
+	CQw:[9,,"J uI",,"QG","greaterThanOrEqual"],
+	CQx:[9,,"uI I",,"QG","greaterThanOrEqual"],
+	CQZ:[9,,"uI F",,"QG","greaterThanOrEqual"],
+	CQW:[9,,"uI uI",,"QG","greaterThanOrEqual"],
+	CQX:[9,,"uI D",,"QG","greaterThanOrEqual"],
+	CQY:[9,,"D uI",,"QG","greaterThanOrEqual"],
+	CQV:[138,,"uI uI [ND",,"QG","greaterThanOrEqual"],
+	CTT:[9,,"Ly<Ez> uI",,"QG","booleanValueAt"],
+	CTS:[9,,"Ly<Ez> QO",,"QG","booleanValueAt"],
 	CUS:[9,"K:G","MD<K:G,Ez> K#",,"QG","booleanValueAt"],
 	CTR:[9,,"Ly<Ez> I",,"QG","booleanValueAt"],
-	CTT:[9,,"Ly<Ez> uI",,"QG","booleanValueAt"],
 	CUT:[9,"K:G","MD<K:G,Ez> NC<>",,"QG","booleanValueAt"],
-	CTS:[9,,"Ly<Ez> QO",,"QG","booleanValueAt"],
-	CTW:[9,,"Ly<> uI",,"WA","doubleValueAt"],
-	CTV:[9,,"Ly<> QO",,"WA","doubleValueAt"],
 	CTU:[9,,"Ly<> I",,"WA","doubleValueAt"],
+	CTV:[9,,"Ly<> QO",,"WA","doubleValueAt"],
+	CTW:[9,,"Ly<> uI",,"WA","doubleValueAt"],
 	CUV:[9,"K:G","MD<K:G,> NC<>",,"WA","doubleValueAt"],
 	CUU:[9,"K:G","MD<K:G,> K#",,"WA","doubleValueAt"],
+	CSQ:[9,,"u uK",,"QG","equalIgnoreCase"],
+	CSO:[9,,"uK uK",,"QG","equalIgnoreCase"],
 	CSP:[9,,"uK u",,"QG","equalIgnoreCase"],
 	CSN:[138,,"uK uK [ND",,"QG","equalIgnoreCase"],
-	CSO:[9,,"uK uK",,"QG","equalIgnoreCase"],
-	CSQ:[9,,"u uK",,"QG","equalIgnoreCase"],
-	CTX:[9,,"Ly<> I",,"WD","floatValueAt"],
+	CTZ:[9,,"Ly<> uI",,"WD","floatValueAt"],
+	CUJ:[9,,"TT uI",,"WD","floatValueAt"],
+	CUI:[9,,"TT QO",,"WD","floatValueAt"],
 	CTY:[9,,"Ly<> QO",,"WD","floatValueAt"],
+	CTX:[9,,"Ly<> I",,"WD","floatValueAt"],
 	CUW:[9,"K:G","MD<K:G,> K#",,"WD","floatValueAt"],
 	CUX:[9,"K:G","MD<K:G,> NC<>",,"WD","floatValueAt"],
-	CUJ:[9,,"TT uI",,"WD","floatValueAt"],
-	CTZ:[9,,"Ly<> uI",,"WD","floatValueAt"],
 	CUH:[9,,"TT I",,"WD","floatValueAt"],
-	CUI:[9,,"TT QO",,"WD","floatValueAt"],
 	CSD:[10,,"u",,"u","getStringSafe"],
+	CUZ:[9,"K:G","MD<K:G,> NC<>",,"WG","integerValueAt"],
+	CUK:[9,,"TU I",,"WG","integerValueAt"],
+	CUL:[9,,"TU QO",,"WG","integerValueAt"],
 	CUY:[9,"K:G","MD<K:G,> K#",,"WG","integerValueAt"],
 	CTw:[9,,"Ly<> uI",,"WG","integerValueAt"],
 	CTv:[9,,"Ly<> QO",,"WG","integerValueAt"],
 	CTu:[9,,"Ly<> I",,"WG","integerValueAt"],
-	CUK:[9,,"TU I",,"WG","integerValueAt"],
-	CUL:[9,,"TU QO",,"WG","integerValueAt"],
 	CUM:[9,,"TU uI",,"WG","integerValueAt"],
-	CUZ:[9,"K:G","MD<K:G,> NC<>",,"WG","integerValueAt"],
-	CTP:[9,"E:G","Ly<E:G>",,"QG","isNotEmpty"],
 	CUP:[9,"K:G V:G","MD<K:G,V:G>",,"QG","isNotEmpty"],
-	CUF:[9,"E:G","MH<E:G>",,"QG","isNotEmpty"],
+	CTP:[9,"E:G","Ly<E:G>",,"QG","isNotEmpty"],
 	CTH:[9,,"uK",,"QG","isNotEmpty"],
+	CUF:[9,"E:G","MH<E:G>",,"QG","isNotEmpty"],
 	CTz:[9,,"Ly<> uI",,"WI","longValueAt"],
 	CUu:[9,"K:G","MD<K:G,> K#",,"WI","longValueAt"],
 	CUv:[9,"K:G","MD<K:G,> NC<>",,"WI","longValueAt"],
 	CTx:[9,,"Ly<> I",,"WI","longValueAt"],
 	CTy:[9,,"Ly<> QO",,"WI","longValueAt"],
-	CNB:[137,,"G [u",,"QG","selectBoolean"],
 	CMu:[137,,"NC<> [u",,"QG","selectBoolean"],
-	CMx:[137,,"G [u",,"WA","selectDouble"],
+	CNB:[137,,"G [u",,"QG","selectBoolean"],
 	CMW:[137,,"NC<> [u",,"WA","selectDouble"],
-	CMX:[137,,"NC<> [u",,"WD","selectFloat"],
+	CMx:[137,,"G [u",,"WA","selectDouble"],
 	CMy:[137,,"G [u",,"WD","selectFloat"],
+	CMX:[137,,"NC<> [u",,"WD","selectFloat"],
 	CMY:[137,,"NC<> [u",,"WG","selectInteger"],
 	CMz:[137,,"G [u",,"WG","selectInteger"],
-	CMZ:[137,,"NC<> [u",,"WI","selectLong"],
 	CNA:[137,,"G [u",,"WI","selectLong"],
+	CMZ:[137,,"NC<> [u",,"WI","selectLong"],
 	CMv:[137,,"NC<> [u",,"QE","selectString"],
 	CNC:[137,,"G [u",,"QE","selectString"],
-	CUB:[9,,"Ly<u> QO",,"QE","stringValueAt"],
-	CUC:[9,,"Ly<u> uI",,"QE","stringValueAt"],
 	CUx:[9,"K:G","MD<K:G,u> NC<>",,"QE","stringValueAt"],
-	CUA:[9,,"Ly<u> I",,"QE","stringValueAt"],
+	CUC:[9,,"Ly<u> uI",,"QE","stringValueAt"],
 	CUw:[9,"K:G","MD<K:G,u> K#",,"QE","stringValueAt"],
+	CUB:[9,,"Ly<u> QO",,"QE","stringValueAt"],
+	CUA:[9,,"Ly<u> I",,"QE","stringValueAt"],
+	CND:[9,,"uL",,"WT","when"],
 	CMO:[137,,"NH<Ez> [ND",,"QG","createBooleanBinding"],
 	CMP:[137,,"NH<CT> [ND",,"WA","createDoubleBinding"],
 	CMQ:[137,,"NH<CS> [ND",,"WD","createFloatBinding"],
@@ -59084,8 +59084,8 @@ boot.define("Py","","",{
 	CMS:[137,,"NH<CR> [ND",,"WI","createLongBinding"],
 	CMT:[137,"T:G","NH<T:G> [ND",,"QM<T:G>","createObjectBinding"],
 	CMU:[137,,"NH<u> [ND",,"QE","createStringBinding"],
-	CSU:[9,,"u uK",,"QG","notEqualIgnoreCase"],
 	CSR:[138,,"uK uK [ND",,"QG","notEqualIgnoreCase"],
+	CSU:[9,,"u uK",,"QG","notEqualIgnoreCase"],
 	CST:[9,,"uK u",,"QG","notEqualIgnoreCase"],
 	CSS:[9,,"uK uK",,"QG","notEqualIgnoreCase"]
 });
@@ -59106,7 +59106,7 @@ boot.define("QH","","uL",{
 	// javafx.beans.binding.BooleanExpression#getValue()
 	CVC:function(){
 		// 56
-		return boot.Ez.BHI(this.CVB())
+		return boot.Ez.BHK(this.CVB())
 	},
 	// javafx.beans.binding.BooleanExpression#booleanExpression(javafx.beans.value.ObservableBooleanValue)
 	_CVD:function(A){
@@ -59176,13 +59176,13 @@ boot.define("QH","","uL",{
 	CVC:[1,,,,"Ez","getValue"],
 	CVF:[1,,"uL",,"QG","and"],
 	CVG:[1,,"uL",,"QG","or"],
-	CVI:[1,,"uL",,"QG","isEqualTo"],
 	CVH:[1,,,,"QG","not"],
 	ByV:[1,,,,"QE","asString"],
 	CVJ:[1,,"uL",,"QG","isNotEqualTo"],
+	CVI:[1,,"uL",,"QG","isEqualTo"],
 	CVK:[1,,,,"QN<Ez>","asObject"],
-	CVD:[9,,"uL",,"QH","booleanExpression"],
-	CVE:[9,,"NC<Ez>",,"QH","booleanExpression"]
+	CVE:[9,,"NC<Ez>",,"QH","booleanExpression"],
+	CVD:[9,,"uL",,"QH","booleanExpression"]
 });
 
 // class javafx.beans.binding.BooleanBinding "QG"
@@ -59322,14 +59322,14 @@ boot.define("QG","QH","SS",{
 	W:[1,,,,"u","toString"],
 	CUz:[1028,,,,"Z","computeValue"],
 	CFQ:[17,,,,"Z","isValid"],
-	CFJ:[148,,"[ND",,"V","bind"],
 	CFP:[17,,,,"V","invalidate"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
-	CFK:[148,,"[ND",,"V","unbind"],
+	CFJ:[148,,"[ND",,"V","bind"],
 	BTx:[1,,"Mx",,"V","addListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
 	BTy:[1,,,,"V","dispose"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	CFK:[148,,"[ND",,"V","unbind"],
 	CFM:[1,,,,"Ly<>","getDependencies"],
 	CFO:[4,,,,"V","onInvalidating"]
 });
@@ -59390,7 +59390,7 @@ boot.define("uQ","QG","",{
 		// 138
 		A=this.g.RZ();
 		// 139
-		return A==null?0:A.BHK()
+		return A==null?0:A.BHM()
 	},
 	// javafx.beans.binding.BooleanExpression$2#getDependencies()
 	CFM:function(){
@@ -59564,11 +59564,11 @@ boot.define("QF","","uK",{
 	CWI:[1,,,,"QG","isEmpty"],
 	CWH:[1,,,,"WG","length"],
 	ByR:[1,,,,"QG","isNull"],
-	CVX:[1,,"uK",,"QG","isEqualTo"],
-	CVY:[1,,"u",,"QG","isEqualTo"],
 	CVu:[1,,"u",,"QG","isNotEqualTo"],
 	CVZ:[1,,"uK",,"QG","isNotEqualTo"],
 	ByT:[1,,,,"QG","isNotNull"],
+	CVY:[1,,"u",,"QG","isEqualTo"],
+	CVX:[1,,"uK",,"QG","isEqualTo"],
 	CWA:[1,,"u",,"QG","greaterThan"],
 	CVz:[1,,"uK",,"QG","greaterThan"],
 	CWC:[1,,"u",,"QG","lessThan"],
@@ -59721,14 +59721,14 @@ boot.define("QE","QF","SS",{
 	W:[1,,,,"u","toString"],
 	CVS:[1028,,,,"u","computeValue"],
 	CFQ:[17,,,,"Z","isValid"],
-	CFJ:[148,,"[ND",,"V","bind"],
 	CFP:[17,,,,"V","invalidate"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	CFK:[148,,"[ND",,"V","unbind"],
+	CFJ:[148,,"[ND",,"V","bind"],
 	BTx:[1,,"Mx",,"V","addListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
 	BTy:[1,,,,"V","dispose"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	CFK:[148,,"[ND",,"V","unbind"],
 	CFM:[1,,,,"Ly<>","getDependencies"],
 	CFO:[4,,,,"V","onInvalidating"]
 });
@@ -59992,10 +59992,10 @@ boot.define("YQ","QF","",{
 	CVO:[1,,,,"u","get"],
 	CSH:[9,,"u",,"YQ","valueOf"],
 	CVT:[1,,,,"u","getValue"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
-	BUE:[1,,"Mx",,"V","removeListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
-	BTx:[1,,"Mx",,"V","addListener"]
+	BTx:[1,,"Mx",,"V","addListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"]
 });
 
 // class com.sun.javafx.binding.StringFormatter$2 "uT"
@@ -60133,63 +60133,63 @@ boot.define("uI","","NC",{
 boot.define("uZ","","uI",{
 },{
 	$:[1537,"javafx.beans.binding.NumberExpression",,,"uI"],
-	CXH:[1025,,"J",,"uJ","add"],
+	CXF:[1025,,"I",,"uJ","add"],
 	CXJ:[1025,,"F",,"uJ","add"],
 	CXL:[1025,,"D",,"uJ","add"],
+	CXH:[1025,,"J",,"uJ","add"],
 	CXV:[1025,,"uI",,"uJ","add"],
-	CXF:[1025,,"I",,"uJ","add"],
-	CWP:[1025,,"J",,"uJ","divide"],
 	CWR:[1025,,"F",,"uJ","divide"],
-	CWN:[1025,,"I",,"uJ","divide"],
+	CWP:[1025,,"J",,"uJ","divide"],
 	CXY:[1025,,"uI",,"uJ","divide"],
 	CWT:[1025,,"D",,"uJ","divide"],
-	CWx:[1025,,"I",,"uJ","subtract"],
-	CXD:[1025,,"D",,"uJ","subtract"],
-	CXW:[1025,,"uI",,"uJ","subtract"],
-	CWz:[1025,,"J",,"uJ","subtract"],
+	CWN:[1025,,"I",,"uJ","divide"],
+	CWv:[1025,,"D",,"uJ","multiply"],
+	CWZ:[1025,,"F",,"uJ","multiply"],
+	CWV:[1025,,"I",,"uJ","multiply"],
+	CXX:[1025,,"uI",,"uJ","multiply"],
+	CWX:[1025,,"J",,"uJ","multiply"],
+	CXN:[1025,,,,"uJ","negate"],
+	CFH:[1025,,"CV u",,"QE","asString"],
+	ByV:[1025,,,,"QE","asString"],
+	CFF:[1025,,"u",,"QE","asString"],
+	CYH:[1025,,"I",,"QG","isNotEqualTo"],
+	CYG:[1025,,"J D",,"QG","isNotEqualTo"],
+	CYF:[1025,,"J",,"QG","isNotEqualTo"],
+	CYE:[1025,,"F D",,"QG","isNotEqualTo"],
+	CYD:[1025,,"D D",,"QG","isNotEqualTo"],
+	CYB:[1025,,"uI",,"QG","isNotEqualTo"],
+	CYC:[1025,,"uI D",,"QG","isNotEqualTo"],
+	CYI:[1025,,"I D",,"QG","isNotEqualTo"],
 	CXB:[1025,,"F",,"uJ","subtract"],
+	CXW:[1025,,"uI",,"uJ","subtract"],
+	CXD:[1025,,"D",,"uJ","subtract"],
+	CWx:[1025,,"I",,"uJ","subtract"],
+	CWz:[1025,,"J",,"uJ","subtract"],
+	CXw:[1025,,"F D",,"QG","isEqualTo"],
 	CXv:[1025,,"D D",,"QG","isEqualTo"],
 	CXu:[1025,,"uI D",,"QG","isEqualTo"],
 	CXZ:[1025,,"uI",,"QG","isEqualTo"],
+	CYA:[1025,,"I D",,"QG","isEqualTo"],
 	CXz:[1025,,"I",,"QG","isEqualTo"],
 	CXy:[1025,,"J D",,"QG","isEqualTo"],
 	CXx:[1025,,"J",,"QG","isEqualTo"],
-	CXw:[1025,,"F D",,"QG","isEqualTo"],
-	CYA:[1025,,"I D",,"QG","isEqualTo"],
-	CWV:[1025,,"I",,"uJ","multiply"],
-	CXX:[1025,,"uI",,"uJ","multiply"],
-	CWv:[1025,,"D",,"uJ","multiply"],
-	CWZ:[1025,,"F",,"uJ","multiply"],
-	CWX:[1025,,"J",,"uJ","multiply"],
-	CXN:[1025,,,,"uJ","negate"],
-	CFF:[1025,,"u",,"QE","asString"],
-	ByV:[1025,,,,"QE","asString"],
-	CFH:[1025,,"CV u",,"QE","asString"],
-	CYH:[1025,,"I",,"QG","isNotEqualTo"],
-	CYI:[1025,,"I D",,"QG","isNotEqualTo"],
-	CYC:[1025,,"uI D",,"QG","isNotEqualTo"],
-	CYB:[1025,,"uI",,"QG","isNotEqualTo"],
-	CYD:[1025,,"D D",,"QG","isNotEqualTo"],
-	CYE:[1025,,"F D",,"QG","isNotEqualTo"],
-	CYF:[1025,,"J",,"QG","isNotEqualTo"],
-	CYG:[1025,,"J D",,"QG","isNotEqualTo"],
 	CYN:[1025,,"I",,"QG","greaterThan"],
-	CYJ:[1025,,"uI",,"QG","greaterThan"],
-	CYK:[1025,,"D",,"QG","greaterThan"],
 	CYL:[1025,,"F",,"QG","greaterThan"],
 	CYM:[1025,,"J",,"QG","greaterThan"],
+	CYK:[1025,,"D",,"QG","greaterThan"],
+	CYJ:[1025,,"uI",,"QG","greaterThan"],
 	CYS:[1025,,"I",,"QG","lessThan"],
 	CYR:[1025,,"J",,"QG","lessThan"],
-	CYP:[1025,,"D",,"QG","lessThan"],
 	CYQ:[1025,,"F",,"QG","lessThan"],
+	CYP:[1025,,"D",,"QG","lessThan"],
 	CYO:[1025,,"uI",,"QG","lessThan"],
-	CYU:[1025,,"D",,"QG","greaterThanOrEqualTo"],
 	CYX:[1025,,"I",,"QG","greaterThanOrEqualTo"],
+	CYU:[1025,,"D",,"QG","greaterThanOrEqualTo"],
+	CYT:[1025,,"uI",,"QG","greaterThanOrEqualTo"],
 	CYV:[1025,,"F",,"QG","greaterThanOrEqualTo"],
 	CYW:[1025,,"J",,"QG","greaterThanOrEqualTo"],
-	CYT:[1025,,"uI",,"QG","greaterThanOrEqualTo"],
-	CYw:[1025,,"I",,"QG","lessThanOrEqualTo"],
 	CYZ:[1025,,"D",,"QG","lessThanOrEqualTo"],
+	CYw:[1025,,"I",,"QG","lessThanOrEqualTo"],
 	CYv:[1025,,"J",,"QG","lessThanOrEqualTo"],
 	CYu:[1025,,"F",,"QG","lessThanOrEqualTo"],
 	CYY:[1025,,"uI",,"QG","lessThanOrEqualTo"]
@@ -60446,48 +60446,48 @@ boot.define("QL","","uZ",{
 	$0:[1],
 	CXV:[1,,"uI",,"uJ","add"],
 	CXY:[1,,"uI",,"uJ","divide"],
+	CXX:[1,,"uI",,"uJ","multiply"],
+	CFH:[1,,"CV u",,"QE","asString"],
+	ByV:[1,,,,"QE","asString"],
+	CFF:[1,,"u",,"QE","asString"],
+	CYG:[1,,"J D",,"QG","isNotEqualTo"],
+	CYF:[1,,"J",,"QG","isNotEqualTo"],
+	CYB:[1,,"uI",,"QG","isNotEqualTo"],
+	CYC:[1,,"uI D",,"QG","isNotEqualTo"],
+	CYE:[1,,"F D",,"QG","isNotEqualTo"],
+	CYD:[1,,"D D",,"QG","isNotEqualTo"],
+	CYI:[1,,"I D",,"QG","isNotEqualTo"],
+	CYH:[1,,"I",,"QG","isNotEqualTo"],
 	CXW:[1,,"uI",,"uJ","subtract"],
+	CXZ:[1,,"uI",,"QG","isEqualTo"],
+	CXy:[1,,"J D",,"QG","isEqualTo"],
 	CXx:[1,,"J",,"QG","isEqualTo"],
 	CXw:[1,,"F D",,"QG","isEqualTo"],
-	CXy:[1,,"J D",,"QG","isEqualTo"],
-	CXz:[1,,"I",,"QG","isEqualTo"],
-	CYA:[1,,"I D",,"QG","isEqualTo"],
-	CXZ:[1,,"uI",,"QG","isEqualTo"],
-	CXu:[1,,"uI D",,"QG","isEqualTo"],
 	CXv:[1,,"D D",,"QG","isEqualTo"],
-	CXX:[1,,"uI",,"uJ","multiply"],
-	CFF:[1,,"u",,"QE","asString"],
-	ByV:[1,,,,"QE","asString"],
-	CFH:[1,,"CV u",,"QE","asString"],
-	CYH:[1,,"I",,"QG","isNotEqualTo"],
-	CYI:[1,,"I D",,"QG","isNotEqualTo"],
-	CYC:[1,,"uI D",,"QG","isNotEqualTo"],
-	CYB:[1,,"uI",,"QG","isNotEqualTo"],
-	CYD:[1,,"D D",,"QG","isNotEqualTo"],
-	CYE:[1,,"F D",,"QG","isNotEqualTo"],
-	CYF:[1,,"J",,"QG","isNotEqualTo"],
-	CYG:[1,,"J D",,"QG","isNotEqualTo"],
-	CXR:[9,"S:Bu","uI",,"QL","numberExpression"],
-	CYJ:[1,,"uI",,"QG","greaterThan"],
+	CXu:[1,,"uI D",,"QG","isEqualTo"],
+	CYA:[1,,"I D",,"QG","isEqualTo"],
+	CXz:[1,,"I",,"QG","isEqualTo"],
 	CYN:[1,,"I",,"QG","greaterThan"],
-	CYM:[1,,"J",,"QG","greaterThan"],
+	CYJ:[1,,"uI",,"QG","greaterThan"],
 	CYL:[1,,"F",,"QG","greaterThan"],
 	CYK:[1,,"D",,"QG","greaterThan"],
+	CYM:[1,,"J",,"QG","greaterThan"],
+	CYO:[1,,"uI",,"QG","lessThan"],
 	CYS:[1,,"I",,"QG","lessThan"],
 	CYR:[1,,"J",,"QG","lessThan"],
 	CYQ:[1,,"F",,"QG","lessThan"],
 	CYP:[1,,"D",,"QG","lessThan"],
-	CYO:[1,,"uI",,"QG","lessThan"],
+	CXR:[9,"S:Bu","uI",,"QL","numberExpression"],
 	CYX:[1,,"I",,"QG","greaterThanOrEqualTo"],
+	CYW:[1,,"J",,"QG","greaterThanOrEqualTo"],
+	CYV:[1,,"F",,"QG","greaterThanOrEqualTo"],
 	CYU:[1,,"D",,"QG","greaterThanOrEqualTo"],
 	CYT:[1,,"uI",,"QG","greaterThanOrEqualTo"],
-	CYV:[1,,"F",,"QG","greaterThanOrEqualTo"],
-	CYW:[1,,"J",,"QG","greaterThanOrEqualTo"],
-	CYZ:[1,,"D",,"QG","lessThanOrEqualTo"],
+	CYY:[1,,"uI",,"QG","lessThanOrEqualTo"],
 	CYw:[1,,"I",,"QG","lessThanOrEqualTo"],
 	CYv:[1,,"J",,"QG","lessThanOrEqualTo"],
 	CYu:[1,,"F",,"QG","lessThanOrEqualTo"],
-	CYY:[1,,"uI",,"QG","lessThanOrEqualTo"]
+	CYZ:[1,,"D",,"QG","lessThanOrEqualTo"]
 });
 
 // interface javafx.beans.value.ObservableIntegerValue "QO"
@@ -60747,18 +60747,18 @@ boot.define("QK","QL","QO",{
 	CWQ:[1,,"J",,"WI","divide"],
 	CWU:[1,,"D",,"WA","divide"],
 	CWS:[1,,"F",,"WD","divide"],
+	CWw:[1,,"D",,"WA","multiply"],
+	CWY:[1,,"J",,"WI","multiply"],
+	CWu:[1,,"F",,"WD","multiply"],
+	CWW:[1,,"I",,"WG","multiply"],
+	CXO:[1,,,,"WG","negate"],
 	CXC:[1,,"F",,"WD","subtract"],
 	CXA:[1,,"J",,"WI","subtract"],
-	CXE:[1,,"D",,"WA","subtract"],
 	CWy:[1,,"I",,"WG","subtract"],
-	CWu:[1,,"F",,"WD","multiply"],
-	CWY:[1,,"J",,"WI","multiply"],
-	CWW:[1,,"I",,"WG","multiply"],
-	CWw:[1,,"D",,"WA","multiply"],
-	CXO:[1,,,,"WG","negate"],
+	CXE:[1,,"D",,"WA","subtract"],
 	CVK:[1,,,,"QN<BZ>","asObject"],
-	CXP:[9,,"QO",,"QK","integerExpression"],
-	CXQ:[9,"T:Bu","NC<T:Bu>",,"QK","integerExpression"]
+	CXQ:[9,"T:Bu","NC<T:Bu>",,"QK","integerExpression"],
+	CXP:[9,,"QO",,"QK","integerExpression"]
 });
 
 // class javafx.beans.binding.IntegerBinding "WG"
@@ -60982,14 +60982,14 @@ boot.define("WG","QK","uJ",{
 	W:[1,,,,"u","toString"],
 	CWL:[1028,,,,"I","computeValue"],
 	CFQ:[17,,,,"Z","isValid"],
-	CFJ:[148,,"[ND",,"V","bind"],
 	CFP:[17,,,,"V","invalidate"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
-	CFK:[148,,"[ND",,"V","unbind"],
-	BTx:[1,,"Mx",,"V","addListener"],
+	CFJ:[148,,"[ND",,"V","bind"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
 	BTy:[1,,,,"V","dispose"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	CFK:[148,,"[ND",,"V","unbind"],
 	CFM:[1,,,,"Ly<>","getDependencies"],
 	CFO:[4,,,,"V","onInvalidating"]
 });
@@ -61399,17 +61399,17 @@ boot.define("WB","QL","WX",{
 	CWU:[1,,"D",,"WA","divide"],
 	CZH:[1,,"F",,"WA","divide"],
 	CZB:[1,,"uI",,"WA","divide"],
+	CZC:[1,,"uI",,"WA","multiply"],
+	CWw:[1,,"D",,"WA","multiply"],
+	CZI:[1,,"I",,"WA","multiply"],
+	CZJ:[1,,"J",,"WA","multiply"],
+	CZK:[1,,"F",,"WA","multiply"],
+	CZR:[1,,,,"WA","negate"],
 	CZN:[1,,"F",,"WA","subtract"],
-	CZM:[1,,"J",,"WA","subtract"],
+	CXE:[1,,"D",,"WA","subtract"],
 	CZL:[1,,"I",,"WA","subtract"],
 	CZD:[1,,"uI",,"WA","subtract"],
-	CXE:[1,,"D",,"WA","subtract"],
-	CZK:[1,,"F",,"WA","multiply"],
-	CZJ:[1,,"J",,"WA","multiply"],
-	CZI:[1,,"I",,"WA","multiply"],
-	CWw:[1,,"D",,"WA","multiply"],
-	CZC:[1,,"uI",,"WA","multiply"],
-	CZR:[1,,,,"WA","negate"],
+	CZM:[1,,"J",,"WA","subtract"],
 	CVK:[1,,,,"QN<CT>","asObject"],
 	CXS:[9,,"WX",,"WB","doubleExpression"],
 	CZS:[9,"T:Bu","NC<T:Bu>",,"WB","doubleExpression"]
@@ -61654,14 +61654,14 @@ boot.define("WA","WB","uJ",{
 	W:[1,,,,"u","toString"],
 	CYz:[1028,,,,"D","computeValue"],
 	CFQ:[17,,,,"Z","isValid"],
-	CFJ:[148,,"[ND",,"V","bind"],
 	CFP:[17,,,,"V","invalidate"],
+	CFJ:[148,,"[ND",,"V","bind"],
+	BTx:[1,,"Mx",,"V","addListener"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
+	BTy:[1,,,,"V","dispose"],
 	BUF:[1,,"Mz<>",,"V","removeListener"],
 	BUE:[1,,"Mx",,"V","removeListener"],
 	CFK:[148,,"[ND",,"V","unbind"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
-	BTx:[1,,"Mx",,"V","addListener"],
-	BTy:[1,,,,"V","dispose"],
 	CFM:[1,,,,"Ly<>","getDependencies"],
 	CFO:[4,,,,"V","onInvalidating"]
 });
@@ -62029,18 +62029,18 @@ boot.define("WE","QL","WZ",{
 	CZY:[1,,"J",,"WD","divide"],
 	CWU:[1,,"D",,"WA","divide"],
 	CWS:[1,,"F",,"WD","divide"],
+	CWw:[1,,"D",,"WA","multiply"],
+	CZu:[1,,"J",,"WD","multiply"],
+	CWu:[1,,"F",,"WD","multiply"],
+	CZZ:[1,,"I",,"WD","multiply"],
+	CZz:[1,,,,"WD","negate"],
 	CXC:[1,,"F",,"WD","subtract"],
 	CZw:[1,,"J",,"WD","subtract"],
-	CXE:[1,,"D",,"WA","subtract"],
 	CZv:[1,,"I",,"WD","subtract"],
-	CWu:[1,,"F",,"WD","multiply"],
-	CZu:[1,,"J",,"WD","multiply"],
-	CZZ:[1,,"I",,"WD","multiply"],
-	CWw:[1,,"D",,"WA","multiply"],
-	CZz:[1,,,,"WD","negate"],
+	CXE:[1,,"D",,"WA","subtract"],
 	CVK:[1,,,,"QN<CS>","asObject"],
-	CXT:[9,,"WZ",,"WE","floatExpression"],
-	CuA:[9,"T:Bu","NC<T:Bu>",,"WE","floatExpression"]
+	CuA:[9,"T:Bu","NC<T:Bu>",,"WE","floatExpression"],
+	CXT:[9,,"WZ",,"WE","floatExpression"]
 });
 
 // class javafx.beans.binding.FloatBinding "WD"
@@ -62262,14 +62262,14 @@ boot.define("WD","WE","uJ",{
 	W:[1,,,,"u","toString"],
 	CZV:[1028,,,,"F","computeValue"],
 	CFQ:[17,,,,"Z","isValid"],
-	CFJ:[148,,"[ND",,"V","bind"],
 	CFP:[17,,,,"V","invalidate"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
-	CFK:[148,,"[ND",,"V","unbind"],
-	BTx:[1,,"Mx",,"V","addListener"],
+	CFJ:[148,,"[ND",,"V","bind"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
 	BTy:[1,,,,"V","dispose"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	CFK:[148,,"[ND",,"V","unbind"],
 	CFM:[1,,,,"Ly<>","getDependencies"],
 	CFO:[4,,,,"V","onInvalidating"]
 });
@@ -62637,18 +62637,18 @@ boot.define("WJ","QL","Wv",{
 	CWQ:[1,,"J",,"WI","divide"],
 	CWU:[1,,"D",,"WA","divide"],
 	CWS:[1,,"F",,"WD","divide"],
+	CWw:[1,,"D",,"WA","multiply"],
+	CWY:[1,,"J",,"WI","multiply"],
+	CWu:[1,,"F",,"WD","multiply"],
+	CuG:[1,,"I",,"WI","multiply"],
+	CuJ:[1,,,,"WI","negate"],
 	CXC:[1,,"F",,"WD","subtract"],
 	CXA:[1,,"J",,"WI","subtract"],
-	CXE:[1,,"D",,"WA","subtract"],
 	CuH:[1,,"I",,"WI","subtract"],
-	CWu:[1,,"F",,"WD","multiply"],
-	CWY:[1,,"J",,"WI","multiply"],
-	CuG:[1,,"I",,"WI","multiply"],
-	CWw:[1,,"D",,"WA","multiply"],
-	CuJ:[1,,,,"WI","negate"],
+	CXE:[1,,"D",,"WA","subtract"],
 	CVK:[1,,,,"QN<CR>","asObject"],
-	CXU:[9,,"Wv",,"WJ","longExpression"],
-	CuK:[9,"T:Bu","NC<T:Bu>",,"WJ","longExpression"]
+	CuK:[9,"T:Bu","NC<T:Bu>",,"WJ","longExpression"],
+	CXU:[9,,"Wv",,"WJ","longExpression"]
 });
 
 // class javafx.beans.binding.LongBinding "WI"
@@ -62872,14 +62872,14 @@ boot.define("WI","WJ","uJ",{
 	W:[1,,,,"u","toString"],
 	CuD:[1028,,,,"J","computeValue"],
 	CFQ:[17,,,,"Z","isValid"],
-	CFJ:[148,,"[ND",,"V","bind"],
 	CFP:[17,,,,"V","invalidate"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
-	CFK:[148,,"[ND",,"V","unbind"],
-	BTx:[1,,"Mx",,"V","addListener"],
+	CFJ:[148,,"[ND",,"V","bind"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
 	BTy:[1,,,,"V","dispose"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	CFK:[148,,"[ND",,"V","unbind"],
 	CFM:[1,,,,"Ly<>","getDependencies"],
 	CFO:[4,,,,"V","onInvalidating"]
 });
@@ -63038,7 +63038,7 @@ boot.define("Vy","QG","",{
 	CUz:function(A){
 		// 133
 		try {
-			return this.h.BUW().BHK();
+			return this.h.BUW().BHM();
 		} catch ($) {
 			$ = boot.BL.CQ($) ;
 			if ($ instanceof boot.BK) {
@@ -63130,11 +63130,11 @@ boot.define("uO","BV","Ly",{
 		// 53
 	},
 	// com.sun.javafx.collections.ImmutableObservableList#addListener(javafx.collections.ListChangeListener)
-	BzD:function(A){
+	BzC:function(A){
 		// 58
 	},
 	// com.sun.javafx.collections.ImmutableObservableList#removeListener(javafx.collections.ListChangeListener)
-	BzC:function(A){
+	BzD:function(A){
 		// 63
 	},
 	// com.sun.javafx.collections.ImmutableObservableList#addAll(java.lang.Object[])
@@ -63195,10 +63195,10 @@ boot.define("uO","BV","Ly",{
 	Byv:[129,,"[E:G",,"Z","retainAll"],
 	ByY:[129,,"[E:G",,"Z","setAll"],
 	ByZ:[1,,"Dy<>",,"Z","setAll"],
-	BzC:[1,,"QV<>",,"V","removeListener"],
-	BUE:[1,,"Mx",,"V","removeListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
-	BzD:[1,,"QV<>",,"V","addListener"]
+	BzC:[1,,"QV<>",,"V","addListener"],
+	BzD:[1,,"QV<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"]
 });
 
 // class javafx.beans.binding.Bindings$2 "Vz"
@@ -64403,8 +64403,8 @@ boot.define("vG","","",{
 	Cuw:[1,,,,"Z","isReadable"],
 	Cuu:[1,,,,"Z","isWritable"],
 	CuT:[1,,,,"Z","hasProperty"],
-	Cuv:[2,,,,"V","reflect"],
-	CuS:[1,,,,"A<>","getContainingClass"]
+	CuS:[1,,,,"A<>","getContainingClass"],
+	Cuv:[2,,,,"V","reflect"]
 });
 
 // class js.lang.reflect.internal.MethodUtil "vK"
@@ -64932,7 +64932,7 @@ boot.define("WR","QG","",{
 			if (boot.uL.$.IM(A)==0) {
 				// 147
 				try {
-					return A.RZ().BHK();
+					return A.RZ().BHM();
 				} catch ($) {
 					$ = boot.BL.CQ($) ;
 					if ($ instanceof boot.BT) {
@@ -65240,7 +65240,7 @@ boot.define("vL","WA","",{
 		// 139
 		A=this.h.CVB();
 		// 140
-		boot.uN.CVA().log("Condition of ternary binding expression was evaluated: {0}",Φ("G",[boot.Ez.BHI(A)]));
+		boot.uN.CVA().log("Condition of ternary binding expression was evaluated: {0}",Φ("G",[boot.Ez.BHK(A)]));
 		// 141
 		return A!=0?this.i.ME():this.j.ME()
 	},
@@ -65351,7 +65351,7 @@ boot.define("vM","WD","",{
 		// 169
 		A=this.h.CVB();
 		// 170
-		boot.uN.CVA().log("Condition of ternary binding expression was evaluated: {0}",Φ("G",[boot.Ez.BHI(A)]));
+		boot.uN.CVA().log("Condition of ternary binding expression was evaluated: {0}",Φ("G",[boot.Ez.BHK(A)]));
 		// 171
 		return A!=0?this.i.MQ():this.j.MQ()
 	},
@@ -65403,7 +65403,7 @@ boot.define("vN","WI","",{
 		// 199
 		A=this.h.CVB();
 		// 200
-		boot.uN.CVA().log("Condition of ternary binding expression was evaluated: {0}",Φ("G",[boot.Ez.BHI(A)]));
+		boot.uN.CVA().log("Condition of ternary binding expression was evaluated: {0}",Φ("G",[boot.Ez.BHK(A)]));
 		// 201
 		return A!=0?this.i.MP():this.j.MP()
 	},
@@ -65455,7 +65455,7 @@ boot.define("vO","WG","",{
 		// 229
 		A=this.h.CVB();
 		// 230
-		boot.uN.CVA().log("Condition of ternary binding expression was evaluated: {0}",Φ("G",[boot.Ez.BHI(A)]));
+		boot.uN.CVA().log("Condition of ternary binding expression was evaluated: {0}",Φ("G",[boot.Ez.BHK(A)]));
 		// 231
 		return A!=0?this.i.MH():this.j.MH()
 	},
@@ -65610,10 +65610,10 @@ boot.define("XC","","WX",{
 	ME:[1,,,,"D","doubleValue"],
 	CNu:[9,,"D",,"XC","valueOf"],
 	CZA:[1,,,,"CT","getValue"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
-	BTx:[1,,"Mx",,"V","addListener"]
+	BUE:[1,,"Mx",,"V","removeListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"]
 });
 
 // class com.sun.javafx.binding.FloatConstant "XD"
@@ -65691,10 +65691,10 @@ boot.define("XD","","WZ",{
 	ME:[1,,,,"D","doubleValue"],
 	CNx:[9,,"F",,"XD","valueOf"],
 	CZW:[1,,,,"CS","getValue"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
-	BTx:[1,,"Mx",,"V","addListener"]
+	BUE:[1,,"Mx",,"V","removeListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"]
 });
 
 // class com.sun.javafx.binding.LongConstant "XE"
@@ -65772,10 +65772,10 @@ boot.define("XE","","Wv",{
 	ME:[1,,,,"D","doubleValue"],
 	COA:[9,,"J",,"XE","valueOf"],
 	CuE:[1,,,,"CR","getValue"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
-	BTx:[1,,"Mx",,"V","addListener"]
+	BUE:[1,,"Mx",,"V","removeListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"]
 });
 
 // class com.sun.javafx.binding.IntegerConstant "XF"
@@ -65853,10 +65853,10 @@ boot.define("XF","","QO",{
 	ME:[1,,,,"D","doubleValue"],
 	COD:[9,,"I",,"XF","valueOf"],
 	CWM:[1,,,,"BZ","getValue"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
-	BTx:[1,,"Mx",,"V","addListener"]
+	BUE:[1,,"Mx",,"V","removeListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"]
 });
 
 // class javafx.beans.binding.When$BooleanConditionBuilder "vQ"
@@ -66016,7 +66016,7 @@ boot.define("vU","QG","",{
 		// 438
 		A=boot.WT.CvN(this.m).CVB();
 		// 439
-		boot.uN.CVA().log("Condition of ternary binding expression was evaluated: {0}",Φ("G",[boot.Ez.BHI(A)]));
+		boot.uN.CVA().log("Condition of ternary binding expression was evaluated: {0}",Φ("G",[boot.Ez.BHK(A)]));
 		// 440
 		return A!=0?this.g!=null?this.g.CVB():this.h:this.i!=null?this.i.CVB():this.j
 	},
@@ -66262,7 +66262,7 @@ boot.define("vV","QE","",{
 		// 609
 		A=boot.WT.CvN(this.m).CVB();
 		// 610
-		boot.uN.CVA().log("Condition of ternary binding expression was evaluated: {0}",Φ("G",[boot.Ez.BHI(A)]));
+		boot.uN.CVA().log("Condition of ternary binding expression was evaluated: {0}",Φ("G",[boot.Ez.BHK(A)]));
 		// 611
 		return A!=0?this.g!=null?this.g.D():this.h:this.i!=null?this.i.D():this.j
 	},
@@ -66514,7 +66514,7 @@ boot.define("vW","QM","",{
 		// 778
 		A=boot.WT.CvN(this.m).CVB();
 		// 779
-		boot.uN.CVA().log("Condition of ternary binding expression was evaluated: {0}",Φ("G",[boot.Ez.BHI(A)]));
+		boot.uN.CVA().log("Condition of ternary binding expression was evaluated: {0}",Φ("G",[boot.Ez.BHK(A)]));
 		// 780
 		return A!=0?this.g!=null?this.g.D():this.h:this.i!=null?this.i.D():this.j
 	},
@@ -67006,10 +67006,10 @@ boot.define("wQ","vY","",{
 	$:[1025,"javafx.beans.property.ReadOnlyDoublePropertyBase",,"vY"],
 	$0:[1],
 	c:[0,"helper","SO<Bu>"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
@@ -67110,10 +67110,10 @@ boot.define("wS","QZ","",{
 	$:[1025,"javafx.beans.property.ReadOnlyObjectPropertyBase","T:G","QZ<T:G>"],
 	$0:[1],
 	c:[0,"helper","SO<T:G>"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
@@ -67542,13 +67542,13 @@ boot.define("wN","vX","",{
 	W:[1,,,,"u","toString"],
 	CwJ:[1,,"D",,"V","set"],
 	CEv:[1,,"NC<>",,"V","bind"],
+	CES:[4,,,,"V","invalidated"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
 	BUE:[1,,"Mx",,"V","removeListener"],
 	BUF:[1,,"Mz<>",,"V","removeListener"],
 	CEu:[1,,,,"Z","isBound"],
 	CEw:[1,,,,"V","unbind"],
-	CES:[4,,,,"V","invalidated"],
-	BTx:[1,,"Mx",,"V","addListener"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
 	CEZ:[2,,,,"V","markInvalid"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
@@ -67945,13 +67945,13 @@ boot.define("QX","QY","",{
 	W:[1,,,,"u","toString"],
 	Hy:[1,,"T:G",,"V","set"],
 	CEv:[1,,"NC<>",,"V","bind"],
-	BUE:[1,,"Mx",,"V","removeListener"],
+	CES:[4,,,,"V","invalidated"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
 	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
 	CEu:[1,,,,"Z","isBound"],
 	CEw:[1,,,,"V","unbind"],
-	CES:[4,,,,"V","invalidated"],
-	BTx:[1,,"Mx",,"V","addListener"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
 	CEZ:[2,,,,"V","markInvalid"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
@@ -68282,10 +68282,10 @@ boot.define("ww","vv","",{
 	$:[1025,"javafx.beans.property.ReadOnlyFloatPropertyBase",,"vv"],
 	$0:[1],
 	c:[0,"helper","SO<Bu>"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
@@ -68753,13 +68753,13 @@ boot.define("wZ","vu","",{
 	W:[1,,,,"u","toString"],
 	CwV:[1,,"F",,"V","set"],
 	CEv:[1,,"NC<>",,"V","bind"],
+	CES:[4,,,,"V","invalidated"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
 	BUE:[1,,"Mx",,"V","removeListener"],
 	BUF:[1,,"Mz<>",,"V","removeListener"],
 	CEu:[1,,,,"Z","isBound"],
 	CEw:[1,,,,"V","unbind"],
-	CES:[4,,,,"V","invalidated"],
-	BTx:[1,,"Mx",,"V","addListener"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
 	CEZ:[2,,,,"V","markInvalid"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
@@ -69178,10 +69178,10 @@ boot.define("xG","QJ","",{
 	$:[1025,"javafx.beans.property.ReadOnlyIntegerPropertyBase",,"QJ"],
 	$0:[1],
 	c:[0,"helper","SO<Bu>"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
@@ -69649,13 +69649,13 @@ boot.define("xD","vx","",{
 	W:[1,,,,"u","toString"],
 	BvV:[1,,"I",,"V","set"],
 	CEv:[1,,"NC<>",,"V","bind"],
+	CES:[4,,,,"V","invalidated"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
 	BUE:[1,,"Mx",,"V","removeListener"],
 	BUF:[1,,"Mz<>",,"V","removeListener"],
 	CEu:[1,,,,"Z","isBound"],
 	CEw:[1,,,,"V","unbind"],
-	CES:[4,,,,"V","invalidated"],
-	BTx:[1,,"Mx",,"V","addListener"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
 	CEZ:[2,,,,"V","markInvalid"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
@@ -70074,10 +70074,10 @@ boot.define("xQ","wA","",{
 	$:[1025,"javafx.beans.property.ReadOnlyLongPropertyBase",,"wA"],
 	$0:[1],
 	c:[0,"helper","SO<Bu>"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
@@ -70545,13 +70545,13 @@ boot.define("xN","vz","",{
 	W:[1,,,,"u","toString"],
 	CxC:[1,,"J",,"V","set"],
 	CEv:[1,,"NC<>",,"V","bind"],
+	CES:[4,,,,"V","invalidated"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
 	BUE:[1,,"Mx",,"V","removeListener"],
 	BUF:[1,,"Mz<>",,"V","removeListener"],
 	CEu:[1,,,,"Z","isBound"],
 	CEw:[1,,,,"V","unbind"],
-	CES:[4,,,,"V","invalidated"],
-	BTx:[1,,"Mx",,"V","addListener"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
 	CEZ:[2,,,,"V","markInvalid"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
@@ -70970,10 +70970,10 @@ boot.define("xu","QI","",{
 	$:[1025,"javafx.beans.property.ReadOnlyBooleanPropertyBase",,"QI"],
 	$0:[1],
 	c:[0,"helper","SO<Ez>"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
@@ -70999,7 +70999,7 @@ boot.define("xZ","xu","",{
 		// 111
 		A=this.f.RZ();
 		// 112
-		return A==null?0:A.BHK()
+		return A==null?0:A.BHM()
 	},
 	// javafx.beans.property.ReadOnlyBooleanProperty$1#getBean()
 	Bxx:function(){
@@ -71119,7 +71119,7 @@ boot.define("wC","QI","Pw xV",{
 		// 73
 		if (A!=null) {
 			// 77
-			this.CxK(A.BHK());
+			this.CxK(A.BHM());
 		} else {
 			// 74
 			boot.uN.CVA().log("Attempt to set boolean property to null, using default value instead.",new boot.BT(1));
@@ -71427,13 +71427,13 @@ boot.define("xX","wC","",{
 	W:[1,,,,"u","toString"],
 	CxK:[1,,"Z",,"V","set"],
 	CEv:[1,,"NC<>",,"V","bind"],
+	CES:[4,,,,"V","invalidated"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
 	BUE:[1,,"Mx",,"V","removeListener"],
 	BUF:[1,,"Mz<>",,"V","removeListener"],
 	CEu:[1,,,,"Z","isBound"],
 	CEw:[1,,,,"V","unbind"],
-	CES:[4,,,,"V","invalidated"],
-	BTx:[1,,"Mx",,"V","addListener"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
 	CEZ:[2,,,,"V","markInvalid"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
@@ -71453,7 +71453,7 @@ boot.define("xw","QG","",{
 		// 174
 		A=this.g.RZ();
 		// 175
-		return A==null?0:A.BHK()
+		return A==null?0:A.BHM()
 	}
 },{
 	$:[65536,"javafx.beans.property.BooleanPropertyBase$1",,"QG"],
@@ -71635,10 +71635,10 @@ boot.define("wD","WU","",{
 					// 263
 					if (D!=A) {
 						// 266
-						D.CxK(C.BHK());
+						D.CxK(C.BHM());
 					} else {
 						// 264
-						E.CxK(C.BHK());
+						E.CxK(C.BHM());
 					}
 					// 287
 					this.f=0;
@@ -71653,10 +71653,10 @@ boot.define("wD","WU","",{
 							try {
 								if (D!=A) {
 									// 273
-									E.CxK(B.BHK());
+									E.CxK(B.BHM());
 								} else {
 									// 271
-									D.CxK(B.BHK());
+									D.CxK(B.BHM());
 								}
 								// 283
 								// 284
@@ -72243,9 +72243,9 @@ boot.define("WV","","",{
 		// 51
 		A.ByZ(B);
 		// 52
-		A.BzD(C);
+		A.BzC(C);
 		// 53
-		B.BzD(C);
+		B.BzC(C);
 		// 54
 		return C
 	},
@@ -72324,9 +72324,9 @@ boot.define("WV","","",{
 			// 82
 			E=new boot.xy(C,D,0);
 			// 83
-			C.BzC(E);
+			C.BzD(E);
 			// 84
-			D.BzC(E);
+			D.BzD(E);
 			// 85
 		}
 		// 98
@@ -72367,12 +72367,12 @@ boot.define("xy","","QV SI",{
 				// 119
 				if (B!=null) {
 					// 120
-					B.BzC(this);
+					B.BzD(this);
 				}
 				// 122
 				if (C!=null) {
 					// 123
-					C.BzC(this);
+					C.BzD(this);
 				} else {
 				}
 			} else {
@@ -72808,9 +72808,9 @@ boot.define("WW","","",{
 			A.ByZ(B);
 		}
 		// 58
-		B.BzC(C);
-		// 59
 		B.BzD(C);
+		// 59
+		B.BzC(C);
 		// 60
 		return C
 	},
@@ -72868,7 +72868,7 @@ boot.define("WW","","",{
 			}
 		} else {
 			// 86
-			B.BzC(new boot.yB(A,0));
+			B.BzD(new boot.yB(A,0));
 		}
 		// 92
 	}
@@ -72920,7 +72920,7 @@ boot.define("yB","","QV SI",{
 			}
 		} else {
 			// 106
-			A.CEC().BzC(this);
+			A.CEC().BzD(this);
 		}
 		// 122
 	},
@@ -75462,10 +75462,10 @@ boot.define("Yu","","QP",{
 	D:[1,,,,"T:G","get"],
 	CTJ:[9,"T:G","T:G",,"Yu<T:G>","valueOf"],
 	RZ:[1,,,,"T:G","getValue"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
-	BTx:[1,,"Mx",,"V","addListener"]
+	BTx:[1,,"Mx",,"V","addListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"]
 });
 
 // class javafx.beans.binding.Bindings$65 "Yv"
@@ -75810,7 +75810,7 @@ boot.define("ZD","QG","",{
 				boot.uN.CVA().log("List element is null, returning default value instead.",new boot.BT(1));
 				// 6220
 			} else {
-				return A.BHK();
+				return A.BHM();
 			}
 		} catch ($) {
 			$ = boot.BL.CQ($) ;
@@ -75868,7 +75868,7 @@ boot.define("ZE","QG","",{
 				boot.uN.CVA().log("List element is null, returning default value instead.",new boot.BT(1));
 				// 6284
 			} else {
-				return A.BHK();
+				return A.BHM();
 			}
 		} catch ($) {
 			$ = boot.BL.CQ($) ;
@@ -77047,7 +77047,7 @@ boot.define("Zw","QG","",{
 				boot.uN.CVA().log("Element not found in map, returning default value instead.",new boot.BT(1));
 				// 7516
 			} else {
-				return A.BHK();
+				return A.BHM();
 			}
 		} catch ($) {
 			$ = boot.BL.CQ($) ;
@@ -77111,7 +77111,7 @@ boot.define("Zx","QG","",{
 				boot.uN.CVA().log("Element not found in map, returning default value instead.",new boot.BT(1));
 				// 7570
 			} else {
-				return A.BHK();
+				return A.BHM();
 			}
 		} catch ($) {
 			$ = boot.BL.CQ($) ;
@@ -77800,8 +77800,8 @@ boot.define("QW","QX","",{
 	$0:[0,,"QQ"],
 	h:[4112,"this$0","QQ"],
 	S:[1,,,,"u","getName"],
-	Bxx:[1,,,,"G","getBean"],
-	CES:[4,,,,"V","invalidated"]
+	CES:[4,,,,"V","invalidated"],
+	Bxx:[1,,,,"G","getBean"]
 });
 
 // class com.sun.javafx.collections.NonIterableChange$GenericAddRemoveChange "Qv"
@@ -78048,7 +78048,7 @@ boot.define("QT","QR","",{
 			// 244
 			if (A.CEE()!=0) {
 				// 245
-				this.OX(this.k+A.Bzy());
+				this.OY(this.k+A.Bzy());
 				// 246
 				this.Cxx(A.BzW(),A.Bzy());
 				// 247
@@ -78067,7 +78067,7 @@ boot.define("QT","QR","",{
 		// 254
 	},
 	// javafx.collections.transformation.SortedList#ensureSize(int)
-	OX:function(A,B){
+	OY:function(A,B){
 		// 285
 		if (this.j.length<A) {
 			// 286
@@ -78159,7 +78159,7 @@ boot.define("QT","QR","",{
 			C=C^-1;
 		}
 		// 339
-		this.OX(this.k+1);
+		this.OY(this.k+1);
 		// 340
 		this.Cxx(B,1);
 		// 341
@@ -78175,7 +78175,7 @@ boot.define("QT","QR","",{
 	// javafx.collections.transformation.SortedList#setAllToMapping(java.util.List, int)
 	CyC:function(A,B,C){
 		// 349
-		this.OX(B);
+		this.OY(B);
 		// 350
 		this.k=B;
 		// 351
@@ -78311,10 +78311,9 @@ boot.define("QT","QR","",{
 	BzO:[2,,"Qx<>",,"V","update"],
 	DL:[2,,"E:G E#",,"I","compare"],
 	CN:[1,,,,"I","size"],
-	OX:[2,,"I",,"V","ensureSize"],
 	BzP:[2,,"Qx<>",,"V","addRemove"],
-	CyA:[2,,"I E:G",,"I","findPosition"],
 	Cxy:[2,,"E:G",,"I","findPosition"],
+	CyA:[2,,"I E:G",,"I","findPosition"],
 	BzS:[1,,"I",,"I","getSourceIndex"],
 	BzI:[4,,"Qx<>",,"V","sourceChanged"],
 	CyB:[2,,"E:G I",,"V","insertToMapping"],
@@ -78322,6 +78321,7 @@ boot.define("QT","QR","",{
 	CxV:[17,,"CL<>",,"V","setComparator"],
 	Cxx:[2,,"I I",,"V","updateIndices"],
 	CxX:[2,,"Qx<>",,"V","updateUnsorted"],
+	OY:[2,,"I",,"V","ensureSize"],
 	TI:[17,,,,"CL<>","getComparator"],
 	CxY:[17,,,,"QY<CL<>>","comparatorProperty"],
 	Cxu:[2,,,,"V","doSortWithPermutationChange"],
@@ -78400,8 +78400,8 @@ boot.define("yH","QX","",{
 	$0:[0,,"QT"],
 	h:[4112,"this$0","QT"],
 	S:[1,,,,"u","getName"],
-	Bxx:[1,,,,"G","getBean"],
-	CES:[4,,,,"V","invalidated"]
+	CES:[4,,,,"V","invalidated"],
+	Bxx:[1,,,,"G","getBean"]
 });
 
 // class javafx.collections.transformation.SortedList$ElementComparator "yI"
@@ -78664,11 +78664,11 @@ boot.define("yJ","","CL OI",{
 	CyI:[41,,,,"yJ","getInstance"],
 	CyK:[9,,"CV",,"yJ","getInstance"],
 	CyT:[41,,,,"[CV","getAvailableLocales"],
-	CyQ:[33,,"I",,"V","setStrength"],
-	CyS:[33,,"I",,"V","setDecomposition"],
 	CyV:[1025,,"u",,"yP","getCollationKey"],
 	CyR:[33,,,,"I","getDecomposition"],
-	CyP:[33,,,,"I","getStrength"]
+	CyP:[33,,,,"I","getStrength"],
+	CyQ:[33,,"I",,"V","setStrength"],
+	CyS:[33,,"I",,"V","setDecomposition"]
 });
 
 // class java.lang.ref.SoftReference "yN"
@@ -79150,7 +79150,7 @@ boot.define("yx","","",{
 			// 607
 			for (;;) {
 				// 607
-				D.OD(A,B);
+				D.OC(A,B);
 				// 608
 				if (D.CKw(A)==B) {
 					// 611
@@ -79184,48 +79184,48 @@ boot.define("yx","","",{
 		throw new boot.Bx(0)
 	},
 	// js.util.Calendar#set(int, int)
-	OD:function(A,B){
+	OC:function(A,B){
 		// 680
 		throw new boot.Bx(0)
 	},
 	// js.util.Calendar#set(int, int, int)
 	Czz:function(A,B,C){
 		// 697
-		this.OD(1,A);
+		this.OC(1,A);
 		// 698
-		this.OD(2,B);
+		this.OC(2,B);
 		// 699
-		this.OD(5,C);
+		this.OC(5,C);
 		// 700
 	},
 	// js.util.Calendar#set(int, int, int, int, int)
 	DAA:function(A,B,C,D,E){
 		// 718
-		this.OD(1,A);
+		this.OC(1,A);
 		// 719
-		this.OD(2,B);
+		this.OC(2,B);
 		// 720
-		this.OD(5,C);
+		this.OC(5,C);
 		// 721
-		this.OD(11,D);
+		this.OC(11,D);
 		// 722
-		this.OD(12,E);
+		this.OC(12,E);
 		// 723
 	},
 	// js.util.Calendar#set(int, int, int, int, int, int)
 	DAB:function(A,B,C,D,E,F){
 		// 743
-		this.OD(1,A);
+		this.OC(1,A);
 		// 744
-		this.OD(2,B);
+		this.OC(2,B);
 		// 745
-		this.OD(5,C);
+		this.OC(5,C);
 		// 746
-		this.OD(11,D);
+		this.OC(11,D);
 		// 747
-		this.OD(12,E);
+		this.OC(12,E);
 		// 748
-		this.OD(13,F);
+		this.OC(13,F);
 		// 749
 	},
 	// js.util.Calendar#isLenient()
@@ -79361,7 +79361,7 @@ boot.define("yx","","",{
 	DAK:[9,,"Ow",,"yx","getInstance"],
 	DAL:[9,,"CV",,"yx","getInstance"],
 	Czz:[17,,"I I I",,"V","set"],
-	OD:[1,,"I I",,"V","set"],
+	OC:[1,,"I I",,"V","set"],
 	DAA:[17,,"I I I I I",,"V","set"],
 	DAB:[17,,"I I I I I I",,"V","set"],
 	DAE:[17,,,,"OX","getTime"],
@@ -80031,13 +80031,13 @@ boot.define("zD","","OI",{
 	DBy:[1025,,,,"I","last"],
 	DBQ:[1025,,"PJ",,"V","setText"],
 	DBP:[1,,"u",,"V","setText"],
-	DBM:[1025,,"I",,"I","following"],
-	DBL:[1,,"I",,"I","preceding"],
 	DBZ:[10,,"yM CV I",,"zD","createBreakInstance"],
 	DBY:[10,,"CV I",,"zD","createBreakInstance"],
 	DBS:[10,,"CV I",,"zD","getBreakInstance"],
 	DBz:[1025,,,,"PJ","getText"],
-	DBO:[1,,"I",,"Z","isBoundary"]
+	DBO:[1,,"I",,"Z","isBoundary"],
+	DBM:[1025,,"I",,"I","following"],
+	DBL:[1,,"I",,"I","preceding"]
 });
 
 // class java.text.StringCharacterIterator "zE"
@@ -80596,14 +80596,14 @@ boot.define("zH","","",{
 	DCP:[1,,,,"[u","getShortMonths"],
 	DCT:[1,,,,"[u","getShortWeekdays"],
 	DCR:[1,,,,"[u","getWeekdays"],
+	CzW:[1,,,,"[[u","getZoneStrings"],
 	DCW:[1,,"[u",,"V","setAmPmStrings"],
 	DCZ:[1,,"u",,"V","setLocalPatternChars"],
 	DCO:[1,,"[u",,"V","setMonths"],
 	DCQ:[1,,"[u",,"V","setShortMonths"],
 	DCU:[1,,"[u",,"V","setShortWeekdays"],
 	DCS:[1,,"[u",,"V","setWeekdays"],
-	DCX:[1,,"[[u",,"V","setZoneStrings"],
-	CzW:[1,,,,"[[u","getZoneStrings"]
+	DCX:[1,,"[[u",,"V","setZoneStrings"]
 });
 
 // class java.text.spi.DecimalFormatSymbolsProvider "yZ"
@@ -80980,9 +80980,9 @@ boot.define("zJ","","",{
 	$0:[2,,"u"],
 	c:[18,"code","u"],
 	DDV:[9,,"u",,"zJ","getInstance"],
-	DDZ:[1,,,,"u","getCurrencyCode"],
 	DDu:[1,,"CV",,"u","getSymbol"],
-	DDW:[1,,,,"u","getSymbol"]
+	DDW:[1,,,,"u","getSymbol"],
+	DDZ:[1,,,,"u","getCurrencyCode"]
 });
 
 // class java.util.spi.LocaleNameProvider "yu"
@@ -81422,6 +81422,12 @@ boot.define("zK","OW","",{
 	DFA:[1,,"I",,"V","setMaximumIntegerDigits"],
 	DFC:[1,,"I",,"V","setMinimumIntegerDigits"],
 	BZA:[17,,"u Ou",,"G","parseObject"],
+	DEI:[9,,"CV",,"zK","getCurrencyInstance"],
+	DEZ:[25,,,,"zK","getCurrencyInstance"],
+	DEJ:[9,,"CV",,"zK","getNumberInstance"],
+	DEX:[25,,,,"zK","getNumberInstance"],
+	DEu:[25,,,,"zK","getPercentInstance"],
+	DEK:[9,,"CV",,"zK","getPercentInstance"],
 	DEP:[0,,"D",,"u","fastFormat"],
 	DDX:[1,,,,"zJ","getCurrency"],
 	DFD:[1,,,,"I","getMaximumFractionDigits"],
@@ -81437,13 +81443,7 @@ boot.define("zK","OW","",{
 	DFE:[1,,"I",,"V","setMaximumFractionDigits"],
 	DFG:[1,,"I",,"V","setMinimumFractionDigits"],
 	DET:[1,,"Z",,"V","setParseIntegerOnly"],
-	DFI:[1,,"zO",,"V","setRoundingMode"],
-	DEZ:[25,,,,"zK","getCurrencyInstance"],
-	DEI:[9,,"CV",,"zK","getCurrencyInstance"],
-	DEJ:[9,,"CV",,"zK","getNumberInstance"],
-	DEX:[25,,,,"zK","getNumberInstance"],
-	DEu:[25,,,,"zK","getPercentInstance"],
-	DEK:[9,,"CV",,"zK","getPercentInstance"]
+	DFI:[1,,"zO",,"V","setRoundingMode"]
 });
 
 // class js.util.concurrent.atomic.AtomicInteger "zL"
@@ -81557,7 +81557,7 @@ boot.define("zL","Bu","",{
 		do {
 			B=this.CWK();
 			// 190
-			C=A.BJF(B);
+			C=A.BJH(B);
 		} while (this.DFM(B,C)==0)// 192
 		return B
 	},
@@ -81567,7 +81567,7 @@ boot.define("zL","Bu","",{
 		do {
 			B=this.CWK();
 			// 208
-			C=A.BJF(B);
+			C=A.BJH(B);
 		} while (this.DFM(B,C)==0)// 210
 		return C
 	},
@@ -81577,7 +81577,7 @@ boot.define("zL","Bu","",{
 		do {
 			C=this.CWK();
 			// 229
-			D=B.BJO(C,A);
+			D=B.BJQ(C,A);
 		} while (this.DFM(C,D)==0)// 231
 		return C
 	},
@@ -81587,7 +81587,7 @@ boot.define("zL","Bu","",{
 		do {
 			C=this.CWK();
 			// 250
-			D=B.BJO(C,A);
+			D=B.BJQ(C,A);
 		} while (this.DFM(C,D)==0)// 252
 		return D
 	},
@@ -82219,11 +82219,11 @@ boot.define("Lw","","QA",{
 		return B==null?boot.Lw.c.CK(A):B.CK(A)
 	},
 	// javafx.beans.binding.ListExpression#set(int, java.lang.Object)
-	OB:function(A,B,C){
+	OE:function(A,B,C){
 		// 305
 		C=this.D();
 		// 306
-		return C==null?boot.Lw.c.OB(A,B):C.OB(A,B)
+		return C==null?boot.Lw.c.OE(A,B):C.OE(A,B)
 	},
 	// javafx.beans.binding.ListExpression#add(int, java.lang.Object)
 	NS:function(A,B,C){
@@ -82364,19 +82364,18 @@ boot.define("Lw","","QA",{
 	ByX:[129,,"[E:G",,"Z","addAll"],
 	IC:[1,,"Dy<>",,"Z","addAll"],
 	Ov:[1,,"I Dy<>",,"Z","addAll"],
-	OB:[1,,"I E:G",,"E:G","set"],
+	OE:[1,,"I E:G",,"E:G","set"],
 	ByI:[1,,,,"I","getSize"],
 	IN:[1,,"Dy<>",,"Z","containsAll"],
 	Hw:[1,,,,"EC<E:G>","listIterator"],
 	Ow:[1,,"I",,"EC<E:G>","listIterator"],
-	IP:[1,,"Dy<>",,"Z","removeAll"],
 	Byu:[129,,"[E:G",,"Z","removeAll"],
+	IP:[1,,"Dy<>",,"Z","removeAll"],
 	Byv:[129,,"[E:G",,"Z","retainAll"],
 	IW:[1,,"Dy<>",,"Z","retainAll"],
-	ByZ:[1,,"Dy<>",,"Z","setAll"],
 	ByY:[129,,"[E:G",,"Z","setAll"],
+	ByZ:[1,,"Dy<>",,"Z","setAll"],
 	ByR:[1,,,,"QG","isNull"],
-	ByN:[1,,"Ly<>",,"QG","isEqualTo"],
 	ByV:[1,,,,"QE","asString"],
 	Byx:[1025,,,,"QI","emptyProperty"],
 	ByP:[1,,"Ly<>",,"QG","isNotEqualTo"],
@@ -82384,7 +82383,8 @@ boot.define("Lw","","QA",{
 	ByH:[9,"E:G","QA<E:G>",,"Lw<E:G>","listExpression"],
 	Byy:[1025,,,,"QJ","sizeProperty"],
 	ByJ:[1,,"I",,"QM<E:G>","valueAt"],
-	ByL:[1,,"QO",,"QM<E:G>","valueAt"]
+	ByL:[1,,"QO",,"QM<E:G>","valueAt"],
+	ByN:[1,,"Ly<>",,"QG","isEqualTo"]
 });
 
 // class javafx.beans.binding.ListBinding "QC"
@@ -82447,13 +82447,13 @@ boot.define("QC","Lw","SS",{
 		// 162
 	},
 	// javafx.beans.binding.ListBinding#addListener(javafx.collections.ListChangeListener)
-	BzD:function(A){
+	BzC:function(A){
 		// 166
 		this.h=boot.zT.DGT(this.h,this,A);
 		// 167
 	},
 	// javafx.beans.binding.ListBinding#removeListener(javafx.collections.ListChangeListener)
-	BzC:function(A){
+	BzD:function(A){
 		// 171
 		this.h=boot.zT.DGU(this.h,A);
 		// 172
@@ -82519,7 +82519,7 @@ boot.define("QC","Lw","SS",{
 			// 243
 			if (this.e!=null) {
 				// 244
-				this.e.BzD(this.d);
+				this.e.BzC(this.d);
 			} else {
 			}
 		}
@@ -82551,7 +82551,7 @@ boot.define("QC","Lw","SS",{
 			// 270
 			if (this.e!=null) {
 				// 271
-				this.e.BzC(this.d);
+				this.e.BzD(this.d);
 			}
 			// 273
 			this.f=0;
@@ -82608,16 +82608,16 @@ boot.define("QC","Lw","SS",{
 	W:[1,,,,"u","toString"],
 	DGO:[1028,,,,"Ly<E:G>","computeValue"],
 	CFQ:[17,,,,"Z","isValid"],
-	CFJ:[148,,"[ND",,"V","bind"],
 	CFP:[17,,,,"V","invalidate"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BzC:[1,,"QV<>",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
-	CFK:[148,,"[ND",,"V","unbind"],
+	CFJ:[148,,"[ND",,"V","bind"],
 	BTx:[1,,"Mx",,"V","addListener"],
-	BzD:[1,,"QV<>",,"V","addListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
+	BzC:[1,,"QV<>",,"V","addListener"],
 	BTy:[1,,,,"V","dispose"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	BzD:[1,,"QV<>",,"V","removeListener"],
+	CFK:[148,,"[ND",,"V","unbind"],
 	Byx:[1,,,,"QI","emptyProperty"],
 	Byy:[1,,,,"QJ","sizeProperty"],
 	CFM:[1,,,,"Ly<>","getDependencies"],
@@ -82749,20 +82749,20 @@ boot.define("zT","RC","",{
 	$:[1025,"com.sun.javafx.binding.ListExpressionHelper","E:G","RC"],
 	$0:[4,,"QA<E:G>"],
 	c:[20,"observable","QA<E:G>"],
-	DGU:[9,"E:G","zT<E:G> QV<>",,"zT<E:G>","removeListener"],
-	DGy:[1028,,"Mz<>",,"zT<E:G>","removeListener"],
-	DGw:[1028,,"Mx",,"zT<E:G>","removeListener"],
-	DGQ:[9,"E:G","zT<E:G> Mx",,"zT<E:G>","removeListener"],
-	DGS:[9,"E:G","zT<E:G> Mz<>",,"zT<E:G>","removeListener"],
-	DHA:[1028,,"QV<>",,"zT<E:G>","removeListener"],
+	DGP:[9,"E:G","zT<E:G> QA<E#> Mx",,"zT<E:G>","addListener"],
 	DGv:[1028,,"Mx",,"zT<E:G>","addListener"],
 	DGx:[1028,,"Mz<>",,"zT<E:G>","addListener"],
 	DGz:[1028,,"QV<>",,"zT<E:G>","addListener"],
-	DGR:[9,"E:G","zT<E:G> QA<E#> Mz<>",,"zT<E:G>","addListener"],
 	DGT:[9,"E:G","zT<E:G> QA<E#> QV<>",,"zT<E:G>","addListener"],
-	DGP:[9,"E:G","zT<E:G> QA<E#> Mx",,"zT<E:G>","addListener"],
-	CEM:[1028,,"Qx<>",,"V","fireValueChangedEvent"],
+	DGR:[9,"E:G","zT<E:G> QA<E#> Mz<>",,"zT<E:G>","addListener"],
+	DGU:[9,"E:G","zT<E:G> QV<>",,"zT<E:G>","removeListener"],
+	DGy:[1028,,"Mz<>",,"zT<E:G>","removeListener"],
+	DHA:[1028,,"QV<>",,"zT<E:G>","removeListener"],
+	DGQ:[9,"E:G","zT<E:G> Mx",,"zT<E:G>","removeListener"],
+	DGw:[1028,,"Mx",,"zT<E:G>","removeListener"],
+	DGS:[9,"E:G","zT<E:G> Mz<>",,"zT<E:G>","removeListener"],
 	CEX:[1028,,,,"V","fireValueChangedEvent"],
+	CEM:[1028,,"Qx<>",,"V","fireValueChangedEvent"],
 	DGX:[9,"E:G","zT<E:G>",,"V","fireValueChangedEvent"],
 	DGu:[9,"E:G","zT<E:G> Qx<>",,"V","fireValueChangedEvent"]
 });
@@ -82829,14 +82829,14 @@ boot.define("zU","zT","",{
 	$0:[4096,,"QA Mx zY"],
 	$1:[2,,"QA<E:G> Mx"],
 	d:[18,"listener","Mx"],
-	DGy:[4,,"Mz<>",,"zT<E:G>","removeListener"],
-	DHA:[4,,"QV<>",,"zT<E:G>","removeListener"],
-	DGw:[4,,"Mx",,"zT<E:G>","removeListener"],
 	DGz:[4,,"QV<>",,"zT<E:G>","addListener"],
-	DGx:[4,,"Mz<>",,"zT<E:G>","addListener"],
 	DGv:[4,,"Mx",,"zT<E:G>","addListener"],
-	CEX:[4,,,,"V","fireValueChangedEvent"],
-	CEM:[4,,"Qx<>",,"V","fireValueChangedEvent"]
+	DGx:[4,,"Mz<>",,"zT<E:G>","addListener"],
+	DGw:[4,,"Mx",,"zT<E:G>","removeListener"],
+	DHA:[4,,"QV<>",,"zT<E:G>","removeListener"],
+	DGy:[4,,"Mz<>",,"zT<E:G>","removeListener"],
+	CEM:[4,,"Qx<>",,"V","fireValueChangedEvent"],
+	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
 // class com.sun.javafx.binding.ListExpressionHelper$Generic "zX"
@@ -83392,12 +83392,12 @@ boot.define("zX","zT","",{
 	$2:[4096,,"QA Mx QV zY"],
 	$9:[4096,,"QA Mz Mz zY"],
 	$10:[4096,,"QA Mz QV zY"],
-	$8:[2,,"QA<E:G> Mz<> QV<>"],
-	$5:[2,,"QA<E:G> QV<> QV<>"],
-	$6:[2,,"QA<E:G> Mx Mz<>"],
 	$7:[2,,"QA<E:G> Mx QV<>"],
+	$8:[2,,"QA<E:G> Mz<> QV<>"],
+	$6:[2,,"QA<E:G> Mx Mz<>"],
 	$3:[2,,"QA<E:G> Mx Mx"],
 	$4:[2,,"QA<E:G> Mz<> Mz<>"],
+	$5:[2,,"QA<E:G> QV<> QV<>"],
 	d:[2,"invalidationListeners","[Mx"],
 	e:[2,"changeListeners","[Mz<>"],
 	f:[2,"listChangeListeners","[QV<>"],
@@ -83406,15 +83406,15 @@ boot.define("zX","zT","",{
 	i:[2,"listChangeSize","I"],
 	j:[2,"locked","Z"],
 	k:[2,"currentValue","Ly<E:G>"],
-	DGy:[4,,"Mz<>",,"zT<E:G>","removeListener"],
-	DGw:[4,,"Mx",,"zT<E:G>","removeListener"],
-	DHA:[4,,"QV<>",,"zT<E:G>","removeListener"],
-	DGv:[4,,"Mx",,"zT<E:G>","addListener"],
 	DGz:[4,,"QV<>",,"zT<E:G>","addListener"],
+	DGv:[4,,"Mx",,"zT<E:G>","addListener"],
 	DGx:[4,,"Mz<>",,"zT<E:G>","addListener"],
-	DHB:[2,,"Ly<E:G> Qx<E#> Z",,"V","notifyListeners"],
+	DGw:[4,,"Mx",,"zT<E:G>","removeListener"],
+	DGy:[4,,"Mz<>",,"zT<E:G>","removeListener"],
+	DHA:[4,,"QV<>",,"zT<E:G>","removeListener"],
+	CEM:[4,,"Qx<>",,"V","fireValueChangedEvent"],
 	CEX:[4,,,,"V","fireValueChangedEvent"],
-	CEM:[4,,"Qx<>",,"V","fireValueChangedEvent"]
+	DHB:[2,,"Ly<E:G> Qx<E#> Z",,"V","notifyListeners"]
 });
 
 // class com.sun.javafx.binding.ListExpressionHelper$SingleChange "zV"
@@ -83489,14 +83489,14 @@ boot.define("zV","zT","",{
 	$1:[2,,"QA<E:G> Mz<>"],
 	d:[18,"listener","Mz<>"],
 	e:[2,"currentValue","Ly<E:G>"],
-	DGy:[4,,"Mz<>",,"zT<E:G>","removeListener"],
-	DHA:[4,,"QV<>",,"zT<E:G>","removeListener"],
-	DGw:[4,,"Mx",,"zT<E:G>","removeListener"],
 	DGz:[4,,"QV<>",,"zT<E:G>","addListener"],
-	DGx:[4,,"Mz<>",,"zT<E:G>","addListener"],
 	DGv:[4,,"Mx",,"zT<E:G>","addListener"],
-	CEX:[4,,,,"V","fireValueChangedEvent"],
-	CEM:[4,,"Qx<>",,"V","fireValueChangedEvent"]
+	DGx:[4,,"Mz<>",,"zT<E:G>","addListener"],
+	DGw:[4,,"Mx",,"zT<E:G>","removeListener"],
+	DHA:[4,,"QV<>",,"zT<E:G>","removeListener"],
+	DGy:[4,,"Mz<>",,"zT<E:G>","removeListener"],
+	CEM:[4,,"Qx<>",,"V","fireValueChangedEvent"],
+	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
 // class com.sun.javafx.binding.ListExpressionHelper$1 "zY"
@@ -83582,14 +83582,14 @@ boot.define("zW","zT","",{
 	$1:[2,,"QA<E:G> QV<>"],
 	d:[18,"listener","QV<>"],
 	e:[2,"currentValue","Ly<E:G>"],
-	DGy:[4,,"Mz<>",,"zT<E:G>","removeListener"],
-	DHA:[4,,"QV<>",,"zT<E:G>","removeListener"],
-	DGw:[4,,"Mx",,"zT<E:G>","removeListener"],
 	DGz:[4,,"QV<>",,"zT<E:G>","addListener"],
-	DGx:[4,,"Mz<>",,"zT<E:G>","addListener"],
 	DGv:[4,,"Mx",,"zT<E:G>","addListener"],
-	CEX:[4,,,,"V","fireValueChangedEvent"],
-	CEM:[4,,"Qx<>",,"V","fireValueChangedEvent"]
+	DGx:[4,,"Mz<>",,"zT<E:G>","addListener"],
+	DGw:[4,,"Mx",,"zT<E:G>","removeListener"],
+	DHA:[4,,"QV<>",,"zT<E:G>","removeListener"],
+	DGy:[4,,"Mz<>",,"zT<E:G>","removeListener"],
+	CEM:[4,,"Qx<>",,"V","fireValueChangedEvent"],
+	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
 // class javafx.beans.binding.ListBinding$SizeProperty "zR"
@@ -83831,10 +83831,10 @@ boot.define("Lv","Lw","Pz",{
 	BK:[1,,"G",,"Z","equals"],
 	W:[1,,,,"u","toString"],
 	BJ:[1,,,,"I","hashCode"],
-	Bxy:[1,,"Ly<E:G>",,"V","bindContentBidirectional"],
-	ByA:[1,,"G",,"V","unbindContentBidirectional"],
 	ByC:[1,,"Ly<E:G>",,"V","bindContent"],
-	ByE:[1,,"G",,"V","unbindContent"]
+	ByE:[1,,"G",,"V","unbindContent"],
+	Bxy:[1,,"Ly<E:G>",,"V","bindContentBidirectional"],
+	ByA:[1,,"G",,"V","unbindContentBidirectional"]
 });
 
 // interface javafx.beans.value.WritableListValue "Px"
@@ -84288,11 +84288,11 @@ boot.define("Q","","zv",{
 	DHV:[25,"W:BAG<First:G,Second:G> First# Second#","A<W:BAG<First:G,Second:G>> First# Second#",,"W:BAG<First:G,Second:G>","of"],
 	BSM:[16,,,,"V","initialize"],
 	BB:[17,,"KX",,"V","renderIn"],
-	DHL:[148,,"[BE",,"BAH","when"],
+	DHI:[0,,"KV",,"V","initializeEventListeners"],
 	DHR:[1,,,,"V","declare"],
 	DHu:[1028,,,,"V","virtualize"],
 	DHK:[4,,,,"Z","shouldUpdate"],
-	DHI:[0,,"KV",,"V","initializeEventListeners"]
+	DHL:[148,,"[BE",,"BAH","when"]
 });
 
 // interface jsx.ui.Locator "BAH"
@@ -84663,7 +84663,7 @@ boot.define("MM","","",{
 		// 893
 		if (A!=null) {
 			// 896
-			return this.DIQ(A.BCJ());
+			return this.DIQ(A.BCL());
 		} else {
 			// 894
 			return this;
@@ -84674,7 +84674,7 @@ boot.define("MM","","",{
 		// 909
 		if (A!=null) {
 			// 912
-			return this.DJJ(A.DKC(Φ("Ez",[boot.Ez.BHI(false)])).DJO(λ(boot.DM,"Gv","DKD",boot.MM,[])));
+			return this.DJJ(A.DKC(Φ("Ez",[boot.Ez.BHK(false)])).DJO(λ(boot.DM,"Gv","DKD",boot.MM,[])));
 		} else {
 			// 910
 			return this;
@@ -84802,7 +84802,7 @@ boot.define("MM","","",{
 	// kiss.Events#toggle(boolean)
 	DKZ:function(A){
 		// 1234
-		return this.DKu(boot.Ez.BHI(A),boot.Ez.BHI(A==0?1:0))
+		return this.DKu(boot.Ez.BHK(A),boot.Ez.BHK(A==0?1:0))
 	},
 	// kiss.Events#toggle(java.lang.Object, java.lang.Object)
 	DKu:function(A,B){
@@ -84954,7 +84954,7 @@ boot.define("MM","","",{
 		// 471
 		if (G!=null) {
 			// 472
-			G.BWW(true);
+			G.BWV(true);
 		}
 		// 475
 		H=λ(boot.IA,"wM","DLN",boot.MM,[A, E, F]);
@@ -85100,7 +85100,7 @@ boot.define("MM","","",{
 	// kiss.Events#lambda$26(java.lang.Boolean)
 	_DKD:function(A){
 		// 912
-		return boot.Ez.BHI(A.BHK()==0?1:0)
+		return boot.Ez.BHK(A.BHM()==0?1:0)
 	},
 	// kiss.Events#lambda$27(int, kiss.Observer)
 	DKF:function(A,B,C){
@@ -85191,17 +85191,17 @@ boot.define("MM","","",{
 	// kiss.Events#lambda$38(java.lang.Boolean, java.lang.Boolean)
 	_DLB:function(A,B){
 		// 1356
-		return boot.Ez.BHI(A.BHK()!=0&&B.BHK()!=0?1:0)
+		return boot.Ez.BHK(A.BHM()!=0&&B.BHM()!=0?1:0)
 	},
 	// kiss.Events#lambda$39(java.lang.Boolean, java.lang.Boolean)
 	_DLD:function(A,B){
 		// 1373
-		return boot.Ez.BHI(A.BHK()!=0||B.BHK()!=0?1:0)
+		return boot.Ez.BHK(A.BHM()!=0||B.BHM()!=0?1:0)
 	},
 	// kiss.Events#lambda$40(java.lang.Boolean, java.lang.Boolean)
 	_DLF:function(A,B){
 		// 1390
-		return boot.Ez.BHI(A.BHK()==0&&B.BHK()==0?1:0)
+		return boot.Ez.BHK(A.BHM()==0&&B.BHM()==0?1:0)
 	},
 	// kiss.Events#lambda$41(java.util.Deque, java.util.concurrent.atomic.AtomicInteger, int, int, kiss.Observer, java.lang.Object)
 	_DLH:function(A,B,C,D,E,F,G,H){
@@ -85528,54 +85528,59 @@ boot.define("MM","","",{
 	c:[25,"NEVER","MM"],
 	d:[26,"UNDEFINED","G"],
 	e:[18,"subscriber","DM<OS<>,My>"],
-	DIJ:[17,"Key:G","DM<V:G,Key:G>",,"MA<Key:G,V:G>","toMap"],
 	DIL:[17,"Key:G Value:G","DM<V:G,Key:G> DM<V#,Value:G>",,"MA<Key:G,Value:G>","toMap"],
+	DIJ:[17,"Key:G","DM<V:G,Key:G>",,"MA<Key:G,V:G>","toMap"],
 	DIY:[145,,"FQ<V:G> [MM<V#>",,"MM<V:G>","combine"],
 	DIW:[17,"O:G R:G","Fy<V:G,O:G,R:G> MM<O#>",,"MM<R:G>","combine"],
 	DJV:[17,,"EJ<>",,"MM<V:G>","merge"],
 	DJU:[145,,"[MM<>",,"MM<V:G>","merge"],
-	DKG:[17,,"J NE",,"MM<V:G>","skip"],
-	DKE:[17,,"I",,"MM<V:G>","skip"],
+	DKG:[17,,"J NF",,"MM<V:G>","skip"],
 	DKB:[17,,"MM<Ez>",,"MM<V:G>","skip"],
+	DKE:[17,,"I",,"MM<V:G>","skip"],
 	DKA:[17,,"EK<V:G>",,"MM<V:G>","skip"],
 	DJJ:[17,,"MM<Ez>",,"MM<V:G>","filter"],
-	DIQ:[17,,"EK<V:G>",,"MM<V:G>","filter"],
 	DJE:[17,,"V:G BAL<V#,V#>",,"MM<V:G>","filter"],
+	DIQ:[17,,"EK<V:G>",,"MM<V:G>","filter"],
 	DJP:[17,"R:G","R:G",,"MM<R:G>","map"],
-	DJS:[17,"R:G","V:G Fy<V#,V#,R:G>",,"MM<R:G>","map"],
 	DJO:[17,"R:G","DM<,R:G>",,"MM<R:G>","map"],
+	DJS:[17,"R:G","V:G Fy<V#,V#,R:G>",,"MM<R:G>","map"],
 	DKz:[137,,"[MM<Ez>",,"MM<Ez>","all",{
 		Dz :{
 		}
 	}],
-	DIS:[17,,"I I",,"MM<Bz<V:G>>","buffer"],
-	DIU:[17,,"J NE",,"MM<Bz<V:G>>","buffer"],
-	DIR:[17,,"I",,"MM<Bz<V:G>>","buffer"],
-	DIE:[17,,"BG<> BG<BL> IA",,"My","to"],
 	DIC:[17,,"OS<>",,"My","to"],
 	DIB:[17,,,,"Pw<V:G>","to"],
+	DIE:[17,,"BG<> BG<BL> IA",,"My","to"],
 	DID:[17,,"BG<> BG<BL>",,"My","to"],
 	DJN:[17,,"EK<>",,"MM<Ez>","is"],
-	DLG:[9,"V:G","EJ<V:G>",,"MM<V:G>","from"],
 	DLA:[137,"V:G","[V:G",,"MM<V:G>","from"],
+	DLG:[9,"V:G","EJ<V:G>",,"MM<V:G>","from"],
+	DKy:[130,,"MM<V:G> [MM<V#>",,"[MM<V:G>","with"],
 	DKP:[17,,"MM<Ez>",,"MM<V:G>","take"],
 	DKQ:[17,,"I",,"MM<V:G>","take"],
-	DKS:[17,,"J NE",,"MM<V:G>","take"],
+	DKS:[17,,"J NF",,"MM<V:G>","take"],
 	DKO:[17,,"EK<V:G>",,"MM<V:G>","take"],
-	DKy:[130,,"MM<V:G> [MM<V#>",,"[MM<V:G>","with"],
+	DIz:[17,,"J NF",,"MM<V:G>","delay"],
 	DJy:[17,"R:G","R:G Fy<R#,V:G,R#>",,"MM<R:G>","scan"],
-	DIz:[17,,"J NE",,"MM<V:G>","delay"],
+	DIU:[17,,"J NF",,"MM<Bz<V:G>>","buffer"],
+	DIR:[17,,"I",,"MM<Bz<V:G>>","buffer"],
+	DIS:[17,,"I I",,"MM<Bz<V:G>>","buffer"],
+	DJB:[17,,,,"MM<V:G>","diff"],
 	DLC:[137,,"[MM<Ez>",,"MM<Ez>","any",{
 		Dz :{
 		}
 	}],
-	DIF:[17,,,,"ME<V:G>","toAlternate"],
-	DIH:[18,,"Fz<ME<V:G>,V#>",,"ME<V:G>","toSet"],
-	DIN:[17,,,,"ME<V:G>","toSet"],
+	DLE:[137,,"[MM<Ez>",,"MM<Ez>","none",{
+		Dz :{
+		}
+	}],
 	DII:[17,,,,"Lu<V:G>","toList"],
+	DIF:[17,,,,"ME<V:G>","toAlternate"],
+	DIN:[17,,,,"ME<V:G>","toSet"],
+	DIH:[18,,"Fz<ME<V:G>,V#>",,"ME<V:G>","toSet"],
 	DIv:[145,,"FQ<V:G> [MM<V#>",,"MM<V:G>","combineLatest"],
 	DIZ:[17,"O:G R:G","Fy<V:G,O:G,R:G> MM<O#>",,"MM<R:G>","combineLatest"],
-	DIw:[17,,"J NE",,"MM<V:G>","debounce"],
+	DIw:[17,,"J NF",,"MM<V:G>","debounce"],
 	DIy:[17,,"Fz<OS<>,V:G>",,"MM<V:G>","on"],
 	DJF:[17,,,,"MM<V:G>","distinct"],
 	DJL:[17,"R:G","DM<V:G,MM<R:G>>",,"MM<R:G>","flatMap"],
@@ -85584,19 +85589,14 @@ boot.define("MM","","",{
 	DJw:[17,,"MM",,"MM<V:G>","sample"],
 	DKM:[17,,"EJ<V:G>",,"MM<V:G>","startWith"],
 	DKC:[145,,"[V:G",,"MM<V:G>","startWith"],
-	DKI:[17,,"MM",,"MM<V:G>","skipUntil"],
 	DKK:[17,"T:G","EK<V:G>",,"MM<V:G>","skipUntil"],
-	DKW:[17,,"EK<V:G>",,"MM<V:G>","takeUntil"],
+	DKI:[17,,"MM",,"MM<V:G>","skipUntil"],
 	DKU:[17,,"MM",,"MM<V:G>","takeUntil"],
-	DKY:[17,,,,"MM<Ez>","toggle"],
+	DKW:[17,,"EK<V:G>",,"MM<V:G>","takeUntil"],
 	DKu:[17,"E:G","E:G E#",,"MM<E:G>","toggle"],
 	DKZ:[17,,"Z",,"MM<Ez>","toggle"],
-	DKw:[17,,"J NE",,"MM<V:G>","throttle"],
-	DLE:[137,,"[MM<Ez>",,"MM<Ez>","none",{
-		Dz :{
-		}
-	}],
-	DJB:[17,,,,"MM<V:G>","diff"],
+	DKY:[17,,,,"MM<Ez>","toggle"],
+	DKw:[17,,"J NF",,"MM<V:G>","throttle"],
 	DIP:[17,"R:G","A<R:G>",,"MM<R:G>","as"]
 });
 
@@ -85858,15 +85858,15 @@ boot.define("MC","","BAO",{
 	RY:[1,,"G",,"Z","containsValue"],
 	ByI:[1,,,,"I","getSize"],
 	ByR:[1,,,,"QG","isNull"],
-	DMQ:[1,,"MD<,>",,"QG","isEqualTo"],
 	ByV:[1,,,,"QE","asString"],
 	Byx:[1025,,,,"QI","emptyProperty"],
 	DMR:[1,,"MD<,>",,"QG","isNotEqualTo"],
 	ByT:[1,,,,"QG","isNotNull"],
 	Byy:[1025,,,,"QJ","sizeProperty"],
-	DMP:[1,,"NC<K:G>",,"QM<V:G>","valueAt"],
 	DMO:[1,,"K:G",,"QM<V:G>","valueAt"],
-	DMN:[9,"K:G V:G","BAO<K:G,V:G>",,"MC<K:G,V:G>","mapExpression"]
+	DMP:[1,,"NC<K:G>",,"QM<V:G>","valueAt"],
+	DMN:[9,"K:G V:G","BAO<K:G,V:G>",,"MC<K:G,V:G>","mapExpression"],
+	DMQ:[1,,"MD<,>",,"QG","isEqualTo"]
 });
 
 // class javafx.beans.binding.MapBinding "BAQ"
@@ -86090,16 +86090,16 @@ boot.define("BAQ","MC","SS",{
 	W:[1,,,,"u","toString"],
 	DMS:[1028,,,,"MD<K:G,V:G>","computeValue"],
 	CFQ:[17,,,,"Z","isValid"],
-	CFJ:[148,,"[ND",,"V","bind"],
 	CFP:[17,,,,"V","invalidate"],
+	CFJ:[148,,"[ND",,"V","bind"],
+	BTx:[1,,"Mx",,"V","addListener"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
+	CIu:[1,,"UU<,>",,"V","addListener"],
+	BTy:[1,,,,"V","dispose"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
 	BUE:[1,,"Mx",,"V","removeListener"],
 	CIw:[1,,"UU<,>",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
 	CFK:[148,,"[ND",,"V","unbind"],
-	BTx:[1,,"Mx",,"V","addListener"],
-	CIu:[1,,"UU<,>",,"V","addListener"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
-	BTy:[1,,,,"V","dispose"],
 	Byx:[1,,,,"QI","emptyProperty"],
 	Byy:[1,,,,"QJ","sizeProperty"],
 	CFM:[1,,,,"Ly<>","getDependencies"],
@@ -86231,20 +86231,20 @@ boot.define("BAV","RC","",{
 	$:[1025,"com.sun.javafx.binding.MapExpressionHelper","K:G V:G","RC"],
 	$0:[4,,"BAO<K:G,V:G>"],
 	c:[20,"observable","BAO<K:G,V:G>"],
-	DMY:[9,"K:G V:G","BAV<K:G,V:G> UU<,>",,"BAV<K:G,V:G>","removeListener"],
-	DNB:[1028,,"Mz<>",,"BAV<K:G,V:G>","removeListener"],
-	DMz:[1028,,"Mx",,"BAV<K:G,V:G>","removeListener"],
-	DMU:[9,"K:G V:G","BAV<K:G,V:G> Mx",,"BAV<K:G,V:G>","removeListener"],
-	DMW:[9,"K:G V:G","BAV<K:G,V:G> Mz<>",,"BAV<K:G,V:G>","removeListener"],
-	DND:[1028,,"UU<,>",,"BAV<K:G,V:G>","removeListener"],
+	DMT:[9,"K:G V:G","BAV<K:G,V:G> BAO<K#,V#> Mx",,"BAV<K:G,V:G>","addListener"],
 	DMy:[1028,,"Mx",,"BAV<K:G,V:G>","addListener"],
 	DNA:[1028,,"Mz<>",,"BAV<K:G,V:G>","addListener"],
 	DNC:[1028,,"UU<,>",,"BAV<K:G,V:G>","addListener"],
-	DMV:[9,"K:G V:G","BAV<K:G,V:G> BAO<K#,V#> Mz<>",,"BAV<K:G,V:G>","addListener"],
 	DMX:[9,"K:G V:G","BAV<K:G,V:G> BAO<K#,V#> UU<,>",,"BAV<K:G,V:G>","addListener"],
-	DMT:[9,"K:G V:G","BAV<K:G,V:G> BAO<K#,V#> Mx",,"BAV<K:G,V:G>","addListener"],
-	CJH:[1028,,"UQ<,>",,"V","fireValueChangedEvent"],
+	DMV:[9,"K:G V:G","BAV<K:G,V:G> BAO<K#,V#> Mz<>",,"BAV<K:G,V:G>","addListener"],
+	DMY:[9,"K:G V:G","BAV<K:G,V:G> UU<,>",,"BAV<K:G,V:G>","removeListener"],
+	DNB:[1028,,"Mz<>",,"BAV<K:G,V:G>","removeListener"],
+	DND:[1028,,"UU<,>",,"BAV<K:G,V:G>","removeListener"],
+	DMU:[9,"K:G V:G","BAV<K:G,V:G> Mx",,"BAV<K:G,V:G>","removeListener"],
+	DMz:[1028,,"Mx",,"BAV<K:G,V:G>","removeListener"],
+	DMW:[9,"K:G V:G","BAV<K:G,V:G> Mz<>",,"BAV<K:G,V:G>","removeListener"],
 	CEX:[1028,,,,"V","fireValueChangedEvent"],
+	CJH:[1028,,"UQ<,>",,"V","fireValueChangedEvent"],
 	DMu:[9,"K:G V:G","BAV<K:G,V:G>",,"V","fireValueChangedEvent"],
 	DMx:[9,"K:G V:G","BAV<K:G,V:G> UQ<,>",,"V","fireValueChangedEvent"]
 });
@@ -86311,14 +86311,14 @@ boot.define("BAW","BAV","",{
 	$0:[4096,,"BAO Mx BAu"],
 	$1:[2,,"BAO<K:G,V:G> Mx"],
 	d:[18,"listener","Mx"],
-	DNB:[4,,"Mz<>",,"BAV<K:G,V:G>","removeListener"],
-	DND:[4,,"UU<,>",,"BAV<K:G,V:G>","removeListener"],
-	DMz:[4,,"Mx",,"BAV<K:G,V:G>","removeListener"],
 	DNC:[4,,"UU<,>",,"BAV<K:G,V:G>","addListener"],
-	DNA:[4,,"Mz<>",,"BAV<K:G,V:G>","addListener"],
 	DMy:[4,,"Mx",,"BAV<K:G,V:G>","addListener"],
-	CEX:[4,,,,"V","fireValueChangedEvent"],
-	CJH:[4,,"UQ<,>",,"V","fireValueChangedEvent"]
+	DNA:[4,,"Mz<>",,"BAV<K:G,V:G>","addListener"],
+	DMz:[4,,"Mx",,"BAV<K:G,V:G>","removeListener"],
+	DND:[4,,"UU<,>",,"BAV<K:G,V:G>","removeListener"],
+	DNB:[4,,"Mz<>",,"BAV<K:G,V:G>","removeListener"],
+	CJH:[4,,"UQ<,>",,"V","fireValueChangedEvent"],
+	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
 // class com.sun.javafx.binding.MapExpressionHelper$Generic "BAZ"
@@ -86930,12 +86930,12 @@ boot.define("BAZ","BAV","",{
 	$2:[4096,,"BAO Mx UU BAu"],
 	$9:[4096,,"BAO Mz Mz BAu"],
 	$10:[4096,,"BAO Mz UU BAu"],
-	$8:[2,,"BAO<K:G,V:G> Mz<> UU<,>"],
-	$5:[2,,"BAO<K:G,V:G> UU<,> UU<,>"],
-	$6:[2,,"BAO<K:G,V:G> Mx Mz<>"],
 	$7:[2,,"BAO<K:G,V:G> Mx UU<,>"],
+	$8:[2,,"BAO<K:G,V:G> Mz<> UU<,>"],
+	$6:[2,,"BAO<K:G,V:G> Mx Mz<>"],
 	$3:[2,,"BAO<K:G,V:G> Mx Mx"],
 	$4:[2,,"BAO<K:G,V:G> Mz<> Mz<>"],
+	$5:[2,,"BAO<K:G,V:G> UU<,> UU<,>"],
 	d:[2,"invalidationListeners","[Mx"],
 	e:[2,"changeListeners","[Mz<>"],
 	f:[2,"mapChangeListeners","[UU<,>"],
@@ -86944,15 +86944,15 @@ boot.define("BAZ","BAV","",{
 	i:[2,"mapChangeSize","I"],
 	j:[2,"locked","Z"],
 	k:[2,"currentValue","MD<K:G,V:G>"],
-	DNB:[4,,"Mz<>",,"BAV<K:G,V:G>","removeListener"],
-	DMz:[4,,"Mx",,"BAV<K:G,V:G>","removeListener"],
-	DND:[4,,"UU<,>",,"BAV<K:G,V:G>","removeListener"],
-	DMy:[4,,"Mx",,"BAV<K:G,V:G>","addListener"],
 	DNC:[4,,"UU<,>",,"BAV<K:G,V:G>","addListener"],
+	DMy:[4,,"Mx",,"BAV<K:G,V:G>","addListener"],
 	DNA:[4,,"Mz<>",,"BAV<K:G,V:G>","addListener"],
-	DNE:[2,,"MD<K:G,V:G> BAv<K#,V#>",,"V","notifyListeners"],
+	DMz:[4,,"Mx",,"BAV<K:G,V:G>","removeListener"],
+	DNB:[4,,"Mz<>",,"BAV<K:G,V:G>","removeListener"],
+	DND:[4,,"UU<,>",,"BAV<K:G,V:G>","removeListener"],
+	CJH:[4,,"UQ<,>",,"V","fireValueChangedEvent"],
 	CEX:[4,,,,"V","fireValueChangedEvent"],
-	CJH:[4,,"UQ<,>",,"V","fireValueChangedEvent"]
+	DNE:[2,,"MD<K:G,V:G> BAv<K#,V#>",,"V","notifyListeners"]
 });
 
 // class com.sun.javafx.binding.MapExpressionHelper$SingleChange "BAX"
@@ -87027,14 +87027,14 @@ boot.define("BAX","BAV","",{
 	$1:[2,,"BAO<K:G,V:G> Mz<>"],
 	d:[18,"listener","Mz<>"],
 	e:[2,"currentValue","MD<K:G,V:G>"],
-	DNB:[4,,"Mz<>",,"BAV<K:G,V:G>","removeListener"],
-	DND:[4,,"UU<,>",,"BAV<K:G,V:G>","removeListener"],
-	DMz:[4,,"Mx",,"BAV<K:G,V:G>","removeListener"],
 	DNC:[4,,"UU<,>",,"BAV<K:G,V:G>","addListener"],
-	DNA:[4,,"Mz<>",,"BAV<K:G,V:G>","addListener"],
 	DMy:[4,,"Mx",,"BAV<K:G,V:G>","addListener"],
-	CEX:[4,,,,"V","fireValueChangedEvent"],
-	CJH:[4,,"UQ<,>",,"V","fireValueChangedEvent"]
+	DNA:[4,,"Mz<>",,"BAV<K:G,V:G>","addListener"],
+	DMz:[4,,"Mx",,"BAV<K:G,V:G>","removeListener"],
+	DND:[4,,"UU<,>",,"BAV<K:G,V:G>","removeListener"],
+	DNB:[4,,"Mz<>",,"BAV<K:G,V:G>","removeListener"],
+	CJH:[4,,"UQ<,>",,"V","fireValueChangedEvent"],
+	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
 // class com.sun.javafx.binding.MapExpressionHelper$1 "BAu"
@@ -87172,14 +87172,14 @@ boot.define("BAY","BAV","",{
 	$1:[2,,"BAO<K:G,V:G> UU<,>"],
 	d:[18,"listener","UU<,>"],
 	e:[2,"currentValue","MD<K:G,V:G>"],
-	DNB:[4,,"Mz<>",,"BAV<K:G,V:G>","removeListener"],
-	DND:[4,,"UU<,>",,"BAV<K:G,V:G>","removeListener"],
-	DMz:[4,,"Mx",,"BAV<K:G,V:G>","removeListener"],
 	DNC:[4,,"UU<,>",,"BAV<K:G,V:G>","addListener"],
-	DNA:[4,,"Mz<>",,"BAV<K:G,V:G>","addListener"],
 	DMy:[4,,"Mx",,"BAV<K:G,V:G>","addListener"],
-	CEX:[4,,,,"V","fireValueChangedEvent"],
-	CJH:[4,,"UQ<,>",,"V","fireValueChangedEvent"]
+	DNA:[4,,"Mz<>",,"BAV<K:G,V:G>","addListener"],
+	DMz:[4,,"Mx",,"BAV<K:G,V:G>","removeListener"],
+	DND:[4,,"UU<,>",,"BAV<K:G,V:G>","removeListener"],
+	DNB:[4,,"Mz<>",,"BAV<K:G,V:G>","removeListener"],
+	CJH:[4,,"UQ<,>",,"V","fireValueChangedEvent"],
+	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
 // class com.sun.javafx.binding.MapExpressionHelper$SimpleChange "BAv"
@@ -87482,10 +87482,10 @@ boot.define("BAR","CC","MD",{
 	$0:[4096,,"BAP"],
 	$1:[2],
 	Rv:[1,,,,"Dx<Fu<K:G,V:G>>","entrySet"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	CIw:[1,,"UU<,>",,"V","removeListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
 	CIu:[1,,"UU<,>",,"V","addListener"],
-	BTx:[1,,"Mx",,"V","addListener"]
+	BUE:[1,,"Mx",,"V","removeListener"],
+	CIw:[1,,"UU<,>",,"V","removeListener"]
 });
 
 // class javafx.beans.property.ReadOnlyMapProperty "MB"
@@ -87638,10 +87638,10 @@ boot.define("MB","MC","Pz",{
 	BK:[1,,"G",,"Z","equals"],
 	W:[1,,,,"u","toString"],
 	BJ:[1,,,,"I","hashCode"],
-	DMK:[1,,"MD<K:G,V:G>",,"V","bindContentBidirectional"],
-	ByA:[1,,"G",,"V","unbindContentBidirectional"],
 	DML:[1,,"MD<K:G,V:G>",,"V","bindContent"],
-	ByE:[1,,"G",,"V","unbindContent"]
+	ByE:[1,,"G",,"V","unbindContent"],
+	DMK:[1,,"MD<K:G,V:G>",,"V","bindContentBidirectional"],
+	ByA:[1,,"G",,"V","unbindContentBidirectional"]
 });
 
 // interface javafx.beans.value.WritableMapValue "BAN"
@@ -87898,13 +87898,13 @@ boot.define("MG","","BAx",{
 	IP:[1,,"Dy<>",,"Z","removeAll"],
 	IW:[1,,"Dy<>",,"Z","retainAll"],
 	ByR:[1,,,,"QG","isNull"],
-	DNN:[1,,"MH<>",,"QG","isEqualTo"],
 	ByV:[1,,,,"QE","asString"],
 	Byx:[1025,,,,"QI","emptyProperty"],
 	DNO:[1,,"MH<>",,"QG","isNotEqualTo"],
 	ByT:[1,,,,"QG","isNotNull"],
 	Byy:[1025,,,,"QJ","sizeProperty"],
-	DNM:[9,"E:G","BAx<E:G>",,"MG<E:G>","setExpression"]
+	DNM:[9,"E:G","BAx<E:G>",,"MG<E:G>","setExpression"],
+	DNN:[1,,"MH<>",,"QG","isEqualTo"]
 });
 
 // class javafx.beans.binding.SetBinding "BAz"
@@ -88128,16 +88128,16 @@ boot.define("BAz","MG","SS",{
 	W:[1,,,,"u","toString"],
 	DNP:[1028,,,,"MH<E:G>","computeValue"],
 	CFQ:[17,,,,"Z","isValid"],
-	CFJ:[148,,"[ND",,"V","bind"],
 	CFP:[17,,,,"V","invalidate"],
+	CFJ:[148,,"[ND",,"V","bind"],
+	BTx:[1,,"Mx",,"V","addListener"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
+	CJP:[1,,"VD<>",,"V","addListener"],
+	BTy:[1,,,,"V","dispose"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
 	BUE:[1,,"Mx",,"V","removeListener"],
 	CJR:[1,,"VD<>",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
 	CFK:[148,,"[ND",,"V","unbind"],
-	BTx:[1,,"Mx",,"V","addListener"],
-	CJP:[1,,"VD<>",,"V","addListener"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
-	BTy:[1,,,,"V","dispose"],
 	Byx:[1,,,,"QI","emptyProperty"],
 	Byy:[1,,,,"QJ","sizeProperty"],
 	CFM:[1,,,,"Ly<>","getDependencies"],
@@ -88269,20 +88269,20 @@ boot.define("BBE","RC","",{
 	$:[1025,"com.sun.javafx.binding.SetExpressionHelper","E:G","RC"],
 	$0:[4,,"BAx<E:G>"],
 	c:[20,"observable","BAx<E:G>"],
-	DNV:[9,"E:G","BBE<E:G> VD<>",,"BBE<E:G>","removeListener"],
-	DNy:[1028,,"Mz<>",,"BBE<E:G>","removeListener"],
-	DNw:[1028,,"Mx",,"BBE<E:G>","removeListener"],
-	DNR:[9,"E:G","BBE<E:G> Mx",,"BBE<E:G>","removeListener"],
-	DNT:[9,"E:G","BBE<E:G> Mz<>",,"BBE<E:G>","removeListener"],
-	DOA:[1028,,"VD<>",,"BBE<E:G>","removeListener"],
+	DNQ:[9,"E:G","BBE<E:G> BAx<E#> Mx",,"BBE<E:G>","addListener"],
 	DNv:[1028,,"Mx",,"BBE<E:G>","addListener"],
 	DNx:[1028,,"Mz<>",,"BBE<E:G>","addListener"],
 	DNz:[1028,,"VD<>",,"BBE<E:G>","addListener"],
-	DNS:[9,"E:G","BBE<E:G> BAx<E#> Mz<>",,"BBE<E:G>","addListener"],
 	DNU:[9,"E:G","BBE<E:G> BAx<E#> VD<>",,"BBE<E:G>","addListener"],
-	DNQ:[9,"E:G","BBE<E:G> BAx<E#> Mx",,"BBE<E:G>","addListener"],
-	CJx:[1028,,"VB<>",,"V","fireValueChangedEvent"],
+	DNS:[9,"E:G","BBE<E:G> BAx<E#> Mz<>",,"BBE<E:G>","addListener"],
+	DNV:[9,"E:G","BBE<E:G> VD<>",,"BBE<E:G>","removeListener"],
+	DNy:[1028,,"Mz<>",,"BBE<E:G>","removeListener"],
+	DOA:[1028,,"VD<>",,"BBE<E:G>","removeListener"],
+	DNR:[9,"E:G","BBE<E:G> Mx",,"BBE<E:G>","removeListener"],
+	DNw:[1028,,"Mx",,"BBE<E:G>","removeListener"],
+	DNT:[9,"E:G","BBE<E:G> Mz<>",,"BBE<E:G>","removeListener"],
 	CEX:[1028,,,,"V","fireValueChangedEvent"],
+	CJx:[1028,,"VB<>",,"V","fireValueChangedEvent"],
 	DNX:[9,"E:G","BBE<E:G>",,"V","fireValueChangedEvent"],
 	DNu:[9,"E:G","BBE<E:G> VB<>",,"V","fireValueChangedEvent"]
 });
@@ -88349,14 +88349,14 @@ boot.define("BBF","BBE","",{
 	$0:[4096,,"BAx Mx BBJ"],
 	$1:[2,,"BAx<E:G> Mx"],
 	d:[18,"listener","Mx"],
-	DNy:[4,,"Mz<>",,"BBE<E:G>","removeListener"],
-	DOA:[4,,"VD<>",,"BBE<E:G>","removeListener"],
-	DNw:[4,,"Mx",,"BBE<E:G>","removeListener"],
 	DNz:[4,,"VD<>",,"BBE<E:G>","addListener"],
-	DNx:[4,,"Mz<>",,"BBE<E:G>","addListener"],
 	DNv:[4,,"Mx",,"BBE<E:G>","addListener"],
-	CEX:[4,,,,"V","fireValueChangedEvent"],
-	CJx:[4,,"VB<>",,"V","fireValueChangedEvent"]
+	DNx:[4,,"Mz<>",,"BBE<E:G>","addListener"],
+	DNw:[4,,"Mx",,"BBE<E:G>","removeListener"],
+	DOA:[4,,"VD<>",,"BBE<E:G>","removeListener"],
+	DNy:[4,,"Mz<>",,"BBE<E:G>","removeListener"],
+	CJx:[4,,"VB<>",,"V","fireValueChangedEvent"],
+	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
 // class com.sun.javafx.binding.SetExpressionHelper$Generic "BBI"
@@ -88947,12 +88947,12 @@ boot.define("BBI","BBE","",{
 	$2:[4096,,"BAx Mx VD BBJ"],
 	$9:[4096,,"BAx Mz Mz BBJ"],
 	$10:[4096,,"BAx Mz VD BBJ"],
-	$8:[2,,"BAx<E:G> Mz<> VD<>"],
-	$5:[2,,"BAx<E:G> VD<> VD<>"],
-	$6:[2,,"BAx<E:G> Mx Mz<>"],
 	$7:[2,,"BAx<E:G> Mx VD<>"],
+	$8:[2,,"BAx<E:G> Mz<> VD<>"],
+	$6:[2,,"BAx<E:G> Mx Mz<>"],
 	$3:[2,,"BAx<E:G> Mx Mx"],
 	$4:[2,,"BAx<E:G> Mz<> Mz<>"],
+	$5:[2,,"BAx<E:G> VD<> VD<>"],
 	d:[2,"invalidationListeners","[Mx"],
 	e:[2,"changeListeners","[Mz<>"],
 	f:[2,"setChangeListeners","[VD<>"],
@@ -88961,15 +88961,15 @@ boot.define("BBI","BBE","",{
 	i:[2,"setChangeSize","I"],
 	j:[2,"locked","Z"],
 	k:[2,"currentValue","MH<E:G>"],
-	DNy:[4,,"Mz<>",,"BBE<E:G>","removeListener"],
-	DNw:[4,,"Mx",,"BBE<E:G>","removeListener"],
-	DOA:[4,,"VD<>",,"BBE<E:G>","removeListener"],
-	DNv:[4,,"Mx",,"BBE<E:G>","addListener"],
 	DNz:[4,,"VD<>",,"BBE<E:G>","addListener"],
+	DNv:[4,,"Mx",,"BBE<E:G>","addListener"],
 	DNx:[4,,"Mz<>",,"BBE<E:G>","addListener"],
-	DOB:[2,,"MH<E:G> BBK<E#>",,"V","notifyListeners"],
+	DNw:[4,,"Mx",,"BBE<E:G>","removeListener"],
+	DNy:[4,,"Mz<>",,"BBE<E:G>","removeListener"],
+	DOA:[4,,"VD<>",,"BBE<E:G>","removeListener"],
+	CJx:[4,,"VB<>",,"V","fireValueChangedEvent"],
 	CEX:[4,,,,"V","fireValueChangedEvent"],
-	CJx:[4,,"VB<>",,"V","fireValueChangedEvent"]
+	DOB:[2,,"MH<E:G> BBK<E#>",,"V","notifyListeners"]
 });
 
 // class com.sun.javafx.binding.SetExpressionHelper$SingleChange "BBG"
@@ -89044,14 +89044,14 @@ boot.define("BBG","BBE","",{
 	$1:[2,,"BAx<E:G> Mz<>"],
 	d:[18,"listener","Mz<>"],
 	e:[2,"currentValue","MH<E:G>"],
-	DNy:[4,,"Mz<>",,"BBE<E:G>","removeListener"],
-	DOA:[4,,"VD<>",,"BBE<E:G>","removeListener"],
-	DNw:[4,,"Mx",,"BBE<E:G>","removeListener"],
 	DNz:[4,,"VD<>",,"BBE<E:G>","addListener"],
-	DNx:[4,,"Mz<>",,"BBE<E:G>","addListener"],
 	DNv:[4,,"Mx",,"BBE<E:G>","addListener"],
-	CEX:[4,,,,"V","fireValueChangedEvent"],
-	CJx:[4,,"VB<>",,"V","fireValueChangedEvent"]
+	DNx:[4,,"Mz<>",,"BBE<E:G>","addListener"],
+	DNw:[4,,"Mx",,"BBE<E:G>","removeListener"],
+	DOA:[4,,"VD<>",,"BBE<E:G>","removeListener"],
+	DNy:[4,,"Mz<>",,"BBE<E:G>","removeListener"],
+	CJx:[4,,"VB<>",,"V","fireValueChangedEvent"],
+	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
 // class com.sun.javafx.binding.SetExpressionHelper$1 "BBJ"
@@ -89174,14 +89174,14 @@ boot.define("BBH","BBE","",{
 	$1:[2,,"BAx<E:G> VD<>"],
 	d:[18,"listener","VD<>"],
 	e:[2,"currentValue","MH<E:G>"],
-	DNy:[4,,"Mz<>",,"BBE<E:G>","removeListener"],
-	DOA:[4,,"VD<>",,"BBE<E:G>","removeListener"],
-	DNw:[4,,"Mx",,"BBE<E:G>","removeListener"],
 	DNz:[4,,"VD<>",,"BBE<E:G>","addListener"],
-	DNx:[4,,"Mz<>",,"BBE<E:G>","addListener"],
 	DNv:[4,,"Mx",,"BBE<E:G>","addListener"],
-	CEX:[4,,,,"V","fireValueChangedEvent"],
-	CJx:[4,,"VB<>",,"V","fireValueChangedEvent"]
+	DNx:[4,,"Mz<>",,"BBE<E:G>","addListener"],
+	DNw:[4,,"Mx",,"BBE<E:G>","removeListener"],
+	DOA:[4,,"VD<>",,"BBE<E:G>","removeListener"],
+	DNy:[4,,"Mz<>",,"BBE<E:G>","removeListener"],
+	CJx:[4,,"VB<>",,"V","fireValueChangedEvent"],
+	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
 // class com.sun.javafx.binding.SetExpressionHelper$SimpleChange "BBK"
@@ -89441,10 +89441,10 @@ boot.define("BBA","DT","MH",{
 	d:[26,"iterator","EB"],
 	IH:[1,,,,"EB<E:G>","iterator"],
 	CN:[1,,,,"I","size"],
-	CJR:[1,,"VD<>",,"V","removeListener"],
-	BUE:[1,,"Mx",,"V","removeListener"],
+	CJP:[1,,"VD<>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
-	CJP:[1,,"VD<>",,"V","addListener"]
+	CJR:[1,,"VD<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"]
 });
 
 // class javafx.beans.binding.SetExpression$EmptyObservableSet$1 "BBL"
@@ -89596,10 +89596,10 @@ boot.define("MF","MG","Pz",{
 	BK:[1,,"G",,"Z","equals"],
 	W:[1,,,,"u","toString"],
 	BJ:[1,,,,"I","hashCode"],
-	DNJ:[1,,"MH<E:G>",,"V","bindContentBidirectional"],
-	ByA:[1,,"G",,"V","unbindContentBidirectional"],
 	DNK:[1,,"MH<E:G>",,"V","bindContent"],
-	ByE:[1,,"G",,"V","unbindContent"]
+	ByE:[1,,"G",,"V","unbindContent"],
+	DNJ:[1,,"MH<E:G>",,"V","bindContentBidirectional"],
+	ByA:[1,,"G",,"V","unbindContentBidirectional"]
 });
 
 // interface javafx.beans.value.WritableSetValue "BAw"
@@ -90726,10 +90726,10 @@ boot.define("BBN","","",{
 		// 40
 		if (B!=-1) {
 			// 43
-			return boot.JB.BBy(this.d[B]);
+			return boot.JB.BCA(this.d[B]);
 		} else {
 			// 41
-			return boot.JB.BBx();
+			return boot.JB.BBz();
 		}
 	},
 	// jsx.collection.DualList#getAll(java.lang.Object)
@@ -91153,7 +91153,7 @@ boot.define("BAB","","",{
 	// jsx.ui.StructureDescriptor#If(javafx.beans.property.ReadOnlyProperty, jsx.ui.Declarable[])
 	_DQG:function(A,B){
 		// 447
-		return boot.BAB.DQF(A!=null&&(A.RZ()!=null&&A.RZ().BHK()!=0)?1:0,B)
+		return boot.BAB.DQF(A!=null&&(A.RZ()!=null&&A.RZ().BHM()!=0)?1:0,B)
 	},
 	// jsx.ui.StructureDescriptor#If(boolean, jsx.ui.Declarable[])
 	_DQF:function(A,B){
@@ -91320,39 +91320,39 @@ boot.define("BAB","","",{
 	DPX:[9,,"u u",,"zv","attr"],
 	DQA:[9,,"u G",,"zv","attr"],
 	DQC:[9,,"u Pw",,"zv","attr"],
-	DQO:[9,"T:G","[T:G BG<T#>",,"zv","contents"],
+	DQI:[9,"T:BF","A<> A<T:BF>",,"zv","contents"],
 	DQM:[9,"T:G","Bz<T:G> BG<T#>",,"zv","contents"],
 	DPO:[137,,"[G",,"zv","contents"],
 	DQQ:[9,"T:G","I GV",,"zv","contents"],
 	DQR:[9,"T:G","I I GV",,"zv","contents"],
 	DQT:[137,,"[Q",,"zv","contents"],
-	DQI:[9,"T:BF","A<> A<T:BF>",,"zv","contents"],
-	DQJ:[9,"T:G","A<> [T:G",,"zv","contents"],
-	DQK:[9,"T:G","A<> Bz<T:G>",,"zv","contents"],
 	DQN:[9,"T:BF","A<T:BF> BG<T#>",,"zv","contents"],
+	DQJ:[9,"T:G","A<> [T:G",,"zv","contents"],
+	DQO:[9,"T:G","[T:G BG<T#>",,"zv","contents"],
+	DQK:[9,"T:G","A<> Bz<T:G>",,"zv","contents"],
 	DPx:[9,,"u",,"zv","id"],
-	DPR:[138,,"I [zv",,"V","box"],
-	DPQ:[137,,"[zv",,"V","box"],
 	DPT:[10,,"I u u [zv IA",,"V","element"],
-	DPw:[9,,,,"BBR","d"],
-	DPH:[9,,"Q",,"V","widget"],
 	DPI:[10,,"I Q",,"V","widget"],
+	DPH:[9,,"Q",,"V","widget"],
 	DPS:[137,,"u [zv",,"V","html"],
 	DPP:[138,,"I u [zv",,"V","html"],
+	DPQ:[137,,"[zv",,"V","box"],
+	DPR:[138,,"I [zv",,"V","box"],
+	DPw:[9,,,,"BBR","d"],
 	DPN:[138,,"I Ky [G",,"V","text"],
-	DPM:[137,,"Ky [G",,"V","text"],
-	DPK:[137,,"[G",,"V","text"],
 	DPL:[138,,"I [G",,"V","text"],
-	DPz:[9,,"u",,"zv","xlink"],
-	DPy:[9,,"u",,"zv","title"],
+	DPK:[137,,"[G",,"V","text"],
+	DPM:[137,,"Ky [G",,"V","text"],
 	DPJ:[8,,"I Q IA",,"BBP","createWidget"],
 	DHS:[8,,"I Q",,"BBP","createWidget"],
 	DPV:[138,,"I u [zv",,"V","svg"],
 	DPU:[137,,"u [zv",,"V","svg"],
 	DQG:[137,,"Pz<Ez> [zv",,"zv","If"],
-	DQF:[137,,"Z [zv",,"zv","If"],
 	DQE:[137,,"u [zv",,"zv","If"],
-	DPW:[9,,"I I I I",,"zv","viewBox"]
+	DQF:[137,,"Z [zv",,"zv","If"],
+	DPW:[9,,"I I I I",,"zv","viewBox"],
+	DPy:[9,,"u",,"zv","title"],
+	DPz:[9,,"u",,"zv","xlink"]
 });
 
 // class jsx.ui.VirtualWidget "BBP"
@@ -91426,8 +91426,8 @@ boot.define("LH","KY","",{
 },{
 	$:[1025,"js.dom.Text",,"KY<LH>"],
 	$0:[1],
-	BQP:[1025,,,,"u","textContent"],
-	BQO:[1025,,"u",,"V","textContent"]
+	BQO:[1025,,,,"u","textContent"],
+	BQP:[1025,,"u",,"V","textContent"]
 },"Text");
 
 // class jsx.ui.StructureDescriptor$SVGPath "BBR"
@@ -92706,9 +92706,9 @@ boot.define("MP","","",{
 	DRS:[1,"CalculationResult:G","DM<Param1:G,CalculationResult:G>",,"MP<CalculationResult:G,Param2:G,Param3:G>","a"],
 	DRW:[1,"CalculationResult:G","DM<Param3:G,CalculationResult:G>",,"MP<Param1:G,Param2:G,CalculationResult:G>","o"],
 	DRV:[1,"NewParam:G","NewParam:G",,"MP<Param1:G,Param2:G,NewParam:G>","o"],
-	DRZ:[1,,,,"MO<Param1:G,Param2:G>","ó"],
 	DRY:[1,,,,"MO<Param1:G,Param3:G>","é"],
-	DRX:[1,,,,"MO<Param2:G,Param3:G>","á"]
+	DRX:[1,,,,"MO<Param2:G,Param3:G>","á"],
+	DRZ:[1,,,,"MO<Param1:G,Param2:G>","ó"]
 });
 
 // class kiss.JSKiss$Copy "MS"
@@ -92984,7 +92984,7 @@ boot.define("MY","Lu","",{
 		// 81
 		if (A!=null) {
 			// 82
-			A.BzD(this.d);
+			A.BzC(this.d);
 		}
 		// 84
 	},
@@ -93033,13 +93033,13 @@ boot.define("MY","Lu","",{
 		// 163
 	},
 	// javafx.beans.property.ListPropertyBase#addListener(javafx.collections.ListChangeListener)
-	BzD:function(A){
+	BzC:function(A){
 		// 167
 		this.i=boot.zT.DGT(this.i,this,A);
 		// 168
 	},
 	// javafx.beans.property.ListPropertyBase#removeListener(javafx.collections.ListChangeListener)
-	BzC:function(A){
+	BzD:function(A){
 		// 172
 		this.i=boot.zT.DGU(this.i,A);
 		// 173
@@ -93077,7 +93077,7 @@ boot.define("MY","Lu","",{
 			// 214
 			if (A!=null) {
 				// 215
-				A.BzC(this.d);
+				A.BzD(this.d);
 			}
 			// 217
 			this.h=0;
@@ -93105,7 +93105,7 @@ boot.define("MY","Lu","",{
 			// 241
 			if (this.e!=null) {
 				// 242
-				this.e.BzD(this.d);
+				this.e.BzC(this.d);
 			} else {
 			}
 		}
@@ -93259,20 +93259,20 @@ boot.define("MY","Lu","",{
 	W:[1,,,,"u","toString"],
 	DRx:[1,,"Ly<E:G>",,"V","set"],
 	CEv:[1,,"NC<>",,"V","bind"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BzC:[1,,"QV<>",,"V","removeListener"],
-	CEu:[1,,,,"Z","isBound"],
-	CEw:[1,,,,"V","unbind"],
 	CES:[4,,,,"V","invalidated"],
-	BzD:[1,,"QV<>",,"V","addListener"],
 	BUC:[1,,"Mz<>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
+	BzC:[1,,"QV<>",,"V","addListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BzD:[1,,"QV<>",,"V","removeListener"],
+	CEu:[1,,,,"Z","isBound"],
+	CEw:[1,,,,"V","unbind"],
 	Byx:[1,,,,"QI","emptyProperty"],
 	Byy:[1,,,,"QJ","sizeProperty"],
 	DRw:[2,,"Ly<E:G>",,"V","markInvalid"],
-	CEX:[4,,,,"V","fireValueChangedEvent"],
 	CEM:[4,,"Qx<>",,"V","fireValueChangedEvent"],
+	CEX:[4,,,,"V","fireValueChangedEvent"],
 	DGW:[2,,,,"V","invalidateProperties"]
 });
 
@@ -93775,20 +93775,20 @@ boot.define("Mu","MA","",{
 	W:[1,,,,"u","toString"],
 	DSC:[1,,"MD<K:G,V:G>",,"V","set"],
 	CEv:[1,,"NC<>",,"V","bind"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
+	CES:[4,,,,"V","invalidated"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
+	CIu:[1,,"UU<,>",,"V","addListener"],
 	BUE:[1,,"Mx",,"V","removeListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
 	CIw:[1,,"UU<,>",,"V","removeListener"],
 	CEu:[1,,,,"Z","isBound"],
 	CEw:[1,,,,"V","unbind"],
-	CES:[4,,,,"V","invalidated"],
-	CIu:[1,,"UU<,>",,"V","addListener"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
-	BTx:[1,,"Mx",,"V","addListener"],
 	Byx:[1,,,,"QI","emptyProperty"],
 	Byy:[1,,,,"QJ","sizeProperty"],
 	DSB:[2,,"MD<K:G,V:G>",,"V","markInvalid"],
-	CEX:[4,,,,"V","fireValueChangedEvent"],
 	CJH:[4,,"UQ<,>",,"V","fireValueChangedEvent"],
+	CEX:[4,,,,"V","fireValueChangedEvent"],
 	DGW:[2,,,,"V","invalidateProperties"]
 });
 
@@ -94291,20 +94291,20 @@ boot.define("Mw","ME","",{
 	W:[1,,,,"u","toString"],
 	DSH:[1,,"MH<E:G>",,"V","set"],
 	CEv:[1,,"NC<>",,"V","bind"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
+	CES:[4,,,,"V","invalidated"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
+	BTx:[1,,"Mx",,"V","addListener"],
+	CJP:[1,,"VD<>",,"V","addListener"],
 	BUE:[1,,"Mx",,"V","removeListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
 	CJR:[1,,"VD<>",,"V","removeListener"],
 	CEu:[1,,,,"Z","isBound"],
 	CEw:[1,,,,"V","unbind"],
-	CES:[4,,,,"V","invalidated"],
-	CJP:[1,,"VD<>",,"V","addListener"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
-	BTx:[1,,"Mx",,"V","addListener"],
 	Byx:[1,,,,"QI","emptyProperty"],
 	Byy:[1,,,,"QJ","sizeProperty"],
 	DSG:[2,,"MH<E:G>",,"V","markInvalid"],
-	CEX:[4,,,,"V","fireValueChangedEvent"],
 	CJx:[4,,"VB<>",,"V","fireValueChangedEvent"],
+	CEX:[4,,,,"V","fireValueChangedEvent"],
 	DGW:[2,,,,"V","invalidateProperties"]
 });
 
@@ -94695,8 +94695,8 @@ boot.define("LO","LP","",{
 	BRU:[10,,"Bz<LQ> DM<LQ,u>",,"I","max"],
 	BRA:[24,"K:G E:G Y:G","LN K:G E:G Y:G",,"V","start"],
 	BQS:[24,,,,"V","stop"],
-	BQw:[8,,"u I",,"u","padding"],
 	BQu:[24,,,,"V","show"],
+	BQw:[8,,"u I",,"u","padding"],
 	BRX:[10,,"J",,"J","ms"]
 },"e");
 
@@ -95655,11 +95655,11 @@ boot.define("w","x","",{
 	DSW:[1,,"u",,"Z","match"],
 	DSO:[9,,"u",,"w","getByName"],
 	DSv:[9,,,,"Bz<w>","getAll"],
+	DSV:[1,,,,"u","getSystemName"],
+	DSZ:[1,,"KX",,"V","applyIcon"],
 	DSY:[1,,,,"BCX","getIconPosition"],
 	DSu:[1,,"BCU",,"BCV","getStatus"],
-	DSX:[1,,,,"u","getIcon"],
-	DSV:[1,,,,"u","getSystemName"],
-	DSZ:[1,,"KX",,"V","applyIcon"]
+	DSX:[1,,,,"u","getIcon"]
 });
 
 // class teemowork.model.Version "BCU"
@@ -96014,16 +96014,16 @@ boot.define("BCT","","",{
 	DXG:[20,,,,"T:BCv","update"],
 	DXE:[17,,"BCU",,"T:BCv","getDescriptor"],
 	DXI:[28,,"D",,"BCy","level"],
-	DXO:[1025,,,,"I","getMaxLevel"],
 	DXF:[1028,,"BCU T:BCv",,"T:BCv","createDescriptor"],
-	DXN:[28,,"BCW D D",,"BCy","amplify"],
 	DXJ:[28,,"BCW D",,"BCy","amplify"],
+	DXN:[28,,"BCW D D",,"BCy","amplify"],
 	DXP:[28,,"BCW BCx",,"BCy","amplify"],
 	DXQ:[28,,"BCW D D BCy",,"BCy","amplify"],
 	DXR:[28,,"BCW D D BCy BCy",,"BCy","amplify"],
 	DXL:[28,,"D",,"BCy","ad"],
 	DXK:[28,,"D",,"BCy","ap"],
-	DXM:[28,,"D",,"BCy","bounusAD"]
+	DXM:[28,,"D",,"BCy","bounusAD"],
+	DXO:[1025,,,,"I","getMaxLevel"]
 });
 
 // class teemowork.model.Status "BCW"
@@ -96199,167 +96199,183 @@ boot.define("BCW","BF","",{
 		// 284
 		boot.BCW.ke=new boot.BCW("MSReduction",157,boot.BCW.ka,1);
 		// 287
-		boot.BCW.kf=new boot.BCW("IgnoreSlow",158,new boot.z(boot.u.Bw(boot.BCW.jk.mi),0).V("無効").W(),0);
+		boot.BCW.kf=new boot.BCW("IgnoreSlow",158,new boot.z(boot.u.Bw(boot.BCW.jk.na),0).V("無効").W(),0);
 		// 290
 		boot.BCW.kg=new boot.BCW("IgnoreUnitCollision",159,"ユニット衝突無効",0);
 		// 293
-		boot.BCW.kh=new boot.BCW("IgnoreCC",160,"CC無効",0);
+		boot.BCW.kh=new boot.BCW("IgnoreDamage",160,"ダメージ無効",0);
 		// 296
-		boot.BCW.ki=new boot.BCW("RemoveCC",161,"全てのCCを解除",0);
+		boot.BCW.ki=new boot.BCW("IgnoreCC",161,"CC無効",0);
+		// 299
+		boot.BCW.kj=new boot.BCW("RemoveCC",162,"全てのCCを解除",0);
 		// 301
-		boot.BCW.kj=new boot.BCW("Stealth",162,"ステルス",0);
+		boot.BCW.kk=new boot.BCW("Untargetable",163,"対象不可",0);
 		// 303
-		boot.BCW.kk=new boot.BCW("Visionable",163,"視界を得る",0);
+		boot.BCW.kl=new boot.BCW("Stasis",164,"対象及び操作不可",0);
 		// 305
-		boot.BCW.kl=new boot.BCW("NotSpellCast",164,"このスキルはSpellcastとして扱われない",0);
+		boot.BCW.km=new boot.BCW("Dash",165,"移動",0);
 		// 307
-		boot.BCW.km=new boot.BCW("Chill",165,3);
+		boot.BCW.kn=new boot.BCW("DashTarget",166,"突撃",0);
 		// 309
-		boot.BCW.kn=new boot.BCW("OnHitEffect",166,"このスキルはOn-Hit Effectの影響を受ける",0);
-		// 315
-		boot.BCW.ko=new boot.BCW("Cost",167,3);boot.BCW.kp=new boot.BCW("CostPerLv",168,3);
-		// 317
-		boot.BCW.la=new boot.BCW("Sell",169,3);
-		// 319
-		boot.BCW.lb=new boot.BCW("Gold",170,3);boot.BCW.lc=new boot.BCW("GoldPer10Sec",171,"Gold Generation",0);
+		boot.BCW.ko=new boot.BCW("Blink",167,"テレポート",0);
+		// 311
+		boot.BCW.kp=new boot.BCW("BlinkTarget",168,"テレポート",0);
+		// 313
+		boot.BCW.la=new boot.BCW("BlinkExchange",169,"入れ替わる",0);
+		// 318
+		boot.BCW.lb=new boot.BCW("Stealth",170,"ステルス",0);
+		// 320
+		boot.BCW.lc=new boot.BCW("Visionable",171,"視界を得る",0);
+		// 322
+		boot.BCW.ld=new boot.BCW("NotSpellCast",172,"このスキルはSpellcastとして扱われない",0);
 		// 324
-		boot.BCW.ld=new boot.BCW("Time",172,"",3,2);boot.BCW.le=new boot.BCW("CDRAwareTime",173,"",0);boot.BCW.lf=new boot.BCW("RespawnTimeReductionRatio",174,"死亡時間",0);
+		boot.BCW.le=new boot.BCW("Chill",173,3);
 		// 326
-		boot.BCW.lg=new boot.BCW("Duration",175,"経過秒数",0);
-		// 328
-		boot.BCW.lh=new boot.BCW("Count",176,"",3,2);boot.BCW.li=new boot.BCW("Radius",177,"範囲",0);
-		// 330
-		boot.BCW.lj=new boot.BCW("Length",178,"長さ",0);
+		boot.BCW.lf=new boot.BCW("OnHitEffect",174,"このスキルはOn-Hit Effectの影響を受ける",0);
 		// 332
-		boot.BCW.lk=new boot.BCW("Distance",179,"距離",0);
+		boot.BCW.lg=new boot.BCW("Cost",175,3);boot.BCW.lh=new boot.BCW("CostPerLv",176,3);
 		// 334
-		boot.BCW.ll=new boot.BCW("MissileSpeed",180,"弾速",0);
+		boot.BCW.li=new boot.BCW("Sell",177,3);
 		// 336
-		boot.BCW.lm=new boot.BCW("MissileWidth",181,"射幅",0);
-		// 338
-		boot.BCW.ln=new boot.BCW("EnemyChampion",182,"敵Championの数",0);
-		// 340
-		boot.BCW.lo=new boot.BCW("DamagedChampion",183,"ダメージを与えた敵チャンピオンの数",0);
-		// 342
-		boot.BCW.lp=new boot.BCW("Takedown",184,"キルかアシストを取る",0);
-		// 344
-		boot.BCW.ma=new boot.BCW("ResetAATimer",185,"通常攻撃タイマーを解消する",0);
-		// 346
-		boot.BCW.mb=new boot.BCW("Value",186,"",0,2);
-		// 348
-		boot.BCW.mc=new boot.BCW("Percentage",187,"",0);
-		// 350
-		boot.BCW.md=new boot.BCW("Charge",188,3);
-		// 352
-		boot.BCW.me=new boot.BCW("Fury",189,"Fury",0);
-		// 354
-		boot.BCW.mf=new boot.BCW("Stack",190,"スタック",0);boot.BCW.mg=new boot.BCW("ConsumedStack",191,"消費したスタック",0);boot.BCW.mh=new boot.BCW("StackPercentage",192,"",0);
+		boot.BCW.lj=new boot.BCW("Gold",178,3);boot.BCW.lk=new boot.BCW("GoldPer10Sec",179,"Gold Generation",0);
+		// 341
+		boot.BCW.ll=new boot.BCW("Time",180,"",3,2);boot.BCW.lm=new boot.BCW("CDRAwareTime",181,"",0);boot.BCW.ln=new boot.BCW("RespawnTimeReductionRatio",182,"死亡時間",0);
+		// 343
+		boot.BCW.lo=new boot.BCW("Duration",183,"経過秒数",0);
+		// 345
+		boot.BCW.lp=new boot.BCW("Count",184,"",3,2);boot.BCW.ma=new boot.BCW("Radius",185,"範囲",0);
+		// 347
+		boot.BCW.mb=new boot.BCW("Length",186,"長さ",0);
+		// 349
+		boot.BCW.mc=new boot.BCW("Distance",187,"距離",0);
+		// 351
+		boot.BCW.md=new boot.BCW("MissileSpeed",188,"弾速",0);
+		// 353
+		boot.BCW.me=new boot.BCW("MissileWidth",189,"射幅",0);
+		// 355
+		boot.BCW.mf=new boot.BCW("EnemyChampion",190,"敵Championの数",0);
+		// 357
+		boot.BCW.mg=new boot.BCW("DamagedChampion",191,"ダメージを与えた敵チャンピオンの数",0);
+		// 359
+		boot.BCW.mh=new boot.BCW("Takedown",192,"キルかアシストを取る",0);
+		// 361
+		boot.BCW.mi=new boot.BCW("ResetAATimer",193,"通常攻撃タイマーを解消する",0);
+		// 363
+		boot.BCW.mj=new boot.BCW("Value",194,"",0,2);
+		// 365
+		boot.BCW.mk=new boot.BCW("Percentage",195,"",0);
+		// 367
+		boot.BCW.ml=new boot.BCW("Charge",196,3);
+		// 369
+		boot.BCW.mm=new boot.BCW("Fury",197,"Fury",0);
+		// 371
+		boot.BCW.mn=new boot.BCW("Stack",198,"スタック",0);boot.BCW.mo=new boot.BCW("ConsumedStack",199,"消費したスタック",0);boot.BCW.mp=new boot.BCW("StackPercentage",200,"",0);
 		// 15
-		boot.BCW.ml=Φ("BCW",[boot.BCW.e,boot.BCW.f,boot.BCW.g,boot.BCW.h,boot.BCW.i,boot.BCW.j,boot.BCW.k,boot.BCW.l,boot.BCW.m,boot.BCW.n,boot.BCW.o,boot.BCW.p,boot.BCW.ba,boot.BCW.bb,boot.BCW.bc,boot.BCW.bd,boot.BCW.be,boot.BCW.bf,boot.BCW.bg,boot.BCW.bh,boot.BCW.bi,boot.BCW.bj,boot.BCW.bk,boot.BCW.bl,boot.BCW.bm,boot.BCW.bn,boot.BCW.bo,boot.BCW.bp,boot.BCW.ca,boot.BCW.cb,boot.BCW.cc,boot.BCW.cd,boot.BCW.ce,boot.BCW.cf,boot.BCW.cg,boot.BCW.ch,boot.BCW.ci,boot.BCW.cj,boot.BCW.ck,boot.BCW.cl,boot.BCW.cm,boot.BCW.cn,boot.BCW.co,boot.BCW.cp,boot.BCW.da,boot.BCW.db,boot.BCW.dc,boot.BCW.dd,boot.BCW.de,boot.BCW.df,boot.BCW.dg,boot.BCW.dh,boot.BCW.di,boot.BCW.dj,boot.BCW.dk,boot.BCW.dl,boot.BCW.dm,boot.BCW.dn,boot.BCW.dp,boot.BCW.ea,boot.BCW.eb,boot.BCW.ec,boot.BCW.ed,boot.BCW.ee,boot.BCW.ef,boot.BCW.eg,boot.BCW.eh,boot.BCW.ei,boot.BCW.ej,boot.BCW.ek,boot.BCW.el,boot.BCW.em,boot.BCW.en,boot.BCW.eo,boot.BCW.ep,boot.BCW.fa,boot.BCW.fb,boot.BCW.fc,boot.BCW.fd,boot.BCW.fe,boot.BCW.ff,boot.BCW.fg,boot.BCW.fh,boot.BCW.fi,boot.BCW.fj,boot.BCW.fk,boot.BCW.fl,boot.BCW.fm,boot.BCW.fn,boot.BCW.fo,boot.BCW.fp,boot.BCW.ga,boot.BCW.gb,boot.BCW.gc,boot.BCW.gd,boot.BCW.ge,boot.BCW.gf,boot.BCW.gg,boot.BCW.gh,boot.BCW.gi,boot.BCW.gj,boot.BCW.gk,boot.BCW.gl,boot.BCW.gm,boot.BCW.gn,boot.BCW.go,boot.BCW.gp,boot.BCW.ha,boot.BCW.hb,boot.BCW.hc,boot.BCW.hd,boot.BCW.he,boot.BCW.hf,boot.BCW.hg,boot.BCW.hh,boot.BCW.hi,boot.BCW.hj,boot.BCW.hk,boot.BCW.hl,boot.BCW.hm,boot.BCW.hn,boot.BCW.ho,boot.BCW.hp,boot.BCW.ia,boot.BCW.ib,boot.BCW.ic,boot.BCW.id,boot.BCW.ie,boot.BCW.ig,boot.BCW.ih,boot.BCW.ii,boot.BCW.ij,boot.BCW.ik,boot.BCW.il,boot.BCW.im,boot.BCW.io,boot.BCW.ip,boot.BCW.ja,boot.BCW.jb,boot.BCW.jc,boot.BCW.jd,boot.BCW.je,boot.BCW.jf,boot.BCW.jg,boot.BCW.jh,boot.BCW.ji,boot.BCW.jj,boot.BCW.jk,boot.BCW.jl,boot.BCW.jm,boot.BCW.jn,boot.BCW.jo,boot.BCW.jp,boot.BCW.ka,boot.BCW.kb,boot.BCW.kc,boot.BCW.kd,boot.BCW.ke,boot.BCW.kf,boot.BCW.kg,boot.BCW.kh,boot.BCW.ki,boot.BCW.kj,boot.BCW.kk,boot.BCW.kl,boot.BCW.km,boot.BCW.kn,boot.BCW.ko,boot.BCW.kp,boot.BCW.la,boot.BCW.lb,boot.BCW.lc,boot.BCW.ld,boot.BCW.le,boot.BCW.lf,boot.BCW.lg,boot.BCW.lh,boot.BCW.li,boot.BCW.lj,boot.BCW.lk,boot.BCW.ll,boot.BCW.lm,boot.BCW.ln,boot.BCW.lo,boot.BCW.lp,boot.BCW.ma,boot.BCW.mb,boot.BCW.mc,boot.BCW.md,boot.BCW.me,boot.BCW.mf,boot.BCW.mg,boot.BCW.mh]);
+		boot.BCW.nd=Φ("BCW",[boot.BCW.e,boot.BCW.f,boot.BCW.g,boot.BCW.h,boot.BCW.i,boot.BCW.j,boot.BCW.k,boot.BCW.l,boot.BCW.m,boot.BCW.n,boot.BCW.o,boot.BCW.p,boot.BCW.ba,boot.BCW.bb,boot.BCW.bc,boot.BCW.bd,boot.BCW.be,boot.BCW.bf,boot.BCW.bg,boot.BCW.bh,boot.BCW.bi,boot.BCW.bj,boot.BCW.bk,boot.BCW.bl,boot.BCW.bm,boot.BCW.bn,boot.BCW.bo,boot.BCW.bp,boot.BCW.ca,boot.BCW.cb,boot.BCW.cc,boot.BCW.cd,boot.BCW.ce,boot.BCW.cf,boot.BCW.cg,boot.BCW.ch,boot.BCW.ci,boot.BCW.cj,boot.BCW.ck,boot.BCW.cl,boot.BCW.cm,boot.BCW.cn,boot.BCW.co,boot.BCW.cp,boot.BCW.da,boot.BCW.db,boot.BCW.dc,boot.BCW.dd,boot.BCW.de,boot.BCW.df,boot.BCW.dg,boot.BCW.dh,boot.BCW.di,boot.BCW.dj,boot.BCW.dk,boot.BCW.dl,boot.BCW.dm,boot.BCW.dn,boot.BCW.dp,boot.BCW.ea,boot.BCW.eb,boot.BCW.ec,boot.BCW.ed,boot.BCW.ee,boot.BCW.ef,boot.BCW.eg,boot.BCW.eh,boot.BCW.ei,boot.BCW.ej,boot.BCW.ek,boot.BCW.el,boot.BCW.em,boot.BCW.en,boot.BCW.eo,boot.BCW.ep,boot.BCW.fa,boot.BCW.fb,boot.BCW.fc,boot.BCW.fd,boot.BCW.fe,boot.BCW.ff,boot.BCW.fg,boot.BCW.fh,boot.BCW.fi,boot.BCW.fj,boot.BCW.fk,boot.BCW.fl,boot.BCW.fm,boot.BCW.fn,boot.BCW.fo,boot.BCW.fp,boot.BCW.ga,boot.BCW.gb,boot.BCW.gc,boot.BCW.gd,boot.BCW.ge,boot.BCW.gf,boot.BCW.gg,boot.BCW.gh,boot.BCW.gi,boot.BCW.gj,boot.BCW.gk,boot.BCW.gl,boot.BCW.gm,boot.BCW.gn,boot.BCW.go,boot.BCW.gp,boot.BCW.ha,boot.BCW.hb,boot.BCW.hc,boot.BCW.hd,boot.BCW.he,boot.BCW.hf,boot.BCW.hg,boot.BCW.hh,boot.BCW.hi,boot.BCW.hj,boot.BCW.hk,boot.BCW.hl,boot.BCW.hm,boot.BCW.hn,boot.BCW.ho,boot.BCW.hp,boot.BCW.ia,boot.BCW.ib,boot.BCW.ic,boot.BCW.id,boot.BCW.ie,boot.BCW.ig,boot.BCW.ih,boot.BCW.ii,boot.BCW.ij,boot.BCW.ik,boot.BCW.il,boot.BCW.im,boot.BCW.io,boot.BCW.ip,boot.BCW.ja,boot.BCW.jb,boot.BCW.jc,boot.BCW.jd,boot.BCW.je,boot.BCW.jf,boot.BCW.jg,boot.BCW.jh,boot.BCW.ji,boot.BCW.jj,boot.BCW.jk,boot.BCW.jl,boot.BCW.jm,boot.BCW.jn,boot.BCW.jo,boot.BCW.jp,boot.BCW.ka,boot.BCW.kb,boot.BCW.kc,boot.BCW.kd,boot.BCW.ke,boot.BCW.kf,boot.BCW.kg,boot.BCW.kh,boot.BCW.ki,boot.BCW.kj,boot.BCW.kk,boot.BCW.kl,boot.BCW.km,boot.BCW.kn,boot.BCW.ko,boot.BCW.kp,boot.BCW.la,boot.BCW.lb,boot.BCW.lc,boot.BCW.ld,boot.BCW.le,boot.BCW.lf,boot.BCW.lg,boot.BCW.lh,boot.BCW.li,boot.BCW.lj,boot.BCW.lk,boot.BCW.ll,boot.BCW.lm,boot.BCW.ln,boot.BCW.lo,boot.BCW.lp,boot.BCW.ma,boot.BCW.mb,boot.BCW.mc,boot.BCW.md,boot.BCW.me,boot.BCW.mf,boot.BCW.mg,boot.BCW.mh,boot.BCW.mi,boot.BCW.mj,boot.BCW.mk,boot.BCW.ml,boot.BCW.mm,boot.BCW.mn,boot.BCW.mo,boot.BCW.mp]);
 	},
 	// teemowork.model.Status#<init>(java.lang.String, int)
 	$3:function(A,B){
-		// 369
+		// 386
 		boot.BCW.prototype.$4.call(this,A,B,1);
-		// 370
+		// 387
 	},
 	// teemowork.model.Status#<init>(java.lang.String, int, java.lang.String)
 	$0:function(A,B,C){
-		// 376
+		// 393
 		boot.BCW.prototype.$2.call(this,A,B,C,1);
-		// 377
+		// 394
 	},
 	// teemowork.model.Status#<init>(java.lang.String, int, teemowork.model.Status)
 	$1:function(A,B,C){
-		// 383
-		boot.BCW.prototype.$2.call(this,A,B,C.mi,1);
-		// 384
+		// 400
+		boot.BCW.prototype.$2.call(this,A,B,C.na,1);
+		// 401
 	},
 	// teemowork.model.Status#<init>(java.lang.String, int, int)
 	$4:function(A,B,C){
-		// 390
+		// 407
 		boot.BCW.prototype.$2.call(this,A,B,null,C);
-		// 391
+		// 408
 	},
 	// teemowork.model.Status#<init>(java.lang.String, int, java.lang.String, int)
 	$2:function(A,B,C,D){
-		// 396
+		// 413
 		boot.BF.prototype.$0.call(this,A,B);
-		// 397
-		this.mi=C==null?this.PD():C;
-		// 398
-		this.mj=D;
-		// 399
+		// 414
+		this.na=C==null?this.PD():C;
+		// 415
+		this.nb=D;
+		// 416
 	},
 	// teemowork.model.Status#base()
 	DXT:function(){
-		// 409
+		// 426
 		if (this.PD().v("Base")==0) {
-			// 412
+			// 429
 			return null;
 		} else {
-			// 410
+			// 427
 			return boot.BCW.DXU(this.PD().w(4));
 		}
 	},
 	// teemowork.model.Status#isPerLv()
 	DXV:function(){
-		// 423
+		// 440
 		return this.PD().DW("PerLv")
 	},
 	// teemowork.model.Status#per()
 	DXW:function(){
-		// 434
+		// 451
 		if (this.PD().DW("PerLv")==0) {
-			// 437
+			// 454
 			return boot.BCW.DXU(new boot.z(boot.u.Bw(this.PD()),0).V("PerLv").W());
 		} else {
-			// 435
+			// 452
 			return null;
 		}
 	},
 	// teemowork.model.Status#ratio()
 	DXX:function(){
-		// 448
+		// 465
 		if (this.PD().DW("Ratio")==0) {
-			// 451
+			// 468
 			return boot.BCW.DXU(new boot.z(boot.u.Bw(this.PD()),0).V("Ratio").W());
 		} else {
-			// 449
+			// 466
 			return null;
 		}
 	},
 	// teemowork.model.Status#round(double)
 	DXY:function(A,C){
-		// 463
-		C=boot.CU.JP(10.0,this.mj);
-		// 464
+		// 480
+		C=boot.CU.JP(10.0,this.nb);
+		// 481
 		return boot.CU.Kv(A*C).JY()/C
 	},
 	// teemowork.model.Status#compute(double, double)
 	DXZ:function(A,C){
-		// 477
+		// 494
 		switch (this.PE()+1) {
 			case 81:
 			case 85:
 			case 88:
 			case 91:
 			case 121:
-			// 483
+			// 500
 			return (1-(1-A/100.0)*(1-C/100.0))*100.0;
 			default:
-			// 486
+			// 503
 			return A+C;
 		}
 	},
 	// teemowork.model.Status#getUnit()
 	DXu:function(){
-		// 491
+		// 508
 		if (this.PD().DW("Ratio")!=0) {
-			// 492
+			// 509
 			return "%";
 		} else {
-			// 495
+			// 512
 			switch (this.PE()+1) {
 				case 61:
 				case 64:
@@ -96367,8 +96383,8 @@ boot.define("BCW","BF","",{
 				case 76:
 				case 119:
 				case 121:
-				case 188:
-				// 523
+				case 196:
+				// 540
 				return "%";
 				case 125:
 				case 127:
@@ -96383,22 +96399,22 @@ boot.define("BCW","BF","",{
 				case 143:
 				case 144:
 				case 152:
-				case 173:
-				case 174:
-				// 511
+				case 181:
+				case 182:
+				// 528
 				return "秒";
-				case 163:
-				// 514
+				case 171:
+				// 531
 				return "秒間";
 				default:
-				// 526
+				// 543
 				return "";
 			}
 		}
 	},
 	// teemowork.model.Status#format(double)
 	DEO:function(A,C){
-		// 539
+		// 556
 		switch (this.PE()+1) {
 			case 2:
 			case 3:
@@ -96421,16 +96437,16 @@ boot.define("BCW","BF","",{
 			case 131:
 			case 154:
 			case 156:
-			// 561
-			return new boot.z(boot.u.Bw(this.mi),0).V("が").V(this.DXv(boot.CU.LR(A))).V(0<=A?"増加":"減少").W();
+			// 578
+			return new boot.z(boot.u.Bw(this.na),0).V("が").V(this.DXv(boot.CU.LR(A))).V(0<=A?"増加":"減少").W();
 			case 11:
 			case 109:
 			case 158:
-			// 580
-			return new boot.z(boot.u.Bw(this.mi),0).V("が").V(this.DXv(A)).V("減少").W();
+			// 597
+			return new boot.z(boot.u.Bw(this.na),0).V("が").V(this.DXv(A)).V("減少").W();
 			case 27:
-			// 583
-			return new boot.z(boot.u.Bw(this.mi),0).V("を").V(this.DXv(A)).V("消費").W();
+			// 600
+			return new boot.z(boot.u.Bw(this.na),0).V("を").V(this.DXv(A)).V("消費").W();
 			case 100:
 			case 101:
 			case 102:
@@ -96442,65 +96458,70 @@ boot.define("BCW","BF","",{
 			case 108:
 			case 110:
 			case 111:
-			case 175:
-			// 575
-			return new boot.z(boot.u.Bw(this.mi),0).V("を").V(this.DXv(A)).V("軽減").W();
+			case 183:
+			// 592
+			return new boot.z(boot.u.Bw(this.na),0).V("を").V(this.DXv(A)).V("軽減").W();
 			case 116:
-			// 604
+			// 621
 			return new boot.z("射程が",0).V(this.DXv(boot.CU.LR(A))).V(0<=A?"増加":"減少").W();
 			case 127:
 			case 128:
-			// 592
+			// 609
 			return new boot.z("CDが",0).V(this.DXv(A)).V("解消").W();
 			case 130:
 			case 132:
 			case 133:
-			// 588
-			return new boot.z(boot.u.Bw(this.mi),0).V("が").V(this.DXv(A)).V("回復").W();
+			// 605
+			return new boot.z(boot.u.Bw(this.na),0).V("が").V(this.DXv(A)).V("回復").W();
 			case 145:
-			// 607
+			case 166:
+			case 167:
+			case 168:
+			case 169:
+			case 170:
+			// 629
 			C=this.DXv(A);
-			// 609
+			// 631
 			if (C.length!=0) {
-				// 612
-				return new boot.z(boot.u.Bw(this.mi),0).V("(距離").V(this.DXv(A)).V(")").W();
+				// 634
+				return new boot.z(boot.u.Bw(this.na),0).V("(距離").V(this.DXv(A)).V(")").W();
 			} else {
-				// 610
-				return this.mi;
+				// 632
+				return this.na;
 			}
-			case 163:
-			// 595
-			return new boot.z(boot.u.Bw(this.DXv(A)),0).V("ステルス").W();
 			case 171:
-			// 598
+			// 612
+			return new boot.z(boot.u.Bw(this.DXv(A)),0).V("ステルス").W();
+			case 179:
+			// 615
 			return new boot.z(boot.u.Bw(this.DXv(A)),0).V("Gold").W();
-			case 172:
-			// 601
+			case 180:
+			// 618
 			return new boot.z("10秒毎に",0).V(this.DXv(A)).V("Gold").W();
-			case 191:
-			case 192:
-			// 617
+			case 199:
+			case 200:
+			// 639
 			return new boot.z(boot.u.Bw(this.DXv(A)),0).V("スタック").W();
 			default:
-			// 618
-			// 619
-			return new boot.z(boot.u.Bw(this.mi),0).V(this.DXv(A)).W();
+			// 640
+			// 641
+			return new boot.z(boot.u.Bw(this.na),0).V(this.DXv(A)).W();
 		}
 	},
 	// teemowork.model.Status#formatValue(double)
 	DXv:function(A){
-		// 631
+		// 653
 		return A==0?"":new boot.z(boot.u.FI(this.DXY(A)),0).V(this.DXu()).W()
 	},
 	// teemowork.model.Status#toString()
 	W:function(){
-		// 639
-		return this.mi
+		// 661
+		return this.na
 	},
 	// teemowork.model.Status#values()
 	_DXw:function(A,B,C){
 		// 1
-		boot.BH.CS(A=boot.BCW.ml,0,C=Φ("BCW",B=A.length,null),0,B);return C
+		boot.BH.CS(A=boot.BCW.nd,0,C=Φ("BCW",B=A.length,null),0,B);return C
 	},
 	// teemowork.model.Status#valueOf(java.lang.String)
 	_DXU:function(A){
@@ -96509,11 +96530,11 @@ boot.define("BCW","BF","",{
 	}
 },{
 	$:[16401,"teemowork.model.Status",,"BF<BCW>"],
-	$1:[2,,"u I BCW"],
-	$4:[2,,"u I I"],
 	$2:[2,,"u I u I"],
+	$1:[2,,"u I BCW"],
 	$0:[2,,"u I u"],
 	$3:[2,,"u I"],
+	$4:[2,,"u I I"],
 	e:[16409,"Damage","BCW"],
 	f:[16409,"DamageRatio","BCW"],
 	g:[16409,"CriticalDamageRatio","BCW"],
@@ -96674,43 +96695,51 @@ boot.define("BCW","BF","",{
 	ke:[16409,"MSReduction","BCW"],
 	kf:[16409,"IgnoreSlow","BCW"],
 	kg:[16409,"IgnoreUnitCollision","BCW"],
-	kh:[16409,"IgnoreCC","BCW"],
-	ki:[16409,"RemoveCC","BCW"],
-	kj:[16409,"Stealth","BCW"],
-	kk:[16409,"Visionable","BCW"],
-	kl:[16409,"NotSpellCast","BCW"],
-	km:[16409,"Chill","BCW"],
-	kn:[16409,"OnHitEffect","BCW"],
-	ko:[16409,"Cost","BCW"],
-	kp:[16409,"CostPerLv","BCW"],
-	la:[16409,"Sell","BCW"],
-	lb:[16409,"Gold","BCW"],
-	lc:[16409,"GoldPer10Sec","BCW"],
-	ld:[16409,"Time","BCW"],
-	le:[16409,"CDRAwareTime","BCW"],
-	lf:[16409,"RespawnTimeReductionRatio","BCW"],
-	lg:[16409,"Duration","BCW"],
-	lh:[16409,"Count","BCW"],
-	li:[16409,"Radius","BCW"],
-	lj:[16409,"Length","BCW"],
-	lk:[16409,"Distance","BCW"],
-	ll:[16409,"MissileSpeed","BCW"],
-	lm:[16409,"MissileWidth","BCW"],
-	ln:[16409,"EnemyChampion","BCW"],
-	lo:[16409,"DamagedChampion","BCW"],
-	lp:[16409,"Takedown","BCW"],
-	ma:[16409,"ResetAATimer","BCW"],
-	mb:[16409,"Value","BCW"],
-	mc:[16409,"Percentage","BCW"],
-	md:[16409,"Charge","BCW"],
-	me:[16409,"Fury","BCW"],
-	mf:[16409,"Stack","BCW"],
-	mg:[16409,"ConsumedStack","BCW"],
-	mh:[16409,"StackPercentage","BCW"],
-	mi:[17,"name","u"],
-	mj:[17,"precision","I"],
-	mk:[4106,"$SWITCH_TABLE$teemowork$model$Status","[I"],
-	ml:[4122,"ENUM$VALUES","[BCW"],
+	kh:[16409,"IgnoreDamage","BCW"],
+	ki:[16409,"IgnoreCC","BCW"],
+	kj:[16409,"RemoveCC","BCW"],
+	kk:[16409,"Untargetable","BCW"],
+	kl:[16409,"Stasis","BCW"],
+	km:[16409,"Dash","BCW"],
+	kn:[16409,"DashTarget","BCW"],
+	ko:[16409,"Blink","BCW"],
+	kp:[16409,"BlinkTarget","BCW"],
+	la:[16409,"BlinkExchange","BCW"],
+	lb:[16409,"Stealth","BCW"],
+	lc:[16409,"Visionable","BCW"],
+	ld:[16409,"NotSpellCast","BCW"],
+	le:[16409,"Chill","BCW"],
+	lf:[16409,"OnHitEffect","BCW"],
+	lg:[16409,"Cost","BCW"],
+	lh:[16409,"CostPerLv","BCW"],
+	li:[16409,"Sell","BCW"],
+	lj:[16409,"Gold","BCW"],
+	lk:[16409,"GoldPer10Sec","BCW"],
+	ll:[16409,"Time","BCW"],
+	lm:[16409,"CDRAwareTime","BCW"],
+	ln:[16409,"RespawnTimeReductionRatio","BCW"],
+	lo:[16409,"Duration","BCW"],
+	lp:[16409,"Count","BCW"],
+	ma:[16409,"Radius","BCW"],
+	mb:[16409,"Length","BCW"],
+	mc:[16409,"Distance","BCW"],
+	md:[16409,"MissileSpeed","BCW"],
+	me:[16409,"MissileWidth","BCW"],
+	mf:[16409,"EnemyChampion","BCW"],
+	mg:[16409,"DamagedChampion","BCW"],
+	mh:[16409,"Takedown","BCW"],
+	mi:[16409,"ResetAATimer","BCW"],
+	mj:[16409,"Value","BCW"],
+	mk:[16409,"Percentage","BCW"],
+	ml:[16409,"Charge","BCW"],
+	mm:[16409,"Fury","BCW"],
+	mn:[16409,"Stack","BCW"],
+	mo:[16409,"ConsumedStack","BCW"],
+	mp:[16409,"StackPercentage","BCW"],
+	na:[17,"name","u"],
+	nb:[17,"precision","I"],
+	nc:[4106,"$SWITCH_TABLE$teemowork$model$Status","[I"],
+	nd:[4122,"ENUM$VALUES","[BCW"],
 	DXT:[1,,,,"BCW","base"],
 	W:[1,,,,"u","toString"],
 	DXw:[9,,,,"[BCW","values"],
@@ -96718,11 +96747,11 @@ boot.define("BCW","BF","",{
 	DEO:[1,,"D",,"u","format"],
 	DXZ:[1,,"D D",,"D","compute"],
 	DXY:[1,,"D",,"D","round"],
+	DXW:[1,,,,"BCW","per"],
+	DXX:[1,,,,"BCW","ratio"],
 	DXV:[1,,,,"Z","isPerLv"],
 	DXv:[2,,"D",,"u","formatValue"],
-	DXu:[1,,,,"u","getUnit"],
-	DXW:[1,,,,"BCW","per"],
-	DXX:[1,,,,"BCW","ratio"]
+	DXu:[1,,,,"u","getUnit"]
 });
 
 // class teemowork.model.variable.VariableResolver "BCx"
@@ -96761,11 +96790,11 @@ boot.define("BCx","","",{
 	$:[1025,"teemowork.model.variable.VariableResolver",,"G"],
 	$0:[1],
 	DXx:[1025,,"I",,"D","compute"],
-	DYB:[4,,"I",,"I","convertChampionLevel"],
 	DXz:[1,,,,"Z","isSkillLevelBased"],
 	DYA:[1,,"I",,"u","getLevelDescription"],
-	DXy:[1025,,,,"I","estimateSize"],
-	DYC:[1,,"BCz",,"I","convertLevel"]
+	DYB:[4,,"I",,"I","convertChampionLevel"],
+	DYC:[1,,"BCz",,"I","convertLevel"],
+	DXy:[1025,,,,"I","estimateSize"]
 });
 
 // interface teemowork.model.StatusCalculator "BCz"
@@ -96876,11 +96905,11 @@ boot.define("BCS","BCT","",{
 	i:[17,"key","BDA"],
 	W:[1,,,,"u","toString"],
 	S:[1,,,,"u","getName"],
+	DYH:[4,,"BCU BDB",,"BDB","createDescriptor"],
+	DYI:[1,,,,"I","getMinLevel"],
 	DSY:[1,,,,"BCX","getIconPosition"],
 	DSX:[1,,,,"u","getIcon"],
-	DXO:[1,,,,"I","getMaxLevel"],
-	DYH:[4,,"BCU BDB",,"BDB","createDescriptor"],
-	DYI:[1,,,,"I","getMinLevel"]
+	DXO:[1,,,,"I","getMaxLevel"]
 });
 
 // class jsx.style.value.Unit "BCZ"
@@ -97000,7 +97029,7 @@ boot.define("BCY","","",{
 	// jsx.style.CSSValue#<clinit>()
 	_:function(){
 		// 20
-		boot.BCY.c=boot.JF.BCS(boot.BDC.$);
+		boot.BCY.c=boot.JF.BCU(boot.BDC.$);
 	},
 	// jsx.style.CSSValue#<init>()
 	$0:function(){
@@ -97285,7 +97314,7 @@ boot.define("BCX","BCY","",{
 			return boot.BCY.c;
 		} else {
 			// 279
-			return boot.JF.BGM(boot.BDC.i,boot.BDC.h);
+			return boot.JF.BGO(boot.BDC.i,boot.BDC.h);
 		}
 	},
 	// jsx.style.value.Numeric#valueFor(jsx.style.Vendor)
@@ -97347,13 +97376,13 @@ boot.define("BCX","BCY","",{
 	DYS:[1,,"D",,"BCX","divide"],
 	DYT:[1,,"BCX",,"BCX","divide"],
 	DYL:[10,,"D D D",,"D","range"],
+	DYR:[1,,"BCX",,"BCX","multiply"],
+	DYQ:[1,,"D",,"BCX","multiply"],
 	DYP:[1,,"BCX",,"BCX","subtract"],
 	DYO:[1,,"D",,"BCX","subtract"],
-	DYQ:[1,,"D",,"BCX","multiply"],
-	DYR:[1,,"BCX",,"BCX","multiply"],
+	DYU:[1,,,,"BCX","opposite"],
 	DYV:[4,,,,"JF<BDC>","vendors"],
-	DYW:[4,,"BDC",,"u","valueFor"],
-	DYU:[1,,,,"BCX","opposite"]
+	DYW:[4,,"BDC",,"u","valueFor"]
 });
 
 // class teemowork.model.SkillKey "BDA"
@@ -97582,7 +97611,7 @@ boot.define("BCv","","",{
 	// teemowork.model.Descriptor#variable(int, teemowork.model.Status, double, double, teemowork.model.variable.Variable, teemowork.model.variable.VariableResolver)
 	DZY:function(A,B,C,E,G,H){
 		// 323
-		return this.DZT(A,B,C,E,G,new boot.BCy(boot.BCW.mb,H,0))
+		return this.DZT(A,B,C,E,G,new boot.BCy(boot.BCW.mj,H,0))
 	},
 	// teemowork.model.Descriptor#variable(int, teemowork.model.Status, teemowork.model.variable.VariableResolver, teemowork.model.variable.Variable)
 	DZZ:function(A,B,C,D){
@@ -97635,21 +97664,21 @@ boot.define("BCv","","",{
 	DXH:[1,,"BCU",,"T:BCv","update"],
 	DZP:[2,,"u",,"Z","isDigit"],
 	DZL:[2,,"u",,"Bz","parse"],
-	DZO:[20,,"u",,"T:BCv","active"],
-	DZV:[20,,"I BCW BCx BCy BCy",,"T:BCv","variable"],
+	DZM:[17,,,,"Z","isActive"],
+	DZK:[20,,"u",,"T:BCv","passive"],
+	DZT:[20,,"I BCW D D BCy BCy",,"T:BCv","variable"],
 	DZX:[20,,"I BCW D D BCy",,"T:BCv","variable"],
 	DZW:[20,,"I BCW BCy",,"T:BCv","variable"],
 	DZU:[20,,"I BCW BCx",,"T:BCv","variable"],
-	DZZ:[20,,"I BCW BCx BCy",,"T:BCv","variable"],
 	DZY:[20,,"I BCW D D BCy BCx",,"T:BCv","variable"],
-	DZT:[20,,"I BCW D D BCy BCy",,"T:BCv","variable"],
+	DZZ:[20,,"I BCW BCx BCy",,"T:BCv","variable"],
+	DZV:[20,,"I BCW BCx BCy BCy",,"T:BCv","variable"],
 	DZQ:[20,,"I BCW",,"T:BCv","variable"],
 	DZR:[20,,"I BCW D",,"T:BCv","variable"],
 	DZS:[20,,"I BCW D D",,"T:BCv","variable"],
+	DZO:[20,,"u",,"T:BCv","active"],
 	DZJ:[17,,,,"Bz","getPassive"],
-	DZN:[17,,,,"Bz","getActive"],
-	DZM:[17,,,,"Z","isActive"],
-	DZK:[20,,"u",,"T:BCv","passive"]
+	DZN:[17,,,,"Bz","getActive"]
 });
 
 // class teemowork.model.Descriptor$VariableReference "BDE"
@@ -97821,7 +97850,7 @@ boot.define("BCy","","",{
 				F=G.Hx();
 			}
 			// 166
-			if (this.d==boot.BCW.ib||this.d==boot.BCW.le) {
+			if (this.d==boot.BCW.ib||this.d==boot.BCW.lm) {
 				// 167
 				if (D>=0) {
 					// 171
@@ -97864,15 +97893,15 @@ boot.define("BCy","","",{
 	g:[2,"amplifiers","Bz<BCy>"],
 	h:[2,"set","Dx"],
 	DXS:[1,,"BCy",,"V","add"],
-	DZy:[1,,"BCx",,"V","setResolver"],
+	DZu:[1,,,,"V","setConditional"],
+	DZz:[1,,,,"Z","isConditional"],
 	DZw:[1,,"BCW",,"V","setStatus"],
+	DZy:[1,,"BCx",,"V","setResolver"],
 	DZv:[1,,,,"BCW","getStatus"],
 	DZx:[1,,,,"BCx","getResolver"],
 	DuC:[1,,,,"Bz<BCy>","getAmplifiers"],
 	DuB:[1,,"I BCz Z",,"D","calculate"],
-	DuA:[1,,"I BCz",,"D","calculate"],
-	DZu:[1,,,,"V","setConditional"],
-	DZz:[1,,,,"Z","isConditional"]
+	DuA:[1,,"I BCz",,"D","calculate"]
 });
 
 // class teemowork.model.variable.Variable$EmptyCalculator "BDF"
@@ -98026,18 +98055,18 @@ boot.define("BDB","BCv","",{
 	DZI:[0,,"BDD",,"BDB","type"],
 	DZH:[1,,,,"BDD","getType"],
 	DZE:[0,,"D",,"BDB","range"],
-	DZF:[0,,"D D",,"BDB","range"],
 	DZG:[0,,"BCx BCy",,"BDB","range"],
+	DZF:[0,,"D D",,"BDB","range"],
 	DYv:[0,,"D",,"BDB","cd"],
 	DYx:[0,,"BCx",,"BDB","cd"],
 	DYw:[0,,"D D",,"BDB","cd"],
-	DZB:[0,,"D D",,"BDB","mana"],
+	DZA:[0,,"BCW D D",,"BDB","cost"],
+	DZC:[0,,"BCW BCx BCy",,"BDB","cost"],
 	DYz:[0,,"D",,"BDB","mana"],
+	DZB:[0,,"D D",,"BDB","mana"],
 	DZD:[1,,,,"BCy","getRange"],
 	DYu:[1,,,,"BCy","getCooldown"],
-	DYy:[1,,,,"BCy","getCost"],
-	DZA:[0,,"BCW D D",,"BDB","cost"],
-	DZC:[0,,"BCW BCx BCy",,"BDB","cost"]
+	DYy:[1,,,,"BCy","getCost"]
 });
 
 // class teemowork.model.SkillType "BDD"
@@ -98154,1836 +98183,1836 @@ boot.define("BCu","","",{
 	// teemowork.model.SkillDefinition#Aatrox(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DSw:function(A,B,C,D,E,F){
 		// 60
-		B.DXH(boot.BCU.dc).DZK(new boot.z("スキルを使用時に消費した",0).IY(boot.BCW.bf).V("をBlood Wellとしてスタックし(最大スタック量は{1})、5秒間戦闘状態でなくなると毎秒2%ずつ失われていく。スタックが1%貯まる毎に{2}する(最大で{3})。Healthが0になると3秒かけて最大スタック量の35% + 現在のスタック量分の").IY(boot.BCW.bf).V("を持って復活する。{6}。").W()).DZU(1,boot.BCW.mf,new boot.BDG(Φ("D",[105.0,138.0,171.0,207.0,244.0,283.0,323.0,365.0,408.0,453.0,500.0,548.0,598.0,649.0,702.0,756.0,813.0,870.0]),0)).DZU(-2,boot.BCW.ea,new boot.BDH(0.3,0.05,0)).DZU(-3,boot.BCW.ea,new boot.BDH(30.0,5.0,0)).DZQ(6,boot.BCW.ep).DYx(new boot.BDI(-225.0,25.0,0));
-		// 70
-		C.DXH(boot.BCU.l).DZO("指定地点に飛びかかり、{1}の敵ユニットに{2}を与える。{4}にいる敵ユニットに対しては更に{3}を与える。").DZR(1,boot.BCW.li,225.0).DZX(2,boot.BCW.h,70.0,45.0,boot.BCT.DXM(0.6)).DZR(3,boot.BCW.jg,1).DZR(4,boot.BCW.li,75.0).DYw(16.0,-1.0).DZA(boot.BCW.cm,10.0,0).DZE(650.0);
-		// 80
+		B.DXH(boot.BCU.dc).DZK(new boot.z("スキルを使用時に消費した",0).IY(boot.BCW.bf).V("をBlood Wellとしてスタックし(最大スタック量は{1})、5秒間戦闘状態でなくなると毎秒2%ずつ失われていく。スタックが1%貯まる毎に{2}する(最大で{3})。").IY(boot.BCW.bf).V("が0になると3秒後最大スタック量の35% + 現在のスタック量分の").IY(boot.BCW.bf).V("を持って復活する。{6}。").W()).DZU(1,boot.BCW.mn,new boot.BDG(Φ("D",[105.0,138.0,171.0,207.0,244.0,283.0,323.0,365.0,408.0,453.0,500.0,548.0,598.0,649.0,702.0,756.0,813.0,870.0]),0)).DZU(-2,boot.BCW.ea,new boot.BDH(0.3,0.05,0)).DZU(-3,boot.BCW.ea,new boot.BDH(30.0,5.0,0)).DZQ(6,boot.BCW.ep).DYx(new boot.BDI(-225.0,25.0,0));
+		// 71
+		C.DXH(boot.BCU.l).DZO("指定地点に{5}して、{1}の敵ユニットに{2}を与える。{4}にいる敵ユニットに対しては更に{3}を与える。").DZR(1,boot.BCW.ma,225.0).DZX(2,boot.BCW.h,70.0,45.0,boot.BCT.DXM(0.6)).DZR(3,boot.BCW.jg,1).DZR(4,boot.BCW.ma,75.0).DZQ(5,boot.BCW.km).DYw(16.0,-1.0).DZA(boot.BCW.cm,10.0,0).DZE(650.0);
+		// 81
 		D.DXH(boot.BCU.bi).DZK("通常攻撃3回ごとに{1}する。Healthが50%以下の場合、{2}する。ToggleOnの間、この効果は失われる。").DZX(1,boot.BCW.ih,20.0,5.0,boot.BCT.DXM(0.25)).DZX(2,boot.BCW.ih,60.0,15.0,boot.BCT.DXM(0.75)).DZO("通常攻撃3回ごとに{3}を与えて{4}する。").DZX(3,boot.BCW.h,60.0,35.0,boot.BCT.DXM(1)).DZX(4,boot.BCW.bo,15.0,8.75,boot.BCT.DXM(0.25)).DYv(0.5).DZI(boot.BDD.g);
-		// 89
-		E.DXH(boot.BCU.ba).DZO("指定方向に貫通するエネルギーを放ち、当たった敵ユニットに{1}と{2}間{3}を与える。").DZT(1,boot.BCW.i,75.0,35.0,boot.BCT.DXK(0.6),boot.BCT.DXM(0.6)).DZS(2,boot.BCW.ld,1.75,0.25).DZR(3,boot.BCW.jl,40.0).DZA(boot.BCW.cm,5.0,0).DYw(12.0,-1.0).DZE(1000.0);
-		// 97
-		F.DXH(boot.BCU.cn).DZO(new boot.z("{1}の敵チャンピオンに{2}を与え、12秒間{3}し、通常攻撃の{4}。当たった敵毎に20%の",0).IY(B).V("を得る。").W()).DZR(1,boot.BCW.li,550.0).DZX(2,boot.BCW.i,200.0,100.0,boot.BCT.DXK(1)).DZS(3,boot.BCW.ea,40.0,10.0).DZR(4,boot.BCW.hi,200.0).DYw(100.0,-15.0);
+		// 90
+		E.DXH(boot.BCU.ba).DZO("指定方向に貫通するエネルギーを放ち、当たった敵ユニットに{1}と{2}間{3}を与える。").DZT(1,boot.BCW.i,75.0,35.0,boot.BCT.DXK(0.6),boot.BCT.DXM(0.6)).DZS(2,boot.BCW.ll,1.75,0.25).DZR(3,boot.BCW.jl,40.0).DZA(boot.BCW.cm,5.0,0).DYw(12.0,-1.0).DZE(1000.0);
 		// 98
+		F.DXH(boot.BCU.cn).DZO(new boot.z("{1}の敵チャンピオンに{2}を与え、12秒間{3}し、通常攻撃の{4}。当たった敵毎に20%の",0).IY(B).V("を得る。").W()).DZR(1,boot.BCW.ma,550.0).DZX(2,boot.BCW.i,200.0,100.0,boot.BCT.DXK(1)).DZS(3,boot.BCW.ea,40.0,10.0).DZR(4,boot.BCW.hi,200.0).DYw(100.0,-15.0);
+		// 99
 	},
 	// teemowork.model.SkillDefinition#Ahri(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DSx:function(A,B,C,D,E,F){
-		// 106
+		// 107
 		B.DXH(boot.BCU.dh).DZK(new boot.z("スキルが敵ユニットに当たる度に",0).IY(B).V("のチャージを1つ得る(1回のスキルで得られる上限は3チャージまで)。9チャージの状態でスキルを使用すると、チャージを全て消費して使用したスキルが敵に当たる毎に{1}する。").W()).DZU(1,boot.BCW.ih,new boot.BDI(Φ("D",[3.0,5.0,9.0,18.0]),1));
-		// 115
+		// 116
 		C.DXH(boot.BCU.ck).DZO("指定方向にオーブを放ち当たった敵ユニットに{1}を与える。オーブは行きと帰りでそれぞれにヒット判定があり、帰りの場合は{2}を与える。オーブを射出している間{3}する。（0.5秒かけて80まで減衰）").DZX(1,boot.BCW.i,40.0,25.0,boot.BCT.DXK(0.35)).DZX(2,boot.BCW.j,40.0,25.0,boot.BCT.DXK(0.35)).DZR(3,boot.BCW.ka,215.0).DYv(7.0).DZB(65.0,5.0).DZE(880.0);
-		// 123
+		// 124
 		D.DXH(boot.BCU.ck).DZO(new boot.z("周囲を回る3本の鬼火を放つ。鬼火は5秒間持続し、近くの敵ユニットに自動的に突撃して{1}を与える。鬼火が同一対象に突撃した場合、2発目以降は本来の30%の",0).IY(boot.BCW.i).V("を与える(同一対象に3発命中すると{3})。通常攻撃範囲内に敵チャンピオンがいる場合、それらを優先して狙う。").W()).DZX(1,boot.BCW.i,40.0,25.0,boot.BCT.DXK(0.4)).DZX(3,boot.BCW.i,64.0,40.0,boot.BCT.DXK(0.64)).DYw(9.0,-1.0).DYz(50.0).DZE(550.0);
-		// 131
+		// 132
 		E.DXH(boot.BCU.df).DZO("指定方向に投げキッスを放ち、当たった敵ユニットに{1}と{2}を与え自分の方向に移動させる。").DZX(1,boot.BCW.i,60.0,35.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.il,1,0.25).DYv(12.0).DYz(85.0).DZE(975.0);
-		// 140
-		F.DXH(boot.BCU.ck).DZO("指定方向にダッシュした後、{2}の敵ユニット(敵チャンピオンを優先)3体に{1}を与える。このスキルは10秒の間、3回まで連続して使用できる。2～3発目はマナコスト無しで使用可能。同一対象に3発命中すると{3}。").DZX(1,boot.BCW.i,70.0,40.0,boot.BCT.DXK(0.3)).DZR(2,boot.BCW.li,600.0).DZX(3,boot.BCW.i,210.0,120.0,boot.BCT.DXK(0.9)).DYw(110.0,-15.0).DYz(100.0).DZE(450.0);
-		// 141
+		// 142
+		F.DXH(boot.BCU.ck).DZO("指定方向に{1}した後、{2}の敵ユニット(敵チャンピオンを優先)3体に{3}を与える。このスキルは10秒の間、3回まで連続して使用できる。2～3発目はマナコスト無しで使用可能。同一対象に3発命中すると{4}。").DZQ(1,boot.BCW.km).DZR(2,boot.BCW.ma,600.0).DZX(3,boot.BCW.i,70.0,40.0,boot.BCT.DXK(0.3)).DZX(4,boot.BCW.i,210.0,120.0,boot.BCT.DXK(0.9)).DYw(110.0,-15.0).DYz(100.0).DZE(450.0);
+		// 143
 	},
 	// teemowork.model.SkillDefinition#Akali(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DSy:function(A,B,C,D,E,F){
-		// 150
+		// 152
 		B.DXH(boot.BCU.f).DZK("{1}を得る。また通常攻撃に{2}が付与される。").DZX(1,boot.BCW.fa,6.0,0,boot.BCT.DXM(0.167)).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.dh,0.06,0,boot.BCT.DXK(0.00167)));
-		// 158
+		// 160
 		C.DXH(boot.BCU.i).DZO("対象の敵ユニットにカマを投げつけ{1}と6秒間マークを与える。マークが付いた対象に通常攻撃でダメージを与えたとき、マークを消費して{1}を与え、{3}する。").DZX(1,boot.BCW.i,35.0,20.0,boot.BCT.DXK(0.4)).DZS(3,boot.BCW.ik,20.0,5.0).DYw(6.0,-0.5).DZA(boot.BCW.cg,60.0,0).DZE(600.0);
-		// 169
-		D.DXH(boot.BCU.ce).DZO("指定地点に8秒間煙を発生させ{1}のユニットに以下の効果を与える。自身は{2}と{3}を得て、敵ユニットには{4}を与える。ステルスはスキル使用または通常攻撃時に解除され、再度ステルス化するのに0.65秒かかる。").DZR(1,boot.BCW.li,400.0).DZQ(2,boot.BCW.kj).DZS(3,boot.BCW.kc,20.0,20.0).DZS(4,boot.BCW.jl,14.0,4.0).DZQ(5,boot.BCW.kk).DYv(20.0).DZA(boot.BCW.cg,80.0,-5.0).DZE(700.0);
-		// 176
-		E.DXH(boot.BCU.da).DZO("{2}の敵ユニットに{1}を与える。").DZT(1,boot.BCW.h,30.0,25.0,boot.BCT.DXK(0.4),boot.BCT.DXL(0.6)).DZR(2,boot.BCW.li,325.0).DYw(5.0,-1.0).DZA(boot.BCW.cg,60.0,-5.0);
-		// 184
-		F.DXH(boot.BCU.db).DZO(new boot.z("対象の敵ユニットを通過して後方200の位置に移動し（",0).IY(C).V("のマークが付いている場合は後方100の位置）{1}を与える。使用時にチャージを消費する。チャージは{2}毎に又は敵チャンピオンを{3}で増加し最大で3つまでチャージされる。").W()).DZX(1,boot.BCW.i,100.0,75.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.le,30.0,-7.5).DZQ(3,boot.BCW.lp).DYw(2.0,-0.5).DZE(700.0);
-		// 185
+		// 171
+		D.DXH(boot.BCU.ce).DZO("指定地点に8秒間煙を発生させ{1}のユニットに以下の効果を与える。自身は{2}と{3}を得て、敵ユニットには{4}を与える。ステルスはスキル使用または通常攻撃時に解除され、再度ステルス化するのに0.65秒かかる。").DZR(1,boot.BCW.ma,400.0).DZQ(2,boot.BCW.lb).DZS(3,boot.BCW.kc,20.0,20.0).DZS(4,boot.BCW.jl,14.0,4.0).DZQ(5,boot.BCW.lc).DYv(20.0).DZA(boot.BCW.cg,80.0,-5.0).DZE(700.0);
+		// 178
+		E.DXH(boot.BCU.da).DZO("{2}の敵ユニットに{1}を与える。").DZT(1,boot.BCW.h,30.0,25.0,boot.BCT.DXK(0.4),boot.BCT.DXL(0.6)).DZR(2,boot.BCW.ma,325.0).DYw(5.0,-1.0).DZA(boot.BCW.cg,60.0,-5.0);
+		// 187
+		F.DXH(boot.BCU.db).DZO(new boot.z("対象の敵ユニットを通過して後方200の位置に{4}し（",0).IY(C).V("のマークが付いている場合は後方100の位置）{1}を与える。使用時にチャージを消費する。チャージは{2}毎に又は敵チャンピオンを{3}で増加し最大で3つまでチャージされる。").W()).DZX(1,boot.BCW.i,100.0,75.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.lm,30.0,-7.5).DZQ(3,boot.BCW.mh).DZQ(4,boot.BCW.kn).DYw(2.0,-0.5).DZE(700.0);
+		// 188
 	},
 	// teemowork.model.SkillDefinition#Alistar(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DSz:function(A,B,C,D,E,F){
-		// 195
-		B.DXH(boot.BCU.bo).DZK("スキルを使用すると3秒間{1}を得て、{2}の敵ユニットと建物に毎秒{3}を与える。ミニオンに対してはダメージが2倍になる。").DZQ(1,boot.BCW.kg).DZR(2,boot.BCW.li,300.0).DZT(3,boot.BCW.i,6.0,0,boot.BCT.DXK(0.1),boot.BCT.DXI(1));
-		// 204
-		C.DXH(boot.BCU.bo).DZO("{4}の敵ユニットに{1}を与え、{2}後に{3}を与える。").DZX(1,boot.BCW.i,60.0,45.0,boot.BCT.DXK(0.5)).DZR(2,boot.BCW.jg,1).DZS(3,boot.BCW.im,0.5,0).DZR(4,boot.BCW.li,365.0).DYw(17.0,-1.0).DZB(65.0,5.0);
-		// 213
-		D.DXH(boot.BCU.dh).DZO("対象の敵ユニットに突撃（速度1200）し{1}と{2}、{3}を与える。").DZX(1,boot.BCW.i,55.0,55.0,boot.BCT.DXK(0.7)).DZQ(2,boot.BCW.jh).DZR(3,boot.BCW.im,1).DYw(14.0,-1.0).DZB(65.0,5.0).DZE(650.0);
-		// 222
-		E.DXH(boot.BCU.bo).DZO("{1}する。{3}の味方ユニットは{2}する。近くの敵ユニットが死ぬと{4}する。").DZX(1,boot.BCW.ih,60.0,30.0,boot.BCT.DXK(0.2)).DZX(2,boot.BCW.ih,30.0,15.0,boot.BCT.DXK(0.1)).DZR(3,boot.BCW.li,575.0).DZR(4,boot.BCW.id,2.0).DYw(12.0,0).DZB(40.0,10.0);
-		// 230
-		F.DXH(boot.BCU.bo).DZO("{1}し、その後7秒間{2}を得て、{3}する。Disable中でも使用可能。").DZQ(1,boot.BCW.ki).DZS(2,boot.BCW.dh,60.0,15.0).DZR(3,boot.BCW.gj,70.0).DYw(120.0,-20.0).DZB(100.0,0);
-		// 231
+		// 198
+		B.DXH(boot.BCU.bo).DZK("スキルを使用すると3秒間{1}を得て、{2}の敵ユニットと建物に毎秒{3}を与える。ミニオンに対してはダメージが2倍になる。").DZQ(1,boot.BCW.kg).DZR(2,boot.BCW.ma,300.0).DZT(3,boot.BCW.i,6.0,0,boot.BCT.DXK(0.1),boot.BCT.DXI(1));
+		// 207
+		C.DXH(boot.BCU.bo).DZO("{4}の敵ユニットに{1}を与え、{2}後に{3}を与える。").DZX(1,boot.BCW.i,60.0,45.0,boot.BCT.DXK(0.5)).DZR(2,boot.BCW.jg,1).DZS(3,boot.BCW.im,0.5,0).DZR(4,boot.BCW.ma,365.0).DYw(17.0,-1.0).DZB(65.0,5.0);
+		// 217
+		D.DXH(boot.BCU.dh).DZO("対象の敵ユニットに{4}（速度1200）し{1}と{2}、{3}を与える。").DZX(1,boot.BCW.i,55.0,55.0,boot.BCT.DXK(0.7)).DZQ(2,boot.BCW.jh).DZR(3,boot.BCW.im,1).DZQ(4,boot.BCW.kn).DYw(14.0,-1.0).DZB(65.0,5.0).DZE(650.0);
+		// 226
+		E.DXH(boot.BCU.bo).DZO("{1}する。{3}の味方ユニットは{2}する。近くの敵ユニットが死ぬと{4}する。").DZX(1,boot.BCW.ih,60.0,30.0,boot.BCT.DXK(0.2)).DZX(2,boot.BCW.ih,30.0,15.0,boot.BCT.DXK(0.1)).DZR(3,boot.BCW.ma,575.0).DZR(4,boot.BCW.id,2.0).DYw(12.0,0).DZB(40.0,10.0);
+		// 234
+		F.DXH(boot.BCU.bo).DZO("{1}し、その後7秒間{2}を得て、{3}する。Disable中でも使用可能。").DZQ(1,boot.BCW.kj).DZS(2,boot.BCW.dh,60.0,15.0).DZR(3,boot.BCW.gj,70.0).DYw(120.0,-20.0).DZB(100.0,0);
+		// 235
 	},
 	// teemowork.model.SkillDefinition#Amumu(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTA:function(A,B,C,D,E,F){
-		// 237
+		// 241
 		B.DXH(boot.BCU.e).DZK("通常攻撃した対象に3秒間{1}を与える。").DZU(1,boot.BCW.fo,new boot.BDJ(15.0,5.0,0));
-		// 245
-		C.DXH(boot.BCU.g).DZO("指定方向に包帯を飛ばし、当たった敵ユニットに{1}及び{2}を与え、そこまで移動する。").DZX(1,boot.BCW.i,80.0,50.0,boot.BCT.DXK(0.7)).DZR(2,boot.BCW.im,1).DZB(80.0,10.0).DYw(16.0,-2.0).DZE(1100.0);
-		// 253
-		D.DXH(boot.BCU.cn).DZO("毎秒、{2}の敵ユニットに{1}を与える。").DZX(1,boot.BCW.i,8.0,4.0,boot.BCT.DXQ(boot.BCW.cp,1,0.5,boot.BCT.DXK(0.01))).DZR(2,boot.BCW.li,300.0).DYz(8.0).DYv(1).DZI(boot.BDD.g);
-		// 263
-		E.DXH(boot.BCU.e).DZK("{1}する。").DZS(1,boot.BCW.gk,2.0,2.0).DZO("{3}の敵ユニットに{2}を与える。通常攻撃でダメージを受けるたびに{4}。").DZX(2,boot.BCW.i,75.0,25.0,boot.BCT.DXK(0.5)).DZR(3,boot.BCW.li,350.0).DZR(4,boot.BCW.id,0.5).DYz(35.0).DYw(10.0,-1.0);
-		// 271
-		F.DXH(boot.BCU.g).DZO("{1}の敵ユニットに{2}と{3}を与え、通常攻撃を封じる。").DZR(1,boot.BCW.li,550.0).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.8)).DZR(3,boot.BCW.ip,2.0).DZB(100.0,50.0).DYw(150.0,-20.0);
-		// 272
+		// 250
+		C.DXH(boot.BCU.g).DZO("指定方向に包帯を飛ばし、当たった敵ユニットに{1}及び{2}を与え、{3}する。").DZX(1,boot.BCW.i,80.0,50.0,boot.BCT.DXK(0.7)).DZR(2,boot.BCW.im,1).DZQ(3,boot.BCW.kn).DZB(80.0,10.0).DYw(16.0,-2.0).DZE(1100.0);
+		// 258
+		D.DXH(boot.BCU.cn).DZO("毎秒、{2}の敵ユニットに{1}を与える。").DZX(1,boot.BCW.i,8.0,4.0,boot.BCT.DXQ(boot.BCW.cp,1,0.5,boot.BCT.DXK(0.01))).DZR(2,boot.BCW.ma,300.0).DYz(8.0).DYv(1).DZI(boot.BDD.g);
+		// 268
+		E.DXH(boot.BCU.e).DZK("{1}する。").DZS(1,boot.BCW.gk,2.0,2.0).DZO("{3}の敵ユニットに{2}を与える。通常攻撃でダメージを受けるたびに{4}。").DZX(2,boot.BCW.i,75.0,25.0,boot.BCT.DXK(0.5)).DZR(3,boot.BCW.ma,350.0).DZR(4,boot.BCW.id,0.5).DYz(35.0).DYw(10.0,-1.0);
+		// 276
+		F.DXH(boot.BCU.g).DZO("{1}の敵ユニットに{2}と{3}を与え、通常攻撃を封じる。").DZR(1,boot.BCW.ma,550.0).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.8)).DZR(3,boot.BCW.ip,2.0).DZB(100.0,50.0).DYw(150.0,-20.0);
+		// 277
 	},
 	// teemowork.model.SkillDefinition#Anivia(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTB:function(A,B,C,D,E,F){
-		// 283
+		// 288
 		B.DXH(boot.BCU.f).DZK("死亡時に卵になり6秒かけて復活する。復活中は{1}及び{2}を得る。復活中にHPが0になった場合は死亡する。{3}。").DZU(-1,boot.BCW.ga,new boot.BDG(Φ("I",[1,5,8,12,15]),-40.0,15.0,1)).DZU(-2,boot.BCW.ge,new boot.BDG(Φ("I",[1,5,8,12,15]),-40.0,15.0,1)).DZQ(3,boot.BCW.ep).DYv(-240.0);
-		// 294
-		C.DXH(boot.BCU.cf).DZO("指定方向に貫通する氷を飛ばし、氷に触れた敵ユニットに{1}と3秒間{2}を与え、{4}状態にする。氷が飛んでいる最中に再度スキルを使用するか、最大距離まで飛ぶと氷が破裂し、破裂地点の{6}の敵ユニットにさらに{1}と{5}と3秒間{2}を与え、{4}状態にする。").DZX(1,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.5)).DZR(2,boot.BCW.jl,20.0).DZQ(4,boot.BCW.km).DZR(5,boot.BCW.im,1).DZR(6,boot.BCW.li,75.0).DZB(80.0,10.0).DYw(12.0,-1.0).DZE(1075.0);
-		// 302
-		D.DXH(boot.BCU.bd).DZO("指定地点に5秒間{1}の壁を作りユニットを通れなくする。また、指定地点の{2}。").DZS(1,boot.BCW.lj,400.0,100.0).DZQ(2,boot.BCW.kk).DYz(70.0).DYv(25.0).DZE(1000.0);
-		// 310
-		E.DXH(boot.BCU.e).DZO(new boot.z("対象の敵ユニットに{1}を与える。対象が",0).IY(boot.BCW.km).V("の場合は{2}を与える。").W()).DZX(1,boot.BCW.i,55.0,30.0,boot.BCT.DXK(0.5)).DZX(2,boot.BCW.i,110.0,60.0,boot.BCT.DXK(1)).DZB(50.0,10.0).DYv(5.0).DZE(650.0);
-		// 321
-		F.DXH(boot.BCU.bh).DZO("指定地点の{1}の敵ユニットに毎秒{2}、1秒間の{3}を与え、{4}状態にする。").DZR(1,boot.BCW.li,300.0).DZX(2,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.25)).DZR(3,boot.BCW.jj,20.0).DZQ(4,boot.BCW.km).DZB(40.0,10.0).DYv(6.0).DZE(625.0).DZI(boot.BDD.g);
-		// 322
+		// 299
+		C.DXH(boot.BCU.cf).DZO("指定方向に貫通する氷を飛ばし、氷に触れた敵ユニットに{1}と3秒間{2}を与え、{4}状態にする。氷が飛んでいる最中に再度スキルを使用するか、最大距離まで飛ぶと氷が破裂し、破裂地点の{6}の敵ユニットにさらに{1}と{5}と3秒間{2}を与え、{4}状態にする。").DZX(1,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.5)).DZR(2,boot.BCW.jl,20.0).DZQ(4,boot.BCW.le).DZR(5,boot.BCW.im,1).DZR(6,boot.BCW.ma,75.0).DZB(80.0,10.0).DYw(12.0,-1.0).DZE(1075.0);
+		// 307
+		D.DXH(boot.BCU.bd).DZO("指定地点に5秒間{1}の壁を作りユニットを通れなくする。また、指定地点の{2}。").DZS(1,boot.BCW.mb,400.0,100.0).DZQ(2,boot.BCW.lc).DYz(70.0).DYv(25.0).DZE(1000.0);
+		// 315
+		E.DXH(boot.BCU.e).DZO(new boot.z("対象の敵ユニットに{1}を与える。対象が",0).IY(boot.BCW.le).V("の場合は{2}を与える。").W()).DZX(1,boot.BCW.i,55.0,30.0,boot.BCT.DXK(0.5)).DZX(2,boot.BCW.i,110.0,60.0,boot.BCT.DXK(1)).DZB(50.0,10.0).DYv(5.0).DZE(650.0);
+		// 326
+		F.DXH(boot.BCU.bh).DZO("指定地点の{1}の敵ユニットに毎秒{2}、1秒間の{3}を与え、{4}状態にする。").DZR(1,boot.BCW.ma,300.0).DZX(2,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.25)).DZR(3,boot.BCW.jj,20.0).DZQ(4,boot.BCW.le).DZB(40.0,10.0).DYv(6.0).DZE(625.0).DZI(boot.BDD.g);
+		// 327
 	},
 	// teemowork.model.SkillDefinition#Annie(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTC:function(A,B,C,D,E,F){
-		// 330
+		// 335
 		B.DXH(boot.BCU.bd).DZK(new boot.z("スキルを使用するたびにスタックが1貯まり、4スタック時に",0).IY(E).V("以外のスキルを使用すると、スタックを全て消費してそのスキルに{1}が追加される。").W()).DZU(1,boot.BCW.im,new boot.BDG(Φ("I",[1,6,11]),1.25,0.25,1));
-		// 339
+		// 344
 		C.DXH(boot.BCU.bg).DZO("対象の敵ユニットに{1}を与える。このスキルでキルを取ると{2}し、{3}する。").DZX(1,boot.BCW.i,80.0,35.0,boot.BCT.DXK(0.8)).DZS(2,boot.BCW.ij,60.0,5.0).DZR(3,boot.BCW.id,2.0).DZB(60.0,5.0).DYv(4.0).DZE(625.0);
-		// 346
-		D.DXH(boot.BCU.bg).DZO("指定方向扇形50°の{1}の敵ユニットに{2}を与える。").DZR(1,boot.BCW.li,625.0).DZX(2,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.85)).DZB(70.0,10.0).DYv(8.0);
-		// 354
+		// 351
+		D.DXH(boot.BCU.bg).DZO("指定方向扇形50°の{1}の敵ユニットに{2}を与える。").DZR(1,boot.BCW.ma,625.0).DZX(2,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.85)).DZB(70.0,10.0).DYv(8.0);
+		// 359
 		E.DXH(boot.BCU.cj).DZO(new boot.z("5秒間{2}と{3}を得て、効果時間中に通常攻撃をしてきた敵ユニットに{4}を与える。また",0).IY(F).V("が召喚されている間は、").IY(F).V("にも").IY(E).V("の効果が付加され移動速度が300増加する(0.75sで減衰)。").W()).DZS(2,boot.BCW.ga,10.0,10.0).DZS(3,boot.BCW.ge,10.0,10.0).DZX(4,boot.BCW.i,20.0,10.0,boot.BCT.DXK(0.2)).DYz(20.0).DYv(10.0);
-		// 370
-		F.DXH(boot.BCU.cn).DZO("指定地点の{1}の敵ユニットに{2}を与え、操作可能なTibbersを召喚する。Tibbersは{3}間持続し、{4}の敵ユニットに毎秒{5}を与える。<br>Health : {6}<br>通常攻撃 : {7}<br>AR : {8}<br>MR : {9}<br>MS : {10}").DZR(1,boot.BCW.li,290.0).DZX(2,boot.BCW.i,175.0,125.0,boot.BCT.DXK(0.8)).DZS(3,boot.BCW.ld,45.0,0).DZR(4,boot.BCW.li,200.0).DZX(5,boot.BCW.i,20.0,10.0,boot.BCT.DXK(0.2)).DZS(6,boot.BCW.mb,1200.0,900.0).DZS(7,boot.BCW.i,80.0,25.0).DZS(8,boot.BCW.mb,30.0,20.0).DZS(9,boot.BCW.mb,30.0,20.0).DZR(10,boot.BCW.mb,350.0).DZE(600.0).DYz(100.0).DYw(120.0,-20.0);
-		// 371
+		// 375
+		F.DXH(boot.BCU.cn).DZO("指定地点の{1}の敵ユニットに{2}を与え、操作可能なTibbersを召喚する。Tibbersは{3}間持続し、{4}の敵ユニットに毎秒{5}を与える。<br>Health : {6}<br>通常攻撃 : {7}<br>AR : {8}<br>MR : {9}<br>MS : {10}").DZR(1,boot.BCW.ma,290.0).DZX(2,boot.BCW.i,175.0,125.0,boot.BCT.DXK(0.8)).DZS(3,boot.BCW.ll,45.0,0).DZR(4,boot.BCW.ma,200.0).DZX(5,boot.BCW.i,20.0,10.0,boot.BCT.DXK(0.2)).DZS(6,boot.BCW.mj,1200.0,900.0).DZS(7,boot.BCW.i,80.0,25.0).DZS(8,boot.BCW.mj,30.0,20.0).DZS(9,boot.BCW.mj,30.0,20.0).DZR(10,boot.BCW.mj,350.0).DZE(600.0).DYz(100.0).DYw(120.0,-20.0);
+		// 376
 	},
 	// teemowork.model.SkillDefinition#Ashe(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTD:function(A,B,C,D,E,F){
-		// 379
+		// 384
 		B.DXH(boot.BCU.dd).DZK(new boot.z("スキルと通常攻撃は対象に2秒間{1}を与える。またこのスキルで",0).IY(boot.BCW.jk).V("を付与した対象に通常攻撃を行う場合、常にクリティカルが発生する。この").IY(boot.BCW.e).V("は").IY(boot.BCW.ee).V("によって上昇する。その代わり通常状態の敵へのクリティカルは発生しない。").W()).DZU(1,boot.BCW.jl,new boot.BDH(5.0,6.0,0));
-		// 389
+		// 394
 		C.DXH(boot.BCU.dc).DZK("スキルもしくは通常攻撃が敵に命中することで4秒間「フォーカス」のチャージを獲得。最大で5チャージ。").DZO(new boot.z("「フォーカス」の全チャージを消費して4秒間",0).IY(B).V("による").IY(boot.BCW.jk).V("効果が{1}になり、{2}する。5チャージ消費されると、通常攻撃が5回に分けて合計{3}を与えるようになる。On-Hit Effectsは5連射の初撃のみ有効(Hurricaneは5回発動)。").W()).DZU(1,boot.BCW.jl,new boot.BDH(6.0,7.2,0)).DZS(2,boot.BCW.ea,20.0,5.0).DZW(3,boot.BCW.h,boot.BCT.DXN(boot.BCW.dh,1.15,0.05)).DYz(50.0).DYw(12.0,-2.0).DZE(1200.0);
-		// 396
+		// 401
 		D.DXH(boot.BCU.dc).DZO("非貫通の矢を扇状に発射し、それぞれ敵に命中するごとに{1}を与える。敵はこのスキルによって放たれる矢を複数遮ることができるが、ダメージは最初に当たった矢の分のみ受ける。").DZX(1,boot.BCW.h,20.0,15.0,boot.BCT.DXL(1)).DZE(1200.0).DYw(12.0,-2.0).DYz(40.0);
-		// 405
-		E.DXH(boot.BCU.dc).DZO("マップ上どこでも、ターゲット位置まで鷹を飛ばすことができ5秒間通過した{2}の{1}。スタックは最大2で{3}毎に増加する。").DZQ(1,boot.BCW.kk).DZR(2,boot.BCW.li,1000.0).DZS(3,boot.BCW.le,90.0,-10.0).DZA(boot.BCW.mf,1,0).DYv(5.0).DZE(-1.0);
-		// 417
-		F.DXH(boot.BCU.dc).DZO("指定方向に敵チャンピオンにのみ当たる矢を飛ばし、当たった敵チャンピオンに{1}と{2}(飛距離に比例して１～3.5秒)と3秒間の{4}を与える。また敵チャンピオン命中時に矢が爆発し、{5}の敵ユニットに{6}と3秒間の{4}を与える。飛行中の矢は{3}。").DZX(1,boot.BCW.i,250.0,175.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.im,0).DZQ(3,boot.BCW.kk).DZR(4,boot.BCW.jl,50.0).DZR(5,boot.BCW.li,250.0).DZX(6,boot.BCW.i,125.0,87.5,boot.BCT.DXK(0.5)).DYz(100.0).DYw(100.0,-10.0).DZE(-1.0);
-		// 418
+		// 410
+		E.DXH(boot.BCU.dc).DZO("マップ上どこでも、ターゲット位置まで鷹を飛ばすことができ5秒間通過した{2}の{1}。スタックは最大2で{3}毎に増加する。").DZQ(1,boot.BCW.lc).DZR(2,boot.BCW.ma,1000.0).DZS(3,boot.BCW.lm,90.0,-10.0).DZA(boot.BCW.mn,1,0).DYv(5.0).DZE(-1.0);
+		// 422
+		F.DXH(boot.BCU.dc).DZO("指定方向に敵チャンピオンにのみ当たる矢を飛ばし、当たった敵チャンピオンに{1}と{2}(飛距離に比例して１～3.5秒)と3秒間の{4}を与える。また敵チャンピオン命中時に矢が爆発し、{5}の敵ユニットに{6}と3秒間の{4}を与える。飛行中の矢は{3}。").DZX(1,boot.BCW.i,250.0,175.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.im,0).DZQ(3,boot.BCW.lc).DZR(4,boot.BCW.jl,50.0).DZR(5,boot.BCW.ma,250.0).DZX(6,boot.BCW.i,125.0,87.5,boot.BCT.DXK(0.5)).DYz(100.0).DYw(100.0,-10.0).DZE(-1.0);
+		// 423
 	},
 	// teemowork.model.SkillDefinition#Azir(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTE:function(A,B,C,D,E,F){
-		// 428
-		B.DXH(boot.BCU.df).DZK("{1}にある味方もしくは敵のタワーの跡地を右クリックすると、その跡地にThe Sun Discを召喚する。The Sun Discは通常のタワーのように振る舞い、60秒後に消失する。敵のNexusおよびInhibitor Turretに対してはこのスキルは使用できない。{2}。").DZR(1,boot.BCW.li,400.0).DZQ(2,boot.BCW.ep).DYv(-180.0);
-		// 436
+		// 433
+		B.DXH(boot.BCU.df).DZK("{1}にある味方もしくは敵のタワーの跡地を右クリックすると、その跡地にThe Sun Discを召喚する。The Sun Discは通常のタワーのように振る舞い、60秒後に消失する。敵のNexusおよびInhibitor Turretに対してはこのスキルは使用できない。{2}。").DZR(1,boot.BCW.ma,400.0).DZQ(2,boot.BCW.ep).DYv(-180.0);
+		// 441
 		C.DXH(boot.BCU.ck).DZO("全ての砂兵士を指定した地点に集結させる。砂兵士は進路上でぶつかった敵に{1}と1秒間{2}を与える。このスロー効果は累積する。").DZX(1,boot.BCW.i,65.0,20.0,boot.BCT.DXK(0.5)).DZR(2,boot.BCW.jl,25.0).DZE(875.0).DYw(10.0,-1.0).DYz(70.0);
-		// 448
-		D.DXH(boot.BCU.df).DZK("{4}する。").DZS(4,boot.BCW.ea,20.0,10.0).DZO("9秒持続する砂兵士1体を召喚する。自身が兵士の射程距離内にいる敵を攻撃すると、兵士が自身に代わってその敵を攻撃し、直線上にいる敵に{1}を与える。複数の兵士が同じ敵を攻撃した場合、2人目以降の兵士のダメージは25%になる。たとえ標的が自身の通常攻撃の射程内にいなくても、兵士自身の射程に入っていれば兵士が攻撃を行う。兵士は最大2体まで、{2}毎に補充される。兵士から離れすぎるとその兵士は動かなくなる。敵タワーの近くでは、兵士の持続時間は通常の半分になる。兵士をタワーの真上に召喚することで、その兵士を犠牲にしてタワーに{3}を与える。").DZV(1,boot.BCW.i,new boot.BDG(Φ("D",[45.0,50.0,55.0,60.0,65.0,70.0,75.0,80.0,85.0,90.0,100.0,110.0,120.0,130.0,140.0,150.0,160.0,170.0]),0),boot.BCT.DXK(0.6),null).DZS(2,boot.BCW.le,12.0,-1.0).DZT(3,boot.BCW.i,50.0,0,boot.BCT.DXK(0.4),boot.BCT.DXI(10.0)).DZE(450.0).DYz(40.0).DYv(1.5);
-		// 456
-		E.DXH(boot.BCU.df).DZO("砂兵士1体に向かってダッシュし、進路上にいる敵に{1}を与える。敵チャンピオンに衝突した場合、そこで停止して4秒間{2}を得る。").DZX(1,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.4)).DZX(2,boot.BCW.he,80.0,40.0,boot.BCT.DXJ(boot.BCW.bj,0.15)).DZE(1100.0).DYw(19.0,-1.0).DYz(60.0);
-		// 467
-		F.DXH(boot.BCU.dl).DZO(new boot.z("兵士{1}体の壁を",0).IY(A).V("の後方(325)に召喚する。兵士たちは前方に突進し、衝突した敵に{2}と{3}を与える。壁その後{4}間持続し、敵はブリンク以外の手段でこの壁をすり抜けることはできないが、味方は自由に壁を通過でき、また壁を通過した際に1秒間{5}する。").W()).DZS(1,boot.BCW.mb,4.0,1).DZQ(2,boot.BCW.jh).DZX(3,boot.BCW.i,150.0,75.0,boot.BCT.DXK(0.6)).DZS(4,boot.BCW.ld,5.0,1).DZR(5,boot.BCW.kc,20.0).DZE(250.0).DYz(100.0).DYw(140.0,-20.0);
-		// 468
+		// 453
+		D.DXH(boot.BCU.df).DZK("{4}する。").DZS(4,boot.BCW.ea,20.0,10.0).DZO("9秒持続する砂兵士1体を召喚する。自身が兵士の射程距離内にいる敵を攻撃すると、兵士が自身に代わってその敵を攻撃し、直線上にいる敵に{1}を与える。複数の兵士が同じ敵を攻撃した場合、2人目以降の兵士のダメージは25%になる。たとえ標的が自身の通常攻撃の射程内にいなくても、兵士自身の射程に入っていれば兵士が攻撃を行う。兵士は最大2体まで、{2}毎に補充される。兵士から離れすぎるとその兵士は動かなくなる。敵タワーの近くでは、兵士の持続時間は通常の半分になる。兵士をタワーの真上に召喚することで、その兵士を犠牲にしてタワーに{3}を与える。").DZV(1,boot.BCW.i,new boot.BDG(Φ("D",[45.0,50.0,55.0,60.0,65.0,70.0,75.0,80.0,85.0,90.0,100.0,110.0,120.0,130.0,140.0,150.0,160.0,170.0]),0),boot.BCT.DXK(0.6),null).DZS(2,boot.BCW.lm,12.0,-1.0).DZT(3,boot.BCW.i,50.0,0,boot.BCT.DXK(0.4),boot.BCT.DXI(10.0)).DZE(450.0).DYz(40.0).DYv(1.5);
+		// 462
+		E.DXH(boot.BCU.df).DZO("砂兵士1体に向かって{3}し、進路上にいる敵に{1}を与える。敵チャンピオンに衝突した場合、そこで停止して4秒間{2}を得る。").DZX(1,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.4)).DZX(2,boot.BCW.he,80.0,40.0,boot.BCT.DXJ(boot.BCW.bj,0.15)).DZQ(3,boot.BCW.kn).DZE(1100.0).DYw(19.0,-1.0).DYz(60.0);
+		// 473
+		F.DXH(boot.BCU.dl).DZO(new boot.z("兵士{1}体の壁を",0).IY(A).V("の後方(325)に召喚する。兵士たちは前方に突進し、衝突した敵に{2}と{3}を与える。壁その後{4}間持続し、敵はブリンク以外の手段でこの壁をすり抜けることはできないが、味方は自由に壁を通過でき、また壁を通過した際に1秒間{5}する。").W()).DZS(1,boot.BCW.mj,4.0,1).DZQ(2,boot.BCW.jh).DZX(3,boot.BCW.i,150.0,75.0,boot.BCT.DXK(0.6)).DZS(4,boot.BCW.ll,5.0,1).DZR(5,boot.BCW.kc,20.0).DZE(250.0).DYz(100.0).DYw(140.0,-20.0);
+		// 474
 	},
 	// teemowork.model.SkillDefinition#Bard(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTF:function(A,B,C,D,E,F){
-		// 481
+		// 487
 		B.DXH(boot.BCU.cp).DZK("鐘が50秒毎に2個ずつ、自身から一定の範囲内に出現する(2回目と3回目は1個のみ。また、試合開始から5分経過すると、敵ジャングル内にも出現し始める)。鐘を取ると、非戦闘時に7秒間{1}し(5回までスタック)、{2}（経過時間に比例）を得て、{3}する。鐘は10分経つと消滅する。<br>通常攻撃の際、スタックを消費して{4}を与える。<br>5個: 1秒間{5}<br>25: ターゲットの後方にも追加効果<br>65: 効果範囲が拡大").DZQ(-1,boot.BCW.kc).DZR(2,boot.BCW.hp,20.0).DZW(3,boot.BCW.ij,boot.BCT.DXJ(boot.BCW.bp,0.12)).DZV(4,boot.BCW.i,new boot.BDK(Φ("I",[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150]),Φ("D",[35.0,55.0,80.0,110.0,140.0,175.0,210.0,245.0,280.0,315.0,345.0,375.0,400.0,425.0,445.0,465.0]),0),boot.BCT.DXK(0.3),null).DZU(5,boot.BCW.jl,new boot.BDK(Φ("I",[5,45,85,115,135]),Φ("D",[25.0,45.0,60.0,75.0,80.0]),0));
-		// 493
-		C.DXH(boot.BCU.co).DZO("{1}の貫通するエネルギー弾を飛ばし、1体目のターゲットに{2}と{3}間{4}を与える。エネルギー弾が別の敵にも命中するか({5})、壁に当たった場合、スキルが命中したすべての敵に{6}を与える。").DZR(1,boot.BCW.ll,1500.0).DZX(2,boot.BCW.i,80.0,45.0,boot.BCT.DXK(0.65)).DZS(3,boot.BCW.ld,1,0.2).DZR(4,boot.BCW.jl,60.0).DZR(5,boot.BCW.li,450.0).DZS(6,boot.BCW.im,1,0.2).DZE(950.0).DYz(60.0).DYw(10.0,-1.0);
-		// 502
+		// 499
+		C.DXH(boot.BCU.co).DZO("{1}の貫通するエネルギー弾を飛ばし、1体目のターゲットに{2}と{3}間{4}を与える。エネルギー弾が別の敵にも命中するか({5})、壁に当たった場合、スキルが命中したすべての敵に{6}を与える。").DZR(1,boot.BCW.md,1500.0).DZX(2,boot.BCW.i,80.0,45.0,boot.BCT.DXK(0.65)).DZS(3,boot.BCW.ll,1,0.2).DZR(4,boot.BCW.jl,60.0).DZR(5,boot.BCW.ma,450.0).DZS(6,boot.BCW.im,1,0.2).DZE(950.0).DYz(60.0).DYw(10.0,-1.0);
+		// 508
 		D.DXH(boot.BCU.di).DZO("治癒効果のある結界を設置し、接触した味方は{1}する。設置から10秒間かけて治癒効果が向上して、最大で{2}するとともに{3}する。この効果は1.5秒かけて減衰する。結界は一度に3個まで発生させることができ、味方のチャンピオンが接触するか、敵が通過すると消滅する。").DZX(1,boot.BCW.ih,30.0,30.0,boot.BCT.DXK(0.2)).DZX(2,boot.BCW.ih,70.0,40.0,boot.BCT.DXK(0.45)).DZR(3,boot.BCW.kc,50.0).DZE(1000.0).DYz(90.0).DYv(5.0);
-		// 509
-		E.DXH(boot.BCU.di).DZO("付近の壁に一方通行の穴を開け、近くで穴のどこかを右クリックすると通り抜けられる。敵も使用できるが、味方のほうが{1}速く通り抜ける。").DZS(1,boot.BCW.mc,10.0,10.0).DZE(900.0).DYz(30.0).DYw(18.0,-1.0);
-		// 516
-		F.DXH(boot.BCU.df).DZO("指定した地点へ弓なりに魔力を射出し、着弾と同時に{1}のすべてのチャンピオン、ミニオン、モンスター、タワーを2.5秒間、行動不能にする。ただし、その間、対象ユニットは無敵状態となり、ターゲットもされなくなる。").DZR(1,boot.BCW.li,350.0).DZE(3400.0).DYz(100.0).DYw(130.0,-15.0);
-		// 517
+		// 515
+		E.DXH(boot.BCU.di).DZO("付近の壁に一方通行の穴を開け、近くで穴のどこかを右クリックすると通り抜けられる。敵も使用できるが、味方のほうが{1}速く通り抜ける。").DZS(1,boot.BCW.mk,10.0,10.0).DZE(900.0).DYz(30.0).DYw(18.0,-1.0);
+		// 523
+		F.DXH(boot.BCU.df).DZO("指定した地点へ弓なりに魔力を射出し、着弾と同時に{1}の全てのチャンピオン、ミニオン、モンスター、タワーを2.5秒間{2}にする。ただし、その間、対象ユニットは無敵状態となり、ターゲットもされなくなる。").DZR(1,boot.BCW.ma,350.0).DZQ(2,boot.BCW.kl).DZE(3400.0).DYz(100.0).DYw(130.0,-15.0);
+		// 524
 	},
 	// teemowork.model.SkillDefinition#Blitzcrank(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTG:function(A,B,C,D,E,F){
-		// 523
+		// 530
 		B.DXH(boot.BCU.e).DZK(" HPが20%以下になると、10秒間{1}を張る。").DZW(1,boot.BCW.he,boot.BCT.DXJ(boot.BCW.dd,50.0)).DYv(90.0);
-		// 532
-		C.DXH(boot.BCU.bk).DZO("指定方向に腕を飛ばし、当たった敵ユニットに{1}と{2}を与え自分の位置まで引き寄せる。またこのスキル命中時に対象の{3}。").DZX(1,boot.BCW.i,80.0,55.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.im,0.5).DZQ(3,boot.BCW.kk).DYz(100.0).DYw(20.0,-1.0).DZE(925.0);
-		// 540
+		// 539
+		C.DXH(boot.BCU.bk).DZO("指定方向に腕を飛ばし、当たった敵ユニットに{1}と{2}を与え自分の位置まで引き寄せる。またこのスキル命中時に対象の{3}。").DZX(1,boot.BCW.i,80.0,55.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.im,0.5).DZQ(3,boot.BCW.lc).DYz(100.0).DYw(20.0,-1.0).DZE(925.0);
+		// 547
 		D.DXH(boot.BCU.cp).DZO(new boot.z("5秒間{1}、{2}する。",0).IY(boot.BCW.ka).V("上昇量は時間と共に10%まで減衰し、効果終了時に自身に1.5秒間{3}を与える。").W()).DZS(1,boot.BCW.kc,70.0,5.0).DZS(2,boot.BCW.ea,30.0,8.0).DZR(3,boot.BCW.jl,30.0).DYz(75.0).DYv(15.0);
-		// 548
-		E.DXH(boot.BCU.e).DZO("次の通常攻撃に{1}を付与し、対象に{2}を与える。{3}。").DZX(1,boot.BCW.h,0,0,boot.BCT.DXL(1)).DZS(2,boot.BCW.jg,1,0).DZQ(3,boot.BCW.ma).DYz(25.0).DYw(9.0,-1.0);
-		// 559
-		F.DXH(boot.BCU.bk).DZK("{1}の敵ユニット1体(対象はランダム)に2.5秒ごとに{2}を与える。").DZR(1,boot.BCW.li,450.0).DZX(2,boot.BCW.i,100.0,100.0,boot.BCT.DXK(0.2)).DZO("{3}の敵ユニットに{4}と{5}を与える。効果後はCDが解消されるまでPassiveの効果がなくなる。").DZR(3,boot.BCW.li,600.0).DZX(4,boot.BCW.i,250.0,125.0,boot.BCT.DXK(1)).DZR(5,boot.BCW.jc,0.5).DYz(100.0).DYv(30.0);
-		// 560
+		// 555
+		E.DXH(boot.BCU.e).DZO("次の通常攻撃に{1}を付与し、対象に{2}を与える。{3}。").DZX(1,boot.BCW.h,0,0,boot.BCT.DXL(1)).DZS(2,boot.BCW.jg,1,0).DZQ(3,boot.BCW.mi).DYz(25.0).DYw(9.0,-1.0);
+		// 566
+		F.DXH(boot.BCU.bk).DZK("{1}の敵ユニット1体(対象はランダム)に2.5秒ごとに{2}を与える。").DZR(1,boot.BCW.ma,450.0).DZX(2,boot.BCW.i,100.0,100.0,boot.BCT.DXK(0.2)).DZO("{3}の敵ユニットに{4}と{5}を与える。効果後はCDが解消されるまでPassiveの効果がなくなる。").DZR(3,boot.BCW.ma,600.0).DZX(4,boot.BCW.i,250.0,125.0,boot.BCT.DXK(1)).DZR(5,boot.BCW.jc,0.5).DYz(100.0).DYv(30.0);
+		// 567
 	},
 	// teemowork.model.SkillDefinition#Brand(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTH:function(A,B,C,D,E,F){
-		// 568
+		// 575
 		B.DXH(boot.BCU.e).DZK("スキルが当たった敵ユニットを炎上させ、4秒間毎秒{1}与える。炎上している敵ユニットにスキルが命中すると追加効果が発生する。(ミニオンやモンスターに対しては毎秒80ダメージが上限)").DZW(1,boot.BCW.i,boot.BCT.DXJ(boot.BCW.cp,2.0));
-		// 576
+		// 583
 		C.DXH(boot.BCU.e).DZO("指定方向に火球を投射し、当たった敵ユニットに{1}を与える。敵が炎上していた場合、{2}を与える。").DZX(1,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.65)).DZR(2,boot.BCW.im,2.0).DYz(50.0).DYw(8.0,-0.5).DZE(1050.0);
-		// 585
-		D.DXH(boot.BCU.m).DZO("指定地点に炎の柱を作り出し、0.625秒後に{1}の敵ユニットに{2}を与える。敵が炎上していた場合、代わりに{3}を与える。").DZR(1,boot.BCW.li,250.0).DZX(2,boot.BCW.i,75.0,45.0,boot.BCT.DXK(0.6)).DZX(3,boot.BCW.i,94.0,56.0,boot.BCT.DXK(0.75)).DZB(70.0,5.0).DYv(10.0).DZE(900.0);
-		// 593
-		E.DXH(boot.BCU.bc).DZO("対象の敵ユニットに{1}を与える。敵が炎上していた場合、{2}の敵にも{1}を与える。").DZX(1,boot.BCW.i,70.0,35.0,boot.BCT.DXK(0.55)).DZR(2,boot.BCW.li,300.0).DZB(70.0,5.0).DYw(12.0,-1.0).DZE(625.0);
+		// 592
+		D.DXH(boot.BCU.m).DZO("指定地点に炎の柱を作り出し、0.625秒後に{1}の敵ユニットに{2}を与える。敵が炎上していた場合、代わりに{3}を与える。").DZR(1,boot.BCW.ma,250.0).DZX(2,boot.BCW.i,75.0,45.0,boot.BCT.DXK(0.6)).DZX(3,boot.BCW.i,94.0,56.0,boot.BCT.DXK(0.75)).DZB(70.0,5.0).DYv(10.0).DZE(900.0);
 		// 600
+		E.DXH(boot.BCU.bc).DZO("対象の敵ユニットに{1}を与える。敵が炎上していた場合、{2}の敵にも{1}を与える。").DZX(1,boot.BCW.i,70.0,35.0,boot.BCT.DXK(0.55)).DZR(2,boot.BCW.ma,300.0).DZB(70.0,5.0).DYw(12.0,-1.0).DZE(625.0);
+		// 607
 		F.DXH(boot.BCU.dc).DZO("対象の敵ユニットに火炎弾を放つ。火炎弾は近くの敵ユニットに4回まで跳ね、その度に{1}を与える(最大5hit)。この跳ね返りは同一ユニットに何度も跳ね返る。敵が炎上していた場合、敵チャンピオンに優先して跳ね返るようになる。").DZX(1,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.5)).DYz(100.0).DYw(105.0,-15.0).DZE(750.0);
-		// 601
+		// 608
 	},
 	// teemowork.model.SkillDefinition#Braum(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTI:function(A,B,C,D,E,F){
-		// 612
-		B.DXH(boot.BCU.bp).DZK(new boot.z("通常攻撃時に対象にスタックを付与する。自身を含む味方チャンピオンがスタック付きの対象に通常攻撃を行う度にスタックが1増加し、4スタックになるとスタックを全て消費し対象に{1}と{2}を与える。スタックは4秒間増加が無いと0になる。",0).IY(boot.BCW.im).V("が発動すると、その対象が{3}間耐性を得て、スタックが付与できなくなるが、代わりに自身が耐性がついた対象に通常攻撃をするか").IY(C).V("を当てると追加で{4}を与える。").W()).DZU(1,boot.BCW.im,new boot.BDJ(1.25,0.25,0)).DZX(2,boot.BCW.i,32.0,0,boot.BCT.DXI(8.0)).DZS(3,boot.BCW.ld,8.0,-1.0).DZX(4,boot.BCW.i,6.4,0,boot.BCT.DXI(1.6));
-		// 620
+		// 619
+		B.DXH(boot.BCU.bp).DZK(new boot.z("通常攻撃時に対象にスタックを付与する。自身を含む味方チャンピオンがスタック付きの対象に通常攻撃を行う度にスタックが1増加し、4スタックになるとスタックを全て消費し対象に{1}と{2}を与える。スタックは4秒間増加が無いと0になる。",0).IY(boot.BCW.im).V("が発動すると、その対象が{3}間耐性を得て、スタックが付与できなくなるが、代わりに自身が耐性がついた対象に通常攻撃をするか").IY(C).V("を当てると追加で{4}を与える。").W()).DZU(1,boot.BCW.im,new boot.BDJ(1.25,0.25,0)).DZX(2,boot.BCW.i,32.0,0,boot.BCT.DXI(8.0)).DZS(3,boot.BCW.ll,8.0,-1.0).DZX(4,boot.BCW.i,6.4,0,boot.BCT.DXI(1.6));
+		// 627
 		C.DXH(boot.BCU.dj).DZO(new boot.z("盾から氷の塊を発射し、命中した敵に",0).IY(B).V("のスタック、{1}と2秒間かけて減衰する{2}を与える。").W()).DZX(1,boot.BCW.i,70.0,45.0,boot.BCT.DXJ(boot.BCW.bf,0.025)).DZR(2,boot.BCW.jl,70.0).DZE(1000.0).DZB(55.0,5.0).DYw(10.0,-1.0);
-		// 628
-		D.DXH(boot.BCU.bp).DZO("対象の味方のユニットのそばに素早く移動する。移動完了後3秒間、自分と味方は{1}と{2}を得る。").DZX(1,boot.BCW.ga,15.0,2.5,boot.BCT.DXN(boot.BCW.gd,0.1,0.015)).DZX(2,boot.BCW.ge,15.0,2.5,boot.BCT.DXN(boot.BCW.gh,0.1,0.015)).DZE(650.0).DZB(50.0,5.0).DYw(14.0,-1.0);
-		// 637
-		E.DXH(boot.BCU.bl).DZO("{1}間、盾を掲げて{3}を得て{4}する。盾を向けている方向から受けた最初の攻撃のダメージを無効化する。それ以降も効果時間中は受ける{2}する。敵の遠距離攻撃を盾によって、食い止める。効果時間中はブラームの移動速度が10％上昇する。").DZS(1,boot.BCW.ld,3.0,0.25).DZS(2,boot.BCW.gj,30.0,2.5).DZQ(3,boot.BCW.kg).DZR(4,boot.BCW.kc,10.0).DZB(30.0,5.0).DYw(18.0,-2.0);
-		// 648
-		F.DXH(boot.BCU.bp).DZO("盾を地面にたたきつけて地割れを起こし、{1}にいる敵と前方のライン上にいる敵に{2}と{3}を与える。前方に伸びた地割れは4間持続し、触れた敵に{5}を与える。最初に命中した敵チャンピオンには{4}を与える。").DZQ(1,boot.BCW.li).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.6)).DZR(3,boot.BCW.jg,0.25).DZR(4,boot.BCW.jg,1.5).DZS(5,boot.BCW.jl,40.0,10.0).DZE(1250.0).DYz(100.0).DYw(140.0,-20.0);
-		// 649
+		// 636
+		D.DXH(boot.BCU.bp).DZO("対象の味方のユニットのそばに{3}する。移動完了後3秒間、自分と味方は{1}と{2}を得る。").DZX(1,boot.BCW.ga,15.0,2.5,boot.BCT.DXN(boot.BCW.gd,0.1,0.015)).DZX(2,boot.BCW.ge,15.0,2.5,boot.BCT.DXN(boot.BCW.gh,0.1,0.015)).DZQ(3,boot.BCW.kn).DZE(650.0).DZB(50.0,5.0).DYw(14.0,-1.0);
+		// 645
+		E.DXH(boot.BCU.bl).DZO("{1}間、盾を掲げて{3}を得て{4}する。盾を向けている方向から受けた最初の攻撃のダメージを無効化する。それ以降も効果時間中は受ける{2}する。敵の遠距離攻撃を盾によって、食い止める。効果時間中はブラームの移動速度が10％上昇する。").DZS(1,boot.BCW.ll,3.0,0.25).DZS(2,boot.BCW.gj,30.0,2.5).DZQ(3,boot.BCW.kg).DZR(4,boot.BCW.kc,10.0).DZB(30.0,5.0).DYw(18.0,-2.0);
+		// 656
+		F.DXH(boot.BCU.bp).DZO("盾を地面にたたきつけて地割れを起こし、{1}にいる敵と前方のライン上にいる敵に{2}と{3}を与える。前方に伸びた地割れは4間持続し、触れた敵に{5}を与える。最初に命中した敵チャンピオンには{4}を与える。").DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.6)).DZR(3,boot.BCW.jg,0.25).DZR(4,boot.BCW.jg,1.5).DZS(5,boot.BCW.jl,40.0,10.0).DZE(1250.0).DYz(100.0).DYw(140.0,-20.0);
+		// 657
 	},
 	// teemowork.model.SkillDefinition#Caitlyn(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTJ:function(A,B,C,D,E,F){
-		// 658
-		B.DXH(boot.BCU.dc).DZK("通常攻撃{1}回毎にダメージが増加する(ミニオンには150%増加、チャンピオンには50%増加して{2}を付与、建物への攻撃は無効)。茂みから通常攻撃を行うと2回分としてカウントされる。").DZU(1,boot.BCW.lh,new boot.BDJ(7.0,-1.0,0)).DZR(2,boot.BCW.fh,50.0);
 		// 666
+		B.DXH(boot.BCU.dc).DZK("通常攻撃{1}回毎にダメージが増加する(ミニオンには150%増加、チャンピオンには50%増加して{2}を付与、建物への攻撃は無効)。茂みから通常攻撃を行うと2回分としてカウントされる。").DZU(1,boot.BCW.lp,new boot.BDJ(7.0,-1.0,0)).DZR(2,boot.BCW.fh,50.0);
+		// 674
 		C.DXH(boot.BCU.e).DZO("1秒詠唱後、指定方向に貫通する弾を発射し当たった敵ユニットに{1}を与える。ダメージは敵に当たるごとに10%減少していき最小で{2}を与える。").DZX(1,boot.BCW.h,20.0,40.0,boot.BCT.DXL(1.3)).DZX(2,boot.BCW.h,10.0,20.0,boot.BCT.DXL(0.65)).DZB(50.0,10.0).DYw(10.0,-1.0).DZE(1250.0);
-		// 676
-		D.DXH(boot.BCU.di).DZO("指定地点に罠を仕掛ける。敵チャンピオンが罠の{4}に入ると発動して、対象に1.5秒かけて{2}と{3}を与え、9秒間対象の{5}。罠は3個まで置け、4分間持続する。").DZX(2,boot.BCW.i,80.0,50.0,boot.BCT.DXK(0.6)).DZR(3,boot.BCW.ip,1.5).DZR(4,boot.BCW.li,67.5).DZQ(5,boot.BCW.kk).DYz(30.0).DYw(16.0,-2.0).DZE(800.0);
-		// 686
-		E.DXH(boot.BCU.e).DZO("指定方向にネットを飛ばし当たった敵ユニットに{1}と{3}間{2}を与え、Caitlynはネットを飛ばした方向の反対側にジャンプ({4})する。").DZX(1,boot.BCW.i,80.0,50.0,boot.BCT.DXK(0.8)).DZR(2,boot.BCW.jl,50.0).DZS(3,boot.BCW.ld,1,0.25).DZR(4,boot.BCW.lk,400.0).DYz(75.0).DYw(18.0,-2.0).DZE(950.0);
-		// 693
-		F.DXH(boot.BCU.dc).DZO("0.5秒詠唱後に対象の敵チャンピオンの視界を得て、更に1秒詠唱後対象に目掛けて敵チャンピオンにのみ当たる弾を発射し、当たった敵チャンピオンに{1}を与える。ターゲットとの射線を遮ると間に入った敵チャンピオンに当たる。").DZX(1,boot.BCW.h,250.0,225.0,boot.BCT.DXM(2.0)).DYz(100.0).DYw(90.0,-15.0).DZF(2000.0,500.0);
+		// 684
+		D.DXH(boot.BCU.di).DZO("指定地点に罠を仕掛ける。敵チャンピオンが罠の{4}に入ると発動して、対象に1.5秒かけて{2}と{3}を与え、9秒間対象の{5}。罠は3個まで置け、4分間持続する。").DZX(2,boot.BCW.i,80.0,50.0,boot.BCT.DXK(0.6)).DZR(3,boot.BCW.ip,1.5).DZR(4,boot.BCW.ma,67.5).DZQ(5,boot.BCW.lc).DYz(30.0).DYw(16.0,-2.0).DZE(800.0);
 		// 694
+		E.DXH(boot.BCU.e).DZO(new boot.z("指定方向にネットを飛ばし当たった敵ユニットに{1}と{2}間{3}を与え、",0).IY(A).V("はネットを飛ばした方向の反対側に{4}する。").W()).DZX(1,boot.BCW.i,80.0,50.0,boot.BCT.DXK(0.8)).DZS(2,boot.BCW.ll,1,0.25).DZR(3,boot.BCW.jl,50.0).DZR(4,boot.BCW.km,400.0).DYz(75.0).DYw(18.0,-2.0).DZE(950.0);
+		// 701
+		F.DXH(boot.BCU.dc).DZO("0.5秒詠唱後に対象の敵チャンピオンの視界を得て、更に1秒詠唱後対象に目掛けて敵チャンピオンにのみ当たる弾を発射し、当たった敵チャンピオンに{1}を与える。ターゲットとの射線を遮ると間に入った敵チャンピオンに当たる。").DZX(1,boot.BCW.h,250.0,225.0,boot.BCT.DXM(2.0)).DYz(100.0).DYw(90.0,-15.0).DZF(2000.0,500.0);
+		// 702
 	},
 	// teemowork.model.SkillDefinition#Cassiopeia(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTK:function(A,B,C,D,E,F){
-		// 706
+		// 714
 		B.DXH(boot.BCU.db).DZK(new boot.z("6秒毎に1スタックを得る。敵チャンピオンに毒を与えている間は毎秒1スタックを得る。スタック数に応じて能力を得る。<br>100: {1}する。",0).IY(E).V("を敵に当てるたびに{2}する。<br>250: {3}する。{4}を得る。<br>500: {5}する。").W()).DZR(-1,boot.BCW.ek,5.0).DZV(2,boot.BCW.ih,new boot.BDM(E,6.0,2.0,0),boot.BCT.DXK(0.06),null).DZR(-3,boot.BCW.ek,5.0).DZR(-4,boot.BCW.em,25.0).DZR(-5,boot.BCW.ek,20.0);
-		// 715
-		C.DXH(boot.BCU.cj).DZO("指定地点に0.4秒後に毒を発生させ、{1}の敵ユニットに毒を与え3秒かけて{2}を与える。このスキルがチャンピオンにヒットした場合、3秒間{3}する。").DZR(1,boot.BCW.li,75.0).DZX(2,boot.BCW.i,75.0,40.0,boot.BCT.DXK(0.45)).DZR(3,boot.BCW.kc,20.0).DZB(40.0,10.0).DYv(4.0).DZE(850.0);
-		// 724
-		D.DXH(boot.BCU.cc).DZO("指定地点に7秒間持続する毒霧を吹き出す。毒霧は徐々に範囲(125～250)が広がり、毒霧の上を通過した敵に2秒間持続する毒を付与し毎秒{1}と2秒間{3}を与える。また指定地点の{4}。").DZX(1,boot.BCW.i,10.0,5.0,boot.BCT.DXK(0.1)).DZS(3,boot.BCW.jl,25.0,5.0).DZQ(4,boot.BCW.kk).DZB(40.0,10.0).DYw(14.0,-1.0).DZE(850.0);
-		// 733
+		// 723
+		C.DXH(boot.BCU.cj).DZO("指定地点に0.4秒後に毒を発生させ、{1}の敵ユニットに毒を与え3秒かけて{2}を与える。このスキルがチャンピオンにヒットした場合、3秒間{3}する。").DZR(1,boot.BCW.ma,75.0).DZX(2,boot.BCW.i,75.0,40.0,boot.BCT.DXK(0.45)).DZR(3,boot.BCW.kc,20.0).DZB(40.0,10.0).DYv(4.0).DZE(850.0);
+		// 732
+		D.DXH(boot.BCU.cc).DZO("指定地点に7秒間持続する毒霧を吹き出す。毒霧は徐々に範囲(125～250)が広がり、毒霧の上を通過した敵に2秒間持続する毒を付与し毎秒{1}と2秒間{3}を与える。また指定地点の{4}。").DZX(1,boot.BCW.i,10.0,5.0,boot.BCT.DXK(0.1)).DZS(3,boot.BCW.jl,25.0,5.0).DZQ(4,boot.BCW.lc).DZB(40.0,10.0).DYw(14.0,-1.0).DZE(850.0);
+		// 741
 		E.DXH(boot.BCU.db).DZO(new boot.z("対象の敵ユニットに{1}を与え、",0).IY(A).V("の毒による{3}する（この効果は2回まで累積する）。対象が毒を受けている場合、{2}が0.5秒になる。").W()).DZX(1,boot.BCW.i,55.0,25.0,boot.BCT.DXK(0.55)).DZQ(2,boot.BCW.ib).DZR(3,boot.BCW.f,20.0).DZB(50.0,10.0).DYv(5.0).DZE(700.0);
-		// 742
+		// 750
 		F.DXH(boot.BCU.cc).DZO("眼からビームを放ち、指定方向扇形80°の範囲内の敵ユニットに{1}を与え、こちらを向いている敵に更に{2}を与える。後ろを向いていた場合2秒間{4}を与える。").DZX(1,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.5)).DZR(2,boot.BCW.im,2.0).DZR(4,boot.BCW.jl,60.0).DYz(100.0).DYw(120.0,-10.0).DZE(825.0);
-		// 743
+		// 751
 	},
 	// teemowork.model.SkillDefinition#Chogath(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTL:function(A,B,C,D,E,F){
-		// 752
+		// 760
 		B.DXH(boot.BCU.e).DZK("敵ユニットを倒すと{1}、{2}する。").DZX(1,boot.BCW.ih,17.0,0,boot.BCT.DXI(3.0)).DZX(2,boot.BCW.ij,3.25,0,boot.BCT.DXI(0.25));
-		// 763
-		C.DXH(boot.BCU.bc).DZO("指定地点に0.5秒後にトゲを出現させ、{1}の敵ユニットに{2}と{3}を与え、その後1.5秒間{5}にする。また指定地点の{4}。").DZR(1,boot.BCW.li,175.0).DZX(2,boot.BCW.i,80.0,55.0,boot.BCT.DXK(1)).DZR(3,boot.BCW.jg,1).DZQ(4,boot.BCW.kk).DZR(5,boot.BCW.jl,60.0).DYz(90.0).DYv(9.0).DZE(950.0);
 		// 771
+		C.DXH(boot.BCU.bc).DZO("指定地点に0.5秒後にトゲを出現させ、{1}の敵ユニットに{2}と{3}を与え、その後1.5秒間{5}にする。また指定地点の{4}。").DZR(1,boot.BCW.ma,175.0).DZX(2,boot.BCW.i,80.0,55.0,boot.BCT.DXK(1)).DZR(3,boot.BCW.jg,1).DZQ(4,boot.BCW.lc).DZR(5,boot.BCW.jl,60.0).DYz(90.0).DYv(9.0).DZE(950.0);
+		// 779
 		D.DXH(boot.BCU.e).DZO("前方扇形60°の領域の敵ユニットに{1}と{2}を与える。").DZX(1,boot.BCW.i,75.0,50.0,boot.BCT.DXK(0.7)).DZS(2,boot.BCW.jc,1.5,0.25).DZB(70.0,10.0).DYv(13.0).DZE(700.0);
-		// 778
+		// 786
 		E.DXH(boot.BCU.e).DZO("通常攻撃時に前方にトゲを飛ばし当たった敵ユニットに{1}を与える。トゲを飛ばす範囲はUltのスタック数に比例し増加する。").DZX(1,boot.BCW.i,20.0,15.0,boot.BCT.DXK(0.3)).DYv(0.5).DZE(500.0).DZI(boot.BDD.g);
-		// 788
-		F.DXH(boot.BCU.ch).DZO("対象の敵ユニットに{1}を与える。対象がチャンピオン以外の場合は{2}を与える。このスキルで敵を倒すとスタックが1増えて{3}と{4}する。最大スタック数は6で、死亡するとスタックが半分(端数切り上げ)消失する。").DZX(1,boot.BCW.j,300.0,175.0,boot.BCT.DXK(0.7)).DZX(2,boot.BCW.j,1000.0,0,boot.BCT.DXK(0.7)).DZW(3,boot.BCW.bf,boot.BCT.DXN(boot.BCW.mf,90.0,30.0)).DZW(4,boot.BCW.hi,boot.BCT.DXN(boot.BCW.mf,3.8,2.25)).DYz(100.0).DYv(80.0).DZE(175.0);
-		// 789
+		// 796
+		F.DXH(boot.BCU.ch).DZO("対象の敵ユニットに{1}を与える。対象がチャンピオン以外の場合は{2}を与える。このスキルで敵を倒すとスタックが1増えて{3}と{4}する。最大スタック数は6で、死亡するとスタックが半分(端数切り上げ)消失する。").DZX(1,boot.BCW.j,300.0,175.0,boot.BCT.DXK(0.7)).DZX(2,boot.BCW.j,1000.0,0,boot.BCT.DXK(0.7)).DZW(3,boot.BCW.bf,boot.BCT.DXN(boot.BCW.mn,90.0,30.0)).DZW(4,boot.BCW.hi,boot.BCT.DXN(boot.BCW.mn,3.8,2.25)).DYz(100.0).DYv(80.0).DZE(175.0);
+		// 797
 	},
 	// teemowork.model.SkillDefinition#Corki(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTM:function(A,B,C,D,E,F){
-		// 795
+		// 803
 		B.DXH(boot.BCU.e).DZK("通常攻撃に{1}が付与される。建物には無効。").DZX(1,boot.BCW.j,0,0,boot.BCT.DXL(0.1));
-		// 804
-		C.DXH(boot.BCU.ch).DZO("指定地点に爆弾を発射し、着弾時に{1}の敵ユニットに{2}を与え、6秒間指定地点の{3}。爆弾にも視界がある。また、チャンピオンに当たった場合、6秒間そのチャンピオンの{3}。このスキルで敵のステルスを看破する事はできない。").DZR(1,boot.BCW.li,250.0).DZT(2,boot.BCW.i,80.0,50.0,boot.BCT.DXK(0.5),boot.BCT.DXM(0.5)).DZQ(3,boot.BCW.kk).DYv(8.0).DZB(60.0,10.0).DZE(825.0);
-		// 811
-		D.DXH(boot.BCU.ci).DZO("指定地点まで高速で移動し、通過地点を2.5秒間炎上させる。炎上地点の上にいる敵ユニットに0.5秒毎に{2}を与える。").DZX(2,boot.BCW.i,30.0,15.0,boot.BCT.DXK(0.2)).DYz(100.0).DYw(26.0,-3.0).DZE(800.0);
-		// 819
+		// 812
+		C.DXH(boot.BCU.ch).DZO("指定地点に爆弾を発射し、着弾時に{1}の敵ユニットに{2}を与え、6秒間指定地点の{3}。爆弾にも視界がある。また、チャンピオンに当たった場合、6秒間そのチャンピオンの{3}。このスキルで敵のステルスを看破する事はできない。").DZR(1,boot.BCW.ma,250.0).DZT(2,boot.BCW.i,80.0,50.0,boot.BCT.DXK(0.5),boot.BCT.DXM(0.5)).DZQ(3,boot.BCW.lc).DYv(8.0).DZB(60.0,10.0).DZE(825.0);
+		// 820
+		D.DXH(boot.BCU.ci).DZO("指定地点まで高速で{1}し、通過地点を2.5秒間炎上させる。炎上地点の上にいる敵ユニットに0.5秒毎に{2}を与える。").DZQ(1,boot.BCW.km).DZX(2,boot.BCW.i,30.0,15.0,boot.BCT.DXK(0.2)).DYz(100.0).DYw(26.0,-3.0).DZE(800.0);
+		// 828
 		E.DXH(boot.BCU.bb).DZO("4秒間、Corkiの前方扇形35°にいる敵ユニットに0.5秒毎に{1}を与える(最大8hit)。ダメージを与える度に対象ユニットに{2}を与える。この効果は2秒間持続し、8回までスタックする。").DZX(1,boot.BCW.h,10.0,6.0,boot.BCT.DXM(0.02)).DZS(2,boot.BCW.fi,1,1).DYz(50.0).DYv(16.0).DZE(600.0);
-		// 830
-		F.DXH(boot.BCU.bb).DZO("スタックを消費して、指定方向にミサイルを発射し当たった敵ユニットの{1}に{2}を与える。スタックは{3}毎に増加する（最大数7）。3発毎に大きいミサイル({4}に{5})を発射する。").DZR(1,boot.BCW.li,75.0).DZT(2,boot.BCW.i,100.0,80.0,boot.BCT.DXK(0.3),boot.BCT.DXN(boot.BCW.dh,0.2,0.1)).DZS(3,boot.BCW.le,12.0,-2.0).DZR(4,boot.BCW.li,150.0).DZT(5,boot.BCW.i,150.0,120.0,boot.BCT.DXK(0.45),boot.BCT.DXN(boot.BCW.dh,0.3,0.15)).DYz(20.0).DYv(-2.0).DZE(1225.0);
-		// 831
+		// 839
+		F.DXH(boot.BCU.bb).DZO("スタックを消費して、指定方向にミサイルを発射し当たった敵ユニットの{1}に{2}を与える。スタックは{3}毎に増加する（最大数7）。3発毎に大きいミサイル({4}に{5})を発射する。").DZR(1,boot.BCW.ma,75.0).DZT(2,boot.BCW.i,100.0,80.0,boot.BCT.DXK(0.3),boot.BCT.DXN(boot.BCW.dh,0.2,0.1)).DZS(3,boot.BCW.lm,12.0,-2.0).DZR(4,boot.BCW.ma,150.0).DZT(5,boot.BCW.i,150.0,120.0,boot.BCT.DXK(0.45),boot.BCT.DXN(boot.BCW.dh,0.3,0.15)).DYz(20.0).DYv(-2.0).DZE(1225.0);
+		// 840
 	},
 	// teemowork.model.SkillDefinition#Diana(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTO:function(A,B,C,D,E,F){
-		// 837
+		// 846
 		B.DXH(boot.BCU.ck).DZK("{1}する。通常攻撃3回毎に周囲にいる敵ユニットに{2}を与える。").DZR(1,boot.BCW.ea,20.0).DZV(2,boot.BCW.i,new boot.BDG(Φ("D",[20.0,25.0,30.0,35.0,40.0,50.0,60.0,70.0,80.0,90.0,105.0,120.0,135.0,155.0,175.0,200.0,225.0,250.0]),0),boot.BCT.DXK(0.8),null);
-		// 847
-		C.DXH(boot.BCU.e).DZO("指定地点に弧を描くエネルギーを放ち、当たった敵ユニットと{2}のユニットに{1}とMoonlight(3秒)を与える。またMoonlightが付与されている敵ユニットの{3}。").DZX(1,boot.BCW.i,60.0,35.0,boot.BCT.DXK(0.7)).DZR(2,boot.BCW.li,50.0).DZQ(3,boot.BCW.kk).DYz(55.0).DYw(10.0,-1.0).DZE(830.0);
-		// 855
-		D.DXH(boot.BCU.ck).DZO("5秒間{1}を張ると同時に、自身の周りを回る3つの球体を召喚する。敵ユニットが触れた球体は爆発し、{2}の敵ユニットに{3}を与える。球体が全て爆発すると{1}が追加される。").DZX(1,boot.BCW.he,40.0,15.0,boot.BCT.DXK(0.3)).DZR(2,boot.BCW.li,200.0).DZX(3,boot.BCW.i,22.0,12.0,boot.BCT.DXK(0.2)).DZB(60.0,10.0).DYv(10.0);
-		// 862
-		E.DXH(boot.BCU.ce).DZO("{1}にいる全ての敵ユニットを自身がいる方向に引き寄せ、2秒間{2}を与える。").DZR(1,boot.BCW.li,350.0).DZS(2,boot.BCW.jl,35.0,5.0).DYz(70.0).DYw(26.0,-2.0);
-		// 870
-		F.DXH(boot.BCU.ch).DZO("対象の敵ユニットの元までテレポートし、{1}を与える。対象にMoonlightが付与されていた場合、全ての敵ユニットに付与されたMoonlightを消費してこのスキルの{2}する。").DZX(1,boot.BCW.i,100.0,60.0,boot.BCT.DXK(0.6)).DZQ(2,boot.BCW.id).DZB(50.0,15.0).DYw(25.0,-5.0).DZE(825.0);
+		// 856
+		C.DXH(boot.BCU.e).DZO("指定地点に弧を描くエネルギーを放ち、当たった敵ユニットと{2}のユニットに{1}とMoonlight(3秒)を与える。またMoonlightが付与されている敵ユニットの{3}。").DZX(1,boot.BCW.i,60.0,35.0,boot.BCT.DXK(0.7)).DZR(2,boot.BCW.ma,50.0).DZQ(3,boot.BCW.lc).DYz(55.0).DYw(10.0,-1.0).DZE(830.0);
+		// 864
+		D.DXH(boot.BCU.ck).DZO("5秒間{1}を張ると同時に、自身の周りを回る3つの球体を召喚する。敵ユニットが触れた球体は爆発し、{2}の敵ユニットに{3}を与える。球体が全て爆発すると{1}が追加される。").DZX(1,boot.BCW.he,40.0,15.0,boot.BCT.DXK(0.3)).DZR(2,boot.BCW.ma,200.0).DZX(3,boot.BCW.i,22.0,12.0,boot.BCT.DXK(0.2)).DZB(60.0,10.0).DYv(10.0);
 		// 871
+		E.DXH(boot.BCU.ce).DZO("{1}にいる全ての敵ユニットを自身がいる方向に引き寄せ、2秒間{2}を与える。").DZR(1,boot.BCW.ma,350.0).DZS(2,boot.BCW.jl,35.0,5.0).DYz(70.0).DYw(26.0,-2.0);
+		// 880
+		F.DXH(boot.BCU.ch).DZO("対象の敵ユニットの元まで{3}し、{1}を与える。対象にMoonlightが付与されていた場合、全ての敵ユニットに付与されたMoonlightを消費してこのスキルの{2}する。").DZX(1,boot.BCW.i,100.0,60.0,boot.BCT.DXK(0.6)).DZQ(2,boot.BCW.id).DZQ(3,boot.BCW.kn).DZB(50.0,15.0).DYw(25.0,-5.0).DZE(825.0);
+		// 881
 	},
 	// teemowork.model.SkillDefinition#Darius(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTN:function(A,B,C,D,E,F){
-		// 881
+		// 891
 		B.DXH(boot.BCU.dh).DZK(new boot.z("通常攻撃または",0).IY(C).V("の刃でダメージを与えた敵ユニットに出血スタックを付与する。出血スタックが付与された敵ユニットに1.25秒毎に5秒間かけて{1}を与える。出血スタックは5秒間持続して最大5回までスタックし最大{2}を与える。敵チャンピオンへのスタックが5になるか").IY(F).V("で倒すと、").IY(A).V("は5秒間{3}を得て、常に5スタックを付与するようになる。").W()).DZT(1,boot.BCW.h,9.0,0,boot.BCT.DXI(1),boot.BCT.DXJ(boot.BCW.dk,0.3)).DZT(2,boot.BCW.h,45.0,0,boot.BCT.DXI(5.0),boot.BCT.DXJ(boot.BCW.dk,1.5)).DZU(-3,boot.BCW.dh,new boot.BDG(Φ("I",[1,3,7,8,9,10,11,12,13,14,15,16,17,18]),Φ("D",[40.0,45.0,50.0,60.0,70.0,80.0,90.0,100.0,110.0,120.0,140.0,160.0,180.0,200.0]),2));
-		// 904
-		C.DXH(boot.BCU.dl).DZO("0.75秒後斧を振り回し{3}の敵ユニットに{1}を与える。斧の刃(幅220)に当たった敵チャンピオンに対しては{2}を与え、1体毎に{4}する（最大36%）。").DZX(1,boot.BCW.h,20.0,12.5,boot.BCT.DXN(boot.BCW.dh,0.5,0.05)).DZX(2,boot.BCW.h,40.0,25.0,boot.BCT.DXN(boot.BCW.dh,1,0.1)).DZR(3,boot.BCW.li,425.0).DZW(4,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.cn,12.0)).DZB(30.0,5.0).DYw(9.0,-1.0);
 		// 914
-		D.DXH(boot.BCU.di).DZO("次の通常攻撃に{1}を追加し、1秒間{2}が付与される。その攻撃で敵を倒した場合{5}し、このスキルの{6}する。{4}。").DZW(1,boot.BCW.h,boot.BCT.DXL(0.4)).DZR(2,boot.BCW.jj,90.0).DZQ(4,boot.BCW.ma).DZR(5,boot.BCW.ij,30.0).DZR(6,boot.BCW.ie,50.0).DYz(30.0).DYw(9.0,-1.0);
+		C.DXH(boot.BCU.dl).DZO("0.75秒後斧を振り回し{3}の敵ユニットに{1}を与える。斧の刃(幅220)に当たった敵チャンピオンに対しては{2}を与え、1体毎に{4}する（最大36%）。").DZX(1,boot.BCW.h,20.0,12.5,boot.BCT.DXN(boot.BCW.dh,0.5,0.05)).DZX(2,boot.BCW.h,40.0,25.0,boot.BCT.DXN(boot.BCW.dh,1,0.1)).DZR(3,boot.BCW.ma,425.0).DZW(4,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.cn,12.0)).DZB(30.0,5.0).DYw(9.0,-1.0);
 		// 924
-		E.DXH(boot.BCU.dl).DZK("{1}を得る。").DZS(1,boot.BCW.ff,5.0,5.0).DZO("前方範囲内の敵ユニットをDariusがいる方向に引き寄せ1秒間{3}を与え、{2}。").DZQ(2,boot.BCW.kk).DZR(3,boot.BCW.jl,40.0).DYz(45.0).DYw(24.0,-3.0).DZE(550.0);
+		D.DXH(boot.BCU.di).DZO("次の通常攻撃に{1}を追加し、1秒間{2}が付与される。その攻撃で敵を倒した場合{5}し、このスキルの{6}する。{4}。").DZW(1,boot.BCW.h,boot.BCT.DXL(0.4)).DZR(2,boot.BCW.jj,90.0).DZQ(4,boot.BCW.mi).DZR(5,boot.BCW.ij,30.0).DZR(6,boot.BCW.ie,50.0).DYz(30.0).DYw(9.0,-1.0);
 		// 934
-		F.DXH(boot.BCU.dh).DZO("対象の敵チャンピオンに跳躍し、{1}を与える。対象の出血スタック数1個につき、このスキルのダメージが20%増加する(最大でダメージ2倍)。このスキルで敵チャンピオンのキルを取った場合、周囲のミニオンとモンスターに{2}を与え、20秒間マナを消費せずに再使用することが出来る（ランク3であれば{4}）。この効果はキルを取るたびに適用される。").DZX(1,boot.BCW.j,100.0,100.0,boot.BCT.DXM(0.75)).DZQ(2,boot.BCW.ja).DZR(3,boot.BCW.ld,20.0).DZQ(4,boot.BCW.id).DZC(boot.BCW.bp,new boot.BDL(Φ("D",[100.0,100.0,0]),0),null).DYw(120.0,-20.0).DZE(475.0);
-		// 935
+		E.DXH(boot.BCU.dl).DZK("{1}を得る。").DZS(1,boot.BCW.ff,5.0,5.0).DZO("前方範囲内の敵ユニットをDariusがいる方向に引き寄せ1秒間{3}を与え、{2}。").DZQ(2,boot.BCW.lc).DZR(3,boot.BCW.jl,40.0).DYz(45.0).DYw(24.0,-3.0).DZE(550.0);
+		// 945
+		F.DXH(boot.BCU.dh).DZO("対象の敵チャンピオンに{5}し、{1}を与える。対象の出血スタック数1個につき、このスキルのダメージが20%増加する(最大でダメージ2倍)。このスキルで敵チャンピオンのキルを取った場合、周囲のミニオンとモンスターに{2}を与え、20秒間マナを消費せずに再使用することが出来る（ランク3であれば{4}）。この効果はキルを取るたびに適用される。").DZX(1,boot.BCW.j,100.0,100.0,boot.BCT.DXM(0.75)).DZQ(2,boot.BCW.ja).DZR(3,boot.BCW.ll,20.0).DZQ(4,boot.BCW.id).DZQ(5,boot.BCW.kn).DZC(boot.BCW.bp,new boot.BDL(Φ("D",[100.0,100.0,0]),0),null).DYw(120.0,-20.0).DZE(475.0);
+		// 946
 	},
 	// teemowork.model.SkillDefinition#DrMundo(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTP:function(A,B,C,D,E,F){
-		// 941
+		// 952
 		B.DXH(boot.BCU.cp).DZK("毎秒{1}する。").DZW(1,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.bf,0.003));
-		// 953
-		C.DXH(boot.BCU.cp).DZO("指定方向に包丁を投げ（{7}）、当たった敵ユニットに{1}と2秒間{3}を与える。最小で{4}。ミニオンやモンスターへは{5}が上限。命中すると{6}する。").DZW(1,boot.BCW.i,boot.BCT.DXN(boot.BCW.da,15.0,3.0)).DZR(3,boot.BCW.jl,40.0).DZS(4,boot.BCW.i,80.0,50.0).DZS(5,boot.BCW.i,300.0,100.0).DZS(6,boot.BCW.ih,25.0,5.0).DZR(7,boot.BCW.lm,60.0).DZA(boot.BCW.bf,50.0,10.0).DYv(4.0).DZE(1000.0);
-		// 962
-		D.DXH(boot.BCU.dl).DZO("{1}の敵ユニットに毎0.5秒{2}を与える。また{3}を得る。").DZR(1,boot.BCW.li,162.5).DZX(2,boot.BCW.i,17.5,7.5,boot.BCT.DXK(0.1)).DZS(3,boot.BCW.hn,10.0,5.0).DZA(boot.BCW.bf,10.0,5.0).DYv(4.0).DZI(boot.BDD.g);
-		// 970
-		E.DXH(boot.BCU.dl).DZO("5秒間{1}を得る。また、次の通常攻撃の射程が25増加し追加{2}を与える。{3}。").DZX(1,boot.BCW.dh,40.0,15.0,boot.BCT.DXN(boot.BCW.co,0.4,0.15)).DZW(2,boot.BCW.i,boot.BCT.DXJ(boot.BCW.bf,0.05)).DZQ(3,boot.BCW.ma).DZA(boot.BCW.bf,25.0,10.0).DYv(7.0);
-		// 977
+		// 964
+		C.DXH(boot.BCU.cp).DZO("指定方向に包丁を投げ（{7}）、当たった敵ユニットに{1}と2秒間{3}を与える。最小で{4}。ミニオンやモンスターへは{5}が上限。命中すると{6}する。").DZW(1,boot.BCW.i,boot.BCT.DXN(boot.BCW.da,15.0,3.0)).DZR(3,boot.BCW.jl,40.0).DZS(4,boot.BCW.i,80.0,50.0).DZS(5,boot.BCW.i,300.0,100.0).DZS(6,boot.BCW.ih,25.0,5.0).DZR(7,boot.BCW.me,60.0).DZA(boot.BCW.bf,50.0,10.0).DYv(4.0).DZE(1000.0);
+		// 973
+		D.DXH(boot.BCU.dl).DZO("{1}の敵ユニットに毎0.5秒{2}を与える。また{3}を得る。").DZR(1,boot.BCW.ma,162.5).DZX(2,boot.BCW.i,17.5,7.5,boot.BCT.DXK(0.1)).DZS(3,boot.BCW.hn,10.0,5.0).DZA(boot.BCW.bf,10.0,5.0).DYv(4.0).DZI(boot.BDD.g);
+		// 981
+		E.DXH(boot.BCU.dl).DZO("5秒間{1}を得る。また、次の通常攻撃の射程が25増加し追加{2}を与える。{3}。").DZX(1,boot.BCW.dh,40.0,15.0,boot.BCT.DXN(boot.BCW.co,0.4,0.15)).DZW(2,boot.BCW.i,boot.BCT.DXJ(boot.BCW.bf,0.05)).DZQ(3,boot.BCW.mi).DZA(boot.BCW.bf,25.0,10.0).DYv(7.0);
+		// 988
 		F.DXH(boot.BCU.cp).DZO("12秒かけて{1}し、{2}する。").DZW(1,boot.BCW.ih,boot.BCT.DXN(boot.BCW.bf,0.4,0.1)).DZS(2,boot.BCW.kc,15.0,10.0).DYv(75.0).DZA(boot.BCW.cm,20.0,0);
-		// 978
+		// 989
 	},
 	// teemowork.model.SkillDefinition#Draven(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTQ:function(A,B,C,D,E,F){
-		// 986
-		B.DXH(boot.BCU.di).DZK(new boot.z(1).IY(B).V("をキャッチするかミニオンかモンスターを倒すか建物を破壊するとスタックを得る。斧を落とすこと無く6体のミニオンを倒すと追加の2スタックを得る。敵チャンピオンを倒すと、スタックを消費して{1}を得る。死亡時にスタックを半分失う。").W()).DZX(1,boot.BCW.lb,50.0,0,boot.BCT.DXJ(boot.BCW.mg,2.0));
-		// 993
+		// 997
+		B.DXH(boot.BCU.di).DZK(new boot.z(1).IY(B).V("をキャッチするかミニオンかモンスターを倒すか建物を破壊するとスタックを得る。斧を落とすこと無く6体のミニオンを倒すと追加の2スタックを得る。敵チャンピオンを倒すと、スタックを消費して{1}を得る。死亡時にスタックを半分失う。").W()).DZX(1,boot.BCW.lj,50.0,0,boot.BCT.DXJ(boot.BCW.mo,2.0));
+		// 1004
 		C.DXH(boot.BCU.j).DZO(new boot.z("次に行う通常攻撃に{1}を付与する。このスキルによる通常攻撃が敵ユニットに命中すると、斧が近くに跳ね返る。その斧をキャッチすると",0).IY(D).V("の{2}し、更に次の通常攻撃も").IY(C).V("の効果を受けるようになる。このスキルは連続で使用する事で最大2回分までチャージできる。").W()).DZW(1,boot.BCW.h,boot.BCT.DXN(boot.BCW.dh,0.45,0.1)).DZQ(2,boot.BCW.id).DYz(45.0).DYw(12.0,-1.0);
-		// 1000
+		// 1011
 		D.DXH(boot.BCU.e).DZO("1.5秒間{1}し、3秒間{2}する。移動速度増加は1.5秒かけて元に戻る。").DZS(1,boot.BCW.kc,40.0,5.0).DZS(2,boot.BCW.ea,20.0,5.0).DYz(40.0).DYv(12.0);
-		// 1009
+		// 1020
 		E.DXH(boot.BCU.e).DZO("指定方向に貫通する斧を投げ、当たった敵ユニットに{1}と{2}と2秒間{3}を与える。このノックバックは斧から弾かれる形で左右に吹き飛ぶ。").DZX(1,boot.BCW.h,70.0,35.0,boot.BCT.DXM(0.5)).DZR(2,boot.BCW.jh,0).DZS(3,boot.BCW.jl,20.0,5.0).DYz(70.0).DYw(18.0,-1.0).DZE(1050.0);
-		// 1017
-		F.DXH(boot.BCU.e).DZO("指定方向に地面を這う貫通する斧を投げ、当たった敵ユニットに{1}を与える。ダメージは敵に当たるごとに8%ずつ減り、最大で40%まで低下する。行きと帰りそれぞれに攻撃判定があり、斧が飛んでいる最中に再度このスキルを使用するか、敵チャンピオンに命中した時点で斧が反転して自身の元に戻ってくる。反転した際、低下ダメージはリセットされる。また移動中の斧は{2}。").DZX(1,boot.BCW.h,175.0,100.0,boot.BCT.DXM(1.1)).DZQ(2,boot.BCW.kk).DYz(120.0).DYw(110.0,-10.0).DZE(-1.0);
-		// 1018
+		// 1028
+		F.DXH(boot.BCU.e).DZO("指定方向に地面を這う貫通する斧を投げ、当たった敵ユニットに{1}を与える。ダメージは敵に当たるごとに8%ずつ減り、最大で40%まで低下する。行きと帰りそれぞれに攻撃判定があり、斧が飛んでいる最中に再度このスキルを使用するか、敵チャンピオンに命中した時点で斧が反転して自身の元に戻ってくる。反転した際、低下ダメージはリセットされる。また移動中の斧は{2}。").DZX(1,boot.BCW.h,175.0,100.0,boot.BCT.DXM(1.1)).DZQ(2,boot.BCW.lc).DYz(120.0).DYw(110.0,-10.0).DZE(-1.0);
+		// 1029
 	},
 	// teemowork.model.SkillDefinition#Ekko(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTR:function(A,B,C,D,E,F){
-		// 1029
-		B.DXH(boot.BCU.dg).DZK("通常攻撃かスキルでダメージを与えた敵ユニットにスタックを付与する。スタックは4秒間持続し、スタック数が3になるとスタックを消費し対象に{1}と{2}間{3}を与える。対象がチャンピオンの場合、更に{2}間{4}する。同一の対象には3秒に一度しか発動しない。建物には無効。").DZT(1,boot.BCW.i,10.0,0,boot.BCT.DXK(0.8),boot.BCT.DXI(10.0)).DZU(2,boot.BCW.ld,new boot.BDG(Φ("I",[1,6,11]),2.0,0.5,1)).DZU(3,boot.BCW.jl,new boot.BDI(30.0,10.0,0)).DZU(-4,boot.BCW.kc,new boot.BDI(40.0,10.0,0));
-		// 1039
+		// 1040
+		B.DXH(boot.BCU.dg).DZK("通常攻撃かスキルでダメージを与えた敵ユニットにスタックを付与する。スタックは4秒間持続し、スタック数が3になるとスタックを消費し対象に{1}と{2}間{3}を与える。対象がチャンピオンの場合、更に{2}間{4}する。同一の対象には3秒に一度しか発動しない。建物には無効。").DZT(1,boot.BCW.i,10.0,0,boot.BCT.DXK(0.8),boot.BCT.DXI(10.0)).DZU(2,boot.BCW.ll,new boot.BDG(Φ("I",[1,6,11]),2.0,0.5,1)).DZU(3,boot.BCW.jl,new boot.BDI(30.0,10.0,0)).DZU(-4,boot.BCW.kc,new boot.BDI(40.0,10.0,0));
+		// 1050
 		C.DXH(boot.BCU.df).DZO("特殊な装置を投げ、貫通した敵に{1}を与える。投げられた装置は最初に命中したチャンピオンの位置にフィールドを展開し、この範囲を通過するすべての対象に{2}を与える。その一瞬後、装置は自身のいる位置に戻り、その際貫通した敵に{3}を与える。2回とも当たった場合は合計{4}となる。").DZX(1,boot.BCW.i,60.0,15.0,boot.BCT.DXK(0.1)).DZS(2,boot.BCW.jl,32.0,7.0).DZX(3,boot.BCW.i,60.0,25.0,boot.BCT.DXK(0.6)).DZX(4,boot.BCW.i,120.0,40.0,boot.BCT.DXK(0.7)).DZE(1075.0).DZB(50.0,10.0).DYw(11.0,-1.0);
-		// 1051
-		D.DXH(boot.BCU.dg).DZK("通常攻撃時、体力が最大値の30％未満の敵に対し、{1}を与える。ミニオンやモンスターに対しては最大150ダメージ。").DZW(1,boot.BCW.i,boot.BCT.DXQ(boot.BCW.db,5.0,0,boot.BCT.DXK(0.0222))).DZO("発動3秒後、指定した地点の{2}の敵に{3}を与える。自身がこの地点に入ると起爆し、2秒間{4}を得て、全ての敵に{5}を与える。").DZQ(2,boot.BCW.li).DZR(3,boot.BCW.jl,40.0).DZX(4,boot.BCW.he,80.0,20.0,boot.BCT.DXK(1.5)).DZR(5,boot.BCW.im,2.25).DZE(1600.0).DZB(50.0,5.0).DYw(22.0,-2.0);
-		// 1059
-		E.DXH(boot.BCU.df).DZO("指定した方向にダッシュする。次の通常攻撃に{1}を付与し{2}する。攻撃が命中すると対象の元までテレポートする。").DZX(1,boot.BCW.i,50.0,30.0,boot.BCT.DXK(0.2)).DZR(2,boot.BCW.hi,300.0).DZE(325.0).DZB(40.0,10.0).DYw(13.0,-1.5);
-		// 1068
-		F.DXH(boot.BCU.dg).DZO("自身が無敵状態になり、敵からターゲット不能になる。さらに時間を撒き戻し、4秒前にいた地点にテレポートする。その際、{1}し、到着地点の{2}にいる敵に{3}を与える。").DZX(1,boot.BCW.ih,100.0,50.0,boot.BCT.DXQ(boot.BCW.bb,20.0,0,boot.BCT.DXK(0.0666))).DZQ(2,boot.BCW.li).DZX(3,boot.BCW.i,200.0,150.0,boot.BCT.DXK(1.3)).DZE(-1.0).DYz(100.0).DYw(110.0,-20.0);
-		// 1069
+		// 1062
+		D.DXH(boot.BCU.dg).DZK("通常攻撃時、体力が最大値の30％未満の敵に対し、{1}を与える。ミニオンやモンスターに対しては最大150ダメージ。").DZW(1,boot.BCW.i,boot.BCT.DXQ(boot.BCW.db,5.0,0,boot.BCT.DXK(0.0222))).DZO("発動3秒後、指定した地点の{2}の敵に{3}を与える。自身がこの地点に入ると起爆し、2秒間{4}を得て、全ての敵に{5}を与える。").DZQ(2,boot.BCW.ma).DZR(3,boot.BCW.jl,40.0).DZX(4,boot.BCW.he,80.0,20.0,boot.BCT.DXK(1.5)).DZR(5,boot.BCW.im,2.25).DZE(1600.0).DZB(50.0,5.0).DYw(22.0,-2.0);
+		// 1072
+		E.DXH(boot.BCU.df).DZO("指定した方向に{1}する。次の通常攻撃に{2}を付与し{3}する。攻撃が命中すると対象の元まで{4}する。").DZQ(1,boot.BCW.km).DZX(2,boot.BCW.i,50.0,30.0,boot.BCT.DXK(0.2)).DZR(3,boot.BCW.hi,300.0).DZQ(4,boot.BCW.ko).DZE(325.0).DZB(40.0,10.0).DYw(13.0,-1.5);
+		// 1082
+		F.DXH(boot.BCU.dg).DZO("自身が無敵状態になり、敵からターゲット不能になる。さらに時間を撒き戻し、4秒前にいた地点に{1}する。その際、{2}し、到着地点の{3}にいる敵に{4}を与える。").DZQ(1,boot.BCW.ko).DZX(2,boot.BCW.ih,100.0,50.0,boot.BCT.DXQ(boot.BCW.bb,20.0,0,boot.BCT.DXK(0.0666))).DZQ(3,boot.BCW.ma).DZX(4,boot.BCW.i,200.0,150.0,boot.BCT.DXK(1.3)).DZE(-1.0).DYz(100.0).DYw(110.0,-20.0);
+		// 1083
 	},
 	// teemowork.model.SkillDefinition#Elise(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTS:function(A,B,C,D,E,F){
-		// 1075
+		// 1089
 		B.DXH(boot.BCU.dd).DZK("使用したスキルが敵ユニットに命中すると子蜘蛛のチャージが1増加する。");
-		// 1083
+		// 1097
 		C.DXH(boot.BCU.dh).DZO("対象の敵ユニットに毒を放ち{1}を与える。ミニオンとモンスターに対しては{2}が上限。").DZX(1,boot.BCW.i,40.0,35.0,boot.BCT.DXQ(boot.BCW.da,4.0,0,boot.BCT.DXK(0.03))).DZS(2,boot.BCW.i,110.0,60.0).DZB(80.0,5.0).DYv(6.0).DZE(625.0);
-		// 1091
-		D.DXH(boot.BCU.df).DZO("指定地点に蜘蛛を放つ。蜘蛛は敵ユニットに当たるか3秒間経過すると爆発し、範囲内の敵ユニットに{1}を与える。蜘蛛は指定地点に移動した後、最も近くにいる敵ユニットに向かって移動する。{2}。").DZX(1,boot.BCW.i,75.0,50.0,boot.BCT.DXK(0.8)).DZQ(2,boot.BCW.kk).DZB(60.0,10.0).DYv(12.0).DZE(950.0);
-		// 1099
-		E.DXH(boot.BCU.df).DZO("指定方向に糸を飛ばし当たった敵ユニットに{1}を与え、1秒間{2}。").DZS(1,boot.BCW.im,1.6,0.1).DZQ(2,boot.BCW.kk).DYz(50.0).DYw(14.0,-1.0).DZE(1075.0);
-		// 1106
-		F.DXH(boot.BCU.dd).DZK("子蜘蛛の最大チャージ数は{1}。").DZS(1,boot.BCW.mb,2.0,1).DZO("Spider Formに変身する。射程が125、移動速度が355になる。また通常攻撃に追加効果を付与する。{2}。").DZQ(2,boot.BCW.kl).DYv(4.0);
-		// 1107
+		// 1105
+		D.DXH(boot.BCU.df).DZO("指定地点に蜘蛛を放つ。蜘蛛は敵ユニットに当たるか3秒間経過すると爆発し、範囲内の敵ユニットに{1}を与える。蜘蛛は指定地点に移動した後、最も近くにいる敵ユニットに向かって移動する。{2}。").DZX(1,boot.BCW.i,75.0,50.0,boot.BCT.DXK(0.8)).DZQ(2,boot.BCW.lc).DZB(60.0,10.0).DYv(12.0).DZE(950.0);
+		// 1113
+		E.DXH(boot.BCU.df).DZO("指定方向に糸を飛ばし当たった敵ユニットに{1}を与え、1秒間{2}。").DZS(1,boot.BCW.im,1.6,0.1).DZQ(2,boot.BCW.lc).DYz(50.0).DYw(14.0,-1.0).DZE(1075.0);
+		// 1120
+		F.DXH(boot.BCU.dd).DZK("子蜘蛛の最大チャージ数は{1}。").DZS(1,boot.BCW.mj,2.0,1).DZO("Spider Formに変身する。射程が125、移動速度が355になる。また通常攻撃に追加効果を付与する。{2}。").DZQ(2,boot.BCW.ld).DYv(4.0);
+		// 1121
 	},
 	// teemowork.model.SkillDefinition#EliseTransformed(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTT:function(A,B,C,D,E,F){
-		// 1118
+		// 1132
 		B.DXH(boot.BCU.dd).DZK("{3}し{4}する。通常攻撃は追加で{1}を与え、{2}する。").DZV(1,boot.BCW.i,new boot.BDM(F,10.0,10.0,0),boot.BCT.DXK(0.3),null).DZV(2,boot.BCW.ih,new boot.BDM(F,4.0,2.0,0),boot.BCT.DXK(0.1),null).DZR(3,boot.BCW.ka,25.0).DZR(4,boot.BCW.hi,-425.0);
-		// 1125
-		C.DXH(boot.BCU.ci).DZO("対象の敵ユニットに飛びつき{1}を与える。ミニオンとモンスターに対しては{2}が上限。").DZX(1,boot.BCW.i,60.0,40.0,boot.BCT.DXQ(boot.BCW.db,8.0,0,boot.BCT.DXK(0.03))).DZS(2,boot.BCW.i,135.0,65.0).DYv(6.0).DZE(475.0);
-		// 1127
+		// 1140
+		C.DXH(boot.BCU.ci).DZO("対象の敵ユニットに{3}して{1}を与える。ミニオンとモンスターに対しては{2}が上限。").DZX(1,boot.BCW.i,60.0,40.0,boot.BCT.DXQ(boot.BCW.db,8.0,0,boot.BCT.DXK(0.03))).DZS(2,boot.BCW.i,135.0,65.0).DZQ(3,boot.BCW.kn).DYv(6.0).DZE(475.0);
+		// 1142
 		D.DXH(boot.BCU.df).DZK("子蜘蛛の{1}する。").DZS(1,boot.BCW.ea,5.0,5.0).DZO("3秒間自身と子蜘蛛の{2}する。").DZS(2,boot.BCW.ea,60.0,20.0).DYv(12.0);
-		// 1133
-		E.DXH(boot.BCU.df).DZO("自身と子蜘蛛が上空に退避し(ターゲット不可になる)指定の方法で降下する。上空にいる間は射程内の{1}。<br>地面をクリックした場合: 最大2秒間上空に待機し、初期位置へ降下する。この間、敵ユニットをターゲットし裏側に降下できる。<br>敵ユニットをクリックした場合: 即座に下降し裏側に降り立つ。").DZQ(1,boot.BCW.kk).DYw(26.0,-3.0).DZE(750.0);
-		// 1143
-		F.DXH(boot.BCU.dj).DZK("変身時にチャージ数に応じた子蜘蛛を召喚する。召喚された子蜘蛛は死亡するとチャージが減るが、Human Formに戻ると再度チャージ状態に戻る。<br>Health: {1}<br>AD: {2}<br>AS: 0.665<br>AR: {3}<br>MR: {4}<br>MS: 355<br>AoEスキルのダメージを{5}低減").DZX(1,boot.BCW.mb,85.0,0,boot.BCT.DXI(10.0)).DZX(2,boot.BCW.mb,10.0,5.0,boot.BCT.DXK(0.15)).DZS(3,boot.BCW.mb,30.0,20.0).DZS(4,boot.BCW.mb,50.0,20.0).DZS(5,boot.BCW.mc,20.0,5.0).DZO("Human Formに変身する。射程が550、移動速度が530になる。また通常攻撃の追加効果がなくなる。{6}。").DZQ(6,boot.BCW.kl);
-		// 1144
+		// 1149
+		E.DXH(boot.BCU.df).DZO("自身と子蜘蛛が上空に退避し{1}になる。上空にいる間は射程内の{2}。<br>地面をクリックした場合: 最大2秒間上空に待機し、初期位置へ降下する。この間、敵ユニットをターゲットし裏側に降下できる。<br>敵ユニットをクリックした場合: 即座に降下し裏側に降り立つ。").DZQ(1,boot.BCW.kk).DZQ(2,boot.BCW.lc).DYw(26.0,-3.0).DZE(750.0);
+		// 1159
+		F.DXH(boot.BCU.dj).DZK("変身時にチャージ数に応じた子蜘蛛を召喚する。召喚された子蜘蛛は死亡するとチャージが減るが、Human Formに戻ると再度チャージ状態に戻る。<br>Health: {1}<br>AD: {2}<br>AS: 0.665<br>AR: {3}<br>MR: {4}<br>MS: 355<br>AoEスキルのダメージを{5}低減").DZX(1,boot.BCW.mj,85.0,0,boot.BCT.DXI(10.0)).DZX(2,boot.BCW.mj,10.0,5.0,boot.BCT.DXK(0.15)).DZS(3,boot.BCW.mj,30.0,20.0).DZS(4,boot.BCW.mj,50.0,20.0).DZS(5,boot.BCW.mk,20.0,5.0).DZO("Human Formに変身する。射程が550、移動速度が530になる。また通常攻撃の追加効果がなくなる。{6}。").DZQ(6,boot.BCW.ld);
+		// 1160
 	},
 	// teemowork.model.SkillDefinition#Evelynn(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTU:function(A,B,C,D,E,F){
-		// 1155
-		B.DXH(boot.BCU.cn).DZK("{1}間非戦闘状態の場合、{2}になる。敵チャンピオンに範囲700まで近づくとステルス状態でも視認されるようになる。また、ステルス中は毎秒{3}し、{4}を得る。").DZU(1,boot.BCW.ld,new boot.BDI(6.0,-1.0,0)).DZQ(2,boot.BCW.kj).DZW(3,boot.BCW.ij,boot.BCT.DXJ(boot.BCW.de,2.0)).DZQ(4,boot.BCW.kg);
-		// 1163
-		C.DXH(boot.BCU.df).DZO("視界内にいる最も近くにいる敵ユニット1体に向けて棘を放ち({2})、直線状にいる敵ユニットに{1}を与える。Evelynnが敵ユニットをターゲットしている場合は、その対象に向けて棘が放たれる。").DZT(1,boot.BCW.i,40.0,10.0,boot.BCT.DXN(boot.BCW.ei,0.35,0.05),boot.BCT.DXN(boot.BCW.dk,0.5,0.05)).DZR(2,boot.BCW.ll,2000.0).DZB(12.0,6.0).DYv(1.5).DZE(500.0);
-		// 1175
-		D.DXH(boot.BCU.dl).DZK("敵チャンピオンにスキルを当てるたびにこのスキルの{1}する。").DZR(1,boot.BCW.id,1).DZO("{3}して、3秒間{2}し{4}を得る。敵チャンピオンを{6}たびに、このスキルの{5}する。").DZS(2,boot.BCW.kc,30.0,10.0).DZQ(3,boot.BCW.kf).DZQ(4,boot.BCW.kg).DZQ(6,boot.BCW.lp).DZQ(5,boot.BCW.id).DYv(15.0).DYz(40.0);
-		// 1184
-		E.DXH(boot.BCU.ci).DZO("対象の敵ユニットに2回連続で{1}を与え、3秒間{2}する。{3}。").DZT(1,boot.BCW.h,35.0,20.0,boot.BCT.DXK(0.5),boot.BCT.DXM(0.5)).DZS(2,boot.BCW.ea,60.0,15.0).DZQ(3,boot.BCW.kn).DZB(50.0,5.0).DYv(9.0).DZE(225.0);
-		// 1194
-		F.DXH(boot.BCU.df).DZO("指定地点の{1}の敵ユニットに{2}と2秒間の{3}を与え、このスキルを命中させた敵チャンピオンごとに6秒間{4}を得る。").DZR(1,boot.BCW.li,250.0).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.da,15.0,5.0,boot.BCT.DXK(0.01))).DZS(3,boot.BCW.jl,40.0,20.0).DZS(4,boot.BCW.he,150.0,75.0).DYz(100.0).DYw(150.0,-30.0).DZE(650.0);
-		// 1195
+		// 1171
+		B.DXH(boot.BCU.cn).DZK("{1}間非戦闘状態の場合、{2}になる。敵チャンピオンに範囲700まで近づくとステルス状態でも視認されるようになる。また、ステルス中は毎秒{3}し、{4}を得る。").DZU(1,boot.BCW.ll,new boot.BDI(6.0,-1.0,0)).DZQ(2,boot.BCW.lb).DZW(3,boot.BCW.ij,boot.BCT.DXJ(boot.BCW.de,2.0)).DZQ(4,boot.BCW.kg);
+		// 1179
+		C.DXH(boot.BCU.df).DZO("視界内にいる最も近くにいる敵ユニット1体に向けて棘を放ち({2})、直線状にいる敵ユニットに{1}を与える。Evelynnが敵ユニットをターゲットしている場合は、その対象に向けて棘が放たれる。").DZT(1,boot.BCW.i,40.0,10.0,boot.BCT.DXN(boot.BCW.ei,0.35,0.05),boot.BCT.DXN(boot.BCW.dk,0.5,0.05)).DZR(2,boot.BCW.md,2000.0).DZB(12.0,6.0).DYv(1.5).DZE(500.0);
+		// 1191
+		D.DXH(boot.BCU.dl).DZK("敵チャンピオンにスキルを当てるたびにこのスキルの{1}する。").DZR(1,boot.BCW.id,1).DZO("{3}して、3秒間{2}し{4}を得る。敵チャンピオンを{6}たびに、このスキルの{5}する。").DZS(2,boot.BCW.kc,30.0,10.0).DZQ(3,boot.BCW.kf).DZQ(4,boot.BCW.kg).DZQ(6,boot.BCW.mh).DZQ(5,boot.BCW.id).DYv(15.0).DYz(40.0);
+		// 1200
+		E.DXH(boot.BCU.ci).DZO("対象の敵ユニットに2回連続で{1}を与え、3秒間{2}する。{3}。").DZT(1,boot.BCW.h,35.0,20.0,boot.BCT.DXK(0.5),boot.BCT.DXM(0.5)).DZS(2,boot.BCW.ea,60.0,15.0).DZQ(3,boot.BCW.lf).DZB(50.0,5.0).DYv(9.0).DZE(225.0);
+		// 1210
+		F.DXH(boot.BCU.df).DZO("指定地点の{1}の敵ユニットに{2}と2秒間の{3}を与え、このスキルを命中させた敵チャンピオンごとに6秒間{4}を得る。").DZR(1,boot.BCW.ma,250.0).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.da,15.0,5.0,boot.BCT.DXK(0.01))).DZS(3,boot.BCW.jl,40.0,20.0).DZS(4,boot.BCW.he,150.0,75.0).DYz(100.0).DYw(150.0,-30.0).DZE(650.0);
+		// 1211
 	},
 	// teemowork.model.SkillDefinition#Ezreal(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTV:function(A,B,C,D,E,F){
-		// 1201
+		// 1217
 		B.DXH(boot.BCU.ce).DZK("ユニット(敵味方問わず)にスキルを当てる度に6秒間{1}する。この効果は5回まで累積する。").DZR(-1,boot.BCW.ea,10.0);
-		// 1210
-		C.DXH(boot.BCU.de).DZO("指定方向に魔法の矢を飛ばし、当たった敵ユニットに{1}を与える。このスキルが命中すると、全てのスキルの{2}。{3}。").DZT(1,boot.BCW.h,35.0,20.0,boot.BCT.DXK(0.4),boot.BCT.DXL(1.1)).DZR(2,boot.BCW.id,1).DZQ(3,boot.BCW.kn).DZB(28.0,3.0).DYw(6.0,-0.5).DZE(1150.0);
-		// 1218
-		D.DXH(boot.BCU.bo).DZO("指定方向にチャンピオンにのみ当たる貫通するエネルギーを飛ばし、当たった味方チャンピオンは5秒間{1}し、敵チャンピオンには{2}を与える。").DZS(1,boot.BCW.ea,20.0,5.0).DZX(2,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.8)).DZB(50.0,10.0).DYv(9.0).DZE(1000.0);
 		// 1226
-		E.DXH(boot.BCU.dj).DZO("指定地点にテレポートし、テレポート先から一番近い敵ユニット({1})1体に{2}を与える。").DZR(1,boot.BCW.li,750.0).DZT(2,boot.BCW.i,75.0,50.0,boot.BCT.DXM(0.5),boot.BCT.DXK(0.75)).DYz(90.0).DYw(19.0,-2.0).DZE(475.0);
+		C.DXH(boot.BCU.de).DZO("指定方向に魔法の矢を飛ばし、当たった敵ユニットに{1}を与える。このスキルが命中すると、全てのスキルの{2}。{3}。").DZT(1,boot.BCW.h,35.0,20.0,boot.BCT.DXK(0.4),boot.BCT.DXL(1.1)).DZR(2,boot.BCW.id,1).DZQ(3,boot.BCW.lf).DZB(28.0,3.0).DYw(6.0,-0.5).DZE(1150.0);
 		// 1234
-		F.DXH(boot.BCU.e).DZO("1秒詠唱後、指定方向に射程無限の貫通する魔法の矢を飛ばし当たった敵ユニットに{1}を与える。ダメージは敵に当たるごとに10%ずつ減り、最大で30%まで低下する。また飛行中の矢は{2}。").DZT(1,boot.BCW.i,350.0,150.0,boot.BCT.DXK(0.9),boot.BCT.DXM(1)).DZQ(2,boot.BCW.kk).DYz(100.0).DYv(80.0).DZE(-1.0);
-		// 1235
+		D.DXH(boot.BCU.bo).DZO("指定方向にチャンピオンにのみ当たる貫通するエネルギーを飛ばし、当たった味方チャンピオンは5秒間{1}し、敵チャンピオンには{2}を与える。").DZS(1,boot.BCW.ea,20.0,5.0).DZX(2,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.8)).DZB(50.0,10.0).DYv(9.0).DZE(1000.0);
+		// 1243
+		E.DXH(boot.BCU.dj).DZO("指定地点に{1}し、テレポート先から一番近い敵ユニット({2})1体に{3}を与える。").DZQ(1,boot.BCW.ko).DZR(2,boot.BCW.ma,750.0).DZT(3,boot.BCW.i,75.0,50.0,boot.BCT.DXM(0.5),boot.BCT.DXK(0.75)).DYz(90.0).DYw(19.0,-2.0).DZE(475.0);
+		// 1251
+		F.DXH(boot.BCU.e).DZO("1秒詠唱後、指定方向に射程無限の貫通する魔法の矢を飛ばし当たった敵ユニットに{1}を与える。ダメージは敵に当たるごとに10%ずつ減り、最大で30%まで低下する。また飛行中の矢は{2}。").DZT(1,boot.BCW.i,350.0,150.0,boot.BCT.DXK(0.9),boot.BCT.DXM(1)).DZQ(2,boot.BCW.lc).DYz(100.0).DYv(80.0).DZE(-1.0);
+		// 1252
 	},
 	// teemowork.model.SkillDefinition#FiddleSticks(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTW:function(A,B,C,D,E,F){
-		// 1241
+		// 1258
 		B.DXH(boot.BCU.ch).DZK(new boot.z(1).IY(boot.BCW.i).V("を与えるか").IY(C).V("を使用した敵ユニットに2.5秒間{1}を与える。").W()).DZR(1,boot.BCW.fo,10.0);
-		// 1243
+		// 1260
 		C.DXH(boot.BCU.ch).DZO("対象の敵ユニットに{1}を与える。").DZS(1,boot.BCW.ja,1.25,0.25).DYz(65.0).DYw(15.0,-1.0).DZE(575.0);
-		// 1253
-		D.DXH(boot.BCU.ck).DZO("対象の敵ユニットに5秒間毎秒{1}を与え、{2}する。敵が離れる({3})と詠唱が中断される。").DZX(1,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.45)).DZW(2,boot.BCW.ih,boot.BCT.DXN(boot.BCW.n,60.0,5.0)).DZR(3,boot.BCW.li,650.0).DZB(80.0,10.0).DYw(10.0,-1.0).DZE(575.0).DZI(boot.BDD.i);
-		// 1263
-		E.DXH(boot.BCU.ch).DZO("対象の敵ユニットにカラスを飛ばし{1}と{2}を与える。カラスは{4}の敵ユニットに4回まで跳ね返り、同一対象にも跳ね返る。ミニオンとモンスターに対しては{3}を与える。").DZX(1,boot.BCW.i,65.0,20.0,boot.BCT.DXK(0.45)).DZR(2,boot.BCW.jc,1.25).DZX(3,boot.BCW.i,97.5,30.0,boot.BCT.DXK(0.675)).DZR(4,boot.BCW.li,450.0).DZB(50.0,20.0).DYw(15.0,-1.0).DZE(750.0);
-		// 1273
-		F.DXH(boot.BCU.cf).DZO("1.5秒詠唱後に指定地点にテレポートし、{1}の敵ユニットに5秒間毎秒{2}を与える。最大ダメージは{3}。").DZR(1,boot.BCW.li,600.0).DZX(2,boot.BCW.i,125.0,100.0,boot.BCT.DXK(0.45)).DZX(3,boot.BCW.i,625.0,500.0,boot.BCT.DXK(2.25)).DYz(100.0).DYw(150.0,-10.0).DZE(800.0).DZI(boot.BDD.i);
-		// 1274
+		// 1270
+		D.DXH(boot.BCU.ck).DZO("対象の敵ユニットに5秒間毎秒{1}を与え、{2}する。敵が離れる({3})と詠唱が中断される。").DZX(1,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.45)).DZW(2,boot.BCW.ih,boot.BCT.DXN(boot.BCW.n,60.0,5.0)).DZR(3,boot.BCW.ma,650.0).DZB(80.0,10.0).DYw(10.0,-1.0).DZE(575.0).DZI(boot.BDD.i);
+		// 1280
+		E.DXH(boot.BCU.ch).DZO("対象の敵ユニットにカラスを飛ばし{1}と{2}を与える。カラスは{4}の敵ユニットに4回まで跳ね返り、同一対象にも跳ね返る。ミニオンとモンスターに対しては{3}を与える。").DZX(1,boot.BCW.i,65.0,20.0,boot.BCT.DXK(0.45)).DZR(2,boot.BCW.jc,1.25).DZX(3,boot.BCW.i,97.5,30.0,boot.BCT.DXK(0.675)).DZR(4,boot.BCW.ma,450.0).DZB(50.0,20.0).DYw(15.0,-1.0).DZE(750.0);
+		// 1291
+		F.DXH(boot.BCU.cf).DZO("1.5秒詠唱後に指定地点に{1}し、{2}の敵ユニットに5秒間毎秒{3}を与える。最大ダメージは{4}。").DZQ(1,boot.BCW.ko).DZR(2,boot.BCW.ma,600.0).DZX(3,boot.BCW.i,125.0,100.0,boot.BCT.DXK(0.45)).DZX(4,boot.BCW.i,625.0,500.0,boot.BCT.DXK(2.25)).DYz(100.0).DYw(150.0,-10.0).DZE(800.0).DZI(boot.BDD.i);
+		// 1292
 	},
 	// teemowork.model.SkillDefinition#Fiora(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTX:function(A,B,C,D,E,F){
-		// 1284
+		// 1302
 		B.DXH(boot.BCU.dg).DZK("近くの敵チャンピオンの急所が表示される。急所に通常攻撃を加えると{1}を与え{2}し、1.75秒かけて減衰しながら{3}する。急所は15秒間持続し、一定時間ごとに再度表示される。").DZW(1,boot.BCW.j,boot.BCT.DXQ(boot.BCW.cp,3.0,0,boot.BCT.DXQ(boot.BCW.dk,0.027,0,boot.BCT.DXI(0.001)))).DZX(2,boot.BCW.ih,14.0,0,boot.BCT.DXI(5.9)).DZU(3,boot.BCW.kc,new boot.BDN(F,20.0,10.0,0));
-		// 1293
-		C.DXH(boot.BCU.dg).DZO("指定方向へダッシュし当たった敵に{1}を与える。敵に当たるとこのスキルの{2}する。{3}。").DZX(1,boot.BCW.h,65.0,10.0,boot.BCT.DXN(boot.BCW.dk,0.55,0.15)).DZR(2,boot.BCW.ie,60.0).DZQ(3,boot.BCW.kn).DZB(20.0,5.0).DYw(16.0,-2.0).DZE(400.0);
-		// 1301
-		D.DXH(boot.BCU.dg).DZO("指定方向に向き剣を構えて0.75秒間無敵になり、その後剣を突き出して当たった全ての敵に{1}を与える。最初に当たった敵チャンピオンには1.5秒間{2}を与える。もし無敵状態の間になんらかの移動阻害効果を受けていた場合、代わりに{3}を与える。").DZX(1,boot.BCW.i,90.0,40.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.jj,50.0).DZQ(3,boot.BCW.im).DYz(50.0).DYw(19.0,-1.0);
-		// 1310
-		E.DXH(boot.BCU.dg).DZO("2回通常攻撃するまで{1}する。一度目の攻撃はクリティカルにならない代わりに1秒間{2}を与える。二度目の攻撃は必ずクリティカルになり{3}を与える。{4}。").DZR(1,boot.BCW.ea,50.0).DZS(2,boot.BCW.jl,25.0,10.0).DZW(3,boot.BCW.h,boot.BCT.DXN(boot.BCW.dh,1.4,0.15)).DZQ(4,boot.BCW.ma).DZB(40.0,5.0).DYw(15.0,-2.0);
-		// 1319
-		F.DXH(boot.BCU.dl).DZO(new boot.z("8秒間対象の敵チャンピオンの全ての急所(4箇所)が表示される(この効果中は対象への",0).IY(B).V("の効果は発動しない)。全ての急所を攻撃するか最低一つの急所を攻撃した上で対象が死ぬと聖なる泉が発生して、{1}の全て味方は2秒間毎秒{2}する。この効果時間は").IY(A).V("が追加の急所を攻撃するたびに1秒延長され、最大5秒になる。対象の近くにいるか泉の範囲内にいる場合、").IY(A).V("は{3}する。").W()).DZR(1,boot.BCW.li,600.0).DZX(2,boot.BCW.ih,80.0,30.0,boot.BCT.DXM(0.6)).DZS(3,boot.BCW.kc,30.0,10.0).DYz(100.0).DYw(110.0,-20.0).DZE(500.0);
+		// 1312
+		C.DXH(boot.BCU.dg).DZO("指定方向へ{4}し当たった敵に{1}を与える。敵に当たるとこのスキルの{2}する。{3}。").DZX(1,boot.BCW.h,65.0,10.0,boot.BCT.DXN(boot.BCW.dk,0.55,0.15)).DZR(2,boot.BCW.ie,60.0).DZQ(3,boot.BCW.lf).DZQ(4,boot.BCW.km).DZB(20.0,5.0).DYw(16.0,-2.0).DZE(400.0);
 		// 1320
+		D.DXH(boot.BCU.dg).DZO("指定方向に向き剣を構えて0.75秒間無敵になり、その後剣を突き出して当たった全ての敵に{1}を与える。最初に当たった敵チャンピオンには1.5秒間{2}を与える。もし無敵状態の間になんらかの移動阻害効果を受けていた場合、代わりに{3}を与える。").DZX(1,boot.BCW.i,90.0,40.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.jj,50.0).DZQ(3,boot.BCW.im).DYz(50.0).DYw(19.0,-1.0);
+		// 1329
+		E.DXH(boot.BCU.dg).DZO("2回通常攻撃するまで{1}する。一度目の攻撃はクリティカルにならない代わりに1秒間{2}を与える。二度目の攻撃は必ずクリティカルになり{3}を与える。{4}。").DZR(1,boot.BCW.ea,50.0).DZS(2,boot.BCW.jl,25.0,10.0).DZW(3,boot.BCW.h,boot.BCT.DXN(boot.BCW.dh,1.4,0.15)).DZQ(4,boot.BCW.mi).DZB(40.0,5.0).DYw(15.0,-2.0);
+		// 1338
+		F.DXH(boot.BCU.dl).DZO(new boot.z("8秒間対象の敵チャンピオンの全ての急所(4箇所)が表示される(この効果中は対象への",0).IY(B).V("の効果は発動しない)。全ての急所を攻撃するか最低一つの急所を攻撃した上で対象が死ぬと聖なる泉が発生して、{1}の全て味方は2秒間毎秒{2}する。この効果時間は").IY(A).V("が追加の急所を攻撃するたびに1秒延長され、最大5秒になる。対象の近くにいるか泉の範囲内にいる場合、").IY(A).V("は{3}する。").W()).DZR(1,boot.BCW.ma,600.0).DZX(2,boot.BCW.ih,80.0,30.0,boot.BCT.DXM(0.6)).DZS(3,boot.BCW.kc,30.0,10.0).DYz(100.0).DYw(110.0,-20.0).DZE(500.0);
+		// 1339
 	},
 	// teemowork.model.SkillDefinition#Fizz(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTY:function(A,B,C,D,E,F){
-		// 1329
+		// 1348
 		B.DXH(boot.BCU.e).DZK("{2}を得て、{1}する。この軽減は防御力計算後に行われる。").DZU(1,boot.BCW.gp,new boot.BDH(4.0,2.0,0)).DZQ(2,boot.BCW.kg);
-		// 1337
-		C.DXH(boot.BCU.di).DZO("対象の敵ユニットに{1}が付与された通常攻撃を与え、その方向に駆け抜ける。移動距離は固定。{2}。").DZX(1,boot.BCW.i,10.0,15.0,boot.BCT.DXK(0.35)).DZQ(2,boot.BCW.kn).DZB(50.0,5.0).DYw(10.0,-1.0).DZE(550.0);
-		// 1345
+		// 1357
+		C.DXH(boot.BCU.di).DZO("対象の敵ユニットに{1}が付与された通常攻撃を与え、その方向に{2}する。{3}。").DZX(1,boot.BCW.i,10.0,15.0,boot.BCT.DXK(0.35)).DZR(2,boot.BCW.kn,550.0).DZQ(3,boot.BCW.lf).DZB(50.0,5.0).DYw(10.0,-1.0).DZE(550.0);
+		// 1365
 		D.DXH(boot.BCU.di).DZK("通常攻撃に{1}が付与される。このダメージは0.5秒毎に3秒間かけて与えられる。").DZT(1,boot.BCW.i,20.0,10.0,boot.BCT.DXK(0.45),boot.BCT.DXN(boot.BCW.db,4.0,1)).DZO("6秒間通常攻撃に{2}を付与する。").DZX(2,boot.BCW.i,10.0,5.0,boot.BCT.DXK(0.3)).DYz(40.0).DYv(10.0);
-		// 1356
-		E.DXH(boot.BCU.bp).DZO("指定地点にジャンプする。ジャンプ中はターゲットされない状態になる。0.75秒後にその場に降下し、{1}の敵ユニットに{2}と2秒間{3}を与える。また、ジャンプ中に再使用することで降下する場所を別の指定地点に変更しできる。その場合、{4}の敵ユニットに{5}を与える。").DZR(1,boot.BCW.li,330.0).DZX(2,boot.BCW.i,70.0,50.0,boot.BCT.DXK(0.75)).DZS(3,boot.BCW.jl,40.0,5.0).DZR(4,boot.BCW.li,270.0).DZX(5,boot.BCW.i,70.0,50.0,boot.BCT.DXK(0.75)).DZB(90.0,10.0).DYw(16.0,-2.0).DZE(400.0);
-		// 1368
-		F.DXH(boot.BCU.di).DZO(new boot.z("指定地点に敵チャンピオンのみに命中する魚を投げ、命中した敵チャンピオンに魚がくっつき、1.5秒間{1}を与え、6秒間",0).IY(A).V("の与える魔法{3}する。1.5秒後に地面から鮫が現れ、魚が命中した対象を襲い、対象とその{4}の敵ユニットに{5}を与え、{6}後に1.5秒間{1}を与える。魚がくっついていた敵チャンピオン以外のユニットには{6}の代わりに{8}を与える。魚がチャンピオンに当たらなかった場合は指定地点に魚が残り、その地点に鮫が現れる。また魚は視界を確保し、その上を敵チャンピオンが通り過ぎると、当たった場合と同様にその敵チャンピオンにくっつき、鮫が襲いかかる。").W()).DZS(1,boot.BCW.jj,50.0,10.0).DZR(3,boot.BCW.f,20.0).DZR(4,boot.BCW.li,250.0).DZX(5,boot.BCW.i,200.0,125.0,boot.BCT.DXK(1)).DZQ(6,boot.BCW.jg).DZQ(8,boot.BCW.jh).DYz(100.0).DYw(100.0,-15.0).DZE(1275.0);
-		// 1369
+		// 1378
+		E.DXH(boot.BCU.bp).DZO("指定地点にジャンプして{7}し、{6}になる。0.75秒後にその場に降下し、{1}の敵ユニットに{2}と2秒間{3}を与える。また、ジャンプ中に再使用することで降下する場所を別の指定地点に変更しできる。その場合、{4}の敵ユニットに{5}を与える。").DZR(1,boot.BCW.ma,330.0).DZX(2,boot.BCW.i,70.0,50.0,boot.BCT.DXK(0.75)).DZS(3,boot.BCW.jl,40.0,5.0).DZR(4,boot.BCW.ma,270.0).DZX(5,boot.BCW.i,70.0,50.0,boot.BCT.DXK(0.75)).DZQ(6,boot.BCW.kk).DZQ(7,boot.BCW.km).DZB(90.0,10.0).DYw(16.0,-2.0).DZE(400.0);
+		// 1390
+		F.DXH(boot.BCU.di).DZO(new boot.z("指定地点に敵チャンピオンのみに命中する魚を投げ、命中した敵チャンピオンに魚がくっつき、1.5秒間{1}を与え、6秒間",0).IY(A).V("の与える魔法{3}する。1.5秒後に地面から鮫が現れ、魚が命中した対象を襲い、対象とその{4}の敵ユニットに{5}を与え、{6}後に1.5秒間{1}を与える。魚がくっついていた敵チャンピオン以外のユニットには{6}の代わりに{8}を与える。魚がチャンピオンに当たらなかった場合は指定地点に魚が残り、その地点に鮫が現れる。また魚は視界を確保し、その上を敵チャンピオンが通り過ぎると、当たった場合と同様にその敵チャンピオンにくっつき、鮫が襲いかかる。").W()).DZS(1,boot.BCW.jj,50.0,10.0).DZR(3,boot.BCW.f,20.0).DZR(4,boot.BCW.ma,250.0).DZX(5,boot.BCW.i,200.0,125.0,boot.BCT.DXK(1)).DZQ(6,boot.BCW.jg).DZQ(8,boot.BCW.jh).DYz(100.0).DYw(100.0,-15.0).DZE(1275.0);
+		// 1391
 	},
 	// teemowork.model.SkillDefinition#Galio(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTZ:function(A,B,C,D,E,F){
-		// 1375
+		// 1397
 		B.DXH(boot.BCU.e).DZK("{1}を得る。").DZW(1,boot.BCW.ei,boot.BCT.DXJ(boot.BCW.ge,0.5));
-		// 1384
-		C.DXH(boot.BCU.e).DZO("指定地点に魔法弾を飛ばし、{1}の敵ユニットに{2}と2.5秒間{3}を与える。").DZR(1,boot.BCW.li,235.0).DZX(2,boot.BCW.i,80.0,55.0,boot.BCT.DXK(0.6)).DZS(3,boot.BCW.jl,24.0,4.0).DZB(60.0,5.0).DYv(7.0).DZE(940.0);
-		// 1393
+		// 1406
+		C.DXH(boot.BCU.e).DZO("指定地点に魔法弾を飛ばし、{1}の敵ユニットに{2}と2.5秒間{3}を与える。").DZR(1,boot.BCW.ma,235.0).DZX(2,boot.BCW.i,80.0,55.0,boot.BCT.DXK(0.6)).DZS(3,boot.BCW.jl,24.0,4.0).DZB(60.0,5.0).DYv(7.0).DZE(940.0);
+		// 1415
 		D.DXH(boot.BCU.dg).DZO("4秒間対象のチャンピオンは{1}と{2}を得て、効果中にその対象のチャンピオンがダメージを受ける度に自身の{3}する。自身に使用した場合はダメージを受けてから回復される。").DZS(1,boot.BCW.ga,30.0,15.0).DZS(2,boot.BCW.ge,30.0,15.0).DZX(3,boot.BCW.ih,25.0,15.0,boot.BCT.DXK(0.3)).DYz(60.0).DYv(13.0).DZE(800.0);
-		// 1401
+		// 1423
 		E.DXH(boot.BCU.cn).DZO("指定方向に風を発生させ、当たった敵ユニットに{1}を与える。このスキルを使用すると指定した方向に5秒間持続する風が残り、その風の進行方向上にいる味方ユニットは{2}する。").DZX(1,boot.BCW.i,60.0,45.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.kc,20.0,8.0).DZB(70.0,5.0).DYw(13.0,-1.0).DZE(1180.0);
-		// 1412
-		F.DXH(boot.BCU.dd).DZO(new boot.z("{1}の敵ユニットに{2}を与え、さらに2秒間詠唱を行う。詠唱中は{3}して、ダメージを受ける度にこのスキルのダメージが最大80％まで10%ずつ増加していく。詠唱中に",0).IY(D).V("を使用することが出来る。詠唱完了またはキャンセル時に、周囲の敵ユニットの").IY(boot.BCW.je).V("を解除するとともに{4}を与える。最大ダメージは{5}。キャンセル時は効果範囲が575に減少する。なお、このスキルの").IY(boot.BCW.je).V("の効果時間は").IY(boot.BCW.hn).V("の影響を受けない。").W()).DZR(1,boot.BCW.li,600.0).DZR(2,boot.BCW.je,2.0).DZR(3,boot.BCW.gj,50.0).DZX(4,boot.BCW.i,200.0,100.0,boot.BCT.DXK(0.6)).DZX(5,boot.BCW.i,360.0,540.0,boot.BCT.DXK(1.08)).DYz(100.0).DYw(150.0,-15.0).DZI(boot.BDD.i);
-		// 1413
+		// 1434
+		F.DXH(boot.BCU.dd).DZO(new boot.z("{1}の敵ユニットに{2}を与え、さらに2秒間詠唱を行う。詠唱中は{3}して、ダメージを受ける度にこのスキルのダメージが最大80％まで10%ずつ増加していく。詠唱中に",0).IY(D).V("を使用することが出来る。詠唱完了またはキャンセル時に、周囲の敵ユニットの").IY(boot.BCW.je).V("を解除するとともに{4}を与える。最大ダメージは{5}。キャンセル時は効果範囲が575に減少する。なお、このスキルの").IY(boot.BCW.je).V("の効果時間は").IY(boot.BCW.hn).V("の影響を受けない。").W()).DZR(1,boot.BCW.ma,600.0).DZR(2,boot.BCW.je,2.0).DZR(3,boot.BCW.gj,50.0).DZX(4,boot.BCW.i,200.0,100.0,boot.BCT.DXK(0.6)).DZX(5,boot.BCW.i,360.0,540.0,boot.BCT.DXK(1.08)).DYz(100.0).DYw(150.0,-15.0).DZI(boot.BDD.i);
+		// 1435
 	},
 	// teemowork.model.SkillDefinition#Gangplank(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTu:function(A,B,C,D,E,F){
-		// 1425
+		// 1447
 		B.DXH(boot.BCU.df).DZK(new boot.z("通常攻撃時に1.5秒間かけて{1}を与え、2秒間{2}する。",0).IY(E).V("を破壊するとこのスキルの{3}し、2秒間{2}する。{4}。").W()).DZT(1,boot.BCW.j,20.0,0,boot.BCT.DXL(1.2),boot.BCT.DXI(10.0)).DZR(-2,boot.BCW.kc,30.0).DZQ(3,boot.BCW.id).DZQ(4,boot.BCW.ep).DYv(-15.0);
-		// 1435
-		C.DXH(boot.BCU.dg).DZO(new boot.z("対象の敵ユニットに{1}(クリティカルあり)を与える。このスキルで敵ユニットを倒すと{4}し、{2}を得る。{3}(ただし",0).IY(B).V("は除く)。").W()).DZX(1,boot.BCW.h,20.0,25.0,boot.BCT.DXL(1)).DZS(2,boot.BCW.lb,4.0,1).DZQ(3,boot.BCW.kn).DZR(4,boot.BCW.ij,25.0).DYz(50.0).DYv(5.0).DZE(625.0);
-		// 1442
-		D.DXH(boot.BCU.df).DZO("{1}し{2}する。Disable中でも使用可能。").DZQ(1,boot.BCW.ki).DZT(2,boot.BCW.ih,50.0,25.0,boot.BCT.DXK(0.9),boot.BCT.DXJ(boot.BCW.cn,15.0)).DZB(60.0,10.0).DYw(22.0,-2.0);
-		// 1455
-		E.DXH(boot.BCU.dj).DZK("{1}毎に火薬樽が貯まる。最大値は{2}。").DZS(1,boot.BCW.ld,18.0,-1.0).DZU(2,boot.BCW.mb,new boot.BDN(F,2.0,1,0)).DZO(new boot.z("60秒間火薬樽を指定の位置に設置する。樽はHP3を持ち、自身か敵チャンピオンが攻撃する若しくは{3}毎にHP1まで1ずつ減少する。HP1の樽を敵が攻撃すると樽は解除される。自身が攻撃すると爆発して、その攻撃が{4}の敵への",0).IY(boot.BCW.fd).V("40%を持つ物理範囲攻撃となり、2秒間{5}を与える。敵チャンピオンに対しては追加で{6}を与える。{7}に火薬樽がある場合、爆発は連鎖していく。").W()).DZU(3,boot.BCW.ld,new boot.BDJ(2.0,-0.5,0)).DZR(4,boot.BCW.li,400.0).DZR(5,boot.BCW.jl,60.0).DZS(6,boot.BCW.h,60.0,30.0).DZR(7,boot.BCW.li,650.0).DZE(1000.0).DYv(0.25);
-		// 1468
-		F.DXH(boot.BCU.df).DZK(new boot.z(1).IY(E).V("のスタック最大値が{1}増加する。").W()).DZS(1,boot.BCW.mb,1,1).DZO("MAP内の指定した地点に砲撃を行い、{3}の{2}。8秒間2秒に3回砲弾が降り注ぎ、{4}と0.5秒間{5}を与える。全段命中すると{6}。").DZQ(2,boot.BCW.kk).DZR(3,boot.BCW.li,600.0).DZX(4,boot.BCW.i,50.0,20.0,boot.BCT.DXK(0.1)).DZR(5,boot.BCW.jl,30.0).DZX(6,boot.BCW.i,600.0,240.0,boot.BCT.DXK(1.2)).DYz(100.0).DYw(120.0,-5.0).DZE(-1.0);
-		// 1469
+		// 1457
+		C.DXH(boot.BCU.dg).DZO(new boot.z("対象の敵ユニットに{1}(クリティカルあり)を与える。このスキルで敵ユニットを倒すと{4}し、{2}を得る。{3}(ただし",0).IY(B).V("は除く)。").W()).DZX(1,boot.BCW.h,20.0,25.0,boot.BCT.DXL(1)).DZS(2,boot.BCW.lj,4.0,1).DZQ(3,boot.BCW.lf).DZR(4,boot.BCW.ij,25.0).DYz(50.0).DYv(5.0).DZE(625.0);
+		// 1464
+		D.DXH(boot.BCU.df).DZO("{1}し{2}する。Disable中でも使用可能。").DZQ(1,boot.BCW.kj).DZT(2,boot.BCW.ih,50.0,25.0,boot.BCT.DXK(0.9),boot.BCT.DXJ(boot.BCW.cn,15.0)).DZB(60.0,10.0).DYw(22.0,-2.0);
+		// 1477
+		E.DXH(boot.BCU.dj).DZK("{1}毎に火薬樽が貯まる。最大値は{2}。").DZS(1,boot.BCW.ll,18.0,-1.0).DZU(2,boot.BCW.mj,new boot.BDN(F,2.0,1,0)).DZO(new boot.z("60秒間火薬樽を指定の位置に設置する。樽はHP3を持ち、自身か敵チャンピオンが攻撃する若しくは{3}毎にHP1まで1ずつ減少する。HP1の樽を敵が攻撃すると樽は解除される。自身が攻撃すると爆発して、その攻撃が{4}の敵への",0).IY(boot.BCW.fd).V("40%を持つ物理範囲攻撃となり、2秒間{5}を与える。敵チャンピオンに対しては追加で{6}を与える。{7}に火薬樽がある場合、爆発は連鎖していく。").W()).DZU(3,boot.BCW.ll,new boot.BDJ(2.0,-0.5,0)).DZR(4,boot.BCW.ma,400.0).DZR(5,boot.BCW.jl,60.0).DZS(6,boot.BCW.h,60.0,30.0).DZR(7,boot.BCW.ma,650.0).DZE(1000.0).DYv(0.25);
+		// 1490
+		F.DXH(boot.BCU.df).DZK(new boot.z(1).IY(E).V("のスタック最大値が{1}増加する。").W()).DZS(1,boot.BCW.mj,1,1).DZO("MAP内の指定した地点に砲撃を行い、{3}の{2}。8秒間2秒に3回砲弾が降り注ぎ、{4}と0.5秒間{5}を与える。全段命中すると{6}。").DZQ(2,boot.BCW.lc).DZR(3,boot.BCW.ma,600.0).DZX(4,boot.BCW.i,50.0,20.0,boot.BCT.DXK(0.1)).DZR(5,boot.BCW.jl,30.0).DZX(6,boot.BCW.i,600.0,240.0,boot.BCT.DXK(1.2)).DYz(100.0).DYw(120.0,-5.0).DZE(-1.0);
+		// 1491
 	},
 	// teemowork.model.SkillDefinition#Garen(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTv:function(A,B,C,D,E,F){
-		// 1478
-		B.DXH(boot.BCU.cd).DZK("{1}間敵ミニオン以外からダメージを受けない状態が続くと、以降敵ミニオン（Lv11からはバロン・ドラゴン以外のモンスター）以外からダメージを受けるまで毎秒{2}する。").DZU(1,boot.BCW.ld,new boot.BDG(Φ("I",[1,11,16]),Φ("D",[9.0,6.0,4.0]),2)).DZW(2,boot.BCW.ih,boot.BCT.DXP(boot.BCW.bf,new boot.BDG(Φ("I",[1,11,16]),Φ("D",[0.004,0.008,0.02]),2)));
-		// 1487
-		C.DXH(boot.BCU.di).DZO("{1}間{2}し、スキル使用後6秒間に行った次の通常攻撃に追加{3}と{4}が付与される。またこのスキル使用時に自身にかかっているスローを解除する。{5}。").DZS(1,boot.BCW.ld,1.5,0.5).DZR(2,boot.BCW.kc,30.0).DZX(3,boot.BCW.h,30.0,25.0,boot.BCT.DXL(0.4)).DZR(4,boot.BCW.jc,1.5).DZQ(5,boot.BCW.ma).DYv(8.0);
-		// 1496
-		D.DXH(boot.BCU.dh).DZK("敵を倒すとスタックが増加する（最大120、チャンピオンや大型モンスターを倒すと4スタック増加）。{1}と{2}を得る。").DZW(1,boot.BCW.ga,boot.BCT.DXJ(boot.BCW.mf,0.25)).DZW(2,boot.BCW.ge,boot.BCT.DXJ(boot.BCW.mf,0.25)).DZO("{3}間{4}する。").DZS(3,boot.BCW.ld,2.0,1).DZR(4,boot.BCW.gj,30.0).DYw(24.0,-1.0);
-		// 1505
-		E.DXH(boot.BCU.dh).DZO("3秒間回転し{1}を得て、{2}の敵ユニットに一定時間毎に{3}を与える（最大{5}回）。このスキルにはクリティカル判定がある。単一の敵に当たった場合、ダメージが33%増加し{4}を与える。").DZQ(1,boot.BCW.kg).DZR(2,boot.BCW.li,300.0).DZX(3,boot.BCW.h,14.0,4.0,boot.BCT.DXN(boot.BCW.dh,0.34,0.01)).DZX(4,boot.BCW.h,20.0,5.0,boot.BCT.DXN(boot.BCW.dh,0.46,0.01)).DZU(5,boot.BCW.mb,new boot.BDH(5.0,1,0)).DYv(9.0);
-		// 1514
+		// 1500
+		B.DXH(boot.BCU.cd).DZK("{1}間敵ミニオン以外からダメージを受けない状態が続くと、以降敵ミニオン（Lv11からはバロン・ドラゴン以外のモンスター）以外からダメージを受けるまで毎秒{2}する。").DZU(1,boot.BCW.ll,new boot.BDG(Φ("I",[1,11,16]),Φ("D",[9.0,6.0,4.0]),2)).DZW(2,boot.BCW.ih,boot.BCT.DXP(boot.BCW.bf,new boot.BDG(Φ("I",[1,11,16]),Φ("D",[0.004,0.008,0.02]),2)));
+		// 1509
+		C.DXH(boot.BCU.di).DZO("{1}間{2}し、スキル使用後6秒間に行った次の通常攻撃に追加{3}と{4}が付与される。またこのスキル使用時に自身にかかっているスローを解除する。{5}。").DZS(1,boot.BCW.ll,1.5,0.5).DZR(2,boot.BCW.kc,30.0).DZX(3,boot.BCW.h,30.0,25.0,boot.BCT.DXL(0.4)).DZR(4,boot.BCW.jc,1.5).DZQ(5,boot.BCW.mi).DYv(8.0);
+		// 1518
+		D.DXH(boot.BCU.dh).DZK("敵を倒すとスタックが増加する（最大120、チャンピオンや大型モンスターを倒すと4スタック増加）。{1}と{2}を得る。").DZW(1,boot.BCW.ga,boot.BCT.DXJ(boot.BCW.mn,0.25)).DZW(2,boot.BCW.ge,boot.BCT.DXJ(boot.BCW.mn,0.25)).DZO("{3}間{4}する。").DZS(3,boot.BCW.ll,2.0,1).DZR(4,boot.BCW.gj,30.0).DYw(24.0,-1.0);
+		// 1527
+		E.DXH(boot.BCU.dh).DZO("3秒間回転し{1}を得て、{2}の敵ユニットに一定時間毎に{3}を与える（最大{5}回）。このスキルにはクリティカル判定がある。単一の敵に当たった場合、ダメージが33%増加し{4}を与える。").DZQ(1,boot.BCW.kg).DZR(2,boot.BCW.ma,300.0).DZX(3,boot.BCW.h,14.0,4.0,boot.BCT.DXN(boot.BCW.dh,0.34,0.01)).DZX(4,boot.BCW.h,20.0,5.0,boot.BCT.DXN(boot.BCW.dh,0.46,0.01)).DZU(5,boot.BCW.mj,new boot.BDH(5.0,1,0)).DYv(9.0);
+		// 1536
 		F.DXH(boot.BCU.dj).DZK(new boot.z(1).IY(A).V("以外の味方チャンピオンを倒した敵は『悪役』になる（直近の1体のみ）。悪役に対する通常攻撃及び").IY(E).V("は追加で{1}を与える。悪役との戦闘中に悪役が変更されることはない。").W()).DZW(1,boot.BCW.j,boot.BCT.DXJ(boot.BCW.cp,1)).DZO("対象の敵チャンピオンに{3}を与える。悪役に対しては{4}を与える。").DZX(3,boot.BCW.i,175.0,175.0,boot.BCT.DXP(boot.BCW.db,new boot.BDL(Φ("D",[28.6,33.3,40.0]),0))).DZX(4,boot.BCW.j,175.0,175.0,boot.BCT.DXP(boot.BCW.db,new boot.BDL(Φ("D",[28.6,33.3,40.0]),0))).DYw(120.0,-20.0).DZE(400.0);
-		// 1515
+		// 1537
 	},
 	// teemowork.model.SkillDefinition#Gnar(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTw:function(A,B,C,D,E,F){
-		// 1532
-		B.DXH(boot.BCU.ck).DZK(new boot.z("Mini Gnarの時に戦闘を行うと3秒間かけてRage{1}を得る。通常攻撃と",0).IY(C).V("で").IY(boot.BCW.e).V("を与えると追加で{2}のRageを得る(ミニオン、モンスター及び建物との戦闘の場合は25%)。13秒間戦闘を行わないとRageは減衰していく。Rageが100になった時にスキルを使用または5秒経過すると、Mega Gnarに変身する。Mega Gnarでは近接攻撃になり、スキルが変化する。15秒間経過するとMini Gnarに戻り、Rageは0になる。Mini Gnarに戻ると15秒間Rageが増加しなくなる。<br>Mini Gnar<br>MS: {3}<br>Range: {4}<br>AS: {5}<br>Mega Gnar<br>HP: {6}<br>AR: {7}<br>MR: {8}<br>Hreg: {9}<br>AD: {10}").W()).DZU(1,boot.BCW.mb,new boot.BDG(Φ("I",[1,6,11]),Φ("D",[4.0,7.0,11.0]),2)).DZU(2,boot.BCW.mb,new boot.BDG(Φ("I",[1,6,11]),Φ("D",[2.0,3.0,5.0]),2)).DZX(3,boot.BCW.ka,9.0,0,boot.BCT.DXI(1)).DZX(4,boot.BCW.hi,245.0,0,boot.BCT.DXI(5.0)).DZW(5,boot.BCW.ea,boot.BCT.DXI(5.5)).DZW(-6,boot.BCW.bf,boot.BCT.DXI(43.0)).DZW(-7,boot.BCW.ga,boot.BCT.DXI(2.0)).DZW(-8,boot.BCW.ge,boot.BCT.DXI(2.0)).DZW(-9,boot.BCW.bl,boot.BCT.DXI(2.5)).DZW(-10,boot.BCW.dh,boot.BCT.DXI(2.5));
-		// 1543
-		C.DXH(boot.BCU.ci).DZO("Mini Gnar<br>指定方向にブーメランを投げ、当たった敵ユニットに{1}と2秒間{2}を与える。ブーメランは2hit目以降の敵ユニットには50%のダメージを与える。ブーメランは最大距離まで飛んだ後、自身がいる位置に戻ってくるが、敵ユニットに当たる度に戻るまでの間隔が早くなる。戻ってきたブーメランは少しずつ加速し、戻り始めた位置から距離2500まで飛ぶ。これをキャッチすると、このスキルの{3}する。またブーメランは同一の対象には一度しか命中しない。<br>Mega Gnar<br>指定方向に岩を投げ、当たった敵ユニットと{4}の敵ユニットに{5}と2秒間{2}を与える。投げた岩はその場に留まり、岩を回収するとこのスキルの{6}する。").DZX(1,boot.BCW.h,5.0,30.0,boot.BCT.DXL(1.15)).DZS(2,boot.BCW.jl,15.0,5.0).DZU(3,boot.BCW.ie,new boot.BDN(F,45.0,5.0,0)).DZR(4,boot.BCW.li,250.0).DZX(5,boot.BCW.h,5.0,40.0,boot.BCT.DXL(1.2)).DZR(6,boot.BCW.ie,60.0).DYw(20.0,-2.5).DZE(1100.0);
-		// 1553
-		D.DXH(boot.BCU.cg).DZK(new boot.z("<br>Mini Gnar<br>通常攻撃かスキルで",0).IY(boot.BCW.e).V("を与えた敵ユニットにスタックを付与する。スタック数が3になるとスタックを消費し{1}を与え、3秒間{2}する。この移動速度増加は時間と共に減衰する。建物には無効。また、この移動速度増加はMega GnarからMini Gnarに戻った時にも発動する。").W()).DZT(1,boot.BCW.i,10.0,10.0,boot.BCT.DXN(boot.BCW.cp,6.0,2.0),boot.BCT.DXK(1)).DZU(2,boot.BCW.kc,new boot.BDN(F,30.0,15.0,0)).DZO("Mega Gnar<br>指定方向に腕を叩き付け{3}の敵ユニットに{4}と{5}を与える。").DZQ(3,boot.BCW.li).DZX(4,boot.BCW.h,25.0,20.0,boot.BCT.DXL(1)).DZR(5,boot.BCW.im,1.25).DYw(15.0,-2.0);
-		// 1562
-		E.DXH(boot.BCU.cg).DZO("Mini Gnar<br>指定地点にジャンプし、3秒間{1}する。指定した地点にユニット(味方可)がいた場合、そのユニットを踏みつけ更にもう一度ジャンプを行う。踏みつけた対象が敵ユニットの場合、対象に{2}と0.5秒{3}を与える。<br>Mega Gnar<br>指定地点にジャンプし、{4}の敵ユニットに{2}を与える。範囲内の中心点にいる敵ユニットには、0.5秒間{3}を与える。").DZS(1,boot.BCW.ea,20.0,10.0).DZX(2,boot.BCW.h,20.0,40.0,boot.BCT.DXJ(boot.BCW.bf,0.06)).DZR(3,boot.BCW.jl,60.0).DZQ(4,boot.BCW.li).DYw(18.0,-1.5).DZE(475.0);
-		// 1573
-		F.DXH(boot.BCU.ci).DZO(new boot.z("Mega Gnar<br>{1}にいる敵ユニットを指定した方向に{2}し{3}と{4}間{5}を与える。",0).IY(boot.BCW.jh).V("した敵ユニットが壁等に当たると{6}と{7}を与える。").W()).DZR(1,boot.BCW.li,590.0).DZQ(2,boot.BCW.jh).DZT(3,boot.BCW.h,200.0,100.0,boot.BCT.DXM(0.2),boot.BCT.DXK(0.5)).DZS(4,boot.BCW.ld,1.25,0.25).DZR(5,boot.BCW.jl,45.0).DZT(6,boot.BCW.h,350.0,150.0,boot.BCT.DXM(0.3),boot.BCT.DXK(0.75)).DZS(7,boot.BCW.im,1.25,0.25).DYw(120.0,-20.0);
-		// 1574
+		// 1554
+		B.DXH(boot.BCU.ck).DZK(new boot.z("Mini Gnarの時に戦闘を行うと3秒間かけてRage{1}を得る。通常攻撃と",0).IY(C).V("で").IY(boot.BCW.e).V("を与えると追加で{2}のRageを得る(ミニオン、モンスター及び建物との戦闘の場合は25%)。13秒間戦闘を行わないとRageは減衰していく。Rageが100になった時にスキルを使用または5秒経過すると、Mega Gnarに変身する。Mega Gnarでは近接攻撃になり、スキルが変化する。15秒間経過するとMini Gnarに戻り、Rageは0になる。Mini Gnarに戻ると15秒間Rageが増加しなくなる。<br>Mini Gnar<br>MS: {3}<br>Range: {4}<br>AS: {5}<br>Mega Gnar<br>HP: {6}<br>AR: {7}<br>MR: {8}<br>Hreg: {9}<br>AD: {10}").W()).DZU(1,boot.BCW.mj,new boot.BDG(Φ("I",[1,6,11]),Φ("D",[4.0,7.0,11.0]),2)).DZU(2,boot.BCW.mj,new boot.BDG(Φ("I",[1,6,11]),Φ("D",[2.0,3.0,5.0]),2)).DZX(3,boot.BCW.ka,9.0,0,boot.BCT.DXI(1)).DZX(4,boot.BCW.hi,245.0,0,boot.BCT.DXI(5.0)).DZW(5,boot.BCW.ea,boot.BCT.DXI(5.5)).DZW(-6,boot.BCW.bf,boot.BCT.DXI(43.0)).DZW(-7,boot.BCW.ga,boot.BCT.DXI(2.0)).DZW(-8,boot.BCW.ge,boot.BCT.DXI(2.0)).DZW(-9,boot.BCW.bl,boot.BCT.DXI(2.5)).DZW(-10,boot.BCW.dh,boot.BCT.DXI(2.5));
+		// 1565
+		C.DXH(boot.BCU.ci).DZO("Mini Gnar<br>指定方向にブーメランを投げ、当たった敵ユニットに{1}と2秒間{2}を与える。ブーメランは2hit目以降の敵ユニットには50%のダメージを与える。ブーメランは最大距離まで飛んだ後、自身がいる位置に戻ってくるが、敵ユニットに当たる度に戻るまでの間隔が早くなる。戻ってきたブーメランは少しずつ加速し、戻り始めた位置から距離2500まで飛ぶ。これをキャッチすると、このスキルの{3}する。またブーメランは同一の対象には一度しか命中しない。<br>Mega Gnar<br>指定方向に岩を投げ、当たった敵ユニットと{4}の敵ユニットに{5}と2秒間{2}を与える。投げた岩はその場に留まり、岩を回収するとこのスキルの{6}する。").DZX(1,boot.BCW.h,5.0,30.0,boot.BCT.DXL(1.15)).DZS(2,boot.BCW.jl,15.0,5.0).DZU(3,boot.BCW.ie,new boot.BDN(F,45.0,5.0,0)).DZR(4,boot.BCW.ma,250.0).DZX(5,boot.BCW.h,5.0,40.0,boot.BCT.DXL(1.2)).DZR(6,boot.BCW.ie,60.0).DYw(20.0,-2.5).DZE(1100.0);
+		// 1575
+		D.DXH(boot.BCU.cg).DZK(new boot.z("<br>Mini Gnar<br>通常攻撃かスキルで",0).IY(boot.BCW.e).V("を与えた敵ユニットにスタックを付与する。スタック数が3になるとスタックを消費し{1}を与え、3秒間{2}する。この移動速度増加は時間と共に減衰する。建物には無効。また、この移動速度増加はMega GnarからMini Gnarに戻った時にも発動する。").W()).DZT(1,boot.BCW.i,10.0,10.0,boot.BCT.DXN(boot.BCW.cp,6.0,2.0),boot.BCT.DXK(1)).DZU(2,boot.BCW.kc,new boot.BDN(F,30.0,15.0,0)).DZO("Mega Gnar<br>指定方向に腕を叩き付け{3}の敵ユニットに{4}と{5}を与える。").DZQ(3,boot.BCW.ma).DZX(4,boot.BCW.h,25.0,20.0,boot.BCT.DXL(1)).DZR(5,boot.BCW.im,1.25).DYw(15.0,-2.0);
+		// 1585
+		E.DXH(boot.BCU.cg).DZO("Mini Gnar<br>指定地点にジャンプして{5}し、3秒間{1}する。指定した地点にユニット(味方可)がいた場合、そのユニットを踏みつけ更にもう一度ジャンプを行う。踏みつけた対象が敵ユニットの場合、対象に{2}と0.5秒{3}を与える。<br>Mega Gnar<br>指定地点にジャンプし、{4}の敵ユニットに{2}を与える。範囲内の中心点にいる敵ユニットには、0.5秒間{3}を与える。").DZS(1,boot.BCW.ea,20.0,10.0).DZX(2,boot.BCW.h,20.0,40.0,boot.BCT.DXJ(boot.BCW.bf,0.06)).DZR(3,boot.BCW.jl,60.0).DZQ(4,boot.BCW.ma).DZQ(5,boot.BCW.km).DYw(18.0,-1.5).DZE(475.0);
+		// 1596
+		F.DXH(boot.BCU.ci).DZO(new boot.z("Mega Gnar<br>{1}にいる敵ユニットを指定した方向に{2}し{3}と{4}間{5}を与える。",0).IY(boot.BCW.jh).V("した敵ユニットが壁等に当たると{6}と{7}を与える。").W()).DZR(1,boot.BCW.ma,590.0).DZQ(2,boot.BCW.jh).DZT(3,boot.BCW.h,200.0,100.0,boot.BCT.DXM(0.2),boot.BCT.DXK(0.5)).DZS(4,boot.BCW.ll,1.25,0.25).DZR(5,boot.BCW.jl,45.0).DZT(6,boot.BCW.h,350.0,150.0,boot.BCT.DXM(0.3),boot.BCT.DXK(0.75)).DZS(7,boot.BCW.im,1.25,0.25).DYw(120.0,-20.0);
+		// 1597
 	},
 	// teemowork.model.SkillDefinition#Gragas(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTx:function(A,B,C,D,E,F){
-		// 1580
+		// 1603
 		B.DXH(boot.BCU.bh).DZK("スキルを使用すると{1}する。").DZW(1,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.bf,0.04)).DYv(-8.0);
-		// 1590
-		C.DXH(boot.BCU.dd).DZO(new boot.z("指定地点に樽を転がし、爆発時に{1}の敵ユニットに{2}と1.3秒間{3}を与える。樽は4秒経つか、スキルを再度使用すると爆発する。樽は設置後、2秒かけて",0).IY(boot.BCW.e).V("と").IY(boot.BCW.ji).V("の効果が最大50%まで増加していく。樽は設置場所の{4}。ミニオンに対しては70％の").IY(boot.BCW.e).V("を与える。").W()).DZR(1,boot.BCW.li,375.0).DZX(2,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.6)).DZS(3,boot.BCW.jj,40.0,5.0).DZQ(4,boot.BCW.kk).DZB(60.0,5.0).DYw(11.0,-1.0).DZE(850.0);
-		// 1597
+		// 1613
+		C.DXH(boot.BCU.dd).DZO(new boot.z("指定地点に樽を転がし、爆発時に{1}の敵ユニットに{2}と1.3秒間{3}を与える。樽は4秒経つか、スキルを再度使用すると爆発する。樽は設置後、2秒かけて",0).IY(boot.BCW.e).V("と").IY(boot.BCW.ji).V("の効果が最大50%まで増加していく。樽は設置場所の{4}。ミニオンに対しては70％の").IY(boot.BCW.e).V("を与える。").W()).DZR(1,boot.BCW.ma,375.0).DZX(2,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.6)).DZS(3,boot.BCW.jj,40.0,5.0).DZQ(4,boot.BCW.lc).DZB(60.0,5.0).DYw(11.0,-1.0).DZE(850.0);
+		// 1620
 		D.DXH(boot.BCU.di).DZO("2.5秒間{1}を得る。1秒詠唱後に次の5秒以内の通常攻撃に{2}が付与される。モンスターに対しては上限300。").DZS(1,boot.BCW.gj,10.0,2.0).DZT(2,boot.BCW.i,20.0,30.0,boot.BCT.DXK(0.3),boot.BCT.DXJ(boot.BCW.cp,8.0)).DYw(8.0,-1.0).DYz(30.0);
-		// 1608
-		E.DXH(boot.BCU.db).DZO("指定方向に突進し、衝突した敵ユニットと{5}の敵ユニットに{1}と{2}、{3}を与える。衝突時に突進は止まる。ユニットに当たった場合{4}する。").DZX(1,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.6)).DZQ(2,boot.BCW.jh).DZR(3,boot.BCW.im,1).DZR(4,boot.BCW.id,3.0).DZQ(5,boot.BCW.li).DYz(50.0).DYv(12.0).DZE(600.0);
-		// 1617
-		F.DXH(boot.BCU.bh).DZO("指定地点に爆発する樽を投げ、{1}内の敵ユニットに{2}を与え、{3}させる。").DZR(1,boot.BCW.li,400.0).DZX(2,boot.BCW.i,200.0,100.0,boot.BCT.DXK(0.7)).DZR(3,boot.BCW.jh,600.0).DYz(100.0).DYw(100.0,-10.0).DZE(1150.0);
-		// 1618
+		// 1632
+		E.DXH(boot.BCU.db).DZO("指定方向に{6}し、衝突した敵ユニットと{5}の敵ユニットに{1}と{2}、{3}を与える。衝突時に突進は止まる。ユニットに当たった場合{4}する。").DZX(1,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.6)).DZQ(2,boot.BCW.jh).DZR(3,boot.BCW.im,1).DZR(4,boot.BCW.id,3.0).DZQ(5,boot.BCW.ma).DZQ(6,boot.BCW.km).DYz(50.0).DYv(12.0).DZE(600.0);
+		// 1641
+		F.DXH(boot.BCU.bh).DZO("指定地点に爆発する樽を投げ、{1}内の敵ユニットに{2}を与え、{3}させる。").DZR(1,boot.BCW.ma,400.0).DZX(2,boot.BCW.i,200.0,100.0,boot.BCT.DXK(0.7)).DZR(3,boot.BCW.jh,600.0).DYz(100.0).DYw(100.0,-10.0).DZE(1150.0);
+		// 1642
 	},
 	// teemowork.model.SkillDefinition#Graves(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTy:function(A,B,C,D,E,F){
-		// 1627
+		// 1651
 		B.DXH(boot.BCU.e).DZK("戦闘状態になると1秒ごとにスタックが1増加し、スタック数に比例して{1}と{2}を得る。スタックは10回まで累積し、3秒間戦闘を行わないと0になる。").DZU(1,boot.BCW.ga,new boot.BDJ(1,1,0)).DZU(2,boot.BCW.ge,new boot.BDJ(1,1,0));
-		// 1635
+		// 1659
 		C.DXH(boot.BCU.cp).DZO(new boot.z("指定方向扇形の範囲に貫通する弾を3発発射し、当たった敵ユニットに{1}を与える。同一対象に対して複数hitし、2発目以降は本来の50%分の",0).IY(boot.BCW.e).V("を与える(3発hitで合計{2})。").W()).DZX(1,boot.BCW.h,60.0,30.0,boot.BCT.DXM(0.75)).DZX(2,boot.BCW.h,120.0,60.0,boot.BCT.DXM(1.5)).DZB(60.0,10.0).DYw(12.0,-1.0).DZE(950.0);
-		// 1644
-		D.DXH(boot.BCU.e).DZO("指定地点にスモーク弾を発射し{3}の敵ユニットに{1}を与え、4秒間持続する煙幕を残す。煙幕内にいる敵チャンピオンに視界低下と{2}を与える。").DZX(1,boot.BCW.i,60.0,50.0,boot.BCT.DXK(0.6)).DZS(2,boot.BCW.jl,15.0,5.0).DZR(3,boot.BCW.li,250.0).DZB(70.0,5.0).DYw(20.0,-1.0).DZE(950.0);
-		// 1652
-		E.DXH(boot.BCU.bh).DZO("指定方向にダッシュし4秒間{1}する。このスキルは自身が通常攻撃を行う毎に{2}する。対象が建物の場合は無効。").DZS(1,boot.BCW.ea,30.0,10.0).DZR(2,boot.BCW.id,1).DYz(40.0).DYw(22.0,-2.0).DZE(425.0);
-		// 1661
-		F.DXH(boot.BCU.cb).DZO("指定方向にミニオンを貫通する爆発弾を発射し、hitした敵ユニットに{1}を与える。敵チャンピオンにhitするか最大距離飛ぶとターゲット後方に扇形に爆発が広がり、{3}の敵ユニットに{2}を与える。").DZX(1,boot.BCW.h,250.0,150.0,boot.BCT.DXM(1.5)).DZX(2,boot.BCW.h,200.0,120.0,boot.BCT.DXM(1.2)).DZR(3,boot.BCW.li,800.0).DYz(100.0).DYw(100.0,-10.0).DZE(1000.0);
-		// 1662
+		// 1668
+		D.DXH(boot.BCU.e).DZO("指定地点にスモーク弾を発射し{3}の敵ユニットに{1}を与え、4秒間持続する煙幕を残す。煙幕内にいる敵チャンピオンに視界低下と{2}を与える。").DZX(1,boot.BCW.i,60.0,50.0,boot.BCT.DXK(0.6)).DZS(2,boot.BCW.jl,15.0,5.0).DZR(3,boot.BCW.ma,250.0).DZB(70.0,5.0).DYw(20.0,-1.0).DZE(950.0);
+		// 1677
+		E.DXH(boot.BCU.bh).DZO("指定方向に{1}し4秒間{2}する。このスキルは自身が通常攻撃を行う毎に{3}する。対象が建物の場合は無効。").DZQ(1,boot.BCW.km).DZS(2,boot.BCW.ea,30.0,10.0).DZR(3,boot.BCW.id,1).DYz(40.0).DYw(22.0,-2.0).DZE(425.0);
+		// 1686
+		F.DXH(boot.BCU.cb).DZO("指定方向にミニオンを貫通する爆発弾を発射し、hitした敵ユニットに{1}を与える。敵チャンピオンにhitするか最大距離飛ぶとターゲット後方に扇形に爆発が広がり、{3}の敵ユニットに{2}を与える。").DZX(1,boot.BCW.h,250.0,150.0,boot.BCT.DXM(1.5)).DZX(2,boot.BCW.h,200.0,120.0,boot.BCT.DXM(1.2)).DZR(3,boot.BCW.ma,800.0).DYz(100.0).DYw(100.0,-10.0).DZE(1000.0);
+		// 1687
 	},
 	// teemowork.model.SkillDefinition#Hecarim(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DTz:function(A,B,C,D,E,F){
-		// 1671
+		// 1696
 		B.DXH(boot.BCU.dc).DZK("{2}と{1}を得る。").DZW(1,boot.BCW.dh,boot.BCT.DXP(boot.BCW.kd,new boot.BDG(Φ("I",[1,3,6,9,12,15,18]),0.15,0.025,1))).DZQ(2,boot.BCW.kg);
-		// 1680
-		C.DXH(boot.BCU.da).DZO("武器を振り回し{2}の敵ユニットに{1}を与える。このスキルが敵ユニットに命中した場合1スタックを得て、1スタックにつきこのスキルの{4}する(最大2スタック)。スタックは8秒間増加がないと0になる。ミニオンには{3}を与える。").DZX(1,boot.BCW.h,60.0,35.0,boot.BCT.DXM(0.6)).DZR(2,boot.BCW.li,350.0).DZX(3,boot.BCW.h,40.0,23.3,boot.BCT.DXM(0.4)).DZR(4,boot.BCW.id,1).DZB(32.0,2.0).DYv(4.0);
-		// 1689
-		D.DXH(boot.BCU.ci).DZO("4秒間{1}の敵ユニットに毎秒{2}を与える。この効果を受けている敵ユニットがダメージを受けた場合、{3}する（ミニオン及びモンスターに対しては{4}が上限）。").DZR(1,boot.BCW.li,525.0).DZX(2,boot.BCW.i,20.0,10.0,boot.BCT.DXK(0.2)).DZW(3,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.n,20.0)).DZS(4,boot.BCW.mb,90.0,30.0).DZB(50.0,10.0).DYw(22.0,-1.0);
-		// 1698
-		E.DXH(boot.BCU.dc).DZO("3秒間{1}して(最大75%)、その後1秒間その移動速度を維持する。また次の通常攻撃のダメージはこのスキルを使用してから移動した距離に比例し最小で{3}、最大で{4}を与えるようになり、{2}が付与される。").DZX(1,boot.BCW.kc,20.0,0,boot.BCT.DXJ(boot.BCW.lg,18.3)).DZR(2,boot.BCW.jh,300.0).DZX(3,boot.BCW.h,40.0,35.0,boot.BCT.DXM(0.5)).DZX(4,boot.BCW.h,80.0,70.0,boot.BCT.DXM(1)).DYz(60.0).DYw(24.0,-2.0);
-		// 1707
-		F.DXH(boot.BCU.l).DZO(new boot.z("亡霊の騎兵隊を従え指定地点に突撃し、Hecarimと騎兵に触れた敵ユニットに{1}を与える。指定した地点に到着すると衝撃波を放ち、{2}の敵ユニットに{4}を与える。Hecarimが指定した地点に到着しても、騎兵隊は常に最大距離まで突撃する。",0).IY(boot.BCW.jb).V("に陥ったユニットは強制的にHecarimから遠ざかるように移動する。この時、Hecarimとの距離に比例して移動速度が変化する。").W()).DZX(1,boot.BCW.i,150.0,100.0,boot.BCT.DXK(1)).DZQ(2,boot.BCW.li).DZR(4,boot.BCW.jb,1).DYz(100.0).DYw(140.0,-20.0).DZE(1000.0);
-		// 1708
+		// 1705
+		C.DXH(boot.BCU.da).DZO("武器を振り回し{2}の敵ユニットに{1}を与える。このスキルが敵ユニットに命中した場合1スタックを得て、1スタックにつきこのスキルの{4}する(最大2スタック)。スタックは8秒間増加がないと0になる。ミニオンには{3}を与える。").DZX(1,boot.BCW.h,60.0,35.0,boot.BCT.DXM(0.6)).DZR(2,boot.BCW.ma,350.0).DZX(3,boot.BCW.h,40.0,23.3,boot.BCT.DXM(0.4)).DZR(4,boot.BCW.id,1).DZB(32.0,2.0).DYv(4.0);
+		// 1714
+		D.DXH(boot.BCU.ci).DZO("4秒間{1}の敵ユニットに毎秒{2}を与える。この効果を受けている敵ユニットがダメージを受けた場合、{3}する（ミニオン及びモンスターに対しては{4}が上限）。").DZR(1,boot.BCW.ma,525.0).DZX(2,boot.BCW.i,20.0,10.0,boot.BCT.DXK(0.2)).DZW(3,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.n,20.0)).DZS(4,boot.BCW.mj,90.0,30.0).DZB(50.0,10.0).DYw(22.0,-1.0);
+		// 1723
+		E.DXH(boot.BCU.dc).DZO("3秒間{1}して(最大75%)、その後1秒間その移動速度を維持する。また次の通常攻撃のダメージはこのスキルを使用してから移動した距離に比例し最小で{3}、最大で{4}を与えるようになり、{2}が付与される。").DZX(1,boot.BCW.kc,20.0,0,boot.BCT.DXJ(boot.BCW.lo,18.3)).DZR(2,boot.BCW.jh,300.0).DZX(3,boot.BCW.h,40.0,35.0,boot.BCT.DXM(0.5)).DZX(4,boot.BCW.h,80.0,70.0,boot.BCT.DXM(1)).DYz(60.0).DYw(24.0,-2.0);
+		// 1733
+		F.DXH(boot.BCU.l).DZO(new boot.z("亡霊の騎兵隊を従え指定地点に{3}し、Hecarimと騎兵に触れた敵ユニットに{1}を与える。指定した地点に到着すると衝撃波を放ち、{2}の敵ユニットに{4}を与える。Hecarimが指定した地点に到着しても、騎兵隊は常に最大距離まで突撃する。",0).IY(boot.BCW.jb).V("に陥ったユニットは強制的にHecarimから遠ざかるように移動する。この時、Hecarimとの距離に比例して移動速度が変化する。").W()).DZX(1,boot.BCW.i,150.0,100.0,boot.BCT.DXK(1)).DZQ(2,boot.BCW.ma).DZQ(3,boot.BCW.km).DZR(4,boot.BCW.jb,1).DYz(100.0).DYw(140.0,-20.0).DZE(1000.0);
+		// 1734
 	},
 	// teemowork.model.SkillDefinition#Heimerdinger(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUA:function(A,B,C,D,E,F){
-		// 1714
-		B.DXH(boot.BCU.cg).DZK(new boot.z("{1}の味方ユニットと",0).IY(B).V("は{2}を得る。").W()).DZR(1,boot.BCW.li,1000.0).DZU(2,boot.BCW.bl,new boot.BDO(10.0,5.0,0));
-		// 1742
-		C.DXH(boot.BCU.bn).DZO("スタックを消費して指定地点にTurretを最大3つまで設置する。スタックは{1}毎に増加し、最大{2}まで貯めることが出来る。塔に与えるダメージは半分。Heimerdingerが攻撃する若しくは攻撃されている場合、その対象を優先で攻撃。8秒間砲台と距離1000以上離れていた場合、砲台の動作が停止する。<br>HP: {3}<br>砲撃: {4}　{5}<br>ビーム: {6}　{7}　（16秒毎）<br>AR: {8}<br>MR: {9}<br>AS: 1.75<br>視界: 525").DZS(1,boot.BCW.le,24.0,-1.0).DZU(2,boot.BCW.mf,new boot.BDL(Φ("D",[1,1,2.0,2.0,3.0]),0)).DZT(3,boot.BCW.mb,125.0,0,boot.BCT.DXI(25.0),boot.BCT.DXP(boot.BCW.ei,new boot.BDG(Φ("I",[1,9,10,11,12,13,14,15,16,17,18]),5.0,3.5,1))).DZR(4,boot.BCW.li,525.0).DZX(5,boot.BCW.i,12.0,6.0,boot.BCT.DXK(0.15)).DZR(6,boot.BCW.li,1100.0).DZX(7,boot.BCW.i,40.0,20.0,boot.BCT.DXK(0.55)).DZU(8,boot.BCW.ga,new boot.BDG(Φ("I",[1,7,9,11,12,13,14,15,16,17,18]),Φ("D",[10.0,15.0,20.0,25.0,30.0,35.0,40.0,50.0,60.0,70.0,80.0]),2)).DZU(9,boot.BCW.ge,new boot.BDG(Φ("I",[1,9,11,13,14,15,16,17,18]),25.0,5.0,1)).DYz(20.0).DYv(1).DZE(450.0);
-		// 1750
+		// 1740
+		B.DXH(boot.BCU.cg).DZK(new boot.z("{1}の味方ユニットと",0).IY(B).V("は{2}を得る。").W()).DZR(1,boot.BCW.ma,1000.0).DZU(2,boot.BCW.bl,new boot.BDO(10.0,5.0,0));
+		// 1768
+		C.DXH(boot.BCU.bn).DZO("スタックを消費して指定地点にTurretを最大3つまで設置する。スタックは{1}毎に増加し、最大{2}まで貯めることが出来る。塔に与えるダメージは半分。Heimerdingerが攻撃する若しくは攻撃されている場合、その対象を優先で攻撃。8秒間砲台と距離1000以上離れていた場合、砲台の動作が停止する。<br>HP: {3}<br>砲撃: {4}　{5}<br>ビーム: {6}　{7}　（16秒毎）<br>AR: {8}<br>MR: {9}<br>AS: 1.75<br>視界: 525").DZS(1,boot.BCW.lm,24.0,-1.0).DZU(2,boot.BCW.mn,new boot.BDL(Φ("D",[1,1,2.0,2.0,3.0]),0)).DZT(3,boot.BCW.mj,125.0,0,boot.BCT.DXI(25.0),boot.BCT.DXP(boot.BCW.ei,new boot.BDG(Φ("I",[1,9,10,11,12,13,14,15,16,17,18]),5.0,3.5,1))).DZR(4,boot.BCW.ma,525.0).DZX(5,boot.BCW.i,12.0,6.0,boot.BCT.DXK(0.15)).DZR(6,boot.BCW.ma,1100.0).DZX(7,boot.BCW.i,40.0,20.0,boot.BCT.DXK(0.55)).DZU(8,boot.BCW.ga,new boot.BDG(Φ("I",[1,7,9,11,12,13,14,15,16,17,18]),Φ("D",[10.0,15.0,20.0,25.0,30.0,35.0,40.0,50.0,60.0,70.0,80.0]),2)).DZU(9,boot.BCW.ge,new boot.BDG(Φ("I",[1,9,11,13,14,15,16,17,18]),25.0,5.0,1)).DYz(20.0).DYv(1).DZE(450.0);
+		// 1776
 		D.DXH(boot.BCU.ba).DZO("指定地点に目掛けて、5本のミサイルを扇状に発射する。ミサイルが指定地点を通過する後も一直線に飛行し続ける。命中すると{1}を与える。同一対象に対して複数命中し、2発目以降は本来の20%分のDMを与える(同一対象に5発命中すると{2})。ミニオンに対しては60%のダメージを与える。").DZX(1,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.45)).DZX(2,boot.BCW.i,108.0,54.0,boot.BCT.DXK(0.81)).DZB(70.0,10.0).DYv(11.0).DZE(1100.0);
-		// 1762
-		E.DXH(boot.BCU.e).DZO("指定地点に手榴弾を投げ、破裂した{1}にいる敵ユニットに{2}と2秒間{3}を与え、{6}のユニットにはさらに{4}を与える。また指定地点の{5}。").DZR(1,boot.BCW.li,210.0).DZX(2,boot.BCW.i,60.0,40.0,boot.BCT.DXK(0.6)).DZR(3,boot.BCW.jl,35.0).DZR(4,boot.BCW.im,1.25).DZQ(5,boot.BCW.kk).DZR(6,boot.BCW.li,135.0).DYz(85.0).DYw(18.0,-2.0).DZE(925.0);
-		// 1781
-		F.DXH(boot.BCU.cd).DZO(new boot.z("次に使用するスキルの効果を強化する。強化されたスキルは一切のコストなしで使用でき、効果はこのスキルのLvに依存する。発動してから3秒間何も使わない場合は再発動可能になり、もう一度使用するとCD3秒でキャンセルする。<br>",0).IY(C).V("<br>Turretの上限を無視する特殊なTurretを1個設置する。8秒間持続する。砲撃に100%のスプラッシュダメージと1秒間{1}が付与される。<br>HP: {3}<br>砲撃: {4}　{5}<br>ビーム: {6}　{7}　（6秒毎）<br><br>").IY(D).V("<br>指定地点に目掛けて、5本のミサイルを扇状に4回発射する。命中すると{8}を与える。同一対象に対して複数命中し、2発目以降は本来の20%分のDMを与える(同一対象に20発命中すると{9})。<br><br>").IY(E).V("<br>2回までバウンドしつつ3回放電する手榴弾を投げる。作動した箇所にいる{10}にいる敵ユニットに{11}と2秒間{12}を与え、真ん中のユニットにはさらに{13}を与える。").W()).DZR(1,boot.BCW.jl,25.0).DZT(3,boot.BCW.mb,550.0,0,boot.BCT.DXI(50.0),boot.BCT.DXP(boot.BCW.ei,new boot.BDG(Φ("I",[1,9,10,11,12,13,14,15,16,17,18]),0.25,0.175,1))).DZR(4,boot.BCW.li,525.0).DZX(5,boot.BCW.i,70.0,20.0,boot.BCT.DXK(0.3)).DZR(6,boot.BCW.li,1100.0).DZX(7,boot.BCW.i,180.0,60.0,boot.BCT.DXK(0.7)).DZX(8,boot.BCW.i,135.0,45.0,boot.BCT.DXK(0.45)).DZX(9,boot.BCW.i,648.0,216.0,boot.BCT.DXK(2.16)).DZR(10,boot.BCW.li,420.0).DZX(11,boot.BCW.i,150.0,50.0,boot.BCT.DXK(0.6)).DZR(12,boot.BCW.jl,80.0).DZR(13,boot.BCW.im,1.25).DYz(100.0).DYw(100.0,-20.0);
-		// 1782
+		// 1788
+		E.DXH(boot.BCU.e).DZO("指定地点に手榴弾を投げ、破裂した{1}にいる敵ユニットに{2}と2秒間{3}を与え、{6}のユニットにはさらに{4}を与える。また指定地点の{5}。").DZR(1,boot.BCW.ma,210.0).DZX(2,boot.BCW.i,60.0,40.0,boot.BCT.DXK(0.6)).DZR(3,boot.BCW.jl,35.0).DZR(4,boot.BCW.im,1.25).DZQ(5,boot.BCW.lc).DZR(6,boot.BCW.ma,135.0).DYz(85.0).DYw(18.0,-2.0).DZE(925.0);
+		// 1807
+		F.DXH(boot.BCU.cd).DZO(new boot.z("次に使用するスキルの効果を強化する。強化されたスキルは一切のコストなしで使用でき、効果はこのスキルのLvに依存する。発動してから3秒間何も使わない場合は再発動可能になり、もう一度使用するとCD3秒でキャンセルする。<br>",0).IY(C).V("<br>Turretの上限を無視する特殊なTurretを1個設置する。8秒間持続する。砲撃に100%のスプラッシュダメージと1秒間{1}が付与される。<br>HP: {3}<br>砲撃: {4}　{5}<br>ビーム: {6}　{7}　（6秒毎）<br><br>").IY(D).V("<br>指定地点に目掛けて、5本のミサイルを扇状に4回発射する。命中すると{8}を与える。同一対象に対して複数命中し、2発目以降は本来の20%分のDMを与える(同一対象に20発命中すると{9})。<br><br>").IY(E).V("<br>2回までバウンドしつつ3回放電する手榴弾を投げる。作動した箇所にいる{10}にいる敵ユニットに{11}と2秒間{12}を与え、真ん中のユニットにはさらに{13}を与える。").W()).DZR(1,boot.BCW.jl,25.0).DZT(3,boot.BCW.mj,550.0,0,boot.BCT.DXI(50.0),boot.BCT.DXP(boot.BCW.ei,new boot.BDG(Φ("I",[1,9,10,11,12,13,14,15,16,17,18]),0.25,0.175,1))).DZR(4,boot.BCW.ma,525.0).DZX(5,boot.BCW.i,70.0,20.0,boot.BCT.DXK(0.3)).DZR(6,boot.BCW.ma,1100.0).DZX(7,boot.BCW.i,180.0,60.0,boot.BCT.DXK(0.7)).DZX(8,boot.BCW.i,135.0,45.0,boot.BCT.DXK(0.45)).DZX(9,boot.BCW.i,648.0,216.0,boot.BCT.DXK(2.16)).DZR(10,boot.BCW.ma,420.0).DZX(11,boot.BCW.i,150.0,50.0,boot.BCT.DXK(0.6)).DZR(12,boot.BCW.jl,80.0).DZR(13,boot.BCW.im,1.25).DYz(100.0).DYw(100.0,-20.0);
+		// 1808
 	},
 	// teemowork.model.SkillDefinition#Irelia(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUB:function(A,B,C,D,E,F){
-		// 1788
+		// 1814
 		B.DXH(boot.BCU.e).DZK("視界内の敵チャンピオン数に応じて{1}を得る。").DZU(-1,boot.BCW.hn,new boot.BDP(Φ("D",[10.0,25.0,40.0]),0)).DZE(1200.0);
-		// 1798
-		C.DXH(boot.BCU.cc).DZO("対象の敵ユニットに突進し、{1}を与える。このスキルで敵を倒したとき、このスキルの{2}され{3}する。{4}。").DZX(1,boot.BCW.h,20.0,30.0,boot.BCT.DXL(1)).DZQ(2,boot.BCW.id).DZR(3,boot.BCW.ij,35.0).DZQ(4,boot.BCW.kn).DZB(60.0,5.0).DYw(14.0,-2.0).DZE(650.0);
-		// 1806
-		D.DXH(boot.BCU.e).DZK("通常攻撃を行う度に{1}する。").DZS(1,boot.BCW.ih,5.0,2.0).DZO("6秒間通常攻撃に{2}が付与され、PassiveのHP回復量が倍になる。").DZS(2,boot.BCW.j,15.0,15.0).DYz(40.0).DYv(15.0);
-		// 1816
-		E.DXH(boot.BCU.cn).DZO("対象の敵ユニットに{1}を与える。対象の残HPの割合がIreliaより高かった場合{2}間{3}を与え、低かった場合は{4}を与える。").DZX(1,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.ld,1,0.25).DZS(3,boot.BCW.jl,60.0,0).DZS(4,boot.BCW.im,1,0.25).DZB(50.0,5.0).DYv(8.0).DZE(425.0);
 		// 1825
+		C.DXH(boot.BCU.cc).DZO("対象の敵ユニットに{5}し、{1}を与える。このスキルで敵を倒したとき、このスキルの{2}され{3}する。{4}。").DZX(1,boot.BCW.h,20.0,30.0,boot.BCT.DXL(1)).DZQ(2,boot.BCW.id).DZR(3,boot.BCW.ij,35.0).DZQ(4,boot.BCW.lf).DZQ(5,boot.BCW.kn).DZB(60.0,5.0).DYw(14.0,-2.0).DZE(650.0);
+		// 1833
+		D.DXH(boot.BCU.e).DZK("通常攻撃を行う度に{1}する。").DZS(1,boot.BCW.ih,5.0,2.0).DZO("6秒間通常攻撃に{2}が付与され、PassiveのHP回復量が倍になる。").DZS(2,boot.BCW.j,15.0,15.0).DYz(40.0).DYv(15.0);
+		// 1843
+		E.DXH(boot.BCU.cn).DZO("対象の敵ユニットに{1}を与える。対象の残HPの割合がIreliaより高かった場合{2}間{3}を与え、低かった場合は{4}を与える。").DZX(1,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.ll,1,0.25).DZS(3,boot.BCW.jl,60.0,0).DZS(4,boot.BCW.im,1,0.25).DZB(50.0,5.0).DYv(8.0).DZE(425.0);
+		// 1852
 		F.DXH(boot.BCU.e).DZO("指定方向に貫通する刃を飛ばし、当たった敵ユニットに{1}を与える。このスキルは15秒の間、4回まで連続して使用できる(但し、一度使用する度に0.5秒のCDが発生する)。2〜4発目はマナコスト無しで使用可能。ミニオンやモンスターにダメージを与えると{2}し、チャンピオンにダメージを与えると{3}する。").DZT(1,boot.BCW.h,80.0,40.0,boot.BCT.DXK(0.5),boot.BCT.DXM(0.6)).DZW(2,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.n,10.0)).DZW(3,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.n,25.0)).DYz(100.0).DYw(70.0,-10.0).DZE(1000.0);
-		// 1826
+		// 1853
 	},
 	// teemowork.model.SkillDefinition#Janna(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUC:function(A,B,C,D,E,F){
-		// 1832
-		B.DXH(boot.BCU.cl).DZK("{1}の全ての味方チャンピオンは{2}する。").DZR(1,boot.BCW.hi,1250.0).DZR(2,boot.BCW.kc,8.0);
-		// 1840
-		C.DXH(boot.BCU.di).DZO(new boot.z("指定方向に竜巻を発生させ、触れた敵ユニットに{1}と{2}を与える。竜巻は3秒経過するか再度スキル使用で飛ばすことができるが、溜めた時間に比例して",0).IY(boot.BCW.i).V("、射程距離、打ち上げ時間が増加する。").W()).DZT(1,boot.BCW.i,60.0,25.0,boot.BCT.DXK(0.35),boot.BCT.DXQ(boot.BCW.lg,15.0,5.0,boot.BCT.DXK(0.1))).DZX(2,boot.BCW.jg,0.5,0,boot.BCT.DXJ(boot.BCW.lg,0.25)).DZB(90.0,15.0).DYw(14.0,-1.0).DZG(new boot.BCw(850.0,0,1,0),boot.BCT.DXJ(boot.BCW.lg,297.5));
-		// 1851
-		D.DXH(boot.BCU.cl).DZK("{1}し{2}を得る。").DZX(1,boot.BCW.kc,9.0,2.0,boot.BCT.DXK(0.02)).DZQ(2,boot.BCW.kg).DZO("対象の敵ユニットに{3}と3秒間{4}を与える（最大で80%）。またこのスキルがCDの間はPassiveの効果が無くなる。").DZX(3,boot.BCW.i,60.0,55.0,boot.BCT.DXK(0.5)).DZX(4,boot.BCW.jl,24.0,4.0,boot.BCT.DXK(0.06)).DZB(40.0,10.0).DYv(12.0).DZE(600.0);
 		// 1859
+		B.DXH(boot.BCU.cl).DZK("{1}の全ての味方チャンピオンは{2}する。").DZR(1,boot.BCW.hi,1250.0).DZR(2,boot.BCW.kc,8.0);
+		// 1867
+		C.DXH(boot.BCU.di).DZO(new boot.z("指定方向に竜巻を発生させ、触れた敵ユニットに{1}と{2}を与える。竜巻は3秒経過するか再度スキル使用で飛ばすことができるが、溜めた時間に比例して",0).IY(boot.BCW.i).V("、射程距離、打ち上げ時間が増加する。").W()).DZT(1,boot.BCW.i,60.0,25.0,boot.BCT.DXK(0.35),boot.BCT.DXQ(boot.BCW.lo,15.0,5.0,boot.BCT.DXK(0.1))).DZX(2,boot.BCW.jg,0.5,0,boot.BCT.DXJ(boot.BCW.lo,0.25)).DZB(90.0,15.0).DYw(14.0,-1.0).DZG(new boot.BCw(850.0,0,1,0),boot.BCT.DXJ(boot.BCW.lo,297.5));
+		// 1878
+		D.DXH(boot.BCU.cl).DZK("{1}し{2}を得る。").DZX(1,boot.BCW.kc,9.0,2.0,boot.BCT.DXK(0.02)).DZQ(2,boot.BCW.kg).DZO("対象の敵ユニットに{3}と3秒間{4}を与える（最大で80%）。またこのスキルがCDの間はPassiveの効果が無くなる。").DZX(3,boot.BCW.i,60.0,55.0,boot.BCT.DXK(0.5)).DZX(4,boot.BCW.jl,24.0,4.0,boot.BCT.DXK(0.06)).DZB(40.0,10.0).DYv(12.0).DZE(600.0);
+		// 1886
 		E.DXH(boot.BCU.e).DZO("対象の味方チャンピオンか塔に5秒間{1}を付与する。シールドが持続している間は対象は{2}を得る。").DZX(1,boot.BCW.he,80.0,40.0,boot.BCT.DXK(0.7)).DZX(2,boot.BCW.dh,14.0,9.0,boot.BCT.DXK(0.1)).DZB(70.0,10.0).DYv(10.0).DZE(725.0);
-		// 1869
-		F.DXH(boot.BCU.di).DZO("{1}の敵ユニットを{2}して3秒間詠唱する。詠唱中は{1}の味方ユニットは毎秒{3}する。最大で{4}する。").DZR(1,boot.BCW.li,725.0).DZR(2,boot.BCW.jh,875.0).DZX(3,boot.BCW.ih,100.0,50.0,boot.BCT.DXK(0.5)).DZX(4,boot.BCW.ih,300.0,150.0,boot.BCT.DXK(1.5)).DYz(100.0).DYw(150.0,-15.0).DZI(boot.BDD.i);
-		// 1870
+		// 1896
+		F.DXH(boot.BCU.di).DZO("{1}の敵ユニットを{2}して3秒間詠唱する。詠唱中は{1}の味方ユニットは毎秒{3}する。最大で{4}する。").DZR(1,boot.BCW.ma,725.0).DZR(2,boot.BCW.jh,875.0).DZX(3,boot.BCW.ih,100.0,50.0,boot.BCT.DXK(0.5)).DZX(4,boot.BCW.ih,300.0,150.0,boot.BCT.DXK(1.5)).DYz(100.0).DYw(150.0,-15.0).DZI(boot.BDD.i);
+		// 1897
 	},
 	// teemowork.model.SkillDefinition#JarvanIV(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUD:function(A,B,C,D,E,F){
-		// 1879
-		B.DXH(boot.BCU.cb).DZK(new boot.z("通常攻撃に{1}を付与する（400",0).IY(boot.BCW.e).V("が上限）。同一の対象には{2}に一度しか発動しない。").W()).DZW(1,boot.BCW.h,boot.BCT.DXJ(boot.BCW.da,10.0)).DZU(2,boot.BCW.ld,new boot.BDJ(10.0,-2.0,0));
-		// 1889
-		C.DXH(boot.BCU.cl).DZO(new boot.z("槍を突き出して直線上の敵ユニットに{1}を与え、3秒間{2}を与える。",0).IY(E).V("の旗にヒットした場合、旗の位置まで突進し、進路上の敵ユニット({4})に{3}を与える。").W()).DZX(1,boot.BCW.h,70.0,45.0,boot.BCT.DXM(1.2)).DZS(2,boot.BCW.fj,10.0,4.0).DZR(3,boot.BCW.jg,0.75).DZR(4,boot.BCW.li,180.0).DZB(45.0,5.0).DYw(10.0,-1.0).DZE(770.0);
-		// 1897
-		D.DXH(boot.BCU.bj).DZO("5秒間{1}を得て、{2}の敵ユニットに２秒間{3}を与える。").DZX(1,boot.BCW.he,50.0,40.0,boot.BCT.DXN(boot.BCW.ln,20.0,10.0)).DZR(2,boot.BCW.li,300.0).DZS(3,boot.BCW.jl,15.0,5.0).DYz(30.0).DYw(20.0,-2.0);
-		// 1910
-		E.DXH(boot.BCU.de).DZK("{1}する。").DZS(1,boot.BCW.ea,10.0,3.0).DZO("指定地点に旗を投げ、{3}の敵ユニットに{4}を与える。旗は8秒間その場に残り{6}の{7}ともに、{5}の味方チャンピオンは{1}する。(自身はPassiveと合わせて倍の効果を受ける)").DZR(3,boot.BCW.li,75.0).DZX(4,boot.BCW.i,60.0,45.0,boot.BCT.DXK(0.8)).DZR(5,boot.BCW.li,600.0).DZR(6,boot.BCW.li,700.0).DZQ(7,boot.BCW.kk).DYz(55.0).DYw(13.0,-0.5).DZE(830.0);
+		// 1906
+		B.DXH(boot.BCU.cb).DZK(new boot.z("通常攻撃に{1}を付与する（400",0).IY(boot.BCW.e).V("が上限）。同一の対象には{2}に一度しか発動しない。").W()).DZW(1,boot.BCW.h,boot.BCT.DXJ(boot.BCW.da,10.0)).DZU(2,boot.BCW.ll,new boot.BDJ(10.0,-2.0,0));
 		// 1917
-		F.DXH(boot.BCU.ch).DZO("対象の敵チャンピオンまで跳躍して{1}を与え、3.5秒間その周囲に通行不可能の円形の地形を作る。再度このスキルを使用すると地形を破壊できる。").DZX(1,boot.BCW.h,200.0,125.0,boot.BCT.DXM(1.5)).DZB(100.0,25.0).DYw(120.0,-15.0).DZE(650.0);
-		// 1918
+		C.DXH(boot.BCU.cl).DZO(new boot.z("槍を突き出して直線上の敵ユニットに{1}を与え、3秒間{2}を与える。",0).IY(E).V("の旗にヒットした場合、旗の位置まで{3}し、進路上の敵ユニット({4})に{5}を与える。").W()).DZX(1,boot.BCW.h,70.0,45.0,boot.BCT.DXM(1.2)).DZS(2,boot.BCW.fj,10.0,4.0).DZQ(3,boot.BCW.km).DZR(4,boot.BCW.ma,180.0).DZR(5,boot.BCW.jg,0.75).DZB(45.0,5.0).DYw(10.0,-1.0).DZE(770.0);
+		// 1925
+		D.DXH(boot.BCU.bj).DZO("5秒間{1}を得て、{2}の敵ユニットに２秒間{3}を与える。").DZX(1,boot.BCW.he,50.0,40.0,boot.BCT.DXN(boot.BCW.mf,20.0,10.0)).DZR(2,boot.BCW.ma,300.0).DZS(3,boot.BCW.jl,15.0,5.0).DYz(30.0).DYw(20.0,-2.0);
+		// 1938
+		E.DXH(boot.BCU.de).DZK("{1}する。").DZS(1,boot.BCW.ea,10.0,3.0).DZO("指定地点に旗を投げ、{3}の敵ユニットに{4}を与える。旗は8秒間その場に残り{6}の{7}ともに、{5}の味方チャンピオンは{1}する。(自身はPassiveと合わせて倍の効果を受ける)").DZR(3,boot.BCW.ma,75.0).DZX(4,boot.BCW.i,60.0,45.0,boot.BCT.DXK(0.8)).DZR(5,boot.BCW.ma,600.0).DZR(6,boot.BCW.ma,700.0).DZQ(7,boot.BCW.lc).DYz(55.0).DYw(13.0,-0.5).DZE(830.0);
+		// 1946
+		F.DXH(boot.BCU.ch).DZO("対象の敵チャンピオンまで{1}して{2}を与え、3.5秒間その周囲に通行不可能の円形の地形を作る。再度このスキルを使用すると地形を破壊できる。").DZQ(1,boot.BCW.kn).DZX(2,boot.BCW.h,200.0,125.0,boot.BCT.DXM(1.5)).DZB(100.0,25.0).DYw(120.0,-15.0).DZE(650.0);
+		// 1947
 	},
 	// teemowork.model.SkillDefinition#Jax(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUE:function(A,B,C,D,E,F){
-		// 1926
+		// 1955
 		B.DXH(boot.BCU.e).DZK("通常攻撃を行う度にスタックが1増加し、スタック数に比例して{1}する(最大6スタック)。スタックは2.5秒増加がないと0になる。").DZU(-1,boot.BCW.ea,new boot.BDH(4.0,2.0,0));
-		// 1933
-		C.DXH(boot.BCU.e).DZO("対象のユニットまで飛びかかる。対象が敵ユニットの場合、{1}を与える。").DZT(1,boot.BCW.h,70.0,40.0,boot.BCT.DXK(0.6),boot.BCT.DXM(1)).DYz(65.0).DYw(10.0,-1.0).DZE(700.0);
-		// 1940
-		D.DXH(boot.BCU.e).DZO(new boot.z("次の通常攻撃か",0).IY(C).V("に{1}を付与する。建物には無効。{2}。").W()).DZX(1,boot.BCW.i,40.0,35.0,boot.BCT.DXK(0.6)).DZQ(2,boot.BCW.ma).DYz(30.0).DYw(7.0,-1.0);
-		// 1948
-		E.DXH(boot.BCU.di).DZO("2秒間、Jaxが受けるタワー以外の通常攻撃を無効化し、AoEダメージを25%低減、さらに効果終了時に{1}の敵ユニットに{2}と{3}を与える。スキルを使用してから1秒経つと再使用できるようになり、任意に効果を終了できる。通常攻撃を回避する度にこのスキルのダメージが20%ずつ増加する(上限は100%、最大で2倍ダメージ)。").DZR(1,boot.BCW.li,187.5).DZX(2,boot.BCW.h,50.0,25.0,boot.BCT.DXM(0.5)).DZR(3,boot.BCW.im,1).DZB(50.0,10.0).DYw(16.0,-2.0);
-		// 1957
+		// 1963
+		C.DXH(boot.BCU.e).DZO("対象のユニットに{1}する。対象が敵ユニットの場合、{2}を与える。").DZQ(1,boot.BCW.kn).DZT(2,boot.BCW.h,70.0,40.0,boot.BCT.DXK(0.6),boot.BCT.DXM(1)).DYz(65.0).DYw(10.0,-1.0).DZE(700.0);
+		// 1970
+		D.DXH(boot.BCU.e).DZO(new boot.z("次の通常攻撃か",0).IY(C).V("に{1}を付与する。建物には無効。{2}。").W()).DZX(1,boot.BCW.i,40.0,35.0,boot.BCT.DXK(0.6)).DZQ(2,boot.BCW.mi).DYz(30.0).DYw(7.0,-1.0);
+		// 1978
+		E.DXH(boot.BCU.di).DZO("2秒間、Jaxが受けるタワー以外の通常攻撃を無効化し、AoEダメージを25%低減、さらに効果終了時に{1}の敵ユニットに{2}と{3}を与える。スキルを使用してから1秒経つと再使用できるようになり、任意に効果を終了できる。通常攻撃を回避する度にこのスキルのダメージが20%ずつ増加する(上限は100%、最大で2倍ダメージ)。").DZR(1,boot.BCW.ma,187.5).DZX(2,boot.BCW.h,50.0,25.0,boot.BCT.DXM(0.5)).DZR(3,boot.BCW.im,1).DZB(50.0,10.0).DYw(16.0,-2.0);
+		// 1987
 		F.DXH(boot.BCU.dd).DZK("通常攻撃3回毎に{1}を与える。建物には無効。").DZX(1,boot.BCW.i,100.0,60.0,boot.BCT.DXK(0.7)).DZO("8秒間{2}と{3}を得る。").DZX(2,boot.BCW.ga,30.0,20.0,boot.BCT.DXM(0.5)).DZX(3,boot.BCW.ge,30.0,20.0,boot.BCT.DXK(0.2)).DYz(100.0).DYv(80.0);
-		// 1958
+		// 1988
 	},
 	// teemowork.model.SkillDefinition#Jayce(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUF:function(A,B,C,D,E,F){
-		// 1969
+		// 1999
 		B.DXH(boot.BCU.e).DZK(new boot.z("{1}と{2}を得る。",0).IY(F).V("を使用すると1.25秒間{3}し{4}を得る。").W()).DZU(1,boot.BCW.ga,new boot.BDM(F,5.0,10.0,0)).DZU(2,boot.BCW.ge,new boot.BDM(F,5.0,10.0,0)).DZR(-3,boot.BCW.ka,40.0).DZQ(4,boot.BCW.kg);
-		// 1978
-		C.DXH(boot.BCU.dc).DZO("対象の敵ユニットに飛びかかり、対象と{1}の敵ユニットに{2}と2秒間{3}を与える。").DZQ(1,boot.BCW.li).DZX(2,boot.BCW.h,30.0,40.0,boot.BCT.DXM(1)).DZS(3,boot.BCW.jl,30.0,5.0).DZB(40.0,5.0).DYw(16.0,-2.0).DZE(600.0);
-		// 1987
-		D.DXH(boot.BCU.dc).DZK("通常攻撃すると{1}する。").DZS(1,boot.BCW.ij,6.0,2.0).DZO("4秒間雷のオーラを身にまとい、{2}の敵ユニットに毎秒{3}を与える。").DZR(2,boot.BCW.li,285.0).DZX(3,boot.BCW.i,25.0,15.0,boot.BCT.DXK(0.25)).DYz(40.0).DYv(10.0);
-		// 1996
+		// 2009
+		C.DXH(boot.BCU.dc).DZO("対象の敵ユニットに{4}、対象と{1}の敵ユニットに{2}と2秒間{3}を与える。").DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.h,30.0,40.0,boot.BCT.DXM(1)).DZS(3,boot.BCW.jl,30.0,5.0).DZQ(4,boot.BCW.kn).DZB(40.0,5.0).DYw(16.0,-2.0).DZE(600.0);
+		// 2018
+		D.DXH(boot.BCU.dc).DZK("通常攻撃すると{1}する。").DZS(1,boot.BCW.ij,6.0,2.0).DZO("4秒間雷のオーラを身にまとい、{2}の敵ユニットに毎秒{3}を与える。").DZR(2,boot.BCW.ma,285.0).DZX(3,boot.BCW.i,25.0,15.0,boot.BCT.DXK(0.25)).DYz(40.0).DYv(10.0);
+		// 2027
 		E.DXH(boot.BCU.dc).DZO("対象の敵ユニットに{1}と0.75秒{3}を与える。ミニオンやモンスターに対しては{2}が上限。").DZT(1,boot.BCW.i,0,0,boot.BCT.DXM(1),boot.BCT.DXN(boot.BCW.cp,8.0,2.4)).DZS(2,boot.BCW.i,200.0,100.0).DZQ(3,boot.BCW.jh).DZB(40.0,10.0).DYw(15.0,-1.0).DZE(240.0);
-		// 2002
-		F.DXH(boot.BCU.e).DZO("射撃形態に変身する。射程が500になり、次の通常攻撃は５秒間{1}と{2}を与える。{3}。").DZS(1,boot.BCW.ff,10.0,5.0).DZS(2,boot.BCW.fm,10.0,5.0).DZQ(3,boot.BCW.kl);
-		// 2003
+		// 2033
+		F.DXH(boot.BCU.e).DZO("射撃形態に変身する。射程が500になり、次の通常攻撃は５秒間{1}と{2}を与える。{3}。").DZS(1,boot.BCW.ff,10.0,5.0).DZS(2,boot.BCW.fm,10.0,5.0).DZQ(3,boot.BCW.ld);
+		// 2034
 	},
 	// teemowork.model.SkillDefinition#JayceTransformed(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUG:function(A,B,C,D,E,F){
-		// 2013
-		B.DXH(boot.BCU.e).DZK(new boot.z("{1}する。",0).IY(F).V("を使用すると1.25秒間{2}し{3}を得る。").W()).DZR(1,boot.BCW.hi,375.0).DZR(-2,boot.BCW.ka,40.0).DZQ(3,boot.BCW.kg);
-		// 2023
-		C.DXH(boot.BCU.dc).DZO("指定方向に{3}の雷のオーブを飛ばし、敵ユニットに命中するか一定距離で爆発し、{4}の敵ユニットに{1}を与える。オーブがAcceleration Gateによって生成されたゲートを通過した場合、弾速、射程距離、爆発範囲、ダメージが各40%増加し{2}を与える。").DZX(1,boot.BCW.h,70.0,50.0,boot.BCT.DXM(1.2)).DZX(2,boot.BCW.h,98.0,70.0,boot.BCT.DXM(1.68)).DZR(3,boot.BCW.ll,1450.0).DZQ(4,boot.BCW.li).DZB(55.0,5.0).DYv(8.0).DZE(1050.0);
-		// 2029
-		D.DXH(boot.BCU.dc).DZO("４秒間攻撃速度が最大まで上昇する。3回通常攻撃を行うと効果が終了する。また効果中は通常攻撃で与えるダメージが{1}%になる。").DZS(1,boot.BCW.mc,70.0,8.0).DYz(40.0).DYw(13.0,-1.6);
-		// 2036
-		E.DXH(boot.BCU.dc).DZO("4秒間持続するゲート(通りぬけ可能)を生成し、触れた味方ユニットは3秒間{1}する。移動速度は3秒かけて元に戻る。").DZS(1,boot.BCW.kc,30.0,5.0).DYz(50.0).DYv(16.0).DZE(650.0);
 		// 2044
-		F.DXH(boot.BCU.e).DZO("近接形態に変身する。射程が125になり、その間は{1}と{2}を得る。また、次の通常攻撃に{3}を付与する。{4}。").DZS(-1,boot.BCW.ga,5.0,10.0).DZS(-2,boot.BCW.ge,5.0,10.0).DZX(3,boot.BCW.i,20.0,40.0,boot.BCT.DXK(0.4)).DZQ(4,boot.BCW.kl).DYv(6.0);
-		// 2045
+		B.DXH(boot.BCU.e).DZK(new boot.z("{1}する。",0).IY(F).V("を使用すると1.25秒間{2}し{3}を得る。").W()).DZR(1,boot.BCW.hi,375.0).DZR(-2,boot.BCW.ka,40.0).DZQ(3,boot.BCW.kg);
+		// 2054
+		C.DXH(boot.BCU.dc).DZO("指定方向に{3}の雷のオーブを飛ばし、敵ユニットに命中するか一定距離で爆発し、{4}の敵ユニットに{1}を与える。オーブがAcceleration Gateによって生成されたゲートを通過した場合、弾速、射程距離、爆発範囲、ダメージが各40%増加し{2}を与える。").DZX(1,boot.BCW.h,70.0,50.0,boot.BCT.DXM(1.2)).DZX(2,boot.BCW.h,98.0,70.0,boot.BCT.DXM(1.68)).DZR(3,boot.BCW.md,1450.0).DZQ(4,boot.BCW.ma).DZB(55.0,5.0).DYv(8.0).DZE(1050.0);
+		// 2060
+		D.DXH(boot.BCU.dc).DZO("４秒間攻撃速度が最大まで上昇する。3回通常攻撃を行うと効果が終了する。また効果中は通常攻撃で与えるダメージが{1}%になる。").DZS(1,boot.BCW.mk,70.0,8.0).DYz(40.0).DYw(13.0,-1.6);
+		// 2067
+		E.DXH(boot.BCU.dc).DZO("4秒間持続するゲート(通りぬけ可能)を生成し、触れた味方ユニットは3秒間{1}する。移動速度は3秒かけて元に戻る。").DZS(1,boot.BCW.kc,30.0,5.0).DYz(50.0).DYv(16.0).DZE(650.0);
+		// 2075
+		F.DXH(boot.BCU.e).DZO("近接形態に変身する。射程が125になり、その間は{1}と{2}を得る。また、次の通常攻撃に{3}を付与する。{4}。").DZS(-1,boot.BCW.ga,5.0,10.0).DZS(-2,boot.BCW.ge,5.0,10.0).DZX(3,boot.BCW.i,20.0,40.0,boot.BCT.DXK(0.4)).DZQ(4,boot.BCW.ld).DYv(6.0);
+		// 2076
 	},
 	// teemowork.model.SkillDefinition#Jinx(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUH:function(A,B,C,D,E,F){
-		// 2051
+		// 2082
 		B.DXH(boot.BCU.bp).DZK("攻撃した敵チャンピオンまたはタワーが3秒以内に死亡/破壊された場合、4秒間{1}する。移動速度は4秒かけて減衰する。").DZR(-1,boot.BCW.kc,175.0);
-		// 2063
-		C.DXH(boot.BCU.db).DZK(new boot.z("通常攻撃毎にスタックが貯まる。スタック2.5秒持続して最大3スタックで{1}し、また{2}する。",0).IY(boot.BCW.dn).V("の増加量はスタック1で5割、スタック2で7割5分、スタック3で10割となる。攻撃を行わないと、2.5秒毎に1つずつ減少していく。このスキルを使用するとスタックによる攻撃速度増加は無効になる。").W()).DZS(-1,boot.BCW.ea,30.0,10.0).DZU(-2,boot.BCW.ea,new boot.BDG(Φ("D",[0,2.0,4.0,6.0,8.0,10.0,15.0,20.0,25.0,30.0,35.0,40.0,45.0,50.0,55.0,60.0,65.0,70.0]),0)).DZO("通常攻撃は{3}し{4}が付与され、対象の{5}にいる敵にも同様のダメージを与えるようになる。").DZS(3,boot.BCW.hi,75.0,25.0).DZX(4,boot.BCW.h,0,0,boot.BCT.DXL(0.1)).DZR(5,boot.BCW.li,150.0).DYz(20.0).DYv(0.9).DZI(boot.BDD.h);
-		// 2072
-		D.DXH(boot.BCU.ba).DZO("0.6秒詠唱後、指定方向に電撃を放ち、当たった敵ユニットに{1}と2秒間{2}を与え、2秒間そのユニットの{3}。").DZX(1,boot.BCW.h,10.0,50.0,boot.BCT.DXL(1.4)).DZS(2,boot.BCW.jl,30.0,10.0).DZQ(3,boot.BCW.kk).DZB(50.0,10.0).DYw(10.0,-1.0).DZE(1500.0);
-		// 2084
-		E.DXH(boot.BCU.bd).DZO("指定地点に3つの罠を仕掛ける。敵チャンピオンが罠に触れると爆発し、{1}にいる敵ユニットに1.5秒かけて{2}を与え、更に罠に触れた敵チャンピオンに{3}を与える。罠は設置から{6}経過しないと反応せず、ひとつづつしか反応しない。一人のチャンピオンが３つ全ての罠にかかった場合は{5}を与える。罠は5秒経過すると自動的に爆発する。また罠は{4}。").DZR(1,boot.BCW.li,50.0).DZX(2,boot.BCW.i,80.0,55.0,boot.BCT.DXK(1)).DZR(3,boot.BCW.ip,1.5).DZQ(4,boot.BCW.kk).DZX(5,boot.BCW.i,240.0,165.0,boot.BCT.DXK(3.0)).DZR(6,boot.BCW.ld,0.7).DYz(50.0).DYw(24.0,-2.0).DZE(900.0);
-		// 2093
-		F.DXH(boot.BCU.cp).DZO(new boot.z("指定方向にロケットを放つ。ロケットが敵チャンピオンに命中すると爆発し、{1}の敵ユニットに{2}を与える。ロケットが発射から当たるまでの時間に比例してダメージが増加する(1秒で最大値になり{3}を与える、またミニオンに対しては300",0).IY(boot.BCW.e).V("が上限)。ロケットの爆風に当たった敵ユニットには80%のダメージを与える。").W()).DZR(1,boot.BCW.li,225.0).DZT(2,boot.BCW.h,25.0,10.0,boot.BCT.DXM(0.1),boot.BCT.DXN(boot.BCW.db,25.0,5.0)).DZT(3,boot.BCW.h,250.0,100.0,boot.BCT.DXM(1),boot.BCT.DXN(boot.BCW.db,25.0,5.0)).DYz(100.0).DYw(90.0,-15.0).DZE(-1.0);
 		// 2094
+		C.DXH(boot.BCU.db).DZK(new boot.z("通常攻撃毎にスタックが貯まる。スタック2.5秒持続して最大3スタックで{1}し、また{2}する。",0).IY(boot.BCW.dn).V("の増加量はスタック1で5割、スタック2で7割5分、スタック3で10割となる。攻撃を行わないと、2.5秒毎に1つずつ減少していく。このスキルを使用するとスタックによる攻撃速度増加は無効になる。").W()).DZS(-1,boot.BCW.ea,30.0,10.0).DZU(-2,boot.BCW.ea,new boot.BDG(Φ("D",[0,2.0,4.0,6.0,8.0,10.0,15.0,20.0,25.0,30.0,35.0,40.0,45.0,50.0,55.0,60.0,65.0,70.0]),0)).DZO("通常攻撃は{3}し{4}が付与され、対象の{5}にいる敵にも同様のダメージを与えるようになる。").DZS(3,boot.BCW.hi,75.0,25.0).DZX(4,boot.BCW.h,0,0,boot.BCT.DXL(0.1)).DZR(5,boot.BCW.ma,150.0).DYz(20.0).DYv(0.9).DZI(boot.BDD.h);
+		// 2103
+		D.DXH(boot.BCU.ba).DZO("0.6秒詠唱後、指定方向に電撃を放ち、当たった敵ユニットに{1}と2秒間{2}を与え、2秒間そのユニットの{3}。").DZX(1,boot.BCW.h,10.0,50.0,boot.BCT.DXL(1.4)).DZS(2,boot.BCW.jl,30.0,10.0).DZQ(3,boot.BCW.lc).DZB(50.0,10.0).DYw(10.0,-1.0).DZE(1500.0);
+		// 2115
+		E.DXH(boot.BCU.bd).DZO("指定地点に3つの罠を仕掛ける。敵チャンピオンが罠に触れると爆発し、{1}にいる敵ユニットに1.5秒かけて{2}を与え、更に罠に触れた敵チャンピオンに{3}を与える。罠は設置から{6}経過しないと反応せず、ひとつづつしか反応しない。一人のチャンピオンが３つ全ての罠にかかった場合は{5}を与える。罠は5秒経過すると自動的に爆発する。また罠は{4}。").DZR(1,boot.BCW.ma,50.0).DZX(2,boot.BCW.i,80.0,55.0,boot.BCT.DXK(1)).DZR(3,boot.BCW.ip,1.5).DZQ(4,boot.BCW.lc).DZX(5,boot.BCW.i,240.0,165.0,boot.BCT.DXK(3.0)).DZR(6,boot.BCW.ll,0.7).DYz(50.0).DYw(24.0,-2.0).DZE(900.0);
+		// 2124
+		F.DXH(boot.BCU.cp).DZO(new boot.z("指定方向にロケットを放つ。ロケットが敵チャンピオンに命中すると爆発し、{1}の敵ユニットに{2}を与える。ロケットが発射から当たるまでの時間に比例してダメージが増加する(1秒で最大値になり{3}を与える、またミニオンに対しては300",0).IY(boot.BCW.e).V("が上限)。ロケットの爆風に当たった敵ユニットには80%のダメージを与える。").W()).DZR(1,boot.BCW.ma,225.0).DZT(2,boot.BCW.h,25.0,10.0,boot.BCT.DXM(0.1),boot.BCT.DXN(boot.BCW.db,25.0,5.0)).DZT(3,boot.BCW.h,250.0,100.0,boot.BCT.DXM(1),boot.BCT.DXN(boot.BCW.db,25.0,5.0)).DYz(100.0).DYw(90.0,-15.0).DZE(-1.0);
+		// 2125
 	},
 	// teemowork.model.SkillDefinition#Kalista(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUI:function(A,B,C,D,E,F){
-		// 2101
+		// 2132
 		B.DXH(boot.BCU.de).DZK(new boot.z("専用アイテムを使用して、味方チャンピオンに使用すると「魂盟の同志」となる。この効果は試合開始3分までは、他のチャンピオンに付け直すことができる。通常攻撃の",0).IY(boot.BCW.e).V("が10%低下しキャンセル不可能になるが、通常攻撃を行った直後、又は").IY(B).V("を使用した直後に移動を行うと、移動の代わりに一定距離ステップする。ステップの距離は所有している靴アイテムのランクにより増加する。<br>靴なし: 250<br>").IY(boot.BDQ.ce).V(": 300<br>それ以外: 350").W());
-		// 2108
-		C.DXH(boot.BCU.df).DZO(new boot.z("槍を投げ、命中した敵に{1}を与える。このスキルの攻撃は、",0).IY(B).V("、").IY(D).V("、および").IY(E).V("の効果を発動する。命中した敵を倒すと槍が貫通し、次に命中した敵に{1}と倒した敵に貯まっていた").IY(E).V("のスタックを与える。").W()).DZX(1,boot.BCW.h,10.0,60.0,boot.BCT.DXL(1)).DYv(8.0).DZB(50.0,5.0).DZE(1200.0);
-		// 2119
-		D.DXH(boot.BCU.di).DZK("自身と「魂盟の同志」が同じ対象に対し2秒以内に通常攻撃をすると、{1}を与える。ミニオンとモンスターに対しては{2}が上限。この効果は同一の対象には10秒に一度しか発動しない。").DZW(1,boot.BCW.i,boot.BCT.DXN(boot.BCW.cp,10.0,2.5)).DZS(2,boot.BCW.i,75.0,50.0).DZO("スタックを1消費し、指定地点を偵察する霊魂を放つ。霊魂は攻撃能力を持たないが、スキルを使用した地点から指定した地点の間を巡回し、敵チャンピオンに接触した場合、4秒間対象の{3}。スタックの最大値は2、{4}ごとに1増加する。霊魂は7往復後に消滅。").DZQ(3,boot.BCW.kk).DZS(4,boot.BCW.le,90.0,-10.0).DYz(25.0).DYv(30.0).DZE(5000.0);
-		// 2129
-		E.DXH(boot.BCU.ch).DZK(new boot.z("通常攻撃か",0).IY(B).V("が命中すると対象に4秒間槍スタックが貯まる。(CD中を除く)。").W()).DZO("槍スタックが付与されている全ての敵のスタックを消費し、{1}と2秒間{2}を与える。槍スタックが2以上の場合、それぞれにつきダメージが50％上昇する。このスキルで敵ユニットを倒した場合、このスキルの{3}、倒した敵ユニット一体につき{4}する（上限40）。").DZX(1,boot.BCW.h,20.0,10.0,boot.BCT.DXL(0.6)).DZS(2,boot.BCW.jl,25.0,5.0).DZQ(3,boot.BCW.id).DZR(4,boot.BCW.ij,20.0).DYz(40.0).DYw(14.0,-1.5);
-		// 2138
-		F.DXH(boot.BCU.di).DZO("「魂盟の同志」を自分の元へ引き寄せる。引き寄せられた同士はその後4秒間敵からターゲットされなくなるが、その間は行動不能になる。 魂盟の同志はマウスでクリックした地点({3})に向かって跳躍する。このとき、最初に命中した敵のチャンピオンの位置で停止し、{1}の敵全員に{2}を与える。同士はその後、敵の射程距離の限界点に着地する。自身と魂盟の同志の間の距離が1400以内のときのみ発動できる。").DZQ(1,boot.BCW.li).DZS(2,boot.BCW.jg,1.5,0.25).DZR(3,boot.BCW.li,1200.0).DYz(100.0).DYw(120.0,-30.0).DZE(1400.0);
 		// 2139
+		C.DXH(boot.BCU.df).DZO(new boot.z("槍を投げ、命中した敵に{1}を与える。このスキルの攻撃は、",0).IY(B).V("、").IY(D).V("、および").IY(E).V("の効果を発動する。命中した敵を倒すと槍が貫通し、次に命中した敵に{1}と倒した敵に貯まっていた").IY(E).V("のスタックを与える。").W()).DZX(1,boot.BCW.h,10.0,60.0,boot.BCT.DXL(1)).DYv(8.0).DZB(50.0,5.0).DZE(1200.0);
+		// 2150
+		D.DXH(boot.BCU.di).DZK("自身と「魂盟の同志」が同じ対象に対し2秒以内に通常攻撃をすると、{1}を与える。ミニオンとモンスターに対しては{2}が上限。この効果は同一の対象には10秒に一度しか発動しない。").DZW(1,boot.BCW.i,boot.BCT.DXN(boot.BCW.cp,10.0,2.5)).DZS(2,boot.BCW.i,75.0,50.0).DZO("スタックを1消費し、指定地点を偵察する霊魂を放つ。霊魂は攻撃能力を持たないが、スキルを使用した地点から指定した地点の間を巡回し、敵チャンピオンに接触した場合、4秒間対象の{3}。スタックの最大値は2、{4}ごとに1増加する。霊魂は7往復後に消滅。").DZQ(3,boot.BCW.lc).DZS(4,boot.BCW.lm,90.0,-10.0).DYz(25.0).DYv(30.0).DZE(5000.0);
+		// 2160
+		E.DXH(boot.BCU.ch).DZK(new boot.z("通常攻撃か",0).IY(B).V("が命中すると対象に4秒間槍スタックが貯まる。(CD中を除く)。").W()).DZO("槍スタックが付与されている全ての敵のスタックを消費し、{1}と2秒間{2}を与える。槍スタックが2以上の場合、それぞれにつきダメージが50％上昇する。このスキルで敵ユニットを倒した場合、このスキルの{3}、倒した敵ユニット一体につき{4}する（上限40）。").DZX(1,boot.BCW.h,20.0,10.0,boot.BCT.DXL(0.6)).DZS(2,boot.BCW.jl,25.0,5.0).DZQ(3,boot.BCW.id).DZR(4,boot.BCW.ij,20.0).DYz(40.0).DYw(14.0,-1.5);
+		// 2170
+		F.DXH(boot.BCU.di).DZO("「魂盟の同志」を自分の元へ引き寄せる。引き寄せられた同士はその後4秒間{1}になる。 魂盟の同志はマウスでクリックした地点({2})に向かって跳躍する。このとき、最初に命中した敵のチャンピオンの位置で停止し、{2}の敵全員に{3}を与える。同士はその後、敵の射程距離の限界点に着地する。自身と魂盟の同志の間の距離が1400以内のときのみ発動できる。").DZQ(1,boot.BCW.kl).DZR(2,boot.BCW.ma,1200.0).DZQ(3,boot.BCW.ma).DZS(4,boot.BCW.jg,1.5,0.25).DYz(100.0).DYw(120.0,-30.0).DZE(1400.0);
+		// 2171
 	},
 	// teemowork.model.SkillDefinition#Karma(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUJ:function(A,B,C,D,E,F){
-		// 2148
+		// 2180
 		B.DXH(boot.BCU.db).DZK(new boot.z("敵チャンピオンにスキルでダメージを与えた場合",0).IY(F).V("の{1}し、通常攻撃でダメージを与えた場合は{2}する。").W()).DZU(1,boot.BCW.id,new boot.BDJ(2.0,0.5,0)).DZU(2,boot.BCW.id,new boot.BDJ(1,0.25,0));
-		// 2160
-		C.DXH(boot.BCU.l).DZO(new boot.z("指定方向に炎を飛ばし、命中した敵と{1}の敵ユニットに{2}と1.5秒間{3}を与える。",0).IY(F).V("を付与した場合、追加の{4}を与え、更に炎が命中した地点にフィールドを発生させ、フィールドの上にいる敵ユニットに{5}を与える。フィールドは1.5秒後に爆発し、フィールドの上にいる敵ユニットに{6}を与える。炎が敵ユニットに命中しなかった場合、最大距離まで飛んだ後にフィールドが発生する。").W()).DZR(1,boot.BCW.li,250.0).DZX(2,boot.BCW.i,80.0,45.0,boot.BCT.DXK(0.6)).DZR(3,boot.BCW.jl,25.0).DZZ(4,boot.BCW.i,new boot.BDM(F,25.0,50.0,0),boot.BCT.DXK(0.3)).DZR(5,boot.BCW.jl,50.0).DZZ(6,boot.BCW.i,new boot.BDM(F,50.0,100.0,0),boot.BCT.DXK(0.6)).DZB(50.0,5.0).DYw(7.0,-0.5).DZE(950.0);
-		// 2170
-		D.DXH(boot.BCU.di).DZO(new boot.z("対象の敵チャンピオンかモンスターと自身を繋ぐビームを発生させる。0.66秒毎に{1}を与え、2秒間ビームが持続していた場合{2}を与える。",0).IY(F).V("を付与した場合、{3}する。2秒間ビームが持続していた場合、追加で{3}し、").IY(boot.BCW.ip).V("の時間が{4}増加する。").W()).DZX(1,boot.BCW.i,20.0,16.0,boot.BCT.DXK(0.3)).DZS(2,boot.BCW.ip,1,0.25).DZW(3,boot.BCW.ih,boot.BCT.DXQ(boot.BCW.cn,20.0,0,boot.BCT.DXK(0.01))).DZU(4,boot.BCW.ld,new boot.BDM(F,0.5,0.25,0)).DZB(65.0,10.0).DYv(12.0).DZE(675.0);
-		// 2182
-		E.DXH(boot.BCU.db).DZO(new boot.z("対象の味方は4秒間{1}を得て1.5秒間{2}する。",0).IY(F).V("を付与した場合、対象の味方ユニットは追加の{5}を得て、{3}の味方ユニットには最初の対象に付与された").IY(boot.BCW.he).V("の半分の量の").IY(boot.BCW.he).V("が付与される。1.5秒間、シールドを付与されたチャンピオン全員の{4}する。").W()).DZX(1,boot.BCW.he,80.0,30.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.kc,40.0,5.0).DZR(3,boot.BCW.li,600.0).DZR(4,boot.BCW.kc,60.0).DZZ(5,boot.BCW.he,new boot.BDM(F,30.0,60.0,0),boot.BCT.DXK(0.3)).DZR(7,boot.BCW.kc,60.0).DZB(60.0,5.0).DYw(10.0,-0.5).DZE(800.0);
-		// 2184
+		// 2192
+		C.DXH(boot.BCU.l).DZO(new boot.z("指定方向に炎を飛ばし、命中した敵と{1}の敵ユニットに{2}と1.5秒間{3}を与える。",0).IY(F).V("を付与した場合、追加の{4}を与え、更に炎が命中した地点にフィールドを発生させ、フィールドの上にいる敵ユニットに{5}を与える。フィールドは1.5秒後に爆発し、フィールドの上にいる敵ユニットに{6}を与える。炎が敵ユニットに命中しなかった場合、最大距離まで飛んだ後にフィールドが発生する。").W()).DZR(1,boot.BCW.ma,250.0).DZX(2,boot.BCW.i,80.0,45.0,boot.BCT.DXK(0.6)).DZR(3,boot.BCW.jl,25.0).DZZ(4,boot.BCW.i,new boot.BDM(F,25.0,50.0,0),boot.BCT.DXK(0.3)).DZR(5,boot.BCW.jl,50.0).DZZ(6,boot.BCW.i,new boot.BDM(F,50.0,100.0,0),boot.BCT.DXK(0.6)).DZB(50.0,5.0).DYw(7.0,-0.5).DZE(950.0);
+		// 2202
+		D.DXH(boot.BCU.di).DZO(new boot.z("対象の敵チャンピオンかモンスターと自身を繋ぐビームを発生させる。0.66秒毎に{1}を与え、2秒間ビームが持続していた場合{2}を与える。",0).IY(F).V("を付与した場合、{3}する。2秒間ビームが持続していた場合、追加で{3}し、").IY(boot.BCW.ip).V("の時間が{4}増加する。").W()).DZX(1,boot.BCW.i,20.0,16.0,boot.BCT.DXK(0.3)).DZS(2,boot.BCW.ip,1,0.25).DZW(3,boot.BCW.ih,boot.BCT.DXQ(boot.BCW.cn,20.0,0,boot.BCT.DXK(0.01))).DZU(4,boot.BCW.ll,new boot.BDM(F,0.5,0.25,0)).DZB(65.0,10.0).DYv(12.0).DZE(675.0);
+		// 2214
+		E.DXH(boot.BCU.db).DZO(new boot.z("対象の味方は4秒間{1}を得て1.5秒間{2}する。",0).IY(F).V("を付与した場合、対象の味方ユニットは追加の{5}を得て、{3}の味方ユニットには最初の対象に付与された").IY(boot.BCW.he).V("の半分の量の").IY(boot.BCW.he).V("が付与される。1.5秒間、シールドを付与されたチャンピオン全員の{4}する。").W()).DZX(1,boot.BCW.he,80.0,30.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.kc,40.0,5.0).DZR(3,boot.BCW.ma,600.0).DZR(4,boot.BCW.kc,60.0).DZZ(5,boot.BCW.he,new boot.BDM(F,30.0,60.0,0),boot.BCT.DXK(0.3)).DZR(7,boot.BCW.kc,60.0).DZB(60.0,5.0).DYw(10.0,-0.5).DZE(800.0);
+		// 2216
 		F.DXH(boot.BCU.cd).DZO(new boot.z("8秒以内に使用する次のスキルに",0).IY(F).V("を付与する。").W()).DYw(45.0,-3.0);
-		// 2185
+		// 2217
 	},
 	// teemowork.model.SkillDefinition#Karthus(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUK:function(A,B,C,D,E,F){
-		// 2191
+		// 2223
 		B.DXH(boot.BCU.bg).DZK("死亡後7秒間スキルが使用可能。この状態ではスキルコストがなくなる。");
-		// 2201
-		C.DXH(boot.BCU.bm).DZO("指定地点を0.5秒後に爆発させ{1}の敵ユニットに{2}を与える。対象が1体の場合は{3}を与える。また、指定地点の{4}。").DZR(1,boot.BCW.li,50.0).DZX(2,boot.BCW.i,40.0,20.0,boot.BCT.DXK(0.3)).DZX(3,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.6)).DZQ(4,boot.BCW.kk).DZB(20.0,6.0).DYv(1).DZE(875.0);
-		// 2211
-		D.DXH(boot.BCU.cm).DZO("指定地点に{3}の通りぬけ可能な壁を5秒間生成し、触れた敵ユニットに５秒間{1}と{2}を与える。スローの効果は5秒かけて元に戻る。また、指定地点の{4}。").DZR(1,boot.BCW.fp,15.0).DZS(2,boot.BCW.jl,40.0,10.0).DZS(3,boot.BCW.lj,800.0,100.0).DZQ(4,boot.BCW.kk).DYz(100.0).DYv(18.0).DZE(1000.0);
-		// 2221
-		E.DXH(boot.BCU.n).DZK("敵ユニットを倒すと{1}する。").DZS(1,boot.BCW.ij,20.0,7.0).DZO("{2}の敵ユニットに毎秒{3}を与える。").DZR(2,boot.BCW.li,425.0).DZX(3,boot.BCW.i,30.0,20.0,boot.BCT.DXK(0.2)).DZB(30.0,12.0).DYv(0.5).DZI(boot.BDD.g);
-		// 2228
+		// 2233
+		C.DXH(boot.BCU.bm).DZO("指定地点を0.5秒後に爆発させ{1}の敵ユニットに{2}を与える。対象が1体の場合は{3}を与える。また、指定地点の{4}。").DZR(1,boot.BCW.ma,50.0).DZX(2,boot.BCW.i,40.0,20.0,boot.BCT.DXK(0.3)).DZX(3,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.6)).DZQ(4,boot.BCW.lc).DZB(20.0,6.0).DYv(1).DZE(875.0);
+		// 2243
+		D.DXH(boot.BCU.cm).DZO("指定地点に{3}の通りぬけ可能な壁を5秒間生成し、触れた敵ユニットに５秒間{1}と{2}を与える。スローの効果は5秒かけて元に戻る。また、指定地点の{4}。").DZR(1,boot.BCW.fp,15.0).DZS(2,boot.BCW.jl,40.0,10.0).DZS(3,boot.BCW.mb,800.0,100.0).DZQ(4,boot.BCW.lc).DYz(100.0).DYv(18.0).DZE(1000.0);
+		// 2253
+		E.DXH(boot.BCU.n).DZK("敵ユニットを倒すと{1}する。").DZS(1,boot.BCW.ij,20.0,7.0).DZO("{2}の敵ユニットに毎秒{3}を与える。").DZR(2,boot.BCW.ma,425.0).DZX(3,boot.BCW.i,30.0,20.0,boot.BCT.DXK(0.2)).DZB(30.0,12.0).DYv(0.5).DZI(boot.BDD.g);
+		// 2260
 		F.DXH(boot.BCU.bn).DZO("3秒詠唱後にすべての敵チャンピオンに{1}を与える。").DZX(1,boot.BCW.i,250.0,150.0,boot.BCT.DXK(0.6)).DZB(150.0,25.0).DYw(200.0,-20.0).DZE(-1.0);
-		// 2229
+		// 2261
 	},
 	// teemowork.model.SkillDefinition#Kassadin(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUL:function(A,B,C,D,E,F){
-		// 2235
+		// 2267
 		B.DXH(boot.BCU.bg).DZK("{1}を得て、{2}する。").DZQ(1,boot.BCW.kg).DZR(2,boot.BCW.go,15.0);
-		// 2243
+		// 2275
 		C.DXH(boot.BCU.ck).DZO("対象の敵ユニットに{1}を与え、詠唱及びチャネリングを解除する。1.5秒間{2}を得る。").DZX(1,boot.BCW.i,70.0,25.0,boot.BCT.DXK(0.7)).DZX(2,boot.BCW.hg,40.0,30.0,boot.BCT.DXK(0.3)).DZB(70.0,5.0).DYv(9.0).DZE(650.0);
-		// 2251
+		// 2283
 		D.DXH(boot.BCU.bo).DZK("通常攻撃に{1}を付与する。建物には無効。").DZX(1,boot.BCW.i,20.0,0,boot.BCT.DXK(0.1)).DZO("次の通常攻撃は射程が50伸び、{2}を与え{3}する。対象がチャンピオンの場合は回復量が5倍になる。建物には無効。").DZX(2,boot.BCW.i,40.0,25.0,boot.BCT.DXK(0.6)).DZX(3,boot.BCW.ij,0,0,boot.BCT.DXN(boot.BCW.de,4.0,1)).DYv(9.0);
-		// 2259
-		E.DXH(boot.BCU.bo).DZO("指定方向扇形80°の{1}の敵ユニットに{2}と1秒間{3}を与える。近くのチャンピオン(敵味方自分問わず)がスキルを使用するとスタックが増え、6スタックまで溜まると使用可能。スキル使用時にスタックは0になる。").DZR(1,boot.BCW.li,700.0).DZX(2,boot.BCW.i,80.0,25.0,boot.BCT.DXK(0.7)).DZS(3,boot.BCW.jl,50.0,10.0).DYz(80.0).DYv(6.0);
-		// 2268
-		F.DXH(boot.BCU.dh).DZO("指定地点にテレポートし、テレポート先の{1}の敵ユニットに{2}を与える。スキル使用時にスタックが増加し、1スタックごとに追加で{3}を与え、マナコストが倍増する(最大4スタック)。スタックは15秒間増加がないと0になる。").DZR(1,boot.BCW.li,150.0).DZT(2,boot.BCW.i,80.0,20.0,boot.BCT.DXK(0.2),boot.BCT.DXJ(boot.BCW.bp,0.02)).DZT(3,boot.BCW.i,40.0,10.0,boot.BCT.DXK(0.1),boot.BCT.DXJ(boot.BCW.bp,0.01)).DYz(50.0).DYw(6.0,-2.0).DZE(500.0);
-		// 2269
+		// 2291
+		E.DXH(boot.BCU.bo).DZO("指定方向扇形80°の{1}の敵ユニットに{2}と1秒間{3}を与える。近くのチャンピオン(敵味方自分問わず)がスキルを使用するとスタックが増え、6スタックまで溜まると使用可能。スキル使用時にスタックは0になる。").DZR(1,boot.BCW.ma,700.0).DZX(2,boot.BCW.i,80.0,25.0,boot.BCT.DXK(0.7)).DZS(3,boot.BCW.jl,50.0,10.0).DYz(80.0).DYv(6.0);
+		// 2301
+		F.DXH(boot.BCU.dh).DZO("指定地点に{4}し、テレポート先の{1}の敵ユニットに{2}を与える。スキル使用時にスタックが増加し、1スタックごとに追加で{3}を与え、マナコストが倍増する(最大4スタック)。スタックは15秒間増加がないと0になる。").DZR(1,boot.BCW.ma,150.0).DZT(2,boot.BCW.i,80.0,20.0,boot.BCT.DXK(0.2),boot.BCT.DXJ(boot.BCW.bp,0.02)).DZT(3,boot.BCW.i,40.0,10.0,boot.BCT.DXK(0.1),boot.BCT.DXJ(boot.BCW.bp,0.01)).DZQ(4,boot.BCW.ko).DYz(50.0).DYw(6.0,-2.0).DZE(500.0);
+		// 2302
 	},
 	// teemowork.model.SkillDefinition#Katarina(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUM:function(A,B,C,D,E,F){
-		// 2275
+		// 2308
 		B.DXH(boot.BCU.cl).DZK(new boot.z(1).IY(boot.BCW.e).V("を与えてから3秒以内に敵チャンピオンが死亡すると、全てのスキルの{1}する。").W()).DZR(1,boot.BCW.id,15.0);
-		// 2283
-		C.DXH(boot.BCU.e).DZO("対象の敵ユニットにナイフを飛ばし{1}と４秒間Debuffを与える。ナイフは近くの敵ユニット({2})に4回まで跳ね返り、その度にダメージとDebuffを与える。ナイフが与えるダメージは跳ね返る度に10%低下する。Debuffが付与された敵ユニットに通常攻撃またはスキルでダメージを与えると、付与されたDebuffを消費して{3}を与える。").DZX(1,boot.BCW.i,60.0,25.0,boot.BCT.DXK(0.45)).DZR(2,boot.BCW.li,400.0).DZX(3,boot.BCW.i,15.0,15.0,boot.BCT.DXK(0.15)).DYw(10.0,-0.5).DZE(675.0);
-		// 2290
-		D.DXH(boot.BCU.e).DZO("{1}にいる敵ユニットに{2}を与える。このスキルが敵チャンピオンに命中した場合、1秒間{3}する。").DZR(1,boot.BCW.li,375.0).DZT(2,boot.BCW.i,40.0,35.0,boot.BCT.DXK(0.25),boot.BCT.DXM(0.6)).DZS(3,boot.BCW.kc,15.0,5.0).DYv(4.0);
-		// 2297
-		E.DXH(boot.BCU.dc).DZO("対象のユニットの後方までワープし、それが敵ユニットの場合は{1}を与える。また1.5秒間{2}する。").DZX(1,boot.BCW.i,40.0,30.0,boot.BCT.DXK(0.25)).DZR(2,boot.BCW.gj,15.0).DYw(12.0,-1.5).DZE(700.0);
-		// 2305
-		F.DXH(boot.BCU.cg).DZO("最大2.5秒間回転する。その間は0.25秒毎に{2}にいる最も近い敵チャンピオン3体にナイフを連続で飛ばし、都度{1}と3秒間HP回復量-50%を与える。敵一体に与える最大DMは{3}。").DZT(1,boot.BCW.i,35.0,20.0,boot.BCT.DXK(0.25),boot.BCT.DXM(0.375)).DZR(2,boot.BCW.li,550.0).DZT(3,boot.BCW.i,350.0,200.0,boot.BCT.DXK(2.5),boot.BCT.DXM(3.75)).DYw(90.0,-30.0).DZI(boot.BDD.i);
-		// 2306
+		// 2316
+		C.DXH(boot.BCU.e).DZO("対象の敵ユニットにナイフを飛ばし{1}と４秒間Debuffを与える。ナイフは近くの敵ユニット({2})に4回まで跳ね返り、その度にダメージとDebuffを与える。ナイフが与えるダメージは跳ね返る度に10%低下する。Debuffが付与された敵ユニットに通常攻撃またはスキルでダメージを与えると、付与されたDebuffを消費して{3}を与える。").DZX(1,boot.BCW.i,60.0,25.0,boot.BCT.DXK(0.45)).DZR(2,boot.BCW.ma,400.0).DZX(3,boot.BCW.i,15.0,15.0,boot.BCT.DXK(0.15)).DYw(10.0,-0.5).DZE(675.0);
+		// 2323
+		D.DXH(boot.BCU.e).DZO("{1}にいる敵ユニットに{2}を与える。このスキルが敵チャンピオンに命中した場合、1秒間{3}する。").DZR(1,boot.BCW.ma,375.0).DZT(2,boot.BCW.i,40.0,35.0,boot.BCT.DXK(0.25),boot.BCT.DXM(0.6)).DZS(3,boot.BCW.kc,15.0,5.0).DYv(4.0);
+		// 2331
+		E.DXH(boot.BCU.dc).DZO("対象のユニットの後方まで{3}し、それが敵ユニットの場合は{1}を与える。また1.5秒間{2}する。").DZX(1,boot.BCW.i,40.0,30.0,boot.BCT.DXK(0.25)).DZR(2,boot.BCW.gj,15.0).DZQ(3,boot.BCW.kp).DYw(12.0,-1.5).DZE(700.0);
+		// 2339
+		F.DXH(boot.BCU.cg).DZO("最大2.5秒間回転する。その間は0.25秒毎に{2}にいる最も近い敵チャンピオン3体にナイフを連続で飛ばし、都度{1}と3秒間HP回復量-50%を与える。敵一体に与える最大DMは{3}。").DZT(1,boot.BCW.i,35.0,20.0,boot.BCT.DXK(0.25),boot.BCT.DXM(0.375)).DZR(2,boot.BCW.ma,550.0).DZT(3,boot.BCW.i,350.0,200.0,boot.BCT.DXK(2.5),boot.BCT.DXM(3.75)).DYw(90.0,-30.0).DZI(boot.BDD.i);
+		// 2340
 	},
 	// teemowork.model.SkillDefinition#Kayle(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUN:function(A,B,C,D,E,F){
-		// 2315
+		// 2349
 		B.DXH(boot.BCU.g).DZK("敵チャンピオンに通常攻撃を行う度に、{1}と{2}を与える。この効果は5秒間持続し、5回までスタックする。").DZR(1,boot.BCW.fj,3.0).DZR(2,boot.BCW.fp,3.0);
-		// 2324
-		C.DXH(boot.BCU.be).DZO(new boot.z("{1}の光の弾を放ち、対象の敵ユニットに{2}、3秒間{3}と",0).IY(B).V("のDebuffを与える。").W()).DZR(1,boot.BCW.ll,1500.0).DZT(2,boot.BCW.i,60.0,50.0,boot.BCT.DXK(0.6),boot.BCT.DXM(1)).DZS(3,boot.BCW.jl,35.0,5.0).DZB(70.0,5.0).DYv(8.0).DZE(650.0);
-		// 2332
+		// 2358
+		C.DXH(boot.BCU.be).DZO(new boot.z("{1}の光の弾を放ち、対象の敵ユニットに{2}、3秒間{3}と",0).IY(B).V("のDebuffを与える。").W()).DZR(1,boot.BCW.md,1500.0).DZT(2,boot.BCW.i,60.0,50.0,boot.BCT.DXK(0.6),boot.BCT.DXM(1)).DZS(3,boot.BCW.jl,35.0,5.0).DZB(70.0,5.0).DYv(8.0).DZE(650.0);
+		// 2366
 		D.DXH(boot.BCU.be).DZO("対象の味方チャンピオンは{1}し、3秒間{2}する。").DZX(1,boot.BCW.ih,60.0,45.0,boot.BCT.DXK(0.45)).DZX(2,boot.BCW.kc,18.0,3.0,boot.BCT.DXK(0.07)).DZB(60.0,10.0).DYv(15.0).DZE(900.0);
-		// 2341
-		E.DXH(boot.BCU.de).DZK("通常攻撃に{1}を付与する。").DZX(1,boot.BCW.i,10.0,5.0,boot.BCT.DXK(0.15)).DZO("10秒間{2}する。更に通常攻撃に{1}が付与され、{3}のスプラッシュ効果が付く。塔を攻撃する時はスプラッシュ効果は発生しない。").DZR(2,boot.BCW.hi,400.0).DZR(3,boot.BCW.li,150.0).DYz(45.0).DYv(16.0);
-		// 2343
-		F.DXH(boot.BCU.bp).DZO("対象の味方チャンピオンを{1}間無敵(ダメージ無効)にする。").DZS(1,boot.BCW.ld,2.0,0.5).DYw(90.0,-15.0).DZE(900.0);
-		// 2344
+		// 2375
+		E.DXH(boot.BCU.de).DZK("通常攻撃に{1}を付与する。").DZX(1,boot.BCW.i,10.0,5.0,boot.BCT.DXK(0.15)).DZO("10秒間{2}する。更に通常攻撃に{1}が付与され、{3}のスプラッシュ効果が付く。塔を攻撃する時はスプラッシュ効果は発生しない。").DZR(2,boot.BCW.hi,400.0).DZR(3,boot.BCW.ma,150.0).DYz(45.0).DYv(16.0);
+		// 2377
+		F.DXH(boot.BCU.bp).DZO("対象の味方チャンピオンは{1}間{2}を得る。").DZS(1,boot.BCW.ll,2.0,0.5).DZQ(2,boot.BCW.kh).DYw(90.0,-15.0).DZE(900.0);
+		// 2378
 	},
 	// teemowork.model.SkillDefinition#Kennen(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUO:function(A,B,C,D,E,F){
-		// 2354
+		// 2388
 		B.DXH(boot.BCU.de).DZK("スキルヒット時対象に雷スタックを追加する。スタックが3つ溜まると対象を{1}させ、{2}する。スタックは6秒間増加がないと0になる。同一の敵チャンピオンを7秒以内に2度スタンさせると、{3}を与える。").DZR(1,boot.BCW.im,1.25).DZR(2,boot.BCW.ik,25.0).DZR(3,boot.BCW.im,0.5);
-		// 2361
+		// 2395
 		C.DXH(boot.BCU.e).DZO("指定方向に手裏剣を飛ばし、当たった敵ユニットに{1}と雷スタックを与える。").DZX(1,boot.BCW.i,75.0,40.0,boot.BCT.DXK(0.75)).DYw(8.0,-1.0).DZE(1050.0).DZA(boot.BCW.cg,65.0,-5.0);
-		// 2370
-		D.DXH(boot.BCU.de).DZK("通常攻撃5回毎に{1}と雷スタックを与える。").DZX(1,boot.BCW.i,0,0,boot.BCT.DXL(0.4)).DZO("{3}の雷スタックの付与されている敵ユニットに{2}と雷スタックを与える。").DZR(3,boot.BCW.li,800.0).DZX(2,boot.BCW.i,65.0,30.0,boot.BCT.DXK(0.55)).DYw(14.0,-2.0).DZA(boot.BCW.cg,45.0,0);
-		// 2381
+		// 2404
+		D.DXH(boot.BCU.de).DZK("通常攻撃5回毎に{1}と雷スタックを与える。").DZX(1,boot.BCW.i,0,0,boot.BCT.DXL(0.4)).DZO("{3}の雷スタックの付与されている敵ユニットに{2}と雷スタックを与える。").DZR(3,boot.BCW.ma,800.0).DZX(2,boot.BCW.i,65.0,30.0,boot.BCT.DXK(0.55)).DYw(14.0,-2.0).DZA(boot.BCW.cg,45.0,0);
+		// 2415
 		E.DXH(boot.BCU.e).DZO(new boot.z("2秒間{1}し{6}を得る。この間は通常攻撃が不可能になり、",0).IY(A).V("に触れた敵ユニットに{2}と雷スタックを与え、一度だけ{3}する。また、4秒間{4}と{5}を得る。ミニオンやモンスターに与えるダメージは半分になる。").W()).DZR(1,boot.BCW.kc,100.0).DZX(2,boot.BCW.i,85.0,40.0,boot.BCT.DXK(0.6)).DZR(3,boot.BCW.ik,40.0).DZS(4,boot.BCW.ga,10.0,10.0).DZS(5,boot.BCW.ge,10.0,10.0).DZQ(6,boot.BCW.kg).DYw(10.0,-1.0).DZA(boot.BCW.cg,100.0,-5.0);
-		// 2389
-		F.DXH(boot.BCU.ck).DZO(new boot.z("{1}に嵐を発生させ、{4}間0.25秒毎に範囲内にいる敵チャンピオン一人をランダムに雷を落とし{3}と雷スタックを与える。同一の対象には3回までヒットし、最大",0).IY(boot.BCW.e).V("は{5}。また、範囲内に複数の対象がいる場合、同一の対象に連続してはヒットしない。雷スタックはヒットする毎に蓄積する。").W()).DZR(1,boot.BCW.li,550.0).DZX(3,boot.BCW.i,80.0,65.0,boot.BCT.DXK(0.4)).DZS(4,boot.BCW.ld,3.0,1).DZX(5,boot.BCW.i,240.0,195.0,boot.BCT.DXK(1.2)).DYv(120.0);
-		// 2390
+		// 2423
+		F.DXH(boot.BCU.ck).DZO(new boot.z("{1}に嵐を発生させ、{4}間0.25秒毎に範囲内にいる敵チャンピオン一人をランダムに雷を落とし{3}と雷スタックを与える。同一の対象には3回までヒットし、最大",0).IY(boot.BCW.e).V("は{5}。また、範囲内に複数の対象がいる場合、同一の対象に連続してはヒットしない。雷スタックはヒットする毎に蓄積する。").W()).DZR(1,boot.BCW.ma,550.0).DZX(3,boot.BCW.i,80.0,65.0,boot.BCT.DXK(0.4)).DZS(4,boot.BCW.ll,3.0,1).DZX(5,boot.BCW.i,240.0,195.0,boot.BCT.DXK(1.2)).DYv(120.0);
+		// 2424
 	},
 	// teemowork.model.SkillDefinition#Khazix(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUP:function(A,B,C,D,E,F){
-		// 2416
+		// 2450
 		B.DXH(boot.BCU.l).DZK(new boot.z(1).IY(A).V("が敵チームの視界から消えた時に発動する。敵チャンピオンに対する次の通常攻撃に{1}と2秒間{2}を付与する。この効果は敵チームの視界に現れても効果が消費されるまでは失われない。").W()).DZV(1,boot.BCW.i,new boot.BDG(Φ("D",[15.0,20.0,25.0,35.0,45.0,55.0,65.0,75.0,85.0,95.0,110.0,125.0,140.0,150.0,160.0,170.0,180.0,190.0]),0),boot.BCT.DXK(0.5),null).DZR(2,boot.BCW.jl,25.0);
-		// 2428
-		C.DXH(boot.BCU.dc).DZK("{1}に仲間がいない孤立している敵ユニットにマークを付与する。").DZR(1,boot.BCW.li,425.0).DZO("対象の敵ユニットに{2}を与える。孤立している敵には{3}を与える。<br>進化すると孤立した敵ユニットに追加で{4}を与え、このスキルの射程と通常攻撃の{5}する。").DZX(2,boot.BCW.h,70.0,25.0,boot.BCT.DXM(1.2)).DZX(3,boot.BCW.h,91.0,32.5,boot.BCT.DXM(1.56)).DZT(4,boot.BCW.h,0,0,boot.BCT.DXM(1.04),boot.BCT.DXI(10.0)).DZR(5,boot.BCW.hi,50.0).DYz(25.0).DYv(3.5).DZE(325.0);
-		// 2441
-		D.DXH(boot.BCU.cp).DZO(new boot.z("指定方向に敵ユニットに命中すると爆発する針を発射し、{1}の敵ユニットに{2}と2秒間{4}を与える。自身が爆発範囲内にいる場合は更に{3}する。モンスターに対しては{5}を与える。",0).IY(E).V("中には発動出来ない。<br>進化すると指定方向に対して扇形になるような3方向に針を発射するようになり、2秒間{6}を与え{7}。").W()).DZQ(1,boot.BCW.li).DZX(2,boot.BCW.h,80.0,30.0,boot.BCT.DXM(1)).DZX(3,boot.BCW.ih,60.0,25.0,boot.BCT.DXK(0.5)).DZR(4,boot.BCW.jl,20.0).DZX(5,boot.BCW.h,96.0,36.0,boot.BCT.DXM(1.2)).DZR(6,boot.BCW.jl,50.0).DZQ(7,boot.BCW.kk).DYv(10.0).DZB(55.0,5.0).DZE(1000.0);
-		// 2451
-		E.DXH(boot.BCU.bf).DZO("指定地点にジャンプし、{1}の敵ユニットに{2}を与える。<br>進化すると射程が300増加し、{3}場合にこのスキルの{4}する。").DZQ(1,boot.BCW.li).DZX(2,boot.BCW.h,65.0,35.0,boot.BCT.DXM(0.2)).DZQ(3,boot.BCW.lp).DZQ(4,boot.BCW.id).DYz(50.0).DYw(20.0,-2.0).DZE(600.0);
-		// 2461
-		F.DXH(boot.BCU.bj).DZK("このスキルを取得、またはランクが上がる毎に、いずれかのスキルを選んで進化させることができる。").DZO(new boot.z("1秒間{1}状態になり、{2}し{3}を得る。また",0).IY(B).V("の効果が発動する。15秒以内であれば1回だけ再使用できる。<br>進化すると、効果時間が2秒になり、再使用回数が2回になる。").W()).DZQ(1,boot.BCW.kj).DZR(2,boot.BCW.kc,40.0).DZQ(3,boot.BCW.kg).DZR(4,boot.BCW.gj,30.0).DYz(100.0).DYw(100.0,-10.0);
 		// 2462
+		C.DXH(boot.BCU.dc).DZK("{1}に仲間がいない孤立している敵ユニットにマークを付与する。").DZR(1,boot.BCW.ma,425.0).DZO("対象の敵ユニットに{2}を与える。孤立している敵には{3}を与える。<br>進化すると孤立した敵ユニットに追加で{4}を与え、このスキルの射程と通常攻撃の{5}する。").DZX(2,boot.BCW.h,70.0,25.0,boot.BCT.DXM(1.2)).DZX(3,boot.BCW.h,91.0,32.5,boot.BCT.DXM(1.56)).DZT(4,boot.BCW.h,0,0,boot.BCT.DXM(1.04),boot.BCT.DXI(10.0)).DZR(5,boot.BCW.hi,50.0).DYz(25.0).DYv(3.5).DZE(325.0);
+		// 2475
+		D.DXH(boot.BCU.cp).DZO(new boot.z("指定方向に敵ユニットに命中すると爆発する針を発射し、{1}の敵ユニットに{2}と2秒間{4}を与える。自身が爆発範囲内にいる場合は更に{3}する。モンスターに対しては{5}を与える。",0).IY(E).V("中には発動出来ない。<br>進化すると指定方向に対して扇形になるような3方向に針を発射するようになり、2秒間{6}を与え{7}。").W()).DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.h,80.0,30.0,boot.BCT.DXM(1)).DZX(3,boot.BCW.ih,60.0,25.0,boot.BCT.DXK(0.5)).DZR(4,boot.BCW.jl,20.0).DZX(5,boot.BCW.h,96.0,36.0,boot.BCT.DXM(1.2)).DZR(6,boot.BCW.jl,50.0).DZQ(7,boot.BCW.lc).DYv(10.0).DZB(55.0,5.0).DZE(1000.0);
+		// 2486
+		E.DXH(boot.BCU.bf).DZO("指定地点に{5}し、{1}の敵ユニットに{2}を与える。<br>進化すると射程が300増加し、{3}場合にこのスキルの{4}する。").DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.h,65.0,35.0,boot.BCT.DXM(0.2)).DZQ(3,boot.BCW.mh).DZQ(4,boot.BCW.id).DZQ(5,boot.BCW.km).DYz(50.0).DYw(20.0,-2.0).DZE(600.0);
+		// 2496
+		F.DXH(boot.BCU.bj).DZK("このスキルを取得、またはランクが上がる毎に、いずれかのスキルを選んで進化させることができる。").DZO(new boot.z("1秒間{1}状態になり、{2}し{3}を得る。また",0).IY(B).V("の効果が発動する。15秒以内であれば1回だけ再使用できる。<br>進化すると、効果時間が2秒になり、再使用回数が2回になる。").W()).DZQ(1,boot.BCW.lb).DZR(2,boot.BCW.kc,40.0).DZQ(3,boot.BCW.kg).DZR(4,boot.BCW.gj,30.0).DYz(100.0).DYw(100.0,-10.0);
+		// 2497
 	},
 	// teemowork.model.SkillDefinition#Kindred(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUQ:function(A,B,C,D,E,F){
-		// 2472
-		B.DXH(boot.BCU.dl).DZK(new boot.z(1).IY(A).V("は非戦闘時に敵チャンピオンを一体選択すると8秒後に狩猟マークを付与する。一度選択すると対象が死なない限りは90秒間対象の変更が出来ず、また240秒間同一の対象を選択することは出来ない。<br>Wolfはゲーム内時間2:30以降に一定時間ごとに敵ジャングル内の伝説級でないモンスターをランダムに一体選んで狩猟マークを付与する。この狩猟マークは敵チームからも視認される。6スタック溜まるとこの効果は発生しなくなる。<br><br>狩猟マークが付与された敵ユニットの{1}と狩猟スタックが1増加する。1狩猟スタックごとに").IY(A).V("の通常攻撃は追加{2}を与える（モンスターに対しては75が上限）。").IY(A).V("の関与に関わらず対象が死ぬと狩猟マークは消滅する。").W()).DZQ(1,boot.BCW.lp).DZW(2,boot.BCW.h,boot.BCT.DXJ(boot.BCW.da,1.25)).DYv(-25.0);
-		// 2481
-		C.DXH(boot.BCU.dl).DZO(new boot.z("指定方向に移動し{1}の敵ユニット3体までに(チャンピオンを優先){2}を与える。",0).IY(D).V("のフィールド内で使用した場合、このスキルの{3}が2秒になる。").W()).DZR(1,boot.BCW.li,500.0).DZX(2,boot.BCW.h,60.0,30.0,boot.BCT.DXL(0.2)).DZQ(3,boot.BCW.ib).DYz(30.0).DYv(9.0).DZE(340.0);
-		// 2492
-		D.DXH(boot.BCU.dl).DZK("移動によりスタックが増加し、100になると次の通常攻撃に{1}を付与し、{2}する。").DZX(1,boot.BCW.h,60.0,0,boot.BCT.DXI(3.0)).DZW(2,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.m,1)).DZO(new boot.z(1).IY(A).V("を中心に8秒間持続するフィールドを展開する。").IY(A).V("がフィールドの範囲内にいる間、Wolfがフィールド内部の敵を攻撃して（攻撃速度は").IY(A).V("の攻撃速度に比例）{3}と狩猟スタック数に比例して{4}を与える。攻撃対象は").IY(A).V("の通常攻撃によって変更可能。フィールドは離脱すると消滅する。").W()).DZX(3,boot.BCW.h,25.0,5.0,boot.BCT.DXL(0.4)).DZW(4,boot.BCW.h,boot.BCT.DXJ(boot.BCW.da,0.5)).DYz(40.0).DYw(18.0,-1.0).DZE(800.0);
-		// 2499
-		E.DXH(boot.BCU.dl).DZO("対象に1秒間{1}を与える。その対象に連続して攻撃を3回成功させると{2}を与える（モンスターに対しては300が上限）。").DZR(1,boot.BCW.jj,70.0).DZT(2,boot.BCW.h,80.0,30.0,boot.BCT.DXL(0.2),boot.BCT.DXJ(boot.BCW.cp,5.0)).DYz(70.0).DYw(16.0,-1.0);
-		// 2506
-		F.DXH(boot.BCU.dl).DZO(new boot.z("対象の味方チャンピオンを中心に、4秒間持続する魔法陣を展開する。魔法陣の{1}にいる全てのユニットは、",0).IY(boot.BCW.bf).V("が10%以下にならなくなる。魔法陣が消滅すると{1}にいる全てのユニットは{2}する。").W()).DZQ(1,boot.BCW.li).DZS(2,boot.BCW.ih,200.0,50.0).DYz(100.0).DYw(150.0,-20.0);
 		// 2507
+		B.DXH(boot.BCU.dl).DZK(new boot.z(1).IY(A).V("は非戦闘時に敵チャンピオンを一体選択すると8秒後に狩猟マークを付与する。一度選択すると対象が死なない限りは90秒間対象の変更が出来ず、また240秒間同一の対象を選択することは出来ない。<br>Wolfはゲーム内時間2:30以降に一定時間ごとに敵ジャングル内の伝説級でないモンスターをランダムに一体選んで狩猟マークを付与する。この狩猟マークは敵チームからも視認される。6スタック溜まるとこの効果は発生しなくなる。<br><br>狩猟マークが付与された敵ユニットの{1}と狩猟スタックが1増加する。1狩猟スタックごとに").IY(A).V("の通常攻撃は追加{2}を与える（モンスターに対しては75が上限）。").IY(A).V("の関与に関わらず対象が死ぬと狩猟マークは消滅する。").W()).DZQ(1,boot.BCW.mh).DZW(2,boot.BCW.h,boot.BCT.DXJ(boot.BCW.da,1.25)).DYv(-50.0);
+		// 2517
+		C.DXH(boot.BCU.dl).DZO(new boot.z("指定方向に{4}し{1}の敵ユニット3体までに(チャンピオンを優先){2}を与える。",0).IY(D).V("のフィールド内で使用した場合、このスキルの{3}が2秒になる。").W()).DZR(1,boot.BCW.ma,500.0).DZX(2,boot.BCW.h,60.0,30.0,boot.BCT.DXL(0.2)).DZQ(3,boot.BCW.ib).DZQ(4,boot.BCW.km).DYz(30.0).DYv(9.0).DZE(340.0);
+		// 2528
+		D.DXH(boot.BCU.dl).DZK("移動によりスタックが増加し、100になると次の通常攻撃に{1}を付与し、{2}する。").DZX(1,boot.BCW.h,60.0,0,boot.BCT.DXI(3.0)).DZW(2,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.m,1)).DZO(new boot.z(1).IY(A).V("を中心に8秒間持続するフィールドを展開する。").IY(A).V("がフィールドの範囲内にいる間、Wolfがフィールド内部の敵を攻撃して（攻撃速度は").IY(A).V("の攻撃速度に比例）{3}と狩猟スタック数に比例して{4}を与える。攻撃対象は").IY(A).V("の通常攻撃によって変更可能。フィールドは離脱すると消滅する。").W()).DZX(3,boot.BCW.h,25.0,5.0,boot.BCT.DXL(0.4)).DZW(4,boot.BCW.h,boot.BCT.DXJ(boot.BCW.da,0.5)).DYz(40.0).DYw(18.0,-1.0).DZE(800.0);
+		// 2535
+		E.DXH(boot.BCU.dl).DZO("対象に1秒間{1}を与える。その対象に連続して攻撃を3回成功させると{2}を与える（モンスターに対しては300が上限）。").DZR(1,boot.BCW.jj,70.0).DZT(2,boot.BCW.h,80.0,30.0,boot.BCT.DXL(0.2),boot.BCT.DXJ(boot.BCW.cp,5.0)).DYz(70.0).DYw(16.0,-1.0);
+		// 2542
+		F.DXH(boot.BCU.dl).DZO(new boot.z("対象の味方チャンピオンを中心に、4秒間持続する魔法陣を展開する。魔法陣の{1}にいる全てのユニットは、",0).IY(boot.BCW.bf).V("が10%以下にならない。魔法陣が消滅すると{1}にいる全てのユニットは{2}する。").W()).DZQ(1,boot.BCW.ma).DZS(2,boot.BCW.ih,200.0,50.0).DYz(100.0).DYw(150.0,-20.0);
+		// 2543
 	},
 	// teemowork.model.SkillDefinition#KogMaw(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUR:function(A,B,C,D,E,F){
-		// 2516
-		B.DXH(boot.BCU.e).DZK("死亡すると4秒後に自爆して{2}の敵ユニットに{1}を与える。自爆するまでの間は徐々に移動速度が増加する(最大時40%増加)。").DZX(1,boot.BCW.j,100.0,0,boot.BCT.DXI(25.0)).DZQ(2,boot.BCW.li);
-		// 2527
-		C.DXH(boot.BCU.bp).DZK("{1}する。").DZS(1,boot.BCW.ea,10.0,5.0).DZO("対象の敵ユニットに{2}を与え、4秒間{3}と{4}を与える。").DZX(2,boot.BCW.i,80.0,50.0,boot.BCT.DXK(0.5)).DZS(3,boot.BCW.fj,12.0,4.0).DZS(4,boot.BCW.fp,12.0,4.0).DYz(60.0).DYv(8.0).DZE(1000.0);
-		// 2534
-		D.DXH(boot.BCU.bg).DZO("8秒間通常攻撃の{1}し、通常攻撃時に{2}を追加で与える。").DZS(1,boot.BCW.hi,130.0,20.0).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,2.0,1,boot.BCT.DXK(0.01))).DYz(50.0).DYv(17.0);
-		// 2542
-		E.DXH(boot.BCU.ca).DZO("指定方向に貫通する弾を発射し、当たった敵ユニットに{1}と1秒間{2}を与える。弾の通過点に4秒間持続する液体が残り、その上にいる敵ユニットに{2}を与える。").DZX(1,boot.BCW.i,60.0,50.0,boot.BCT.DXK(0.7)).DZS(2,boot.BCW.jl,20.0,8.0).DZB(80.0,10.0).DYv(12.0).DZE(1280.0);
 		// 2552
-		F.DXH(boot.BCU.ca).DZO("指定地点を砲撃し、0.6秒後に{1}の敵ユニットに{2}を与える。敵チャンピオンには{3}を与える。4秒間そのユニットの{4}。このスキルを使うたびにスタックが増加し、1スタックにつきこのスキルの消費マナが40ずつ増加していく。スタックは6秒間持続し最大10。").DZR(1,boot.BCW.li,200.0).DZT(2,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.3),boot.BCT.DXM(0.5)).DZT(3,boot.BCW.i,160.0,80.0,boot.BCT.DXK(0.3),boot.BCT.DXM(0.5)).DZQ(4,boot.BCW.kk).DZC(boot.BCW.bp,new boot.BCw(40.0,0,1,0),boot.BCT.DXJ(boot.BCW.mf,40.0)).DYw(2.0,-0.5).DZF(1400.0,300.0);
-		// 2553
+		B.DXH(boot.BCU.e).DZK("死亡すると4秒後に自爆して{2}の敵ユニットに{1}を与える。自爆するまでの間は徐々に移動速度が増加する(最大時40%増加)。").DZX(1,boot.BCW.j,100.0,0,boot.BCT.DXI(25.0)).DZQ(2,boot.BCW.ma);
+		// 2563
+		C.DXH(boot.BCU.bp).DZK("{1}する。").DZS(1,boot.BCW.ea,10.0,5.0).DZO("対象の敵ユニットに{2}を与え、4秒間{3}と{4}を与える。").DZX(2,boot.BCW.i,80.0,50.0,boot.BCT.DXK(0.5)).DZS(3,boot.BCW.fj,12.0,4.0).DZS(4,boot.BCW.fp,12.0,4.0).DYz(60.0).DYv(8.0).DZE(1000.0);
+		// 2570
+		D.DXH(boot.BCU.bg).DZO("8秒間通常攻撃の{1}し、通常攻撃時に{2}を追加で与える。").DZS(1,boot.BCW.hi,130.0,20.0).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,2.0,1,boot.BCT.DXK(0.01))).DYz(50.0).DYv(17.0);
+		// 2578
+		E.DXH(boot.BCU.ca).DZO("指定方向に貫通する弾を発射し、当たった敵ユニットに{1}と1秒間{2}を与える。弾の通過点に4秒間持続する液体が残り、その上にいる敵ユニットに{2}を与える。").DZX(1,boot.BCW.i,60.0,50.0,boot.BCT.DXK(0.7)).DZS(2,boot.BCW.jl,20.0,8.0).DZB(80.0,10.0).DYv(12.0).DZE(1280.0);
+		// 2588
+		F.DXH(boot.BCU.ca).DZO("指定地点を砲撃し、0.6秒後に{1}の敵ユニットに{2}を与える。敵チャンピオンには{3}を与える。4秒間そのユニットの{4}。このスキルを使うたびにスタックが増加し、1スタックにつきこのスキルの消費マナが40ずつ増加していく。スタックは6秒間持続し最大10。").DZR(1,boot.BCW.ma,200.0).DZT(2,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.3),boot.BCT.DXM(0.5)).DZT(3,boot.BCW.i,160.0,80.0,boot.BCT.DXK(0.3),boot.BCT.DXM(0.5)).DZQ(4,boot.BCW.lc).DZC(boot.BCW.bp,new boot.BCw(40.0,0,1,0),boot.BCT.DXJ(boot.BCW.mn,40.0)).DYw(2.0,-0.5).DZF(1400.0,300.0);
+		// 2589
 	},
 	// teemowork.model.SkillDefinition#Leblanc(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUS:function(A,B,C,D,E,F){
-		// 2563
-		B.DXH(boot.BCU.cf).DZK("HPが40%以下になったとき{2}状態になり、自分の分身を作り出す。分身は8秒間持続し、分身が敵にダメージを与えることはできない。{1}。").DZQ(1,boot.BCW.ep).DZR(2,boot.BCW.kj,1).DYv(-60.0);
-		// 2570
+		// 2599
+		B.DXH(boot.BCU.cf).DZK("HPが40%以下になったとき{2}状態になり、自分の分身を作り出す。分身は8秒間持続し、分身が敵にダメージを与えることはできない。{1}。").DZQ(1,boot.BCW.ep).DZR(2,boot.BCW.lb,1).DYv(-60.0);
+		// 2606
 		C.DXH(boot.BCU.e).DZO("対象の敵ユニットに{1}と3.5秒間持続するマークを付与する。マークが付いている間に再度スキルでダメージを与えると、マークを消費して{1}を与える。").DZX(1,boot.BCW.i,55.0,25.0,boot.BCT.DXK(0.4)).DZB(50.0,10.0).DYv(6.0).DZE(700.0);
-		// 2578
-		D.DXH(boot.BCU.dh).DZO("指定地点まで高速で移動し（速度1450）、移動先の{1}にいる敵ユニットに{2}を与える。3秒間以内にもう一度このスキルを使用すると元居た地点に戻る。").DZR(1,boot.BCW.li,250.0).DZX(2,boot.BCW.i,85.0,40.0,boot.BCT.DXK(0.6)).DZB(80.0,5.0).DYw(18.0,-2.0).DZE(600.0);
-		// 2587
+		// 2616
+		D.DXH(boot.BCU.dh).DZO("指定地点まで{1}し（速度1450）、移動先の{2}にいる敵ユニットに{3}を与える。3秒間以内にもう一度このスキルを使用すると元居た地点に{4}する。").DZQ(1,boot.BCW.km).DZR(2,boot.BCW.ma,250.0).DZX(3,boot.BCW.i,85.0,40.0,boot.BCT.DXK(0.6)).DZQ(4,boot.BCW.ko).DZB(80.0,5.0).DYw(18.0,-2.0).DZE(600.0);
+		// 2625
 		E.DXH(boot.BCU.dc).DZO("指定方向に鎖を放ち、当たった敵ユニットに{1}を与え対象と鎖で繋がれ、その間{2}を与える。1.5秒間対象が鎖の範囲内(範囲1000)に留まっていた場合、対象に{1}と{3}を与える。").DZX(1,boot.BCW.i,40.0,25.0,boot.BCT.DXK(0.5)).DZR(2,boot.BCW.jl,25.0).DZR(3,boot.BCW.ip,1.5).DYz(80.0).DYw(14.0,-1.5).DZE(950.0);
-		// 2594
+		// 2632
 		F.DXH(boot.BCU.cn).DZO(new boot.z("直前に使ったスキルをコピーする。(ダメージ値が下記のように変化する)<br>",0).IY(C).V(": {1}<br>").IY(D).V(": {2}<br>").IY(E).V(": {3}").W()).DZX(1,boot.BCW.i,100.0,100.0,boot.BCT.DXK(0.6)).DZX(2,boot.BCW.i,150.0,150.0,boot.BCT.DXK(0.9)).DZX(3,boot.BCW.i,100.0,100.0,boot.BCT.DXK(0.6)).DYw(40.0,-8.0);
-		// 2595
+		// 2633
 	},
 	// teemowork.model.SkillDefinition#LeeSin(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUT:function(A,B,C,D,E,F){
-		// 2604
+		// 2642
 		B.DXH(boot.BCU.dh).DZK("スキルを使用すると{1}し通常攻撃の度に{2}する（一撃目は20、二撃目は10）。この効果は3秒経つか2回通常攻撃を行うと解消される。").DZR(-1,boot.BCW.ea,40.0).DZQ(2,boot.BCW.ik);
-		// 2615
-		C.DXH(boot.BCU.e).DZO(new boot.z("指定方向に気を飛ばし当たった敵ユニットに{1}を与える。このスキルが敵ユニットに当たった場合、3秒間対象の{5}、下記のスキルを使用できる。<br><br>{2}を消費して、",0).IY(C).V("が当たった{3}の敵ユニットにダッシュし、{4}を与える。(追加ダメージはミニオンやモンスターに対して400ダメージが上限)").W()).DZX(1,boot.BCW.h,50.0,30.0,boot.BCT.DXM(0.9)).DZR(2,boot.BCW.cg,30.0).DZR(3,boot.BCW.li,1300.0).DZT(4,boot.BCW.h,50.0,30.0,boot.BCT.DXM(0.9),boot.BCT.DXJ(boot.BCW.db,8.0)).DZQ(5,boot.BCW.kk).DYw(11.0,-1.0).DZE(1100.0).DZA(boot.BCW.cg,50.0,0);
-		// 2625
-		D.DXH(boot.BCU.bp).DZO("対象の味方ユニットまで移動する。自身及び対象（味方チャンピオンに限る）は５秒間{1}を得る。このスキル使用後3秒間、下記のスキルが使用できる。<br><br>{2}を消費して、5秒間{3}と{4}を得る。").DZX(1,boot.BCW.he,40.0,40.0,boot.BCT.DXK(0.8)).DZR(2,boot.BCW.cg,30.0).DZS(3,boot.BCW.eb,5.0,5.0).DZS(4,boot.BCW.fa,5.0,5.0).DYv(14.0).DZA(boot.BCW.cg,50.0,0).DZE(700.0);
-		// 2636
-		E.DXH(boot.BCU.bp).DZO(new boot.z("{1}の敵ユニットに{2}を与え、4秒間そのユニットの{3}。このスキルが敵ユニットに当たった場合、3秒間下記のスキルが使用できる。<br><br>{4}を消費して、",0).IY(E).V("が当たった{5}の敵ユニットに４秒間かけて減衰する{6}を与える。").W()).DZR(1,boot.BCW.li,350.0).DZX(2,boot.BCW.i,60.0,35.0,boot.BCT.DXM(1)).DZQ(3,boot.BCW.kk).DZR(4,boot.BCW.cg,30.0).DZR(5,boot.BCW.li,500.0).DZS(6,boot.BCW.jl,20.0,10.0).DYv(10.0).DZA(boot.BCW.cg,50.0,0);
-		// 2644
+		// 2654
+		C.DXH(boot.BCU.e).DZO(new boot.z("指定方向に気を飛ばし当たった敵ユニットに{1}を与える。このスキルが敵ユニットに当たった場合、3秒間対象の{5}、下記のスキルを使用できる。<br><br>{2}を消費して、",0).IY(C).V("が当たった{3}の敵ユニットに{6}し、{4}を与える。(追加ダメージはミニオンやモンスターに対して400ダメージが上限)").W()).DZX(1,boot.BCW.h,50.0,30.0,boot.BCT.DXM(0.9)).DZR(2,boot.BCW.cg,30.0).DZR(3,boot.BCW.ma,1300.0).DZT(4,boot.BCW.h,50.0,30.0,boot.BCT.DXM(0.9),boot.BCT.DXJ(boot.BCW.db,8.0)).DZQ(5,boot.BCW.lc).DZQ(6,boot.BCW.kn).DYw(11.0,-1.0).DZE(1100.0).DZA(boot.BCW.cg,50.0,0);
+		// 2665
+		D.DXH(boot.BCU.bp).DZO("対象の味方ユニットまで{5}する。自身及び対象（味方チャンピオンに限る）は５秒間{1}を得る。このスキル使用後3秒間、下記のスキルが使用できる。<br><br>{2}を消費して、5秒間{3}と{4}を得る。").DZX(1,boot.BCW.he,40.0,40.0,boot.BCT.DXK(0.8)).DZR(2,boot.BCW.cg,30.0).DZS(3,boot.BCW.eb,5.0,5.0).DZS(4,boot.BCW.fa,5.0,5.0).DZQ(5,boot.BCW.km).DYv(14.0).DZA(boot.BCW.cg,50.0,0).DZE(700.0);
+		// 2676
+		E.DXH(boot.BCU.bp).DZO(new boot.z("{1}の敵ユニットに{2}を与え、4秒間そのユニットの{3}。このスキルが敵ユニットに当たった場合、3秒間下記のスキルが使用できる。<br><br>{4}を消費して、",0).IY(E).V("が当たった{5}の敵ユニットに４秒間かけて減衰する{6}を与える。").W()).DZR(1,boot.BCW.ma,350.0).DZX(2,boot.BCW.i,60.0,35.0,boot.BCT.DXM(1)).DZQ(3,boot.BCW.lc).DZR(4,boot.BCW.cg,30.0).DZR(5,boot.BCW.ma,500.0).DZS(6,boot.BCW.jl,20.0,10.0).DYv(10.0).DZA(boot.BCW.cg,50.0,0);
+		// 2684
 		F.DXH(boot.BCU.e).DZO("対象の敵チャンピオンに{1}を与え、{2}させる。ノックバックした対象に触れた敵ユニットにも{1}を与え、{3}を与える。").DZX(1,boot.BCW.h,200.0,200.0,boot.BCT.DXM(2.0)).DZR(2,boot.BCW.jh,1200.0).DZR(3,boot.BCW.jg,0).DYw(90.0,-15.0).DZE(375.0);
-		// 2645
+		// 2685
 	},
 	// teemowork.model.SkillDefinition#Leona(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUU:function(A,B,C,D,E,F){
-		// 2653
+		// 2693
 		B.DXH(boot.BCU.e).DZK(new boot.z("スキルでダメージを与えた敵ユニットに、3.5秒間持続するDebuffを付与する。この敵ユニットに対して",0).IY(A).V("以外の味方チャンピオンがダメージを与えると、付与されたDebuffを消費して{1}を与える。").W()).DZU(1,boot.BCW.i,new boot.BDR(20.0,15.0,0));
-		// 2660
+		// 2700
 		C.DXH(boot.BCU.e).DZO("次の通常攻撃に{1}と{2}を付与する。").DZX(1,boot.BCW.i,40.0,30.0,boot.BCT.DXK(0.3)).DZR(2,boot.BCW.im,1.25).DZB(45.0,5.0).DYw(11.0,-1.0);
-		// 2669
-		D.DXH(boot.BCU.bh).DZO(new boot.z("3秒間{1}と{2}を得て、効果終了時に{3}の敵ユニットに{4}を与える。",0).IY(boot.BCW.i).V("が敵ユニットに命中した場合、効果時間が3秒延長される。").W()).DZX(1,boot.BCW.ga,20.0,10.0,boot.BCT.DXJ(boot.BCW.gd,0.2)).DZX(2,boot.BCW.ge,30.0,10.0,boot.BCT.DXJ(boot.BCW.gh,0.2)).DZR(3,boot.BCW.li,275.0).DZX(4,boot.BCW.i,60.0,50.0,boot.BCT.DXK(0.4)).DYz(60.0).DYv(14.0);
-		// 2676
-		E.DXH(boot.BCU.db).DZO(new boot.z("指定方向に貫通するエネルギーを飛ばし当たった敵ユニットに{1}を与える。このスキルが敵チャンピオンに命中した場合、その敵チャンピオンの元まで移動する。また移動中は対象の敵チャンピオンに",0).IY(boot.BCW.ip).V("を与える。複数の敵チャンピオンに命中した場合は最後に命中した敵チャンピオンの元に移動する。").W()).DZX(1,boot.BCW.i,60.0,40.0,boot.BCT.DXK(0.4)).DYz(60.0).DYw(13.0,-1.0).DZE(875.0);
-		// 2687
-		F.DXH(boot.BCU.cb).DZO("0.625秒後、指定地点を中心として{1}の敵ユニットに{2}と1.5秒間{3}を、{5}の敵ユニットに{4}を与える。").DZR(1,boot.BCW.li,250.0).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.8)).DZR(3,boot.BCW.jl,80.0).DZR(5,boot.BCW.li,100.0).DZR(4,boot.BCW.im,1.5).DYz(100.0).DYw(90.0,-15.0).DZE(1200.0);
-		// 2688
+		// 2709
+		D.DXH(boot.BCU.bh).DZO(new boot.z("3秒間{1}と{2}を得て、効果終了時に{3}の敵ユニットに{4}を与える。",0).IY(boot.BCW.i).V("が敵ユニットに命中した場合、効果時間が3秒延長される。").W()).DZX(1,boot.BCW.ga,20.0,10.0,boot.BCT.DXJ(boot.BCW.gd,0.2)).DZX(2,boot.BCW.ge,30.0,10.0,boot.BCT.DXJ(boot.BCW.gh,0.2)).DZR(3,boot.BCW.ma,275.0).DZX(4,boot.BCW.i,60.0,50.0,boot.BCT.DXK(0.4)).DYz(60.0).DYv(14.0);
+		// 2717
+		E.DXH(boot.BCU.db).DZO(new boot.z("指定方向に貫通するエネルギーを飛ばし当たった敵ユニットに{1}を与える。このスキルが敵チャンピオンに命中した場合、その敵チャンピオンの元まで{2}する。また移動中は対象の敵チャンピオンに",0).IY(boot.BCW.ip).V("を与える。複数の敵チャンピオンに命中した場合は最後に命中した敵チャンピオンの元に移動する。").W()).DZX(1,boot.BCW.i,60.0,40.0,boot.BCT.DXK(0.4)).DZQ(2,boot.BCW.kn).DYz(60.0).DYw(13.0,-1.0).DZE(875.0);
+		// 2728
+		F.DXH(boot.BCU.cb).DZO("0.625秒後、指定地点を中心として{1}の敵ユニットに{2}と1.5秒間{3}を、{5}の敵ユニットに{4}を与える。").DZR(1,boot.BCW.ma,250.0).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.8)).DZR(3,boot.BCW.jl,80.0).DZR(5,boot.BCW.ma,100.0).DZR(4,boot.BCW.im,1.5).DYz(100.0).DYw(90.0,-15.0).DZE(1200.0);
+		// 2729
 	},
 	// teemowork.model.SkillDefinition#Lissandra(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUV:function(A,B,C,D,E,F){
-		// 2694
+		// 2735
 		B.DXH(boot.BCU.j).DZK(new boot.z("次に使うスキルのコストが0になる。",0).IY(E).V("以外のスキルを敵ユニットに命中させるたびに、このスキルの{1}。").W()).DZR(1,boot.BCW.id,1).DYv(-18.0);
-		// 2703
-		C.DXH(boot.BCU.cm).DZO("指定方向に敵に当たると砕ける氷の槍を飛ばし、当たった敵ユニットに{1}と1.5秒間{2}を与える。槍の破片は貫通し、後方{3}の敵に{1}を与える。").DZX(1,boot.BCW.i,70.0,30.0,boot.BCT.DXK(0.65)).DZS(2,boot.BCW.jl,16.0,3.0).DZR(3,boot.BCW.li,100.0).DYz(85.0).DYw(6.0,-0.75).DZE(725.0);
-		// 2711
-		D.DXH(boot.BCU.bp).DZO("{1}にいる全ての敵ユニットに{2}と{3}を与える。").DZR(1,boot.BCW.li,450.0).DZX(2,boot.BCW.i,70.0,40.0,boot.BCT.DXK(0.4)).DZS(3,boot.BCW.ip,1.1,0.1).DYz(50.0).DYw(14.0,-1.0);
-		// 2718
-		E.DXH(boot.BCU.cl).DZO("指定方向に貫通する氷の爪を飛ばし、当たった敵ユニットに{1}を与える。氷の爪が出ている間にこのスキルを再度使用すると、氷の爪の位置までワープし氷の爪が消滅する。").DZX(1,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.6)).DZB(80.0,5.0).DYw(24.0,-3.0).DZE(1050.0);
-		// 2729
-		F.DXH(boot.BCU.dh).DZO(new boot.z("対象の敵チャンピオンに{1}と{2}を与え、同時に対象の周囲に3秒間持続するDark Iceを呼び出し、Dark Iceに触れた敵ユニットに{1}と{3}を与える。このスキルは自身を対象とする事が可能で、自身を対象とした場合は{4}間行動出来なくなる代わりに、ダメージを無効化かつターゲット不可状態になり、自身の周囲からDark Iceが出現し、{5}する（この効果は失った",0).IY(boot.BCW.bf).V("1%毎に効果量が1%上昇する）。").W()).DZX(1,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.7)).DZR(2,boot.BCW.im,1.5).DZS(3,boot.BCW.jl,30.0,15.0).DZR(4,boot.BCW.ld,2.5).DZX(5,boot.BCW.ih,100.0,50.0,boot.BCT.DXK(0.3)).DYz(100.0).DYw(130.0,-25.0).DZE(550.0);
-		// 2730
+		// 2744
+		C.DXH(boot.BCU.cm).DZO("指定方向に敵に当たると砕ける氷の槍を飛ばし、当たった敵ユニットに{1}と1.5秒間{2}を与える。槍の破片は貫通し、後方{3}の敵に{1}を与える。").DZX(1,boot.BCW.i,70.0,30.0,boot.BCT.DXK(0.65)).DZS(2,boot.BCW.jl,16.0,3.0).DZR(3,boot.BCW.ma,100.0).DYz(85.0).DYw(6.0,-0.75).DZE(725.0);
+		// 2752
+		D.DXH(boot.BCU.bp).DZO("{1}にいる全ての敵ユニットに{2}と{3}を与える。").DZR(1,boot.BCW.ma,450.0).DZX(2,boot.BCW.i,70.0,40.0,boot.BCT.DXK(0.4)).DZS(3,boot.BCW.ip,1.1,0.1).DYz(50.0).DYw(14.0,-1.0);
+		// 2760
+		E.DXH(boot.BCU.cl).DZO("指定方向に貫通する氷の爪を飛ばし、当たった敵ユニットに{1}を与える。氷の爪が出ている間にこのスキルを再度使用すると、氷の爪の位置まで{2}し氷の爪が消滅する。").DZX(1,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.6)).DZQ(2,boot.BCW.ko).DZB(80.0,5.0).DYw(24.0,-3.0).DZE(1050.0);
+		// 2772
+		F.DXH(boot.BCU.dh).DZO(new boot.z("対象の敵チャンピオンに{1}と{2}を与え、同時に対象の周囲に3秒間持続するDark Iceを呼び出し、Dark Iceに触れた敵ユニットに{1}と{3}を与える。このスキルは自身を対象とする事が可能で、自身を対象とした場合は{4}間{5}になり、{6}する（この効果は失った",0).IY(boot.BCW.bf).V("1%毎に効果量が1%上昇する）。").W()).DZX(1,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.7)).DZR(2,boot.BCW.im,1.5).DZS(3,boot.BCW.jl,30.0,15.0).DZR(4,boot.BCW.ll,2.5).DZQ(5,boot.BCW.kl).DZX(6,boot.BCW.ih,100.0,50.0,boot.BCT.DXK(0.3)).DYz(100.0).DYw(130.0,-25.0).DZE(550.0);
+		// 2773
 	},
 	// teemowork.model.SkillDefinition#Lucian(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUW:function(A,B,C,D,E,F){
-		// 2738
+		// 2781
 		B.DXH(boot.BCU.dh).DZK("スキルを使用した次の通常攻撃が2回攻撃になる。この効果は通常攻撃を行うか、3秒経過すると解消される。2回目の攻撃は{1}を与えるが、対象がミニオンかモンスターの場合は2倍になる。2回攻撃の1発目で対象が死亡した場合、2発目は近くのユニットを攻撃する。").DZW(1,boot.BCW.h,boot.BCT.DXP(boot.BCW.dh,new boot.BDI(0.3,0.1,0)));
-		// 2746
-		C.DXH(boot.BCU.bo).DZO("対象の敵ユニットに向けて0.35秒後に光のボルトを放ち、対象とその直線状({1})にいるすべての敵ユニットに{2}を与える。").DZR(1,boot.BCW.lj,1100.0).DZX(2,boot.BCW.h,80.0,30.0,boot.BCT.DXN(boot.BCW.dk,0.6,0.15)).DZB(50.0,5.0).DYw(9.0,-1.0).DZE(550.0);
-		// 2755
-		D.DXH(boot.BCU.dh).DZO("指定方向に爆発する弾を放つ。敵ユニットに当たるか最大距離まで飛ぶと十字型に爆風が広がり、範囲内の敵ユニットに{1}と6秒間マークを与える。マークが付いた敵ユニット味方がダメージを与えると、その味方は1秒間{2}する。また爆風が発生した地点の{3}。").DZX(1,boot.BCW.i,60.0,40.0,boot.BCT.DXK(0.9)).DZS(2,boot.BCW.ka,60.0,5.0).DZQ(3,boot.BCW.kk).DYz(50.0).DYw(14.0,-1.0).DZE(1000.0);
-		// 2765
-		E.DXH(boot.BCU.ce).DZO(new boot.z("指定方向にダッシュする。",0).IY(B).V("による通常攻撃がヒットする度に、このスキルの{2}し、対象が敵チャンピオンの場合は{3}。{4}。").W()).DZQ(1,boot.BCW.id).DZR(2,boot.BCW.id,1).DZR(3,boot.BCW.id,2.0).DZQ(4,boot.BCW.ma).DZB(40.0,-10.0).DYw(18.0,-1.0).DZE(425.0);
-		// 2774
-		F.DXH(boot.BCU.cf).DZO(new boot.z("一定方向に3秒間高速連射する。連射中は自由に移動可能。弾は敵を貫通せず、1発あたり{1}を与える。発砲する弾数は{2}。銃を連射している間は移動と",0).IY(E).V("のみが可能。また連射中にこのスキルを再使用することで連射を解除できる。ミニオンに対しては400%のダメージを与える。").W()).DZT(1,boot.BCW.h,40.0,10.0,boot.BCT.DXK(0.1),boot.BCT.DXM(0.25)).DZX(2,boot.BCW.mb,7.5,0,boot.BCT.DXN(boot.BCW.dn,7.5,1.5)).DZT(3,boot.BCW.h,1040.0,460.0,boot.BCT.DXN(boot.BCW.ei,2.6,0.4),boot.BCT.DXN(boot.BCW.dk,6.5,1)).DYz(100.0).DYw(110.0,-10.0).DZE(1400.0);
-		// 2775
+		// 2789
+		C.DXH(boot.BCU.bo).DZO("対象の敵ユニットに向けて0.35秒後に光のボルトを放ち、対象とその直線状({1})にいるすべての敵ユニットに{2}を与える。").DZR(1,boot.BCW.mb,1100.0).DZX(2,boot.BCW.h,80.0,30.0,boot.BCT.DXN(boot.BCW.dk,0.6,0.15)).DZB(50.0,5.0).DYw(9.0,-1.0).DZE(550.0);
+		// 2798
+		D.DXH(boot.BCU.dh).DZO("指定方向に爆発する弾を放つ。敵ユニットに当たるか最大距離まで飛ぶと十字型に爆風が広がり、範囲内の敵ユニットに{1}と6秒間マークを与える。マークが付いた敵ユニット味方がダメージを与えると、その味方は1秒間{2}する。また爆風が発生した地点の{3}。").DZX(1,boot.BCW.i,60.0,40.0,boot.BCT.DXK(0.9)).DZS(2,boot.BCW.ka,60.0,5.0).DZQ(3,boot.BCW.lc).DYz(50.0).DYw(14.0,-1.0).DZE(1000.0);
+		// 2808
+		E.DXH(boot.BCU.ce).DZO(new boot.z("指定方向に{1}する。",0).IY(B).V("による通常攻撃がヒットする度に、このスキルの{2}し、対象が敵チャンピオンの場合は{3}。{4}。").W()).DZQ(1,boot.BCW.km).DZR(2,boot.BCW.id,1).DZR(3,boot.BCW.id,2.0).DZQ(4,boot.BCW.mi).DZB(40.0,-10.0).DYw(18.0,-1.0).DZE(425.0);
+		// 2817
+		F.DXH(boot.BCU.cf).DZO(new boot.z("一定方向に3秒間高速連射する。連射中は自由に移動可能。弾は敵を貫通せず、1発あたり{1}を与える。発砲する弾数は{2}。銃を連射している間は移動と",0).IY(E).V("のみが可能。また連射中にこのスキルを再使用することで連射を解除できる。ミニオンに対しては400%のダメージを与える。").W()).DZT(1,boot.BCW.h,40.0,10.0,boot.BCT.DXK(0.1),boot.BCT.DXM(0.25)).DZX(2,boot.BCW.mj,7.5,0,boot.BCT.DXN(boot.BCW.dn,7.5,1.5)).DZT(3,boot.BCW.h,1040.0,460.0,boot.BCT.DXN(boot.BCW.ei,2.6,0.4),boot.BCT.DXN(boot.BCW.dk,6.5,1)).DYz(100.0).DYw(110.0,-10.0).DZE(1400.0);
+		// 2818
 	},
 	// teemowork.model.SkillDefinition#Lulu(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUX:function(A,B,C,D,E,F){
-		// 2783
+		// 2826
 		B.DXH(boot.BCU.bc).DZK("Pixという妖精がお供になる。Pixが付いている味方チャンピオンが通常攻撃を行った場合、Pixは同一の敵ユニットの方向に3発の弾を放ち1発毎に{1}を与える。この弾は敵ユニットを追尾するが、弾の進行方向上にいる敵ユニットにも当たる。建物を攻撃した場合はPixは弾を撃たない。").DZV(1,boot.BCW.i,new boot.BDR(3.0,4.0,0),boot.BCT.DXK(0.05),null);
-		// 2792
-		C.DXH(boot.BCU.bp).DZO("指定方向に貫通するエネルギーを発射し当たった敵ユニットに{1}と{2}間かけて減衰する{3}を与える。Pixがいる位置からもこのスキルが発射される(Pixが放つ方向はPixから見て指定した地点)。同一の対象に2回ヒットはしない。").DZX(1,boot.BCW.i,80.0,45.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.ld,1,0.25).DZR(3,boot.BCW.jl,80.0).DZB(60.0,5.0).DYv(7.0).DZE(925.0);
-		// 2802
-		D.DXH(boot.BCU.ca).DZO("味方チャンピオンに使用した場合、対象の味方チャンピオンは{1}間{2}を得る。敵チャンピオンに使用した場合、{3}間無力な動物に変化させ(Polymorph)、その間通常攻撃とスキルを封じ、{4}する。").DZS(1,boot.BCW.ld,3.0,0.5).DZX(2,boot.BCW.kc,30.0,0,boot.BCT.DXK(0.1)).DZS(3,boot.BCW.ld,1.25,0.25).DZR(4,boot.BCW.ke,60.0).DYz(65.0).DYw(18.0,-1.5).DZE(650.0);
-		// 2811
-		E.DXH(boot.BCU.bh).DZO("味方ユニットに使用した場合、6秒間対象の味方ユニットにPixを付けると同時に{1}を付与する。敵ユニットに使用した場合、Pixが敵ユニットに付くと同時に{2}を与え、4秒間その敵ユニットの{3}。").DZX(1,boot.BCW.he,80.0,40.0,boot.BCT.DXK(0.6)).DZX(2,boot.BCW.i,80.0,30.0,boot.BCT.DXK(0.4)).DZQ(3,boot.BCW.kk).DZB(60.0,10.0).DYv(10.0).DZE(650.0);
-		// 2821
-		F.DXH(boot.BCU.bc).DZO("対象の味方チャンピオンを7秒間巨大化させ、同時に対象の{3}の敵ユニットに{1}を与える。巨大化した味方チャンピオンは{2}を得て、{3}の敵ユニットに継続的に{4}を与える。スローの効果は範囲内から出ても1秒間持続する。").DZR(1,boot.BCW.jg,1.5).DZX(2,boot.BCW.bf,300.0,150.0,boot.BCT.DXK(0.5)).DZR(3,boot.BCW.li,150.0).DZS(4,boot.BCW.jl,30.0,15.0).DYz(100.0).DYw(110.0,-15.0).DZE(900.0);
-		// 2822
+		// 2835
+		C.DXH(boot.BCU.bp).DZO("指定方向に貫通するエネルギーを発射し当たった敵ユニットに{1}と{2}間かけて減衰する{3}を与える。Pixがいる位置からもこのスキルが発射される(Pixが放つ方向はPixから見て指定した地点)。同一の対象に2回ヒットはしない。").DZX(1,boot.BCW.i,80.0,45.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.ll,1,0.25).DZR(3,boot.BCW.jl,80.0).DZB(60.0,5.0).DYv(7.0).DZE(925.0);
+		// 2845
+		D.DXH(boot.BCU.ca).DZO("味方チャンピオンに使用した場合、対象の味方チャンピオンは{1}間{2}を得る。敵チャンピオンに使用した場合、{3}間無力な動物に変化させ(Polymorph)、その間通常攻撃とスキルを封じ、{4}する。").DZS(1,boot.BCW.ll,3.0,0.5).DZX(2,boot.BCW.kc,30.0,0,boot.BCT.DXK(0.1)).DZS(3,boot.BCW.ll,1.25,0.25).DZR(4,boot.BCW.ke,60.0).DYz(65.0).DYw(18.0,-1.5).DZE(650.0);
+		// 2854
+		E.DXH(boot.BCU.bh).DZO("味方ユニットに使用した場合、6秒間対象の味方ユニットにPixを付けると同時に{1}を付与する。敵ユニットに使用した場合、Pixが敵ユニットに付くと同時に{2}を与え、4秒間その敵ユニットの{3}。").DZX(1,boot.BCW.he,80.0,40.0,boot.BCT.DXK(0.6)).DZX(2,boot.BCW.i,80.0,30.0,boot.BCT.DXK(0.4)).DZQ(3,boot.BCW.lc).DZB(60.0,10.0).DYv(10.0).DZE(650.0);
+		// 2864
+		F.DXH(boot.BCU.bc).DZO("対象の味方チャンピオンを7秒間巨大化させ、同時に対象の{3}の敵ユニットに{1}を与える。巨大化した味方チャンピオンは{2}を得て、{3}の敵ユニットに継続的に{4}を与える。スローの効果は範囲内から出ても1秒間持続する。").DZR(1,boot.BCW.jg,1.5).DZX(2,boot.BCW.bf,300.0,150.0,boot.BCT.DXK(0.5)).DZR(3,boot.BCW.ma,150.0).DZS(4,boot.BCW.jl,30.0,15.0).DYz(100.0).DYw(110.0,-15.0).DZE(900.0);
+		// 2865
 	},
 	// teemowork.model.SkillDefinition#Lux(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUY:function(A,B,C,D,E,F){
-		// 2830
+		// 2873
 		B.DXH(boot.BCU.bp).DZK(new boot.z("スキルでダメージを与えた敵ユニットに6秒間持続するDebuffを付与する。この敵ユニットに対して通常攻撃か",0).IY(F).V("でダメージを与えると、付与されたDebuffを消費して{1}を与える。").W()).DZT(1,boot.BCW.i,10.0,0,boot.BCT.DXI(8.0),boot.BCT.DXK(0.2));
-		// 2838
+		// 2881
 		C.DXH(boot.BCU.di).DZO("指定方向に光の玉を飛ばし、当たった敵ユニットに{1}と{2}を与える。光の玉は一度だけ敵ユニットを貫通し、2体目のユニットに{1}と{2}を与える。").DZX(1,boot.BCW.i,60.0,50.0,boot.BCT.DXK(0.7)).DZR(2,boot.BCW.ip,2.0).DZB(50.0,5.0).DYw(15.0,-1.0).DZE(1175.0);
-		// 2845
+		// 2888
 		D.DXH(boot.BCU.dd).DZO("指定方向に杖を投げ、自身と当たった味方チャンピオンに{1}を付与する。行きと帰りそれぞれに判定があり、シールドは3秒間持続する。このシールドはスタックしない。").DZX(1,boot.BCW.he,80.0,25.0,boot.BCT.DXK(0.35)).DYz(60.0).DYw(14.0,-1.0).DZE(1075.0);
-		// 2855
-		E.DXH(boot.BCU.dd).DZO("指定地点に光の玉を設置し、{1}の敵ユニットに{2}を与える。光の玉は5秒経つか再度スキルを使用する事で爆発し、{1}の敵ユニットに{3}を与える。光の玉は{4}。").DZR(1,boot.BCW.li,350.0).DZS(2,boot.BCW.jl,20.0,4.0).DZX(3,boot.BCW.i,60.0,45.0,boot.BCT.DXK(0.6)).DZQ(4,boot.BCW.kk).DZB(70.0,15.0).DYv(10.0).DZE(1100.0);
-		// 2863
-		F.DXH(boot.BCU.cn).DZO("0.5秒詠唱後、指定方向の直線状にいるすべての敵ユニットに{1}を与える。また効果範囲内の{2}。").DZX(1,boot.BCW.i,300.0,100.0,boot.BCT.DXK(0.75)).DZQ(2,boot.BCW.kk).DYz(100.0).DYw(80.0,-15.0).DZE(3340.0);
-		// 2864
+		// 2898
+		E.DXH(boot.BCU.dd).DZO("指定地点に光の玉を設置し、{1}の敵ユニットに{2}を与える。光の玉は5秒経つか再度スキルを使用する事で爆発し、{1}の敵ユニットに{3}を与える。光の玉は{4}。").DZR(1,boot.BCW.ma,350.0).DZS(2,boot.BCW.jl,20.0,4.0).DZX(3,boot.BCW.i,60.0,45.0,boot.BCT.DXK(0.6)).DZQ(4,boot.BCW.lc).DZB(70.0,15.0).DYv(10.0).DZE(1100.0);
+		// 2906
+		F.DXH(boot.BCU.cn).DZO("0.5秒詠唱後、指定方向の直線状にいるすべての敵ユニットに{1}を与える。また効果範囲内の{2}。").DZX(1,boot.BCW.i,300.0,100.0,boot.BCT.DXK(0.75)).DZQ(2,boot.BCW.lc).DYz(100.0).DYw(80.0,-15.0).DZE(3340.0);
+		// 2907
 	},
 	// teemowork.model.SkillDefinition#Malphite(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUZ:function(A,B,C,D,E,F){
-		// 2870
-		B.DXH(boot.BCU.bj).DZK("{2}間ダメージを受けないと{1}を得る。").DZW(1,boot.BCW.he,boot.BCT.DXJ(boot.BCW.bf,0.1)).DZU(2,boot.BCW.ld,new boot.BDJ(10.0,-2.0,0));
-		// 2878
+		// 2913
+		B.DXH(boot.BCU.bj).DZK("{2}間ダメージを受けないと{1}を得る。").DZW(1,boot.BCW.he,boot.BCT.DXJ(boot.BCW.bf,0.1)).DZU(2,boot.BCW.ll,new boot.BDJ(10.0,-2.0,0));
+		// 2921
 		C.DXH(boot.BCU.e).DZO("対象の敵ユニットに{1}と4秒間{2}を与える。また、このスキルで減少させた移動速度を自身の移動速度に加算する。").DZX(1,boot.BCW.i,70.0,50.0,boot.BCT.DXK(0.6)).DZS(2,boot.BCW.jl,14.0,3.0).DZB(70.0,5.0).DYv(8.0).DZE(625.0);
-		// 2888
-		D.DXH(boot.BCU.dd).DZK("{1}する。").DZS(1,boot.BCW.gc,10.0,5.0).DZW(2,boot.BCW.h,boot.BCT.DXN(boot.BCW.dh,0.3,0.08)).DZO("6秒間、通常攻撃時に対象と{2}のユニットに対して、{3}を与える。").DZR(2,boot.BCW.li,225.0).DZT(3,boot.BCW.h,15.0,15.0,boot.BCT.DXK(0.1),boot.BCT.DXJ(boot.BCW.ga,0.1)).DYz(25.0).DYv(14.0);
-		// 2896
-		E.DXH(boot.BCU.e).DZO("{1}の敵ユニットに{2}と3秒間{3}を与える。").DZR(1,boot.BCW.li,200.0).DZT(2,boot.BCW.i,60.0,40.0,boot.BCT.DXK(0.2),boot.BCT.DXJ(boot.BCW.ga,0.3)).DZS(3,boot.BCW.jn,30.0,5.0).DZB(50.0,5.0).DYv(7.0);
-		// 2905
-		F.DXH(boot.BCU.e).DZO("指定地点に突撃し{1}の敵ユニットに{2}と3}を与える。").DZR(1,boot.BCW.li,300.0).DZX(2,boot.BCW.i,200.0,100.0,boot.BCT.DXK(1)).DZR(3,boot.BCW.jg,1.5).DYz(100.0).DYw(130.0,-15.0).DZE(1000.0);
-		// 2906
+		// 2931
+		D.DXH(boot.BCU.dd).DZK("{1}する。").DZS(1,boot.BCW.gc,10.0,5.0).DZW(2,boot.BCW.h,boot.BCT.DXN(boot.BCW.dh,0.3,0.08)).DZO("6秒間、通常攻撃時に対象と{2}のユニットに対して、{3}を与える。").DZR(2,boot.BCW.ma,225.0).DZT(3,boot.BCW.h,15.0,15.0,boot.BCT.DXK(0.1),boot.BCT.DXJ(boot.BCW.ga,0.1)).DYz(25.0).DYv(14.0);
+		// 2939
+		E.DXH(boot.BCU.e).DZO("{1}の敵ユニットに{2}と3秒間{3}を与える。").DZR(1,boot.BCW.ma,200.0).DZT(2,boot.BCW.i,60.0,40.0,boot.BCT.DXK(0.2),boot.BCT.DXJ(boot.BCW.ga,0.3)).DZS(3,boot.BCW.jn,30.0,5.0).DZB(50.0,5.0).DYv(7.0);
+		// 2949
+		F.DXH(boot.BCU.e).DZO("指定地点に{4}し{1}の敵ユニットに{2}と{3}を与える。").DZR(1,boot.BCW.ma,300.0).DZX(2,boot.BCW.i,200.0,100.0,boot.BCT.DXK(1)).DZR(3,boot.BCW.jg,1.5).DZQ(4,boot.BCW.km).DYz(100.0).DYw(130.0,-15.0).DZE(1000.0);
+		// 2950
 	},
 	// teemowork.model.SkillDefinition#Malzahar(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUu:function(A,B,C,D,E,F){
-		// 2915
-		B.DXH(boot.BCU.bh).DZK(new boot.z("スキルを4回使う度にVoidlingを召喚する。Voidlingは21秒間持続し、7秒後にADとARが1.5倍、14秒後にASが2倍に増加する。任意の操作不可。攻撃対象は、",0).IY(F).V("を掛けた相手、").IY(E).V("を掛けた相手、").IY(A).V("がターゲットしている相手の順。<br>Health: {1}<br>AD: {2}<br>AR: 30<br>MR: 50<br>AS: 0.831<br>MS: 451").W()).DZX(1,boot.BCW.mb,200.0,0,boot.BCT.DXI(50.0)).DZT(2,boot.BCW.mb,20.0,0,boot.BCT.DXI(5.0),boot.BCT.DXM(1));
-		// 2924
-		C.DXH(boot.BCU.n).DZO("指定した地点の左右から挟み込む様に2本の波動が出現し、当たった敵ユニットに{1}と{2}を与える。また、指定した場所の{3}。").DZX(1,boot.BCW.i,80.0,55.0,boot.BCT.DXK(0.8)).DZS(2,boot.BCW.jc,1.4,0.4).DZQ(3,boot.BCW.kk).DZB(80.0,5.0).DYv(9.0).DZE(900.0);
-		// 2932
-		D.DXH(boot.BCU.j).DZO("指定地点に5秒間持続する{1}のダメージゾーンを発生させ、上にいる敵ユニットに毎秒{2}を与える。(ミニオンやモンスターに対しては毎秒120ダメージが上限)").DZR(1,boot.BCW.li,250.0).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,4.0,1,boot.BCT.DXK(0.01))).DZB(90.0,5.0).DYv(14.0).DZE(800.0);
-		// 2941
+		// 2959
+		B.DXH(boot.BCU.bh).DZK(new boot.z("スキルを4回使う度にVoidlingを召喚する。Voidlingは21秒間持続し、7秒後にADとARが1.5倍、14秒後にASが2倍に増加する。任意の操作不可。攻撃対象は、",0).IY(F).V("を掛けた相手、").IY(E).V("を掛けた相手、").IY(A).V("がターゲットしている相手の順。<br>Health: {1}<br>AD: {2}<br>AR: 30<br>MR: 50<br>AS: 0.831<br>MS: 451").W()).DZX(1,boot.BCW.mj,200.0,0,boot.BCT.DXI(50.0)).DZT(2,boot.BCW.mj,20.0,0,boot.BCT.DXI(5.0),boot.BCT.DXM(1));
+		// 2968
+		C.DXH(boot.BCU.n).DZO("指定した地点の左右から挟み込む様に2本の波動が出現し、当たった敵ユニットに{1}と{2}を与える。また、指定した場所の{3}。").DZX(1,boot.BCW.i,80.0,55.0,boot.BCT.DXK(0.8)).DZS(2,boot.BCW.jc,1.4,0.4).DZQ(3,boot.BCW.lc).DZB(80.0,5.0).DYv(9.0).DZE(900.0);
+		// 2976
+		D.DXH(boot.BCU.j).DZO("指定地点に5秒間持続する{1}のダメージゾーンを発生させ、上にいる敵ユニットに毎秒{2}を与える。(ミニオンやモンスターに対しては毎秒120ダメージが上限)").DZR(1,boot.BCW.ma,250.0).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,4.0,1,boot.BCT.DXK(0.01))).DZB(90.0,5.0).DYv(14.0).DZE(800.0);
+		// 2985
 		E.DXH(boot.BCU.n).DZO("対象の敵ユニットに4秒間0.5秒毎に{1}を与える（合計{2}）。効果中に敵ユニットが死亡した場合、{3}し、近くの敵ユニットに効果が移り変わる。移る度に4秒のタイマーはリセットされる。").DZX(1,boot.BCW.i,10.0,7.5,boot.BCT.DXK(0.1)).DZX(2,boot.BCW.i,80.0,60.0,boot.BCT.DXK(0.8)).DZS(3,boot.BCW.ij,10.0,4.0).DZB(60.0,15.0).DYw(15.0,-2.0).DZE(650.0);
-		// 2951
+		// 2995
 		F.DXH(boot.BCU.bk).DZO("対象の敵チャンピオンに2.5秒間0.5秒毎に{1}を与え（合計{2}）、{3}を与える。").DZX(1,boot.BCW.i,50.0,30.0,boot.BCT.DXK(0.26)).DZX(2,boot.BCW.i,250.0,150.0,boot.BCT.DXK(1.3)).DZR(3,boot.BCW.jf,2.5).DYz(100.0).DYw(120.0,-20.0).DZE(700.0).DZI(boot.BDD.i);
-		// 2952
+		// 2996
 	},
 	// teemowork.model.SkillDefinition#Maokai(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUv:function(A,B,C,D,E,F){
-		// 2960
+		// 3004
 		B.DXH(boot.BCU.co).DZK("近くのチャンピオン(敵味方自分問わず)がスキルを使用するとスタックが増え、5スタックまで溜まった状態で通常攻撃を行うとスタックを消費して{1}する。建物を攻撃した場合は発動しない。").DZW(1,boot.BCW.ih,boot.BCT.DXP(boot.BCW.bf,new boot.BDJ(0.05,0.01,0)));
-		// 2971
-		C.DXH(boot.BCU.bn).DZO("{1}の敵ユニットと指定方向の敵ユニットに{2}と1.5秒間{3}を与える。{4}の敵ユニットには更に{5}を与える。").DZQ(1,boot.BCW.li).DZX(2,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.4)).DZS(3,boot.BCW.jl,20.0,7.0).DZR(4,boot.BCW.li,100.0).DZQ(5,boot.BCW.jh).DYz(45.0).DYv(6.0).DZE(600.0);
-		// 2979
-		D.DXH(boot.BCU.ca).DZO("対象の敵ユニットまで高速移動し{1}と{2}を与える（ミニオンやモンスターに対しては300ダメージが上限）。移動中はターゲット不可状態になる。").DZX(1,boot.BCW.i,0,0,boot.BCT.DXQ(boot.BCW.cp,9.0,1,boot.BCT.DXK(0.03))).DZS(2,boot.BCW.ip,1,0.25).DYz(75.0).DYw(13.0,-1.0).DZE(525.0);
-		// 2990
-		E.DXH(boot.BCU.bn).DZO("指定地点に苗木を投げ、{1}の敵ユニットに{2}を与える。苗木は最大35秒間その場で待機し、敵ユニットが近付く({4})と相手に向かって移動を開始する、敵に接触するか数秒経つと爆発して{1}に{3}と1秒間{5}を与える。").DZR(1,boot.BCW.li,175.0).DZX(2,boot.BCW.i,40.0,20.0,boot.BCT.DXK(0.4)).DZX(3,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.6)).DZR(4,boot.BCW.li,350.0).DZR(5,boot.BCW.jl,50.0).DZB(60.0,10.0).DYv(12.0).DZE(1100.0);
-		// 3000
-		F.DXH(boot.BCU.di).DZK("指定地点の{1}にシールドを展開し、範囲内の味方チャンピオンは{2}を得る(タワーからの攻撃以外)。10秒経過するか再度スキルを使用すると解除され、範囲内の敵ユニットに{3}を与える（増加ダメージは{4}が上限）。").DZQ(1,boot.BCW.li).DZR(2,boot.BCW.gj,20.0).DZT(3,boot.BCW.i,100.0,50.0,boot.BCT.DXK(0.5),boot.BCT.DXJ(boot.BCW.ba,0.1)).DZS(4,boot.BCW.mb,100.0,50.0).DZC(boot.BCW.bp,new boot.BDL(Φ("D",[40.0]),0),boot.BCT.DXJ(boot.BCW.lg,30.0)).DYw(60.0,-10.0).DZE(475.0);
-		// 3001
+		// 3015
+		C.DXH(boot.BCU.bn).DZO("{1}の敵ユニットと指定方向の敵ユニットに{2}と1.5秒間{3}を与える。{4}の敵ユニットには更に{5}を与える。").DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.4)).DZS(3,boot.BCW.jl,20.0,7.0).DZR(4,boot.BCW.ma,100.0).DZQ(5,boot.BCW.jh).DYz(45.0).DYv(6.0).DZE(600.0);
+		// 3025
+		D.DXH(boot.BCU.ca).DZO("{1}になり対象の敵ユニットまで{2}し{3}と{4}を与える（ミニオンやモンスターに対しては300ダメージが上限）。").DZQ(1,boot.BCW.kk).DZQ(2,boot.BCW.kn).DZX(3,boot.BCW.i,0,0,boot.BCT.DXQ(boot.BCW.cp,9.0,1,boot.BCT.DXK(0.03))).DZS(4,boot.BCW.ip,1,0.25).DYz(75.0).DYw(13.0,-1.0).DZE(525.0);
+		// 3036
+		E.DXH(boot.BCU.bn).DZO("指定地点に苗木を投げ、{1}の敵ユニットに{2}を与える。苗木は最大35秒間その場で待機し、敵ユニットが近付く({4})と相手に向かって移動を開始する、敵に接触するか数秒経つと爆発して{1}に{3}と1秒間{5}を与える。").DZR(1,boot.BCW.ma,175.0).DZX(2,boot.BCW.i,40.0,20.0,boot.BCT.DXK(0.4)).DZX(3,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.6)).DZR(4,boot.BCW.ma,350.0).DZR(5,boot.BCW.jl,50.0).DZB(60.0,10.0).DYv(12.0).DZE(1100.0);
+		// 3046
+		F.DXH(boot.BCU.di).DZK("指定地点の{1}にシールドを展開し、範囲内の味方チャンピオンは{2}を得る(タワーからの攻撃以外)。10秒経過するか再度スキルを使用すると解除され、範囲内の敵ユニットに{3}を与える（増加ダメージは{4}が上限）。").DZQ(1,boot.BCW.ma).DZR(2,boot.BCW.gj,20.0).DZT(3,boot.BCW.i,100.0,50.0,boot.BCT.DXK(0.5),boot.BCT.DXJ(boot.BCW.ba,0.1)).DZS(4,boot.BCW.mj,100.0,50.0).DZC(boot.BCW.bp,new boot.BDL(Φ("D",[40.0]),0),boot.BCT.DXJ(boot.BCW.lo,30.0)).DYw(60.0,-10.0).DZE(475.0);
+		// 3047
 	},
 	// teemowork.model.SkillDefinition#MasterYi(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUw:function(A,B,C,D,E,F){
-		// 3007
+		// 3053
 		B.DXH(boot.BCU.n).DZK("通常攻撃4回毎に2回連続で攻撃を行い{1}を与える。対象が建物の場合も有効。通常攻撃を4秒間しなかった場合、カウントがリセットされる。").DZW(1,boot.BCW.h,boot.BCT.DXL(0.5));
-		// 3018
-		C.DXH(boot.BCU.ba).DZO("ターゲット不可状態になり対象の敵ユニットと近くの敵ユニット3体({1})をランダムに対象とし{2}を与え(クリティカル発生時は{5})、対象の近くにワープする。ミニオンやモンスターには{3}を追加で与える。通常攻撃をする毎に{4}する。").DZR(1,boot.BCW.li,600.0).DZX(2,boot.BCW.h,25.0,35.0,boot.BCT.DXL(1)).DZS(3,boot.BCW.h,75.0,25.0).DZR(4,boot.BCW.id,1).DZX(5,boot.BCW.h,25.0,35.0,boot.BCT.DXL(1.6)).DZB(70.0,10.0).DYw(18.0,-1.0).DZE(600.0);
-		// 3026
+		// 3066
+		C.DXH(boot.BCU.ba).DZO("{6}になり対象の敵ユニットと近くの敵ユニット3体({1})をランダムに対象とし{2}を与え(クリティカル発生時は{5})、対象の近くに{7}する。ミニオンやモンスターには{3}を追加で与える。通常攻撃をする毎に{4}する。").DZR(1,boot.BCW.ma,600.0).DZX(2,boot.BCW.h,25.0,35.0,boot.BCT.DXL(1)).DZS(3,boot.BCW.h,75.0,25.0).DZR(4,boot.BCW.id,1).DZX(5,boot.BCW.h,25.0,35.0,boot.BCT.DXL(1.6)).DZQ(6,boot.BCW.kk).DZQ(7,boot.BCW.kp).DZB(70.0,10.0).DYw(18.0,-1.0).DZE(600.0);
+		// 3074
 		D.DXH(boot.BCU.ba).DZO("4秒間詠唱し、毎秒{1}する。この効果は自分の体力欠損分1％ごとに1％増加する。詠唱中は{2}する（タワーに対しては効果半減）。").DZX(1,boot.BCW.ih,30.0,20.0,boot.BCT.DXK(0.3)).DZS(2,boot.BCW.gj,50.0,5.0).DYv(35.0).DYz(50.0).DZI(boot.BDD.i);
-		// 3033
+		// 3081
 		E.DXH(boot.BCU.n).DZK("{1}を得る。CD中この効果は失われる。").DZW(1,boot.BCW.dh,boot.BCT.DXL(0.1)).DZO("5秒間通常攻撃に{2}が追加される。建物に対しては無効。").DZX(2,boot.BCW.j,10.0,5.0,boot.BCT.DXN(boot.BCW.dh,0.1,0.025)).DYw(18.0,-1.0);
-		// 3044
-		F.DXH(boot.BCU.n).DZK(new boot.z("チャンピオンを{1}と",0).IY(F).V("以外のスキルは{2}する。").W()).DZQ(1,boot.BCW.lp).DZR(2,boot.BCW.ie,70.0).DZO("10秒間{3}、{4}し、{5}を得る。効果中にチャンピオンを{1}と効果時間が4秒延長する。").DZS(3,boot.BCW.kc,25.0,10.0).DZS(4,boot.BCW.ea,30.0,25.0).DZQ(5,boot.BCW.kf).DYz(100.0).DYv(75.0);
-		// 3045
+		// 3092
+		F.DXH(boot.BCU.n).DZK(new boot.z("チャンピオンを{1}と",0).IY(F).V("以外のスキルは{2}する。").W()).DZQ(1,boot.BCW.mh).DZR(2,boot.BCW.ie,70.0).DZO("10秒間{3}、{4}し、{5}を得る。効果中にチャンピオンを{1}と効果時間が4秒延長する。").DZS(3,boot.BCW.kc,25.0,10.0).DZS(4,boot.BCW.ea,30.0,25.0).DZQ(5,boot.BCW.kf).DYz(100.0).DYv(75.0);
+		// 3093
 	},
 	// teemowork.model.SkillDefinition#MissFortune(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUx:function(A,B,C,D,E,F){
-		// 3051
+		// 3099
 		B.DXH(boot.BCU.df).DZK("5秒間ダメージを受けないと{1}する。以後徐々に増加して8秒後に{2}する。ダメージを受けると解除される。").DZR(-1,boot.BCW.ka,25.0).DZR(-2,boot.BCW.ka,70.0);
-		// 3062
-		C.DXH(boot.BCU.df).DZO("敵1体を貫通する弾丸を発射し、1体目の敵に{1}を与え、後方（{2}）にいる2体目の敵に{3}を与える。{4}。一体目の敵を倒し場合、2体目の敵に与えるダメージは{5}になる。").DZT(1,boot.BCW.h,20.0,15.0,boot.BCT.DXL(0.85),boot.BCT.DXK(0.35)).DZR(2,boot.BCW.li,500.0).DZT(3,boot.BCW.h,40.0,30.0,boot.BCT.DXL(1),boot.BCT.DXK(0.5)).DZQ(4,boot.BCW.kn).DZT(5,boot.BCW.h,60.0,45.0,boot.BCT.DXL(1.5),boot.BCT.DXK(0.75)).DZB(43.0,3.0).DYw(7.0,-1.0).DZE(650.0);
-		// 3072
-		D.DXH(boot.BCU.df).DZK("通常攻撃に{1}を付与する。5秒以内の攻撃は{2}回まで累積し最大{3}を与える。").DZX(1,boot.BCW.i,0,0,boot.BCT.DXL(0.06)).DZU(2,boot.BCW.mb,new boot.BDN(F,5.0,1,0)).DZW(3,boot.BCW.i,boot.BCT.DXP(boot.BCW.dh,new boot.BDN(F,0.3,0.06,0))).DZO(new boot.z("6秒間{4}する。また即座に",0).IY(B).V("の効果が発動する。").W()).DZS(4,boot.BCW.ea,20.0,10.0).DZB(30.0,5.0).DYv(12.0);
-		// 3081
-		E.DXH(boot.BCU.df).DZO("0.5秒後、指定地点に2秒間0.25秒毎に銃弾の雨を降らし、{1}の敵ユニットに{2}と1秒間{3}を与える。").DZR(1,boot.BCW.li,200.0).DZX(2,boot.BCW.i,90.0,55.0,boot.BCT.DXK(0.8)).DZS(3,boot.BCW.jl,40.0,5.0).DYz(80.0).DYw(14.0,-1.0).DZE(800.0);
-		// 3090
+		// 3110
+		C.DXH(boot.BCU.df).DZO("敵1体を貫通する弾丸を発射し、1体目の敵に{1}を与え、後方（{2}）にいる2体目の敵に{3}を与える。{4}。一体目の敵を倒し場合、2体目の敵に与えるダメージは{5}になる。").DZT(1,boot.BCW.h,20.0,15.0,boot.BCT.DXL(0.85),boot.BCT.DXK(0.35)).DZR(2,boot.BCW.ma,500.0).DZT(3,boot.BCW.h,40.0,30.0,boot.BCT.DXL(1),boot.BCT.DXK(0.5)).DZQ(4,boot.BCW.lf).DZT(5,boot.BCW.h,60.0,45.0,boot.BCT.DXL(1.5),boot.BCT.DXK(0.75)).DZB(43.0,3.0).DYw(7.0,-1.0).DZE(650.0);
+		// 3120
+		D.DXH(boot.BCU.df).DZK("通常攻撃に{1}を付与する。5秒以内の攻撃は{2}回まで累積し最大{3}を与える。").DZX(1,boot.BCW.i,0,0,boot.BCT.DXL(0.06)).DZU(2,boot.BCW.mj,new boot.BDN(F,5.0,1,0)).DZW(3,boot.BCW.i,boot.BCT.DXP(boot.BCW.dh,new boot.BDN(F,0.3,0.06,0))).DZO(new boot.z("6秒間{4}する。また即座に",0).IY(B).V("の効果が発動する。").W()).DZS(4,boot.BCW.ea,20.0,10.0).DZB(30.0,5.0).DYv(12.0);
+		// 3129
+		E.DXH(boot.BCU.df).DZO("0.5秒後、指定地点に2秒間0.25秒毎に銃弾の雨を降らし、{1}の敵ユニットに{2}と1秒間{3}を与える。").DZR(1,boot.BCW.ma,200.0).DZX(2,boot.BCW.i,90.0,55.0,boot.BCT.DXK(0.8)).DZS(3,boot.BCW.jl,40.0,5.0).DYz(80.0).DYw(14.0,-1.0).DZE(800.0);
+		// 3138
 		F.DXH(boot.BCU.dk).DZO(new boot.z("指定方向扇形の範囲に2秒間、弾幕砲火を浴びせて0.25秒毎に範囲内の敵ユニットに{1}と",0).IY(D).V("のパッシブ効果を与える。同一の対象に8回までヒットし最大で{2}。").W()).DZT(1,boot.BCW.h,50.0,25.0,boot.BCT.DXK(0.2),boot.BCT.DXN(boot.BCW.dk,0.1,0.075)).DZT(2,boot.BCW.h,400.0,200.0,boot.BCT.DXK(1.6),boot.BCT.DXN(boot.BCW.dk,0.8,0.6)).DYz(100.0).DYw(120.0,-10.0).DZE(1400.0).DZI(boot.BDD.i);
-		// 3091
+		// 3139
 	},
 	// teemowork.model.SkillDefinition#Mordekaiser(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUy:function(A,B,C,D,E,F){
-		// 3102
-		B.DXH(boot.BCU.dh).DZK(new boot.z("スキルでダメージを与えると{1}を得る（チャンピオンに対しては{2}）。",0).IY(boot.BCW.he).V("の最大値は{3}で、1秒毎に{4}ずつ減少するが、{5}になると減少は止まる。").W()).DZW(1,boot.BCW.he,boot.BCT.DXJ(boot.BCW.n,12.5)).DZW(2,boot.BCW.he,boot.BCT.DXJ(boot.BCW.n,25.0)).DZW(3,boot.BCW.mb,boot.BCT.DXJ(boot.BCW.bf,0.25)).DZW(4,boot.BCW.mb,boot.BCT.DXJ(boot.BCW.bk,0.015));
-		// 3115
-		C.DXH(boot.BCU.dh).DZO("次の3回の通常攻撃は追加{1}を与える。このタメージは攻撃するたびに{2}倍になり、3発で合計{3}を与える。{4}。").DZT(1,boot.BCW.i,4.0,4.0,boot.BCT.DXN(boot.BCW.dh,0.25,0.0125),boot.BCT.DXK(0.2)).DZS(2,boot.BCW.mb,2.0,0.25).DZV(3,boot.BCW.i,new boot.BDL(Φ("D",[28.0,66.5,117.0,181.0,260.0]),0),boot.BCT.DXP(boot.BCW.dh,new boot.BDL(Φ("D",[1.75,2.182,2.681,3.196,3.9]),0)),boot.BCT.DXP(boot.BCW.ei,new boot.BDL(Φ("D",[1.4,1.663,1.95,2.263,2.6]),0))).DZQ(4,boot.BCW.ma).DYw(10.0,-1.5).DZA(boot.BCW.bf,20.0,3.0);
-		// 3126
-		D.DXH(boot.BCU.dj).DZK(new boot.z(1).IY(A).V("が倒したミニオンから得る経験値は、周りに味方チャンピオンがいても減少することがない。味方チャンピオンは通常通り減少した経験値を得る。").W()).DZO(new boot.z("4秒間 ",0).IY(A).V("と対象の味方はお互いに向かって移動する時{1}する。それぞれの{2}にフィールドを生成し毎秒{3}を与える（このダメージは重複しない）。スキルを再度使用するとそれぞれのフィールドが消失し、最寄りの2体の敵に{4}を与え、").IY(A).V("と味方は{5}する（ミニオンに当たった場合回復量は25%になる）。").W()).DZR(1,boot.BCW.ka,75.0).DZR(2,boot.BCW.li,250.0).DZX(3,boot.BCW.i,35.0,10.0,boot.BCT.DXK(0.225)).DZX(4,boot.BCW.i,70.0,25.0,boot.BCT.DXK(0.3)).DZW(5,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.n,100.0)).DZA(boot.BCW.bf,25.0,10.0).DYw(12.0,-1.0);
-		// 3134
-		E.DXH(boot.BCU.dh).DZO("指定方向扇形の{2}の敵ユニットに{1}を与える。").DZT(1,boot.BCW.i,35.0,30.0,boot.BCT.DXL(0.6),boot.BCT.DXK(0.6)).DZQ(2,boot.BCW.li).DYw(6.0,-0.25).DZE(675.0).DZA(boot.BCW.bf,24.0,12.0);
-		// 3148
-		F.DXH(boot.BCU.dh).DZK("通常攻撃とスキルは10秒間ドラゴンに対して呪いをかける。").DZO(new boot.z("対象の敵チャンピオンを呪い{1}を与え、その後10秒間、毎秒{2}を与える。10秒間で総計{4}を与え、{3}する。呪われた対象が死ぬと幽霊を生成し{5}秒間従わせる。<br>Child of the Grave<br>AD: 対象のAD + {7}<br>AP: 対象のAP<br>HP: 対象のHP + ",0).IY(A).V("のHPの15%<br>行動範囲: 1125<br>従えている間、").IY(A).V("は{8}と{9}を得る。").W()).DZW(1,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,12.5,2.5,boot.BCT.DXK(0.02))).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,1.3,0.25,boot.BCT.DXK(0.002))).DZW(3,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.n,100.0)).DZW(4,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,25.0,5.0,boot.BCT.DXK(0.04))).DZS(5,boot.BCW.mb,45.0,15.0).DZU(7,boot.BCW.mb,new boot.BDL(Φ("D",[10.0,25.0,50.0]),0)).DZW(8,boot.BCW.bf,boot.BCT.DXJ(boot.BCW.dc,25.0)).DZW(9,boot.BCW.ei,boot.BCT.DXJ(boot.BCW.el,0.3)).DYw(120.0,-15.0).DZE(650.0);
-		// 3149
+		// 3150
+		B.DXH(boot.BCU.dh).DZK(new boot.z("スキルでダメージを与えると{1}を得る（チャンピオンに対しては{2}）。",0).IY(boot.BCW.he).V("の最大値は{3}で、1秒毎に{4}ずつ減少するが、{5}になると減少は止まる。").W()).DZW(1,boot.BCW.he,boot.BCT.DXJ(boot.BCW.n,12.5)).DZW(2,boot.BCW.he,boot.BCT.DXJ(boot.BCW.n,25.0)).DZW(3,boot.BCW.mj,boot.BCT.DXJ(boot.BCW.bf,0.25)).DZW(4,boot.BCW.mj,boot.BCT.DXJ(boot.BCW.bk,0.015));
+		// 3163
+		C.DXH(boot.BCU.dh).DZO("次の3回の通常攻撃は追加{1}を与える。このタメージは攻撃するたびに{2}倍になり、3発で合計{3}を与える。{4}。").DZT(1,boot.BCW.i,4.0,4.0,boot.BCT.DXN(boot.BCW.dh,0.25,0.0125),boot.BCT.DXK(0.2)).DZS(2,boot.BCW.mj,2.0,0.25).DZV(3,boot.BCW.i,new boot.BDL(Φ("D",[28.0,66.5,117.0,181.0,260.0]),0),boot.BCT.DXP(boot.BCW.dh,new boot.BDL(Φ("D",[1.75,2.182,2.681,3.196,3.9]),0)),boot.BCT.DXP(boot.BCW.ei,new boot.BDL(Φ("D",[1.4,1.663,1.95,2.263,2.6]),0))).DZQ(4,boot.BCW.mi).DYw(10.0,-1.5).DZA(boot.BCW.bf,20.0,3.0);
+		// 3174
+		D.DXH(boot.BCU.dj).DZK(new boot.z(1).IY(A).V("が倒したミニオンから得る経験値は、周りに味方チャンピオンがいても減少することがない。味方チャンピオンは通常通り減少した経験値を得る。").W()).DZO(new boot.z("4秒間 ",0).IY(A).V("と対象の味方はお互いに向かって移動する時{1}する。それぞれの{2}にフィールドを生成し毎秒{3}を与える（このダメージは重複しない）。スキルを再度使用するとそれぞれのフィールドが消失し、最寄りの2体の敵に{4}を与え、").IY(A).V("と味方は{5}する（ミニオンに当たった場合回復量は25%になる）。").W()).DZR(1,boot.BCW.ka,75.0).DZR(2,boot.BCW.ma,250.0).DZX(3,boot.BCW.i,35.0,10.0,boot.BCT.DXK(0.225)).DZX(4,boot.BCW.i,70.0,25.0,boot.BCT.DXK(0.3)).DZW(5,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.n,100.0)).DZA(boot.BCW.bf,25.0,10.0).DYw(12.0,-1.0);
+		// 3182
+		E.DXH(boot.BCU.dh).DZO("指定方向扇形の{2}の敵ユニットに{1}を与える。").DZT(1,boot.BCW.i,35.0,30.0,boot.BCT.DXL(0.6),boot.BCT.DXK(0.6)).DZQ(2,boot.BCW.ma).DYw(6.0,-0.25).DZE(675.0).DZA(boot.BCW.bf,24.0,12.0);
+		// 3196
+		F.DXH(boot.BCU.dh).DZK("通常攻撃とスキルは10秒間ドラゴンに対して呪いをかける。").DZO(new boot.z("対象の敵チャンピオンを呪い{1}を与え、その後10秒間、毎秒{2}を与える。10秒間で総計{4}を与え、{3}する。呪われた対象が死ぬと幽霊を生成し{5}秒間従わせる。<br>Child of the Grave<br>AD: 対象のAD + {7}<br>AP: 対象のAP<br>HP: 対象のHP + ",0).IY(A).V("のHPの15%<br>行動範囲: 1125<br>従えている間、").IY(A).V("は{8}と{9}を得る。").W()).DZW(1,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,12.5,2.5,boot.BCT.DXK(0.02))).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,1.3,0.25,boot.BCT.DXK(0.002))).DZW(3,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.n,100.0)).DZW(4,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,25.0,5.0,boot.BCT.DXK(0.04))).DZS(5,boot.BCW.mj,45.0,15.0).DZU(7,boot.BCW.mj,new boot.BDL(Φ("D",[10.0,25.0,50.0]),0)).DZW(8,boot.BCW.bf,boot.BCT.DXJ(boot.BCW.dc,25.0)).DZW(9,boot.BCW.ei,boot.BCT.DXJ(boot.BCW.el,0.3)).DYw(120.0,-15.0).DZE(650.0);
+		// 3197
 	},
 	// teemowork.model.SkillDefinition#Morgana(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DUz:function(A,B,C,D,E,F){
-		// 3155
+		// 3203
 		B.DXH(boot.BCU.e).DZK("{1}を得る。").DZU(1,boot.BCW.fa,new boot.BDJ(10.0,5.0,0));
-		// 3163
+		// 3211
 		C.DXH(boot.BCU.dj).DZO("指定方向に魔法弾を飛ばし、当たった敵ユニットに{1}と{2}を与える。").DZX(1,boot.BCW.i,80.0,55.0,boot.BCT.DXK(0.9)).DZS(2,boot.BCW.ip,2.0,0.25).DZB(50.0,5.0).DYv(11.0).DZE(1175.0);
-		// 3172
-		D.DXH(boot.BCU.da).DZO("指定地点に5秒間持続する黒い沼({3})を発生させ、上にいる敵ユニットに0.5秒毎に{1}を与える（最大で{2}）。対象が失っているHP1%につき、このスキルのダメージが0.5%上昇する(最大で1.5倍)。").DZX(1,boot.BCW.i,8.0,8.0,boot.BCT.DXK(0.11)).DZX(2,boot.BCW.i,80.0,80.0,boot.BCT.DXK(1.1)).DZR(3,boot.BCW.li,175.0).DZB(70.0,15.0).DYv(10.0).DZE(900.0);
-		// 3180
-		E.DXH(boot.BCU.ca).DZO("対象の味方チャンピオンは5秒間{1}と{2}を得る。").DZX(1,boot.BCW.hg,70.0,70.0,boot.BCT.DXK(0.7)).DZQ(2,boot.BCW.kh).DYz(55.0).DYw(23.0,-2.0).DZE(750.0);
-		// 3191
-		F.DXH(boot.BCU.ca).DZO("{1}の敵チャンピオンに{2}と３秒間{3}を与え対象と繋がれる。繋がれた対象が3秒間{4}に留まっていた場合、{1}と{5}を与える。").DZR(1,boot.BCW.li,600.0).DZX(2,boot.BCW.i,175.0,75.0,boot.BCT.DXK(0.7)).DZR(3,boot.BCW.jl,20.0).DZR(4,boot.BCW.li,1050.0).DZR(5,boot.BCW.im,1.5).DYz(100.0).DYw(120.0,-10.0).DZE(600.0);
-		// 3192
+		// 3220
+		D.DXH(boot.BCU.da).DZO("指定地点に5秒間持続する黒い沼({3})を発生させ、上にいる敵ユニットに0.5秒毎に{1}を与える（最大で{2}）。対象が失っているHP1%につき、このスキルのダメージが0.5%上昇する(最大で1.5倍)。").DZX(1,boot.BCW.i,8.0,8.0,boot.BCT.DXK(0.11)).DZX(2,boot.BCW.i,80.0,80.0,boot.BCT.DXK(1.1)).DZR(3,boot.BCW.ma,175.0).DZB(70.0,15.0).DYv(10.0).DZE(900.0);
+		// 3228
+		E.DXH(boot.BCU.ca).DZO("対象の味方チャンピオンは5秒間{1}と{2}を得る。").DZX(1,boot.BCW.hg,70.0,70.0,boot.BCT.DXK(0.7)).DZQ(2,boot.BCW.ki).DYz(55.0).DYw(23.0,-2.0).DZE(750.0);
+		// 3239
+		F.DXH(boot.BCU.ca).DZO("{1}の敵チャンピオンに{2}と３秒間{3}を与え対象と繋がれる。繋がれた対象が3秒間{4}に留まっていた場合、{1}と{5}を与える。").DZR(1,boot.BCW.ma,600.0).DZX(2,boot.BCW.i,175.0,75.0,boot.BCT.DXK(0.7)).DZR(3,boot.BCW.jl,20.0).DZR(4,boot.BCW.ma,1050.0).DZR(5,boot.BCW.im,1.5).DYz(100.0).DYw(120.0,-10.0).DZE(600.0);
+		// 3240
 	},
 	// teemowork.model.SkillDefinition#Nami(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVA:function(A,B,C,D,E,F){
-		// 3201
+		// 3249
 		B.DXH(boot.BCU.dh).DZK(new boot.z("スキルが味方チャンピオンに命中した際に、対象は1.5秒間{1}する。",0).IY(F).V("の場合には{2}する。").W()).DZX(-1,boot.BCW.ka,60.0,0,boot.BCT.DXK(0.1)).DZX(-2,boot.BCW.ka,120.0,0,boot.BCT.DXK(0.2));
-		// 3209
+		// 3257
 		C.DXH(boot.BCU.bb).DZO("指定地点に泡を投げ、範囲内の敵ユニットに{1}と{2}を与える。").DZX(1,boot.BCW.i,75.0,55.0,boot.BCT.DXK(0.5)).DZR(2,boot.BCW.io,1.5).DYz(60.0).DYw(14.0,-1.0).DZE(875.0);
-		// 3219
-		D.DXH(boot.BCU.bp).DZO("味方チャンピオンと敵チャンピオンの間で交互に跳ね返る水流を発射する。<br>味方命中時: {1}し、{2}の敵のチャンピオンに跳ね返る。<br>敵命中時: {3}を与え、{2}の味方のチャンピオンに跳ね返る。<br>同じターゲットに2回以上命中することはなく、最大3体に命中。1度跳ね返るごとに、効果量に{4} の補正がかかる。").DZX(1,boot.BCW.ih,65.0,30.0,boot.BCT.DXK(0.3)).DZR(2,boot.BCW.li,875.0).DZX(3,boot.BCW.i,70.0,40.0,boot.BCT.DXK(0.5)).DZX(4,boot.BCW.mc,-15.0,0,boot.BCT.DXK(0.075)).DZB(70.0,15.0).DYv(10.0).DZE(725.0);
-		// 3227
+		// 3267
+		D.DXH(boot.BCU.bp).DZO("味方チャンピオンと敵チャンピオンの間で交互に跳ね返る水流を発射する。<br>味方命中時: {1}し、{2}の敵のチャンピオンに跳ね返る。<br>敵命中時: {3}を与え、{2}の味方のチャンピオンに跳ね返る。<br>同じターゲットに2回以上命中することはなく、最大3体に命中。1度跳ね返るごとに、効果量に{4} の補正がかかる。").DZX(1,boot.BCW.ih,65.0,30.0,boot.BCT.DXK(0.3)).DZR(2,boot.BCW.ma,875.0).DZX(3,boot.BCW.i,70.0,40.0,boot.BCT.DXK(0.5)).DZX(4,boot.BCW.mk,-15.0,0,boot.BCT.DXK(0.075)).DZB(70.0,15.0).DYv(10.0).DZE(725.0);
+		// 3275
 		E.DXH(boot.BCU.bb).DZO("対象の味方のチャンピオンは6秒間 (または通常攻撃3回分) 通常攻撃に{1}が付与され、ターゲットを1秒間{2}にする。").DZX(1,boot.BCW.i,25.0,15.0,boot.BCT.DXK(0.2)).DZX(2,boot.BCW.jl,15.0,5.0,boot.BCT.DXK(0.05)).DZB(55.0,5.0).DYv(11.0).DZE(800.0);
-		// 3236
+		// 3284
 		F.DXH(boot.BCU.bd).DZO("指定方向に津波を発生させ、命中した敵ユニットに{1}と{2}を与えた後2～4秒間{3}与える。スローの効果時間は当たるまでの津波の移動距離に比例する。").DZR(1,boot.BCW.jg,1).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.6)).DZS(3,boot.BCW.jl,50.0,10.0).DYz(100.0).DYw(120.0,-10.0).DZE(2750.0);
-		// 3237
+		// 3285
 	},
 	// teemowork.model.SkillDefinition#Nasus(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVB:function(A,B,C,D,E,F){
-		// 3243
+		// 3291
 		B.DXH(boot.BCU.bb).DZK("{1}を得る。").DZU(1,boot.BCW.eb,new boot.BDJ(10.0,5.0,0));
-		// 3250
-		C.DXH(boot.BCU.dh).DZO("次に行う通常攻撃に{1}を付与する。このスキルを使用しLHをとると増加ダメージが+3されていく。対象が敵チャンピオン/SiegeまたはSuperミニオン/Buffを持った中立クリープの場合、増加値は+6になる。").DZX(1,boot.BCW.h,30.0,20.0,boot.BCT.DXJ(boot.BCW.mf,3.0)).DYz(20.0).DYw(8.0,-1.0).DZE(150.0);
-		// 3258
-		D.DXH(boot.BCU.bd).DZO("対象の敵チャンピオンに5秒間{1}と{2}を与える。").DZX(1,boot.BCW.jn,17.5,0,boot.BCT.DXN(boot.BCW.lg,1.5,1.5)).DZX(2,boot.BCW.jl,35.0,0,boot.BCT.DXN(boot.BCW.lg,3.0,3.0)).DYz(80.0).DYw(15.0,-1.0).DZE(600.0);
-		// 3268
-		E.DXH(boot.BCU.e).DZO("指定地点に魔法陣を呼び出し{1}の敵ユニットに{2}を与える。魔方陣は5秒間持続し、上にいる敵ユニットに{3}と毎秒{4}を与える。").DZR(1,boot.BCW.li,400.0).DZX(2,boot.BCW.i,55.0,40.0,boot.BCT.DXK(0.6)).DZS(3,boot.BCW.fi,20.0,5.0).DZX(4,boot.BCW.i,11.0,8.0,boot.BCT.DXK(0.12)).DZB(70.0,15.0).DYv(12.0).DZE(650.0);
-		// 3277
-		F.DXH(boot.BCU.da).DZO("15秒間{1}を得て{3}し、自身の周りに砂嵐を発生させ{5}の敵ユニットに毎秒{2}を与える。このスキルで与えたダメージの6.375%を自身の攻撃力に加える。毎秒ダメージの上限は240、増加攻撃力の上限は300。").DZS(1,boot.BCW.bf,300.0,150.0).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,3.0,1,boot.BCT.DXK(0.01))).DZR(3,boot.BCW.hi,50.0).DZR(5,boot.BCW.li,350.0).DYz(100.0).DYv(120.0);
-		// 3278
+		// 3298
+		C.DXH(boot.BCU.dh).DZO("次に行う通常攻撃に{1}を付与する。このスキルを使用しLHをとると増加ダメージが+3されていく。対象が敵チャンピオン/SiegeまたはSuperミニオン/Buffを持った中立クリープの場合、増加値は+6になる。").DZX(1,boot.BCW.h,30.0,20.0,boot.BCT.DXJ(boot.BCW.mn,3.0)).DYz(20.0).DYw(8.0,-1.0).DZE(150.0);
+		// 3306
+		D.DXH(boot.BCU.bd).DZO("対象の敵チャンピオンに5秒間{1}と{2}を与える。").DZX(1,boot.BCW.jn,17.5,0,boot.BCT.DXN(boot.BCW.lo,1.5,1.5)).DZX(2,boot.BCW.jl,35.0,0,boot.BCT.DXN(boot.BCW.lo,3.0,3.0)).DYz(80.0).DYw(15.0,-1.0).DZE(600.0);
+		// 3316
+		E.DXH(boot.BCU.e).DZO("指定地点に魔法陣を呼び出し{1}の敵ユニットに{2}を与える。魔方陣は5秒間持続し、上にいる敵ユニットに{3}と毎秒{4}を与える。").DZR(1,boot.BCW.ma,400.0).DZX(2,boot.BCW.i,55.0,40.0,boot.BCT.DXK(0.6)).DZS(3,boot.BCW.fi,20.0,5.0).DZX(4,boot.BCW.i,11.0,8.0,boot.BCT.DXK(0.12)).DZB(70.0,15.0).DYv(12.0).DZE(650.0);
+		// 3325
+		F.DXH(boot.BCU.da).DZO("15秒間{1}を得て{3}し、自身の周りに砂嵐を発生させ{5}の敵ユニットに毎秒{2}を与える。このスキルで与えたダメージの6.375%を自身の攻撃力に加える。毎秒ダメージの上限は240、増加攻撃力の上限は300。").DZS(1,boot.BCW.bf,300.0,150.0).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,3.0,1,boot.BCT.DXK(0.01))).DZR(3,boot.BCW.hi,50.0).DZR(5,boot.BCW.ma,350.0).DYz(100.0).DYv(120.0);
+		// 3326
 	},
 	// teemowork.model.SkillDefinition#Nautilus(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVC:function(A,B,C,D,E,F){
-		// 3288
-		B.DXH(boot.BCU.bo).DZK("通常攻撃に{1}と{2}が付与される。同一の対象には{3}に一度しか発動しない。").DZX(1,boot.BCW.h,2.0,0,boot.BCT.DXI(6.0)).DZU(2,boot.BCW.ip,new boot.BDG(Φ("I",[1,6,11,16,18]),0.5,0.25,1)).DZU(3,boot.BCW.ld,new boot.BDI(9.0,-1.0,0));
-		// 3296
-		C.DXH(boot.BCU.cd).DZO("指定方向に錨を投げ、最初に命中した敵ユニットに{1}を与え自身の方向に引き寄せる。また自身も敵ユニットの方向に移動する。錨が壁に命中した場合、壁の方向に移動しこのスキルの{2}。").DZX(1,boot.BCW.i,60.0,45.0,boot.BCT.DXK(0.75)).DZR(2,boot.BCW.ie,50.0).DZB(60.0,10.0).DYw(18.0,-2.0).DZE(1100.0);
-		// 3304
-		D.DXH(boot.BCU.cm).DZO("10秒間{1}を得る。シールドが持続している間は通常攻撃時に対象とその周囲({2})にいる敵ユニットに2秒かけて{3}を与える。").DZX(1,boot.BCW.he,65.0,5.0,boot.BCT.DXN(boot.BCW.bf,0.09,0.02)).DZR(2,boot.BCW.li,175.0).DZX(3,boot.BCW.i,30.0,10.0,boot.BCT.DXK(0.4)).DYz(80.0).DYv(18.0);
-		// 3313
-		E.DXH(boot.BCU.de).DZO(new boot.z("{1}を爆発させ命中した敵ユニットに{1}と1.5秒かけて減衰する{2}を与える。爆発は3回発生し、同一対象に対して複数hitする。2発目以降は本来の50%分の",0).IY(boot.BCW.i).V("を与える(3発hitで{3})。").W()).DZR(1,boot.BCW.li,600.0).DZX(1,boot.BCW.i,60.0,35.0,boot.BCT.DXK(0.3)).DZS(2,boot.BCW.jl,30.0,5.0).DZX(3,boot.BCW.i,120.0,70.0,boot.BCT.DXK(0.6)).DZB(60.0,10.0).DYv(10.0);
-		// 3325
-		F.DXH(boot.BCU.e).DZO("敵のチャンピオン1体を追尾する衝撃波を発射し、追尾中に巻き込んだ敵全員に{1}と{2}を与える。衝撃波は発動時のターゲットに命中すると爆発し、ターゲットとその{3}にいる敵に{4}、{5}と{6}を与える。").DZX(1,boot.BCW.i,125.0,50.0,boot.BCT.DXK(0.4)).DZR(2,boot.BCW.jg,0.5).DZQ(3,boot.BCW.li).DZX(4,boot.BCW.i,200.0,125.0,boot.BCT.DXK(0.8)).DZR(5,boot.BCW.jg,1).DZS(6,boot.BCW.im,1,0.5).DYz(100.0).DYw(140.0,-30.0).DZE(825.0);
-		// 3326
+		// 3336
+		B.DXH(boot.BCU.bo).DZK("通常攻撃に{1}と{2}が付与される。同一の対象には{3}に一度しか発動しない。").DZX(1,boot.BCW.h,2.0,0,boot.BCT.DXI(6.0)).DZU(2,boot.BCW.ip,new boot.BDG(Φ("I",[1,6,11,16,18]),0.5,0.25,1)).DZU(3,boot.BCW.ll,new boot.BDI(9.0,-1.0,0));
+		// 3345
+		C.DXH(boot.BCU.cd).DZO("指定方向に錨を投げ、最初に命中した敵ユニットに{1}を与え自身の方向に引き寄せる。また自身も敵ユニットの方向に{3}する。錨が壁に命中した場合、壁の方向に移動しこのスキルの{2}。").DZX(1,boot.BCW.i,60.0,45.0,boot.BCT.DXK(0.75)).DZR(2,boot.BCW.ie,50.0).DZQ(3,boot.BCW.kn).DZB(60.0,10.0).DYw(18.0,-2.0).DZE(1100.0);
+		// 3353
+		D.DXH(boot.BCU.cm).DZO("10秒間{1}を得る。シールドが持続している間は通常攻撃時に対象とその周囲({2})にいる敵ユニットに2秒かけて{3}を与える。").DZX(1,boot.BCW.he,65.0,5.0,boot.BCT.DXN(boot.BCW.bf,0.09,0.02)).DZR(2,boot.BCW.ma,175.0).DZX(3,boot.BCW.i,30.0,10.0,boot.BCT.DXK(0.4)).DYz(80.0).DYv(18.0);
+		// 3362
+		E.DXH(boot.BCU.de).DZO(new boot.z("{1}を爆発させ命中した敵ユニットに{1}と1.5秒かけて減衰する{2}を与える。爆発は3回発生し、同一対象に対して複数hitする。2発目以降は本来の50%分の",0).IY(boot.BCW.i).V("を与える(3発hitで{3})。").W()).DZR(1,boot.BCW.ma,600.0).DZX(1,boot.BCW.i,60.0,35.0,boot.BCT.DXK(0.3)).DZS(2,boot.BCW.jl,30.0,5.0).DZX(3,boot.BCW.i,120.0,70.0,boot.BCT.DXK(0.6)).DZB(60.0,10.0).DYv(10.0);
+		// 3374
+		F.DXH(boot.BCU.e).DZO("敵のチャンピオン1体を追尾する衝撃波を発射し、追尾中に巻き込んだ敵全員に{1}と{2}を与える。衝撃波は発動時のターゲットに命中すると爆発し、ターゲットとその{3}にいる敵に{4}、{5}と{6}を与える。").DZX(1,boot.BCW.i,125.0,50.0,boot.BCT.DXK(0.4)).DZR(2,boot.BCW.jg,0.5).DZQ(3,boot.BCW.ma).DZX(4,boot.BCW.i,200.0,125.0,boot.BCT.DXK(0.8)).DZR(5,boot.BCW.jg,1).DZS(6,boot.BCW.im,1,0.5).DYz(100.0).DYw(140.0,-30.0).DZE(825.0);
+		// 3375
 	},
 	// teemowork.model.SkillDefinition#Nidalee(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVD:function(A,B,C,D,E,F){
-		// 3339
-		B.DXH(boot.BCU.df).DZK(new boot.z("茂みに入ると{1}する。さらに敵チャンピオンの方へ移動していると{2}する({3})。この効果は茂みから出ても2秒間持続する。敵チャンピオン及びモンスターに",0).IY(C).V("で").IY(boot.BCW.e).V("を与えると、４秒間対象にHuntedを付与し、対象の{4}。対象がモンスターの場合、{5}を与える。Huntedが付与された対象に向かって移動する際は{1}し{6}を得る。").W()).DZR(-1,boot.BCW.kc,15.0).DZR(-2,boot.BCW.kc,30.0).DZR(3,boot.BCW.li,5500.0).DZQ(4,boot.BCW.kk).DZR(5,boot.BCW.ip,2.0).DZQ(6,boot.BCW.kg);
-		// 3347
+		// 3388
+		B.DXH(boot.BCU.df).DZK(new boot.z("茂みに入ると{1}する。さらに敵チャンピオンの方へ移動していると{2}する({3})。この効果は茂みから出ても2秒間持続する。敵チャンピオン及びモンスターに",0).IY(C).V("で").IY(boot.BCW.e).V("を与えると、４秒間対象にHuntedを付与し、対象の{4}。対象がモンスターの場合、{5}を与える。Huntedが付与された対象に向かって移動する際は{1}し{6}を得る。").W()).DZR(-1,boot.BCW.kc,15.0).DZR(-2,boot.BCW.kc,30.0).DZR(3,boot.BCW.ma,5500.0).DZQ(4,boot.BCW.lc).DZR(5,boot.BCW.ip,2.0).DZQ(6,boot.BCW.kg);
+		// 3396
 		C.DXH(boot.BCU.dg).DZO("0.25秒後、指定方向に槍を投げて当たった敵ユニットに{1}を与える。槍が投げた距離に比例して与えるダメージが増加する。最大で{2}。").DZX(1,boot.BCW.i,50.0,20.0,boot.BCT.DXK(0.4)).DZX(2,boot.BCW.i,150.0,60.0,boot.BCT.DXK(1.2)).DZB(50.0,10.0).DYv(6.0).DZE(1500.0);
-		// 3357
-		D.DXH(boot.BCU.dg).DZO("指定地点に罠を仕掛け、0.5秒間{1}の{2}。敵ユニットが罠を踏むと発動し、対象の敵ユニットとその周囲の敵ユニットに4秒かけて{3}を与え、{2}。罠は2分間持続する。").DZR(1,boot.BCW.li,400.0).DZX(3,boot.BCW.i,40.0,40.0,boot.BCT.DXK(0.2)).DZQ(2,boot.BCW.kk).DZR(5,boot.BCW.ld,12.0).DZB(40.0,5.0).DYw(13.0,-1.0).DZE(900.0);
-		// 3365
+		// 3406
+		D.DXH(boot.BCU.dg).DZO("指定地点に罠を仕掛け、0.5秒間{1}の{2}。敵ユニットが罠を踏むと発動し、対象の敵ユニットとその周囲の敵ユニットに4秒かけて{3}を与え、{2}。罠は2分間持続する。").DZR(1,boot.BCW.ma,400.0).DZX(3,boot.BCW.i,40.0,40.0,boot.BCT.DXK(0.2)).DZQ(2,boot.BCW.lc).DZR(5,boot.BCW.ll,12.0).DZB(40.0,5.0).DYw(13.0,-1.0).DZE(900.0);
+		// 3414
 		E.DXH(boot.BCU.df).DZO("対象の味方チャンピオンは{1}し、7秒間{2}する。").DZX(1,boot.BCW.ih,45.0,40.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.ea,20.0,10.0).DZB(60.0,15.0).DYv(12.0).DZE(600.0);
-		// 3367
-		F.DXH(boot.BCU.df).DZO("Cougarに変身する。射程が125になる。{1}。").DZQ(1,boot.BCW.kl).DYv(3.0);
-		// 3368
+		// 3416
+		F.DXH(boot.BCU.df).DZO("Cougarに変身する。射程が125になる。{1}。").DZQ(1,boot.BCW.ld).DYv(3.0);
+		// 3417
 	},
 	// teemowork.model.SkillDefinition#NidaleeTransformed(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVE:function(A,B,C,D,E,F){
-		// 3382
-		B.DXH(boot.BCU.df).DZK(new boot.z("{7}する。茂みに入ると{1}する。さらに敵チャンピオンの方へ移動していると{2}する({3})。この効果は茂みから出ても2秒間持続する。敵チャンピオン及びモンスターに",0).IY(C).V("で").IY(boot.BCW.e).V("を与えると、４秒間対象にHuntedを付与し、対象の{4}。対象がモンスターの場合、{5}を与える。Huntedが付与された対象に向かって移動する際は{1}し{6}を得る。").W()).DZR(-1,boot.BCW.kc,15.0).DZR(-2,boot.BCW.kc,30.0).DZR(3,boot.BCW.li,5500.0).DZQ(4,boot.BCW.kk).DZR(5,boot.BCW.ip,2.0).DZQ(6,boot.BCW.kg).DZR(7,boot.BCW.hi,-400.0);
-		// 3390
+		// 3431
+		B.DXH(boot.BCU.df).DZK(new boot.z("{7}する。茂みに入ると{1}する。さらに敵チャンピオンの方へ移動していると{2}する({3})。この効果は茂みから出ても2秒間持続する。敵チャンピオン及びモンスターに",0).IY(C).V("で").IY(boot.BCW.e).V("を与えると、４秒間対象にHuntedを付与し、対象の{4}。対象がモンスターの場合、{5}を与える。Huntedが付与された対象に向かって移動する際は{1}し{6}を得る。").W()).DZR(-1,boot.BCW.kc,15.0).DZR(-2,boot.BCW.kc,30.0).DZR(3,boot.BCW.ma,5500.0).DZQ(4,boot.BCW.lc).DZR(5,boot.BCW.ip,2.0).DZQ(6,boot.BCW.kg).DZR(7,boot.BCW.hi,-400.0);
+		// 3439
 		C.DXH(boot.BCU.df).DZO(new boot.z("次の通常攻撃は{1}し、{2}を与える。この攻撃は対象の失っている",0).IY(boot.BCW.bf).V("に応じて増加し、最大で{3}を与える。対象がHuntedを付与されていた場合、ダメージが33%上昇し、最大で{4}を与える。").W()).DZR(1,boot.BCW.hi,75.0).DZV(2,boot.BCW.i,new boot.BDS(F,Φ("D",[4.0,16.0,50.0,90.0]),0),boot.BCT.DXL(0.75),boot.BCT.DXK(0.36)).DZV(3,boot.BCW.i,new boot.BDS(F,Φ("D",[10.0,50.0,125.0,225.0]),0),boot.BCT.DXL(1.875),boot.BCT.DXK(0.9)).DZV(4,boot.BCW.i,new boot.BDS(F,Φ("D",[13.0,67.0,167.0,300.0]),0),boot.BCT.DXL(2.5),boot.BCT.DXK(1.2)).DYv(5.0);
-		// 3398
-		D.DXH(boot.BCU.df).DZO("前方に飛びかかり（飛距離375固定）着地地点{2}の敵ユニットに{1}を与える。ユニットを倒すとこのスキルのCDが{3}になるまで減少する。対象付近にHuntedを付与された敵がいた場合、飛距離が750となってその対象めがけて跳躍するようになり、このスキルのCDが{3}になるまで減少する。この効果は初撃のみ発動する。").DZV(1,boot.BCW.i,new boot.BDM(F,50.0,50.0,0),boot.BCT.DXK(0.3),null).DZR(2,boot.BCW.li,75.0).DZR(3,boot.BCW.le,1.5).DYv(5.0).DZE(375.0);
-		// 3404
-		E.DXH(boot.BCU.df).DZO("前方扇形180°{2}の敵ユニットに{1}を与える。").DZV(1,boot.BCW.i,new boot.BDM(F,70.0,60.0,0),boot.BCT.DXK(0.45),null).DZR(2,boot.BCW.li,300.0).DYv(5.0);
-		// 3406
-		F.DXH(boot.BCU.df).DZO("Humanに変身する。射程が525になる。{1}。").DZQ(1,boot.BCW.kl).DYv(3.0);
-		// 3407
+		// 3448
+		D.DXH(boot.BCU.df).DZO("前方に{4}して着地地点{2}の敵ユニットに{1}を与える。ユニットを倒すとこのスキルのCDが{3}になるまで減少する。対象付近にHuntedを付与された敵がいた場合、飛距離が750となってその対象めがけて跳躍するようになり、このスキルのCDが{3}になるまで減少する。この効果は初撃のみ発動する。").DZV(1,boot.BCW.i,new boot.BDM(F,50.0,50.0,0),boot.BCT.DXK(0.3),null).DZR(2,boot.BCW.ma,75.0).DZR(3,boot.BCW.lm,1.5).DZR(4,boot.BCW.km,375.0).DYv(5.0).DZE(375.0);
+		// 3454
+		E.DXH(boot.BCU.df).DZO("前方扇形180°{2}の敵ユニットに{1}を与える。").DZV(1,boot.BCW.i,new boot.BDM(F,70.0,60.0,0),boot.BCT.DXK(0.45),null).DZR(2,boot.BCW.ma,300.0).DYv(5.0);
+		// 3456
+		F.DXH(boot.BCU.df).DZO("Humanに変身する。射程が525になる。{1}。").DZQ(1,boot.BCW.ld).DYv(3.0);
+		// 3457
 	},
 	// teemowork.model.SkillDefinition#Nocturne(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVF:function(A,B,C,D,E,F){
-		// 3418
-		B.DXH(boot.BCU.e).DZK("10秒に1度、通常攻撃のダメージが120%に増加し、{1}の敵ユニットにダメージを与える範囲攻撃になる。この効果がヒットした敵の数に応じて{2}する。また、通常攻撃を行うごとに、このスキルの{3}する。建物を攻撃する時はこの効果は発生しない。").DZR(1,boot.BCW.li,200.0).DZU(2,boot.BCW.ih,new boot.BDJ(10.0,8.0,0)).DZR(3,boot.BCW.id,1).DYv(-10.0);
-		// 3428
+		// 3468
+		B.DXH(boot.BCU.e).DZK("10秒に1度、通常攻撃のダメージが120%に増加し、{1}の敵ユニットにダメージを与える範囲攻撃になる。この効果がヒットした敵の数に応じて{2}する。また、通常攻撃を行うごとに、このスキルの{3}する。建物を攻撃する時はこの効果は発生しない。").DZR(1,boot.BCW.ma,200.0).DZU(2,boot.BCW.ih,new boot.BDJ(10.0,8.0,0)).DZR(3,boot.BCW.id,1).DYv(-10.0);
+		// 3478
 		C.DXH(boot.BCU.cb).DZO("指定方向に影の刃を投げて当たった敵ユニットに{1}を与える。刃の軌跡には5秒間持続するDusk Trailが残り、刃がヒットした敵チャンピオンの動いた軌道上にもDusk Trailが残るようになる。Dusk Trailの上ではNocturneは{2}と{3}を得て、{4}する。").DZX(1,boot.BCW.h,60.0,45.0,boot.BCT.DXM(0.75)).DZS(2,boot.BCW.dh,15.0,10.0).DZQ(3,boot.BCW.kg).DZS(4,boot.BCW.ea,15.0,5.0).DZB(60.0,5.0).DYv(10.0).DZE(1200.0);
-		// 3436
+		// 3486
 		D.DXH(boot.BCU.e).DZK("{1}する。").DZS(1,boot.BCW.ea,20.0,5.0).DZO("1.5秒間{2}を付与し、その間一度だけ敵のスキルを無効化する。無効化した場合、5秒間Passiveの増加攻撃速度が2倍になる。").DZQ(2,boot.BCW.hh).DYz(50.0).DYw(20.0,-2.0);
-		// 3447
+		// 3497
 		E.DXH(boot.BCU.da).DZK("恐怖状態の敵に向かっていく際、{1}する。").DZR(-1,boot.BCW.ka,335.0).DZO("対象の敵ユニットに2秒間0.5秒毎に{2}、合計で{4}を与え、2秒間対象が一定範囲内(範囲465)に留まり続けていれば、更に{3}を与える。").DZX(2,boot.BCW.i,20.0,10.0,boot.BCT.DXK(0.25)).DZS(3,boot.BCW.ja,1,0.25).DZX(4,boot.BCW.i,80.0,40.0,boot.BCT.DXK(1)).DZB(60.0,5.0).DYw(15.0,-1.0).DZE(425.0);
-		// 3455
-		F.DXH(boot.BCU.di).DZO("4秒間すべての敵チャンピオンに{1}を与え、また自分以外の視界を得られなくする。再度スキルを使用すると、指定した敵チャンピオンの位置まで移動し、{2}を与える。").DZR(1,boot.BCW.jp,300.0).DZX(2,boot.BCW.h,150.0,100.0,boot.BCT.DXM(1.2)).DYz(100.0).DYw(150.0,-25.0).DZF(2500.0,750.0);
-		// 3456
+		// 3506
+		F.DXH(boot.BCU.di).DZO("4秒間すべての敵チャンピオンに{1}を与え、また自分以外の視界を得られなくする。再度スキルを使用すると、指定した敵チャンピオンに{2}して{3}を与える。").DZR(1,boot.BCW.jp,300.0).DZQ(2,boot.BCW.kn).DZX(3,boot.BCW.h,150.0,100.0,boot.BCT.DXM(1.2)).DYz(100.0).DYw(150.0,-25.0).DZF(2500.0,750.0);
+		// 3507
 	},
 	// teemowork.model.SkillDefinition#Nunu(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVG:function(A,B,C,D,E,F){
-		// 3462
+		// 3513
 		B.DXH(boot.BCU.e).DZK("通常攻撃を行うたびにスタックが増加する(最大5スタック)。5スタックの状態でスキルを使用すると、スタックを消費してスキルの消費マナが0になる。");
-		// 3475
-		C.DXH(boot.BCU.cg).DZO("対象の敵ミニオンかペット及びモンスターに{1}を与え、{2}する。特定のモンスターを対象とした場合{3}間、以下の追加効果を得る。<br>精霊系 : {4}を得て{5}する。<br>動物系またはアンデッド系 : 敵ユニットを倒すと3秒間{7}する。<br>それ以外 : 通常攻撃かスキルでダメージを与えると、{6}を与える。").DZS(1,boot.BCW.j,400.0,150.0).DZX(2,boot.BCW.ih,70.0,45.0,boot.BCT.DXK(0.75)).DZS(3,boot.BCW.ld,120.0,30.0).DZW(4,boot.BCW.bf,boot.BCT.DXJ(boot.BCW.bf,0.1)).DZQ(5,boot.BCW.hl).DZW(6,boot.BCW.i,boot.BCT.DXJ(boot.BCW.bf,0.01)).DZR(7,boot.BCW.kc,15.0).DYw(13.0,-1.0).DYz(60.0).DZE(125.0);
-		// 3483
+		// 3526
+		C.DXH(boot.BCU.cg).DZO("対象の敵ミニオンかペット及びモンスターに{1}を与え、{2}する。特定のモンスターを対象とした場合{3}間、以下の追加効果を得る。<br>精霊系 : {4}を得て{5}する。<br>動物系またはアンデッド系 : 敵ユニットを倒すと3秒間{7}する。<br>それ以外 : 通常攻撃かスキルでダメージを与えると、{6}を与える。").DZS(1,boot.BCW.j,400.0,150.0).DZX(2,boot.BCW.ih,70.0,45.0,boot.BCT.DXK(0.75)).DZS(3,boot.BCW.ll,120.0,30.0).DZW(4,boot.BCW.bf,boot.BCT.DXJ(boot.BCW.bf,0.1)).DZQ(5,boot.BCW.hl).DZW(6,boot.BCW.i,boot.BCT.DXJ(boot.BCW.bf,0.01)).DZR(7,boot.BCW.kc,15.0).DYw(13.0,-1.0).DYz(60.0).DZE(125.0);
+		// 3534
 		D.DXH(boot.BCU.cp).DZO("12秒間自身と指定した味方は{1}し{2}する。自分に対し発動した場合、もっとも近くにいる味方のチャンピオンを対象とする。").DZS(1,boot.BCW.ea,25.0,5.0).DZS(2,boot.BCW.kc,8.0,1).DYz(50.0).DYv(15.0).DZE(700.0);
-		// 3492
+		// 3543
 		E.DXH(boot.BCU.e).DZO("対象の敵ユニットに{1}と3秒間{2}、{3}を与える。").DZX(1,boot.BCW.i,85.0,45.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.jn,25.0).DZS(3,boot.BCW.jl,20.0,10.0).DZB(75.0,10.0).DYv(6.0).DZE(550.0);
-		// 3502
-		F.DXH(boot.BCU.ce).DZO("{1}の熱を最大3秒まで吸い込み、エリア内の全て敵に{2}と{3}を与える。詠唱終了時（もしくは移動、中断された時）にエリア内の敵に{4}、３秒間{2}と{3}を与える。ダメージ量は詠唱した時間に比例し下限は{5}。").DZR(1,boot.BCW.li,650.0).DZR(2,boot.BCW.jn,25.0).DZR(3,boot.BCW.jl,50.0).DZX(4,boot.BCW.i,625.0,250.0,boot.BCT.DXK(2.5)).DZX(5,boot.BCW.i,78.0,31.0,boot.BCT.DXK(0.3)).DYz(100.0).DYw(110.0,-10.0);
-		// 3503
+		// 3553
+		F.DXH(boot.BCU.ce).DZO("{1}の熱を最大3秒まで吸い込み、エリア内の全て敵に{2}と{3}を与える。詠唱終了時（もしくは移動、中断された時）にエリア内の敵に{4}、３秒間{2}と{3}を与える。ダメージ量は詠唱した時間に比例し下限は{5}。").DZR(1,boot.BCW.ma,650.0).DZR(2,boot.BCW.jn,25.0).DZR(3,boot.BCW.jl,50.0).DZX(4,boot.BCW.i,625.0,250.0,boot.BCT.DXK(2.5)).DZX(5,boot.BCW.i,78.0,31.0,boot.BCT.DXK(0.3)).DYz(100.0).DYw(110.0,-10.0);
+		// 3554
 	},
 	// teemowork.model.SkillDefinition#Olaf(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVH:function(A,B,C,D,E,F){
-		// 3509
+		// 3560
 		B.DXH(boot.BCU.e).DZK("{1}する。").DZW(1,boot.BCW.ea,boot.BCT.DXJ(boot.BCW.co,1));
-		// 3519
-		C.DXH(boot.BCU.bp).DZO(new boot.z("指定地点に貫通する斧を投げ(最短飛距離400)、当たった敵ユニットに{1}と{4}間{2}を与える。投げた斧は指定地点に7秒間留まり、斧を回収するとこのスキルの{3}する。また",0).IY(A).V("は斧に当たったモンスターをすり抜けることができる。").W()).DZX(1,boot.BCW.h,70.0,45.0,boot.BCT.DXM(1)).DZS(2,boot.BCW.jl,29.0,4.0).DZR(3,boot.BCW.id,4.5).DZX(4,boot.BCW.ld,1.5,0,boot.BCT.DXJ(boot.BCW.lk,1)).DYz(60.0).DYv(7.0).DZE(1000.0);
-		// 3527
+		// 3570
+		C.DXH(boot.BCU.bp).DZO(new boot.z("指定地点に貫通する斧を投げ(最短飛距離400)、当たった敵ユニットに{1}と{4}間{2}を与える。投げた斧は指定地点に7秒間留まり、斧を回収するとこのスキルの{3}する。また",0).IY(A).V("は斧に当たったモンスターをすり抜けることができる。").W()).DZX(1,boot.BCW.h,70.0,45.0,boot.BCT.DXM(1)).DZS(2,boot.BCW.jl,29.0,4.0).DZR(3,boot.BCW.id,4.5).DZX(4,boot.BCW.ll,1.5,0,boot.BCT.DXJ(boot.BCW.mc,1)).DYz(60.0).DYv(7.0).DZE(1000.0);
+		// 3578
 		D.DXH(boot.BCU.bp).DZO("6秒間{1}し、{2}を得る。また{3}する。").DZS(1,boot.BCW.ea,40.0,10.0).DZS(2,boot.BCW.eb,9.0,3.0).DZW(3,boot.BCW.ii,boot.BCT.DXJ(boot.BCW.co,0.5)).DYv(16.0).DYz(30.0);
-		// 3536
+		// 3587
 		E.DXH(boot.BCU.ba).DZO("対象の敵ユニットに{1}を与える。このスキルで対象を倒した場合、{2}する。通常攻撃をする度にこのスキルの{3}する。").DZX(1,boot.BCW.j,70.0,45.0,boot.BCT.DXL(0.4)).DZZ(2,boot.BCW.ih,new boot.BCw(21.0,13.5,5,0),boot.BCT.DXL(0.12)).DZR(3,boot.BCW.id,1).DZC(boot.BCW.bf,new boot.BCw(21.0,13.5,5,0),boot.BCT.DXL(0.12)).DZE(325.0).DYw(12.0,-1.0);
-		// 3546
-		F.DXH(boot.BCU.da).DZK("{1}と{2}を得る。").DZS(1,boot.BCW.ga,10.0,10.0).DZS(2,boot.BCW.ge,10.0,10.0).DZO("6秒間パッシブの効果が消失して、{3}と{4}を得る。また、最初の1秒間は敵チャンピオンに向かって移動する際に{5}する。").DZQ(3,boot.BCW.kh).DZS(4,boot.BCW.dh,40.0,20.0).DZS(5,boot.BCW.kc,50.0,10.0).DYw(100.0,-10.0);
-		// 3547
+		// 3597
+		F.DXH(boot.BCU.da).DZK("{1}と{2}を得る。").DZS(1,boot.BCW.ga,10.0,10.0).DZS(2,boot.BCW.ge,10.0,10.0).DZO("6秒間パッシブの効果が消失して、{3}と{4}を得る。また、最初の1秒間は敵チャンピオンに向かって移動する際に{5}する。").DZQ(3,boot.BCW.ki).DZS(4,boot.BCW.dh,40.0,20.0).DZS(5,boot.BCW.kc,50.0,10.0).DYw(100.0,-10.0);
+		// 3598
 	},
 	// teemowork.model.SkillDefinition#Orianna(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVI:function(A,B,C,D,E,F){
-		// 3555
+		// 3606
 		B.DXH(boot.BCU.e).DZK(new boot.z("通常攻撃に{1}が付与される。4秒以内に同一の対象を連続して攻撃すると、",0).IY(boot.BCW.i).V("が20%上昇する(最大40%)。建物には無効。").W()).DZZ(1,boot.BCW.i,new boot.BDH(10.0,8.0,0),boot.BCT.DXK(0.15));
-		// 3564
-		C.DXH(boot.BCU.e).DZO(new boot.z("指定した地点にBallを移動させ、移動中のBallに触れた敵ユニットと指定{1}にいる敵ユニットに{2}を与える。ダメージは敵に当たるごとに10%づつ減少する(最大60%減少)。Ballは",0).IY(A).V("から一定距離離れなければその場に待機して{3}。").W()).DZR(1,boot.BCW.li,175.0).DZX(2,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.5)).DZQ(3,boot.BCW.kk).DYz(50.0).DYw(6.0,-0.75).DZE(825.0);
-		// 3573
-		D.DXH(boot.BCU.e).DZO("Ballの存在する地点にフィールドを展開しBallの{1}にいる敵ユニットに{2}を与える。フィールドは3秒間持続し、フィールドの上の味方ユニットは{3}し、敵ユニットには{4}を与える。フィールドから出た場合、この効果は2秒かけて減衰する。").DZR(1,boot.BCW.li,250.0).DZX(2,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.7)).DZS(3,boot.BCW.kc,20.0,5.0).DZS(4,boot.BCW.jl,20.0,5.0).DZB(70.0,10.0).DYv(9.0);
-		// 3584
+		// 3615
+		C.DXH(boot.BCU.e).DZO(new boot.z("指定した地点にBallを移動させ、移動中のBallに触れた敵ユニットと指定{1}にいる敵ユニットに{2}を与える。ダメージは敵に当たるごとに10%づつ減少する(最大60%減少)。Ballは",0).IY(A).V("から一定距離離れなければその場に待機して{3}。").W()).DZR(1,boot.BCW.ma,175.0).DZX(2,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.5)).DZQ(3,boot.BCW.lc).DYz(50.0).DYw(6.0,-0.75).DZE(825.0);
+		// 3624
+		D.DXH(boot.BCU.e).DZO("Ballの存在する地点にフィールドを展開しBallの{1}にいる敵ユニットに{2}を与える。フィールドは3秒間持続し、フィールドの上の味方ユニットは{3}し、敵ユニットには{4}を与える。フィールドから出た場合、この効果は2秒かけて減衰する。").DZR(1,boot.BCW.ma,250.0).DZX(2,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.7)).DZS(3,boot.BCW.kc,20.0,5.0).DZS(4,boot.BCW.jl,20.0,5.0).DZB(70.0,10.0).DYv(9.0);
+		// 3635
 		E.DXH(boot.BCU.m).DZK("Ballが付いている味方チャンピオンは{1}と{2}を得る。").DZS(1,boot.BCW.ga,10.0,5.0).DZS(2,boot.BCW.ge,10.0,5.0).DZO(new boot.z("対象の味方チャンピオンまでBallを移動させ、4秒間持続する{3}を付与する。また、移動中のBallに触れた敵ユニットに{4}を与える。Ballは対象が",0).IY(A).V("から一定距離離れなければ貼り付き続ける。").W()).DZX(3,boot.BCW.he,80.0,40.0,boot.BCT.DXK(0.4)).DZX(4,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.3)).DYz(60.0).DYv(9.0).DZE(1100.0);
-		// 3592
-		F.DXH(boot.BCU.dc).DZO("0.75秒詠唱後にBallから衝撃波を発生させ、Ballの{1}にいる敵ユニットに{2}を与えると共に、Ballの方向に{3}させる。").DZR(1,boot.BCW.li,325.0).DZX(2,boot.BCW.i,150.0,75.0,boot.BCT.DXK(0.7)).DZR(3,boot.BCW.jh,350.0).DZB(100.0,25.0).DYw(120.0,-15.0);
-		// 3593
+		// 3643
+		F.DXH(boot.BCU.dc).DZO("0.75秒詠唱後にBallから衝撃波を発生させ、Ballの{1}にいる敵ユニットに{2}を与えると共に、Ballの方向に{3}させる。").DZR(1,boot.BCW.ma,325.0).DZX(2,boot.BCW.i,150.0,75.0,boot.BCT.DXK(0.7)).DZR(3,boot.BCW.jh,350.0).DZB(100.0,25.0).DYw(120.0,-15.0);
+		// 3644
 	},
 	// teemowork.model.SkillDefinition#Pantheon(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVJ:function(A,B,C,D,E,F){
-		// 3599
+		// 3650
 		B.DXH(boot.BCU.cb).DZK(new boot.z("通常攻撃を行うかスキルを使用するたびにスタックが1増加し、4スタック時に40",0).IY(boot.BCW.e).V("以上の通常攻撃またはタワーの攻撃を受けるとスタックを消費してダメージを無効化する。").W());
-		// 3601
+		// 3652
 		C.DXH(boot.BCU.e).DZO("対象の敵ユニットに槍を投げ{1}を与える。").DZX(1,boot.BCW.h,65.0,40.0,boot.BCT.DXM(1.4)).DYz(45.0).DYv(4.0).DZE(600.0);
-		// 3609
-		D.DXH(boot.BCU.bc).DZO(new boot.z("対象の敵ユニットに飛びかかり{1}と{2}を与え、",0).IY(B).V("を発動する。").W()).DZX(1,boot.BCW.i,50.0,25.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.im,1).DYz(55.0).DYw(13.0,-1.0).DZE(600.0);
-		// 3619
+		// 3661
+		D.DXH(boot.BCU.bc).DZO(new boot.z("対象の敵ユニットに{3}して{1}と{2}を与え、",0).IY(B).V("を発動する。").W()).DZX(1,boot.BCW.i,50.0,25.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.im,1).DZQ(3,boot.BCW.kn).DYz(55.0).DYw(13.0,-1.0).DZE(600.0);
+		// 3671
 		E.DXH(boot.BCU.bm).DZK(new boot.z("敵ユニットのHPが15%以下の時は通常攻撃が必ずクリティカルになり、また",0).IY(C).V("のダメージが1.5倍になる。").W()).DZO("指定方向に槍を突き出し、範囲内の敵ユニットに0.75秒間0.25秒毎に{1}を与える。対象がチャンピオンの場合、{2}を与える。").DZX(1,boot.BCW.h,13.0,10.0,boot.BCT.DXM(0.6)).DZX(2,boot.BCW.h,26.0,20.0,boot.BCT.DXM(1.2)).DZB(45.0,5.0).DYw(10.0,-1.0).DZE(600.0).DZI(boot.BDD.i);
-		// 3628
-		F.DXH(boot.BCU.cp).DZO(new boot.z("地点を指定して2秒後にジャンプし、その1.5秒後に指定地点の{1}に{2}と1秒間{3}を与えつつ落下する。",0).IY(boot.BCW.e).V("は指定地点から離れるほど低減され、範囲最端では50%となる。ジャンプ前にキャンセルすると、消費した分のマナが回復し、このスキルのCDは10秒になる。").W()).DZR(1,boot.BCW.li,1000.0).DZX(2,boot.BCW.i,400.0,300.0,boot.BCT.DXK(1)).DZR(3,boot.BCW.jl,35.0).DYz(125.0).DYw(150.0,-15.0).DZE(5500.0);
-		// 3629
+		// 3680
+		F.DXH(boot.BCU.cp).DZO(new boot.z("地点を指定して2秒後にジャンプし、その1.5秒後に指定地点の{1}に{2}と1秒間{3}を与えつつ落下する。",0).IY(boot.BCW.e).V("は指定地点から離れるほど低減され、範囲最端では50%となる。ジャンプ前にキャンセルすると、消費した分のマナが回復し、このスキルのCDは10秒になる。").W()).DZR(1,boot.BCW.ma,1000.0).DZX(2,boot.BCW.i,400.0,300.0,boot.BCT.DXK(1)).DZR(3,boot.BCW.jl,35.0).DYz(125.0).DYw(150.0,-15.0).DZE(5500.0);
+		// 3681
 	},
 	// teemowork.model.SkillDefinition#Poppy(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVK:function(A,B,C,D,E,F){
-		// 3635
+		// 3687
 		B.DXH(boot.BCU.e).DZK("現在HPの10%を超えるダメージを受けた際、その超過分のダメージを50%低減する。塔の攻撃には無効。");
-		// 3642
-		C.DXH(boot.BCU.e).DZO(new boot.z("次の通常攻撃が",0).IY(boot.BCW.i).V("になり、{1}が付与される。{2}。").W()).DZT(1,boot.BCW.i,20.0,20.0,boot.BCT.DXK(0.6),boot.BCT.DXJ(boot.BCW.cp,8.0)).DZQ(2,boot.BCW.ma).DYz(55.0).DYw(8.0,-1.0);
-		// 3651
-		D.DXH(boot.BCU.e).DZK("通常攻撃を行うか、通常攻撃を受ける度にスタックが1増加する(最大10)。スタック数に比例して{1}と{2}を得る。スタックは5秒間増加がないと0になる。").DZX(-1,boot.BCW.dh,0,0,boot.BCT.DXN(boot.BCW.mf,1.5,0.5)).DZX(-2,boot.BCW.ga,0,0,boot.BCT.DXN(boot.BCW.mf,1.5,0.5)).DZO("スタックを最大(10)まで増加させ、5秒間{3}する。").DZS(3,boot.BCW.kc,17.0,2.0).DZB(70.0,5.0).DYv(12.0);
-		// 3661
-		E.DXH(boot.BCU.cc).DZO("対象の敵ユニットに突撃し{1}と{2}を与える。ノックバック時に壁にぶつかった場合、追加{3}と{4}を与える。").DZR(1,boot.BCW.jh,300.0).DZX(2,boot.BCW.i,50.0,25.0,boot.BCT.DXK(0.4)).DZX(3,boot.BCW.i,75.0,50.0,boot.BCT.DXK(0.4)).DZR(4,boot.BCW.im,1.5).DZB(60.0,5.0).DYw(12.0,-1.0).DZE(525.0);
-		// 3669
-		F.DXH(boot.BCU.e).DZO("対象の敵チャンピオンを{2}秒間ターゲットし、その対象に与える{1}する。効果中は対象以外からのすべての攻撃を無効化する(対象のPetからはダメージを受ける)。").DZS(1,boot.BCW.f,20.0,10.0).DZS(2,boot.BCW.ld,6.0,1).DYz(100.0).DYw(140.0,-20.0).DZE(900.0);
-		// 3670
+		// 3694
+		C.DXH(boot.BCU.e).DZO(new boot.z("次の通常攻撃が",0).IY(boot.BCW.i).V("になり、{1}が付与される。{2}。").W()).DZT(1,boot.BCW.i,20.0,20.0,boot.BCT.DXK(0.6),boot.BCT.DXJ(boot.BCW.cp,8.0)).DZQ(2,boot.BCW.mi).DYz(55.0).DYw(8.0,-1.0);
+		// 3703
+		D.DXH(boot.BCU.e).DZK("通常攻撃を行うか、通常攻撃を受ける度にスタックが1増加する(最大10)。スタック数に比例して{1}と{2}を得る。スタックは5秒間増加がないと0になる。").DZX(-1,boot.BCW.dh,0,0,boot.BCT.DXN(boot.BCW.mn,1.5,0.5)).DZX(-2,boot.BCW.ga,0,0,boot.BCT.DXN(boot.BCW.mn,1.5,0.5)).DZO("スタックを最大(10)まで増加させ、5秒間{3}する。").DZS(3,boot.BCW.kc,17.0,2.0).DZB(70.0,5.0).DYv(12.0);
+		// 3714
+		E.DXH(boot.BCU.cc).DZO("対象の敵ユニットに{5}し{1}と{2}を与える。ノックバック時に壁にぶつかった場合、追加{3}と{4}を与える。").DZR(1,boot.BCW.jh,300.0).DZX(2,boot.BCW.i,50.0,25.0,boot.BCT.DXK(0.4)).DZX(3,boot.BCW.i,75.0,50.0,boot.BCT.DXK(0.4)).DZR(4,boot.BCW.im,1.5).DZQ(5,boot.BCW.kn).DZB(60.0,5.0).DYw(12.0,-1.0).DZE(525.0);
+		// 3724
+		F.DXH(boot.BCU.e).DZO("{1}秒間、対象の敵チャンピオンに与える{2}し、対象とそのペット以外からの{3}と{4}を得る。").DZS(1,boot.BCW.ll,6.0,1).DZS(2,boot.BCW.f,20.0,10.0).DZQ(3,boot.BCW.kh).DZQ(4,boot.BCW.ki).DYz(100.0).DYw(140.0,-20.0).DZE(900.0);
+		// 3725
 	},
 	// teemowork.model.SkillDefinition#Quinn(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVL:function(A,B,C,D,E,F){
-		// 3697
-		B.DXH(boot.BCU.i).DZK(new boot.z("Valorが",0).IY(A).V("の周辺に存在する敵ユニット一体(チャンピオン優先)に自動的に4.5秒間持続するマークを付与する。マークが付与された敵ユニットに").IY(A).V("が通常攻撃を行うと、付与されたマークを消費して{1}を与える。またマークが付与された敵ユニットの{2}。Valorと交代している間はこのスキルは無効になる。").W()).DZZ(1,boot.BCW.h,new boot.BDG(Φ("D",[25.0,35.0,45.0,55.0,65.0,75.0,85.0,95.0,105.0,115.0,125.0,135.0,145.0,155.0,170.0,185.0,190.0,215.0]),0),boot.BCT.DXM(0.5)).DZQ(2,boot.BCW.kk).DYv(-10.0);
-		// 3707
-		C.DXH(boot.BCU.j).DZO("指定方向にValorを突撃させ、最初に当たった敵ユニットと{1}の敵ユニットに{2}と{3}を与える。<br>Tag Team時は自身の{4}の敵ユニットに{2}と{3}を与える。").DZR(1,boot.BCW.li,210.0).DZT(2,boot.BCW.h,70.0,40.0,boot.BCT.DXM(0.65),boot.BCT.DXK(0.5)).DZR(3,boot.BCW.jd,1.5).DZR(4,boot.BCW.li,275.0).DZB(50.0,5.0).DYw(11.0,-1.0).DZE(1025.0);
-		// 3716
-		D.DXH(boot.BCU.j).DZK("Harrierによってマークが付与された敵ユニットに通常攻撃を行うと、3秒間{1}、{3}する。Tag Team時は{2}する。").DZS(-1,boot.BCW.ea,20.0,5.0).DZS(-2,boot.BCW.ea,40.0,10.0).DZS(3,boot.BCW.ka,20.0,10.0).DZO("2秒間{4}の視界を得る。").DZR(4,boot.BCW.li,2100.0).DYw(50.0,-5.0);
-		// 3724
-		E.DXH(boot.BCU.cn).DZO(new boot.z("対象の敵ユニットまでダッシュし{1}と2秒かけて減衰する{2}を与える。ダッシュ後、",0).IY(A).V("の通常攻撃の最大射程(距離525)までジャンプして対象と距離を離す。また、同時に対象には").IY(B).V("のマークが付与される。Tag Team時はダッシュ後に距離を離さなくなる。").W()).DZX(1,boot.BCW.h,40.0,30.0,boot.BCT.DXM(0.2)).DZR(2,boot.BCW.jl,50.0).DZE(700.0).DYz(50.0).DYw(12.0,-1.0);
-		// 3735
-		F.DXH(boot.BCU.j).DZO(new boot.z("20秒間Valorが",0).IY(A).V("と入れ替わり戦闘に参加する。Valorは射程125のMeleeであり、専用のスキルが与えられるがスキルのCDは").IY(A).V("と共有する。Valorは{1}を得て{2}する。戦闘状態に入ると{3}する。このスキルを再度使用するか、20秒経過するとValorが").IY(A).V("と入れ替わり、{4}に敵ユニットに{5}を与える。対象が受けているダメージに比例して与えるダメージが増加し、最大で{6}を与える。").W()).DZQ(1,boot.BCW.kg).DZS(-2,boot.BCW.kc,80.0,10.0).DZS(3,boot.BCW.kc,20.0,10.0).DZR(4,boot.BCW.li,700.0).DZX(5,boot.BCW.h,100.0,50.0,boot.BCT.DXM(0.5)).DZX(6,boot.BCW.h,200.0,100.0,boot.BCT.DXM(1)).DYz(100.0).DYw(140.0,-30.0);
-		// 3736
+		// 3752
+		B.DXH(boot.BCU.i).DZK(new boot.z("Valorが",0).IY(A).V("の周辺に存在する敵ユニット一体(チャンピオン優先)に自動的に4.5秒間持続するマークを付与する。マークが付与された敵ユニットに").IY(A).V("が通常攻撃を行うと、付与されたマークを消費して{1}を与える。またマークが付与された敵ユニットの{2}。Valorと交代している間はこのスキルは無効になる。").W()).DZZ(1,boot.BCW.h,new boot.BDG(Φ("D",[25.0,35.0,45.0,55.0,65.0,75.0,85.0,95.0,105.0,115.0,125.0,135.0,145.0,155.0,170.0,185.0,190.0,215.0]),0),boot.BCT.DXM(0.5)).DZQ(2,boot.BCW.lc).DYv(-10.0);
+		// 3762
+		C.DXH(boot.BCU.j).DZO("指定方向にValorを突撃させ、最初に当たった敵ユニットと{1}の敵ユニットに{2}と{3}を与える。<br>Tag Team時は自身の{4}の敵ユニットに{2}と{3}を与える。").DZR(1,boot.BCW.ma,210.0).DZT(2,boot.BCW.h,70.0,40.0,boot.BCT.DXM(0.65),boot.BCT.DXK(0.5)).DZR(3,boot.BCW.jd,1.5).DZR(4,boot.BCW.ma,275.0).DZB(50.0,5.0).DYw(11.0,-1.0).DZE(1025.0);
+		// 3771
+		D.DXH(boot.BCU.j).DZK("Harrierによってマークが付与された敵ユニットに通常攻撃を行うと、3秒間{1}、{3}する。Tag Team時は{2}する。").DZS(-1,boot.BCW.ea,20.0,5.0).DZS(-2,boot.BCW.ea,40.0,10.0).DZS(3,boot.BCW.ka,20.0,10.0).DZO("2秒間{4}の視界を得る。").DZR(4,boot.BCW.ma,2100.0).DYw(50.0,-5.0);
+		// 3780
+		E.DXH(boot.BCU.cn).DZO(new boot.z("対象の敵ユニットまで{3}し{1}と2秒かけて減衰する{2}を与える。ダッシュ後、",0).IY(A).V("の通常攻撃の最大射程(距離525)までジャンプして対象と距離を離す。また、同時に対象には").IY(B).V("のマークが付与される。Tag Team時はダッシュ後に距離を離さなくなる。").W()).DZX(1,boot.BCW.h,40.0,30.0,boot.BCT.DXM(0.2)).DZR(2,boot.BCW.jl,50.0).DZQ(3,boot.BCW.kn).DZE(700.0).DYz(50.0).DYw(12.0,-1.0);
+		// 3791
+		F.DXH(boot.BCU.j).DZO(new boot.z("20秒間Valorが",0).IY(A).V("と入れ替わり戦闘に参加する。Valorは射程125のMeleeであり、専用のスキルが与えられるがスキルのCDは").IY(A).V("と共有する。Valorは{1}を得て{2}する。戦闘状態に入ると{3}する。このスキルを再度使用するか、20秒経過するとValorが").IY(A).V("と入れ替わり、{4}に敵ユニットに{5}を与える。対象が受けているダメージに比例して与えるダメージが増加し、最大で{6}を与える。").W()).DZQ(1,boot.BCW.kg).DZS(-2,boot.BCW.kc,80.0,10.0).DZS(3,boot.BCW.kc,20.0,10.0).DZR(4,boot.BCW.ma,700.0).DZX(5,boot.BCW.h,100.0,50.0,boot.BCT.DXM(0.5)).DZX(6,boot.BCW.h,200.0,100.0,boot.BCT.DXM(1)).DYz(100.0).DYw(140.0,-30.0);
+		// 3792
 	},
 	// teemowork.model.SkillDefinition#Rammus(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVM:function(A,B,C,D,E,F){
-		// 3742
+		// 3798
 		B.DXH(boot.BCU.e).DZK("{1}を得る。").DZW(1,boot.BCW.dh,boot.BCT.DXJ(boot.BCW.ga,0.25));
-		// 3752
-		C.DXH(boot.BCU.cn).DZO(new boot.z("7秒間徐々に移動速度が増加し、最大で{5}する。最初に当たった敵ユニットと自身の周囲({1})にいる敵ユニットに{2}、{3}、3秒間の{4}を与える。",0).IY(D).V("を使用するとキャンセルされる。").W()).DZR(1,boot.BCW.li,200.0).DZX(2,boot.BCW.i,100.0,50.0,boot.BCT.DXK(1)).DZR(3,boot.BCW.jg,0.75).DZS(4,boot.BCW.jl,20.0,5.0).DZR(5,boot.BCW.kc,85.0).DZB(60.0,5.0).DYw(16.0,-1.5);
-		// 3760
+		// 3808
+		C.DXH(boot.BCU.cn).DZO(new boot.z("7秒間徐々に移動速度が増加し、最大で{5}する。最初に当たった敵ユニットと自身の周囲({1})にいる敵ユニットに{2}、{3}、3秒間の{4}を与える。",0).IY(D).V("を使用するとキャンセルされる。").W()).DZR(1,boot.BCW.ma,200.0).DZX(2,boot.BCW.i,100.0,50.0,boot.BCT.DXK(1)).DZR(3,boot.BCW.jg,0.75).DZS(4,boot.BCW.jl,20.0,5.0).DZR(5,boot.BCW.kc,85.0).DZB(60.0,5.0).DYw(16.0,-1.5);
+		// 3816
 		D.DXH(boot.BCU.dh).DZO(new boot.z("6秒間{1}と{2}を得て、",0).IY(A).V("を通常攻撃した敵ユニットに{3}を与える。効果中に").IY(C).V("を使用すると効果がキャンセルされる。また、このスキルを再使用することで効果をキャンセルできる。").W()).DZS(1,boot.BCW.ga,40.0,20.0).DZS(2,boot.BCW.ge,40.0,20.0).DZX(3,boot.BCW.i,25.0,10.0,boot.BCT.DXJ(boot.BCW.ga,0.1)).DYz(40.0).DYv(14.0);
-		// 3768
+		// 3824
 		E.DXH(boot.BCU.cg).DZO("対象の敵ユニットに{1}と{2}を与える。").DZS(1,boot.BCW.je,1.25,0.25).DZS(2,boot.BCW.fi,5.0,5.0).DYv(12.0).DZE(325.0).DYz(50.0);
-		// 3775
-		F.DXH(boot.BCU.bc).DZO("8秒間地震を発生させ{1}の敵ユニット及び建物に毎秒{2}を与える。").DZR(1,boot.BCW.li,300.0).DZX(2,boot.BCW.i,65.0,65.0,boot.BCT.DXK(0.3)).DYv(60.0).DYz(100.0);
-		// 3776
+		// 3831
+		F.DXH(boot.BCU.bc).DZO("8秒間地震を発生させ{1}の敵ユニット及び建物に毎秒{2}を与える。").DZR(1,boot.BCW.ma,300.0).DZX(2,boot.BCW.i,65.0,65.0,boot.BCT.DXK(0.3)).DYv(60.0).DYz(100.0);
+		// 3832
 	},
 	// teemowork.model.SkillDefinition#RekSai(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVN:function(A,B,C,D,E,F){
-		// 3783
-		B.DXH(boot.BCU.di).DZK(new boot.z("通常攻撃で敵ユニットに",0).IY(boot.BCW.e).V("を与える度に5、スキルで敵ユニットに").IY(boot.BCW.e).V("を与える度に10の").IY(boot.BCW.me).V("を得る。一定時間戦闘を行わないと、").IY(boot.BCW.me).V("は毎秒20ずつ減少していく。").W());
-		// 3789
-		C.DXH(boot.BCU.co).DZO("5秒以内に発動される3回の通常攻撃は{1}の敵に{2}を与える。").DZR(1,boot.BCW.li,325.0).DZX(2,boot.BCW.h,15.0,10.0,boot.BCT.DXM(0.2)).DYv(4.0);
-		// 3796
-		D.DXH(boot.BCU.ch).DZO(new boot.z("地中に潜る。この間は通常攻撃が不可能になり、視界が大幅に狭まるが、",0).IY(F).V("以外のスキルが変化し、{1}にいる移動中の敵ユニットの場所にソナーが発生し位置を特定できるようになる。また{2}を得て{3}する。").W()).DZR(1,boot.BCW.li,1300.0).DZQ(2,boot.BCW.kg).DZU(3,boot.BCW.ka,new boot.BDI(15.0,5.0,0)).DYv(4.0);
-		// 3802
-		E.DXH(boot.BCU.ch).DZO(new boot.z("ターゲットにかみつき{1}を与える。",0).IY(boot.BCW.e).V("は得ている").IY(boot.BCW.me).V("1につき1%増加し(最大2倍)、").IY(boot.BCW.me).V("が100の場合は").IY(boot.BCW.h).V("の代わりに").IY(boot.BCW.j).V("を与える。").W()).DZX(1,boot.BCW.h,0,0,boot.BCT.DXN(boot.BCW.dh,0.8,0.1)).DYv(12.0).DZE(250.0);
-		// 3809
+		// 3839
+		B.DXH(boot.BCU.di).DZK(new boot.z("通常攻撃で敵ユニットに",0).IY(boot.BCW.e).V("を与える度に5、スキルで敵ユニットに").IY(boot.BCW.e).V("を与える度に10の").IY(boot.BCW.mm).V("を得る。一定時間戦闘を行わないと、").IY(boot.BCW.mm).V("は毎秒20ずつ減少していく。").W());
+		// 3845
+		C.DXH(boot.BCU.co).DZO("5秒以内に発動される3回の通常攻撃は{1}の敵に{2}を与える。").DZR(1,boot.BCW.ma,325.0).DZX(2,boot.BCW.h,15.0,10.0,boot.BCT.DXM(0.2)).DYv(4.0);
+		// 3852
+		D.DXH(boot.BCU.ch).DZO(new boot.z("地中に潜る。この間は通常攻撃が不可能になり、視界が大幅に狭まるが、",0).IY(F).V("以外のスキルが変化し、{1}にいる移動中の敵ユニットの場所にソナーが発生し位置を特定できるようになる。また{2}を得て{3}する。").W()).DZR(1,boot.BCW.ma,1300.0).DZQ(2,boot.BCW.kg).DZU(3,boot.BCW.ka,new boot.BDI(15.0,5.0,0)).DYv(4.0);
+		// 3858
+		E.DXH(boot.BCU.ch).DZO(new boot.z("ターゲットにかみつき{1}を与える。",0).IY(boot.BCW.e).V("は得ている").IY(boot.BCW.mm).V("1につき1%増加し(最大2倍)、").IY(boot.BCW.mm).V("が100の場合は").IY(boot.BCW.h).V("の代わりに").IY(boot.BCW.j).V("を与える。").W()).DZX(1,boot.BCW.h,0,0,boot.BCT.DXN(boot.BCW.dh,0.8,0.1)).DYv(12.0).DZE(250.0);
+		// 3865
 		F.DXH(boot.BCU.ch).DZK("{1}する。").DZS(1,boot.BCW.ea,20.0,20.0).DZO(new boot.z("MAP上にあるトンネルを指定すると、1.5秒詠唱後に指定したトンネルの元まで高速で移動する。スキル発動後は地面に潜った状態となる。このスキルによる詠唱は敵チャンピオンまたは敵タワーから",0).IY(boot.BCW.e).V("を受けると中断される。").W()).DYw(150.0,-40.0).DZE(-1.0);
-		// 3810
+		// 3866
 	},
 	// teemowork.model.SkillDefinition#RekSaiTransformed(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVO:function(A,B,C,D,E,F){
-		// 3816
-		B.DXH(boot.BCU.ch).DZK(new boot.z("毎秒20",0).IY(boot.BCW.me).V("を消費して{1}する。").W()).DZX(1,boot.BCW.ih,0,0,boot.BCT.DXI(5.0));
-		// 3824
-		C.DXH(boot.BCU.ci).DZO("ビームを放ち、最初に命中したユニットとその{1}の敵ユニットに{2}を与え、{3}。").DZQ(1,boot.BCW.li).DZX(2,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.7)).DZQ(3,boot.BCW.kk).DYw(11.0,-1.0).DZE(1650.0);
-		// 3832
-		D.DXH(boot.BCU.de).DZO(new boot.z("地上に飛び出し、{1}にいる敵に{2}と{3}を与える。打ち上げ時間は、",0).IY(A).V("に近い敵ほど長くなる。一度").IY(D).V("の効果を受けたユニットは、以後{4}経過するまで再度効果を受けない。").W()).DZR(1,boot.BCW.li,160.0).DZX(2,boot.BCW.h,40.0,40.0,boot.BCT.DXM(0.4)).DZR(3,boot.BCW.jg,1).DZS(4,boot.BCW.ld,10.0,-0.5).DYv(1);
-		// 3838
-		E.DXH(boot.BCU.cm).DZO(new boot.z("指定した地点まで一定距離掘り進んだ後、スキルを使用した地点と止まった地点にトンネルの出入り口を作成する。",0).IY(A).V("がトンネルの出入り口をクリックすると、トンネルを経由してもう一つの出入り口まで移動できる。移動には1.5秒かかり、一度トンネルによる移動を行うと、{1}間はトンネルが使用できなくなる。トンネルは10分間持続し、一度に8箇所まで作成できるが、敵チャンピオンが出入り口の上に立ち1.5秒経過すると、トンネルは破壊される。").W()).DZS(1,boot.BCW.ld,10.0,-1.0).DYw(20.0,-0.5).DZE(250.0);
-		// 3845
+		// 3872
+		B.DXH(boot.BCU.ch).DZK(new boot.z("毎秒20",0).IY(boot.BCW.mm).V("を消費して{1}する。").W()).DZX(1,boot.BCW.ih,0,0,boot.BCT.DXI(5.0));
+		// 3880
+		C.DXH(boot.BCU.ci).DZO("ビームを放ち、最初に命中したユニットとその{1}の敵ユニットに{2}を与え、{3}。").DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.7)).DZQ(3,boot.BCW.lc).DYw(11.0,-1.0).DZE(1650.0);
+		// 3888
+		D.DXH(boot.BCU.de).DZO(new boot.z("地上に飛び出し、{1}にいる敵に{2}と{3}を与える。打ち上げ時間は、",0).IY(A).V("に近い敵ほど長くなる。一度").IY(D).V("の効果を受けたユニットは、以後{4}経過するまで再度効果を受けない。").W()).DZR(1,boot.BCW.ma,160.0).DZX(2,boot.BCW.h,40.0,40.0,boot.BCT.DXM(0.4)).DZR(3,boot.BCW.jg,1).DZS(4,boot.BCW.ll,10.0,-0.5).DYv(1);
+		// 3895
+		E.DXH(boot.BCU.cm).DZO(new boot.z("指定した地点まで一定距離{1}後、スキルを使用した地点と止まった地点にトンネルの出入り口を作成する。",0).IY(A).V("がトンネルの出入り口をクリックすると、トンネルを経由してもう一つの出入り口まで移動できる。移動には1.5秒かかり、一度トンネルによる移動を行うと、{2}間はトンネルが使用できなくなる。トンネルは10分間持続し、一度に8箇所まで作成できるが、敵チャンピオンが出入り口の上に立ち1.5秒経過すると、トンネルは破壊される。").W()).DZQ(1,boot.BCW.km).DZS(2,boot.BCW.ll,10.0,-1.0).DYw(20.0,-0.5).DZE(250.0);
+		// 3902
 		F.DXH(boot.BCU.ch).DZK("{1}する。").DZS(1,boot.BCW.ea,20.0,20.0).DZO(new boot.z("MAP上にあるトンネルを指定すると、1.5秒詠唱後に指定したトンネルの元まで高速で移動する。スキル発動後は地面に潜った状態となる。このスキルによる詠唱は敵チャンピオンまたは敵タワーから",0).IY(boot.BCW.e).V("を受けると中断される。").W()).DYw(150.0,-40.0).DZE(-1.0);
-		// 3846
+		// 3903
 	},
 	// teemowork.model.SkillDefinition#Renekton(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVP:function(A,B,C,D,E,F){
-		// 3853
-		B.DXH(boot.BCU.ci).DZK(new boot.z("通常攻撃ごとに",0).IY(boot.BCW.me).V("が5増加する。12秒間戦闘を行わないと").IY(boot.BCW.me).V("は毎秒4減少する。").IY(boot.BCW.me).V("の最大値は100、").IY(boot.BCW.me).V("が50以上ある場合にスキルを使用すると、").IY(boot.BCW.me).V("を50消費してスキルが強化される。また、").IY(A).V("の").IY(boot.BCW.bf).V("が50%以下になると").IY(boot.BCW.me).V("の増加量が50%増加する。建物を攻撃した場合は").IY(boot.BCW.me).V("は増加しない。").W());
-		// 3866
-		C.DXH(boot.BCU.ci).DZO(new boot.z("武器を振り回し{1}の敵ユニットに{2}を与え、{3}する。対象がチャンピオンの場合は{4}する。回復値の上限は{5}。当たったユニット1体につき",0).IY(boot.BCW.me).V("が2.5（チャンピオンの場合は10）増加する(最大25)。<br><br>").IY(boot.BCW.me).V("50以上時: {6}を与え、{7}する。対象がチャンピオンの場合は{8}する。回復値の上限は{9}。").IY(boot.BCW.me).V("増加効果は無くなる。").W()).DZR(1,boot.BCW.li,225.0).DZX(2,boot.BCW.h,60.0,30.0,boot.BCT.DXM(0.8)).DZX(3,boot.BCW.ih,3.0,1.5,boot.BCT.DXM(0.04)).DZX(4,boot.BCW.ih,9.0,4.5,boot.BCT.DXM(0.12)).DZS(5,boot.BCW.mb,50.0,25.0).DZX(6,boot.BCW.h,90.0,45.0,boot.BCT.DXM(1.2)).DZX(7,boot.BCW.ih,9.0,4.5,boot.BCT.DXM(0.12)).DZX(8,boot.BCW.ih,27.0,13.5,boot.BCT.DXM(0.36)).DZS(9,boot.BCW.mb,150.0,75.0).DYv(8.0);
-		// 3877
-		D.DXH(boot.BCU.da).DZO(new boot.z("次の通常攻撃は{1}して2回攻撃になり、1撃ごとに{2}を与え（合計{3}）、さらに{4}を与える。{5}。対象がチャンピオンであった場合、追加で",0).IY(boot.BCW.me).V("10を得る。<br><br>").IY(boot.BCW.me).V("50以上時: 攻撃回数が3回に増え、ターゲットに合計{6}と{7}を与える。").IY(boot.BCW.me).V("増加効果は無くなる。").W()).DZR(1,boot.BCW.hi,50.0).DZX(2,boot.BCW.h,5.0,10.0,boot.BCT.DXL(0.75)).DZX(3,boot.BCW.h,10.0,20.0,boot.BCT.DXL(1.5)).DZR(4,boot.BCW.im,0.75).DZQ(5,boot.BCW.kn).DZX(6,boot.BCW.h,15.0,30.0,boot.BCT.DXL(2.25)).DZR(7,boot.BCW.im,1.5).DYw(13.0,-1.0);
-		// 3885
-		E.DXH(boot.BCU.ci).DZO(new boot.z("一撃目: ",0).IY(A).V("がダッシュして敵を斬りつけ{1}を与える。攻撃命中後は4秒以内に「二撃目」の発動が可能になる。<br><br>二撃目: ").IY(A).V("がダッシュして敵を斬りつけ{1}を与える。さらに攻撃が敵1体に命中するごとに").IY(boot.BCW.me).V("2.5 (対象がチャンピオンの場合は10で最大で30)を生成する。<br><br>").IY(boot.BCW.me).V("50以上時の二撃目: {3}と4秒間{2}を与える。").IY(boot.BCW.me).V("増加効果はなくなる。").W()).DZX(1,boot.BCW.h,30.0,30.0,boot.BCT.DXM(0.9)).DZS(2,boot.BCW.fj,15.0,5.0).DZX(3,boot.BCW.h,45.0,45.0,boot.BCT.DXM(1.35)).DYw(18.0,-1.0).DZE(450.0);
-		// 3893
-		F.DXH(boot.BCU.da).DZO(new boot.z("15秒間{4}、{1}を得て{2}の敵ユニットに毎秒{3}を与える。また、毎秒5",0).IY(boot.BCW.me).V("を得る。").W()).DZU(1,boot.BCW.bf,new boot.BDL(Φ("D",[200.0,400.0,800.0]),0)).DZR(2,boot.BCW.li,175.0).DZX(3,boot.BCW.i,40.0,30.0,boot.BCT.DXK(0.1)).DZQ(4,boot.BCW.hl).DYv(120.0);
-		// 3894
+		// 3910
+		B.DXH(boot.BCU.ci).DZK(new boot.z("通常攻撃ごとに",0).IY(boot.BCW.mm).V("が5増加する。12秒間戦闘を行わないと").IY(boot.BCW.mm).V("は毎秒4減少する。").IY(boot.BCW.mm).V("の最大値は100、").IY(boot.BCW.mm).V("が50以上ある場合にスキルを使用すると、").IY(boot.BCW.mm).V("を50消費してスキルが強化される。また、").IY(A).V("の").IY(boot.BCW.bf).V("が50%以下になると").IY(boot.BCW.mm).V("の増加量が50%増加する。建物を攻撃した場合は").IY(boot.BCW.mm).V("は増加しない。").W());
+		// 3923
+		C.DXH(boot.BCU.ci).DZO(new boot.z("武器を振り回し{1}の敵ユニットに{2}を与え、{3}する。対象がチャンピオンの場合は{4}する。回復値の上限は{5}。当たったユニット1体につき",0).IY(boot.BCW.mm).V("が2.5（チャンピオンの場合は10）増加する(最大25)。<br><br>").IY(boot.BCW.mm).V("50以上時: {6}を与え、{7}する。対象がチャンピオンの場合は{8}する。回復値の上限は{9}。").IY(boot.BCW.mm).V("増加効果は無くなる。").W()).DZR(1,boot.BCW.ma,225.0).DZX(2,boot.BCW.h,60.0,30.0,boot.BCT.DXM(0.8)).DZX(3,boot.BCW.ih,3.0,1.5,boot.BCT.DXM(0.04)).DZX(4,boot.BCW.ih,9.0,4.5,boot.BCT.DXM(0.12)).DZS(5,boot.BCW.mj,50.0,25.0).DZX(6,boot.BCW.h,90.0,45.0,boot.BCT.DXM(1.2)).DZX(7,boot.BCW.ih,9.0,4.5,boot.BCT.DXM(0.12)).DZX(8,boot.BCW.ih,27.0,13.5,boot.BCT.DXM(0.36)).DZS(9,boot.BCW.mj,150.0,75.0).DYv(8.0);
+		// 3934
+		D.DXH(boot.BCU.da).DZO(new boot.z("次の通常攻撃は{1}して2回攻撃になり、1撃ごとに{2}を与え（合計{3}）、さらに{4}を与える。{5}。対象がチャンピオンであった場合、追加で",0).IY(boot.BCW.mm).V("10を得る。<br><br>").IY(boot.BCW.mm).V("50以上時: 攻撃回数が3回に増え、ターゲットに合計{6}と{7}を与える。").IY(boot.BCW.mm).V("増加効果は無くなる。").W()).DZR(1,boot.BCW.hi,50.0).DZX(2,boot.BCW.h,5.0,10.0,boot.BCT.DXL(0.75)).DZX(3,boot.BCW.h,10.0,20.0,boot.BCT.DXL(1.5)).DZR(4,boot.BCW.im,0.75).DZQ(5,boot.BCW.lf).DZX(6,boot.BCW.h,15.0,30.0,boot.BCT.DXL(2.25)).DZR(7,boot.BCW.im,1.5).DYw(13.0,-1.0);
+		// 3943
+		E.DXH(boot.BCU.ci).DZO(new boot.z("一撃目: ",0).IY(A).V("が{4}して敵を斬りつけ{1}を与える。攻撃命中後は4秒以内に「二撃目」の発動が可能になる。<br><br>二撃目: ").IY(A).V("が{4}して敵を斬りつけ{1}を与える。さらに攻撃が敵1体に命中するごとに").IY(boot.BCW.mm).V("2.5 (対象がチャンピオンの場合は10で最大で30)を生成する。<br><br>").IY(boot.BCW.mm).V("50以上時の二撃目: {3}と4秒間{2}を与える。").IY(boot.BCW.mm).V("増加効果はなくなる。").W()).DZX(1,boot.BCW.h,30.0,30.0,boot.BCT.DXM(0.9)).DZS(2,boot.BCW.fj,15.0,5.0).DZX(3,boot.BCW.h,45.0,45.0,boot.BCT.DXM(1.35)).DZQ(4,boot.BCW.km).DYw(18.0,-1.0).DZE(450.0);
+		// 3951
+		F.DXH(boot.BCU.da).DZO(new boot.z("15秒間{4}、{1}を得て{2}の敵ユニットに毎秒{3}を与える。また、毎秒5",0).IY(boot.BCW.mm).V("を得る。").W()).DZU(1,boot.BCW.bf,new boot.BDL(Φ("D",[200.0,400.0,800.0]),0)).DZR(2,boot.BCW.ma,175.0).DZX(3,boot.BCW.i,40.0,30.0,boot.BCT.DXK(0.1)).DZQ(4,boot.BCW.hl).DYv(120.0);
+		// 3952
 	},
 	// teemowork.model.SkillDefinition#Rengar(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVQ:function(A,B,C,D,E,F){
-		// 3905
-		B.DXH(boot.BCU.bl).DZK(new boot.z("スキルで敵ユニットにダメージを与える度に1 スタックを得て、5 スタック貯まると全てを消費して強化されたスキルを使用することが出来る。<br>ステルス状態または茂みの中から相手を攻撃する際には、通常攻撃の{1}して相手に飛びつくようになる。この効果はステルス状態が解除された、また茂みから出た後0.5秒の間でも発生し、またステルス状態や茂みの中の視界が取られていた場合でも発生する。<br>敵チャンピオンを{2}と1Trophyを得る。得たTrophyの数に応じて以下の効果を得る。<br>3: 戦闘外または茂みに入っている間は{3}を得る。<br>6: ",0).IY(B).V("の{4}する。<br>12: ").IY(F).V("の効果時間が5秒増加する。<br>20: ").IY(F).V("の増加移動速度が2倍になる。").W()).DZR(-1,boot.BCW.hi,600.0).DZQ(2,boot.BCW.lp).DZR(-3,boot.BCW.ka,25.0).DZR(-4,boot.BCW.hi,125.0);
-		// 3930
+		// 3963
+		B.DXH(boot.BCU.bl).DZK(new boot.z("スキルで敵ユニットにダメージを与える度に1 スタックを得て、5 スタック貯まると全てを消費して強化されたスキルを使用することが出来る。<br>ステルス状態または茂みの中から相手を攻撃する際には、通常攻撃の{1}して相手に飛びつくようになる。この効果はステルス状態が解除された、また茂みから出た後0.5秒の間でも発生し、またステルス状態や茂みの中の視界が取られていた場合でも発生する。<br>敵チャンピオンを{2}と1Trophyを得る。得たTrophyの数に応じて以下の効果を得る。<br>3: 戦闘外または茂みに入っている間は{3}を得る。<br>6: ",0).IY(B).V("の{4}する。<br>12: ").IY(F).V("の効果時間が5秒増加する。<br>20: ").IY(F).V("の増加移動速度が2倍になる。").W()).DZR(-1,boot.BCW.hi,600.0).DZQ(2,boot.BCW.mh).DZR(-3,boot.BCW.ka,25.0).DZR(-4,boot.BCW.hi,125.0);
+		// 3988
 		C.DXH(boot.BCU.bo).DZO("3秒以内の次の通常攻撃に{1}を付与する。<br>強化スキル: 3秒以内の次の通常攻撃に{2}を付与し、5秒間{3}を得て{4}する。").DZX(1,boot.BCW.h,30.0,30.0,boot.BCT.DXN(boot.BCW.dh,0,0.05)).DZZ(2,boot.BCW.h,new boot.BDG(Φ("D",[30.0,45.0,60.0,75.0,90.0,105.0,120.0,135.0,150.0,160.0,170.0,180.0,190.0,200.0,210.0,220.0,230.0,240.0]),0),boot.BCT.DXL(0.5)).DZW(3,boot.BCW.dh,boot.BCT.DXL(0.1)).DZX(4,boot.BCW.ea,47.0,0,boot.BCT.DXI(3.0)).DYw(6.0,-0.5);
-		// 3958
-		D.DXH(boot.BCU.bh).DZO("{1}の敵ユニットに{2}を与え、4秒間{3}と{4}を得る。<br>強化スキル: {1}の敵ユニットに{5}を与え、4秒間{3}と{4}を得る（通常スキルの効果と重複する）。また、{6}する（自身が失っているHP1%につき、回復量が6.25%上昇して最大で{7}）。").DZR(1,boot.BCW.li,500.0).DZX(2,boot.BCW.i,50.0,30.0,boot.BCT.DXK(0.8)).DZX(3,boot.BCW.ga,10.0,5.0,boot.BCT.DXN(boot.BCW.lo,5.0,2.5)).DZX(4,boot.BCW.ge,10.0,5.0,boot.BCT.DXN(boot.BCW.lo,5.0,2.5)).DZZ(5,boot.BCW.i,new boot.BDG(Φ("D",[40.0,55.0,70.0,85.0,100.0,115.0,130.0,145.0,160.0,170.0,180.0,190.0,200.0,210.0,220.0,230.0,240.0,250.0]),0),boot.BCT.DXK(0.8)).DZX(6,boot.BCW.ih,8.0,0,boot.BCT.DXI(4.0)).DZX(7,boot.BCW.ih,50.0,0,boot.BCT.DXI(25.0)).DYv(12.0);
-		// 3984
+		// 4016
+		D.DXH(boot.BCU.bh).DZO("{1}の敵ユニットに{2}を与え、4秒間{3}と{4}を得る。<br>強化スキル: {1}の敵ユニットに{5}を与え、4秒間{3}と{4}を得る（通常スキルの効果と重複する）。また、{6}する（自身が失っているHP1%につき、回復量が6.25%上昇して最大で{7}）。").DZR(1,boot.BCW.ma,500.0).DZX(2,boot.BCW.i,50.0,30.0,boot.BCT.DXK(0.8)).DZX(3,boot.BCW.ga,10.0,5.0,boot.BCT.DXN(boot.BCW.mg,5.0,2.5)).DZX(4,boot.BCW.ge,10.0,5.0,boot.BCT.DXN(boot.BCW.mg,5.0,2.5)).DZZ(5,boot.BCW.i,new boot.BDG(Φ("D",[40.0,55.0,70.0,85.0,100.0,115.0,130.0,145.0,160.0,170.0,180.0,190.0,200.0,210.0,220.0,230.0,240.0,250.0]),0),boot.BCT.DXK(0.8)).DZX(6,boot.BCW.ih,8.0,0,boot.BCT.DXI(4.0)).DZX(7,boot.BCW.ih,50.0,0,boot.BCT.DXI(25.0)).DYv(12.0);
+		// 4042
 		E.DXH(boot.BCU.bh).DZO("指定方向に投げ縄を投げ、当たった敵に{1}と2.5秒かけて減衰する{2}を与える。<br>強化スキル: 指定方向に投げ縄を投げ、当たった敵に{3}と{4}を与える。").DZX(1,boot.BCW.h,50.0,50.0,boot.BCT.DXM(0.7)).DZS(2,boot.BCW.jl,60.0,5.0).DZZ(3,boot.BCW.h,new boot.BDG(Φ("D",[50.0,75.0,100.0,125.0,150.0,175.0,200.0,225.0,250.0,260.0,270.0,280.0,290.0,300.0,310.0,320.0,330.0,340.0]),0),boot.BCT.DXM(0.7)).DZR(4,boot.BCW.ip,1.75).DYv(10.0).DZE(1000.0);
-		// 3993
-		F.DXH(boot.BCU.cb).DZO("1秒後に{1}になり{4}して、{2}の敵チャンピオン全員の{3}。ステルス準備中に攻撃を行うかダメージを受ける度に、ステルス状態になるのに必要な時間が1秒増加する。ステルス準備開始から3秒経過するとダメージを受けていてもステルス状態になる。ステルスが解除されると5秒間{5}して1秒毎に1 Ferocityを得る。").DZR(1,boot.BCW.kj,7.0).DZS(2,boot.BCW.li,2000.0,1000.0).DZQ(3,boot.BCW.kk).DZR(-4,boot.BCW.kc,15.0).DZS(5,boot.BCW.kc,25.0,10.0).DYw(150.0,-40.0);
-		// 3994
+		// 4051
+		F.DXH(boot.BCU.cb).DZO("1秒後に{1}になり{4}して、{2}の敵チャンピオン全員の{3}。ステルス準備中に攻撃を行うかダメージを受ける度に、ステルス状態になるのに必要な時間が1秒増加する。ステルス準備開始から3秒経過するとダメージを受けていてもステルス状態になる。ステルスが解除されると5秒間{5}して1秒毎に1 Ferocityを得る。").DZR(1,boot.BCW.lb,7.0).DZS(2,boot.BCW.ma,2000.0,1000.0).DZQ(3,boot.BCW.lc).DZR(-4,boot.BCW.kc,15.0).DZS(5,boot.BCW.kc,25.0,10.0).DYw(150.0,-40.0);
+		// 4052
 	},
 	// teemowork.model.SkillDefinition#Riven(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVR:function(A,B,C,D,E,F){
-		// 4002
+		// 4060
 		B.DXH(boot.BCU.f).DZK("スキルを使用するごとに1チャージを得る。チャージがある状態で通常攻撃を行うと、チャージを消費して通常攻撃に{1}が付与される。チャージは最大3スタックされ、通常攻撃ごとに1チャージずつ消費される。チャージは5秒間増加または消費がないと0になる。建物には無効。").DZW(1,boot.BCW.h,boot.BCT.DXP(boot.BCW.dh,new boot.BDG(Φ("I",[1,3,6,9,12,15,18]),0.2,0.05,1)));
-		// 4012
-		C.DXH(boot.BCU.bd).DZO("前方にステップし、{1}の敵ユニットを剣で切りつけて{2}を与える。このスキルは短期間の間、3回まで連続して使用できる。3度目の使用でジャンプを行い、着地時に{3}の敵ユニットに{2}と{4}を与える。また、スキルを使用する度にオートアタックタイマーがリセットされる。最大DMは{5}。3度目のジャンプのみ壁を飛び越えられる。").DZR(1,boot.BCW.li,112.5).DZX(2,boot.BCW.h,10.0,20.0,boot.BCT.DXN(boot.BCW.dh,0.4,0.05)).DZR(3,boot.BCW.li,150.0).DZQ(4,boot.BCW.jg).DZX(5,boot.BCW.h,30.0,60.0,boot.BCT.DXN(boot.BCW.dh,1.2,0.15)).DYv(1).DZE(260.0);
-		// 4019
-		D.DXH(boot.BCU.e).DZO("{1}の敵ユニットに{2}と{3}を与える。").DZR(1,boot.BCW.li,125.0).DZX(2,boot.BCW.h,50.0,30.0,boot.BCT.DXM(1)).DZR(3,boot.BCW.im,0.75).DYw(11.0,-1.0);
-		// 4026
-		E.DXH(boot.BCU.be).DZO("指定方向にダッシュし、{3}間{2}が付与される。").DZX(2,boot.BCW.he,90.0,30.0,boot.BCT.DXM(1)).DZR(3,boot.BCW.ld,1.5).DYw(10.0,-1.0).DZE(325.0);
-		// 4035
-		F.DXH(boot.BCU.e).DZO(new boot.z("15秒間折れた剣の刃を再生させ、{1}を得て{2}する。また、このスキルを再度使用することで一度だけ0.5秒後に指定方向に巨大な衝撃波を発生させ、{3}の敵ユニットに{5}与える。対象が受けているダメージに比例して与えるダメージが増加して、最大",0).IY(boot.BCW.e).V("は{6}。").W()).DZW(1,boot.BCW.dh,boot.BCT.DXL(0.2)).DZR(2,boot.BCW.hi,75.0).DZR(3,boot.BCW.li,900.0).DZX(5,boot.BCW.h,80.0,40.0,boot.BCT.DXM(0.6)).DZX(6,boot.BCW.h,240.0,120.0,boot.BCT.DXM(1.8)).DYw(110.0,-30.0);
-		// 4036
+		// 4071
+		C.DXH(boot.BCU.bd).DZO("前方に{6}し、{1}の敵ユニットを剣で切りつけて{2}を与える。このスキルは短期間の間、3回まで連続して使用できる。3度目の使用でジャンプを行い、着地時に{3}の敵ユニットに{2}と{4}を与える。また、スキルを使用する度にオートアタックタイマーがリセットされる。最大DMは{5}。3度目のジャンプのみ壁を飛び越えられる。").DZR(1,boot.BCW.ma,112.5).DZX(2,boot.BCW.h,10.0,20.0,boot.BCT.DXN(boot.BCW.dh,0.4,0.05)).DZR(3,boot.BCW.ma,150.0).DZQ(4,boot.BCW.jg).DZX(5,boot.BCW.h,30.0,60.0,boot.BCT.DXN(boot.BCW.dh,1.2,0.15)).DZQ(6,boot.BCW.km).DYv(1).DZE(260.0);
+		// 4078
+		D.DXH(boot.BCU.e).DZO("{1}の敵ユニットに{2}と{3}を与える。").DZR(1,boot.BCW.ma,125.0).DZX(2,boot.BCW.h,50.0,30.0,boot.BCT.DXM(1)).DZR(3,boot.BCW.im,0.75).DYw(11.0,-1.0);
+		// 4080
+		E.DXH(boot.BCU.be).DZO("指定方向に{1}し、1.5秒間{2}が付与される。").DZQ(1,boot.BCW.km).DZX(2,boot.BCW.he,90.0,30.0,boot.BCT.DXM(1)).DYw(10.0,-1.0).DZE(325.0);
+		// 4089
+		F.DXH(boot.BCU.e).DZO(new boot.z("15秒間折れた剣の刃を再生させ、{1}を得て{2}する。また、このスキルを再度使用することで一度だけ0.5秒後に指定方向に巨大な衝撃波を発生させ、{3}の敵ユニットに{5}与える。対象が受けているダメージに比例して与えるダメージが増加して、最大",0).IY(boot.BCW.e).V("は{6}。").W()).DZW(1,boot.BCW.dh,boot.BCT.DXL(0.2)).DZR(2,boot.BCW.hi,75.0).DZR(3,boot.BCW.ma,900.0).DZX(5,boot.BCW.h,80.0,40.0,boot.BCT.DXM(0.6)).DZX(6,boot.BCW.h,240.0,120.0,boot.BCT.DXM(1.8)).DYw(110.0,-30.0);
+		// 4090
 	},
 	// teemowork.model.SkillDefinition#Rumble(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVS:function(A,B,C,D,E,F){
-		// 4044
+		// 4098
 		B.DXH(boot.BCU.e).DZK(new boot.z(1).IY(F).V("以外のスキルを使うとHeatが20増加し、それが50以上になると「Danger Zone」状態に入り全てのスキルに追加効果がつくようになる。Heatが100になると6秒間スキルが使用不可能になり、通常攻撃に{1}が付与される（建物には無効）。4秒間スキルを使用しないとHeatは減少していく。").W()).DZT(1,boot.BCW.i,20.0,0,boot.BCT.DXK(0.25),boot.BCT.DXI(5.0));
-		// 4051
+		// 4105
 		C.DXH(boot.BCU.df).DZO("目の前の敵を焼き払い、3秒間毎秒{1}を与える。ミニオンやモンスターに対してはダメージが半減。Danger Zone中は{2}を与える。").DZX(1,boot.BCW.i,25.0,20.0,boot.BCT.DXK(0.33)).DZX(2,boot.BCW.i,37.5,30.0,boot.BCT.DXK(0.5)).DYv(6.0).DZE(600.0);
-		// 4059
+		// 4113
 		D.DXH(boot.BCU.cb).DZO("2秒間{1}を得て1秒間{2}する。Danger Zone中は2秒間{3}を得て1秒間{4}する。").DZX(1,boot.BCW.he,50.0,30.0,boot.BCT.DXK(0.4)).DZS(2,boot.BCW.kc,10.0,5.0).DZX(3,boot.BCW.he,75.0,45.0,boot.BCT.DXK(0.6)).DZS(4,boot.BCW.kc,15.0,7.5).DYv(6.0);
-		// 4068
+		// 4122
 		E.DXH(boot.BCU.e).DZO("指定方向に銛を放ち当たった敵ユニットに{1}と3秒間{2}を与える。このスキルは3秒間、再使用できる(但し、一度使用する度に1秒のCDが発生する)。2発目はHeatが増加しない。また、このスキルによるスローはスタックする。Danger Zone中では{3}と3秒間{4}を与える。").DZX(1,boot.BCW.i,45.0,25.0,boot.BCT.DXK(0.4)).DZS(2,boot.BCW.jl,15.0,5.0).DZX(3,boot.BCW.i,67.5,37.5,boot.BCT.DXK(0.6)).DZS(4,boot.BCW.jl,22.5,7.5).DYv(10.0).DZE(850.0);
-		// 4076
-		F.DXH(boot.BCU.dh).DZO("指定した位置から指定方向({4})にロケットを打ち出し、当たった地面を5秒間炎上させる。炎上した地面の上にいる敵ユニットに毎秒{3}と{2}を与える。").DZR(2,boot.BCW.jl,35.0).DZX(3,boot.BCW.i,130.0,55.0,boot.BCT.DXK(0.3)).DZR(4,boot.BCW.lk,1000.0).DYw(120.0,-10.0).DZE(1700.0);
-		// 4077
+		// 4130
+		F.DXH(boot.BCU.dh).DZO("指定した位置から指定方向({4})にロケットを打ち出し、当たった地面を5秒間炎上させる。炎上した地面の上にいる敵ユニットに毎秒{3}と{2}を与える。").DZR(2,boot.BCW.jl,35.0).DZX(3,boot.BCW.i,130.0,55.0,boot.BCT.DXK(0.3)).DZR(4,boot.BCW.mc,1000.0).DYw(120.0,-10.0).DZE(1700.0);
+		// 4131
 	},
 	// teemowork.model.SkillDefinition#Ryze(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVT:function(A,B,C,D,E,F){
-		// 4087
-		B.DXH(boot.BCU.df).DZK(new boot.z("スキル使用時に6秒間、スタックを得る。5スタック時に、{1}間フルチャージ状態になり、{2}を得て、スキルを使用するたびに使用したスキル以外のスキルの{3}が「",0).IY(C).V("のCD数値分」解消する。").W()).DZU(1,boot.BCW.ld,new boot.BDN(C,2.5,0.5,0)).DZT(2,boot.BCW.he,20.0,0,boot.BCT.DXI(5.0),boot.BCT.DXJ(boot.BCW.bp,0.08)).DZQ(3,boot.BCW.ib);
-		// 4096
-		C.DXH(boot.BCU.df).DZK(new boot.z(1).IY(B).V("がフルチャージした際の効果時間が{2}増加する。").W()).DZS(2,boot.BCW.ld,0.5,0.5).DZO("オーブを放ち、最初に命中した敵に{1}を与える。").DZT(1,boot.BCW.i,60.0,25.0,boot.BCT.DXK(0.55),boot.BCT.DXN(boot.BCW.bp,0.02,0.005)).DYz(40.0).DYv(4.0).DZE(900.0);
-		// 4104
+		// 4141
+		B.DXH(boot.BCU.df).DZK(new boot.z("スキル使用時に6秒間、スタックを得る。5スタック時に、{1}間フルチャージ状態になり、{2}を得て、スキルを使用するたびに使用したスキル以外のスキルの{3}が「",0).IY(C).V("のCD数値分」解消する。").W()).DZU(1,boot.BCW.ll,new boot.BDN(C,2.5,0.5,0)).DZT(2,boot.BCW.he,20.0,0,boot.BCT.DXI(5.0),boot.BCT.DXJ(boot.BCW.bp,0.08)).DZQ(3,boot.BCW.ib);
+		// 4150
+		C.DXH(boot.BCU.df).DZK(new boot.z(1).IY(B).V("がフルチャージした際の効果時間が{2}増加する。").W()).DZS(2,boot.BCW.ll,0.5,0.5).DZO("オーブを放ち、最初に命中した敵に{1}を与える。").DZT(1,boot.BCW.i,60.0,25.0,boot.BCT.DXK(0.55),boot.BCT.DXN(boot.BCW.bp,0.02,0.005)).DYz(40.0).DYv(4.0).DZE(900.0);
+		// 4158
 		D.DXH(boot.BCU.dd).DZO("対象の敵ユニットに{1}と{2}を与える。").DZT(1,boot.BCW.i,80.0,20.0,boot.BCT.DXK(0.4),boot.BCT.DXJ(boot.BCW.bp,0.025)).DZS(2,boot.BCW.ip,1,0.1).DYv(14.0).DZB(60.0,10.0).DZE(600.0);
-		// 4114
+		// 4168
 		E.DXH(boot.BCU.df).DZO("対象の敵ユニットにオーブを放ち{1}と5秒間{2} (効果は3回まで累積)を与える。命中後、周囲の敵と自身(ターゲット以外で最大6体)に跳ね返り、最終的に最初のターゲットに戻る。最初のターゲットに命中した後は、跳ね返るごとに{3}を与える。最大で{4}。").DZT(1,boot.BCW.i,36.0,16.0,boot.BCT.DXK(0.2),boot.BCT.DXJ(boot.BCW.bp,0.02)).DZS(2,boot.BCW.fp,8.0,1).DZT(3,boot.BCW.i,18.0,8.0,boot.BCT.DXK(0.1),boot.BCT.DXJ(boot.BCW.bp,0.01)).DZT(4,boot.BCW.i,144.0,64.0,boot.BCT.DXK(0.8),boot.BCT.DXJ(boot.BCW.bp,0.08)).DZB(60.0,10.0).DYv(7.0).DZE(600.0);
-		// 4123
-		F.DXH(boot.BCU.db).DZK("{1}を得る。").DZS(1,boot.BCW.em,10.0,10.0).DZO("6秒間{2}を得て{3}する。更にスキルに50%のスプラッシュダメージ({4})が付与される。").DZS(2,boot.BCW.fa,15.0,5.0).DZR(3,boot.BCW.ka,80.0).DZR(4,boot.BCW.li,200.0).DYw(80.0,-20.0);
-		// 4124
+		// 4177
+		F.DXH(boot.BCU.db).DZK("{1}を得る。").DZS(1,boot.BCW.em,10.0,10.0).DZO("6秒間{2}を得て{3}する。更にスキルに50%のスプラッシュダメージ({4})が付与される。").DZS(2,boot.BCW.fa,15.0,5.0).DZR(3,boot.BCW.ka,80.0).DZR(4,boot.BCW.ma,200.0).DYw(80.0,-20.0);
+		// 4178
 	},
 	// teemowork.model.SkillDefinition#Sejuani(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVU:function(A,B,C,D,E,F){
-		// 4133
+		// 4187
 		B.DXH(boot.BCU.j).DZK("通常攻撃かスキルによりダメージを与えると、2秒間{1}と{2}を得る。この効果時間は最大8秒までスタックする。").DZU(1,boot.BCW.ga,new boot.BDG(Φ("I",[1,7,12,17]),10.0,5.0,1)).DZU(2,boot.BCW.hd,new boot.BDG(Φ("I",[1,7,12,17]),10.0,5.0,1));
-		// 4141
-		C.DXH(boot.BCU.ch).DZO("指定方向に突進し、接触した全ての敵ユニットに{1}と{2}を与える。敵チャンピオンに当たると突進は止まる。").DZQ(1,boot.BCW.jg).DZX(2,boot.BCW.i,80.0,55.0,boot.BCT.DXK(0.4)).DZB(80.0,5.0).DYw(15.0,-1.0).DZE(650.0);
-		// 4149
-		D.DXH(boot.BCU.dc).DZO("次の通常攻撃は、対象と{1}の敵に{2}を与える。また通常攻撃するか4秒経過するか再度スキルを使用すると4秒間{1}の敵に毎秒{3}を与える。").DZR(1,boot.BCW.li,350.0).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,4.0,0.5,boot.BCT.DXK(0.03))).DZT(3,boot.BCW.i,10.0,7.5,boot.BCT.DXK(0.15),boot.BCT.DXN(boot.BCW.bf,0.01,0.005)).DYw(11.0,-1.0).DZB(40.0,-5.0);
-		// 4159
-		E.DXH(boot.BCU.ch).DZK("通常攻撃かスキルによりダメージを与えると、対象を4秒間Frost状態にする。").DZO("{0}のFrost状態の敵ユニットに{1}と1.5秒間{2}を与える。").DZR(0,boot.BCW.li,1000.0).DZX(1,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.jl,50.0,5.0).DZE(1000.0).DYz(55.0).DYw(10.0,-1.0);
-		// 4170
-		F.DXH(boot.BCU.cn).DZO("指定方向に武器を投げ、敵チャンピオンに命中するとその場で爆発し、{1}の敵ユニットに{2}と{3}を与える。命中しなかった場合、最大射程で爆発し{1}の敵ユニットに{2}と{5}間{4}を与える。").DZQ(1,boot.BCW.li).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.8)).DZS(3,boot.BCW.im,1.25,0.25).DZR(4,boot.BCW.jl,30.0).DZS(5,boot.BCW.ld,1.25,0.25).DZE(1175.0).DYz(100.0).DYw(130.0,-15.0);
-		// 4171
+		// 4196
+		C.DXH(boot.BCU.ch).DZO("指定方向に{3}し、接触した全ての敵ユニットに{1}と{2}を与える。敵チャンピオンに当たると突進は止まる。").DZQ(1,boot.BCW.jg).DZX(2,boot.BCW.i,80.0,55.0,boot.BCT.DXK(0.4)).DZQ(3,boot.BCW.km).DZB(80.0,5.0).DYw(15.0,-1.0).DZE(650.0);
+		// 4204
+		D.DXH(boot.BCU.dc).DZO("次の通常攻撃は、対象と{1}の敵に{2}を与える。また通常攻撃するか4秒経過するか再度スキルを使用すると4秒間{1}の敵に毎秒{3}を与える。").DZR(1,boot.BCW.ma,350.0).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,4.0,0.5,boot.BCT.DXK(0.03))).DZT(3,boot.BCW.i,10.0,7.5,boot.BCT.DXK(0.15),boot.BCT.DXN(boot.BCW.bf,0.01,0.005)).DYw(11.0,-1.0).DZB(40.0,-5.0);
+		// 4214
+		E.DXH(boot.BCU.ch).DZK("通常攻撃かスキルによりダメージを与えると、対象を4秒間Frost状態にする。").DZO("{0}のFrost状態の敵ユニットに{1}と1.5秒間{2}を与える。").DZR(0,boot.BCW.ma,1000.0).DZX(1,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.jl,50.0,5.0).DZE(1000.0).DYz(55.0).DYw(10.0,-1.0);
+		// 4225
+		F.DXH(boot.BCU.cn).DZO("指定方向に武器を投げ、敵チャンピオンに命中するとその場で爆発し、{1}の敵ユニットに{2}と{3}を与える。命中しなかった場合、最大射程で爆発し{1}の敵ユニットに{2}と{5}間{4}を与える。").DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.8)).DZS(3,boot.BCW.im,1.25,0.25).DZR(4,boot.BCW.jl,30.0).DZS(5,boot.BCW.ll,1.25,0.25).DZE(1175.0).DYz(100.0).DYw(130.0,-15.0);
+		// 4226
 	},
 	// teemowork.model.SkillDefinition#Shaco(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVV:function(A,B,C,D,E,F){
-		// 4177
+		// 4232
 		B.DXH(boot.BCU.e).DZK("対象の背後から攻撃した場合に{1}する。").DZR(1,boot.BCW.f,20.0);
-		// 4185
-		C.DXH(boot.BCU.e).DZO("指定地点にテレポートし、{1}になる。また、スキル使用後6秒以内に通常攻撃を行うと必ずクリティカルになる。その際のクリティカルダメージは{2}になる。").DZR(1,boot.BCW.kj,3.5).DZS(2,boot.BCW.mc,140.0,20.0).DYv(11.0).DZB(90.0,-10.0).DZE(400.0);
-		// 4194
-		D.DXH(boot.BCU.be).DZO("指定地点に60秒持続する人形を設置する。人形は設置後2秒で{1}となり、敵ユニットがステルス状態の人形から範囲300以内に近づくと、人形のステルスが解除されると同時に近くの敵ユニットに{2}を与え、5秒間通常攻撃({3})を行った後に破壊される。").DZQ(1,boot.BCW.kj).DZS(2,boot.BCW.ja,0.5,0.25).DZX(3,boot.BCW.i,35.0,15.0,boot.BCT.DXK(0.2)).DZB(50.0,5.0).DYv(16.0).DZE(425.0);
-		// 4203
+		// 4241
+		C.DXH(boot.BCU.e).DZO("指定地点に{3}し、{1}になる。また、スキル使用後6秒以内に通常攻撃を行うと必ずクリティカルになる。その際のクリティカルダメージは{2}になる。").DZR(1,boot.BCW.lb,3.5).DZS(2,boot.BCW.mk,140.0,20.0).DZQ(3,boot.BCW.ko).DYv(11.0).DZB(90.0,-10.0).DZE(400.0);
+		// 4250
+		D.DXH(boot.BCU.be).DZO("指定地点に60秒持続する人形を設置する。人形は設置後2秒で{1}となり、敵ユニットがステルス状態の人形から範囲300以内に近づくと、人形のステルスが解除されると同時に近くの敵ユニットに{2}を与え、5秒間通常攻撃({3})を行った後に破壊される。").DZQ(1,boot.BCW.lb).DZS(2,boot.BCW.ja,0.5,0.25).DZX(3,boot.BCW.i,35.0,15.0,boot.BCT.DXK(0.2)).DZB(50.0,5.0).DYv(16.0).DZE(425.0);
+		// 4259
 		E.DXH(boot.BCU.e).DZK("通常攻撃に2秒間の{1}を付与する。対象がチャンピオン以外の場合、更に命中率低下(値はスローと同じ)を与える。命中率低下を受けたユニットは一定確率で通常攻撃が外れる(ブラインドと同じ)。").DZS(1,boot.BCW.jl,10.0,5.0).DZO("対象の敵ユニットに{2}と3秒間{1}を与える。効果後はCDが解消されるまでPassiveの効果が無くなる。").DZT(2,boot.BCW.i,50.0,40.0,boot.BCT.DXK(1),boot.BCT.DXM(1)).DZB(50.0,5.0).DYv(8.0).DZE(625.0);
-		// 4210
-		F.DXH(boot.BCU.e).DZO("18秒間持続する自身のイリュージョン(敵からの見た目は本体と同じ)を作成する。(RまたはALT押しながらクリックで任意の操作可能)イリュージョンは本体の75%の攻撃力を持ち、150%のダメージを受ける。また本体の一部アイテムの効果を引き継ぐ。イリュージョン死亡または効果時間終了時に爆発し、{1}の敵ユニットに{2}を与える。イリュージョンが塔に与えるダメージは半分。このスキルを使用してもステルスは解除されない。").DZR(1,boot.BCW.li,250.0).DZX(2,boot.BCW.i,300.0,150.0,boot.BCT.DXK(1)).DYz(100.0).DYw(100.0,-10.0);
-		// 4211
+		// 4266
+		F.DXH(boot.BCU.e).DZO("18秒間持続する自身のイリュージョン(敵からの見た目は本体と同じ)を作成する。(RまたはALT押しながらクリックで任意の操作可能)イリュージョンは本体の75%の攻撃力を持ち、150%のダメージを受ける。また本体の一部アイテムの効果を引き継ぐ。イリュージョン死亡または効果時間終了時に爆発し、{1}の敵ユニットに{2}を与える。イリュージョンが塔に与えるダメージは半分。このスキルを使用してもステルスは解除されない。").DZR(1,boot.BCW.ma,250.0).DZX(2,boot.BCW.i,300.0,150.0,boot.BCT.DXK(1)).DYz(100.0).DYw(100.0,-10.0);
+		// 4267
 	},
 	// teemowork.model.SkillDefinition#Shen(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVW:function(A,B,C,D,E,F){
-		// 4222
-		B.DXH(boot.BCU.dc).DZK(new boot.z("{3}に1度通常攻撃に追加{1}が付与され、{2}する。通常攻撃を行う度に{4}する（建物には無効、",0).IY(D).V("の効果時間中は2倍）。").W()).DZT(1,boot.BCW.i,4.0,0,boot.BCT.DXI(4.0),boot.BCT.DXJ(boot.BCW.bj,0.1)).DZU(2,boot.BCW.ik,new boot.BDJ(10.0,10.0,0)).DZU(3,boot.BCW.ld,new boot.BDJ(9.0,-1.0,0)).DZR(4,boot.BCW.id,1);
-		// 4231
+		// 4278
+		B.DXH(boot.BCU.dc).DZK(new boot.z("{3}に1度通常攻撃に追加{1}が付与され、{2}する。通常攻撃を行う度に{4}する（建物には無効、",0).IY(D).V("の効果時間中は2倍）。").W()).DZT(1,boot.BCW.i,4.0,0,boot.BCT.DXI(4.0),boot.BCT.DXJ(boot.BCW.bj,0.1)).DZU(2,boot.BCW.ik,new boot.BDJ(10.0,10.0,0)).DZU(3,boot.BCW.ll,new boot.BDJ(9.0,-1.0,0)).DZR(4,boot.BCW.id,1);
+		// 4287
 		C.DXH(boot.BCU.di).DZO("対象の敵ユニットに{1}と5秒間持続するDebuffを与える。Debuffが付与された対象に通常攻撃またはダメージスペルで攻撃をすると、攻撃した味方チャンピオンは3秒かけて{2}する。このスキルでLHを取った場合、{3}する。").DZX(1,boot.BCW.i,60.0,40.0,boot.BCT.DXK(0.6)).DZX(2,boot.BCW.ih,6.0,4.0,boot.BCT.DXJ(boot.BCW.bf,0.015)).DZX(3,boot.BCW.ih,1,1,boot.BCT.DXJ(boot.BCW.bf,0.005)).DYw(6.0,-0.5).DZA(boot.BCW.cg,60.0,0).DZE(475.0);
-		// 4237
+		// 4293
 		D.DXH(boot.BCU.n).DZO(new boot.z("3秒間{1}を得る。シールドが持続している間は",0).IY(B).V("のCD解消効果が1秒から2秒になる。").W()).DZX(1,boot.BCW.he,60.0,45.0,boot.BCT.DXK(0.6)).DYw(9.0,-1.0).DZA(boot.BCW.cg,50.0,0);
-		// 4247
-		E.DXH(boot.BCU.dc).DZO(new boot.z("指定地点まで素早く移動し接触した敵チャンピオンに{1}と{2}を与える。",0).IY(A).V("は").IY(boot.BCW.je).V("効果中の対象から受ける{4}する。またこのスキルが敵チャンピオンに命中する度に{3}する。").W()).DZX(1,boot.BCW.i,50.0,35.0,boot.BCT.DXK(0.5)).DZR(2,boot.BCW.je,1.5).DZR(3,boot.BCW.ik,40.0).DZR(4,boot.BCW.gj,50.0).DYw(16.0,-2.0).DZA(boot.BCW.cg,100.0,-5.0).DZE(600.0);
-		// 4253
+		// 4304
+		E.DXH(boot.BCU.dc).DZO(new boot.z("指定地点まで{5}し接触した敵チャンピオンに{1}と{2}を与える。",0).IY(A).V("は").IY(boot.BCW.je).V("効果中の対象から受ける{4}する。またこのスキルが敵チャンピオンに命中する度に{3}する。").W()).DZX(1,boot.BCW.i,50.0,35.0,boot.BCT.DXK(0.5)).DZR(2,boot.BCW.je,1.5).DZR(3,boot.BCW.ik,40.0).DZR(4,boot.BCW.gj,50.0).DZQ(5,boot.BCW.km).DYw(16.0,-2.0).DZA(boot.BCW.cg,100.0,-5.0).DZE(600.0);
+		// 4310
 		F.DXH(boot.BCU.cp).DZO("対象の味方チャンピオンに5秒間{1}を付与し、3秒詠唱後そこまでワープする。詠唱中にスロー以外のCCを受けると中断される。").DZX(1,boot.BCW.he,250.0,300.0,boot.BCT.DXK(1.35)).DYw(180.0,-20.0).DZE(-1.0);
-		// 4254
+		// 4311
 	},
 	// teemowork.model.SkillDefinition#Shyvana(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVX:function(A,B,C,D,E,F){
-		// 4263
+		// 4320
 		B.DXH(boot.BCU.m).DZK("{1}と{2}を得る。この効果はDragon Form時には2倍になる。").DZU(1,boot.BCW.ga,new boot.BDI(5.0,5.0,0)).DZU(2,boot.BCW.ge,new boot.BDI(5.0,5.0,0));
-		// 4270
-		C.DXH(boot.BCU.ch).DZO("次に行う通常攻撃が二回攻撃になり、ニ回目の攻撃は{1}を与える。Dragon Form時は対象の前方にいる敵ユニットにも同様の効果を与える。建物以外の対象を通常攻撃する毎に{2}する。{3}。").DZW(1,boot.BCW.h,boot.BCT.DXN(boot.BCW.dh,0.8,0.05)).DZR(2,boot.BCW.id,0.5).DZQ(3,boot.BCW.kn).DYw(10.0,-1.0);
-		// 4278
-		D.DXH(boot.BCU.de).DZO(new boot.z("3秒間{1}の敵ユニットに毎秒{2}を与え、{3}する（モンスターに対してはダメージが20％増加）。通常攻撃をする毎に効果時間が1秒延長し最大4秒延長でき{4}を与える。移動速度上昇は時間経過と共に減少する。Dragon Form時",0).IY(A).V("の通り道を5秒間炎上させ、その上にいる敵ユニットにも毎秒{2}を与える。").W()).DZR(1,boot.BCW.li,325.0).DZX(2,boot.BCW.i,20.0,13.0,boot.BCT.DXM(0.2)).DZS(3,boot.BCW.kc,30.0,5.0).DZX(4,boot.BCW.i,5.0,3.25,boot.BCT.DXM(0.05)).DYv(12.0);
-		// 4285
+		// 4327
+		C.DXH(boot.BCU.ch).DZO("次に行う通常攻撃が二回攻撃になり、ニ回目の攻撃は{1}を与える。Dragon Form時は対象の前方にいる敵ユニットにも同様の効果を与える。建物以外の対象を通常攻撃する毎に{2}する。{3}。").DZW(1,boot.BCW.h,boot.BCT.DXN(boot.BCW.dh,0.8,0.05)).DZR(2,boot.BCW.id,0.5).DZQ(3,boot.BCW.lf).DYw(10.0,-1.0);
+		// 4335
+		D.DXH(boot.BCU.de).DZO(new boot.z("3秒間{1}の敵ユニットに毎秒{2}を与え、{3}する（モンスターに対してはダメージが20％増加）。通常攻撃をする毎に効果時間が1秒延長し最大4秒延長でき{4}を与える。移動速度上昇は時間経過と共に減少する。Dragon Form時",0).IY(A).V("の通り道を5秒間炎上させ、その上にいる敵ユニットにも毎秒{2}を与える。").W()).DZR(1,boot.BCW.ma,325.0).DZX(2,boot.BCW.i,20.0,13.0,boot.BCT.DXM(0.2)).DZS(3,boot.BCW.kc,30.0,5.0).DZX(4,boot.BCW.i,5.0,3.25,boot.BCT.DXM(0.05)).DYv(12.0);
+		// 4342
 		E.DXH(boot.BCU.cm).DZO(new boot.z("指定方向に貫通する火球を放ち当たった敵ユニットに{1}と5秒間Debuffを与える。Debuffを受けている敵に通常攻撃をする毎に{2}を与える（モンスターに対しては100ダメージが上限）。Dragon Form時",0).IY(A).V("の前方の扇状の範囲を巻き込む範囲攻撃となる。").W()).DZX(1,boot.BCW.i,60.0,40.0,boot.BCT.DXK(0.6)).DZW(2,boot.BCW.i,boot.BCT.DXJ(boot.BCW.cp,2.5)).DYw(12.0,-1.0).DZE(925.0);
-		// 4293
-		F.DXH(boot.BCU.bd).DZK("Human Formの時には1.5秒毎に{1}Furyを得る。また、このスキルのLv1取得時に100Furyを得る。").DZS(1,boot.BCW.mb,1,1).DZO(new boot.z("このスキルはHuman Formで",0).IY(boot.BCW.me).V("が100貯まった時のみ使用可能。Dragon Formに変身し、指定地点まで飛んで移動する。その際の移動経路上にいる敵ユニットに{3}を与え、移動地点の方向に{4}を与える。Dragon Formでは毎秒5Fury減少し、0になるとHuman Formに戻る。").W()).DZX(3,boot.BCW.i,175.0,125.0,boot.BCT.DXK(0.7)).DZQ(4,boot.BCW.jh).DZE(1000.0);
-		// 4294
+		// 4351
+		F.DXH(boot.BCU.bd).DZK("Human Formの時には1.5秒毎に{1}Furyを得る。また、このスキルのLv1取得時に100Furyを得る。").DZS(1,boot.BCW.mj,1,1).DZO(new boot.z("このスキルはHuman Formで",0).IY(boot.BCW.mm).V("が100貯まった時のみ使用可能。Dragon Formに変身し、指定地点まで飛んで{2}する。その際の移動経路上にいる敵ユニットに{3}を与え、移動地点の方向に{4}を与える。Dragon Formでは毎秒5Fury減少し、0になるとHuman Formに戻る。").W()).DZQ(2,boot.BCW.km).DZX(3,boot.BCW.i,175.0,125.0,boot.BCT.DXK(0.7)).DZQ(4,boot.BCW.jh).DZE(1000.0);
+		// 4352
 	},
 	// teemowork.model.SkillDefinition#Singed(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVY:function(A,B,C,D,E,F){
-		// 4300
+		// 4358
 		B.DXH(boot.BCU.e).DZK("{1}を得る。").DZW(1,boot.BCW.bf,boot.BCT.DXJ(boot.BCW.bp,0.25));
-		// 4307
+		// 4365
 		C.DXH(boot.BCU.e).DZO("Singedの通り道に3.25秒間持続する毒を撒き、触れた敵ユニットに3秒間毎秒{1}を与える。").DZX(1,boot.BCW.i,22.0,0,boot.BCT.DXK(0.3)).DYz(13.0).DYv(1).DZI(boot.BDD.g);
-		// 4315
-		D.DXH(boot.BCU.de).DZO("指定地点に5秒間持続する粘着剤を撒き、{1}の敵ユニットに{2}を与え続ける。この効果は範囲外に出てからも1秒間持続する。").DZR(1,boot.BCW.li,350.0).DZS(2,boot.BCW.jl,35.0,10.0).DZB(70.0,10.0).DYv(14.0).DZE(1000.0);
-		// 4324
-		E.DXH(boot.BCU.de).DZO(new boot.z("対象の敵ユニット{1}を与え、後ろに投げ飛ばす({2})。もし対象を",0).IY(D).V("の範囲内に投げ飛ばした場合、対象に{3}を与える。").W()).DZT(1,boot.BCW.i,50.0,15.0,boot.BCT.DXK(0.75),boot.BCT.DXN(boot.BCW.cp,6.0,0.5)).DZR(2,boot.BCW.lk,550.0).DZS(3,boot.BCW.ip,1,0.25).DZB(100.0,10.0).DYv(10.0).DZE(125.0);
-		// 4335
+		// 4373
+		D.DXH(boot.BCU.de).DZO("指定地点に5秒間持続する粘着剤を撒き、{1}の敵ユニットに{2}を与え続ける。この効果は範囲外に出てからも1秒間持続する。").DZR(1,boot.BCW.ma,350.0).DZS(2,boot.BCW.jl,35.0,10.0).DZB(70.0,10.0).DYv(14.0).DZE(1000.0);
+		// 4382
+		E.DXH(boot.BCU.de).DZO(new boot.z("対象の敵ユニット{1}を与え、後ろに投げ飛ばす({2})。もし対象を",0).IY(D).V("の範囲内に投げ飛ばした場合、対象に{3}を与える。").W()).DZT(1,boot.BCW.i,50.0,15.0,boot.BCT.DXK(0.75),boot.BCT.DXN(boot.BCW.cp,6.0,0.5)).DZR(2,boot.BCW.mc,550.0).DZS(3,boot.BCW.ip,1,0.25).DZB(100.0,10.0).DYv(10.0).DZE(125.0);
+		// 4393
 		F.DXH(boot.BCU.cf).DZO("25秒間{1}、{2}、{3}、{4}、{5}を得て、{6}する。").DZS(1,boot.BCW.ei,35.0,15.0).DZS(2,boot.BCW.ga,35.0,15.0).DZS(3,boot.BCW.ge,35.0,15.0).DZS(4,boot.BCW.bl,35.0,15.0).DZS(5,boot.BCW.cd,35.0,15.0).DZS(6,boot.BCW.ka,35.0,15.0).DYz(150.0).DYv(100.0);
-		// 4336
+		// 4394
 	},
 	// teemowork.model.SkillDefinition#Sion(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVZ:function(A,B,C,D,E,F){
-		// 4346
-		B.DXH(boot.BCU.ci).DZK(new boot.z("死亡後にHPが最大の状態で復活する。復活後は移動と通常攻撃のみが可能でHPが毎秒{1}減少する。また、{2}し、ASが1.75に固定され、通常攻撃に{3}が付与される（チャンピオン以外には75ダメージが上限）。復活中はすべてのスキルがDeath Surgeに置き換わる。<br><br>Death Surge<br> 1.5秒間",0).IY(boot.BCW.ka).V("が50%増加する。この効果1.5秒かけて減衰する。").W()).DZX(1,boot.BCW.mb,4.0,0,boot.BCT.DXI(4.0)).DZR(-2,boot.BCW.ed,100.0).DZW(3,boot.BCW.h,boot.BCT.DXJ(boot.BCW.cp,10.0));
-		// 4357
-		C.DXH(boot.BCU.cn).DZO(new boot.z("最初にスキルを使用するとチャージを行い、この間は移動できなくなる。再度スキルを使用するか2秒経過すると斧を振り下ろし、{1}の敵ユニットに{2}と0.25秒{3}を与える（2秒チャージすると{5}）。チャージを行って1秒間経過した場合は",0).IY(boot.BCW.jk).V("の代わりに{4}を与える。ミニオンに対しては").IY(boot.BCW.e).V("が40%減少し、モンスターに対しては").IY(boot.BCW.e).V("が20%減少する。").W()).DZX(1,boot.BCW.li,300.0,0,boot.BCT.DXJ(boot.BCW.lg,150.0)).DZX(2,boot.BCW.h,16.0,16.0,boot.BCT.DXJ(boot.BCW.dh,0.52)).DZR(3,boot.BCW.jl,50.0).DZX(4,boot.BCW.jg,1.25,0,boot.BCT.DXJ(boot.BCW.lg,0.5)).DZX(5,boot.BCW.h,48.0,48.0,boot.BCT.DXL(1.56)).DYz(45.0).DYw(10.0,-1.0).DZG(new boot.BDL(Φ("D",[300.0]),0),boot.BCT.DXJ(boot.BCW.lg,150.0));
-		// 4367
-		D.DXH(boot.BCU.cp).DZK(new boot.z("敵を倒す度に",0).IY(boot.BCW.bf).V("が2増加する。大型ミニオンやモンスター、敵チャンピオンを{1}と10増加する。").W()).DZQ(1,boot.BCW.lp).DZO("6秒間{2}を得る。3秒後以降に再度スキルを使用するか6秒経過するとシールドが破裂し{3}の敵ユニットに{4}を与える。").DZT(2,boot.BCW.he,30.0,25.0,boot.BCT.DXK(0.4),boot.BCT.DXN(boot.BCW.bf,0.06,0.01)).DZR(3,boot.BCW.li,550.0).DZT(4,boot.BCW.i,40.0,25.0,boot.BCT.DXK(0.4),boot.BCT.DXN(boot.BCW.cp,10.0,1)).DZB(65.0,5.0).DYv(13.0);
-		// 4378
+		// 4404
+		B.DXH(boot.BCU.ci).DZK(new boot.z("死亡後にHPが最大の状態で復活する。復活後は移動と通常攻撃のみが可能でHPが毎秒{1}減少する。また、{2}し、ASが1.75に固定され、通常攻撃に{3}が付与される（チャンピオン以外には75ダメージが上限）。復活中はすべてのスキルがDeath Surgeに置き換わる。<br><br>Death Surge<br> 1.5秒間",0).IY(boot.BCW.ka).V("が50%増加する。この効果1.5秒かけて減衰する。").W()).DZX(1,boot.BCW.mj,4.0,0,boot.BCT.DXI(4.0)).DZR(-2,boot.BCW.ed,100.0).DZW(3,boot.BCW.h,boot.BCT.DXJ(boot.BCW.cp,10.0));
+		// 4415
+		C.DXH(boot.BCU.cn).DZO(new boot.z("最初にスキルを使用するとチャージを行い、この間は移動できなくなる。再度スキルを使用するか2秒経過すると斧を振り下ろし、{1}の敵ユニットに{2}と0.25秒{3}を与える（2秒チャージすると{5}）。チャージを行って1秒間経過した場合は",0).IY(boot.BCW.jk).V("の代わりに{4}を与える。ミニオンに対しては").IY(boot.BCW.e).V("が40%減少し、モンスターに対しては").IY(boot.BCW.e).V("が20%減少する。").W()).DZX(1,boot.BCW.ma,300.0,0,boot.BCT.DXJ(boot.BCW.lo,150.0)).DZX(2,boot.BCW.h,16.0,16.0,boot.BCT.DXJ(boot.BCW.dh,0.52)).DZR(3,boot.BCW.jl,50.0).DZX(4,boot.BCW.jg,1.25,0,boot.BCT.DXJ(boot.BCW.lo,0.5)).DZX(5,boot.BCW.h,48.0,48.0,boot.BCT.DXL(1.56)).DYz(45.0).DYw(10.0,-1.0).DZG(new boot.BDL(Φ("D",[300.0]),0),boot.BCT.DXJ(boot.BCW.lo,150.0));
+		// 4425
+		D.DXH(boot.BCU.cp).DZK(new boot.z("敵を倒す度に",0).IY(boot.BCW.bf).V("が2増加する。大型ミニオンやモンスター、敵チャンピオンを{1}と10増加する。").W()).DZQ(1,boot.BCW.mh).DZO("6秒間{2}を得る。3秒後以降に再度スキルを使用するか6秒経過するとシールドが破裂し{3}の敵ユニットに{4}を与える。").DZT(2,boot.BCW.he,30.0,25.0,boot.BCT.DXK(0.4),boot.BCT.DXN(boot.BCW.bf,0.06,0.01)).DZR(3,boot.BCW.ma,550.0).DZT(4,boot.BCW.i,40.0,25.0,boot.BCT.DXK(0.4),boot.BCT.DXN(boot.BCW.cp,10.0,1)).DZB(65.0,5.0).DYv(13.0);
+		// 4436
 		E.DXH(boot.BCU.cn).DZO("指定方向に咆哮を放ち、最初に命中した敵ユニットに{1}、2.5秒間{2}と{3}を与える。このスキルが敵チャンピオン以外に命中した場合、対象の敵ユニットに{4}を与え、衝突した敵ユニットに{5}と2.5秒間{2}を与える。").DZX(1,boot.BCW.i,70.0,35.0,boot.BCT.DXK(0.4)).DZS(2,boot.BCW.jl,40.0,5.0).DZR(3,boot.BCW.fj,20.0).DZQ(4,boot.BCW.jh).DZX(5,boot.BCW.i,91.0,45.5,boot.BCT.DXK(0.52)).DZB(35.0,5.0).DYw(12.0,-1.0).DZE(1500.0);
-		// 4390
-		F.DXH(boot.BCU.db).DZO(new boot.z("マウスカーソルの方向へ最大8秒間突進する。突進中はサモナースペルの使用が不可能になる代わりに、",0).IY(boot.BCW.ka).V("が950になり、{1}を得る。このスキルを再使用するか、敵チャンピオンまたは壁に衝突すると{2}の敵ユニットに{3}と{4}を与える（移動距離に比例して最大で{6}と{7}）。衝突地点から離れた敵ユニットには").IY(boot.BCW.jg).V("の代わりに3秒間{5}を与える。").W()).DZQ(1,boot.BCW.kh).DZQ(2,boot.BCW.li).DZX(3,boot.BCW.h,150.0,150.0,boot.BCT.DXM(0.4)).DZR(4,boot.BCW.jg,1.25).DZS(5,boot.BCW.jl,40.0,5.0).DZX(6,boot.BCW.h,300.0,300.0,boot.BCT.DXM(0.8)).DZR(7,boot.BCW.jg,2.25).DYz(100.0).DYw(140.0,-40.0);
-		// 4391
+		// 4448
+		F.DXH(boot.BCU.db).DZO(new boot.z("マウスカーソルの方向へ最大8秒間突進する。突進中はサモナースペルの使用が不可能になる代わりに、",0).IY(boot.BCW.ka).V("が950になり、{1}を得る。このスキルを再使用するか、敵チャンピオンまたは壁に衝突すると{2}の敵ユニットに{3}と{4}を与える（移動距離に比例して最大で{6}と{7}）。衝突地点から離れた敵ユニットには").IY(boot.BCW.jg).V("の代わりに3秒間{5}を与える。").W()).DZQ(1,boot.BCW.ki).DZQ(2,boot.BCW.ma).DZX(3,boot.BCW.h,150.0,150.0,boot.BCT.DXM(0.4)).DZR(4,boot.BCW.jg,1.25).DZS(5,boot.BCW.jl,40.0,5.0).DZX(6,boot.BCW.h,300.0,300.0,boot.BCT.DXM(0.8)).DZR(7,boot.BCW.jg,2.25).DYz(100.0).DYw(140.0,-40.0);
+		// 4449
 	},
 	// teemowork.model.SkillDefinition#Sivir(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVu:function(A,B,C,D,E,F){
-		// 4399
+		// 4457
 		B.DXH(boot.BCU.bc).DZK("敵チャンピオンに通常攻撃かスキルでダメージを与えると、2秒間{1}する。").DZU(-1,boot.BCW.kc,new boot.BDG(Φ("I",[1,6,11,16,18]),30.0,5.0,1));
-		// 4407
-		C.DXH(boot.BCU.cb).DZO("指定方向にブーメランを投げ、当たった敵ユニットに{1}を与える。ダメージは敵に当たるごとに{2}ずつ減り、最大で40%まで低下する。行きと帰りそれぞれに攻撃判定がある。").DZT(1,boot.BCW.h,25.0,20.0,boot.BCT.DXN(boot.BCW.dh,0.7,0.1),boot.BCT.DXK(0.5)).DZR(2,boot.BCW.mc,10.0).DZB(70.0,10.0).DYv(9.0).DZE(1250.0);
-		// 4415
-		D.DXH(boot.BCU.bg).DZO("次の3回の通常攻撃が{1}の全ての敵に跳ねるようになる。この跳ねは一番近くのユニットに跳ね、同一ユニットには一度しか当たらない。2匹目以降の敵には{2}を与える。{3}。").DZR(1,boot.BCW.li,450.0).DZW(2,boot.BCW.h,boot.BCT.DXN(boot.BCW.dh,0.5,0.05)).DZQ(3,boot.BCW.ma).DYz(60.0).DYw(9.0,-1.0);
-		// 4421
+		// 4465
+		C.DXH(boot.BCU.cb).DZO("指定方向にブーメランを投げ、当たった敵ユニットに{1}を与える。ダメージは敵に当たるごとに{2}ずつ減り、最大で40%まで低下する。行きと帰りそれぞれに攻撃判定がある。").DZT(1,boot.BCW.h,25.0,20.0,boot.BCT.DXN(boot.BCW.dh,0.7,0.1),boot.BCT.DXK(0.5)).DZR(2,boot.BCW.mk,10.0).DZB(70.0,10.0).DYv(9.0).DZE(1250.0);
+		// 4473
+		D.DXH(boot.BCU.bg).DZO("次の3回の通常攻撃が{1}の全ての敵に跳ねるようになる。この跳ねは一番近くのユニットに跳ね、同一ユニットには一度しか当たらない。2匹目以降の敵には{2}を与える。{3}。").DZR(1,boot.BCW.ma,450.0).DZW(2,boot.BCW.h,boot.BCT.DXN(boot.BCW.dh,0.5,0.05)).DZQ(3,boot.BCW.mi).DYz(60.0).DYw(9.0,-1.0);
+		// 4479
 		E.DXH(boot.BCU.bg).DZO("1.5秒間、一度だけ敵のスキルを無効化する{1}を得る。無効化した場合{2}する。").DZQ(1,boot.BCW.hh).DZS(2,boot.BCW.ij,80.0,15.0).DYw(22.0,-3.0);
-		// 4432
-		F.DXH(boot.BCU.dc).DZK(new boot.z(1).IY(D).V("の起動中は{1}する。").W()).DZS(-1,boot.BCW.ea,40.0,20.0).DZO(new boot.z("8秒間{2}の味方は{3}する。一度範囲内に入れば、",0).IY(A).V("から離れても効果が持続する。詠唱後に").IY(F).V("の効果範囲内に入った味方は").IY(A).V("と等しい移動速度増加と効果時間が付与される。増加移動速度は{3}かけて20%まで減少する。").W()).DZR(2,boot.BCW.li,1000.0).DZS(3,boot.BCW.kc,40.0,10.0).DZS(3,boot.BCW.ld,2.0,1).DYz(100.0).DYw(120.0,-20.0).DZE(1000.0);
-		// 4433
+		// 4490
+		F.DXH(boot.BCU.dc).DZK(new boot.z(1).IY(D).V("の起動中は{1}する。").W()).DZS(-1,boot.BCW.ea,40.0,20.0).DZO(new boot.z("8秒間{2}の味方は{3}する。一度範囲内に入れば、",0).IY(A).V("から離れても効果が持続する。詠唱後に").IY(F).V("の効果範囲内に入った味方は").IY(A).V("と等しい移動速度増加と効果時間が付与される。増加移動速度は{3}かけて20%まで減少する。").W()).DZR(2,boot.BCW.ma,1000.0).DZS(3,boot.BCW.kc,40.0,10.0).DZS(3,boot.BCW.ll,2.0,1).DYz(100.0).DYw(120.0,-20.0).DZE(1000.0);
+		// 4491
 	},
 	// teemowork.model.SkillDefinition#Skarner(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVv:function(A,B,C,D,E,F){
-		// 4444
-		B.DXH(boot.BCU.di).DZK(new boot.z("マップ上にクリスタルが6箇所発生し、敵味方問わず2秒間立っていると占領出来る。占領下のクリスタルの{1}にいる時、",0).IY(E).V("のスタン効果時間中及び").IY(F).V("の効果時間中、次の効果を受ける。<br><br>Crystal Charge<br>{2}、{3}して毎秒{4}する。").W()).DZR(1,boot.BCW.li,1150.0).DZX(2,boot.BCW.ka,67.0,0,boot.BCT.DXI(3.0)).DZX(3,boot.BCW.ea,36.12,0,boot.BCT.DXI(6.88)).DZW(4,boot.BCW.ij,boot.BCT.DXJ(boot.BCW.bp,0.02));
-		// 4455
-		C.DXH(boot.BCU.dh).DZO("{1}の敵ユニットに{2}を与える。このスキルが命中した場合、4秒間チャージ状態になる。チャージ状態で再度このスキルを使用すると、追加{3}を与える。通常攻撃を行うたびに、このスキルの{4}する(対象がチャンピオンの場合は{5})。").DZR(1,boot.BCW.li,350.0).DZW(2,boot.BCW.h,boot.BCT.DXN(boot.BCW.dh,0.33,0.03)).DZT(3,boot.BCW.i,0,0,boot.BCT.DXN(boot.BCW.dh,0.33,0.03),boot.BCT.DXK(0.2)).DZR(4,boot.BCW.id,0.25).DZR(5,boot.BCW.id,1).DZB(10.0,1).DYw(3.5,-0.25).DZE(350.0);
-		// 4462
+		// 4502
+		B.DXH(boot.BCU.di).DZK(new boot.z("マップ上にクリスタルが6箇所発生し、敵味方問わず2秒間立っていると占領出来る。占領下のクリスタルの{1}にいる時、",0).IY(E).V("のスタン効果時間中及び").IY(F).V("の効果時間中、次の効果を受ける。<br><br>Crystal Charge<br>{2}、{3}して毎秒{4}する。").W()).DZR(1,boot.BCW.ma,1150.0).DZX(2,boot.BCW.ka,67.0,0,boot.BCT.DXI(3.0)).DZX(3,boot.BCW.ea,36.12,0,boot.BCT.DXI(6.88)).DZW(4,boot.BCW.ij,boot.BCT.DXJ(boot.BCW.bp,0.02));
+		// 4513
+		C.DXH(boot.BCU.dh).DZO("{1}の敵ユニットに{2}を与える。このスキルが命中した場合、4秒間チャージ状態になる。チャージ状態で再度このスキルを使用すると、追加{3}を与える。通常攻撃を行うたびに、このスキルの{4}する(対象がチャンピオンの場合は{5})。").DZR(1,boot.BCW.ma,350.0).DZW(2,boot.BCW.h,boot.BCT.DXN(boot.BCW.dh,0.33,0.03)).DZT(3,boot.BCW.i,0,0,boot.BCT.DXN(boot.BCW.dh,0.33,0.03),boot.BCT.DXK(0.2)).DZR(4,boot.BCW.id,0.25).DZR(5,boot.BCW.id,1).DZB(10.0,1).DYw(3.5,-0.25).DZE(350.0);
+		// 4520
 		D.DXH(boot.BCU.dh).DZO("6秒間{1}を張る。シールドが残っている間3秒かけて{2}する。").DZT(1,boot.BCW.he,0,0,boot.BCT.DXK(0.8),boot.BCT.DXN(boot.BCW.bf,0.1,0.01)).DZR(2,boot.BCW.kc,16.0).DYz(60.0).DYw(13.0,-0.5);
-		// 4474
+		// 4532
 		E.DXH(boot.BCU.dj).DZO(new boot.z("指定方向に貫通するエネルギーを飛ばし、当たった敵ユニットに{1}と2秒間{2}与え、5秒間マークする。マークされた敵に通常攻撃をするとマークを消費して、{3}と{4}を与える。スタンを与えるとこのスキルの{5}する。",0).IY(F).V("を使用するとこのスキルの{6}する。").W()).DZX(1,boot.BCW.i,40.0,25.0,boot.BCT.DXK(0.4)).DZS(2,boot.BCW.jl,30.0,5.0).DZS(3,boot.BCW.h,25.0,10.0).DZR(4,boot.BCW.im,1).DZR(5,boot.BCW.id,1).DZR(6,boot.BCW.id,1.75).DYw(14.0,-0.5).DYz(55.0).DZE(1000.0);
-		// 4484
+		// 4542
 		F.DXH(boot.BCU.dh).DZO("対象の敵チャンピオンに{1}を与えた後、{2}と{3}、{4}与える。効果中は対象の敵チャンピオンを引っ張る事が出来き、効果終了時に{2}と{3}を与える。").DZR(1,boot.BCW.ip,0.25).DZW(2,boot.BCW.h,boot.BCT.DXL(1)).DZX(3,boot.BCW.i,20.0,40.0,boot.BCT.DXK(0.5)).DZR(4,boot.BCW.jf,1.75).DYz(100.0).DYw(120.0,-20.0).DZE(350.0);
-		// 4485
+		// 4543
 	},
 	// teemowork.model.SkillDefinition#Sona(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVw:function(A,B,C,D,E,F){
-		// 4494
-		B.DXH(boot.BCU.cm).DZK(new boot.z(1).IY(F).V("以外のスキル使用時に3秒間オーラを纏い、{1}の味方を1人支援するたび持続時間が0.5秒延びる。<br>スキルを使用する度にスタックが増加し、3スタック時に通常攻撃を行うと、スタックを消費して通常攻撃に{2}と、そのとき展開しているオーラに応じた追加効果が発生する。").W()).DZR(1,boot.BCW.li,350.0).DZZ(2,boot.BCW.i,new boot.BDG(Φ("D",[13.0,20.0,27.0,35.0,43.0,52.0,62.0,72.0,82.0,92.0,102.0,112.0,122.0,132.0,147.0,162.0,177.0,192.0]),0),boot.BCT.DXK(0.2));
-		// 4521
-		C.DXH(boot.BCU.ci).DZO(new boot.z("{1}の敵2体 (チャンピオンを優先) に{2}を与える。<br>オーラ: 味方の3秒以内の次の通常攻撃に{3}を付与する。<br>追加効果: オーラの",0).IY(boot.BCW.e).V("が{4}になる。").W()).DZR(1,boot.BCW.li,850.0).DZX(2,boot.BCW.i,40.0,40.0,boot.BCT.DXK(0.5)).DZY(3,boot.BCW.i,20.0,10.0,boot.BCT.DXK(0.2),new boot.BDS(F,Φ("D",[10.0,20.0,40.0]),0)).DZY(4,boot.BCW.i,28.0,14.0,boot.BCT.DXK(0.28),new boot.BDS(F,Φ("D",[14.0,28.0,56.0]),0)).DZB(45.0,5.0).DYv(8.0).DZE(850.0);
-		// 4531
+		// 4552
+		B.DXH(boot.BCU.cm).DZK(new boot.z(1).IY(F).V("以外のスキル使用時に3秒間オーラを纏い、{1}の味方を1人支援するたび持続時間が0.5秒延びる。<br>スキルを使用する度にスタックが増加し、3スタック時に通常攻撃を行うと、スタックを消費して通常攻撃に{2}と、そのとき展開しているオーラに応じた追加効果が発生する。").W()).DZR(1,boot.BCW.ma,350.0).DZZ(2,boot.BCW.i,new boot.BDG(Φ("D",[13.0,20.0,27.0,35.0,43.0,52.0,62.0,72.0,82.0,92.0,102.0,112.0,122.0,132.0,147.0,162.0,177.0,192.0]),0),boot.BCT.DXK(0.2));
+		// 4579
+		C.DXH(boot.BCU.ci).DZO(new boot.z("{1}の敵2体 (チャンピオンを優先) に{2}を与える。<br>オーラ: 味方の3秒以内の次の通常攻撃に{3}を付与する。<br>追加効果: オーラの",0).IY(boot.BCW.e).V("が{4}になる。").W()).DZR(1,boot.BCW.ma,850.0).DZX(2,boot.BCW.i,40.0,40.0,boot.BCT.DXK(0.5)).DZY(3,boot.BCW.i,20.0,10.0,boot.BCT.DXK(0.2),new boot.BDS(F,Φ("D",[10.0,20.0,40.0]),0)).DZY(4,boot.BCW.i,28.0,14.0,boot.BCT.DXK(0.28),new boot.BDS(F,Φ("D",[14.0,28.0,56.0]),0)).DZB(45.0,5.0).DYv(8.0).DZE(850.0);
+		// 4589
 		D.DXH(boot.BCU.cg).DZO(new boot.z("近くにいる最も",0).IY(boot.BCW.bf).V("が減っている味方チャンピオン1体と").IY(A).V("は{1}する。回復する対象の減少している").IY(boot.BCW.bf).V("1%につき回復量が0.5%増加し最大で{2}する。<br>オーラ: 味方チャンピオンは1.5秒間{3}得る。<br>追加効果: 対象は3秒間{4}する。").W()).DZX(1,boot.BCW.ih,30.0,20.0,boot.BCT.DXK(0.2)).DZX(2,boot.BCW.ih,45.0,30.0,boot.BCT.DXK(0.3)).DZY(3,boot.BCW.he,35.0,20.0,boot.BCT.DXK(0.2),new boot.BDS(F,Φ("D",[10.0,20.0,40.0]),0)).DZX(4,boot.BCW.o,20.0,0,boot.BCT.DXK(0.02)).DZB(80.0,5.0).DYv(10.0).DZE(1000.0);
-		// 4539
+		// 4597
 		E.DXH(boot.BCU.bp).DZO(new boot.z("3秒間{1}する。この効果は3秒かけて減衰する。<br>オーラ: ",0).IY(A).V("以外の味方チャンピオンは1.5秒間{2}する。<br>追加効果: 対象に2秒間{3}を与える。").W()).DZY(1,boot.BCW.kc,13.0,1,boot.BCT.DXK(0.075),new boot.BDM(F,2.0,2.0,0)).DZY(2,boot.BCW.kc,10.0,1,boot.BCT.DXK(0.035),new boot.BDM(F,2.0,2.0,0)).DZX(3,boot.BCW.jl,40.0,0,boot.BCT.DXK(0.04)).DYz(65.0).DYv(12.0);
-		// 4548
-		F.DXH(boot.BCU.cm).DZO("前方{1}の敵チャンピオンに{2}と{3}を与える。").DZR(1,boot.BCW.li,900.0).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.5)).DZR(3,boot.BCW.im,1.5).DYz(100.0).DYw(140.0,-20.0).DZE(900.0);
-		// 4549
+		// 4606
+		F.DXH(boot.BCU.cm).DZO("前方{1}の敵チャンピオンに{2}と{3}を与える。").DZR(1,boot.BCW.ma,900.0).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.5)).DZR(3,boot.BCW.im,1.5).DYz(100.0).DYw(140.0,-20.0).DZE(900.0);
+		// 4607
 	},
 	// teemowork.model.SkillDefinition#Soraka(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVx:function(A,B,C,D,E,F){
-		// 4555
+		// 4613
 		B.DXH(boot.BCU.cd).DZK(new boot.z(1).IY(D).V("の範囲外かつ範囲2500以内の").IY(boot.BCW.bf).V("が40%未満になっている味方チャンピオンに向かって移動する時、{1}する。").W()).DZR(1,boot.BCW.kc,70.0);
-		// 4566
-		C.DXH(boot.BCU.cm).DZO("指定した地点に流星を落下させ、{1}の敵に{2}を与える。中心部の敵には{3}と2秒間{4}を与える。星が降ってくる速度は距離に比例する(近距離ほど発動が早く、遠距離ほど遅い)。指定地点の{5}。").DZQ(1,boot.BCW.li).DZX(2,boot.BCW.i,70.0,40.0,boot.BCT.DXK(0.35)).DZX(3,boot.BCW.i,105.0,60.0,boot.BCT.DXK(0.525)).DZS(4,boot.BCW.jl,30.0,5.0).DZQ(5,boot.BCW.kk).DZB(70.0,5.0).DYw(7.0,-0.5).DZE(970.0);
-		// 4577
-		D.DXH(boot.BCU.ch).DZK(new boot.z(1).IY(C).V("が敵のチャンピオンにヒットするたび、{1}する。").IY(A).V("が失っている").IY(boot.BCW.bf).V("1%につき回復量が1%増加し最大で{2}する。").W()).DZX(1,boot.BCW.ih,25.0,10.0,boot.BCT.DXK(0.4)).DZX(2,boot.BCW.ih,50.0,20.0,boot.BCT.DXK(0.8)).DZO(new boot.z("指定した味方は{3}する。",0).IY(A).V("の").IY(boot.BCW.bf).V("が5％以下の時は発動できない。このスキルは自身には使用出来ず、使用時に").IY(boot.BCW.bf).V("を{4}を失う。").W()).DZX(3,boot.BCW.ih,120.0,30.0,boot.BCT.DXK(0.6)).DZW(4,boot.BCW.mb,boot.BCT.DXJ(boot.BCW.bf,0.1)).DZB(20.0,5.0).DYw(4.0,-0.5).DZE(550.0);
-		// 4587
-		E.DXH(boot.BCU.cg).DZO("指定した地点に1.5秒間、時空の渦を発生させ、{1}の敵のチャンピオンに{2}を与える。敵のチャンピオンが範囲内にいる間、{3}を与える。渦が消滅した瞬間、範囲内にいるすべての敵のチャンピオンに{2}と{4}を与える。").DZQ(1,boot.BCW.li).DZX(2,boot.BCW.i,70.0,40.0,boot.BCT.DXK(0.6)).DZQ(3,boot.BCW.jc).DZS(4,boot.BCW.ip,1,0.25).DYw(24.0,-2.0).DYz(70.0).DZE(925.0);
-		// 4595
+		// 4624
+		C.DXH(boot.BCU.cm).DZO("指定した地点に流星を落下させ、{1}の敵に{2}を与える。中心部の敵には{3}と2秒間{4}を与える。星が降ってくる速度は距離に比例する(近距離ほど発動が早く、遠距離ほど遅い)。指定地点の{5}。").DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.i,70.0,40.0,boot.BCT.DXK(0.35)).DZX(3,boot.BCW.i,105.0,60.0,boot.BCT.DXK(0.525)).DZS(4,boot.BCW.jl,30.0,5.0).DZQ(5,boot.BCW.lc).DZB(70.0,5.0).DYw(7.0,-0.5).DZE(970.0);
+		// 4635
+		D.DXH(boot.BCU.ch).DZK(new boot.z(1).IY(C).V("が敵のチャンピオンにヒットするたび、{1}する。").IY(A).V("が失っている").IY(boot.BCW.bf).V("1%につき回復量が1%増加し最大で{2}する。").W()).DZX(1,boot.BCW.ih,25.0,10.0,boot.BCT.DXK(0.4)).DZX(2,boot.BCW.ih,50.0,20.0,boot.BCT.DXK(0.8)).DZO(new boot.z("指定した味方は{3}する。",0).IY(A).V("の").IY(boot.BCW.bf).V("が5％以下の時は発動できない。このスキルは自身には使用出来ず、使用時に").IY(boot.BCW.bf).V("を{4}を失う。").W()).DZX(3,boot.BCW.ih,120.0,30.0,boot.BCT.DXK(0.6)).DZW(4,boot.BCW.mj,boot.BCT.DXJ(boot.BCW.bf,0.1)).DZB(20.0,5.0).DYw(4.0,-0.5).DZE(550.0);
+		// 4645
+		E.DXH(boot.BCU.cg).DZO("指定した地点に1.5秒間、時空の渦を発生させ、{1}の敵のチャンピオンに{2}を与える。敵のチャンピオンが範囲内にいる間、{3}を与える。渦が消滅した瞬間、範囲内にいるすべての敵のチャンピオンに{2}と{4}を与える。").DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.i,70.0,40.0,boot.BCT.DXK(0.6)).DZQ(3,boot.BCW.jc).DZS(4,boot.BCW.ip,1,0.25).DYw(24.0,-2.0).DYz(70.0).DZE(925.0);
+		// 4653
 		F.DXH(boot.BCU.cd).DZO(new boot.z("すべての味方のチャンピオンは{1}する。",0).IY(boot.BCW.jo).V("を受けている場合はその効果も解消する。").IY(boot.BCW.bf).V("が40％以下のチャンピオンに対しては{2}する。").W()).DZX(1,boot.BCW.ih,150.0,100.0,boot.BCT.DXK(0.55)).DZX(2,boot.BCW.ih,225.0,150.0,boot.BCT.DXK(0.825)).DYz(100.0).DYw(160.0,-15.0).DZE(-1.0);
-		// 4596
+		// 4654
 	},
 	// teemowork.model.SkillDefinition#Swain(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVy:function(A,B,C,D,E,F){
-		// 4606
-		B.DXH(boot.BCU.ba).DZK("敵ユニットを倒す毎に{1}する。{3}ごとに{2}する。").DZX(1,boot.BCW.ij,9.0,0,boot.BCT.DXI(1)).DZW(2,boot.BCW.ij,boot.BCT.DXJ(boot.BCW.bp,0.09)).DZQ(3,boot.BCW.lp);
-		// 4615
-		C.DXH(boot.BCU.e).DZO(new boot.z(1).IY(A).V("の位置にビームを吐くカラスを設置し、対象の敵ユニットに毎秒{1}と{2}を与える。3秒経つか対象のユニットがカラスの有効範囲外({3})に移動すると効果が切れる。").W()).DZX(1,boot.BCW.i,25.0,15.0,boot.BCT.DXK(0.3)).DZS(2,boot.BCW.jl,20.0,5.0).DZR(3,boot.BCW.li,900.0).DZB(60.0,10.0).DYv(8.0).DZE(625.0);
-		// 4624
-		D.DXH(boot.BCU.e).DZO("地点を指定した0.875秒後に{3}の敵ユニットに{1}と{2}を与える。").DZX(1,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.7)).DZR(2,boot.BCW.ip,2.0).DZR(3,boot.BCW.li,250.0).DZB(80.0,10.0).DYw(18.0,-2.0).DZE(900.0);
-		// 4632
+		// 4664
+		B.DXH(boot.BCU.ba).DZK("敵ユニットを倒す毎に{1}する。{3}ごとに{2}する。").DZX(1,boot.BCW.ij,9.0,0,boot.BCT.DXI(1)).DZW(2,boot.BCW.ij,boot.BCT.DXJ(boot.BCW.bp,0.09)).DZQ(3,boot.BCW.mh);
+		// 4673
+		C.DXH(boot.BCU.e).DZO(new boot.z(1).IY(A).V("の位置にビームを吐くカラスを設置し、対象の敵ユニットに毎秒{1}と{2}を与える。3秒経つか対象のユニットがカラスの有効範囲外({3})に移動すると効果が切れる。").W()).DZX(1,boot.BCW.i,25.0,15.0,boot.BCT.DXK(0.3)).DZS(2,boot.BCW.jl,20.0,5.0).DZR(3,boot.BCW.ma,900.0).DZB(60.0,10.0).DYv(8.0).DZE(625.0);
+		// 4682
+		D.DXH(boot.BCU.e).DZO("地点を指定した0.875秒後に{3}の敵ユニットに{1}と{2}を与える。").DZX(1,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.7)).DZR(2,boot.BCW.ip,2.0).DZR(3,boot.BCW.ma,250.0).DZB(80.0,10.0).DYw(18.0,-2.0).DZE(900.0);
+		// 4690
 		E.DXH(boot.BCU.e).DZO(new boot.z("対象の敵ユニットに4秒かけて{1}を与える。また、効果中は",0).IY(A).V("が対象のユニットに与える{2}する。").W()).DZX(1,boot.BCW.i,75.0,40.0,boot.BCT.DXK(0.8)).DZS(2,boot.BCW.f,8.0,3.0).DZB(65.0,5.0).DYv(10.0).DZE(625.0);
-		// 4643
-		F.DXH(boot.BCU.e).DZO("カラスに変身し、{0}の敵ユニット3体(敵チャンピオンを優先)に毎秒{1}を与える。また、{2}して敵チャンピオンの場合は{3}する。").DZR(0,boot.BCW.li,700.0).DZX(1,boot.BCW.i,50.0,25.0,boot.BCT.DXK(0.2)).DZW(2,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.n,0.25)).DZW(3,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.m,0.75)).DYv(8.0).DZE(700.0).DZC(boot.BCW.bp,new boot.BCw(25.0,0,1,0),boot.BCT.DXN(boot.BCW.lg,5.0,1)).DZI(boot.BDD.g);
-		// 4644
+		// 4701
+		F.DXH(boot.BCU.e).DZO("カラスに変身し、{0}の敵ユニット3体(敵チャンピオンを優先)に毎秒{1}を与える。また、{2}して敵チャンピオンの場合は{3}する。").DZR(0,boot.BCW.ma,700.0).DZX(1,boot.BCW.i,50.0,25.0,boot.BCT.DXK(0.2)).DZW(2,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.n,0.25)).DZW(3,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.m,0.75)).DYv(8.0).DZE(700.0).DZC(boot.BCW.bp,new boot.BCw(25.0,0,1,0),boot.BCT.DXN(boot.BCW.lo,5.0,1)).DZI(boot.BDD.g);
+		// 4702
 	},
 	// teemowork.model.SkillDefinition#Syndra(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DVz:function(A,B,C,D,E,F){
-		// 4650
+		// 4708
 		B.DXH(boot.BCU.e).DZK("各スキルを最高ランクまで上げると追加効果が発生する。");
-		// 4659
-		C.DXH(boot.BCU.de).DZO("指定地点にDark Sphereを召喚し、{1}の敵ユニットに{2}を与える。Dark Sphereはその後6秒間持続する。Lv5になるとチャンピオンに対して{3}を与える。").DZR(1,boot.BCW.li,175.0).DZX(2,boot.BCW.i,50.0,45.0,boot.BCT.DXK(0.6)).DZX(3,boot.BCW.i,264.5,0,boot.BCT.DXK(0.69)).DZB(40.0,10.0).DYv(4.0).DZE(800.0);
-		// 4670
-		D.DXH(boot.BCU.df).DZO("指定したDark Sphereか敵ミニオンまたはモンスター(DragonとBaronには無効)のいずれかを自身まで引き寄せ、最大5秒間引っ張り続ける。この際Dark Sphereを引き寄せた場合、そのDark Sphereの持続時間は引き寄せてから6秒間に更新される。その後再度地点を指定({5})することで指定地点に引き寄せたものを投げ、{1}の敵ユニットに{2}と1.5秒間{3}を与える。また指定地点の{4}。Lv5になるとスローの効果時間が2秒になる。").DZR(1,boot.BCW.li,200.0).DZX(2,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.7)).DZS(3,boot.BCW.jl,25.0,5.0).DZQ(4,boot.BCW.kk).DZR(5,boot.BCW.li,950.0).DZB(60.0,10.0).DYw(12.0,-1.0).DZE(925.0);
-		// 4680
-		E.DXH(boot.BCU.de).DZO(new boot.z("指定方向扇形の{1}にいる敵ユニットに{2}と{3}を与える。ノックバック距離は",0).IY(A).V("に近い地点にいるほど増加する。扇形の範囲内にDark Sphereがあった場合同様にノックバックさせ、それに当たった敵ユニットに{2}(このスキルの").IY(boot.BCW.e).V("とは重複しない)と{4}を与える。Lv5になると範囲の横幅が50%増加する。").W()).DZQ(1,boot.BCW.li).DZX(2,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.4)).DZQ(3,boot.BCW.jh).DZR(4,boot.BCW.im,1.5).DYz(50.0).DYw(18.0,-1.5).DZE(700.0);
-		// 4689
+		// 4717
+		C.DXH(boot.BCU.de).DZO("指定地点にDark Sphereを召喚し、{1}の敵ユニットに{2}を与える。Dark Sphereはその後6秒間持続する。Lv5になるとチャンピオンに対して{3}を与える。").DZR(1,boot.BCW.ma,175.0).DZX(2,boot.BCW.i,50.0,45.0,boot.BCT.DXK(0.6)).DZX(3,boot.BCW.i,264.5,0,boot.BCT.DXK(0.69)).DZB(40.0,10.0).DYv(4.0).DZE(800.0);
+		// 4728
+		D.DXH(boot.BCU.df).DZO("指定したDark Sphereか敵ミニオンまたはモンスター(DragonとBaronには無効)のいずれかを自身まで引き寄せ、最大5秒間引っ張り続ける。この際Dark Sphereを引き寄せた場合、そのDark Sphereの持続時間は引き寄せてから6秒間に更新される。その後再度地点を指定({5})することで指定地点に引き寄せたものを投げ、{1}の敵ユニットに{2}と1.5秒間{3}を与える。また指定地点の{4}。Lv5になるとスローの効果時間が2秒になる。").DZR(1,boot.BCW.ma,200.0).DZX(2,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.7)).DZS(3,boot.BCW.jl,25.0,5.0).DZQ(4,boot.BCW.lc).DZR(5,boot.BCW.ma,950.0).DZB(60.0,10.0).DYw(12.0,-1.0).DZE(925.0);
+		// 4738
+		E.DXH(boot.BCU.de).DZO(new boot.z("指定方向扇形の{1}にいる敵ユニットに{2}と{3}を与える。ノックバック距離は",0).IY(A).V("に近い地点にいるほど増加する。扇形の範囲内にDark Sphereがあった場合同様にノックバックさせ、それに当たった敵ユニットに{2}(このスキルの").IY(boot.BCW.e).V("とは重複しない)と{4}を与える。Lv5になると範囲の横幅が50%増加する。").W()).DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.4)).DZQ(3,boot.BCW.jh).DZR(4,boot.BCW.im,1.5).DYz(50.0).DYw(18.0,-1.5).DZE(700.0);
+		// 4747
 		F.DXH(boot.BCU.de).DZO("自身の周辺にDark Sphereを3つ召喚し、指定した敵チャンピオンに向けて自身の周囲に存在する全てのDark Sphereを向かわせ、{1}を与える。3個で{2}、7個で{3}になる。この際に召喚したDark Sphereは6秒間持続する。Lv3になると射程が75増加する。").DZX(1,boot.BCW.i,90.0,45.0,boot.BCT.DXK(0.2)).DZX(2,boot.BCW.i,270.0,135.0,boot.BCT.DXK(0.6)).DZX(3,boot.BCW.i,630.0,345.0,boot.BCT.DXK(1.4)).DYz(100.0).DYw(100.0,-10.0).DZE(675.0);
-		// 4690
+		// 4748
 	},
 	// teemowork.model.SkillDefinition#TahmKench(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWA:function(A,B,C,D,E,F){
-		// 4697
+		// 4755
 		B.DXH(boot.BCU.di).DZK(new boot.z("通常攻撃もしくはスキルで",0).IY(boot.BCW.e).V("を与えた敵チャンピオンに対して、「舌慣らし」スタックを付与する(最大3スタック)。3スタックが付与された対象にスキルを使用すると、各スキルは追加効果を得る。7秒後から0.5秒おきにスタックが減少する。").W());
-		// 4706
+		// 4764
 		C.DXH(boot.BCU.df).DZO(new boot.z("最初に命中した敵に{1}と2秒間{2}を与える。「舌慣らし」が3スタック溜まっている敵のチャンピオンには、さらに{3}を与える。舌が飛び出している最中に",0).IY(D).V("を発動することで、遠くにいるモンスターやミニオンを食らうことができる。").W()).DZX(1,boot.BCW.i,80.0,45.0,boot.BCT.DXK(0.7)).DZS(2,boot.BCW.jl,30.0,10.0).DZR(3,boot.BCW.im,1.5).DYz(50.0).DYv(6.0).DZE(800.0);
-		// 4720
-		D.DXH(boot.BCU.di).DZO("対象を{1}間食らう。対象が敵の場合、{2}を与える(ミニオンと中立モンスターへは{3}が上限)。食べた対象は吐き出すまでの間、行動不能かつターゲット不可になる。また、食べたユニットに応じて以下の効果を与える。<br>敵ミニオン及びモンスター: 指定した方向に({6})吐き出し{7}を与え、命中した敵ユニットに{4}を与える。<br>味方チャンピオン: 敵チャンピオンに向かって移動する際に{5}を得る。<br>敵チャンピオン: 要「舌慣らし」3スタック。効果時間が半分になり、自身は95％のスローになる。指定した方向に({8})吐き出し{7}を与える。").DZS(1,boot.BCW.ld,4.0,0.5).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,20.0,3.0,boot.BCT.DXK(0.02))).DZS(3,boot.BCW.i,400.0,50.0).DZX(4,boot.BCW.i,100.0,50.0,boot.BCT.DXK(0.6)).DZS(-5,boot.BCW.kc,30.0,5.0).DZR(6,boot.BCW.lk,650.0).DZR(7,boot.BCW.im,0.25).DZR(8,boot.BCW.lk,200.0).DYz(90.0).DYw(14.0,-1.0).DZE(250.0);
-		// 4728
+		// 4778
+		D.DXH(boot.BCU.di).DZO("対象を{1}間食らう。対象が敵の場合、{2}を与える(ミニオンと中立モンスターへは{3}が上限)。食べた対象は吐き出すまでの間、行動不能かつターゲット不可になる。また、食べたユニットに応じて以下の効果を与える。<br>敵ミニオン及びモンスター: 指定した方向に({6})吐き出し{7}を与え、命中した敵ユニットに{4}を与える。<br>味方チャンピオン: 敵チャンピオンに向かって移動する際に{5}を得る。<br>敵チャンピオン: 要「舌慣らし」3スタック。効果時間が半分になり、自身は95％のスローになる。指定した方向に({8})吐き出し{7}を与える。").DZS(1,boot.BCW.ll,4.0,0.5).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,20.0,3.0,boot.BCT.DXK(0.02))).DZS(3,boot.BCW.i,400.0,50.0).DZX(4,boot.BCW.i,100.0,50.0,boot.BCT.DXK(0.6)).DZS(-5,boot.BCW.kc,30.0,5.0).DZR(6,boot.BCW.mc,650.0).DZR(7,boot.BCW.im,0.25).DZR(8,boot.BCW.mc,200.0).DYz(90.0).DYw(14.0,-1.0).DZE(250.0);
+		// 4786
 		E.DXH(boot.BCU.de).DZK(new boot.z("受けたダメージを灰色の体力に変換する(クールダウン中は無効)。2.5秒間",0).IY(boot.BCW.e).V("を受けなければ、{1}する。").W()).DZW(1,boot.BCW.ih,boot.BCT.DXN(boot.BCW.ba,20.0,6.0)).DZO("{2}。このシールドは6秒間持続するが時間と共に急激に減少していく。").DZW(2,boot.BCW.he,boot.BCT.DXJ(boot.BCW.ba,100.0)).DYz(50.0).DYw(16.0,-1.0);
-		// 4737
+		// 4795
 		F.DXH(boot.BCU.df).DZK("通常攻撃及びスキルに{1}を付与する。").DZX(1,boot.BCW.i,20.0,0,boot.BCT.DXN(boot.BCW.bj,0.04,0.02)).DZO(new boot.z("最大15秒間、口を大きく開けてその場で詠唱を開始する。味方チャンピオンが入るか、このスキルを再使用することで、2秒詠唱後に指定した地点までワープする。この詠唱は",0).IY(boot.BCW.e).V("を受けると解除される。").W()).DYz(100.0).DYw(120.0,-10.0).DZF(4000.0,1000.0).DZI(boot.BDD.i);
-		// 4738
+		// 4796
 	},
 	// teemowork.model.SkillDefinition#Talon(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWB:function(A,B,C,D,E,F){
-		// 4744
+		// 4802
 		B.DXH(boot.BCU.e).DZK("スロー、スタン、スネア、サプレッションを受けている状態の敵ユニットに対しては{1}する。").DZR(1,boot.BCW.l,10.0);
-		// 4752
-		C.DXH(boot.BCU.cd).DZO("次の通常攻撃に{1}が付与される。対象がチャンピオンの場合、更に6秒間対象を出血させその間毎秒{2}を与える。また出血中の対象の{3}。").DZX(1,boot.BCW.h,30.0,30.0,boot.BCT.DXM(0.3)).DZX(2,boot.BCW.h,10.0,10.0,boot.BCT.DXM(1)).DZQ(3,boot.BCW.kk).DZB(40.0,5.0).DYw(8.0,-1.0);
-		// 4760
+		// 4810
+		C.DXH(boot.BCU.cd).DZO("次の通常攻撃に{1}が付与される。対象がチャンピオンの場合、更に6秒間対象を出血させその間毎秒{2}を与える。また出血中の対象の{3}。").DZX(1,boot.BCW.h,30.0,30.0,boot.BCT.DXM(0.3)).DZX(2,boot.BCW.h,10.0,10.0,boot.BCT.DXM(1)).DZQ(3,boot.BCW.lc).DZB(40.0,5.0).DYw(8.0,-1.0);
+		// 4818
 		D.DXH(boot.BCU.e).DZO("前方指定範囲に飛んだ後すぐ戻る刃を投げ当たった敵ユニットに{1}と2秒間{2}を与える。刃は戻り際にも判定がある。").DZX(1,boot.BCW.h,30.0,25.0,boot.BCT.DXM(0.6)).DZS(2,boot.BCW.jl,20.0,5.0).DZB(60.0,5.0).DYv(10.0).DZE(600.0);
-		// 4768
-		E.DXH(boot.BCU.ce).DZO("対象の敵ユニットの背後に跳躍し0.25秒{1}と3秒間マークを与える。マークがついた敵ユニットに対しては{2}する。").DZR(1,boot.BCW.jl,90.0).DZS(2,boot.BCW.f,3.0,3.0).DZB(35.0,5.0).DYw(18.0,-2.0).DZE(700.0);
-		// 4777
-		F.DXH(boot.BCU.cd).DZO(new boot.z("{4}に8本の刃を投げ当たった敵ユニットに{1}を与え、同時に{2}になり{3}する。ステルスが解除されるか敵ユニットを攻撃すると刃が",0).IY(A).V("の元に戻ってきて、当たった敵ユニットに{1}を与える。").W()).DZX(1,boot.BCW.h,120.0,50.0,boot.BCT.DXM(0.75)).DZR(2,boot.BCW.kj,2.5).DZR(3,boot.BCW.kc,40.0).DZR(4,boot.BCW.li,500.0).DZB(80.0,10.0).DYw(75.0,-10.0);
-		// 4778
+		// 4827
+		E.DXH(boot.BCU.ce).DZO("対象の敵ユニットの背後に{3}し0.25秒{1}と3秒間マークを与える。マークがついた敵ユニットに対しては{2}する。").DZR(1,boot.BCW.jl,90.0).DZS(2,boot.BCW.f,3.0,3.0).DZQ(3,boot.BCW.kp).DZB(35.0,5.0).DYw(18.0,-2.0).DZE(700.0);
+		// 4836
+		F.DXH(boot.BCU.cd).DZO(new boot.z("{4}に8本の刃を投げ当たった敵ユニットに{1}を与え、同時に{2}になり{3}する。ステルスが解除されるか敵ユニットを攻撃すると刃が",0).IY(A).V("の元に戻ってきて、当たった敵ユニットに{1}を与える。").W()).DZX(1,boot.BCW.h,120.0,50.0,boot.BCT.DXM(0.75)).DZR(2,boot.BCW.lb,2.5).DZR(3,boot.BCW.kc,40.0).DZR(4,boot.BCW.ma,500.0).DZB(80.0,10.0).DYw(75.0,-10.0);
+		// 4837
 	},
 	// teemowork.model.SkillDefinition#Taric(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWC:function(A,B,C,D,E,F){
-		// 4787
+		// 4846
 		B.DXH(boot.BCU.bc).DZK("スキルを使用した次の通常攻撃は追加{1}を与え、全スキルの{2}する。この効果は通常攻撃を行うか、一定時間経過すると解消される。建物には無効。").DZW(1,boot.BCW.i,boot.BCT.DXJ(boot.BCW.ga,0.2)).DZR(2,boot.BCW.id,2.0);
-		// 4795
+		// 4854
 		C.DXH(boot.BCU.db).DZO(new boot.z("対象の味方ユニットと",0).IY(A).V("の{1}する。自身に使用した場合は{2}する。").W()).DZT(1,boot.BCW.ih,60.0,40.0,boot.BCT.DXK(0.3),boot.BCT.DXJ(boot.BCW.bj,0.05)).DZT(2,boot.BCW.ih,84.0,56.0,boot.BCT.DXK(0.42),boot.BCT.DXJ(boot.BCW.bj,0.07)).DZB(60.0,10.0).DYw(18.0,-1.0).DZE(750.0);
-		// 4808
-		D.DXH(boot.BCU.bc).DZK("{1}を得る（CD中は効果が消滅）。{2}の味方チャンピオンは{3}をを得る。自身は両方の効果を得る。").DZS(1,boot.BCW.ga,10.0,5.0).DZR(2,boot.BCW.li,500.0).DZW(3,boot.BCW.ga,boot.BCT.DXJ(boot.BCW.ga,0.12)).DZO("{4}の敵ユニットに{5}を与え、4秒間{6}を与える。").DZR(4,boot.BCW.li,375.0).DZX(5,boot.BCW.i,40.0,40.0,boot.BCT.DXJ(boot.BCW.ga,0.2)).DZX(6,boot.BCW.fi,5.0,5.0,boot.BCT.DXJ(boot.BCW.ga,0.05)).DYz(50.0).DYv(10.0).DZE(375.0);
-		// 4817
+		// 4867
+		D.DXH(boot.BCU.bc).DZK("{1}を得る（CD中は効果が消滅）。{2}の味方チャンピオンは{3}をを得る。自身は両方の効果を得る。").DZS(1,boot.BCW.ga,10.0,5.0).DZR(2,boot.BCW.ma,500.0).DZW(3,boot.BCW.ga,boot.BCT.DXJ(boot.BCW.ga,0.12)).DZO("{4}の敵ユニットに{5}を与え、4秒間{6}を与える。").DZR(4,boot.BCW.ma,375.0).DZX(5,boot.BCW.i,40.0,40.0,boot.BCT.DXJ(boot.BCW.ga,0.2)).DZX(6,boot.BCW.fi,5.0,5.0,boot.BCT.DXJ(boot.BCW.ga,0.05)).DYz(50.0).DYv(10.0).DZE(375.0);
+		// 4876
 		E.DXH(boot.BCU.bb).DZO(new boot.z("対象の敵ユニットに{1}と{2}を与える。",0).IY(boot.BCW.e).V("は対象との距離が近いほど増加し、距離が遠いほど低下し、最大で{3}。").W()).DZX(1,boot.BCW.i,40.0,30.0,boot.BCT.DXK(0.2)).DZS(2,boot.BCW.im,1.2,0.1).DZX(3,boot.BCW.i,80.0,60.0,boot.BCT.DXK(0.4)).DYz(75.0).DYw(1,-1.0).DZE(625.0);
-		// 4830
-		F.DXH(boot.BCU.bb).DZO("{1}の敵ユニットに{2}を与える。スキル使用後の10秒間、{3}と{4}を得て、{7}の味方チャンピオンは{5}と{6}を得る。").DZR(1,boot.BCW.li,375.0).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.5)).DZS(3,boot.BCW.dh,30.0,20.0).DZS(4,boot.BCW.ei,30.0,20.0).DZS(-5,boot.BCW.dh,15.0,10.0).DZS(-6,boot.BCW.ei,15.0,10.0).DZR(7,boot.BCW.li,500.0).DYz(100.0).DYv(75.0).DZE(375.0);
-		// 4831
+		// 4889
+		F.DXH(boot.BCU.bb).DZO("{1}の敵ユニットに{2}を与える。スキル使用後の10秒間、{3}と{4}を得て、{7}の味方チャンピオンは{5}と{6}を得る。").DZR(1,boot.BCW.ma,375.0).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.5)).DZS(3,boot.BCW.dh,30.0,20.0).DZS(4,boot.BCW.ei,30.0,20.0).DZS(-5,boot.BCW.dh,15.0,10.0).DZS(-6,boot.BCW.ei,15.0,10.0).DZR(7,boot.BCW.ma,500.0).DYz(100.0).DYv(75.0).DZE(375.0);
+		// 4890
 	},
 	// teemowork.model.SkillDefinition#Teemo(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWD:function(A,B,C,D,E,F){
-		// 4840
-		B.DXH(boot.BCU.dg).DZK(new boot.z("1.5秒間（茂みにいる場合は0.75秒間）動かないと{1}になる。何か行動を行うか、強制的に移動させられると",0).IY(boot.BCW.kj).V("が解除され、").IY(boot.BCW.kj).V("解除後3秒間{2}する。茂みの中は移動しても").IY(boot.BCW.kj).V("は解除されない。").W()).DZQ(1,boot.BCW.kj).DZU(-2,boot.BCW.ea,new boot.BDG(Φ("I",[1,5,10,15]),20.0,20.0,1));
-		// 4848
+		// 4899
+		B.DXH(boot.BCU.dg).DZK(new boot.z("1.5秒間（茂みにいる場合は0.75秒間）動かないと{1}になる。何か行動を行うか、強制的に移動させられると",0).IY(boot.BCW.lb).V("が解除され、").IY(boot.BCW.lb).V("解除後3秒間{2}する。茂みの中は移動しても").IY(boot.BCW.lb).V("は解除されない。").W()).DZQ(1,boot.BCW.lb).DZU(-2,boot.BCW.ea,new boot.BDG(Φ("I",[1,5,10,15]),20.0,20.0,1));
+		// 4907
 		C.DXH(boot.BCU.e).DZO("対象の敵ユニットに{1}と{2}を与える。").DZX(1,boot.BCW.i,80.0,45.0,boot.BCT.DXK(0.8)).DZS(2,boot.BCW.jd,1.5,0.25).DZB(70.0,10.0).DYv(8.0).DZE(580.0);
-		// 4855
+		// 4914
 		D.DXH(boot.BCU.ba).DZK("{1}する。敵チャンピオンかタワーからダメージを受けると5秒間効果が切れる。").DZS(1,boot.BCW.kc,10.0,4.0).DZO("3秒間{1}し、Passiveの効果が切れることがなくなる。").DYz(40.0).DYv(17.0);
-		// 4861
+		// 4920
 		E.DXH(boot.BCU.be).DZK("通常攻撃時に{1}と毒が付与される。毒は4秒間持続し、毎秒{2}を与える。合計で{3}。").DZX(1,boot.BCW.i,10.0,10.0,boot.BCT.DXK(0.3)).DZX(2,boot.BCW.i,6.0,6.0,boot.BCT.DXK(0.1)).DZX(3,boot.BCW.i,34.0,34.0,boot.BCT.DXK(0.7));
-		// 4875
-		F.DXH(boot.BCU.dl).DZO("指定地点に5分間持続するキノコの罠を投げる(設置後1秒で{1}になる)。設置されているキノコに投げつけた場合、バウンドしてさらに{7}離れた位置へ飛んでいく。敵ユニットがステルス状態の罠を踏むと破裂し、{2}のユニットに4秒かけて{3}と{4}を与え{8}。{5}毎にスタック数が1つ増加し最大3つまでスタックされる。設置したキノコはチャンピオンの通常攻撃でのみ破壊でき(近接2回、遠距離3回)、破壊すると{6}を得る。").DZQ(1,boot.BCW.kj).DZR(2,boot.BCW.li,400.0).DZX(3,boot.BCW.i,200.0,125.0,boot.BCT.DXK(0.5)).DZS(4,boot.BCW.jl,30.0,10.0).DZS(5,boot.BCW.le,34.0,-6.0).DZR(6,boot.BCW.lb,10.0).DZS(7,boot.BCW.lk,300.0,100.0).DZQ(8,boot.BCW.kk).DYv(1).DZB(75.0,25.0).DZF(300.0,300.0);
-		// 4876
+		// 4934
+		F.DXH(boot.BCU.dl).DZO("指定地点に5分間持続するキノコの罠を投げる(設置後1秒で{1}になる)。設置されているキノコに投げつけた場合、バウンドしてさらに{7}離れた位置へ飛んでいく。敵ユニットがステルス状態の罠を踏むと破裂し、{2}のユニットに4秒かけて{3}と{4}を与え{8}。{5}毎にスタック数が1つ増加し最大3つまでスタックされる。設置したキノコはチャンピオンの通常攻撃でのみ破壊でき(近接2回、遠距離3回)、破壊すると{6}を得る。").DZQ(1,boot.BCW.lb).DZR(2,boot.BCW.ma,400.0).DZX(3,boot.BCW.i,200.0,125.0,boot.BCT.DXK(0.5)).DZS(4,boot.BCW.jl,30.0,10.0).DZS(5,boot.BCW.lm,34.0,-6.0).DZR(6,boot.BCW.lj,10.0).DZS(7,boot.BCW.mc,300.0,100.0).DZQ(8,boot.BCW.lc).DYv(1).DZB(75.0,25.0).DZF(300.0,300.0);
+		// 4935
 	},
 	// teemowork.model.SkillDefinition#Thresh(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWE:function(A,B,C,D,E,F){
-		// 4886
-		B.DXG().DZK(new boot.z("{1}で敵ユニットが死んだ場合、一定の確率で魂を落とす。魂へ近づくか",0).IY(D).V("のランタンを魂の近くに置くとその魂を回収し、{2}と{3}を得る。落とした魂は15秒間持続し、敵チームがThreshの視界を得ていた場合、敵チームからも視認することができる。").W()).DZR(1,boot.BCW.li,1900.0).DZW(2,boot.BCW.ga,boot.BCT.DXJ(boot.BCW.mf,0.75)).DZW(3,boot.BCW.ei,boot.BCT.DXJ(boot.BCW.mf,0.75));
-		// 4895
-		C.DXH(boot.BCU.df).DZO("指定方向に鎌を投げ、命中した敵ユニットに{1}と{2}を与え、対象を1.5秒かけて自身の方へ引き寄せる。このスキルを再度使用すると対象のユニットへ飛びつく。鎌が敵に命中した場合、このスキルの{3}する。").DZX(1,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.5)).DZR(2,boot.BCW.mf,1.5).DZR(3,boot.BCW.id,3.0).DYw(20.0,-2.0).DYz(80.0).DZE(1100.0);
-		// 4903
-		D.DXH(boot.BCU.df).DZO("指定地点に6秒間持続するランタンを設置する。味方チャンピオンがランタンを指定すると、ランタンとその味方チャンピオンが自身の方へと引き寄せられる。更にランタンの周囲にいる魂を自動的に回収し、{1}の味方チャンピオンは{2}を得る。。シールドを得られるのは1ユニットにつき1回のみ。自身がランタンから距離1500以上離れるとランタンは自動的に自身の下へと戻る。").DZQ(1,boot.BCW.li).DZX(2,boot.BCW.he,60.0,35.0,boot.BCT.DXK(0.4)).DZB(50.0,5.0).DYw(22.0,-1.5).DZE(950.0);
-		// 4914
-		E.DXH(boot.BCU.df).DZK(new boot.z("通常攻撃に{3}を付与する。この",0).IY(boot.BCW.e).V("は").IY(B).V("のスタック数と、自身が前回敵ユニットに通常攻撃をしてから経過した時間に比例して増加し最大で{4}。建物を攻撃した場合は追加").IY(boot.BCW.i).V("は発生せず、時間がリセットされる事もない。").W()).DZW(3,boot.BCW.i,boot.BCT.DXJ(boot.BCW.mf,1)).DZT(4,boot.BCW.i,0,0,boot.BCT.DXJ(boot.BCW.mf,1),boot.BCT.DXN(boot.BCW.dh,0.8,0.3)).DZO("自身後方から前方への帯状領域内の敵ユニットに{1}を与える。また自身後方にいる敵ユニットは自身に近づく向きに、自身前方にいる敵ユニットには自身から遠ざかる向きにノックバックさせ、1.5秒間{2}を与える。").DZX(1,boot.BCW.i,65.0,30.0,boot.BCT.DXK(0.4)).DZS(2,boot.BCW.jl,20.0,5.0).DZB(60.0,5.0).DYv(9.0).DZE(400.0);
-		// 4923
-		F.DXH(boot.BCU.df).DZO("0.75秒後、{4}に五角形の壁を創り出し、最初に壁に触れた敵チャンピオンに{1}と2秒間{2}を与える。2つ目以降の壁に触れた敵チャンピオンには1秒間{2}を与える。敵が触れた部分の壁は破壊され消滅する。").DZX(1,boot.BCW.i,250.0,150.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.jl,99.0).DZR(4,boot.BCW.li,450.0).DYz(100.0).DYw(150.0,-10.0).DZE(450.0);
-		// 4924
+		// 4945
+		B.DXG().DZK(new boot.z("{1}で敵ユニットが死んだ場合、一定の確率で魂を落とす。魂へ近づくか",0).IY(D).V("のランタンを魂の近くに置くとその魂を回収し、{2}と{3}を得る。落とした魂は15秒間持続し、敵チームがThreshの視界を得ていた場合、敵チームからも視認することができる。").W()).DZR(1,boot.BCW.ma,1900.0).DZW(2,boot.BCW.ga,boot.BCT.DXJ(boot.BCW.mn,0.75)).DZW(3,boot.BCW.ei,boot.BCT.DXJ(boot.BCW.mn,0.75));
+		// 4955
+		C.DXH(boot.BCU.df).DZO("指定方向に鎌を投げ、命中した敵ユニットに{1}と{2}を与え、対象を1.5秒かけて自身の方へ引き寄せる。このスキルを再度使用すると対象のユニットへ{3}する。鎌が敵に命中した場合、このスキルの{4}する。").DZX(1,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.5)).DZR(2,boot.BCW.mn,1.5).DZQ(3,boot.BCW.kn).DZR(4,boot.BCW.id,3.0).DYw(20.0,-2.0).DYz(80.0).DZE(1100.0);
+		// 4963
+		D.DXH(boot.BCU.df).DZO("指定地点に6秒間持続するランタンを設置する。味方チャンピオンがランタンを指定すると、ランタンとその味方チャンピオンが自身の方へと引き寄せられる。更にランタンの周囲にいる魂を自動的に回収し、{1}の味方チャンピオンは{2}を得る。。シールドを得られるのは1ユニットにつき1回のみ。自身がランタンから距離1500以上離れるとランタンは自動的に自身の下へと戻る。").DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.he,60.0,35.0,boot.BCT.DXK(0.4)).DZB(50.0,5.0).DYw(22.0,-1.5).DZE(950.0);
+		// 4974
+		E.DXH(boot.BCU.df).DZK(new boot.z("通常攻撃に{3}を付与する。この",0).IY(boot.BCW.e).V("は").IY(B).V("のスタック数と、自身が前回敵ユニットに通常攻撃をしてから経過した時間に比例して増加し最大で{4}。建物を攻撃した場合は追加").IY(boot.BCW.i).V("は発生せず、時間がリセットされる事もない。").W()).DZW(3,boot.BCW.i,boot.BCT.DXJ(boot.BCW.mn,1)).DZT(4,boot.BCW.i,0,0,boot.BCT.DXJ(boot.BCW.mn,1),boot.BCT.DXN(boot.BCW.dh,0.8,0.3)).DZO("自身後方から前方への帯状領域内の敵ユニットに{1}を与える。また自身後方にいる敵ユニットは自身に近づく向きに、自身前方にいる敵ユニットには自身から遠ざかる向きにノックバックさせ、1.5秒間{2}を与える。").DZX(1,boot.BCW.i,65.0,30.0,boot.BCT.DXK(0.4)).DZS(2,boot.BCW.jl,20.0,5.0).DZB(60.0,5.0).DYv(9.0).DZE(400.0);
+		// 4983
+		F.DXH(boot.BCU.df).DZO("0.75秒後、{4}に五角形の壁を創り出し、最初に壁に触れた敵チャンピオンに{1}と2秒間{2}を与える。2つ目以降の壁に触れた敵チャンピオンには1秒間{2}を与える。敵が触れた部分の壁は破壊され消滅する。").DZX(1,boot.BCW.i,250.0,150.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.jl,99.0).DZR(4,boot.BCW.ma,450.0).DYz(100.0).DYw(150.0,-10.0).DZE(450.0);
+		// 4984
 	},
 	// teemowork.model.SkillDefinition#Tristana(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWF:function(A,B,C,D,E,F){
-		// 4930
+		// 4990
 		B.DXH(boot.BCU.cj).DZK(new boot.z("通常攻撃、",0).IY(E).V("と").IY(F).V("は{1}する。").W()).DZZ(1,boot.BCW.hi,new boot.BDL(Φ("D",[-7.0]),0),boot.BCT.DXI(7.0));
-		// 4938
+		// 4998
 		C.DXH(boot.BCU.co).DZK(new boot.z(1).IY(E).V("がスタックしている敵に").IY(A).V("の通常攻撃が命中するたび、このスキルの{1}する。").IY(C).V("を発動中、").IY(A).V("の通常攻撃が命中するたび、").IY(E).V("の{2}する (チャンピオンへの攻撃時は{1}する)。").W()).DZR(1,boot.BCW.id,1).DZR(2,boot.BCW.id,0.5).DZO("5秒間{1}する。").DZS(1,boot.BCW.ea,30.0,20.0).DYv(20.0);
-		// 4951
-		D.DXH(boot.BCU.cj).DZO(new boot.z("地面を砲撃して指定した地点へジャンプし、着地と同時に{1}の敵ユニットに{2}と{3}間{4}を与える。",0).IY(E).V("のスタックが付与されている敵に対しては1スタックごとに20%ダメージが増加し最大で{5}。{6}とこのスキルの{7}する。").W()).DZQ(1,boot.BCW.li).DZX(2,boot.BCW.i,80.0,25.0,boot.BCT.DXK(0.5)).DZS(3,boot.BCW.ld,1,0.5).DZR(4,boot.BCW.jl,60.0).DZX(5,boot.BCW.i,160.0,50.0,boot.BCT.DXK(1)).DZQ(6,boot.BCW.lp).DZQ(7,boot.BCW.id).DYz(60.0).DYw(22.0,-2.0).DZE(900.0);
-		// 4963
-		E.DXH(boot.BCU.da).DZK("通常攻撃で敵ユニットを倒した時にそのユニットの{1}の敵ユニットに{2}を与える。").DZR(1,boot.BCW.li,75.0).DZX(2,boot.BCW.i,50.0,25.0,boot.BCT.DXK(0.25)).DZO(new boot.z("詠唱後、対象の敵ユニット・タワーにグレネードを投げる。グレネードは4秒後に爆発し対象と{3}の敵ユニットに{4}を与える。爆発までの4秒間に対象に通常攻撃を行うと、最大で4スタックするDebuffを付与し、1スタック毎に爆発時の",0).IY(boot.BCW.e).V("が30%増加し最大で{5}。既に4スタック溜まっている対象に").IY(D).V("または通常攻撃を行うと、即座に爆発させる。詠唱時間はASによって減少する。").W()).DZQ(3,boot.BCW.li).DZT(4,boot.BCW.h,60.0,10.0,boot.BCT.DXK(0.5),boot.BCT.DXN(boot.BCW.dk,0.5,0.15)).DZT(5,boot.BCW.h,132.0,22.0,boot.BCT.DXK(1.1),boot.BCT.DXN(boot.BCW.dk,1.1,0.33)).DZB(75.0,5.0).DYw(16.0,-0.5).DZG(new boot.BDL(Φ("D",[543.0]),0),boot.BCT.DXI(7.0));
-		// 4972
-		F.DXH(boot.BCU.cj).DZO("対象の敵ユニットに{1}を与え、対象と{2}の敵ユニットを{3}させる。").DZX(1,boot.BCW.i,300.0,100.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.li,200.0).DZS(3,boot.BCW.jh,600.0,200.0).DYz(100.0).DYw(100.0,-15.0).DZG(new boot.BDL(Φ("D",[543.0]),0),boot.BCT.DXI(7.0));
-		// 4973
+		// 5012
+		D.DXH(boot.BCU.cj).DZO(new boot.z("指定地点へ{8}し、着地と同時に{1}の敵ユニットに{2}と{3}間{4}を与える。",0).IY(E).V("のスタックが付与されている敵に対しては1スタックごとに20%ダメージが増加し最大で{5}。{6}とこのスキルの{7}する。").W()).DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.i,80.0,25.0,boot.BCT.DXK(0.5)).DZS(3,boot.BCW.ll,1,0.5).DZR(4,boot.BCW.jl,60.0).DZX(5,boot.BCW.i,160.0,50.0,boot.BCT.DXK(1)).DZQ(6,boot.BCW.mh).DZQ(7,boot.BCW.id).DZQ(8,boot.BCW.km).DYz(60.0).DYw(22.0,-2.0).DZE(900.0);
+		// 5024
+		E.DXH(boot.BCU.da).DZK("通常攻撃で敵ユニットを倒した時にそのユニットの{1}の敵ユニットに{2}を与える。").DZR(1,boot.BCW.ma,75.0).DZX(2,boot.BCW.i,50.0,25.0,boot.BCT.DXK(0.25)).DZO(new boot.z("詠唱後、対象の敵ユニット・タワーにグレネードを投げる。グレネードは4秒後に爆発し対象と{3}の敵ユニットに{4}を与える。爆発までの4秒間に対象に通常攻撃を行うと、最大で4スタックするDebuffを付与し、1スタック毎に爆発時の",0).IY(boot.BCW.e).V("が30%増加し最大で{5}。既に4スタック溜まっている対象に").IY(D).V("または通常攻撃を行うと、即座に爆発させる。詠唱時間はASによって減少する。").W()).DZQ(3,boot.BCW.ma).DZT(4,boot.BCW.h,60.0,10.0,boot.BCT.DXK(0.5),boot.BCT.DXN(boot.BCW.dk,0.5,0.15)).DZT(5,boot.BCW.h,132.0,22.0,boot.BCT.DXK(1.1),boot.BCT.DXN(boot.BCW.dk,1.1,0.33)).DZB(75.0,5.0).DYw(16.0,-0.5).DZG(new boot.BDL(Φ("D",[543.0]),0),boot.BCT.DXI(7.0));
+		// 5033
+		F.DXH(boot.BCU.cj).DZO("対象の敵ユニットに{1}を与え、対象と{2}の敵ユニットを{3}させる。").DZX(1,boot.BCW.i,300.0,100.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.ma,200.0).DZS(3,boot.BCW.jh,600.0,200.0).DYz(100.0).DYw(100.0,-15.0).DZG(new boot.BDL(Φ("D",[543.0]),0),boot.BCT.DXI(7.0));
+		// 5034
 	},
 	// teemowork.model.SkillDefinition#Trundle(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWG:function(A,B,C,D,E,F){
-		// 4982
-		B.DXH(boot.BCU.cm).DZK("{1}で敵ユニットが死んだとき、{2}する。").DZR(1,boot.BCW.li,1400.0).DZW(2,boot.BCW.ih,boot.BCT.DXP(boot.BCW.cp,new boot.BDG(Φ("I",[1,5,9,12,15]),2.0,1,1)));
-		// 4991
+		// 5043
+		B.DXH(boot.BCU.cm).DZK("{1}で敵ユニットが死んだとき、{2}する。").DZR(1,boot.BCW.ma,1400.0).DZW(2,boot.BCW.ih,boot.BCT.DXP(boot.BCW.cp,new boot.BDG(Φ("I",[1,5,9,12,15]),2.0,1,1)));
+		// 5052
 		C.DXH(boot.BCU.e).DZO("次の通常攻撃は{1}と0.1秒間{4}を与える。8秒間{2}を得て、攻撃を受けたユニットは{3}する。建物には無効。").DZX(1,boot.BCW.h,20.0,20.0,boot.BCT.DXN(boot.BCW.dh,1,0.05)).DZS(2,boot.BCW.dh,20.0,5.0).DZS(3,boot.BCW.hb,10.0,2.5).DZR(4,boot.BCW.jl,75.0).DYz(30.0).DYv(4.0);
-		// 5001
-		D.DXH(boot.BCU.cm).DZO("指定した地点の{1}に8秒間持続する呪いを振りまく。範囲内に入っている間、{2}、{3}、{4}する。").DZR(1,boot.BCW.li,500.0).DZS(2,boot.BCW.ea,20.0,15.0).DZS(3,boot.BCW.kc,20.0,5.0).DZR(4,boot.BCW.ii,20.0).DYz(60.0).DYv(15.0).DZE(900.0);
-		// 5010
-		E.DXH(boot.BCU.da).DZO("指定地点に6秒間持続する通行不可能なビーコンを設置し、ビーコンの{1}にいる敵ユニットに{2}を与える。また、{3}の視界を得る。").DZR(1,boot.BCW.li,375.0).DZS(2,boot.BCW.jl,30.0,5.0).DZR(3,boot.BCW.li,1200.0).DYz(60.0).DYw(23.0,-3.0).DZE(1000.0);
-		// 5022
+		// 5062
+		D.DXH(boot.BCU.cm).DZO("指定した地点の{1}に8秒間持続する呪いを振りまく。範囲内に入っている間、{2}、{3}、{4}する。").DZR(1,boot.BCW.ma,500.0).DZS(2,boot.BCW.ea,20.0,15.0).DZS(3,boot.BCW.kc,20.0,5.0).DZR(4,boot.BCW.ii,20.0).DYz(60.0).DYv(15.0).DZE(900.0);
+		// 5071
+		E.DXH(boot.BCU.da).DZO("指定地点に6秒間持続する通行不可能なビーコンを設置し、ビーコンの{1}にいる敵ユニットに{2}を与える。また、{3}の視界を得る。").DZR(1,boot.BCW.ma,375.0).DZS(2,boot.BCW.jl,30.0,5.0).DZR(3,boot.BCW.ma,1200.0).DYz(60.0).DYw(23.0,-3.0).DZE(1000.0);
+		// 5083
 		F.DXH(boot.BCU.dd).DZO(new boot.z("敵のチャンピオン1体に{1}、{2}と{3}を与え、続けて4秒かけて{1}、{2}と{3}を与える。 ",0).IY(A).V("は全ての効果を吸収する({4}し、減少させた").IY(boot.BCW.ga).V("及び").IY(boot.BCW.ge).V("に等しい量の{5}と{6}を得る)。吸収効果は4秒かけて元に戻る。").W()).DZW(1,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,10.0,3.75,boot.BCT.DXK(0.01))).DZR(2,boot.BCW.fj,20.0).DZR(3,boot.BCW.fp,20.0).DZW(4,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.m,1)).DZQ(5,boot.BCW.ga).DZQ(6,boot.BCW.ge).DYz(80.0).DYw(80.0,-10.0).DZE(700.0);
-		// 5023
+		// 5084
 	},
 	// teemowork.model.SkillDefinition#Tryndamere(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWH:function(A,B,C,D,E,F){
-		// 5031
-		B.DXH(boot.BCU.e).DZK(new boot.z("{1}する。通常攻撃時に5Fury、クリティカル時に10Fury、",0).IY(E).V("が敵ユニットに命中するたびに2Furyを得る。敵ユニットを倒すと追加で10Furyを得る。Furyの上限は100、8秒間戦闘を行わないと毎秒5Furyずつ減少していく。建物を攻撃した場合はFuryは増加しない。").W()).DZW(-1,boot.BCW.ee,boot.BCT.DXJ(boot.BCW.mf,0.35));
-		// 5038
-		C.DXH(boot.BCU.g).DZK("{1}を得る。").DZX(1,boot.BCW.dh,5.0,5.0,boot.BCT.DXN(boot.BCW.co,0.15,0.05)).DZO("Furyをすべて消費し{2}する。").DZT(2,boot.BCW.ih,30.0,10.0,boot.BCT.DXK(0.3),boot.BCT.DXQ(boot.BCW.mf,0.5,0.45,boot.BCT.DXK(0.012))).DYv(12.0);
-		// 5045
+		// 5092
+		B.DXH(boot.BCU.e).DZK(new boot.z("{1}する。通常攻撃時に5Fury、クリティカル時に10Fury、",0).IY(E).V("が敵ユニットに命中するたびに2Furyを得る。敵ユニットを倒すと追加で10Furyを得る。Furyの上限は100、8秒間戦闘を行わないと毎秒5Furyずつ減少していく。建物を攻撃した場合はFuryは増加しない。").W()).DZW(-1,boot.BCW.ee,boot.BCT.DXJ(boot.BCW.mn,0.35));
+		// 5099
+		C.DXH(boot.BCU.g).DZK("{1}を得る。").DZX(1,boot.BCW.dh,5.0,5.0,boot.BCT.DXN(boot.BCW.co,0.15,0.05)).DZO("Furyをすべて消費し{2}する。").DZT(2,boot.BCW.ih,30.0,10.0,boot.BCT.DXK(0.3),boot.BCT.DXQ(boot.BCW.mn,0.5,0.45,boot.BCT.DXK(0.012))).DYv(12.0);
+		// 5106
 		D.DXH(boot.BCU.e).DZO("4秒間近くの敵チャンピオンは{1}し、後ろを向いている敵チャンピオンには更に4秒間{2}を与える。").DZS(1,boot.BCW.hb,20.0,15.0).DZS(2,boot.BCW.jj,30.0,7.5).DYv(14.0).DZE(400.0);
-		// 5053
-		E.DXH(boot.BCU.cg).DZO("指定地点まで武器を振り回しながら移動し、当たった敵ユニットに{1}を与える。このスキルはクリティカルが発生するたびに{2}する。(敵チャンピオンの場合は{3}する)").DZT(1,boot.BCW.h,70.0,30.0,boot.BCT.DXK(1),boot.BCT.DXM(1.2)).DZR(2,boot.BCW.id,1).DZR(3,boot.BCW.id,2.0).DYw(13.0,-1.0).DZE(660.0);
-		// 5059
-		F.DXH(boot.BCU.p).DZO(new boot.z("5秒間HPが1未満にならなくなる(死ななくなる)。また、このスキル使用時にFuryが{1}増加する。このスキルの使用は状態異常によって阻害されない。5秒後、",0).IY(A).V("の").IY(boot.BCW.bf).V("が3%以下の場合{2}する。").W()).DZS(1,boot.BCW.lh,50.0,25.0).DZW(2,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.bf,0.05)).DYw(110.0,-10.0);
-		// 5060
+		// 5115
+		E.DXH(boot.BCU.cg).DZO("指定地点まで武器を振り回しながら{4}し、当たった敵ユニットに{1}を与える。このスキルはクリティカルが発生するたびに{2}する。(敵チャンピオンの場合は{3}する)").DZT(1,boot.BCW.h,70.0,30.0,boot.BCT.DXK(1),boot.BCT.DXM(1.2)).DZR(2,boot.BCW.id,1).DZR(3,boot.BCW.id,2.0).DZQ(4,boot.BCW.km).DYw(13.0,-1.0).DZE(660.0);
+		// 5121
+		F.DXH(boot.BCU.p).DZO(new boot.z("5秒間HPが1未満にならなくなる(死ななくなる)。また、このスキル使用時にFuryが{1}増加する。このスキルの使用は状態異常によって阻害されない。5秒後、",0).IY(A).V("の").IY(boot.BCW.bf).V("が3%以下の場合{2}する。").W()).DZS(1,boot.BCW.lp,50.0,25.0).DZW(2,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.bf,0.05)).DYw(110.0,-10.0);
+		// 5122
 	},
 	// teemowork.model.SkillDefinition#TwistedFate(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWI:function(A,B,C,D,E,F){
-		// 5066
-		B.DXH(boot.BCU.n).DZK("ユニットを倒すたびに追加の{1}(1~6でランダム、但し期待値は3.5よりも大きくなる)を得る。").DZQ(1,boot.BCW.lb);
-		// 5073
+		// 5128
+		B.DXH(boot.BCU.n).DZK("ユニットを倒すたびに追加の{1}(1~6でランダム、但し期待値は3.5よりも大きくなる)を得る。").DZQ(1,boot.BCW.lj);
+		// 5135
 		C.DXH(boot.BCU.bd).DZO("指定向き3方向に貫通するカードを飛ばし、当たった敵ユニットに{1}を与える。").DZX(1,boot.BCW.i,60.0,50.0,boot.BCT.DXK(0.65)).DZB(60.0,10.0).DYv(6.0).DZE(1450.0);
-		// 5085
-		D.DXH(boot.BCU.bh).DZO(new boot.z("3種類のカードが順番に出現し、6秒以内に再度使用してカードを決定する。6秒以内の次の通常攻撃が",0).IY(boot.BCW.i).V("に変換され、以下の効果になる。<br>Blue Card: {2}を与え{3}する。<br>Red Card: {4}の敵に{5}と2.5秒間{6}を与える。<br>Gold Card: {7}と{8}を与える。").W()).DZT(2,boot.BCW.i,40.0,20.0,boot.BCT.DXK(0.5),boot.BCT.DXL(1)).DZS(3,boot.BCW.ij,50.0,25.0).DZR(4,boot.BCW.li,100.0).DZT(5,boot.BCW.i,30.0,15.0,boot.BCT.DXK(0.5),boot.BCT.DXL(1)).DZS(6,boot.BCW.jl,30.0,5.0).DZT(7,boot.BCW.i,15.0,7.5,boot.BCT.DXK(0.5),boot.BCT.DXL(1)).DZS(8,boot.BCW.im,1.2,0.2).DZB(40.0,15.0).DYv(6.0);
-		// 5087
+		// 5147
+		D.DXH(boot.BCU.bh).DZO(new boot.z("3種類のカードが順番に出現し、6秒以内に再度使用してカードを決定する。6秒以内の次の通常攻撃が",0).IY(boot.BCW.i).V("に変換され、以下の効果になる。<br>Blue Card: {2}を与え{3}する。<br>Red Card: {4}の敵に{5}と2.5秒間{6}を与える。<br>Gold Card: {7}と{8}を与える。").W()).DZT(2,boot.BCW.i,40.0,20.0,boot.BCT.DXK(0.5),boot.BCT.DXL(1)).DZS(3,boot.BCW.ij,50.0,25.0).DZR(4,boot.BCW.ma,100.0).DZT(5,boot.BCW.i,30.0,15.0,boot.BCT.DXK(0.5),boot.BCT.DXL(1)).DZS(6,boot.BCW.jl,30.0,5.0).DZT(7,boot.BCW.i,15.0,7.5,boot.BCT.DXK(0.5),boot.BCT.DXL(1)).DZS(8,boot.BCW.im,1.2,0.2).DZB(40.0,15.0).DYv(6.0);
+		// 5149
 		E.DXH(boot.BCU.ck).DZK("{1}する。通常攻撃4回毎に追加{2}を与える。").DZS(1,boot.BCW.ea,10.0,5.0).DZX(2,boot.BCW.i,55.0,25.0,boot.BCT.DXK(0.5));
-		// 5095
-		F.DXH(boot.BCU.ck).DZO("{1}間すべての敵チャンピオン(ステルス中のチャンピオン含む)の{2}。0.5秒後に再度使用することができるようになり、効果時間内に使用すると1.5秒間移動・攻撃が不可能になった後、指定地点にワープする。").DZS(1,boot.BCW.ld,6.0,2.0).DZQ(2,boot.BCW.kk).DZB(150.0,-25.0).DYw(180.0,-30.0).DZE(5500.0);
-		// 5096
+		// 5157
+		F.DXH(boot.BCU.ck).DZO("{1}間すべての敵チャンピオン(ステルス中のチャンピオン含む)の{2}。0.5秒後に再度使用することができるようになり、効果時間内に使用すると1.5秒間移動・攻撃が不可能になった後、指定地点にワープする。").DZS(1,boot.BCW.ll,6.0,2.0).DZQ(2,boot.BCW.lc).DZB(150.0,-25.0).DYw(180.0,-30.0).DZE(5500.0);
+		// 5158
 	},
 	// teemowork.model.SkillDefinition#Twitch(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWJ:function(A,B,C,D,E,F){
-		// 5102
+		// 5164
 		B.DXH(boot.BCU.cn).DZK("通常攻撃時に毒を付与し、6秒間毎秒{1}を与える。毒は6回までスタックする。").DZU(1,boot.BCW.j,new boot.BDO(2.0,1,0));
-		// 5110
-		C.DXH(boot.BCU.dj).DZO("使用から1.5秒後に{1}になる。ステルス状態では{2}し、ステルスを解除すると5秒間{3}する。ステルス準備中に攻撃を行うかダメージを受けると、ステルス状態になるのに再度1.25秒必要になる。ステルス準備開始から4.5秒経過するとダメージを受けていてもステルス状態になる。").DZS(1,boot.BCW.kj,4.0,1).DZR(2,boot.BCW.kc,20.0).DZS(3,boot.BCW.ea,30.0,10.0).DYz(40.0).DYv(16.0);
-		// 5119
-		D.DXH(boot.BCU.e).DZO("指定地点に{1}で毒の入った瓶を投げつけ、範囲内の敵ユニットに3秒間{2}と毒を2スタック分与える。また、指定した地点の{3}。").DZR(1,boot.BCW.ll,1400.0).DZS(2,boot.BCW.jl,25.0,5.0).DZQ(3,boot.BCW.kk).DYz(50.0).DYw(13.0,-1.0).DZE(950.0);
-		// 5127
-		E.DXH(boot.BCU.bi).DZO("毒をスタックされている{1}の敵ユニットに{2}を与える。").DZR(1,boot.BCW.li,1200.0).DZX(2,boot.BCW.h,20.0,15.0,boot.BCT.DXR(boot.BCW.mf,15.0,5.0,boot.BCT.DXK(0.2),boot.BCT.DXM(0.25))).DZB(50.0,10.0).DYw(12.0,-1.0).DZE(1200.0);
-		// 5134
+		// 5172
+		C.DXH(boot.BCU.dj).DZO("使用から1.5秒後に{1}になる。ステルス状態では{2}し、ステルスを解除すると5秒間{3}する。ステルス準備中に攻撃を行うかダメージを受けると、ステルス状態になるのに再度1.25秒必要になる。ステルス準備開始から4.5秒経過するとダメージを受けていてもステルス状態になる。").DZS(1,boot.BCW.lb,4.0,1).DZR(2,boot.BCW.kc,20.0).DZS(3,boot.BCW.ea,30.0,10.0).DYz(40.0).DYv(16.0);
+		// 5181
+		D.DXH(boot.BCU.e).DZO("指定地点に{1}で毒の入った瓶を投げつけ、範囲内の敵ユニットに3秒間{2}と毒を2スタック分与える。また、指定した地点の{3}。").DZR(1,boot.BCW.md,1400.0).DZS(2,boot.BCW.jl,25.0,5.0).DZQ(3,boot.BCW.lc).DYz(50.0).DYw(13.0,-1.0).DZE(950.0);
+		// 5189
+		E.DXH(boot.BCU.bi).DZO("毒をスタックされている{1}の敵ユニットに{2}を与える。").DZR(1,boot.BCW.ma,1200.0).DZX(2,boot.BCW.h,20.0,15.0,boot.BCT.DXR(boot.BCW.mn,15.0,5.0,boot.BCT.DXK(0.2),boot.BCT.DXM(0.25))).DZB(50.0,10.0).DYw(12.0,-1.0).DZE(1200.0);
+		// 5196
 		F.DXH(boot.BCU.dh).DZO("7秒間{2}し{1}を得て、通常攻撃が敵ユニットを貫通するようになる。対象との直線上にいる敵ユニットにもダメージと毒スタックを与える。ダメージは敵に当たるごとに20%減少する。最小で40%。").DZS(1,boot.BCW.dh,20.0,10.0).DZR(2,boot.BCW.hi,300.0).DZB(100.0,25.0).DYw(120.0,-10.0);
-		// 5135
+		// 5197
 	},
 	// teemowork.model.SkillDefinition#Udyr(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWK:function(A,B,C,D,E,F){
-		// 5144
+		// 5206
 		B.DXH(boot.BCU.i).DZK("スキルを使用する度に{1}、{2}する。この効果は5秒間持続し、3回までスタックする。また、スキルを使用するとその他のCD待ちでないスキルが1秒CDになる。").DZR(-1,boot.BCW.ea,10.0).DZR(-2,boot.BCW.ka,5.0);
-		// 5152
+		// 5214
 		C.DXH(boot.BCU.k).DZO("次の通常攻撃は2秒間かけて追加の{2}を与えるようになり（建物には無効）、5秒間{3}する。別のスキルを使うまで通常攻撃は追加{1}を与える。").DZX(1,boot.BCW.h,0,0,boot.BCT.DXL(0.15)).DZX(2,boot.BCW.h,30.0,50.0,boot.BCT.DXN(boot.BCW.dh,1.2,0.1)).DZS(3,boot.BCW.ea,30.0,10.0).DZB(47.0,-3.0).DYv(6.0);
-		// 5154
+		// 5216
 		D.DXH(boot.BCU.i).DZO("5秒間{1}を得る。別のスキルを使うまで{2}を得る。").DZX(1,boot.BCW.he,60.0,40.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.eb,10.0,2.0).DZB(47.0,-3.0).DYv(6.0);
-		// 5163
-		E.DXH(boot.BCU.bk).DZO(new boot.z("{1}間{2}し{4}を得る。別のスキルを使うまで通常攻撃は{3}を与える。敵チャンピオンに",0).IY(boot.BCW.im).V("を与える際、対象に向かって短い距離をダッシュする。この効果は同一の対象に5秒に1度しか発動しない。").W()).DZS(1,boot.BCW.ld,2.0,0.25).DZS(2,boot.BCW.kc,15.0,5.0).DZR(3,boot.BCW.im,1).DZQ(4,boot.BCW.kg).DZB(47.0,-3.0).DYv(6.0);
-		// 5172
+		// 5226
+		E.DXH(boot.BCU.bk).DZO(new boot.z("{1}間{2}し{4}を得る。別のスキルを使うまで通常攻撃は{3}を与える。敵チャンピオンに",0).IY(boot.BCW.im).V("を与える際、対象に向かって{5}する。この効果は同一の対象に5秒に1度しか発動しない。").W()).DZS(1,boot.BCW.ll,2.0,0.25).DZS(2,boot.BCW.kc,15.0,5.0).DZR(3,boot.BCW.im,1).DZQ(4,boot.BCW.kg).DZR(5,boot.BCW.kn,200.0).DZB(47.0,-3.0).DYv(6.0);
+		// 5235
 		F.DXH(boot.BCU.i).DZO("5秒間周囲の敵ユニットに毎秒{1}を与え、次の通常攻撃に前方の敵ユニットに{4}を与える効果を付与する。別のスキル使うまで通常攻撃を3回行うごとに火を吹き前方の敵ユニットに{4}を与える。").DZX(1,boot.BCW.i,15.0,10.0,boot.BCT.DXK(0.25)).DZS(2,boot.BCW.dh,8.0,4.0).DZS(3,boot.BCW.ei,16.0,8.0).DZX(4,boot.BCW.i,40.0,40.0,boot.BCT.DXK(0.45)).DZB(47.0,-3.0).DYv(6.0);
-		// 5173
+		// 5236
 	},
 	// teemowork.model.SkillDefinition#Urgot(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWL:function(A,B,C,D,E,F){
-		// 5179
+		// 5242
 		B.DXH(boot.BCU.e).DZK(new boot.z("通常攻撃または",0).IY(C).V("でダメージを与えた対象は2.5秒間{1}する。").W()).DZR(1,boot.BCW.o,15.0);
-		// 5186
+		// 5249
 		C.DXH(boot.BCU.cb).DZO(new boot.z("指定方向にミサイルを飛ばし当たった敵ユニットに{1}を与える。",0).IY(E).V("の効果を受けている敵ユニットの近くを指定して使用すると、その敵ユニット目掛けてミサイルが飛んでいく。").W()).DZX(1,boot.BCW.h,10.0,30.0,boot.BCT.DXL(0.85)).DYz(40.0).DYv(2.0).DZE(1000.0);
-		// 5193
+		// 5256
 		D.DXH(boot.BCU.cm).DZO(new boot.z("7秒間{1}を得る。シールドが残っている間は通常攻撃と",0).IY(C).V("は1.5秒間{2}を与える。").W()).DZT(1,boot.BCW.he,60.0,40.0,boot.BCT.DXK(0.8),boot.BCT.DXJ(boot.BCW.bp,0.08)).DZS(2,boot.BCW.jl,20.0,5.0).DZB(55.0,5.0).DYw(16.0,-1.0);
-		// 5203
-		E.DXH(boot.BCU.cb).DZO("指定地点に爆弾を飛ばし{1}の敵ユニットに5秒間かけて{2}と{3}を与える。また指定地点の{4}。").DZR(1,boot.BCW.li,300.0).DZX(2,boot.BCW.h,75.0,55.0,boot.BCT.DXM(0.6)).DZS(3,boot.BCW.fj,12.0,2.0).DZQ(4,boot.BCW.kk).DZB(50.0,5.0).DYw(15.0,-1.0).DZE(900.0);
-		// 5213
+		// 5266
+		E.DXH(boot.BCU.cb).DZO("指定地点に爆弾を飛ばし{1}の敵ユニットに5秒間かけて{2}と{3}を与える。また指定地点の{4}。").DZR(1,boot.BCW.ma,300.0).DZX(2,boot.BCW.h,75.0,55.0,boot.BCT.DXM(0.6)).DZS(3,boot.BCW.fj,12.0,2.0).DZQ(4,boot.BCW.lc).DZB(50.0,5.0).DYw(15.0,-1.0).DZE(900.0);
+		// 5276
 		F.DXH(boot.BCU.cm).DZO("対象の敵チャンピオンに{1}を与え、5秒間{2}と{3}を得る。1秒詠唱後に敵チャンピオンと自分の位置を入れ替え、敵チャンピオンに3秒間{4}を与える。").DZR(1,boot.BCW.jf,1).DZS(2,boot.BCW.ga,60.0,30.0).DZS(3,boot.BCW.ge,60.0,30.0).DZR(4,boot.BCW.jl,40.0).DYz(100.0).DYw(120.0,-20.0).DZF(550.0,150.0);
-		// 5214
+		// 5277
 	},
 	// teemowork.model.SkillDefinition#Varus(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWM:function(A,B,C,D,E,F){
-		// 5224
-		B.DXH(boot.BCU.e).DZK("敵ユニットを倒すと3秒間{1}する。{3}と6秒間{2}する。この効果はスタックしない。").DZR(-1,boot.BCW.ea,20.0).DZR(-2,boot.BCW.ea,40.0).DZQ(3,boot.BCW.lp);
-		// 5232
-		C.DXH(boot.BCU.cm).DZO(new boot.z("最初にスキルを使用すると狙いを付ける。この間は通常攻撃や他のスキルを使用できなくなり、",0).IY(A).V("の移動速度が20%低下するが、狙いを付けている間は徐々にこのスキルのダメージと射程距離が増加していく(2秒で最大)。再度このスキルを使用することで指定方向に貫通する矢を放ち、当たった敵ユニットに{1}を与える(最大で{2})。ダメージは敵に当たるごとに15%減少する。最小で33%。狙いを付けて4秒間経過した場合はこのスキルは失敗しCDになるが、消費したマナの半分が回復する。").W()).DZX(1,boot.BCW.h,10.0,37.0,boot.BCT.DXL(1)).DZX(2,boot.BCW.h,15.0,55.0,boot.BCT.DXL(1.65)).DZB(70.0,5.0).DYw(16.0,-2.0).DZG(new boot.BDL(Φ("D",[925.0]),0),boot.BCT.DXJ(boot.BCW.lg,350.0));
-		// 5237
+		// 5287
+		B.DXH(boot.BCU.e).DZK("敵ユニットを倒すと3秒間{1}する。{3}と6秒間{2}する。この効果はスタックしない。").DZR(-1,boot.BCW.ea,20.0).DZR(-2,boot.BCW.ea,40.0).DZQ(3,boot.BCW.mh);
+		// 5295
+		C.DXH(boot.BCU.cm).DZO(new boot.z("最初にスキルを使用すると狙いを付ける。この間は通常攻撃や他のスキルを使用できなくなり、",0).IY(A).V("の移動速度が20%低下するが、狙いを付けている間は徐々にこのスキルのダメージと射程距離が増加していく(2秒で最大)。再度このスキルを使用することで指定方向に貫通する矢を放ち、当たった敵ユニットに{1}を与える(最大で{2})。ダメージは敵に当たるごとに15%減少する。最小で33%。狙いを付けて4秒間経過した場合はこのスキルは失敗しCDになるが、消費したマナの半分が回復する。").W()).DZX(1,boot.BCW.h,10.0,37.0,boot.BCT.DXL(1)).DZX(2,boot.BCW.h,15.0,55.0,boot.BCT.DXL(1.65)).DZB(70.0,5.0).DYw(16.0,-2.0).DZG(new boot.BDL(Φ("D",[925.0]),0),boot.BCT.DXJ(boot.BCW.lo,350.0));
+		// 5300
 		D.DXH(boot.BCU.e).DZK("通常攻撃に追加{1}と6秒間持続する疫病が付与される。疫病は3回までスタックする。疫病のスタックが付与されている敵ユニットにVarusの他のスキルが命中した場合、疫病のスタックを全て消費して1スタック毎に{2}を与える。").DZX(1,boot.BCW.i,10.0,4.0,boot.BCT.DXK(0.25)).DZW(2,boot.BCW.i,boot.BCT.DXQ(boot.BCW.cp,2.0,0.75,boot.BCT.DXK(0.02)));
-		// 5246
+		// 5309
 		E.DXH(boot.BCU.l).DZO("指定地点に矢の雨を放ち、範囲内の敵ユニットに{1}を与える。指定地点は4秒間呪われ、範囲内の敵ユニットに{2}と{3}を付与する。").DZX(1,boot.BCW.h,65.0,35.0,boot.BCT.DXM(0.6)).DZS(2,boot.BCW.jl,25.0,5.0).DZQ(3,boot.BCW.jo).DYz(80.0).DYw(18.0,-2.0).DZE(925.0);
-		// 5255
-		F.DXH(boot.BCU.ck).DZO("指定方向に腐敗の蔓を投げつけ、当たった敵チャンピオンに{1}と{2}を与える。当たった敵チャンピオンからは徐々に腐敗が広がり({3})、腐敗に触れた敵チャンピオンにも同様の効果を与える。").DZX(1,boot.BCW.i,150.0,100.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.ip,2.0).DZR(3,boot.BCW.li,550.0).DYz(100.0).DYw(120.0,-15.0).DZE(1075.0);
-		// 5256
+		// 5318
+		F.DXH(boot.BCU.ck).DZO("指定方向に腐敗の蔓を投げつけ、当たった敵チャンピオンに{1}と{2}を与える。当たった敵チャンピオンからは徐々に腐敗が広がり({3})、腐敗に触れた敵チャンピオンにも同様の効果を与える。").DZX(1,boot.BCW.i,150.0,100.0,boot.BCT.DXK(1)).DZR(2,boot.BCW.ip,2.0).DZR(3,boot.BCW.ma,550.0).DYz(100.0).DYw(120.0,-15.0).DZE(1075.0);
+		// 5319
 	},
 	// teemowork.model.SkillDefinition#Vayne(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWN:function(A,B,C,D,E,F){
-		// 5262
+		// 5325
 		B.DXH(boot.BCU.e).DZK("敵チャンピオンに向かって移動する際に{1}する。").DZR(-1,boot.BCW.ka,30.0);
-		// 5269
-		C.DXH(boot.BCU.df).DZO("指定地点にローリングし、次の通常攻撃に{1}を付与する。6秒間攻撃を行わないとCDになる。").DZW(1,boot.BCW.h,boot.BCT.DXN(boot.BCW.dh,0.3,0.05)).DZE(300.0).DYz(30.0).DYw(6.0,-1.0);
-		// 5273
+		// 5333
+		C.DXH(boot.BCU.df).DZO("指定地点に{1}し、次の通常攻撃に{2}を付与する。6秒間攻撃を行わないとCDになる。").DZQ(1,boot.BCW.km).DZW(2,boot.BCW.h,boot.BCT.DXN(boot.BCW.dh,0.3,0.05)).DZE(300.0).DYz(30.0).DYw(6.0,-1.0);
+		// 5337
 		D.DXH(boot.BCU.e).DZK("同じターゲットに3回連続して通常攻撃またはスキルで攻撃すると、{1}を与える。（モンスターやミニオンに対しては上限200）").DZX(1,boot.BCW.j,20.0,10.0,boot.BCT.DXN(boot.BCW.cp,4.0,1));
-		// 5282
+		// 5346
 		E.DXH(boot.BCU.cc).DZO("対象の敵ユニットをヘビークロスボウで狙撃し{1}と{2}を与える。ノックバックした敵が壁等に当たると追加で{1}と{3}を与える。").DZX(1,boot.BCW.h,45.0,35.0,boot.BCT.DXM(0.5)).DZR(2,boot.BCW.jh,470.0).DZR(3,boot.BCW.im,1.5).DYz(90.0).DYw(20.0,-2.0).DZE(550.0);
-		// 5290
-		F.DXH(boot.BCU.bp).DZO(new boot.z("{1}間{2}を得て、",0).IY(C).V("を使うと{3}になり、").IY(B).V("の移動速度増加が3倍になる。").W()).DZS(1,boot.BCW.ld,8.0,2.0).DZS(2,boot.BCW.dh,30.0,20.0).DZR(3,boot.BCW.kj,1).DYz(80.0).DYw(100.0,-15.0);
-		// 5291
+		// 5354
+		F.DXH(boot.BCU.bp).DZO(new boot.z("{1}間{2}を得て、",0).IY(C).V("を使うと{3}になり、").IY(B).V("の移動速度増加が3倍になる。").W()).DZS(1,boot.BCW.ll,8.0,2.0).DZS(2,boot.BCW.dh,30.0,20.0).DZR(3,boot.BCW.lb,1).DYz(80.0).DYw(100.0,-15.0);
+		// 5355
 	},
 	// teemowork.model.SkillDefinition#Veigar(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWO:function(A,B,C,D,E,F){
-		// 5297
+		// 5361
 		B.DXH(boot.BCU.cn).DZK("{1}する。").DZW(1,boot.BCW.cf,boot.BCT.DXJ(boot.BCW.df,0.01));
-		// 5308
+		// 5372
 		C.DXH(boot.BCU.cn).DZK("敵チャンピオンを倒すと{1}を得る。").DZS(-1,boot.BCW.ei,1,1).DZO("闇のエネルギーを発射し、命中した最初の2体の敵に{2}を与える。倒した敵1体につき{3}を得る。倒したターゲットがチャンピオン、大型ミニオンまたは大型モンスターの場合は{4}を得る。").DZX(2,boot.BCW.i,80.0,45.0,boot.BCT.DXK(0.6)).DZR(-3,boot.BCW.ei,1).DZR(-4,boot.BCW.ei,2.0).DZB(60.0,5.0).DYw(7.0,-0.5).DZE(950.0);
-		// 5317
-		D.DXH(boot.BCU.cl).DZO("指定地点に1.25秒後に隕石を降らし、{1}の敵ユニットに{2}を与える。また隕石が落下するまでの間、指定地点の{3}。").DZR(1,boot.BCW.li,225.0).DZX(2,boot.BCW.i,120.0,50.0,boot.BCT.DXK(1)).DZQ(3,boot.BCW.kk).DZB(70.0,5.0).DYw(10.0,-0.5).DZE(900.0);
-		// 5325
-		E.DXH(boot.BCU.cn).DZO("0.5秒後に指定した{1}に3秒間魔法陣を呼び出し、魔法陣の縁に触れた敵ユニットに{2}を与える。").DZR(1,boot.BCW.li,425.0).DZS(2,boot.BCW.im,1.5,0.25).DZB(80.0,5.0).DYw(18.0,-1.0).DZE(700.0);
-		// 5332
+		// 5381
+		D.DXH(boot.BCU.cl).DZO("指定地点に1.25秒後に隕石を降らし、{1}の敵ユニットに{2}を与える。また隕石が落下するまでの間、指定地点の{3}。").DZR(1,boot.BCW.ma,225.0).DZX(2,boot.BCW.i,120.0,50.0,boot.BCT.DXK(1)).DZQ(3,boot.BCW.lc).DZB(70.0,5.0).DYw(10.0,-0.5).DZE(900.0);
+		// 5389
+		E.DXH(boot.BCU.cn).DZO("0.5秒後に指定した{1}に3秒間魔法陣を呼び出し、魔法陣の縁に触れた敵ユニットに{2}を与える。").DZR(1,boot.BCW.ma,425.0).DZS(2,boot.BCW.im,1.5,0.25).DZB(80.0,5.0).DYw(18.0,-1.0).DZE(700.0);
+		// 5396
 		F.DXH(boot.BCU.de).DZO("対象の敵チャンピオンに{1}を与える。").DZT(1,boot.BCW.i,250.0,125.0,boot.BCT.DXK(1),boot.BCT.DXJ(boot.BCW.el,0.8)).DYz(125.0).DYw(120.0,-20.0).DZE(650.0);
-		// 5333
+		// 5397
 	},
 	// teemowork.model.SkillDefinition#Velkoz(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWP:function(A,B,C,D,E,F){
-		// 5341
+		// 5405
 		B.DXH(boot.BCU.bo).DZK("スキルで敵ユニットにダメージを与える度に対象にスタックを付与し、対象のスタックが3になるとスタックを全て消費して{1}を与える。スタックは7秒間持続する。通常攻撃を行うと、既に存在しているスタックの持続時間を7秒に戻す。").DZX(1,boot.BCW.j,25.0,0,boot.BCT.DXI(10.0));
-		// 5351
-		C.DXH(boot.BCU.dh).DZO("指定方向にプラズマを放ち、当たった敵ユニットに{1}と{2}かけて減衰する{3}を与える。スキルを再使用するか、プラズマが敵ユニットに命中するとプラズマが90度の方向に分裂し、分裂したプラズマ（{4}）に当たった敵ユニットにも同様の効果を与える。").DZX(1,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.6)).DZS(2,boot.BCW.ld,1,0.25).DZR(3,boot.BCW.jl,70.0).DZR(4,boot.BCW.lk,1100.0).DZB(40.0,5.0).DYv(7.0).DZE(1050.0);
-		// 5361
-		D.DXH(boot.BCU.bp).DZO("スタックを1消費して、ビームで指定方向に裂け目を発生させ、直線状にいる敵ユニットに{1}を与える。裂け目は0.25秒後に爆発し、{2}にいる敵ユニットに{3}を与える。スタックは{4}毎に増加する（最大2）。").DZX(1,boot.BCW.i,30.0,20.0,boot.BCT.DXK(0.25)).DZQ(2,boot.BCW.li).DZX(3,boot.BCW.i,45.0,30.0,boot.BCT.DXK(0.375)).DZS(4,boot.BCW.le,19.0,-1.0).DZB(50.0,5.0).DYv(-1.5).DZE(1050.0);
-		// 5370
-		E.DXH(boot.BCU.bo).DZO(new boot.z("指定地点を爆発させ、{1}の敵ユニットに{2}と{3}を与える。命中した敵は",0).IY(A).V("から遠ざかるように吹き飛ぶ。").W()).DZQ(1,boot.BCW.li).DZX(2,boot.BCW.i,70.0,30.0,boot.BCT.DXK(0.5)).DZR(3,boot.BCW.io,0.75).DZB(50.0,5.0).DYw(16.0,-1.0).DZE(850.0);
-		// 5381
-		F.DXH(boot.BCU.cn).DZO(new boot.z("最大2.5秒間カーソルの場所目掛けて貫通するレーザーを放ち、0.25秒毎に{1}にいる敵ユニットに{2}と1秒間{3}を与える（2.5秒間当て続けた場合は{4}）。また0.5秒毎に",0).IY(B).V("のスタックが増加する。スキルを再使用することで中断できる。ミニオン(モンスターには無効)に対しては500%のダメージを与える。").W()).DZQ(1,boot.BCW.li).DZX(2,boot.BCW.i,50.0,20.0,boot.BCT.DXK(0.06)).DZR(3,boot.BCW.jl,20.0).DZX(4,boot.BCW.i,500.0,200.0,boot.BCT.DXK(0.6)).DYz(100.0).DYw(130.0,-20.0).DZE(1550.0).DZI(boot.BDD.i);
-		// 5382
+		// 5415
+		C.DXH(boot.BCU.dh).DZO("指定方向にプラズマを放ち、当たった敵ユニットに{1}と{2}かけて減衰する{3}を与える。スキルを再使用するか、プラズマが敵ユニットに命中するとプラズマが90度の方向に分裂し、分裂したプラズマ（{4}）に当たった敵ユニットにも同様の効果を与える。").DZX(1,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.6)).DZS(2,boot.BCW.ll,1,0.25).DZR(3,boot.BCW.jl,70.0).DZR(4,boot.BCW.mc,1100.0).DZB(40.0,5.0).DYv(7.0).DZE(1050.0);
+		// 5425
+		D.DXH(boot.BCU.bp).DZO("スタックを1消費して、ビームで指定方向に裂け目を発生させ、直線状にいる敵ユニットに{1}を与える。裂け目は0.25秒後に爆発し、{2}にいる敵ユニットに{3}を与える。スタックは{4}毎に増加する（最大2）。").DZX(1,boot.BCW.i,30.0,20.0,boot.BCT.DXK(0.25)).DZQ(2,boot.BCW.ma).DZX(3,boot.BCW.i,45.0,30.0,boot.BCT.DXK(0.375)).DZS(4,boot.BCW.lm,19.0,-1.0).DZB(50.0,5.0).DYv(-1.5).DZE(1050.0);
+		// 5434
+		E.DXH(boot.BCU.bo).DZO(new boot.z("指定地点を爆発させ、{1}の敵ユニットに{2}と{3}を与える。命中した敵は",0).IY(A).V("から遠ざかるように吹き飛ぶ。").W()).DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.i,70.0,30.0,boot.BCT.DXK(0.5)).DZR(3,boot.BCW.io,0.75).DZB(50.0,5.0).DYw(16.0,-1.0).DZE(850.0);
+		// 5445
+		F.DXH(boot.BCU.cn).DZO(new boot.z("最大2.5秒間カーソルの場所目掛けて貫通するレーザーを放ち、0.25秒毎に{1}にいる敵ユニットに{2}と1秒間{3}を与える（2.5秒間当て続けた場合は{4}）。また0.5秒毎に",0).IY(B).V("のスタックが増加する。スキルを再使用することで中断できる。ミニオン(モンスターには無効)に対しては500%のダメージを与える。").W()).DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.i,50.0,20.0,boot.BCT.DXK(0.06)).DZR(3,boot.BCW.jl,20.0).DZX(4,boot.BCW.i,500.0,200.0,boot.BCT.DXK(0.6)).DYz(100.0).DYw(130.0,-20.0).DZE(1550.0).DZI(boot.BDD.i);
+		// 5446
 	},
 	// teemowork.model.SkillDefinition#Vi(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWQ:function(A,B,C,D,E,F){
-		// 5391
-		B.DXH(boot.BCU.di).DZK("敵ユニットにスキルでダメージを与えると、3秒間{1}を得る。この効果は{2}に一度発動する。").DZW(1,boot.BCW.he,boot.BCT.DXJ(boot.BCW.bf,0.1)).DZU(2,boot.BCW.ld,new boot.BDG(Φ("I",[1,2,3,4,5,6,7,8,9,10,11]),Φ("D",[18.0,17.0,16.0,15.0,14.0,13.0,12.0,11.0,10.0,9.0,8.0]),2));
-		// 5401
-		C.DXH(boot.BCU.bg).DZO("発動すると自身の移動速度が15%減少し、このスキルのダメージと射程が徐々に増加する(1.25秒で最大)。再度使用で指定した方向へとダッシュし(最小{3}、最大{4})、命中した全ての敵ユニットに{1}を与える(最大で{2})。ダッシュ中に敵チャンピオンに衝突するとその時点で停止し、対象をノックバックさせる。このスキルにはDenting Blowsの効果が適用され、ミニオンや中立クリープに与えるダメージは75%に減少する。途中で詠唱を停止させられた場合、このスキルのCDは3秒になり、消費したmanaの半分が回復する。").DZX(1,boot.BCW.h,50.0,25.0,boot.BCT.DXM(0.8)).DZX(2,boot.BCW.h,100.0,50.0,boot.BCT.DXM(1.6)).DZR(3,boot.BCW.lk,250.0).DZR(4,boot.BCW.lk,725.0).DZB(50.0,10.0).DYw(18.0,-2.5).DZE(250.0);
-		// 5407
+		// 5455
+		B.DXH(boot.BCU.di).DZK("敵ユニットにスキルでダメージを与えると、3秒間{1}を得る。この効果は{2}に一度発動する。").DZW(1,boot.BCW.he,boot.BCT.DXJ(boot.BCW.bf,0.1)).DZU(2,boot.BCW.ll,new boot.BDG(Φ("I",[1,2,3,4,5,6,7,8,9,10,11]),Φ("D",[18.0,17.0,16.0,15.0,14.0,13.0,12.0,11.0,10.0,9.0,8.0]),2));
+		// 5466
+		C.DXH(boot.BCU.bg).DZO("発動すると自身の移動速度が15%減少し、このスキルのダメージと射程が徐々に増加する(1.25秒で最大)。再度使用で指定した方向へ{1}し(最小{2}、最大{3})、命中した全ての敵ユニットに{4}を与える(最大で{5})。ダッシュ中に敵チャンピオンに衝突するとその時点で停止し、対象をノックバックさせる。このスキルにはDenting Blowsの効果が適用され、ミニオンや中立クリープに与えるダメージは75%に減少する。途中で詠唱を停止させられた場合、このスキルのCDは3秒になり、消費したmanaの半分が回復する。").DZQ(1,boot.BCW.km).DZR(2,boot.BCW.mc,250.0).DZR(3,boot.BCW.mc,725.0).DZX(4,boot.BCW.h,50.0,25.0,boot.BCT.DXM(0.8)).DZX(5,boot.BCW.h,100.0,50.0,boot.BCT.DXM(1.6)).DZB(50.0,10.0).DYw(18.0,-2.5).DZE(250.0);
+		// 5472
 		D.DXH(boot.BCU.g).DZK("同一対象に3回連続して通常攻撃を行うと、{1}と4秒間{2}を与え、4秒間{3}する。(ミニオンやモンスターへは最大300ダメージが上限)").DZW(1,boot.BCW.h,boot.BCT.DXQ(boot.BCW.cp,4.0,1.5,boot.BCT.DXM(0.03))).DZR(2,boot.BCW.fj,20.0).DZS(3,boot.BCW.ea,30.0,5.0);
-		// 5416
-		E.DXH(boot.BCU.cf).DZO("チャージを1つ消費することで、次の通常攻撃は{1}し対象とその後方扇形{2}にいる敵ユニットに{3}を与る。チャージは{4}毎に増加し、最大2つまでスタックされる。").DZR(1,boot.BCW.hi,50.0).DZR(2,boot.BCW.li,600.0).DZT(3,boot.BCW.h,5.0,15.0,boot.BCT.DXL(1.15),boot.BCT.DXK(0.7)).DZS(4,boot.BCW.le,14.0,-1.5).DYz(60.0).DYv(1);
-		// 5426
-		F.DXH(boot.BCU.cm).DZO(new boot.z("対象の敵チャンピオンに突撃し、{1}と{2}を与える。一連の動作中は{4}を得て、また対象のチャンピオン以外で",0).IY(A).V("に触れた敵ユニットには{3}を与え、左右に吹き飛ばす。").W()).DZX(1,boot.BCW.h,150.0,150.0,boot.BCT.DXM(1.4)).DZR(2,boot.BCW.jg,1.25).DZX(3,boot.BCW.h,117.5,126.25,boot.BCT.DXM(1.05)).DZQ(4,boot.BCW.kh).DZB(100.0,25.0).DYw(150.0,-35.0).DZE(800.0);
-		// 5427
+		// 5481
+		E.DXH(boot.BCU.cf).DZO("チャージを1つ消費することで、次の通常攻撃は{1}し対象とその後方扇形{2}にいる敵ユニットに{3}を与る。チャージは{4}毎に増加し、最大2つまでスタックされる。").DZR(1,boot.BCW.hi,50.0).DZR(2,boot.BCW.ma,600.0).DZT(3,boot.BCW.h,5.0,15.0,boot.BCT.DXL(1.15),boot.BCT.DXK(0.7)).DZS(4,boot.BCW.lm,14.0,-1.5).DYz(60.0).DYv(1);
+		// 5492
+		F.DXH(boot.BCU.cm).DZO(new boot.z("対象の敵チャンピオンに{5}し、{1}と{2}を与える。一連の動作中は{4}を得て、また対象のチャンピオン以外で",0).IY(A).V("に触れた敵ユニットには{3}を与え、左右に吹き飛ばす。").W()).DZX(1,boot.BCW.h,150.0,150.0,boot.BCT.DXM(1.4)).DZR(2,boot.BCW.jg,1.25).DZX(3,boot.BCW.h,117.5,126.25,boot.BCT.DXM(1.05)).DZQ(4,boot.BCW.ki).DZQ(5,boot.BCW.kn).DZB(100.0,25.0).DYw(150.0,-35.0).DZE(800.0);
+		// 5493
 	},
 	// teemowork.model.SkillDefinition#Viktor(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWR:function(A,B,C,D,E,F){
-		// 5441
+		// 5507
 		B.DXH(boot.BCU.bg).DZK(new boot.z(1).IY(A).V("は最初から").IY(boot.BDQ.ic).V("という、自身のステータスを強化するアイテムを所持している。").IY(boot.BDQ.ic).V("はショップで1000Gを消費して3回アップグレードでき、その都度スキルを一回強化できる。").IY(boot.BDQ.ic).V("はアイテムスロットを1つ占有し、売却することは出来ない。<br>").IY(boot.BDQ.ic).V(" : {1}を得る。<br>").IY(boot.BDQ.ln).V(" : {2}、{3}を得る。<br>").IY(boot.BDQ.lo).V(" : {4}、{5}を得る。<br>").IY(boot.BDQ.id).V(" : {6}、{7}を得る。").W()).DZW(-1,boot.BCW.ei,boot.BCT.DXI(3.0)).DZX(-2,boot.BCW.ei,20.0,0,boot.BCT.DXI(4.0)).DZR(-3,boot.BCW.bp,150.0).DZX(-4,boot.BCW.ei,40.0,0,boot.BCT.DXI(5.0)).DZR(-5,boot.BCW.bp,300.0).DZX(-6,boot.BCW.ei,60.0,0,boot.BCT.DXI(6.0)).DZR(-7,boot.BCW.bp,500.0);
-		// 5468
+		// 5534
 		C.DXH(boot.BCU.bg).DZO(new boot.z("対象の敵ユニットに{1}を与え、2.5秒間{2}を得る。また、次の3.5秒以内の通常攻撃が",0).IY(boot.BCW.i).V("に変換され{3}を与える。<br>強化: スキル使用時に{4}する。").W()).DZX(1,boot.BCW.i,40.0,20.0,boot.BCT.DXK(0.2)).DZX(2,boot.BCW.he,30.0,20.0,boot.BCT.DXK(0.2)).DZV(3,boot.BCW.i,new boot.BDG(Φ("D",[20.0,25.0,30.0,35.0,40.0,45.0,50.0,55.0,60.0,70.0,80.0,90.0,110.0,130.0,150.0,170.0,190.0,210.0]),0),boot.BCT.DXK(0.5),boot.BCT.DXL(1)).DZR(4,boot.BCW.kc,30.0).DZB(45.0,5.0).DYw(10.0,-1.5).DZE(600.0);
-		// 5478
-		D.DXH(boot.BCU.g).DZO(new boot.z("0.25秒詠唱後、指定範囲に4秒間持続する重力束縛装置を呼び出し、{3}の敵ユニットに{1}を与え、0.5秒毎にスタックを付与する。スタックが3溜まった敵ユニットに{2}を与える。<br>強化: ",0).IY(boot.BCW.im).V("した敵を中心部へ{4}する。").W()).DZS(1,boot.BCW.jl,28.0,4.0).DZR(2,boot.BCW.im,1.5).DZQ(3,boot.BCW.li).DZQ(4,boot.BCW.jh).DYz(65.0).DYw(17.0,-1.0).DZE(700.0);
-		// 5488
-		E.DXH(boot.BCU.cf).DZO(new boot.z("指定地点から指定方向にビームを発射し、ビームが通過する線上の敵ユニットに{1}を与える。また、ビームが通過した地点の{2}。<br>強化: ",0).IY(E).V("の通過した場所で爆発が発生し{3}の敵ユニットに{1}を与える。既に").IY(E).V("に当たった敵ユニットには40%のダメージを与える(合計{4})。").W()).DZX(1,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.7)).DZQ(2,boot.BCW.kk).DZQ(3,boot.BCW.li).DZX(4,boot.BCW.i,98.0,63.0,boot.BCT.DXK(0.98)).DZB(70.0,10.0).DYw(13.0,-1.0).DZE(525.0);
-		// 5499
-		F.DXH(boot.BCU.cm).DZO(new boot.z("指定地点に7秒間持続する特異点を呼び出し、{1}の敵ユニットに{2}と{3}を与える。特異点は周囲の敵ユニットに毎秒{4}を与え、また近くにいる敵チャンピオンを自動的に追尾する。このスキルがActiveの間に再度地点を指定することで、特異点を指定した地点に手動で移動させる事が出来る。最大で{5}を与える。<br>強化: ",0).IY(F).V("の移動速度が20%増加する。").W()).DZQ(1,boot.BCW.li).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.55)).DZR(3,boot.BCW.jc,0.5).DZX(4,boot.BCW.i,30.0,30.0,boot.BCT.DXK(0.2)).DZX(5,boot.BCW.i,360.0,310.0,boot.BCT.DXK(1.95)).DYz(100.0).DYw(120.0,-10.0).DZE(700.0);
-		// 5500
+		// 5544
+		D.DXH(boot.BCU.g).DZO(new boot.z("0.25秒詠唱後、指定範囲に4秒間持続する重力束縛装置を呼び出し、{3}の敵ユニットに{1}を与え、0.5秒毎にスタックを付与する。スタックが3溜まった敵ユニットに{2}を与える。<br>強化: ",0).IY(boot.BCW.im).V("した敵を中心部へ{4}する。").W()).DZS(1,boot.BCW.jl,28.0,4.0).DZR(2,boot.BCW.im,1.5).DZQ(3,boot.BCW.ma).DZQ(4,boot.BCW.jh).DYz(65.0).DYw(17.0,-1.0).DZE(700.0);
+		// 5554
+		E.DXH(boot.BCU.cf).DZO(new boot.z("指定地点から指定方向にビームを発射し、ビームが通過する線上の敵ユニットに{1}を与える。また、ビームが通過した地点の{2}。<br>強化: ",0).IY(E).V("の通過した場所で爆発が発生し{3}の敵ユニットに{1}を与える。既に").IY(E).V("に当たった敵ユニットには40%のダメージを与える(合計{4})。").W()).DZX(1,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.7)).DZQ(2,boot.BCW.lc).DZQ(3,boot.BCW.ma).DZX(4,boot.BCW.i,98.0,63.0,boot.BCT.DXK(0.98)).DZB(70.0,10.0).DYw(13.0,-1.0).DZE(525.0);
+		// 5565
+		F.DXH(boot.BCU.cm).DZO(new boot.z("指定地点に7秒間持続する特異点を呼び出し、{1}の敵ユニットに{2}と{3}を与える。特異点は周囲の敵ユニットに毎秒{4}を与え、また近くにいる敵チャンピオンを自動的に追尾する。このスキルがActiveの間に再度地点を指定することで、特異点を指定した地点に手動で移動させる事が出来る。最大で{5}を与える。<br>強化: ",0).IY(F).V("の移動速度が20%増加する。").W()).DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.55)).DZR(3,boot.BCW.jc,0.5).DZX(4,boot.BCW.i,30.0,30.0,boot.BCT.DXK(0.2)).DZX(5,boot.BCW.i,360.0,310.0,boot.BCT.DXK(1.95)).DYz(100.0).DYw(120.0,-10.0).DZE(700.0);
+		// 5566
 	},
 	// teemowork.model.SkillDefinition#Vladimir(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWS:function(A,B,C,D,E,F){
-		// 5506
+		// 5572
 		B.DXH(boot.BCU.e).DZK("{1}と{2}を得る。").DZW(1,boot.BCW.ei,boot.BCT.DXJ(boot.BCW.bj,0.025)).DZW(2,boot.BCW.bf,boot.BCT.DXK(1.4));
-		// 5513
+		// 5579
 		C.DXH(boot.BCU.e).DZO("対象の敵ユニットに{1}を与え、{2}する。").DZX(1,boot.BCW.i,90.0,35.0,boot.BCT.DXK(0.6)).DZX(2,boot.BCW.ih,15.0,10.0,boot.BCT.DXK(0.25)).DYw(10.0,-1.5).DZE(600.0);
-		// 5522
-		D.DXH(boot.BCU.bn).DZO("2秒間血の海に沈む。その間はターゲットされなくなり、{1}内にいる敵ユニットに0.5秒毎に{2}と{3}間の{4}を与え続ける。また、与えたダメージの12.5%Healthが回復する。").DZR(1,boot.BCW.li,300.0).DZX(2,boot.BCW.i,20.0,13.75,boot.BCT.DXJ(boot.BCW.bj,0.00375)).DZR(3,boot.BCW.ld,1).DZR(4,boot.BCW.jl,40.0).DZA(boot.BCW.cm,20.0,0).DYw(26.0,-3.0);
-		// 5531
-		E.DXH(boot.BCU.cc).DZO("{1}の敵ユニットに{2}を与える。使用する度にスタックが1ずつ最大4まで増加し、10秒増加が無いと0になる。このスキルは周囲に敵ユニットがいなくても使用可能。").DZR(1,boot.BCW.li,0).DZT(2,boot.BCW.i,60.0,25.0,boot.BCT.DXK(0.45),boot.BCT.DXN(boot.BCW.mf,15.0,6.25)).DZS(4,boot.BCW.ii,4.0,1).DZC(boot.BCW.bf,new boot.BCw(30.0,10.0,5,0),boot.BCT.DXN(boot.BCW.mf,7.5,2.5)).DYv(4.5).DZE(610.0);
-		// 5539
-		F.DXH(boot.BCU.ba).DZO("指定地点の{1}の敵ユニットに疫病を付与し、その敵ユニットは5秒間受けるダメージが12%増加する。効果終了時に{2}を与える。ダメージ増加効果のため実際には{3}を与える。").DZR(1,boot.BCW.li,150.0).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.7)).DZX(3,boot.BCW.i,168.0,112.0,boot.BCT.DXK(0.784)).DYw(150.0,-15.0).DZE(700.0);
-		// 5540
+		// 5590
+		D.DXH(boot.BCU.bn).DZO("2秒間血の海に沈み{6}になり、{1}内にいる敵ユニットに0.5秒毎に{2}と{3}間の{4}を与え続け、{5}する。").DZR(1,boot.BCW.ma,300.0).DZX(2,boot.BCW.i,20.0,13.75,boot.BCT.DXJ(boot.BCW.bj,0.00375)).DZR(3,boot.BCW.ll,1).DZR(4,boot.BCW.jl,40.0).DZW(5,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.n,12.5)).DZQ(6,boot.BCW.kk).DZA(boot.BCW.cm,20.0,0).DYw(26.0,-3.0);
+		// 5599
+		E.DXH(boot.BCU.cc).DZO("{1}の敵ユニットに{2}を与える。使用する度にスタックが1ずつ最大4まで増加し、10秒増加が無いと0になる。このスキルは周囲に敵ユニットがいなくても使用可能。").DZR(1,boot.BCW.ma,0).DZT(2,boot.BCW.i,60.0,25.0,boot.BCT.DXK(0.45),boot.BCT.DXN(boot.BCW.mn,15.0,6.25)).DZS(4,boot.BCW.ii,4.0,1).DZC(boot.BCW.bf,new boot.BCw(30.0,10.0,5,0),boot.BCT.DXN(boot.BCW.mn,7.5,2.5)).DYv(4.5).DZE(610.0);
+		// 5607
+		F.DXH(boot.BCU.ba).DZO("指定地点の{1}の敵ユニットに疫病を付与し、その敵ユニットは5秒間受けるダメージが12%増加する。効果終了時に{2}を与える。ダメージ増加効果のため実際には{3}を与える。").DZR(1,boot.BCW.ma,150.0).DZX(2,boot.BCW.i,150.0,100.0,boot.BCT.DXK(0.7)).DZX(3,boot.BCW.i,168.0,112.0,boot.BCT.DXK(0.784)).DYw(150.0,-15.0).DZE(700.0);
+		// 5608
 	},
 	// teemowork.model.SkillDefinition#Volibear(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWT:function(A,B,C,D,E,F){
-		// 5550
+		// 5618
 		B.DXH(boot.BCU.e).DZK(new boot.z(1).IY(A).V("の").IY(boot.BCW.bf).V("が30%以下になったとき、6秒間かけて{1}する。{2}。").W()).DZW(1,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.bf,0.3)).DZQ(2,boot.BCW.ep).DYv(-120.0);
-		// 5558
+		// 5626
 		C.DXH(boot.BCU.bl).DZO("4秒間{1}する。敵チャンピオンに向かって移動する場合は{2}する。また次の通常攻撃に追加{3}を付与し、対象をVolibearの後ろに投げ飛ばす。4秒間攻撃を行わないとCDになる。").DZR(1,boot.BCW.kc,15.0).DZS(-2,boot.BCW.kc,30.0,5.0).DZS(3,boot.BCW.h,30.0,30.0).DYz(40.0).DYw(12.0,-1.0);
-		// 5567
-		D.DXH(boot.BCU.cm).DZK("通常攻撃でダメージを与える度にスタックが1増加し(最大3スタック)、{1}する。スタックは4秒持続する。").DZW(-1,boot.BCW.ea,boot.BCT.DXN(boot.BCW.mf,8.0,3.0)).DZO("スタックが最大まで溜まった時のみ使用可能。対象の敵ユニットに{2}を与える。対象が失っているHP1%につきダメージが1%上昇する。").DZX(2,boot.BCW.h,80.0,45.0,boot.BCT.DXJ(boot.BCW.bj,0.15)).DYz(35.0).DYv(18.0).DZE(400.0);
-		// 5576
-		E.DXH(boot.BCU.e).DZO("{1}の敵ユニットに{2}と3秒間{3}を与える。対象がミニオンの場合、さらに{4}を与える。").DZR(1,boot.BCW.li,425.0).DZX(2,boot.BCW.i,60.0,45.0,boot.BCT.DXK(0.6)).DZS(3,boot.BCW.jl,30.0,5.0).DZR(4,boot.BCW.ja,3.0).DZB(60.0,5.0).DYv(11.0);
-		// 5583
-		F.DXH(boot.BCU.dh).DZO("雷を放ち{2}の敵1体に{1}を与え、以後12秒間通常攻撃した対象に雷を放ち{1}を与える。雷は対象の{2}の敵ユニット(敵チャンピオンを優先)3体にも連鎖し同様のダメージを与える。建物を攻撃する時は効果は発生しない。").DZX(1,boot.BCW.i,75.0,40.0,boot.BCT.DXK(0.3)).DZR(2,boot.BCW.li,300.0).DYz(100.0).DYw(100.0,-10.0);
-		// 5584
+		// 5635
+		D.DXH(boot.BCU.cm).DZK("通常攻撃でダメージを与える度にスタックが1増加し(最大3スタック)、{1}する。スタックは4秒持続する。").DZW(-1,boot.BCW.ea,boot.BCT.DXN(boot.BCW.mn,8.0,3.0)).DZO("スタックが最大まで溜まった時のみ使用可能。対象の敵ユニットに{2}を与える。対象が失っているHP1%につきダメージが1%上昇する。").DZX(2,boot.BCW.h,80.0,45.0,boot.BCT.DXJ(boot.BCW.bj,0.15)).DYz(35.0).DYv(18.0).DZE(400.0);
+		// 5644
+		E.DXH(boot.BCU.e).DZO("{1}の敵ユニットに{2}と3秒間{3}を与える。対象がミニオンの場合、さらに{4}を与える。").DZR(1,boot.BCW.ma,425.0).DZX(2,boot.BCW.i,60.0,45.0,boot.BCT.DXK(0.6)).DZS(3,boot.BCW.jl,30.0,5.0).DZR(4,boot.BCW.ja,3.0).DZB(60.0,5.0).DYv(11.0);
+		// 5651
+		F.DXH(boot.BCU.dh).DZO("雷を放ち{2}の敵1体に{1}を与え、以後12秒間通常攻撃した対象に雷を放ち{1}を与える。雷は対象の{2}の敵ユニット(敵チャンピオンを優先)3体にも連鎖し同様のダメージを与える。建物を攻撃する時は効果は発生しない。").DZX(1,boot.BCW.i,75.0,40.0,boot.BCT.DXK(0.3)).DZR(2,boot.BCW.ma,300.0).DYz(100.0).DYw(100.0,-10.0);
+		// 5652
 	},
 	// teemowork.model.SkillDefinition#Warwick(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWU:function(A,B,C,D,E,F){
-		// 5593
-		B.DXH(boot.BCU.e).DZK("通常攻撃で対象にスタックを付与し、追加{1}を与え{2}する。スタックは4秒持続し、最大3つまでスタックされる。建物を攻撃した場合は無効。").DZW(1,boot.BCW.i,boot.BCT.DXP(boot.BCW.mf,new boot.BDG(Φ("D",[3.0,3.5,4.0,4.5,5.0,5.5,6.0,6.5,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0]),0))).DZW(2,boot.BCW.ih,boot.BCT.DXP(boot.BCW.mf,new boot.BDG(Φ("D",[3.0,3.5,4.0,4.5,5.0,5.5,6.0,6.5,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0]),0)));
-		// 5619
+		// 5661
+		B.DXH(boot.BCU.e).DZK("通常攻撃で対象にスタックを付与し、追加{1}を与え{2}する。スタックは4秒持続し、最大3つまでスタックされる。建物を攻撃した場合は無効。").DZW(1,boot.BCW.i,boot.BCT.DXP(boot.BCW.mn,new boot.BDG(Φ("D",[3.0,3.5,4.0,4.5,5.0,5.5,6.0,6.5,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0]),0))).DZW(2,boot.BCW.ih,boot.BCT.DXP(boot.BCW.mn,new boot.BDG(Φ("D",[3.0,3.5,4.0,4.5,5.0,5.5,6.0,6.5,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0]),0)));
+		// 5687
 		C.DXH(boot.BCU.e).DZO("対象の敵ユニットに{1}を与え、{2}する。対象がチャンピオンの場合は{3}と比較し大きいほうのDMを与える。").DZX(1,boot.BCW.i,75.0,50.0,boot.BCT.DXK(1)).DZW(2,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.n,80.0)).DZT(3,boot.BCW.i,0,0,boot.BCT.DXK(1),boot.BCT.DXN(boot.BCW.cp,8.0,2.0)).DZB(70.0,10.0).DYw(10.0,-1.0).DZE(400.0);
-		// 5627
-		D.DXH(boot.BCU.ch).DZO("6秒間{2}し、{1}の味方チャンピオンは{3}する。").DZR(1,boot.BCW.li,1250.0).DZS(2,boot.BCW.ea,40.0,10.0).DZS(-3,boot.BCW.ea,20.0,5.0).DYz(35.0).DYw(24.0,-2.0);
-		// 5635
-		E.DXH(boot.BCU.cp).DZO(new boot.z("{2}に",0).IY(boot.BCW.bf).V("が50%以下の敵チャンピオンがいると{1}して、対象の{3}。このスキルで敵のステルスを看破する事はできず、ステルス中の敵チャンピオンの視界を得ることもできない。").W()).DZS(1,boot.BCW.kc,20.0,5.0).DZS(2,boot.BCW.li,1500.0,800.0).DZQ(3,boot.BCW.kk).DYv(4.0).DZI(boot.BDD.g);
-		// 5647
-		F.DXH(boot.BCU.ch).DZO("対象の敵チャンピオンに突撃し{2}を与えて、その間{3}を得て0.3秒毎に{1}を、計5回で{4}を与える。{5}。").DZX(1,boot.BCW.i,30.0,20.0,boot.BCT.DXM(0.4)).DZR(2,boot.BCW.jf,1.8).DZR(3,boot.BCW.eb,30.0).DZX(4,boot.BCW.i,150.0,100.0,boot.BCT.DXM(2.0)).DZQ(5,boot.BCW.kn).DZI(boot.BDD.i).DZB(100.0,25.0).DYw(110.0,-20.0).DZE(700.0);
-		// 5648
+		// 5695
+		D.DXH(boot.BCU.ch).DZO("6秒間{2}し、{1}の味方チャンピオンは{3}する。").DZR(1,boot.BCW.ma,1250.0).DZS(2,boot.BCW.ea,40.0,10.0).DZS(-3,boot.BCW.ea,20.0,5.0).DYz(35.0).DYw(24.0,-2.0);
+		// 5703
+		E.DXH(boot.BCU.cp).DZO(new boot.z("{2}に",0).IY(boot.BCW.bf).V("が50%以下の敵チャンピオンがいると{1}して、対象の{3}。このスキルで敵のステルスを看破する事はできず、ステルス中の敵チャンピオンの視界を得ることもできない。").W()).DZS(1,boot.BCW.kc,20.0,5.0).DZS(2,boot.BCW.ma,1500.0,800.0).DZQ(3,boot.BCW.lc).DYv(4.0).DZI(boot.BDD.g);
+		// 5716
+		F.DXH(boot.BCU.ch).DZO("対象の敵チャンピオンに{1}し{2}を与えて、その間{3}を得て0.3秒毎に{4}を、計5回で{5}を与える。{6}。").DZQ(1,boot.BCW.kp).DZR(2,boot.BCW.jf,1.8).DZR(3,boot.BCW.eb,30.0).DZX(4,boot.BCW.i,30.0,20.0,boot.BCT.DXM(0.4)).DZX(5,boot.BCW.i,150.0,100.0,boot.BCT.DXM(2.0)).DZQ(6,boot.BCW.lf).DZI(boot.BDD.i).DZB(100.0,25.0).DYw(110.0,-20.0).DZE(700.0);
+		// 5717
 	},
 	// teemowork.model.SkillDefinition#MonkeyKing(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWV:function(A,B,C,D,E,F){
-		// 5658
-		B.DXH(boot.BCU.p).DZK("視界内{1}にいる敵チャンピオンの数に比例して、{2}と{3}を得る。").DZR(1,boot.BCW.li,1400.0).DZW(2,boot.BCW.ga,boot.BCT.DXP(boot.BCW.ln,new boot.BDJ(4.0,2.0,0))).DZW(3,boot.BCW.ge,boot.BCT.DXP(boot.BCW.ln,new boot.BDJ(4.0,2.0,0)));
-		// 5666
+		// 5727
+		B.DXH(boot.BCU.p).DZK("視界内{1}にいる敵チャンピオンの数に比例して、{2}と{3}を得る。").DZR(1,boot.BCW.ma,1400.0).DZW(2,boot.BCW.ga,boot.BCT.DXP(boot.BCW.mf,new boot.BDJ(4.0,2.0,0))).DZW(3,boot.BCW.ge,boot.BCT.DXP(boot.BCW.mf,new boot.BDJ(4.0,2.0,0)));
+		// 5735
 		C.DXH(boot.BCU.bh).DZO("次の通常攻撃は{3}して追加の{1}と3秒間{2}を与える。").DZX(1,boot.BCW.h,30.0,30.0,boot.BCT.DXL(0.1)).DZS(2,boot.BCW.fj,10.0,5.0).DZR(3,boot.BCW.hi,125.0).DYz(40.0).DYw(9.0,-1.0);
-		// 5675
-		D.DXH(boot.BCU.e).DZO(new boot.z("{1}になり{2}を得る。同時に",0).IY(A).V("がいた場所に分身(操作不可能)を作り出す。分身は1.5秒経過すると消滅し、その際に分身の{3}の敵に{4}を与える。").W()).DZR(1,boot.BCW.kj,1.5).DZQ(2,boot.BCW.kg).DZR(3,boot.BCW.li,175.0).DZX(4,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.6)).DZB(50.0,5.0).DYw(18.0,-2.0);
-		// 5684
-		E.DXH(boot.BCU.ce).DZO(new boot.z("対象の敵ユニットまでダッシュし{1}を与える。対象の敵ユニットの{3}の敵ユニット2体にも",0).IY(A).V("の幻影が飛び、{1}を与える。また、スキル使用後4秒間{2}する。").W()).DZX(1,boot.BCW.h,60.0,45.0,boot.BCT.DXM(0.8)).DZS(2,boot.BCW.ea,30.0,5.0).DZR(3,boot.BCW.li,325.0).DZB(45.0,5.0).DYv(8.0).DZE(625.0);
-		// 5695
-		F.DXH(boot.BCU.bh).DZO(new boot.z("4秒間",0).IY(A).V("が回転する。回転中は{1}の敵ユニットに1秒毎に{2}と{3}を与える。").IY(boot.BCW.jg).V("は同一の対象に1度までしか発生しない。また、このスキルを使用してから0.5秒毎に{5}する。最大で{4}を与え、{6}する。").W()).DZR(1,boot.BCW.li,325.0).DZX(2,boot.BCW.h,20.0,90.0,boot.BCT.DXL(1.1)).DZR(3,boot.BCW.jg,1.5).DZX(4,boot.BCW.h,80.0,360.0,boot.BCT.DXL(4.4)).DZR(-5,boot.BCW.kc,5.0).DZR(6,boot.BCW.kc,40.0).DYz(100.0).DYw(120.0,-15.0);
-		// 5696
+		// 5744
+		D.DXH(boot.BCU.e).DZO(new boot.z("{1}になり{2}を得る。同時に",0).IY(A).V("がいた場所に分身(操作不可能)を作り出す。分身は1.5秒経過すると消滅し、その際に分身の{3}の敵に{4}を与える。").W()).DZR(1,boot.BCW.lb,1.5).DZQ(2,boot.BCW.kg).DZR(3,boot.BCW.ma,175.0).DZX(4,boot.BCW.i,70.0,45.0,boot.BCT.DXK(0.6)).DZB(50.0,5.0).DYw(18.0,-2.0);
+		// 5754
+		E.DXH(boot.BCU.ce).DZO(new boot.z("対象の敵ユニットに{4}し{1}を与える。対象の敵ユニットの{3}の敵ユニット2体にも",0).IY(A).V("の幻影が飛び、{1}を与える。また、スキル使用後4秒間{2}する。").W()).DZX(1,boot.BCW.h,60.0,45.0,boot.BCT.DXM(0.8)).DZS(2,boot.BCW.ea,30.0,5.0).DZR(3,boot.BCW.ma,325.0).DZQ(4,boot.BCW.kn).DZB(45.0,5.0).DYv(8.0).DZE(625.0);
+		// 5765
+		F.DXH(boot.BCU.bh).DZO(new boot.z("4秒間",0).IY(A).V("が回転する。回転中は{1}の敵ユニットに1秒毎に{2}と{3}を与える。").IY(boot.BCW.jg).V("は同一の対象に1度までしか発生しない。また、このスキルを使用してから0.5秒毎に{5}する。最大で{4}を与え、{6}する。").W()).DZR(1,boot.BCW.ma,325.0).DZX(2,boot.BCW.h,20.0,90.0,boot.BCT.DXL(1.1)).DZR(3,boot.BCW.jg,1.5).DZX(4,boot.BCW.h,80.0,360.0,boot.BCT.DXL(4.4)).DZR(-5,boot.BCW.kc,5.0).DZR(6,boot.BCW.kc,40.0).DYz(100.0).DYw(120.0,-15.0);
+		// 5766
 	},
 	// teemowork.model.SkillDefinition#Xerath(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWW:function(A,B,C,D,E,F){
-		// 5705
+		// 5775
 		B.DXH(boot.BCU.be).DZK("通常攻撃を行うと{1}する。チャンピオンを攻撃した場合は回復量が2倍になる。建物に対しては無効。").DZU(1,boot.BCW.ij,new boot.BDG(Φ("D",[30.0,33.0,36.0,42.0,48.0,54.0,63.0,72.0,81.0,90.0,102.0,114.0,126.0,138.0,150.0,165.0,180.0,195.0]),0)).DYv(-12.0);
-		// 5712
+		// 5782
 		C.DXH(boot.BCU.be).DZO("最初にスキルを使用するとチャージを行う。この間は通常攻撃や他のスキルを使用できなくなり、移動速度が徐々に低下(最大で-50%)するが、チャージしている間は徐々にこのスキルの射程距離が増加していき、1.5秒後に最大射程1400に到達。再度このスキルを使用することで指定方向に電撃を放ち、直線状にいる敵ユニットに{1}を与える。チャージを行って3秒間経過した場合はこのスキルは失敗しCDになるが、消費したマナの半分が回復する。").DZX(1,boot.BCW.i,80.0,40.0,boot.BCT.DXK(0.75)).DYw(9.0,-1.0).DZB(80.0,10.0).DZE(750.0);
-		// 5724
-		D.DXH(boot.BCU.cb).DZO("0.5秒後に指定地点の{1}の敵ユニットに{2}と2.5秒間{3}を与える。中心点にいる敵ユニットに対しては{4}と2.5秒間{5}を与える（2.5秒かけて10%まで減衰）。また、指定地点の{6}。").DZR(1,boot.BCW.li,200.0).DZX(2,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.6)).DZR(3,boot.BCW.jl,10.0).DZX(4,boot.BCW.i,90.0,45.0,boot.BCT.DXK(0.9)).DZS(5,boot.BCW.jl,60.0,5.0).DZQ(6,boot.BCW.kk).DYw(14.0,-1.0).DZB(70.0,10.0).DZE(1100.0);
-		// 5732
+		// 5794
+		D.DXH(boot.BCU.cb).DZO("0.5秒後に指定地点の{1}の敵ユニットに{2}と2.5秒間{3}を与える。中心点にいる敵ユニットに対しては{4}と2.5秒間{5}を与える（2.5秒かけて10%まで減衰）。また、指定地点の{6}。").DZR(1,boot.BCW.ma,200.0).DZX(2,boot.BCW.i,60.0,30.0,boot.BCT.DXK(0.6)).DZR(3,boot.BCW.jl,10.0).DZX(4,boot.BCW.i,90.0,45.0,boot.BCT.DXK(0.9)).DZS(5,boot.BCW.jl,60.0,5.0).DZQ(6,boot.BCW.lc).DYw(14.0,-1.0).DZB(70.0,10.0).DZE(1100.0);
+		// 5802
 		E.DXH(boot.BCU.cl).DZO("指定方向に雷のオーブを放ち、当たった敵ユニットに{1}と{2}を与える。飛距離に比例してスタンの効果時間が延長する（0.75秒から2秒）。").DZX(1,boot.BCW.i,80.0,30.0,boot.BCT.DXK(0.45)).DZQ(2,boot.BCW.im).DYw(13.0,-0.5).DZB(60.0,5.0).DZE(1050.0);
-		// 5742
-		F.DXH(boot.BCU.cp).DZO("最大10秒間通常攻撃、移動、スキル使用が不可能になる。最大3回、指定地点に砲撃を行い、0.5秒後に{1}の敵ユニットに{2}を与える。一度使用する度に0.35秒のCDが発生する。また、指定地点の{3}。砲撃を行う前に行動不可状態を解除した場合、このスキルの{4}する。").DZQ(1,boot.BCW.li).DZX(2,boot.BCW.i,190.0,55.0,boot.BCT.DXK(0.43)).DZQ(3,boot.BCW.kk).DZR(4,boot.BCW.ie,50.0).DYw(130.0,-15.0).DYz(100.0).DZF(3200.0,1200.0);
-		// 5743
+		// 5812
+		F.DXH(boot.BCU.cp).DZO("最大10秒間通常攻撃、移動、スキル使用が不可能になる。最大3回、指定地点に砲撃を行い、0.5秒後に{1}の敵ユニットに{2}を与える。一度使用する度に0.35秒のCDが発生する。また、指定地点の{3}。砲撃を行う前に行動不可状態を解除した場合、このスキルの{4}する。").DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.i,190.0,55.0,boot.BCT.DXK(0.43)).DZQ(3,boot.BCW.lc).DZR(4,boot.BCW.ie,50.0).DYw(130.0,-15.0).DYz(100.0).DZF(3200.0,1200.0);
+		// 5813
 	},
 	// teemowork.model.SkillDefinition#XinZhao(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWX:function(A,B,C,D,E,F){
-		// 5751
+		// 5821
 		B.DXH(boot.BCU.e).DZK(new boot.z("通常攻撃または",0).IY(E).V("で指定した敵ユニットに{1}を与える。この効果はスタックせず、3秒間持続し、また1体の敵ユニットにしか発動しない。").W()).DZR(1,boot.BCW.fj,15.0);
-		// 5758
+		// 5828
 		C.DXH(boot.BCU.e).DZO("次の3回の通常攻撃に{1}が追加され、3回目の攻撃で{2}を与える。効果中に通常攻撃を行う度に、このスキル以外のCDが1秒解消される。").DZX(1,boot.BCW.h,15.0,15.0,boot.BCT.DXL(0.2)).DZR(2,boot.BCW.jg,1).DYz(30.0).DYw(9.0,-1.0);
-		// 5766
+		// 5836
 		D.DXH(boot.BCU.df).DZK("通常攻撃3回ごとに{1}する。").DZX(1,boot.BCW.ih,30.0,5.0,boot.BCT.DXK(0.6)).DZO("5秒間{2}増加する。").DZS(2,boot.BCW.ea,40.0,10.0).DYz(40.0).DYw(16.0,-1.0);
-		// 5775
-		E.DXH(boot.BCU.cm).DZO("対象の敵ユニットに突進し、{1}の敵ユニットに{2}と2秒間{3}を与える。").DZR(1,boot.BCW.li,225.0).DZX(2,boot.BCW.i,70.0,40.0,boot.BCT.DXK(0.6)).DZS(3,boot.BCW.jl,25.0,5.0).DYz(60.0).DYw(14.0,-1.0).DZE(600.0);
-		// 5785
-		F.DXH(boot.BCU.da).DZO(new boot.z("槍を振り回し{3}の敵ユニットに{1}と{2}を与え、このスキルを命中させた敵チャンピオンの数に比例して6秒間{4}と{5}を得る。",0).IY(B).V("効果中の敵ユニットに対しては").IY(boot.BCW.jh).V("は発動しない。").W()).DZT(1,boot.BCW.h,75.0,100.0,boot.BCT.DXM(1),boot.BCT.DXJ(boot.BCW.da,0.15)).DZR(2,boot.BCW.jh,0).DZR(3,boot.BCW.li,375.0).DZS(4,boot.BCW.ga,15.0,5.0).DZS(5,boot.BCW.ge,15.0,5.0).DYz(100.0).DYw(120.0,-10.0);
-		// 5786
+		// 5846
+		E.DXH(boot.BCU.cm).DZO("対象の敵ユニットに{4}し、{1}の敵ユニットに{2}と2秒間{3}を与える。").DZR(1,boot.BCW.ma,225.0).DZX(2,boot.BCW.i,70.0,40.0,boot.BCT.DXK(0.6)).DZS(3,boot.BCW.jl,25.0,5.0).DZQ(4,boot.BCW.kn).DYz(60.0).DYw(14.0,-1.0).DZE(600.0);
+		// 5856
+		F.DXH(boot.BCU.da).DZO(new boot.z("槍を振り回し{3}の敵ユニットに{1}と{2}を与え、このスキルを命中させた敵チャンピオンの数に比例して6秒間{4}と{5}を得る。",0).IY(B).V("効果中の敵ユニットに対しては").IY(boot.BCW.jh).V("は発動しない。").W()).DZT(1,boot.BCW.h,75.0,100.0,boot.BCT.DXM(1),boot.BCT.DXJ(boot.BCW.da,0.15)).DZR(2,boot.BCW.jh,0).DZR(3,boot.BCW.ma,375.0).DZS(4,boot.BCW.ga,15.0,5.0).DZS(5,boot.BCW.ge,15.0,5.0).DYz(100.0).DYw(120.0,-10.0);
+		// 5857
 	},
 	// teemowork.model.SkillDefinition#Yasuo(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWY:function(A,B,C,D,E,F){
-		// 5798
-		B.DXH(boot.BCU.cp).DZK(new boot.z("一定距離({1})を移動すると最大値の1%のFlowを得る。{2}するがクリティカルダメージは10%減少する。この減少効果はダメージ増減算の前に適用される。(例: 本来200%のクリティカルダメージは(100 - 10) x 2 = 180%になり、",0).V(boot.BDQ.fb.nd).V("を持った場合本来250%のダメージが(100 - 10) * 2.5 = 225%になる)。Flowが最大値の時、敵チャンピオンかモンスターからダメージを受けると全てのFlowを消費して{5}間{3}を得る。").W()).DZU(1,boot.BCW.mb,new boot.BDJ(59.0,-7.0,0)).DZW(2,boot.BCW.ee,boot.BCT.DXJ(boot.BCW.ee,1)).DZU(3,boot.BCW.he,new boot.BDG(Φ("D",[100.0,105.0,110.0,115.0,120.0,130.0,140.0,150.0,165.0,180.0,200.0,225.0,255.0,290.0,330.0,380.0,440.0,510.0]),0)).DZR(5,boot.BCW.ld,1);
-		// 5808
-		C.DXH(boot.BCU.df).DZO(new boot.z("指定した方向の直線上にいる全ての敵({1})に{2}を与える。",0).IY(E).V("の使用中に起動した場合、{3}の敵にダメージを与える。このスキルは3回まで連続して使用でき、3度目の使用では{4}になり{5}を追加で与える。このスキルは通常攻撃として扱われ(クリティカル適用)、固定のCDを持つが、増加AS1.71%毎に再使用時間が1%減少する（最大で66%）。{6}。").W()).DZR(1,boot.BCW.lk,475.0).DZX(2,boot.BCW.h,20.0,20.0,boot.BCT.DXL(1)).DZR(3,boot.BCW.li,375.0).DZR(4,boot.BCW.lk,900.0).DZQ(5,boot.BCW.jg).DZQ(6,boot.BCW.kn).DYv(4.0);
-		// 5810
-		D.DXH(boot.BCU.bp).DZO("3.75秒間持続する{1}の壁を作り出す。この壁はタワー攻撃を除く全ての投射物をブロックする。").DZS(1,boot.BCW.lj,300.0,50.0).DYw(26.0,-2.0).DZE(400.0);
-		// 5819
-		E.DXH(boot.BCU.cd).DZO("マークの付いていない対象の敵の方向に飛び込み({2})移動する。対象に{1}を与え{3}間マークを付与する。スキル使用時にスタックが増加し、1スタックごとに基礎ダメージが25%増加していく。(最大2スタックで{4})").DZX(1,boot.BCW.i,70.0,20.0,boot.BCT.DXK(0.6)).DZR(2,boot.BCW.lk,475.0).DZS(3,boot.BCW.ld,10.0,-1.0).DZX(4,boot.BCW.i,105.0,35.0,boot.BCT.DXK(0.6)).DYw(-0.5,0.1).DZE(475.0);
-		// 5827
-		F.DXH(boot.BCU.be).DZO(new boot.z("打ち上げられている敵チャンピオンのもとへ瞬間移動し、{1}を与える。さらに、{2}の打ち上げられ中の全ての敵をもう1秒間、打ち上げ直す。発動と同時にFlowが満タンになるが、",0).IY(C).V("のスタックは解消される。また、15秒間、{3}を得る。").W()).DZX(1,boot.BCW.h,200.0,100.0,boot.BCT.DXM(1.5)).DZR(2,boot.BCW.li,400.0).DZR(3,boot.BCW.fh,50.0).DYw(80.0,-25.0).DZE(1200.0);
-		// 5828
+		// 5869
+		B.DXH(boot.BCU.cp).DZK(new boot.z("一定距離({1})を移動すると最大値の1%のFlowを得る。{2}するがクリティカルダメージは10%減少する。この減少効果はダメージ増減算の前に適用される。(例: 本来200%のクリティカルダメージは(100 - 10) x 2 = 180%になり、",0).V(boot.BDQ.fb.nd).V("を持った場合本来250%のダメージが(100 - 10) * 2.5 = 225%になる)。Flowが最大値の時、敵チャンピオンかモンスターからダメージを受けると全てのFlowを消費して{5}間{3}を得る。").W()).DZU(1,boot.BCW.mj,new boot.BDJ(59.0,-7.0,0)).DZW(2,boot.BCW.ee,boot.BCT.DXJ(boot.BCW.ee,1)).DZU(3,boot.BCW.he,new boot.BDG(Φ("D",[100.0,105.0,110.0,115.0,120.0,130.0,140.0,150.0,165.0,180.0,200.0,225.0,255.0,290.0,330.0,380.0,440.0,510.0]),0)).DZR(5,boot.BCW.ll,1);
+		// 5879
+		C.DXH(boot.BCU.df).DZO(new boot.z("指定した方向の直線上にいる全ての敵({1})に{2}を与える。",0).IY(E).V("の使用中に起動した場合、{3}の敵にダメージを与える。このスキルは3回まで連続して使用でき、3度目の使用では{4}になり{5}を追加で与える。このスキルは通常攻撃として扱われ(クリティカル適用)、固定のCDを持つが、増加AS1.71%毎に再使用時間が1%減少する（最大で66%）。{6}。").W()).DZR(1,boot.BCW.mc,475.0).DZX(2,boot.BCW.h,20.0,20.0,boot.BCT.DXL(1)).DZR(3,boot.BCW.ma,375.0).DZR(4,boot.BCW.mc,900.0).DZQ(5,boot.BCW.jg).DZQ(6,boot.BCW.lf).DYv(4.0);
+		// 5881
+		D.DXH(boot.BCU.bp).DZO("3.75秒間持続する{1}の壁を作り出す。この壁はタワー攻撃を除く全ての投射物をブロックする。").DZS(1,boot.BCW.mb,300.0,50.0).DYw(26.0,-2.0).DZE(400.0);
+		// 5890
+		E.DXH(boot.BCU.cd).DZO("マークの付いていない対象の敵の方向に{2}する。対象に{1}を与え{3}間マークを付与する。スキル使用時にスタックが増加し、1スタックごとに基礎ダメージが25%増加していく。(最大2スタックで{4})").DZX(1,boot.BCW.i,70.0,20.0,boot.BCT.DXK(0.6)).DZR(2,boot.BCW.kn,475.0).DZS(3,boot.BCW.ll,10.0,-1.0).DZX(4,boot.BCW.i,105.0,35.0,boot.BCT.DXK(0.6)).DYw(-0.5,0.1).DZE(475.0);
+		// 5899
+		F.DXH(boot.BCU.be).DZO(new boot.z("打ち上げられている敵チャンピオンのもとへ{4}し、{1}を与える。さらに、{2}の打ち上げられ中の全ての敵をもう1秒間、打ち上げ直す。発動と同時にFlowが満タンになるが、",0).IY(C).V("のスタックは解消される。また、15秒間、{3}を得る。").W()).DZX(1,boot.BCW.h,200.0,100.0,boot.BCT.DXM(1.5)).DZR(2,boot.BCW.ma,400.0).DZR(3,boot.BCW.fh,50.0).DZQ(4,boot.BCW.kp).DYw(80.0,-25.0).DZE(1200.0);
+		// 5900
 	},
 	// teemowork.model.SkillDefinition#Yorick(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWZ:function(A,B,C,D,E,F){
-		// 5843
-		B.DXH(boot.BCU.e).DZK("召喚中のGhoulの数に比例して{1}し{2}する。召喚したGhoulは5秒間持続し、毎秒最大HPの20%が減少していく。同じ種類のGhoulを召喚した場合、先に召喚したGhoulが消滅する。任意の操作不可、AoEスキルのダメージを50%低減し敵ユニットの通行を妨げない。<br>Health : {3}<br>AD : {4}<br>AR : {5}<br>MR : {6}<br>AS : 0.670<br>MS : {7}<br>Kill : {8}").DZW(1,boot.BCW.gj,boot.BCT.DXJ(boot.BCW.mf,5.0)).DZW(2,boot.BCW.l,boot.BCT.DXJ(boot.BCW.mf,5.0)).DZW(3,boot.BCW.mb,boot.BCT.DXJ(boot.BCW.bf,0.35)).DZX(4,boot.BCW.mb,0,0,boot.BCT.DXL(0.35)).DZX(5,boot.BCW.mb,10.0,0,boot.BCT.DXI(2.0)).DZX(6,boot.BCW.mb,20.0,0,boot.BCT.DXI(2.0)).DZU(7,boot.BCW.mb,new boot.BDG(Φ("I",[1,6,9,12]),300.0,40.0,1)).DZR(8,boot.BCW.lb,5.0);
-		// 5852
+		// 5915
+		B.DXH(boot.BCU.e).DZK("召喚中のGhoulの数に比例して{1}し{2}する。召喚したGhoulは5秒間持続し、毎秒最大HPの20%が減少していく。同じ種類のGhoulを召喚した場合、先に召喚したGhoulが消滅する。任意の操作不可、AoEスキルのダメージを50%低減し敵ユニットの通行を妨げない。<br>Health : {3}<br>AD : {4}<br>AR : {5}<br>MR : {6}<br>AS : 0.670<br>MS : {7}<br>Kill : {8}").DZW(1,boot.BCW.gj,boot.BCT.DXJ(boot.BCW.mn,5.0)).DZW(2,boot.BCW.l,boot.BCT.DXJ(boot.BCW.mn,5.0)).DZW(3,boot.BCW.mj,boot.BCT.DXJ(boot.BCW.bf,0.35)).DZX(4,boot.BCW.mj,0,0,boot.BCT.DXL(0.35)).DZX(5,boot.BCW.mj,10.0,0,boot.BCT.DXI(2.0)).DZX(6,boot.BCW.mj,20.0,0,boot.BCT.DXI(2.0)).DZU(7,boot.BCW.mj,new boot.BDG(Φ("I",[1,6,9,12]),300.0,40.0,1)).DZR(8,boot.BCW.lj,5.0);
+		// 5924
 		C.DXH(boot.BCU.cn).DZO("次の通常攻撃は{4}し{1}を与えると同時にSpectral Ghoulを召喚する。Spectral Ghoulは{3}を得る。Spectral Ghoulが生存している間、Ghoulと自身の{q2}する。").DZX(1,boot.BCW.h,30.0,30.0,boot.BCT.DXL(1.2)).DZS(2,boot.BCW.kc,15.0,5.0).DZS(-3,boot.BCW.dh,8.0,8.0).DZR(4,boot.BCW.hi,50.0).DYz(40.0).DYw(9.0,-1.0);
-		// 5862
-		D.DXH(boot.BCU.e).DZO("指定地点を爆発させ{1}の敵ユニットに{2}と1.5秒{3}を与え、同時にその地点にDecaying Ghoulを召喚する。Decaying Ghoulは近くの敵ユニットに継続的に{4}与える。").DZR(1,boot.BCW.li,200.0).DZX(2,boot.BCW.i,60.0,35.0,boot.BCT.DXK(1)).DZS(3,boot.BCW.jl,20.0,5.0).DZS(4,boot.BCW.jl,10.0,2.5).DZB(55.0,5.0).DYv(12.0).DZE(600.0);
-		// 5872
+		// 5934
+		D.DXH(boot.BCU.e).DZO("指定地点を爆発させ{1}の敵ユニットに{2}と1.5秒{3}を与え、同時にその地点にDecaying Ghoulを召喚する。Decaying Ghoulは近くの敵ユニットに継続的に{4}与える。").DZR(1,boot.BCW.ma,200.0).DZX(2,boot.BCW.i,60.0,35.0,boot.BCT.DXK(1)).DZS(3,boot.BCW.jl,20.0,5.0).DZS(4,boot.BCW.jl,10.0,2.5).DZB(55.0,5.0).DYv(12.0).DZE(600.0);
+		// 5944
 		E.DXH(boot.BCU.be).DZO("対象の敵ユニットに{1}を与え、{2}し対象の背後にRavenous Ghoulを召喚する。Ravenous Ghoulが通常攻撃を行うたびに{3}する。敵チャンピオンを攻撃した場合は{4}する。").DZX(1,boot.BCW.i,55.0,30.0,boot.BCT.DXM(1)).DZW(2,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.n,40.0)).DZX(3,boot.BCW.ih,0,0,boot.BCT.DXL(0.175)).DZX(4,boot.BCW.ih,0,0,boot.BCT.DXL(0.35)).DZB(55.0,5.0).DYw(10.0,-1.0).DZE(550.0);
-		// 5879
-		F.DXH(boot.BCU.bg).DZO("対象の味方チャンピオン一人の姿形を持ったRevenantを召喚する(ALT押しながら右クリックで任意の操作可能)。Revenantは10秒間持続し、対象の{1}の攻撃力を持つ。Revenantが生存している間に対象となった味方チャンピオンが死亡した場合、Revenantが消滅し、死亡した味方チャンピオンはHPとMNが最大の状態で蘇生される。蘇生した味方チャンピオンは10秒経過すると消滅する。").DZS(1,boot.BCW.mc,45.0,15.0).DYz(100.0).DYw(120.0,-15.0).DZE(900.0);
-		// 5880
+		// 5951
+		F.DXH(boot.BCU.bg).DZO("対象の味方チャンピオン一人の姿形を持ったRevenantを召喚する(ALT押しながら右クリックで任意の操作可能)。Revenantは10秒間持続し、対象の{1}の攻撃力を持つ。Revenantが生存している間に対象となった味方チャンピオンが死亡した場合、Revenantが消滅し、死亡した味方チャンピオンはHPとMNが最大の状態で蘇生される。蘇生した味方チャンピオンは10秒経過すると消滅する。").DZS(1,boot.BCW.mk,45.0,15.0).DYz(100.0).DYw(120.0,-15.0).DZE(900.0);
+		// 5952
 	},
 	// teemowork.model.SkillDefinition#Zac(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWu:function(A,B,C,D,E,F){
-		// 5893
-		B.DXH(boot.BCU.bf).DZK(new boot.z("スキルが敵ユニットに命中する度に小型のスライムが出現する。スライム({5})を自身が回収すると{1}し、敵が回収すると消滅する。また、",0).IY(boot.BCW.bf).V("が0になった時4つのスライムに分裂し一定時間かけて復活する。復活中にすべてのスライムが死亡すると").IY(A).V("も死亡する。復活時の").IY(boot.BCW.bf).V("は生きているスライムの数に比例し増加(10-50%)する。スライムは以下のステータスを持つ。<br>Health : {2}<br>AR : {3}<br>MR : {4}").W()).DZW(1,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.bf,0.04)).DZW(2,boot.BCW.mb,boot.BCT.DXJ(boot.BCW.bf,0.12)).DZW(3,boot.BCW.mb,boot.BCT.DXJ(boot.BCW.ga,0.5)).DZW(4,boot.BCW.mb,boot.BCT.DXJ(boot.BCW.ge,0.5)).DZR(5,boot.BCW.li,50.0).DYv(300.0);
-		// 5901
+		// 5965
+		B.DXH(boot.BCU.bf).DZK(new boot.z("スキルが敵ユニットに命中する度に小型のスライムが出現する。スライム({5})を自身が回収すると{1}し、敵が回収すると消滅する。また、",0).IY(boot.BCW.bf).V("が0になった時4つのスライムに分裂し一定時間かけて復活する。復活中にすべてのスライムが死亡すると").IY(A).V("も死亡する。復活時の").IY(boot.BCW.bf).V("は生きているスライムの数に比例し増加(10-50%)する。スライムは以下のステータスを持つ。<br>Health : {2}<br>AR : {3}<br>MR : {4}").W()).DZW(1,boot.BCW.ih,boot.BCT.DXJ(boot.BCW.bf,0.04)).DZW(2,boot.BCW.mj,boot.BCT.DXJ(boot.BCW.bf,0.12)).DZW(3,boot.BCW.mj,boot.BCT.DXJ(boot.BCW.ga,0.5)).DZW(4,boot.BCW.mj,boot.BCT.DXJ(boot.BCW.ge,0.5)).DZR(5,boot.BCW.ma,50.0).DYv(300.0);
+		// 5973
 		C.DXH(boot.BCU.i).DZO("指定方向に腕を伸ばし範囲内にいる敵ユニットに{1}と2秒間{2}を与える。").DZX(1,boot.BCW.i,70.0,40.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.jl,20.0,5.0).DZA(boot.BCW.cm,4.0,0).DYw(9.0,-0.5).DZE(550.0);
-		// 5908
-		D.DXH(boot.BCU.cm).DZO("{1}にいる敵ユニットに{2}を与える。(ミニオンに対しては200ダメージが上限)").DZR(1,boot.BCW.li,350.0).DZX(2,boot.BCW.i,40.0,15.0,boot.BCT.DXQ(boot.BCW.cp,4.0,1,boot.BCT.DXK(0.02))).DZA(boot.BCW.cm,4.0,0).DYv(4.0);
-		// 5916
-		E.DXH(boot.BCU.dh).DZO("その場で停止しチャージを行う。チャージした時間に比例して射程が前方扇形範囲で徐々に増加する。再度使用で指定した地点にジャンプし、着地時に範囲内にいる敵ユニットに{1}と{2}を与える。チャージは移動を行う事でキャンセルできる。").DZX(1,boot.BCW.i,80.0,50.0,boot.BCT.DXK(0.7)).DZQ(2,boot.BCW.jh).DZA(boot.BCW.cm,4.0,0).DYw(24.0,-3.0).DZF(1200.0,150.0);
-		// 5927
-		F.DXH(boot.BCU.dd).DZO(new boot.z("4回飛び跳ね、その度に{6}にいる敵ユニットに{1}と{2}と1秒間{3}を与える。ノックバックは同一の対象に1度までしか発生せず、同一ユニットに複数回DMを与える場合、2回目以降は50%のダメージになる。このスキルが発動している間は",0).IY(D).V("と移動のみが可能であり、また徐々に移動速度が増加する(20-50%増加)。{5}。").W()).DZX(1,boot.BCW.i,140.0,70.0,boot.BCT.DXK(0.4)).DZR(2,boot.BCW.jh,400.0).DZR(3,boot.BCW.jl,20.0).DZR(4,boot.BCW.hn,75.0).DZQ(5,boot.BCW.kf).DZR(6,boot.BCW.li,300.0).DYw(130.0,-15.0).DZE(300.0);
-		// 5928
+		// 5980
+		D.DXH(boot.BCU.cm).DZO("{1}にいる敵ユニットに{2}を与える。(ミニオンに対しては200ダメージが上限)").DZR(1,boot.BCW.ma,350.0).DZX(2,boot.BCW.i,40.0,15.0,boot.BCT.DXQ(boot.BCW.cp,4.0,1,boot.BCT.DXK(0.02))).DZA(boot.BCW.cm,4.0,0).DYv(4.0);
+		// 5989
+		E.DXH(boot.BCU.dh).DZO("その場で停止しチャージを行う。チャージした時間に比例して射程が前方扇形範囲で徐々に増加する。再度使用で指定地点に{3}し、着地時に範囲内にいる敵ユニットに{1}と{2}を与える。チャージは移動を行う事でキャンセルできる。").DZX(1,boot.BCW.i,80.0,50.0,boot.BCT.DXK(0.7)).DZQ(2,boot.BCW.jh).DZQ(3,boot.BCW.km).DZA(boot.BCW.cm,4.0,0).DYw(24.0,-3.0).DZF(1200.0,150.0);
+		// 6000
+		F.DXH(boot.BCU.dd).DZO(new boot.z("4回飛び跳ね、その度に{6}にいる敵ユニットに{1}と{2}と1秒間{3}を与える。ノックバックは同一の対象に1度までしか発生せず、同一ユニットに複数回DMを与える場合、2回目以降は50%のダメージになる。このスキルが発動している間は",0).IY(D).V("と移動のみが可能であり、また徐々に移動速度が増加する(20-50%増加)。{5}。").W()).DZX(1,boot.BCW.i,140.0,70.0,boot.BCT.DXK(0.4)).DZR(2,boot.BCW.jh,400.0).DZR(3,boot.BCW.jl,20.0).DZR(4,boot.BCW.hn,75.0).DZQ(5,boot.BCW.kf).DZR(6,boot.BCW.ma,300.0).DYw(130.0,-15.0).DZE(300.0);
+		// 6001
 	},
 	// teemowork.model.SkillDefinition#Zed(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWv:function(A,B,C,D,E,F){
-		// 5936
+		// 6009
 		B.DXH(boot.BCU.e).DZK(new boot.z(1).IY(boot.BCW.bf).V("が50%以下の敵ユニットへの通常攻撃に{1}を付与する。同一の対象には10秒に一度しか発動しない。").W()).DZW(1,boot.BCW.i,boot.BCT.DXP(boot.BCW.cp,new boot.BDG(Φ("I",[1,7,17]),6.0,2.0,1)));
-		// 5945
+		// 6018
 		C.DXH(boot.BCU.k).DZO(new boot.z(1).IY(A).V("と「影」から指定方向に貫通する手裏剣を飛ばし、当たった敵ユニットに{1}を与える。手裏剣は一度敵ユニットに当たるとそれ以降の敵ユニットには{3}を与える。").IY(A).V("と「影」が同一の対象に手裏剣を命中させた場合、2発目以降は{2}を与える。").W()).DZX(1,boot.BCW.h,75.0,40.0,boot.BCT.DXM(1)).DZX(2,boot.BCW.h,37.5,20.0,boot.BCT.DXM(0.5)).DZX(3,boot.BCW.h,45.0,24.0,boot.BCT.DXM(0.6)).DZA(boot.BCW.cg,75.0,-5.0).DYv(6.0).DZE(900.0);
-		// 5957
-		D.DXH(boot.BCU.cb).DZK("{1}を得る。").DZW(1,boot.BCW.dh,boot.BCT.DXN(boot.BCW.dk,0.05,0.05)).DZO(new boot.z("「影」が指定方向にダッシュし({5})、4秒間その場に留まり{2}の{3}。再度このスキルを使用すると",0).IY(A).V("と「影」の位置が入れ替わる。「影」は").IY(A).V("が通常スキルを使用すると同時に同じスキルを使用する。この時スキルが").IY(A).V("のスキルと同一の敵ユニットに命中した場合、{4}する。回復効果はスキル1回毎に1度のみ発動する。").W()).DZR(2,boot.BCW.li,700.0).DZQ(3,boot.BCW.kk).DZS(4,boot.BCW.ik,20.0,5.0).DZR(5,boot.BCW.ll,1500.0).DZA(boot.BCW.cg,40.0,-5.0).DYw(18.0,-1.0).DZE(550.0);
-		// 5967
-		E.DXH(boot.BCU.k).DZO(new boot.z(1).IY(A).V("と「影」から衝撃波を発生させ、{1}の敵ユニットに{2}を与える。").IY(A).V("の").IY(E).V("は敵チャンピオンに当たる度に").IY(D).V("の{4}。「影」の").IY(E).V("はダメージと共に敵ユニットに1.5秒間{3}を与える。").IY(A).V("と「影」が同一の対象にShadow Slashを命中させた場合、").IY(boot.BCW.e).V("は重複しないがスローの効果が上昇する。").W()).DZR(1,boot.BCW.li,290.0).DZX(2,boot.BCW.h,60.0,30.0,boot.BCT.DXM(0.9)).DZS(3,boot.BCW.jl,30.0,7.5).DZR(4,boot.BCW.id,2.0).DZA(boot.BCW.cg,50.0,0).DYv(4.0).DZE(290.0);
-		// 5974
-		F.DXH(boot.BCU.dh).DZO(new boot.z("対象の敵チャンピオンにダッシュしマークを付与する。ダッシュ中は0.75秒間ターゲット不可状態になる。また詠唱地点に6秒間持続する「影」を召喚する。0.5秒経過後、再度このスキルを使用すると",0).IY(A).V("と「影」の位置が入れ替わる({2})。付与から3秒後にマークは消費され、対象にマークが付与されている間に").IY(A).V("と「影」が与えた").IY(boot.BCW.j).V("以外のダメージの合計に比例し{1}を与える。").W()).DZT(1,boot.BCW.h,0,0,boot.BCT.DXL(1),boot.BCT.DXN(boot.BCW.n,20.0,15.0)).DZR(2,boot.BCW.li,2000.0).DYw(120.0,-20.0).DZE(625.0);
-		// 5975
+		// 6031
+		D.DXH(boot.BCU.cb).DZK("{1}を得る。").DZW(1,boot.BCW.dh,boot.BCT.DXN(boot.BCW.dk,0.05,0.05)).DZO(new boot.z("「影」が指定方向にダッシュし({2})、4秒間その場に留まり{3}の{4}。再度このスキルを使用すると",0).IY(A).V("と「影」の位置が{5}。「影」は").IY(A).V("が通常スキルを使用すると同時に同じスキルを使用する。この時スキルが").IY(A).V("のスキルと同一の敵ユニットに命中した場合、{6}する。回復効果はスキル1回毎に1度のみ発動する。").W()).DZR(2,boot.BCW.md,1500.0).DZR(3,boot.BCW.ma,700.0).DZQ(4,boot.BCW.lc).DZQ(5,boot.BCW.la).DZS(6,boot.BCW.ik,20.0,5.0).DZA(boot.BCW.cg,40.0,-5.0).DYw(18.0,-1.0).DZE(550.0);
+		// 6041
+		E.DXH(boot.BCU.k).DZO(new boot.z(1).IY(A).V("と「影」から衝撃波を発生させ、{1}の敵ユニットに{2}を与える。").IY(A).V("の").IY(E).V("は敵チャンピオンに当たる度に").IY(D).V("の{4}。「影」の").IY(E).V("はダメージと共に敵ユニットに1.5秒間{3}を与える。").IY(A).V("と「影」が同一の対象にShadow Slashを命中させた場合、").IY(boot.BCW.e).V("は重複しないがスローの効果が上昇する。").W()).DZR(1,boot.BCW.ma,290.0).DZX(2,boot.BCW.h,60.0,30.0,boot.BCT.DXM(0.9)).DZS(3,boot.BCW.jl,30.0,7.5).DZR(4,boot.BCW.id,2.0).DZA(boot.BCW.cg,50.0,0).DYv(4.0).DZE(290.0);
+		// 6050
+		F.DXH(boot.BCU.dh).DZO(new boot.z("対象の敵チャンピオンに{4}しマークを付与し、0.75秒間{1}になる。また詠唱地点に6秒間持続する「影」を召喚する。0.5秒経過後、再度このスキルを使用すると",0).IY(A).V("と「影」の位置が{2}。付与から3秒後にマークは消費され、対象にマークが付与されている間に").IY(A).V("と「影」が与えた").IY(boot.BCW.j).V("以外のダメージの合計に比例し{3}を与える。").W()).DZQ(1,boot.BCW.kk).DZR(2,boot.BCW.la,2000.0).DZT(3,boot.BCW.h,0,0,boot.BCT.DXL(1),boot.BCT.DXN(boot.BCW.n,20.0,15.0)).DZQ(4,boot.BCW.kn).DYw(120.0,-20.0).DZE(625.0);
+		// 6051
 	},
 	// teemowork.model.SkillDefinition#Ziggs(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWw:function(A,B,C,D,E,F){
-		// 6002
+		// 6078
 		B.DXH(boot.BCU.bo).DZK(new boot.z("12秒毎に通常攻撃に追加{1}が付与される。スキルを使う度に{2}する。建物に対しては1.5倍の",0).IY(boot.BCW.e).V("を与える。").W()).DZZ(1,boot.BCW.i,new boot.BDG(Φ("D",[20.0,24.0,28.0,32.0,36.0,40.0,48.0,56.0,64.0,72.0,80.0,88.0,100.0,112.0,124.0,136.0,148.0,160.0]),0),boot.BCT.DXP(boot.BCW.ei,new boot.BDJ(0.25,0.05,0))).DZR(2,boot.BCW.id,4.0).DYv(-12.0);
-		// 6010
-		C.DXH(boot.BCU.cn).DZO("指定地点に跳ねながら転がる爆弾を投げ、爆発時に{1}の敵ユニットに{2}を与える。敵に当たらなかった場合には投げた方向に2回までバウンドする。").DZR(1,boot.BCW.li,250.0).DZX(2,boot.BCW.i,75.0,45.0,boot.BCT.DXK(0.65)).DZB(50.0,10.0).DYw(6.0,-0.5).DZE(850.0);
-		// 6021
-		D.DXH(boot.BCU.bo).DZO(new boot.z("指定地点に{6}で火薬を投げ、爆発時に{1}の敵ユニットに{2}を与え、{3}させる。",0).IY(A).V("が範囲内にいた場合は自分も{3}する(").IY(A).V("にダメージは無し)。火薬は4秒経つか、スキルを再度使用すると爆発する。また火薬は{5}。").W()).DZR(1,boot.BCW.li,325.0).DZX(2,boot.BCW.i,70.0,35.0,boot.BCT.DXK(0.35)).DZR(3,boot.BCW.jh,400.0).DZQ(5,boot.BCW.kk).DZR(6,boot.BCW.ll,1750.0).DYz(65.0).DYw(26.0,-2.0).DZE(1000.0);
-		// 6032
-		E.DXH(boot.BCU.be).DZO("指定地点の{4}に11個の近接地雷を円形にばら撒き、敵ユニットが地雷に触れる({5})と{1}と1.5秒間{2}を与える。同ユニットが2個目以降に踏むと{3}を与える。地雷は爆発するか10秒経つと消滅する。").DZX(1,boot.BCW.i,40.0,25.0,boot.BCT.DXK(0.3)).DZS(2,boot.BCW.jl,20.0,5.0).DZX(3,boot.BCW.i,16.0,10.0,boot.BCT.DXK(0.12)).DZR(4,boot.BCW.li,400.0).DZR(5,boot.BCW.li,150.0).DZB(70.0,10.0).DYv(16.0).DZE(900.0);
-		// 6042
-		F.DXH(boot.BCU.bp).DZO("指定地点に巨大な爆弾を投下し、{1}の敵ユニットに{2}を与え、{3}の敵ユニットに{4}を与える。ミニオンやモンスターには2倍のダメージを与える。").DZR(1,boot.BCW.li,250.0).DZX(2,boot.BCW.i,250.0,125.0,boot.BCT.DXK(0.9)).DZR(3,boot.BCW.li,750.0).DZX(4,boot.BCW.i,200.0,100.0,boot.BCT.DXK(0.72)).DYz(100.0).DYv(120.0).DZE(5300.0);
-		// 6043
+		// 6086
+		C.DXH(boot.BCU.cn).DZO("指定地点に跳ねながら転がる爆弾を投げ、爆発時に{1}の敵ユニットに{2}を与える。敵に当たらなかった場合には投げた方向に2回までバウンドする。").DZR(1,boot.BCW.ma,250.0).DZX(2,boot.BCW.i,75.0,45.0,boot.BCT.DXK(0.65)).DZB(50.0,10.0).DYw(6.0,-0.5).DZE(850.0);
+		// 6097
+		D.DXH(boot.BCU.bo).DZO(new boot.z("指定地点に{6}で火薬を投げ、爆発時に{1}の敵ユニットに{2}を与え、{3}させる。",0).IY(A).V("が範囲内にいた場合は自分も{3}する(").IY(A).V("にダメージは無し)。火薬は4秒経つか、スキルを再度使用すると爆発する。また火薬は{5}。").W()).DZR(1,boot.BCW.ma,325.0).DZX(2,boot.BCW.i,70.0,35.0,boot.BCT.DXK(0.35)).DZR(3,boot.BCW.jh,400.0).DZQ(5,boot.BCW.lc).DZR(6,boot.BCW.md,1750.0).DYz(65.0).DYw(26.0,-2.0).DZE(1000.0);
+		// 6108
+		E.DXH(boot.BCU.be).DZO("指定地点の{4}に11個の近接地雷を円形にばら撒き、敵ユニットが地雷に触れる({5})と{1}と1.5秒間{2}を与える。同ユニットが2個目以降に踏むと{3}を与える。地雷は爆発するか10秒経つと消滅する。").DZX(1,boot.BCW.i,40.0,25.0,boot.BCT.DXK(0.3)).DZS(2,boot.BCW.jl,20.0,5.0).DZX(3,boot.BCW.i,16.0,10.0,boot.BCT.DXK(0.12)).DZR(4,boot.BCW.ma,400.0).DZR(5,boot.BCW.ma,150.0).DZB(70.0,10.0).DYv(16.0).DZE(900.0);
+		// 6118
+		F.DXH(boot.BCU.bp).DZO("指定地点に巨大な爆弾を投下し、{1}の敵ユニットに{2}を与え、{3}の敵ユニットに{4}を与える。ミニオンやモンスターには2倍のダメージを与える。").DZR(1,boot.BCW.ma,250.0).DZX(2,boot.BCW.i,250.0,125.0,boot.BCT.DXK(0.9)).DZR(3,boot.BCW.ma,750.0).DZX(4,boot.BCW.i,200.0,100.0,boot.BCT.DXK(0.72)).DYz(100.0).DYv(120.0).DZE(5300.0);
+		// 6119
 	},
 	// teemowork.model.SkillDefinition#Zilean(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWx:function(A,B,C,D,E,F){
-		// 6049
-		B.DXH(boot.BCU.cf).DZK("{2}の味方チャンピオンが取得する{1}する。").DZR(1,boot.BCW.ia,8.0).DZR(2,boot.BCW.li,1500.0);
-		// 6059
-		C.DXH(boot.BCU.df).DZO("指定した場所に時限式の爆弾を投げ、{1}に入った最初のユニットに爆弾がくっつく（チャンピオン優先）。3秒後に爆発し、{2}にいるすべての敵に{3}を与える。同じユニットに2個目の爆弾を仕掛けると1個目の爆弾はすぐに爆発し、爆風の中ににいるすべての敵に{4}を与える。").DZR(1,boot.BCW.li,100.0).DZR(2,boot.BCW.li,300.0).DZX(3,boot.BCW.i,75.0,40.0,boot.BCT.DXK(0.9)).DZS(4,boot.BCW.im,1.1,0.1).DZB(60.0,5.0).DYw(10.0,-0.5).DZE(900.0);
-		// 6061
+		// 6125
+		B.DXH(boot.BCU.cf).DZK("{2}の味方チャンピオンが取得する{1}する。").DZR(1,boot.BCW.ia,8.0).DZR(2,boot.BCW.ma,1500.0);
+		// 6135
+		C.DXH(boot.BCU.df).DZO("指定した場所に時限式の爆弾を投げ、{1}に入った最初のユニットに爆弾がくっつく（チャンピオン優先）。3秒後に爆発し、{2}にいるすべての敵に{3}を与える。同じユニットに2個目の爆弾を仕掛けると1個目の爆弾はすぐに爆発し、爆風の中ににいるすべての敵に{4}を与える。").DZR(1,boot.BCW.ma,100.0).DZR(2,boot.BCW.ma,300.0).DZX(3,boot.BCW.i,75.0,40.0,boot.BCT.DXK(0.9)).DZS(4,boot.BCW.im,1.1,0.1).DZB(60.0,5.0).DYw(10.0,-0.5).DZE(900.0);
+		// 6137
 		D.DXH(boot.BCU.de).DZO(new boot.z(1).IY(C).V("と").IY(E).V("の{1}する。このスキルはどちらかのスキルがCD中のみ使用できる。").W()).DZR(1,boot.BCW.id,10.0).DYz(35.0).DYw(14.0,-2.0);
-		// 6069
+		// 6145
 		E.DXH(boot.BCU.cn).DZO("味方チャンピオンに使用した場合は2.5秒間{1}増加し、敵チャンピオンに使用した場合は2.5秒間{2}を与える。").DZS(1,boot.BCW.kc,40.0,15.0).DZS(2,boot.BCW.jl,40.0,15.0).DYz(50.0).DYv(15.0).DZE(550.0);
-		// 6076
+		// 6152
 		F.DXH(boot.BCU.e).DZO("対象の味方チャンピオンが使用してから7秒以内に死亡した場合、2秒後にその場で{1}して復活する。").DZX(1,boot.BCW.ih,600.0,150.0,boot.BCT.DXK(2.0)).DZB(125.0,25.0).DYw(120.0,-30.0).DZE(900.0);
-		// 6077
+		// 6153
 	},
 	// teemowork.model.SkillDefinition#Zyra(teemowork.model.Champion, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill, teemowork.model.Skill)
 	_DWy:function(A,B,C,D,E,F){
-		// 6086
+		// 6162
 		B.DXH(boot.BCU.e).DZK("死亡すると2秒後にその場で植物に変形し、指定方向に一度だけ貫通する光線を放つことができる。光線に当たった敵ユニットに{1}を与える。").DZX(1,boot.BCW.j,80.0,0,boot.BCT.DXI(20.0)).DZE(1500.0);
-		// 6095
-		C.DXH(boot.BCU.ba).DZO("地面から棘を出現させ、指定範囲内の敵ユニットに{1}を与える。種にHitした場合Thorn Spitterに成長し、{3}の敵を自動攻撃して{2}を与える。Thorn Spitterは10秒間持続する。").DZX(1,boot.BCW.i,70.0,35.0,boot.BCT.DXK(0.65)).DZT(2,boot.BCW.i,23.0,0,boot.BCT.DXI(6.5),boot.BCT.DXK(0.2)).DZR(3,boot.BCW.li,750.0).DZB(75.0,5.0).DYw(7.0,-0.5).DZE(800.0);
-		// 6103
-		D.DXH(boot.BCU.ba).DZK("{1}を得る。").DZS(1,boot.BCW.em,2.0,2.0).DZO(new boot.z("指定地点に30秒持続する種を植える。他のスキルを種に当てることで成長させることができる。敵チャンピオンが種を踏んだ場合、視界を2秒間得る。{2}毎にチャージが1つ増加し最大2つまでチャージされる。種が植物に成長し、同一ユニットに複数の植物が",0).IY(boot.BCW.e).V("を与える場合、2体目以降は50%の").IY(boot.BCW.e).V("を与える。").W()).DZS(2,boot.BCW.le,17.0,-1.0).DZE(850.0).DZA(boot.BCW.md,1,0);
-		// 6114
-		E.DXH(boot.BCU.e).DZO("指定方向に蔓を放ち、当たった全ての敵ユニットに{1}と{2}を与える。種にHitした場合Vine Lasherに成長し、{3}の敵を自動攻撃して{4}と2秒間{5}を与える。Vine Lasherは10秒間持続する。").DZX(1,boot.BCW.i,60.0,35.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.ip,0.75,0.25).DZR(3,boot.BCW.li,400.0).DZT(4,boot.BCW.i,23.0,0,boot.BCT.DXI(6.5),boot.BCT.DXK(0.2)).DZR(5,boot.BCW.jl,30.0).DZB(70.0,5.0).DYv(12.0).DZE(1100.0);
-		// 6123
-		F.DXH(boot.BCU.ba).DZO("指定地点に藪を召還し、{1}の全ての敵に{2}を与え、2秒後に{3}。成長した植物にHitした場合、その植物の攻撃速度が50%増加する。").DZQ(1,boot.BCW.li).DZX(2,boot.BCW.i,180.0,85.0,boot.BCT.DXK(0.7)).DZR(3,boot.BCW.jg,1).DZB(100.0,20.0).DYw(130.0,-10.0).DZE(700.0);
-		// 6124
+		// 6171
+		C.DXH(boot.BCU.ba).DZO("地面から棘を出現させ、指定範囲内の敵ユニットに{1}を与える。種にHitした場合Thorn Spitterに成長し、{3}の敵を自動攻撃して{2}を与える。Thorn Spitterは10秒間持続する。").DZX(1,boot.BCW.i,70.0,35.0,boot.BCT.DXK(0.65)).DZT(2,boot.BCW.i,23.0,0,boot.BCT.DXI(6.5),boot.BCT.DXK(0.2)).DZR(3,boot.BCW.ma,750.0).DZB(75.0,5.0).DYw(7.0,-0.5).DZE(800.0);
+		// 6179
+		D.DXH(boot.BCU.ba).DZK("{1}を得る。").DZS(1,boot.BCW.em,2.0,2.0).DZO(new boot.z("指定地点に30秒持続する種を植える。他のスキルを種に当てることで成長させることができる。敵チャンピオンが種を踏んだ場合、視界を2秒間得る。{2}毎にチャージが1つ増加し最大2つまでチャージされる。種が植物に成長し、同一ユニットに複数の植物が",0).IY(boot.BCW.e).V("を与える場合、2体目以降は50%の").IY(boot.BCW.e).V("を与える。").W()).DZS(2,boot.BCW.lm,17.0,-1.0).DZE(850.0).DZA(boot.BCW.ml,1,0);
+		// 6190
+		E.DXH(boot.BCU.e).DZO("指定方向に蔓を放ち、当たった全ての敵ユニットに{1}と{2}を与える。種にHitした場合Vine Lasherに成長し、{3}の敵を自動攻撃して{4}と2秒間{5}を与える。Vine Lasherは10秒間持続する。").DZX(1,boot.BCW.i,60.0,35.0,boot.BCT.DXK(0.5)).DZS(2,boot.BCW.ip,0.75,0.25).DZR(3,boot.BCW.ma,400.0).DZT(4,boot.BCW.i,23.0,0,boot.BCT.DXI(6.5),boot.BCT.DXK(0.2)).DZR(5,boot.BCW.jl,30.0).DZB(70.0,5.0).DYv(12.0).DZE(1100.0);
+		// 6199
+		F.DXH(boot.BCU.ba).DZO("指定地点に藪を召還し、{1}の全ての敵に{2}を与え、2秒後に{3}。成長した植物にHitした場合、その植物の攻撃速度が50%増加する。").DZQ(1,boot.BCW.ma).DZX(2,boot.BCW.i,180.0,85.0,boot.BCT.DXK(0.7)).DZR(3,boot.BCW.jg,1).DZB(100.0,20.0).DYw(130.0,-10.0).DZE(700.0);
+		// 6200
 	}
 },{
 	$:[1537,"teemowork.model.SkillDefinition"],
@@ -100200,10 +100229,10 @@ boot.define("BDG","BCx","",{
 	c:[17,"levels","[I"],
 	d:[18,"values","[D"],
 	DXx:[1,,"I",,"D","compute"],
-	DYB:[4,,"I",,"I","convertChampionLevel"],
 	DXz:[1,,,,"Z","isSkillLevelBased"],
-	DXy:[1,,,,"I","estimateSize"],
-	DYC:[1,,"BCz",,"I","convertLevel"]
+	DYB:[4,,"I",,"I","convertChampionLevel"],
+	DYC:[1,,"BCz",,"I","convertLevel"],
+	DXy:[1,,,,"I","estimateSize"]
 });
 
 // class teemowork.model.variable.VariableResolver$Per3Level "BDH"
@@ -102155,7 +102184,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$200(teemowork.model.AbilityDescriptor)
 	_EAW:function(A){
 		// 39
-		A.EDw("{1}の敵ユニットに{2}を与える。").DZR(1,boot.BCW.li,700.0).DZR(2,boot.BCW.fo,20.0);
+		A.EDw("{1}の敵ユニットに{2}を与える。").DZR(1,boot.BCW.ma,700.0).DZR(2,boot.BCW.fo,20.0);
 		// 40
 	},
 	// teemowork.model.Item#lambda$201(teemowork.model.AbilityDescriptor)
@@ -102179,7 +102208,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$204(teemowork.model.AbilityDescriptor)
 	_EBB:function(A){
 		// 82
-		A.DZK("{2}と{1}する。").DZX(1,boot.BCW.ij,0,0,boot.BCT.DXJ(boot.BCW.bp,0.3)).DZQ(2,boot.BCW.lp);
+		A.DZK("{2}と{1}する。").DZX(1,boot.BCW.ij,0,0,boot.BCT.DXJ(boot.BCW.bp,0.3)).DZQ(2,boot.BCW.mh);
 		// 83
 	},
 	// teemowork.model.Item#lambda$205(teemowork.model.AbilityDescriptor)
@@ -102191,7 +102220,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$206(teemowork.model.AbilityDescriptor)
 	_EBH:function(A){
 		// 156
-		A.DZO("対象の敵Champion({0})に{1}と2秒間{2}与える。{3}。").DZR(0,boot.BCW.li,550.0).DZR(1,boot.BCW.i,100.0).DZR(2,boot.BCW.jl,25.0).DZR(3,boot.BCW.ig,90.0);
+		A.DZO("対象の敵Champion({0})に{1}と2秒間{2}与える。{3}。").DZR(0,boot.BCW.ma,550.0).DZR(1,boot.BCW.i,100.0).DZR(2,boot.BCW.jl,25.0).DZR(3,boot.BCW.ig,90.0);
 		// 157
 	},
 	// teemowork.model.Item#lambda$207(teemowork.model.AbilityDescriptor)
@@ -102209,7 +102238,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$209(teemowork.model.AbilityDescriptor)
 	_EBK:function(A){
 		// 179
-		A.DZO("対象の敵Champion({1})に{2}(下限100ダメージ)を与え、{3}する。また{4}間{5}を与え、自身の移動速度がその分だけ増加する。{6}。").DZR(1,boot.BCW.li,550.0).DZX(2,boot.BCW.h,0,0,boot.BCT.DXJ(boot.BCW.cp,15.0)).DZX(3,boot.BCW.ih,0,0,boot.BCT.DXJ(boot.BCW.m,1)).DZR(4,boot.BCW.ld,3.0).DZR(5,boot.BCW.jl,30.0).DZR(6,boot.BCW.ig,90.0);
+		A.DZO("対象の敵Champion({1})に{2}(下限100ダメージ)を与え、{3}する。また{4}間{5}を与え、自身の移動速度がその分だけ増加する。{6}。").DZR(1,boot.BCW.ma,550.0).DZX(2,boot.BCW.h,0,0,boot.BCT.DXJ(boot.BCW.cp,15.0)).DZX(3,boot.BCW.ih,0,0,boot.BCT.DXJ(boot.BCW.m,1)).DZR(4,boot.BCW.ll,3.0).DZR(5,boot.BCW.jl,30.0).DZR(6,boot.BCW.ig,90.0);
 		// 180
 	},
 	// teemowork.model.Item#lambda$210(teemowork.model.AbilityDescriptor)
@@ -102245,7 +102274,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$215(teemowork.model.AbilityDescriptor)
 	_EBS:function(A){
 		// 324
-		A.DZK("通常攻撃を行うと全てのチャージを消費して{1}を与える。100チャージを消費した場合は、与えるダメージが2倍になる。近接攻撃をした場合はさらに1秒かけて減衰する{2}を与える。").DZX(1,boot.BCW.h,0,0,boot.BCT.DXJ(boot.BCW.md,0.5)).DZR(2,boot.BCW.jl,75.0);
+		A.DZK("通常攻撃を行うと全てのチャージを消費して{1}を与える。100チャージを消費した場合は、与えるダメージが2倍になる。近接攻撃をした場合はさらに1秒かけて減衰する{2}を与える。").DZX(1,boot.BCW.h,0,0,boot.BCT.DXJ(boot.BCW.ml,0.5)).DZR(2,boot.BCW.jl,75.0);
 		// 325
 	},
 	// teemowork.model.Item#lambda$216(teemowork.model.AbilityDescriptor)
@@ -102281,7 +102310,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$221(teemowork.model.AbilityDescriptor)
 	_EBu:function(A){
 		// 388
-		A.EDx().DZO("このアイテムを消費して3分間、{1}を得る。また、チャンピオンに対して物理ダメージを与えると、自身の体力がダメージの10％分回復する。これらの効果は{2}たびに30秒間延長する。").DZR(1,boot.BCW.dh,25.0).DZQ(2,boot.BCW.lp);
+		A.EDx().DZO("このアイテムを消費して3分間、{1}を得る。また、チャンピオンに対して物理ダメージを与えると、自身の体力がダメージの10％分回復する。これらの効果は{2}たびに30秒間延長する。").DZR(1,boot.BCW.dh,25.0).DZQ(2,boot.BCW.mh);
 		// 389
 	},
 	// teemowork.model.Item#lambda$222(teemowork.model.AbilityDescriptor)
@@ -102293,13 +102322,13 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$223(teemowork.model.AbilityDescriptor)
 	_EBx:function(A){
 		// 433
-		A.EDw("{1}の敵ユニットに{2}を与える。").DZR(1,boot.BCW.li,700.0).DZR(2,boot.BCW.jn,15.0);
+		A.EDw("{1}の敵ユニットに{2}を与える。").DZR(1,boot.BCW.ma,700.0).DZR(2,boot.BCW.jn,15.0);
 		// 434
 	},
 	// teemowork.model.Item#lambda$224(teemowork.model.AbilityDescriptor)
 	_EBy:function(A){
 		// 458
-		A.DZK("Healthが0になった際、4秒後に{1}と{2}を得て復活する。{3}。").DZX(-1,boot.BCW.bf,0,0,boot.BCT.DXJ(boot.BCW.bf,0.3)).DZX(-2,boot.BCW.bp,0,0,boot.BCT.DXJ(boot.BCW.bp,0.3)).DZR(3,boot.BCW.ig,300.0);
+		A.DZK(new boot.z(1).IY(boot.BCW.bf).V("が0になると、4秒後に{2}と{3}を得て復活する。{4}。").W()).DZX(-2,boot.BCW.bf,0,0,boot.BCT.DXJ(boot.BCW.bf,0.3)).DZX(-3,boot.BCW.bp,0,0,boot.BCT.DXJ(boot.BCW.bp,0.3)).DZR(4,boot.BCW.ig,300.0);
 		// 459
 	},
 	// teemowork.model.Item#lambda$225(teemowork.model.AbilityDescriptor)
@@ -102329,7 +102358,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$229(teemowork.model.AbilityDescriptor)
 	_ECD:function(A){
 		// 505
-		A.DZO("対象の敵Champion({1})に{2}と2秒間{3}を与える。{4}。").DZR(1,boot.BCW.li,700.0).DZX(2,boot.BCW.i,150.0,0,boot.BCT.DXK(0.4)).DZR(3,boot.BCW.jl,40.0).DZR(4,boot.BCW.ig,60.0);
+		A.DZO("対象の敵Champion({1})に{2}と2秒間{3}を与える。{4}。").DZR(1,boot.BCW.ma,700.0).DZX(2,boot.BCW.i,150.0,0,boot.BCT.DXK(0.4)).DZR(3,boot.BCW.jl,40.0).DZR(4,boot.BCW.ig,60.0);
 		// 506
 	},
 	// teemowork.model.Item#lambda$230(teemowork.model.AbilityDescriptor)
@@ -102341,7 +102370,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$231(teemowork.model.AbilityDescriptor)
 	_ECF:function(A){
 		// 519
-		A.DZK("大型モンスターを倒すたびに{1}を得る。").DZR(1,boot.BCW.lb,15.0);
+		A.DZK("大型モンスターを倒すたびに{1}を得る。").DZR(1,boot.BCW.lj,15.0);
 		// 520
 	},
 	// teemowork.model.Item#lambda$232(teemowork.model.AbilityDescriptor)
@@ -102371,7 +102400,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$236(teemowork.model.AbilityDescriptor)
 	_ECL:function(A){
 		// 601
-		A.DZO("{1}の味方に2秒間{2}を付与する。{3}。").DZR(1,boot.BCW.li,600.0).DZX(2,boot.BCW.he,75.0,0,boot.BCT.DXJ(boot.BCW.hm,15.0)).DZR(3,boot.BCW.ig,60.0);
+		A.DZO("{1}の味方に2秒間{2}を付与する。{3}。").DZR(1,boot.BCW.ma,600.0).DZX(2,boot.BCW.he,75.0,0,boot.BCT.DXJ(boot.BCW.hm,15.0)).DZR(3,boot.BCW.ig,60.0);
 		// 602
 	},
 	// teemowork.model.Item#lambda$237(teemowork.model.AbilityDescriptor)
@@ -102395,7 +102424,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$240(teemowork.model.AbilityDescriptor)
 	_ECP:function(A){
 		// 642
-		A.DZK("購入時に5スタック、キル時に2スタック、アシスト時に1スタックを得て、死亡時に半分失う（最大20スタック）。{1}を得て、20スタック時は{2}を得る。").DZX(1,boot.BCW.ei,0,0,boot.BCT.DXJ(boot.BCW.mf,8.0)).DZR(2,boot.BCW.em,15.0);
+		A.DZK("購入時に5スタック、キル時に2スタック、アシスト時に1スタックを得て、死亡時に半分失う（最大20スタック）。{1}を得て、20スタック時は{2}を得る。").DZX(1,boot.BCW.ei,0,0,boot.BCT.DXJ(boot.BCW.mn,8.0)).DZR(2,boot.BCW.em,15.0);
 		// 643
 	},
 	// teemowork.model.Item#lambda$241(teemowork.model.AbilityDescriptor)
@@ -102407,7 +102436,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$242(teemowork.model.AbilityDescriptor)
 	_ECR:function(A){
 		// 689
-		A.DZO(" 対象({1})の味方のチャンピオンからDebuffを全て取り除き、{2}する。{3}。").DZR(1,boot.BCW.li,750.0).DZX(2,boot.BCW.ih,150.0,0,boot.BCT.DXJ(boot.BCW.cp,0.1)).DZR(3,boot.BCW.ig,180.0);
+		A.DZO(" 対象({1})の味方のチャンピオンからDebuffを全て取り除き、{2}する。{3}。").DZR(1,boot.BCW.ma,750.0).DZX(2,boot.BCW.ih,150.0,0,boot.BCT.DXJ(boot.BCW.cp,0.1)).DZR(3,boot.BCW.ig,180.0);
 		// 690
 	},
 	// teemowork.model.Item#lambda$243(teemowork.model.AbilityDescriptor)
@@ -102473,7 +102502,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$253(teemowork.model.AbilityDescriptor)
 	_ECx:function(A){
 		// 884
-		A.DZO("{1}の敵ユニットに4秒間{2}を与える。この効果時間は、自身のArmor+Magic Resistの値100につき1秒増加する。{3}。").DZR(1,boot.BCW.li,500.0).DZR(2,boot.BCW.jl,35.0).DZR(3,boot.BCW.ig,60.0);
+		A.DZO("{1}の敵ユニットに4秒間{2}を与える。この効果時間は、自身のArmor+Magic Resistの値100につき1秒増加する。{3}。").DZR(1,boot.BCW.ma,500.0).DZR(2,boot.BCW.jl,35.0).DZR(3,boot.BCW.ig,60.0);
 		// 885
 	},
 	// teemowork.model.Item#lambda$254(teemowork.model.AbilityDescriptor)
@@ -102491,13 +102520,13 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$256(teemowork.model.AbilityDescriptor)
 	_EDA:function(A){
 		// 991
-		A.EDx().DZK("1分毎に{1}と{2}と{3}を得る。この効果は10回まで発生する。").DZX(1,boot.BCW.bf,0,0,boot.BCT.DXJ(boot.BCW.mf,20.0)).DZX(2,boot.BCW.bp,0,0,boot.BCT.DXJ(boot.BCW.mf,40.0)).DZX(3,boot.BCW.ei,0,0,boot.BCT.DXJ(boot.BCW.mf,4.0));
+		A.EDx().DZK("1分毎に{1}と{2}と{3}を得る。この効果は10回まで発生する。").DZX(1,boot.BCW.bf,0,0,boot.BCT.DXJ(boot.BCW.mn,20.0)).DZX(2,boot.BCW.bp,0,0,boot.BCT.DXJ(boot.BCW.mn,40.0)).DZX(3,boot.BCW.ei,0,0,boot.BCT.DXJ(boot.BCW.mn,4.0));
 		// 992
 	},
 	// teemowork.model.Item#lambda$257(teemowork.model.AbilityDescriptor)
 	_EDB:function(A){
 		// 1011
-		A.DZK("通常攻撃をした際に、{1}の2体の敵ユニットに{2}を与える。{3}。").DZR(1,boot.BCW.li,375.0).DZX(2,boot.BCW.h,0,0,boot.BCT.DXL(0.5)).DZQ(3,boot.BCW.kn);
+		A.DZK("通常攻撃をした際に、{1}の2体の敵ユニットに{2}を与える。{3}。").DZR(1,boot.BCW.ma,375.0).DZX(2,boot.BCW.h,0,0,boot.BCT.DXL(0.5)).DZQ(3,boot.BCW.lf);
 		// 1012
 	},
 	// teemowork.model.Item#lambda$258(teemowork.model.AbilityDescriptor)
@@ -102509,7 +102538,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$259(teemowork.model.AbilityDescriptor)
 	_EDD:function(A){
 		// 1040
-		A.DZK("敵ユニットを倒す度に{1}と{2}を得る。この効果は30回分までスタックする。").DZX(1,boot.BCW.ei,0,0,boot.BCT.DXJ(boot.BCW.mf,0.5)).DZX(2,boot.BCW.ga,0,0,boot.BCT.DXJ(boot.BCW.mf,0.5));
+		A.DZK("敵ユニットを倒す度に{1}と{2}を得る。この効果は30回分までスタックする。").DZX(1,boot.BCW.ei,0,0,boot.BCT.DXJ(boot.BCW.mn,0.5)).DZX(2,boot.BCW.ga,0,0,boot.BCT.DXJ(boot.BCW.mn,0.5));
 		// 1041
 	},
 	// teemowork.model.Item#lambda$260(teemowork.model.AbilityDescriptor)
@@ -102527,7 +102556,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$262(teemowork.model.AbilityDescriptor)
 	_EDG:function(A){
 		// 1226
-		A.DZK("移動または通常攻撃を行うとその度にチャージが貯まっていく。 チャージが100に達した時、次の通常時に対象に雷を放ち{1}を与える。雷は対象の付近の敵ユニット({2})3体にも連鎖し同様のダメージを与える。雷によるダメージはクリティカルの影響を受ける。雷を放った後はチャージは0になる。建物を攻撃する時はチャージは増加するが雷は発生しない。").DZR(1,boot.BCW.i,100.0).DZR(2,boot.BCW.li,300.0);
+		A.DZK("移動または通常攻撃を行うとその度にチャージが貯まっていく。 チャージが100に達した時、次の通常時に対象に雷を放ち{1}を与える。雷は対象の付近の敵ユニット({2})3体にも連鎖し同様のダメージを与える。雷によるダメージはクリティカルの影響を受ける。雷を放った後はチャージは0になる。建物を攻撃する時はチャージは増加するが雷は発生しない。").DZR(1,boot.BCW.i,100.0).DZR(2,boot.BCW.ma,300.0);
 		// 1227
 	},
 	// teemowork.model.Item#lambda$263(teemowork.model.AbilityDescriptor)
@@ -102539,7 +102568,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$264(teemowork.model.AbilityDescriptor)
 	_EDI:function(A){
 		// 1235
-		A.DZK("5秒以内に{1}のダメージを受けると8秒間Primal Rageの効果を得る。{2}。").DZX(1,boot.BCW.mb,400.0,0,boot.BCT.DXI(82.35)).DZR(2,boot.BCW.ig,45.0);
+		A.DZK("5秒以内に{1}のダメージを受けると8秒間Primal Rageの効果を得る。{2}。").DZX(1,boot.BCW.mj,400.0,0,boot.BCT.DXI(82.35)).DZR(2,boot.BCW.ig,45.0);
 		// 1236
 	},
 	// teemowork.model.Item#lambda$265(teemowork.model.AbilityDescriptor)
@@ -102551,25 +102580,25 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$266(teemowork.model.AbilityDescriptor)
 	_EDK:function(A){
 		// 1250
-		A.EDx().DZO("このアイテムを消費して、視界{1}を持つオブジェクトを指定地点に設置する。オブジェクトは設置から約3秒後にステルス状態になり、3分間持続する。各プレイヤーは3つまでしか設置出来ず、3つしか携帯出来ない。{2}").DZR(1,boot.BCW.li,1100.0).DZQ(2,boot.BCW.kk);
+		A.EDx().DZO("このアイテムを消費して、視界{1}を持つオブジェクトを指定地点に設置する。オブジェクトは設置から約3秒後にステルス状態になり、3分間持続する。各プレイヤーは3つまでしか設置出来ず、3つしか携帯出来ない。{2}").DZR(1,boot.BCW.ma,1100.0).DZQ(2,boot.BCW.lc);
 		// 1251
 	},
 	// teemowork.model.Item#lambda$267(teemowork.model.AbilityDescriptor)
 	_EDL:function(A){
 		// 1262
-		A.DZK("{1}の敵に毎秒{2}を与える。").DZR(1,boot.BCW.li,400.0).DZX(2,boot.BCW.i,25.0,0,boot.BCT.DXJ(boot.BCW.hm,1));
+		A.DZK("{1}の敵に毎秒{2}を与える。").DZR(1,boot.BCW.ma,400.0).DZX(2,boot.BCW.i,25.0,0,boot.BCT.DXJ(boot.BCW.hm,1));
 		// 1263
 	},
 	// teemowork.model.Item#lambda$268(teemowork.model.AbilityDescriptor)
 	_EDM:function(A){
 		// 1271
-		A.DZK("購入時に5スタック、キル時に2スタック、アシスト時に1スタックを得て、死亡時に半分を失う(最大20スタック)。{1}を得る。20スタック時には{2}する。").DZX(1,boot.BCW.dh,0,0,boot.BCT.DXJ(boot.BCW.mf,5.0)).DZR(2,boot.BCW.ea,20.0);
+		A.DZK("購入時に5スタック、キル時に2スタック、アシスト時に1スタックを得て、死亡時に半分を失う(最大20スタック)。{1}を得る。20スタック時には{2}する。").DZX(1,boot.BCW.dh,0,0,boot.BCT.DXJ(boot.BCW.mn,5.0)).DZR(2,boot.BCW.ea,20.0);
 		// 1272
 	},
 	// teemowork.model.Item#lambda$269(teemowork.model.AbilityDescriptor)
 	_EDN:function(A){
 		// 1290
-		A.DZO("{1}の味方は3秒間{2}する。{3}。").DZR(1,boot.BCW.li,600.0).DZR(2,boot.BCW.kc,40.0).DZR(3,boot.BCW.ig,40.0);
+		A.DZO("{1}の味方は3秒間{2}する。{3}。").DZR(1,boot.BCW.ma,600.0).DZR(2,boot.BCW.kc,40.0).DZR(3,boot.BCW.ig,40.0);
 		// 1291
 	},
 	// teemowork.model.Item#lambda$270(teemowork.model.AbilityDescriptor)
@@ -102593,13 +102622,13 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$273(teemowork.model.AbilityDescriptor)
 	_EDR:function(A){
 		// 1350
-		A.DZO("攻撃無効な亡霊を最大2体召喚し、最も近くにいる敵チャンピオン2人を6秒間探索する。亡霊はターゲットに追いつくと、2.5秒間{1}と{2}を与える。ターゲットを見つけられなかった場合、亡霊は召喚者のもとへ戻ろうとする。亡霊が帰還に成功した場合、このアイテムのクールダウンは20秒短縮される({3})。").DZQ(1,boot.BCW.kk).DZR(2,boot.BCW.jl,40.0).DZR(3,boot.BCW.ig,60.0);
+		A.DZO("攻撃無効な亡霊を最大2体召喚し、最も近くにいる敵チャンピオン2人を6秒間探索する。亡霊はターゲットに追いつくと、2.5秒間{1}と{2}を与える。ターゲットを見つけられなかった場合、亡霊は召喚者のもとへ戻ろうとする。亡霊が帰還に成功した場合、このアイテムのクールダウンは20秒短縮される({3})。").DZQ(1,boot.BCW.lc).DZR(2,boot.BCW.jl,40.0).DZR(3,boot.BCW.ig,60.0);
 		// 1351
 	},
 	// teemowork.model.Item#lambda$274(teemowork.model.AbilityDescriptor)
 	_EDS:function(A){
 		// 1365
-		A.EDx().DZO("このアイテムを消費して、ステルスを看破できる視界{1}を持ち耐久値5のオブジェクトを指定地点に設置する。これは永久に持続する。各プレイヤーは1個しか設置出来ず、2個しか携帯出来ない。{2}").DZR(1,boot.BCW.li,1100.0).DZQ(2,boot.BCW.kk);
+		A.EDx().DZO("このアイテムを消費して、ステルスを看破できる視界{1}を持ち耐久値5のオブジェクトを指定地点に設置する。これは永久に持続する。各プレイヤーは1個しか設置出来ず、2個しか携帯出来ない。{2}").DZR(1,boot.BCW.ma,1100.0).DZQ(2,boot.BCW.lc);
 		// 1366
 	},
 	// teemowork.model.Item#lambda$275(teemowork.model.AbilityDescriptor)
@@ -102623,7 +102652,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$278(teemowork.model.AbilityDescriptor)
 	_EDW:function(A){
 		// 1402
-		A.DZK("通常攻撃は追加{1}を与え、{2}を得る。また対象の敵に{3}を与える。MRの増減は5回までスタックし、5秒間持続する。").DZR(1,boot.BCW.i,42.0).DZX(2,boot.BCW.ge,0,0,boot.BCT.DXJ(boot.BCW.mf,5.0)).DZX(3,boot.BCW.fo,0,0,boot.BCT.DXJ(boot.BCW.mf,5.0));
+		A.DZK("通常攻撃は追加{1}を与え、{2}を得る。また対象の敵に{3}を与える。MRの増減は5回までスタックし、5秒間持続する。").DZR(1,boot.BCW.i,42.0).DZX(2,boot.BCW.ge,0,0,boot.BCT.DXJ(boot.BCW.mn,5.0)).DZX(3,boot.BCW.fo,0,0,boot.BCT.DXJ(boot.BCW.mn,5.0));
 		// 1403
 	},
 	// teemowork.model.Item#lambda$279(teemowork.model.AbilityDescriptor)
@@ -102635,7 +102664,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$280(teemowork.model.AbilityDescriptor)
 	_EDY:function(A){
 		// 1424
-		A.DZK("{1}にConduitを使用した味方がいる場合、チャージを生成する。攻撃もしくはスキルを使用することで追加のチャージを生成する。最大100チャージまで貯まり、5秒間持続する。最大チャージ時にダメージを与えると、全てのチャージを消費して8秒間あなたと対象の味方は{2}し{3}する。").DZR(1,boot.BCW.li,1000.0).DZR(2,boot.BCW.ek,20.0).DZR(3,boot.BCW.ee,50.0);
+		A.DZK("{1}にConduitを使用した味方がいる場合、チャージを生成する。攻撃もしくはスキルを使用することで追加のチャージを生成する。最大100チャージまで貯まり、5秒間持続する。最大チャージ時にダメージを与えると、全てのチャージを消費して8秒間あなたと対象の味方は{2}し{3}する。").DZR(1,boot.BCW.ma,1000.0).DZR(2,boot.BCW.ek,20.0).DZR(3,boot.BCW.ee,50.0);
 		// 1425
 	},
 	// teemowork.model.Item#lambda$281(teemowork.model.AbilityDescriptor)
@@ -102647,7 +102676,7 @@ boot.define("BDQ","BCT","",{
 	// teemowork.model.Item#lambda$282(teemowork.model.AbilityDescriptor)
 	_EDu:function(A){
 		// 1438
-		A.DZO("2.5秒間、自身を行動不能かつ無敵(ダメージ無効, ターゲット不可)にする。{1}。").DZR(1,boot.BCW.ig,90.0);
+		A.DZO("2.5秒間{1}になる。{1}。").DZQ(1,boot.BCW.kl).DZR(2,boot.BCW.ig,90.0);
 		// 1439
 	},
 	// teemowork.model.Item#lambda$283(teemowork.model.AbilityDescriptor)
@@ -102870,14 +102899,14 @@ boot.define("BDQ","BCT","",{
 	CN:[9,,,,"I","size"],
 	EAS:[9,,"u",,"BDQ","getByName"],
 	DSv:[9,,,,"Bz<BDQ>","getAll"],
-	EAT:[9,,"I",,"BDQ","getById"],
-	DSY:[1,,,,"BCX","getIconPosition"],
-	DSX:[1,,,,"u","getIcon"],
-	DXO:[1,,,,"I","getMaxLevel"],
 	EAQ:[1,,,,"D","getBaseCost"],
 	EAR:[1,,,,"D","getTotalCost"],
 	EAP:[4,,"BCU BDU",,"BDU","createDescriptor"],
-	DSZ:[1,,"KX",,"V","applyIcon"]
+	DSZ:[1,,"KX",,"V","applyIcon"],
+	EAT:[9,,"I",,"BDQ","getById"],
+	DSY:[1,,,,"BCX","getIconPosition"],
+	DSX:[1,,,,"u","getIcon"],
+	DXO:[1,,,,"I","getMaxLevel"]
 });
 
 // class teemowork.api.RiotItemData "BDT"
@@ -103885,7 +103914,7 @@ boot.define("BDU","BCv","",{
 	// teemowork.model.ItemDescriptor#goldGeneration(double)
 	EBw:function(A){
 		// 259
-		return this.ECV(boot.BCW.lc,A)
+		return this.ECV(boot.BCW.lk,A)
 	},
 	// teemowork.model.ItemDescriptor#getBuild()
 	EDz:function(){
@@ -103982,6 +104011,8 @@ boot.define("BDU","BCv","",{
 	ECV:[0,,"BCW D",,"BDU","set"],
 	EAO:[128,,"[I",,"BDU","build"],
 	EBC:[0,,"D",,"BDU","critical"],
+	EEA:[1,,,,"[BDQ","getBuildItem"],
+	EEB:[1,,,,"Bz<BDV>","getAbilities"],
 	EAy:[0,,"D",,"BDU","cooldownReduction"],
 	EAU:[0,,"D",,"BDU","abilityPower"],
 	EAV:[0,,"D",,"BDU","magicRegist"],
@@ -104000,9 +104031,7 @@ boot.define("BDU","BCv","",{
 	EDz:[1,,,,"[I","getBuild"],
 	EEC:[0,,,,"BDU","deprecated"],
 	EDy:[0,,"D",,"BDU","spellVamp"],
-	EED:[1,,,,"Z","isDeprecated"],
-	EEA:[1,,,,"[BDQ","getBuildItem"],
-	EEB:[1,,,,"Bz<BDV>","getAbilities"]
+	EED:[1,,,,"Z","isDeprecated"]
 });
 
 // class teemowork.model.Ability "BDV"
@@ -104200,7 +104229,7 @@ boot.define("BDV","BCT","",{
 	// teemowork.model.Ability#lambda$0(teemowork.model.AbilityDescriptor)
 	_EEG:function(A){
 		// 30
-		A.DZO("対象（{1}）とその{2}の敵に{3}と2秒かけて減衰する{4}を与える。{5}").DZR(1,boot.BCW.li,850.0).DZR(2,boot.BCW.li,225.0).DZX(3,boot.BCW.i,50.0,0,boot.BCT.DXJ(boot.BCW.hm,5.0)).DZR(4,boot.BCW.jl,80.0).DZR(5,boot.BCW.ig,60.0);
+		A.DZO("対象（{1}）とその{2}の敵に{3}と2秒かけて減衰する{4}を与える。{5}").DZR(1,boot.BCW.ma,850.0).DZR(2,boot.BCW.ma,225.0).DZX(3,boot.BCW.i,50.0,0,boot.BCT.DXJ(boot.BCW.hm,5.0)).DZR(4,boot.BCW.jl,80.0).DZR(5,boot.BCW.ig,60.0);
 		// 31
 	},
 	// teemowork.model.Ability#lambda$1(teemowork.model.AbilityDescriptor)
@@ -104224,7 +104253,7 @@ boot.define("BDV","BCT","",{
 	// teemowork.model.Ability#lambda$4(teemowork.model.AbilityDescriptor)
 	_EEK:function(A){
 		// 50
-		A.DZK("{1}を得る。").DZR(1,boot.BCW.lc,3.0);
+		A.DZK("{1}を得る。").DZR(1,boot.BCW.lk,3.0);
 		// 51
 	},
 	// teemowork.model.Ability#lambda$5(teemowork.model.AbilityDescriptor)
@@ -104260,7 +104289,7 @@ boot.define("BDV","BCT","",{
 	// teemowork.model.Ability#lambda$10(teemowork.model.AbilityDescriptor)
 	_EEQ:function(A){
 		// 86
-		A.DZK("「スマイト」で敵のチャンピオンを攻撃できるようになる。対象のチャンピオンは4秒間マークされ{3}。対象への通常攻撃の命中時に3秒間かけて{1}を与え、対象から受ける{2}する。").DZX(1,boot.BCW.j,54.0,0,boot.BCT.DXJ(boot.BCW.hm,6.0)).DZR(2,boot.BCW.gj,20.0).DZQ(3,boot.BCW.kk);
+		A.DZK("「スマイト」で敵のチャンピオンを攻撃できるようになる。対象のチャンピオンは4秒間マークされ{3}。対象への通常攻撃の命中時に3秒間かけて{1}を与え、対象から受ける{2}する。").DZX(1,boot.BCW.j,54.0,0,boot.BCT.DXJ(boot.BCW.hm,6.0)).DZR(2,boot.BCW.gj,20.0).DZQ(3,boot.BCW.lc);
 		// 87
 	},
 	// teemowork.model.Ability#lambda$11(teemowork.model.AbilityDescriptor)
@@ -104272,37 +104301,37 @@ boot.define("BDV","BCT","",{
 	// teemowork.model.Ability#lambda$12(teemowork.model.AbilityDescriptor)
 	_EES:function(A){
 		// 101
-		A.DZK("通常攻撃は{1}のユニットに{2}を与える。ダメージは攻撃対象から離れるにつれて減少し、最小で{3}になる。").DZR(1,boot.BCW.li,385.0).DZX(2,boot.BCW.h,0,0,boot.BCT.DXL(0.6)).DZX(3,boot.BCW.h,0,0,boot.BCT.DXL(0.2));
+		A.DZK("通常攻撃は{1}のユニットに{2}を与える。ダメージは攻撃対象から離れるにつれて減少し、最小で{3}になる。").DZR(1,boot.BCW.ma,385.0).DZX(2,boot.BCW.h,0,0,boot.BCT.DXL(0.6)).DZX(3,boot.BCW.h,0,0,boot.BCT.DXL(0.2));
 		// 102
 	},
 	// teemowork.model.Ability#lambda$13(teemowork.model.AbilityDescriptor)
 	_EET:function(A){
 		// 109
-		A.DZK("通常攻撃は追加で{2}を与える。更に{1}の敵に{3}を与える。").DZR(1,boot.BCW.li,385.0).DZX(2,boot.BCW.h,5.0,0,boot.BCT.DXJ(boot.BCW.bh,1)).DZX(3,boot.BCW.h,40.0,0,boot.BCT.DXJ(boot.BCW.bh,2.5));
+		A.DZK("通常攻撃は追加で{2}を与える。更に{1}の敵に{3}を与える。").DZR(1,boot.BCW.ma,385.0).DZX(2,boot.BCW.h,5.0,0,boot.BCT.DXJ(boot.BCW.bh,1)).DZX(3,boot.BCW.h,40.0,0,boot.BCT.DXJ(boot.BCW.bh,2.5));
 		// 110
 	},
 	// teemowork.model.Ability#lambda$14(teemowork.model.AbilityDescriptor)
 	_EEU:function(A){
 		// 114
-		A.DZK("通常攻撃を受けた際に対象に{2}間{1}を与える。").DZR(1,boot.BCW.jn,15.0).DZR(2,boot.BCW.ld,1);
+		A.DZK("通常攻撃を受けた際に対象に{2}間{1}を与える。").DZR(1,boot.BCW.jn,15.0).DZR(2,boot.BCW.ll,1);
 		// 115
 	},
 	// teemowork.model.Ability#lambda$15(teemowork.model.AbilityDescriptor)
 	_EEV:function(A){
 		// 123
-		A.DZO("{1}のユニットに{2}を与える。ダメージは自身から離れるにつれて減少し、最小で{3}になる。{4}。").DZR(1,boot.BCW.li,400.0).DZX(2,boot.BCW.h,0,0,boot.BCT.DXL(1)).DZX(3,boot.BCW.h,0,0,boot.BCT.DXJ(boot.BCW.dh,0.6)).DZR(4,boot.BCW.ig,10.0);
+		A.DZO("{1}のユニットに{2}を与える。ダメージは自身から離れるにつれて減少し、最小で{3}になる。{4}。").DZR(1,boot.BCW.ma,400.0).DZX(2,boot.BCW.h,0,0,boot.BCT.DXL(1)).DZX(3,boot.BCW.h,0,0,boot.BCT.DXJ(boot.BCW.dh,0.6)).DZR(4,boot.BCW.ig,10.0);
 		// 124
 	},
 	// teemowork.model.Ability#lambda$16(teemowork.model.AbilityDescriptor)
 	_EEW:function(A){
 		// 132
-		A.DZO(new boot.z("次の通常攻撃の",0).IY(boot.BDV.bb).V("の効果は{1}のユニットに{2}を与える。{3}。{4}。").W()).DZR(1,boot.BCW.li,400.0).DZX(2,boot.BCW.h,40.0,0,boot.BCT.DXJ(boot.BCW.bh,10.0)).DZQ(3,boot.BCW.ma).DZR(4,boot.BCW.ig,20.0);
+		A.DZO(new boot.z("次の通常攻撃の",0).IY(boot.BDV.bb).V("の効果は{1}のユニットに{2}を与える。{3}。{4}。").W()).DZR(1,boot.BCW.ma,400.0).DZX(2,boot.BCW.h,40.0,0,boot.BCT.DXJ(boot.BCW.bh,10.0)).DZQ(3,boot.BCW.mi).DZR(4,boot.BCW.ig,20.0);
 		// 133
 	},
 	// teemowork.model.Ability#lambda$17(teemowork.model.AbilityDescriptor)
 	_EEX:function(A){
 		// 139
-		A.DZO("通常攻撃ごとに{1}を与える。スタックは大型モンスターかチャンピオンを{2}と1、RiftScuttlerを{2}と2、DragonかBaronを{2}と5、増加する。スタックが30貯まると進化する。").DZX(1,boot.BCW.i,30.0,0,boot.BCT.DXJ(boot.BCW.mf,0.67)).DZQ(2,boot.BCW.lp);
+		A.DZO("通常攻撃ごとに{1}を与える。スタックは大型モンスターかチャンピオンを{2}と1、RiftScuttlerを{2}と2、DragonかBaronを{2}と5、増加する。スタックが30貯まると進化する。").DZX(1,boot.BCW.i,30.0,0,boot.BCT.DXJ(boot.BCW.mn,0.67)).DZQ(2,boot.BCW.mh);
 		// 140
 	},
 	// teemowork.model.Ability#lambda$18(teemowork.model.AbilityDescriptor)
@@ -104338,13 +104367,13 @@ boot.define("BDV","BCT","",{
 	// teemowork.model.Ability#lambda$23(teemowork.model.AbilityDescriptor)
 	_EEx:function(A){
 		// 172
-		A.DZK("{1}であなたが殺すことなくミニオンが死んだ場合に{2}獲得し、{3}する。").DZR(1,boot.BCW.li,1400.0).DZR(2,boot.BCW.lb,3.0).DZR(3,boot.BCW.ih,5.0);
+		A.DZK("{1}であなたが殺すことなくミニオンが死んだ場合に{2}獲得し、{3}する。").DZR(1,boot.BCW.ma,1400.0).DZR(2,boot.BCW.lj,3.0).DZR(3,boot.BCW.ih,5.0);
 		// 173
 	},
 	// teemowork.model.Ability#lambda$24(teemowork.model.AbilityDescriptor)
 	_EEy:function(A){
 		// 180
-		A.DZK("{1}であなたが殺すことなくミニオンが死んだ場合に{2}獲得し、{3}する。").DZR(1,boot.BCW.li,1400.0).DZR(2,boot.BCW.lb,4.0).DZR(3,boot.BCW.ih,10.0);
+		A.DZK("{1}であなたが殺すことなくミニオンが死んだ場合に{2}獲得し、{3}する。").DZR(1,boot.BCW.ma,1400.0).DZR(2,boot.BCW.lj,4.0).DZR(3,boot.BCW.ih,10.0);
 		// 181
 	},
 	// teemowork.model.Ability#lambda$25(teemowork.model.AbilityDescriptor)
@@ -104362,7 +104391,7 @@ boot.define("BDV","BCT","",{
 	// teemowork.model.Ability#lambda$27(teemowork.model.AbilityDescriptor)
 	_EFB:function(A){
 		// 195
-		A.DZK("ユニットを倒すたびに{1}を得る。").DZR(1,boot.BCW.lb,2.0);
+		A.DZK("ユニットを倒すたびに{1}を得る。").DZR(1,boot.BCW.lj,2.0);
 		// 196
 	},
 	// teemowork.model.Ability#lambda$28(teemowork.model.AbilityDescriptor)
@@ -104374,13 +104403,13 @@ boot.define("BDV","BCT","",{
 	// teemowork.model.Ability#lambda$29(teemowork.model.AbilityDescriptor)
 	_EFD:function(A){
 		// 208
-		A.DZK("{1}の敵に毎秒{2}を与える。モンスターに対しては{3}を与える。 ").DZR(1,boot.BCW.li,400.0).DZX(2,boot.BCW.i,5.0,0,boot.BCT.DXJ(boot.BCW.hm,1)).DZX(3,boot.BCW.i,7.5,0,boot.BCT.DXJ(boot.BCW.hm,1.5));
+		A.DZK("{1}の敵に毎秒{2}を与える。モンスターに対しては{3}を与える。 ").DZR(1,boot.BCW.ma,400.0).DZX(2,boot.BCW.i,5.0,0,boot.BCT.DXJ(boot.BCW.hm,1)).DZX(3,boot.BCW.i,7.5,0,boot.BCT.DXJ(boot.BCW.hm,1.5));
 		// 209
 	},
 	// teemowork.model.Ability#lambda$30(teemowork.model.AbilityDescriptor)
 	_EFE:function(A){
 		// 216
-		A.DZK("{1}の敵に毎秒{2}を与える。モンスターに対しては{3}を与える。 ").DZR(1,boot.BCW.li,400.0).DZX(2,boot.BCW.i,15.0,0,boot.BCT.DXJ(boot.BCW.hm,0.6)).DZX(3,boot.BCW.i,30.0,0,boot.BCT.DXJ(boot.BCW.hm,1.2));
+		A.DZK("{1}の敵に毎秒{2}を与える。モンスターに対しては{3}を与える。 ").DZR(1,boot.BCW.ma,400.0).DZX(2,boot.BCW.i,15.0,0,boot.BCT.DXJ(boot.BCW.hm,0.6)).DZX(3,boot.BCW.i,30.0,0,boot.BCT.DXJ(boot.BCW.hm,1.2));
 		// 217
 	},
 	// teemowork.model.Ability#lambda$31(teemowork.model.AbilityDescriptor)
@@ -104404,7 +104433,7 @@ boot.define("BDV","BCT","",{
 	// teemowork.model.Ability#lambda$34(teemowork.model.AbilityDescriptor)
 	_EFI:function(A){
 		// 239
-		A.EDw("{1}の味方ユニットは{2}を得る。").DZR(1,boot.BCW.li,1100.0).DZR(2,boot.BCW.ge,15.0);
+		A.EDw("{1}の味方ユニットは{2}を得る。").DZR(1,boot.BCW.ma,1100.0).DZR(2,boot.BCW.ge,15.0);
 		// 240
 	},
 	// teemowork.model.Ability#lambda$35(teemowork.model.AbilityDescriptor)
@@ -104422,7 +104451,7 @@ boot.define("BDV","BCT","",{
 	// teemowork.model.Ability#lambda$37(teemowork.model.AbilityDescriptor)
 	_EFL:function(A){
 		// 254
-		A.DZK("大型モンスターを倒すたびに{1}を得る。").DZR(1,boot.BCW.lb,30.0);
+		A.DZK("大型モンスターを倒すたびに{1}を得る。").DZR(1,boot.BCW.lj,30.0);
 		// 255
 	},
 	// teemowork.model.Ability#lambda$38(teemowork.model.AbilityDescriptor)
@@ -104464,7 +104493,7 @@ boot.define("BDV","BCT","",{
 	// teemowork.model.Ability#lambda$44(teemowork.model.AbilityDescriptor)
 	_EFS:function(A){
 		// 291
-		A.DZK("タワー（破壊されたものを含む）の{1}では、2秒かけて{2}する。この効果は範囲外に出ると2秒かけて減衰する。").DZR(1,boot.BCW.li,1300.0).DZR(2,boot.BCW.kc,20.0);
+		A.DZK("タワー（破壊されたものを含む）の{1}では、2秒かけて{2}する。この効果は範囲外に出ると2秒かけて減衰する。").DZR(1,boot.BCW.ma,1300.0).DZR(2,boot.BCW.kc,20.0);
 		// 292
 	},
 	// teemowork.model.Ability#lambda$45(teemowork.model.AbilityDescriptor)
@@ -104482,13 +104511,13 @@ boot.define("BDV","BCT","",{
 	// teemowork.model.Ability#lambda$47(teemowork.model.AbilityDescriptor)
 	_EFV:function(A){
 		// 309
-		A.DZK("スマイト」を使って敵陣側のジャングルで大型モンスターを攻撃すると、「スマイト」の{1}する。そのモンスターを倒すと、{2}を得て{3}する。この効果は2秒間にかけて減衰する。").DZR(1,boot.BCW.ie,50.0).DZR(2,boot.BCW.lb,20.0).DZR(3,boot.BCW.kc,175.0);
+		A.DZK("スマイト」を使って敵陣側のジャングルで大型モンスターを攻撃すると、「スマイト」の{1}する。そのモンスターを倒すと、{2}を得て{3}する。この効果は2秒間にかけて減衰する。").DZR(1,boot.BCW.ie,50.0).DZR(2,boot.BCW.lj,20.0).DZR(3,boot.BCW.kc,175.0);
 		// 310
 	},
 	// teemowork.model.Ability#lambda$48(teemowork.model.AbilityDescriptor)
 	_EFW:function(A){
 		// 318
-		A.DZK("スキル使用後の通常攻撃に、周囲の敵ユニットに{1}を与える効果を付与し、範囲内の敵ユニットに{2}を与える円形のフィールド({3})を2秒間形成する。{5}。").DZX(1,boot.BCW.h,0,0,boot.BCT.DXJ(boot.BCW.dl,1.25)).DZR(2,boot.BCW.jl,30.0).DZR(3,boot.BCW.li,285.0).DZR(5,boot.BCW.ig,1.5);
+		A.DZK("スキル使用後の通常攻撃に、周囲の敵ユニットに{1}を与える効果を付与し、範囲内の敵ユニットに{2}を与える円形のフィールド({3})を2秒間形成する。{5}。").DZX(1,boot.BCW.h,0,0,boot.BCT.DXJ(boot.BCW.dl,1.25)).DZR(2,boot.BCW.jl,30.0).DZR(3,boot.BCW.ma,285.0).DZR(5,boot.BCW.ig,1.5);
 		// 319
 	},
 	// teemowork.model.Ability#lambda$49(teemowork.model.AbilityDescriptor)
@@ -104500,7 +104529,7 @@ boot.define("BDV","BCT","",{
 	// teemowork.model.Ability#lambda$50(teemowork.model.AbilityDescriptor)
 	_EFY:function(A){
 		// 335
-		A.DZK("スキル使用後の通常攻撃に、{1}を付与する。{2}。モンスターに対して攻撃した際には{3}を与え{4}し、{5}のモンスターに{1}を与える。").DZT(1,boot.BCW.i,0,0,boot.BCT.DXJ(boot.BCW.dl,1),boot.BCT.DXJ(boot.BCW.ei,0.3)).DZR(2,boot.BCW.ib,1.5).DZT(3,boot.BCW.i,0,0,boot.BCT.DXJ(boot.BCW.dl,2.0),boot.BCT.DXJ(boot.BCW.ei,0.3)).DZX(4,boot.BCW.ij,0,0,boot.BCT.DXJ(boot.BCW.de,8.0)).DZQ(5,boot.BCW.li);
+		A.DZK("スキル使用後の通常攻撃に、{1}を付与する。{2}。モンスターに対して攻撃した際には{3}を与え{4}し、{5}のモンスターに{1}を与える。").DZT(1,boot.BCW.i,0,0,boot.BCT.DXJ(boot.BCW.dl,1),boot.BCT.DXJ(boot.BCW.ei,0.3)).DZR(2,boot.BCW.ib,1.5).DZT(3,boot.BCW.i,0,0,boot.BCT.DXJ(boot.BCW.dl,2.0),boot.BCT.DXJ(boot.BCW.ei,0.3)).DZX(4,boot.BCW.ij,0,0,boot.BCT.DXJ(boot.BCW.de,8.0)).DZQ(5,boot.BCW.ma);
 		// 336
 	},
 	// teemowork.model.Ability#lambda$51(teemowork.model.AbilityDescriptor)
@@ -104524,19 +104553,19 @@ boot.define("BDV","BCT","",{
 	// teemowork.model.Ability#lambda$54(teemowork.model.AbilityDescriptor)
 	_EFw:function(A){
 		// 357
-		A.DZK("60秒毎に最大2つまでスタックが貯まる。スタックがある状態でミニオンを倒すとあなたと最寄りの味方Championは共にゴールドを獲得し、{1}する。また、体力が{2}以下のミニオンに近接攻撃を行うと、そのミニオンを倒すことが出来る。近くに味方がいない場合、これらの効果は発動しない。").DZR(1,boot.BCW.ih,40.0).DZX(2,boot.BCW.mb,200.0,0,boot.BCT.DXJ(boot.BCW.dh,1));
+		A.DZK("60秒毎に最大2つまでスタックが貯まる。スタックがある状態でミニオンを倒すとあなたと最寄りの味方Championは共にゴールドを獲得し、{1}する。また、体力が{2}以下のミニオンに近接攻撃を行うと、そのミニオンを倒すことが出来る。近くに味方がいない場合、これらの効果は発動しない。").DZR(1,boot.BCW.ih,40.0).DZX(2,boot.BCW.mj,200.0,0,boot.BCT.DXJ(boot.BCW.dh,1));
 		// 358
 	},
 	// teemowork.model.Ability#lambda$55(teemowork.model.AbilityDescriptor)
 	_EFx:function(A){
 		// 364
-		A.DZK("30秒毎に最大3つまでスタックが貯まる。スタックがある状態でミニオンを倒すとあなたと最寄りの味方Championは共にゴールドを獲得し、{1}する。また、体力が{2}以下のミニオンに近接攻撃を行うと、そのミニオンを倒すことが出来る。近くに味方がいない場合、これらの効果は発動しない。").DZR(1,boot.BCW.ih,50.0).DZX(2,boot.BCW.mb,240.0,0,boot.BCT.DXJ(boot.BCW.dh,1));
+		A.DZK("30秒毎に最大3つまでスタックが貯まる。スタックがある状態でミニオンを倒すとあなたと最寄りの味方Championは共にゴールドを獲得し、{1}する。また、体力が{2}以下のミニオンに近接攻撃を行うと、そのミニオンを倒すことが出来る。近くに味方がいない場合、これらの効果は発動しない。").DZR(1,boot.BCW.ih,50.0).DZX(2,boot.BCW.mj,240.0,0,boot.BCT.DXJ(boot.BCW.dh,1));
 		// 365
 	},
 	// teemowork.model.Ability#lambda$56(teemowork.model.AbilityDescriptor)
 	_EFy:function(A){
 		// 371
-		A.DZK("30秒毎に最大4つまでスタックが貯まる。スタックがある状態でミニオンを倒すとあなたと最寄りの味方Championは共にゴールドを獲得し、{1}する。また、体力が{2}以下のミニオンに近接攻撃を行うと、そのミニオンを倒すことが出来る。近くに味方がいない場合、これらの効果は発動しない。").DZX(1,boot.BCW.ih,50.0,0,boot.BCT.DXJ(boot.BCW.bh,1)).DZX(2,boot.BCW.mb,400.0,0,boot.BCT.DXJ(boot.BCW.dh,1));
+		A.DZK("30秒毎に最大4つまでスタックが貯まる。スタックがある状態でミニオンを倒すとあなたと最寄りの味方Championは共にゴールドを獲得し、{1}する。また、体力が{2}以下のミニオンに近接攻撃を行うと、そのミニオンを倒すことが出来る。近くに味方がいない場合、これらの効果は発動しない。").DZX(1,boot.BCW.ih,50.0,0,boot.BCT.DXJ(boot.BCW.bh,1)).DZX(2,boot.BCW.mj,400.0,0,boot.BCT.DXJ(boot.BCW.dh,1));
 		// 372
 	},
 	// teemowork.model.Ability#lambda$57(teemowork.model.AbilityDescriptor)
@@ -104548,13 +104577,13 @@ boot.define("BDV","BCT","",{
 	// teemowork.model.Ability#lambda$58(teemowork.model.AbilityDescriptor)
 	_EGA:function(A){
 		// 383
-		A.DZK("チャンピオンまたは建造物に対してスキル攻撃ないし通常攻撃を行うと、{1}を与え、{2}を得る。この効果は最大で30秒間に3回まで発生する。ミニオンを倒すと、これらの効果は12秒間無効となる。").DZR(1,boot.BCW.j,10.0).DZR(2,boot.BCW.lb,5.0);
+		A.DZK("チャンピオンまたは建造物に対してスキル攻撃ないし通常攻撃を行うと、{1}を与え、{2}を得る。この効果は最大で30秒間に3回まで発生する。ミニオンを倒すと、これらの効果は12秒間無効となる。").DZR(1,boot.BCW.j,10.0).DZR(2,boot.BCW.lj,5.0);
 		// 384
 	},
 	// teemowork.model.Ability#lambda$59(teemowork.model.AbilityDescriptor)
 	_EGB:function(A){
 		// 390
-		A.DZK("チャンピオンまたは建造物に対してスキル攻撃ないし通常攻撃を行うと、{1}を与え、{2}を得る。この効果は最大で30秒間に3回まで発生する。ミニオンを倒すと、これらの効果は12秒間無効となる。").DZR(1,boot.BCW.j,15.0).DZR(2,boot.BCW.lb,10.0);
+		A.DZK("チャンピオンまたは建造物に対してスキル攻撃ないし通常攻撃を行うと、{1}を与え、{2}を得る。この効果は最大で30秒間に3回まで発生する。ミニオンを倒すと、これらの効果は12秒間無効となる。").DZR(1,boot.BCW.j,15.0).DZR(2,boot.BCW.lj,10.0);
 		// 391
 	},
 	// teemowork.model.Ability#lambda$60(teemowork.model.AbilityDescriptor)
@@ -104645,8 +104674,8 @@ boot.define("BDV","BCT","",{
 	ee:[17,"name","u"],
 	ef:[18,"descriptor","BG<BDW>"],
 	W:[1,,,,"u","toString"],
-	DXO:[1,,,,"I","getMaxLevel"],
-	EGF:[4,,"BCU BDW",,"BDW","createDescriptor"]
+	EGF:[4,,"BCU BDW",,"BDW","createDescriptor"],
+	DXO:[1,,,,"I","getMaxLevel"]
 });
 
 // class teemowork.model.AbilityDescriptor "BDW"
@@ -105036,7 +105065,7 @@ boot.define("LL","","",{
 			// 82
 			F=new boot.BDZ(boot.BDC.$,0);
 			// 85
-			G=boot.JF.BGS(E);
+			G=boot.JF.BGU(E);
 			// 87
 			I=B.IH();
 			// 87
@@ -105293,7 +105322,7 @@ boot.define("BDu","","",{
 		// 84
 		this.e=B;
 		// 85
-		this.f=boot.JF.BCQ(boot.BDC.i,C);
+		this.f=boot.JF.BCS(boot.BDC.i,C);
 		// 86
 	},
 	// jsx.style.PropertyDefinition#value(java.lang.Object)
@@ -105340,7 +105369,7 @@ boot.define("BDu","","",{
 	// jsx.style.PropertyDefinition#value(java.lang.String, java.util.List, java.lang.String, int)
 	EGW:function(A,B,C,D){
 		// 176
-		return this.EGX(boot.JF.BCS(boot.BDC.$),A,B,C,D)
+		return this.EGX(boot.JF.BCU(boot.BDC.$),A,B,C,D)
 	},
 	// jsx.style.PropertyDefinition#value(java.util.EnumSet, java.lang.String, java.util.List, java.lang.String, int)
 	EGX:function(A,B,C,D,E){
@@ -105365,7 +105394,7 @@ boot.define("BDu","","",{
 		for (; E<F; ++E) {
 			D=G[E];
 			// 224
-			C.BDH(B.Gv(D).W());
+			C.BDJ(B.Gv(D).W());
 		}
 		// 226
 		return C.W()
@@ -105378,7 +105407,7 @@ boot.define("BDu","","",{
 		D=0;
 		for (; D<A.length; ++D) {
 			// 242
-			C.BDH(B.Gv(A[D]).W());
+			C.BDJ(B.Gv(A[D]).W());
 		}
 		// 244
 		return C.W()
@@ -105390,7 +105419,7 @@ boot.define("BDu","","",{
 		// 259
 		E=A.IH();
 		// 259
-		for (; E.IO()!=0; C.BDH(B.Gv(D).W())) {
+		for (; E.IO()!=0; C.BDJ(B.Gv(D).W())) {
 			D=E.Hx();
 		}
 		// 262
@@ -105514,9 +105543,9 @@ boot.define("BDv","","",{
 },{
 	$:[1,"booton.util.Strings",,"G"],
 	$0:[1],
-	EGx:[9,,"u",,"u","unhyphenate"],
+	EGy:[9,,"u",,"Z","hasSpace"],
 	EGQ:[9,,"u",,"u","hyphenate"],
-	EGy:[9,,"u",,"Z","hasSpace"]
+	EGx:[9,,"u",,"u","unhyphenate"]
 });
 
 // class jsx.style.value.Font "LK"
@@ -105705,11 +105734,11 @@ boot.define("Kx","","",{
 	g:[18,"filters","KX"],
 	EHA:[1,,"I I",,"Kx","size"],
 	EHB:[1,,"u",,"Kx","src"],
+	EHC:[1,,"D",,"Kx","grayscale"],
+	EHF:[1,,"I I I I",,"Kx","clip"],
 	EHD:[2,,"KX",,"Kx","applyFilter"],
 	EHE:[1,,"D",,"Kx","saturate"],
-	EHG:[1,,,,"Kx","clearFilter"],
-	EHF:[1,,"I I I I",,"Kx","clip"],
-	EHC:[1,,"D",,"Kx","grayscale"]
+	EHG:[1,,,,"Kx","clearFilter"]
 });
 
 // class js.dom.ClientRect "Kz"
@@ -106073,7 +106102,7 @@ boot.define("CX","","GS",{
 		return this.c<this.d.DO()
 	},
 	// java.lang.CharSequence$1CodePointIterator#nextInt()
-	BJD:function(A,B,C){
+	BJF:function(A,B,C){
 		// 210
 		A=this.d.DO();
 		// 212
@@ -106111,7 +106140,7 @@ boot.define("CX","","GS",{
 	c:[0,"cur","I"],
 	d:[4112,"this$0","CK"],
 	IO:[1,,,,"Z","hasNext"],
-	BJD:[1,,,,"I","nextInt"],
+	BJF:[1,,,,"I","nextInt"],
 	TM:[1,,"GV",,"V","forEachRemaining"]
 });
 
@@ -106131,7 +106160,7 @@ boot.define("CZ","","GS",{
 		return this.c<this.d.DO()
 	},
 	// java.lang.CharSequence$1CharIterator#nextInt()
-	BJD:function(){
+	BJF:function(){
 		// 139
 		if (this.IO()==0) {
 			// 142
@@ -106161,7 +106190,7 @@ boot.define("CZ","","GS",{
 	c:[0,"cur","I"],
 	d:[4112,"this$0","CK"],
 	IO:[1,,,,"Z","hasNext"],
-	BJD:[1,,,,"I","nextInt"],
+	BJF:[1,,,,"I","nextInt"],
 	TM:[1,,"GV",,"V","forEachRemaining"]
 });
 
@@ -107111,14 +107140,17 @@ boot.define("M","","",{
 	EJH:[28,,"Ky",,"V","after"],
 	EJG:[28,,"Ky",,"V","before"],
 	EIO:[28,,"Ky",,"V","enabled"],
-	EJF:[28,,"Ky",,"V","notEmpty"],
 	EJS:[28,,"Ky Ky",,"V","not"],
 	EJV:[28,,"Ky Ky",,"V","with"],
-	EJL:[28,,"Ky",,"V","children"],
+	EJF:[28,,"Ky",,"V","notEmpty"],
 	EIM:[28,,"Ky",,"V","link"],
 	EIU:[28,,"Ky",,"V","invalid"],
-	EIS:[28,,"Ky",,"V","optional"],
 	EIP:[28,,"Ky",,"V","disabled"],
+	EIS:[28,,"Ky",,"V","optional"],
+	EIV:[28,,"Ky",,"V","firstChild"],
+	EIY:[28,,"Ky",,"V","lastChild"],
+	EJX:[28,,"I BCX BEu BEu",,"V","createBottomBubble"],
+	EJL:[28,,"Ky",,"V","children"],
 	EIH:[25,,,,"BEx","shadow"],
 	EIB:[25,,"I I I D",,"BEu","hsla"],
 	EID:[25,,"BEu BEu",,"BEv","linear"],
@@ -107128,8 +107160,8 @@ boot.define("M","","",{
 	EHz:[25,,"I I I D",,"BEu","rgba"],
 	EJW:[28,,,,"BEy","transit"],
 	EIA:[25,,"I I I",,"BEu","hsl"],
-	EIG:[25,,"BEu BEu",,"BEw","radial"],
 	EIF:[25,,,,"BEw","radial"],
+	EIG:[25,,"BEu BEu",,"BEw","radial"],
 	EII:[28,,"Ky",,"V","active"],
 	EIJ:[28,,"Ky",,"V","checked"],
 	EIK:[28,,"Ky",,"V","focus"],
@@ -107160,10 +107192,7 @@ boot.define("M","","",{
 	EJR:[28,,"Ky",,"V","siblingChecked"],
 	EJT:[28,,"Ky Ky",,"V","inBackOf"],
 	EJU:[28,,"Ky Ky",,"V","insideOf"],
-	EJX:[28,,"I BCX BEu BEu",,"V","createBottomBubble"],
-	EIV:[28,,"Ky",,"V","firstChild"],
-	EJx:[28,,"I BCX BEu BEu",,"V","createTopBubble"],
-	EIY:[28,,"Ky",,"V","lastChild"]
+	EJx:[28,,"I BCX BEu BEu",,"V","createTopBubble"]
 });
 
 // class jsx.style.property.Animation "BEB"
@@ -107364,10 +107393,10 @@ boot.define("BEB","BDu","",{
 	EKW:[1,,,,"BEB","reverse"],
 	EKR:[1,,,,"BEB","running"],
 	EKw:[1,,"D BCZ",,"BEB","delay"],
+	EKu:[1,,,,"BEB","iterationInfinite"],
 	EKx:[1,,,,"BEB","linear"],
 	EKv:[1,,"D BCZ",,"BEB","duration"],
 	ELA:[1,,,,"BEB","easeInOut"],
-	EKu:[1,,,,"BEB","iterationInfinite"],
 	EKy:[1,,,,"BEB","ease"],
 	EKS:[1,,,,"BEB","paused"],
 	EKT:[1,,,,"BEB","forwards"],
@@ -107513,21 +107542,21 @@ boot.define("BED","BDu","",{
 	g:[17,"sizing","BFA"],
 	ELF:[1,,"BCX",,"BED","size"],
 	EKE:[1,,"D BCZ",,"BED","size"],
+	ELH:[1,,"BCX",,"BED","height"],
+	ELN:[1,,"D BCZ",,"BED","height"],
+	ELG:[1,,"BCX",,"BED","width"],
+	ELI:[1,,"D BCZ",,"BED","width"],
 	ELU:[129,,"[BEx",,"BED","shadow"],
 	ELK:[1,,"BCX",,"BED","minWidth"],
 	ELJ:[1,,"D BCZ",,"BED","minWidth"],
 	ELS:[1,,"I",,"BED","zIndex"],
 	ELT:[1,,"D",,"BED","opacity"],
-	ELM:[1,,"BCX",,"BED","maxWidth"],
 	ELL:[1,,"D BCZ",,"BED","maxWidth"],
+	ELM:[1,,"BCX",,"BED","maxWidth"],
 	ELP:[1,,"BCX",,"BED","minHeight"],
 	ELO:[1,,"D BCZ",,"BED","minHeight"],
 	ELQ:[1,,"D BCZ",,"BED","maxHeight"],
-	ELR:[1,,"BCX",,"BED","maxHeight"],
-	ELN:[1,,"D BCZ",,"BED","height"],
-	ELH:[1,,"BCX",,"BED","height"],
-	ELG:[1,,"BCX",,"BED","width"],
-	ELI:[1,,"D BCZ",,"BED","width"]
+	ELR:[1,,"BCX",,"BED","maxHeight"]
 });
 
 // class jsx.style.property.Box$Sizing "BFA"
@@ -107923,14 +107952,14 @@ boot.define("BEu","","",{
 	EMD:[10,,"F F",,"F","range"],
 	EMK:[10,,"F F F F",,"BEu","color"],
 	EMI:[1,,,,"BEu","complement"],
-	EMJ:[9,,"u",,"BEu","rgb"],
-	EHy:[9,,"I I I",,"BEu","rgb"],
-	EHz:[9,,"I I I D",,"BEu","rgba"],
-	EMG:[1,,"I",,"BEu","lighten"],
-	EMF:[1,,"I",,"BEu","saturate"],
-	EKN:[1,,"D",,"BEu","opacify"],
 	EME:[1,,"I",,"BEu","adjustHue"],
-	EMH:[1,,,,"BEu","grayscale"]
+	EMH:[1,,,,"BEu","grayscale"],
+	EMG:[1,,"I",,"BEu","lighten"],
+	EHy:[9,,"I I I",,"BEu","rgb"],
+	EMJ:[9,,"u",,"BEu","rgb"],
+	EHz:[9,,"I I I D",,"BEu","rgba"],
+	EKN:[1,,"D",,"BEu","opacify"],
+	EMF:[1,,"I",,"BEu","saturate"]
 });
 
 // class jsx.style.property.Cursor "BEE"
@@ -108101,9 +108130,9 @@ boot.define("BEE","BDu","",{
 	EML:[1,,,,"BEE","defaults"],
 	EMX:[1,,,,"BEE","copy"],
 	EMO:[1,,,,"BEE","help"],
-	EMU:[1,,,,"BEE","text"],
 	EMY:[1,,,,"BEE","move"],
 	EMQ:[1,,,,"BEE","progress"],
+	EMU:[1,,,,"BEE","text"],
 	EMM:[1,,,,"BEE","none"],
 	EMN:[1,,,,"BEE","contextMenu"],
 	EMP:[1,,,,"BEE","pointer"],
@@ -108400,20 +108429,21 @@ boot.define("BEF","BEG","",{
 	ENu:[1,,"BCX",,"BEF","size"],
 	ENZ:[1,,"D BCZ",,"BEF","size"],
 	ENR:[2,,"[BFB I",,"Bz","collect"],
-	ENx:[1,,"D BCZ D BCZ",,"BEF","position"],
 	ENy:[1,,"BCX BCX",,"BEF","position"],
+	ENx:[1,,"D BCZ D BCZ",,"BEF","position"],
 	EOH:[1,,,,"BEF","round"],
 	ENK:[1,,"BEu",,"BEF","color"],
+	ENY:[1,,,,"BEF","local"],
 	ENM:[1,,"u",,"BEF","image"],
 	ENQ:[129,,"[BFB",,"BEF","image"],
 	ENO:[1,,"BFB",,"BEF","image"],
-	ENY:[1,,,,"BEF","local"],
-	EOB:[1,,"D BCZ",,"BEF","vertical"],
+	ENX:[1,,,,"BEF","fixed"],
+	ENL:[1,,,,"BEF","none"],
+	EOF:[1,,,,"BEF","repeat"],
 	EOC:[1,,"BCX",,"BEF","vertical"],
+	EOB:[1,,"D BCZ",,"BEF","vertical"],
 	EOA:[1,,"BCX",,"BEF","horizontal"],
 	ENz:[1,,"D BCZ",,"BEF","horizontal"],
-	EOF:[1,,,,"BEF","repeat"],
-	ENL:[1,,,,"BEF","none"],
 	ENN:[10,,"u",,"u","normalizeURL"],
 	ENW:[1,,,,"BEF","scroll"],
 	ENT:[1,,,,"BEF","paddingBox"],
@@ -108424,8 +108454,7 @@ boot.define("BEF","BEG","",{
 	EOD:[1,,,,"BEF","repeatX"],
 	EOE:[1,,,,"BEF","repeatY"],
 	EOG:[1,,,,"BEF","space"],
-	EOI:[1,,,,"BEF","noRepeat"],
-	ENX:[1,,,,"BEF","fixed"]
+	EOI:[1,,,,"BEF","noRepeat"]
 });
 
 // class jsx.style.property.Background$BackgroundImage "BFB"
@@ -108643,12 +108672,14 @@ boot.define("BFB","","",{
 	EOP:[25,,"u",,"BFB","url"],
 	EOQ:[1,,,,"BFB","top"],
 	EOy:[1,,,,"BFB","local"],
+	EOx:[1,,,,"BFB","fixed"],
+	EOR:[1,,,,"BFB","bottom"],
+	EON:[9,,,,"BFB","none"],
+	EPB:[1,,,,"BFB","repeat"],
 	EOT:[1,,"BCX",,"BFB","vertical"],
 	EOS:[1,,"D BCZ",,"BFB","vertical"],
 	EOW:[1,,"D BCZ",,"BFB","horizontal"],
 	EOX:[1,,"BCX",,"BFB","horizontal"],
-	EPB:[1,,,,"BFB","repeat"],
-	EON:[9,,,,"BFB","none"],
 	EOw:[1,,,,"BFB","scroll"],
 	EPG:[1,,,,"BFB","paddingBox"],
 	EPH:[1,,,,"BFB","contentBox"],
@@ -108658,9 +108689,7 @@ boot.define("BFB","","",{
 	EOz:[1,,,,"BFB","repeatX"],
 	EPA:[1,,,,"BFB","repeatY"],
 	EPC:[1,,,,"BFB","space"],
-	EPE:[1,,,,"BFB","noRepeat"],
-	EOx:[1,,,,"BFB","fixed"],
-	EOR:[1,,,,"BFB","bottom"]
+	EPE:[1,,,,"BFB","noRepeat"]
 });
 
 // class jsx.style.value.LinearGradient "BEv"
@@ -108744,7 +108773,7 @@ boot.define("BEv","BCY","",{
 	// jsx.style.value.LinearGradient#vendors()
 	DYV:function(){
 		// 158
-		return boot.JF.BGM(boot.BDC.i,boot.BDC.h)
+		return boot.JF.BGO(boot.BDC.i,boot.BDC.h)
 	},
 	// jsx.style.value.LinearGradient#valueFor(jsx.style.Vendor)
 	DYW:function(A,B,C,D,E){
@@ -108805,12 +108834,12 @@ boot.define("BEv","BCY","",{
 	EIE:[129,,"[BEu",,"T:BEv","color"],
 	EPK:[1,,"BEu BCX",,"T:BEv","color"],
 	EPM:[1,,,,"T:BEv","repeat"],
-	DYV:[4,,,,"JF<BDC>","vendors"],
-	DYW:[4,,"BDC",,"u","valueFor"],
 	EPJ:[1,,"BCX",,"T:BEv","angle"],
 	EPI:[1,,"D BCZ",,"T:BEv","angle"],
 	EPN:[1,,,,"BEu","getStartColor"],
-	EPO:[1,,,,"BEu","getEndColor"]
+	EPO:[1,,,,"BEu","getEndColor"],
+	DYV:[4,,,,"JF<BDC>","vendors"],
+	DYW:[4,,"BDC",,"u","valueFor"]
 });
 
 // class jsx.style.value.LinearGradient$Step "BFC"
@@ -108908,20 +108937,20 @@ boot.define("BEI","BEG","",{
 	$:[1025,"jsx.style.property.Border",,"BEG<BEI>"],
 	$0:[4],
 	EPR:[1028,,"u",,"BEI","style"],
-	EPV:[17,,,,"BEI","hidden"],
-	EKK:[17,,,,"BEI","solid"],
-	EPS:[17,,"D BCZ",,"BEI","radius"],
-	EPP:[1025,,"BCX",,"BEI","radius"],
-	EPU:[17,,,,"BEI","none"],
 	EPY:[17,,,,"BEI","doubles"],
+	EPV:[17,,,,"BEI","hidden"],
+	EPT:[17,,"D BCZ",,"BEI","width"],
+	EKM:[1025,,"BCX",,"BEI","width"],
+	EPU:[17,,,,"BEI","none"],
+	EKK:[17,,,,"BEI","solid"],
+	EPP:[1025,,"BCX",,"BEI","radius"],
+	EPS:[17,,"D BCZ",,"BEI","radius"],
 	EPW:[17,,,,"BEI","dotted"],
 	EPX:[17,,,,"BEI","dashed"],
 	EPZ:[17,,,,"BEI","groove"],
 	EPu:[17,,,,"BEI","ridge"],
 	EPv:[17,,,,"BEI","inset"],
-	EPw:[17,,,,"BEI","outset"],
-	EPT:[17,,"D BCZ",,"BEI","width"],
-	EKM:[1025,,"BCX",,"BEI","width"]
+	EPw:[17,,,,"BEI","outset"]
 });
 
 // class jsx.style.property.Borders "BEH"
@@ -108980,8 +109009,8 @@ boot.define("BEH","BEI","",{
 	l:[17,"horizontal","BEI"],
 	EPQ:[1,,"BEu",,"BEI","color"],
 	EPR:[4,,"u",,"BEI","style"],
-	EPP:[1,,"BCX",,"BEI","radius"],
-	EKM:[1,,"BCX",,"BEI","width"]
+	EKM:[1,,"BCX",,"BEI","width"],
+	EPP:[1,,"BCX",,"BEI","radius"]
 });
 
 // class jsx.style.property.Borders$Each "BFD"
@@ -109079,8 +109108,8 @@ boot.define("BFD","BEI","",{
 	g:[18,"sides","[u"],
 	EPQ:[1,,"BEu",,"BEI","color"],
 	EPR:[4,,"u",,"BEI","style"],
-	EPP:[1,,"BCX",,"BEI","radius"],
-	EKM:[1,,"BCX",,"BEI","width"]
+	EKM:[1,,"BCX",,"BEI","width"],
+	EPP:[1,,"BCX",,"BEI","radius"]
 });
 
 // class jsx.style.property.Content "BEJ"
@@ -109189,14 +109218,14 @@ boot.define("BEK","BDu","",{
 	$:[17,"jsx.style.property.Display",,"BDu<BEK>"],
 	$0:[1],
 	EKD:[1,,,,"BEK","block"],
-	EQC:[1,,,,"BEK","inlineBlock"],
+	EQB:[1,,,,"BEK","inline"],
 	EQF:[1,,,,"BEK","none"],
+	EQC:[1,,,,"BEK","inlineBlock"],
+	EKA:[1,,,,"BEz","flex"],
 	EQD:[1,,,,"BEK","listItem"],
 	EQE:[1,,,,"BEz","inlineFlex"],
 	EQG:[1,,,,"BEz","horizontalBox"],
-	EQH:[1,,,,"BEz","verticalBox"],
-	EKA:[1,,,,"BEz","flex"],
-	EQB:[1,,,,"BEK","inline"]
+	EQH:[1,,,,"BEz","verticalBox"]
 });
 
 // class jsx.style.property.Flex "BEz"
@@ -109778,8 +109807,8 @@ boot.define("BFL","BDu","",{
 	$0:[4096,,"BEN BFL"],
 	$1:[2,,"BEN"],
 	g:[4112,"this$0","BEN"],
-	ERH:[1,,,,"BEN","normal"],
-	ERK:[1,,,,"BEN","smallCaps"]
+	ERK:[1,,,,"BEN","smallCaps"],
+	ERH:[1,,,,"BEN","normal"]
 });
 
 // class jsx.style.property.Font$Weight "BFM"
@@ -109833,9 +109862,9 @@ boot.define("BFM","BDu","",{
 	$0:[4096,,"BEN BFM"],
 	g:[4112,"this$0","BEN"],
 	ERO:[2,,"I",,"BEN","number"],
+	ERM:[1,,,,"BEN","lighter"],
 	ERL:[1,,,,"BEN","bold"],
 	ERH:[1,,,,"BEN","normal"],
-	ERM:[1,,,,"BEN","lighter"],
 	ERN:[1,,,,"BEN","bolder"]
 });
 
@@ -109972,10 +110001,10 @@ boot.define("BFO","BDu","",{
 		for (; D<E; ++D) {
 			C=F[D];
 			// 573
-			B.BDH(C);
+			B.BDJ(C);
 		}
 		// 575
-		B.BDH(A);
+		B.BDJ(A);
 		// 577
 		return B.W()
 	},
@@ -110138,8 +110167,8 @@ boot.define("BEP","BDu","",{
 },{
 	$:[1,"jsx.style.property.ListStyle",,"BDu<BEP>"],
 	$0:[1],
-	ESA:[1,,"u",,"BEP","image"],
 	ESC:[1,,,,"BEP","square"],
+	ESA:[1,,"u",,"BEP","image"],
 	ESE:[1,,,,"BEP","decimalLeadingZero"],
 	ESR:[1,,,,"BEP","none"],
 	ESB:[1,,,,"BEP","circle"],
@@ -110285,13 +110314,13 @@ boot.define("BEQ","BDu","",{
 	ESu:[1,,"BCX",,"BEQ","right"],
 	EHv:[1,,"D BCZ",,"BEQ","top"],
 	ESv:[1,,"BCX",,"BEQ","top"],
-	ESY:[1,,"BCX",,"BEQ","vertical"],
-	ESV:[1,,"D BCZ",,"BEQ","vertical"],
-	EHu:[1,,"D BCZ",,"BEQ","horizontal"],
-	ESX:[1,,"BCX",,"BEQ","horizontal"],
-	ESZ:[1,,,,"BEQ","auto"],
+	ESw:[1,,"D BCZ",,"BEQ","bottom"],
 	ESx:[1,,"BCX",,"BEQ","bottom"],
-	ESw:[1,,"D BCZ",,"BEQ","bottom"]
+	ESV:[1,,"D BCZ",,"BEQ","vertical"],
+	ESY:[1,,"BCX",,"BEQ","vertical"],
+	ESX:[1,,"BCX",,"BEQ","horizontal"],
+	EHu:[1,,"D BCZ",,"BEQ","horizontal"],
+	ESZ:[1,,,,"BEQ","auto"]
 });
 
 // class jsx.style.property.BoxLength$Auto "BFP"
@@ -110412,18 +110441,18 @@ boot.define("BER","BEG","",{
 	$0:[1],
 	ETA:[1,,"BEu",,"BER","color"],
 	ETD:[4,,"u",,"BER","style"],
-	ETF:[17,,,,"BER","hidden"],
-	ETI:[17,,,,"BER","solid"],
-	ETE:[17,,,,"BER","none"],
 	ETJ:[17,,,,"BER","doubles"],
+	ETF:[17,,,,"BER","hidden"],
+	ETB:[1,,"BCX",,"BER","width"],
+	ETC:[17,,"D BCZ",,"BER","width"],
+	ETE:[17,,,,"BER","none"],
+	ETI:[17,,,,"BER","solid"],
 	ETG:[17,,,,"BER","dotted"],
 	ETH:[17,,,,"BER","dashed"],
 	ETK:[17,,,,"BER","groove"],
 	ETL:[17,,,,"BER","ridge"],
 	ETM:[17,,,,"BER","inset"],
-	ETN:[17,,,,"BER","outset"],
-	ETB:[1,,"BCX",,"BER","width"],
-	ETC:[17,,"D BCZ",,"BER","width"]
+	ETN:[17,,,,"BER","outset"]
 });
 
 // class jsx.style.property.Overflow "BET"
@@ -110551,14 +110580,14 @@ boot.define("BEU","BDu","",{
 	$0:[1],
 	ETZ:[1,,,,"BEU","fill"],
 	ETv:[1,,,,"BEU","all"],
-	ETu:[1,,,,"BEU","stroke"],
 	ETT:[1,,,,"BEU","none"],
-	ETX:[1,,,,"BEU","visible"],
-	ETS:[1,,,,"BEU","auto"],
 	ETU:[1,,,,"BEU","visiblePainted"],
 	ETV:[1,,,,"BEU","visibleFill"],
 	ETW:[1,,,,"BEU","visibleStroke"],
-	ETY:[1,,,,"BEU","painted"]
+	ETY:[1,,,,"BEU","painted"],
+	ETX:[1,,,,"BEU","visible"],
+	ETu:[1,,,,"BEU","stroke"],
+	ETS:[1,,,,"BEU","auto"]
 });
 
 // class jsx.style.property.Position "BEV"
@@ -110670,15 +110699,15 @@ boot.define("BEV","BDu","",{
 	ETy:[1,,"D BCZ",,"BEV","right"],
 	EUA:[1,,"BCX",,"BEV","top"],
 	EKI:[1,,"D BCZ",,"BEV","top"],
-	EJu:[1,,,,"BEV","relative"],
-	EUC:[1,,,,"BEV","center"],
-	EKG:[1,,,,"BEV","absolute"],
-	EJZ:[1,,,,"Z","isRelative"],
-	EUG:[1,,,,"BEV","centerHorizontally"],
-	EUE:[1,,,,"BEV","centerVertically"],
 	ETw:[1,,,,"BEV","fixed"],
 	EUB:[1,,"BCX",,"BEV","bottom"],
-	EKO:[1,,"D BCZ",,"BEV","bottom"]
+	EKO:[1,,"D BCZ",,"BEV","bottom"],
+	EUG:[1,,,,"BEV","centerHorizontally"],
+	EJu:[1,,,,"BEV","relative"],
+	EUE:[1,,,,"BEV","centerVertically"],
+	EUC:[1,,,,"BEV","center"],
+	EKG:[1,,,,"BEV","absolute"],
+	EJZ:[1,,,,"Z","isRelative"]
 });
 
 // class jsx.style.property.Transform "BEY"
@@ -110708,7 +110737,7 @@ boot.define("BEY","BDu","",{
 		// 63
 		this.g.CA(B);
 		// 65
-		this.EGX(boot.JF.BGN(boot.BDC.h),"transform",this.g," ",1);
+		this.EGX(boot.JF.BGP(boot.BDC.h),"transform",this.g," ",1);
 		// 66
 	},
 	// jsx.style.property.Transform#rotate(double, jsx.style.value.Unit)
@@ -110880,16 +110909,16 @@ boot.define("BEY","BDu","",{
 	EUz:[1,,"BCX",,"BEY","translate"],
 	EUx:[1,,"D BCZ D BCZ",,"BEY","translate"],
 	EUD:[1,,"D BCZ",,"BEY","translate"],
-	EUF:[1,,"D BCZ",,"BEY","translateY"],
 	EVB:[1,,"BCX",,"BEY","translateY"],
+	EUF:[1,,"D BCZ",,"BEY","translateY"],
 	EVA:[1,,"BCX",,"BEY","translateX"],
 	EUH:[1,,"D BCZ",,"BEY","translateX"],
-	EUM:[1,,"D BCZ",,"BEY","rotateY"],
-	EUN:[1,,"BCX",,"BEY","rotateY"],
-	EUL:[1,,"BCX",,"BEY","rotateX"],
 	EUK:[1,,"D BCZ",,"BEY","rotateX"],
+	EUL:[1,,"BCX",,"BEY","rotateX"],
 	EUO:[1,,"D BCZ",,"BEY","rotateZ"],
 	EUP:[1,,"BCX",,"BEY","rotateZ"],
+	EUM:[1,,"D BCZ",,"BEY","rotateY"],
+	EUN:[1,,"BCX",,"BEY","rotateY"],
 	EUS:[1,,"D",,"BEY","scaleX"],
 	EUT:[1,,"D",,"BEY","scaleY"],
 	EUU:[1,,"D",,"BEY","scaleZ"],
@@ -110971,7 +111000,7 @@ boot.define("BFQ","BCY","",{
 	// jsx.style.property.Transform$Function#vendors()
 	DYV:function(A,B,C,D,E){
 		// 601
-		A=boot.JF.BCS(boot.BDC.$);
+		A=boot.JF.BCU(boot.BDC.$);
 		// 603
 		D=(E=this.e).length;C=0;
 		for (; C<D; ++C) {
@@ -111077,11 +111106,11 @@ boot.define("BEW","BEG","",{
 	h:[17,"linejoin","BFT"],
 	i:[17,"width","BFU"],
 	EVE:[1,,"BEu",,"BEW","color"],
+	EVF:[1,,"D BCZ",,"BEW","width"],
+	EVG:[1,,"BCX",,"BEW","width"],
 	EVI:[129,,"[F",,"BEW","dashArray"],
 	EVJ:[1,,"D",,"BEW","dashOffset"],
-	EVK:[1,,"I",,"BEW","miterLimit"],
-	EVG:[1,,"BCX",,"BEW","width"],
-	EVF:[1,,"D BCZ",,"BEW","width"]
+	EVK:[1,,"I",,"BEW","miterLimit"]
 });
 
 // class jsx.style.property.Stroke$LineCap "BFS"
@@ -111288,12 +111317,12 @@ boot.define("BEX","BDu","",{
 	h:[17,"decoration","BFW"],
 	i:[17,"overflow","BFX"],
 	j:[17,"verticalAlign","BFY"],
-	EVU:[1,,"BEu",,"BEX","shadow"],
-	EVT:[129,,"[BEx",,"BEX","shadow"],
-	EVV:[1,,"BEu D",,"BEX","shadow"],
-	EVW:[1,,"BEu D",,"BEX","outline"],
-	EVS:[1,,"BCX",,"BEX","indent"],
 	EVR:[1,,"D BCZ",,"BEX","indent"],
+	EVS:[1,,"BCX",,"BEX","indent"],
+	EVU:[1,,"BEu",,"BEX","shadow"],
+	EVV:[1,,"BEu D",,"BEX","shadow"],
+	EVT:[129,,"[BEx",,"BEX","shadow"],
+	EVW:[1,,"BEu D",,"BEX","outline"],
 	EVX:[1,,,,"BEX","unselectable"]
 });
 
@@ -111351,8 +111380,8 @@ boot.define("BFV","BDu","",{
 	EVY:[1,,,,"BEX","left"],
 	EVZ:[1,,,,"BEX","right"],
 	EVx:[1,,,,"BEX","end"],
-	EVu:[1,,,,"BEX","center"],
-	EVv:[1,,,,"BEX","justify"]
+	EVv:[1,,,,"BEX","justify"],
+	EVu:[1,,,,"BEX","center"]
 });
 
 // class jsx.style.property.Text$Decration "BFW"
@@ -111501,14 +111530,14 @@ boot.define("BFY","BDu","",{
 	$0:[4096,,"BEX BFY"],
 	$1:[2,,"BEX"],
 	g:[4112,"this$0","BEX"],
-	EWL:[1,,,,"BEX","top"],
 	EWG:[1,,,,"BEX","sub"],
+	EWL:[1,,,,"BEX","top"],
 	EWK:[1,,,,"BEX","middle"],
-	EWF:[1,,,,"BEX","baseline"],
+	EWM:[1,,,,"BEX","bottom"],
 	EWH:[1,,,,"BEX","sup"],
 	EWI:[1,,,,"BEX","textTop"],
 	EWJ:[1,,,,"BEX","textBottom"],
-	EWM:[1,,,,"BEX","bottom"]
+	EWF:[1,,,,"BEX","baseline"]
 });
 
 // class jsx.style.property.BuiltinStyle "BFZ"
@@ -111570,8 +111599,8 @@ boot.define("BEZ","BDu","",{
 	$:[1,"jsx.style.property.Visibility",,"BDu<BEZ>"],
 	$0:[1],
 	EWO:[1,,,,"BEZ","hidden"],
-	EWN:[1,,,,"BEZ","visible"],
-	EWP:[1,,,,"BEZ","collapse"]
+	EWP:[1,,,,"BEZ","collapse"],
+	EWN:[1,,,,"BEZ","visible"]
 });
 
 // class jsx.style.value.RadialGradient "BEw"
@@ -111675,7 +111704,7 @@ boot.define("BFu","BCY","",{
 	// jsx.style.value.Position#vendors()
 	DYV:function(A){
 		// 60
-		A=boot.JF.BCS(boot.BDC.$);
+		A=boot.JF.BCU(boot.BDC.$);
 		// 62
 		if (this.d!=null) {
 			// 63
@@ -111912,18 +111941,7 @@ boot.define("BEy","BDu","",{
 	h:[2,"delay","BCX"],
 	i:[2,"timing","u"],
 	EWS:[1,,"D BCZ",,"BEy","delay"],
-	EWu:[1,,"Ky Ky",,"V","when"],
-	EWv:[2,,"u Ky",,"V","when"],
-	EWT:[1,,,,"BEy","linear"],
-	EWR:[1,,"D BCZ",,"BEy","duration"],
-	EWW:[1,,,,"BEy","easeInOut"],
-	EWz:[1,,"Ky",,"V","whenParentHover"],
 	EXB:[1,,"Ky",,"V","whenAdjacentHover"],
-	EWU:[1,,,,"BEy","ease"],
-	EWV:[1,,,,"BEy","easeIn"],
-	EWX:[1,,,,"BEy","easeOut"],
-	EWY:[1,,,,"BEy","stepStart"],
-	EWZ:[1,,,,"BEy","stepEnd"],
 	EXA:[1,,"Ky",,"V","whenSiblingHover"],
 	EWx:[1,,"Ky Ky",,"V","whenWith"],
 	EWy:[1,,"Ky",,"V","whenHover"],
@@ -111933,7 +111951,18 @@ boot.define("BEy","BDu","",{
 	EXE:[1,,"Ky",,"V","whenCheck"],
 	EXF:[1,,"Ky",,"V","whenValid"],
 	EXG:[1,,"Ky",,"V","whenInvalid"],
-	EXK:[1,,,,"V","whenever"]
+	EXK:[1,,,,"V","whenever"],
+	EWv:[2,,"u Ky",,"V","when"],
+	EWu:[1,,"Ky Ky",,"V","when"],
+	EWT:[1,,,,"BEy","linear"],
+	EWR:[1,,"D BCZ",,"BEy","duration"],
+	EWW:[1,,,,"BEy","easeInOut"],
+	EWz:[1,,"Ky",,"V","whenParentHover"],
+	EWU:[1,,,,"BEy","ease"],
+	EWV:[1,,,,"BEy","easeIn"],
+	EWX:[1,,,,"BEy","easeOut"],
+	EWY:[1,,,,"BEy","stepStart"],
+	EWZ:[1,,,,"BEy","stepEnd"]
 });
 
 // class teemowork.TeemoworkTheme "L"
@@ -112191,177 +112220,177 @@ boot.define("BFw","","",{
 boot.define("P","Q","",{
 	// teemowork.ChampionSelect#<init>(teemowork.Teemowork)
 	$0:function(A){
-		// 132
+		// 137
 		boot.Q.prototype.$0.call(this);
-		// 112
-		this.m=Φ("BFx",[new boot.BFx("ダメージ",Φ("BFy",[boot.P.EXP(Φ("BCW",[boot.BCW.h])),boot.P.EXP(Φ("BCW",[boot.BCW.i])),boot.P.EXP(Φ("BCW",[boot.BCW.j])),boot.P.EXQ("範囲攻撃",Φ("BCW",[boot.BCW.li]))]),null,0),new boot.BFx("参照",Φ("BFy",[boot.P.EXR(Φ("BCW",[boot.BCW.bf,boot.BCW.bh,boot.BCW.bj,boot.BCW.bk])),boot.P.EXR(Φ("BCW",[boot.BCW.bp,boot.BCW.cb,boot.BCW.cc])),boot.P.EXR(Φ("BCW",[boot.BCW.dh,boot.BCW.dj,boot.BCW.dk,boot.BCW.dl])),boot.P.EXR(Φ("BCW",[boot.BCW.ei,boot.BCW.ek])),boot.P.EXR(Φ("BCW",[boot.BCW.ga,boot.BCW.gc,boot.BCW.gd])),boot.P.EXR(Φ("BCW",[boot.BCW.ge,boot.BCW.gg,boot.BCW.gh])),boot.P.EXR(Φ("BCW",[boot.BCW.ka,boot.BCW.kc,boot.BCW.kd])),boot.P.EXR(Φ("BCW",[boot.BCW.cm])),boot.P.EXR(Φ("BCW",[boot.BCW.dd])),boot.P.EXR(Φ("BCW",[boot.BCW.cn])),boot.P.EXR(Φ("BCW",[boot.BCW.de])),boot.P.EXR(Φ("BCW",[boot.BCW.co])),boot.P.EXR(Φ("BCW",[boot.BCW.df])),boot.P.EXS(Φ("BCW",[boot.BCW.cp])),boot.P.EXS(Φ("BCW",[boot.BCW.da])),boot.P.EXS(Φ("BCW",[boot.BCW.dc])),boot.P.EXS(Φ("BCW",[boot.BCW.db])),boot.P.EXS(Φ("BCW",[boot.BCW.el]))]),null,0),new boot.BFx("Buff",Φ("BFy",[boot.P.EXP(Φ("BCW",[boot.BCW.bf,boot.BCW.bh])),boot.P.EXP(Φ("BCW",[boot.BCW.bp,boot.BCW.cb])),boot.P.EXP(Φ("BCW",[boot.BCW.dh,boot.BCW.dj])),boot.P.EXP(Φ("BCW",[boot.BCW.ei,boot.BCW.ek])),boot.P.EXP(Φ("BCW",[boot.BCW.ga,boot.BCW.gc])),boot.P.EXP(Φ("BCW",[boot.BCW.ge,boot.BCW.gg])),boot.P.EXP(Φ("BCW",[boot.BCW.ka,boot.BCW.kc])),boot.P.EXP(Φ("BCW",[boot.BCW.dn,boot.BCW.ea])),boot.P.EXP(Φ("BCW",[boot.BCW.em,boot.BCW.eo])),boot.P.EXP(Φ("BCW",[boot.BCW.eb,boot.BCW.ed])),boot.P.EXP(Φ("BCW",[boot.BCW.fa,boot.BCW.fc])),boot.P.EXP(Φ("BCW",[boot.BCW.fd,boot.BCW.ff])),boot.P.EXP(Φ("BCW",[boot.BCW.fk,boot.BCW.fm])),boot.P.EXP(Φ("BCW",[boot.BCW.he,boot.BCW.hf,boot.BCW.hg])),boot.P.EXQ("スキル無効",Φ("BCW",[boot.BCW.hh])),boot.P.EXP(Φ("BCW",[boot.BCW.kh,boot.BCW.ki])),boot.P.EXP(Φ("BCW",[boot.BCW.kf])),boot.P.EXP(Φ("BCW",[boot.BCW.kg]))]),null,0),new boot.BFx("Debuff",Φ("BFy",[boot.P.EXP(Φ("BCW",[boot.BCW.jk,boot.BCW.jl,boot.BCW.ji,boot.BCW.jj])),boot.P.EXP(Φ("BCW",[boot.BCW.jm,boot.BCW.jn,boot.BCW.ji,boot.BCW.jj])),boot.P.EXP(Φ("BCW",[boot.BCW.im])),boot.P.EXP(Φ("BCW",[boot.BCW.ip])),boot.P.EXP(Φ("BCW",[boot.BCW.je])),boot.P.EXP(Φ("BCW",[boot.BCW.jh])),boot.P.EXP(Φ("BCW",[boot.BCW.jg])),boot.P.EXP(Φ("BCW",[boot.BCW.il])),boot.P.EXP(Φ("BCW",[boot.BCW.ja])),boot.P.EXP(Φ("BCW",[boot.BCW.jb])),boot.P.EXP(Φ("BCW",[boot.BCW.jf])),boot.P.EXP(Φ("BCW",[boot.BCW.io])),boot.P.EXP(Φ("BCW",[boot.BCW.jc])),boot.P.EXP(Φ("BCW",[boot.BCW.jd]))]),null,0),new boot.BFx("回復",Φ("BFy",[boot.P.EXP(Φ("BCW",[boot.BCW.ih,boot.BCW.ii,boot.BCW.bl,boot.BCW.bm,boot.BCW.bn])),boot.P.EXP(Φ("BCW",[boot.BCW.ij,boot.BCW.cd,boot.BCW.ce,boot.BCW.cf])),boot.P.EXP(Φ("BCW",[boot.BCW.ik,boot.BCW.ch,boot.BCW.ci]))]),null,0),new boot.BFx("その他",Φ("BFy",[boot.P.EXQ("AAタイマー解消",Φ("BCW",[boot.BCW.ma])),boot.P.EXQ("オンヒット効果",Φ("BCW",[boot.BCW.kn])),boot.P.EXQ("CD解消",Φ("BCW",[boot.BCW.id,boot.BCW.ie,boot.BCW.ib])),boot.P.EXP(Φ("BCW",[boot.BCW.kk]))]),null,0)]);
-		// 118
+		// 113
+		this.m=Φ("BFx",[new boot.BFx("ダメージ",Φ("BFy",[boot.P.EXP(Φ("BCW",[boot.BCW.h])),boot.P.EXP(Φ("BCW",[boot.BCW.i])),boot.P.EXP(Φ("BCW",[boot.BCW.j])),boot.P.EXQ("範囲攻撃",Φ("BCW",[boot.BCW.ma]))]),null,0),new boot.BFx("参照",Φ("BFy",[boot.P.EXR(Φ("BCW",[boot.BCW.bf,boot.BCW.bh,boot.BCW.bj,boot.BCW.bk])),boot.P.EXR(Φ("BCW",[boot.BCW.bp,boot.BCW.cb,boot.BCW.cc])),boot.P.EXR(Φ("BCW",[boot.BCW.dh,boot.BCW.dj,boot.BCW.dk,boot.BCW.dl])),boot.P.EXR(Φ("BCW",[boot.BCW.ei,boot.BCW.ek])),boot.P.EXR(Φ("BCW",[boot.BCW.ga,boot.BCW.gc,boot.BCW.gd])),boot.P.EXR(Φ("BCW",[boot.BCW.ge,boot.BCW.gg,boot.BCW.gh])),boot.P.EXR(Φ("BCW",[boot.BCW.ka,boot.BCW.kc,boot.BCW.kd])),boot.P.EXR(Φ("BCW",[boot.BCW.cm])),boot.P.EXR(Φ("BCW",[boot.BCW.dd])),boot.P.EXR(Φ("BCW",[boot.BCW.cn])),boot.P.EXR(Φ("BCW",[boot.BCW.de])),boot.P.EXR(Φ("BCW",[boot.BCW.co])),boot.P.EXR(Φ("BCW",[boot.BCW.df])),boot.P.EXS(Φ("BCW",[boot.BCW.cp])),boot.P.EXS(Φ("BCW",[boot.BCW.da])),boot.P.EXS(Φ("BCW",[boot.BCW.dc])),boot.P.EXS(Φ("BCW",[boot.BCW.db])),boot.P.EXS(Φ("BCW",[boot.BCW.el]))]),null,0),new boot.BFx("Buff",Φ("BFy",[boot.P.EXP(Φ("BCW",[boot.BCW.bf,boot.BCW.bh])),boot.P.EXP(Φ("BCW",[boot.BCW.bp,boot.BCW.cb])),boot.P.EXP(Φ("BCW",[boot.BCW.dh,boot.BCW.dj])),boot.P.EXP(Φ("BCW",[boot.BCW.ei,boot.BCW.ek])),boot.P.EXP(Φ("BCW",[boot.BCW.ga,boot.BCW.gc])),boot.P.EXP(Φ("BCW",[boot.BCW.ge,boot.BCW.gg])),boot.P.EXP(Φ("BCW",[boot.BCW.ka,boot.BCW.kc])),boot.P.EXP(Φ("BCW",[boot.BCW.dn,boot.BCW.ea])),boot.P.EXP(Φ("BCW",[boot.BCW.em,boot.BCW.eo])),boot.P.EXP(Φ("BCW",[boot.BCW.eb,boot.BCW.ed])),boot.P.EXP(Φ("BCW",[boot.BCW.fa,boot.BCW.fc])),boot.P.EXP(Φ("BCW",[boot.BCW.fd,boot.BCW.ff])),boot.P.EXP(Φ("BCW",[boot.BCW.fk,boot.BCW.fm])),boot.P.EXP(Φ("BCW",[boot.BCW.he,boot.BCW.hf,boot.BCW.hg])),boot.P.EXQ("スキル無効",Φ("BCW",[boot.BCW.hh])),boot.P.EXP(Φ("BCW",[boot.BCW.kh])),boot.P.EXP(Φ("BCW",[boot.BCW.ki,boot.BCW.kj])),boot.P.EXP(Φ("BCW",[boot.BCW.kf])),boot.P.EXP(Φ("BCW",[boot.BCW.kg]))]),null,0),new boot.BFx("Debuff",Φ("BFy",[boot.P.EXP(Φ("BCW",[boot.BCW.jk,boot.BCW.jl,boot.BCW.ji,boot.BCW.jj])),boot.P.EXP(Φ("BCW",[boot.BCW.jm,boot.BCW.jn,boot.BCW.ji,boot.BCW.jj])),boot.P.EXP(Φ("BCW",[boot.BCW.im])),boot.P.EXP(Φ("BCW",[boot.BCW.ip])),boot.P.EXP(Φ("BCW",[boot.BCW.je])),boot.P.EXP(Φ("BCW",[boot.BCW.jh])),boot.P.EXP(Φ("BCW",[boot.BCW.jg])),boot.P.EXP(Φ("BCW",[boot.BCW.il])),boot.P.EXP(Φ("BCW",[boot.BCW.ja])),boot.P.EXP(Φ("BCW",[boot.BCW.jb])),boot.P.EXP(Φ("BCW",[boot.BCW.jf])),boot.P.EXP(Φ("BCW",[boot.BCW.io])),boot.P.EXP(Φ("BCW",[boot.BCW.jc])),boot.P.EXP(Φ("BCW",[boot.BCW.jd]))]),null,0),new boot.BFx("回復",Φ("BFy",[boot.P.EXP(Φ("BCW",[boot.BCW.ih,boot.BCW.ii,boot.BCW.bl,boot.BCW.bm,boot.BCW.bn])),boot.P.EXP(Φ("BCW",[boot.BCW.ij,boot.BCW.cd,boot.BCW.ce,boot.BCW.cf])),boot.P.EXP(Φ("BCW",[boot.BCW.ik,boot.BCW.ch,boot.BCW.ci]))]),null,0),new boot.BFx("その他",Φ("BFy",[boot.P.EXQ("AAタイマー解消",Φ("BCW",[boot.BCW.mi])),boot.P.EXQ("オンヒット効果",Φ("BCW",[boot.BCW.lf])),boot.P.EXQ("CD解消",Φ("BCW",[boot.BCW.id,boot.BCW.ie,boot.BCW.ib])),boot.P.EXP(Φ("BCW",[boot.BCW.lc])),boot.P.EXP(Φ("BCW",[boot.BCW.kl])),boot.P.EXP(Φ("BCW",[boot.BCW.kk])),boot.P.EXQ("移動",Φ("BCW",[boot.BCW.ko,boot.BCW.la,boot.BCW.km])),boot.P.EXQ("移動(要対象)",Φ("BCW",[boot.BCW.kp,boot.BCW.kn]))]),null,0)]);
+		// 123
 		this.n=boot.BFz.EXT().EXU("Champion Name").EXW(boot.BGA.EXV());
-		// 121
+		// 126
 		this.o=boot.BC.BE(boot.ME.$);
-		// 124
+		// 129
 		this.p=this.DHL(Φ("BE",[boot.BE.bl])).DIA(boot.BGA.EXX()).DKY().DIB();
-		// 127
+		// 132
 		this.ba=this.DHL(Φ("BE",[boot.BE.bl])).DIA(boot.BGA.EXY()).DKY().DIB();
-		// 133
+		// 138
 		this.DHL(Φ("BE",[boot.BE.bl])).DHv(boot.BGA.EXZ(),boot.w.$).DIC(λ(boot.OS,"X","EXu",boot.P,[A]));
-		// 134
+		// 139
 	},
 	// teemowork.ChampionSelect#virtualize()
 	DHu:function(){
-		// 141
+		// 146
 		boot.BAB.DPR(0,Φ("zv",[boot.BGA.EXv(),λ(boot.zv,"DHR","EHX",this,[])]))
 	},
 	// teemowork.ChampionSelect#filter(teemowork.model.Champion)
 	EXw:function(A,B,C){
-		// 181
+		// 186
 		if (this.o.EB()==0) {
-			// 185
+			// 190
 			C=this.o.IH();
-			// 185
+			// 190
 			while (C.IO()!=0) {
 				B=C.Hx();
-				// 186
+				// 191
 				if (boot.BFy.EXx(B).Iu(A)!=0) {
 				} else {
-					// 187
+					// 192
 					return false;
 				}
 			}
-			// 190
+			// 195
 			return true;
 		} else {
-			// 182
+			// 187
 			return true;
 		}
 	},
 	// teemowork.ChampionSelect#type(teemowork.model.Status[])
 	_EXP:function(A){
-		// 202
-		return boot.P.EXQ(A[0].mi,A)
+		// 207
+		return boot.P.EXQ(A[0].na,A)
 	},
 	// teemowork.ChampionSelect#type(java.lang.String, teemowork.model.Status[])
 	_EXQ:function(A,B){
-		// 214
+		// 219
 		return new boot.BFy(A,λ(boot.EK,"Iu","EXy",boot.P,[B]),null,0)
 	},
 	// teemowork.ChampionSelect#referSelf(teemowork.model.Status[])
 	_EXR:function(A){
-		// 235
-		return boot.P.EXz(A[0].mi,A)
+		// 240
+		return boot.P.EXz(A[0].na,A)
 	},
 	// teemowork.ChampionSelect#referSelf(java.lang.String, teemowork.model.Status[])
 	_EXz:function(A,B){
-		// 247
+		// 252
 		return new boot.BFy(new boot.z("自身の",0).V(A).W(),λ(boot.EK,"Iu","EYA",boot.P,[B]),null,0)
 	},
 	// teemowork.ChampionSelect#addReferEnemy(teemowork.model.Status[])
 	_EXS:function(A){
-		// 268
-		return boot.P.EYB(A[0].mi,A)
+		// 273
+		return boot.P.EYB(A[0].na,A)
 	},
 	// teemowork.ChampionSelect#addReferEnemy(java.lang.String, teemowork.model.Status[])
 	_EYB:function(A,B){
-		// 280
+		// 285
 		return new boot.BFy(A,λ(boot.EK,"Iu","EYC",boot.P,[B]),null,0)
 	},
 	// teemowork.ChampionSelect#lambda$0(teemowork.Teemowork, teemowork.model.Champion)
 	_EXu:function(A,B){
-		// 133
+		// 138
 		A.G(B)
 	},
 	// teemowork.ChampionSelect#lambda$1()
 	EHX:function(){
-		// 142
-		boot.BAB.DPR(1,Φ("zv",[boot.BGA.EYD(),this.n,λ(boot.zv,"DHR","EXL",this,[])]))// 163
-		boot.BAB.DPR(2,Φ("zv",[boot.BGA.EYE(),boot.BAB.DQM(boot.w.DSv(),λ(boot.BG,"X","EYF",this,[]))]))// 169
+		// 147
+		boot.BAB.DPR(1,Φ("zv",[boot.BGA.EYD(),this.n,λ(boot.zv,"DHR","EXL",this,[])]))// 168
+		boot.BAB.DPR(2,Φ("zv",[boot.BGA.EYE(),boot.BAB.DQM(boot.w.DSv(),λ(boot.BG,"X","EYF",this,[]))]))// 174
 	},
 	// teemowork.ChampionSelect#lambda$2(teemowork.model.Status[], teemowork.model.Champion)
 	_EXy:function(A,B,C,D,E,F,G){
-		// 215
+		// 220
 		C=boot.BGB.EYG(B);
-		// 217
+		// 222
 		F=(G=A).length;E=0;
 		for (; E<F; ++E) {
 			D=G[E];
-			// 218
+			// 223
 			if (boot.BGB.EYH(C).ID(D)==0) {
 			} else {
-				// 219
+				// 224
 				return true;
 			}
 		}
-		// 222
+		// 227
 		return false
 	},
 	// teemowork.ChampionSelect#lambda$3(teemowork.model.Status[], teemowork.model.Champion)
 	_EYA:function(A,B,C,D,E,F,G){
-		// 248
+		// 253
 		C=boot.BGB.EYG(B);
-		// 250
+		// 255
 		F=(G=A).length;E=0;
 		for (; E<F; ++E) {
 			D=G[E];
-			// 251
+			// 256
 			if (boot.BGB.EYI(C).ID(D)==0) {
 			} else {
-				// 252
+				// 257
 				return true;
 			}
 		}
-		// 255
+		// 260
 		return false
 	},
 	// teemowork.ChampionSelect#lambda$4(teemowork.model.Status[], teemowork.model.Champion)
 	_EYC:function(A,B,C,D,E,F,G){
-		// 281
+		// 286
 		C=boot.BGB.EYG(B);
-		// 283
+		// 288
 		F=(G=A).length;E=0;
 		for (; E<F; ++E) {
 			D=G[E];
-			// 284
+			// 289
 			if (boot.BGB.EYI(C).ID(D)==0) {
 			} else {
-				// 285
+				// 290
 				return true;
 			}
 		}
-		// 288
+		// 293
 		return false
 	},
 	// teemowork.ChampionSelect#lambda$5()
 	EXL:function(){
-		// 143
-		boot.BAB.DPN(3,boot.BGA.EXX(),Φ("G",["スキルで絞込"]))// 145
-		boot.BAB.DPR(4,Φ("zv",[boot.BGA.EYJ(),boot.BAB.DQG(this.p,Φ("zv",[boot.BGA.EYK()])),boot.BAB.DQO(this.m,λ(boot.BG,"X","EYL",this,[]))]))// 162
+		// 148
+		boot.BAB.DPN(3,boot.BGA.EXX(),Φ("G",["スキルで絞込"]))// 150
+		boot.BAB.DPR(4,Φ("zv",[boot.BGA.EYJ(),boot.BAB.DQG(this.p,Φ("zv",[boot.BGA.EYK()])),boot.BAB.DQO(this.m,λ(boot.BG,"X","EYL",this,[]))]))// 167
 	},
 	// teemowork.ChampionSelect#lambda$6(teemowork.model.Champion)
 	EYF:function(A){
-		// 164
-		boot.BAB.DPR(5,Φ("zv",[boot.BGA.EXZ(),boot.BAB.DQF(this.EXw(A)==0||A.DSW(this.n.p.D())==0?1:0,Φ("zv",[boot.BGA.EYM()])),λ(boot.zv,"DHR","EYN",boot.P,[A])]))// 168
+		// 169
+		boot.BAB.DPR(5,Φ("zv",[boot.BGA.EXZ(),boot.BAB.DQF(this.EXw(A)==0||A.DSW(this.n.p.D())==0?1:0,Φ("zv",[boot.BGA.EYM()])),λ(boot.zv,"DHR","EYN",boot.P,[A])]))// 173
 	},
 	// teemowork.ChampionSelect#lambda$7(teemowork.ChampionSelect$FilterGroup)
 	EYL:function(A){
-		// 146
-		boot.BAB.DPR(6,Φ("zv",[boot.BGA.EYO(),λ(boot.zv,"DHR","EYP",this,[A])]))// 152
+		// 151
+		boot.BAB.DPR(6,Φ("zv",[boot.BGA.EYO(),λ(boot.zv,"DHR","EYP",this,[A])]))// 157
 	},
 	// teemowork.ChampionSelect#lambda$8(teemowork.model.Champion)
 	_EYN:function(A){
-		// 165
-		boot.BAB.DPR(7,Φ("zv",[boot.BGA.EYQ(),boot.BGA.EYR().EYS(A)]))// 166
-		boot.BAB.DPN(8,boot.BGA.EYT(),Φ("G",[A.ik]))// 167
+		// 170
+		boot.BAB.DPR(7,Φ("zv",[boot.BGA.EYQ(),boot.BGA.EYR().EYS(A)]))// 171
+		boot.BAB.DPN(8,boot.BGA.EYT(),Φ("G",[A.ik]))// 172
 	},
 	// teemowork.ChampionSelect#lambda$9(teemowork.ChampionSelect$FilterGroup)
 	EYP:function(A){
-		// 147
-		boot.BAB.DPN(9,boot.BGA.EYU(),Φ("G",[boot.BFx.EYV(A)]))// 148
-		boot.BAB.DPR(10,Φ("zv",[boot.BGA.EYW(),boot.BAB.DQO(boot.BFx.EYX(A),λ(boot.BG,"X","EYY",this,[]))]))// 151
+		// 152
+		boot.BAB.DPN(9,boot.BGA.EYU(),Φ("G",[boot.BFx.EYV(A)]))// 153
+		boot.BAB.DPR(10,Φ("zv",[boot.BGA.EYW(),boot.BAB.DQO(boot.BFx.EYX(A),λ(boot.BG,"X","EYY",this,[]))]))// 156
 	},
 	// teemowork.ChampionSelect#lambda$10(teemowork.ChampionSelect$SkillFilter)
 	EYY:function(A){
-		// 149
-		boot.BAB.DPI(11,boot.BFz.EYu(this.o,A,boot.BFy.EYZ(A)).EXW(boot.BGA.EYv()))// 150
+		// 154
+		boot.BAB.DPI(11,boot.BFz.EYu(this.o,A,boot.BFy.EYZ(A)).EXW(boot.BGA.EYv()))// 155
 	}
 },{
 	$:[1,"teemowork.ChampionSelect",,"Q"],
@@ -112383,36 +112412,36 @@ boot.define("P","Q","",{
 	EXQ:[138,,"u [BCW",,"BFy","type"],
 	EXP:[138,,"[BCW",,"BFy","type"],
 	EXw:[2,,"w",,"Z","filter"],
-	DHu:[4,,,,"V","virtualize"],
-	EXR:[138,,"[BCW",,"BFy","referSelf"],
 	EXz:[138,,"u [BCW",,"BFy","referSelf"],
+	EXR:[138,,"[BCW",,"BFy","referSelf"],
+	EXS:[138,,"[BCW",,"BFy","addReferEnemy"],
 	EYB:[138,,"u [BCW",,"BFy","addReferEnemy"],
-	EXS:[138,,"[BCW",,"BFy","addReferEnemy"]
+	DHu:[4,,,,"V","virtualize"]
 });
 
 // class teemowork.ChampionSelect$FilterGroup "BFx"
 boot.define("BFx","","",{
 	// teemowork.ChampionSelect$FilterGroup#<init>(java.lang.String, teemowork.ChampionSelect$SkillFilter[])
 	$1:function(A,B){
-		// 308
+		// 313
 		this.c=A;
-		// 309
+		// 314
 		this.d=B;
-		// 310
+		// 315
 	},
 	// teemowork.ChampionSelect$FilterGroup#<init>(java.lang.String, teemowork.ChampionSelect$SkillFilter[], teemowork.ChampionSelect$FilterGroup)
 	$0:function(A,B,C){
-		// 307
+		// 312
 		boot.BFx.prototype.$1.call(this,A,B);
 	},
 	// teemowork.ChampionSelect$FilterGroup#access$1(teemowork.ChampionSelect$FilterGroup)
 	_EYV:function(A){
-		// 298
+		// 303
 		return A.c
 	},
 	// teemowork.ChampionSelect$FilterGroup#access$2(teemowork.ChampionSelect$FilterGroup)
 	_EYX:function(A){
-		// 301
+		// 306
 		return A.d
 	}
 },{
@@ -112427,25 +112456,25 @@ boot.define("BFx","","",{
 boot.define("BFy","","",{
 	// teemowork.ChampionSelect$SkillFilter#<init>(java.lang.String, java.util.function.Predicate)
 	$1:function(A,B){
-		// 329
+		// 334
 		this.c=A;
-		// 330
+		// 335
 		this.d=B;
-		// 331
+		// 336
 	},
 	// teemowork.ChampionSelect$SkillFilter#access$0(teemowork.ChampionSelect$SkillFilter)
 	_EYZ:function(A){
-		// 319
+		// 324
 		return A.c
 	},
 	// teemowork.ChampionSelect$SkillFilter#access$1(teemowork.ChampionSelect$SkillFilter)
 	_EXx:function(A){
-		// 322
+		// 327
 		return A.d
 	},
 	// teemowork.ChampionSelect$SkillFilter#<init>(java.lang.String, java.util.function.Predicate, teemowork.ChampionSelect$SkillFilter)
 	$0:function(A,B,C){
-		// 328
+		// 333
 		boot.BFy.prototype.$1.call(this,A,B);
 	}
 },{
@@ -112542,12 +112571,12 @@ boot.define("BFz","","",{
 },{
 	$:[1,"jsx.ui.piece.UI",,"G"],
 	$0:[1],
-	EYx:[25,,"BGH",,"BGC","input"],
-	EYy:[25,,"u",,"BGC","input"],
-	EXT:[25,,,,"BGC","input"],
-	EZA:[25,,"BGH",,"BGJ","output"],
-	EZB:[25,,"vx",,"BGJ","output"],
 	EYz:[25,,"u",,"BGJ","output"],
+	EZB:[25,,"vx",,"BGJ","output"],
+	EZA:[25,,"BGH",,"BGJ","output"],
+	EXT:[25,,,,"BGC","input"],
+	EYy:[25,,"u",,"BGC","input"],
+	EYx:[25,,"BGH",,"BGC","input"],
 	EZD:[25,"E:BF","A<E:BF>",,"BGN<E:BF>","select"],
 	EZE:[25,"M:G","Lu<M:G>",,"BGN<M:G>","select"],
 	EYw:[25,,,,"BGE","button"],
@@ -112722,21 +112751,21 @@ boot.define("BGD","Q","",{
 	o:[20,"rootStyle","Pw<zv>"],
 	EZK:[4,,"Ku",,"Z","isValid"],
 	EXW:[1,,"Ky",,"T:BGD<T#>","style"],
-	EZO:[1,,"IA",,"T:BGD<T#>","hover"],
-	EZH:[1,,,,"wC","hover"],
 	EZJ:[1,,"IA",,"T:BGD<T#>","click"],
 	EZM:[1,,"IA",,"T:BGD<T#>","dbclick"],
 	EZP:[1,,,,"MM<BGP>","keyDown"],
 	EZQ:[1,,"BGP IA",,"T:BGD<T#>","shortcut"],
 	EZT:[20,,"My",,"V","disposeLater"],
 	EZU:[1,,"NC<Ez>",,"T:BGD<T#>","enableIf"],
-	EZV:[1,,"O<Ez>",,"T:BGD<T#>","disableIf"],
 	EZW:[1,,"NC<Ez>",,"T:BGD<T#>","disableIf"],
+	EZV:[1,,"O<Ez>",,"T:BGD<T#>","disableIf"],
 	EZY:[1,,"BGQ",,"T:BGD<T#>","showIf"],
 	EZX:[1,,"NC<Ez>",,"T:BGD<T#>","showIf"],
 	EZZ:[1,,"NC<Ez>",,"T:BGD<T#>","hideIf"],
 	EZu:[1,,"QG Ky",,"T:BGD<T#>","styleIf"],
-	EZv:[1,,"MM<Ez> Q",,"T:BGD<T#>","popupIf"]
+	EZv:[1,,"MM<Ez> Q",,"T:BGD<T#>","popupIf"],
+	EZO:[1,,"IA",,"T:BGD<T#>","hover"],
+	EZH:[1,,,,"wC","hover"]
 });
 
 // class javafx.beans.property.SimpleBooleanProperty "BGO"
@@ -113206,9 +113235,9 @@ boot.define("BGE","BGD","",{
 	$:[1,"jsx.ui.piece.Button",,"BGD<BGE>"],
 	$0:[0],
 	p:[1,"label","QF"],
-	DHu:[4,,,,"V","virtualize"],
 	EZF:[1,,"QF",,"BGE","label"],
-	EZG:[129,,"[G",,"BGE","label"]
+	EZG:[129,,"[G",,"BGE","label"],
+	DHu:[4,,,,"V","virtualize"]
 });
 
 // class javafx.beans.property.ReadOnlyStringProperty "BGI"
@@ -113551,13 +113580,13 @@ boot.define("BGG","BGH","",{
 	W:[1,,,,"u","toString"],
 	EuA:[1,,"u",,"V","set"],
 	CEv:[1,,"NC<>",,"V","bind"],
+	CES:[4,,,,"V","invalidated"],
+	BTx:[1,,"Mx",,"V","addListener"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
 	BUE:[1,,"Mx",,"V","removeListener"],
 	BUF:[1,,"Mz<>",,"V","removeListener"],
 	CEu:[1,,,,"Z","isBound"],
 	CEw:[1,,,,"V","unbind"],
-	CES:[4,,,,"V","invalidated"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
-	BTx:[1,,"Mx",,"V","addListener"],
 	CEZ:[2,,,,"V","markInvalid"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
@@ -113665,7 +113694,7 @@ boot.define("BGC","BGD","",{
 		// 51
 		this.p=A;
 		// 54
-		this.DHL(Φ("BE",[boot.BE.ca,boot.BE.cl,boot.BE.cn])).DIA(boot.BGT.dk).DIw(boot.J.BP(100,0),boot.NE.g).DJO(λ(boot.DM,"Gv","BOT")).DJB().DIC(this.DHO(λ(boot.OS,"X","Hy",A,[])));
+		this.DHL(Φ("BE",[boot.BE.ca,boot.BE.cl,boot.BE.cn])).DIA(boot.BGT.dk).DIw(boot.J.BP(100,0),boot.NF.g).DJO(λ(boot.DM,"Gv","BOT")).DJB().DIC(this.DHO(λ(boot.OS,"X","Hy",A,[])));
 		// 55
 	},
 	// jsx.ui.piece.Input#clear()
@@ -113752,8 +113781,8 @@ boot.define("BGC","BGD","",{
 	EuJ:[1,,"O<u>",,"BGC","placeholder"],
 	EuH:[1,,"QF",,"BGC","placeholder"],
 	EXU:[1,,"u",,"BGC","placeholder"],
-	DHu:[4,,,,"V","virtualize"],
-	EuK:[1,,,,"BGC","require"]
+	EuK:[1,,,,"BGC","require"],
+	DHu:[4,,,,"V","virtualize"]
 });
 
 // class jsx.ui.piece.PieceStyle "BGT"
@@ -113894,7 +113923,7 @@ boot.define("BGU","","",{
 	// jsx.ui.FunctionHelper#not(java.util.function.Predicate)
 	_EuR:function(A){
 		// 46
-		return A.BCJ()
+		return A.BCL()
 	},
 	// jsx.ui.FunctionHelper#lambda$0(java.lang.String)
 	_EuN:function(A){
@@ -113915,8 +113944,8 @@ boot.define("BGU","","",{
 	$0:[1],
 	c:[25,"Empty","EK<u>"],
 	d:[25,"NotEmpty","EK<u>"],
-	EuP:[9,"P:G","BG<P:G> P#",,"IA","$"],
-	EuR:[9,"T:G","EK<T:G>",,"EK","not"]
+	EuR:[9,"T:G","EK<T:G>",,"EK","not"],
+	EuP:[9,"P:G","BG<P:G> P#",,"IA","$"]
 });
 
 // class jsx.ui.piece.Output "BGJ"
@@ -114020,10 +114049,10 @@ boot.define("BGL","BGD","",{
 	bc:[17,"label","u"],
 	bd:[18,"id","u"],
 	EuW:[1028,,,,"Z","isMarked"],
-	EuV:[1028,,,,"BCX","radius"],
 	DHu:[20,,,,"V","virtualize"],
 	EuU:[1028,,,,"V","virtualizeMark"],
-	EuX:[1028,,"Ku",,"V","change"]
+	EuX:[1028,,"Ku",,"V","change"],
+	EuV:[1028,,,,"BCX","radius"]
 });
 
 // class jsx.ui.piece.MarkedButton$$ "BGV"
@@ -114295,9 +114324,9 @@ boot.define("BGK","BGL","",{
 	bf:[26,"CheckMark","Ky"],
 	bg:[18,"selection","ME<V:G>"],
 	EuW:[4,,,,"Z","isMarked"],
-	EuV:[4,,,,"BCX","radius"],
 	EuU:[4,,,,"V","virtualizeMark"],
-	EuX:[4,,"Ku",,"V","change"]
+	EuX:[4,,"Ku",,"V","change"],
+	EuV:[4,,,,"BCX","radius"]
 });
 
 // class jsx.ui.piece.RadioBox "BGM"
@@ -114341,9 +114370,9 @@ boot.define("BGM","BGL","",{
 	be:[26,"Radius","BCX"],
 	bf:[18,"selection","Pw<V:G>"],
 	EuW:[4,,,,"Z","isMarked"],
-	EuV:[4,,,,"BCX","radius"],
 	EuU:[4,,,,"V","virtualizeMark"],
-	EuX:[4,,"Ku",,"V","change"]
+	EuX:[4,,"Ku",,"V","change"],
+	EuV:[4,,,,"BCX","radius"]
 });
 
 // class jsx.ui.piece.Select "BGN"
@@ -114606,10 +114635,10 @@ boot.define("BGw","BGx","",{
 	$2:[1,,"I"],
 	$1:[1],
 	l:[2,"readOnlyProperty","BGz"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
 	EvS:[1,,,,"QJ","getReadOnlyProperty"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
@@ -114681,11 +114710,11 @@ boot.define("BGz","QJ","",{
 	d:[4112,"this$0","BGw"],
 	CWK:[1,,,,"I","get"],
 	S:[1,,,,"u","getName"],
+	BTx:[1,,"Mx",,"V","addListener"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
 	BUF:[1,,"Mz<>",,"V","removeListener"],
 	BUE:[1,,"Mx",,"V","removeListener"],
 	Bxx:[1,,,,"G","getBean"],
-	BTx:[1,,"Mx",,"V","addListener"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
@@ -114777,10 +114806,10 @@ boot.define("BGy","BAJ","",{
 	$2:[1,,"T:G"],
 	$1:[1],
 	l:[2,"readOnlyProperty","BHB<>"],
-	BUE:[1,,"Mx",,"V","removeListener"],
-	BUF:[1,,"Mz<>",,"V","removeListener"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
 	BTx:[1,,"Mx",,"V","addListener"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
+	BUF:[1,,"Mz<>",,"V","removeListener"],
+	BUE:[1,,"Mx",,"V","removeListener"],
 	EvU:[1,,,,"QZ<T:G>","getReadOnlyProperty"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
@@ -114852,11 +114881,11 @@ boot.define("BHB","QZ","",{
 	d:[4112,"this$0","BGy"],
 	D:[1,,,,"T:G","get"],
 	S:[1,,,,"u","getName"],
+	BTx:[1,,"Mx",,"V","addListener"],
+	BUC:[1,,"Mz<>",,"V","addListener"],
 	BUF:[1,,"Mz<>",,"V","removeListener"],
 	BUE:[1,,"Mx",,"V","removeListener"],
 	Bxx:[1,,,,"G","getBean"],
-	BTx:[1,,"Mx",,"V","addListener"],
-	BUC:[1,,"Mz<>",,"V","addListener"],
 	CEX:[4,,,,"V","fireValueChangedEvent"]
 });
 
@@ -115157,349 +115186,349 @@ boot.define("BGv","BGT","",{
 boot.define("BGA","M","",{
 	// teemowork.ChampionSelect$$#<clinit>()
 	_:function(){
-		// 401
+		// 406
 		boot.BGA.ck=new boot.BEu(0,10,10,1);
-		// 403
+		// 408
 		boot.BGA.cl=new boot.BCX(70.0,boot.M.f,0);
-		// 405
+		// 410
 		boot.BGA.cm=boot.BGA.cl.DYQ(10.0);
-		// 407
+		// 412
 		boot.BGA.cn=λ(boot.Ky,"DHD","BYw",boot.BGA,[]);
-		// 413
+		// 418
 		boot.BGA.co=λ(boot.Ky,"DHD","EHX",boot.BGA,[]);
-		// 419
-		boot.BGA.cp=λ(boot.Ky,"DHD","EHw",boot.BGA,[]);
 		// 424
+		boot.BGA.cp=λ(boot.Ky,"DHD","EHw",boot.BGA,[]);
+		// 429
 		boot.BGA.da=λ(boot.Ky,"DHD","EHx",boot.BGA,[]);
-		// 428
+		// 433
 		boot.BGA.db=λ(boot.Ky,"DHD","DHQ",boot.BGA,[]);
-		// 449
+		// 454
 		boot.BGA.dc=λ(boot.BGW,"EuY","EvV",boot.BGA,[]);
-		// 453
+		// 458
 		boot.BGA.dd=λ(boot.Ky,"DHD","EXM",boot.BGA,[]);
-		// 477
+		// 482
 		boot.BGA.de=λ(boot.Ky,"DHD","EXN",boot.BGA,[]);
-		// 481
-		boot.BGA.df=λ(boot.Ky,"DHD","EKC",boot.BGA,[]);
 		// 486
+		boot.BGA.df=λ(boot.Ky,"DHD","EKC",boot.BGA,[]);
+		// 491
 		boot.BGA.dg=λ(boot.Ky,"DHD","EXO",boot.BGA,[]);
-		// 490
+		// 495
 		boot.BGA.dh=λ(boot.Ky,"DHD","Euv",boot.BGA,[]);
-		// 503
+		// 508
 		boot.BGA.di=λ(boot.Ky,"DHD","EvW",boot.BGA,[]);
-		// 510
+		// 515
 		boot.BGA.dj=boot.BGA.di.DPF(λ(boot.Ky,"DHD","EvX",boot.BGA,[]));
-		// 513
+		// 518
 		boot.BGA.dk=boot.BGA.di.DPF(λ(boot.Ky,"DHD","EvY",boot.BGA,[]));
-		// 516
-		boot.BGA.dl=λ(boot.Ky,"DHD","EvZ",boot.BGA,[]);
 		// 521
+		boot.BGA.dl=λ(boot.Ky,"DHD","EvZ",boot.BGA,[]);
+		// 526
 		boot.BGA.dm=λ(boot.Ky,"DHD","Evu",boot.BGA,[]);
-		// 527
+		// 532
 		boot.BGA.dn=λ(boot.Ky,"DHD","Evv",boot.BGA,[]);
-		// 531
+		// 536
 		boot.BGA.dp=λ(boot.Ky,"DHD","Evw",boot.BGA,[]);
-		// 533
+		// 538
 	},
 	// teemowork.ChampionSelect$$#<init>()
 	$0:function(){
-		// 399
+		// 404
 		boot.M.prototype.$0.call(this);
 	},
 	// teemowork.ChampionSelect$$#access$0()
 	_EXV:function(){
-		// 477
+		// 482
 		return boot.BGA.de
 	},
 	// teemowork.ChampionSelect$$#access$1()
 	_EXX:function(){
-		// 510
+		// 515
 		return boot.BGA.dj
 	},
 	// teemowork.ChampionSelect$$#access$2()
 	_EXY:function(){
-		// 513
+		// 518
 		return boot.BGA.dk
 	},
 	// teemowork.ChampionSelect$$#access$3()
 	_EXZ:function(){
-		// 419
+		// 424
 		return boot.BGA.cp
 	},
 	// teemowork.ChampionSelect$$#access$4()
 	_EXv:function(){
-		// 407
+		// 412
 		return boot.BGA.cn
 	},
 	// teemowork.ChampionSelect$$#access$5()
 	_EYD:function(){
-		// 481
+		// 486
 		return boot.BGA.df
 	},
 	// teemowork.ChampionSelect$$#access$6()
 	_EYJ:function(){
-		// 490
+		// 495
 		return boot.BGA.dh
 	},
 	// teemowork.ChampionSelect$$#access$7()
 	_EYK:function(){
-		// 486
+		// 491
 		return boot.BGA.dg
 	},
 	// teemowork.ChampionSelect$$#access$8()
 	_EYO:function(){
-		// 516
+		// 521
 		return boot.BGA.dl
 	},
 	// teemowork.ChampionSelect$$#access$9()
 	_EYU:function(){
-		// 521
+		// 526
 		return boot.BGA.dm
 	},
 	// teemowork.ChampionSelect$$#access$10()
 	_EYW:function(){
-		// 527
+		// 532
 		return boot.BGA.dn
 	},
 	// teemowork.ChampionSelect$$#access$11()
 	_EYv:function(){
-		// 531
+		// 536
 		return boot.BGA.dp
 	},
 	// teemowork.ChampionSelect$$#access$12()
 	_EYE:function(){
-		// 413
+		// 418
 		return boot.BGA.co
 	},
 	// teemowork.ChampionSelect$$#access$13()
 	_EYM:function(){
-		// 424
+		// 429
 		return boot.BGA.da
 	},
 	// teemowork.ChampionSelect$$#access$14()
 	_EYQ:function(){
-		// 428
+		// 433
 		return boot.BGA.db
 	},
 	// teemowork.ChampionSelect$$#access$15()
 	_EYR:function(){
-		// 449
+		// 454
 		return boot.BGA.dc
 	},
 	// teemowork.ChampionSelect$$#access$16()
 	_EYT:function(){
-		// 453
+		// 458
 		return boot.BGA.dd
 	},
 	// teemowork.ChampionSelect$$#lambda$0()
 	_BYw:function(){
-		// 408
+		// 413
 		boot.M.bg.EKD();
-		// 409
+		// 414
 		boot.M.bm.ESZ();
-		// 410
+		// 415
 		boot.M.bb.ELG(boot.BGA.cm.DYM(2.0));
-		// 411
+		// 416
 	},
 	// teemowork.ChampionSelect$$#lambda$1()
 	_EHX:function(){
-		// 414
+		// 419
 		boot.M.bg.EQE().g.EQI().h.EQL();
-		// 415
+		// 420
 		boot.M.be.g.EKK().EPT(2.0,boot.M.f).EKL(boot.BGA.ck);
-		// 416
+		// 421
 		boot.M.be.i.EKK().EPT(2.0,boot.M.f).EKL(boot.BGA.ck);
-		// 417
+		// 422
 	},
 	// teemowork.ChampionSelect$$#lambda$2()
 	_EHw:function(){
-		// 420
+		// 425
 		boot.M.cb.EJu();
-		// 421
+		// 426
 		boot.M.bg.EKD();
-		// 422
+		// 427
 	},
 	// teemowork.ChampionSelect$$#lambda$3()
 	_EHx:function(){
-		// 425
+		// 430
 		boot.M.bg.EQF();
-		// 426
+		// 431
 	},
 	// teemowork.ChampionSelect$$#lambda$4()
 	_DHQ:function(){
-		// 429
-		boot.M.bg.EKD();
-		// 430
-		boot.M.bb.ELF(boot.BGA.cl);
-		// 431
-		boot.M.be.h.EKK().EPT(2.0,boot.M.f).EKL(boot.BGA.ck);
-		// 432
-		boot.M.be.j.EKK().EPT(2.0,boot.M.f).EKL(boot.BGA.ck);
-		// 433
-		boot.M.bc.EMP();
 		// 434
-		boot.M.bd.ENM("src/main/resources/teemowork/champions.jpg").ENv().ENV();
+		boot.M.bg.EKD();
+		// 435
+		boot.M.bb.ELF(boot.BGA.cl);
 		// 436
+		boot.M.be.h.EKK().EPT(2.0,boot.M.f).EKL(boot.BGA.ck);
+		// 437
+		boot.M.be.j.EKK().EPT(2.0,boot.M.f).EKL(boot.BGA.ck);
+		// 438
+		boot.M.bc.EMP();
+		// 439
+		boot.M.bd.ENM("src/main/resources/teemowork/champions.jpg").ENv().ENV();
+		// 441
 		boot.M.EJH(λ(boot.Ky,"DHD","Evx",boot.BGA,[]));
-		// 447
+		// 452
 	},
 	// teemowork.ChampionSelect$$#lambda$5(teemowork.model.Champion)
 	_EvV:function(A){
-		// 450
+		// 455
 		boot.M.bd.EOA(A.DSY());
-		// 451
+		// 456
 	},
 	// teemowork.ChampionSelect$$#lambda$6()
 	_EXM:function(A,B){
-		// 454
-		A=boot.BGA.cl.DYM(40.0);
-		// 455
-		B=new boot.BEu(0,98,97,1,0);
-		// 457
-		boot.M.bj.i.ERL().ERB(18.0,boot.M.f);
-		// 458
-		boot.M.cd.g.EVu();
 		// 459
-		boot.M.bk.ERz(20.0,boot.M.f);
+		A=boot.BGA.cl.DYM(40.0);
 		// 460
-		boot.M.bp.ESU(5.0,boot.M.f);
-		// 461
-		boot.M.bd.ENO(boot.BFB.EOO(boot.M.EID(B.EKN(-0.4),B)));
+		B=new boot.BEu(0,98,97,1,0);
 		// 462
-		boot.M.cb.EKG().EKH(50.0,boot.M.o).EUB(boot.BGA.cl.DYM(20.0));
+		boot.M.bj.i.ERL().ERB(18.0,boot.M.f);
 		// 463
-		boot.M.bm.EKJ(A.DYS(-2.0));
+		boot.M.cd.g.EVu();
 		// 464
-		boot.M.bb.ELK(A).ELS(1).ELT(0);
+		boot.M.bk.ERz(20.0,boot.M.f);
 		// 465
-		boot.M.be.EPT(4.0,boot.M.f).EKK().EKL(B.EMG(-100)).EPS(5.0,boot.M.f);
+		boot.M.bp.ESU(5.0,boot.M.f);
 		// 466
-		boot.M.ca.ETT();
+		boot.M.bd.ENO(boot.BFB.EOO(boot.M.EID(B.EKN(-0.4),B)));
+		// 467
+		boot.M.cb.EKG().EKH(50.0,boot.M.o).EUB(boot.BGA.cl.DYM(20.0));
+		// 468
+		boot.M.bm.EKJ(A.DYS(-2.0));
 		// 469
-		boot.M.EJX(7,new boot.BCX(4.0,boot.M.f,0),B.EMG(-100),B);
+		boot.M.bb.ELK(A).ELS(1).ELT(0);
+		// 470
+		boot.M.be.EPT(4.0,boot.M.f).EKK().EKL(B.EMG(-100)).EPS(5.0,boot.M.f);
 		// 471
+		boot.M.ca.ETT();
+		// 474
+		boot.M.EJX(7,new boot.BCX(4.0,boot.M.f,0),B.EMG(-100),B);
+		// 476
 		boot.M.EJW().EWR(0.2,boot.M.m).EWS(100.0,boot.M.n).EWW().EXA(λ(boot.Ky,"DHD","Evy",boot.BGA,[]));
-		// 475
+		// 480
 	},
 	// teemowork.ChampionSelect$$#lambda$7()
 	_EXN:function(){
-		// 479
+		// 484
 	},
 	// teemowork.ChampionSelect$$#lambda$8()
 	_EKC:function(){
-		// 482
-		boot.M.bg.EKD();
-		// 483
-		boot.M.bm.ESw(10.0,boot.M.f);
-		// 484
-	},
-	// teemowork.ChampionSelect$$#lambda$9()
-	_EXO:function(){
 		// 487
 		boot.M.bg.EKD();
 		// 488
+		boot.M.bm.ESw(10.0,boot.M.f);
+		// 489
+	},
+	// teemowork.ChampionSelect$$#lambda$9()
+	_EXO:function(){
+		// 492
+		boot.M.bg.EKD();
+		// 493
 	},
 	// teemowork.ChampionSelect$$#lambda$10()
 	_Euv:function(){
-		// 491
+		// 496
 		boot.M.bm.EHv(1,boot.M.d);
-		// 492
-		boot.M.bj.j.ERY();
-		// 494
-		boot.M.bg.EQF();
-		// 495
-		boot.M.bb.ELN(0,boot.M.f);
 		// 497
+		boot.M.bj.j.ERY();
+		// 499
+		boot.M.bg.EQF();
+		// 500
+		boot.M.bb.ELN(0,boot.M.f);
+		// 502
 		boot.M.EJW().EWR(0.5,boot.M.m).EWW().EWu(boot.BGA.dg,λ(boot.Ky,"DHD","Evz",boot.BGA,[]));
-		// 501
+		// 506
 	},
 	// teemowork.ChampionSelect$$#lambda$11()
 	_EvW:function(){
-		// 504
+		// 509
 		boot.M.bj.j.ERS().ERA(boot.BEu.EHy(100,100,100));
-		// 505
+		// 510
 		boot.M.cd.j.EWM().EVX();
-		// 506
+		// 511
 		boot.M.bm.ESy(1,boot.M.d);
-		// 507
+		// 512
 		boot.M.bc.EMP();
-		// 508
+		// 513
 	},
 	// teemowork.ChampionSelect$$#lambda$12()
 	_EvX:function(){
-		// 511
+		// 516
 	},
 	// teemowork.ChampionSelect$$#lambda$13()
 	_EvY:function(){
-		// 514
+		// 519
 	},
 	// teemowork.ChampionSelect$$#lambda$14()
 	_EvZ:function(){
-		// 517
-		boot.M.bg.EKD();
-		// 518
-		boot.M.bm.ESw(0.8,boot.M.d);
-		// 519
-	},
-	// teemowork.ChampionSelect$$#lambda$15()
-	_Evu:function(){
 		// 522
 		boot.M.bg.EKD();
 		// 523
-		boot.M.bj.i.ERL();
+		boot.M.bm.ESw(0.8,boot.M.d);
 		// 524
+	},
+	// teemowork.ChampionSelect$$#lambda$15()
+	_Evu:function(){
+		// 527
+		boot.M.bg.EKD();
+		// 528
+		boot.M.bj.i.ERL();
+		// 529
 		boot.M.bm.ESw(0.4,boot.M.d);
-		// 525
+		// 530
 	},
 	// teemowork.ChampionSelect$$#lambda$16()
 	_Evv:function(){
-		// 528
+		// 533
 		boot.M.bg.EKA().h.EQL();
-		// 529
+		// 534
 	},
 	// teemowork.ChampionSelect$$#lambda$17()
 	_Evw:function(){
-		// 532
+		// 537
 		boot.M.bb.ELG(boot.BGA.cm.DYS(5.0));
-		// 533
+		// 538
 	},
 	// teemowork.ChampionSelect$$#lambda$18()
 	_Evx:function(){
-		// 437
+		// 442
 		boot.M.bf.EKF("");
-		// 438
-		boot.M.bg.EKD();
-		// 439
-		boot.M.cb.EKG();
-		// 440
-		boot.M.bb.ELI(100.0,boot.M.o).ELN(100.0,boot.M.o).ELT(1);
-		// 441
-		boot.M.bd.ENK(boot.M.EIB(0,100,100,0.2));
 		// 443
-		boot.M.EJW().EWR(0.2,boot.M.m).EWW().EWy(λ(boot.Ky,"DHD","EwA",boot.BGA,[]));
+		boot.M.bg.EKD();
+		// 444
+		boot.M.cb.EKG();
+		// 445
+		boot.M.bb.ELI(100.0,boot.M.o).ELN(100.0,boot.M.o).ELT(1);
 		// 446
+		boot.M.bd.ENK(boot.M.EIB(0,100,100,0.2));
+		// 448
+		boot.M.EJW().EWR(0.2,boot.M.m).EWW().EWy(λ(boot.Ky,"DHD","EwA",boot.BGA,[]));
+		// 451
 	},
 	// teemowork.ChampionSelect$$#lambda$19()
 	_Evy:function(){
-		// 472
+		// 477
 		boot.M.bb.ELT(1);
-		// 473
+		// 478
 		boot.M.cb.EUB(boot.BGA.cl);
-		// 474
+		// 479
 	},
 	// teemowork.ChampionSelect$$#lambda$20()
 	_Evz:function(){
-		// 498
+		// 503
 		boot.M.bg.EKD();
-		// 499
+		// 504
 		boot.M.bb.ELN(100.0,boot.M.o);
-		// 500
+		// 505
 	},
 	// teemowork.ChampionSelect$$#lambda$21()
 	_EwA:function(){
-		// 444
+		// 449
 		boot.M.bb.ELT(0);
-		// 445
+		// 450
 	}
 },{
 	$:[32776,"teemowork.ChampionSelect$$",,"M"],
@@ -115531,74 +115560,74 @@ boot.define("BGA","M","",{
 boot.define("BGB","","",{
 	// teemowork.ChampionSelect$Info#<clinit>()
 	_:function(){
-		// 340
+		// 345
 		boot.BGB.c=new boot.CB(0);
 	},
 	// teemowork.ChampionSelect$Info#<init>(teemowork.model.Champion)
 	$0:function(A,B,C,D,E,F){
-		// 343
+		// 348
 		this.d=new boot.DS(0);
-		// 346
+		// 351
 		this.e=new boot.DS(0);
-		// 352
+		// 357
 		D=(E=A.io).length;C=0;
 		for (; C<D; ++C) {
 			B=E[C];
-			// 353
+			// 358
 			F=B.DXE(boot.BCU.dn);
-			// 355
+			// 360
 			this.EwB(F.DZJ());
-			// 356
+			// 361
 			this.EwB(F.DZN());
 		}
-		// 358
+		// 363
 	},
 	// teemowork.ChampionSelect$Info#parse(java.util.List)
 	EwB:function(A,B,C,D,E,F,G,H){
-		// 368
+		// 373
 		C=A.IH();
-		// 368
+		// 373
 		while (C.IO()!=0) {
 			B=C.Hx();
-			// 369
+			// 374
 			if (B instanceof boot.BCy==0) {
 			} else {
-				// 370
+				// 375
 				D=B;
-				// 371
+				// 376
 				E=D.DZv();
-				// 372
+				// 377
 				this.d.CA(E);
-				// 374
+				// 379
 				F=D.DuC();
-				// 376
+				// 381
 				H=F.IH();
-				// 376
+				// 381
 				for (; H.IO()!=0; this.e.CA(G.DZv())) {
 					G=H.Hx();
 				}
 			}
 		}
-		// 381
+		// 386
 	},
 	// teemowork.ChampionSelect$Info#of(teemowork.model.Champion)
 	_EwC:function(A){
-		// 392
+		// 397
 		return boot.BGB.c.SK(A,λ(boot.DM,"Gv","$0",boot.BGB.prototype,[]))
 	},
 	// teemowork.ChampionSelect$Info#access$0(teemowork.model.Champion)
 	_EYG:function(A){
-		// 391
+		// 396
 		return boot.BGB.EwC(A)
 	},
 	// teemowork.ChampionSelect$Info#access$1(teemowork.ChampionSelect$Info)
 	_EYH:function(A){
-		// 343
+		// 348
 		return A.d
 	},
 	// teemowork.ChampionSelect$Info#access$2(teemowork.ChampionSelect$Info)
 	_EYI:function(A){
-		// 346
+		// 351
 		return A.e
 	}
 },{
@@ -115740,7 +115769,7 @@ boot.define("R","T","",{
 			F=E.DYC(this.p);
 		}
 		// 168
-		G=D.mi;
+		G=D.na;
 		// 170
 		if (D!=boot.BCW.hi&&D!=boot.BCW.ib) {
 			// 171
@@ -115894,8 +115923,8 @@ boot.define("R","T","",{
 	bc:[17,"skillDown","MM<BCS>"],
 	bd:[17,"championLevelUp","MM<w>"],
 	be:[17,"championLevelDown","MM<w>"],
-	DHu:[4,,,,"V","virtualize"],
 	EwK:[2,,"BCW",,"[G","computeStatusValue"],
+	DHu:[4,,,,"V","virtualize"],
 	EwI:[2,,"BCS BDB BCy",,"V","writeStatusValue"]
 });
 
@@ -116065,7 +116094,7 @@ boot.define("BHD","M","",{
 		// 307
 		boot.M.be.i.EKK().EKL(boot.BEu.f).EPT(1,boot.M.f);
 		// 308
-		boot.M.bd.ENO(boot.BFB.EOO(boot.M.EID(boot.M.EHz(240,192,28,A.BHK()!=0?1:0.5),boot.M.EHz(160,123,1,A.BHK()!=0?1:0.5))));
+		boot.M.bd.ENO(boot.BFB.EOO(boot.M.EID(boot.M.EHz(240,192,28,A.BHM()!=0?1:0.5),boot.M.EHz(160,123,1,A.BHM()!=0?1:0.5))));
 		// 309
 	},
 	// teemowork.ChampionDetail$CSS#lambda$10()
@@ -116284,7 +116313,7 @@ boot.define("BHG","","BGW",{
 	// jsx.style.BinaryStyle#of(boolean)
 	ExC:function(A){
 		// 42
-		return this.EYS(boot.Ez.BHI(A))
+		return this.EYS(boot.Ez.BHK(A))
 	}
 },{
 	$:[1537,"jsx.style.BinaryStyle",,,"BGW<Ez>"],
@@ -116309,7 +116338,7 @@ boot.define("U","","BCz",{
 		// 52
 		this.i=new boot.MX(boot.Lz.CGF(Φ("BZ",[boot.BZ.QB(0),boot.BZ.QB(0),boot.BZ.QB(0),boot.BZ.QB(0),boot.BZ.QB(0)])),0);
 		// 56
-		this.j=new boot.MX(boot.Lz.CGF(Φ("Ez",[boot.Ez.BHI(false),boot.Ez.BHI(false),boot.Ez.BHI(false),boot.Ez.BHI(false),boot.Ez.BHI(false)])),0);
+		this.j=new boot.MX(boot.Lz.CGF(Φ("Ez",[boot.Ez.BHK(false),boot.Ez.BHK(false),boot.Ez.BHK(false),boot.Ez.BHK(false),boot.Ez.BHK(false)])),0);
 		// 62
 		this.l=new boot.BU(0);
 		// 65
@@ -116326,7 +116355,7 @@ boot.define("U","","BCz",{
 		B=0;
 		for (; B<5; ++B) {
 			// 83
-			this.i.OB(B,boot.BZ.QB(A.io[B].DYI()));
+			this.i.OE(B,boot.BZ.QB(A.io[B].DYI()));
 		}
 		// 92
 	},
@@ -116390,14 +116419,14 @@ boot.define("U","","BCz",{
 				case 49:
 				case 50:
 				case 71:
-				case 173:
-				case 176:
-				case 180:
-				case 183:
+				case 181:
 				case 184:
+				case 188:
 				case 191:
 				case 192:
-				case 193:
+				case 199:
+				case 200:
+				case 201:
 				// 188
 				return new boot.BHH(this,0,0,A,null,0);
 				case 10:
@@ -116454,7 +116483,7 @@ boot.define("U","","BCz",{
 				case 157:
 				// 206
 				return new boot.BHH(this,0,this.ExP(boot.BCW.ka).e,A,null,0);
-				case 187:
+				case 195:
 				// 191
 				return new boot.BHH(this,0,1,A,null,0);
 				default:
@@ -116524,7 +116553,7 @@ boot.define("U","","BCz",{
 		// 312
 		if (C<A.DXO()) {
 			// 313
-			this.i.OB(B,boot.BZ.QB(C+1));
+			this.i.OE(B,boot.BZ.QB(C+1));
 		}
 		// 315
 	},
@@ -116537,7 +116566,7 @@ boot.define("U","","BCz",{
 		// 328
 		if (A.DYI()<C) {
 			// 329
-			this.i.OB(B,boot.BZ.QB(C-1));
+			this.i.OE(B,boot.BZ.QB(C-1));
 		}
 		// 331
 	},
@@ -116602,7 +116631,7 @@ boot.define("U","","BCz",{
 				// 404
 				B=A.DXZ(B,this.ExV(G.DZJ(),F,A));
 				// 407
-				if (this.j.CK(E).BHK()!=0) {
+				if (this.j.CK(E).BHM()!=0) {
 					// 408
 					B=A.DXZ(B,this.ExV(G.DZN(),F,A));
 				}
@@ -116728,11 +116757,11 @@ boot.define("U","","BCz",{
 		// 535
 		B=A.PE();
 		// 536
-		this.j.OB(B,boot.Ez.BHI(this.j.CK(B).BHK()==0?1:0));
+		this.j.OE(B,boot.Ez.BHK(this.j.CK(B).BHM()==0?1:0));
 		// 539
-		if (this.j.CK(B).BHK()!=0&&this.i.CK(B).MH()==0) {
+		if (this.j.CK(B).BHM()!=0&&this.i.CK(B).MH()==0) {
 			// 540
-			this.i.OB(B,boot.BZ.QB(1));
+			this.i.OE(B,boot.BZ.QB(1));
 		}
 		// 543
 		if (A==boot.BDA.i) {
@@ -116793,7 +116822,7 @@ boot.define("U","","BCz",{
 	// teemowork.model.Build#isActive(teemowork.model.Skill)
 	Exv:function(A){
 		// 581
-		return this.j.CK(A.i.PE()).BHK()
+		return this.j.CK(A.i.PE()).BHM()
 	},
 	// teemowork.model.Build#access$0(teemowork.model.Build)
 	_Exw:function(A){
@@ -116820,26 +116849,26 @@ boot.define("U","","BCz",{
 	ba:[4106,"$SWITCH_TABLE$teemowork$model$Status","[I"],
 	ExQ:[2,,"BCW",,"D","base"],
 	ExP:[1,,"BCW",,"BHH","get"],
-	ExV:[2,,"Bz BCS BCW",,"D","sum"],
 	ExR:[2,,"BCW",,"D","sum"],
 	ExU:[2,,"Bz BCW",,"D","sum"],
+	ExV:[2,,"Bz BCS BCW",,"D","sum"],
 	Ewx:[1,,,,"BCU","getVersion"],
 	ExO:[1,,"BCU",,"V","setVersion"],
 	ExN:[1,,"I",,"V","setLevel"],
 	ExS:[1,,"I",,"BDQ","getItem"],
-	Exu:[1,,"BDA",,"V","active"],
 	ExT:[1,,"I BDQ",,"V","setItem"],
+	ExW:[1,,"BCS BCy I",,"D","calculateVariable"],
 	DYD:[1,,,,"I","getLevel"],
 	DYE:[1,,"BCS",,"I","getLevel"],
-	ExW:[1,,"BCS BCy I",,"D","calculateVariable"],
+	Exv:[1,,"BCS",,"Z","isActive"],
+	ExZ:[2,,"BCW BCS",,"D","computeVariable"],
+	Exu:[1,,"BDA",,"V","active"],
 	DYF:[1,,"BCW",,"D","calculate"],
 	EwL:[1,,"BCW",,"u","getQualified"],
 	EwN:[1,,,,"V","levelUp"],
 	EwP:[1,,"BCS",,"V","levelUp"],
-	EwQ:[1,,"BCS",,"V","levelDown"],
 	EwO:[1,,,,"V","levelDown"],
-	Exv:[1,,"BCS",,"Z","isActive"],
-	ExZ:[2,,"BCW BCS",,"D","computeVariable"]
+	EwQ:[1,,"BCS",,"V","levelDown"]
 });
 
 // class teemowork.model.Build$Computed "BHH"
@@ -116855,7 +116884,7 @@ boot.define("BHH","","",{
 		// 605
 		this.e=F.DXY(D-B);
 		// 607
-		boot.U.Exw(A).OB(F.PE(),this);
+		boot.U.Exw(A).OE(F.PE(),this);
 		// 608
 	},
 	// teemowork.model.Build$Computed#value()
@@ -117318,14 +117347,14 @@ boot.define("BHJ","","",{
 	EyD:[1,,"BHL",,"Z","isAvailable"],
 	EyA:[1,,,,"u","getCode"],
 	EyI:[1,,"BHL",,"I","getLevel"],
-	Exz:[1,,"u",,"V","setCode"],
-	EyE:[2,,"BHL I",,"Z","changeLevel"],
-	EyG:[2,,"BHL",,"Z","isUnavailable"],
-	EyL:[1,,"BHL",,"Z","isMax"],
 	EyC:[1,,"BHL",,"V","up"],
 	EyF:[1,,"BHL",,"V","down"],
 	EyJ:[1,,,,"I","getSum"],
-	EyK:[1,,"BHM",,"I","getSum"]
+	EyK:[1,,"BHM",,"I","getSum"],
+	Exz:[1,,"u",,"V","setCode"],
+	EyE:[2,,"BHL I",,"Z","changeLevel"],
+	EyG:[2,,"BHL",,"Z","isUnavailable"],
+	EyL:[1,,"BHL",,"Z","isMax"]
 });
 
 // class teemowork.model.Mastery "BHL"
@@ -117393,11 +117422,11 @@ boot.define("BHL","BCT","",{
 	o:[17,"id","I"],
 	p:[18,"level","I"],
 	W:[1,,,,"u","toString"],
+	EyP:[9,,"BCU",,"[[[BHL","getMasteryTree"],
 	EyH:[9,,"BCU",,"[BHL","getMastery"],
 	DSY:[1025,,,,"BCX","getIconPosition"],
 	DSX:[1025,,,,"u","getIcon"],
-	DXO:[1,,,,"I","getMaxLevel"],
-	EyP:[9,,"BCU",,"[[[BHL","getMasteryTree"]
+	DXO:[1,,,,"I","getMaxLevel"]
 });
 
 // class teemowork.model.MasterySeason4 "BHN"
@@ -117470,7 +117499,7 @@ boot.define("BHN","BHL","",{
 		// 98
 		boot.BHN.bl.DXG().DZK("{1}を得る。").DZR(1,boot.BCW.ei,6.0);
 		// 99
-		boot.BHN.bm.DXG().DZK("対象のHealthが{1}以下の時、{2}する。").DZS(1,boot.BCW.mc,20.0,15.0).DZR(2,boot.BCW.f,5.0);
+		boot.BHN.bm.DXG().DZK("対象のHealthが{1}以下の時、{2}する。").DZS(1,boot.BCW.mk,20.0,15.0).DZR(2,boot.BCW.f,5.0);
 		// 100
 		boot.BHN.bn.DXG().DZK("スキルでChampionにダメージを与えると、5秒間自身の通常攻撃の与ダメージが1%増加する。この効果は3回までスタックする。");
 		// 101
@@ -117558,7 +117587,7 @@ boot.define("BHN","BHL","",{
 		// 192
 		boot.BHN.de.DXG().DZK("Healthが25%以下の時、{1}する。").DZR(1,boot.BCW.ii,10.0);
 		// 197
-		boot.BHN.df.DXG().DZK("{1}に敵Championがいる場合、{2}と{3}を得る。").DZR(1,boot.BCW.li,700.0).DZX(2,boot.BCW.ga,0,0,boot.BCT.DXN(boot.BCW.ln,1,1)).DZX(3,boot.BCW.ge,0,0,boot.BCT.DXN(boot.BCW.ln,0.5,0.5));
+		boot.BHN.df.DXG().DZK("{1}に敵Championがいる場合、{2}と{3}を得る。").DZR(1,boot.BCW.ma,700.0).DZX(2,boot.BCW.ga,0,0,boot.BCT.DXN(boot.BCW.mf,1,1)).DZX(3,boot.BCW.ge,0,0,boot.BCT.DXN(boot.BCW.mf,0.5,0.5));
 		// 198
 		boot.BHN.dg.DXG().DZK("ゲーム開始時とRespawnする時、{1}を得る。").DZR(1,boot.BCW.he,50.0);
 		// 199
@@ -117608,13 +117637,13 @@ boot.define("BHN","BHL","",{
 		// 260
 		boot.BHN.dl.DXG().DZK("Trinket系アイテムの射程が25%増加する。");
 		// 261
-		boot.BHN.dm.DXG().DZK("{Summoner SpellのCDが{1}減少する。").DZS(1,boot.BCW.mc,4.0,3.0);
+		boot.BHN.dm.DXG().DZK("{Summoner SpellのCDが{1}減少する。").DZS(1,boot.BCW.mk,4.0,3.0);
 		// 262
 		boot.BHN.dn.DXG().DZK("{1}を得る。").DZX(1,boot.BCW.bl,0,0,boot.BCT.DXJ(boot.BCW.bp,0.0033));
 		// 263
 		boot.BHN.dp.DXG().DZK("PotionとElixir系のアイテムの持続時間が10%増加する。");
 		// 264
-		boot.BHN.ea.DXG().DZK("{1}を得る。").DZS(1,boot.BCW.lc,0.5,0.5);
+		boot.BHN.ea.DXG().DZK("{1}を得る。").DZS(1,boot.BCW.lk,0.5,0.5);
 		// 265
 		boot.BHN.eb.DXG().DZK("BaronBuff以外のBuffの効果時間が20%延長される。");
 		// 266
@@ -117622,17 +117651,17 @@ boot.define("BHN","BHL","",{
 		// 267
 		boot.BHN.ed.DXG().DZK("Health PotionがTotal Biscuit of Rejuvenationになり、使用時は即座にHealthを20、Manaを10回復する。");
 		// 268
-		boot.BHN.ef.DXG().DZK("自分以外の味方が近くのミニオンを倒すと{1}を得る。").DZR(1,boot.BCW.lb,1);
+		boot.BHN.ef.DXG().DZK("自分以外の味方が近くのミニオンを倒すと{1}を得る。").DZR(1,boot.BCW.lj,1);
 		// 269
-		boot.BHN.ee.DXG().DZK("ゲーム開始時に{1}を得る。").DZR(1,boot.BCW.lb,40.0);
+		boot.BHN.ee.DXG().DZK("ゲーム開始時に{1}を得る。").DZR(1,boot.BCW.lj,40.0);
 		// 270
 		boot.BHN.eg.DXG().DZK("{1}を得る。").DZX(1,boot.BCW.bp,0,0,boot.BCT.DXN(boot.BCW.bp,0.02,0.015));
 		// 271
 		boot.BHN.eh.DXG().DZK("レベルが自分よりも高い味方の側にいると、1秒毎に{1}を得る。").DZS(1,boot.BCW.hp,0.5,0.5);
 		// 275
-		boot.BHN.ei.DXG().DZK("Melee : キルもしくはアシストを取ると{1}を得る。<br>Ranged : 敵Championに通常攻撃でダメージを与える毎に{2}を得る。CDは5秒。").DZR(1,boot.BCW.lb,15.0).DZR(2,boot.BCW.lb,3.0);
+		boot.BHN.ei.DXG().DZK("Melee : キルもしくはアシストを取ると{1}を得る。<br>Ranged : 敵Championに通常攻撃でダメージを与える毎に{2}を得る。CDは5秒。").DZR(1,boot.BCW.lj,15.0).DZR(2,boot.BCW.lj,3.0);
 		// 276
-		boot.BHN.ej.DXG().DZK("{1}を得る。また、アイテムのActiveのCDが{2}減少する。").DZS(1,boot.BCW.em,2.0,1.5).DZS(2,boot.BCW.mc,4.0,3.0);
+		boot.BHN.ej.DXG().DZK("{1}を得る。また、アイテムのActiveのCDが{2}減少する。").DZS(1,boot.BCW.em,2.0,1.5).DZS(2,boot.BCW.mk,4.0,3.0);
 		// 277
 		boot.BHN.ek.DXG().DZK("非戦闘時、{1}する。").DZR(1,boot.BCW.kc,5.0);
 		// 283
@@ -117738,9 +117767,9 @@ boot.define("BHN","BHL","",{
 	ek:[25,"Wanderer","BHN"],
 	el:[24,"Trees","[[[BHL"],
 	em:[10,"counter","I"],
+	EyQ:[4,,"BCU BHO",,"BHO","createDescriptor"],
 	DSY:[1,,,,"BCX","getIconPosition"],
-	DSX:[1,,,,"u","getIcon"],
-	EyQ:[4,,"BCU BHO",,"BHO","createDescriptor"]
+	DSX:[1,,,,"u","getIcon"]
 });
 
 // class teemowork.model.MasteryDescriptor "BHO"
@@ -117955,7 +117984,7 @@ boot.define("BHE","BAF","",{
 			boot.BAB.DPL(14,Φ("G",[")"]))
 		}
 		// 138
-		boot.BAB.DPL(15,Φ("G",[A.DZv().mi]))// 139
+		boot.BAB.DPL(15,Φ("G",[A.DZv().na]))// 139
 	},
 	// teemowork.model.DescriptionView#lambda$5(teemowork.model.variable.VariableResolver, int, int, teemowork.model.variable.Variable, teemowork.model.StatusCalculator, int)
 	_Eyu:function(A,B,C,D,E,F,G){
@@ -118482,7 +118511,7 @@ boot.define("BHS","T","CL",{
 	// teemowork.ChampionComparing$Header#virtualize()
 	DHu:function(){
 		// 139
-		boot.BAB.DPN(0,boot.BHR.EXV(),Φ("G",[this.n.mi]))// 140
+		boot.BAB.DPN(0,boot.BHR.EXV(),Φ("G",[this.n.na]))// 140
 	},
 	// teemowork.ChampionComparing$Header#compare(java.lang.Object, java.lang.Object)
 	DL:function(A,B){
@@ -118504,7 +118533,7 @@ boot.define("X","Q","",{
 	// teemowork.ItemCatalog#<clinit>()
 	_:function(){
 		// 45
-		boot.X.m=Φ("BCW",[boot.BCW.bf,boot.BCW.bl,boot.BCW.bn,boot.BCW.bp,boot.BCW.cd,boot.BCW.cf,boot.BCW.dh,boot.BCW.ea,boot.BCW.fd,boot.BCW.eb,boot.BCW.ee,boot.BCW.ei,boot.BCW.em,boot.BCW.fa,boot.BCW.fk,boot.BCW.ga,boot.BCW.ge,boot.BCW.kc,boot.BCW.lc]);
+		boot.X.m=Φ("BCW",[boot.BCW.bf,boot.BCW.bl,boot.BCW.bn,boot.BCW.bp,boot.BCW.cd,boot.BCW.cf,boot.BCW.dh,boot.BCW.ea,boot.BCW.fd,boot.BCW.eb,boot.BCW.ee,boot.BCW.ei,boot.BCW.em,boot.BCW.fa,boot.BCW.fk,boot.BCW.ga,boot.BCW.ge,boot.BCW.kc,boot.BCW.lk]);
 		// 46
 	},
 	// teemowork.ItemCatalog#<init>()
@@ -118542,7 +118571,7 @@ boot.define("X","Q","",{
 	// teemowork.ItemCatalog#type(teemowork.model.Status[])
 	_EzF:function(A){
 		// 182
-		return boot.X.EzI(A[0].mi,A)
+		return boot.X.EzI(A[0].na,A)
 	},
 	// teemowork.ItemCatalog#type(java.lang.String, teemowork.model.Status[])
 	_EzI:function(A,B){
@@ -118891,7 +118920,7 @@ boot.define("BHX","T","",{
 	// teemowork.ItemView#<clinit>()
 	_:function(){
 		// 36
-		boot.BHX.n=Φ("BCW",[boot.BCW.bf,boot.BCW.bl,boot.BCW.bp,boot.BCW.cd,boot.BCW.dh,boot.BCW.ea,boot.BCW.fd,boot.BCW.eb,boot.BCW.ee,boot.BCW.ei,boot.BCW.em,boot.BCW.fa,boot.BCW.fk,boot.BCW.ga,boot.BCW.ge,boot.BCW.kc,boot.BCW.lc]);
+		boot.BHX.n=Φ("BCW",[boot.BCW.bf,boot.BCW.bl,boot.BCW.bp,boot.BCW.cd,boot.BCW.dh,boot.BCW.ea,boot.BCW.fd,boot.BCW.eb,boot.BCW.ee,boot.BCW.ei,boot.BCW.em,boot.BCW.fa,boot.BCW.fk,boot.BCW.ga,boot.BCW.ge,boot.BCW.kc,boot.BCW.lk]);
 		// 37
 	},
 	// teemowork.ItemView#<init>()
@@ -118955,7 +118984,7 @@ boot.define("BHX","T","",{
 		// 72
 		if (C!=0) {
 			// 73
-			boot.BAB.DPN(12,boot.BHY.dj,Φ("G",[boot.CT.MG(C),B.DXu()," ",B.mi]))
+			boot.BAB.DPN(12,boot.BHY.dj,Φ("G",[boot.CT.MG(C),B.DXu()," ",B.na]))
 		}
 		// 75
 	},
@@ -119332,8 +119361,8 @@ boot.define("Y","Q","",{
 	o:[18,"up","MM<BHL>"],
 	p:[18,"down","MM<BHL>"],
 	Ezw:[2,,"Ky [[BHL BHM",,"V","build"],
-	DHu:[4,,,,"V","virtualize"],
-	Ezy:[2,,"D",,"u","grayscale"]
+	Ezy:[2,,"D",,"u","grayscale"],
+	DHu:[4,,,,"V","virtualize"]
 });
 
 // class teemowork.MasteryBuilder$$ "BHu"
