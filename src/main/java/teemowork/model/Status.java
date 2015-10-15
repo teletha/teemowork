@@ -302,6 +302,16 @@ public enum Status {
 
     Stasis("対象及び操作不可"),
 
+    Dash("移動"),
+
+    DashTarget("突撃"),
+
+    Blink("テレポート"),
+
+    BlinkTarget("テレポート"),
+
+    BlinkExchange("入れ替わる"),
+
     // ==================================================
     // State
     // ==================================================
@@ -610,6 +620,11 @@ public enum Status {
         case Range:
             return "射程が" + formatValue(Math.abs(computed)) + (0 <= computed ? "増加" : "減少");
 
+        case Blink:
+        case BlinkExchange:
+        case BlinkTarget:
+        case Dash:
+        case DashTarget:
         case Knockback:
             String length = formatValue(computed);
 

@@ -60,11 +60,12 @@ public interface SkillDefinition {
                 .cd(new Per5Level(-225, 25));
 
         Q.update(P308)
-                .active("指定地点に飛びかかり、{1}の敵ユニットに{2}を与える。{4}にいる敵ユニットに対しては更に{3}を与える。")
+                .active("指定地点に{5}して、{1}の敵ユニットに{2}を与える。{4}にいる敵ユニットに対しては更に{3}を与える。")
                 .variable(1, Radius, 225)
                 .variable(2, PhysicalDamage, 70, 45, bounusAD(0.6))
                 .variable(3, Knockup, 1)
                 .variable(4, Radius, 75)
+                .variable(5, Dash)
                 .cd(16, -1)
                 .cost(CurrentHealthRatio, 10, 0)
                 .range(650);
@@ -131,10 +132,11 @@ public interface SkillDefinition {
                 .range(975);
 
         R.update(P503)
-                .active("指定方向にダッシュした後、{2}の敵ユニット(敵チャンピオンを優先)3体に{1}を与える。このスキルは10秒の間、3回まで連続して使用できる。2～3発目はマナコスト無しで使用可能。同一対象に3発命中すると{3}。")
-                .variable(1, MagicDamage, 70, 40, ap(0.3))
+                .active("指定方向に{1}した後、{2}の敵ユニット(敵チャンピオンを優先)3体に{3}を与える。このスキルは10秒の間、3回まで連続して使用できる。2～3発目はマナコスト無しで使用可能。同一対象に3発命中すると{4}。")
+                .variable(1, Dash)
                 .variable(2, Radius, 600)
-                .variable(3, MagicDamage, 210, 120, ap(0.9))
+                .variable(3, MagicDamage, 70, 40, ap(0.3))
+                .variable(4, MagicDamage, 210, 120, ap(0.9))
                 .cd(110, -15)
                 .mana(100)
                 .range(450);
@@ -176,10 +178,11 @@ public interface SkillDefinition {
                 .cost(Energy, 60, -5);
 
         R.update(P510)
-                .active("対象の敵ユニットを通過して後方200の位置に移動し（" + Q + "のマークが付いている場合は後方100の位置）{1}を与える。使用時にチャージを消費する。チャージは{2}毎に又は敵チャンピオンを{3}で増加し最大で3つまでチャージされる。")
+                .active("対象の敵ユニットを通過して後方200の位置に{4}し（" + Q + "のマークが付いている場合は後方100の位置）{1}を与える。使用時にチャージを消費する。チャージは{2}毎に又は敵チャンピオンを{3}で増加し最大で3つまでチャージされる。")
                 .variable(1, MagicDamage, 100, 75, ap(0.5))
                 .variable(2, CDRAwareTime, 30, -7.5)
                 .variable(3, Takedown)
+                .variable(4, DashTarget)
                 .cd(2, -0.5)
                 .range(700);
     }
@@ -204,10 +207,11 @@ public interface SkillDefinition {
                 .mana(65, 5);
 
         W.update(P516)
-                .active("対象の敵ユニットに突撃（速度1200）し{1}と{2}、{3}を与える。")
+                .active("対象の敵ユニットに{4}（速度1200）し{1}と{2}、{3}を与える。")
                 .variable(1, MagicDamage, 55, 55, ap(0.7))
                 .variable(2, Knockback)
                 .variable(3, Stun, 1)
+                .variable(4, DashTarget)
                 .cd(14, -1)
                 .mana(65, 5)
                 .range(650);
@@ -237,9 +241,10 @@ public interface SkillDefinition {
         P.update(P301).passive("通常攻撃した対象に3秒間{1}を与える。").variable(1, MRReduction, new Per6Level(15, 5));
 
         Q.update(P303)
-                .active("指定方向に包帯を飛ばし、当たった敵ユニットに{1}及び{2}を与え、そこまで移動する。")
+                .active("指定方向に包帯を飛ばし、当たった敵ユニットに{1}及び{2}を与え、{3}する。")
                 .variable(1, MagicDamage, 80, 50, ap(0.7))
                 .variable(2, Stun, 1)
+                .variable(3, DashTarget)
                 .mana(80, 10)
                 .cd(16, -2)
                 .range(1100);
@@ -448,9 +453,10 @@ public interface SkillDefinition {
                 .cd(1.5);
 
         E.update(P514)
-                .active("砂兵士1体に向かってダッシュし、進路上にいる敵に{1}を与える。敵チャンピオンに衝突した場合、そこで停止して4秒間{2}を得る。")
+                .active("砂兵士1体に向かって{3}し、進路上にいる敵に{1}を与える。敵チャンピオンに衝突した場合、そこで停止して4秒間{2}を得る。")
                 .variable(1, MagicDamage, 60, 30, ap(0.4))
                 .variable(2, Shield, 80, 40, amplify(BounusHealth, 0.15))
+                .variable(3, DashTarget)
                 .range(1100)
                 .cd(19, -1)
                 .mana(60);
@@ -621,9 +627,10 @@ public interface SkillDefinition {
                 .cd(10, -1);
 
         W.update(P413)
-                .active("対象の味方のユニットのそばに素早く移動する。移動完了後3秒間、自分と味方は{1}と{2}を得る。")
+                .active("対象の味方のユニットのそばに{3}する。移動完了後3秒間、自分と味方は{1}と{2}を得る。")
                 .variable(1, AR, 15, 2.5, amplify(BounusAR, 0.1, 0.015))
                 .variable(2, MR, 15, 2.5, amplify(BounusMR, 0.1, 0.015))
+                .variable(3, DashTarget)
                 .range(650)
                 .mana(50, 5)
                 .cd(14, -1);
@@ -677,11 +684,11 @@ public interface SkillDefinition {
                 .range(800);
 
         E.update(P301)
-                .active("指定方向にネットを飛ばし当たった敵ユニットに{1}と{3}間{2}を与え、Caitlynはネットを飛ばした方向の反対側にジャンプ({4})する。")
+                .active("指定方向にネットを飛ばし当たった敵ユニットに{1}と{2}間{3}を与え、" + champion + "はネットを飛ばした方向の反対側に{4}する。")
                 .variable(1, MagicDamage, 80, 50, ap(0.8))
-                .variable(2, MSSlowRatio, 50)
-                .variable(3, Time, 1, 0.25)
-                .variable(4, Distance, 400)
+                .variable(2, Time, 1, 0.25)
+                .variable(3, MSSlowRatio, 50)
+                .variable(4, Dash, 400)
                 .mana(75)
                 .cd(18, -2)
                 .range(950);
@@ -805,7 +812,8 @@ public interface SkillDefinition {
                 .range(825);
 
         W.update(P501)
-                .active("指定地点まで高速で移動し、通過地点を2.5秒間炎上させる。炎上地点の上にいる敵ユニットに0.5秒毎に{2}を与える。")
+                .active("指定地点まで高速で{1}し、通過地点を2.5秒間炎上させる。炎上地点の上にいる敵ユニットに0.5秒毎に{2}を与える。")
+                .variable(1, Dash)
                 .variable(2, MagicDamage, 30, 15, ap(0.2))
                 .mana(100)
                 .cd(26, -3)
@@ -863,9 +871,10 @@ public interface SkillDefinition {
                 .cd(26, -2);
 
         R.update(P421)
-                .active("対象の敵ユニットの元までテレポートし、{1}を与える。対象にMoonlightが付与されていた場合、全ての敵ユニットに付与されたMoonlightを消費してこのスキルの{2}する。")
+                .active("対象の敵ユニットの元まで{3}し、{1}を与える。対象にMoonlightが付与されていた場合、全ての敵ユニットに付与されたMoonlightを消費してこのスキルの{2}する。")
                 .variable(1, MagicDamage, 100, 60, ap(0.6))
                 .variable(2, CDDecrease)
+                .variable(3, DashTarget)
                 .mana(50, 15)
                 .cd(25, -5)
                 .range(825);
@@ -925,11 +934,12 @@ public interface SkillDefinition {
                 .range(550);
 
         R.update(P516)
-                .active("対象の敵チャンピオンに跳躍し、{1}を与える。対象の出血スタック数1個につき、このスキルのダメージが20%増加する(最大でダメージ2倍)。このスキルで敵チャンピオンのキルを取った場合、周囲のミニオンとモンスターに{2}を与え、20秒間マナを消費せずに再使用することが出来る（ランク3であれば{4}）。この効果はキルを取るたびに適用される。")
+                .active("対象の敵チャンピオンに{5}し、{1}を与える。対象の出血スタック数1個につき、このスキルのダメージが20%増加する(最大でダメージ2倍)。このスキルで敵チャンピオンのキルを取った場合、周囲のミニオンとモンスターに{2}を与え、20秒間マナを消費せずに再使用することが出来る（ランク3であれば{4}）。この効果はキルを取るたびに適用される。")
                 .variable(1, TrueDamage, 100, 100, bounusAD(0.75))
                 .variable(2, Fear)
                 .variable(3, Time, 20)
                 .variable(4, CDDecrease)
+                .variable(5, DashTarget)
                 .cost(Mana, new PerSkillLevel(100, 100, 0), null)
                 .cd(120, -20)
                 .range(475);
@@ -1052,18 +1062,21 @@ public interface SkillDefinition {
                 .cd(22, -2);
 
         E.update(P514)
-                .active("指定した方向にダッシュする。次の通常攻撃に{1}を付与し{2}する。攻撃が命中すると対象の元までテレポートする。")
-                .variable(1, MagicDamage, 50, 30, ap(0.2))
-                .variable(2, Range, 300)
+                .active("指定した方向に{1}する。次の通常攻撃に{2}を付与し{3}する。攻撃が命中すると対象の元まで{4}する。")
+                .variable(1, Dash)
+                .variable(2, MagicDamage, 50, 30, ap(0.2))
+                .variable(3, Range, 300)
+                .variable(4, Blink)
                 .range(325)
                 .mana(40, 10)
                 .cd(13, -1.5);
 
         R.update(P515)
-                .active("自身が無敵状態になり、敵からターゲット不能になる。さらに時間を撒き戻し、4秒前にいた地点にテレポートする。その際、{1}し、到着地点の{2}にいる敵に{3}を与える。")
-                .variable(1, RestoreHealth, 100, 50, amplify(ReceivedDamage4SecRatio, 20, 0, ap(0.0666)))
-                .variable(2, Radius)
-                .variable(3, MagicDamage, 200, 150, ap(1.3))
+                .active("自身が無敵状態になり、敵からターゲット不能になる。さらに時間を撒き戻し、4秒前にいた地点に{1}する。その際、{2}し、到着地点の{3}にいる敵に{4}を与える。")
+                .variable(1, Blink)
+                .variable(2, RestoreHealth, 100, 50, amplify(ReceivedDamage4SecRatio, 20, 0, ap(0.0666)))
+                .variable(3, Radius)
+                .variable(4, MagicDamage, 200, 150, ap(1.3))
                 .range(-1)
                 .mana(100)
                 .cd(110, -20);
@@ -1119,16 +1132,17 @@ public interface SkillDefinition {
                 .variable(4, Range, -425);
 
         Q.update(P501)
-                .active("対象の敵ユニットに飛びつき{1}を与える。ミニオンとモンスターに対しては{2}が上限。")
+                .active("対象の敵ユニットに{3}して{1}を与える。ミニオンとモンスターに対しては{2}が上限。")
                 .variable(1, MagicDamage, 60, 40, amplify(TargetMissingHealthRatio, 8, 0, ap(0.03)))
                 .variable(2, MagicDamage, 135, 65)
+                .variable(3, DashTarget)
                 .cd(6)
                 .range(475);
 
         W.update(P514).passive("子蜘蛛の{1}する。").variable(1, ASRatio, 5, 5).active("3秒間自身と子蜘蛛の{2}する。").variable(2, ASRatio, 60, 20).cd(12);
 
         E.update(P514)
-                .active("自身と子蜘蛛が上空に退避し{1}になる。上空にいる間は射程内の{2}。<br>地面をクリックした場合: 最大2秒間上空に待機し、初期位置へ降下する。この間、敵ユニットをターゲットし裏側に降下できる。<br>敵ユニットをクリックした場合: 即座に下降し裏側に降り立つ。")
+                .active("自身と子蜘蛛が上空に退避し{1}になる。上空にいる間は射程内の{2}。<br>地面をクリックした場合: 最大2秒間上空に待機し、初期位置へ降下する。この間、敵ユニットをターゲットし裏側に降下できる。<br>敵ユニットをクリックした場合: 即座に降下し裏側に降り立つ。")
                 .variable(1, Untargetable)
                 .variable(2, Visionable)
                 .cd(26, -3)
@@ -1220,9 +1234,10 @@ public interface SkillDefinition {
                 .range(1000);
 
         E.update(P518)
-                .active("指定地点にテレポートし、テレポート先から一番近い敵ユニット({1})1体に{2}を与える。")
-                .variable(1, Radius, 750)
-                .variable(2, MagicDamage, 75, 50, bounusAD(0.5), ap(0.75))
+                .active("指定地点に{1}し、テレポート先から一番近い敵ユニット({2})1体に{3}を与える。")
+                .variable(1, Blink)
+                .variable(2, Radius, 750)
+                .variable(3, MagicDamage, 75, 50, bounusAD(0.5), ap(0.75))
                 .mana(90)
                 .cd(19, -2)
                 .range(475);
@@ -1265,10 +1280,11 @@ public interface SkillDefinition {
                 .range(750);
 
         R.update(P419)
-                .active("1.5秒詠唱後に指定地点にテレポートし、{1}の敵ユニットに5秒間毎秒{2}を与える。最大ダメージは{3}。")
-                .variable(1, Radius, 600)
-                .variable(2, MagicDamage, 125, 100, ap(0.45))
-                .variable(3, MagicDamage, 625, 500, ap(2.25))
+                .active("1.5秒詠唱後に指定地点に{1}し、{2}の敵ユニットに5秒間毎秒{3}を与える。最大ダメージは{4}。")
+                .variable(1, Blink)
+                .variable(2, Radius, 600)
+                .variable(3, MagicDamage, 125, 100, ap(0.45))
+                .variable(4, MagicDamage, 625, 500, ap(2.25))
                 .mana(100)
                 .cd(150, -10)
                 .range(800)
@@ -1286,10 +1302,11 @@ public interface SkillDefinition {
                 .variable(3, MSRatio, new ReferPlus(R, 20, 10));
 
         Q.update(P515)
-                .active("指定方向へダッシュし当たった敵に{1}を与える。敵に当たるとこのスキルの{2}する。{3}。")
+                .active("指定方向へ{4}し当たった敵に{1}を与える。敵に当たるとこのスキルの{2}する。{3}。")
                 .variable(1, PhysicalDamage, 65, 10, amplify(BounusAD, 0.55, 0.15))
                 .variable(2, CDDecreaseRatio, 60)
                 .variable(3, OnHitEffect)
+                .variable(4, Dash)
                 .mana(20, 5)
                 .cd(16, -2)
                 .range(400);
@@ -1331,9 +1348,10 @@ public interface SkillDefinition {
                 .variable(2, IgnoreUnitCollision);
 
         Q.update(P517)
-                .active("対象の敵ユニットに{1}が付与された通常攻撃を与え、その方向に駆け抜ける。移動距離は固定。{2}。")
+                .active("対象の敵ユニットに{1}が付与された通常攻撃を与え、その方向に{2}する。{3}。")
                 .variable(1, MagicDamage, 10, 15, ap(0.35))
-                .variable(2, OnHitEffect)
+                .variable(2, DashTarget, 550)
+                .variable(3, OnHitEffect)
                 .mana(50, 5)
                 .cd(10, -1)
                 .range(550);
@@ -1347,13 +1365,14 @@ public interface SkillDefinition {
                 .cd(10);
 
         E.update(P413)
-                .active("指定地点にジャンプし、{6}になる。0.75秒後にその場に降下し、{1}の敵ユニットに{2}と2秒間{3}を与える。また、ジャンプ中に再使用することで降下する場所を別の指定地点に変更しできる。その場合、{4}の敵ユニットに{5}を与える。")
+                .active("指定地点にジャンプして{7}し、{6}になる。0.75秒後にその場に降下し、{1}の敵ユニットに{2}と2秒間{3}を与える。また、ジャンプ中に再使用することで降下する場所を別の指定地点に変更しできる。その場合、{4}の敵ユニットに{5}を与える。")
                 .variable(1, Radius, 330)
                 .variable(2, MagicDamage, 70, 50, ap(0.75))
                 .variable(3, MSSlowRatio, 40, 5)
                 .variable(4, Radius, 270)
                 .variable(5, MagicDamage, 70, 50, ap(0.75))
                 .variable(6, Untargetable)
+                .variable(7, Dash)
                 .mana(90, 10)
                 .cd(16, -2)
                 .range(400);
@@ -1556,11 +1575,12 @@ public interface SkillDefinition {
                 .cd(15, -2);
 
         E.update(P420)
-                .active("Mini Gnar<br>指定地点にジャンプし、3秒間{1}する。指定した地点にユニット(味方可)がいた場合、そのユニットを踏みつけ更にもう一度ジャンプを行う。踏みつけた対象が敵ユニットの場合、対象に{2}と0.5秒{3}を与える。<br>Mega Gnar<br>指定地点にジャンプし、{4}の敵ユニットに{2}を与える。範囲内の中心点にいる敵ユニットには、0.5秒間{3}を与える。")
+                .active("Mini Gnar<br>指定地点にジャンプして{5}し、3秒間{1}する。指定した地点にユニット(味方可)がいた場合、そのユニットを踏みつけ更にもう一度ジャンプを行う。踏みつけた対象が敵ユニットの場合、対象に{2}と0.5秒{3}を与える。<br>Mega Gnar<br>指定地点にジャンプし、{4}の敵ユニットに{2}を与える。範囲内の中心点にいる敵ユニットには、0.5秒間{3}を与える。")
                 .variable(1, ASRatio, 20, 10)
                 .variable(2, PhysicalDamage, 20, 40, amplify(Health, 0.06))
                 .variable(3, MSSlowRatio, 60)
                 .variable(4, Radius)
+                .variable(5, Dash)
                 .cd(18, -1.5)
                 .range(475);
 
@@ -1600,12 +1620,13 @@ public interface SkillDefinition {
                 .mana(30);
 
         E.update(P510)
-                .active("指定方向に突進し、衝突した敵ユニットと{5}の敵ユニットに{1}と{2}、{3}を与える。衝突時に突進は止まる。ユニットに当たった場合{4}する。")
+                .active("指定方向に{6}し、衝突した敵ユニットと{5}の敵ユニットに{1}と{2}、{3}を与える。衝突時に突進は止まる。ユニットに当たった場合{4}する。")
                 .variable(1, MagicDamage, 80, 40, ap(0.6))
                 .variable(2, Knockback)
                 .variable(3, Stun, 1)
                 .variable(4, CDDecrease, 3)
                 .variable(5, Radius)
+                .variable(6, Dash)
                 .mana(50)
                 .cd(12)
                 .range(600);
@@ -1647,9 +1668,10 @@ public interface SkillDefinition {
                 .range(950);
 
         E.update(P405)
-                .active("指定方向にダッシュし4秒間{1}する。このスキルは自身が通常攻撃を行う毎に{2}する。対象が建物の場合は無効。")
-                .variable(1, ASRatio, 30, 10)
-                .variable(2, CDDecrease, 1)
+                .active("指定方向に{1}し4秒間{2}する。このスキルは自身が通常攻撃を行う毎に{3}する。対象が建物の場合は無効。")
+                .variable(1, Dash)
+                .variable(2, ASRatio, 30, 10)
+                .variable(3, CDDecrease, 1)
                 .mana(40)
                 .cd(22, -2)
                 .range(425);
@@ -1701,9 +1723,10 @@ public interface SkillDefinition {
                 .cd(24, -2);
 
         R.update(P308)
-                .active("亡霊の騎兵隊を従え指定地点に突撃し、Hecarimと騎兵に触れた敵ユニットに{1}を与える。指定した地点に到着すると衝撃波を放ち、{2}の敵ユニットに{4}を与える。Hecarimが指定した地点に到着しても、騎兵隊は常に最大距離まで突撃する。" + Terrified + "に陥ったユニットは強制的にHecarimから遠ざかるように移動する。この時、Hecarimとの距離に比例して移動速度が変化する。")
+                .active("亡霊の騎兵隊を従え指定地点に{3}し、Hecarimと騎兵に触れた敵ユニットに{1}を与える。指定した地点に到着すると衝撃波を放ち、{2}の敵ユニットに{4}を与える。Hecarimが指定した地点に到着しても、騎兵隊は常に最大距離まで突撃する。" + Terrified + "に陥ったユニットは強制的にHecarimから遠ざかるように移動する。この時、Hecarimとの距離に比例して移動速度が変化する。")
                 .variable(1, MagicDamage, 150, 100, ap(1))
                 .variable(2, Radius)
+                .variable(3, Dash)
                 .variable(4, Terrified, 1)
                 .mana(100)
                 .cd(140, -20)
@@ -1791,11 +1814,12 @@ public interface SkillDefinition {
         P.update(P301).passive("視界内の敵チャンピオン数に応じて{1}を得る。").variable(-1, Tenacity, new PerChampion(10, 25, 40)).range(1200);
 
         Q.update(P416)
-                .active("対象の敵ユニットに突進し、{1}を与える。このスキルで敵を倒したとき、このスキルの{2}され{3}する。{4}。")
+                .active("対象の敵ユニットに{5}し、{1}を与える。このスキルで敵を倒したとき、このスキルの{2}され{3}する。{4}。")
                 .variable(1, PhysicalDamage, 20, 30, ad(1))
                 .variable(2, CDDecrease)
                 .variable(3, RestoreMana, 35)
                 .variable(4, OnHitEffect)
+                .variable(5, DashTarget)
                 .mana(60, 5)
                 .cd(14, -2)
                 .range(650);
@@ -1882,11 +1906,12 @@ public interface SkillDefinition {
                 .variable(2, Time, new Per6Level(10, -2));
 
         Q.update(P504)
-                .active("槍を突き出して直線上の敵ユニットに{1}を与え、3秒間{2}を与える。" + E + "の旗にヒットした場合、旗の位置まで突進し、進路上の敵ユニット({4})に{3}を与える。")
+                .active("槍を突き出して直線上の敵ユニットに{1}を与え、3秒間{2}を与える。" + E + "の旗にヒットした場合、旗の位置まで{3}し、進路上の敵ユニット({4})に{5}を与える。")
                 .variable(1, PhysicalDamage, 70, 45, bounusAD(1.2))
                 .variable(2, ARReductionRatio, 10, 4)
-                .variable(3, Knockup, 0.75)
+                .variable(3, Dash)
                 .variable(4, Radius, 180)
+                .variable(5, Knockup, 0.75)
                 .mana(45, 5)
                 .cd(10, -1)
                 .range(770);
@@ -1913,8 +1938,9 @@ public interface SkillDefinition {
                 .range(830);
 
         R.update(P421)
-                .active("対象の敵チャンピオンまで跳躍して{1}を与え、3.5秒間その周囲に通行不可能の円形の地形を作る。再度このスキルを使用すると地形を破壊できる。")
-                .variable(1, PhysicalDamage, 200, 125, bounusAD(1.5))
+                .active("対象の敵チャンピオンまで{1}して{2}を与え、3.5秒間その周囲に通行不可能の円形の地形を作る。再度このスキルを使用すると地形を破壊できる。")
+                .variable(1, DashTarget)
+                .variable(2, PhysicalDamage, 200, 125, bounusAD(1.5))
                 .mana(100, 25)
                 .cd(120, -15)
                 .range(650);
@@ -1929,8 +1955,9 @@ public interface SkillDefinition {
                 .variable(-1, ASRatio, new Per3Level(4, 2));
 
         Q.update(P301)
-                .active("対象のユニットまで飛びかかる。対象が敵ユニットの場合、{1}を与える。")
-                .variable(1, PhysicalDamage, 70, 40, ap(0.6), bounusAD(1))
+                .active("対象のユニットに{1}する。対象が敵ユニットの場合、{2}を与える。")
+                .variable(1, DashTarget)
+                .variable(2, PhysicalDamage, 70, 40, ap(0.6), bounusAD(1))
                 .mana(65)
                 .cd(10, -1)
                 .range(700);
@@ -1972,10 +1999,11 @@ public interface SkillDefinition {
                 .variable(4, IgnoreUnitCollision);
 
         Q.update(P511)
-                .active("対象の敵ユニットに飛びかかり、対象と{1}の敵ユニットに{2}と2秒間{3}を与える。")
+                .active("対象の敵ユニットに{4}、対象と{1}の敵ユニットに{2}と2秒間{3}を与える。")
                 .variable(1, Radius)
                 .variable(2, PhysicalDamage, 30, 40, bounusAD(1))
                 .variable(3, MSSlowRatio, 30, 5)
+                .variable(4, DashTarget)
                 .mana(40, 5)
                 .cd(16, -2)
                 .range(600);
@@ -2263,10 +2291,11 @@ public interface SkillDefinition {
                 .cd(6);
 
         R.update(P516)
-                .active("指定地点にテレポートし、テレポート先の{1}の敵ユニットに{2}を与える。スキル使用時にスタックが増加し、1スタックごとに追加で{3}を与え、マナコストが倍増する(最大4スタック)。スタックは15秒間増加がないと0になる。")
+                .active("指定地点に{4}し、テレポート先の{1}の敵ユニットに{2}を与える。スキル使用時にスタックが増加し、1スタックごとに追加で{3}を与え、マナコストが倍増する(最大4スタック)。スタックは15秒間増加がないと0になる。")
                 .variable(1, Radius, 150)
                 .variable(2, MagicDamage, 80, 20, ap(0.2), amplify(Mana, 0.02))
                 .variable(3, MagicDamage, 40, 10, ap(0.1), amplify(Mana, 0.01))
+                .variable(4, Blink)
                 .mana(50)
                 .cd(6, -2)
                 .range(500);
@@ -2294,9 +2323,10 @@ public interface SkillDefinition {
                 .cd(4);
 
         E.update(P511)
-                .active("対象のユニットの後方までワープし、それが敵ユニットの場合は{1}を与える。また1.5秒間{2}する。")
+                .active("対象のユニットの後方まで{3}し、それが敵ユニットの場合は{1}を与える。また1.5秒間{2}する。")
                 .variable(1, MagicDamage, 40, 30, ap(0.25))
                 .variable(2, DamageReductionRatio, 15)
+                .variable(3, BlinkTarget)
                 .cd(12, -1.5)
                 .range(700);
 
@@ -2445,11 +2475,12 @@ public interface SkillDefinition {
                 .range(1000);
 
         E.update(P403)
-                .active("指定地点にジャンプし、{1}の敵ユニットに{2}を与える。<br>進化すると射程が300増加し、{3}場合にこのスキルの{4}する。")
+                .active("指定地点に{5}し、{1}の敵ユニットに{2}を与える。<br>進化すると射程が300増加し、{3}場合にこのスキルの{4}する。")
                 .variable(1, Radius)
                 .variable(2, PhysicalDamage, 65, 35, bounusAD(0.2))
                 .variable(3, Takedown)
                 .variable(4, CDDecrease)
+                .variable(5, Dash)
                 .mana(50)
                 .cd(20, -2)
                 .range(600);
@@ -2476,10 +2507,11 @@ public interface SkillDefinition {
                 .cd(-50);
 
         Q.update(P520)
-                .active("指定方向に移動し{1}の敵ユニット3体までに(チャンピオンを優先){2}を与える。" + W + "のフィールド内で使用した場合、このスキルの{3}が2秒になる。")
+                .active("指定方向に{4}し{1}の敵ユニット3体までに(チャンピオンを優先){2}を与える。" + W + "のフィールド内で使用した場合、このスキルの{3}が2秒になる。")
                 .variable(1, Radius, 500)
                 .variable(2, PhysicalDamage, 60, 30, ad(0.2))
                 .variable(3, CD)
+                .variable(4, Dash)
                 .mana(30)
                 .cd(9)
                 .range(340);
@@ -2574,9 +2606,11 @@ public interface SkillDefinition {
                 .range(700);
 
         W.update(P516)
-                .active("指定地点まで高速で移動し（速度1450）、移動先の{1}にいる敵ユニットに{2}を与える。3秒間以内にもう一度このスキルを使用すると元居た地点に戻る。")
-                .variable(1, Radius, 250)
-                .variable(2, MagicDamage, 85, 40, ap(0.6))
+                .active("指定地点まで{1}し（速度1450）、移動先の{2}にいる敵ユニットに{3}を与える。3秒間以内にもう一度このスキルを使用すると元居た地点に{4}する。")
+                .variable(1, Dash)
+                .variable(2, Radius, 250)
+                .variable(3, MagicDamage, 85, 40, ap(0.6))
+                .variable(4, Blink)
                 .mana(80, 5)
                 .cd(18, -2)
                 .range(600);
@@ -2608,22 +2642,24 @@ public interface SkillDefinition {
                 .variable(2, RestoreEnergy);
 
         Q.update(P301)
-                .active("指定方向に気を飛ばし当たった敵ユニットに{1}を与える。このスキルが敵ユニットに当たった場合、3秒間対象の{5}、下記のスキルを使用できる。<br><br>{2}を消費して、" + Q + "が当たった{3}の敵ユニットにダッシュし、{4}を与える。(追加ダメージはミニオンやモンスターに対して400ダメージが上限)")
+                .active("指定方向に気を飛ばし当たった敵ユニットに{1}を与える。このスキルが敵ユニットに当たった場合、3秒間対象の{5}、下記のスキルを使用できる。<br><br>{2}を消費して、" + Q + "が当たった{3}の敵ユニットに{6}し、{4}を与える。(追加ダメージはミニオンやモンスターに対して400ダメージが上限)")
                 .variable(1, PhysicalDamage, 50, 30, bounusAD(0.9))
                 .variable(2, Energy, 30)
                 .variable(3, Radius, 1300)
                 .variable(4, PhysicalDamage, 50, 30, bounusAD(0.9), amplify(Status.TargetMissingHealthRatio, 8))
                 .variable(5, Visionable)
+                .variable(6, DashTarget)
                 .cd(11, -1)
                 .range(1100)
                 .cost(Energy, 50, 0);
 
         W.update(P413)
-                .active("対象の味方ユニットまで移動する。自身及び対象（味方チャンピオンに限る）は５秒間{1}を得る。このスキル使用後3秒間、下記のスキルが使用できる。<br><br>{2}を消費して、5秒間{3}と{4}を得る。")
+                .active("対象の味方ユニットまで{5}する。自身及び対象（味方チャンピオンに限る）は５秒間{1}を得る。このスキル使用後3秒間、下記のスキルが使用できる。<br><br>{2}を消費して、5秒間{3}と{4}を得る。")
                 .variable(1, Shield, 40, 40, ap(0.8))
                 .variable(2, Energy, 30)
                 .variable(3, LS, 5, 5)
                 .variable(4, SV, 5, 5)
+                .variable(5, Dash)
                 .cd(14)
                 .cost(Energy, 50, 0)
                 .range(700);
@@ -2673,8 +2709,9 @@ public interface SkillDefinition {
                 .cd(14);
 
         E.update(P510)
-                .active("指定方向に貫通するエネルギーを飛ばし当たった敵ユニットに{1}を与える。このスキルが敵チャンピオンに命中した場合、その敵チャンピオンの元まで移動する。また移動中は対象の敵チャンピオンに" + Snare + "を与える。複数の敵チャンピオンに命中した場合は最後に命中した敵チャンピオンの元に移動する。")
+                .active("指定方向に貫通するエネルギーを飛ばし当たった敵ユニットに{1}を与える。このスキルが敵チャンピオンに命中した場合、その敵チャンピオンの元まで{2}する。また移動中は対象の敵チャンピオンに" + Snare + "を与える。複数の敵チャンピオンに命中した場合は最後に命中した敵チャンピオンの元に移動する。")
                 .variable(1, MagicDamage, 60, 40, ap(0.4))
+                .variable(2, DashTarget)
                 .mana(60)
                 .cd(13, -1)
                 .range(875);
@@ -2715,8 +2752,9 @@ public interface SkillDefinition {
                 .cd(14, -1);
 
         E.update(P504)
-                .active("指定方向に貫通する氷の爪を飛ばし、当たった敵ユニットに{1}を与える。氷の爪が出ている間にこのスキルを再度使用すると、氷の爪の位置までワープし氷の爪が消滅する。")
+                .active("指定方向に貫通する氷の爪を飛ばし、当たった敵ユニットに{1}を与える。氷の爪が出ている間にこのスキルを再度使用すると、氷の爪の位置まで{2}し氷の爪が消滅する。")
                 .variable(1, MagicDamage, 70, 45, ap(0.6))
+                .variable(2, Blink)
                 .mana(80, 5)
                 .cd(24, -3)
                 .range(1050);
@@ -2760,8 +2798,8 @@ public interface SkillDefinition {
                 .range(1000);
 
         E.update(P418)
-                .active("指定方向にダッシュする。" + P + "による通常攻撃がヒットする度に、このスキルの{2}し、対象が敵チャンピオンの場合は{3}。{4}。")
-                .variable(1, CDDecrease)
+                .active("指定方向に{1}する。" + P + "による通常攻撃がヒットする度に、このスキルの{2}し、対象が敵チャンピオンの場合は{3}。{4}。")
+                .variable(1, Dash)
                 .variable(2, CDDecrease, 1)
                 .variable(3, CDDecrease, 2)
                 .variable(4, ResetAATimer)
@@ -2901,10 +2939,11 @@ public interface SkillDefinition {
                 .cd(7);
 
         R.update(P301)
-                .active("指定地点に突撃し{1}の敵ユニットに{2}と3}を与える。")
+                .active("指定地点に{4}し{1}の敵ユニットに{2}と{3}を与える。")
                 .variable(1, Radius, 300)
                 .variable(2, MagicDamage, 200, 100, ap(1))
                 .variable(3, Knockup, 1.5)
+                .variable(4, Dash)
                 .mana(100)
                 .cd(130, -15)
                 .range(1000);
@@ -2976,10 +3015,11 @@ public interface SkillDefinition {
                 .range(600);
 
         W.update(P414)
-                .active("{1}になり対象の敵ユニットまで高速移動し{2}と{3}を与える（ミニオンやモンスターに対しては300ダメージが上限）。")
+                .active("{1}になり対象の敵ユニットまで{2}し{3}と{4}を与える（ミニオンやモンスターに対しては300ダメージが上限）。")
                 .variable(1, Untargetable)
-                .variable(2, MagicDamage, 0, 0, amplify(TargetMaxHealthRatio, 9, 1, ap(0.03)))
-                .variable(3, Snare, 1, 0.25)
+                .variable(2, DashTarget)
+                .variable(3, MagicDamage, 0, 0, amplify(TargetMaxHealthRatio, 9, 1, ap(0.03)))
+                .variable(4, Snare, 1, 0.25)
                 .mana(75)
                 .cd(13, -1)
                 .range(525);
@@ -3013,13 +3053,14 @@ public interface SkillDefinition {
         P.update(P310).passive("通常攻撃4回毎に2回連続で攻撃を行い{1}を与える。対象が建物の場合も有効。通常攻撃を4秒間しなかった場合、カウントがリセットされる。").variable(1, PhysicalDamage, ad(0.5));
 
         Q.update(P313)
-                .active("{6}になり対象の敵ユニットと近くの敵ユニット3体({1})をランダムに対象とし{2}を与え(クリティカル発生時は{5})、対象の近くにワープする。ミニオンやモンスターには{3}を追加で与える。通常攻撃をする毎に{4}する。")
+                .active("{6}になり対象の敵ユニットと近くの敵ユニット3体({1})をランダムに対象とし{2}を与え(クリティカル発生時は{5})、対象の近くに{7}する。ミニオンやモンスターには{3}を追加で与える。通常攻撃をする毎に{4}する。")
                 .variable(1, Radius, 600)
                 .variable(2, PhysicalDamage, 25, 35, ad(1))
                 .variable(3, PhysicalDamage, 75, 25)
                 .variable(4, CDDecrease, 1)
                 .variable(5, PhysicalDamage, 25, 35, ad(1.6))
                 .variable(6, Untargetable)
+                .variable(7, BlinkTarget)
                 .mana(70, 10)
                 .cd(18, -1)
                 .range(600);
@@ -3295,9 +3336,10 @@ public interface SkillDefinition {
                 .variable(3, Time, new Per5Level(9, -1));
 
         Q.update(P417)
-                .active("指定方向に錨を投げ、最初に命中した敵ユニットに{1}を与え自身の方向に引き寄せる。また自身も敵ユニットの方向に移動する。錨が壁に命中した場合、壁の方向に移動しこのスキルの{2}。")
+                .active("指定方向に錨を投げ、最初に命中した敵ユニットに{1}を与え自身の方向に引き寄せる。また自身も敵ユニットの方向に{3}する。錨が壁に命中した場合、壁の方向に移動しこのスキルの{2}。")
                 .variable(1, MagicDamage, 60, 45, ap(0.75))
                 .variable(2, CDDecreaseRatio, 50)
+                .variable(3, DashTarget)
                 .mana(60, 10)
                 .cd(18, -2)
                 .range(1100);
@@ -3397,10 +3439,11 @@ public interface SkillDefinition {
                 .cd(5);
 
         W.update(P514)
-                .active("前方に飛びかかり（飛距離375固定）着地地点{2}の敵ユニットに{1}を与える。ユニットを倒すとこのスキルのCDが{3}になるまで減少する。対象付近にHuntedを付与された敵がいた場合、飛距離が750となってその対象めがけて跳躍するようになり、このスキルのCDが{3}になるまで減少する。この効果は初撃のみ発動する。")
+                .active("前方に{4}して着地地点{2}の敵ユニットに{1}を与える。ユニットを倒すとこのスキルのCDが{3}になるまで減少する。対象付近にHuntedを付与された敵がいた場合、飛距離が750となってその対象めがけて跳躍するようになり、このスキルのCDが{3}になるまで減少する。この効果は初撃のみ発動する。")
                 .variable(1, MagicDamage, new Refer(R, 50, 50), ap(0.3), null)
                 .variable(2, Radius, 75)
                 .variable(3, CDRAwareTime, 1.5)
+                .variable(4, Dash, 375)
                 .cd(5)
                 .range(375);
 
@@ -3454,9 +3497,10 @@ public interface SkillDefinition {
                 .range(425);
 
         R.update(P517)
-                .active("4秒間すべての敵チャンピオンに{1}を与え、また自分以外の視界を得られなくする。再度スキルを使用すると、指定した敵チャンピオンの位置まで移動し、{2}を与える。")
+                .active("4秒間すべての敵チャンピオンに{1}を与え、また自分以外の視界を得られなくする。再度スキルを使用すると、指定した敵チャンピオンに{2}して{3}を与える。")
                 .variable(1, Foggy, 300)
-                .variable(2, PhysicalDamage, 150, 100, bounusAD(1.2))
+                .variable(2, DashTarget)
+                .variable(3, PhysicalDamage, 150, 100, bounusAD(1.2))
                 .mana(100)
                 .cd(150, -25)
                 .range(2500, 750);
@@ -3608,9 +3652,10 @@ public interface SkillDefinition {
         Q.update(P301).active("対象の敵ユニットに槍を投げ{1}を与える。").variable(1, PhysicalDamage, 65, 40, bounusAD(1.4)).mana(45).cd(4).range(600);
 
         W.update(P315)
-                .active("対象の敵ユニットに飛びかかり{1}と{2}を与え、" + P + "を発動する。")
+                .active("対象の敵ユニットに{3}して{1}と{2}を与え、" + P + "を発動する。")
                 .variable(1, MagicDamage, 50, 25, ap(1))
                 .variable(2, Stun, 1)
+                .variable(3, DashTarget)
                 .mana(55)
                 .cd(13, -1)
                 .range(600);
@@ -3658,11 +3703,12 @@ public interface SkillDefinition {
                 .cd(12);
 
         E.update(P416)
-                .active("対象の敵ユニットに突撃し{1}と{2}を与える。ノックバック時に壁にぶつかった場合、追加{3}と{4}を与える。")
+                .active("対象の敵ユニットに{5}し{1}と{2}を与える。ノックバック時に壁にぶつかった場合、追加{3}と{4}を与える。")
                 .variable(1, Knockback, 300)
                 .variable(2, MagicDamage, 50, 25, ap(0.4))
                 .variable(3, MagicDamage, 75, 50, ap(0.4))
                 .variable(4, Stun, 1.5)
+                .variable(5, DashTarget)
                 .mana(60, 5)
                 .cd(12, -1)
                 .range(525);
@@ -3725,9 +3771,10 @@ public interface SkillDefinition {
                 .cd(50, -5);
 
         E.update(P506)
-                .active("対象の敵ユニットまでダッシュし{1}と2秒かけて減衰する{2}を与える。ダッシュ後、" + champion + "の通常攻撃の最大射程(距離525)までジャンプして対象と距離を離す。また、同時に対象には" + P + "のマークが付与される。Tag Team時はダッシュ後に距離を離さなくなる。")
+                .active("対象の敵ユニットまで{3}し{1}と2秒かけて減衰する{2}を与える。ダッシュ後、" + champion + "の通常攻撃の最大射程(距離525)までジャンプして対象と距離を離す。また、同時に対象には" + P + "のマークが付与される。Tag Team時はダッシュ後に距離を離さなくなる。")
                 .variable(1, PhysicalDamage, 40, 30, bounusAD(0.2))
                 .variable(2, MSSlowRatio, 50)
+                .variable(3, DashTarget)
                 .range(700)
                 .mana(50)
                 .cd(12, -1);
@@ -3841,8 +3888,9 @@ public interface SkillDefinition {
                 .cd(1);
 
         E.update(P505)
-                .active("指定した地点まで一定距離掘り進んだ後、スキルを使用した地点と止まった地点にトンネルの出入り口を作成する。" + champion + "がトンネルの出入り口をクリックすると、トンネルを経由してもう一つの出入り口まで移動できる。移動には1.5秒かかり、一度トンネルによる移動を行うと、{1}間はトンネルが使用できなくなる。トンネルは10分間持続し、一度に8箇所まで作成できるが、敵チャンピオンが出入り口の上に立ち1.5秒経過すると、トンネルは破壊される。")
-                .variable(1, Time, 10, -1)
+                .active("指定した地点まで一定距離{1}後、スキルを使用した地点と止まった地点にトンネルの出入り口を作成する。" + champion + "がトンネルの出入り口をクリックすると、トンネルを経由してもう一つの出入り口まで移動できる。移動には1.5秒かかり、一度トンネルによる移動を行うと、{2}間はトンネルが使用できなくなる。トンネルは10分間持続し、一度に8箇所まで作成できるが、敵チャンピオンが出入り口の上に立ち1.5秒経過すると、トンネルは破壊される。")
+                .variable(1, Dash)
+                .variable(2, Time, 10, -1)
                 .cd(20, -0.5)
                 .range(250);
 
@@ -3886,10 +3934,11 @@ public interface SkillDefinition {
                 .cd(13, -1);
 
         E.update(P501)
-                .active("一撃目: " + champion + "がダッシュして敵を斬りつけ{1}を与える。攻撃命中後は4秒以内に「二撃目」の発動が可能になる。<br><br>二撃目: " + champion + "がダッシュして敵を斬りつけ{1}を与える。さらに攻撃が敵1体に命中するごとに" + Fury + "2.5 (対象がチャンピオンの場合は10で最大で30)を生成する。<br><br>" + Fury + "50以上時の二撃目: {3}と4秒間{2}を与える。" + Fury + "増加効果はなくなる。")
+                .active("一撃目: " + champion + "が{4}して敵を斬りつけ{1}を与える。攻撃命中後は4秒以内に「二撃目」の発動が可能になる。<br><br>二撃目: " + champion + "が{4}して敵を斬りつけ{1}を与える。さらに攻撃が敵1体に命中するごとに" + Fury + "2.5 (対象がチャンピオンの場合は10で最大で30)を生成する。<br><br>" + Fury + "50以上時の二撃目: {3}と4秒間{2}を与える。" + Fury + "増加効果はなくなる。")
                 .variable(1, PhysicalDamage, 30, 30, bounusAD(0.9))
                 .variable(2, ARReductionRatio, 15, 5)
                 .variable(3, PhysicalDamage, 45, 45, bounusAD(1.35))
+                .variable(4, Dash)
                 .cd(18, -1)
                 .range(450);
 
@@ -4011,12 +4060,13 @@ public interface SkillDefinition {
                 .variable(1, PhysicalDamage, amplify(AD, new PerLevel(new int[] {1, 3, 6, 9, 12, 15, 18}, 0.2, 0.05)));
 
         Q.update(P401)
-                .active("前方にステップし、{1}の敵ユニットを剣で切りつけて{2}を与える。このスキルは短期間の間、3回まで連続して使用できる。3度目の使用でジャンプを行い、着地時に{3}の敵ユニットに{2}と{4}を与える。また、スキルを使用する度にオートアタックタイマーがリセットされる。最大DMは{5}。3度目のジャンプのみ壁を飛び越えられる。")
+                .active("前方に{6}し、{1}の敵ユニットを剣で切りつけて{2}を与える。このスキルは短期間の間、3回まで連続して使用できる。3度目の使用でジャンプを行い、着地時に{3}の敵ユニットに{2}と{4}を与える。また、スキルを使用する度にオートアタックタイマーがリセットされる。最大DMは{5}。3度目のジャンプのみ壁を飛び越えられる。")
                 .variable(1, Radius, 112.5)
                 .variable(2, PhysicalDamage, 10, 20, amplify(AD, 0.4, 0.05))
                 .variable(3, Radius, 150)
                 .variable(4, Knockup)
                 .variable(5, PhysicalDamage, 30, 60, amplify(AD, 1.2, 0.15))
+                .variable(6, Dash)
                 .cd(1)
                 .range(260);
 
@@ -4027,12 +4077,7 @@ public interface SkillDefinition {
                 .variable(3, Stun, 0.75)
                 .cd(11, -1);
 
-        E.update(P402)
-                .active("指定方向にダッシュし、{3}間{2}が付与される。")
-                .variable(2, Shield, 90, 30, bounusAD(1))
-                .variable(3, Time, 1.5)
-                .cd(10, -1)
-                .range(325);
+        E.update(P402).active("指定方向に{1}し、1.5秒間{2}が付与される。").variable(1, Dash).variable(2, Shield, 90, 30, bounusAD(1)).cd(10, -1).range(325);
 
         R.update(P301)
                 .active("15秒間折れた剣の刃を再生させ、{1}を得て{2}する。また、このスキルを再度使用することで一度だけ0.5秒後に指定方向に巨大な衝撃波を発生させ、{3}の敵ユニットに{5}与える。対象が受けているダメージに比例して与えるダメージが増加して、最大" + Damage + "は{6}。")
@@ -4142,9 +4187,10 @@ public interface SkillDefinition {
                 .variable(2, MSSlowReductionRatio, new PerLevel(new int[] {1, 7, 12, 17}, 10, 5));
 
         Q.update(P421)
-                .active("指定方向に突進し、接触した全ての敵ユニットに{1}と{2}を与える。敵チャンピオンに当たると突進は止まる。")
+                .active("指定方向に{3}し、接触した全ての敵ユニットに{1}と{2}を与える。敵チャンピオンに当たると突進は止まる。")
                 .variable(1, Knockup)
                 .variable(2, MagicDamage, 80, 55, ap(0.4))
+                .variable(3, Dash)
                 .mana(80, 5)
                 .cd(15, -1)
                 .range(650);
@@ -4186,9 +4232,10 @@ public interface SkillDefinition {
         P.update(P301).passive("対象の背後から攻撃した場合に{1}する。").variable(1, DamageRatio, 20);
 
         Q.update(P301)
-                .active("指定地点にテレポートし、{1}になる。また、スキル使用後6秒以内に通常攻撃を行うと必ずクリティカルになる。その際のクリティカルダメージは{2}になる。")
+                .active("指定地点に{3}し、{1}になる。また、スキル使用後6秒以内に通常攻撃を行うと必ずクリティカルになる。その際のクリティカルダメージは{2}になる。")
                 .variable(1, Stealth, 3.5)
                 .variable(2, Percentage, 140, 20)
+                .variable(3, Blink)
                 .cd(11)
                 .mana(90, -10)
                 .range(400);
@@ -4246,11 +4293,12 @@ public interface SkillDefinition {
                 .cost(Energy, 50, 0);
 
         E.update(P511)
-                .active("指定地点まで素早く移動し接触した敵チャンピオンに{1}と{2}を与える。" + champion + "は" + Taunt + "効果中の対象から受ける{4}する。またこのスキルが敵チャンピオンに命中する度に{3}する。")
+                .active("指定地点まで{5}し接触した敵チャンピオンに{1}と{2}を与える。" + champion + "は" + Taunt + "効果中の対象から受ける{4}する。またこのスキルが敵チャンピオンに命中する度に{3}する。")
                 .variable(1, MagicDamage, 50, 35, ap(0.5))
                 .variable(2, Taunt, 1.5)
                 .variable(3, RestoreEnergy, 40)
                 .variable(4, DamageReductionRatio, 50)
+                .variable(5, Dash)
                 .cd(16, -2)
                 .cost(Energy, 100, -5)
                 .range(600);
@@ -4296,7 +4344,8 @@ public interface SkillDefinition {
         R.update(P401)
                 .passive("Human Formの時には1.5秒毎に{1}Furyを得る。また、このスキルのLv1取得時に100Furyを得る。")
                 .variable(1, Value, 1, 1)
-                .active("このスキルはHuman Formで" + Fury + "が100貯まった時のみ使用可能。Dragon Formに変身し、指定地点まで飛んで移動する。その際の移動経路上にいる敵ユニットに{3}を与え、移動地点の方向に{4}を与える。Dragon Formでは毎秒5Fury減少し、0になるとHuman Formに戻る。")
+                .active("このスキルはHuman Formで" + Fury + "が100貯まった時のみ使用可能。Dragon Formに変身し、指定地点まで飛んで{2}する。その際の移動経路上にいる敵ユニットに{3}を与え、移動地点の方向に{4}を与える。Dragon Formでは毎秒5Fury減少し、0になるとHuman Formに戻る。")
+                .variable(2, Dash)
                 .variable(3, MagicDamage, 175, 125, ap(0.7))
                 .variable(4, Knockback)
                 .range(1000);
@@ -4769,9 +4818,10 @@ public interface SkillDefinition {
                 .range(600);
 
         E.update(P418)
-                .active("対象の敵ユニットの背後に跳躍し0.25秒{1}と3秒間マークを与える。マークがついた敵ユニットに対しては{2}する。")
+                .active("対象の敵ユニットの背後に{3}し0.25秒{1}と3秒間マークを与える。マークがついた敵ユニットに対しては{2}する。")
                 .variable(1, MSSlowRatio, 90)
                 .variable(2, DamageRatio, 3, 3)
+                .variable(3, BlinkTarget)
                 .mana(35, 5)
                 .cd(18, -2)
                 .range(700);
@@ -4895,10 +4945,11 @@ public interface SkillDefinition {
                 .variable(3, AP, amplify(Stack, 0.75));
 
         Q.update(P514)
-                .active("指定方向に鎌を投げ、命中した敵ユニットに{1}と{2}を与え、対象を1.5秒かけて自身の方へ引き寄せる。このスキルを再度使用すると対象のユニットへ飛びつく。鎌が敵に命中した場合、このスキルの{3}する。")
+                .active("指定方向に鎌を投げ、命中した敵ユニットに{1}と{2}を与え、対象を1.5秒かけて自身の方へ引き寄せる。このスキルを再度使用すると対象のユニットへ{3}する。鎌が敵に命中した場合、このスキルの{4}する。")
                 .variable(1, MagicDamage, 80, 40, ap(0.5))
                 .variable(2, Stack, 1.5)
-                .variable(3, CDDecrease, 3)
+                .variable(3, DashTarget)
+                .variable(4, CDDecrease, 3)
                 .cd(20, -2)
                 .mana(80)
                 .range(1100);
@@ -4947,7 +4998,7 @@ public interface SkillDefinition {
                 .cd(20);
 
         W.update(P502)
-                .active("地面を砲撃して指定した地点へジャンプし、着地と同時に{1}の敵ユニットに{2}と{3}間{4}を与える。" + E + "のスタックが付与されている敵に対しては1スタックごとに20%ダメージが増加し最大で{5}。{6}とこのスキルの{7}する。")
+                .active("指定地点へ{8}し、着地と同時に{1}の敵ユニットに{2}と{3}間{4}を与える。" + E + "のスタックが付与されている敵に対しては1スタックごとに20%ダメージが増加し最大で{5}。{6}とこのスキルの{7}する。")
                 .variable(1, Radius)
                 .variable(2, MagicDamage, 80, 25, ap(0.5))
                 .variable(3, Time, 1, 0.5)
@@ -4955,6 +5006,7 @@ public interface SkillDefinition {
                 .variable(5, MagicDamage, 160, 50, ap(1))
                 .variable(6, Takedown)
                 .variable(7, CDDecrease)
+                .variable(8, Dash)
                 .mana(60)
                 .cd(22, -2)
                 .range(900);
@@ -5054,10 +5106,11 @@ public interface SkillDefinition {
                 .range(400);
 
         E.update(P420)
-                .active("指定地点まで武器を振り回しながら移動し、当たった敵ユニットに{1}を与える。このスキルはクリティカルが発生するたびに{2}する。(敵チャンピオンの場合は{3}する)")
+                .active("指定地点まで武器を振り回しながら{4}し、当たった敵ユニットに{1}を与える。このスキルはクリティカルが発生するたびに{2}する。(敵チャンピオンの場合は{3}する)")
                 .variable(1, PhysicalDamage, 70, 30, ap(1), bounusAD(1.2))
                 .variable(2, CDDecrease, 1)
                 .variable(3, CDDecrease, 2)
+                .variable(4, Dash)
                 .cd(13, -1)
                 .range(660);
 
@@ -5163,11 +5216,12 @@ public interface SkillDefinition {
         W.update(P305).active("5秒間{1}を得る。別のスキルを使うまで{2}を得る。").variable(1, Shield, 60, 40, ap(0.5)).variable(2, LS, 10, 2).mana(47, -3).cd(6);
 
         E.update(P408)
-                .active("{1}間{2}し{4}を得る。別のスキルを使うまで通常攻撃は{3}を与える。敵チャンピオンに" + Stun + "を与える際、対象に向かって短い距離をダッシュする。この効果は同一の対象に5秒に1度しか発動しない。")
+                .active("{1}間{2}し{4}を得る。別のスキルを使うまで通常攻撃は{3}を与える。敵チャンピオンに" + Stun + "を与える際、対象に向かって{5}する。この効果は同一の対象に5秒に1度しか発動しない。")
                 .variable(1, Time, 2, 0.25)
                 .variable(2, MSRatio, 15, 5)
                 .variable(3, Stun, 1)
                 .variable(4, IgnoreUnitCollision)
+                .variable(5, DashTarget, 200)
                 .mana(47, -3)
                 .cd(6);
 
@@ -5271,8 +5325,9 @@ public interface SkillDefinition {
         P.update(P301).passive("敵チャンピオンに向かって移動する際に{1}する。").variable(-1, MS, 30);
 
         Q.update(P514)
-                .active("指定地点にローリングし、次の通常攻撃に{1}を付与する。6秒間攻撃を行わないとCDになる。")
-                .variable(1, PhysicalDamage, amplify(AD, 0.3, 0.05))
+                .active("指定地点に{1}し、次の通常攻撃に{2}を付与する。6秒間攻撃を行わないとCDになる。")
+                .variable(1, Dash)
+                .variable(2, PhysicalDamage, amplify(AD, 0.3, 0.05))
                 .range(300)
                 .mana(30)
                 .cd(6, -1);
@@ -5400,11 +5455,12 @@ public interface SkillDefinition {
                 .variable(2, Time, new PerLevel(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8));
 
         Q.update(P404)
-                .active("発動すると自身の移動速度が15%減少し、このスキルのダメージと射程が徐々に増加する(1.25秒で最大)。再度使用で指定した方向へとダッシュし(最小{3}、最大{4})、命中した全ての敵ユニットに{1}を与える(最大で{2})。ダッシュ中に敵チャンピオンに衝突するとその時点で停止し、対象をノックバックさせる。このスキルにはDenting Blowsの効果が適用され、ミニオンや中立クリープに与えるダメージは75%に減少する。途中で詠唱を停止させられた場合、このスキルのCDは3秒になり、消費したmanaの半分が回復する。")
-                .variable(1, PhysicalDamage, 50, 25, bounusAD(0.8))
-                .variable(2, PhysicalDamage, 100, 50, bounusAD(1.6))
-                .variable(3, Distance, 250)
-                .variable(4, Distance, 725)
+                .active("発動すると自身の移動速度が15%減少し、このスキルのダメージと射程が徐々に増加する(1.25秒で最大)。再度使用で指定した方向へ{1}し(最小{2}、最大{3})、命中した全ての敵ユニットに{4}を与える(最大で{5})。ダッシュ中に敵チャンピオンに衝突するとその時点で停止し、対象をノックバックさせる。このスキルにはDenting Blowsの効果が適用され、ミニオンや中立クリープに与えるダメージは75%に減少する。途中で詠唱を停止させられた場合、このスキルのCDは3秒になり、消費したmanaの半分が回復する。")
+                .variable(1, Dash)
+                .variable(2, Distance, 250)
+                .variable(3, Distance, 725)
+                .variable(4, PhysicalDamage, 50, 25, bounusAD(0.8))
+                .variable(5, PhysicalDamage, 100, 50, bounusAD(1.6))
                 .mana(50, 10)
                 .cd(18, -2.5)
                 .range(250);
@@ -5425,11 +5481,12 @@ public interface SkillDefinition {
                 .cd(1);
 
         R.update(P505)
-                .active("対象の敵チャンピオンに突撃し、{1}と{2}を与える。一連の動作中は{4}を得て、また対象のチャンピオン以外で" + champion + "に触れた敵ユニットには{3}を与え、左右に吹き飛ばす。")
+                .active("対象の敵チャンピオンに{5}し、{1}と{2}を与える。一連の動作中は{4}を得て、また対象のチャンピオン以外で" + champion + "に触れた敵ユニットには{3}を与え、左右に吹き飛ばす。")
                 .variable(1, PhysicalDamage, 150, 150, bounusAD(1.4))
                 .variable(2, Knockup, 1.25)
                 .variable(3, PhysicalDamage, 117.5, 126.25, bounusAD(1.05))
                 .variable(4, IgnoreCC)
+                .variable(5, DashTarget)
                 .mana(100, 25)
                 .cd(150, -35)
                 .range(800);
@@ -5646,12 +5703,13 @@ public interface SkillDefinition {
                 .type(SkillType.Toggle);
 
         R.update(P421)
-                .active("対象の敵チャンピオンに突撃し{2}を与えて、その間{3}を得て0.3秒毎に{1}を、計5回で{4}を与える。{5}。")
-                .variable(1, MagicDamage, 30, 20, bounusAD(0.4))
+                .active("対象の敵チャンピオンに{1}し{2}を与えて、その間{3}を得て0.3秒毎に{4}を、計5回で{5}を与える。{6}。")
+                .variable(1, BlinkTarget)
                 .variable(2, Suppression, 1.8)
                 .variable(3, LS, 30)
-                .variable(4, MagicDamage, 150, 100, bounusAD(2))
-                .variable(5, OnHitEffect)
+                .variable(4, MagicDamage, 30, 20, bounusAD(0.4))
+                .variable(5, MagicDamage, 150, 100, bounusAD(2))
+                .variable(6, OnHitEffect)
                 .type(SkillType.Channel)
                 .mana(100, 25)
                 .cd(110, -20)
@@ -5686,10 +5744,11 @@ public interface SkillDefinition {
                 .cd(18, -2);
 
         E.update(P418)
-                .active("対象の敵ユニットまでダッシュし{1}を与える。対象の敵ユニットの{3}の敵ユニット2体にも" + champion + "の幻影が飛び、{1}を与える。また、スキル使用後4秒間{2}する。")
+                .active("対象の敵ユニットに{4}し{1}を与える。対象の敵ユニットの{3}の敵ユニット2体にも" + champion + "の幻影が飛び、{1}を与える。また、スキル使用後4秒間{2}する。")
                 .variable(1, PhysicalDamage, 60, 45, bounusAD(0.8))
                 .variable(2, ASRatio, 30, 5)
                 .variable(3, Radius, 325)
+                .variable(4, DashTarget)
                 .mana(45, 5)
                 .cd(8)
                 .range(625);
@@ -5777,10 +5836,11 @@ public interface SkillDefinition {
                 .cd(16, -1);
 
         E.update(P505)
-                .active("対象の敵ユニットに突進し、{1}の敵ユニットに{2}と2秒間{3}を与える。")
+                .active("対象の敵ユニットに{4}し、{1}の敵ユニットに{2}と2秒間{3}を与える。")
                 .variable(1, Radius, 225)
                 .variable(2, MagicDamage, 70, 40, ap(0.6))
                 .variable(3, MSSlowRatio, 25, 5)
+                .variable(4, DashTarget)
                 .mana(60)
                 .cd(14, -1)
                 .range(600);
@@ -5821,19 +5881,20 @@ public interface SkillDefinition {
         W.update(P413).active("3.75秒間持続する{1}の壁を作り出す。この壁はタワー攻撃を除く全ての投射物をブロックする。").variable(1, Length, 300, 50).cd(26, -2).range(400);
 
         E.update(P417)
-                .active("マークの付いていない対象の敵の方向に飛び込み({2})移動する。対象に{1}を与え{3}間マークを付与する。スキル使用時にスタックが増加し、1スタックごとに基礎ダメージが25%増加していく。(最大2スタックで{4})")
+                .active("マークの付いていない対象の敵の方向に{2}する。対象に{1}を与え{3}間マークを付与する。スキル使用時にスタックが増加し、1スタックごとに基礎ダメージが25%増加していく。(最大2スタックで{4})")
                 .variable(1, MagicDamage, 70, 20, ap(0.6))
-                .variable(2, Distance, 475)
+                .variable(2, DashTarget, 475)
                 .variable(3, Time, 10, -1)
                 .variable(4, MagicDamage, 105, 35, ap(0.6))
                 .cd(-0.5, 0.1)
                 .range(475);
 
         R.update(P402)
-                .active("打ち上げられている敵チャンピオンのもとへ瞬間移動し、{1}を与える。さらに、{2}の打ち上げられ中の全ての敵をもう1秒間、打ち上げ直す。発動と同時にFlowが満タンになるが、" + Q + "のスタックは解消される。また、15秒間、{3}を得る。")
+                .active("打ち上げられている敵チャンピオンのもとへ{4}し、{1}を与える。さらに、{2}の打ち上げられ中の全ての敵をもう1秒間、打ち上げ直す。発動と同時にFlowが満タンになるが、" + Q + "のスタックは解消される。また、15秒間、{3}を得る。")
                 .variable(1, PhysicalDamage, 200, 100, bounusAD(1.5))
                 .variable(2, Radius, 400)
                 .variable(3, BounusARPenRatio, 50)
+                .variable(4, BlinkTarget)
                 .cd(80, -25)
                 .range(1200);
     }
@@ -5919,9 +5980,10 @@ public interface SkillDefinition {
                 .cd(4);
 
         E.update(P516)
-                .active("その場で停止しチャージを行う。チャージした時間に比例して射程が前方扇形範囲で徐々に増加する。再度使用で指定した地点にジャンプし、着地時に範囲内にいる敵ユニットに{1}と{2}を与える。チャージは移動を行う事でキャンセルできる。")
+                .active("その場で停止しチャージを行う。チャージした時間に比例して射程が前方扇形範囲で徐々に増加する。再度使用で指定地点に{3}し、着地時に範囲内にいる敵ユニットに{1}と{2}を与える。チャージは移動を行う事でキャンセルできる。")
                 .variable(1, MagicDamage, 80, 50, ap(0.7))
                 .variable(2, Knockback)
+                .variable(3, Dash)
                 .cost(CurrentHealthRatio, 4, 0)
                 .cd(24, -3)
                 .range(1200, 150);
@@ -5958,11 +6020,12 @@ public interface SkillDefinition {
         W.update(P415)
                 .passive("{1}を得る。")
                 .variable(1, AD, amplify(BounusAD, 0.05, 0.05))
-                .active("「影」が指定方向にダッシュし({5})、4秒間その場に留まり{2}の{3}。再度このスキルを使用すると" + champion + "と「影」の位置が入れ替わる。「影」は" + champion + "が通常スキルを使用すると同時に同じスキルを使用する。この時スキルが" + champion + "のスキルと同一の敵ユニットに命中した場合、{4}する。回復効果はスキル1回毎に1度のみ発動する。")
-                .variable(2, Radius, 700)
-                .variable(3, Visionable)
-                .variable(4, RestoreEnergy, 20, 5)
-                .variable(5, MissileSpeed, 1500)
+                .active("「影」が指定方向にダッシュし({2})、4秒間その場に留まり{3}の{4}。再度このスキルを使用すると" + champion + "と「影」の位置が{5}。「影」は" + champion + "が通常スキルを使用すると同時に同じスキルを使用する。この時スキルが" + champion + "のスキルと同一の敵ユニットに命中した場合、{6}する。回復効果はスキル1回毎に1度のみ発動する。")
+                .variable(2, MissileSpeed, 1500)
+                .variable(3, Radius, 700)
+                .variable(4, Visionable)
+                .variable(5, BlinkExchange)
+                .variable(6, RestoreEnergy, 20, 5)
                 .cost(Energy, 40, -5)
                 .cd(18, -1)
                 .range(550);
@@ -5978,10 +6041,11 @@ public interface SkillDefinition {
                 .range(290);
 
         R.update(P516)
-                .active("対象の敵チャンピオンにダッシュしマークを付与する。ダッシュ中は0.75秒間{3}になる。また詠唱地点に6秒間持続する「影」を召喚する。0.5秒経過後、再度このスキルを使用すると" + champion + "と「影」の位置が入れ替わる({2})。付与から3秒後にマークは消費され、対象にマークが付与されている間に" + champion + "と「影」が与えた" + TrueDamage + "以外のダメージの合計に比例し{1}を与える。")
-                .variable(1, PhysicalDamage, 0, 0, ad(1), amplify(DealtDamageRatio, 20, 15))
-                .variable(2, Radius, 2000)
-                .variable(3, Untargetable)
+                .active("対象の敵チャンピオンに{4}しマークを付与し、0.75秒間{1}になる。また詠唱地点に6秒間持続する「影」を召喚する。0.5秒経過後、再度このスキルを使用すると" + champion + "と「影」の位置が{2}。付与から3秒後にマークは消費され、対象にマークが付与されている間に" + champion + "と「影」が与えた" + TrueDamage + "以外のダメージの合計に比例し{3}を与える。")
+                .variable(1, Untargetable)
+                .variable(2, BlinkExchange, 2000)
+                .variable(3, PhysicalDamage, 0, 0, ad(1), amplify(DealtDamageRatio, 20, 15))
+                .variable(4, DashTarget)
                 .cd(120, -20)
                 .range(625);
     }

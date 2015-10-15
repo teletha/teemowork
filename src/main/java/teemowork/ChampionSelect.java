@@ -116,7 +116,9 @@ public class ChampionSelect extends Widget {
                     type("CD解消", Status.CDDecrease, Status.CDDecreaseRatio, Status.CD),
                     type(Status.Visionable),
                     type(Status.Stasis),
-                    type(Status.Untargetable))};
+                    type(Status.Untargetable),
+                    type("移動", Status.Blink, Status.BlinkExchange, Status.Dash),
+                    type("移動(要対象)", Status.BlinkTarget, Status.DashTarget))};
 
     private final Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
 
