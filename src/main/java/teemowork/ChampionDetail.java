@@ -12,9 +12,6 @@ package teemowork;
 import static jsx.ui.StructureDescriptor.*;
 import static teemowork.model.Status.*;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-
 import js.dom.UIAction;
 import jsx.style.BinaryStyle;
 import jsx.style.StyleDescriptor;
@@ -27,7 +24,6 @@ import jsx.ui.ModelValue;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
-import jsx.ui.piece.ModalWindow;
 import jsx.ui.piece.UI;
 import kiss.Events;
 import teemowork.model.Build;
@@ -56,8 +52,6 @@ public class ChampionDetail extends Widget1<Build> {
     /** The your custom build. */
     private final Build build = model1;
 
-    public final Events<Integer> selectItem = when(UIAction.Click).at($.ItemIconBase, Integer.class);
-
     public final Events<Skill> skillUp = when(UIAction.Click).at($.IconBox, Skill.class);
 
     public final Events<Skill> skillDown = when(UIAction.ClickRight).at($.IconBox, Skill.class);
@@ -66,10 +60,12 @@ public class ChampionDetail extends Widget1<Build> {
 
     public final Events<Champion> championLevelDown = when(UIAction.ClickRight, UIAction.MouseWheelDown).at($.ChampionIconBox);
 
-    private final @ModelValue BooleanProperty showItemCatalog = new SimpleBooleanProperty();
-
     /** The item selector. */
-    private final ModalWindow<ItemCatalog> itemCatalog = UI.modal(ItemCatalog.class).showWhen(selectItem).hideWhen();
+    private final @ModelValue Events<ItemCatalog> selectItem = UI.modal()
+            .open(when(UIAction.Click).at($.ItemIconBase, Integer.class))
+            .contents(ItemCatalog.class)
+            .closeWhen(items -> items.selectItem)
+            .process(v -> build.setItem(v.a, v.o));
 
     /**
      * 
@@ -79,12 +75,6 @@ public class ChampionDetail extends Widget1<Build> {
         championLevelDown.to(update(v -> build.levelDown()));
         skillUp.to(update(v -> build.levelUp(v)));
         skillDown.to(update(v -> build.levelDown(v)));
-
-        selectItem.combine(itemCatalog.contents.selectItem).to(v -> {
-            System.out.println(v.a + "  " + v.e.name);
-            build.setItem(v.a, v.e);
-            showItemCatalog.set(false);
-        });
     }
 
     /**
