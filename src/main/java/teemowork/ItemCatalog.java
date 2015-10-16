@@ -21,6 +21,7 @@ import java.util.function.Predicate;
 
 import javafx.beans.property.SetProperty;
 
+import js.dom.UIAction;
 import jsx.style.StyleDescriptor;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
@@ -28,6 +29,7 @@ import jsx.ui.ModelValue;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.UI;
+import kiss.Events;
 import kiss.I;
 import teemowork.model.Ability;
 import teemowork.model.AbilityDescriptor;
@@ -70,6 +72,9 @@ public class ItemCatalog extends Widget {
                     type(Status.Shield, Status.MagicShield, Status.SpellShield),
                     type(Status.MSSlowRatio))};
 
+    /** The user select item. */
+    public final Events<Item> selectItem = when(UIAction.Click).at($.Item, Item.class);
+
     private final @ModelValue SetProperty<ItemFilter> activeFilters = I.make(SetProperty.class);
 
     /**
@@ -86,7 +91,7 @@ public class ItemCatalog extends Widget {
             }));
             box($.Items, contents(Item.getAll(), item -> {
                 if (show(item)) {
-                    html("div", $.Item, () -> {
+                    box($.Item, () -> {
                         widget(Widget.of(ItemView.class, item));
                     });
                 }

@@ -12,6 +12,9 @@ package teemowork;
 import static jsx.ui.StructureDescriptor.*;
 import static teemowork.model.Status.*;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+
 import js.dom.UIAction;
 import jsx.style.BinaryStyle;
 import jsx.style.StyleDescriptor;
@@ -20,9 +23,12 @@ import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
+import jsx.ui.ModelValue;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
+import jsx.ui.piece.ModalWindow;
+import jsx.ui.piece.UI;
 import kiss.Events;
 import teemowork.model.Build;
 import teemowork.model.Champion;
@@ -50,7 +56,7 @@ public class ChampionDetail extends Widget1<Build> {
     /** The your custom build. */
     private final Build build = model1;
 
-    public final Events<Item> itemSelect = when(UIAction.Click).at($.ItemIconBase, Item.class);
+    public final Events<Integer> selectItem = when(UIAction.Click).at($.ItemIconBase, Integer.class);
 
     public final Events<Skill> skillUp = when(UIAction.Click).at($.IconBox, Skill.class);
 
@@ -59,6 +65,11 @@ public class ChampionDetail extends Widget1<Build> {
     public final Events<Champion> championLevelUp = when(UIAction.Click, UIAction.MouseWheelUp).at($.ChampionIconBox);
 
     public final Events<Champion> championLevelDown = when(UIAction.ClickRight, UIAction.MouseWheelDown).at($.ChampionIconBox);
+
+    private final @ModelValue BooleanProperty showItemCatalog = new SimpleBooleanProperty();
+
+    /** The item selector. */
+    private final ModalWindow<ItemCatalog> itemCatalog = UI.modal(ItemCatalog.class).showWhen(selectItem).hideWhen();
 
     /**
      * 
@@ -69,8 +80,10 @@ public class ChampionDetail extends Widget1<Build> {
         skillUp.to(update(v -> build.levelUp(v)));
         skillDown.to(update(v -> build.levelDown(v)));
 
-        itemSelect.to(v -> {
-            System.out.println(v);
+        selectItem.combine(itemCatalog.contents.selectItem).to(v -> {
+            System.out.println(v.a + "  " + v.e.name);
+            build.setItem(v.a, v.e);
+            showItemCatalog.set(false);
         });
     }
 
@@ -83,8 +96,10 @@ public class ChampionDetail extends Widget1<Build> {
             box($.ChampionIconBox.of(build.champion), () -> {
                 text($.Level, build.getLevel());
             });
-            box($.ItemViewBox, contents(build.items, item -> {
+            box($.ItemViewBox, contents(0, 6, index -> {
                 box($.ItemIconBase, () -> {
+                    Item item = build.getItem(index);
+
                     if (item != null) {
                         box($.ItemIcon.of(item.position));
                     }
