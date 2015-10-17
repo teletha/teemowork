@@ -26,6 +26,7 @@ import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.UI;
 import kiss.Events;
+import kiss.Ternary;
 import teemowork.model.Build;
 import teemowork.model.Champion;
 import teemowork.model.DescriptionView;
@@ -61,11 +62,11 @@ public class ChampionDetail extends Widget1<Build> {
     public final Events<Champion> championLevelDown = when(UIAction.ClickRight, UIAction.MouseWheelDown).at($.ChampionIconBox);
 
     /** The item selector. */
-    private final @ModelValue Events<ItemCatalog> selectItem = UI.modal()
+    @ModelValue
+    private final Events<Ternary<Integer, ItemCatalog, Item>> selectItem = UI.modal()
             .open(when(UIAction.Click).at($.ItemIconBase, Integer.class))
-            .contents(ItemCatalog.class)
-            .closeWhen(items -> items.selectItem)
-            .process(v -> build.setItem(v.a, v.o));
+            .show(ItemCatalog.class)
+            .closeWhen(items -> items.selectItem);
 
     /**
      * 
@@ -75,6 +76,7 @@ public class ChampionDetail extends Widget1<Build> {
         championLevelDown.to(update(v -> build.levelDown()));
         skillUp.to(update(v -> build.levelUp(v)));
         skillDown.to(update(v -> build.levelDown(v)));
+        selectItem.to(v -> build.setItem(v.a, v.o));
     }
 
     /**
