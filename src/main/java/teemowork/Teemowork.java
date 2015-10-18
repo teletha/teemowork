@@ -12,6 +12,7 @@ package teemowork;
 import static js.lang.Global.*;
 import static teemowork.TeemoworkTheme.*;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import jsx.application.Header;
@@ -27,12 +28,36 @@ import teemowork.model.Champion;
  */
 public class Teemowork extends Application {
 
+    private Object menu(String label) {
+        return null;
+    }
+
+    private Object menu(String label, Runnable items) {
+        return null;
+    }
+
+    private Object menu(String label, Function<Application, Widget> link) {
+        return null;
+    }
+
     /**
      * 
      */
     private Teemowork() {
         document.documentElement().add(HTML);
         document.getElementById("Content").add(Content);
+
+        menu("< ^ v ^ > Teemowork");
+        menu("Patch");
+        menu("Champion", () -> {
+            menu("Compare", this::championCompare);
+            menu("Item", this::item);
+            menu("Mastery", this::mastery);
+            menu("Rune");
+        });
+        menu("Builder");
+        menu("About");
+        menu("Contact");
 
         Header nav = new Header();
         nav.add("< ^ v ^ > Teemowork", "");
