@@ -20,11 +20,11 @@ import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
-import jsx.ui.ModelValue;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.UI;
+import kiss.Binary;
 import kiss.Events;
 import kiss.Ternary;
 import teemowork.model.Build;
@@ -40,7 +40,7 @@ import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
 
 /**
- * @version 2015/08/20 15:53:24
+ * @version 2015/10/18 21:57:55
  */
 public class ChampionDetail extends Widget1<Build> {
 
@@ -53,20 +53,24 @@ public class ChampionDetail extends Widget1<Build> {
     /** The your custom build. */
     private final Build build = model1;
 
+    /** Up skill level. */
     public final Events<Skill> skillUp = when(UIAction.Click).at($.IconBox, Skill.class);
 
+    /** Down skill level. */
     public final Events<Skill> skillDown = when(UIAction.ClickRight).at($.IconBox, Skill.class);
 
+    /** Up champion level. */
     public final Events<Champion> championLevelUp = when(UIAction.Click, UIAction.MouseWheelUp).at($.ChampionIconBox);
 
+    /** Down champion level. */
     public final Events<Champion> championLevelDown = when(UIAction.ClickRight, UIAction.MouseWheelDown).at($.ChampionIconBox);
 
-    /** The item selector. */
-    @ModelValue
-    private final Events<Ternary<Integer, ItemCatalog, Item>> selectItem = UI.modal()
+    /** The item selection. */
+    private final Events<Binary<Integer, Item>> selectItem = UI.modal()
             .open(when(UIAction.Click).at($.ItemIconBase, Integer.class))
             .show(ItemCatalog.class)
-            .closeWhen(items -> items.selectItem);
+            .closeWhen(items -> items.selectItem)
+            .map(Ternary::é);
 
     /**
      * 
@@ -74,9 +78,9 @@ public class ChampionDetail extends Widget1<Build> {
     public ChampionDetail() {
         championLevelUp.to(update(v -> build.levelUp()));
         championLevelDown.to(update(v -> build.levelDown()));
-        skillUp.to(update(v -> build.levelUp(v)));
-        skillDown.to(update(v -> build.levelDown(v)));
-        selectItem.to(v -> build.setItem(v.a, v.o));
+        skillUp.to(update(build::levelUp));
+        skillDown.to(update(build::levelDown));
+        selectItem.to(update(v -> build.setItem(v.a, v.e)));
     }
 
     /**
@@ -189,7 +193,7 @@ public class ChampionDetail extends Widget1<Build> {
                 int current = level;
 
                 box(contents(1, size, i -> {
-                    double value = status.round(variable.calculate(i, build));
+                    double value = status.round(variable.calculate(i, build, true));
                     String desc = resolver.getLevelDescription(i);
 
                     box($.Value, If(size != 1 && i == current, $.Current), If(desc, title(desc), $.Indicator), () -> {
