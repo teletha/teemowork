@@ -12,11 +12,8 @@ package teemowork;
 import static js.lang.Global.*;
 import static teemowork.TeemoworkTheme.*;
 
-import java.util.function.Function;
 import java.util.function.Supplier;
 
-import jsx.application.Header;
-import jsx.application.Header.Menu;
 import jsx.ui.Application;
 import jsx.ui.Route;
 import jsx.ui.Widget;
@@ -28,18 +25,6 @@ import teemowork.model.Champion;
  */
 public class Teemowork extends Application {
 
-    private Object menu(String label) {
-        return null;
-    }
-
-    private Object menu(String label, Runnable items) {
-        return null;
-    }
-
-    private Object menu(String label, Function<Application, Widget> link) {
-        return null;
-    }
-
     /**
      * 
      */
@@ -47,31 +32,34 @@ public class Teemowork extends Application {
         document.documentElement().add(HTML);
         document.getElementById("Content").add(Content);
 
-        menu("< ^ v ^ > Teemowork");
-        menu("Patch");
-        menu("Champion", () -> {
-            menu("Compare", this::championCompare);
-            menu("Item", this::item);
-            menu("Mastery", this::mastery);
-            menu("Rune");
+        Navi navi = Widget.of(Navi.class);
+        navi.menu("< ^ v ^ > Teemowork", this::champion);
+        navi.menu("Patch");
+        navi.menu("Champion", this::champion, sub -> {
+            sub.menu("Compare", this::championCompare);
+            sub.menu("Item", this::item);
+            sub.menu("Mastery", this::mastery);
+            sub.menu("Rune");
         });
-        menu("Builder");
-        menu("About");
-        menu("Contact");
+        navi.menu("Builder");
+        navi.menu("About");
+        navi.menu("Contact");
 
-        Header nav = new Header();
-        nav.add("< ^ v ^ > Teemowork", "");
-        nav.add("Patch", "#history");
+        navi.renderIn(document.getElementById("Header"));
 
-        Menu sub = nav.add("champion", "#");
-        sub.add("Compare", "#championCompare");
-        sub.add("Item", "#item");
-        sub.add("Mastery", "#mastery");
-        sub.add("Rune", "#");
-
-        nav.add("Builder", "#GridTest");
-        nav.add("About", "#item");
-        nav.add("Contact", "#");
+        // Header nav = new Header();
+        // nav.add("< ^ v ^ > Teemowork", "");
+        // nav.add("Patch", "#history");
+        //
+        // Menu sub = nav.add("champion", "#");
+        // sub.add("Compare", "#championCompare");
+        // sub.add("Item", "#item");
+        // sub.add("Mastery", "#mastery");
+        // sub.add("Rune", "#");
+        //
+        // nav.add("Builder", "#GridTest");
+        // nav.add("About", "#item");
+        // nav.add("Contact", "#");
     }
 
     /**
