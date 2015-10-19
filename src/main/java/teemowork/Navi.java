@@ -14,9 +14,9 @@ import static jsx.ui.StructureDescriptor.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 import js.dom.UIAction;
+import jsx.style.BinaryStyle;
 import jsx.style.StyleDescriptor;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
@@ -40,8 +40,8 @@ public class Navi extends Widget {
      */
     private Navi() {
         selectMenu.to(menu -> {
-            if (menu.link != null) {
-                menu.link.get();
+            if (menu.action != null) {
+                menu.action.run();
             }
         });
     }
@@ -72,8 +72,8 @@ public class Navi extends Widget {
      * @param label
      * @param sub
      */
-    public void menu(String label, Consumer<Navi> sub) {
-        menu(label, null, sub);
+    public void menu(String label, Runnable action) {
+        menus.add(new Menu(label, action));
     }
 
     /**
@@ -84,25 +84,13 @@ public class Navi extends Widget {
      * @param label
      * @param sub
      */
-    public void menu(String label, Supplier<Widget> link, Consumer<Navi> sub) {
+    public void menu(String label, Runnable action, Consumer<Navi> sub) {
         Menu parent = menus;
-        Menu menu = new Menu(label, link);
+        Menu menu = new Menu(label, action);
         menus.add(menu);
         menus = menu;
         sub.accept(this);
         menus = parent;
-    }
-
-    /**
-     * <p>
-     * Define menu with link.
-     * </p>
-     * 
-     * @param label
-     * @param link
-     */
-    public void menu(String label, Supplier<Widget> link) {
-        menus.add(new Menu(label, link));
     }
 
     /**
@@ -112,11 +100,11 @@ public class Navi extends Widget {
     protected void virtualize() {
         box($.TopMenuGroup, contents(menus.items, item -> {
             html("li", $.TopMenu, () -> {
-                text($.MenuLink, item.label);
+                text($.MenuLink.of(item.action != null), item.label);
 
                 box($.SubMenuGroup, contents(item.items, sub -> {
                     html("li", $.SubMenu, () -> {
-                        text($.MenuLink, sub.label);
+                        text($.MenuLink.of(item.action != null), sub.label);
                     });
                 }));
             });
@@ -131,19 +119,19 @@ public class Navi extends Widget {
         /** The menu label. */
         private final String label;
 
-        /** The menu link. */
-        private final Supplier<Widget> link;
+        /** The menu action. */
+        private final Runnable action;
 
         /** The menu list. */
         private final List<Menu> items = new ArrayList();
 
         /**
          * @param label
-         * @param link
+         * @param action
          */
-        private Menu(String label, Supplier<Widget> link) {
+        private Menu(String label, Runnable action) {
             this.label = label;
-            this.link = link;
+            this.action = action;
         }
 
         /**
@@ -191,16 +179,19 @@ public class Navi extends Widget {
             text.align.center();
         };
 
-        static Style MenuLink = () -> {
+        static BinaryStyle MenuLink = action -> {
             display.block();
             padding.vertical(12, px).horizontal(20, px);
             font.color(153, 153, 153).weight.bold().size(14, px);
             text.decoration.none().shadow();
-            cursor.pointer();
 
-            hover(() -> {
-                font.color(Color.Whity);
-            });
+            if (action) {
+                cursor.pointer();
+
+                hover(() -> {
+                    font.color(Color.Whity);
+                });
+            }
         };
 
         static Style SubMenuGroup = () -> {

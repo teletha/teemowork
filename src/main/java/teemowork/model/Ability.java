@@ -182,7 +182,7 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability GhostWard = new Ability("ゴーストワード", ability -> {
-        ability.active("チャージを1つ消費して" + Item.StealthWard.name + "と同様の効果があるオブジェクトを指定地点に設置する。");
+        ability.active("チャージを1つ消費して" + Item.StealthWard + "と同様の効果があるオブジェクトを指定地点に設置する。");
     });
 
     /** The ability. */

@@ -15,17 +15,23 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.function.Consumer;
 
 import js.dom.Element;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
+import kiss.I;
+import teemowork.UserPreference;
 import teemowork.api.RiotItemData;
 
 /**
  * @version 2015/07/19 23:24:51
  */
 public class Item extends Describable<ItemDescriptor> {
+
+    /** The user settings. */
+    private static final UserPreference preference = I.make(UserPreference.class);
 
     /** The counter for id. */
     private static int counter = 0;
@@ -1476,7 +1482,10 @@ public class Item extends Describable<ItemDescriptor> {
     public final int id;
 
     /** The item name. */
-    public final String name;
+    private final String name;
+
+    /** The item name. */
+    private final String localized;
 
     /** The item description. */
     private final Consumer<ItemDescriptor> descriptor;
@@ -1497,9 +1506,21 @@ public class Item extends Describable<ItemDescriptor> {
         this.position = counter++;
         this.id = data.id;
         this.name = data.name;
+        this.localized = data.localizedName;
         this.descriptor = descriptor;
 
         items.add(this);
+    }
+
+    /**
+     * <p>
+     * Return the name of this item.
+     * </p>
+     * 
+     * @return
+     */
+    public String getName() {
+        return preference.localeItem.getValue() == Locale.ENGLISH ? name : localized;
     }
 
     /**
@@ -1579,7 +1600,7 @@ public class Item extends Describable<ItemDescriptor> {
      */
     @Override
     public String toString() {
-        return name;
+        return getName();
     }
 
     /**

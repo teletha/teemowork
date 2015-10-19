@@ -169,7 +169,7 @@ public class ChampionSelect extends Widget {
             box($.ImageSet, contents(Champion.getAll(), champion -> {
                 box($.Container, If(!filter(champion) || !champion.match(input.value.get()), $.Unselected), () -> {
                     box($.IconImage, $.IconPosition.of(champion));
-                    text($.Title, champion.name);
+                    text($.Title, champion);
                 });
             }));
         });

@@ -12,11 +12,14 @@ package teemowork.model;
 import static teemowork.model.Status.*;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 import js.dom.Element;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
+import kiss.I;
+import teemowork.UserPreference;
 import teemowork.api.RiotChampionData;
 
 /**
@@ -31,13 +34,13 @@ public class Champion extends RiotChampionData {
     public final int id;
 
     /** The name. */
-    public final String name;
+    private final String name;
 
     /** The localized name. */
-    public final String localized;
+    private final String localized;
 
     /** The normalized skillSystem name. */
-    public final String systemName;
+    private final String systemName;
 
     /** The skill set. */
     public final Skill[] skills = new Skill[5];
@@ -135,6 +138,17 @@ public class Champion extends RiotChampionData {
 
     /**
      * <p>
+     * Returns the name of this champion.
+     * </p>
+     * 
+     * @return A champion name.
+     */
+    public String getName() {
+        return I.make(UserPreference.class).localeChampion.getValue() == Locale.ENGLISH ? name : localized;
+    }
+
+    /**
+     * <p>
      * Returns icon image path.
      * </p>
      * 
@@ -214,7 +228,7 @@ public class Champion extends RiotChampionData {
      */
     @Override
     public String toString() {
-        return name;
+        return getName();
     }
 
     /**

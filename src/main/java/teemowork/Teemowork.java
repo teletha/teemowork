@@ -43,23 +43,9 @@ public class Teemowork extends Application {
         });
         navi.menu("Builder");
         navi.menu("About");
-        navi.menu("Contact");
+        navi.menu("Setting", this::setting);
 
         navi.renderIn(document.getElementById("Header"));
-
-        // Header nav = new Header();
-        // nav.add("< ^ v ^ > Teemowork", "");
-        // nav.add("Patch", "#history");
-        //
-        // Menu sub = nav.add("champion", "#");
-        // sub.add("Compare", "#championCompare");
-        // sub.add("Item", "#item");
-        // sub.add("Mastery", "#mastery");
-        // sub.add("Rune", "#");
-        //
-        // nav.add("Builder", "#GridTest");
-        // nav.add("About", "#item");
-        // nav.add("Contact", "#");
     }
 
     /**
@@ -93,6 +79,11 @@ public class Teemowork extends Application {
     @Route
     public Widget mastery() {
         return Widget.of(MasteryBuilder.class);
+    }
+
+    @Route
+    public Widget setting() {
+        return Widget.of(Setting.class);
     }
 
     /**

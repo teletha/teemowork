@@ -12,13 +12,20 @@ package teemowork.model;
 import static teemowork.api.RiotChampionData.*;
 import static teemowork.model.SkillKey.*;
 
+import java.util.Locale;
+
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
+import kiss.I;
+import teemowork.UserPreference;
 
 /**
  * @version 2015/07/21 16:42:24
  */
 public class Skill extends Describable<SkillDescriptor> {
+
+    /** The user settings. */
+    private static final UserPreference preference = I.make(UserPreference.class);
 
     /** The skill data. */
     private final String name;
@@ -62,7 +69,7 @@ public class Skill extends Describable<SkillDescriptor> {
      * @return A name of this skill.
      */
     public String getName() {
-        return name;
+        return preference.localeSkill.getValue() == Locale.ENGLISH ? name : localized;
     }
 
     /**

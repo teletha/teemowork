@@ -58,7 +58,7 @@ public class ItemView extends Widget1<Item> {
                 double total = item.getTotalCost();
 
                 box($.Heading, () -> {
-                    text($.Name, item.name);
+                    text($.Name, item);
                     text($.TotalCost, total);
                     if (cost != total) {
                         text($.Cost, "(", cost, ")");
