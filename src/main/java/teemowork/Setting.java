@@ -17,6 +17,7 @@ import jsx.style.StyleDescriptor;
 import jsx.ui.ModelValue;
 import jsx.ui.Style;
 import jsx.ui.Widget;
+import jsx.ui.piece.Input;
 import jsx.ui.piece.RadioBox;
 import jsx.ui.piece.UI;
 import kiss.I;
@@ -28,6 +29,9 @@ public class Setting extends Widget {
 
     /** The user preference. */
     private final @ModelValue UserPreference preference = I.make(UserPreference.class);
+
+    /** The configuration item. */
+    private final Input summerName = UI.input(preference.summonerName);
 
     /** The configuration item. */
     private final RadioBox championEnglish = UI.radiobox(preference.localeChampion, Locale.ENGLISH, "英語").style($.SettingBox);
@@ -47,11 +51,23 @@ public class Setting extends Widget {
     /** The configuration item. */
     private final RadioBox itemJapanease = UI.radiobox(preference.localeItem, Locale.JAPANESE, "日本語").style($.SettingBox);
 
+    /** The configuration item. */
+    private final RadioBox statusEnglish = UI.radiobox(preference.localeStatus, Locale.ENGLISH, "英語").style($.SettingBox);
+
+    /** The configuration item. */
+    private final RadioBox statusJapanease = UI.radiobox(preference.localeStatus, Locale.JAPANESE, "日本語").style($.SettingBox);
+
     /**
      * {@inheritDoc}
      */
     @Override
     protected void virtualize() {
+        text($.CategoryName, "サモナー");
+        box($.Item, () -> {
+            text($.ItemName, "名前");
+            box(summerName);
+        });
+
         text($.CategoryName, "表記言語");
         box($.Item, () -> {
             text($.ItemName, "チャンピオン名");
@@ -65,6 +81,10 @@ public class Setting extends Widget {
             text($.ItemName, "アイテム名");
             box(itemEnglish, itemJapanease);
         });
+        box($.Item, () -> {
+            text($.ItemName, "ステータス名");
+            box(statusEnglish, statusJapanease);
+        });
     }
 
     /**
@@ -76,6 +96,10 @@ public class Setting extends Widget {
             display.block();
             font.weight.bold();
             margin.bottom(0.5, em);
+
+            notFirstChild(() -> {
+                margin.top(1, em);
+            });
         };
 
         static Style Item = () -> {
@@ -86,11 +110,11 @@ public class Setting extends Widget {
 
         static Style ItemName = () -> {
             display.block();
-            box.width(8, em);
+            box.width(10, em);
         };
 
         static Style SettingBox = () -> {
-            margin.left(2, em);
+            margin.right(2, em);
         };
     }
 }

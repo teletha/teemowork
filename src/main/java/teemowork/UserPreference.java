@@ -13,25 +13,33 @@ import java.util.Locale;
 
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import jsx.ui.ModelValue;
 import kiss.Manageable;
-import kiss.Singleton;
+import kiss.Preference;
 
 /**
  * @version 2015/10/19 18:43:13
  */
-@Manageable(lifestyle = Singleton.class)
+@Manageable(lifestyle = Preference.class)
 public class UserPreference {
 
-    /** The user language. */
-    public final @ModelValue Property<Locale> localeChampion = new SimpleObjectProperty(Locale.ENGLISH);
+    /** The user name. */
+    public final @ModelValue StringProperty summonerName = new SimpleStringProperty();
 
     /** The user language. */
-    public final @ModelValue Property<Locale> localeSkill = new SimpleObjectProperty(Locale.ENGLISH);
+    public final @ModelValue Property<Locale> localeChampion = new SimpleObjectProperty<>(Locale.ENGLISH);
 
     /** The user language. */
-    public final @ModelValue Property<Locale> localeItem = new SimpleObjectProperty(Locale.ENGLISH);
+    public final @ModelValue Property<Locale> localeSkill = new SimpleObjectProperty<>(Locale.ENGLISH);
+
+    /** The user language. */
+    public final @ModelValue Property<Locale> localeItem = new SimpleObjectProperty<>(Locale.ENGLISH);
+
+    /** The user language. */
+    public final @ModelValue Property<Locale> localeStatus = new SimpleObjectProperty<>(Locale.ENGLISH);
 
     /**
      * <p>

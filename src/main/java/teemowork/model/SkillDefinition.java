@@ -2175,7 +2175,7 @@ public interface SkillDefinition {
      */
     public static void Karma(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P510)
-                .passive("敵チャンピオンにスキルでダメージを与えた場合" + R + "の{1}し、通常攻撃でダメージを与えた場合は{2}する。")
+                .passive("敵チャンピオンにスキルでダメージを与えた場合{R}の{1}し、通常攻撃でダメージを与えた場合は{2}する。")
                 .variable(1, CDDecrease, new Per6Level(2, 0.5))
                 .variable(2, CDDecrease, new Per6Level(1, 0.25));
 
