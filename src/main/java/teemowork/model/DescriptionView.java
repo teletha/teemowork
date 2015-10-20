@@ -135,7 +135,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                         writeAmplifier(amplifier.getAmplifiers(), current, calculator);
                         text(")");
                     }
-                    text(amplifier.getStatus().name);
+                    text(amplifier.getStatus());
                 });
             }));
         }

@@ -205,7 +205,7 @@ public class ChampionSelect extends Widget {
      * @return
      */
     private static SkillFilter type(Status... statuses) {
-        return type(statuses[0].name, statuses);
+        return type(statuses[0].getName(), statuses);
     }
 
     /**
@@ -238,7 +238,7 @@ public class ChampionSelect extends Widget {
      * @return
      */
     private static SkillFilter referSelf(Status... statuses) {
-        return referSelf(statuses[0].name, statuses);
+        return referSelf(statuses[0].getName(), statuses);
     }
 
     /**
@@ -271,7 +271,7 @@ public class ChampionSelect extends Widget {
      * @return
      */
     private static SkillFilter addReferEnemy(Status... statuses) {
-        return addReferEnemy(statuses[0].name, statuses);
+        return addReferEnemy(statuses[0].getName(), statuses);
     }
 
     /**

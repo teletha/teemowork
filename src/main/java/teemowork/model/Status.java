@@ -9,6 +9,11 @@
  */
 package teemowork.model;
 
+import java.util.Locale;
+
+import kiss.I;
+import teemowork.UserPreference;
+
 /**
  * @version 2013/12/02 13:28:33
  */
@@ -18,56 +23,56 @@ public enum Status {
     // Damage Type
     // ==================================================
     /** Any Damage */
-    Damage("ダメージ"), DamageRatio(Damage), CriticalDamageRatio("クリティカルダメージ", 2),
+    Damage("Damage", "ダメージ"), DamageRatio(Damage), CriticalDamageRatio("クリティカルダメージ", 2),
 
     /** Physical Daname */
-    PhysicalDamage("物理DM"),
+    PhysicalDamage("Physical Damage", "物理ダメージ"),
 
     /** Magic Damage */
-    MagicDamage("魔法DM"),
+    MagicDamage("MagicDamage", "魔法ダメージ"),
 
     /** True Damage */
-    TrueDamage("TrueDM"),
+    TrueDamage("TrueDamage", "確定ダメージ"),
 
     /** ATtack Damage */
     AttackDamage("通常攻撃によるダメージ"), AttackDamageRatio(AttackDamage),
 
     /** Dealt Damage */
-    DealtDamage("与えたDM"), DealtDamageRatio(DealtDamage),
+    DealtDamage("DealtDamage", "与えたダメージ"), DealtDamageRatio(DealtDamage),
 
     /** Dealt Damage Reduction */
     DamageDecreaseRatio("与えるダメージ"),
 
     /** Received Damage */
-    ReceivedDamage("受けたDM"), ReceivedDamageRatio(ReceivedDamage), ReceivedDamage4SecRatio(
+    ReceivedDamage("ReceivedDamage", "受けたダメージ"), ReceivedDamageRatio(ReceivedDamage), ReceivedDamage4SecRatio(
             "4秒以内に" + ReceivedDamage), ReceivedOriginalDamageRatio("軽減前の受けたDM"),
 
     /** Received Damage */
-    PreventedDamage("軽減したDM"), PreventedDamageRatio(ReceivedDamage),
+    PreventedDamage("PreventedDamage", "軽減したダメージ"), PreventedDamageRatio(ReceivedDamage),
 
     // ==================================================
     // Health Related
     // ==================================================
     /** Health */
-    Health("Health"), HealthPerLv, HealthRatio(Health), HealthRatioPerLv(HealthRatio), BounusHealth("増加" + Health),
+    Health("Health", "体力"), HealthPerLv, HealthRatio(Health), HealthRatioPerLv(HealthRatio), BounusHealth("増加" + Health),
 
     /** Base Health */
-    BaseHealth("基礎" + Health),
+    BaseHealth("BaseHealth", "基礎体力"),
 
     /** Health Regeneration */
-    Hreg(2), HregPerLv(2), HregRatio("Hreg", 2),
+    Hreg("HealthRegen", "体力自動回復", 2), HregPerLv(2), HregRatio("Hreg", 2),
 
     /** Health Cost */
-    LoseHealth("Health"),
+    LoseHealth(Health),
 
     // ==================================================
     // Mana Related
     // ==================================================
     /** Mana */
-    Mana("Mana"), ManaPerLv, ManaRatio(Mana), BounusMana("増加Mana"),
+    Mana("Mana", "マナ"), ManaPerLv, ManaRatio(Mana), BounusMana("増加Mana"),
 
     /** Mana Regeneration */
-    Mreg(2), MregPerLv(2), MregRatio("Mreg", 2),
+    Mreg("ManaRegen", "マナ自動回復", 2), MregPerLv(2), MregRatio("Mreg", 2),
 
     // ==================================================
     // Energy Related
@@ -81,7 +86,7 @@ public enum Status {
     // ==================================================
     // My Health Reference
     // ==================================================
-    CurrentHealthRatio("現在のHealth"),
+    CurrentHealthRatio("CurrentHealth", "現在の体力"),
 
     MissingHealthRatio("失ったHealth"),
 
@@ -116,16 +121,16 @@ public enum Status {
     // Attack Related
     // ==================================================
     /** Attack Damage */
-    AD, ADPerLv, ADRatio("AD"), BounusAD("増加AD"), BaseAD("基礎AD"), TargetAD("対象のAD"),
+    AD("AD", "攻撃力"), ADPerLv, ADRatio(AD), BounusAD("BounsAD", "増加攻撃力"), BaseAD("BaseAD", "基礎攻撃力"), TargetAD("TargetAD", "対象の攻撃力"),
 
     /** Attack Speed */
-    AS(3), ASPerLv(3), ASRatio("攻撃速度", 2),
+    AS("AS", "攻撃速度", 3), ASPerLv(3), ASRatio(AS, 2),
 
     /** life Steal */
-    LS("Life Steal"), LSPerLv(LS), LSRatio(LS),
+    LS("Life Steal", "物理吸命"), LSPerLv(LS), LSRatio(LS),
 
     /** Critical Chance */
-    Critical("Critical Chance"), CriticalPerLv, CriticalRatio,
+    Critical("Critical Chance", "クリティカル率"), CriticalPerLv, CriticalRatio,
 
     /** Other */
     AttackTowerDamageRatio("タワーに対するダメージ"),
@@ -134,52 +139,52 @@ public enum Status {
     // Ability Power Related
     // ==================================================
     /** Ability Power */
-    AP, APPerLv, APRatio("AP", 2), TargetAP("対象のAP"),
+    AP("AP", "魔力"), APPerLv, APRatio("AP", 2), TargetAP("TargetAP", "対象の魔力"),
 
     /** Cooldown Reduction */
-    CDR("CD減少", 2), CDRPerLv, CDRRatio, CDRUnaware("CD減少の影響を受けない"),
+    CDR("CDR", "クールダウン短縮", 2), CDRPerLv, CDRRatio, CDRUnaware("CD減少の影響を受けない"),
 
     /** Spell Vamp */
-    SV("Spell Vamp"), SVPerLv, SVRatio,
+    SV("Spell Vamp", "魔法吸命"), SVPerLv, SVRatio,
 
     // ==================================================
     // AR Penetrations and Reductions
     // ==================================================
     /** Flat Penetration */
-    ARPen, ARPenPerLv,
+    ARPen("ARPen", "物理防御貫通"), ARPenPerLv,
 
     /** Percentage Penetration */
-    ARPenRatio("ARPen"), ARPenRatioPerLv, BounusARPenRatio("増加ARPen"),
+    ARPenRatio(ARPen), ARPenRatioPerLv, BounusARPenRatio("増加ARPen"),
 
     /** Flat Reduction */
-    ARReduction("AR減少"),
+    ARReduction("AR減少", "物理防御減少"),
 
     /** Percentage Reduction */
-    ARReductionRatio("AR減少"),
+    ARReductionRatio(ARReduction),
 
     // ==================================================
     // MR Penetrations and Reductions
     // ==================================================
     /** Flat Penetration */
-    MRPen, MRPenPerLv,
+    MRPen("MRPen", "魔法防御貫通"), MRPenPerLv,
 
     /** Percentage Penetration */
-    MRPenRatio("MRPen"), MRPenRatioPerLv,
+    MRPenRatio(MRPen), MRPenRatioPerLv,
 
     /** Flat Reduction */
-    MRReduction("MR減少"),
+    MRReduction("MR減少", "魔法防御減少"),
 
     /** Percentage Reduction */
-    MRReductionRatio("MR減少"),
+    MRReductionRatio(MRReduction),
 
     // ==================================================
     // Defense Related
     // ==================================================
     /** Attack Damage Resistance */
-    AR, ARPerLv, ARRatio("AR", 3), BounusAR("増加AR"),
+    AR("AR", "物理防御"), ARPerLv, ARRatio(AR, 3), BounusAR("BounusAR", "増加物理防御"),
 
     /** Magic Damage Resistance */
-    MR, MRPerLv, MRRatio("MR", 3), BounusMR("増加MR"),
+    MR("MR", "魔法防御"), MRPerLv, MRRatio(MR, 3), BounusMR("BounusMR", "増加魔法防御"),
 
     /** General Damage Reduction */
     DamageReduction(Damage), DamageReductionRatio(Damage),
@@ -200,16 +205,16 @@ public enum Status {
     ADReduction(AD),
 
     /** Movement Slow Reduction */
-    MSSlowReduction("スロー"), MSSlowReductionRatio("スロー"),
+    MSSlowReduction("Slow", "スロー"), MSSlowReductionRatio(MSSlowReduction),
 
     /** Shield */
-    Shield("シールド"), PhysicalShield("物理DM用シールド"), MagicShield("魔法DM用シールド"), SpellShield("スペルシールド"),
+    Shield("Shield", "シールド"), PhysicalShield("物理DM用シールド"), MagicShield("魔法DM用シールド"), SpellShield("スペルシールド"),
 
     // ==================================================
     // Other Status Related
     // ==================================================
     /** Range */
-    Range("射程"), RangePerLv, RangeRatio(Range),
+    Range("Range", "射程"), RangePerLv, RangeRatio(Range),
 
     /** Grow Body Size */
     Grow("サイズ"),
@@ -218,13 +223,13 @@ public enum Status {
     Lv,
 
     /** Tenacity */
-    Tenacity("Tenacity"), TenacityPerLv,
+    Tenacity("Tenacity", "耐性"), TenacityPerLv,
 
     /** Experiment */
     Experiment("経験値"), ExperimentRatio("経験値"),
 
     /** Cooldown */
-    CD(2), CDPerLv, CDDecrease(2), CDDecreaseRatio(1), ItemCD("CD", 1),
+    CD("CD", "クールダウン", 2), CDPerLv, CDDecrease(CD, 2), CDDecreaseRatio(CD, 1), ItemCD(CD, 1),
 
     // ==================================================
     // Heal Related
@@ -278,7 +283,7 @@ public enum Status {
     // Movement Related
     // ==================================================
     /** Movement Speed */
-    MS("移動速度"), MSPerLv, MSRatio("移動速度"), BounusMS("増加移動速度"),
+    MS("MS", "移動速度"), MSPerLv, MSRatio("移動速度"), BounusMS("増加移動速度"),
 
     /** Reduction. */
     MSReduction(MS),
@@ -371,7 +376,10 @@ public enum Status {
     Stack("スタック"), ConsumedStack("消費したスタック"), StackPercentage("");
 
     /** The status name. */
-    public final String name;
+    private final String name;
+
+    /** The status name. */
+    private final String localized;
 
     /** The unit. */
     // public final String unit;
@@ -394,25 +402,58 @@ public enum Status {
     }
 
     /**
+     * @param name
+     */
+    private Status(String name, String localized) {
+        this(name, localized, 1);
+    }
+
+    /**
      * @param status
      */
     private Status(Status status) {
-        this(status.name, 1);
+        this(status.name, status.localized, 1);
     }
 
     /**
      * @param precision
      */
     private Status(int precision) {
-        this(null, precision);
+        this((String) null, precision);
     }
 
     /**
      * @param name
      */
     private Status(String name, int precision) {
+        this(name, name, precision);
+    }
+
+    /**
+     * @param name
+     */
+    private Status(Status status, int precision) {
+        this(status.name, status.localized, precision);
+    }
+
+    /**
+     * @param name
+     */
+    private Status(String name, String localized, int precision) {
         this.name = name == null ? name() : name;
+        this.localized = name == null ? name() : localized;
         this.precision = precision;
+    }
+
+    /**
+     * <p>
+     * Returns the name of this status.
+     * </p>
+     * 
+     * @return A status name.
+     */
+    public String getName() {
+        return I.make(UserPreference.class).localeStatus.getValue() == Locale.ENGLISH ? name : localized;
     }
 
     /**
@@ -575,7 +616,7 @@ public enum Status {
         case RestoreHealthRatio:
         case Grow:
         case AttackTowerDamageRatio:
-            return name + "が" + formatValue(Math.abs(computed)) + (0 <= computed ? "増加" : "減少");
+            return getName() + "が" + formatValue(Math.abs(computed)) + (0 <= computed ? "増加" : "減少");
 
         case DamageReduction:
         case DamageReductionRatio:
@@ -589,20 +630,20 @@ public enum Status {
         case MSSlowReductionRatio:
         case RespawnTimeReductionRatio:
         case CriticalDamageReductionRatio:
-            return name + "を" + formatValue(computed) + "軽減";
+            return getName() + "を" + formatValue(computed) + "軽減";
 
         case ADReduction:
         case MSReduction:
         case DamageDecreaseRatio:
-            return name + "が" + formatValue(computed) + "減少";
+            return getName() + "が" + formatValue(computed) + "減少";
 
         case LoseHealth:
-            return name + "を" + formatValue(computed) + "消費";
+            return getName() + "を" + formatValue(computed) + "消費";
 
         case RestoreEnergy:
         case RestoreHealth:
         case RestoreMana:
-            return name + "が" + formatValue(computed) + "回復";
+            return getName() + "が" + formatValue(computed) + "回復";
 
         case CDDecrease:
         case CDDecreaseRatio:
@@ -629,16 +670,16 @@ public enum Status {
             String length = formatValue(computed);
 
             if (length.length() == 0) {
-                return name;
+                return getName();
             } else {
-                return name + "(距離" + formatValue(computed) + ")";
+                return getName() + "(距離" + formatValue(computed) + ")";
             }
 
         case Stack:
         case ConsumedStack:
             return formatValue(computed) + "スタック";
         }
-        return name + formatValue(computed);
+        return getName() + formatValue(computed);
     }
 
     /**
@@ -658,6 +699,6 @@ public enum Status {
      */
     @Override
     public String toString() {
-        return name;
+        return getName();
     }
 }

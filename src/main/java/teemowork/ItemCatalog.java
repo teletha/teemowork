@@ -184,7 +184,7 @@ public class ItemCatalog extends Widget {
      * @return
      */
     private static ItemFilter type(Status... statuses) {
-        return type(statuses[0].name, statuses);
+        return type(statuses[0].getName(), statuses);
     }
 
     /**

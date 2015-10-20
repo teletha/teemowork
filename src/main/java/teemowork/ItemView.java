@@ -70,7 +70,7 @@ public class ItemView extends Widget1<Item> {
                     double value = descriptor.get(status);
 
                     if (value != 0) {
-                        text($.StatusValue, value, status.getUnit(), " ", status.name);
+                        text($.StatusValue, value, status.getUnit(), " ", status);
                     }
                 }));
 

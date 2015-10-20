@@ -136,7 +136,7 @@ public class ChampionComparing extends Widget {
          */
         @Override
         protected void virtualize() {
-            text($.StatusView, status.name);
+            text($.StatusView, status);
         }
     }
 

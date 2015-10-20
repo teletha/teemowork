@@ -106,7 +106,7 @@ public class ChampionDetail extends Widget1<Build> {
         box($.Container, () -> {
             box($.StatusViewBox, contents(VISIBLE, status -> {
                 box($.StatusBox, () -> {
-                    text($.StatusName, status.name());
+                    text($.StatusName, status);
                     text($.StatusValue, computeStatusValue(status));
                 });
             }));
@@ -176,7 +176,7 @@ public class ChampionDetail extends Widget1<Build> {
                 }
 
                 // write label
-                String label = status.name;
+                String label = status.getName();
 
                 if (status != Range && status != CD) {
                     if (descriptor.getType() == SkillType.Toggle) {
@@ -380,6 +380,7 @@ public class ChampionDetail extends Widget1<Build> {
             display.block();
             box.width(13, em);
             flexItem.shrink(0);
+            font.size.small();
         };
 
         Style StatusBox = () -> {
@@ -388,7 +389,7 @@ public class ChampionDetail extends Widget1<Build> {
         };
 
         Style StatusName = () -> {
-            box.width(5, em);
+            box.width(9.5, em);
         };
 
         Style StatusValue = () -> {
@@ -400,7 +401,7 @@ public class ChampionDetail extends Widget1<Build> {
         Style ItemViewBox = () -> {
             display.flex();
             box.width(ItemIconSize.multiply(6));
-            margin.left(137, px);
+            margin.left(100, px);
         };
 
         Style ItemIconBase = () -> {

@@ -19,7 +19,7 @@ import teemowork.model.variable.VariableResolver;
 import teemowork.model.variable.VariableResolver.Diff;
 
 /**
- * @version 2013/03/16 13:36:52
+ * @version 2015/10/20 14:10:08
  */
 public abstract class Descriptor<T extends Descriptor> {
 
@@ -109,8 +109,8 @@ public abstract class Descriptor<T extends Descriptor> {
      * @param text
      * @return
      */
-    protected final T passive(String text) {
-        passive = parse(text);
+    protected final T passive(Object... texts) {
+        passive = parse(texts);
 
         // Chainable API
         return (T) this;
@@ -155,8 +155,8 @@ public abstract class Descriptor<T extends Descriptor> {
      * @param text
      * @return
      */
-    protected final T active(String text) {
-        active = parse(text);
+    protected final T active(Object... texts) {
+        active = parse(texts);
 
         // Chainable API
         return (T) this;
@@ -170,16 +170,22 @@ public abstract class Descriptor<T extends Descriptor> {
      * @param tokens A list of text tokens.
      * @param text A skill text.
      */
-    private List parse(String text) {
+    private List parse(Object... texts) {
         List tokens = new ArrayList();
 
-        for (String token : text.split("[\\{\\}<>]")) {
-            if (token.equals("br")) {
-                tokens.add("\r\n");
-            } else if (token.length() == 0 || !isDigit(token)) {
-                tokens.add(token);
+        for (Object text : texts) {
+            if (text instanceof String) {
+                for (String token : ((String) text).split("[\\{\\}<>]")) {
+                    if (token.equals("br")) {
+                        tokens.add("\r\n");
+                    } else if (token.length() == 0 || !isDigit(token)) {
+                        tokens.add(token);
+                    } else {
+                        tokens.add(new VariableReference(token));
+                    }
+                }
             } else {
-                tokens.add(new VariableReference(token));
+                tokens.add(text);
             }
         }
         return tokens;
