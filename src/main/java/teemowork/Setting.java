@@ -14,24 +14,37 @@ import static jsx.ui.StructureDescriptor.*;
 import java.util.Locale;
 
 import jsx.style.StyleDescriptor;
-import jsx.ui.ModelValue;
 import jsx.ui.Style;
 import jsx.ui.Widget;
+import jsx.ui.piece.Button;
 import jsx.ui.piece.Input;
 import jsx.ui.piece.RadioBox;
+import jsx.ui.piece.Select;
 import jsx.ui.piece.UI;
 import kiss.I;
+import teemowork.api.RiotAPI;
+import teemowork.model.Region;
 
 /**
- * @version 2015/10/19 18:42:13
+ * @version 2015/10/20 16:52:02
  */
 public class Setting extends Widget {
 
     /** The user preference. */
-    private final @ModelValue UserPreference preference = I.make(UserPreference.class);
+    private final UserPreference preference = I.make(UserPreference.class);
 
     /** The configuration item. */
-    private final Input summerName = UI.input(preference.summonerName);
+    private final Select<Region> summerRegion = UI.select(preference.region, Region.class);
+
+    /** The configuration item. */
+    private final Input summerName = UI.input(preference.name);
+
+    /** The configuration item. */
+    private final Button update = UI.button().label("次回更新可能時刻").disableIf(summerName.value.isEmpty()).click(() -> {
+        RiotAPI.user().to(v -> {
+            System.out.println(v.id);
+        });
+    });
 
     /** The configuration item. */
     private final RadioBox championEnglish = UI.radiobox(preference.localeChampion, Locale.ENGLISH, "英語").style($.SettingBox);
@@ -64,8 +77,16 @@ public class Setting extends Widget {
     protected void virtualize() {
         text($.CategoryName, "サモナー");
         box($.Item, () -> {
+            text($.ItemName, "地域");
+            box(summerRegion);
+        });
+        box($.Item, () -> {
             text($.ItemName, "名前");
             box(summerName);
+        });
+        box($.Item, () -> {
+            text($.ItemName, "更新");
+            box(update);
         });
 
         text($.CategoryName, "表記言語");

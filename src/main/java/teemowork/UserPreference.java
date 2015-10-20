@@ -16,9 +16,9 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import jsx.ui.ModelValue;
 import kiss.Manageable;
 import kiss.Preference;
+import teemowork.model.Region;
 
 /**
  * @version 2015/10/19 18:43:13
@@ -26,37 +26,21 @@ import kiss.Preference;
 @Manageable(lifestyle = Preference.class)
 public class UserPreference {
 
-    /** The user name. */
-    public final @ModelValue StringProperty summonerName = new SimpleStringProperty();
+    /** The user. */
+    public final Property<Region> region = new SimpleObjectProperty(Region.NA);
+
+    /** The user. */
+    public final StringProperty name = new SimpleStringProperty();
 
     /** The user language. */
-    public final @ModelValue Property<Locale> localeChampion = new SimpleObjectProperty<>(Locale.ENGLISH);
+    public final Property<Locale> localeChampion = new SimpleObjectProperty<>(Locale.ENGLISH);
 
     /** The user language. */
-    public final @ModelValue Property<Locale> localeSkill = new SimpleObjectProperty<>(Locale.ENGLISH);
+    public final Property<Locale> localeSkill = new SimpleObjectProperty<>(Locale.ENGLISH);
 
     /** The user language. */
-    public final @ModelValue Property<Locale> localeItem = new SimpleObjectProperty<>(Locale.ENGLISH);
+    public final Property<Locale> localeItem = new SimpleObjectProperty<>(Locale.ENGLISH);
 
     /** The user language. */
-    public final @ModelValue Property<Locale> localeStatus = new SimpleObjectProperty<>(Locale.ENGLISH);
-
-    /**
-     * <p>
-     * Check user
-     * </p>
-     * 
-     * @return
-     */
-    public boolean isJapaneaseChampionName() {
-        return localeChampion.equals(Locale.JAPANESE);
-    }
-
-    public boolean isJapaneaseItemName() {
-        return localeChampion.equals(Locale.JAPANESE);
-    }
-
-    public boolean isJapaneaseSkillName() {
-        return localeChampion.equals(Locale.JAPANESE);
-    }
+    public final Property<Locale> localeStatus = new SimpleObjectProperty<>(Locale.ENGLISH);
 }

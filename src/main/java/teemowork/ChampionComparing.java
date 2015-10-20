@@ -45,7 +45,7 @@ public class ChampionComparing extends Widget {
     /** The sort order. */
     private ListProperty<Header> order = I.make(ListProperty.class);
 
-    private final Select<ChampionGroup> groups = UI.select(ChampionGroup.class);
+    private final Select<ChampionGroup> groups = UI.select(group, ChampionGroup.class);
 
     /** The sort comparator. */
     private Comparator<Champion> comparator = (one, other) -> {
