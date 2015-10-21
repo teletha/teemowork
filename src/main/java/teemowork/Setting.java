@@ -37,10 +37,10 @@ public class Setting extends Widget {
     private final Select<Region> summerRegion = UI.select(preference.region, Region.class);
 
     /** The configuration item. */
-    private final Input summerName = UI.input(preference.name);
+    private final Input summerName = UI.input(preference.name).invalidIf(String::isEmpty, "サモナーネームを入力して下さい。");
 
     /** The configuration item. */
-    private final Button update = UI.button().label("次回更新可能時刻").disableIf(summerName.value.isEmpty()).click(() -> {
+    private final Button update = UI.button().label("次回更新可能時刻").disableIf(summerName.invalid).click(() -> {
         RiotAPI.user().to(v -> {
             System.out.println(v.id);
         });
