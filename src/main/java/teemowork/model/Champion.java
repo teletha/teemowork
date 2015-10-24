@@ -33,6 +33,9 @@ public class Champion extends RiotChampionData {
     /** The champion id. */
     public final int id;
 
+    /** The riot champion id. */
+    public final int key;
+
     /** The name. */
     private final String name;
 
@@ -70,11 +73,10 @@ public class Champion extends RiotChampionData {
      * <p>
      * Create new champion.
      * </p>
-     * 
-     * @param name
      */
-    public Champion(String name, String localized, String system, float hp, float hpPer, float hreg, float hregPer, float mp, float mpPer, float mreg, float mregPer, float ad, float adPer, float as, float asPer, float crit, float critPer, float ar, float arPer, float mr, float mrPer, float ms, float range, String[] skillNames, String[] skillLocalized, SkillDefinition skillDefinition, boolean transformed) {
+    public Champion(int key, String name, String localized, String system, float hp, float hpPer, float hreg, float hregPer, float mp, float mpPer, float mreg, float mregPer, float ad, float adPer, float as, float asPer, float crit, float critPer, float ar, float arPer, float mr, float mrPer, float ms, float range, String[] skillNames, String[] skillLocalized, SkillDefinition skillDefinition, boolean transformed) {
         this.id = counter++;
+        this.key = key;
 
         for (int i = 0; i < skills.length; i++) {
             this.skills[i] = new Skill(skillNames[i], skillLocalized[i], system, i);
@@ -253,6 +255,23 @@ public class Champion extends RiotChampionData {
     public static Champion getByName(String name) {
         for (Champion champion : getAll()) {
             if (champion.systemName.equals(name)) {
+                return champion;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * <p>
+     * Find champion by riot key.
+     * </p>
+     * 
+     * @param name A champion key.
+     * @return A matched champion.
+     */
+    public static Champion getByKey(int key) {
+        for (Champion champion : getAll()) {
+            if (champion.key == key) {
                 return champion;
             }
         }

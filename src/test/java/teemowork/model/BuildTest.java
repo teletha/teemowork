@@ -196,7 +196,7 @@ public class BuildTest {
          *
          */
         public EmptyChampion() {
-            super("", "", "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, new String[] {}, new String[] {}, SkillDefinition::Aatrox, false);
+            super(0, "", "", "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, new String[] {}, new String[] {}, SkillDefinition::Aatrox, false);
         }
 
     }

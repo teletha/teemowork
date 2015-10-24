@@ -45,7 +45,7 @@ public class ChampionDataBuilder {
 
             code.write();
             code.write("/** ", champion.name, " Definition", " */");
-            code.write("public static final ", Champion.class, " ", champion.id, " = new ", Champion.class, param(string(champion.name), string(champion.localizedName), string(champion.id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status
+            code.write("public static final ", Champion.class, " ", champion.id, " = new ", Champion.class, param(champion.key, string(champion.name), string(champion.localizedName), string(champion.id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status
                     .attackspeed(), status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperlevel, status.movespeed, status.attackrange, skills(champion.skill, false), skills(champion.skillLocalized, false), methodRef(SkillDefinition.class, champion.id), false), ";");
 
             if (champion.isTransformer()) {
@@ -53,7 +53,7 @@ public class ChampionDataBuilder {
 
                 code.write();
                 code.write("/** ", champion.name, " Definition", " */");
-                code.write("public static final ", Champion.class, " ", id, " = new ", Champion.class, param(string(champion.name), string(champion.localizedName), string(id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status
+                code.write("public static final ", Champion.class, " ", id, " = new ", Champion.class, param(-champion.key, string(champion.name), string(champion.localizedName), string(id), status.hp, status.hpperlevel, status.hpregen, status.hpregenperlevel, status.mp, status.mpperlevel, status.mpregen, status.mpregenperlevel, status.attackdamage, status.attackdamageperlevel, status
                         .attackspeed(), status.attackspeedperlevel, status.crit, status.critperlevel, status.armor, status.armorperlevel, status.spellblock, status.spellblockperlevel, status.movespeed, status.attackrange, skills(champion.skill, true), skills(champion.skillLocalized, true), methodRef(SkillDefinition.class, id), true), ";");
             }
         }

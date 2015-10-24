@@ -21,8 +21,9 @@ import jsx.ui.piece.Input;
 import jsx.ui.piece.RadioBox;
 import jsx.ui.piece.Select;
 import jsx.ui.piece.UI;
+import kiss.Events;
 import kiss.I;
-import teemowork.api.RiotAPI;
+import teemowork.api.GameAPI;
 import teemowork.model.Region;
 
 /**
@@ -41,8 +42,8 @@ public class Setting extends Widget {
 
     /** The configuration item. */
     private final Button update = UI.button().label("次回更新可能時刻").disableIf(summerName.invalid).click(() -> {
-        RiotAPI.user().to(v -> {
-            System.out.println(v.id);
+        GameAPI.user().flatMap(GameAPI::matchList).flatMap(history -> Events.from(history.matches)).flatMap(GameAPI::match).to(match -> {
+            System.out.println(match);
         });
     });
 
