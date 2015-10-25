@@ -70,6 +70,8 @@ public class GameAPI {
         return parse(RiotMatch.class, "/api/lol/" + preference.region.getValue().code + "/v2.2/match/" + history.matchId, false);
     }
 
+    private static final Events reconciler = Events.from();
+
     /**
      * <p>
      * Paser Riot API.
@@ -82,9 +84,10 @@ public class GameAPI {
     private static <M> Events<M> parse(Class<M> type, String uri, boolean trim) {
         String cache = localStorage.getItem(uri);
 
-        if (cache != null) {
-            return Events.from(I.read(cache, I.make(type)));
-        } else {
+        // if (cache != null) {
+        // return Events.from(I.read(cache, I.make(type)));
+        // } else {
+        return Events.from(uri).interval(2000, TimeUnit.MILLISECONDS, reconciler).flatMap(url -> {
             return new Events<M>(observer -> {
                 NativeXMLHttpRequest request = new NativeXMLHttpRequest();
                 request.open("GET", "https://na.api.pvp.net/" + uri + "?api_key=" + API_KEY);
@@ -109,8 +112,9 @@ public class GameAPI {
                 return () -> {
                     request.abort();
                 };
-            }).delay(1000, TimeUnit.MILLISECONDS);
-        }
+            });
+        });
+        // }
     }
 
     /**

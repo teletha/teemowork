@@ -42,8 +42,8 @@ public class Setting extends Widget {
 
     /** The configuration item. */
     private final Button update = UI.button().label("次回更新可能時刻").disableIf(summerName.invalid).click(() -> {
-        GameAPI.user().flatMap(GameAPI::matchList).flatMap(history -> Events.from(history.matches)).flatMap(GameAPI::match).to(match -> {
-            System.out.println(match);
+        GameAPI.user().flatMap(GameAPI::matchList).flatMap(history -> Events.from(history.matches)).flatMap(GameAPI::match).to(t -> {
+            System.out.println(t);
         });
     });
 
