@@ -42,7 +42,7 @@ public class GameAPI {
      */
     public static Events<RiotUser> user() {
         return parse(RiotUser.class, "/api/lol/" + preference.region.getValue().code + "/v1.4/summoner/by-name/" + preference.name
-                .get(), true);
+                .get(), true, true);
     }
 
     /**
@@ -55,7 +55,7 @@ public class GameAPI {
      */
     public static Events<RiotMatchHistory> matchList(RiotUser user) {
         return parse(RiotMatchHistory.class, "/api/lol/" + preference.region
-                .getValue().code + "/v2.2/matchlist/by-summoner/" + user.id, false);
+                .getValue().code + "/v2.2/matchlist/by-summoner/" + user.id, false, false);
     }
 
     /**
@@ -67,10 +67,8 @@ public class GameAPI {
      * @return
      */
     public static Events<RiotMatch> match(MatchHistory history) {
-        return parse(RiotMatch.class, "/api/lol/" + preference.region.getValue().code + "/v2.2/match/" + history.matchId, false);
+        return parse(RiotMatch.class, "/api/lol/" + preference.region.getValue().code + "/v2.2/match/" + history.matchId, true, false);
     }
-
-    private static final Events reconciler = Events.from();
 
     /**
      * <p>
@@ -81,13 +79,15 @@ public class GameAPI {
      * @param uri
      * @return
      */
-    private static <M> Events<M> parse(Class<M> type, String uri, boolean trim) {
-        String cache = localStorage.getItem(uri);
+    private static <M> Events<M> parse(Class<M> type, String uri, boolean useCache, boolean trim) {
+        if (useCache) {
+            String cache = localStorage.getItem(uri);
 
-        // if (cache != null) {
-        // return Events.from(I.read(cache, I.make(type)));
-        // } else {
-        return Events.from(uri).interval(2000, TimeUnit.MILLISECONDS, reconciler).flatMap(url -> {
+            if (cache != null) {
+                return Events.from(I.read(cache, I.make(type)));
+            }
+        }
+        return Events.from(uri).interval(2000, TimeUnit.MILLISECONDS, GameAPI.class).flatMap(url -> {
             return new Events<M>(observer -> {
                 NativeXMLHttpRequest request = new NativeXMLHttpRequest();
                 request.open("GET", "https://na.api.pvp.net/" + uri + "?api_key=" + API_KEY);
@@ -114,7 +114,6 @@ public class GameAPI {
                 };
             });
         });
-        // }
     }
 
     /**
