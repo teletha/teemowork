@@ -19,6 +19,8 @@ import js.lang.NativeFunction;
 import js.lang.NativeXMLHttpRequest;
 import kiss.Events;
 import kiss.I;
+import kiss.Manageable;
+import kiss.Preference;
 import teemowork.UserPreference;
 import teemowork.model.Champion;
 
@@ -32,6 +34,9 @@ public class GameAPI {
 
     /** The API key. */
     private static final String API_KEY = "d82a93fe-1848-4692-895d-f194e928ed87";
+
+    /** The cache for the latest matches. */
+    private static List<RiotMatch> latestMatches = new ArrayList();
 
     /**
      * <p>
@@ -116,6 +121,10 @@ public class GameAPI {
         });
     }
 
+    public static List<RiotMatch> getLatestMatches() {
+        return latestMatches;
+    }
+
     /**
      * @version 2015/10/20 22:27:30
      */
@@ -137,6 +146,7 @@ public class GameAPI {
     /**
      * @version 2015/10/24 9:45:21
      */
+    @Manageable(lifestyle = Preference.class)
     public static class RiotMatchHistory {
 
         /** The match history manager. */

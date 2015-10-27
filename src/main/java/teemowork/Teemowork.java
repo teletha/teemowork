@@ -21,7 +21,7 @@ import teemowork.model.Build;
 import teemowork.model.Champion;
 
 /**
- * @version 2015/10/15 22:32:04
+ * @version 2015/10/27 14:10:47
  */
 public class Teemowork extends Application {
 
@@ -41,7 +41,7 @@ public class Teemowork extends Application {
             sub.menu("Mastery", this::mastery);
             sub.menu("Rune");
         });
-        navi.menu("Builder");
+        navi.menu("Record", this::record);
         navi.menu("About");
         navi.menu("Setting", this::setting);
 
@@ -79,6 +79,11 @@ public class Teemowork extends Application {
     @Route
     public Widget mastery() {
         return Widget.of(MasteryBuilder.class);
+    }
+
+    @Route
+    public Widget record() {
+        return Widget.of(Record.class);
     }
 
     @Route
