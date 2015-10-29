@@ -11,20 +11,17 @@ package teemowork;
 
 import static jsx.ui.StructureDescriptor.*;
 
-import java.util.Locale;
-
 import jsx.style.StyleDescriptor;
+import jsx.style.ValueStyle;
+import jsx.style.value.Numeric;
 import jsx.ui.Style;
 import jsx.ui.Widget;
-import jsx.ui.piece.Button;
-import jsx.ui.piece.Input;
-import jsx.ui.piece.RadioBox;
-import jsx.ui.piece.Select;
-import jsx.ui.piece.UI;
 import kiss.Events;
 import kiss.I;
 import teemowork.api.GameAPI;
-import teemowork.model.Region;
+import teemowork.api.GameAPI.ParticipantStats;
+import teemowork.api.GameAPI.RiotMatch;
+import teemowork.model.Champion;
 
 /**
  * @version 2015/10/27 14:10:55
@@ -34,53 +31,46 @@ public class Record extends Widget {
     /** The user preference. */
     private final UserPreference preference = I.make(UserPreference.class);
 
-    /** The configuration item. */
-    private final Select<Region> summerRegion = UI.select(preference.region, Region.class);
-
-    /** The configuration item. */
-    private final Input summerName = UI.input(preference.name).invalidIf(String::isEmpty, "サモナーネームを入力して下さい。");
-
-    /** The configuration item. */
-    private final Button update = UI.button().label("次回更新可能時刻").disableIf(summerName.invalid).click(() -> {
-        GameAPI.user().flatMap(GameAPI::matchList).flatMap(history -> Events.from(history.matches)).flatMap(GameAPI::match).to(t -> {
-            System.out.println(t);
-        });
-    });
-
-    /** The configuration item. */
-    private final RadioBox championEnglish = UI.radiobox(preference.localeChampion, Locale.ENGLISH, "英語").style($.SettingBox);
-
-    /** The configuration item. */
-    private final RadioBox championJapanease = UI.radiobox(preference.localeChampion, Locale.JAPANESE, "日本語").style($.SettingBox);
-
-    /** The configuration item. */
-    private final RadioBox skillEnglish = UI.radiobox(preference.localeSkill, Locale.ENGLISH, "英語").style($.SettingBox);
-
-    /** The configuration item. */
-    private final RadioBox skillJapanease = UI.radiobox(preference.localeSkill, Locale.JAPANESE, "日本語").style($.SettingBox);
-
-    /** The configuration item. */
-    private final RadioBox itemEnglish = UI.radiobox(preference.localeItem, Locale.ENGLISH, "英語").style($.SettingBox);
-
-    /** The configuration item. */
-    private final RadioBox itemJapanease = UI.radiobox(preference.localeItem, Locale.JAPANESE, "日本語").style($.SettingBox);
-
-    /** The configuration item. */
-    private final RadioBox statusEnglish = UI.radiobox(preference.localeStatus, Locale.ENGLISH, "英語").style($.SettingBox);
-
-    /** The configuration item. */
-    private final RadioBox statusJapanease = UI.radiobox(preference.localeStatus, Locale.JAPANESE, "日本語").style($.SettingBox);
+    private final Events<RiotMatch> matches = GameAPI.user()
+            .flatMap(GameAPI::matchList)
+            .flatMap(history -> Events.from(history.matches))
+            .flatMap(GameAPI::match);
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected void virtualize() {
-        box($.MatchResultList, contents(GameAPI.getLatestMatches(), match -> {
+        box($.MatchResultList, contents(matches, match -> {
             box($.MatchResult, () -> {
-                text(match.matchType);
+                box($.MatchInfo, () -> {
+                    text($.MatchType, match.queueType.name);
+                    text($.MatchDate, match.matchCreation);
+                    text($.MatchDuration, format(match.matchDuration));
+                });
+                box(contents(match.participants, participant -> {
+                    box($.Participant, () -> {
+                        box($.Champion.of(participant.champion()));
+
+                        ParticipantStats stats = participant.stats;
+                        box($.Score, () -> {
+                            text($.ScoreValue, stats.kills);
+                            text($.Separator, "/");
+                            text($.ScoreValue, stats.deaths);
+                            text($.Separator, "/");
+                            text($.ScoreValue, stats.assists);
+                        });
+                    });
+                }));
             });
         }));
+    }
+
+    private String format(int time) {
+        int second = time % 60;
+        int minute = (time - second) / 60;
+
+        return minute + "分" + second + "秒";
     }
 
     /**
@@ -88,18 +78,61 @@ public class Record extends Widget {
      */
     private static class $ extends StyleDescriptor {
 
+        private static final Numeric IconSize = new Numeric(22, px);
+
+        private static final Numeric IconMargin = new Numeric(10, px);
+
         static Style MatchResultList = () -> {
             display.block();
         };
 
         static Style MatchResult = () -> {
-            display.flex();
+            display.block();
             font.size.small();
+            margin.bottom(2, em);
         };
 
-        static Style ItemName = () -> {
+        static Style MatchInfo = () -> {
+
+        };
+
+        static Style MatchDate = () -> {
+
+        };
+
+        static Style MatchDuration = () -> {
+
+        };
+
+        static Style MatchType = () -> {
+            font.weight.bold();
+        };
+
+        static Style Participant = () -> {
             display.block();
             box.width(10, em);
+        };
+
+        static ValueStyle<Champion> Champion = champion -> {
+            display.inlineBlock();
+            background.image("src/main/resources/teemowork/champions.jpg").cover().horizontal(champion.getIconPosition());
+            box.size(IconSize);
+            border.radius(2, px).color(rgb(50, 50, 50)).width(1, px).solid();
+            cursor.pointer();
+        };
+
+        static Style Score = () -> {
+
+        };
+
+        static Style ScoreValue = () -> {
+            display.inlineBlock();
+            box.width(1.2, em);
+            padding.horizontal(0.2, em);
+        };
+
+        static Style Separator = () -> {
+
         };
 
         static Style SettingBox = () -> {

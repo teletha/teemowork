@@ -35,9 +35,6 @@ public class GameAPI {
     /** The API key. */
     private static final String API_KEY = "d82a93fe-1848-4692-895d-f194e928ed87";
 
-    /** The cache for the latest matches. */
-    private static List<RiotMatch> latestMatches = new ArrayList();
-
     /**
      * <p>
      * Search user by name.
@@ -60,7 +57,7 @@ public class GameAPI {
      */
     public static Events<RiotMatchHistory> matchList(RiotUser user) {
         return parse(RiotMatchHistory.class, "/api/lol/" + preference.region
-                .getValue().code + "/v2.2/matchlist/by-summoner/" + user.id, false, false);
+                .getValue().code + "/v2.2/matchlist/by-summoner/" + user.id, true, false);
     }
 
     /**
@@ -119,10 +116,6 @@ public class GameAPI {
                 };
             });
         });
-    }
-
-    public static List<RiotMatch> getLatestMatches() {
-        return latestMatches;
     }
 
     /**
@@ -202,7 +195,30 @@ public class GameAPI {
      * @version 2015/10/24 11:33:42
      */
     public static enum QueueType {
-        RANKED_SOLO_5x5, RANKED_TEAM_3x3, RANKED_TEAM_5x5;
+        /** Ranked 5x5 */
+        RANKED_SOLO_5x5("Rank Solo"), RANKED_PREMADE_5x5("Rank Duo"), RANKED_TEAM_5x5("Rank Team"),
+
+        /** Ranked 3x3 */
+        RANKED_PREMADE_3x3("Rank 3v3"), RANKED_TEAM_3x3("Rank Team 3v3"),
+
+        /** Normal Game */
+        NORMAL_5x5_BLIND("ノーマル"), NORMAL_5x5_DRAFT("ノーマル"), NORMAL_3x3("ノーマル3v3"),
+
+        /** Custom Game */
+        CUSTOM("カスタム"),
+
+        /** Bot Game */
+        BOT_5x5("ボット");
+
+        /** The game type name. */
+        public final String name;
+
+        /**
+         * @param name
+         */
+        private QueueType(String name) {
+            this.name = name;
+        }
     }
 
     /**
@@ -219,8 +235,14 @@ public class GameAPI {
         /** The creation date. */
         public long matchCreation;
 
+        /** The duration time. */
+        public int matchDuration;
+
         /** The list of participants. */
         public List<Participant> participants;
+
+        /** The queue type. */
+        public QueueType queueType;
 
         /**
          * {@inheritDoc}
@@ -251,6 +273,9 @@ public class GameAPI {
         /** The summoner spell 2. */
         public int spell2Id;
 
+        /** The status. */
+        public ParticipantStats stats;
+
         public Champion champion() {
             return Champion.getByKey(championId);
         }
@@ -262,5 +287,152 @@ public class GameAPI {
         public String toString() {
             return "Participant [champion=" + champion() + ", participantId=" + participantId + ", highestAchievedSeasonTier=" + highestAchievedSeasonTier + "]";
         }
+    }
+
+    /**
+     * @version 2015/10/29 23:02:57
+     */
+    public static class ParticipantStats {
+
+        /** The stats. */
+        public int assists;
+
+        /** The stats. */
+        public int champLevel;
+
+        /** The stats. */
+        public int deaths;
+
+        /** The stats. */
+        public int doubleKills;
+
+        /** The stats. */
+        public int goldEarned;
+
+        /** The stats. */
+        public int goldSpent;
+
+        /** The stats. */
+        public int item0;
+
+        /** The stats. */
+        public int item1;
+
+        /** The stats. */
+        public int item2;
+
+        /** The stats. */
+        public int item3;
+
+        /** The stats. */
+        public int item4;
+
+        /** The stats. */
+        public int item5;
+
+        /** The stats. */
+        public int item6;
+
+        /** The stats. */
+        public int killingSprees;
+
+        /** The stats. */
+        public int kills;
+
+        /** The stats. */
+        public int largestCriticalStrike;
+
+        /** The stats. */
+        public int largestKillingSpree;
+
+        /** The stats. */
+        public int largestMultiKill;
+
+        /** The stats. */
+        public int magicDamageDealt;
+
+        /** The stats. */
+        public int magicDamageDealtToChampions;
+
+        /** The stats. */
+        public int magicDamageTaken;
+
+        /** The stats. */
+        public int minionsKilled;
+
+        /** The stats. */
+        public int neutralMinionsKilled;
+
+        /** The stats. */
+        public int neutralMinionsKilledEnemyJungle;
+
+        /** The stats. */
+        public int neutralMinionsKilledTeamJungle;
+
+        /** The stats. */
+        public int pentaKills;
+
+        /** The stats. */
+        public int physicalDamageDealt;
+
+        /** The stats. */
+        public int physicalDamageDealtToChampions;
+
+        /** The stats. */
+        public int physicalDamageTaken;
+
+        /** The stats. */
+        public int quadraKills;
+
+        /** The stats. */
+        public int sightWardsBoughtInGame;
+
+        /** The stats. */
+        public int totalDamageDealt;
+
+        /** The stats. */
+        public int totalDamageDealtToChampions;
+
+        /** The stats. */
+        public int totalDamageTaken;
+
+        /** The stats. */
+        public int totalHeal;
+
+        /** The stats. */
+        public int totalTimeCrowdControlDealt;
+
+        /** The stats. */
+        public int totalUnitsHealed;
+
+        /** The stats. */
+        public int towerKills;
+
+        /** The stats. */
+        public int tripleKills;
+
+        /** The stats. */
+        public int trueDamageDealt;
+
+        /** The stats. */
+        public int trueDamageDealtToChampions;
+
+        /** The stats. */
+        public int trueDamageTaken;
+
+        /** The stats. */
+        public int unrealKills;
+
+        /** The stats. */
+        public int visionWardsBoughtInGame;
+
+        /** The stats. */
+        public int wardsKilled;
+
+        /** The stats. */
+        public int wardsPlaced;
+
+        /** The stats. */
+        public boolean winner;
     }
 }
