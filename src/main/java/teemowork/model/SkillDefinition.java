@@ -1299,7 +1299,7 @@ public interface SkillDefinition {
                 .passive("近くの敵チャンピオンの急所が表示される。急所に通常攻撃を加えると{1}を与え{2}し、1.75秒かけて減衰しながら{3}する。急所は15秒間持続し、一定時間ごとに再度表示される。")
                 .variable(1, TrueDamage, amplify(TargetMaxHealthRatio, 3, 0, amplify(BounusAD, 0.027, 0, level(0.001))))
                 .variable(2, RestoreHealth, 14, 0, level(5.9))
-                .variable(3, MSRatio, new ReferPlus(R, 20, 10));
+                .variable(-3, MSRatio, new ReferPlus(R, 20, 10));
 
         Q.update(P515)
                 .active("指定方向へ{4}し当たった敵に{1}を与える。敵に当たるとこのスキルの{2}する。{3}。")
@@ -1567,7 +1567,7 @@ public interface SkillDefinition {
         W.update(P420)
                 .passive("<br>Mini Gnar<br>通常攻撃かスキルで", Damage, "を与えた敵ユニットにスタックを付与する。スタック数が3になるとスタックを消費し{1}を与え、3秒間{2}する。この移動速度増加は時間と共に減衰する。建物には無効。また、この移動速度増加はMega GnarからMini Gnarに戻った時にも発動する。")
                 .variable(1, MagicDamage, 10, 10, amplify(TargetMaxHealthRatio, 6, 2), ap(1))
-                .variable(2, MSRatio, new ReferPlus(R, 30, 15))
+                .variable(-2, MSRatio, new ReferPlus(R, 30, 15))
                 .active("Mega Gnar<br>指定方向に腕を叩き付け{3}の敵ユニットに{4}と{5}を与える。")
                 .variable(3, Radius)
                 .variable(4, PhysicalDamage, 25, 20, ad(1))
@@ -4497,8 +4497,8 @@ public interface SkillDefinition {
         P.update(P517)
                 .passive("マップ上にクリスタルが6箇所発生し、敵味方問わず2秒間立っていると占領出来る。占領下のクリスタルの{1}にいる時、", E, "のスタン効果時間中及び", R, "の効果時間中、次の効果を受ける。<br><br>Crystal Charge<br>{2}、{3}して毎秒{4}する。")
                 .variable(1, Radius, 1150)
-                .variable(2, MS, 67, 0, level(3))
-                .variable(3, ASRatio, 36.12, 0, level(6.88))
+                .variable(-2, MS, 67, 0, level(3))
+                .variable(-3, ASRatio, 36.12, 0, level(6.88))
                 .variable(4, RestoreMana, amplify(Mana, 0.02));
 
         Q.update(P516)
@@ -4610,7 +4610,7 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Soraka(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P417).passive(W, "の範囲外かつ範囲2500以内の", Health, "が40%未満になっている味方チャンピオンに向かって移動する時、{1}する。").variable(1, MSRatio, 70);
+        P.update(P417).passive(W, "の範囲外かつ範囲2500以内の", Health, "が40%未満になっている味方チャンピオンに向かって移動する時、{1}する。").variable(-1, MSRatio, 70);
 
         Q.update(P505)
                 .active("指定した地点に流星を落下させ、{1}の敵に{2}を与える。中心部の敵には{3}と2秒間{4}を与える。星が降ってくる速度は距離に比例する(近距離ほど発動が早く、遠距離ほど遅い)。指定地点の{5}。")

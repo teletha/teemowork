@@ -9,7 +9,7 @@
  */
 package teemowork.model;
 
-import static teemowork.model.Champion.*;
+import static teemowork.api.RiotChampionData.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,21 +23,24 @@ import java.util.List;
 public enum ChampionGroup {
 
     /** The built-in group. */
-    RANGED(Ashe, Caitlyn, Corki, Draven, Ezreal, Graves, Jayce, Jinx, Kennen, KogMaw, MissFortune, Quinn, Sivir, Teemo,
-            Thresh, Tristana, TwistedFate, Twitch, Urgot, Varus, Vayne),
+    Ranged(Ashe, Caitlyn, Corki, Draven, Ezreal, Graves, Jayce, Jinx, Kennen, Kindred, KogMaw, MissFortune, Quinn, Sivir, Teemo, Thresh,
+            Tristana, TwistedFate, Twitch, Urgot, Varus, Vayne),
+
+    Assasin(Ahri, Akali, Diana, Ekko, Evelynn, Fiora, Fizz, Kassadin, Katarina, Khazix, Leblanc, LeeSin, Malzahar, Nidalee, Pantheon,
+            Rengar, Shaco, Talon, XinZhao, Yasuo, Zed),
 
     /** The built-in group. */
     ALL(Champion.getAll());
 
     /** The group members. */
-    private final List<Champion> members = new ArrayList();
+    private final List<Build> members = new ArrayList();
 
     /**
      * @param members
      */
     private ChampionGroup(List<Champion> members) {
         for (Champion champion : members) {
-            this.members.add(champion);
+            this.members.add(new Build(champion));
         }
     }
 
@@ -50,26 +53,14 @@ public enum ChampionGroup {
 
     /**
      * <p>
-     * Detct member.
-     * </p>
-     * 
-     * @param champion
-     * @return
-     */
-    public boolean contains(Champion champion) {
-        return members.contains(champion);
-    }
-
-    /**
-     * <p>
      * List up all champions by the specified sort.
      * </p>
      * 
      * @param health
      * @return
      */
-    public List<Champion> sortBy(Comparator<Champion> sorter) {
-        List<Champion> sorted = new ArrayList(members);
+    public List<Build> sortBy(Comparator<Build> sorter) {
+        List<Build> sorted = new ArrayList(members);
         Collections.sort(sorted, sorter);
         return sorted;
     }

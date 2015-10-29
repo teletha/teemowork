@@ -18,14 +18,17 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 
+import js.dom.UIAction;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
+import jsx.style.value.Numeric;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.Select;
 import jsx.ui.piece.UI;
 import kiss.I;
+import teemowork.model.Build;
 import teemowork.model.Champion;
 import teemowork.model.ChampionGroup;
 import teemowork.model.ChampionStatus;
@@ -37,18 +40,20 @@ import teemowork.model.Version;
  */
 public class ChampionComparing extends Widget {
 
-    private static final Status[] STATUS = {Health, Hreg, HregPerLv, Mana, AD, ADPerLv, AS, AR, MR, MS, Range};
+    private static final Status[] STATUS = {Health, Hreg, Mana, Mreg, AD, AS, AR, MR, MS, Range};
 
     /** The filter. */
-    private Property<ChampionGroup> group = new SimpleObjectProperty(ChampionGroup.RANGED);
+    private Property<ChampionGroup> group = new SimpleObjectProperty(ChampionGroup.ALL);
 
     /** The sort order. */
     private ListProperty<Header> order = I.make(ListProperty.class);
 
     private final Select<ChampionGroup> groups = UI.select(group, ChampionGroup.class);
 
+    private final int level = 18;
+
     /** The sort comparator. */
-    private Comparator<Champion> comparator = (one, other) -> {
+    private Comparator<Build> comparator = (one, other) -> {
         for (Header header : order) {
             int result = header.compare(one, other);
 
@@ -58,6 +63,23 @@ public class ChampionComparing extends Widget {
         }
         return 0;
     };
+
+    /**
+     * 
+     */
+    private ChampionComparing(Teemowork teemowork) {
+        when(UIAction.Click).at($.Icon).to(champion -> {
+            System.out.println(champion);
+            teemowork.champion(champion);
+        });
+    }
+
+    /**
+     * @param id
+     */
+    private ChampionComparing(int id) {
+        super(id);
+    }
 
     /**
      * {@inheritDoc}
@@ -72,13 +94,17 @@ public class ChampionComparing extends Widget {
             });
 
             box($.Body, () -> {
-                box($.VBox, contents(group.getValue().sortBy(comparator), champion -> {
+                box($.VBox, contents(group.getValue().sortBy(comparator), build -> {
                     box($.RowLine, () -> {
-                        ChampionStatus championStatus = champion.getStatus(Version.Latest);
+                        ChampionStatus championStatus = build.champion.getStatus(Version.Latest);
+                        build.setLevel(level);
 
-                        box($.Icon.of(champion));
+                        box($.Icon.of(build.champion));
                         box(contents(STATUS, status -> {
-                            text($.StatusView, championStatus.get(status));
+                            box($.Status, () -> {
+                                text($.StatusBase, build.get(status));
+                                text($.StatusPerLevel, "(", championStatus.get(status.per()), ")");
+                            });
                         }));
                     });
                 }));
@@ -89,7 +115,7 @@ public class ChampionComparing extends Widget {
     /**
      * @version 2015/03/02 10:58:34
      */
-    private class Header extends Widget1<Status>implements Comparator<Champion> {
+    private class Header extends Widget1<Status>implements Comparator<Build> {
 
         /** The champion status. */
         private final Status status = model1;
@@ -101,24 +127,24 @@ public class ChampionComparing extends Widget {
          * 
          */
         private Header() {
-            // listen(UIAction.Click).to(v -> {
-            // if (order.get(0) == this) {
-            // this.decending = !decending;
-            // }
-            //
-            // // push this at top
-            // order.remove(this);
-            // order.add(0, this);
-            // });
+            when(UIAction.Click).at($.StatusHeader).to(update(v -> {
+                if (order.get(0) == this) {
+                    this.decending = !decending;
+                }
+
+                // push this at top
+                order.remove(this);
+                order.add(0, this);
+            }));
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public int compare(Champion one, Champion other) {
-            double oneValue = one.getStatus(Version.Latest).get(status);
-            double otherValue = other.getStatus(Version.Latest).get(status);
+        public int compare(Build one, Build other) {
+            double oneValue = one.setLevel(level).get(status).value;
+            double otherValue = other.setLevel(level).get(status).value;
 
             if (oneValue == otherValue) {
                 return 0;
@@ -136,7 +162,7 @@ public class ChampionComparing extends Widget {
          */
         @Override
         protected void virtualize() {
-            text($.StatusView, status);
+            text($.StatusHeader, status);
         }
     }
 
@@ -145,8 +171,16 @@ public class ChampionComparing extends Widget {
      */
     private static class $ extends StyleDescriptor {
 
+        private static final Numeric itemWidth = new Numeric(6.5, em);
+
+        private static final Numeric IconSize = new Numeric(22, px);
+
+        private static final Numeric IconMargin = new Numeric(10, px);
+
         private static Style Table = () -> {
             display.verticalBox();
+            font.size.small();
+            margin.top(IconMargin);
         };
 
         private static Style Head = () -> {
@@ -156,26 +190,38 @@ public class ChampionComparing extends Widget {
         };
 
         private static Style RowLine = () -> {
-            display.flex();
+            display.flex().alignItems.center();
+            margin.top(0.5, em);
         };
 
         private static ValueStyle<Champion> Icon = champion -> {
             display.inlineBlock();
             background.image("src/main/resources/teemowork/champions.jpg").cover().horizontal(champion.getIconPosition());
-            box.size(44, px);
-            border.radius(5, px).color(rgb(50, 50, 50)).width(1, px).solid();
+            box.size(IconSize);
+            border.radius(2, px).color(rgb(50, 50, 50)).width(1, px).solid();
             cursor.pointer();
+            margin.right(IconMargin);
         };
 
-        private static Style NoIcon = () -> {
+        static Style NoIcon = () -> {
             display.inlineBlock();
-            box.size(40, px);
+            box.width(IconSize.add(IconMargin));
         };
 
-        private static Style StatusView = () -> {
+        static Style Status = () -> {
             display.inlineBlock();
-            box.width(4, em);
-            text.verticalAlign.middle();
+            box.width(itemWidth);
+        };
+
+        static Style StatusHeader = Status.with(() -> {
+            cursor.pointer();
+        });
+
+        static Style StatusBase = () -> {
+        };
+
+        static Style StatusPerLevel = () -> {
+            font.color(rgb(180, 180, 180));
         };
     }
 }

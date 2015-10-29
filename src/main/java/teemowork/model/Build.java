@@ -52,8 +52,8 @@ public class Build implements StatusCalculator {
     public final ListProperty<Integer> skillLevel = new SimpleListProperty(FXCollections.observableArrayList(0, 0, 0, 0, 0));
 
     /** The skill level. */
-    public final ListProperty<Boolean> skillActivation = new SimpleListProperty(FXCollections
-            .observableArrayList(false, false, false, false, false));
+    public final ListProperty<Boolean> skillActivation = new SimpleListProperty(
+            FXCollections.observableArrayList(false, false, false, false, false));
 
     /** The mastery. */
     private MasterySet mastery;
@@ -112,10 +112,11 @@ public class Build implements StatusCalculator {
      * 
      * @param level The level value to set.
      */
-    public void setLevel(int level) {
+    public Build setLevel(int level) {
         if (0 < level && level < 19) {
             this.level.set(level);
         }
+        return this;
     }
 
     /**
