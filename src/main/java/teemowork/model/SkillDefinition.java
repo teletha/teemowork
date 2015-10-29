@@ -916,7 +916,7 @@ public interface SkillDefinition {
         W.update(P517)
                 .active("次の通常攻撃に{1}を追加し、1秒間{2}が付与される。その攻撃で敵を倒した場合{5}し、このスキルの{6}する。{4}。")
                 .variable(1, PhysicalDamage, ad(0.4))
-                .variable(2, SlowRatio, 90)
+                .variable(2, MSSlowRatio, 90)
                 .variable(4, ResetAATimer)
                 .variable(5, RestoreMana, 30)
                 .variable(6, CDDecreaseRatio, 50)
@@ -1379,7 +1379,7 @@ public interface SkillDefinition {
 
         R.update(P517)
                 .active("指定地点に敵チャンピオンのみに命中する魚を投げ、命中した敵チャンピオンに魚がくっつき、1.5秒間{1}を与え、6秒間", champion, "の与える魔法{3}する。1.5秒後に地面から鮫が現れ、魚が命中した対象を襲い、対象とその{4}の敵ユニットに{5}を与え、{6}後に1.5秒間{1}を与える。魚がくっついていた敵チャンピオン以外のユニットには{6}の代わりに{8}を与える。魚がチャンピオンに当たらなかった場合は指定地点に魚が残り、その地点に鮫が現れる。また魚は視界を確保し、その上を敵チャンピオンが通り過ぎると、当たった場合と同様にその敵チャンピオンにくっつき、鮫が襲いかかる。")
-                .variable(1, SlowRatio, 50, 10)
+                .variable(1, MSSlowRatio, 50, 10)
                 .variable(3, DamageRatio, 20)
                 .variable(4, Radius, 250)
                 .variable(5, MagicDamage, 200, 125, ap(1))
@@ -1606,7 +1606,7 @@ public interface SkillDefinition {
                 .active("指定地点に樽を転がし、爆発時に{1}の敵ユニットに{2}と1.3秒間{3}を与える。樽は4秒経つか、スキルを再度使用すると爆発する。樽は設置後、2秒かけて", Damage, "と", Slow, "の効果が最大50%まで増加していく。樽は設置場所の{4}。ミニオンに対しては70％の", Damage, "を与える。")
                 .variable(1, Radius, 375)
                 .variable(2, MagicDamage, 80, 40, ap(0.6))
-                .variable(3, SlowRatio, 40, 5)
+                .variable(3, MSSlowRatio, 40, 5)
                 .variable(4, Visionable)
                 .mana(60, 5)
                 .cd(11, -1)
@@ -2529,7 +2529,7 @@ public interface SkillDefinition {
 
         E.update(P520)
                 .active("対象に1秒間{1}を与える。その対象に連続して攻撃を3回成功させると{2}を与える（モンスターに対しては300が上限）。")
-                .variable(1, SlowRatio, 70)
+                .variable(1, MSSlowRatio, 70)
                 .variable(2, PhysicalDamage, 80, 30, ad(0.2), amplify(TargetMaxHealthRatio, 5))
                 .mana(70)
                 .cd(16, -1);
@@ -5101,7 +5101,7 @@ public interface SkillDefinition {
         W.update(P301)
                 .active("4秒間近くの敵チャンピオンは{1}し、後ろを向いている敵チャンピオンには更に4秒間{2}を与える。")
                 .variable(1, ADReduction, 20, 15)
-                .variable(2, SlowRatio, 30, 7.5)
+                .variable(2, MSSlowRatio, 30, 7.5)
                 .cd(14)
                 .range(400);
 
@@ -5819,9 +5819,11 @@ public interface SkillDefinition {
         P.update(P301).passive("通常攻撃または", E, "で指定した敵ユニットに{1}を与える。この効果はスタックせず、3秒間持続し、また1体の敵ユニットにしか発動しない。").variable(1, ARReductionRatio, 15);
 
         Q.update(P301)
-                .active("次の3回の通常攻撃に{1}が追加され、3回目の攻撃で{2}を与える。効果中に通常攻撃を行う度に、このスキル以外のCDが1秒解消される。")
+                .active("次の3回の通常攻撃に{1}が追加され、3回目の攻撃で{2}を与える。効果中に通常攻撃を行う度に、このスキル以外の{3}する。{4}。")
                 .variable(1, PhysicalDamage, 15, 15, ad(0.2))
                 .variable(2, Knockup, 1)
+                .variable(3, CDDecrease, 1)
+                .variable(4, ResetAATimer)
                 .mana(30)
                 .cd(9, -1);
 
