@@ -68,17 +68,9 @@ public class ChampionComparing extends Widget {
      * 
      */
     private ChampionComparing(Teemowork teemowork) {
-        when(UIAction.Click).at($.Icon).to(champion -> {
-            System.out.println(champion);
-            teemowork.champion(champion);
+        when(UIAction.Click).at($.Icon, Build.class).to(build -> {
+            teemowork.champion(build.champion);
         });
-    }
-
-    /**
-     * @param id
-     */
-    private ChampionComparing(int id) {
-        super(id);
     }
 
     /**
