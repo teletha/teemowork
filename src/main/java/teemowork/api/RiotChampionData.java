@@ -9,9 +9,9 @@
  */
 package teemowork.api;
 
+import teemowork.model.SkillDefinition;
 import java.util.List;
 import java.util.ArrayList;
-import teemowork.model.SkillDefinition;
 import teemowork.model.Champion;
 
 public class RiotChampionData {
@@ -110,7 +110,7 @@ public class RiotChampionData {
     public static final Champion Galio = new Champion(3, "Galio", "ガリオ", "Galio", 577.8F, 85.0F, 8.71F, 0.75F, 319.0F, 50.0F, 6.0F, 0.8F, 61.97F, 3.375F, 0.638F, 1.2F, 0.0F, 0.0F, 26.88F, 3.5F, 32.1F, 1.25F, 335.0F, 125.0F, new String[] {"Runic Skin", "Resolute Smite", "Bulwark", "Righteous Gust", "Idol of Durand"}, new String[] {"ルーンの加護", "懲罰の視線", "忠義の防壁", "正義の追い風", "デュランドの偶像"}, SkillDefinition::Galio, false);
 
     /** Gangplank Definition */
-    public static final Champion Gangplank = new Champion(41, "Gangplank", "ガングプランク", "Gangplank", 631.08F, 79.0F, 6.0F, 0.6F, 282.0F, 40.0F, 7.5F, 0.7F, 56.0F, 3.0F, 0.625F, 3.2F, 0.0F, 0.0F, 26.0F, 3.0F, 32.1F, 1.25F, 345.0F, 125.0F, new String[] {"Trial by Fire", "Parrrley", "Remove Scurvy", "Powder Keg", "Cannon Barrage"}, new String[] {"背水の銃剣", "偽りの発砲", "壊血病治癒", "火薬樽", "一斉砲撃"}, SkillDefinition::Gangplank, false);
+    public static final Champion Gangplank = new Champion(41, "Gangplank", "ガングプランク", "Gangplank", 580.0F, 82.0F, 6.0F, 0.6F, 282.0F, 40.0F, 7.5F, 0.7F, 56.0F, 3.0F, 0.625F, 3.2F, 0.0F, 0.0F, 26.0F, 3.0F, 32.1F, 1.25F, 345.0F, 125.0F, new String[] {"Trial by Fire", "Parrrley", "Remove Scurvy", "Powder Keg", "Cannon Barrage"}, new String[] {"背水の銃剣", "偽りの発砲", "壊血病治癒", "火薬樽", "一斉砲撃"}, SkillDefinition::Gangplank, false);
 
     /** Garen Definition */
     public static final Champion Garen = new Champion(86, "Garen", "ガレン", "Garen", 616.28F, 84.25F, 7.84F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 57.88F, 4.5F, 0.625F, 2.9F, 0.0F, 0.0F, 27.536F, 3.0F, 32.1F, 1.25F, 340.0F, 175.0F, new String[] {"Perseverance", "Decisive Strike", "Courage", "Judgment", "Demacian Justice"}, new String[] {"忍耐", "断固たる一撃", "勇気の護り", "断罪剣", "デマーシアの正義"}, SkillDefinition::Garen, false);
@@ -407,7 +407,7 @@ public class RiotChampionData {
     public static final Champion Ziggs = new Champion(115, "Ziggs", "ジグス", "Ziggs", 524.4F, 80.0F, 6.255F, 0.6F, 334.0F, 50.0F, 6.0F, 0.8F, 54.208F, 3.1F, 0.656F, 2.0F, 0.0F, 0.0F, 21.544F, 3.3F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {"Short Fuse", "Bouncing Bomb", "Satchel Charge", "Hexplosive Minefield", "Mega Inferno Bomb"}, new String[] {"ショートヒューズ", "バウンドボム", "エンジニアボム", "ヘクステックマイン", "メガインフェルノボム"}, SkillDefinition::Ziggs, false);
 
     /** Zilean Definition */
-    public static final Champion Zilean = new Champion(26, "Zilean", "ジリアン", "Zilean", 499.28F, 77.0F, 5.44F, 0.5F, 360.8F, 60.0F, 6.0F, 0.8F, 51.64F, 3.0F, 0.625F, 2.13F, 0.0F, 0.0F, 19.134F, 3.8F, 30.0F, 0.0F, 335.0F, 550.0F, new String[] {"Heightened Learning", "Time Bomb", "Rewind", "Time Warp", "Chronoshift"}, new String[] {"ハイスピードラーニング", "タイムボム", "リ・ウィンド", "タイムワープ", "クロノシフト"}, SkillDefinition::Zilean, false);
+    public static final Champion Zilean = new Champion(26, "Zilean", "ジリアン", "Zilean", 499.28F, 77.0F, 5.44F, 0.5F, 360.8F, 60.0F, 6.0F, 0.8F, 51.64F, 3.0F, 0.625F, 2.13F, 0.0F, 0.0F, 19.134F, 3.8F, 30.0F, 0.0F, 335.0F, 550.0F, new String[] {"Time in a Bottle", "Time Bomb", "Rewind", "Time Warp", "Chronoshift"}, new String[] {"ハイスピードラーニング", "タイムボム", "リ・ウィンド", "タイムワープ", "クロノシフト"}, SkillDefinition::Zilean, false);
 
     /** Zyra Definition */
     public static final Champion Zyra = new Champion(143, "Zyra", "ザイラ", "Zyra", 479.32F, 74.0F, 5.69F, 0.5F, 334.0F, 50.0F, 6.0F, 0.8F, 53.376F, 3.2F, 0.625F, 2.11F, 0.0F, 0.0F, 20.04F, 3.0F, 30.0F, 0.0F, 325.0F, 575.0F, new String[] {"Rise of the Thorns", "Deadly Bloom", "Rampant Growth", "Grasping Roots", "Stranglethorns"}, new String[] {"最後の一咲き", "死華の誘い", "狂い咲き", "捕縛の根", "茨のゆりかご"}, SkillDefinition::Zyra, false);

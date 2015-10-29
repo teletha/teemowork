@@ -785,12 +785,13 @@ public interface SkillDefinition {
                 .range(500)
                 .type(SkillType.Toggle);
 
-        R.update(P421)
-                .active("対象の敵ユニットに{1}を与える。対象がチャンピオン以外の場合は{2}を与える。このスキルで敵を倒すとスタックが1増えて{3}と{4}する。最大スタック数は6で、死亡するとスタックが半分(端数切り上げ)消失する。")
+        R.update(P521)
+                .active("対象の敵ユニットに{1}を与える。対象がチャンピオン以外の場合は{2}を与える。このスキルで敵を倒すとスタックが1（チャンピオンの場合は2）増えて{3}と{4}する。スタックが既に最大である場合は{5}する（チャンピオンの場合は2倍）。最大スタック数は6で、死亡するとスタックが半分(端数切り上げ)消失する。")
                 .variable(1, TrueDamage, 300, 175, ap(0.7))
                 .variable(2, TrueDamage, 1000, 0, ap(0.7))
                 .variable(3, Health, amplify(Stack, 90, 30))
                 .variable(4, Range, amplify(Stack, 3.8, 2.25))
+                .variable(5, RestoreHealth, 90, 30)
                 .mana(100)
                 .cd(80)
                 .range(175);
@@ -1446,13 +1447,12 @@ public interface SkillDefinition {
                 .variable(4, CDRUnaware)
                 .cd(-15);
 
-        Q.update(P515)
-                .active("対象の敵ユニットに{1}(クリティカルあり)を与える。このスキルで敵ユニットを倒すと{4}し、{2}を得る。{3}(ただし", P, "は除く)。")
+        Q.update(P521)
+                .active("対象の敵ユニットに{1}(クリティカルあり)を与える。このスキルで敵ユニットを倒すと{2}を得る。{3}(ただし", P, "は除く)。")
                 .variable(1, PhysicalDamage, 20, 25, ad(1))
                 .variable(2, Gold, 4, 1)
                 .variable(3, OnHitEffect)
-                .variable(4, RestoreMana, 25)
-                .mana(50)
+                .mana(40)
                 .cd(5)
                 .range(625);
 
@@ -2274,13 +2274,13 @@ public interface SkillDefinition {
                 .cd(9)
                 .range(650);
 
-        W.update(P412)
+        W.update(P521)
                 .passive("通常攻撃に{1}を付与する。建物には無効。")
                 .variable(1, MagicDamage, 20, 0, ap(0.1))
                 .active("次の通常攻撃は射程が50伸び、{2}を与え{3}する。対象がチャンピオンの場合は回復量が5倍になる。建物には無効。")
-                .variable(2, MagicDamage, 40, 25, ap(0.6))
+                .variable(2, MagicDamage, 40, 25, ap(0.7))
                 .variable(3, RestoreMana, 0, 0, amplify(MissingManaRatio, 4, 1))
-                .cd(9);
+                .cd(7);
 
         E.update(P412)
                 .active("指定方向扇形80°の{1}の敵ユニットに{2}と1秒間{3}を与える。近くのチャンピオン(敵味方自分問わず)がスキルを使用するとスタックが増え、6スタックまで溜まると使用可能。スキル使用時にスタックは0になる。")
@@ -3162,8 +3162,8 @@ public interface SkillDefinition {
                 .cd(10, -1.5)
                 .cost(Health, 20, 3);
 
-        W.update(P518)
-                .passive(champion, "が倒したミニオンから得る経験値は、周りに味方チャンピオンがいても減少することがない。味方チャンピオンは通常通り減少した経験値を得る。")
+        W.update(P521)
+                .passive(champion, "がミニオンを倒した場合、経験値共有によって失われた量の50%を追加で得る。")
                 .active("4秒間 ", champion, "と対象の味方はお互いに向かって移動する時{1}する。それぞれの{2}にフィールドを生成し毎秒{3}を与える（このダメージは重複しない）。スキルを再度使用するとそれぞれのフィールドが消失し、最寄りの2体の敵に{4}を与え、", champion, "と味方は{5}する（ミニオンに当たった場合回復量は25%になる）。")
                 .variable(1, MS, 75)
                 .variable(2, Radius, 250)
@@ -4079,14 +4079,14 @@ public interface SkillDefinition {
 
         E.update(P402).active("指定方向に{1}し、1.5秒間{2}が付与される。").variable(1, Dash).variable(2, Shield, 90, 30, bounusAD(1)).cd(10, -1).range(325);
 
-        R.update(P301)
+        R.update(P521)
                 .active("15秒間折れた剣の刃を再生させ、{1}を得て{2}する。また、このスキルを再度使用することで一度だけ0.5秒後に指定方向に巨大な衝撃波を発生させ、{3}の敵ユニットに{5}与える。対象が受けているダメージに比例して与えるダメージが増加して、最大", Damage, "は{6}。")
                 .variable(1, AD, ad(0.2))
                 .variable(2, Range, 75)
                 .variable(3, Radius, 900)
                 .variable(5, PhysicalDamage, 80, 40, bounusAD(0.6))
                 .variable(6, PhysicalDamage, 240, 120, bounusAD(1.8))
-                .cd(110, -30);
+                .cd(130, -35);
     }
 
     /**
@@ -5360,21 +5360,21 @@ public interface SkillDefinition {
     public static void Veigar(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P506).passive("{1}する。").variable(1, MregRatio, amplify(MissingManaPercentage, 0.01));
 
-        Q.update(P506)
+        Q.update(P521)
                 .passive("敵チャンピオンを倒すと{1}を得る。")
                 .variable(-1, AP, 1, 1)
                 .active("闇のエネルギーを発射し、命中した最初の2体の敵に{2}を与える。倒した敵1体につき{3}を得る。倒したターゲットがチャンピオン、大型ミニオンまたは大型モンスターの場合は{4}を得る。")
-                .variable(2, MagicDamage, 80, 45, ap(0.6))
+                .variable(2, MagicDamage, 70, 40, ap(0.6))
                 .variable(-3, AP, 1)
                 .variable(-4, AP, 2)
                 .mana(60, 5)
                 .cd(7, -0.5)
                 .range(950);
 
-        W.update(P504)
+        W.update(P521)
                 .active("指定地点に1.25秒後に隕石を降らし、{1}の敵ユニットに{2}を与える。また隕石が落下するまでの間、指定地点の{3}。")
                 .variable(1, Radius, 225)
-                .variable(2, MagicDamage, 120, 50, ap(1))
+                .variable(2, MagicDamage, 100, 50, ap(1))
                 .variable(3, Visionable)
                 .mana(70, 5)
                 .cd(10, -0.5)
@@ -6123,7 +6123,10 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Zilean(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P419).passive("{2}の味方チャンピオンが取得する{1}する。").variable(1, ExperimentRatio, 8).variable(2, Radius, 1500);
+        P.update(P521)
+                .passive("5秒毎に{1}貯まっていく。対象の味方のLv上昇に十分な量の経験値が溜まると、溜めた経験値を右クリックで分け与えることができ、その際与えた経験値と同じ量の経験値を得ることが出来る。戦闘中に使用することはできない。")
+                .variable(1, Experiment, new PerLevel(new int[] {1, 6, 11, 16, 18}, new double[] {2, 3.5, 5, 6, 12}))
+                .cd(120);
 
         Q.update(P514)
                 .active("指定した場所に時限式の爆弾を投げ、{1}に入った最初のユニットに爆弾がくっつく（チャンピオン優先）。3秒後に爆発し、{2}にいるすべての敵に{3}を与える。同じユニットに2個目の爆弾を仕掛けると1個目の爆弾はすぐに爆発し、爆風の中ににいるすべての敵に{4}を与える。")
