@@ -364,7 +364,6 @@ public class ChampionDetail extends Widget1<Build> {
             cursor.pointer();
             position.relative();
             background.image(champion.getIcon()).horizontal(champion.getIconPosition());
-
         };
 
         Style Level = () -> {

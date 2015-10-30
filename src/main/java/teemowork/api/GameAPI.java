@@ -49,6 +49,19 @@ public class GameAPI {
 
     /**
      * <p>
+     * Retrieve recent matche history.
+     * </p>
+     * 
+     * @param user
+     * @return
+     */
+    public static Events<RecentGamesDto> recent(RiotUser user) {
+        return parse(RecentGamesDto.class, "/api/lol/" + preference.region
+                .getValue().code + "/v1.3/game/by-summoner/" + user.id + "/recent", true, false);
+    }
+
+    /**
+     * <p>
      * Retrieve matche history.
      * </p>
      * 
@@ -58,6 +71,18 @@ public class GameAPI {
     public static Events<RiotMatchHistory> matchList(RiotUser user) {
         return parse(RiotMatchHistory.class, "/api/lol/" + preference.region
                 .getValue().code + "/v2.2/matchlist/by-summoner/" + user.id, true, false);
+    }
+
+    /**
+     * <p>
+     * Retrieve matche info.
+     * </p>
+     * 
+     * @param user
+     * @return
+     */
+    public static Events<RiotMatch> match(GameDto history) {
+        return parse(RiotMatch.class, "/api/lol/" + preference.region.getValue().code + "/v2.2/match/" + history.gameId, true, false);
     }
 
     /**
@@ -163,6 +188,9 @@ public class GameAPI {
         /** The queue type. */
         public QueueType queue;
 
+        /** The role type. */
+        public String role;
+
         /**
          * <p>
          * Find used champion.
@@ -189,6 +217,14 @@ public class GameAPI {
     public static enum LaneType {
 
         MID, MIDDLE, TOP, JUNGLE, BOT, BOTTOM;
+    }
+
+    /**
+     * @version 2015/10/30 15:21:13
+     */
+    public static enum RoleType {
+
+        DUO, NONE, SOLO, DUO_CARRY, DUO_SUPPORT;
     }
 
     /**
@@ -241,8 +277,33 @@ public class GameAPI {
         /** The list of participants. */
         public List<Participant> participants;
 
+        /** The list of participants info. */
+        public List<ParticipantIdentity> participantIdentities;
+
         /** The queue type. */
         public QueueType queueType;
+
+        /**
+         * <p>
+         * Find myself.
+         * </p>
+         * 
+         * @return
+         */
+        public Participant getByName(String name) {
+            for (ParticipantIdentity identity : participantIdentities) {
+                if (identity.player.summonerName.equals(name)) {
+                    for (Participant participant : participants) {
+                        if (participant.participantId == identity.participantId) {
+                            return participant;
+                        }
+                    }
+                }
+            }
+            // If this exception will be thrown, it is bug of this program. So we must rethrow the
+            // wrapped error in here.
+            throw new Error();
+        }
 
         /**
          * {@inheritDoc}
@@ -262,7 +323,7 @@ public class GameAPI {
         public int championId;
 
         /** The summoner id. */
-        public long participantId;
+        public int participantId;
 
         /** The summoner tier. */
         public String highestAchievedSeasonTier;
@@ -276,6 +337,9 @@ public class GameAPI {
         /** The status. */
         public ParticipantStats stats;
 
+        /** The status. */
+        public ParticipantTimeline timeline;
+
         public Champion champion() {
             return Champion.getByKey(championId);
         }
@@ -287,6 +351,32 @@ public class GameAPI {
         public String toString() {
             return "Participant [champion=" + champion() + ", participantId=" + participantId + ", highestAchievedSeasonTier=" + highestAchievedSeasonTier + "]";
         }
+    }
+
+    /**
+     * @version 2015/10/30 14:36:15
+     */
+    public static class ParticipantIdentity {
+
+        /** The identity number. */
+        public int participantId;
+
+        /** The player info. */
+        public Player player;
+    }
+
+    /**
+     * @version 2015/10/30 14:37:23
+     */
+    public static class Player {
+
+        public String matchHistoryUri;
+
+        public int profileIcon;
+
+        public long summonerId;
+
+        public String summonerName;
     }
 
     /**
@@ -434,5 +524,296 @@ public class GameAPI {
 
         /** The stats. */
         public boolean winner;
+    }
+
+    /**
+     * @version 2015/10/30 15:13:57
+     */
+    public static class ParticipantTimeline {
+
+        /** The time line data. */
+        public ParticipantTimelineData ancientGolemAssistsPerMinCounts;
+
+        /** The time line data. */
+        public ParticipantTimelineData ancientGolemKillsPerMinCounts;
+
+        /** The time line data. */
+        public ParticipantTimelineData assistedLaneDeathsPerMinDeltas;
+
+        /** The time line data. */
+        public ParticipantTimelineData assistedLaneKillsPerMinDeltas;
+
+        /** The time line data. */
+        public ParticipantTimelineData baronAssistsPerMinCounts;
+
+        /** The time line data. */
+        public ParticipantTimelineData baronKillsPerMinCounts;
+
+        /** The time line data. */
+        public ParticipantTimelineData creepsPerMinDeltas;
+
+        /** The time line data. */
+        public ParticipantTimelineData csDiffPerMinDeltas;
+
+        /** The time line data. */
+        public ParticipantTimelineData damageTakenDiffPerMinDeltas;
+
+        /** The time line data. */
+        public ParticipantTimelineData damageTakenPerMinDeltas;
+
+        /** The time line data. */
+        public ParticipantTimelineData dragonAssistsPerMinCounts;
+
+        /** The time line data. */
+        public ParticipantTimelineData dragonKillsPerMinCounts;
+
+        /** The time line data. */
+        public ParticipantTimelineData elderLizardAssistsPerMinCounts;
+
+        /** The time line data. */
+        public ParticipantTimelineData elderLizardKillsPerMinCounts;
+
+        /** The time line data. */
+        public ParticipantTimelineData goldPerMinDeltas;
+
+        /** The time line data. */
+        public ParticipantTimelineData inhibitorAssistsPerMinCounts;
+
+        /** The time line data. */
+        public ParticipantTimelineData inhibitorKillsPerMinCounts;
+
+        /** The time line data. */
+        public ParticipantTimelineData towerAssistsPerMinCounts;
+
+        /** The time line data. */
+        public ParticipantTimelineData towerKillsPerMinCounts;
+
+        /** The time line data. */
+        public ParticipantTimelineData towerKillsPerMinDeltas;
+
+        /** The time line data. */
+        public ParticipantTimelineData wardsPerMinDeltas;
+
+        /** The time line data. */
+        public ParticipantTimelineData xpDiffPerMinDeltas;
+
+        /** The time line data. */
+        public ParticipantTimelineData xpPerMinDeltas;
+
+        public LaneType lane;
+
+        public RoleType role;
+    }
+
+    /**
+     * @version 2015/10/30 15:16:15
+     */
+    public static class ParticipantTimelineData {
+
+        public double tenToTwenty;
+
+        public double thirtyToEnd;
+
+        public double twentyToThirty;
+
+        public double zeroToTen;
+    }
+
+    /**
+     * @version 2015/10/30 15:51:51
+     */
+    public static class RecentGamesDto {
+
+        public List<GameDto> games;
+
+        public long summonerId;
+    }
+
+    /**
+     * @version 2015/10/30 15:52:09
+     */
+    public static class GameDto {
+
+        public int championId;
+
+        public long createDate;
+
+        public List<PlayerDto> fellowPlayers;
+
+        public long gameId;
+
+        public int spell1;
+
+        public int spell2;
+
+        public RawStatsDto stats;
+
+        public String subType;
+
+        public int teamId;
+    }
+
+    /**
+     * @version 2015/10/30 15:53:00
+     */
+    public static class PlayerDto {
+
+        public int championId;
+
+        public long summonerId;
+
+        public int teamId;
+    }
+
+    /**
+     * @version 2015/10/30 15:54:22
+     */
+    public static class RawStatsDto {
+
+        public int assists;
+
+        public int barracksKilled;
+
+        public int championsKilled;
+
+        public int combatPlayerScore;
+
+        public int consumablesPurchased;
+
+        public int damageDealtPlayer;
+
+        public int doubleKills;
+
+        public int firstBlood;
+
+        public int gold;
+
+        public int goldEarned;
+
+        public int goldSpent;
+
+        public int item0;
+
+        public int item1;
+
+        public int item2;
+
+        public int item3;
+
+        public int item4;
+
+        public int item5;
+
+        public int item6;
+
+        public int itemsPurchased;
+
+        public int killingSprees;
+
+        public int largestCriticalStrike;
+
+        public int largestKillingSpree;
+
+        public int largestMultiKill;
+
+        public int legendaryItemsCreated;
+
+        public int level;
+
+        public int magicDamageDealtPlayer;
+
+        public int magicDamageDealtToChampions;
+
+        public int magicDamageTaken;
+
+        public int minionsDenied;
+
+        public int minionsKilled;
+
+        public int neutralMinionsKilled;
+
+        public int neutralMinionsKilledEnemyJungle;
+
+        public int neutralMinionsKilledYourJungle;
+
+        public int numDeaths;
+
+        public int numItemsBought;
+
+        public int objectivePlayerScore;
+
+        public int pentaKills;
+
+        public int physicalDamageDealtPlayer;
+
+        public int physicalDamageDealtToChampions;
+
+        public int physicalDamageTaken;
+
+        public int playerPosition;
+
+        public int playerRole;
+
+        public int quadraKills;
+
+        public int sightWardsBought;
+
+        public int spell1Cast;
+
+        public int spell2Cast;
+
+        public int spell3Cast;
+
+        public int spell4Cast;
+
+        public int summonSpell1Cast;
+
+        public int summonSpell2Cast;
+
+        public int superMonsterKilled;
+
+        public int team;
+
+        public int teamObjective;
+
+        public int timePlayed;
+
+        public int totalDamageDealt;
+
+        public int totalDamageDealtToChampions;
+
+        public int totalDamageTaken;
+
+        public int totalHeal;
+
+        public int totalPlayerScore;
+
+        public int totalScoreRank;
+
+        public int totalTimeCrowdControlDealt;
+
+        public int totalUnitsHealed;
+
+        public int tripleKills;
+
+        public int trueDamageDealtPlayer;
+
+        public int trueDamageDealtToChampions;
+
+        public int trueDamageTaken;
+
+        public int trueDamaturretsKilledgeTaken;
+
+        public int unrealKills;
+
+        public int victoryPointTotal;
+
+        public int visionWardsBought;
+
+        public int wardKilled;
+
+        public int wardPlaced;
+
+        public boolean win;
     }
 }
