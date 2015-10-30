@@ -815,5 +815,12 @@ public class GameAPI {
         public int wardPlaced;
 
         public boolean win;
+
+        /**
+         * @return
+         */
+        public float getKDA() {
+            return (championsKilled + assists) / Math.max(1, numDeaths);
+        }
     }
 }

@@ -59,18 +59,7 @@ public class Record extends Widget {
                     text($.ScoreValue, stats.numDeaths);
                     text($.Separator, "/");
                     text($.ScoreValue, stats.assists);
-                    text($.Separator, "/");
-                    text($.ScoreValue, stats.spell1Cast);
-                    text($.Separator, "/");
-                    text($.ScoreValue, stats.spell2Cast);
-                    text($.Separator, "/");
-                    text($.ScoreValue, stats.spell3Cast);
-                    text($.Separator, "/");
-                    text($.ScoreValue, stats.spell4Cast);
-                    text($.Separator, "/");
-                    text($.ScoreValue, stats.summonSpell1Cast);
-                    text($.Separator, "/");
-                    text($.ScoreValue, stats.summonSpell2Cast);
+                    text("(", stats.getKDA(), ")");
                 });
 
                 // box(contents(match.participants, participant -> {
