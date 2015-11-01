@@ -4780,7 +4780,7 @@ public interface SkillDefinition {
         E.update(P513)
                 .passive("受けたダメージを灰色の体力に変換する(クールダウン中は無効)。2.5秒間", Damage, "を受けなければ、{1}する。")
                 .variable(1, RestoreHealth, amplify(ReceivedDamageRatio, 20, 6))
-                .active("{2}。このシールドは6秒間持続するが時間と共に急激に減少していく。")
+                .active("{2}を得る。このシールドは6秒間持続するが時間と共に急激に減少していく。")
                 .variable(2, Shield, amplify(ReceivedDamageRatio, 100))
                 .mana(50)
                 .cd(16, -1);
