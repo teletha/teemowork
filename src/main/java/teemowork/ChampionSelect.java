@@ -27,6 +27,7 @@ import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
+import jsx.ui.LowLevelWidget;
 import jsx.ui.ModelValue;
 import jsx.ui.Style;
 import jsx.ui.Widget;
@@ -118,7 +119,8 @@ public class ChampionSelect extends Widget {
                     type(Status.Stasis),
                     type(Status.Untargetable),
                     type("移動", Status.Blink, Status.BlinkExchange, Status.Dash),
-                    type("移動(要対象)", Status.BlinkTarget, Status.DashTarget))};
+                    type("移動(要対象)", Status.BlinkTarget, Status.DashTarget)),
+            new FilterGroup("ステータス", status(Status.MS))};
 
     /** The name filter. */
     private final Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
@@ -152,7 +154,7 @@ public class ChampionSelect extends Widget {
                     box($.Group, () -> {
                         text($.GroupName, group.name);
                         box($.GroupItems, contents(group.filters, filter -> {
-                            widget(UI.checkbox(activeFilters, filter, filter.name).style($.Filter));
+                            widget(filter.createUI(activeFilters).style($.Filter));
                         }));
                     });
                 }));
@@ -226,6 +228,12 @@ public class ChampionSelect extends Widget {
                 }
             }
             return false;
+        });
+    }
+
+    private static SkillFilter status(Status status) {
+        return new SkillFilter(status.name(), champion -> {
+            return true;
         });
     }
 
@@ -322,18 +330,49 @@ public class ChampionSelect extends Widget {
     private static class SkillFilter {
 
         /** The filter name. */
-        private final String name;
+        final String name;
 
         /** The actual filter. */
-        private final Predicate<Champion> filter;
+        final Predicate<Champion> filter;
 
         /**
          * @param name
          * @param filter
          */
-        private SkillFilter(String name, Predicate<Champion> filter) {
+        SkillFilter(String name, Predicate<Champion> filter) {
             this.name = name;
             this.filter = filter;
+        }
+
+        /**
+         * @param activeFilters
+         * @return
+         */
+        LowLevelWidget createUI(SetProperty<SkillFilter> activeFilters) {
+            return UI.checkbox(activeFilters, this, name);
+        }
+
+    }
+
+    /**
+     * @version 2015/11/02 11:00:44
+     */
+    private static class SelectFilter extends SkillFilter {
+
+        /**
+         * @param name
+         * @param filter
+         */
+        SelectFilter(String name, Predicate<Champion> filter) {
+            super(name, filter);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        LowLevelWidget createUI(SetProperty<SkillFilter> activeFilters) {
+            return UI.checkbox(activeFilters, this, name);
         }
     }
 

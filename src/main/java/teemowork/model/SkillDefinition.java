@@ -5974,9 +5974,10 @@ public interface SkillDefinition {
                 .range(550);
 
         W.update(P505)
-                .active("{1}にいる敵ユニットに{2}を与える。(ミニオンに対しては200ダメージが上限)")
+                .active("{1}にいる敵ユニットに{2}を与える(ミニオンに対しては200ダメージが上限)。小型スライムを回収するか、回収してから一秒以内にスキルを使用すると{3}する。")
                 .variable(1, Radius, 350)
                 .variable(2, MagicDamage, 40, 15, amplify(TargetMaxHealthRatio, 4, 1, ap(0.02)))
+                .variable(3, CDDecrease, 1)
                 .cost(CurrentHealthRatio, 4, 0)
                 .cd(4);
 
