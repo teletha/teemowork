@@ -57,7 +57,7 @@ public class GameAPI {
      */
     public static Events<RecentGamesDto> recent(RiotUser user) {
         return parse(RecentGamesDto.class, "/api/lol/" + preference.region
-                .getValue().code + "/v1.3/game/by-summoner/" + user.id + "/recent", true, false);
+                .getValue().code + "/v1.3/game/by-summoner/" + user.id + "/recent", false, false);
     }
 
     /**
