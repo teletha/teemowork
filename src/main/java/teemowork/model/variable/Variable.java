@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 
 import teemowork.model.Skill;
 import teemowork.model.Status;
@@ -34,6 +35,8 @@ public class Variable {
     /** The value enumerator. */
     private VariableResolver resolver;
 
+    private Function<StatusCalculator, Double> calculation;
+
     /** The condtional variable flag. */
     private boolean conditional = false;
 
@@ -44,6 +47,14 @@ public class Variable {
      * Without ID.
      */
     public Variable() {
+    }
+
+    /**
+     * Without ID.
+     */
+    public Variable(Status status, Function<StatusCalculator, Double> calculation) {
+        this.status = status;
+        this.calculation = calculation;
     }
 
     /**
@@ -135,7 +146,7 @@ public class Variable {
      * @param calculator A status calculator.
      * @return A calculated value.
      */
-    public double calculate(int level, StatusCalculator calculator) {
+    public final double calculate(int level, StatusCalculator calculator) {
         return calculate(level, calculator, false);
     }
 
