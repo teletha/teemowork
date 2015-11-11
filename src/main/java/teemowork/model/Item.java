@@ -89,11 +89,6 @@ public class Item extends Describable<ItemDescriptor> {
         });
     });
 
-    /** Avarice Blade */
-    public static final Item AvariceBlade = new Item(RiotItemData.AvariceBlade, item -> {
-        item.critical(10).add(Ability.Avarice).add(Ability.Greed);
-    });
-
     /** B. F. Sword */
     public static final Item BFSword = new Item(RiotItemData.BFSword, item -> {
         item.attackDamage(50);
@@ -270,11 +265,6 @@ public class Item extends Describable<ItemDescriptor> {
         item.critical(8);
     });
 
-    /** The Brutalizer */
-    public static final Item Brutalizer = new Item(RiotItemData.TheBrutalizer, item -> {
-        item.attackDamage(25).add(Ability.ARPen10).add(Ability.CDR10);
-    });
-
     /** Catalyst the Protector */
     public static final Item CatalystTheProtector = new Item(RiotItemData.CatalysttheProtector, item -> {
         item.health(200).mana(300).add(Ability.ValorsReward);
@@ -303,15 +293,6 @@ public class Item extends Describable<ItemDescriptor> {
     /** Item definition */
     public static final Item CrystallineBracer = new Item(RiotItemData.CrystallineBracer, item -> {
         item.health(200).healthRegenRatio(50);
-    });
-
-    /** Crystalline Flask */
-    public static final Item CrystallineFlask = new Item(RiotItemData.CrystallineFlask, item -> {
-        item.add(ability -> {
-            ability.active("チャージを1つ消費して12秒かけて{1}し、{2}する。").variable(1, Status.RestoreHealth, 120).variable(2, RestoreMana, 60);
-        }).add(ability -> {
-            ability.passive("ショップを訪れる度に3つのチャージを得る。");
-        });
     });
 
     /** Dagger */
@@ -358,18 +339,6 @@ public class Item extends Describable<ItemDescriptor> {
                     .variable(1, AP, 40)
                     .variable(2, Mreg, 15)
                     .variable(3, TrueDamage, 25);
-        });
-    });
-
-    /** Item definition */
-    public static final Item ElixirofRuin = new Item(RiotItemData.ElixirofRuin, item -> {
-        item.add(ability -> {
-            ability.ununique()
-                    .active("このアイテムを消費して3分間、{1}を得て、{2}する。また、周囲のミニオンは{2}し、自身と同じ移動速度になる。")
-                    .variable(1, Health, 250)
-                    .variable(2, AttackTowerDamageRatio, 15)
-                    .variable(3, Tenacity, 25)
-                    .variable(4, MSRatio, 15);
         });
     });
 
@@ -621,13 +590,6 @@ public class Item extends Describable<ItemDescriptor> {
         });
     });
 
-    /** Mana Potion */
-    public static final Item ManaPotion = new Item(RiotItemData.ManaPotion, item -> {
-        item.add(ability -> {
-            ability.ununique().active("このアイテムを消費して15秒かけて{1}する。").variable(1, RestoreMana, 100);
-        });
-    });
-
     /** Manamune */
     public static final Item Manamune = new Item(RiotItemData.Manamune, item -> {
         item.attackDamage(25).manaRegenRatio(25).mana(250).add(Ability.Awe).add(Ability.ManaChargeManamune);
@@ -792,65 +754,6 @@ public class Item extends Describable<ItemDescriptor> {
         item.attackDamage(25);
     });
 
-    /** PoachersKnife */
-    public static final Item PoachersKnife = new Item(RiotItemData.PoachersKnife, item -> {
-        item.add(Ability.GoldIncome).add(Ability.LargeMonsterKill).add(Ability.ScavengingSmite).add(Ability.Jungler);
-    });
-
-    /** PoachersKnife */
-    public static final Item PoachersKnifeCinderhulk = new Item(RiotItemData.PoachersKnifeCinderhulk, item -> {
-        item.add(Ability.GoldIncome)
-                .add(Ability.LargeMonsterKill)
-                .add(Ability.ScavengingSmite)
-                .add(Ability.Jungler)
-                .health(400)
-                .set(BounusHealth, 15)
-                .add(Ability.ImmolateLevel2);
-    });
-
-    /** PoachersKnife */
-    public static final Item PoachersKnifeDevourer = new Item(RiotItemData.PoachersKnifeDevourer, item -> {
-        item.add(Ability.GoldIncome)
-                .add(Ability.LargeMonsterKill)
-                .add(Ability.ScavengingSmite)
-                .add(Ability.Jungler)
-                .attackSpeed(50)
-                .add(Ability.Devouring);
-    });
-
-    /** PoachersKnife */
-    public static final Item PoachersKnifeRuneglaive = new Item(RiotItemData.PoachersKnifeRuneglaive, item -> {
-        item.add(Ability.GoldIncome)
-                .add(Ability.LargeMonsterKill)
-                .add(Ability.ScavengingSmite)
-                .add(Ability.Jungler)
-                .abilityPower(50)
-                .mana(200)
-                .cooldownReduction(10)
-                .add(Ability.SpellbladeRuneglaive);
-    });
-
-    /** PoachersKnife */
-    public static final Item PoachersKnifeWarrior = new Item(RiotItemData.PoachersKnifeWarrior, item -> {
-        item.add(Ability.GoldIncome)
-                .add(Ability.LargeMonsterKill)
-                .add(Ability.ScavengingSmite)
-                .add(Ability.Jungler)
-                .attackDamage(45)
-                .cooldownReduction(10)
-                .set(ARPen, 10);
-    });
-
-    /** PoachersKnife */
-    public static final Item PoachersKnifeSatedDevourer = new Item(RiotItemData.PoachersKnifeSatedDevourer, item -> {
-        item.add(Ability.GoldIncome)
-                .add(Ability.LargeMonsterKill)
-                .add(Ability.ScavengingSmite)
-                .add(Ability.Jungler)
-                .attackSpeed(50)
-                .add(Ability.PhantomHit);
-    });
-
     /** The Hex Core */
     public static final Item PrototypeHexCore = new Item(RiotItemData.PrototypeHexCore, item -> {
         item.add(ability -> {
@@ -889,65 +792,6 @@ public class Item extends Describable<ItemDescriptor> {
                     .variable(2, MSSlowRatio, 35)
                     .variable(3, ItemCD, 60);
         });
-    });
-
-    /** RangersTrailblazer */
-    public static final Item RangersTrailblazer = new Item(RiotItemData.RangersTrailblazer, item -> {
-        item.add(Ability.GoldIncome).add(Ability.LargeMonsterKill).add(Ability.BlastingSmite).add(Ability.Jungler);
-    });
-
-    /** RangersTrailblazer */
-    public static final Item RangersTrailblazerCinderhulk = new Item(RiotItemData.RangersTrailblazerCinderhulk, item -> {
-        item.add(Ability.GoldIncome)
-                .add(Ability.LargeMonsterKill)
-                .add(Ability.BlastingSmite)
-                .add(Ability.Jungler)
-                .health(400)
-                .set(BounusHealth, 15)
-                .add(Ability.ImmolateLevel2);
-    });
-
-    /** RangersTrailblazer */
-    public static final Item RangersTrailblazerDevourer = new Item(RiotItemData.RangersTrailblazerDevourer, item -> {
-        item.add(Ability.GoldIncome)
-                .add(Ability.LargeMonsterKill)
-                .add(Ability.BlastingSmite)
-                .add(Ability.Jungler)
-                .attackSpeed(50)
-                .add(Ability.Devouring);
-    });
-
-    /** RangersTrailblazer */
-    public static final Item RangersTrailblazerRuneglaive = new Item(RiotItemData.RangersTrailblazerRuneglaive, item -> {
-        item.add(Ability.GoldIncome)
-                .add(Ability.LargeMonsterKill)
-                .add(Ability.BlastingSmite)
-                .add(Ability.Jungler)
-                .abilityPower(50)
-                .mana(200)
-                .cooldownReduction(10)
-                .add(Ability.SpellbladeRuneglaive);
-    });
-
-    /** RangersTrailblazer */
-    public static final Item RangersTrailblazerWarrior = new Item(RiotItemData.RangersTrailblazerWarrior, item -> {
-        item.add(Ability.GoldIncome)
-                .add(Ability.LargeMonsterKill)
-                .add(Ability.BlastingSmite)
-                .add(Ability.Jungler)
-                .attackDamage(45)
-                .cooldownReduction(10)
-                .set(ARPen, 10);
-    });
-
-    /** RangersTrailblazer */
-    public static final Item RangersTrailblazerSatedDevourer = new Item(RiotItemData.RangersTrailblazerSatedDevourer, item -> {
-        item.add(Ability.GoldIncome)
-                .add(Ability.LargeMonsterKill)
-                .add(Ability.BlastingSmite)
-                .add(Ability.Jungler)
-                .attackSpeed(50)
-                .add(Ability.PhantomHit);
     });
 
     /** Raptor Cloak */
@@ -1247,16 +1091,6 @@ public class Item extends Describable<ItemDescriptor> {
         });
     });
 
-    /** Sight Ward */
-    public static final Item StealthWard = new Item(RiotItemData.StealthWard, item -> {
-        item.add(ability -> {
-            ability.ununique()
-                    .active("このアイテムを消費して、視界{1}を持つオブジェクトを指定地点に設置する。オブジェクトは設置から約3秒後にステルス状態になり、3分間持続する。各プレイヤーは3つまでしか設置出来ず、3つしか携帯出来ない。{2}")
-                    .variable(1, Radius, 1100)
-                    .variable(2, Visionable);
-        });
-    });
-
     /** Stinger */
     public static final Item Stinger = new Item(RiotItemData.Stinger, item -> {
         item.attackSpeed(40).add(Ability.CDR10);
@@ -1266,15 +1100,6 @@ public class Item extends Describable<ItemDescriptor> {
     public static final Item SunfireCape = new Item(RiotItemData.SunfireCape, item -> {
         item.health(450).armor(45).add("猛火", ability -> {
             ability.passive("{1}の敵に毎秒{2}を与える。").variable(1, Radius, 400).variable(2, MagicDamage, 25, 0, amplify(Lv, 1));
-        });
-    });
-
-    /** Sword of the Occult */
-    public static final Item SwordOftheOccult = new Item(RiotItemData.SwordoftheOccult, item -> {
-        item.attackDamage(10).add(ability -> {
-            ability.passive("購入時に5スタック、キル時に2スタック、アシスト時に1スタックを得て、死亡時に半分を失う(最大20スタック)。{1}を得る。20スタック時には{2}する。")
-                    .variable(1, AD, 0, 0, amplify(Stack, 5))
-                    .variable(2, ASRatio, 20);
         });
     });
 
@@ -1345,16 +1170,6 @@ public class Item extends Describable<ItemDescriptor> {
                 .movementSpeed(8)
                 .add(Ability.SpellbladeTrinityForce)
                 .add(Ability.Rage);
-    });
-
-    /** Twin Shadows */
-    public static final Item TwinShadows = new Item(RiotItemData.TwinShadows, item -> {
-        item.cooldownReduction(10).abilityPower(80).movementSpeed(6).add(" 狩り", ability -> {
-            ability.active("攻撃無効な亡霊を最大2体召喚し、最も近くにいる敵チャンピオン2人を6秒間探索する。亡霊はターゲットに追いつくと、2.5秒間{1}と{2}を与える。ターゲットを見つけられなかった場合、亡霊は召喚者のもとへ戻ろうとする。亡霊が帰還に成功した場合、このアイテムのクールダウンは20秒短縮される({3})。")
-                    .variable(1, Visionable)
-                    .variable(2, MSSlowRatio, 40)
-                    .variable(3, ItemCD, 60);
-        });
     });
 
     /** Vampiric Scepter */
@@ -1431,11 +1246,6 @@ public class Item extends Describable<ItemDescriptor> {
         }).add(ability -> {
             ability.active("味方チャンピオンを指定する。以前の対象との関係は破棄される。{1}。").variable(1, ItemCD, 60);
         });
-    });
-
-    /** Zephyr */
-    public static final Item Zephyr = new Item(RiotItemData.Zephyr, item -> {
-        item.attackDamage(25).cooldownReduction(10).attackSpeed(50).movementSpeed(10).add(Ability.TenacityEffect);
     });
 
     /** Zhonya's Hourglass */

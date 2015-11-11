@@ -46,21 +46,8 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
-    public static final Ability Avarice = new Ability("強欲", ability -> {
-        ability.passive("{1}を得る。").variable(1, GoldPer10Sec, 3);
-    });
-
-    /** The ability. */
     public static final Ability Awe = new Ability("畏怖", ability -> {
         ability.passive("{1}を得る。").variable(1, AD, 0, 0, amplify(Mana, 0.02));
-    });
-
-    /** The ability. */
-    public static final Ability BlastingSmite = new Ability("破裂のスマイト", ability -> {
-        ability.passive("ターゲットの周囲にいるモンスターとミニオンに半分のダメージを与え、全てのユニットに{1}を与える。「スマイト」をモンスターに使用すると、{2}し{3}する。")
-                .variable(1, Stun, 1.5)
-                .variable(2, RestoreHealth, 0, 0, amplify(MissingHealthRatio, 15))
-                .variable(3, RestoreMana, 0, 0, amplify(MissingManaRatio, 15));
     });
 
     /** The ability. */
@@ -182,17 +169,12 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability GhostWard = new Ability("ゴーストワード", ability -> {
-        ability.active("チャージを1つ消費して" + Item.StealthWard + "と同様の効果があるオブジェクトを指定地点に設置する。");
+        ability.active("チャージを1つ消費して3分間持続する視界確保の効果があるオブジェクトを指定地点に設置する。");
     });
 
     /** The ability. */
     public static final Ability GoldIncome = new Ability("Gold Income", ability -> {
         ability.passive("収入増加アイテムはひとつしか保有できない。");
-    });
-
-    /** The ability. */
-    public static final Ability Greed = new Ability("金銭欲", ability -> {
-        ability.passive("ユニットを倒すたびに{1}を得る。").variable(1, Gold, 2);
     });
 
     /** The ability. */
@@ -299,14 +281,6 @@ public class Ability extends Describable<AbilityDescriptor> {
     /** The ability. */
     public static final Ability Rage = new Ability("疾風怒濤", ability -> {
         ability.passive("通常攻撃をする毎に2秒間{1}する。敵ユニットを倒すと2秒間{2}する。遠隔攻撃型のチャンピオンの場合、この移動速度ボーナスは半分になる。").variable(1, MS, 20).variable(2, MS, 60);
-    });
-
-    /** The ability. */
-    public static final Ability ScavengingSmite = new Ability("乱食のスマイト", ability -> {
-        ability.passive("スマイト」を使って敵陣側のジャングルで大型モンスターを攻撃すると、「スマイト」の{1}する。そのモンスターを倒すと、{2}を得て{3}する。この効果は2秒間にかけて減衰する。")
-                .variable(1, CDDecreaseRatio, 50)
-                .variable(2, Gold, 20)
-                .variable(3, MSRatio, 175);
     });
 
     /** The ability. */

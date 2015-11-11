@@ -240,8 +240,7 @@ class ChampionDefinition implements Comparable<ChampionDefinition> {
          * @return
          */
         public float attackspeed() {
-            return new BigDecimal(0.625)
-                    .divide(BigDecimal.ONE.add(new BigDecimal(attackspeedoffset)), 3, RoundingMode.HALF_UP)
+            return new BigDecimal(0.625).divide(BigDecimal.ONE.add(new BigDecimal(attackspeedoffset)), 3, RoundingMode.HALF_UP)
                     .floatValue();
         }
     }
