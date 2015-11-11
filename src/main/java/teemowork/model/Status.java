@@ -271,7 +271,7 @@ public enum Status {
 
     Slow("移動及び攻撃速度低下"), SlowRatio(Slow),
 
-    MSSlow("移動速度低下"), MSSlowRatio("スロー"),
+    MSSlow("移動速度低下"), MSSlowRatio("Slow", "スロー"),
 
     ASSlow("攻撃速度低下"), ASSlowRatio(ASSlow),
 

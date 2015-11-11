@@ -138,12 +138,17 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability EnhancedMovement3 = new Ability("移動速度強化", ability -> {
-        ability.passive("{1}する。").variable(1, MS, 60);
+        ability.passive("{1}する。").variable(1, MS, 65);
     });
 
     /** The ability. */
     public static final Ability EnhancedMovement5 = new Ability("移動速度強化", ability -> {
         ability.passive("{1}する。5秒間戦闘をしなければ、{2}する。").variable(1, MS, 25).variable(2, MS, 105);
+    });
+
+    /** The ability. */
+    public static final Ability Energize = new Ability("Energize", ability -> {
+        ability.passive("移動または通常攻撃を行うとその度にチャージが貯まっていく。 チャージが100に達した時、次の通常攻撃時に全てのチャージを消費して追加効果が発生する。");
     });
 
     /** The ability. */
@@ -170,6 +175,16 @@ public class Ability extends Describable<AbilityDescriptor> {
     /** The ability. */
     public static final Ability GhostWard = new Ability("ゴーストワード", ability -> {
         ability.active("チャージを1つ消費して3分間持続する視界確保の効果があるオブジェクトを指定地点に設置する。");
+    });
+
+    /** The ability. */
+    public static final Ability GiantSlayer = new Ability("Giant Slayer", ability -> {
+        ability.active("敵チャンピオンの最大" + Status.Health + "が自身より50大きくなるごとに対象への" + Status.PhysicalDamage + "が1%増加する（最大で10%増加）。");
+    });
+
+    /** The ability. */
+    public static final Ability GiantSlayer2 = new Ability("Giant Slayer", ability -> {
+        ability.active("敵チャンピオンの最大" + Status.Health + "が自身より50大きくなるごとに対象への" + Status.PhysicalDamage + "が1.5%増加する（最大で15%増加）。");
     });
 
     /** The ability. */
@@ -205,7 +220,7 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability Ionian = new Ability(ability -> {
-        ability.passive("{1}を得る。").variable(1, CDR, 15);
+        ability.passive("{1}を得る。サモナースペルの" + CD + "が10%減少する。").variable(1, CDR, 10);
     });
 
     /** The ability. */
@@ -219,6 +234,11 @@ public class Ability extends Describable<AbilityDescriptor> {
     /** The ability. */
     public static final Ability Legion = new Ability("Legion", ability -> {
         ability.aura("{1}の味方ユニットは{2}を得る。").variable(1, Radius, 1100).variable(2, MR, 15);
+    });
+
+    /** The ability. */
+    public static final Ability LastWhisper = new Ability("Last Whipser", ability -> {
+        ability.passive("{1}を得る。").variable(1, ARPenRatio, 40);
     });
 
     /** The ability. */
@@ -347,7 +367,7 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability TenacityEffect = new Ability("根性", ability -> {
-        ability.passive("{1} を得る。").variable(1, Status.Tenacity, 35);
+        ability.passive("{1} を得る。").variable(1, Status.Tenacity, 20);
     });
 
     /** The ability. */

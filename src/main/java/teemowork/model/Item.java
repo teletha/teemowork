@@ -119,32 +119,32 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Berserker's Greaves */
     public static final Item BerserkersGreaves = new Item(RiotItemData.BerserkersGreaves, item -> {
-        item.attackSpeed(25).add(Ability.EnhancedMovement2);
+        item.attackSpeed(30).add(Ability.EnhancedMovement2);
     });
 
     /** Berserker's Greaves */
     public static final Item BerserkersGreavesAlacrity = new Item(RiotItemData.BerserkersGreavesAlacrity, item -> {
-        item.attackSpeed(25).add(Ability.EnhancedMovement2);
+        item.attackSpeed(30).add(Ability.EnhancedMovement2);
     });
 
     /** Berserker's Greaves */
     public static final Item BerserkersGreavesCaptain = new Item(RiotItemData.BerserkersGreavesCaptain, item -> {
-        item.attackSpeed(25).add(Ability.EnhancedMovement2);
+        item.attackSpeed(30).add(Ability.EnhancedMovement2);
     });
 
     /** Berserker's Greaves */
     public static final Item BerserkersGreavesDistortion = new Item(RiotItemData.BerserkersGreavesDistortion, item -> {
-        item.attackSpeed(25).add(Ability.EnhancedMovement2);
+        item.attackSpeed(30).add(Ability.EnhancedMovement2);
     });
 
     /** Berserker's Greaves */
     public static final Item BerserkersGreavesFuror = new Item(RiotItemData.BerserkersGreavesFuror, item -> {
-        item.attackSpeed(25).add(Ability.EnhancedMovement2);
+        item.attackSpeed(30).add(Ability.EnhancedMovement2);
     });
 
     /** Berserker's Greaves */
-    public static final Item BerserkersGreavesHomeguard = new Item(RiotItemData.BerserkersGreavesHomeguard, item -> {
-        item.attackSpeed(25).add(Ability.EnhancedMovement2);
+    public static final Item BerserkersGreavesHomeguard = new Item(RiotItemData.BerserkersGreaves, item -> {
+        item.attackSpeed(30).add(Ability.EnhancedMovement2);
     });
 
     /** Bilgewater Cutlass */
@@ -221,7 +221,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Boots of Mobility */
-    public static final Item BootsofMobilityHomeguard = new Item(RiotItemData.BootsofMobilityHomeguard, item -> {
+    public static final Item BootsofMobilityHomeguard = new Item(RiotItemData.BootsofMobility, item -> {
         item.add(Ability.EnhancedMovement5);
     });
 
@@ -256,7 +256,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Boots of Swiftness */
-    public static final Item BootsofSwiftnessHomeguard = new Item(RiotItemData.BootsofSwiftnessHomeguard, item -> {
+    public static final Item BootsofSwiftnessHomeguard = new Item(RiotItemData.BootsofSwiftness, item -> {
         item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
     });
 
@@ -268,6 +268,10 @@ public class Item extends Describable<ItemDescriptor> {
     /** Catalyst the Protector */
     public static final Item CatalystTheProtector = new Item(RiotItemData.CatalysttheProtector, item -> {
         item.health(200).mana(300).add(Ability.ValorsReward);
+    });
+
+    /** Caulfield's Warhammer */
+    public static final Item CaulfieldsWarhammer = new Item(RiotItemData.CaulfieldsWarhammer, item -> {
     });
 
     /** Chain Vest */
@@ -291,13 +295,26 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Item definition */
+    public static final Item CorruptingPotion = new Item(RiotItemData.CorruptingPotion, item -> {
+    });
+
+    /** Item definition */
     public static final Item CrystallineBracer = new Item(RiotItemData.CrystallineBracer, item -> {
         item.health(200).healthRegenRatio(50);
+    });
+
+    /** Item definition */
+    public static final Item Cull = new Item(RiotItemData.Cull, item -> {
     });
 
     /** Dagger */
     public static final Item Dagger = new Item(RiotItemData.Dagger, item -> {
         item.attackSpeed(15);
+    });
+
+    /** The Dark Seal */
+    public static final Item TheDarkSeal = new Item(RiotItemData.TheDarkSeal, item -> {
+        item.abilityPower(15).mana(100);
     });
 
     /** DeadMansPlate */
@@ -310,6 +327,10 @@ public class Item extends Describable<ItemDescriptor> {
                     .variable(1, PhysicalDamage, 0, 0, amplify(Charge, 0.5))
                     .variable(2, MSSlowRatio, 75);
         });
+    });
+
+    /** Death's Dance */
+    public static final Item DeathsDance = new Item(RiotItemData.DeathsDance, item -> {
     });
 
     /** Doran's Blade */
@@ -365,9 +386,28 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Item definition */
+    public static final Item EyeoftheEquinox = new Item(RiotItemData.EyeoftheEquinox, item -> {
+    });
+
+    /** Item definition */
+    public static final Item EyeoftheOasis = new Item(RiotItemData.EyeoftheOasis, item -> {
+    });
+
+    /** Item definition */
+    public static final Item EyeoftheWatchers = new Item(RiotItemData.EyeoftheWatchers, item -> {
+    });
+
+    /** Item definition */
     public static final Item EssenceReaver = new Item(RiotItemData.EssenceReaver, item -> {
         item.cooldownReduction(10).attackDamage(80).lifeSteal(10).add(ability -> {
             ability.passive("通常攻撃で与えたダメージの2％～8％をマナとして回復する。この効果は失ったマナ量に比例して増える。");
+        });
+    });
+
+    /** Item definition */
+    public static final Item ExecutionersCalling = new Item(RiotItemData.ExecutionersCalling, item -> {
+        item.attackDamage(15).add(ability -> {
+            ability.passive("物理ダメージを与えた対象に3秒間{1}を与える。").variable(1, Wounds);
         });
     });
 
@@ -417,6 +457,11 @@ public class Item extends Describable<ItemDescriptor> {
     /** Giant's Belt */
     public static final Item GiantsBelt = new Item(RiotItemData.GiantsBelt, item -> {
         item.health(380);
+    });
+
+    /** Giant Slayer */
+    public static final Item GiantSlayer = new Item(RiotItemData.GiantSlayer, item -> {
+        item.attackDamage(10).add(Ability.GiantSlayer);
     });
 
     /** Glacial Shroud */
@@ -500,6 +545,22 @@ public class Item extends Describable<ItemDescriptor> {
         });
     });
 
+    /** Hunter's Potion */
+    public static final Item HuntersPotion = new Item(RiotItemData.HuntersPotion, item -> {
+    });
+
+    /** Hunter's Talisman */
+    public static final Item HuntersTalisman = new Item(RiotItemData.HuntersTalisman, item -> {
+        item.add(Ability.GoldIncome).add(ability -> {
+            ability.passive("大型モンスターを倒すたびに{1}を得る。").variable(1, Gold, 15);
+        }).add("ジャングラー", ability -> {
+            ability.passive("モンスターに対する攻撃命中時に2秒間かけて{1}を与える。また、モンスターとの戦闘中、毎秒{2}、{3}する（非好戦的なモンスターの場合、自動回復効果はなし）。")
+                    .variable(1, MagicDamage, 30)
+                    .variable(2, RestoreHealth, 7)
+                    .variable(3, RestoreMana, 4);
+        });
+    });
+
     /** Iceborn Gauntlet */
     public static final Item IcebornGauntlet = new Item(RiotItemData.IcebornGauntlet, item -> {
         item.abilityPower(30).cooldownReduction(10).armor(60).mana(500).add(Ability.SpellbladeIceborn);
@@ -538,13 +599,24 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Ionian Boots of Lucidity */
-    public static final Item IonianBootsofLucidityHomeguard = new Item(RiotItemData.IonianBootsofLucidityHomeguard, item -> {
+    public static final Item IonianBootsofLucidityHomeguard = new Item(RiotItemData.IonianBootsofLucidity, item -> {
         item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
+    });
+
+    /** Jaurim's Fist */
+    public static final Item JaurimsFist = new Item(RiotItemData.JaurimsFist, item -> {
     });
 
     /** Kindlegem */
     public static final Item Kindlegem = new Item(RiotItemData.Kindlegem, item -> {
         item.health(200).add(Ability.CDR10);
+    });
+
+    /** Kircheis Shard */
+    public static final Item KircheisShard = new Item(RiotItemData.KircheisShard, item -> {
+        item.attackSpeed(15).add(Ability.Energize).add(ability -> {
+            ability.passive("チャージされた通常攻撃は追加{1}を与える。").variable(1, MagicDamage, 30);
+        });
     });
 
     /** Last Whisper */
@@ -565,6 +637,11 @@ public class Item extends Describable<ItemDescriptor> {
     /** Lich Bane */
     public static final Item LichBane = new Item(RiotItemData.LichBane, item -> {
         item.abilityPower(80).mana(250).movementSpeed(5).add(Ability.SpellbladeLich);
+    });
+
+    /** Lord Dominik's Regards */
+    public static final Item LordDominiksRegards = new Item(RiotItemData.LordDominiksRegards, item -> {
+        item.attackDamage(40).add(Ability.GiantSlayer2).add(Ability.LastWhisper);
     });
 
     /** Locket of the Iron Solari */
@@ -644,7 +721,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Mercury's Treads */
-    public static final Item MercurysTreadsHomeguard = new Item(RiotItemData.MercurysTreadsHomeguard, item -> {
+    public static final Item MercurysTreadsHomeguard = new Item(RiotItemData.MercurysTreads, item -> {
         item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
     });
 
@@ -662,6 +739,13 @@ public class Item extends Describable<ItemDescriptor> {
     public static final Item Morellonomicon = new Item(RiotItemData.Morellonomicon, item -> {
         item.cooldownReduction(20).abilityPower(80).manaRegenRatio(100).add(ability -> {
             ability.passive("ライフが残り40％未満の敵のチャンピオンに魔法ダメージを与えると、{1} を与える。").variable(1, Wounds, 4);
+        });
+    });
+
+    /** Mortal Reminder */
+    public static final Item MortalReminder = new Item(RiotItemData.MortalReminder, item -> {
+        item.attackDamage(40).add(Ability.LastWhisper).add(ability -> {
+            ability.passive("物理ダメージを与えた対象に5秒間{1}を与える。").variable(1, Wounds);
         });
     });
 
@@ -692,32 +776,32 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Ninja Tabi */
     public static final Item NinjaTabi = new Item(RiotItemData.NinjaTabi, item -> {
-        item.armor(25).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
+        item.armor(30).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
     });
 
     /** Ninja Tabi */
     public static final Item NinjaTabiAlacrity = new Item(RiotItemData.NinjaTabiAlacrity, item -> {
-        item.armor(25).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
+        item.armor(30).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
     });
 
     /** Ninja Tabi */
     public static final Item NinjaTabiCaptain = new Item(RiotItemData.NinjaTabiCaptain, item -> {
-        item.armor(25).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
+        item.armor(30).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
     });
 
     /** Ninja Tabi */
     public static final Item NinjaTabiDistortion = new Item(RiotItemData.NinjaTabiDistortion, item -> {
-        item.armor(25).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
+        item.armor(30).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
     });
 
     /** Ninja Tabi */
     public static final Item NinjaTabiFuror = new Item(RiotItemData.NinjaTabiFuror, item -> {
-        item.armor(25).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
+        item.armor(30).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
     });
 
     /** Ninja Tabi */
-    public static final Item NinjaTabiHomeguard = new Item(RiotItemData.NinjaTabiHomeguard, item -> {
-        item.armor(25).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
+    public static final Item NinjaTabiHomeguard = new Item(RiotItemData.NinjaTabi, item -> {
+        item.armor(30).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
     });
 
     /** Nomad's Medallion */
@@ -794,6 +878,13 @@ public class Item extends Describable<ItemDescriptor> {
         });
     });
 
+    /** Rapid Firecannon */
+    public static final Item RapidFirecannon = new Item(RiotItemData.RapidFirecannon, item -> {
+        item.attackSpeed(30).critical(30).movementSpeed(8).add(Ability.Energize).add(ability -> {
+            ability.passive("チャージされた通常攻撃は射程が35%延び、追加{1}を与える。建物に対しても有効。").variable(1, MagicDamage, level(10));
+        });
+    });
+
     /** Raptor Cloak */
     public static final Item RaptorCloak = new Item(RiotItemData.RaptorCloak, item -> {
         item.armor(40).healthRegenRatio(150).add(Ability.PointRunner);
@@ -809,6 +900,10 @@ public class Item extends Describable<ItemDescriptor> {
     /** Recurve Bow */
     public static final Item RecurveBow = new Item(RiotItemData.RecurveBow, item -> {
         item.attackSpeed(30).add(Ability.BowDamage);
+    });
+
+    /** Refillable Potion */
+    public static final Item RefillablePotion = new Item(RiotItemData.RefillablePotion, item -> {
     });
 
     /** Rejuvenation Bead */
@@ -880,6 +975,10 @@ public class Item extends Describable<ItemDescriptor> {
     /** Seraph's Embrace */
     public static final Item SeraphsEmbrace = new Item(RiotItemData.SeraphsEmbrace, item -> {
         item.abilityPower(80).manaRegenRatio(100).mana(1000).add(Ability.Insight).add(Ability.ManaShield);
+    });
+
+    /** Serrated Dirk */
+    public static final Item SerratedDirk = new Item(RiotItemData.SerratedDirk, item -> {
     });
 
     /** Seeker's Armguard */
@@ -986,7 +1085,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Sorcerer's Shoes */
-    public static final Item SorcerersShoesHomeguard = new Item(RiotItemData.SorcerersShoesHomeguard, item -> {
+    public static final Item SorcerersShoesHomeguard = new Item(RiotItemData.SorcerersShoes, item -> {
         item.set(MRPen, 15).add(Ability.EnhancedMovement2);
     });
 
@@ -1070,7 +1169,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Statikk Shiv */
     public static final Item StatikkShiv = new Item(RiotItemData.StatikkShiv, item -> {
-        item.attackSpeed(40).movementSpeed(6).critical(20).add(ability -> {
+        item.attackSpeed(40).movementSpeed(6).critical(20).add(Ability.Energize).add(ability -> {
             ability.passive("移動または通常攻撃を行うとその度にチャージが貯まっていく。 チャージが100に達した時、次の通常時に対象に雷を放ち{1}を与える。雷は対象の付近の敵ユニット({2})3体にも連鎖し同様のダメージを与える。雷によるダメージはクリティカルの影響を受ける。雷を放った後はチャージは0になる。建物を攻撃する時はチャージは増加するが雷は発生しない。")
                     .variable(1, MagicDamage, 100)
                     .variable(2, Radius, 300);
@@ -1157,6 +1256,65 @@ public class Item extends Describable<ItemDescriptor> {
     /** TitanicHydra */
     public static final Item TitanicHydra = new Item(RiotItemData.TitanicHydraMeleeOnly, item -> {
         item.health(400).attackDamage(50).healthRegenRatio(100).add(Ability.CleaveHealth).add(Ability.CrescentHealth);
+    });
+
+    /** Tracker's Knife */
+    public static final Item TrackersKnife = new Item(RiotItemData.TrackersKnife, item -> {
+        item.add(Ability.GoldIncome).add(Ability.LargeMonsterKill).add(Ability.ChillingSmite).add(Ability.Jungler);
+    });
+
+    /** Tracker's Knife */
+    public static final Item TrackersKnifeCinderhulk = new Item(RiotItemData.TrackersKnifeCinderhulk, item -> {
+        item.add(Ability.GoldIncome)
+                .add(Ability.LargeMonsterKill)
+                .add(Ability.ChillingSmite)
+                .add(Ability.Jungler)
+                .health(400)
+                .set(BounusHealth, 15)
+                .add(Ability.ImmolateLevel2);
+    });
+
+    /** Tracker's Knife */
+    public static final Item TrackersKnifeDevourer = new Item(RiotItemData.TrackersKnifeDevourer, item -> {
+        item.add(Ability.GoldIncome)
+                .add(Ability.LargeMonsterKill)
+                .add(Ability.ChillingSmite)
+                .add(Ability.Jungler)
+                .attackSpeed(50)
+                .add(Ability.Devouring);
+    });
+
+    /** Tracker's Knife */
+    public static final Item TrackersKnifeRuneglaive = new Item(RiotItemData.TrackersKnifeRuneglaive, item -> {
+        item.add(Ability.GoldIncome)
+                .add(Ability.LargeMonsterKill)
+                .add(Ability.ChillingSmite)
+                .add(Ability.Jungler)
+                .abilityPower(50)
+                .mana(200)
+                .cooldownReduction(10)
+                .add(Ability.SpellbladeRuneglaive);
+    });
+
+    /** Tracker's Knife */
+    public static final Item TrackersKnifeWarrior = new Item(RiotItemData.TrackersKnifeWarrior, item -> {
+        item.add(Ability.GoldIncome)
+                .add(Ability.LargeMonsterKill)
+                .add(Ability.ChillingSmite)
+                .add(Ability.Jungler)
+                .attackDamage(45)
+                .cooldownReduction(10)
+                .set(ARPen, 10);
+    });
+
+    /** Tracker's Knife */
+    public static final Item TrackersKnifeSatedDevourer = new Item(RiotItemData.TrackersKnifeSatedDevourer, item -> {
+        item.add(Ability.GoldIncome)
+                .add(Ability.LargeMonsterKill)
+                .add(Ability.ChillingSmite)
+                .add(Ability.Jungler)
+                .attackSpeed(50)
+                .add(Ability.PhantomHit);
     });
 
     /** Trinity Force */

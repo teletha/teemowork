@@ -51,7 +51,7 @@ public class RiotAPI {
      */
     public static List<ChampionDefinition> champions() {
         ChampionDefinitions definitions = parse(ChampionDefinitions.class, Version.Latest, Locale.US);
-        ChampionDefinitions localized = parse(ChampionDefinitions.class, Version.Latest, Locale.JAPAN);
+        ChampionDefinitions localized = parse(ChampionDefinitions.class, Version.P521, Locale.JAPAN);
 
         List<ChampionDefinition> list = new ArrayList();
 
@@ -80,9 +80,7 @@ public class RiotAPI {
      * @return
      */
     public static <M> M parse(Class<M> modelClass, Version version, Locale locale) {
-        return parse(modelClass.getSimpleName()
-                .replaceAll("Definition[s]?", "")
-                .toLowerCase(), modelClass, version, locale);
+        return parse(modelClass.getSimpleName().replaceAll("Definition[s]?", "").toLowerCase(), modelClass, version, locale);
     }
 
     /**
@@ -101,8 +99,7 @@ public class RiotAPI {
 
             M m = I.make(modelClass);
             Model model = Model.load(m.getClass());
-            return parse(model, m, Json
-                    .createReader(new InputStreamReader(new URL(uri).openConnection().getInputStream())).readObject());
+            return parse(model, m, Json.createReader(new InputStreamReader(new URL(uri).openConnection().getInputStream())).readObject());
         } catch (Exception e) {
             throw I.quiet(e);
         }
