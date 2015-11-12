@@ -39,7 +39,7 @@ public class ItemDataBuilder {
      */
     public static void main(String[] args) throws Exception {
         ItemDefinitions en = RiotAPI.parse(ItemDefinitions.class, Version.Latest, Locale.US);
-        // ItemDefinitions ja = RiotAPI.parse(ItemDefinitions.class, Version.Latest, Locale.JAPAN);
+        ItemDefinitions ja = RiotAPI.parse(ItemDefinitions.class, Version.Latest, Locale.JAPAN);
 
         ClassWriter code = new ClassWriter("teemowork.api", "RiotItemData");
         code.write("public class ", code.className, " {");
@@ -47,7 +47,7 @@ public class ItemDataBuilder {
         for (Entry<Integer, ItemDefinition> entry : en.data.entrySet()) {
             int id = entry.getKey();
             ItemDefinition item = entry.getValue();
-            // ItemDefinition localized = ja.data.get(id);
+            ItemDefinition localized = ja.data.get(id);
             ItemGold gold = item.gold;
             ItemImage image = item.image;
 
@@ -55,9 +55,9 @@ public class ItemDataBuilder {
                 code.write();
                 code.write("/** ", item.name, " Definition", " */");
                 item.name(en.data);
-                // localized.name(ja.data);
+                localized.name(ja.data);
 
-                code.write("public static final ", code.className, " ", item.identicalName, " = new ", code.className, param(string(item.name), string(item.name), id, gold.base, gold.total, gold.sell, array(item.from), array(item.into), image.sprite
+                code.write("public static final ", code.className, " ", item.identicalName, " = new ", code.className, param(string(item.name), string(localized.name), id, gold.base, gold.total, gold.sell, array(item.from), array(item.into), image.sprite
                         .charAt(4), image.x, image.y, item.depth), ";");
             }
         }

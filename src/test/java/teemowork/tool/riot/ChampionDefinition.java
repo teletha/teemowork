@@ -84,7 +84,7 @@ class ChampionDefinition implements Comparable<ChampionDefinition> {
     final void analyze() {
         String path = "champion/" + id;
         Detail info = RiotAPI.parse(path, Details.class, Version.Latest, Locale.US).data.get(id);
-        Detail local = RiotAPI.parse(path, Details.class, Version.P521, Locale.JAPAN).data.get(id);
+        Detail local = RiotAPI.parse(path, Details.class, Version.Latest, Locale.JAPAN).data.get(id);
 
         // passive
         addSkill(info.passive.name, local.passive.name, info.passive.image.full);

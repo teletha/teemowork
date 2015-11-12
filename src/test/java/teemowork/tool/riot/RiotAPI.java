@@ -51,7 +51,7 @@ public class RiotAPI {
      */
     public static List<ChampionDefinition> champions() {
         ChampionDefinitions definitions = parse(ChampionDefinitions.class, Version.Latest, Locale.US);
-        ChampionDefinitions localized = parse(ChampionDefinitions.class, Version.P521, Locale.JAPAN);
+        ChampionDefinitions localized = parse(ChampionDefinitions.class, Version.Latest, Locale.JAPAN);
 
         List<ChampionDefinition> list = new ArrayList();
 
@@ -95,7 +95,7 @@ public class RiotAPI {
      */
     public static <M> M parse(String location, Class<M> modelClass, Version version, Locale locale) {
         try {
-            String uri = DRAGON_URL + version.name + ".1/data/" + locale + "/" + location + ".json";
+            String uri = DRAGON_URL + version.name + ".3/data/" + locale + "/" + location + ".json";
 
             M m = I.make(modelClass);
             Model model = Model.load(m.getClass());

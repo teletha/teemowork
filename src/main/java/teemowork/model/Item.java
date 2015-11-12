@@ -143,7 +143,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Berserker's Greaves */
-    public static final Item BerserkersGreavesHomeguard = new Item(RiotItemData.BerserkersGreaves, item -> {
+    public static final Item BerserkersGreavesHomeguard = new Item(RiotItemData.BerserkersGreavesHomeguard, item -> {
         item.attackSpeed(30).add(Ability.EnhancedMovement2);
     });
 
@@ -221,7 +221,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Boots of Mobility */
-    public static final Item BootsofMobilityHomeguard = new Item(RiotItemData.BootsofMobility, item -> {
+    public static final Item BootsofMobilityHomeguard = new Item(RiotItemData.BootsofMobilityHomeguard, item -> {
         item.add(Ability.EnhancedMovement5);
     });
 
@@ -256,7 +256,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Boots of Swiftness */
-    public static final Item BootsofSwiftnessHomeguard = new Item(RiotItemData.BootsofSwiftness, item -> {
+    public static final Item BootsofSwiftnessHomeguard = new Item(RiotItemData.BootsofSwiftnessHomeguard, item -> {
         item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
     });
 
@@ -652,7 +652,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Ionian Boots of Lucidity */
-    public static final Item IonianBootsofLucidityHomeguard = new Item(RiotItemData.IonianBootsofLucidity, item -> {
+    public static final Item IonianBootsofLucidityHomeguard = new Item(RiotItemData.IonianBootsofLucidityHomeguard, item -> {
         item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
     });
 
@@ -775,7 +775,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Mercury's Treads */
-    public static final Item MercurysTreadsHomeguard = new Item(RiotItemData.MercurysTreads, item -> {
+    public static final Item MercurysTreadsHomeguard = new Item(RiotItemData.MercurysTreadsHomeguard, item -> {
         item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
     });
 
@@ -854,7 +854,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Ninja Tabi */
-    public static final Item NinjaTabiHomeguard = new Item(RiotItemData.NinjaTabi, item -> {
+    public static final Item NinjaTabiHomeguard = new Item(RiotItemData.NinjaTabiHomeguard, item -> {
         item.armor(30).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
     });
 
@@ -950,7 +950,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Ravenous Hydra */
-    public static final Item RavenousHydra = new Item(RiotItemData.RavenousHydraMeleeOnly, item -> {
+    public static final Item RavenousHydra = new Item(RiotItemData.RavenousHydra, item -> {
         item.lifeSteal(12).attackDamage(75).healthRegenRatio(100).add(Ability.Cleave).add(Ability.Crescent).add(ability -> {
             ability.ununique().passive("このアイテムによって与えられたダメージはLife Stealの効果を受ける。");
         });
@@ -1012,7 +1012,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Runaan's Hurricane */
-    public static final Item RunaansHurricane = new Item(RiotItemData.RunaansHurricaneRangedOnly, item -> {
+    public static final Item RunaansHurricane = new Item(RiotItemData.RunaansHurricane, item -> {
         item.attackSpeed(40).critical(30).movementSpeed(5).add(Ability.BowDamage).add(ability -> {
             ability.passive("通常攻撃をした際に、{1}の2体の敵ユニットに{2}を与える（クリティカルあり）。{3}。")
                     .variable(1, Radius, 375)
@@ -1128,7 +1128,7 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Sorcerer's Shoes */
-    public static final Item SorcerersShoesHomeguard = new Item(RiotItemData.SorcerersShoes, item -> {
+    public static final Item SorcerersShoesHomeguard = new Item(RiotItemData.SorcerersShoesHomeguard, item -> {
         item.set(MRPen, 15).add(Ability.EnhancedMovement2);
     });
 
@@ -1266,12 +1266,12 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Tiamat */
-    public static final Item Tiamat = new Item(RiotItemData.TiamatMeleeOnly, item -> {
+    public static final Item Tiamat = new Item(RiotItemData.Tiamat, item -> {
         item.attackDamage(30).healthRegenRatio(50).add(Ability.Crescent);
     });
 
     /** TitanicHydra */
-    public static final Item TitanicHydra = new Item(RiotItemData.TitanicHydraMeleeOnly, item -> {
+    public static final Item TitanicHydra = new Item(RiotItemData.TitanicHydra, item -> {
         item.health(450).attackDamage(50).healthRegenRatio(100).add(Ability.CleaveHealth).add(Ability.CrescentHealth);
     });
 
