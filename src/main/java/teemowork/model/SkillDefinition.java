@@ -1645,17 +1645,17 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Graves(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P301)
-                .passive("戦闘状態になると1秒ごとにスタックが1増加し、スタック数に比例して{1}と{2}を得る。スタックは10回まで累積し、3秒間戦闘を行わないと0になる。")
-                .variable(1, AR, new Per6Level(1, 1))
-                .variable(2, MR, new Per6Level(1, 1));
+        P.update(P522)
+                .passive("通常攻撃が扇状に4発同時に発射され、貫通せず最初に当たったユニットにだけ{1}と弾丸1発毎に{2}を与える。クリティカルが発生した時はダメージは増加せず扇状範囲が50%広がり8発同時に発射する。チャンピオン以外のユニットに複数ヒットした場合", Knockback, "を与え、建物に与えるダメージは25%減少する。最大2つの装弾数を持ち、装弾数が0になるとリロード動作を行いその間通常攻撃が出せなくなる。リロードの時間は", AS, "の上昇により短縮されるほか、通常攻撃は通常よりも", AS, "の影響を受けやすくなる。")
+                .variable(1, PhysicalDamage, amplify(AD, 0.6765, 0, level(0.0235)))
+                .variable(2, PhysicalDamage, amplify(AD, 0.2435, 0, level(0.0065)));
 
-        Q.update(P508)
-                .active("指定方向扇形の範囲に貫通する弾を3発発射し、当たった敵ユニットに{1}を与える。同一対象に対して複数hitし、2発目以降は本来の50%分の", Damage, "を与える(3発hitで合計{2})。")
-                .variable(1, PhysicalDamage, 60, 30, bounusAD(0.75))
-                .variable(2, PhysicalDamage, 120, 60, bounusAD(1.5))
-                .mana(60, 10)
-                .cd(12, -1)
+        Q.update(P522)
+                .active("指定方向にT字型に貫通する弾丸を放ち{1}を与える。発射して1秒後、あるいは弾丸が壁または建物に当たると弾道を戻るように爆発が起こり{2}を与える。")
+                .variable(1, PhysicalDamage, 60, 20, bounusAD(0.75))
+                .variable(2, PhysicalDamage, 90, 65, amplify(BounusAD, 0.4, 0.2))
+                .mana(50, 5)
+                .cd(14, -1)
                 .range(950);
 
         W.update(P301)
@@ -1667,17 +1667,19 @@ public interface SkillDefinition {
                 .cd(20, -1)
                 .range(950);
 
-        E.update(P405)
-                .active("指定方向に{1}し4秒間{2}する。このスキルは自身が通常攻撃を行う毎に{3}する。対象が建物の場合は無効。")
+        E.update(P522)
+                .active("指定方向に{1}して、4秒間{2}と{3}を得る(最大4スタックまで保持可能)。このスキルは使用時に装弾数を1つ回復させ、{4}。通常攻撃をする毎にこのスキルの{5}する（建物には無効）。")
                 .variable(1, Dash)
-                .variable(2, ASRatio, 30, 10)
-                .variable(3, CDDecrease, 1)
+                .variable(2, AR, 10, 5)
+                .variable(3, MR, 10, 5)
+                .variable(4, ResetAATimer)
+                .variable(5, CDDecrease, 0.5)
                 .mana(40)
                 .cd(22, -2)
                 .range(425);
 
-        R.update(P415)
-                .active("指定方向にミニオンを貫通する爆発弾を発射し、hitした敵ユニットに{1}を与える。敵チャンピオンにhitするか最大距離飛ぶとターゲット後方に扇形に爆発が広がり、{3}の敵ユニットに{2}を与える。")
+        R.update(P522)
+                .active("指定方向にミニオンを貫通する爆発弾を発射し、命中した敵ユニットに{1}を与え、自身は後方へ下がる。敵チャンピオンに当たるか最大距離飛ぶと後方に扇形に爆発が広がり、範囲内の敵ユニットに{2}を与える。")
                 .variable(1, PhysicalDamage, 250, 150, bounusAD(1.5))
                 .variable(2, PhysicalDamage, 200, 120, bounusAD(1.2))
                 .variable(3, Radius, 800)
