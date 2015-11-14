@@ -3105,7 +3105,10 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void MissFortune(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P514).passive("5秒間ダメージを受けないと{1}する。以後徐々に増加して8秒後に{2}する。ダメージを受けると解除される。").variable(-1, MS, 25).variable(-2, MS, 70);
+        P.update(P522)
+                .passive(champion, "が新しい対象を通常攻撃すると追加{1}を与える。モンスターとチャンピオンが対象の場合は追加{2}を与える。")
+                .variable(1, PhysicalDamage, amplify(AD, 0.32, 0, level(0.01)))
+                .variable(2, PhysicalDamage, amplify(AD, 0.64, 0, level(0.02)));
 
         Q.update(P514)
                 .active("敵1体を貫通する弾丸を発射し、1体目の敵に{1}を与え、後方（{2}）にいる2体目の敵に{3}を与える。{4}。一体目の敵を倒し場合、2体目の敵に与えるダメージは{5}になる。")
@@ -3119,7 +3122,7 @@ public interface SkillDefinition {
                 .range(650);
 
         W.update(P514)
-                .passive("通常攻撃に{1}を付与する。5秒以内の攻撃は{2}回まで累積し最大{3}を与える。")
+                .passive("5秒間ダメージを受けないと{1}する。以後徐々に増加して8秒後に{2}する。")
                 .variable(1, MagicDamage, 0, 0, ad(0.06))
                 .variable(2, Value, new ReferPlus(R, 5, 1))
                 .variable(3, MagicDamage, amplify(AD, new ReferPlus(R, 0.3, 0.06)))
