@@ -220,6 +220,10 @@ public class Build implements StatusCalculator {
             }
             return new Computed(baseMS, computedMS, status);
 
+        case ASRatio:
+        case Critical:
+            return new Computed(0, sum(status), status);
+
         case AS:
             double baseAS = champion.getStatus(version).get(AS);
             double levelAS = champion.getStatus(version).get(ASPerLv) * (level.get() - 1);

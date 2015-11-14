@@ -130,7 +130,7 @@ public enum Status {
     LS("Life Steal", "物理吸命"), LSPerLv(LS), LSRatio(LS),
 
     /** Critical Chance */
-    Critical("Critical Chance", "クリティカル率"), CriticalPerLv, CriticalRatio,
+    Critical("Critical Chance", "クリティカル率"), CriticalPerLv,
 
     /** Other */
     AttackTowerDamageRatio("タワーに対するダメージ"),

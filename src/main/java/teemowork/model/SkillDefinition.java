@@ -660,33 +660,36 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Caitlyn(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P511)
-                .passive("通常攻撃{1}回毎にダメージが増加する(ミニオンには150%増加、チャンピオンには50%増加して{2}を付与、建物への攻撃は無効)。茂みから通常攻撃を行うと2回分としてカウントされる。")
-                .variable(1, Count, new Per6Level(7, -1))
-                .variable(2, BounusARPenRatio, 50);
+        P.update(P522)
+                .passive("{1}する。", W, "の", Snare, "もしくは", E, "の", MSSlow, "を受けている相手に対する最初の通常攻撃は{2}して追加{3}を与える。{4}回ごと（茂みから攻撃を行うと2回分としてカウント）の通常攻撃も追加{3}を与える。（ミニオンやモンスターに対しては追加{5}を与える）")
+                .variable(1, ASRatio, amplify(ASRatio, 0.1))
+                .variable(-2, Range, 650)
+                .variable(3, PhysicalDamage, amplify(AD, 0.5, 0, amplify(Critical, 0.01)))
+                .variable(4, Count, new Per6Level(7, -1))
+                .variable(5, PhysicalDamage, ad(1.5));
 
-        Q.update(P301)
-                .active("1秒詠唱後、指定方向に貫通する弾を発射し当たった敵ユニットに{1}を与える。ダメージは敵に当たるごとに10%減少していき最小で{2}を与える。")
-                .variable(1, PhysicalDamage, 20, 40, ad(1.3))
-                .variable(2, PhysicalDamage, 10, 20, ad(0.65))
+        Q.update(P522)
+                .active("1秒詠唱後、指定方向に貫通する弾を発射し最初に当たった敵に{1}を与える。2体目以降の敵には{2}を与える。", W, "で視界を得ている敵に対しては常に{1}を与える。")
+                .variable(1, PhysicalDamage, 25, 45, amplify(AD, 1.2, 0.1))
+                .variable(2, PhysicalDamage, 15, 27, amplify(AD, 0.72, 0.06))
                 .mana(50, 10)
                 .cd(10, -1)
                 .range(1250);
 
-        W.update(P517)
-                .active("指定地点に罠を仕掛ける。敵チャンピオンが罠の{4}に入ると発動して、対象に1.5秒かけて{2}と{3}を与え、9秒間対象の{5}。罠は3個まで置け、4分間持続する。")
-                .variable(2, MagicDamage, 80, 50, ap(0.6))
-                .variable(3, Snare, 1.5)
+        W.update(P522)
+                .active("指定地点に罠を仕掛ける。敵チャンピオンが罠の{4}に入ると発動して、対象に{3}を与え、9秒間対象への", P, "の追加ダメージが{1}し、{5}。罠は{6}個まで置け、90秒間持続し{7}秒ごとに補充される。")
+                .variable(1, Percentage, 10, 10)
+                .variable(3, Snare, 2)
                 .variable(4, Radius, 67.5)
                 .variable(5, Visionable)
-                .mana(30)
-                .cd(16, -2)
+                .variable(6, Value, new PerSkillLevel(3, 3, 4, 4, 5))
+                .variable(7, CDRAwareTime, new PerSkillLevel(45, 32.5, 20, 12.5, 10))
+                .mana(20)
                 .range(800);
 
-        E.update(P301)
-                .active("指定方向にネットを飛ばし当たった敵ユニットに{1}と{2}間{3}を与え、", champion, "はネットを飛ばした方向の反対側に{4}する。")
-                .variable(1, MagicDamage, 80, 50, ap(0.8))
-                .variable(2, Time, 1, 0.25)
+        E.update(P522)
+                .active("指定方向にネットを飛ばし当たった敵ユニットに{1}と1秒間{3}を与え、", champion, "はネットを飛ばした方向の反対側に{4}する。")
+                .variable(1, MagicDamage, 70, 40, ap(0.8))
                 .variable(3, MSSlowRatio, 50)
                 .variable(4, Dash, 400)
                 .mana(75)

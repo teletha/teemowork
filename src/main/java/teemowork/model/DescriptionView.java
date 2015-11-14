@@ -129,7 +129,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                         });
                     }));
 
-                    text(amplifier.getStatus().getUnit());
+                    text(amplifier.getStatus().name().endsWith("Ratio") ? "%" : "");
                     if (!amplifier.getAmplifiers().isEmpty()) {
                         text("(");
                         writeAmplifier(amplifier.getAmplifiers(), current, calculator);

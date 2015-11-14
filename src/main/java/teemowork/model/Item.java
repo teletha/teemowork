@@ -441,8 +441,7 @@ public class Item extends Describable<ItemDescriptor> {
     /** Item definition */
     public static final Item EssenceReaver = new Item(RiotItemData.EssenceReaver, item -> {
         item.attackDamage(65).critical(20).add(ability -> {
-            ability.passive("{1}を得る。（20%を上限にこのアイテム以外からの" + CriticalRatio + "に等しい" + CDR + "を得る）")
-                    .variable(1, CDR, 10, 0, amplify(CriticalRatio, 1));
+            ability.passive("{1}を得る。（20%を上限にこのアイテム以外からの" + Critical + "に等しい" + CDR + "を得る）").variable(1, CDR, 10, 0, amplify(Critical, 1));
         }).add(ability -> {
             ability.passive("クリティカル発生時に{1}する。").variable(1, RestoreMana, amplify(Mana, 0.03));
         });
