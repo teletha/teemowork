@@ -3107,8 +3107,8 @@ public interface SkillDefinition {
     public static void MissFortune(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P522)
                 .passive(champion, "が新しい対象を通常攻撃すると追加{1}を与える。モンスターとチャンピオンが対象の場合は追加{2}を与える。")
-                .variable(1, PhysicalDamage, amplify(AD, 0.32, 0, level(0.01)))
-                .variable(2, PhysicalDamage, amplify(AD, 0.64, 0, level(0.02)));
+                .variable(1, PhysicalDamage, amplify(AD, 0.302, 0, level(0.011)))
+                .variable(2, PhysicalDamage, amplify(AD, 0.604, 0, level(0.022)));
 
         Q.update(P514)
                 .active("敵1体を貫通する弾丸を発射し、1体目の敵に{1}を与え、後方（{2}）にいる2体目の敵に{3}を与える。{4}。一体目の敵を倒し場合、2体目の敵に与えるダメージは{5}になる。")
@@ -3121,29 +3121,31 @@ public interface SkillDefinition {
                 .cd(7, -1)
                 .range(650);
 
-        W.update(P514)
-                .passive("5秒間ダメージを受けないと{1}する。以後徐々に増加して8秒後に{2}する。")
-                .variable(1, MagicDamage, 0, 0, ad(0.06))
-                .variable(2, Value, new ReferPlus(R, 5, 1))
-                .variable(3, MagicDamage, amplify(AD, new ReferPlus(R, 0.3, 0.06)))
-                .active("6秒間{4}する。また即座に", P, "の効果が発動する。")
-                .variable(4, ASRatio, 20, 10)
+        W.update(P522)
+                .passive("5秒間ダメージを受けないと{1}する。以後徐々に増加して5秒後に{2}する。")
+                .variable(-1, MS, 25)
+                .variable(-2, MS, 60, 10)
+                .active("3秒間{3}し、{2}得る。", AS, "増加の効果時間は", P, "の効果が発動するたびに1秒延長される(チャンピオンを対象として発動した場合は2秒延長し、累計で最大3秒まで延長される)。")
+                .variable(3, ASRatio, 60, 15)
                 .mana(30, 5)
                 .cd(12);
 
-        E.update(P514)
+        E.update(P522)
                 .active("0.5秒後、指定地点に2秒間0.25秒毎に銃弾の雨を降らし、{1}の敵ユニットに{2}と1秒間{3}を与える。")
                 .variable(1, Radius, 200)
                 .variable(2, MagicDamage, 90, 55, ap(0.8))
                 .variable(3, MSSlowRatio, 40, 5)
                 .mana(80)
                 .cd(14, -1)
-                .range(800);
+                .range(1000);
 
-        R.update(P519)
-                .active("指定方向扇形の範囲に2秒間、弾幕砲火を浴びせて0.25秒毎に範囲内の敵ユニットに{1}と", W, "のパッシブ効果を与える。同一の対象に8回までヒットし最大で{2}。")
-                .variable(1, PhysicalDamage, 50, 25, ap(0.2), amplify(BounusAD, 0.1, 0.075))
-                .variable(2, PhysicalDamage, 400, 200, ap(1.6), amplify(BounusAD, 0.8, 0.6))
+        R.update(P522)
+                .active("指定方向扇形の範囲に3秒間かけて{1}回弾幕を浴びせて1回毎に範囲内の敵ユニットに{2}を与える(同一の対象へ最大で{3})。クリティカルが発生した場合はダメージが20%上昇し{4}を与える(同一の対象へ最大で{5})。")
+                .variable(1, Value, 12, 2)
+                .variable(2, PhysicalDamage, 0, 0, ad(0.75), ap(0.2))
+                .variable(3, PhysicalDamage, 0, 0, amplify(AD, 9, 1.5), amplify(AP, 2.4, 0.4))
+                .variable(4, PhysicalDamage, 0, 0, ad(0.9), ap(0.24))
+                .variable(5, PhysicalDamage, 0, 0, amplify(AD, 10.8, 1.8), amplify(AP, 2.88, 0.48))
                 .mana(100)
                 .cd(120, -10)
                 .range(1400)
