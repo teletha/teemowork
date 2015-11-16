@@ -54,7 +54,8 @@ public enum Status {
     // Health Related
     // ==================================================
     /** Health */
-    Health("Health", "体力"), HealthPerLv, HealthRatio(Health), HealthRatioPerLv(HealthRatio), BounusHealth("増加" + Health),
+    Health("Health", "体力"), HealthPerLv, HealthRatio(Health), HealthRatioPerLv(HealthRatio), BounusHealth("増加" + Health), BounusHealthRatio(
+            BounusHealth),
 
     /** Base Health */
     BaseHealth("BaseHealth", "基礎体力"),

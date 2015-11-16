@@ -44,8 +44,8 @@ import teemowork.model.variable.Variable;
  */
 public class ItemCatalog extends Widget {
 
-    private static final Status[] VISIBLE = {Health, Hreg, HregRatio, Mana, Mreg, MregRatio, AD, ASRatio, ARPen, LS, Critical, AP, CDR, SV,
-            MRPen, AR, MR, MSRatio, GoldPer10Sec};
+    private static final Status[] VISIBLE = {Health, BounusHealthRatio, Hreg, HregRatio, Mana, Mreg, MregRatio, AD, ASRatio, ARPen, LS,
+            Critical, AP, CDR, SV, MRPen, AR, MR, MSRatio, GoldPer10Sec};
 
     private final FilterGroup[] groups = {
             new FilterGroup("Defense",

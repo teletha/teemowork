@@ -1073,7 +1073,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** SkirmishersSabre */
     public static final Item SkirmishersSabreCinderhulk = new Item(RiotItemData.SkirmishersSabreCinderhulk, item -> {
-        item.add(Ability.NailAndTooth).add(Ability.ChallengingSmite).health(400).set(BounusHealth, 15).add(Ability.ImmolateLevel2);
+        item.add(Ability.NailAndTooth).add(Ability.ChallengingSmite).health(400).set(BounusHealthRatio, 15).add(Ability.ImmolateLevel2);
     });
 
     /** SkirmishersSabre */
@@ -1157,7 +1157,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** StalkersBlade */
     public static final Item StalkersBladeCinderhulk = new Item(RiotItemData.StalkersBladeCinderhulk, item -> {
-        item.add(Ability.NailAndTooth).add(Ability.ChillingSmite).health(400).set(BounusHealth, 15).add(Ability.ImmolateLevel2);
+        item.add(Ability.NailAndTooth).add(Ability.ChillingSmite).health(400).set(BounusHealthRatio, 15).add(Ability.ImmolateLevel2);
     });
 
     /** StalkersBlade */
@@ -1285,7 +1285,7 @@ public class Item extends Describable<ItemDescriptor> {
                 .add(Ability.WardRefresh0)
                 .add(Ability.GhostWard)
                 .health(400)
-                .set(BounusHealth, 15)
+                .set(BounusHealthRatio, 15)
                 .add(Ability.ImmolateLevel2);
     });
 
