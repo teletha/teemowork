@@ -3754,28 +3754,11 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Quinn(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P305)
-                .passive("Valorが", champion, "の周辺に存在する敵ユニット一体(チャンピオン優先)に自動的に4.5秒間持続するマークを付与する。マークが付与された敵ユニットに", champion, "が通常攻撃を行うと、付与されたマークを消費して{1}を与える。またマークが付与された敵ユニットの{2}。Valorと交代している間はこのスキルは無効になる。")
-                .variable(1, PhysicalDamage, new PerLevel(25,
-                        35,
-                        45,
-                        55,
-                        65,
-                        75,
-                        85,
-                        95,
-                        105,
-                        115,
-                        125,
-                        135,
-                        145,
-                        155,
-                        170,
-                        185,
-                        190,
-                        215), bounusAD(0.5))
+        P.update(P522)
+                .passive("周囲の敵ユニット一体(チャンピオン優先)に自動的に4.5秒間持続するマークを付与する。マークが付与された敵ユニットに", champion, "が通常攻撃を行うと、付与されたマークを消費して{1}を与える。またマークが付与された敵ユニットの{2}。このスキルの", CD, "は, ", Critical, "により減少する。")
+                .variable(1, PhysicalDamage, ad(0.5))
                 .variable(2, Visionable)
-                .cd(-10);
+                .cd(-8);
 
         Q.update(P306)
                 .active("指定方向にValorを突撃させ、最初に当たった敵ユニットと{1}の敵ユニットに{2}と{3}を与える。<br>Tag Team時は自身の{4}の敵ユニットに{2}と{3}を与える。")
