@@ -288,28 +288,11 @@ public abstract class Descriptor<T extends Descriptor> {
      * @param status A variable type.
      * @param base A base value.
      * @param diff A diff value.
-     * @param amplifier A first amplifier.
+     * @param amplifiers A list of amplifiers.
      * @return Chainable API.
      */
-    protected final T variable(int id, Status status, double base, double diff, Variable amplifier) {
-        return variable(id, status, base, diff, amplifier, (Variable) null);
-    }
-
-    /**
-     * <p>
-     * Set new variable.
-     * </p>
-     * 
-     * @param id A variable identifier.
-     * @param status A variable type.
-     * @param base A base value.
-     * @param diff A diff value.
-     * @param first A first amplifier.
-     * @param second A second amplifier.
-     * @return Chainable API.
-     */
-    protected final T variable(int id, Status status, double base, double diff, Variable first, Variable second) {
-        return variable(id, status, new Diff(base, diff, describable.getMaxLevel()), first, second);
+    protected final T variable(int id, Status status, double base, double diff, Variable... amplifiers) {
+        return variable(id, status, new Diff(base, diff, describable.getMaxLevel()), amplifiers);
     }
 
     /**
@@ -356,10 +339,12 @@ public abstract class Descriptor<T extends Descriptor> {
      * @param second A second amplifier.
      * @return Chainable API.
      */
-    protected final T variable(int id, Status status, VariableResolver resolver, Variable first, Variable second) {
+    protected final T variable(int id, Status status, VariableResolver resolver, Variable... amplifiers) {
         Variable variable = new Variable(status, resolver);
-        variable.add(first);
-        variable.add(second);
+
+        for (Variable amplifier : amplifiers) {
+            variable.add(amplifier);
+        }
 
         if (id < 0) {
             id *= -1;
