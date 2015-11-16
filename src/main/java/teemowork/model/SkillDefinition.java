@@ -2560,9 +2560,9 @@ public interface SkillDefinition {
                 .variable(1, TrueDamage, 100, 0, level(25))
                 .variable(2, Radius);
 
-        Q.update(P413)
+        Q.update(P522)
                 .passive("{1}する。")
-                .variable(1, ASRatio, 10, 5)
+                .variable(1, ASRatio, 15, 5)
                 .active("対象の敵ユニットに{2}を与え、4秒間{3}と{4}を与える。")
                 .variable(2, MagicDamage, 80, 50, ap(0.5))
                 .variable(3, ARReductionRatio, 12, 4)
@@ -2571,12 +2571,13 @@ public interface SkillDefinition {
                 .cd(8)
                 .range(1000);
 
-        W.update(P404)
-                .active("8秒間通常攻撃の{1}し、通常攻撃時に{2}を追加で与える。")
-                .variable(1, Range, 130, 20)
-                .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 2, 1, ap(0.01)))
-                .mana(50)
-                .cd(17);
+        W.update(P522)
+                .active("6秒間{1}、{2}し、", AS, "の上限とスキルの詠唱速度が倍になる。通常攻撃はミニオン以外の対象には55%のダメージしか与えなくなるが追加{3}を与える(ミニオンやモンスターには100ダメージが上限)。")
+                .variable(1, Range, 90, 30)
+                .variable(2, AS, amplify(AS, 1))
+                .variable(3, MagicDamage, amplify(TargetMaxHealthRatio, 0, 0, ad(0.0125), ap(0.0075)))
+                .mana(40)
+                .cd(13, -1.5);
 
         E.update(P414)
                 .active("指定方向に貫通する弾を発射し、当たった敵ユニットに{1}と1秒間{2}を与える。弾の通過点に4秒間持続する液体が残り、その上にいる敵ユニットに{2}を与える。")
@@ -2586,13 +2587,14 @@ public interface SkillDefinition {
                 .cd(12)
                 .range(1280);
 
-        R.update(P414)
-                .active("指定地点を砲撃し、0.6秒後に{1}の敵ユニットに{2}を与える。敵チャンピオンには{3}を与える。4秒間そのユニットの{4}。このスキルを使うたびにスタックが増加し、1スタックにつきこのスキルの消費マナが40ずつ増加していく。スタックは6秒間持続し最大10。")
+        R.update(P522)
+                .active("指定地点を砲撃し、0.6秒後に{1}の敵ユニットに{2}を与える。", Health, "が50%以下の敵には{3}を与え、25%以下の敵には{4}を与える。2秒間そのユニットの{5}。このスキルを使うたびにスタックが増加し、1スタックにつきこのスキルの消費マナが50ずつ増加していく。スタックは10秒間持続し最大10。")
                 .variable(1, Radius, 200)
-                .variable(2, MagicDamage, 80, 40, ap(0.3), bounusAD(0.5))
-                .variable(3, MagicDamage, 160, 80, ap(0.3), bounusAD(0.5))
-                .variable(4, Visionable)
-                .cost(Mana, new Diff(40, 0, 1), amplify(Stack, 40))
+                .variable(2, MagicDamage, 70, 40, ap(0.25), bounusAD(0.65))
+                .variable(3, MagicDamage, 140, 80, ap(0.5), bounusAD(1.3))
+                .variable(4, MagicDamage, 210, 120, ap(0.75), bounusAD(1.95))
+                .variable(5, Visionable)
+                .cost(Mana, new Diff(50, 0, 1), amplify(Stack, 50))
                 .cd(2, -0.5)
                 .range(1400, 300);
     }

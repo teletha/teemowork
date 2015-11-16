@@ -596,12 +596,13 @@ public enum Status {
     public String format(double computed) {
         switch (this) {
         case Critical:
-        case MS:
         case DamageRatio:
         case CriticalDamageRatio:
         case AttackDamage:
         case AttackDamageRatio:
+        case MS:
         case MSRatio:
+        case AS:
         case ASRatio:
         case ADRatio:
         case APRatio:

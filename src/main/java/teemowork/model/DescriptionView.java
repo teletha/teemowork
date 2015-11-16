@@ -118,7 +118,8 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                         amp = resolver.convertLevel(calculator);
                     }
 
-                    int size = resolver.estimateSize();
+                    int estimated = resolver.estimateSize();
+                    int size = estimated == 0 ? amplifier.getAmplifiers().isEmpty() ? 0 : 1 : estimated;
                     int current = amp;
 
                     box(contents(1, size, i -> {
