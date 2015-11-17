@@ -2042,7 +2042,7 @@ public interface SkillDefinition {
                 .range(240);
 
         R.update(P301)
-                .active("射撃形態に変身する。射程が500になり、次の通常攻撃は５秒間{1}と{2}を与える。{3}。")
+                .active("射撃形態に変身する。射程が500になり、５秒間、次の通常攻撃は{1}と{2}を得る。{3}。")
                 .variable(1, ARPenRatio, 10, 5)
                 .variable(2, MRPenRatio, 10, 5)
                 .variable(3, NotSpellCast);
