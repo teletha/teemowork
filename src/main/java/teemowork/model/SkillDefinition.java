@@ -380,7 +380,7 @@ public interface SkillDefinition {
      */
     public static void Ashe(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P522)
-                .passive("スキルと通常攻撃は対象に2秒間{1}を与える。またこのスキルで", MSSlow, "を付与した対象に通常攻撃を行うと追加{2}を与える。この", Damage, "は", Critical, "によって上昇する。また、クリティカルが発生した場合、", Damage, "が増加する代わりに", MSSlowRatio, "の効果が2倍になる。")
+                .passive("スキルと通常攻撃は対象に2秒間{1}を与える。またこのスキルで", MSSlow, "を付与した対象に通常攻撃を行うと追加{2}を与える。また、クリティカルが発生した場合、", Damage, "が増加する代わりに", MSSlowRatio, "の効果が2倍になる。")
                 .variable(1, MSSlowRatio, new Per3Level(5, 4))
                 .variable(2, PhysicalDamage, amplify(AD, 0.1, 0, amplify(Critical, 0.01)));
 
