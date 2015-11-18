@@ -380,22 +380,21 @@ public interface SkillDefinition {
      */
     public static void Ashe(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P522)
-                .passive("スキルと通常攻撃は対象に2秒間{1}を与える。またこのスキルで", MSSlow, "を付与した対象に通常攻撃を行う場合、常にクリティカルが発生する。この", Damage, "は", Critical, "によって上昇する。その代わり通常状態の敵へのクリティカルは発生しない。")
-                .variable(1, MSSlowRatio, new Per3Level(5, 6));
+                .passive("スキルと通常攻撃は対象に2秒間{1}を与える。またこのスキルで", MSSlow, "を付与した対象に通常攻撃を行うと追加{2}を与える。この", Damage, "は", Critical, "によって上昇する。また、クリティカルが発生した場合、", Damage, "が増加する代わりに", MSSlowRatio, "の効果が2倍になる。")
+                .variable(1, MSSlowRatio, new Per3Level(5, 4))
+                .variable(2, PhysicalDamage, amplify(AD, 0.1, 0, amplify(Critical, 0.01)));
 
-        Q.update(P511)
-                .passive("スキルもしくは通常攻撃が敵に命中することで4秒間「フォーカス」のチャージを獲得。最大で5チャージ。")
-                .active("「フォーカス」の全チャージを消費して4秒間", P, "による", MSSlow, "効果が{1}になり、{2}する。5チャージ消費されると、通常攻撃が5回に分けて合計{3}を与えるようになる。On-Hit Effectsは5連射の初撃のみ有効(Hurricaneは5回発動)。")
-                .variable(1, MSSlowRatio, new Per3Level(6, 7.2))
-                .variable(2, ASRatio, 20, 5)
-                .variable(3, PhysicalDamage, amplify(AD, 1.15, 0.05))
-                .mana(50)
-                .cd(12, -2)
-                .range(1200);
+        Q.update(P522)
+                .passive("通常攻撃するたびに4秒間持続するスタックを得る(最大5スタック)。")
+                .active("5スタックを消費して4秒間{1}し、通常攻撃が5回に分けて合計{2}を与えるようになる。On-Hit Effectsは5連射の初撃のみ有効(Hurricaneは5回発動)。")
+                .variable(1, ASRatio, 20, 5)
+                .variable(2, PhysicalDamage, amplify(AD, 1.15, 0.05))
+                .mana(50);
 
-        W.update(P511)
-                .active("非貫通の矢を扇状に発射し、それぞれ敵に命中するごとに{1}を与える。敵はこのスキルによって放たれる矢を複数遮ることができるが、ダメージは最初に当たった矢の分のみ受ける。")
+        W.update(P522)
+                .active("非貫通の矢を扇状に発射し、それぞれ敵に命中するごとに{1}と2秒間{2}を与える。敵はこのスキルによって放たれる矢を複数遮ることができるが、ダメージは最初に当たった矢の分のみ受ける。")
                 .variable(1, PhysicalDamage, 20, 15, ad(1))
+                .variable(2, MSSlowRatio, new Per3Level(10, 8))
                 .range(1200)
                 .cd(12, -2)
                 .mana(40);
