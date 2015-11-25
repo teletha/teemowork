@@ -1825,7 +1825,42 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Illaoi(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P523)
+                .passive("一定時間ごとに、Tentacleを近くの壁に召喚する。Tentacleはキルされるか、", champion, "が一定距離離れてから1分以上経過すると消える。Tentacleが攻撃すると線上の敵に{1}を与える。")
+                .variable(1, PhysicalDamage, 0, 0, level(10), ad(1.2))
+                .cd(new Per2Level(-20, 1));
 
+        Q.update(P523)
+                .passive("Tentacleが敵チャンピオンに", Damage, "を与えるたびに、{1}する。")
+                .variable(1, RestoreHealth, amplify(MissingHealthRatio, 5))
+                .active("指定方向の地面を触手で叩きつけて命中した敵に{2}を与える。")
+                .variable(2, PhysicalDamage, 0, 0, level(10), amplify(AD, 1.2, 0.1))
+                .cd(10, -1)
+                .mana(40, 5)
+                .range(800);
+
+        W.update(P523)
+                .active("次の通常攻撃は{1}し追加{2}を与え、対象に飛びつくようになる。自身が対象に飛びつく時、同時に近くのTentacleも対象を攻撃する。{3}。")
+                .variable(1, Range)
+                .variable(2, PhysicalDamage, 15, 20, ad(0.1))
+                .variable(3, ResetAATimer)
+                .cd(6, -0.5)
+                .mana(30);
+
+        E.update(P523)
+                .active("指定方向に触手をとばして命中した敵チャンピオンの魂を抜き取る。味方は魂を攻撃することができる。魂をキルした時、または魂の主が一定範囲外に出た時に魂は消え、それまでに魂に与えた", Damage, "に応じて{1}と2秒かけて減衰する{2}を与えると同時に、対象を60秒間Vesselにする。Vessel状態の敵がいるとき、10秒毎にTentacleを対象の付近の壁に召喚する。")
+                .variable(1, PhysicalDamage, 0, 0, amplify(DealtDamageRatio, 25, 5, amplify(AD, 0.08)))
+                .variable(2, MSSlowRatio, 80)
+                .mana(35, 10)
+                .cd(20, -2)
+                .range(900);
+
+        R.update(P523)
+                .active("地面を叩きつけ{1}の敵に{2}を与え、当たった敵の数だけターゲット不可のTentacleを召喚する。このスキルを使用後、8秒間TentacleのASが50％増加し、また", W, "の", CD, "が2秒になる。")
+                .variable(1, Radius, 450)
+                .variable(2, PhysicalDamage, 150, 100, bounusAD(0.5))
+                .mana(100)
+                .cd(120, -15);
     }
 
     /**
@@ -4948,7 +4983,7 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Thresh(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update()
+        P.update(P514)
                 .passive("{1}で敵ユニットが死んだ場合、一定の確率で魂を落とす。魂へ近づくか", W, "のランタンを魂の近くに置くとその魂を回収し、{2}と{3}を得る。落とした魂は15秒間持続し、敵チームがThreshの視界を得ていた場合、敵チームからも視認することができる。")
                 .variable(1, Radius, 1900)
                 .variable(2, AR, amplify(Stack, 0.75))

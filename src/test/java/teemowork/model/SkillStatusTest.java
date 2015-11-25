@@ -82,7 +82,7 @@ public class SkillStatusTest {
         private EmptySkill() {
             super("name", "name", "owner", 0);
 
-            update();
+            update(Version.P301);
         }
 
         /**

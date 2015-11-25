@@ -1391,7 +1391,7 @@ public class Item extends Describable<ItemDescriptor> {
             for (Field field : Item.class.getFields()) {
                 if (Modifier.isStatic(field.getModifiers())) {
                     Item item = (Item) field.get(null);
-                    ItemDescriptor descriptor = item.update();
+                    ItemDescriptor descriptor = item.update(Version.P301);
 
                     if (item.data.from != null) {
                         descriptor.build(item.data.from);

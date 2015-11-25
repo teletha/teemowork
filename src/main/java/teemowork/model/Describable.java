@@ -66,17 +66,6 @@ public abstract class Describable<T extends Descriptor> {
      * Update descriptor.
      * </p>
      * 
-     * @return A oldest descriptor.
-     */
-    protected final T update() {
-        return update(Version.P301);
-    }
-
-    /**
-     * <p>
-     * Update descriptor.
-     * </p>
-     * 
      * @return A descriptor of the specified version.
      */
     protected final T update(Version version) {

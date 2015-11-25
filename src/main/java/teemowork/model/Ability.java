@@ -427,7 +427,7 @@ public class Ability extends Describable<AbilityDescriptor> {
             for (Field field : Ability.class.getFields()) {
                 if (Modifier.isStatic(field.getModifiers())) {
                     Ability ability = (Ability) field.get(null);
-                    ability.descriptor.accept(ability.update());
+                    ability.descriptor.accept(ability.update(Version.P301));
                 }
             }
         } catch (Exception e) {

@@ -10,6 +10,7 @@
 package teemowork.model;
 
 import static teemowork.model.Status.*;
+import static teemowork.model.Version.*;
 
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
@@ -82,32 +83,32 @@ public class MasterySeason4 extends Mastery {
     public static final MasterySeason4 Havoc = new MasterySeason4("Havoc", 1, Offense, 5);
 
     static {
-        DoubleEdgedSword.update()
+        DoubleEdgedSword.update(P401)
                 .passive("Melee : {1}し、被ダメージが1%増加する。<br>Ranged : {2}し、被ダメージが1.5%増加する。")
                 .variable(1, DamageRatio, 2)
                 .variable(2, DamageRatio, 1.5);
-        Fury.update().passive("{1}する。").variable(1, ASRatio, 1.25, 1.25);
-        Sorcery.update().passive("{1}を得る。").variable(1, CDR, 1.25, 1.25);
-        Butcher.update().passive("ミニオンやモンスターへの通常攻撃や単一対象スキルのダメージが2増加する。(AoE及びDoTスキルは対象外)");
-        ExposeWeakness.update().passive("スキルでダメージを与えた対象は、3秒間味方から受けるダメージが1%増加するようになる。");
-        BruteForce.update().passive("{1}を得る。").variable(1, AD, 0, 0, amplify(Lv, 0.22, 0.22));
-        MentalForce.update().passive("{1}を得る。").variable(1, AP, 0, 0, amplify(Lv, 0.33, 0.28));
-        Feast.update().passive("敵を倒す毎に{1}し{2}する。").variable(1, RestoreHealth, 2).variable(2, RestoreMana, 1);
-        SpellWeaving.update().passive("通常攻撃でChampionにダメージを与えると、5秒間自身のスキルの与ダメージが1%増加する。この効果は3回までスタックする。");
-        MartialMastery.update().passive("{1}を得る。").variable(1, AD, 4);
-        ArcaneMastery.update().passive("{1}を得る。").variable(1, AP, 6);
-        Executioner.update().passive("対象のHealthが{1}以下の時、{2}する。").variable(1, Percentage, 20, 15).variable(2, DamageRatio, 5);
-        BladeWeaving.update().passive("スキルでChampionにダメージを与えると、5秒間自身の通常攻撃の与ダメージが1%増加する。この効果は3回までスタックする。");
-        Warlord.update().passive("{1}を得る。").variable(1, AD, 0, 0, amplify(BounusAD, 0.02, 0.015));
-        Archmage.update().passive("{1}する。").variable(1, APRatio, 2, 1.5);
-        DangerousGame.update()
+        Fury.update(P401).passive("{1}する。").variable(1, ASRatio, 1.25, 1.25);
+        Sorcery.update(P401).passive("{1}を得る。").variable(1, CDR, 1.25, 1.25);
+        Butcher.update(P401).passive("ミニオンやモンスターへの通常攻撃や単一対象スキルのダメージが2増加する。(AoE及びDoTスキルは対象外)");
+        ExposeWeakness.update(P401).passive("スキルでダメージを与えた対象は、3秒間味方から受けるダメージが1%増加するようになる。");
+        BruteForce.update(P401).passive("{1}を得る。").variable(1, AD, 0, 0, amplify(Lv, 0.22, 0.22));
+        MentalForce.update(P401).passive("{1}を得る。").variable(1, AP, 0, 0, amplify(Lv, 0.33, 0.28));
+        Feast.update(P401).passive("敵を倒す毎に{1}し{2}する。").variable(1, RestoreHealth, 2).variable(2, RestoreMana, 1);
+        SpellWeaving.update(P401).passive("通常攻撃でChampionにダメージを与えると、5秒間自身のスキルの与ダメージが1%増加する。この効果は3回までスタックする。");
+        MartialMastery.update(P401).passive("{1}を得る。").variable(1, AD, 4);
+        ArcaneMastery.update(P401).passive("{1}を得る。").variable(1, AP, 6);
+        Executioner.update(P401).passive("対象のHealthが{1}以下の時、{2}する。").variable(1, Percentage, 20, 15).variable(2, DamageRatio, 5);
+        BladeWeaving.update(P401).passive("スキルでChampionにダメージを与えると、5秒間自身の通常攻撃の与ダメージが1%増加する。この効果は3回までスタックする。");
+        Warlord.update(P401).passive("{1}を得る。").variable(1, AD, 0, 0, amplify(BounusAD, 0.02, 0.015));
+        Archmage.update(P401).passive("{1}する。").variable(1, APRatio, 2, 1.5);
+        DangerousGame.update(P401)
                 .passive("Championを倒すと{1}し、{2}する。")
                 .variable(1, RestoreHealth, 0, 0, amplify(MissingHealthRatio, 5))
                 .variable(2, RestoreMana, 0, 0, amplify(Status.MissingManaRatio, 5));
-        Frenzy.update().passive("クリティカルが発生すると3秒間{1}する。この効果は3回までスタックする。").variable(-1, ASRatio, 5);
-        DevastatingStrikes.update().passive("{1}と{2}を得る。").variable(1, ARPenRatio, 2, 2).variable(2, MRPenRatio, 2, 2);
-        ArcaneBlade.update().passive("通常攻撃に{1}を付与する。").variable(1, MagicDamage, 0, 0, ap(0.05));
-        Havoc.update().passive("{1}する。").variable(1, DamageRatio, 3);
+        Frenzy.update(P401).passive("クリティカルが発生すると3秒間{1}する。この効果は3回までスタックする。").variable(-1, ASRatio, 5);
+        DevastatingStrikes.update(P401).passive("{1}と{2}を得る。").variable(1, ARPenRatio, 2, 2).variable(2, MRPenRatio, 2, 2);
+        ArcaneBlade.update(P401).passive("通常攻撃に{1}を付与する。").variable(1, MagicDamage, 0, 0, ap(0.05));
+        Havoc.update(P401).passive("{1}する。").variable(1, DamageRatio, 3);
     }
 
     /** Mastery */
@@ -168,35 +169,37 @@ public class MasterySeason4 extends Mastery {
     public static final MasterySeason4 Tenacious = new MasterySeason4("Tenacious", 1, Defense, 5);
 
     static {
-        Block.update().passive("敵Championから受ける{1}する。").variable(1, AttackDamageReduction, 1, 1);
-        Recovery.update().passive("{1}を得る。").variable(1, Hreg, 1, 1);
-        EnchantedArmor.update()
+        Block.update(P401).passive("敵Championから受ける{1}する。").variable(1, AttackDamageReduction, 1, 1);
+        Recovery.update(P401).passive("{1}を得る。").variable(1, Hreg, 1, 1);
+        EnchantedArmor.update(P401)
                 .passive("{1}と{2}を得る。")
                 .variable(1, AR, 0, 0, amplify(BounusAR, 0.025, 0.025))
                 .variable(2, MR, 0, 0, amplify(BounusMR, 0.025, 0.025));
-        ToughSkin.update().passive("モンスターから受ける{1}する。").variable(1, DamageReduction, 1, 1);
-        Unyielding.update()
+        ToughSkin.update(P401).passive("モンスターから受ける{1}する。").variable(1, DamageReduction, 1, 1);
+        Unyielding.update(P401)
                 .passive("Melee : Championから受ける{1}する。<br>Ranged : Championから受ける{2}する。")
                 .variable(1, DamageReduction, 2)
                 .variable(2, DamageReduction, 1);
-        VeteranScars.update().passive("{1}を得る。").variable(1, Health, 12, 12);
-        BladedArmor.update().passive("攻撃してきたモンスターを出血状態にし、毎秒{1}を与える。").variable(1, TrueDamage, 0, 0, amplify(TargetCurrentHealthRatio, 1));
-        Oppression.update().passive("スタン,スロー, タウント, フィアー, スネア, 打ち上げ, ノックバック,もしくはサプレッションを受けている敵ユニットから受ける被ダメージが3%減少する。");
-        Juggernaut.update().passive("{1}する。").variable(1, HealthRatio, 3);
-        Hardiness.update().passive("{1}を得る。").variable(1, AR, 2, 1.5);
-        Resistance.update().passive("{1}を得る。").variable(1, MR, 2, 1.5);
-        Perseverance.update().passive("{1}を得る。").variable(1, Hreg, 0, 0, amplify(MissingHealthPercentage, 0.35, 0.325));
-        Swiftness.update().passive("{1}する。").variable(1, MSSlowReductionRatio, 10);
-        ReinforcedArmor.update().passive("クリティカルヒットから受ける{1}する。").variable(1, DamageReductionRatio, 10);
-        Evasive.update().passive("AoEスキルから受ける{1}する。").variable(1, DamageReductionRatio, 10);
-        SecondWind.update().passive("Healthが25%以下の時、{1}する。").variable(1, RestoreHealthRatio, 10);
-        LegendaryGuardian.update()
+        VeteranScars.update(P401).passive("{1}を得る。").variable(1, Health, 12, 12);
+        BladedArmor.update(P401)
+                .passive("攻撃してきたモンスターを出血状態にし、毎秒{1}を与える。")
+                .variable(1, TrueDamage, 0, 0, amplify(TargetCurrentHealthRatio, 1));
+        Oppression.update(P401).passive("スタン,スロー, タウント, フィアー, スネア, 打ち上げ, ノックバック,もしくはサプレッションを受けている敵ユニットから受ける被ダメージが3%減少する。");
+        Juggernaut.update(P401).passive("{1}する。").variable(1, HealthRatio, 3);
+        Hardiness.update(P401).passive("{1}を得る。").variable(1, AR, 2, 1.5);
+        Resistance.update(P401).passive("{1}を得る。").variable(1, MR, 2, 1.5);
+        Perseverance.update(P401).passive("{1}を得る。").variable(1, Hreg, 0, 0, amplify(MissingHealthPercentage, 0.35, 0.325));
+        Swiftness.update(P401).passive("{1}する。").variable(1, MSSlowReductionRatio, 10);
+        ReinforcedArmor.update(P401).passive("クリティカルヒットから受ける{1}する。").variable(1, DamageReductionRatio, 10);
+        Evasive.update(P401).passive("AoEスキルから受ける{1}する。").variable(1, DamageReductionRatio, 10);
+        SecondWind.update(P401).passive("Healthが25%以下の時、{1}する。").variable(1, RestoreHealthRatio, 10);
+        LegendaryGuardian.update(P401)
                 .passive("{1}に敵Championがいる場合、{2}と{3}を得る。")
                 .variable(1, Radius, 700)
                 .variable(2, AR, 0, 0, amplify(EnemyChampion, 1, 1))
                 .variable(3, MR, 0, 0, amplify(EnemyChampion, 0.5, 0.5));
-        RunicShield.update().passive("ゲーム開始時とRespawnする時、{1}を得る。").variable(1, Shield, 50);
-        Tenacious.update().passive("{1}を得る。").variable(1, Tenacity, 15);
+        RunicShield.update(P401).passive("ゲーム開始時とRespawnする時、{1}を得る。").variable(1, Shield, 50);
+        Tenacious.update(P401).passive("{1}を得る。").variable(1, Tenacity, 15);
     }
 
     /** Mastery */
@@ -254,27 +257,27 @@ public class MasterySeason4 extends Mastery {
     public static final MasterySeason4 Wanderer = new MasterySeason4("Wanderer", 1, Utility, 5);
 
     static {
-        Phasewalker.update().passive("Recallの詠唱時間が1秒短くなる。");
-        FleetOfFoot.update().passive("{1}する。").variable(1, MSRatio, 0.5, 0.5);
-        Meditation.update().passive("{1}を得る。").variable(1, Mreg, 1, 1);
-        Scout.update().passive("Trinket系アイテムの射程が25%増加する。");
-        SummonersInsight.update().passive("{Summoner SpellのCDが{1}減少する。").variable(1, Percentage, 4, 3);
-        StrengthOfSpirit.update().passive("{1}を得る。").variable(1, Hreg, 0, 0, amplify(Mana, 0.0033));
-        Alchemist.update().passive("PotionとElixir系のアイテムの持続時間が10%増加する。");
-        Greed.update().passive("{1}を得る。").variable(1, GoldPer10Sec, 0.5, 0.5);
-        RunicAffinity.update().passive("BaronBuff以外のBuffの効果時間が20%延長される。");
-        Vampirism.update().passive("{1}と{2}を得る。").variable(1, LS, 1, 1).variable(2, SV, 1, 1);
-        CulinaryMaster.update().passive("Health PotionがTotal Biscuit of Rejuvenationになり、使用時は即座にHealthを20、Manaを10回復する。");
-        Scavenger.update().passive("自分以外の味方が近くのミニオンを倒すと{1}を得る。").variable(1, Gold, 1);
-        Wealth.update().passive("ゲーム開始時に{1}を得る。").variable(1, Gold, 40);
-        ExpandedMind.update().passive("{1}を得る。").variable(1, Mana, 0, 0, amplify(Mana, 0.02, 0.015));
-        Inspiration.update().passive("レベルが自分よりも高い味方の側にいると、1秒毎に{1}を得る。").variable(1, Experiment, 0.5, 0.5);
-        Bandit.update()
+        Phasewalker.update(P401).passive("Recallの詠唱時間が1秒短くなる。");
+        FleetOfFoot.update(P401).passive("{1}する。").variable(1, MSRatio, 0.5, 0.5);
+        Meditation.update(P401).passive("{1}を得る。").variable(1, Mreg, 1, 1);
+        Scout.update(P401).passive("Trinket系アイテムの射程が25%増加する。");
+        SummonersInsight.update(P401).passive("{Summoner SpellのCDが{1}減少する。").variable(1, Percentage, 4, 3);
+        StrengthOfSpirit.update(P401).passive("{1}を得る。").variable(1, Hreg, 0, 0, amplify(Mana, 0.0033));
+        Alchemist.update(P401).passive("PotionとElixir系のアイテムの持続時間が10%増加する。");
+        Greed.update(P401).passive("{1}を得る。").variable(1, GoldPer10Sec, 0.5, 0.5);
+        RunicAffinity.update(P401).passive("BaronBuff以外のBuffの効果時間が20%延長される。");
+        Vampirism.update(P401).passive("{1}と{2}を得る。").variable(1, LS, 1, 1).variable(2, SV, 1, 1);
+        CulinaryMaster.update(P401).passive("Health PotionがTotal Biscuit of Rejuvenationになり、使用時は即座にHealthを20、Manaを10回復する。");
+        Scavenger.update(P401).passive("自分以外の味方が近くのミニオンを倒すと{1}を得る。").variable(1, Gold, 1);
+        Wealth.update(P401).passive("ゲーム開始時に{1}を得る。").variable(1, Gold, 40);
+        ExpandedMind.update(P401).passive("{1}を得る。").variable(1, Mana, 0, 0, amplify(Mana, 0.02, 0.015));
+        Inspiration.update(P401).passive("レベルが自分よりも高い味方の側にいると、1秒毎に{1}を得る。").variable(1, Experiment, 0.5, 0.5);
+        Bandit.update(P401)
                 .passive("Melee : キルもしくはアシストを取ると{1}を得る。<br>Ranged : 敵Championに通常攻撃でダメージを与える毎に{2}を得る。CDは5秒。")
                 .variable(1, Gold, 15)
                 .variable(2, Gold, 3);
-        Intelligence.update().passive("{1}を得る。また、アイテムのActiveのCDが{2}減少する。").variable(1, CDR, 2, 1.5).variable(2, Percentage, 4, 3);
-        Wanderer.update().passive("非戦闘時、{1}する。").variable(1, MSRatio, 5);
+        Intelligence.update(P401).passive("{1}を得る。また、アイテムのActiveのCDが{2}減少する。").variable(1, CDR, 2, 1.5).variable(2, Percentage, 4, 3);
+        Wanderer.update(P401).passive("非戦闘時、{1}する。").variable(1, MSRatio, 5);
     }
 
     /**
