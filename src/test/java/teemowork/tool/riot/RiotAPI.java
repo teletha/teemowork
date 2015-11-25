@@ -95,7 +95,7 @@ public class RiotAPI {
      */
     public static <M> M parse(String location, Class<M> modelClass, Version version, Locale locale) {
         try {
-            String uri = DRAGON_URL + version.name + ".3/data/" + locale + "/" + location + ".json";
+            String uri = DRAGON_URL + version.name + ".1/data/" + locale + "/" + location + ".json";
 
             M m = I.make(modelClass);
             Model model = Model.load(m.getClass());

@@ -262,6 +262,8 @@ public enum Status {
 
     Blind("ブラインド", 3),
 
+    NearSight("視界減少", 3),
+
     Taunt("タウント", 3),
 
     Suppression("サプレッション", 3),
@@ -567,6 +569,7 @@ public enum Status {
         case CD:
         case CDRAwareTime:
         case CDDecrease:
+        case NearSight:
             return "秒";
 
         case Stealth:

@@ -283,8 +283,8 @@ public class Ability extends Describable<AbilityDescriptor> {
     /** The ability. */
     public static final Ability Tooth = new Ability("Tooth", ability -> {
         ability.passive("モンスターへのダメージを与えると5秒間かけて{1}与え、{2}する。大型モンスターを倒すと{3}を得る。ジャングル内にいる時{4}する。")
-                .variable(1, TrueDamage, 20)
-                .variable(2, RestoreHealth, 20)
+                .variable(1, TrueDamage, 25)
+                .variable(2, RestoreHealth, 25)
                 .variable(3, Experiment, 15)
                 .variable(4, MregRatio, 150);
     });

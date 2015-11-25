@@ -142,11 +142,6 @@ public class Item extends Describable<ItemDescriptor> {
         item.attackSpeed(30).add(Ability.EnhancedMovement2);
     });
 
-    /** Berserker's Greaves */
-    public static final Item BerserkersGreavesHomeguard = new Item(RiotItemData.BerserkersGreavesHomeguard, item -> {
-        item.attackSpeed(30).add(Ability.EnhancedMovement2);
-    });
-
     /** Bilgewater Cutlass */
     public static final Item BilgewaterCutlass = new Item(RiotItemData.BilgewaterCutlass, item -> {
         item.lifeSteal(10).attackDamage(25).add(ability -> {
@@ -220,11 +215,6 @@ public class Item extends Describable<ItemDescriptor> {
         item.add(Ability.EnhancedMovement5);
     });
 
-    /** Boots of Mobility */
-    public static final Item BootsofMobilityHomeguard = new Item(RiotItemData.BootsofMobilityHomeguard, item -> {
-        item.add(Ability.EnhancedMovement5);
-    });
-
     /** Boots of Speed */
     public static final Item BootsOfSpeed = new Item(RiotItemData.BootsofSpeed, item -> {
         item.add(Ability.EnhancedMovement1);
@@ -252,11 +242,6 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Boots of Swiftness */
     public static final Item BootsofSwiftnessFuror = new Item(RiotItemData.BootsofSwiftnessFuror, item -> {
-        item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
-    });
-
-    /** Boots of Swiftness */
-    public static final Item BootsofSwiftnessHomeguard = new Item(RiotItemData.BootsofSwiftnessHomeguard, item -> {
         item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
     });
 
@@ -650,11 +635,6 @@ public class Item extends Describable<ItemDescriptor> {
         item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
     });
 
-    /** Ionian Boots of Lucidity */
-    public static final Item IonianBootsofLucidityHomeguard = new Item(RiotItemData.IonianBootsofLucidityHomeguard, item -> {
-        item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
-    });
-
     /** Jaurim's Fist */
     public static final Item JaurimsFist = new Item(RiotItemData.JaurimsFist, item -> {
         item.attackDamage(15).health(150).add(ability -> {
@@ -773,11 +753,6 @@ public class Item extends Describable<ItemDescriptor> {
         item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
     });
 
-    /** Mercury's Treads */
-    public static final Item MercurysTreadsHomeguard = new Item(RiotItemData.MercurysTreadsHomeguard, item -> {
-        item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
-    });
-
     /** Mikael's Crucible */
     public static final Item MikaelsCrucible = new Item(RiotItemData.MikaelsCrucible, item -> {
         item.cooldownReduction(10).magicRegist(35).manaRegenRatio(100).add(Ability.ManaFont).add(ability -> {
@@ -849,11 +824,6 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Ninja Tabi */
     public static final Item NinjaTabiFuror = new Item(RiotItemData.NinjaTabiFuror, item -> {
-        item.armor(30).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
-    });
-
-    /** Ninja Tabi */
-    public static final Item NinjaTabiHomeguard = new Item(RiotItemData.NinjaTabiHomeguard, item -> {
         item.armor(30).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
     });
 
@@ -963,7 +933,7 @@ public class Item extends Describable<ItemDescriptor> {
     /** Refillable Potion */
     public static final Item RefillablePotion = new Item(RiotItemData.RefillablePotion, item -> {
         item.add(ability -> {
-            ability.ununique().active("チャージを消費して10秒かけて{1}する。お店に寄るごとに2チャージを得る。").variable(1, RestoreHealth, 100);
+            ability.ununique().active("チャージを消費して12秒かけて{1}する。お店に寄るごとに2チャージを得る。").variable(1, RestoreHealth, 125);
         });
     });
 
@@ -1126,11 +1096,6 @@ public class Item extends Describable<ItemDescriptor> {
         item.set(MRPen, 15).add(Ability.EnhancedMovement2);
     });
 
-    /** Sorcerer's Shoes */
-    public static final Item SorcerersShoesHomeguard = new Item(RiotItemData.SorcerersShoesHomeguard, item -> {
-        item.set(MRPen, 15).add(Ability.EnhancedMovement2);
-    });
-
     /** Spectre's Cowl */
     public static final Item SpectresCowl = new Item(RiotItemData.SpectresCowl, item -> {
         item.health(200).magicRegist(35).add(ability -> {
@@ -1188,8 +1153,8 @@ public class Item extends Describable<ItemDescriptor> {
     /** Statikk Shiv */
     public static final Item StatikkShiv = new Item(RiotItemData.StatikkShiv, item -> {
         item.attackSpeed(35).movementSpeed(5).critical(30).add(Ability.Energize).add(ability -> {
-            ability.passive("チャージされた通常攻撃は対象に雷を放ち{1}を与える。雷は対象の付近の敵ユニット({2})4体にも連鎖し同様のダメージを与える。雷によるダメージはクリティカルの影響を受ける。建物には無効。ミニオンに対してはダメージが50%増加。")
-                    .variable(1, MagicDamage, 41, 0, level(8.83))
+            ability.passive("チャージされた通常攻撃は対象に雷を放ち{1}を与える。雷は対象の付近の敵ユニット({2})4体にも連鎖し同様のダメージを与える。雷によるダメージはクリティカルの影響を受ける。建物には無効。ミニオンに対してはダメージが75%増加。")
+                    .variable(1, MagicDamage, 30, 0, level(4.11))
                     .variable(2, Radius, 300);
         });
     });

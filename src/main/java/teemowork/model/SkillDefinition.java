@@ -476,8 +476,8 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Bard(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P508)
-                .passive("鐘が50秒毎に2個ずつ、自身から一定の範囲内に出現する(2回目と3回目は1個のみ。また、試合開始から5分経過すると、敵ジャングル内にも出現し始める)。鐘を取ると、非戦闘時に7秒間{1}し(5回までスタック)、{2}（経過時間に比例）を得て、{3}する。鐘は10分経つと消滅する。<br>通常攻撃の際、スタックを消費して{4}を与える。<br>5個: 1秒間{5}<br>25: ターゲットの後方にも追加効果<br>65: 効果範囲が拡大")
+        P.update(P523)
+                .passive("鐘が35秒毎に2個ずつ、自身から一定の範囲内に出現する(2回目と3回目は1個のみ。また、試合開始から5分経過すると、敵ジャングル内にも出現し始める)。鐘を取ると、非戦闘時に7秒間{1}し(5回までスタック)、{2}（経過時間に比例）を得て、{3}する。鐘は10分経つと消滅する。<br>通常攻撃の際、スタックを消費して{4}を与える。<br>5個: 1秒間{5}<br>25: ターゲットの後方にも追加効果<br>65: 効果範囲が拡大")
                 .variable(-1, MSRatio)
                 .variable(2, Experiment, 20)
                 .variable(3, RestoreMana, amplify(Mana, 0.12))
@@ -667,10 +667,10 @@ public interface SkillDefinition {
                 .variable(4, Count, new Per6Level(7, -1))
                 .variable(5, PhysicalDamage, ad(1.5));
 
-        Q.update(P522)
+        Q.update(P523)
                 .active("1秒詠唱後、指定方向に貫通する弾を発射し最初に当たった敵に{1}を与える。2体目以降の敵には{2}を与える。", W, "で視界を得ている敵に対しては常に{1}を与える。")
                 .variable(1, PhysicalDamage, 25, 45, amplify(AD, 1.2, 0.1))
-                .variable(2, PhysicalDamage, 15, 27, amplify(AD, 0.72, 0.06))
+                .variable(2, PhysicalDamage, 16.5, 29.7, amplify(AD, 0.79, 0.066))
                 .mana(50, 10)
                 .cd(10, -1)
                 .range(1250);
@@ -1824,6 +1824,13 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
+    public static void Illaoi(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+
+    }
+
+    /**
+     * Define skill.
+     */
     public static void Irelia(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P301).passive("視界内の敵チャンピオン数に応じて{1}を得る。").variable(-1, Tenacity, new PerChampion(10, 25, 40)).range(1200);
 
@@ -2467,7 +2474,7 @@ public interface SkillDefinition {
                         190), ap(0.5), null)
                 .variable(2, MSSlowRatio, 25);
 
-        Q.update(P511)
+        Q.update(P523)
                 .passive("{1}に仲間がいない孤立している敵ユニットにマークを付与する。")
                 .variable(1, Radius, 425)
                 .active("対象の敵ユニットに{2}を与える。孤立している敵には{3}を与える。<br>進化すると孤立した敵ユニットに追加で{4}を与え、このスキルの射程と通常攻撃の{5}する。")
@@ -2475,7 +2482,7 @@ public interface SkillDefinition {
                 .variable(3, PhysicalDamage, 91, 32.5, bounusAD(1.56))
                 .variable(4, PhysicalDamage, 0, 0, bounusAD(1.04), level(10))
                 .variable(5, Range, 50)
-                .mana(25)
+                .mana(20)
                 .cd(3.5)
                 .range(325);
 
@@ -2827,11 +2834,10 @@ public interface SkillDefinition {
                 .cd(18, -1)
                 .range(425);
 
-        R.update(P522)
+        R.update(P523)
                 .active("一定方向に3秒間高速連射する。連射中は自由に移動可能。弾は敵を貫通せず、1発あたり{1}を与える。発砲する弾数は{2}。銃を連射している間は移動と", E, "のみが可能。また連射中にこのスキルを再使用することで連射を解除できる。ミニオンに対しては400%のダメージを与える。")
-                .variable(1, PhysicalDamage, 40, 10, ap(0.1), bounusAD(0.25))
+                .variable(1, PhysicalDamage, 20, 15, ap(0.1), ad(0.2))
                 .variable(2, Value, 20, 5)
-                .variable(3, PhysicalDamage, 1040, 460, amplify(AP, 2.6, 0.4), amplify(BounusAD, 6.5, 1.0))
                 .mana(100)
                 .cd(110, -10)
                 .range(1400);
@@ -3132,12 +3138,12 @@ public interface SkillDefinition {
                 .cd(7, -1)
                 .range(650);
 
-        W.update(P522)
+        W.update(P523)
                 .passive("5秒間ダメージを受けないと{1}する。以後徐々に増加して5秒後に{2}する。")
                 .variable(-1, MS, 25)
                 .variable(-2, MS, 60, 10)
                 .active("3秒間{3}し、{2}得る。", AS, "増加の効果時間は", P, "の効果が発動するたびに1秒延長される(チャンピオンを対象として発動した場合は2秒延長し、累計で最大3秒まで延長される)。")
-                .variable(3, ASRatio, 60, 15)
+                .variable(3, ASRatio, 60, 10)
                 .mana(30, 5)
                 .cd(12);
 
@@ -3174,34 +3180,31 @@ public interface SkillDefinition {
                 .variable(3, Value, amplify(Health, 0.25))
                 .variable(4, Value, amplify(BaseHealth, 0.015));
 
-        Q.update(P516)
-                .active("次の3回の通常攻撃は追加{1}を与える。このタメージは攻撃するたびに{2}倍になり、3発で合計{3}を与える。{4}。")
-                .variable(1, MagicDamage, 4, 4, amplify(AD, 0.25, 0.0125), ap(0.2))
-                .variable(2, Value, 2, 0.25)
-                .variable(3, MagicDamage, new PerSkillLevel(28, 66.5, 117, 181, 260), amplify(AD, new PerSkillLevel(1.75,
-                        2.182,
-                        2.681,
-                        3.196,
-                        3.9)), amplify(AP, new PerSkillLevel(1.4, 1.663, 1.95, 2.263, 2.6)))
+        Q.update(P523)
+                .active("次の2回の通常攻撃は追加{1}を与え、3回目の通常攻撃は追加{2}を与える。3発で合計{3}を与える。{4}。")
+                .variable(1, MagicDamage, 10, 10, amplify(AD, 0.5, 0.1), ap(0.6))
+                .variable(2, MagicDamage, 20, 20, amplify(AD, 1, 0.2), ap(1.2))
+                .variable(2, MagicDamage, 40, 40, amplify(AD, 2, 0.4), ap(2.4))
                 .variable(4, ResetAATimer)
                 .cd(10, -1.5)
                 .cost(Health, 20, 3);
 
-        W.update(P521)
+        W.update(P523)
                 .passive(champion, "がミニオンを倒した場合、経験値共有によって失われた量の50%を追加で得る。")
                 .active("4秒間 ", champion, "と対象の味方はお互いに向かって移動する時{1}する。それぞれの{2}にフィールドを生成し毎秒{3}を与える（このダメージは重複しない）。スキルを再度使用するとそれぞれのフィールドが消失し、最寄りの2体の敵に{4}を与え、", champion, "と味方は{5}する（ミニオンに当たった場合回復量は25%になる）。")
                 .variable(1, MS, 75)
                 .variable(2, Radius, 250)
                 .variable(3, MagicDamage, 35, 10, ap(0.225))
-                .variable(4, MagicDamage, 70, 25, ap(0.3))
+                .variable(4, MagicDamage, 50, 35, ap(0.3))
                 .variable(5, RestoreHealth, amplify(DealtDamageRatio, 100))
                 .cost(Health, 25, 10)
                 .cd(12, -1);
 
-        E.update(P516)
-                .active("指定方向扇形の{2}の敵ユニットに{1}を与える。")
-                .variable(1, MagicDamage, 35, 30, ad(0.6), ap(0.6))
-                .variable(2, Radius)
+        E.update(P523)
+                .active("指定方向扇形の{1}の敵ユニットに{2}を与える。敵チャンピオンに当たった場合は{3}を得る。")
+                .variable(1, Radius)
+                .variable(2, MagicDamage, 35, 30, ad(0.6), ap(0.6))
+                .variable(3, Shield, amplify(Health, 0.0375, 0.00625))
                 .cd(6, -0.25)
                 .range(675)
                 .cost(Health, 24, 12);
@@ -3753,17 +3756,17 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Quinn(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P522)
+        P.update(P523)
                 .passive("周囲の敵ユニット一体(チャンピオン優先)に自動的に4.5秒間持続するマークを付与する。マークが付与された敵ユニットに", champion, "が通常攻撃を行うと付与されたマークを消費して{1}を与える。またマークが付与された敵ユニットの{2}。このスキルの", CD, "は, ", Critical, "により減少する。", R, "を使用している間、この効果は発生しない。")
-                .variable(1, PhysicalDamage, ad(0.5))
+                .variable(1, PhysicalDamage, 10, 0, level(5), amplify(AD, 1.14, 0.02))
                 .variable(2, Visionable)
                 .cd(-8);
 
-        Q.update(P522)
-                .active("指定方向にValorを突撃させ、最初に当たった対象と{1}の敵ユニットに{2}と4.5秒間マークを与える。対象が失っている", Health, "1%につき、このスキルの", Damage, "が1%上昇する(最大で2倍)。また、このスキルで敵ユニットを倒した場合、このスキルの{3}する。")
+        Q.update(P523)
+                .active("指定方向にValorを突撃させ、最初に当たった対象と{1}の敵ユニットに{2}と4.5秒間のマーク及び{3}を与える。対象がチャンピオンでない場合は攻撃及びスキルの発動を封じる。")
                 .variable(1, Radius, 210)
-                .variable(2, PhysicalDamage, 20, 25, amplify(AD, 0.7, 0.05), ap(0.35))
-                .variable(3, CDDecreaseRatio, 50)
+                .variable(2, PhysicalDamage, 25, 30, amplify(AD, 0.8, 0.05), ap(0.5))
+                .variable(3, NearSight, 2)
                 .mana(50, 5)
                 .cd(11, -1)
                 .range(1025);
@@ -6020,18 +6023,18 @@ public interface SkillDefinition {
                 .cd(6)
                 .range(900);
 
-        W.update(P415)
+        W.update(P523)
                 .passive("{1}を得る。")
                 .variable(1, AD, amplify(BounusAD, 0.05, 0.05))
                 .active("「影」が指定方向にダッシュし({2})、4秒間その場に留まり{3}の{4}。再度このスキルを使用すると", champion, "と「影」の位置が{5}。「影」は", champion, "が通常スキルを使用すると同時に同じスキルを使用する。この時スキルが", champion, "のスキルと同一の敵ユニットに命中した場合、{6}する。回復効果はスキル1回毎に1度のみ発動する。")
-                .variable(2, MissileSpeed, 1500)
+                .variable(2, MissileSpeed, 1750)
                 .variable(3, Radius, 700)
                 .variable(4, Visionable)
                 .variable(5, BlinkExchange)
                 .variable(6, RestoreEnergy, 20, 5)
                 .cost(Energy, 40, -5)
                 .cd(18, -1)
-                .range(550);
+                .range(700);
 
         E.update(P307)
                 .active(champion, "と「影」から衝撃波を発生させ、{1}の敵ユニットに{2}を与える。", champion, "の", E, "は敵チャンピオンに当たる度に", W, "の{4}。「影」の", E, "はダメージと共に敵ユニットに1.5秒間{3}を与える。", champion, "と「影」が同一の対象にShadow Slashを命中させた場合、", Damage, "は重複しないがスローの効果が上昇する。")
@@ -6043,11 +6046,11 @@ public interface SkillDefinition {
                 .cd(4)
                 .range(290);
 
-        R.update(P516)
+        R.update(P523)
                 .active("対象の敵チャンピオンに{4}しマークを付与し、0.75秒間{1}になる。また詠唱地点に6秒間持続する「影」を召喚する。0.5秒経過後、再度このスキルを使用すると", champion, "と「影」の位置が{2}。付与から3秒後にマークは消費され、対象にマークが付与されている間に", champion, "と「影」が与えた", TrueDamage, "以外のダメージの合計に比例し{3}を与える。")
                 .variable(1, Untargetable)
                 .variable(2, BlinkExchange, 2000)
-                .variable(3, PhysicalDamage, 0, 0, ad(1), amplify(DealtDamageRatio, 20, 15))
+                .variable(3, PhysicalDamage, 0, 0, ad(1), amplify(DealtDamageRatio, 30, 10))
                 .variable(4, DashTarget)
                 .cd(120, -20)
                 .range(625);

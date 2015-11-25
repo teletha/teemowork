@@ -69,7 +69,7 @@ public class ImageBuilder {
 
         for (Item item : items) {
             EditableImage image = new EditableImage(
-                    download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".3/img/item/", item.id, ".png"));
+                    download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/item/", item.id, ".png"));
             image.trim(2).resize(45);
 
             container.concat(image);
@@ -89,7 +89,7 @@ public class ImageBuilder {
 
         for (ChampionDefinition champion : champions) {
             EditableImage image = new EditableImage(
-                    download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".3/img/champion/", champion.id, ".png"));
+                    download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/champion/", champion.id, ".png"));
             image.trim(7).resize(70);
 
             container.concat(image);
@@ -138,7 +138,7 @@ public class ImageBuilder {
             String directory = i == 0 ? "passive" : "spell";
 
             EditableImage image = new EditableImage(
-                    download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".3/img/", directory, "/", file));
+                    download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/", directory, "/", file));
             image.resize(45);
 
             container.concat(image);

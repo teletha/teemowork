@@ -9,9 +9,9 @@
  */
 package teemowork.api;
 
-import teemowork.model.SkillDefinition;
 import java.util.List;
 import java.util.ArrayList;
+import teemowork.model.SkillDefinition;
 import teemowork.model.Champion;
 
 public class RiotChampionData {
@@ -122,13 +122,16 @@ public class RiotChampionData {
     public static final Champion Gragas = new Champion(79, "Gragas", "グラガス", "Gragas", 583.52F, 89.0F, 5.5F, 0.5F, 400.0F, 47.0F, 6.0F, 0.8F, 61.38F, 3.5F, 0.651F, 2.05F, 0.0F, 0.0F, 26.048F, 3.6F, 32.1F, 1.25F, 330.0F, 125.0F, new String[] {"Happy Hour", "Barrel Roll", "Drunken Rage", "Body Slam", "Explosive Cask"}, new String[] {"ふわふわタイム", "タル転がし", "飲みすぎ注意", "腹の肉", "タル爆弾"}, SkillDefinition::Gragas, false);
 
     /** Graves Definition */
-    public static final Champion Graves = new Champion(104, "Graves", "グレイヴズ", "Graves", 551.12F, 84.0F, 6.675F, 0.7F, 322.2F, 40.0F, 7.925F, 0.7F, 60.83F, 2.41F, 0.481F, 2.6F, 0.0F, 0.0F, 24.376F, 3.4F, 30.0F, 0.0F, 345.0F, 425.0F, new String[] {"New Destiny", "End of the Line", "Smoke Screen", "Quickdraw", "Collateral Damage"}, new String[] {"確固たる信念", "End of the Line", "煙幕", "早撃ち", "炸裂砲弾"}, SkillDefinition::Graves, false);
+    public static final Champion Graves = new Champion(104, "Graves", "グレイヴズ", "Graves", 551.12F, 84.0F, 6.675F, 0.7F, 322.2F, 40.0F, 7.925F, 0.7F, 60.83F, 2.41F, 0.481F, 2.6F, 0.0F, 0.0F, 24.376F, 3.4F, 30.0F, 0.0F, 340.0F, 425.0F, new String[] {"New Destiny", "End of the Line", "Smoke Screen", "Quickdraw", "Collateral Damage"}, new String[] {"確固たる信念", "End of the Line", "煙幕", "早撃ち", "炸裂砲弾"}, SkillDefinition::Graves, false);
 
     /** Hecarim Definition */
-    public static final Champion Hecarim = new Champion(120, "Hecarim", "ヘカリム", "Hecarim", 599.6F, 95.0F, 7.0F, 0.75F, 327.2F, 37.0F, 6.5F, 0.6F, 61.376F, 3.2F, 0.67F, 2.5F, 0.0F, 0.0F, 26.72F, 4.0F, 32.1F, 1.25F, 345.0F, 175.0F, new String[] {"Warpath", "Rampage", "Spirit of Dread", "Devastating Charge", "Onslaught of Shadows"}, new String[] {"出陣", "縦横無尽", "怨霊の恐怖", "猛突進", "幻影の襲撃"}, SkillDefinition::Hecarim, false);
+    public static final Champion Hecarim = new Champion(120, "Hecarim", "ヘカリム", "Hecarim", 599.6F, 95.0F, 7.0F, 0.75F, 277.2F, 40.0F, 6.5F, 0.6F, 61.376F, 3.2F, 0.67F, 2.5F, 0.0F, 0.0F, 26.72F, 4.0F, 32.1F, 1.25F, 345.0F, 175.0F, new String[] {"Warpath", "Rampage", "Spirit of Dread", "Devastating Charge", "Onslaught of Shadows"}, new String[] {"出陣", "縦横無尽", "怨霊の恐怖", "猛突進", "幻影の襲撃"}, SkillDefinition::Hecarim, false);
 
     /** Heimerdinger Definition */
     public static final Champion Heimerdinger = new Champion(74, "Heimerdinger", "ハイマー", "Heimerdinger", 476.0F, 75.0F, 11.005F, 1.75F, 307.2F, 40.0F, 6.0F, 0.8F, 55.536F, 2.7F, 0.625F, 1.36F, 0.0F, 0.0F, 19.04F, 3.0F, 30.0F, 0.0F, 340.0F, 550.0F, new String[] {"Techmaturgical Repair Bots", "H-28G Evolution Turret", "Hextech Micro-Rockets", "CH-2 Electron Storm Grenade", "UPGRADE!!!"}, new String[] {"テクマタジカル修理ボット", "H-28G革新砲", "ヘクステック小型ロケット", "CH-2超電磁グレネード", "アップグレード！！！"}, SkillDefinition::Heimerdinger, false);
+
+    /** Illaoi Definition */
+    public static final Champion Illaoi = new Champion(420, "Illaoi", "Illaoi", "Illaoi", 585.6F, 95.0F, 9.5F, 0.8F, 300.0F, 40.0F, 7.5F, 0.75F, 60.0F, 5.0F, 0.625F, 2.5F, 0.0F, 0.0F, 26.0F, 3.8F, 32.1F, 1.25F, 340.0F, 125.0F, new String[] {"Prophet of an Elder God", "Tentacle Smash", "Harsh Lesson", "Test of Spirit", "Leap of Faith"}, new String[] {"Prophet of an Elder God", "Tentacle Smash", "Harsh Lesson", "Test of Spirit", "Leap of Faith"}, SkillDefinition::Illaoi, false);
 
     /** Irelia Definition */
     public static final Champion Irelia = new Champion(39, "Irelia", "イレリア", "Irelia", 607.2F, 90.0F, 8.59F, 0.65F, 338.8F, 32.0F, 8.09F, 0.65F, 61.544F, 3.3F, 0.665F, 3.2F, 0.0F, 0.0F, 25.3F, 3.75F, 32.1F, 1.25F, 345.0F, 125.0F, new String[] {"Ionian Fervor", "Bladesurge", "Hiten Style", "Equilibrium Strike", "Transcendent Blades"}, new String[] {"アイオニアの熱情", "瞬剣", "飛天流", "平衡の一撃", "飛剣の舞"}, SkillDefinition::Irelia, false);
@@ -173,13 +176,13 @@ public class RiotChampionData {
     public static final Champion Kennen = new Champion(85, "Kennen", "ケネン", "Kennen", 535.72F, 79.0F, 5.59F, 0.65F, 200.0F, 0.0F, 50.0F, 0.0F, 50.544F, 3.3F, 0.69F, 3.4F, 0.0F, 0.0F, 24.3F, 3.75F, 30.0F, 0.0F, 335.0F, 550.0F, new String[] {"Mark of the Storm", "Thundering Shuriken", "Electrical Surge", "Lightning Rush", "Slicing Maelstrom"}, new String[] {"嵐の刻印", "雷手裏剣", "稲妻の奔流", "疾風迅雷", "雷撃の大嵐"}, SkillDefinition::Kennen, false);
 
     /** Kha'Zix Definition */
-    public static final Champion Khazix = new Champion(121, "Kha'Zix", "カ＝ジックス", "Khazix", 572.8F, 85.0F, 7.51F, 0.75F, 327.2F, 40.0F, 7.59F, 0.5F, 55.208F, 3.1F, 0.668F, 2.7F, 0.0F, 0.0F, 24.04F, 3.0F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"Unseen Threat", "Taste Their Fear", "Void Spike", "Leap", "Void Assault"}, new String[] {"見えざる脅威", "甘美なる恐怖", "破裂の棘", "跳躍", "捕食の本能"}, SkillDefinition::Khazix, false);
+    public static final Champion Khazix = new Champion(121, "Kha'Zix", "カ＝ジックス", "Khazix", 572.8F, 85.0F, 7.51F, 0.75F, 327.2F, 40.0F, 7.59F, 0.5F, 55.208F, 3.1F, 0.668F, 2.7F, 0.0F, 0.0F, 27.0F, 3.0F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"Unseen Threat", "Taste Their Fear", "Void Spike", "Leap", "Void Assault"}, new String[] {"見えざる脅威", "甘美なる恐怖", "破裂の棘", "跳躍", "捕食の本能"}, SkillDefinition::Khazix, false);
 
     /** Kindred Definition */
     public static final Champion Kindred = new Champion(203, "Kindred", "Kindred", "Kindred", 540.0F, 85.0F, 7.0F, 0.55F, 300.0F, 35.0F, 6.97F, 0.4F, 54.0F, 1.7F, 0.625F, 2.5F, 0.0F, 0.0F, 27.0F, 3.25F, 30.0F, 0.0F, 325.0F, 500.0F, new String[] {"Mark of the Kindred", "Dance of Arrows", "Wolf's Frenzy", "Mounting Dread", "Lamb's Respite"}, new String[] {"Mark of the Kindred", "Dance of Arrows", "Wolf's Frenzy", "Mounting Dread", "Lamb's Respite"}, SkillDefinition::Kindred, false);
 
     /** Kog'Maw Definition */
-    public static final Champion KogMaw = new Champion(96, "Kog'Maw", "コグ＝マウ", "KogMaw", 517.76F, 82.0F, 5.92F, 0.55F, 322.2F, 40.0F, 8.675F, 0.7F, 54.46F, 2.41F, 0.625F, 1.5F, 0.0F, 0.0F, 19.88F, 3.5F, 30.0F, 0.0F, 325.0F, 500.0F, new String[] {"Icathian Surprise", "Caustic Spittle", "Bio-Arcane Barrage", "Void Ooze", "Living Artillery"}, new String[] {"イカシアの自爆", "腐食粘液", "有機性魔力砲", "ヴォイド分泌液", "生体空撃砲"}, SkillDefinition::KogMaw, false);
+    public static final Champion KogMaw = new Champion(96, "Kog'Maw", "コグ＝マウ", "KogMaw", 517.76F, 82.0F, 5.92F, 0.55F, 322.2F, 40.0F, 8.675F, 0.7F, 57.46F, 2.41F, 0.665F, 1.5F, 0.0F, 0.0F, 19.88F, 3.5F, 30.0F, 0.0F, 325.0F, 500.0F, new String[] {"Icathian Surprise", "Caustic Spittle", "Bio-Arcane Barrage", "Void Ooze", "Living Artillery"}, new String[] {"イカシアの自爆", "腐食粘液", "有機性魔力砲", "ヴォイド分泌液", "生体空撃砲"}, SkillDefinition::KogMaw, false);
 
     /** LeBlanc Definition */
     public static final Champion Leblanc = new Champion(7, "LeBlanc", "ルブラン", "Leblanc", 516.0F, 75.0F, 7.42F, 0.55F, 334.0F, 50.0F, 6.0F, 0.8F, 54.88F, 3.5F, 0.625F, 1.4F, 0.0F, 0.0F, 21.88F, 3.5F, 30.0F, 0.0F, 335.0F, 525.0F, new String[] {"Mirror Image", "Sigil of Malice", "Distortion", "Ethereal Chains", "Mimic"}, new String[] {"鏡像", "悪意の印", "空間歪曲", "霊妙な鎖", "再演"}, SkillDefinition::Leblanc, false);
@@ -194,7 +197,7 @@ public class RiotChampionData {
     public static final Champion Lissandra = new Champion(127, "Lissandra", "リサンドラ", "Lissandra", 506.12F, 84.0F, 6.92F, 0.55F, 304.0F, 50.0F, 5.67F, 0.4F, 50.536F, 2.7F, 0.625F, 1.36F, 0.0F, 0.0F, 20.216F, 3.7F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {"Iceborn", "Ice Shard", "Ring of Frost", "Glacial Path", "Frozen Tomb"}, new String[] {"アイスボーン", "アイスシャード", "リング・オブ・フロスト", "グラシアルパス", "フローズングレイブ"}, SkillDefinition::Lissandra, false);
 
     /** Lucian Definition */
-    public static final Champion Lucian = new Champion(236, "Lucian", "ルシアン", "Lucian", 554.4F, 80.0F, 6.19F, 0.65F, 348.88F, 38.0F, 8.175F, 0.7F, 59.46F, 2.41F, 0.638F, 3.3F, 0.0F, 0.0F, 24.04F, 3.0F, 30.0F, 0.0F, 335.0F, 500.0F, new String[] {"Lightslinger", "Piercing Light", "Ardent Blaze", "Relentless Pursuit", "The Culling"}, new String[] {"二丁掃射", "閃光", "浄化の星印", "瞬脚", "殲滅"}, SkillDefinition::Lucian, false);
+    public static final Champion Lucian = new Champion(236, "Lucian", "ルシアン", "Lucian", 554.4F, 80.0F, 6.19F, 0.65F, 348.88F, 38.0F, 8.175F, 0.7F, 57.46F, 2.41F, 0.638F, 3.3F, 0.0F, 0.0F, 24.04F, 3.0F, 30.0F, 0.0F, 335.0F, 500.0F, new String[] {"Lightslinger", "Piercing Light", "Ardent Blaze", "Relentless Pursuit", "The Culling"}, new String[] {"二丁掃射", "閃光", "浄化の星印", "瞬脚", "殲滅"}, SkillDefinition::Lucian, false);
 
     /** Lulu Definition */
     public static final Champion Lulu = new Champion(117, "Lulu", "ルル", "Lulu", 552.76F, 74.0F, 6.005F, 0.6F, 292.4F, 55.0F, 11.0F, 0.6F, 46.368F, 2.6F, 0.625F, 2.25F, 0.0F, 0.0F, 19.216F, 3.7F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {"Pix, Faerie Companion", "Glitterlance", "Whimsy", "Help, Pix!", "Wild Growth"}, new String[] {"仲良し妖精ピックス", "ぴかぴかランス", "イタズラ", "ピックス、おねがい！", "おおきくなぁれ！"}, SkillDefinition::Lulu, false);
@@ -215,10 +218,10 @@ public class RiotChampionData {
     public static final Champion MasterYi = new Champion(11, "Master Yi", "マスター・イー", "MasterYi", 598.56F, 92.0F, 7.59F, 0.65F, 250.56F, 42.0F, 7.255F, 0.45F, 60.04F, 3.0F, 0.679F, 2.0F, 0.0F, 0.0F, 24.04F, 3.0F, 32.1F, 1.25F, 355.0F, 125.0F, new String[] {"Double Strike", "Alpha Strike", "Meditate", "Wuju Style", "Highlander"}, new String[] {"双連斬", "疾風斬・極", "明鏡止水", "無極流", "無極流奥義"}, SkillDefinition::MasterYi, false);
 
     /** Miss Fortune Definition */
-    public static final Champion MissFortune = new Champion(21, "Miss Fortune", "フォーチュン", "MissFortune", 577.8F, 85.0F, 6.19F, 0.65F, 325.84F, 35.0F, 8.04F, 0.65F, 46.0F, 1.0F, 0.656F, 3.0F, 0.0F, 0.0F, 24.04F, 3.0F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {"Love Tap", "Double Up", "Strut", "Make It Rain", "Bullet Time"}, new String[] {"ステップアップ", "ダブルアップ", "ダーティショット", "レイニングバレット", "バレットタイム"}, SkillDefinition::MissFortune, false);
+    public static final Champion MissFortune = new Champion(21, "Miss Fortune", "フォーチュン", "MissFortune", 530.0F, 85.0F, 6.19F, 0.65F, 325.84F, 35.0F, 8.04F, 0.65F, 46.0F, 1.0F, 0.656F, 3.0F, 0.0F, 0.0F, 24.04F, 3.0F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {"Love Tap", "Double Up", "Strut", "Make It Rain", "Bullet Time"}, new String[] {"ステップアップ", "ダブルアップ", "ダーティショット", "レイニングバレット", "バレットタイム"}, SkillDefinition::MissFortune, false);
 
     /** Mordekaiser Definition */
-    public static final Champion Mordekaiser = new Champion(82, "Mordekaiser", "モルデカイザー", "Mordekaiser", 525.0F, 73.0F, 4.0F, 0.3F, 0.0F, 0.0F, 0.0F, 0.0F, 61.0F, 5.0F, 0.601F, 2.2F, 0.0F, 0.0F, 20.0F, 3.75F, 32.1F, 1.25F, 325.0F, 200.0F, new String[] {"Iron Man", "Mace of Spades", "Harvesters of Sorrow", "Siphon of Destruction", "Children of the Grave"}, new String[] {"アイアンマン", "メイス・オブ・スペーズ", "悲しみを刈り取る者", "ハンド・オブ・ルーイン", "グレイブ・チルドレン"}, SkillDefinition::Mordekaiser, false);
+    public static final Champion Mordekaiser = new Champion(82, "Mordekaiser", "モルデカイザー", "Mordekaiser", 525.0F, 73.0F, 4.0F, 0.3F, 0.0F, 0.0F, 0.0F, 0.0F, 61.0F, 5.0F, 0.601F, 2.2F, 0.0F, 0.0F, 20.0F, 3.75F, 32.1F, 1.25F, 325.0F, 175.0F, new String[] {"Iron Man", "Mace of Spades", "Harvesters of Sorrow", "Siphon of Destruction", "Children of the Grave"}, new String[] {"アイアンマン", "メイス・オブ・スペーズ", "悲しみを刈り取る者", "ハンド・オブ・ルーイン", "グレイブ・チルドレン"}, SkillDefinition::Mordekaiser, false);
 
     /** Morgana Definition */
     public static final Champion Morgana = new Champion(25, "Morgana", "モルガナ", "Morgana", 547.48F, 86.0F, 5.705F, 0.6F, 340.8F, 60.0F, 8.5F, 0.8F, 55.46F, 3.5F, 0.625F, 1.53F, 0.0F, 0.0F, 25.384F, 3.8F, 30.0F, 0.0F, 335.0F, 450.0F, new String[] {"Soul Siphon", "Dark Binding", "Tormented Soil", "Black Shield", "Soul Shackles"}, new String[] {"魂吸引", "闇の束縛", "苦悶の沼", "漆黒の盾", "魂の足枷"}, SkillDefinition::Morgana, false);
@@ -257,7 +260,7 @@ public class RiotChampionData {
     public static final Champion Poppy = new Champion(78, "Poppy", "ポッピー", "Poppy", 559.08F, 81.0F, 8.37F, 0.55F, 235.4F, 30.0F, 7.155F, 0.45F, 61.97F, 3.375F, 0.638F, 3.35F, 0.0F, 0.0F, 28.72F, 4.0F, 30.0F, 0.0F, 345.0F, 125.0F, new String[] {"Valiant Fighter", "Devastating Blow", "Paragon of Demacia", "Heroic Charge", "Diplomatic Immunity"}, new String[] {"勇敢な戦士", "渾身の一撃", "デマーシアの規範", "勇猛な突進", "絶対的特権"}, SkillDefinition::Poppy, false);
 
     /** Quinn Definition */
-    public static final Champion Quinn = new Champion(133, "Quinn", "クイン", "Quinn", 532.8F, 85.0F, 5.42F, 0.55F, 268.8F, 35.0F, 6.97F, 0.4F, 56.46F, 2.41F, 0.668F, 3.1F, 0.0F, 0.0F, 23.38F, 3.5F, 30.0F, 0.0F, 335.0F, 525.0F, new String[] {"Harrier", "Aerial Assault", "Heightened Senses", "Vault", "Tag Team"}, new String[] {"鷲匠", "暗闇の強襲", "鷹の眼", "飛翔撃", "相棒"}, SkillDefinition::Quinn, false);
+    public static final Champion Quinn = new Champion(133, "Quinn", "クイン", "Quinn", 532.8F, 85.0F, 5.42F, 0.55F, 268.8F, 35.0F, 6.97F, 0.4F, 56.46F, 2.41F, 0.668F, 3.1F, 0.0F, 0.0F, 23.38F, 3.5F, 30.0F, 0.0F, 335.0F, 525.0F, new String[] {"Harrier", "Blinding Assault", "Heightened Senses", "Vault", "Behind Enemy Lines"}, new String[] {"鷲匠", "暗闇の強襲", "鷹の眼", "飛翔撃", "相棒"}, SkillDefinition::Quinn, false);
 
     /** Rammus Definition */
     public static final Champion Rammus = new Champion(33, "Rammus", "ラムス", "Rammus", 564.48F, 86.0F, 7.92F, 0.55F, 310.44F, 33.0F, 7.84F, 0.5F, 55.88F, 3.5F, 0.625F, 2.215F, 0.0F, 0.0F, 31.384F, 4.3F, 32.1F, 1.25F, 335.0F, 125.0F, new String[] {"Spiked Shell", "Powerball", "Defensive Ball Curl", "Puncturing Taunt", "Tremors"}, new String[] {"トゲトゲ", "ころころ", "かたくなる", "ちくちく", "ドスンドスン"}, SkillDefinition::Rammus, false);
@@ -299,7 +302,7 @@ public class RiotChampionData {
     public static final Champion Singed = new Champion(27, "Singed", "シンジド", "Singed", 542.76F, 82.0F, 8.02F, 0.55F, 290.6F, 45.0F, 7.52F, 0.55F, 62.32F, 3.375F, 0.613F, 1.81F, 0.0F, 0.0F, 27.88F, 3.5F, 32.1F, 1.25F, 345.0F, 125.0F, new String[] {"Empowered Bulwark", "Poison Trail", "Mega Adhesive", "Fling", "Insanity Potion"}, new String[] {"肉体強化", "猛毒の跡", "強力粘着剤", "ぶん投げ", "狂人のポーション"}, SkillDefinition::Singed, false);
 
     /** Sion Definition */
-    public static final Champion Sion = new Champion(14, "Sion", "サイオン", "Sion", 542.64F, 73.0F, 10.18F, 0.8F, 325.6F, 42.0F, 8.005F, 0.6F, 59.72F, 4.0F, 0.679F, 1.3F, 0.0F, 0.0F, 23.04F, 3.0F, 32.1F, 1.25F, 345.0F, 150.0F, new String[] {"Glory in Death", "Decimating Smash", "Soul Furnace", "Roar of the Slayer", "Unstoppable Onslaught"}, new String[] {"名誉ある死", "破滅の斧", "魂の炉心", "殺意の雄叫び", "猪突猛進"}, SkillDefinition::Sion, false);
+    public static final Champion Sion = new Champion(14, "Sion", "サイオン", "Sion", 542.64F, 73.0F, 10.18F, 0.8F, 325.6F, 42.0F, 8.005F, 0.6F, 59.72F, 4.0F, 0.679F, 1.3F, 0.0F, 0.0F, 23.04F, 3.0F, 32.1F, 1.25F, 345.0F, 175.0F, new String[] {"Glory in Death", "Decimating Smash", "Soul Furnace", "Roar of the Slayer", "Unstoppable Onslaught"}, new String[] {"名誉ある死", "破滅の斧", "魂の炉心", "殺意の雄叫び", "猪突猛進"}, SkillDefinition::Sion, false);
 
     /** Sivir Definition */
     public static final Champion Sivir = new Champion(15, "Sivir", "シヴィア", "Sivir", 515.76F, 82.0F, 5.17F, 0.55F, 284.0F, 50.0F, 8.01F, 0.9F, 57.46F, 2.41F, 0.625F, 1.6F, 0.0F, 0.0F, 22.21F, 3.25F, 30.0F, 0.0F, 335.0F, 500.0F, new String[] {"Fleet of Foot", "Boomerang Blade", "Ricochet", "Spell Shield", "On The Hunt"}, new String[] {"戦駆け", "ぶっ放し", "跳刃", "破魔の護り", "狩猟の幕開け"}, SkillDefinition::Sivir, false);
@@ -320,7 +323,7 @@ public class RiotChampionData {
     public static final Champion Syndra = new Champion(134, "Syndra", "シンドラ", "Syndra", 511.04F, 78.0F, 6.505F, 0.6F, 384.0F, 60.0F, 6.0F, 0.8F, 53.872F, 2.9F, 0.625F, 2.0F, 0.0F, 0.0F, 24.712F, 3.4F, 30.0F, 0.0F, 330.0F, 550.0F, new String[] {"Transcendent", "Dark Sphere", "Force of Will", "Scatter the Weak", "Unleashed Power"}, new String[] {"絶大なる魔力", "闇の魔珠", "魔力の制御", "魔力四散", "魔力解放"}, SkillDefinition::Syndra, false);
 
     /** Tahm Kench Definition */
-    public static final Champion TahmKench = new Champion(223, "Tahm Kench", "タム・ケンチ", "TahmKench", 610.0F, 95.0F, 6.5F, 0.55F, 325.0F, 40.0F, 8.0F, 1.0F, 56.0F, 3.2F, 0.625F, 2.5F, 0.0F, 0.0F, 27.0F, 3.5F, 32.1F, 1.25F, 335.0F, 200.0F, new String[] {"An Acquired Taste", "Tongue Lash", "Devour", "Thick Skin", "Abyssal Voyage"}, new String[] {"味見", "舌のムチ", "丸呑み", "硬質化", "船旅"}, SkillDefinition::TahmKench, false);
+    public static final Champion TahmKench = new Champion(223, "Tahm Kench", "タム・ケンチ", "TahmKench", 610.0F, 95.0F, 6.5F, 0.55F, 325.0F, 40.0F, 8.0F, 1.0F, 56.0F, 3.2F, 0.625F, 2.5F, 0.0F, 0.0F, 27.0F, 3.5F, 32.1F, 1.25F, 335.0F, 175.0F, new String[] {"An Acquired Taste", "Tongue Lash", "Devour", "Thick Skin", "Abyssal Voyage"}, new String[] {"味見", "舌のムチ", "丸呑み", "硬質化", "船旅"}, SkillDefinition::TahmKench, false);
 
     /** Talon Definition */
     public static final Champion Talon = new Champion(91, "Talon", "タロン", "Talon", 582.8F, 85.0F, 8.51F, 0.75F, 377.2F, 37.0F, 7.59F, 0.5F, 55.208F, 3.1F, 0.668F, 2.7F, 0.0F, 0.0F, 26.88F, 3.5F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"Mercy", "Noxian Diplomacy", "Rake", "Cutthroat", "Shadow Assault"}, new String[] {"刃の慈悲", "ノクサスの刃", "飛燕手裏剣", "瞬刃", "影刃円舞"}, SkillDefinition::Talon, false);
@@ -338,7 +341,7 @@ public class RiotChampionData {
     public static final Champion Tristana = new Champion(18, "Tristana", "トリスターナ", "Tristana", 542.76F, 82.0F, 6.19F, 0.65F, 246.76F, 32.0F, 7.205F, 0.45F, 56.96F, 2.41F, 0.656F, 1.5F, 0.0F, 0.0F, 22.0F, 3.0F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {"Draw a Bead", "Rapid Fire", "Rocket Jump", "Explosive Charge", "Buster Shot"}, new String[] {"ドロー＆グロー", "ラピッドファイア", "ロケットジャンプ", "ヨードルグレネード", "バスターショット"}, SkillDefinition::Tristana, false);
 
     /** Trundle Definition */
-    public static final Champion Trundle = new Champion(48, "Trundle", "トランドル", "Trundle", 616.28F, 96.0F, 9.425F, 0.85F, 281.6F, 45.0F, 7.505F, 0.6F, 60.04F, 3.0F, 0.67F, 2.9F, 0.0F, 0.0F, 27.536F, 2.7F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"King's Tribute", "Chomp", "Frozen Domain", "Pillar of Ice", "Subjugate"}, new String[] {"王への貢物", "噛み付き", "凍てつく大地", "氷冷の柱", "暴虐なる搾取"}, SkillDefinition::Trundle, false);
+    public static final Champion Trundle = new Champion(48, "Trundle", "トランドル", "Trundle", 616.28F, 96.0F, 9.425F, 0.85F, 281.6F, 45.0F, 7.505F, 0.6F, 60.04F, 3.0F, 0.67F, 2.9F, 0.0F, 0.0F, 27.536F, 2.7F, 32.1F, 1.25F, 350.0F, 175.0F, new String[] {"King's Tribute", "Chomp", "Frozen Domain", "Pillar of Ice", "Subjugate"}, new String[] {"王への貢物", "噛み付き", "凍てつく大地", "氷冷の柱", "暴虐なる搾取"}, SkillDefinition::Trundle, false);
 
     /** Tryndamere Definition */
     public static final Champion Tryndamere = new Champion(23, "Tryndamere", "トリンダメア", "Tryndamere", 625.64F, 98.0F, 8.51F, 0.9F, 100.0F, 0.0F, 0.0F, 0.0F, 61.376F, 3.2F, 0.67F, 2.9F, 0.0F, 0.0F, 24.108F, 3.1F, 32.1F, 1.25F, 345.0F, 125.0F, new String[] {"Battle Fury", "Bloodlust", "Mocking Shout", "Spinning Slash", "Undying Rage"}, new String[] {"戦場の咆哮", "血の欲望", "嘲りの叫び", "旋回斬り", "不死の憤激"}, SkillDefinition::Tryndamere, false);
@@ -398,7 +401,7 @@ public class RiotChampionData {
     public static final Champion Yorick = new Champion(83, "Yorick", "ヨーリック", "Yorick", 563.8F, 85.0F, 8.175F, 0.7F, 293.8F, 35.0F, 6.755F, 0.45F, 57.58F, 3.5F, 0.625F, 3.0F, 0.0F, 0.0F, 25.048F, 3.6F, 32.1F, 1.25F, 345.0F, 125.0F, new String[] {"Unholy Covenant", "Omen of War", "Omen of Pestilence", "Omen of Famine", "Omen of Death"}, new String[] {"不浄な誓約", "戦の凶兆", "疫の凶兆", "飢の凶兆", "死の凶兆"}, SkillDefinition::Yorick, false);
 
     /** Zac Definition */
-    public static final Champion Zac = new Champion(154, "Zac", "ザック", "Zac", 614.6F, 95.0F, 7.92F, 0.55F, 0.0F, 0.0F, 0.0F, 0.0F, 59.67F, 3.375F, 0.638F, 1.6F, 0.0F, 0.0F, 23.88F, 3.5F, 32.1F, 1.25F, 335.0F, 125.0F, new String[] {"Cell Division", "Stretching Strike", "Unstable Matter", "Elastic Slingshot", "Let's Bounce!"}, new String[] {"スライムドロップ", "ノビノビパンチ", "ボインボイン", "スライミーショット", "ボムボムスラム"}, SkillDefinition::Zac, false);
+    public static final Champion Zac = new Champion(154, "Zac", "ザック", "Zac", 614.6F, 95.0F, 7.92F, 0.55F, 0.0F, 0.0F, 0.0F, 0.0F, 59.67F, 3.375F, 0.638F, 1.6F, 0.0F, 0.0F, 23.88F, 3.5F, 32.1F, 1.25F, 335.0F, 175.0F, new String[] {"Cell Division", "Stretching Strike", "Unstable Matter", "Elastic Slingshot", "Let's Bounce!"}, new String[] {"スライムドロップ", "ノビノビパンチ", "ボインボイン", "スライミーショット", "ボムボムスラム"}, SkillDefinition::Zac, false);
 
     /** Zed Definition */
     public static final Champion Zed = new Champion(238, "Zed", "ゼド", "Zed", 579.4F, 80.0F, 7.09F, 0.65F, 200.0F, 0.0F, 50.0F, 0.0F, 54.712F, 3.4F, 0.644F, 2.1F, 0.0F, 0.0F, 26.88F, 3.5F, 32.1F, 1.25F, 345.0F, 125.0F, new String[] {"Contempt for the Weak", "Razor Shuriken", "Living Shadow", "Shadow Slash", "Death Mark"}, new String[] {"弱者必衰", "風車手裏剣", "影分身", "闇討ち", "死の刻印"}, SkillDefinition::Zed, false);
