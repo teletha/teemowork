@@ -22,6 +22,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SetProperty;
 
 import js.dom.UIAction;
+import jsx.style.BinaryStyle;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
@@ -150,7 +151,7 @@ public class ChampionSelect extends Widget {
             box($.Filters, input, () -> {
                 text($.FilterBySkill, "スキルで絞込");
                 // text($.FilterByChampion, "チャンピオンで絞込");
-                box($.SkillFilters, If(showSkillFilters, $.ShowDetailFilter), contents(groups, group -> {
+                box($.SkillFilters.of(showSkillFilters), contents(groups, group -> {
                     box($.Group, () -> {
                         text($.GroupName, group.name);
                         box($.GroupItems, contents(group.filters, filter -> {
@@ -540,21 +541,15 @@ public class ChampionSelect extends Widget {
             margin.bottom(10, px);
         };
 
-        private static Style ShowDetailFilter = () -> {
-            display.block();
-        };
-
-        private static Style SkillFilters = () -> {
+        private static BinaryStyle SkillFilters = show -> {
             margin.top(1, em);
             font.size.smaller();
 
-            display.none();
-            box.height(0, px);
-
-            transit().duration(0.5, s).easeInOut().when(ShowDetailFilter, () -> {
+            if (show) {
                 display.block();
-                box.height(100, percent);
-            });
+            } else {
+                display.none();
+            }
         };
 
         private static Style FilterBy = () -> {
