@@ -1154,7 +1154,7 @@ public class Item extends Describable<ItemDescriptor> {
     public static final Item StatikkShiv = new Item(RiotItemData.StatikkShiv, item -> {
         item.attackSpeed(35).movementSpeed(5).critical(30).add(Ability.Energize).add(ability -> {
             ability.passive("チャージされた通常攻撃は対象に雷を放ち{1}を与える。雷は対象の付近の敵ユニット({2})4体にも連鎖し同様のダメージを与える。雷によるダメージはクリティカルの影響を受ける。建物には無効。ミニオンに対してはダメージが75%増加。")
-                    .variable(1, MagicDamage, 30, 0, level(4.11))
+                    .variable(1, MagicDamage, 26, 0, level(4.11))
                     .variable(2, Radius, 300);
         });
     });
