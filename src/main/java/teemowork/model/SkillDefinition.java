@@ -1840,10 +1840,11 @@ public interface SkillDefinition {
                 .range(800);
 
         W.update(P523)
-                .active("次の通常攻撃は{1}し追加{2}を与え、対象に飛びつくようになる。自身が対象に飛びつく時、同時に近くのTentacleも対象を攻撃する。{3}。")
-                .variable(1, Range)
+                .active("次の通常攻撃は{1}し追加{2}を与え、対象に{3}する。自身が対象に飛びつく時、同時に近くのTentacleも対象を攻撃する。{4}。")
+                .variable(1, Range, 225)
                 .variable(2, PhysicalDamage, 15, 20, ad(0.1))
-                .variable(3, ResetAATimer)
+                .variable(3, Dash)
+                .variable(4, ResetAATimer)
                 .cd(6, -0.5)
                 .mana(30);
 
