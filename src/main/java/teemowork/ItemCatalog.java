@@ -86,7 +86,7 @@ public class ItemCatalog extends Widget {
             box($.Groups, contents(groups, group -> {
                 text($.GroupName, group.name);
                 box($.Filters, contents(group.filters, filter -> {
-                    widget(UI.checkbox(activeFilters, filter, filter.name).style($.FilterName));
+                    widget(UI.checkbox(activeFilters, filter, filter.status.getName()).style($.FilterName));
                 }));
             }));
             box($.Items, contents(Item.getAll(), item -> {
@@ -143,6 +143,7 @@ public class ItemCatalog extends Widget {
         static Style Groups = () -> {
             display.block();
             margin.right(30, px);
+            position.fixed();
         };
 
         static Style GroupName = () -> {
@@ -163,6 +164,7 @@ public class ItemCatalog extends Widget {
         static Style Items = () -> {
             display.flex().wrap.enable().alignContent.start();
             box.width(ItemAreaWidth);
+            margin.left(160, px);
         };
 
         static Style Item = () -> {
@@ -184,19 +186,7 @@ public class ItemCatalog extends Widget {
      * @return
      */
     private static ItemFilter type(Status... statuses) {
-        return type(statuses[0].getName(), statuses);
-    }
-
-    /**
-     * <p>
-     * Add filter.
-     * </p>
-     * 
-     * @param statuses
-     * @return
-     */
-    private static ItemFilter type(String name, Status... statuses) {
-        return new ItemFilter(name, item -> {
+        return new ItemFilter(statuses[0], item -> {
             Info info = Info.of(item);
 
             for (Status status : statuses) {
@@ -235,17 +225,17 @@ public class ItemCatalog extends Widget {
     private static class ItemFilter {
 
         /** The filter name. */
-        private final String name;
+        private final Status status;
 
         /** The actual filter. */
         private final Predicate<Item> filter;
 
         /**
-         * @param name
+         * @param status
          * @param filter
          */
-        private ItemFilter(String name, Predicate<Item> filter) {
-            this.name = name;
+        private ItemFilter(Status status, Predicate<Item> filter) {
+            this.status = status;
             this.filter = filter;
         }
     }
