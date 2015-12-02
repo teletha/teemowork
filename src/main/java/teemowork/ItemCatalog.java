@@ -112,9 +112,9 @@ public class ItemCatalog extends Widget {
      * @return
      */
     private boolean show(Item item) {
-        // if (activeFilters.isEmpty()) {
-        // return false;
-        // }
+        if (activeFilters.isEmpty()) {
+            return false;
+        }
 
         for (ItemFilter filter : activeFilters) {
             if (!filter.filter.test(item)) {
