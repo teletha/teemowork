@@ -321,7 +321,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** DeadMansPlate */
     public static final Item DeadMansPlate = new Item(RiotItemData.DeadMansPlate, item -> {
-        item.health(600).armor(50).add("Dreadnought", ability -> {
+        item.health(500).armor(50).add("Dreadnought", ability -> {
             ability.passive("移動するとチャージが貯まっていき、比例して移動速度が増加していく。チャージは最大で100まで貯まり、{1}する。チャージは移動阻害効果を受けると急激に減少し、" + MSSlow + "を受けると緩やかに減少する。")
                     .variable(1, MS, 60);
         }).add("Crushing Blow", ability -> {
@@ -536,7 +536,7 @@ public class Item extends Describable<ItemDescriptor> {
                     .variable(-1, ASRatio, 8)
                     .variable(-2, AP, 4)
                     .variable(-3, AD, 3)
-                    .variable(4, Radius)
+                    .variable(4, Radius, 350)
                     .variable(5, MagicDamage, 20, 0, bounusAD(0.15), ap(0.075));
         });
     });
@@ -851,7 +851,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Phantom Dancer */
     public static final Item PhantomDancer = new Item(RiotItemData.PhantomDancer, item -> {
-        item.attackSpeed(40).critical(30).add("Spectral Waltz", ability -> {
+        item.attackSpeed(45).critical(30).add("Spectral Waltz", ability -> {
             ability.passive("{3}の視界内に敵チャンピオンがいる場合、{1}と{2}を得る。")
                     .variable(1, IgnoreUnitCollision)
                     .variable(2, MSRatio, 12)

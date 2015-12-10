@@ -352,7 +352,7 @@ public class RiotItemData {
     public static final RiotItemData Phage = new RiotItemData("Phage", "ファージ", 3044, 500, 1250, 875, new int[] {1028, 1036}, new int[] {3078, 3071, 3184}, 0, 96, 336, 2);
 
     /** Phantom Dancer Definition */
-    public static final RiotItemData PhantomDancer = new RiotItemData("Phantom Dancer", "幻影の踊り手", 3046, 900, 2700, 1890, new int[] {1042, 3086, 1042}, null, 0, 144, 336, 3);
+    public static final RiotItemData PhantomDancer = new RiotItemData("Phantom Dancer", "幻影の踊り手", 3046, 900, 2800, 1960, new int[] {1042, 3086, 1042}, null, 0, 144, 336, 3);
 
     /** Ninja Tabi Definition */
     public static final RiotItemData NinjaTabi = new RiotItemData("Ninja Tabi", "忍者足袋", 3047, 500, 1100, 770, new int[] {1001, 1029}, new int[] {1316, 1318, 1315, 1317}, 0, 192, 336, 2);
@@ -406,7 +406,7 @@ public class RiotItemData {
     public static final RiotItemData Tiamat = new RiotItemData("Tiamat", "ティアマット（近接専用）", 3077, 225, 1250, 875, new int[] {1037, 1006}, new int[] {3074, 3748}, 0, 0, 432, 2);
 
     /** Trinity Force Definition */
-    public static final RiotItemData TrinityForce = new RiotItemData("Trinity Force", "トリニティ・フォース", 3078, 300, 3800, 2660, new int[] {3086, 3057, 3044}, null, 0, 48, 432, 3);
+    public static final RiotItemData TrinityForce = new RiotItemData("Trinity Force", "トリニティ・フォース", 3078, 200, 3800, 2660, new int[] {3086, 3057, 3044}, null, 0, 48, 432, 3);
 
     /** Warden's Mail Definition */
     public static final RiotItemData WardensMail = new RiotItemData("Warden's Mail", "番人の鎧", 3082, 500, 1100, 770, new int[] {1029, 1029}, new int[] {3110, 3143}, 0, 96, 432, 2);
@@ -418,13 +418,13 @@ public class RiotItemData {
     public static final RiotItemData OverlordsBloodmail = new RiotItemData("Overlord's Bloodmail", "覇王の血染鎧", 3084, 900, 2550, 1785, new int[] {1011, 3801}, null, 0, 192, 432, 3);
 
     /** Runaan's Hurricane Definition */
-    public static final RiotItemData RunaansHurricane = new RiotItemData("Runaan's Hurricane", "ルナーンのハリケーン(遠隔専用)", 3085, 300, 2500, 1750, new int[] {1043, 3086}, null, 0, 240, 432, 3);
+    public static final RiotItemData RunaansHurricane = new RiotItemData("Runaan's Hurricane", "ルナーンのハリケーン(遠隔専用)", 3085, 300, 2600, 1820, new int[] {1043, 3086}, null, 0, 240, 432, 3);
 
     /** Zeal Definition */
-    public static final RiotItemData Zeal = new RiotItemData("Zeal", "ジール", 3086, 500, 1200, 840, new int[] {1051, 1042}, new int[] {3046, 3078, 3085, 3087, 3094}, 0, 288, 432, 2);
+    public static final RiotItemData Zeal = new RiotItemData("Zeal", "ジール", 3086, 600, 1300, 910, new int[] {1051, 1042}, new int[] {3046, 3078, 3085, 3087, 3094}, 0, 288, 432, 2);
 
     /** Statikk Shiv Definition */
-    public static final RiotItemData StatikkShiv = new RiotItemData("Statikk Shiv", "雷剣", 3087, 550, 2500, 1750, new int[] {3086, 2015}, null, 0, 336, 432, 3);
+    public static final RiotItemData StatikkShiv = new RiotItemData("Statikk Shiv", "雷剣", 3087, 550, 2600, 1820, new int[] {3086, 2015}, null, 0, 336, 432, 3);
 
     /** Rabadon's Deathcap Definition */
     public static final RiotItemData RabadonsDeathcap = new RiotItemData("Rabadon's Deathcap", "ラバドンの死の帽子", 3089, 1265, 3800, 2660, new int[] {1026, 1058, 1052}, null, 0, 384, 432, 2);
@@ -439,7 +439,7 @@ public class RiotItemData {
     public static final RiotItemData FrostQueensClaim = new RiotItemData("Frost Queen's Claim", "女王の凍った指先", 3092, 550, 2200, 880, new int[] {3098, 3108}, null, 1, 48, 0, 3);
 
     /** Rapid Firecannon Definition */
-    public static final RiotItemData RapidFirecannon = new RiotItemData("Rapid Firecannon", "Rapid Firecannon", 3094, 550, 2500, 1750, new int[] {3086, 2015}, null, 3, 240, 384, 3);
+    public static final RiotItemData RapidFirecannon = new RiotItemData("Rapid Firecannon", "Rapid Firecannon", 3094, 550, 2600, 1820, new int[] {3086, 2015}, null, 3, 240, 384, 3);
 
     /** Nomad's Medallion Definition */
     public static final RiotItemData NomadsMedallion = new RiotItemData("Nomad's Medallion", "放浪民のメダル", 3096, 225, 850, 340, new int[] {1004, 3301, 1006}, new int[] {2302, 3069}, 1, 144, 0, 2);
