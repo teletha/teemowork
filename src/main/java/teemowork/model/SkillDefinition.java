@@ -385,7 +385,7 @@ public interface SkillDefinition {
                 .variable(2, PhysicalDamage, amplify(AD, 0.1, 0, amplify(Critical, 0.01)));
 
         Q.update(P524)
-                .passive("通常攻撃するたびに4秒間持続するスタックを得る(最大5スタック)。")
+                .passive("通常攻撃するたびに4秒間持続するスタックを得る(最大4スタック)。")
                 .active("4スタックを消費して4秒間{1}し、通常攻撃が5回に分けて合計{2}を与えるようになる。On-Hit Effectsは5連射の初撃のみ有効(Hurricaneは5回発動)。")
                 .variable(1, ASRatio, 20, 5)
                 .variable(2, PhysicalDamage, amplify(AD, 1.15, 0.05))
@@ -3744,44 +3744,52 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Poppy(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P301).passive("現在HPの10%を超えるダメージを受けた際、その超過分のダメージを50%低減する。塔の攻撃には無効。");
+        P.update(P524)
+                .passive("{1}ごとに通常攻撃としてバックラーを投げる。その際、通常攻撃の射程が400増加(合計525)し、{2}を付与する。 バックラーは近くに落ちて4秒間残る。", champion, "がバックラーを拾った場合、{3}間{4}を得る。バックラーが敵チャンピオンに踏まれた場合は消滅する。バックラーでユニットをキルした場合は落ちずに直接自身のもとに返ってくる。")
+                .variable(1, Time, new Per6Level(18, -4))
+                .variable(2, MagicDamage, 10, 0, level(10))
+                .variable(3, Time, new Per6Level(4, 1))
+                .variable(4, Shield, amplify(HealthRatio, 0.15));
 
-        Q.update(P301)
-                .active("次の通常攻撃が", MagicDamage, "になり、{1}が付与される。{2}。")
-                .variable(1, MagicDamage, 20, 20, ap(0.6), amplify(TargetMaxHealthRatio, 8))
-                .variable(2, ResetAATimer)
-                .mana(55)
-                .cd(8, -1);
+        Q.update(P524)
+                .active("地面を叩いて直線上の敵ユニットに{1}を与え、{2}の敵ユニットに継続的に{3}を与える。1秒後に叩いた地面が爆発を起こして{1}を与える。ミニオンに対しては80％のダメージになる。")
+                .variable(1, PhysicalDamage, 30, 35, bounusAD(0.65), amplify(TargetMaxHealthRatio, 6))
+                .variable(2, Radius)
+                .variable(3, MSSlowRatio, 20, 5)
+                .mana(35, 5)
+                .cd(9, -1);
 
-        W.update(P301)
-                .passive("通常攻撃を行うか、通常攻撃を受ける度にスタックが1増加する(最大10)。スタック数に比例して{1}と{2}を得る。スタックは5秒間増加がないと0になる。")
-                .variable(-1, AD, 0, 0, amplify(Stack, 1.5, 0.5))
-                .variable(-2, AR, 0, 0, amplify(Stack, 1.5, 0.5))
-                .active("スタックを最大(10)まで増加させ、5秒間{3}する。")
-                .variable(3, MSRatio, 17, 2)
-                .mana(70, 5)
-                .cd(12);
+        W.update(P524)
+                .passive("{1}と{2}を得る。 HPが40％以下になるとさらに{3}と{4}を得る。")
+                .variable(1, AR, 0, 0, amplify(AR, 0.12))
+                .variable(2, MR, 0, 0, amplify(MR, 0.12))
+                .variable(-3, AR, 0, 0, amplify(AR, 0.12))
+                .variable(-4, MR, 0, 0, amplify(MR, 0.12))
+                .active("2.5秒間{5}し、周囲にエリアを生成する。エリア内で敵チャンピオンがダッシュスキルを使用した場合、その敵を止めて{6}を与える。同一対象には一度しか効果が発動しない。")
+                .variable(5, MSRatio, 27, 2)
+                .variable(6, MagicDamage, 70, 40, ap(0.7))
+                .mana(50)
+                .cd(24, -2);
 
-        E.update(P416)
-                .active("対象の敵ユニットに{5}し{1}と{2}を与える。ノックバック時に壁にぶつかった場合、追加{3}と{4}を与える。")
+        E.update(P524)
+                .active("対象の敵ユニットに{5}し{1}と{2}を与える。", Knockback, "により壁に衝突した場合、{2}と{3}を与える。")
                 .variable(1, Knockback, 300)
-                .variable(2, MagicDamage, 50, 25, ap(0.4))
-                .variable(3, MagicDamage, 75, 50, ap(0.4))
-                .variable(4, Stun, 1.5)
+                .variable(2, MagicDamage, 50, 20, bounusAD(0.65))
+                .variable(3, Stun, 1.6, 0.1)
                 .variable(5, DashTarget)
-                .mana(60, 5)
+                .mana(70)
                 .cd(12, -1)
                 .range(525);
 
-        R.update(P301)
-                .active("{1}秒間、対象の敵チャンピオンに与える{2}し、対象とそのペット以外からの{3}と{4}を得る。")
-                .variable(1, Time, 6, 1)
-                .variable(2, DamageRatio, 20, 10)
-                .variable(3, IgnoreDamage)
-                .variable(4, IgnoreCC)
+        R.update(P524)
+                .active("4秒間詠唱を行い、15％の", MSSlowRatio, "を自身に与える。スキルを再使用することでの衝撃波を発生させる。衝撃波に最初に命中したチャンピオンとその{1}の敵に{2}を与えて、敵の本拠地の方向に{3}を与える(衝撃波と", Knockback, "距離は詠唱した時間に比例する)。このスキルによって", Knockback, "している敵はターゲット不可状態になる。")
+                .variable(1, Radius)
+                .variable(2, PhysicalDamage, 200, 100, bounusAD(0.9))
+                .variable(3, Knockback)
                 .mana(100)
                 .cd(140, -20)
-                .range(900);
+                .range(900)
+                .type(SkillType.Channel);
     }
 
     /**
