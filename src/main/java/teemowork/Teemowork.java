@@ -30,7 +30,7 @@ public class Teemowork extends Application {
      */
     private Teemowork() {
         document.documentElement().add(HTML);
-        document.getElementById("Content").add(Content);
+        document.contentElement().add(Content);
 
         Navi navi = Widget.of(Navi.class);
         navi.menu("< ^ v ^ > Teemowork", this::champion);
@@ -45,7 +45,7 @@ public class Teemowork extends Application {
         navi.menu("About");
         navi.menu("Setting", this::setting);
 
-        navi.renderIn(document.getElementById("Header"));
+        navi.renderIn(document.headerElement());
     }
 
     /**
