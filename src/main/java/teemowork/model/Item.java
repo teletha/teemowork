@@ -333,10 +333,10 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Death's Dance */
     public static final Item DeathsDance = new Item(RiotItemData.DeathsDance, item -> {
-        item.attackDamage(65).cooldownReduction(10).add(ability -> {
-            ability.passive(PhysicalDamage + "を与えると{1}する。（複数対象の場合は33%）").variable(1, RestoreHealth, amplify(DealtDamageRatio, 12));
+        item.attackDamage(75).cooldownReduction(10).add(ability -> {
+            ability.passive(PhysicalDamage + "を与えると{1}する。（複数対象の場合は33%）").variable(1, RestoreHealth, amplify(DealtDamageRatio, 15));
         }).add(ability -> {
-            ability.passive("受けたダメージの12%に等しいダメージを5秒間かけて対象に跳ね返す。");
+            ability.passive("受けたダメージの15%に等しいダメージを5秒間かけて対象に跳ね返す。");
         });
     });
 
@@ -406,7 +406,8 @@ public class Item extends Describable<ItemDescriptor> {
     public static final Item EyeoftheOasis = new Item(RiotItemData.EyeoftheOasis, item -> {
         item.health(200)
                 .healthRegenRatio(150)
-                .manaRegenRatio(150)
+                .manaRegenRatio(100)
+                .cooldownReduction(10)
                 .add(Ability.FavorLevel2)
                 .add(Ability.WardRefresh2)
                 .add(Ability.GhostWard);
@@ -417,7 +418,8 @@ public class Item extends Describable<ItemDescriptor> {
         item.health(200)
                 .abilityPower(25)
                 .goldGeneration(2)
-                .manaRegenRatio(150)
+                .manaRegenRatio(100)
+                .cooldownReduction(10)
                 .add(Ability.TributeLevel2)
                 .add(Ability.WardRefresh2)
                 .add(Ability.GhostWard);
@@ -478,13 +480,13 @@ public class Item extends Describable<ItemDescriptor> {
     /** Frost Queen's Claim */
     public static final Item FrostQueensClaim = new Item(RiotItemData.FrostQueensClaim, item -> {
         item.abilityPower(50)
-                .manaRegenRatio(150)
+                .manaRegenRatio(100)
                 .goldGeneration(2)
                 .cooldownReduction(10)
                 .add(Ability.GoldIncome)
                 .add(Ability.TributeLevel2)
                 .add(ability -> {
-            ability.active("攻撃無効な亡霊を2体召喚し、最も近くにいる敵チャンピオン2人を6秒間探索する。亡霊はターゲットに追いつくと、4秒間{1}と{2}を与える。ターゲットを見つけられなかった場合、亡霊は召喚者のもとへ戻ろうとする。亡霊が帰還に成功した場合、このアイテムのクールダウンは20秒短縮される({3})。")
+            ability.active("攻撃無効な亡霊を2体召喚し、最も近くにいる敵チャンピオン2人を6秒間探索する。亡霊はターゲットに追いつくと、2秒から5秒間（亡霊の移動距離に依る）{1}と{2}を与える。ターゲットを見つけられなかった場合、亡霊は召喚者のもとへ戻ろうとする。亡霊が帰還に成功した場合、このアイテムのクールダウンは20秒短縮される({3})。")
                     .variable(1, Visionable)
                     .variable(2, MSSlowRatio, 40)
                     .variable(3, ItemCD, 60);
@@ -851,10 +853,10 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Phantom Dancer */
     public static final Item PhantomDancer = new Item(RiotItemData.PhantomDancer, item -> {
-        item.attackSpeed(45).critical(30).add("Spectral Waltz", ability -> {
+        item.attackSpeed(45).critical(30).movementSpeed(5).add("Spectral Waltz", ability -> {
             ability.passive("{3}の視界内に敵チャンピオンがいる場合、{1}と{2}を得る。")
                     .variable(1, IgnoreUnitCollision)
-                    .variable(2, MSRatio, 12)
+                    .variable(2, MSRatio, 7)
                     .variable(3, Radius, 500);
         }).add("Lament", ability -> {
             ability.passive("通常攻撃を与えた敵チャンピオンから受けるダメージが10秒間12%減少する。この効果は同時に一体のチャンピオンにしか発生しない。");
@@ -908,7 +910,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Rapid Firecannon */
     public static final Item RapidFirecannon = new Item(RiotItemData.RapidFirecannon, item -> {
-        item.attackSpeed(30).critical(30).movementSpeed(8).add(Ability.Energize).add(ability -> {
+        item.attackSpeed(30).critical(30).movementSpeed(7).add(Ability.Energize).add(ability -> {
             ability.passive("チャージされた通常攻撃は射程が35%延び、追加{1}を与える。建物に対しても有効。").variable(1, MagicDamage, level(10));
         });
     });
@@ -982,7 +984,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Runaan's Hurricane */
     public static final Item RunaansHurricane = new Item(RiotItemData.RunaansHurricane, item -> {
-        item.attackSpeed(40).critical(30).movementSpeed(5).add(Ability.BowDamage).add(ability -> {
+        item.attackSpeed(40).critical(30).movementSpeed(7).add(Ability.BowDamage).add(ability -> {
             ability.passive("通常攻撃をした際に、{1}の2体の敵ユニットに{2}を与える（クリティカルあり）。{3}。")
                     .variable(1, Radius, 375)
                     .variable(2, PhysicalDamage, 0, 0, ad(0.25))
@@ -1052,13 +1054,8 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** SkirmishersSabre */
-    public static final Item SkirmishersSabreRuneglaive = new Item(RiotItemData.SkirmishersSabreRuneglaive, item -> {
-        item.add(Ability.NailAndTooth)
-                .add(Ability.ChallengingSmite)
-                .abilityPower(40)
-                .mana(250)
-                .cooldownReduction(10)
-                .add(Ability.SpellbladeRuneglaive);
+    public static final Item SkirmishersSabreRunicEchoes = new Item(RiotItemData.SkirmishersSabreRunicEchoes, item -> {
+        item.add(Ability.NailAndTooth).add(Ability.ChallengingSmite).abilityPower(60).movementSpeed(10).add(Ability.RunicEchoes);
     });
 
     /** SkirmishersSabre */
@@ -1131,13 +1128,8 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** StalkersBlade */
-    public static final Item StalkersBladeRuneglaive = new Item(RiotItemData.StalkersBladeRuneglaive, item -> {
-        item.add(Ability.NailAndTooth)
-                .add(Ability.ChillingSmite)
-                .abilityPower(40)
-                .mana(250)
-                .cooldownReduction(10)
-                .add(Ability.SpellbladeRuneglaive);
+    public static final Item StalkersBladeRunicEchoes = new Item(RiotItemData.StalkersBladeRunicEchoes, item -> {
+        item.add(Ability.NailAndTooth).add(Ability.ChillingSmite).abilityPower(60).movementSpeed(10).add(Ability.RunicEchoes);
     });
 
     /** StalkersBlade */
@@ -1153,7 +1145,7 @@ public class Item extends Describable<ItemDescriptor> {
     /** Statikk Shiv */
     public static final Item StatikkShiv = new Item(RiotItemData.StatikkShiv, item -> {
         item.attackSpeed(35).movementSpeed(5).critical(30).add(Ability.Energize).add(ability -> {
-            ability.passive("チャージされた通常攻撃は対象に雷を放ち{1}を与える。雷は対象の付近の敵ユニット({2})4体にも連鎖し同様のダメージを与える。雷によるダメージはクリティカルの影響を受ける。建物には無効。ミニオンに対してはダメージが75%増加。")
+            ability.passive("チャージされた通常攻撃は対象に雷を放ち{1}を与える。雷は対象の付近の敵ユニット({2})4体にも連鎖し同様のダメージを与える。雷によるダメージはクリティカルの影響を受ける。建物には無効。ミニオンに対してはダメージが120%増加。")
                     .variable(1, MagicDamage, 26, 0, level(4.11))
                     .variable(2, Radius, 300);
         });
@@ -1180,7 +1172,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Sunfire Cape */
     public static final Item SunfireCape = new Item(RiotItemData.SunfireCape, item -> {
-        item.health(500).armor(45).add("猛火", ability -> {
+        item.health(500).armor(50).add("猛火", ability -> {
             ability.passive("{1}の敵に毎秒{2}を与える。").variable(1, Radius, 400).variable(2, MagicDamage, 25, 0, amplify(Lv, 1));
         });
     });
@@ -1260,14 +1252,13 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Tracker's Knife */
-    public static final Item TrackersKnifeRuneglaive = new Item(RiotItemData.TrackersKnifeRuneglaive, item -> {
+    public static final Item TrackersKnifeRunicEchoes = new Item(RiotItemData.TrackersKnifeRunicEchoes, item -> {
         item.add(Ability.NailAndTooth)
                 .add(Ability.WardRefresh0)
                 .add(Ability.GhostWard)
-                .abilityPower(40)
-                .mana(250)
-                .cooldownReduction(10)
-                .add(Ability.SpellbladeRuneglaive);
+                .abilityPower(60)
+                .movementSpeed(10)
+                .add(Ability.RunicEchoes);
     });
 
     /** Tracker's Knife */

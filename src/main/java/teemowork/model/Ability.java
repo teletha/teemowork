@@ -225,7 +225,7 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability LastWhisper = new Ability("Last Whipser", ability -> {
-        ability.passive("{1}を得る。").variable(1, BounusARPenRatio, 40);
+        ability.passive("{1}を得る。").variable(1, BounusARPenRatio, 45);
     });
 
     /** The ability. */
@@ -297,7 +297,7 @@ public class Ability extends Describable<AbilityDescriptor> {
                 .variable(3, RestoreHealth, 30)
                 .variable(4, Experiment, 30)
                 .variable(5, LS, 10)
-                .variable(6, MregRatio, 150);
+                .variable(6, MregRatio, 180);
     });
 
     /** The ability. */
@@ -321,6 +321,14 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
+    public static final Ability RunicEchoes = new Ability("追撃", ability -> {
+        ability.passive("スキルの使用、移動によってチャージが溜まる。100チャージ溜まると、次のスキルはチャージを全て消費して対象と{1}の敵(最大4体まで)に{2}を与える。巨大モンスターに対してはダメージが2.5倍になり{3}する。")
+                .variable(1, Radius)
+                .variable(2, MagicDamage, 80, 0, ap(0.1))
+                .variable(3, RestoreMana, amplify(MissingManaRatio, 18));
+    });
+
+    /** The ability. */
     public static final Ability SpellbladeIceborn = new Ability("追撃", ability -> {
         ability.passive("スキル使用後の通常攻撃に、周囲の敵ユニットに{1}を与える効果を付与し、範囲内（ボーナスARにより拡大）の敵ユニットに{2}を与える円形のフィールド({3})を2秒間形成する。{5}。")
                 .variable(1, PhysicalDamage, 0, 0, amplify(BaseAD, 1.25))
@@ -334,16 +342,6 @@ public class Ability extends Describable<AbilityDescriptor> {
         ability.passive("スキル使用後の通常攻撃に、{1}を付与する。{2}。")
                 .variable(1, MagicDamage, 50, 0, amplify(BaseAD, 0.75), ap(0.5))
                 .variable(2, ItemCD, 1.5);
-    });
-
-    /** The ability. */
-    public static final Ability SpellbladeRuneglaive = new Ability("追撃", ability -> {
-        ability.passive("スキル使用後の通常攻撃に、{1}を付与する。{2}。モンスターに対して攻撃した際には{3}を与え{4}し、{5}のモンスターに{1}を与える。")
-                .variable(1, MagicDamage, 0, 0, amplify(BaseAD, 1), amplify(AP, 0.3))
-                .variable(2, CD, 1.5)
-                .variable(3, MagicDamage, 0, 0, amplify(BaseAD, 2), amplify(AP, 0.3))
-                .variable(4, RestoreMana, 0, 0, amplify(MissingManaRatio, 8))
-                .variable(5, Radius);
     });
 
     /** The ability. */
