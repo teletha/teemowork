@@ -21,6 +21,8 @@ import jsx.style.ValueStyle;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
+import kiss.Decoder;
+import kiss.Encoder;
 import kiss.I;
 import teemowork.UserPreference;
 import teemowork.api.RiotChampionData;
@@ -307,7 +309,7 @@ public class Champion extends RiotChampionData {
      * @version 2015/08/18 14:39:56
      */
     @SuppressWarnings("unused")
-    private static class Codec implements kiss.Codec<Champion> {
+    private static class Codec implements Decoder<Champion>, Encoder<Champion> {
 
         /**
          * {@inheritDoc}
