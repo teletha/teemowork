@@ -10,8 +10,8 @@
 package teemowork.api;
 
 import java.util.List;
-import java.util.ArrayList;
 import teemowork.model.SkillDefinition;
+import java.util.ArrayList;
 import teemowork.model.Champion;
 
 public class RiotChampionData {
@@ -68,7 +68,7 @@ public class RiotChampionData {
     public static final Champion Chogath = new Champion(31, "Cho'Gath", "チョ＝ガス", "Chogath", 574.4F, 80.0F, 8.925F, 0.85F, 272.2F, 40.0F, 7.205F, 0.45F, 61.156F, 4.2F, 0.625F, 1.44F, 0.0F, 0.0F, 28.88F, 3.5F, 32.1F, 1.25F, 345.0F, 125.0F, new String[] {"Carnivore", "Rupture", "Feral Scream", "Vorpal Spikes", "Feast"}, new String[] {"暴食", "ラプチャー", "スクリーム", "ヴォーパルスパイク", "捕食"}, SkillDefinition::Chogath, false);
 
     /** Corki Definition */
-    public static final Champion Corki = new Champion(42, "Corki", "コーキー", "Corki", 512.76F, 82.0F, 5.42F, 0.55F, 350.16F, 34.0F, 7.42F, 0.55F, 56.0F, 2.5F, 0.625F, 2.3F, 0.0F, 0.0F, 23.38F, 3.5F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {"Hextech Munitions", "Phosphorus Bomb", "Valkyrie", "Gatling Gun", "Missile Barrage"}, new String[] {"ヘクステック弾薬", "閃光弾", "ワルキューレ機行", "ガトリングガン", "連発ミサイル"}, SkillDefinition::Corki, false);
+    public static final Champion Corki = new Champion(42, "Corki", "コーキー", "Corki", 512.76F, 82.0F, 5.42F, 0.55F, 350.16F, 34.0F, 7.42F, 0.55F, 56.0F, 2.5F, 0.625F, 2.3F, 0.0F, 0.0F, 23.38F, 3.5F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {"Hextech Munitions", "Phosphorus Bomb", "Valkyrie", "Gatling Gun", "Missile Barrage"}, new String[] {"ヘクステック榴散弾", "閃光弾", "ワルキューレ機行", "ガトリングガン", "連発ミサイル"}, SkillDefinition::Corki, false);
 
     /** Darius Definition */
     public static final Champion Darius = new Champion(122, "Darius", "ダリウス", "Darius", 582.24F, 100.0F, 9.845F, 0.95F, 263.0F, 37.5F, 6.585F, 0.35F, 56.0F, 5.0F, 0.625F, 1.0F, 0.0F, 0.0F, 30.0F, 4.0F, 32.1F, 1.25F, 340.0F, 175.0F, new String[] {"Hemorrhage", "Decimate", "Crippling Strike", "Apprehend", "Noxian Guillotine"}, new String[] {"大出血", "皆殺しの斧", "脚削ぎ", "捕縛", "ノクサスギロチン"}, SkillDefinition::Darius, false);
@@ -86,10 +86,10 @@ public class RiotChampionData {
     public static final Champion Ekko = new Champion(245, "Ekko", "エコー", "Ekko", 580.0F, 80.0F, 9.0F, 0.9F, 280.0F, 50.0F, 6.0F, 0.8F, 59.0F, 3.0F, 0.625F, 3.3F, 0.0F, 0.0F, 27.0F, 3.0F, 32.0F, 1.25F, 340.0F, 125.0F, new String[] {"Z-Drive Resonance", "Timewinder", "Parallel Convergence", "Phase Dive", "Chronobreak"}, new String[] {"ゼロ・ドライブ", "タイムワインダー", "パラレルトラップ", "フェイズダイブ", "クロノブレイク"}, SkillDefinition::Ekko, false);
 
     /** Elise Definition */
-    public static final Champion Elise = new Champion(60, "Elise", "エリス", "Elise", 529.4F, 80.0F, 5.705F, 0.6F, 324.0F, 50.0F, 6.0F, 0.8F, 50.54F, 3.0F, 0.625F, 1.75F, 0.0F, 0.0F, 22.128F, 3.35F, 30.0F, 0.0F, 330.0F, 550.0F, new String[] {"Spider Queen", "Neurotoxin", "Volatile Spiderling", "Cocoon", "Spider Form"}, new String[] {"蜘蛛の女帝", "神経毒", "子蜘蛛爆弾", "繭化", "蜘蛛形態"}, SkillDefinition::Elise, false);
+    public static final Champion Elise = new Champion(60, "Elise", "エリス", "Elise", 529.4F, 80.0F, 5.705F, 0.6F, 324.0F, 50.0F, 6.0F, 0.8F, 50.54F, 3.0F, 0.625F, 1.75F, 0.0F, 0.0F, 22.128F, 3.35F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {"Spider Queen", "Neurotoxin", "Volatile Spiderling", "Cocoon", "Spider Form"}, new String[] {"蜘蛛の女帝", "神経毒", "子蜘蛛爆弾", "繭化", "蜘蛛形態"}, SkillDefinition::Elise, false);
 
     /** Elise Definition */
-    public static final Champion EliseTransformed = new Champion(-60, "Elise", "エリス", "EliseTransformed", 529.4F, 80.0F, 5.705F, 0.6F, 324.0F, 50.0F, 6.0F, 0.8F, 50.54F, 3.0F, 0.625F, 1.75F, 0.0F, 0.0F, 22.128F, 3.35F, 30.0F, 0.0F, 330.0F, 550.0F, new String[] {"Spider Queen", "Venomous Bite", "Skittering Frenzy", "Rappel", "Human Form"}, new String[] {"蜘蛛の女帝", "毒牙", "猛食", "蜘蛛の糸", "ヒト形態"}, SkillDefinition::EliseTransformed, true);
+    public static final Champion EliseTransformed = new Champion(-60, "Elise", "エリス", "EliseTransformed", 529.4F, 80.0F, 5.705F, 0.6F, 324.0F, 50.0F, 6.0F, 0.8F, 50.54F, 3.0F, 0.625F, 1.75F, 0.0F, 0.0F, 22.128F, 3.35F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {"Spider Queen", "Venomous Bite", "Skittering Frenzy", "Rappel", "Human Form"}, new String[] {"蜘蛛の女帝", "毒牙", "猛食", "蜘蛛の糸", "ヒト形態"}, SkillDefinition::EliseTransformed, true);
 
     /** Evelynn Definition */
     public static final Champion Evelynn = new Champion(28, "Evelynn", "エヴェリン", "Evelynn", 531.2F, 90.0F, 9.82F, 0.55F, 315.6F, 42.0F, 8.105F, 0.6F, 53.88F, 3.5F, 0.625F, 3.6F, 0.0F, 0.0F, 26.5F, 3.8F, 32.1F, 1.25F, 340.0F, 125.0F, new String[] {"Shadow Walk", "Hate Spike", "Dark Frenzy", "Ravage", "Agony's Embrace"}, new String[] {"シャドウウォーク", "ヘイトスパイク", "ダークフレンジー", "ラベージ", "エンブレイス"}, SkillDefinition::Evelynn, false);
@@ -140,7 +140,7 @@ public class RiotChampionData {
     public static final Champion Janna = new Champion(40, "Janna", "ジャンナ", "Janna", 487.04F, 78.0F, 5.42F, 0.55F, 409.52F, 64.0F, 11.5F, 0.4F, 51.956F, 2.95F, 0.625F, 2.61F, 0.0F, 0.0F, 19.384F, 3.8F, 30.0F, 0.0F, 335.0F, 475.0F, new String[] {"Tailwind", "Howling Gale", "Zephyr", "Eye Of The Storm", "Monsoon"}, new String[] {"テイルウィンド", "ハウリングゲイル", "ゼファー", "ストームブレス", "モンスーン"}, SkillDefinition::Janna, false);
 
     /** Jarvan IV Definition */
-    public static final Champion JarvanIV = new Champion(59, "Jarvan IV", "ジャーヴァンⅣ", "JarvanIV", 571.2F, 90.0F, 8.175F, 0.7F, 302.2F, 40.0F, 6.755F, 0.45F, 55.712F, 3.4F, 0.658F, 2.5F, 0.0F, 0.0F, 29.0F, 3.6F, 32.1F, 1.25F, 340.0F, 175.0F, new String[] {"Martial Cadence", "Dragon Strike", "Golden Aegis", "Demacian Standard", "Cataclysm"}, new String[] {"武魂の律動", "ドラゴンストライク", "ゴールデンイージス", "デマーシアの旗印", "決戦"}, SkillDefinition::JarvanIV, false);
+    public static final Champion JarvanIV = new Champion(59, "Jarvan IV", "ジャーヴァンⅣ", "JarvanIV", 571.2F, 90.0F, 8.175F, 0.7F, 302.2F, 40.0F, 6.755F, 0.45F, 55.712F, 3.4F, 0.658F, 2.5F, 0.0F, 0.0F, 29.0F, 3.6F, 32.1F, 1.25F, 340.0F, 175.0F, new String[] {"Martial Cadence", "Dragon Strike", "Golden Aegis", "Demacian Standard", "Cataclysm"}, new String[] {"武魂の律動", "ドラゴンストライク", "ゴールデンイージス", "デマーシアの旗印", "決戦場"}, SkillDefinition::JarvanIV, false);
 
     /** Jax Definition */
     public static final Champion Jax = new Champion(24, "Jax", "ジャックス", "Jax", 592.8F, 85.0F, 8.37F, 0.55F, 338.8F, 32.0F, 7.575F, 0.7F, 61.97F, 3.375F, 0.638F, 3.4F, 0.0F, 0.0F, 27.04F, 3.0F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"Relentless Assault", "Leap Strike", "Empower", "Counter Strike", "Grandmaster's Might"}, new String[] {"アサルトアタック", "リープストライク", "パワーバッシュ", "カウンターストライク", "グランドマスター"}, SkillDefinition::Jax, false);
@@ -150,6 +150,9 @@ public class RiotChampionData {
 
     /** Jayce Definition */
     public static final Champion JayceTransformed = new Champion(-126, "Jayce", "ジェイス", "JayceTransformed", 571.2F, 90.0F, 7.34F, 0.8F, 357.2F, 37.0F, 6.0F, 0.8F, 50.38F, 3.5F, 0.658F, 3.0F, 0.0F, 0.0F, 22.38F, 3.5F, 30.0F, 0.0F, 335.0F, 125.0F, new String[] {"Hextech Capacitor", "Shock Blast", "Hyper Charge", "Acceleration Gate", "Mercury Hammer"}, new String[] {"ヘクステック・コンデンサー", "ショックブラスト", "ハイパーチャージ", "アクセルゲート", "マーキュリーハンマー"}, SkillDefinition::JayceTransformed, true);
+
+    /** Jhin Definition */
+    public static final Champion Jhin = new Champion(202, "Jhin", "ジン", "Jhin", 540.0F, 85.0F, 5.5F, 0.5F, 300.0F, 50.0F, 6.0F, 0.8F, 53.0F, 4.0F, 0.625F, 0.0F, 0.0F, 0.0F, 20.0F, 3.5F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {"Whisper", "Dancing Grenade", "Deadly Flourish", "Captive Audience", "Curtain Call"}, new String[] {"この銃の名は｢囁き｣", "｢爆ぜ狂う果実｣", "｢死者への狂奏曲｣", "｢女神の抱擁｣", "｢終演 -フィナーレ-｣"}, SkillDefinition::Jhin, false);
 
     /** Jinx Definition */
     public static final Champion Jinx = new Champion(222, "Jinx", "ジンクス", "Jinx", 517.76F, 82.0F, 5.84F, 0.5F, 245.6F, 45.0F, 6.68F, 1.0F, 58.46F, 2.41F, 0.625F, 1.0F, 0.0F, 0.0F, 22.88F, 3.5F, 30.0F, 0.0F, 325.0F, 525.0F, new String[] {"Get Excited!", "Switcheroo!", "Zap!", "Flame Chompers!", "Super Mega Death Rocket!"}, new String[] {"超エキサイティン！", "スイッチング！", "シビレーザー！", "パックンチョッパー！", "スーパーメガデスロケット！"}, SkillDefinition::Jinx, false);
@@ -161,7 +164,7 @@ public class RiotChampionData {
     public static final Champion Karma = new Champion(43, "Karma", "カルマ", "Karma", 522.44F, 83.0F, 5.62F, 0.55F, 374.0F, 50.0F, 8.5F, 0.8F, 53.544F, 3.3F, 0.625F, 2.3F, 0.0F, 0.0F, 20.384F, 3.8F, 30.0F, 0.0F, 335.0F, 525.0F, new String[] {"Gathering Fire", "Inner Flame", "Focused Resolve", "Inspire", "Mantra"}, new String[] {"寄せ火", "心炎", "魂縛", "激励", "マントラ"}, SkillDefinition::Karma, false);
 
     /** Karthus Definition */
-    public static final Champion Karthus = new Champion(30, "Karthus", "カーサス", "Karthus", 516.0F, 75.0F, 6.42F, 0.55F, 372.48F, 61.0F, 6.0F, 0.8F, 45.66F, 3.25F, 0.625F, 2.11F, 0.0F, 0.0F, 20.88F, 3.5F, 30.0F, 0.0F, 335.0F, 450.0F, new String[] {"Death Defied", "Lay Waste", "Wall of Pain", "Defile", "Requiem"}, new String[] {"怨嗟の叫び", "根絶やし", "嘆きの壁", "冒涜", "レクイエム"}, SkillDefinition::Karthus, false);
+    public static final Champion Karthus = new Champion(30, "Karthus", "カーサス", "Karthus", 516.0F, 75.0F, 6.42F, 0.55F, 372.48F, 61.0F, 6.0F, 0.8F, 45.66F, 3.25F, 0.625F, 2.11F, 0.0F, 0.0F, 20.88F, 3.5F, 30.0F, 0.0F, 335.0F, 450.0F, new String[] {"Death Defied", "Lay Waste", "Wall of Pain", "Defile", "Requiem"}, new String[] {"怨嗟の叫び", "根絶やし", "嘆きの壁", "冒涜", "鎮魂歌"}, SkillDefinition::Karthus, false);
 
     /** Kassadin Definition */
     public static final Champion Kassadin = new Champion(38, "Kassadin", "カサディン", "Kassadin", 564.04F, 78.0F, 7.79F, 0.5F, 397.6F, 67.0F, 6.0F, 0.8F, 58.852F, 3.9F, 0.64F, 3.7F, 0.0F, 0.0F, 23.376F, 3.2F, 30.0F, 0.0F, 340.0F, 150.0F, new String[] {"Void Stone", "Null Sphere", "Nether Blade", "Force Pulse", "Riftwalk"}, new String[] {"ヴォイドストーン", "ヴォイドスフィア", "ネザーブレード", "ヴォイドパルス", "リフトウォーク"}, SkillDefinition::Kassadin, false);
@@ -179,7 +182,7 @@ public class RiotChampionData {
     public static final Champion Khazix = new Champion(121, "Kha'Zix", "カ＝ジックス", "Khazix", 572.8F, 85.0F, 7.51F, 0.75F, 327.2F, 40.0F, 7.59F, 0.5F, 55.208F, 3.1F, 0.668F, 2.7F, 0.0F, 0.0F, 27.0F, 3.0F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"Unseen Threat", "Taste Their Fear", "Void Spike", "Leap", "Void Assault"}, new String[] {"見えざる脅威", "甘美なる恐怖", "ヴォイドの刺棘", "リープ", "捕食の本能"}, SkillDefinition::Khazix, false);
 
     /** Kindred Definition */
-    public static final Champion Kindred = new Champion(203, "Kindred", "キンドレッド", "Kindred", 540.0F, 85.0F, 7.0F, 0.55F, 300.0F, 35.0F, 6.97F, 0.4F, 54.0F, 1.7F, 0.625F, 2.5F, 0.0F, 0.0F, 27.0F, 3.25F, 30.0F, 0.0F, 325.0F, 500.0F, new String[] {"Mark of the Kindred", "Dance of Arrows", "Wolf's Frenzy", "Mounting Dread", "Lamb's Respite"}, new String[] {"キンドレッドの刻印", "矢の輪舞", "狼の激昂", "忍び寄る恐怖", "子羊の慈悲"}, SkillDefinition::Kindred, false);
+    public static final Champion Kindred = new Champion(203, "Kindred", "キンドレッド", "Kindred", 540.0F, 85.0F, 7.0F, 0.55F, 300.0F, 35.0F, 6.97F, 0.4F, 54.0F, 1.7F, 0.625F, 2.5F, 0.0F, 0.0F, 27.0F, 3.25F, 30.0F, 0.0F, 325.0F, 500.0F, new String[] {"Mark of the Kindred", "Dance of Arrows", "Wolf's Frenzy", "Mounting Dread", "Lamb's Respite"}, new String[] {"キンドレッドの刻印", "矢の輪舞", "狼の激昂", "忍び寄る恐怖", "羊の執行猶予"}, SkillDefinition::Kindred, false);
 
     /** Kog'Maw Definition */
     public static final Champion KogMaw = new Champion(96, "Kog'Maw", "コグ＝マウ", "KogMaw", 517.76F, 82.0F, 5.92F, 0.55F, 322.2F, 40.0F, 8.675F, 0.7F, 57.46F, 2.41F, 0.665F, 1.5F, 0.0F, 0.0F, 19.88F, 3.5F, 30.0F, 0.0F, 325.0F, 500.0F, new String[] {"Icathian Surprise", "Caustic Spittle", "Bio-Arcane Barrage", "Void Ooze", "Living Artillery"}, new String[] {"イカシアの自爆", "腐食粘液", "有機性魔力砲", "ヴォイド分泌液", "生体空撃砲"}, SkillDefinition::KogMaw, false);
@@ -206,7 +209,7 @@ public class RiotChampionData {
     public static final Champion Lux = new Champion(99, "Lux", "ラックス", "Lux", 477.72F, 79.0F, 5.42F, 0.55F, 384.0F, 47.0F, 6.0F, 0.8F, 53.544F, 3.3F, 0.625F, 1.36F, 0.0F, 0.0F, 18.72F, 4.0F, 30.0F, 0.0F, 330.0F, 550.0F, new String[] {"Illumination", "Light Binding", "Prismatic Barrier", "Lucent Singularity", "Final Spark"}, new String[] {"イルミネーション", "ライトバインド", "プリズムバリア", "シンギュラリティ", "ファイナルスパーク"}, SkillDefinition::Lux, false);
 
     /** Malphite Definition */
-    public static final Champion Malphite = new Champion(54, "Malphite", "マルファイト", "Malphite", 574.2F, 90.0F, 8.37F, 0.55F, 282.2F, 40.0F, 7.32F, 0.55F, 61.97F, 3.375F, 0.638F, 3.4F, 0.0F, 0.0F, 28.3F, 3.75F, 32.1F, 1.25F, 335.0F, 125.0F, new String[] {"Granite Shield", "Seismic Shard", "Brutal Strikes", "Ground Slam", "Unstoppable Force"}, new String[] {"グラナイトシールド", "サイズミックシャード", "ブルータルストライク", "グランドスラム", "アンストッパブル・フォース"}, SkillDefinition::Malphite, false);
+    public static final Champion Malphite = new Champion(54, "Malphite", "マルファイト", "Malphite", 574.2F, 90.0F, 8.37F, 0.55F, 282.2F, 40.0F, 7.32F, 0.55F, 61.97F, 3.375F, 0.638F, 3.4F, 0.0F, 0.0F, 28.3F, 3.75F, 32.1F, 1.25F, 335.0F, 125.0F, new String[] {"Granite Shield", "Seismic Shard", "Brutal Strikes", "Ground Slam", "Unstoppable Force"}, new String[] {"グラナイトシールド", "サイズミックシャード", "ブルータルストライク", "グラウンドスラム", "アンストッパブル・フォース"}, SkillDefinition::Malphite, false);
 
     /** Malzahar Definition */
     public static final Champion Malzahar = new Champion(90, "Malzahar", "マルザハール", "Malzahar", 514.4F, 80.0F, 5.42F, 0.55F, 325.6F, 45.0F, 6.0F, 0.8F, 54.7F, 3.0F, 0.625F, 1.36F, 0.0F, 0.0F, 21.88F, 3.5F, 30.0F, 0.0F, 340.0F, 550.0F, new String[] {"Summon Voidling", "Call of the Void", "Null Zone", "Malefic Visions", "Nether Grasp"}, new String[] {"ヴォイドリング使い", "ヴォイドコール", "ヴォイドゾーン", "虚性侵蝕", "ネザーグラスプ"}, SkillDefinition::Malzahar, false);
@@ -257,10 +260,10 @@ public class RiotChampionData {
     public static final Champion Pantheon = new Champion(80, "Pantheon", "パンテオン", "Pantheon", 579.16F, 87.0F, 7.84F, 0.65F, 317.12F, 31.0F, 7.355F, 0.45F, 55.572F, 2.9F, 0.644F, 2.95F, 0.0F, 0.0F, 27.652F, 3.9F, 32.1F, 1.25F, 355.0F, 150.0F, new String[] {"Aegis Protection", "Spear Shot", "Aegis of Zeonia", "Heartseeker Strike", "Grand Skyfall"}, new String[] {"イージスの守護", "痛恨の槍", "ゼオニアの加護", "急所乱撃", "偉大なる空路"}, SkillDefinition::Pantheon, false);
 
     /** Poppy Definition */
-    public static final Champion Poppy = new Champion(78, "Poppy", "ポッピー", "Poppy", 540.0F, 90.0F, 8.0F, 0.8F, 280.0F, 40.0F, 7.0F, 0.7F, 56.0F, 4.0F, 0.625F, 2.5F, 0.0F, 0.0F, 29.0F, 3.5F, 32.0F, 1.25F, 340.0F, 125.0F, new String[] {"Iron Ambassador", "Hammer Shock", "Steadfast Presence", "Heroic Charge", "Keeper's Verdict"}, new String[] {"攻鉄の親善大使", "ハンマーショック", "ステッドファスト", "ヒロイックチャージ", "守護者の鉄鎚"}, SkillDefinition::Poppy, false);
+    public static final Champion Poppy = new Champion(78, "Poppy", "ポッピー", "Poppy", 540.0F, 90.0F, 8.0F, 0.8F, 280.0F, 40.0F, 7.0F, 0.7F, 56.0F, 4.0F, 0.625F, 2.5F, 0.0F, 0.0F, 29.0F, 3.5F, 32.0F, 1.25F, 340.0F, 125.0F, new String[] {"Iron Ambassador", "Hammer Shock", "Steadfast Presence", "Heroic Charge", "Keeper's Verdict"}, new String[] {"攻鉄の大使", "ハンマーショック", "ステッドファスト", "ヒロイックチャージ", "守護者の鉄鎚"}, SkillDefinition::Poppy, false);
 
     /** Quinn Definition */
-    public static final Champion Quinn = new Champion(133, "Quinn", "クイン", "Quinn", 532.8F, 85.0F, 5.42F, 0.55F, 268.8F, 35.0F, 6.97F, 0.4F, 54.46F, 2.41F, 0.668F, 3.1F, 0.0F, 0.0F, 23.38F, 3.5F, 30.0F, 0.0F, 335.0F, 525.0F, new String[] {"Harrier", "Blinding Assault", "Heightened Senses", "Vault", "Behind Enemy Lines"}, new String[] {"鷲匠", "暗闇の強襲", "鷲の眼", "飛翔撃", "敵陣潜入"}, SkillDefinition::Quinn, false);
+    public static final Champion Quinn = new Champion(133, "Quinn", "クイン", "Quinn", 532.8F, 85.0F, 5.42F, 0.55F, 268.8F, 35.0F, 6.97F, 0.4F, 54.46F, 2.41F, 0.668F, 3.1F, 0.0F, 0.0F, 23.38F, 3.5F, 30.0F, 0.0F, 335.0F, 525.0F, new String[] {"Harrier", "Blinding Assault", "Heightened Senses", "Vault", "Behind Enemy Lines"}, new String[] {"鷲匠", "暗闇の強襲", "鷲の眼", "飛翔撃", "相棒"}, SkillDefinition::Quinn, false);
 
     /** Rammus Definition */
     public static final Champion Rammus = new Champion(33, "Rammus", "ラムス", "Rammus", 564.48F, 86.0F, 7.92F, 0.55F, 310.44F, 33.0F, 7.84F, 0.5F, 55.88F, 3.5F, 0.625F, 2.215F, 0.0F, 0.0F, 31.384F, 4.3F, 32.1F, 1.25F, 335.0F, 125.0F, new String[] {"Spiked Shell", "Powerball", "Defensive Ball Curl", "Puncturing Taunt", "Tremors"}, new String[] {"トゲトゲ", "ころころ", "かたくなる", "ちくちく", "ドスンドスン"}, SkillDefinition::Rammus, false);
@@ -293,7 +296,7 @@ public class RiotChampionData {
     public static final Champion Shaco = new Champion(35, "Shaco", "シャコ", "Shaco", 582.12F, 84.0F, 8.37F, 0.55F, 297.2F, 40.0F, 7.155F, 0.45F, 57.58F, 3.5F, 0.694F, 3.0F, 0.0F, 0.0F, 24.88F, 3.5F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"Backstab", "Deceive", "Jack In The Box", "Two-Shiv Poison", "Hallucinate"}, new String[] {"バックスタブ", "幻惑", "びっくり箱", "ポイズンダガー", "ハルシネイト"}, SkillDefinition::Shaco, false);
 
     /** Shen Definition */
-    public static final Champion Shen = new Champion(98, "Shen", "シェン", "Shen", 570.8F, 85.0F, 8.37F, 0.55F, 200.0F, 0.0F, 50.0F, 0.0F, 60.17F, 3.375F, 0.651F, 3.4F, 0.0F, 0.0F, 25.72F, 4.0F, 32.1F, 1.25F, 335.0F, 125.0F, new String[] {"Ki Strike", "Vorpal Blade", "Feint", "Shadow Dash", "Stand United"}, new String[] {"気功斬", "吸命刀", "護身術", "殺気駆け", "刹那護法"}, SkillDefinition::Shen, false);
+    public static final Champion Shen = new Champion(98, "Shen", "シェン", "Shen", 540.0F, 73.0F, 10.0F, 0.75F, 400.0F, 0.0F, 50.0F, 0.0F, 60.0F, 3.0F, 0.625F, 2.0F, 0.0F, 0.0F, 25.0F, 2.6F, 32.1F, 1.25F, 340.0F, 125.0F, new String[] {"Ki Barrier", "Twilight Assault", "Spirit's Refuge", "Shadow Dash", "Stand United"}, new String[] {"内気功", "護刃招来", "防人の帳", "殺気駆け", "瞬身護法"}, SkillDefinition::Shen, false);
 
     /** Shyvana Definition */
     public static final Champion Shyvana = new Champion(102, "Shyvana", "シヴァーナ", "Shyvana", 594.6F, 95.0F, 8.59F, 0.8F, 100.0F, 0.0F, 0.0F, 0.0F, 60.712F, 3.4F, 0.658F, 2.5F, 0.0F, 0.0F, 27.628F, 3.35F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"Dragonborn", "Twin Bite", "Burnout", "Flame Breath", "Dragon's Descent"}, new String[] {"ドラゴンボーン", "ツインバイト", "バーンアウト", "フレイムブレス", "龍族の血統"}, SkillDefinition::Shyvana, false);
@@ -362,7 +365,7 @@ public class RiotChampionData {
     public static final Champion Varus = new Champion(110, "Varus", "ヴァルス", "Varus", 537.76F, 82.0F, 5.42F, 0.55F, 360.48F, 33.0F, 7.34F, 0.8F, 54.66F, 2.41F, 0.658F, 3.0F, 0.0F, 0.0F, 23.212F, 3.4F, 30.0F, 0.0F, 330.0F, 575.0F, new String[] {"Living Vengeance", "Piercing Arrow", "Blighted Quiver", "Hail of Arrows", "Chain of Corruption"}, new String[] {"復讐の化身", "乾坤一擲", "枯死の矢筒", "滅びの矢雨", "穢れの連鎖"}, SkillDefinition::Varus, false);
 
     /** Vayne Definition */
-    public static final Champion Vayne = new Champion(67, "Vayne", "ヴェイン", "Vayne", 498.44F, 83.0F, 5.42F, 0.55F, 231.8F, 35.0F, 6.97F, 0.4F, 55.88F, 1.66F, 0.658F, 4.0F, 0.0F, 0.0F, 19.012F, 3.4F, 30.0F, 0.0F, 330.0F, 550.0F, new String[] {"Night Hunter", "Tumble", "Silver Bolts", "Condemn", "Final Hour"}, new String[] {"闇夜の狩人　", "タンブル", "シルバーボルト", "お仕置き", "遊びは終わりよ"}, SkillDefinition::Vayne, false);
+    public static final Champion Vayne = new Champion(67, "Vayne", "ヴェイン", "Vayne", 498.44F, 83.0F, 5.42F, 0.55F, 231.8F, 35.0F, 6.97F, 0.4F, 55.88F, 1.66F, 0.658F, 4.0F, 0.0F, 0.0F, 19.012F, 3.4F, 30.0F, 0.0F, 330.0F, 550.0F, new String[] {"Night Hunter", "Tumble", "Silver Bolts", "Condemn", "Final Hour"}, new String[] {"ナイトハンター", "タンブル", "シルバーボルト", "パニッシュメント", "ファイナルアワー"}, SkillDefinition::Vayne, false);
 
     /** Veigar Definition */
     public static final Champion Veigar = new Champion(45, "Veigar", "ヴェイガー", "Veigar", 492.76F, 82.0F, 5.42F, 0.55F, 392.4F, 52.0F, 6.0F, 0.8F, 50.71F, 2.625F, 0.625F, 2.24F, 0.0F, 0.0F, 22.55F, 3.75F, 30.0F, 0.0F, 340.0F, 525.0F, new String[] {"Equilibrium", "Baleful Strike", "Dark Matter", "Event Horizon", "Primordial Burst"}, new String[] {"ワールドバランス", "イーヴィルストライク", "ダークマター", "イベントホライズン", "メテオバースト"}, SkillDefinition::Veigar, false);

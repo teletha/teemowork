@@ -43,7 +43,7 @@ public class RiotItemData {
     public static final RiotItemData ChainVest = new RiotItemData("Chain Vest", "チェインベスト", 1031, 500, 800, 560, new int[] {1029}, new int[] {3075, 3068, 3026, 2053, 3742}, 0, 432, 0, 2);
 
     /** Null-Magic Mantle Definition */
-    public static final RiotItemData NullMagicMantle = new RiotItemData("Null-Magic Mantle", "ナルマジックマント", 1033, 450, 450, 315, null, new int[] {3111, 3211, 1057, 3028, 3140, 3155, 3105, 3091}, 0, 0, 48, 0);
+    public static final RiotItemData NullMagicMantle = new RiotItemData("Null-Magic Mantle", "ヌルマジックマント", 1033, 450, 450, 315, null, new int[] {3111, 3211, 1057, 3028, 3140, 3155, 3105, 3091}, 0, 0, 48, 0);
 
     /** Long Sword Definition */
     public static final RiotItemData LongSword = new RiotItemData("Long Sword", "ロングソード", 1036, 350, 350, 245, null, new int[] {1053, 3133, 3052, 3123, 3034, 3044, 3072, 3074, 3122, 3134, 3144, 3155}, 0, 48, 48, 0);
@@ -97,7 +97,7 @@ public class RiotItemData {
     public static final RiotItemData ProspectorsRing = new RiotItemData("Prospector's Ring", "プロスペクターリング", 1063, 950, 950, 380, null, null, 0, 288, 96, 0);
 
     /** The Dark Seal Definition */
-    public static final RiotItemData TheDarkSeal = new RiotItemData("The Dark Seal", "ダークシール", 1082, 400, 400, 280, null, new int[] {3041}, 3, 288, 240, 0);
+    public static final RiotItemData TheDarkSeal = new RiotItemData("The Dark Seal", "ダークシール", 1082, 350, 350, 245, null, new int[] {3041}, 3, 288, 240, 0);
 
     /** Cull Definition */
     public static final RiotItemData Cull = new RiotItemData("Cull", "カル", 1083, 450, 450, 180, null, null, 3, 336, 240, 0);
@@ -343,7 +343,7 @@ public class RiotItemData {
     public static final RiotItemData SeraphsEmbrace = new RiotItemData("Seraph's Embrace", "セラフ・エンブレイス", 3040, 3000, 3000, 4270, new int[] {3003}, null, 0, 384, 288, 4);
 
     /** Mejai's Soulstealer Definition */
-    public static final RiotItemData MejaisSoulstealer = new RiotItemData("Mejai's Soulstealer", "メジャイ・ソウルスティーラー", 3041, 1000, 1400, 980, new int[] {1082}, null, 0, 432, 288, 2);
+    public static final RiotItemData MejaisSoulstealer = new RiotItemData("Mejai's Soulstealer", "メジャイ・ソウルスティーラー", 3041, 1050, 1400, 980, new int[] {1082}, null, 0, 432, 288, 2);
 
     /** Muramana Definition */
     public static final RiotItemData Muramana = new RiotItemData("Muramana", "ムラマナ", 3042, 2200, 2200, 3220, new int[] {3004}, null, 0, 0, 336, 4);
@@ -394,7 +394,7 @@ public class RiotItemData {
     public static final RiotItemData TheBlackCleaver = new RiotItemData("The Black Cleaver", "ブラック・クリーバー", 3071, 1150, 3500, 2450, new int[] {3044, 3133}, null, 0, 240, 384, 3);
 
     /** The Bloodthirster Definition */
-    public static final RiotItemData TheBloodthirster = new RiotItemData("The Bloodthirster", "渇望の血剣", 3072, 1150, 3700, 2590, new int[] {1038, 1036, 1053}, null, 0, 288, 384, 3);
+    public static final RiotItemData TheBloodthirster = new RiotItemData("The Bloodthirster", "ブラッドサースター", 3072, 1150, 3700, 2590, new int[] {1038, 1036, 1053}, null, 0, 288, 384, 3);
 
     /** Ravenous Hydra Definition */
     public static final RiotItemData RavenousHydra = new RiotItemData("Ravenous Hydra", "ラヴァナス・ハイドラ(近接専用)", 3074, 1050, 3500, 2450, new int[] {3077, 1053, 1036}, null, 0, 384, 384, 3);
@@ -544,7 +544,7 @@ public class RiotItemData {
     public static final RiotItemData WilloftheAncients = new RiotItemData("Will of the Ancients", "ウィル・オブ・ザ・エンシェント", 3152, 300, 2300, 1610, new int[] {3145, 3108}, null, 1, 288, 144, 3);
 
     /** Blade of the Ruined King Definition */
-    public static final RiotItemData BladeoftheRuinedKing = new RiotItemData("Blade of the Ruined King", "失墜の王剣", 3153, 750, 3400, 2380, new int[] {3144, 1043}, null, 1, 336, 144, 4);
+    public static final RiotItemData BladeoftheRuinedKing = new RiotItemData("Blade of the Ruined King", "ルインドキング･ブレード", 3153, 750, 3400, 2380, new int[] {3144, 1043}, null, 1, 336, 144, 4);
 
     /** Hexdrinker Definition */
     public static final RiotItemData Hexdrinker = new RiotItemData("Hexdrinker", "ヘクスドリンカー", 3155, 500, 1300, 910, new int[] {1036, 1033}, new int[] {3156}, 1, 432, 144, 2);
@@ -559,13 +559,13 @@ public class RiotItemData {
     public static final RiotItemData IonianBootsofLucidity = new RiotItemData("Ionian Boots of Lucidity", "アイオニアブーツ", 3158, 500, 800, 560, new int[] {1001}, new int[] {1331, 1333, 1330, 1332}, 1, 96, 192, 2);
 
     /** Morellonomicon Definition */
-    public static final RiotItemData Morellonomicon = new RiotItemData("Morellonomicon", "モレロノミコン", 3165, 765, 2550, 1785, new int[] {3108, 3114, 1052}, null, 1, 192, 192, 3);
+    public static final RiotItemData Morellonomicon = new RiotItemData("Morellonomicon", "モレロノミコン", 3165, 615, 2400, 1680, new int[] {3108, 3114, 1052}, null, 1, 192, 192, 3);
 
     /** Moonflair Spellblade Definition */
     public static final RiotItemData MoonflairSpellblade = new RiotItemData("Moonflair Spellblade", "ムーンフレア・スペルブレード", 3170, 580, 2500, 1750, new int[] {3191, 1057}, null, 1, 432, 192, 3);
 
     /** Athene's Unholy Grail Definition */
-    public static final RiotItemData AthenesUnholyGrail = new RiotItemData("Athene's Unholy Grail", "アテネの血杯", 3174, 565, 2800, 1960, new int[] {3108, 3028, 1052}, null, 1, 96, 240, 3);
+    public static final RiotItemData AthenesUnholyGrail = new RiotItemData("Athene's Unholy Grail", "アテネの血杯", 3174, 465, 2700, 1890, new int[] {3108, 3028, 1052}, null, 1, 96, 240, 3);
 
     /** Odyn's Veil Definition */
     public static final RiotItemData OdynsVeil = new RiotItemData("Odyn's Veil", "オーディンヴェール", 3180, 480, 2400, 1680, new int[] {1057, 3010}, null, 1, 192, 240, 3);
@@ -656,6 +656,9 @@ public class RiotItemData {
 
     /** Golden Transcendence Definition */
     public static final RiotItemData GoldenTranscendence = new RiotItemData("Golden Transcendence", "黄金の超越", 3460, 0, 0, 0, null, null, 2, 432, 144, 0);
+
+    /** Golden Transcendence (Disabled) Definition */
+    public static final RiotItemData GoldenTranscendenceDisabled = new RiotItemData("Golden Transcendence (Disabled)", "黄金の超越", 3461, 0, 0, 0, null, null, 3, 144, 432, 0);
 
     /** Ardent Censer Definition */
     public static final RiotItemData ArdentCenser = new RiotItemData("Ardent Censer", "アーデントセンサー", 3504, 800, 2200, 1540, new int[] {3114, 3113}, null, 2, 0, 192, 3);

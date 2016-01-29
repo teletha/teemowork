@@ -298,10 +298,10 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Item definition */
     public static final Item Cull = new Item(RiotItemData.Cull, item -> {
-        item.attackDamage(5).add(ability -> {
+        item.attackDamage(7).add(ability -> {
             ability.passive("通常攻撃時に{1}する。").variable(1, RestoreHealth, 3);
         }).add(ability -> {
-            ability.passive("ミニオンを倒すと{1}を得る。100体のミニオンを倒すと{2}を得てこの効果が消滅する。").variable(1, Gold, 1).variable(2, Gold, 300);
+            ability.passive("ミニオンを倒すと{1}を得る。100体のミニオンを倒すと{2}を得てこの効果が消滅する。").variable(1, Gold, 1).variable(2, Gold, 350);
         });
     });
 
@@ -489,7 +489,7 @@ public class Item extends Describable<ItemDescriptor> {
             ability.active("攻撃無効な亡霊を2体召喚し、最も近くにいる敵チャンピオン2人を6秒間探索する。亡霊はターゲットに追いつくと、2秒から5秒間（亡霊の移動距離に依る）{1}と{2}を与える。ターゲットを見つけられなかった場合、亡霊は召喚者のもとへ戻ろうとする。亡霊が帰還に成功した場合、このアイテムのクールダウンは20秒短縮される({3})。")
                     .variable(1, Visionable)
                     .variable(2, MSSlowRatio, 40)
-                    .variable(3, ItemCD, 60);
+                    .variable(3, ItemCD, 90);
         });
     });
 
