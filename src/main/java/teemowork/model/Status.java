@@ -669,8 +669,6 @@ public enum Status {
         case Blink:
         case BlinkExchange:
         case BlinkTarget:
-        case Dash:
-        case DashTarget:
         case Knockback:
             String length = formatValue(computed);
 
@@ -678,6 +676,16 @@ public enum Status {
                 return getName();
             } else {
                 return getName() + "(距離" + formatValue(computed) + ")";
+            }
+
+        case Dash:
+        case DashTarget:
+            String speed = formatValue(computed);
+
+            if (speed.length() == 0) {
+                return getName();
+            } else {
+                return getName() + "(速度" + formatValue(computed) + ")";
             }
 
         case Stack:
