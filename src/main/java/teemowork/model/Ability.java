@@ -133,7 +133,7 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability EnhancedMovement5 = new Ability("移動速度強化", ability -> {
-        ability.passive("{1}する。5秒間戦闘をしなければ、{2}する。").variable(1, MS, 25).variable(2, MS, 105);
+        ability.passive("{1}する。5秒間戦闘をしなければ、{2}する。").variable(1, MS, 25).variable(2, MS, 115);
     });
 
     /** The ability. */

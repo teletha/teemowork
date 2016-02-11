@@ -145,7 +145,7 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
      * 
      * @return Chainable API.
      */
-    ItemDescriptor attackDamage(double value) {
+    ItemDescriptor ad(double value) {
         return set(AD, value);
     }
 
@@ -156,7 +156,7 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
      * 
      * @return Chainable API.
      */
-    ItemDescriptor abilityPower(double value) {
+    ItemDescriptor ap(double value) {
         return set(AP, value);
     }
 
@@ -167,7 +167,7 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
      * 
      * @return Chainable API.
      */
-    ItemDescriptor armor(double value) {
+    ItemDescriptor ar(double value) {
         return set(AR, value);
     }
 
@@ -200,7 +200,7 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
      * 
      * @return Chainable API.
      */
-    ItemDescriptor movementSpeed(double value) {
+    ItemDescriptor ms(double value) {
         return set(MSRatio, value);
     }
 
@@ -211,7 +211,7 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
      * 
      * @return Chainable API.
      */
-    ItemDescriptor cooldownReduction(double value) {
+    ItemDescriptor cdr(double value) {
         return set(CDR, value);
     }
 

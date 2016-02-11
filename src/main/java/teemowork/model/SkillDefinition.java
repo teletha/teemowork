@@ -22,7 +22,6 @@ import teemowork.model.variable.VariableResolver.Per5Level;
 import teemowork.model.variable.VariableResolver.Per6Level;
 import teemowork.model.variable.VariableResolver.PerChampion;
 import teemowork.model.variable.VariableResolver.PerLevel;
-import teemowork.model.variable.VariableResolver.PerLevel;
 import teemowork.model.variable.VariableResolver.PerReferedSkillLevel;
 import teemowork.model.variable.VariableResolver.PerSkillLevel;
 import teemowork.model.variable.VariableResolver.Refer;
