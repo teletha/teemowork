@@ -780,7 +780,7 @@ public class Item extends Describable<ItemDescriptor> {
     /** Muramana */
     public static final Item Muramana = new Item(RiotItemData.Muramana, item -> {
         item.ad(25).manaRegenRatio(25).mana(1000).add(Ability.Awe).add(ability -> {
-            ability.passive("現在のManaの3%を消費して、通常攻撃または単体対象かつDoTではないダメージスキルに{1}を付与する。")
+            ability.passive("敵チャンピオンに対して単体スキルや通常攻撃がヒットすると、現在マナの3%を消費して{1}を与える。この効果は自身のマナが最大値の20%以上あるときにしか発動しない。")
                     .variable(1, PhysicalDamage, 0, 0, amplify(Status.CurrentManaRatio, 6));
         });
     });
@@ -1053,7 +1053,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** SkirmishersSabre */
     public static final Item SkirmishersSabreRunicEchoes = new Item(RiotItemData.SkirmishersSabreRunicEchoes, item -> {
-        item.add(Ability.NailAndTooth).add(Ability.ChallengingSmite).ap(60).ms(10).add(Ability.RunicEchoes);
+        item.add(Ability.NailAndTooth).add(Ability.ChallengingSmite).ap(60).ms(7).add(Ability.RunicEchoes);
     });
 
     /** SkirmishersSabre */
@@ -1127,7 +1127,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** StalkersBlade */
     public static final Item StalkersBladeRunicEchoes = new Item(RiotItemData.StalkersBladeRunicEchoes, item -> {
-        item.add(Ability.NailAndTooth).add(Ability.ChillingSmite).ap(60).ms(10).add(Ability.RunicEchoes);
+        item.add(Ability.NailAndTooth).add(Ability.ChillingSmite).ap(60).ms(7).add(Ability.RunicEchoes);
     });
 
     /** StalkersBlade */
@@ -1151,7 +1151,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** SteraksGage */
     public static final Item SteraksGage = new Item(RiotItemData.SteraksGage, item -> {
-        item.health(500).add(ability -> {
+        item.health(400).add(ability -> {
             ability.ununique().passive("{1}を得る。").variable(1, AD, amplify(BaseAD, 0.25));
         }).add(ability -> {
             ability.passive("5秒以内に{1}のダメージを受けると8秒間Primal Rageの効果を得る。{2}。").variable(1, Value, 400, 0, level(82.35)).variable(2, ItemCD, 45);
@@ -1248,7 +1248,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Tracker's Knife */
     public static final Item TrackersKnifeRunicEchoes = new Item(RiotItemData.TrackersKnifeRunicEchoes, item -> {
-        item.add(Ability.NailAndTooth).add(Ability.WardRefresh0).add(Ability.GhostWard).ap(60).ms(10).add(Ability.RunicEchoes);
+        item.add(Ability.NailAndTooth).add(Ability.WardRefresh0).add(Ability.GhostWard).ap(60).ms(7).add(Ability.RunicEchoes);
     });
 
     /** Tracker's Knife */

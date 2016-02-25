@@ -309,9 +309,9 @@ class ChampionDefinition implements Comparable<ChampionDefinition> {
 
         public List<Float> cooldown;
 
-        public List<Integer> cost;
+        public List<Float> cost;
 
-        public List<Integer> range;
+        public List<Float> range;
 
         public String costType;
 

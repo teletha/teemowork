@@ -34,7 +34,7 @@ public class RiotItemData {
     public static final RiotItemData SapphireCrystal = new RiotItemData("Sapphire Crystal", "サファイアクリスタル", 1027, 350, 350, 245, null, new int[] {3057, 3070, 3073, 3010, 3024}, 0, 288, 0, 0);
 
     /** Ruby Crystal Definition */
-    public static final RiotItemData RubyCrystal = new RiotItemData("Ruby Crystal", "ルビークリスタル", 1028, 400, 400, 280, null, new int[] {1011, 3751, 2049, 2045, 2051, 3010, 3052, 3022, 3044, 3053, 3067, 3801, 3211, 3136, 3748}, 0, 336, 0, 0);
+    public static final RiotItemData RubyCrystal = new RiotItemData("Ruby Crystal", "ルビークリスタル", 1028, 400, 400, 280, null, new int[] {1011, 3751, 2049, 2045, 2051, 3010, 3052, 3022, 3044, 3067, 3801, 3211, 3136, 3748}, 0, 336, 0, 0);
 
     /** Cloth Armor Definition */
     public static final RiotItemData ClothArmor = new RiotItemData("Cloth Armor", "クロースアーマー", 1029, 300, 300, 210, null, new int[] {3047, 1031, 3191, 3024, 3082, 3075, 2053}, 0, 384, 0, 0);
@@ -46,7 +46,7 @@ public class RiotItemData {
     public static final RiotItemData NullMagicMantle = new RiotItemData("Null-Magic Mantle", "ヌルマジックマント", 1033, 450, 450, 315, null, new int[] {3111, 3211, 1057, 3028, 3140, 3155, 3105, 3091}, 0, 0, 48, 0);
 
     /** Long Sword Definition */
-    public static final RiotItemData LongSword = new RiotItemData("Long Sword", "ロングソード", 1036, 350, 350, 245, null, new int[] {1053, 3133, 3052, 3123, 3034, 3044, 3072, 3074, 3122, 3134, 3144, 3155}, 0, 48, 48, 0);
+    public static final RiotItemData LongSword = new RiotItemData("Long Sword", "ロングソード", 1036, 350, 350, 245, null, new int[] {1053, 3133, 3052, 3123, 3034, 3044, 3053, 3072, 3074, 3122, 3134, 3144, 3155}, 0, 48, 48, 0);
 
     /** Pickaxe Definition */
     public static final RiotItemData Pickaxe = new RiotItemData("Pickaxe", "ピッケル", 1037, 875, 875, 613, null, new int[] {3004, 3008, 3022, 3031, 3035, 3077, 3104, 3124, 3139, 3181, 3184, 3812}, 0, 96, 48, 0);
@@ -364,7 +364,7 @@ public class RiotItemData {
     public static final RiotItemData JaurimsFist = new RiotItemData("Jaurim's Fist", "ジャウリムフィスト", 3052, 450, 1200, 840, new int[] {1036, 1028}, new int[] {3022, 3053, 3748}, 3, 192, 384, 2);
 
     /** Sterak's Gage Definition */
-    public static final RiotItemData SteraksGage = new RiotItemData("Sterak's Gage", "ステラックの篭手", 3053, 1100, 2700, 1890, new int[] {3052, 1028}, null, 3, 144, 240, 3);
+    public static final RiotItemData SteraksGage = new RiotItemData("Sterak's Gage", "ステラックの篭手", 3053, 1150, 2700, 1890, new int[] {3052, 1036}, null, 3, 144, 240, 3);
 
     /** Ohmwrecker Definition */
     public static final RiotItemData Ohmwrecker = new RiotItemData("Ohmwrecker", "オームレッカー", 3056, 650, 2650, 1855, new int[] {2053, 3067}, null, 0, 336, 336, 4);
@@ -397,7 +397,7 @@ public class RiotItemData {
     public static final RiotItemData TheBloodthirster = new RiotItemData("The Bloodthirster", "ブラッドサースター", 3072, 1150, 3700, 2590, new int[] {1038, 1036, 1053}, null, 0, 288, 384, 3);
 
     /** Ravenous Hydra Definition */
-    public static final RiotItemData RavenousHydra = new RiotItemData("Ravenous Hydra", "ラヴァナス・ハイドラ (近接専用)", 3074, 1050, 3500, 2450, new int[] {3077, 1053, 1036}, null, 0, 384, 384, 3);
+    public static final RiotItemData RavenousHydra = new RiotItemData("Ravenous Hydra", "ラヴァナス・ハイドラ", 3074, 1050, 3500, 2450, new int[] {3077, 1053, 1036}, null, 0, 384, 384, 3);
 
     /** Thornmail Definition */
     public static final RiotItemData Thornmail = new RiotItemData("Thornmail", "ソーンメイル", 3075, 1250, 2350, 1645, new int[] {1029, 1031}, null, 0, 432, 384, 3);
@@ -700,7 +700,7 @@ public class RiotItemData {
     public static final RiotItemData DeadMansPlate = new RiotItemData("Dead Man's Plate", "デッドマンプレート", 3742, 1100, 2900, 2030, new int[] {1031, 1011}, null, 3, 48, 192, 3);
 
     /** Titanic Hydra Definition */
-    public static final RiotItemData TitanicHydra = new RiotItemData("Titanic Hydra", "タイタン・ハイドラ(近接専用)", 3748, 700, 3500, 2450, new int[] {3077, 1028, 3052}, null, 3, 192, 240, 3);
+    public static final RiotItemData TitanicHydra = new RiotItemData("Titanic Hydra", "タイタン・ハイドラ", 3748, 700, 3500, 2450, new int[] {3077, 1028, 3052}, null, 3, 192, 240, 3);
 
     /** Bami's Cinder Definition */
     public static final RiotItemData BamisCinder = new RiotItemData("Bami's Cinder", "バミ・シンダー", 3751, 700, 1100, 770, new int[] {1028}, new int[] {3068, 3717, 3725, 1401, 1409, 1413, 3672}, 2, 336, 288, 2);

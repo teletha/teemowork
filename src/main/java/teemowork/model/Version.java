@@ -143,6 +143,8 @@ public enum Version {
 
     P603("6.3", 2016, 2, 10),
 
+    P604("6.4", 2016, 2, 25),
+
     PBE("Public Beta Environment", 2013, 1, 26);
 
     /** The latest stable version. */

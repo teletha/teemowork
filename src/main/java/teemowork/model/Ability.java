@@ -128,7 +128,7 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability EnhancedMovement3 = new Ability("移動速度強化", ability -> {
-        ability.passive("{1}する。").variable(1, MS, 65);
+        ability.passive("{1}する。").variable(1, MS, 60);
     });
 
     /** The ability. */
@@ -382,7 +382,7 @@ public class Ability extends Describable<AbilityDescriptor> {
 
     /** The ability. */
     public static final Ability TenacityEffect = new Ability("根性", ability -> {
-        ability.passive("{1} を得る。").variable(1, Status.Tenacity, 20);
+        ability.passive("{1} を得る。").variable(1, Status.Tenacity, 30);
     });
 
     /** The ability. */
