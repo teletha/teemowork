@@ -148,7 +148,7 @@ public enum Version {
     PBE("Public Beta Environment", 2013, 1, 26);
 
     /** The latest stable version. */
-    public static final Version Latest = P603;
+    public static final Version Latest = P604;
 
     /** The selected version. */
     private static Version selection = Latest;
