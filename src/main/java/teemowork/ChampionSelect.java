@@ -11,6 +11,8 @@ package teemowork;
 
 import static jsx.ui.StructureDescriptor.*;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -135,6 +137,52 @@ public class ChampionSelect extends Widget {
     /** The view state of filters. */
     private final @ModelValue BooleanProperty showChampionFilters = when(UIAction.Click).at($.FilterByChampion).toBinary();
 
+    /** The view state of sorts. */
+    private final @ModelValue BooleanProperty showSkillSorts = when(UIAction.Click).at($.SortBySkill).toBinary();
+
+    /** The list of active sorts. */
+    private final @ModelValue SetProperty<SkillFilter> activeSorts = I.make(SetProperty.class);
+
+    private final Comparator<Champion> sorter = (one, other) -> {
+        double sumOne = sumRate(one, Status.AP);
+        double sumOther = sumRate(other, Status.AP);
+
+        return sumOne == sumOther ? 0 : sumOne < sumOther ? 1 : -1;
+    };
+
+    private double sumRate(Champion champion, Status status) {
+        double sum = 0;
+
+        for (Skill skill : champion.skills) {
+            SkillDescriptor descriptor = skill.getDescriptor(Version.Latest);
+
+            List list = new ArrayList();
+            list.addAll(descriptor.getPassive());
+            list.addAll(descriptor.getActive());
+
+            for (Object text : list) {
+                if (text instanceof Variable) {
+                    Variable variable = (Variable) text;
+
+                    switch (variable.getStatus()) {
+                    case PhysicalDamage:
+                    case MagicDamage:
+                    case TrueDamage:
+                    case Shield:
+                    case MagicShield:
+                        for (Variable v : variable.getAmplifiers()) {
+                            if (v.getStatus() == status) {
+                                sum += variable.getResolver().compute(1);
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        return sum;
+    }
+
     /**
      * 
      */
@@ -169,7 +217,7 @@ public class ChampionSelect extends Widget {
                 // });
                 // }));
             });
-            box($.ImageSet, contents(Champion.getAll(), champion -> {
+            box($.ImageSet, contents(Champion.getAll(sorter), champion -> {
                 box($.Container, If(!filter(champion) || !champion.match(input.value.get()), $.Unselected), () -> {
                     box($.IconImage, $.IconPosition.of(champion));
                     text($.Title, champion);
@@ -192,6 +240,27 @@ public class ChampionSelect extends Widget {
         }
 
         for (SkillFilter filter : activeFilters) {
+            if (!filter.filter.test(champion)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * <p>
+     * Sort by conditions.
+     * </p>
+     * 
+     * @param champion
+     * @return
+     */
+    private boolean sort(Champion champion) {
+        if (activeSorts.isEmpty()) {
+            return true;
+        }
+
+        for (SkillFilter filter : activeSorts) {
             if (!filter.filter.test(champion)) {
                 return false;
             }
@@ -560,6 +629,9 @@ public class ChampionSelect extends Widget {
         };
 
         private static Style FilterBySkill = FilterBy.with(() -> {
+        });
+
+        private static Style SortBySkill = FilterBy.with(() -> {
         });
 
         private static Style FilterByChampion = FilterBy.with(() -> {

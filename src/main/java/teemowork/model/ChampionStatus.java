@@ -70,4 +70,13 @@ public class ChampionStatus {
 
         return this;
     }
+
+    /**
+     * @param ap
+     * @return
+     */
+    public double sumRate(Status status) {
+
+        return 0;
+    }
 }

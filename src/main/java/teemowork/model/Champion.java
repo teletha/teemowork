@@ -11,6 +11,8 @@ package teemowork.model;
 
 import static teemowork.model.Status.*;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
@@ -269,6 +271,20 @@ public class Champion extends RiotChampionData {
      */
     public static List<Champion> getAll() {
         return champions;
+    }
+
+    /**
+     * <p>
+     * List up all champions.
+     * </p>
+     * 
+     * @return
+     */
+    public static List<Champion> getAll(Comparator<Champion> sorter) {
+        List<Champion> list = new ArrayList(champions);
+        list.sort(sorter);
+
+        return list;
     }
 
     /**
