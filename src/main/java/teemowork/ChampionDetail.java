@@ -21,6 +21,7 @@ import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
 import jsx.ui.Style;
+import jsx.ui.TypeStyle;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.UI;
@@ -54,7 +55,7 @@ public class ChampionDetail extends Widget1<Build> {
     private final Build build = model1;
 
     /** Up skill level. */
-    public final Events<Skill> skillUp = when(User.Click).at($.IconBox, Skill.class);
+    public final Events<Skill> skillUp = when(User.Click).at($.IconBox);
 
     /** Down skill level. */
     public final Events<Skill> skillDown = when(User.ClickRight).at($.IconBox, Skill.class);
@@ -319,7 +320,7 @@ public class ChampionDetail extends Widget1<Build> {
             background.image(BackgroundImage.of(linear(rgba(240, 192, 28, state ? 1 : 0.5), rgba(160, 123, 1, state ? 1 : 0.5))));
         };
 
-        Style IconBox = () -> {
+        TypeStyle<Skill> IconBox = () -> {
             display.verticalBox();
             margin.right(SkillIconSize / 5, px);
             cursor.pointer();
