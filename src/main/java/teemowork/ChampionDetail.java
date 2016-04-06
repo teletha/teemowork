@@ -12,7 +12,7 @@ package teemowork;
 import static jsx.ui.StructureDescriptor.*;
 import static teemowork.model.Status.*;
 
-import js.dom.UIAction;
+import js.dom.User;
 import jsx.style.BinaryStyle;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
@@ -24,9 +24,9 @@ import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.UI;
-import kiss.Binary;
 import kiss.Events;
-import kiss.Ternary;
+import kiss.I;
+import kiss.Ⅱ;
 import teemowork.model.Build;
 import teemowork.model.Champion;
 import teemowork.model.DescriptionView;
@@ -54,23 +54,23 @@ public class ChampionDetail extends Widget1<Build> {
     private final Build build = model1;
 
     /** Up skill level. */
-    public final Events<Skill> skillUp = when(UIAction.Click).at($.IconBox, Skill.class);
+    public final Events<Skill> skillUp = when(User.Click).at($.IconBox, Skill.class);
 
     /** Down skill level. */
-    public final Events<Skill> skillDown = when(UIAction.ClickRight).at($.IconBox, Skill.class);
+    public final Events<Skill> skillDown = when(User.ClickRight).at($.IconBox, Skill.class);
 
     /** Up champion level. */
-    public final Events<Champion> championLevelUp = when(UIAction.Click, UIAction.MouseWheelUp).at($.ChampionIconBox);
+    public final Events<Champion> championLevelUp = when(User.Click, User.MouseWheelUp).at($.ChampionIconBox);
 
     /** Down champion level. */
-    public final Events<Champion> championLevelDown = when(UIAction.ClickRight, UIAction.MouseWheelDown).at($.ChampionIconBox);
+    public final Events<Champion> championLevelDown = when(User.ClickRight, User.MouseWheelDown).at($.ChampionIconBox);
 
     /** The item selection. */
-    private final Events<Binary<Integer, Item>> selectItem = UI.modal()
-            .open(when(UIAction.Click).at($.ItemIconBase, Integer.class))
+    private final Events<Ⅱ<Integer, Item>> selectItem = UI.modal()
+            .open(when(User.Click).at($.ItemIconBase, Integer.class))
             .show(ItemCatalog.class)
             .closeWhen(items -> items.selectItem)
-            .map(Ternary::é);
+            .map(c -> I.pair(c.ⅰ, c.ⅲ));
 
     /**
      * 
@@ -80,7 +80,7 @@ public class ChampionDetail extends Widget1<Build> {
         championLevelDown.to(update(v -> build.levelDown()));
         skillUp.to(update(build::levelUp));
         skillDown.to(update(build::levelDown));
-        selectItem.to(update(v -> build.setItem(v.a, v.e)));
+        selectItem.to(update(v -> build.setItem(v.ⅰ, v.ⅱ)));
     }
 
     /**

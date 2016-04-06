@@ -177,9 +177,7 @@ public class ClassWriter {
             StringBuilder copy = new StringBuilder(code);
             copy.insert(importPosition, imports);
 
-            Files.write(copy, path.resolve(packageName.replace('.', '/'))
-                    .resolve(className.concat(".java"))
-                    .toFile(), I.$encoding);
+            Files.write(copy, path.resolve(packageName.replace('.', '/')).resolve(className.concat(".java")).toFile(), I.$encoding);
         } catch (IOException e) {
             throw I.quiet(e);
         }
@@ -322,7 +320,7 @@ public class ClassWriter {
      * @return
      */
     public static <E> String array(boolean[] array) {
-        List<Boolean> list = new ArrayList();
+        List<Boolean> list = new ArrayList<>();
         for (Boolean value : array) {
             list.add(value);
         }
@@ -338,7 +336,7 @@ public class ClassWriter {
      * @return
      */
     public static <E> String array(char[] array) {
-        List<Character> list = new ArrayList();
+        List<Character> list = new ArrayList<Character>();
         for (Character value : array) {
             list.add(value);
         }
@@ -685,8 +683,7 @@ public class ClassWriter {
                     return "int";
                 } else if (clazz.isArray()) {
                     return convert2(clazz.getComponentType()) + "[]";
-                } else if (clazz.isPrimitive() || full.startsWith("java.lang.") || packageName
-                        .equals(clazz.getPackage().getName())) {
+                } else if (clazz.isPrimitive() || full.startsWith("java.lang.") || packageName.equals(clazz.getPackage().getName())) {
                     return simple;
                 }
 

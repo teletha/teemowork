@@ -281,7 +281,7 @@ public class Champion extends RiotChampionData {
      * @return
      */
     public static List<Champion> getAll(Comparator<Champion> sorter) {
-        List<Champion> list = new ArrayList(champions);
+        List<Champion> list = new ArrayList<>(champions);
         list.sort(sorter);
 
         return list;

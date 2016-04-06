@@ -98,7 +98,7 @@ public class RiotAPI {
             String uri = DRAGON_URL + version.name + ".1/data/" + locale + "/" + location + ".json";
 
             M m = I.make(modelClass);
-            Model model = Model.load(m.getClass());
+            Model model = Model.of(m.getClass());
             return parse(model, m, Json.createReader(new InputStreamReader(new URL(uri).openConnection().getInputStream())).readObject());
         } catch (Exception e) {
             throw I.quiet(e);
@@ -122,7 +122,7 @@ public class RiotAPI {
             JsonArray array = (JsonArray) js;
 
             for (int i = 0; i < array.size(); i++) {
-                parse(model, java, array.get(i), model.getProperty(String.valueOf(i)));
+                parse(model, java, array.get(i), model.property(String.valueOf(i)));
             }
             break;
 
@@ -130,7 +130,7 @@ public class RiotAPI {
             JsonObject object = (JsonObject) js;
 
             for (String id : object.keySet()) {
-                parse(model, java, object.get(id), model.getProperty(id));
+                parse(model, java, object.get(id), model.property(id));
             }
             break;
         }

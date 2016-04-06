@@ -28,7 +28,7 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
     private int[] build = new int[0];
 
     /** The ability list. */
-    private List<Ability> abilities = new ArrayList();
+    private List<Ability> abilities = new ArrayList<>();
 
     /** The item status. */
     private boolean deprecated = false;
@@ -42,7 +42,7 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
         if (previous != null) {
             values = Arrays.copyOf(previous.values, previous.values.length);
             build = previous.build;
-            abilities = new ArrayList(previous.abilities);
+            abilities = new ArrayList<>(previous.abilities);
         }
     }
 

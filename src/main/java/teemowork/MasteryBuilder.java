@@ -11,7 +11,7 @@ package teemowork;
 
 import static jsx.ui.StructureDescriptor.*;
 
-import js.dom.UIAction;
+import js.dom.User;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
@@ -37,9 +37,9 @@ public class MasteryBuilder extends Widget {
 
     private final MasterySet masterySet = new MasterySet("");
 
-    private final Events<Mastery> up = when(UIAction.Click).at($.MasteryPane, Mastery.class);
+    private final Events<Mastery> up = when(User.Click).at($.MasteryPane, Mastery.class);
 
-    private final Events<Mastery> down = when(UIAction.ClickRight).at($.MasteryPane, Mastery.class);
+    private final Events<Mastery> down = when(User.ClickRight).at($.MasteryPane, Mastery.class);
 
     /**
      * 

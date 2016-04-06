@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import js.dom.UIAction;
+import js.dom.User;
 import jsx.style.BinaryStyle;
 import jsx.style.StyleDescriptor;
 import jsx.style.property.Background.BackgroundImage;
@@ -33,7 +33,7 @@ public class Navi extends Widget {
     private Menu menus = new Menu("", null);
 
     /** The menu selection. */
-    private final Events<Menu> selectMenu = when(UIAction.Click).at($.MenuLink, Menu.class);
+    private final Events<Menu> selectMenu = when(User.Click).at($.MenuLink, Menu.class);
 
     /**
      * 

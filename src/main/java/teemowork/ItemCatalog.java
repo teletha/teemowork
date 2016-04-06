@@ -21,7 +21,7 @@ import java.util.function.Predicate;
 
 import javafx.beans.property.SetProperty;
 
-import js.dom.UIAction;
+import js.dom.User;
 import jsx.style.StyleDescriptor;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
@@ -73,7 +73,7 @@ public class ItemCatalog extends Widget {
                     type(Status.MSSlowRatio))};
 
     /** The user select item. */
-    public final Events<Item> selectItem = when(UIAction.Click).at($.Item, Item.class);
+    public final Events<Item> selectItem = when(User.Click).at($.Item, Item.class);
 
     private final @ModelValue SetProperty<ItemFilter> activeFilters = I.make(SetProperty.class);
 

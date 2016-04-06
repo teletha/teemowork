@@ -49,29 +49,29 @@ public class Build implements StatusCalculator {
     private int[] skills = new int[18];
 
     /** The skill level. */
-    public final ListProperty<Integer> skillLevel = new SimpleListProperty(FXCollections.observableArrayList(0, 0, 0, 0, 0));
+    public final ListProperty<Integer> skillLevel = new SimpleListProperty<Integer>(FXCollections.observableArrayList(0, 0, 0, 0, 0));
 
     /** The skill level. */
-    public final ListProperty<Boolean> skillActivation = new SimpleListProperty(
+    public final ListProperty<Boolean> skillActivation = new SimpleListProperty<Boolean>(
             FXCollections.observableArrayList(false, false, false, false, false));
 
     /** The mastery. */
     private MasterySet mastery;
 
     /** The rune list. */
-    private List<Rune> marks = new ArrayList();
+    private List<Rune> marks = new ArrayList<Rune>();
 
     /** The rune list. */
-    private List<Rune> glyphs = new ArrayList();
+    private List<Rune> glyphs = new ArrayList<Rune>();
 
     /** The rune list. */
-    private List<Rune> seals = new ArrayList();
+    private List<Rune> seals = new ArrayList<Rune>();
 
     /** The rune list. */
-    private List<Rune> quintessences = new ArrayList();
+    private List<Rune> quintessences = new ArrayList<Rune>();
 
     /** The first cache for computed value. */
-    private List<Computed> cache = new ArrayList(Status.values().length);
+    private List<Computed> cache = new ArrayList<Computed>(Status.values().length);
 
     /**
      * @param champion
@@ -374,7 +374,7 @@ public class Build implements StatusCalculator {
         // ===================================
         // Item
         // ===================================
-        Set<String> names = new HashSet();
+        Set<String> names = new HashSet<String>();
 
         for (int i = 0; i < 6; i++) {
             Item item = items[i];

@@ -18,7 +18,7 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 
-import js.dom.UIAction;
+import js.dom.User;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
 import jsx.style.value.Numeric;
@@ -68,7 +68,7 @@ public class ChampionComparing extends Widget {
      * 
      */
     private ChampionComparing(Teemowork teemowork) {
-        when(UIAction.Click).at($.Icon, Build.class).to(build -> {
+        when(User.Click).at($.Icon, Build.class).to(build -> {
             teemowork.champion(build.champion);
         });
     }
@@ -119,7 +119,7 @@ public class ChampionComparing extends Widget {
          * 
          */
         private Header() {
-            when(UIAction.Click).at($.StatusHeader).to(update(v -> {
+            when(User.Click).at($.StatusHeader).to(update(v -> {
                 if (order.get(0) == this) {
                     this.decending = !decending;
                 }

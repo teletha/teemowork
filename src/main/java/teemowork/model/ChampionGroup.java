@@ -23,8 +23,7 @@ import java.util.List;
 public enum ChampionGroup {
 
     /** The built-in group. */
-    Ranged(Ashe, Caitlyn, Corki, Draven, Ezreal, Graves, Jayce, Jinx, Kennen, Kindred, KogMaw, MissFortune, Quinn, Sivir, Teemo, Thresh,
-            Tristana, TwistedFate, Twitch, Urgot, Varus, Vayne),
+    Ranged(Ashe, Caitlyn, Corki, Draven, Ezreal, Graves, Jayce, Jinx, Kennen, Kindred, KogMaw, MissFortune, Quinn, Sivir, Teemo, Thresh, Tristana, TwistedFate, Twitch, Urgot, Varus, Vayne),
 
     Assasin(Ahri, Akali, Diana, Ekko, Evelynn, Fiora, Fizz, Kassadin, Katarina, Khazix, Leblanc, LeeSin, Malzahar, Nidalee, Pantheon,
             Rengar, Shaco, Talon, XinZhao, Yasuo, Zed),
@@ -60,7 +59,7 @@ public enum ChampionGroup {
      * @return
      */
     public List<Build> sortBy(Comparator<Build> sorter) {
-        List<Build> sorted = new ArrayList(members);
+        List<Build> sorted = new ArrayList<>(members);
         Collections.sort(sorted, sorter);
         return sorted;
     }

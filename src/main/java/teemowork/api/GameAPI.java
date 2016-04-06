@@ -168,7 +168,7 @@ public class GameAPI {
     public static class RiotMatchHistory {
 
         /** The match history manager. */
-        public List<MatchHistory> matches = new ArrayList();
+        public List<MatchHistory> matches = new ArrayList<MatchHistory>();
     }
 
     /**

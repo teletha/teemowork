@@ -23,7 +23,7 @@ import java.util.function.Predicate;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SetProperty;
 
-import js.dom.UIAction;
+import js.dom.User;
 import jsx.style.BinaryStyle;
 import jsx.style.StyleDescriptor;
 import jsx.style.ValueStyle;
@@ -132,13 +132,13 @@ public class ChampionSelect extends Widget {
     private final @ModelValue SetProperty<SkillFilter> activeFilters = I.make(SetProperty.class);
 
     /** The view state of filters. */
-    private final @ModelValue BooleanProperty showSkillFilters = when(UIAction.Click).at($.FilterBySkill).toBinary();
+    private final @ModelValue BooleanProperty showSkillFilters = when(User.Click).at($.FilterBySkill).toBinary();
 
     /** The view state of filters. */
-    private final @ModelValue BooleanProperty showChampionFilters = when(UIAction.Click).at($.FilterByChampion).toBinary();
+    private final @ModelValue BooleanProperty showChampionFilters = when(User.Click).at($.FilterByChampion).toBinary();
 
     /** The view state of sorts. */
-    private final @ModelValue BooleanProperty showSkillSorts = when(UIAction.Click).at($.SortBySkill).toBinary();
+    private final @ModelValue BooleanProperty showSkillSorts = when(User.Click).at($.SortBySkill).toBinary();
 
     /** The list of active sorts. */
     private final @ModelValue SetProperty<SkillFilter> activeSorts = I.make(SetProperty.class);
@@ -187,7 +187,7 @@ public class ChampionSelect extends Widget {
      * 
      */
     public ChampionSelect(Teemowork application) {
-        when(UIAction.Click).at($.Container, Champion.class).to(name -> application.champion(name));
+        when(User.Click).at($.Container, Champion.class).to(name -> application.champion(name));
     }
 
     /**
