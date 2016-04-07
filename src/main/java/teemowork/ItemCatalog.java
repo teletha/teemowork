@@ -31,6 +31,7 @@ import jsx.ui.Widget;
 import jsx.ui.piece.UI;
 import kiss.Events;
 import kiss.I;
+import teemowork.ItemCatalog.Styles;
 import teemowork.model.Ability;
 import teemowork.model.AbilityDescriptor;
 import teemowork.model.Item;
@@ -42,7 +43,7 @@ import teemowork.model.variable.Variable;
 /**
  * @version 2015/10/12 21:46:39
  */
-public class ItemCatalog extends Widget {
+public class ItemCatalog extends Widget<Styles> {
 
     private static final Status[] VISIBLE = {Health, BounusHealthRatio, Hreg, HregRatio, Mana, Mreg, MregRatio, AD, ASRatio, ARPen, LS,
             Critical, AP, CDR, SV, MRPen, AR, MR, MSRatio, GoldPer10Sec};
@@ -65,7 +66,8 @@ public class ItemCatalog extends Widget {
                     type(Status.SV),
                     type(Status.Mana),
                     type(Status.Mreg, Status.MregRatio)),
-            new FilterGroup("Boots", type(Status.MS)), new FilterGroup("Other",
+            new FilterGroup("Boots", type(Status.MS)),
+            new FilterGroup("Other",
                     type(Status.PhysicalDamage),
                     type(Status.MagicDamage),
                     type(Status.TrueDamage),
@@ -127,7 +129,7 @@ public class ItemCatalog extends Widget {
     /**
      * @version 2015/10/12 21:55:48
      */
-    private static class $ extends StyleDescriptor {
+    static class Styles extends StyleDescriptor {
 
         private static final Color BorderColor = rgb(220, 220, 220);
 
@@ -135,39 +137,39 @@ public class ItemCatalog extends Widget {
 
         private static final Numeric ItemAreaWidth = new Numeric(580, px);
 
-        static Style Root = () -> {
+        Style Root = () -> {
             display.flex();
             font.size.small();
         };
 
-        static Style Groups = () -> {
+        Style Groups = () -> {
             display.block();
             margin.right(30, px);
             position.fixed();
         };
 
-        static Style GroupName = () -> {
+        Style GroupName = () -> {
             display.block();
             font.weight.bold();
         };
 
-        static Style Filters = () -> {
+        Style Filters = () -> {
             display.flex().direction.column();
             box.width(130, px);
             margin.bottom(1, em);
         };
 
-        static Style FilterName = () -> {
+        Style FilterName = () -> {
             display.block();
         };
 
-        static Style Items = () -> {
+        Style Items = () -> {
             display.flex().wrap.enable().alignContent.start();
             box.width(ItemAreaWidth);
             margin.left(160, px);
         };
 
-        static Style Item = () -> {
+        Style Item = () -> {
             display.flex();
             box.width(ItemAreaWidth.divide(2).subtract(itemGap.multiply(2)));
             border.solid().color(BorderColor).width(1, px);

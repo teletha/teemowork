@@ -20,6 +20,7 @@ import jsx.style.value.Numeric;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
+import teemowork.ItemView.Styles;
 import teemowork.model.Ability;
 import teemowork.model.AbilityDescriptor;
 import teemowork.model.DescriptionView;
@@ -31,7 +32,7 @@ import teemowork.model.Version;
 /**
  * @version 2015/10/14 11:02:40
  */
-public class ItemView extends Widget1<Item> {
+public class ItemView extends Widget1<Styles, Item> {
 
     private static final Status[] VISIBLE = {Health, BounusHealthRatio, Hreg, Mana, Mreg, AD, ASRatio, ARPen, LS, Critical, AP, CDR, SV,
             MRPen, AR, MR, MSRatio, GoldPer10Sec};
@@ -109,7 +110,7 @@ public class ItemView extends Widget1<Item> {
     /**
      * @version 2015/10/14 11:02:34
      */
-    static class $ extends StyleDescriptor {
+    static class Styles extends StyleDescriptor {
 
         /** The icon color. */
         static final Color IconBorderColor = rgb(100, 100, 100);
@@ -119,21 +120,21 @@ public class ItemView extends Widget1<Item> {
 
         private static final Numeric gap = new Numeric(0.8, em);
 
-        static ValueStyle<Item> ItemImage = item -> {
+        ValueStyle<Item> ItemImage = item -> {
             background.image(BackgroundImage.url(item.getIcon()).horizontal(item.getIconPosition()).cover().borderBox().noRepeat());
         };
 
-        static Style Root = () -> {
+        Style Root = () -> {
             display.flex();
             box.maxWidth(600, px);
         };
 
-        static Style IconArea = () -> {
+        Style IconArea = () -> {
             display.flex().direction.column();
             margin.right(gap);
         };
 
-        static Style Icon = () -> {
+        Style Icon = () -> {
             display.block();
             margin.bottom(IconSize.divide(5));
             cursor.pointer();
@@ -141,56 +142,56 @@ public class ItemView extends Widget1<Item> {
             border.radius(5, px).color(IconBorderColor).width(1, px).solid();
         };
 
-        static Style Materials = () -> {
+        Style Materials = () -> {
             display.flex().wrap.enable();
             box.width(IconSize);
         };
 
-        static Style Material = () -> {
+        Style Material = () -> {
             display.block();
             box.size(IconSize.divide(2));
             border.color(IconBorderColor).width(1, px).solid();
         };
 
-        static Style DescriptionArea = () -> {
+        Style DescriptionArea = () -> {
             box.maxWidth(290, px);
         };
 
-        static Style Heading = () -> {
+        Style Heading = () -> {
             display.block();
             font.family(TeemoworkTheme.Main);
         };
 
-        static Style Name = () -> {
+        Style Name = () -> {
             margin.right(0.5, em);
             font.weight.bold();
         };
 
-        static Style TotalCost = () -> {
+        Style TotalCost = () -> {
             margin.right(0.5, em);
         };
 
-        static Style Cost = () -> {
+        Style Cost = () -> {
         };
 
-        static Style StatusSet = () -> {
+        Style StatusSet = () -> {
             display.block();
             line.height(1.1);
             margin.top(gap);
         };
 
-        static Style StatusValue = () -> {
+        Style StatusValue = () -> {
             display.block();
             font.size.small().family(TeemoworkTheme.Main);
         };
 
-        static Style AbilityArea = () -> {
+        Style AbilityArea = () -> {
             display.block();
             font.size.small();
             margin.top(gap);
         };
 
-        static Style AbilityInfo = () -> {
+        Style AbilityInfo = () -> {
             font.color(205, 146, 0).weight.bolder();
             padding.right(0.5, em);
         };

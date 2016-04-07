@@ -28,6 +28,7 @@ import jsx.ui.piece.UI;
 import kiss.Events;
 import kiss.I;
 import kiss.Ⅱ;
+import teemowork.ChampionDetail.Styles;
 import teemowork.model.Build;
 import teemowork.model.Champion;
 import teemowork.model.DescriptionView;
@@ -43,9 +44,7 @@ import teemowork.model.variable.VariableResolver;
 /**
  * @version 2015/10/18 21:57:55
  */
-public class ChampionDetail extends Widget1<Build> {
-
-    private static final CSS $ = new CSS();
+public class ChampionDetail extends Widget1<Styles, Build> {
 
     /** The displayable status. */
     private static final Status[] VISIBLE = {Health, Hreg, Mana, Mreg, AD, ARPen, AS, LS, Critical, AP, MRPen, CDR, SV, AR, MR, MS, Range,
@@ -124,9 +123,9 @@ public class ChampionDetail extends Widget1<Build> {
                         }
                     });
 
-                    box($.VBox, () -> {
+                    box(Styles.VBox, () -> {
                         SkillDescriptor status = skill.getDescriptor(build.getVersion());
-                        box($.HBox, () -> {
+                        box(Styles.HBox, () -> {
                             text($.Name, skill);
                             text($.VersionDisplay, status.version.name);
                         });
@@ -248,7 +247,7 @@ public class ChampionDetail extends Widget1<Build> {
     /**
      * @version 2015/08/20 15:49:48
      */
-    private static class CSS extends StyleDescriptor {
+    static class Styles extends StyleDescriptor {
 
         /** The skill icon size. */
         int SkillIconSize = 45;

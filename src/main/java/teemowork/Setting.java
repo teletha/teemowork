@@ -23,13 +23,14 @@ import jsx.ui.piece.Select;
 import jsx.ui.piece.UI;
 import kiss.Events;
 import kiss.I;
+import teemowork.Setting.Styles;
 import teemowork.api.GameAPI;
 import teemowork.model.Region;
 
 /**
  * @version 2015/10/20 16:52:02
  */
-public class Setting extends Widget {
+public class Setting extends Widget<Styles> {
 
     /** The user preference. */
     private final UserPreference preference = I.make(UserPreference.class);
@@ -112,9 +113,9 @@ public class Setting extends Widget {
     /**
      * @version 2015/10/19 18:51:45
      */
-    private static class $ extends StyleDescriptor {
+    static class Styles extends StyleDescriptor {
 
-        static Style CategoryName = () -> {
+        Style CategoryName = () -> {
             display.block();
             font.weight.bold();
             margin.bottom(0.5, em);
@@ -124,18 +125,18 @@ public class Setting extends Widget {
             });
         };
 
-        static Style Item = () -> {
+        Style Item = () -> {
             display.flex();
             font.size.small();
             margin.top(0.5, em);
         };
 
-        static Style ItemName = () -> {
+        Style ItemName = () -> {
             display.block();
             box.width(10, em);
         };
 
-        static Style SettingBox = () -> {
+        Style SettingBox = () -> {
             margin.right(2, em);
         };
     }

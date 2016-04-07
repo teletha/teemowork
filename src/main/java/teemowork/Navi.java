@@ -23,11 +23,12 @@ import jsx.style.value.Color;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import kiss.Events;
+import teemowork.Navi.Styles;
 
 /**
  * @version 2015/10/19 2:56:06
  */
-public class Navi extends Widget {
+public class Navi extends Widget<Styles> {
 
     /** The top-level menus. */
     private Menu menus = new Menu("", null);
@@ -149,7 +150,7 @@ public class Navi extends Widget {
     /**
      * @version 2015/10/19 11:36:50
      */
-    private static class $ extends StyleDescriptor {
+    static class Styles extends StyleDescriptor {
 
         /** The background color. */
         private static final Color LightBack = new Color(0, 0, 27);
@@ -163,7 +164,7 @@ public class Navi extends Widget {
         /** The menu radius. */
         private static final int Radius = 3;
 
-        static Style TopMenuGroup = () -> {
+        Style TopMenuGroup = () -> {
             display.block();
             margin.vertical(30, px);
             box.shadow(shadow().offset(0, 1, px).blurRadius(1, px).color(hsla(0, 0, 0, 0.15)));
@@ -171,7 +172,7 @@ public class Navi extends Widget {
             background.image(BackgroundImage.of(linear(LightBack, DarkBack)));
         };
 
-        static Style TopMenu = () -> {
+        Style TopMenu = () -> {
             position.relative();
             display.inlineBlock();
             border.right.width(1, px).solid().color(DarkBack);
@@ -179,7 +180,7 @@ public class Navi extends Widget {
             text.align.center();
         };
 
-        static BinaryStyle MenuLink = action -> {
+        BinaryStyle MenuLink = action -> {
             display.block();
             padding.vertical(12, px).horizontal(20, px);
             font.color(153, 153, 153).weight.bold().size(14, px);
@@ -194,7 +195,7 @@ public class Navi extends Widget {
             }
         };
 
-        static Style SubMenuGroup = () -> {
+        Style SubMenuGroup = () -> {
             listStyle.none();
             margin.top(20, px);
             padding.size(0, px);
@@ -211,7 +212,7 @@ public class Navi extends Widget {
             });
         };
 
-        static Style SubMenu = () -> {
+        Style SubMenu = () -> {
             display.block();
             border.bottom.width(1, px).solid().color(rgb(81, 81, 81));
 

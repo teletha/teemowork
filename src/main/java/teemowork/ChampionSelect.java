@@ -37,6 +37,7 @@ import jsx.ui.Widget;
 import jsx.ui.piece.Input;
 import jsx.ui.piece.UI;
 import kiss.I;
+import teemowork.ChampionSelect.Styles;
 import teemowork.model.Champion;
 import teemowork.model.Skill;
 import teemowork.model.SkillDescriptor;
@@ -47,7 +48,7 @@ import teemowork.model.variable.Variable;
 /**
  * @version 2015/10/15 19:26:07
  */
-public class ChampionSelect extends Widget {
+public class ChampionSelect extends Widget<Styles> {
 
     /** The skill filters. */
     private final FilterGroup[] groups = {
@@ -523,7 +524,7 @@ public class ChampionSelect extends Widget {
     /**
      * @version 2015/01/30 14:32:48
      */
-    static class $ extends StyleDescriptor {
+    static class Styles extends StyleDescriptor {
 
         private static final Color backColor = new Color(0, 10, 10);
 
@@ -531,28 +532,28 @@ public class ChampionSelect extends Widget {
 
         private static final Numeric ImagesSize = ImageSize.multiply(10);
 
-        private static Style Root = () -> {
+        private Style Root = () -> {
             display.block();
             margin.auto();
             box.width(ImagesSize.add(2));
         };
 
-        private static Style ImageSet = () -> {
+        private Style ImageSet = () -> {
             display.inlineFlex().direction.row().wrap.enable();
             border.top.solid().width(2, px).color(backColor);
             border.left.solid().width(2, px).color(backColor);
         };
 
-        private static Style Container = () -> {
+        private Style Container = () -> {
             position.relative();
             display.block();
         };
 
-        private static Style Unselected = () -> {
+        private Style Unselected = () -> {
             display.none();
         };
 
-        private static Style IconImage = () -> {
+        private Style IconImage = () -> {
             display.block();
             box.size(ImageSize);
             border.bottom.solid().width(2, px).color(backColor);
@@ -573,11 +574,11 @@ public class ChampionSelect extends Widget {
             });
         };
 
-        private static ValueStyle<Champion> IconPosition = chmapion -> {
+        private ValueStyle<Champion> IconPosition = chmapion -> {
             background.horizontal(chmapion.getIconPosition());
         };
 
-        private static Style Title = () -> {
+        private Style Title = () -> {
             Numeric boxWidth = ImageSize.add(40);
             Color color = new Color(0, 98, 97, 1);
 
@@ -601,16 +602,16 @@ public class ChampionSelect extends Widget {
             });
         };
 
-        private static Style SearchByName = () -> {
+        private Style SearchByName = () -> {
 
         };
 
-        private static Style Filters = () -> {
+        private Style Filters = () -> {
             display.block();
             margin.bottom(10, px);
         };
 
-        private static BinaryStyle SkillFilters = show -> {
+        private BinaryStyle SkillFilters = show -> {
             margin.top(1, em);
             font.size.smaller();
 
@@ -621,39 +622,39 @@ public class ChampionSelect extends Widget {
             }
         };
 
-        private static Style FilterBy = () -> {
+        private Style FilterBy = () -> {
             font.size.small().color(Color.rgb(100, 100, 100));
             text.verticalAlign.bottom().unselectable();
             margin.left(1, em);
             cursor.pointer();
         };
 
-        private static Style FilterBySkill = FilterBy.with(() -> {
+        private Style FilterBySkill = FilterBy.with(() -> {
         });
 
-        private static Style SortBySkill = FilterBy.with(() -> {
+        private Style SortBySkill = FilterBy.with(() -> {
         });
 
-        private static Style FilterByChampion = FilterBy.with(() -> {
+        private Style FilterByChampion = FilterBy.with(() -> {
         });
 
-        private static Style Group = () -> {
+        private Style Group = () -> {
             display.block();
             margin.bottom(0.8, em);
         };
 
-        private static Style GroupName = () -> {
+        private Style GroupName = () -> {
             display.block();
             font.weight.bold();
             margin.bottom(0.4, em);
         };
 
-        private static Style GroupItems = () -> {
+        private Style GroupItems = () -> {
             display.flex().wrap.enable();
         };
 
-        private static Style Filter = () -> {
-            box.width(ChampionSelect.$.ImagesSize.divide(5));
+        private Style Filter = () -> {
+            box.width(ImagesSize.divide(5));
         };
     }
 }

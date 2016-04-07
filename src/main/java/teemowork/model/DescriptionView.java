@@ -16,13 +16,14 @@ import java.util.List;
 import jsx.style.StyleDescriptor;
 import jsx.ui.Style;
 import jsx.ui.Widget3;
+import teemowork.model.DescriptionView.Styles;
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
 
 /**
  * @version 2015/09/18 12:50:28
  */
-public abstract class DescriptionView<D extends Describable> extends Widget3<D, StatusCalculator, List> {
+public abstract class DescriptionView<D extends Describable> extends Widget3<Styles, D, StatusCalculator, List> {
 
     /** The target descriptor to view. */
     protected final Describable describable = model1;
@@ -44,7 +45,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
      */
     @Override
     protected void virtualize() {
-        box($.Passive, contents(model3, text -> {
+        box(Styles.Passive, contents(model3, text -> {
             if (text instanceof Variable) {
                 writeVariable((Variable) text, getLevel());
             } else {
@@ -71,7 +72,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
         }
 
         // compute current value
-        text($.ComputedValue, status.format(variable.calculate(Math.max(1, level), calculator)));
+        text(Styles.ComputedValue, status.format(variable.calculate(Math.max(1, level), calculator)));
 
         // All values
         int size = resolver.estimateSize();
@@ -81,10 +82,10 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
             text("(");
 
             if (1 < size) {
-                box($.Variable, contents(1, size, i -> {
+                box(Styles.Variable, contents(1, size, i -> {
                     String description = resolver.getLevelDescription(i);
 
-                    box($.Value, If(i == current, $.Current), If(description, title(description), $.Indicator), () -> {
+                    box(Styles.Value, If(i == current, Styles.Current), If(description, title(description), Styles.Indicator), () -> {
                         text(round(resolver.compute(i), 2));
                     });
                 }));
@@ -106,8 +107,8 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
      */
     public static void writeAmplifier(List<Variable> amplifiers, int level, StatusCalculator calculator) {
         if (!amplifiers.isEmpty()) {
-            box($.Amplifiers, contents(amplifiers, amplifier -> {
-                box($.Amplifier, () -> {
+            box(Styles.Amplifiers, contents(amplifiers, amplifier -> {
+                box(Styles.Amplifier, () -> {
                     int amp = level;
 
                     text("+");
@@ -125,7 +126,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
                     box(contents(1, size, i -> {
                         String description = resolver.getLevelDescription(i);
 
-                        box($.Value, If(size != 1 && i == current, $.Current), If(description, title(description), $.Indicator), () -> {
+                        box(Styles.Value, If(size != 1 && i == current, Styles.Current), If(description, title(description), Styles.Indicator), () -> {
                             text(round(amplifier.calculate(i, calculator, true), 4));
                         });
                     }));
@@ -168,7 +169,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<D, 
     /**
      * @version 2015/08/20 15:59:24
      */
-    private static class $ extends StyleDescriptor {
+    static class Styles extends StyleDescriptor {
 
         private static Style ComputedValue = () -> {
         };

@@ -22,6 +22,7 @@ import jsx.style.value.Unit;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import kiss.Events;
+import teemowork.MasteryBuilder.Styles;
 import teemowork.model.DescriptionView;
 import teemowork.model.Mastery;
 import teemowork.model.MasterySet;
@@ -31,7 +32,7 @@ import teemowork.model.Version;
 /**
  * @version 2015/08/19 13:41:08
  */
-public class MasteryBuilder extends Widget {
+public class MasteryBuilder extends Widget<Styles> {
 
     private MasteryManager masteryManager;
 
@@ -99,7 +100,7 @@ public class MasteryBuilder extends Widget {
                             svg("svg", $.IconImage, size(45, 45), () -> {
                                 svg("image", position(0, 0), size(45, 45), attr("xlink:href", mastery
                                         .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? "" : "url('#test')"));
-                                svg("filter", $.NBox, id("test"), () -> {
+                                svg("filter", Styles.NBox, id("test"), () -> {
                                     svg("feColorMatrix", attr("type", "matrix"), attr("values", grayscale(0.4)));
                                 });
                             });
@@ -148,7 +149,7 @@ public class MasteryBuilder extends Widget {
     /**
      * @version 2013/03/13 15:05:12
      */
-    private static class $ extends StyleDescriptor {
+    static class Styles extends StyleDescriptor {
 
         private static int TreeWidth = 240;
 
@@ -176,10 +177,10 @@ public class MasteryBuilder extends Widget {
 
         private static String noise = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAABlBMVEUAAAAAAAClZ7nPAAAAAnRSTlMAGovxNEIAAAAoSURBVDhPYxBEAgIMSkhAgcEFCTgwdCCBBoZRfaP6RvWN6hvVR5Y+APADQlQnmrINAAAAAElFTkSuQmCC";
 
-        static Style Unavailable = () -> {
+        Style Unavailable = () -> {
         };
 
-        static Style Completed = () -> {
+        Style Completed = () -> {
         };
 
         private static void MasteryBox() {
@@ -189,28 +190,28 @@ public class MasteryBuilder extends Widget {
             background.image(BackgroundImage.of(transparent), BackgroundImage.url(noise));
         }
 
-        static Style Offense = () -> {
+        Style Offense = () -> {
             MasteryBox();
             background.color(Blue.adjustHue(120));
         };
 
-        static Style Defense = () -> {
+        Style Defense = () -> {
             MasteryBox();
             background.color(Blue);
         };
 
-        static Style Utility = () -> {
+        Style Utility = () -> {
             MasteryBox();
             background.color(Blue.adjustHue(-120));
         };
 
-        static Style RankPane = () -> {
+        Style RankPane = () -> {
             display.block();
             margin.vertical(Gap * 2.8, px);
             text.unselectable();
         };
 
-        static Style MasteryPane = () -> {
+        Style MasteryPane = () -> {
             display.inlineBlock();
             box.size(IconSize, px);
             margin.horizontal(Gap, px);
@@ -222,11 +223,11 @@ public class MasteryBuilder extends Widget {
             });
         };
 
-        static Style EmptyPane = () -> {
+        Style EmptyPane = () -> {
             visibility.hidden();
         };
 
-        static Style IconImage = () -> {
+        Style IconImage = () -> {
             display.block();
             box.size(IconSize, px);
             border.color(AvailableColor).width(IconBorderSize, px).solid().radius(Corner, px);
@@ -244,7 +245,7 @@ public class MasteryBuilder extends Widget {
             background.image(BackgroundImage.url(mastery.getIcon()).horizontal(mastery.getIconPosition()).cover().borderBox().noRepeat());
         };
 
-        static Style LevelPane = () -> {
+        Style LevelPane = () -> {
             display.block();
             box.width(IconSize - IconBorderSize * 2, px);
             position.bottom(IconBorderSize, px).left(IconBorderSize, px).absolute();
@@ -263,24 +264,24 @@ public class MasteryBuilder extends Widget {
             });
         };
 
-        static Style SumPoint = () -> {
+        Style SumPoint = () -> {
             font.color(hsla(0, 0, 100, 0.7)).size(26, px);
             text.unselectable();
             padding.left(7, px);
         };
 
-        static Style LevelValue = () -> {
+        Style LevelValue = () -> {
             text.unselectable();
             cursor.pointer();
         };
 
-        static Style LevelSeparator = () -> {
+        Style LevelSeparator = () -> {
             margin.horizontal(2, px);
             text.unselectable();
             cursor.pointer();
         };
 
-        static Style PopupPane = () -> {
+        Style PopupPane = () -> {
 
             int Width = 220;
 
@@ -312,14 +313,14 @@ public class MasteryBuilder extends Widget {
             });
         };
 
-        static Style MasteryName = () -> {
+        Style MasteryName = () -> {
             display.block();
             margin.bottom(0.7, em);
             text.unselectable();
             font.size(16, px).weight.bolder().color(hsl(60, 100, 85)).family(TeemoworkTheme.Title);
         };
 
-        static Style Description = () -> {
+        Style Description = () -> {
             text.unselectable();
 
             inBackOf(Unavailable, () -> {
@@ -327,18 +328,18 @@ public class MasteryBuilder extends Widget {
             });
         };
 
-        static Style Current = () -> {
+        Style Current = () -> {
         };
 
-        static Style ComputedValue = () -> {
+        Style ComputedValue = () -> {
         };
 
-        static Style Information = () -> {
+        Style Information = () -> {
             display.block();
             margin.bottom(10, px);
         };
 
-        // static Style ResetButton = () -> {
+        // Style ResetButton = () -> {
         // createButton();
         // };
 
@@ -372,7 +373,7 @@ public class MasteryBuilder extends Widget {
         // });
         // }
 
-        static Style Available = () -> {
+        Style Available = () -> {
         };
 
         private static Numeric BorderWidth = new Numeric(1, Unit.px);
@@ -381,7 +382,7 @@ public class MasteryBuilder extends Widget {
 
         private static Color BorderColor = new Color(0, 0, 80);
 
-        // static Style Input = () -> {
+        // Style Input = () -> {
         // display.inlineBlock();
         // box.height(20, px).width(200, px).shadowInset(0, px, 1, px, 1, px, rgba(0, 0, 0, 0.075));
         // padding.vertical(4, px).horizontal(6, px);

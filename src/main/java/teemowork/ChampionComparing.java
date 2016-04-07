@@ -28,6 +28,7 @@ import jsx.ui.Widget1;
 import jsx.ui.piece.Select;
 import jsx.ui.piece.UI;
 import kiss.I;
+import teemowork.ChampionComparing.Styles;
 import teemowork.model.Build;
 import teemowork.model.Champion;
 import teemowork.model.ChampionGroup;
@@ -38,7 +39,7 @@ import teemowork.model.Version;
 /**
  * @version 2015/08/20 15:47:10
  */
-public class ChampionComparing extends Widget {
+public class ChampionComparing extends Widget<Styles> {
 
     private static final Status[] STATUS = {Health, Hreg, Mana, Mreg, AD, AS, AR, MR, MS, Range};
 
@@ -86,7 +87,7 @@ public class ChampionComparing extends Widget {
             });
 
             box($.Body, () -> {
-                box($.VBox, contents(group.getValue().sortBy(comparator), build -> {
+                box(Styles.VBox, contents(group.getValue().sortBy(comparator), build -> {
                     box($.RowLine, () -> {
                         ChampionStatus championStatus = build.champion.getStatus(Version.Latest);
                         build.setLevel(level);
@@ -107,7 +108,7 @@ public class ChampionComparing extends Widget {
     /**
      * @version 2015/03/02 10:58:34
      */
-    private class Header extends Widget1<Status>implements Comparator<Build> {
+    private class Header extends Widget1<Styles, Status> implements Comparator<Build> {
 
         /** The champion status. */
         private final Status status = model1;
@@ -161,7 +162,7 @@ public class ChampionComparing extends Widget {
     /**
      * @version 2015/08/20 15:44:41
      */
-    private static class $ extends StyleDescriptor {
+    static class Styles extends StyleDescriptor {
 
         private static final Numeric itemWidth = new Numeric(6.5, em);
 
@@ -169,24 +170,24 @@ public class ChampionComparing extends Widget {
 
         private static final Numeric IconMargin = new Numeric(10, px);
 
-        private static Style Table = () -> {
+        private Style Table = () -> {
             display.verticalBox();
             font.size.small();
             margin.top(IconMargin);
         };
 
-        private static Style Head = () -> {
+        private Style Head = () -> {
         };
 
-        private static Style Body = () -> {
+        private Style Body = () -> {
         };
 
-        private static Style RowLine = () -> {
+        private Style RowLine = () -> {
             display.flex().alignItems.center();
             margin.top(0.5, em);
         };
 
-        private static ValueStyle<Champion> Icon = champion -> {
+        private ValueStyle<Champion> Icon = champion -> {
             display.inlineBlock();
             background.image("src/main/resources/teemowork/champions.jpg").cover().horizontal(champion.getIconPosition());
             box.size(IconSize);
@@ -195,24 +196,24 @@ public class ChampionComparing extends Widget {
             margin.right(IconMargin);
         };
 
-        static Style NoIcon = () -> {
+        Style NoIcon = () -> {
             display.inlineBlock();
             box.width(IconSize.add(IconMargin));
         };
 
-        static Style Status = () -> {
+        Style Status = () -> {
             display.inlineBlock();
             box.width(itemWidth);
         };
 
-        static Style StatusHeader = Status.with(() -> {
+        Style StatusHeader = Status.with(() -> {
             cursor.pointer();
         });
 
-        static Style StatusBase = () -> {
+        Style StatusBase = () -> {
         };
 
-        static Style StatusPerLevel = () -> {
+        Style StatusPerLevel = () -> {
             font.color(rgb(180, 180, 180));
         };
     }

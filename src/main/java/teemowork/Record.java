@@ -19,6 +19,7 @@ import jsx.ui.Style;
 import jsx.ui.Widget;
 import kiss.Events;
 import kiss.I;
+import teemowork.Record.Styles;
 import teemowork.api.GameAPI;
 import teemowork.api.GameAPI.GameDto;
 import teemowork.api.GameAPI.RawStatsDto;
@@ -27,7 +28,7 @@ import teemowork.model.Champion;
 /**
  * @version 2015/10/27 14:10:55
  */
-public class Record extends Widget {
+public class Record extends Widget<Styles> {
 
     /** The user preference. */
     private final UserPreference preference = I.make(UserPreference.class);
@@ -97,44 +98,44 @@ public class Record extends Widget {
     /**
      * @version 2015/10/19 18:51:45
      */
-    private static class $ extends StyleDescriptor {
+    static class Styles extends StyleDescriptor {
 
         private static final Numeric IconSize = new Numeric(22, px);
 
         private static final Numeric IconMargin = new Numeric(10, px);
 
-        static Style MatchResultList = () -> {
+        Style MatchResultList = () -> {
             display.block();
         };
 
-        static Style MatchResult = () -> {
+        Style MatchResult = () -> {
             display.block();
             font.size.small();
             margin.bottom(2, em);
         };
 
-        static Style MatchInfo = () -> {
+        Style MatchInfo = () -> {
 
         };
 
-        static Style MatchType = () -> {
+        Style MatchType = () -> {
             font.weight.bold();
             margin.right(1.5, em);
         };
 
-        static Style MatchDate = () -> {
+        Style MatchDate = () -> {
             margin.right(1.5, em);
         };
 
-        static Style MatchDuration = () -> {
+        Style MatchDuration = () -> {
             margin.right(1.5, em);
         };
 
-        static Style MatchEnd = () -> {
+        Style MatchEnd = () -> {
             margin.right(1.5, em);
         };
 
-        static Style Participant = () -> {
+        Style Participant = () -> {
             display.block();
             box.width(10, em);
         };
@@ -147,21 +148,21 @@ public class Record extends Widget {
             cursor.pointer();
         };
 
-        static Style Score = () -> {
+        Style Score = () -> {
 
         };
 
-        static Style ScoreValue = () -> {
+        Style ScoreValue = () -> {
             display.inlineBlock();
             box.width(1.2, em);
             padding.horizontal(0.2, em);
         };
 
-        static Style Separator = () -> {
+        Style Separator = () -> {
 
         };
 
-        static Style SettingBox = () -> {
+        Style SettingBox = () -> {
             margin.right(2, em);
         };
     }
