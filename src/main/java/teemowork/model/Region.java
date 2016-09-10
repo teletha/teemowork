@@ -16,7 +16,7 @@ public enum Region {
 
     BR("Brazil"),
 
-    EUNE("Europa East"), EUW("Europa West"), KR("Korea"), LAN("Latin America North"), LAS("Latin America South"),
+    EUNE("Europa East"), EUW("Europa West"), JP("Japan"), KR("Korea"), LAN("Latin America North"), LAS("Latin America South"),
 
     NA("North America"), OCE("Oceania"), RU("Russia"), TR("Turkey");
 

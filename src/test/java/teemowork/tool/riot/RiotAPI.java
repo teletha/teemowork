@@ -107,7 +107,7 @@ public class RiotAPI {
 
     /**
      * <p>
-     * Helper method to traverse json structure using Java Object {@link Model}.
+     * Helper method to traverse json structure using Java Object {@link JSModel}.
      * </p>
      *
      * @param <M> A current model type.
