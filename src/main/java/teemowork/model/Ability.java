@@ -360,7 +360,7 @@ public class Ability extends Describable<AbilityDescriptor> {
     /** The ability. */
     public static final Ability SpoilsofWarLevel1 = new Ability("戦場の略奪", ability -> {
         ability.passive("60秒毎に最大2つまでスタックが貯まる。スタックがある状態でミニオンを倒すとあなたと最寄りの味方Championは共にゴールドを獲得し、{1}する。また、体力が{2}以下のミニオンに近接攻撃を行うと、そのミニオンを倒すことが出来る。近くに味方がいない場合、これらの効果は発動しない。")
-                .variable(1, RestoreHealth, 40)
+                .variable(1, RestoreHealth, 15)
                 .variable(2, Value, 200, 0, amplify(AD, 1));
     });
 

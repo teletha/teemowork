@@ -441,7 +441,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Frozen Mallet */
     public static final Item FrozenMallet = new Item(RiotItemData.FrozenMallet, item -> {
-        item.ad(40).health(650).add(Ability.Icy);
+        item.ad(30).health(700).add(Ability.Icy);
     });
 
     /** Giant's Belt */
