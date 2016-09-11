@@ -96,11 +96,14 @@ class ChampionDefinition implements Comparable<ChampionDefinition> {
         }
 
         // extra
-        for (int i : findExtra()) {
-            Spell spell = info.spells.get(i);
+        if (isTransformer()) {
+            for (int i = 0; i < info.spells.size(); i++) {
+                Spell spell = info.spells.get(i);
 
-            addSkill(spell.getSecondary(), local.spells.get(i).getSecondary(), spell.getSecondaryImage());
+                addSkill(spell.getSecondary(), local.spells.get(i).getSecondary(), spell.getSecondaryImage());
+            }
         }
+
     }
 
     /**
@@ -112,11 +115,11 @@ class ChampionDefinition implements Comparable<ChampionDefinition> {
      */
     private int[] findExtra() {
         switch (id) {
+        case "Elise":
+        case "Jayce":
+        case "Nidalee":
         case "RekSai":
             return new int[] {0, 1, 2, 3};
-
-        case "Nidalee":
-            return new int[] {3};
 
         default:
             return new int[0];

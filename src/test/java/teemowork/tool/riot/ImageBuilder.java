@@ -68,8 +68,7 @@ public class ImageBuilder {
         EditableImage container = new EditableImage();
 
         for (Item item : items) {
-            EditableImage image = new EditableImage(
-                    download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/item/", item.id, ".png"));
+            EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/item/", item.id, ".png"));
             image.trim(2).resize(45);
 
             container.concat(image);
@@ -88,8 +87,7 @@ public class ImageBuilder {
         EditableImage container = new EditableImage();
 
         for (ChampionDefinition champion : champions) {
-            EditableImage image = new EditableImage(
-                    download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/champion/", champion.id, ".png"));
+            EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/champion/", champion.id, ".png"));
             image.trim(7).resize(70);
 
             container.concat(image);
@@ -137,8 +135,7 @@ public class ImageBuilder {
             String file = (skills[i] + ".png").replaceAll("\\s", "%20");
             String directory = i == 0 ? "passive" : "spell";
 
-            EditableImage image = new EditableImage(
-                    download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/", directory, "/", file));
+            EditableImage image = new EditableImage(download("http://ddragon.leagueoflegends.com/cdn/", version.name, ".1/img/", directory, "/", file));
             image.resize(45);
 
             container.concat(image);
@@ -221,13 +218,13 @@ public class ImageBuilder {
      * @return
      */
     private Path download(Object... uri) {
+        StringJoiner joiner = new StringJoiner("");
+
+        for (Object object : uri) {
+            joiner.add(object.toString());
+        }
+
         try {
-            StringJoiner joiner = new StringJoiner("");
-
-            for (Object object : uri) {
-                joiner.add(object.toString());
-            }
-
             Path path = temporary.resolve("donwnloaded" + Instant.now().getEpochSecond());
             URL url = new URL(joiner.toString());
 
@@ -236,6 +233,7 @@ public class ImageBuilder {
 
             return path;
         } catch (Exception e) {
+            System.out.println(joiner.toString());
             throw I.quiet(e);
         }
     }

@@ -240,13 +240,27 @@ public class ItemDataBuilder {
         case 3048: // SeraphsEmbrace 見分けつかないので要らない方を除外
         case 3043: // Muramana 見分けつかないので要らない方を除外
         case 3348: // HextechSweeper 見分けつかないので要らない方を除外
+        case 3648: // Siegeマップ用アイテムなので除外
+        case 3649: // Siegeマップ用アイテムなので除外
+        case 3632: // TODO エラーデータ？
             return false;
 
         default:
             if (item.name.endsWith("(Crystal Scar)")) {
                 return false;
             }
-            return item.maps == null || item.maps.get(1) == false;
+
+            if (item.group != null) {
+                if (item.group.contains("GangplankRUpgrade")) {
+                    return false;
+                }
+
+                if (item.group.contains("Siege")) {
+                    return false;
+                }
+            }
+
+            return item.maps == null || (item.maps.get(1) == false && item.maps.get(11) == true);
         }
     }
 

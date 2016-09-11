@@ -110,10 +110,8 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
-    public static final Ability Devouring = new Ability("むさぼり食らう", ability -> {
-        ability.active("通常攻撃ごとに{1}を与える。スタックは大型モンスターかチャンピオンを{2}と1、RiftScuttlerを{2}と2、DragonかBaronを{2}と5、増加する。スタックが30貯まると進化する。")
-                .variable(1, MagicDamage, 30, 0, amplify(Stack, 0.67))
-                .variable(2, Takedown);
+    public static final Ability Bloodrazor = new Ability(ability -> {
+        ability.active("通常攻撃ごとに{1}を与える。（ミニオンやモンスターに対しては75が上限）").variable(1, PhysicalDamage, 0, 0, amplify(TargetMaxHealthRatio, 4));
     });
 
     /** The ability. */
@@ -400,8 +398,8 @@ public class Ability extends Describable<AbilityDescriptor> {
     });
 
     /** The ability. */
-    public static final Ability ValorsReward = new Ability("勇者の報酬", ability -> {
-        ability.passive("レベルアップ時に8秒かけて{1}し、{2}する。").variable(1, RestoreHealth, 150).variable(2, RestoreMana, 200);
+    public static final Ability Eternity = new Ability("久遠", ability -> {
+        ability.passive("敵チャンピオンから受けたダメージの15%分マナを回復し、自身が消費したマナの20%分HPを回復する。HP回復はマナ消費毎に最大で15。");
     });
 
     /** The ability. */

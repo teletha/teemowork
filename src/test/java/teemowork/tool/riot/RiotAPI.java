@@ -40,7 +40,7 @@ public class RiotAPI {
     private static final String DRAGON_URL = "http://ddragon.leagueoflegends.com/cdn/";
 
     /** The Riot API key. */
-    private static final String key = "ad37a9e0-2e34-4849-979b-effce8a8a477";
+    private static final String key = "RGAPI-A5787FAB-2C53-4D86-9EE2-E86D2601CE8B";
 
     /**
      * <p>

@@ -24,6 +24,7 @@ import jsx.style.value.Unit;
 import kiss.I;
 import teemowork.UserPreference;
 import teemowork.api.RiotItemData;
+import teemowork.model.variable.VariableResolver.PerLevel;
 
 /**
  * @version 2015/07/19 23:24:51
@@ -116,26 +117,6 @@ public class Item extends Describable<ItemDescriptor> {
         item.attackSpeed(30).add(Ability.EnhancedMovement2);
     });
 
-    /** Berserker's Greaves */
-    public static final Item BerserkersGreavesAlacrity = new Item(RiotItemData.BerserkersGreavesAlacrity, item -> {
-        item.attackSpeed(30).add(Ability.EnhancedMovement2);
-    });
-
-    /** Berserker's Greaves */
-    public static final Item BerserkersGreavesCaptain = new Item(RiotItemData.BerserkersGreavesCaptain, item -> {
-        item.attackSpeed(30).add(Ability.EnhancedMovement2);
-    });
-
-    /** Berserker's Greaves */
-    public static final Item BerserkersGreavesDistortion = new Item(RiotItemData.BerserkersGreavesDistortion, item -> {
-        item.attackSpeed(30).add(Ability.EnhancedMovement2);
-    });
-
-    /** Berserker's Greaves */
-    public static final Item BerserkersGreavesFuror = new Item(RiotItemData.BerserkersGreavesFuror, item -> {
-        item.attackSpeed(30).add(Ability.EnhancedMovement2);
-    });
-
     /** Bilgewater Cutlass */
     public static final Item BilgewaterCutlass = new Item(RiotItemData.BilgewaterCutlass, item -> {
         item.lifeSteal(10).ad(25).add(ability -> {
@@ -189,26 +170,6 @@ public class Item extends Describable<ItemDescriptor> {
         item.add(Ability.EnhancedMovement5);
     });
 
-    /** Boots of Mobility */
-    public static final Item BootsofMobilityAlacrity = new Item(RiotItemData.BootsofMobilityAlacrity, item -> {
-        item.add(Ability.EnhancedMovement5);
-    });
-
-    /** Boots of Mobility */
-    public static final Item BootsofMobilityCaptain = new Item(RiotItemData.BootsofMobilityCaptain, item -> {
-        item.add(Ability.EnhancedMovement5);
-    });
-
-    /** Boots of Mobility */
-    public static final Item BootsofMobilityDistortion = new Item(RiotItemData.BootsofMobilityDistortion, item -> {
-        item.add(Ability.EnhancedMovement5);
-    });
-
-    /** Boots of Mobility */
-    public static final Item BootsofMobilityFuror = new Item(RiotItemData.BootsofMobilityFuror, item -> {
-        item.add(Ability.EnhancedMovement5);
-    });
-
     /** Boots of Speed */
     public static final Item BootsOfSpeed = new Item(RiotItemData.BootsofSpeed, item -> {
         item.add(Ability.EnhancedMovement1);
@@ -219,34 +180,14 @@ public class Item extends Describable<ItemDescriptor> {
         item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
     });
 
-    /** Boots of Swiftness */
-    public static final Item BootsofSwiftnessAlacrity = new Item(RiotItemData.BootsofSwiftnessAlacrity, item -> {
-        item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
-    });
-
-    /** Boots of Swiftness */
-    public static final Item BootsofSwiftnessCaptain = new Item(RiotItemData.BootsofSwiftnessCaptain, item -> {
-        item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
-    });
-
-    /** Boots of Swiftness */
-    public static final Item BootsofSwiftnessDistortion = new Item(RiotItemData.BootsofSwiftnessDistortion, item -> {
-        item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
-    });
-
-    /** Boots of Swiftness */
-    public static final Item BootsofSwiftnessFuror = new Item(RiotItemData.BootsofSwiftnessFuror, item -> {
-        item.add(Ability.EnhancedMovement3).add(Ability.SlowResist);
-    });
-
     /** Brawler's Gloves */
     public static final Item BrawlersGloves = new Item(RiotItemData.BrawlersGloves, item -> {
         item.critical(10);
     });
 
     /** Catalyst the Protector */
-    public static final Item CatalystTheProtector = new Item(RiotItemData.CatalysttheProtector, item -> {
-        item.health(225).mana(300).add(Ability.ValorsReward);
+    public static final Item CatalystOfAeons = new Item(RiotItemData.CatalystofAeons, item -> {
+        item.health(225).mana(300).add(Ability.Eternity);
     });
 
     /** Caulfield's Warhammer */
@@ -454,11 +395,11 @@ public class Item extends Describable<ItemDescriptor> {
                 .add(Ability.GoldIncome)
                 .add(Ability.SpoilsofWarLevel3)
                 .add("Deadly Phalanx", ability -> {
-            ability.active("対象の味方チャンピオンに4秒間{1}を与える。また4秒後に爆発して{2}の敵に{3}を与える。")
-                    .variable(1, Shield, amplify(Health, 0.1))
-                    .variable(2, Radius, 200)
-                    .variable(3, MagicDamage, 0, 0, ad(1), ap(0.3));
-        });
+                    ability.active("対象の味方チャンピオンに4秒間{1}を与える。また4秒後に爆発して{2}の敵に{3}を与える。")
+                            .variable(1, Shield, amplify(Health, 0.1))
+                            .variable(2, Radius, 200)
+                            .variable(3, MagicDamage, 0, 0, ad(1), ap(0.3));
+                });
     });
 
     /** Faerie Charm */
@@ -571,6 +512,23 @@ public class Item extends Describable<ItemDescriptor> {
         });
     });
 
+    /** HextechGLP800 */
+    public static final Item HextechGLP800 = new Item(RiotItemData.HextechGLP800, item -> {
+        item.health(300).mana(400).ap(80).add("Frost Bolt", ability -> {
+            ability.active("指定方向の敵ユニットに{1}を与え、0.5秒かけて減衰する{2}を付与する。")
+                    .variable(1, MagicDamage, new PerLevel(100, 106, 112, 118, 124, 130, 136, 141, 147, 153, 159, 165, 171, 176, 182, 188, 194, 200), ap(0.35))
+                    .variable(2, MSSlowRatio, 65);
+        });
+    });
+
+    /** Item */
+    public static final Item HextechProtobelt01 = new Item(RiotItemData.HextechProtobelt01, item -> {
+        item.health(300).ap(60).cdr(10).add("Fire Bolt", ability -> {
+            ability.active("指定方向にダッシュして前方扇状に矢を放ち、当たった敵ユニットに{1}を与える。同一ユニットに複数の矢が当たった場合、2本目以降の矢は20%のダメージになる。このダッシュで地形を通り抜けることはできない。")
+                    .variable(1, MagicDamage, new PerLevel(75, 79, 83, 88, 92, 97, 101, 106, 110, 115, 119, 124, 128, 132, 137, 141, 146, 150), ap(0.35));
+        });
+    });
+
     /** Hextech Revolver */
     public static final Item HextechRevolver = new Item(RiotItemData.HextechRevolver, item -> {
         item.ap(40).add(ability -> {
@@ -612,26 +570,6 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Ionian Boots of Lucidity */
     public static final Item IonianBootsOfLucidity = new Item(RiotItemData.IonianBootsofLucidity, item -> {
-        item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
-    });
-
-    /** Ionian Boots of Lucidity */
-    public static final Item IonianBootsofLucidityAlacrity = new Item(RiotItemData.IonianBootsofLucidityAlacrity, item -> {
-        item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
-    });
-
-    /** Ionian Boots of Lucidity */
-    public static final Item IonianBootsofLucidityCaptain = new Item(RiotItemData.IonianBootsofLucidityCaptain, item -> {
-        item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
-    });
-
-    /** Ionian Boots of Lucidity */
-    public static final Item IonianBootsofLucidityDistortion = new Item(RiotItemData.IonianBootsofLucidityDistortion, item -> {
-        item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
-    });
-
-    /** Ionian Boots of Lucidity */
-    public static final Item IonianBootsofLucidityFuror = new Item(RiotItemData.IonianBootsofLucidityFuror, item -> {
         item.add(Ability.Ionian).add(Ability.EnhancedMovement2);
     });
 
@@ -733,26 +671,6 @@ public class Item extends Describable<ItemDescriptor> {
         item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
     });
 
-    /** Mercury's Treads */
-    public static final Item MercurysTreadsAlacrity = new Item(RiotItemData.MercurysTreadsAlacrity, item -> {
-        item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
-    });
-
-    /** Mercury's Treads */
-    public static final Item MercurysTreadsCaptain = new Item(RiotItemData.MercurysTreadsCaptain, item -> {
-        item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
-    });
-
-    /** Mercury's Treads */
-    public static final Item MercurysTreadsDistortion = new Item(RiotItemData.MercurysTreadsDistortion, item -> {
-        item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
-    });
-
-    /** Mercury's Treads */
-    public static final Item MercurysTreadsFuror = new Item(RiotItemData.MercurysTreadsFuror, item -> {
-        item.magicRegist(25).add(Ability.EnhancedMovement2).add(Ability.TenacityEffect);
-    });
-
     /** Mikael's Crucible */
     public static final Item MikaelsCrucible = new Item(RiotItemData.MikaelsCrucible, item -> {
         item.cdr(10).magicRegist(35).manaRegenRatio(100).add(Ability.ManaFont).add(ability -> {
@@ -804,26 +722,6 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Ninja Tabi */
     public static final Item NinjaTabi = new Item(RiotItemData.NinjaTabi, item -> {
-        item.ar(30).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
-    });
-
-    /** Ninja Tabi */
-    public static final Item NinjaTabiAlacrity = new Item(RiotItemData.NinjaTabiAlacrity, item -> {
-        item.ar(30).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
-    });
-
-    /** Ninja Tabi */
-    public static final Item NinjaTabiCaptain = new Item(RiotItemData.NinjaTabiCaptain, item -> {
-        item.ar(30).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
-    });
-
-    /** Ninja Tabi */
-    public static final Item NinjaTabiDistortion = new Item(RiotItemData.NinjaTabiDistortion, item -> {
-        item.ar(30).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
-    });
-
-    /** Ninja Tabi */
-    public static final Item NinjaTabiFuror = new Item(RiotItemData.NinjaTabiFuror, item -> {
         item.ar(30).add(Ability.BlockDamage).add(Ability.EnhancedMovement2);
     });
 
@@ -959,7 +857,7 @@ public class Item extends Describable<ItemDescriptor> {
 
     /** Rod of Ages */
     public static final Item RodOfAges = new Item(RiotItemData.RodofAges, item -> {
-        item.ap(80).health(300).mana(400).add(Ability.ValorsReward).add(ability -> {
+        item.ap(80).health(300).mana(400).add(Ability.Eternity).add(ability -> {
             ability.ununique()
                     .passive("1分毎に{1}と{2}と{3}を得る。この効果は10回まで発生する。")
                     .variable(1, Health, 0, 0, amplify(Stack, 20))
@@ -1047,8 +945,8 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** SkirmishersSabre */
-    public static final Item SkirmishersSabreDevourer = new Item(RiotItemData.SkirmishersSabreDevourer, item -> {
-        item.add(Ability.NailAndTooth).add(Ability.ChallengingSmite).attackSpeed(40).add(Ability.Devouring);
+    public static final Item SkirmishersSabreBloodrazor = new Item(RiotItemData.SkirmishersSabreBloodrazor, item -> {
+        item.add(Ability.NailAndTooth).add(Ability.ChallengingSmite).attackSpeed(50).add(Ability.Bloodrazor);
     });
 
     /** SkirmishersSabre */
@@ -1061,33 +959,8 @@ public class Item extends Describable<ItemDescriptor> {
         item.add(Ability.NailAndTooth).add(Ability.ChallengingSmite).ad(60).cdr(10);
     });
 
-    /** SkirmishersSabre */
-    public static final Item SkirmishersSabreSatedDevourer = new Item(RiotItemData.SkirmishersSabreSatedDevourer, item -> {
-        item.add(Ability.NailAndTooth).add(Ability.ChallengingSmite).attackSpeed(40).add(Ability.PhantomHit);
-    });
-
     /** Sorcerer's Shoes */
     public static final Item SorcerersShoes = new Item(RiotItemData.SorcerersShoes, item -> {
-        item.set(MRPen, 15).add(Ability.EnhancedMovement2);
-    });
-
-    /** Sorcerer's Shoes */
-    public static final Item SorcerersShoesAlacrity = new Item(RiotItemData.SorcerersShoesAlacrity, item -> {
-        item.set(MRPen, 15).add(Ability.EnhancedMovement2);
-    });
-
-    /** Sorcerer's Shoes */
-    public static final Item SorcerersShoesCaptain = new Item(RiotItemData.SorcerersShoesCaptain, item -> {
-        item.set(MRPen, 15).add(Ability.EnhancedMovement2);
-    });
-
-    /** Sorcerer's Shoes */
-    public static final Item SorcerersShoesDistortion = new Item(RiotItemData.SorcerersShoesDistortion, item -> {
-        item.set(MRPen, 15).add(Ability.EnhancedMovement2);
-    });
-
-    /** Sorcerer's Shoes */
-    public static final Item SorcerersShoesFuror = new Item(RiotItemData.SorcerersShoesFuror, item -> {
         item.set(MRPen, 15).add(Ability.EnhancedMovement2);
     });
 
@@ -1121,8 +994,8 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** StalkersBlade */
-    public static final Item StalkersBladeDevourer = new Item(RiotItemData.StalkersBladeDevourer, item -> {
-        item.add(Ability.NailAndTooth).add(Ability.ChillingSmite).attackSpeed(40).add(Ability.Devouring);
+    public static final Item StalkersBladeBloodrazor = new Item(RiotItemData.StalkersBladeBloodrazor, item -> {
+        item.add(Ability.NailAndTooth).add(Ability.ChillingSmite).attackSpeed(50).add(Ability.Bloodrazor);
     });
 
     /** StalkersBlade */
@@ -1133,11 +1006,6 @@ public class Item extends Describable<ItemDescriptor> {
     /** StalkersBlade */
     public static final Item StalkersBladeWarrior = new Item(RiotItemData.StalkersBladeWarrior, item -> {
         item.add(Ability.NailAndTooth).add(Ability.ChillingSmite).ad(60).cdr(10);
-    });
-
-    /** StalkersBlade */
-    public static final Item StalkersBladeSatedDevourer = new Item(RiotItemData.StalkersBladeSatedDevourer, item -> {
-        item.add(Ability.NailAndTooth).add(Ability.ChillingSmite).attackSpeed(40).add(Ability.PhantomHit);
     });
 
     /** Statikk Shiv */
@@ -1242,8 +1110,8 @@ public class Item extends Describable<ItemDescriptor> {
     });
 
     /** Tracker's Knife */
-    public static final Item TrackersKnifeDevourer = new Item(RiotItemData.TrackersKnifeDevourer, item -> {
-        item.add(Ability.NailAndTooth).add(Ability.WardRefresh0).add(Ability.GhostWard).attackSpeed(40).add(Ability.Devouring);
+    public static final Item TrackersKnifeBloodrazor = new Item(RiotItemData.TrackersKnifeBloodrazor, item -> {
+        item.add(Ability.NailAndTooth).add(Ability.WardRefresh0).add(Ability.GhostWard).attackSpeed(50).add(Ability.Bloodrazor);
     });
 
     /** Tracker's Knife */
@@ -1254,11 +1122,6 @@ public class Item extends Describable<ItemDescriptor> {
     /** Tracker's Knife */
     public static final Item TrackersKnifeWarrior = new Item(RiotItemData.TrackersKnifeWarrior, item -> {
         item.add(Ability.NailAndTooth).add(Ability.WardRefresh0).add(Ability.GhostWard).ad(60).cdr(10);
-    });
-
-    /** Tracker's Knife */
-    public static final Item TrackersKnifeSatedDevourer = new Item(RiotItemData.TrackersKnifeSatedDevourer, item -> {
-        item.add(Ability.NailAndTooth).add(Ability.WardRefresh0).add(Ability.GhostWard).attackSpeed(40).add(Ability.PhantomHit);
     });
 
     /** Trinity Force */
@@ -1298,13 +1161,6 @@ public class Item extends Describable<ItemDescriptor> {
         item.health(850).healthRegenRatio(200).add("Warmog's Heart", ability -> {
             ability.passive("8秒間ダメージを受けていなければ毎秒{1}する。この効果は最大" + Health + "が3000以上でないと発動しない。")
                     .variable(1, RestoreHealth, amplify(HealthRatio, 3));
-        });
-    });
-
-    /** Will of the Ancients */
-    public static final Item WillOftheAncients = new Item(RiotItemData.WilloftheAncients, item -> {
-        item.cdr(10).ap(80).add(ability -> {
-            ability.passive("スキルで与えたダメージ(ARやMR等による軽減前)の15%を回復する。 AoEスキルの場合、効果は1/3しか得られない。");
         });
     });
 
