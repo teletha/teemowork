@@ -57,8 +57,8 @@ public class ItemView extends Widget1<Styles, Item> {
             });
             box($.DescriptionArea, () -> {
                 // Name and Cost
-                double cost = item.getBaseCost();
-                double total = item.getTotalCost();
+                double cost = item.buyBaseCost;
+                double total = item.buyTotalCost;
 
                 box($.Heading, () -> {
                     text($.Name, item);

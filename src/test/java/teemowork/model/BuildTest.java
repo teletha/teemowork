@@ -14,7 +14,6 @@ import static teemowork.model.Status.*;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import teemowork.api.RiotItemData;
 import teemowork.model.Build.Computed;
 
 /**
@@ -207,14 +206,11 @@ public class BuildTest {
     private static class EmptyItem extends Item {
 
         /**
-         * 
+         *
          */
-        private EmptyItem() {
-            super(RiotItemData.AbyssalScepter, item -> {
-
+        public EmptyItem() {
+            super("", "", 0, 0, 0, 0, null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, item -> {
             });
-
-            update(Version.P301);
         }
     }
 

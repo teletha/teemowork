@@ -64,7 +64,7 @@ public class ClassWriter {
         this.imports = new Imports(packageName);
 
         write("/*");
-        write(" * Copyright (C) 2015 Nameless Production Committee");
+        write(" * Copyright (C) 2016 Nameless Production Committee");
         write(" *");
         write(" * Licensed under the MIT License (the \"License\");");
         write(" * you may not use this file except in compliance with the License.");

@@ -295,8 +295,9 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
      * @return
      */
     ItemDescriptor build(int... items) {
-        this.build = items;
-
+        if (items != null) {
+            this.build = items;
+        }
         return this;
     }
 

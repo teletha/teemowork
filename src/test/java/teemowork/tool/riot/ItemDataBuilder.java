@@ -21,7 +21,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import kiss.I;
+import teemowork.model.Describable;
 import teemowork.model.Item;
+import teemowork.model.ItemDescriptor;
 import teemowork.model.Version;
 import teemowork.tool.ClassWriter;
 
@@ -43,7 +45,7 @@ public class ItemDataBuilder {
         ItemDefinitions ja = RiotAPI.parse(ItemDefinitions.class, Version.Latest, Locale.JAPAN);
 
         ClassWriter code = new ClassWriter("teemowork.api", "RiotItemData");
-        code.write("public class ", code.className, " {");
+        code.write("public abstract class ", code.className, " extends ", generic(Describable.class, ItemDescriptor.class), " {");
 
         for (Entry<Integer, ItemDefinition> entry : en.data.entrySet()) {
             int id = entry.getKey();
@@ -58,38 +60,10 @@ public class ItemDataBuilder {
                 item.name(en.data);
                 localized.name(ja.data);
 
-                code.write("public static final ", code.className, " ", item.identicalName, " = new ", code.className, param(string(item.name), string(localized.name), id, gold.base, gold.total, gold.sell, array(item.from), array(item.into), image.sprite
-                        .charAt(4), image.x, image.y, item.depth, (int) item.stats.FlatHPPoolMod, item.stats.FlatHPRegenMod, (int) item.stats.FlatMPPoolMod, (int) item.stats.FlatPhysicalDamageMod, (int) item.stats.FlatArmorMod, (int) item.stats.FlatMagicDamageMod, (int) item.stats.FlatSpellBlockMod, (int) (item.stats.PercentAttackSpeedMod * 100), (int) (item.stats.PercentMovementSpeedMod * 100), (int) (item.stats.FlatCritChanceMod * 100), (int) (item.stats.PercentLifeStealMod * 100)), ";");
-
-                code.write("public static final ", Item.class, " ITEM_", item.identicalName, " = new ", Item.class, param(string(item.name), string(localized.name), id, gold.base, gold.total, gold.sell, array(item.from), array(item.into), image.sprite
+                code.write("public static final ", Item.class, " ", item.identicalName, " = new ", Item.class, param(string(item.name), string(localized.name), id, gold.base, gold.total, gold.sell, array(item.from), array(item.into), image.sprite
                         .charAt(4), image.x, image.y, item.depth, (int) item.stats.FlatHPPoolMod, item.stats.FlatHPRegenMod, (int) item.stats.FlatMPPoolMod, (int) item.stats.FlatPhysicalDamageMod, (int) item.stats.FlatArmorMod, (int) item.stats.FlatMagicDamageMod, (int) item.stats.FlatSpellBlockMod, (int) (item.stats.PercentAttackSpeedMod * 100), (int) (item.stats.PercentMovementSpeedMod * 100), (int) (item.stats.FlatCritChanceMod * 100), (int) (item.stats.PercentLifeStealMod * 100), staticField(teemowork.model.ItemDefinition.class, item.identicalName)), ";");
             }
         }
-
-        // Properties
-        Object[] properties = {String.class, "name", String.class, "localizedName", int.class, "id", int.class, "buyBase", int.class,
-                "buyTotal", int.class, "sell", int[].class, "from", int[].class, "to", int.class, "imageNo", int.class, "imageX", int.class,
-                "imageY", int.class, "depth", int.class, "health", float.class, "flatHealthRegen", int.class, "mana", int.class, "ad",
-                int.class, "ar", int.class, "ap", int.class, "mr", int.class, "as", int.class, "ms", int.class, "crit", int.class, "ls"};
-
-        // Field
-        for (int i = 0; i < properties.length; i++) {
-            code.write();
-            code.write("/** Item status. */");
-            code.write("public final ", properties[i], " ", properties[++i], ";");
-        }
-
-        // constructor
-        code.write();
-        code.write("/**");
-        code.write(" * The item definition.");
-        code.write(" */");
-        code.write("private ", code.className, arg(properties), " {");
-        for (int i = 0; i < properties.length; i++) {
-            code.write("this.", properties[++i], " = ", properties[i], ";");
-        }
-        code.write("}");
-
         code.write("}");
         code.writeTo(I.locate("src/main/java"));
     }

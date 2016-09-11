@@ -13,6 +13,7 @@ import static teemowork.model.Describable.*;
 import static teemowork.model.Status.*;
 import static teemowork.model.Version.*;
 
+import teemowork.api.RiotItemData;
 import teemowork.model.variable.VariableResolver.BardChimes;
 import teemowork.model.variable.VariableResolver.Diff;
 import teemowork.model.variable.VariableResolver.Per2Level;
@@ -5498,7 +5499,7 @@ public interface SkillDefinition {
      */
     public static void Viktor(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P404)
-                .passive(champion, "は最初から", Item.PrototypeHexCore, "という、自身のステータスを強化するアイテムを所持している。", Item.PrototypeHexCore, "はショップで1000Gを消費して3回アップグレードでき、その都度スキルを一回強化できる。", Item.PrototypeHexCore, "はアイテムスロットを1つ占有し、売却することは出来ない。<br>", Item.PrototypeHexCore, " : {1}を得る。<br>", Item.TheHexCoremk1, " : {2}、{3}を得る。<br>", Item.TheHexCoremk2, " : {4}、{5}を得る。<br>", Item.PerfectHexCore, " : {6}、{7}を得る。")
+                .passive(champion, "は最初から", RiotItemData.PrototypeHexCore, "という、自身のステータスを強化するアイテムを所持している。", RiotItemData.PrototypeHexCore, "はショップで1000Gを消費して3回アップグレードでき、その都度スキルを一回強化できる。", Item.PrototypeHexCore, "はアイテムスロットを1つ占有し、売却することは出来ない。<br>", Item.PrototypeHexCore, " : {1}を得る。<br>", Item.HexCoremk1, " : {2}、{3}を得る。<br>", Item.HexCoremk2, " : {4}、{5}を得る。<br>", Item.PerfectHexCore, " : {6}、{7}を得る。")
                 .variable(-1, AP, level(3))
                 .variable(-2, AP, 20, 0, level(4))
                 .variable(-3, Mana, 150)
