@@ -435,6 +435,18 @@ public class ClassWriter {
     }
 
     /**
+     * <p>
+     * Helper method to write method reference.
+     * </p>
+     * 
+     * @param params
+     * @return
+     */
+    public static Object staticField(Class base, String fieldName) {
+        return new StaticField(base, fieldName);
+    }
+
+    /**
      * @version 2015/07/19 5:18:02
      */
     private static interface CodeFragment {
@@ -447,6 +459,35 @@ public class ClassWriter {
          * @param $
          */
         void write(ClassWriter $);
+    }
+
+    /**
+     * @version 2016/09/12 1:09:05
+     */
+    private static class StaticField implements CodeFragment {
+
+        /** The base class. */
+        private final Class base;
+
+        /** The reference name. */
+        private final String name;
+
+        /**
+         * @param base
+         * @param name
+         */
+        private StaticField(Class base, String name) {
+            this.base = base;
+            this.name = name;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void write(ClassWriter $) {
+            $.code(base).code(".").code(name);
+        }
     }
 
     /**

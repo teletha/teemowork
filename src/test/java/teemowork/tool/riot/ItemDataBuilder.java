@@ -21,12 +21,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import kiss.I;
-import teemowork.model.Status;
+import teemowork.model.Item;
 import teemowork.model.Version;
 import teemowork.tool.ClassWriter;
 
 /**
- * @version 2015/07/14 11:46:21
+ * @version 2016/09/12 0:41:19
  */
 public class ItemDataBuilder {
 
@@ -60,6 +60,9 @@ public class ItemDataBuilder {
 
                 code.write("public static final ", code.className, " ", item.identicalName, " = new ", code.className, param(string(item.name), string(localized.name), id, gold.base, gold.total, gold.sell, array(item.from), array(item.into), image.sprite
                         .charAt(4), image.x, image.y, item.depth, (int) item.stats.FlatHPPoolMod, item.stats.FlatHPRegenMod, (int) item.stats.FlatMPPoolMod, (int) item.stats.FlatPhysicalDamageMod, (int) item.stats.FlatArmorMod, (int) item.stats.FlatMagicDamageMod, (int) item.stats.FlatSpellBlockMod, (int) (item.stats.PercentAttackSpeedMod * 100), (int) (item.stats.PercentMovementSpeedMod * 100), (int) (item.stats.FlatCritChanceMod * 100), (int) (item.stats.PercentLifeStealMod * 100)), ";");
+
+                code.write("public static final ", Item.class, " ITEM_", item.identicalName, " = new ", Item.class, param(string(item.name), string(localized.name), id, gold.base, gold.total, gold.sell, array(item.from), array(item.into), image.sprite
+                        .charAt(4), image.x, image.y, item.depth, (int) item.stats.FlatHPPoolMod, item.stats.FlatHPRegenMod, (int) item.stats.FlatMPPoolMod, (int) item.stats.FlatPhysicalDamageMod, (int) item.stats.FlatArmorMod, (int) item.stats.FlatMagicDamageMod, (int) item.stats.FlatSpellBlockMod, (int) (item.stats.PercentAttackSpeedMod * 100), (int) (item.stats.PercentMovementSpeedMod * 100), (int) (item.stats.FlatCritChanceMod * 100), (int) (item.stats.PercentLifeStealMod * 100), staticField(teemowork.model.ItemDefinition.class, item.identicalName)), ";");
             }
         }
 
@@ -89,25 +92,6 @@ public class ItemDataBuilder {
 
         code.write("}");
         code.writeTo(I.locate("src/main/java"));
-    }
-
-    /**
-     * <p>
-     * Compute item status.
-     * </p>
-     * 
-     * @param item
-     * @param status
-     * @return
-     */
-    private static int status(ItemDefinition item, Status status) {
-        float value = 0;
-
-        switch (status) {
-        case Health:
-            value = item.stats.FlatHPPoolMod;
-        }
-        return Float.valueOf(value).intValue();
     }
 
     /**
@@ -267,10 +251,16 @@ public class ItemDataBuilder {
         case 2050: // 旧アイテム
         case 2052: // HAマップ用アイテム
         case 2054: // HAマップ用アイテム
+        case 3599: // チャンピオン用特殊消費アイテム
+        case 3671: // Jungle Enchant
+        case 3672: // Jungle Enchant
+        case 3673: // Jungle Enchant
+        case 3675: // Jungle Enchant
             return false;
 
         default:
-            if (item.name.endsWith("(Crystal Scar)")) {
+            if (item.name.endsWith("(Crystal Scar)") || item.name.endsWith("(Quick Charge)") || item.name.endsWith("(Trinket)") || item.name
+                    .endsWith("Alteration")) {
                 return false;
             }
 
@@ -342,7 +332,7 @@ public class ItemDataBuilder {
 
         private void name(Map<Integer, ItemDefinition> data) {
             // normalize
-            name = name.replaceAll("：", ": ");
+            name = name.replaceAll("：", ": ").replaceAll(" of ", " Of ").replaceAll("^The", "");
 
             if (name.startsWith("Enchantment: Sated Devourer") && from != null) {
                 name = data.get(data.get(from.get(0)).from.get(1)).name + " [" + name.substring(name.indexOf(":") + 2) + "]";
