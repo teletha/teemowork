@@ -462,9 +462,9 @@ public class ChampionSelect extends Widget<Styles> {
 
         private static final Color backColor = new Color(0, 10, 10);
 
-        private static final Numeric ImageSize = new Numeric(70, px);
+        private static final Numeric ImageSize = new Numeric(60, px);
 
-        private static final Numeric ImagesSize = ImageSize.multiply(10);
+        private static final Numeric ImagesSize = ImageSize.multiply(11);
 
         private Style Root = () -> {
             display.block();
@@ -588,7 +588,7 @@ public class ChampionSelect extends Widget<Styles> {
         };
 
         private Style Filter = () -> {
-            box.width(ImagesSize.divide(5));
+            box.width(ImagesSize.divide(4));
         };
     }
 }
