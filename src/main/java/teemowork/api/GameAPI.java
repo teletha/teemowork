@@ -33,7 +33,7 @@ public class GameAPI {
     private static final UserPreference preference = I.make(UserPreference.class);
 
     /** The API key. */
-    private static final String API_KEY = "d82a93fe-1848-4692-895d-f194e928ed87";
+    private static final String API_KEY = "RGAPI-A5787FAB-2C53-4D86-9EE2-E86D2601CE8B";
 
     /**
      * <p>
@@ -117,7 +117,7 @@ public class GameAPI {
         return Events.from(uri).interval(2000, TimeUnit.MILLISECONDS, GameAPI.class).flatMap(url -> {
             return new Events<M>(observer -> {
                 NativeXMLHttpRequest request = new NativeXMLHttpRequest();
-                request.open("GET", "https://na.api.pvp.net/" + uri + "?api_key=" + API_KEY);
+                request.open("GET", "https://" + preference.region.getValue().code + ".api.pvp.net/" + uri + "?api_key=" + API_KEY);
                 request.send();
                 request.addEventListener("load", new NativeFunction(() -> {
                     String text = request.responseText();
