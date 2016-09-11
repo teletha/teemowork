@@ -26,7 +26,9 @@ import teemowork.model.AbilityDescriptor;
 import teemowork.model.DescriptionView;
 import teemowork.model.Item;
 import teemowork.model.ItemDescriptor;
+import teemowork.model.Skill;
 import teemowork.model.Status;
+import teemowork.model.StatusCalculator;
 import teemowork.model.Version;
 
 /**
@@ -85,7 +87,25 @@ public class ItemView extends Widget1<Styles, Item> {
                             } else {
                                 text($.AbilityInfo, ability.name);
                             }
-                            widget(Widget.of(AbilityDescriptionView.class, ability, null, desc.getDescription()));
+                            StatusCalculator c = new StatusCalculator() {
+
+                                @Override
+                                public int getLevel(Skill skill) {
+                                    return 0;
+                                }
+
+                                @Override
+                                public int getLevel() {
+                                    return 0;
+                                }
+
+                                @Override
+                                public double calculate(Status status) {
+                                    return 0;
+                                }
+                            };
+
+                            widget(Widget.of(AbilityDescriptionView.class, ability, c, desc.getDescription()));
                         });
                     }));
                 });

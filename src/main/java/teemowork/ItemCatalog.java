@@ -49,30 +49,11 @@ public class ItemCatalog extends Widget<Styles> {
             Critical, AP, CDR, SV, MRPen, AR, MR, MSRatio, GoldPer10Sec};
 
     private final FilterGroup[] groups = {
-            new FilterGroup("Defense",
-                    type(Status.Health),
-                    type(Status.AR),
-                    type(Status.MR),
-                    type(Status.Hreg, Status.HregRatio),
-                    type(Status.Tenacity)),
-            new FilterGroup("Attack",
-                    type(Status.AD, Status.ADRatio, Status.BaseAD),
-                    type(Status.Critical),
-                    type(Status.ASRatio),
-                    type(Status.LS)),
-            new FilterGroup("Magic",
-                    type(Status.AP),
-                    type(Status.CDR),
-                    type(Status.SV),
-                    type(Status.Mana),
-                    type(Status.Mreg, Status.MregRatio)),
+            new FilterGroup("Defense", type(Status.Health), type(Status.AR), type(Status.MR), type(Status.Hreg, Status.HregRatio), type(Status.Tenacity)),
+            new FilterGroup("Attack", type(Status.AD, Status.ADRatio, Status.BaseAD), type(Status.Critical), type(Status.ASRatio), type(Status.LS)),
+            new FilterGroup("Magic", type(Status.AP), type(Status.CDR), type(Status.SV), type(Status.Mana), type(Status.Mreg, Status.MregRatio)),
             new FilterGroup("Boots", type(Status.MS)),
-            new FilterGroup("Other",
-                    type(Status.PhysicalDamage),
-                    type(Status.MagicDamage),
-                    type(Status.TrueDamage),
-                    type(Status.Shield, Status.MagicShield, Status.SpellShield),
-                    type(Status.MSSlowRatio))};
+            new FilterGroup("Other", type(Status.PhysicalDamage), type(Status.MagicDamage), type(Status.TrueDamage), type(Status.Shield, Status.MagicShield, Status.SpellShield), type(Status.MSSlowRatio))};
 
     /** The user select item. */
     public final Events<Item> selectItem = when(User.Click).at($.Item, Item.class);

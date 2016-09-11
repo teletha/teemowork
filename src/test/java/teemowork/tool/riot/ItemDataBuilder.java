@@ -21,6 +21,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import kiss.I;
+import teemowork.model.Status;
 import teemowork.model.Version;
 import teemowork.tool.ClassWriter;
 
@@ -58,14 +59,15 @@ public class ItemDataBuilder {
                 localized.name(ja.data);
 
                 code.write("public static final ", code.className, " ", item.identicalName, " = new ", code.className, param(string(item.name), string(localized.name), id, gold.base, gold.total, gold.sell, array(item.from), array(item.into), image.sprite
-                        .charAt(4), image.x, image.y, item.depth), ";");
+                        .charAt(4), image.x, image.y, item.depth, (int) item.stats.FlatHPPoolMod, item.stats.FlatHPRegenMod, (int) item.stats.FlatMPPoolMod, (int) item.stats.FlatPhysicalDamageMod, (int) item.stats.FlatArmorMod, (int) item.stats.FlatMagicDamageMod, (int) item.stats.FlatSpellBlockMod, (int) (item.stats.PercentAttackSpeedMod * 100), (int) (item.stats.PercentMovementSpeedMod * 100), (int) (item.stats.FlatCritChanceMod * 100), (int) (item.stats.PercentLifeStealMod * 100)), ";");
             }
         }
 
         // Properties
         Object[] properties = {String.class, "name", String.class, "localizedName", int.class, "id", int.class, "buyBase", int.class,
                 "buyTotal", int.class, "sell", int[].class, "from", int[].class, "to", int.class, "imageNo", int.class, "imageX", int.class,
-                "imageY", int.class, "depth"};
+                "imageY", int.class, "depth", int.class, "health", float.class, "flatHealthRegen", int.class, "mana", int.class, "ad",
+                int.class, "ar", int.class, "ap", int.class, "mr", int.class, "as", int.class, "ms", int.class, "crit", int.class, "ls"};
 
         // Field
         for (int i = 0; i < properties.length; i++) {
@@ -87,6 +89,25 @@ public class ItemDataBuilder {
 
         code.write("}");
         code.writeTo(I.locate("src/main/java"));
+    }
+
+    /**
+     * <p>
+     * Compute item status.
+     * </p>
+     * 
+     * @param item
+     * @param status
+     * @return
+     */
+    private static int status(ItemDefinition item, Status status) {
+        float value = 0;
+
+        switch (status) {
+        case Health:
+            value = item.stats.FlatHPPoolMod;
+        }
+        return Float.valueOf(value).intValue();
     }
 
     /**
@@ -243,6 +264,9 @@ public class ItemDataBuilder {
         case 3648: // Siegeマップ用アイテムなので除外
         case 3649: // Siegeマップ用アイテムなので除外
         case 3632: // TODO エラーデータ？
+        case 2050: // 旧アイテム
+        case 2052: // HAマップ用アイテム
+        case 2054: // HAマップ用アイテム
             return false;
 
         default:
