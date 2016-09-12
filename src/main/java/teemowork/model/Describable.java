@@ -24,7 +24,7 @@ public abstract class Describable<T extends Descriptor> {
     private static Describable current;
 
     /** The version manager. */
-    private final Descriptor[] versions = new Descriptor[Version.values().length];
+    private Descriptor descriptor;
 
     /**
      * <p>
@@ -51,14 +51,10 @@ public abstract class Describable<T extends Descriptor> {
      * </p>
      */
     public final T getDescriptor(Version version) {
-        for (int i = version.ordinal(); 0 <= i; i--) {
-            Descriptor descriptor = versions[i];
-
-            if (descriptor != null) {
-                return (T) descriptor;
-            }
+        if (descriptor == null) {
+            descriptor = createDescriptor(version);
         }
-        return createDescriptor(version);
+        return (T) descriptor;
     }
 
     /**
@@ -69,19 +65,11 @@ public abstract class Describable<T extends Descriptor> {
      * @return A descriptor of the specified version.
      */
     protected final T update(Version version) {
-        T descriptor = createDescriptor(version);
-
-        // versioning management
-        versions[version.ordinal()] = descriptor;
-
         // for helper methods
         current = this;
 
-        // record patch info
-        version.record(this);
-
         // API definition
-        return descriptor;
+        return getDescriptor(version);
     }
 
     /**

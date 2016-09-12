@@ -423,7 +423,7 @@ public class Ability extends Describable<AbilityDescriptor> {
             for (Field field : Ability.class.getFields()) {
                 if (Modifier.isStatic(field.getModifiers())) {
                     Ability ability = (Ability) field.get(null);
-                    ability.descriptor.accept(ability.update(Version.P301));
+                    ability.definition.accept(ability.update(Version.P301));
                 }
             }
         } catch (Exception e) {
@@ -437,7 +437,7 @@ public class Ability extends Describable<AbilityDescriptor> {
     public final String name;
 
     /** The ability descriptor. */
-    private final Consumer<AbilityDescriptor> descriptor;
+    private final Consumer<AbilityDescriptor> definition;
 
     /**
      * Create new ability with invisible name.
@@ -451,7 +451,7 @@ public class Ability extends Describable<AbilityDescriptor> {
      */
     Ability(String name, Consumer<AbilityDescriptor> descriptor) {
         this.name = name == null ? "#" + descriptor.hashCode() : name;
-        this.descriptor = descriptor;
+        this.definition = descriptor;
     }
 
     /**

@@ -61,7 +61,7 @@ public abstract class Descriptor<T extends Descriptor> {
      * @param version
      * @return
      */
-    public T update(Version version) {
+    public final T update(Version version) {
         return (T) describable.update(version);
     }
 
