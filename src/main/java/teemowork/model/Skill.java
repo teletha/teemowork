@@ -134,6 +134,16 @@ public class Skill extends Describable<SkillDescriptor> {
             return 0;
         }
 
+        if (owner.equals("Ryze")) {
+            if (key == Q) {
+                return 6;
+            }
+
+            if (key == R) {
+                return 2;
+            }
+        }
+
         if (key == R) {
             switch (owner) {
             case "Elise":

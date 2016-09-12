@@ -95,6 +95,14 @@ public abstract class VariableResolver {
         private final double[] values;
 
         /**
+         * @param base
+         * @param diff
+         */
+        public PerLevel(double base, double diff) {
+            this(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}, base, diff);
+        }
+
+        /**
          * @param levels
          * @param base
          * @param diff

@@ -169,8 +169,15 @@ public abstract class Describable<T extends Descriptor> {
      * @param diff A diff value of amplifier rate.
      * @return
      */
-    protected static final Variable amplify(Status status, VariableResolver resolver) {
-        return new Variable(status, resolver);
+    protected static final Variable amplify(Status status, VariableResolver resolver, Variable... variables) {
+        Variable variable = new Variable(status, resolver);
+
+        if (variables != null) {
+            for (Variable var : variables) {
+                variable.add(var);
+            }
+        }
+        return variable;
     }
 
     /**

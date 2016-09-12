@@ -482,7 +482,24 @@ public interface ItemDefinition {
     public static Consumer<ItemDescriptor> HextechGLP800 = item -> {
         item.add("Frost Bolt", ability -> {
             ability.active("指定方向の敵ユニットに{1}を与え、0.5秒かけて減衰する{2}を付与する。")
-                    .variable(1, MagicDamage, new PerLevel(100, 106, 112, 118, 124, 130, 136, 141, 147, 153, 159, 165, 171, 176, 182, 188, 194, 200), ap(0.35))
+                    .variable(1, MagicDamage, new PerLevel(100,
+                            106,
+                            112,
+                            118,
+                            124,
+                            130,
+                            136,
+                            141,
+                            147,
+                            153,
+                            159,
+                            165,
+                            171,
+                            176,
+                            182,
+                            188,
+                            194,
+                            200), ap(0.35))
                     .variable(2, MSSlowRatio, 65);
         });
     };
@@ -491,7 +508,24 @@ public interface ItemDefinition {
     public static Consumer<ItemDescriptor> HextechProtobelt01 = item -> {
         item.cdr(10).add("Fire Bolt", ability -> {
             ability.active("指定方向にダッシュして前方扇状に矢を放ち、当たった敵ユニットに{1}を与える。同一ユニットに複数の矢が当たった場合、2本目以降の矢は20%のダメージになる。このダッシュで地形を通り抜けることはできない。")
-                    .variable(1, MagicDamage, new PerLevel(75, 79, 83, 88, 92, 97, 101, 106, 110, 115, 119, 124, 128, 132, 137, 141, 146, 150), ap(0.35));
+                    .variable(1, MagicDamage, new PerLevel(75,
+                            79,
+                            83,
+                            88,
+                            92,
+                            97,
+                            101,
+                            106,
+                            110,
+                            115,
+                            119,
+                            124,
+                            128,
+                            132,
+                            137,
+                            141,
+                            146,
+                            150), ap(0.35));
         });
     };
 
@@ -1154,8 +1188,8 @@ public interface ItemDefinition {
 
     /** Zhonya's Hourglass */
     public static Consumer<ItemDescriptor> ZhonyasHourglass = item -> {
-        item.add("停滞", ability -> {
-            ability.active("2.5秒間{1}になる。{1}。").variable(1, Stasis).variable(2, ItemCD, 90);
+        item.cdr(10).add("停滞", ability -> {
+            ability.active("2.5秒間{1}になる。{1}。").variable(1, Stasis).variable(2, ItemCD, 120);
         });
     };
 

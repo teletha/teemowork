@@ -44,8 +44,7 @@ public enum Status {
     DamageDecreaseRatio("与えるダメージ"),
 
     /** Received Damage */
-    ReceivedDamage("ReceivedDamage", "受けたダメージ"), ReceivedDamageRatio(ReceivedDamage), ReceivedDamage4SecRatio(
-            "4秒以内に" + ReceivedDamage), ReceivedOriginalDamageRatio("軽減前の受けたDM"),
+    ReceivedDamage("ReceivedDamage", "受けたダメージ"), ReceivedDamageRatio(ReceivedDamage), ReceivedDamage4SecRatio("4秒以内に" + ReceivedDamage), ReceivedOriginalDamageRatio("軽減前の受けたDM"),
 
     /** Received Damage */
     PreventedDamage("PreventedDamage", "軽減したダメージ"), PreventedDamageRatio(ReceivedDamage),
@@ -54,8 +53,7 @@ public enum Status {
     // Health Related
     // ==================================================
     /** Health */
-    Health("Health", "体力"), HealthPerLv, HealthRatio(Health), HealthRatioPerLv(HealthRatio), BounusHealth("増加" + Health), BounusHealthRatio(
-            BounusHealth),
+    Health("Health", "体力"), HealthPerLv, HealthRatio(Health), HealthRatioPerLv(HealthRatio), BounusHealth("増加" + Health), BounusHealthRatio(BounusHealth),
 
     /** Base Health */
     BaseHealth("BaseHealth", "基礎体力"),
@@ -122,10 +120,10 @@ public enum Status {
     // Attack Related
     // ==================================================
     /** Attack Damage */
-    AD("AD", "攻撃力"), ADPerLv, ADRatio(AD), BounusAD("BounsAD", "増加攻撃力"), BaseAD("BaseAD", "基礎攻撃力"), TargetAD("TargetAD", "対象の攻撃力"),
+    AD("AD", "攻撃力"), ADPerLv, ADRatio(AD), BounusAD("BounusAD", "増加攻撃力"), BaseAD("BaseAD", "基礎攻撃力"), TargetAD("TargetAD", "対象の攻撃力"),
 
     /** Attack Speed */
-    AS("AS", "攻撃速度", 3), ASPerLv(3), ASRatio(AS, 2),
+    AS("AS", "攻撃速度", 3), ASPerLv(3), ASRatio(AS, 2), BounusASRatio("BounusAS", "増加攻撃速度"),
 
     /** life Steal */
     LS("Life Steal", "物理吸命"), LSPerLv(LS), LSRatio(LS),
@@ -140,7 +138,7 @@ public enum Status {
     // Ability Power Related
     // ==================================================
     /** Ability Power */
-    AP("AP", "魔力"), APPerLv, APRatio("AP", 2), TargetAP("TargetAP", "対象の魔力"),
+    AP("AP", "魔力"), APPerLv, APRatio("AP", 2), TargetAP("TargetAP", "対象の魔力"), BounusAP("BounusAP", "増加魔力"),
 
     /** Cooldown Reduction */
     CDR("CDR", "クールダウン短縮", 2), CDRPerLv, CDRRatio, CDRUnaware("CD減少の影響を受けない"),
@@ -607,6 +605,7 @@ public enum Status {
         case MS:
         case MSRatio:
         case AS:
+        case BounusASRatio:
         case ASRatio:
         case ADRatio:
         case APRatio:

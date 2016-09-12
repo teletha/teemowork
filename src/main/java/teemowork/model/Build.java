@@ -52,8 +52,8 @@ public class Build implements StatusCalculator {
     public final ListProperty<Integer> skillLevel = new SimpleListProperty<Integer>(FXCollections.observableArrayList(0, 0, 0, 0, 0));
 
     /** The skill level. */
-    public final ListProperty<Boolean> skillActivation = new SimpleListProperty<Boolean>(FXCollections
-            .observableArrayList(false, false, false, false, false));
+    public final ListProperty<Boolean> skillActivation = new SimpleListProperty<Boolean>(
+            FXCollections.observableArrayList(false, false, false, false, false));
 
     /** The mastery. */
     private MasterySet mastery;
@@ -194,11 +194,20 @@ public class Build implements StatusCalculator {
         case BounusAD:
             return new Computed(0, get(AD).increased, status);
 
+        case BounusASRatio:
+            return new Computed(0, get(ASRatio).increased, status);
+
         case BounusAR:
             return new Computed(0, get(AR).increased, status);
 
         case BounusMR:
             return new Computed(0, get(MR).increased, status);
+
+        case BounusAP:
+            return new Computed(0, get(AP).increased, status);
+
+        case BounusMana:
+            return new Computed(0, get(Mana).increased, status);
 
         case BounusHealth:
             return new Computed(0, get(Health).increased, status);

@@ -111,7 +111,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<Sty
                 box(Styles.Amplifier, () -> {
                     int amp = level;
 
-                    text("+");
+                    text("+", amplifier.getStatus());
 
                     VariableResolver resolver = amplifier.getResolver();
 
@@ -137,7 +137,6 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<Sty
                         writeAmplifier(amplifier.getAmplifiers(), current, calculator);
                         text(")");
                     }
-                    text(amplifier.getStatus());
                 });
             }));
         }
