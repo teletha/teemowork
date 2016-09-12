@@ -16,7 +16,7 @@ import java.lang.reflect.Modifier;
 import java.util.function.Consumer;
 
 /**
- * @version 2013/12/01 12:39:34
+ * @version 2016/09/12 21:46:07
  */
 public class Ability extends Describable<AbilityDescriptor> {
 
@@ -458,8 +458,8 @@ public class Ability extends Describable<AbilityDescriptor> {
      * {@inheritDoc}
      */
     @Override
-    protected AbilityDescriptor createDescriptor(Version version, AbilityDescriptor previous) {
-        return new AbilityDescriptor(this, previous, version);
+    protected AbilityDescriptor createDescriptor(Version version) {
+        return new AbilityDescriptor(this, version);
     }
 
     /**

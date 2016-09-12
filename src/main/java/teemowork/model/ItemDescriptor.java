@@ -12,12 +12,11 @@ package teemowork.model;
 import static teemowork.model.Status.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * @version 2013/12/01 12:39:26
+ * @version 2016/09/12 21:47:16
  */
 public class ItemDescriptor extends Descriptor<ItemDescriptor> {
 
@@ -36,14 +35,8 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
     /**
      * @param name
      */
-    ItemDescriptor(Item item, ItemDescriptor previous, Version version) {
-        super(item, previous, version);
-
-        if (previous != null) {
-            values = Arrays.copyOf(previous.values, previous.values.length);
-            build = previous.build;
-            abilities = new ArrayList<>(previous.abilities);
-        }
+    ItemDescriptor(Item item, Version version) {
+        super(item, version);
     }
 
     /**
@@ -281,7 +274,7 @@ public class ItemDescriptor extends Descriptor<ItemDescriptor> {
         Item[] items = new Item[build.length];
 
         for (int i = 0; i < items.length; i++) {
-            items[i] = Item.getById(build[i]);
+            items[i] = Item.of(build[i]);
         }
         return items;
     }

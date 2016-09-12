@@ -22,7 +22,7 @@ import teemowork.UserPreference;
 import teemowork.api.RiotItemData;
 
 /**
- * @version 2015/07/19 23:24:51
+ * @version 2016/09/12 21:33:44
  */
 public class Item extends RiotItemData {
 
@@ -144,8 +144,8 @@ public class Item extends RiotItemData {
      * {@inheritDoc}
      */
     @Override
-    protected ItemDescriptor createDescriptor(Version version, ItemDescriptor previous) {
-        return new ItemDescriptor(this, previous, version);
+    protected ItemDescriptor createDescriptor(Version version) {
+        return new ItemDescriptor(this, version);
     }
 
     /**
@@ -163,7 +163,7 @@ public class Item extends RiotItemData {
      * 
      * @return
      */
-    public static List<Item> getAll() {
+    public static List<Item> all() {
         return items;
     }
 
@@ -175,7 +175,7 @@ public class Item extends RiotItemData {
      * @param name A Item name.
      * @return A matched Item.
      */
-    public static Item getByName(String name) {
+    public static Item of(String name) {
         for (Item item : items) {
             if (item.name.equals(name)) {
                 return item;
@@ -192,16 +192,12 @@ public class Item extends RiotItemData {
      * @param id A Item id.
      * @return A matched Item.
      */
-    public static Item getById(int id) {
+    public static Item of(int id) {
         for (Item item : items) {
             if (item.id == id) {
                 return item;
             }
         }
         return null;
-    }
-
-    public static int size() {
-        return counter;
     }
 }

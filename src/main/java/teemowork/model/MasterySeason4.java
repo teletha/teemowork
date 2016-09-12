@@ -348,7 +348,7 @@ public class MasterySeason4 extends Mastery {
      * {@inheritDoc}
      */
     @Override
-    protected MasteryDescriptor createDescriptor(Version version, MasteryDescriptor previous) {
-        return new MasteryDescriptor(this, previous, version);
+    protected MasteryDescriptor createDescriptor(Version version) {
+        return new MasteryDescriptor(this, version);
     }
 }

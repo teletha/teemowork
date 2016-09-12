@@ -414,7 +414,7 @@ public class ChampionDetail extends Widget1<Styles, Build> {
         ValueStyle<Integer> ItemIcon = id -> {
             display.block();
             box.size(100, percent);
-            background.horizontal(id / (Item.size() - 1) * 100, percent)
+            background.horizontal(id / (Item.all().size() - 1) * 100, percent)
                     .image(BackgroundImage.url("src/main/resources/teemowork/items.jpg").cover().borderBox().noRepeat());
         };
     }

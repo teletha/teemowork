@@ -16,7 +16,7 @@ import teemowork.model.variable.VariableResolver;
 import teemowork.model.variable.VariableResolver.Diff;
 
 /**
- * @version 2013/03/20 0:32:27
+ * @version 2016/09/12 21:46:33
  */
 public class SkillDescriptor extends Descriptor<SkillDescriptor> {
 
@@ -35,15 +35,8 @@ public class SkillDescriptor extends Descriptor<SkillDescriptor> {
     /**
      * @param name
      */
-    SkillDescriptor(Skill skill, SkillDescriptor previous, Version version) {
-        super(skill, previous, version);
-
-        if (previous != null) {
-            type = previous.type;
-            cost = previous.cost;
-            range = previous.range;
-            cooldown = previous.cooldown;
-        }
+    SkillDescriptor(Skill skill, Version version) {
+        super(skill, version);
     }
 
     /**

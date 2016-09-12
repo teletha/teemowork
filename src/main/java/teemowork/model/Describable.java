@@ -16,7 +16,7 @@ import teemowork.model.variable.VariableResolver;
 import teemowork.model.variable.VariableResolver.Diff;
 
 /**
- * @version 2013/05/30 20:35:46
+ * @version 2016/09/12 21:46:19
  */
 public abstract class Describable<T extends Descriptor> {
 
@@ -43,7 +43,7 @@ public abstract class Describable<T extends Descriptor> {
      * @param previous
      * @return
      */
-    protected abstract T createDescriptor(Version current, T previous);
+    protected abstract T createDescriptor(Version current);
 
     /**
      * <p>
@@ -58,7 +58,7 @@ public abstract class Describable<T extends Descriptor> {
                 return (T) descriptor;
             }
         }
-        return createDescriptor(version, null);
+        return createDescriptor(version);
     }
 
     /**
@@ -69,7 +69,7 @@ public abstract class Describable<T extends Descriptor> {
      * @return A descriptor of the specified version.
      */
     protected final T update(Version version) {
-        T descriptor = createDescriptor(version, getDescriptor(version));
+        T descriptor = createDescriptor(version);
 
         // versioning management
         versions[version.ordinal()] = descriptor;

@@ -18,7 +18,7 @@ import org.junit.Test;
 import teemowork.model.variable.Variable;
 
 /**
- * @version 2013/01/27 20:34:23
+ * @version 2016/09/12 21:46:12
  */
 public class SkillStatusTest {
 
@@ -27,7 +27,7 @@ public class SkillStatusTest {
 
     @Test
     public void description() throws Exception {
-        SkillDescriptor skill = new SkillDescriptor(null, null, null);
+        SkillDescriptor skill = new SkillDescriptor(null, null);
         skill.active("Test");
 
         List tokens = skill.getActive();
@@ -37,7 +37,7 @@ public class SkillStatusTest {
 
     @Test
     public void variable() throws Exception {
-        SkillDescriptor skill = new SkillDescriptor(empty, null, null);
+        SkillDescriptor skill = new SkillDescriptor(empty, null);
         skill.active("Test{1}");
         skill.variable(1, AD, 10, 10);
 
@@ -55,7 +55,7 @@ public class SkillStatusTest {
 
     @Test
     public void variable2() throws Exception {
-        SkillDescriptor skill = new SkillDescriptor(empty, null, null);
+        SkillDescriptor skill = new SkillDescriptor(empty, null);
         skill.active("Test{1}");
         skill.variable(1, SV, 10, 10);
 

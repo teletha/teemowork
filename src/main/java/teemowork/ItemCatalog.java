@@ -72,7 +72,7 @@ public class ItemCatalog extends Widget<Styles> {
                     widget(UI.checkbox(activeFilters, filter, filter.status.getName()).style($.FilterName));
                 }));
             }));
-            box($.Items, contents(Item.getAll(), item -> {
+            box($.Items, contents(Item.all(), item -> {
                 if (show(item)) {
                     box($.Item, () -> {
                         widget(Widget.of(ItemView.class, item));

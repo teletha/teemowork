@@ -19,7 +19,7 @@ import teemowork.model.variable.VariableResolver;
 import teemowork.model.variable.VariableResolver.Diff;
 
 /**
- * @version 2015/10/20 14:10:08
+ * @version 2016/09/12 21:47:06
  */
 public abstract class Descriptor<T extends Descriptor> {
 
@@ -29,20 +29,17 @@ public abstract class Descriptor<T extends Descriptor> {
     /** The version of this descriptor. */
     public final Version version;
 
-    /** The previous version. */
-    private final Descriptor<T> previous;
+    /** The ability description. */
+    private List passive = new ArrayList();
 
     /** The ability description. */
-    private List passive;
-
-    /** The ability description. */
-    private List active;
+    private List active = new ArrayList();
 
     /** The flag for initialization of variable pool. */
-    private boolean initializable = true;
+    private boolean initializable;
 
     /** The variable store. */
-    private Map<String, Variable> variables;
+    private Map<String, Variable> variables = new HashMap();
 
     /**
      * <p>
@@ -51,22 +48,9 @@ public abstract class Descriptor<T extends Descriptor> {
      * 
      * @param previous
      */
-    protected Descriptor(Describable describable, Descriptor<T> previous, Version version) {
+    protected Descriptor(Describable describable, Version version) {
         this.describable = describable;
-        this.previous = previous;
         this.version = version;
-
-        if (previous == null) {
-            passive = new ArrayList();
-            active = new ArrayList();
-            variables = new HashMap();
-
-            initializable = false;
-        } else {
-            passive = previous.passive;
-            active = previous.active;
-            variables = previous.variables;
-        }
     }
 
     /**
@@ -354,10 +338,6 @@ public abstract class Descriptor<T extends Descriptor> {
         if (initializable) {
             initializable = false;
             variables = new HashMap();
-
-            if (previous != null) {
-                variables.putAll(previous.variables);
-            }
         }
         variables.put(String.valueOf(id), variable);
 

@@ -10,14 +10,14 @@
 package teemowork.model;
 
 /**
- * @version 2013/03/13 14:55:20
+ * @version 2016/09/12 21:46:48
  */
 public class MasteryDescriptor extends Descriptor<MasteryDescriptor> {
 
     /**
      * 
      */
-    MasteryDescriptor(Mastery mastery, MasteryDescriptor previous, Version version) {
-        super(mastery, previous, version);
+    MasteryDescriptor(Mastery mastery, Version version) {
+        super(mastery, version);
     }
 }

@@ -20,7 +20,7 @@ import kiss.I;
 import teemowork.UserPreference;
 
 /**
- * @version 2015/07/21 16:42:24
+ * @version 2016/09/12 21:46:26
  */
 public class Skill extends Describable<SkillDescriptor> {
 
@@ -57,8 +57,8 @@ public class Skill extends Describable<SkillDescriptor> {
      * {@inheritDoc}
      */
     @Override
-    protected SkillDescriptor createDescriptor(Version version, SkillDescriptor previous) {
-        return new SkillDescriptor(this, previous, version);
+    protected SkillDescriptor createDescriptor(Version version) {
+        return new SkillDescriptor(this, version);
     }
 
     /**

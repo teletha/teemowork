@@ -12,18 +12,15 @@ package teemowork.model;
 import java.util.List;
 
 /**
- * @version 2013/01/29 1:55:25
+ * @version 2016/09/12 21:46:53
  */
 public class AbilityDescriptor extends Descriptor<AbilityDescriptor> {
 
     /** The unique flag. */
-    private boolean unique;
+    private boolean unique = true;
 
     /** The aura flag. */
-    private boolean aura;
-
-    /** The ability description. */
-    private String description;
+    private boolean aura = false;
 
     /**
      * <p>
@@ -32,20 +29,9 @@ public class AbilityDescriptor extends Descriptor<AbilityDescriptor> {
      * 
      * @param name
      * @param unique
-     * @param previous
      */
-    AbilityDescriptor(Ability ability, AbilityDescriptor previous, Version version) {
-        super(ability, previous, version);
-
-        if (previous != null) {
-            unique = previous.unique;
-            aura = previous.aura;
-            description = previous.description;
-        } else {
-            unique = true;
-            aura = false;
-            description = "";
-        }
+    AbilityDescriptor(Ability ability, Version version) {
+        super(ability, version);
     }
 
     /**
