@@ -38,8 +38,7 @@ public class Champion extends RiotChampionData {
 
     /** The large icon style. */
     public static final ValueStyle<Champion> Icon70 = champion -> {
-        StyleDescriptor.display.flex();
-        StyleDescriptor.box.size(ChampionIconSize);
+        StyleDescriptor.display.size(ChampionIconSize).flex();
         StyleDescriptor.border.radius(10, Unit.px).color(Color.rgb(50, 50, 50)).width(2, Unit.px).solid();
         StyleDescriptor.cursor.pointer();
         StyleDescriptor.position.relative();
@@ -48,8 +47,7 @@ public class Champion extends RiotChampionData {
 
     /** The large icon style. */
     public static final ValueStyle<Champion> Icon50 = champion -> {
-        StyleDescriptor.display.flex();
-        StyleDescriptor.box.size(50, Unit.px);
+        StyleDescriptor.display.size(50, Unit.px).flex();
         StyleDescriptor.border.radius(10, Unit.px).color(Color.rgb(50, 50, 50)).width(2, Unit.px).solid();
         StyleDescriptor.cursor.pointer();
         StyleDescriptor.position.relative();

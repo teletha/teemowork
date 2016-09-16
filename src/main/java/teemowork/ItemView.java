@@ -146,7 +146,7 @@ public class ItemView extends Widget1<Styles, Item> {
 
         Style Root = () -> {
             display.flex();
-            box.maxWidth(600, px);
+            display.maxWidth(600, px);
         };
 
         Style IconArea = () -> {
@@ -155,26 +155,24 @@ public class ItemView extends Widget1<Styles, Item> {
         };
 
         Style Icon = () -> {
-            display.block();
+            display.block().size(IconSize);
             margin.bottom(IconSize.divide(5));
             cursor.pointer();
-            box.size(IconSize);
             border.radius(5, px).color(IconBorderColor).width(1, px).solid();
         };
 
         Style Materials = () -> {
             display.flex().wrap.enable();
-            box.width(IconSize);
+            display.width(IconSize);
         };
 
         Style Material = () -> {
-            display.block();
-            box.size(IconSize.divide(2));
+            display.block().size(IconSize.divide(2));
             border.color(IconBorderColor).width(1, px).solid();
         };
 
         Style DescriptionArea = () -> {
-            box.maxWidth(290, px);
+            display.maxWidth(290, px);
         };
 
         Style Heading = () -> {

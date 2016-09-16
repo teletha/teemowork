@@ -99,7 +99,8 @@ public class MasteryBuilder extends Widget<Styles> {
                         box($.MasteryPane, If(!available, $.Unavailable), () -> {
                             svg("svg", $.IconImage, size(45, 45), () -> {
                                 svg("image", position(0, 0), size(45, 45), attr("xlink:href", mastery
-                                        .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? "" : "url('#test')"));
+                                        .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? ""
+                                                : "url('#test')"));
                                 svg("filter", Styles.NBox, id("test"), () -> {
                                     svg("feColorMatrix", attr("type", "matrix"), attr("values", grayscale(0.4)));
                                 });
@@ -184,8 +185,7 @@ public class MasteryBuilder extends Widget<Styles> {
         };
 
         private static void MasteryBox() {
-            display.inlineBlock();
-            box.width(TreeWidth, px).height(TreeHeight, px);
+            display.inlineBlock().width(TreeWidth, px).height(TreeHeight, px);
             padding.size(TreePadding, px);
             background.image(BackgroundImage.of(transparent), BackgroundImage.url(noise));
         }
@@ -212,8 +212,7 @@ public class MasteryBuilder extends Widget<Styles> {
         };
 
         Style MasteryPane = () -> {
-            display.inlineBlock();
-            box.size(IconSize, px);
+            display.inlineBlock().size(IconSize, px);
             margin.horizontal(Gap, px);
             position.relative();
             cursor.pointer();
@@ -228,8 +227,7 @@ public class MasteryBuilder extends Widget<Styles> {
         };
 
         Style IconImage = () -> {
-            display.block();
-            box.size(IconSize, px);
+            display.block().size(IconSize, px);
             border.color(AvailableColor).width(IconBorderSize, px).solid().radius(Corner, px);
 
             insideOf(Unavailable, () -> {
@@ -246,8 +244,7 @@ public class MasteryBuilder extends Widget<Styles> {
         };
 
         Style LevelPane = () -> {
-            display.block();
-            box.width(IconSize - IconBorderSize * 2, px);
+            display.block().width(IconSize - IconBorderSize * 2, px);
             position.bottom(IconBorderSize, px).left(IconBorderSize, px).absolute();
             padding.right(5, px);
             border.bottom.radius(Corner, px);
@@ -290,9 +287,8 @@ public class MasteryBuilder extends Widget<Styles> {
             Color borderColor = new Color(0, 98, 97, 0.9);
 
             Color color = new Color(0, 10, 0, 1);
-            display.block();
+            display.block().width(Width, px).opacity(0).zIndex(100).shadow(shadow().blurRadius(7, px).color(color));
             position.absolute().bottom(IconSize + 35, px).left(IconSize / 2 - Width / 2, px);
-            box.width(Width, px).opacity(0).zIndex(100).shadow(shadow().blurRadius(7, px).color(color));
             background.image(BackgroundImage.of(linear(color.opacify(-0.25), color)));
             border.radius(Corner, px).solid().width(BorderWidth, px).color(borderColor);
             padding.size(10, px);
@@ -307,7 +303,7 @@ public class MasteryBuilder extends Widget<Styles> {
             });
 
             transit().easeInOut().whenSiblingHover(() -> {
-                box.opacity(1);
+                display.opacity(1);
                 visibility.visible();
                 position.bottom(IconSize + 12, px);
             });

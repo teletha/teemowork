@@ -467,9 +467,8 @@ public class ChampionSelect extends Widget<Styles> {
         private static final Numeric ImagesSize = ImageSize.multiply(11);
 
         private Style Root = () -> {
-            display.block();
+            display.block().width(ImagesSize.add(2));
             margin.auto();
-            box.width(ImagesSize.add(2));
         };
 
         private Style ImageSet = () -> {
@@ -488,8 +487,7 @@ public class ChampionSelect extends Widget<Styles> {
         };
 
         private Style IconImage = () -> {
-            display.block();
-            box.size(ImageSize);
+            display.block().size(ImageSize);
             border.bottom.solid().width(2, px).color(backColor);
             border.right.solid().width(2, px).color(backColor);
             cursor.pointer();
@@ -497,13 +495,13 @@ public class ChampionSelect extends Widget<Styles> {
 
             after(() -> {
                 content.text("");
-                display.block();
+                display.block().width(100, percent).height(100, percent).opacity(1);
                 position.absolute();
-                box.width(100, percent).height(100, percent).opacity(1);
+
                 background.color(hsla(0, 100, 100, 0.2));
 
                 transit().duration(0.2, s).easeInOut().whenHover(() -> {
-                    box.opacity(0);
+                    display.opacity(0);
                 });
             });
         };
@@ -523,7 +521,7 @@ public class ChampionSelect extends Widget<Styles> {
             background.image(BackgroundImage.of(linear(color.opacify(-0.4), color)));
             position.absolute().left(50, percent).bottom(ImageSize.add(20));
             margin.left(boxWidth.divide(-2));
-            box.minWidth(boxWidth).zIndex(1).opacity(0);
+            display.minWidth(boxWidth).zIndex(1).opacity(0);
             border.width(4, px).solid().color(color.lighten(-100)).radius(5, px);
             pointerEvents.none();
 
@@ -531,7 +529,7 @@ public class ChampionSelect extends Widget<Styles> {
             createBottomBubble(7, new Numeric(4, px), color.lighten(-100), color);
 
             transit().duration(0.2, s).delay(100, ms).easeInOut().whenSiblingHover(() -> {
-                box.opacity(1);
+                display.opacity(1);
                 position.bottom(ImageSize);
             });
         };
@@ -588,7 +586,7 @@ public class ChampionSelect extends Widget<Styles> {
         };
 
         private Style Filter = () -> {
-            box.width(ImagesSize.divide(4));
+            display.width(ImagesSize.divide(4));
         };
     }
 }

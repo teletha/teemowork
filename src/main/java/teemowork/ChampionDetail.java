@@ -271,7 +271,7 @@ public class ChampionDetail extends Widget1<Styles, Build> {
         };
 
         Style Value = () -> {
-            box.opacity(0.7);
+            display.opacity(0.7);
 
             notLastChild(() -> {
                 after(() -> {
@@ -297,24 +297,21 @@ public class ChampionDetail extends Widget1<Styles, Build> {
         };
 
         ValueStyle<Skill> SkillIcon = skill -> {
-            display.block();
-            box.size(SkillIconSize, px);
+            display.block().size(SkillIconSize, px);
             border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
             background.image(BackgroundImage.url(skill.getIcon()).horizontal(skill.getIconPosition()).cover().borderBox().noRepeat());
         };
 
         Style LevelBox = () -> {
-            display.flex();
-            box.width(SkillIconSize, px).height(LevelBoxHeight + 2, px);
+            display.width(SkillIconSize, px).height(LevelBoxHeight + 2, px).flex();
             border.width(1, px).solid().color(Color.Black);
             border.left.none();
             margin.top(2, px).bottom(5, px);
         };
 
         BinaryStyle LevelMark = state -> {
-            display.block();
+            display.block().height(LevelBoxHeight, px);
             flexItem.grow(1);
-            box.height(LevelBoxHeight, px);
             border.left.solid().color(Color.Black).width(1, px);
             background.image(BackgroundImage.of(linear(rgba(240, 192, 28, state ? 1 : 0.5), rgba(160, 123, 1, state ? 1 : 0.5))));
         };
@@ -358,8 +355,7 @@ public class ChampionDetail extends Widget1<Styles, Build> {
         Numeric ChampionIconSize = new Numeric(70, Unit.px);
 
         ValueStyle<Champion> ChampionIconBox = champion -> {
-            display.flex();
-            box.size(ChampionIconSize);
+            display.size(ChampionIconSize).flex();
             border.radius(10, px).color(rgb(50, 50, 50)).width(2, px).solid();
             cursor.pointer();
             position.relative();
@@ -367,8 +363,7 @@ public class ChampionDetail extends Widget1<Styles, Build> {
         };
 
         Style Level = () -> {
-            display.block();
-            box.size(22, px);
+            display.block().size(22, px);
             font.size(20, px).color(240, 240, 240).weight.bold().family("Arial");
             text.align.center().unselectable().outline(rgb(240, 240, 240), 0.8);
             position.absolute().bottom(4, px).right(4, px);
@@ -376,8 +371,7 @@ public class ChampionDetail extends Widget1<Styles, Build> {
         };
 
         Style StatusViewBox = () -> {
-            display.block();
-            box.width(13, em);
+            display.block().width(13, em);
             flexItem.shrink(0);
             font.size.small();
         };
@@ -388,32 +382,29 @@ public class ChampionDetail extends Widget1<Styles, Build> {
         };
 
         Style StatusName = () -> {
-            box.width(9.5, em);
+            display.width(9.5, em);
         };
 
         Style StatusValue = () -> {
-            box.width(50, px);
+            display.width(50, px);
         };
 
         Numeric ItemIconSize = ChampionIconSize.divide(5).multiply(3);
 
         Style ItemViewBox = () -> {
-            display.flex();
-            box.width(ItemIconSize.multiply(6));
+            display.width(ItemIconSize.multiply(6)).flex();
             margin.left(100, px);
         };
 
         Style ItemIconBase = () -> {
-            display.block();
-            box.size(ItemIconSize);
+            display.block().size(ItemIconSize);
             background.image(BackgroundImage.url("src/main/resources/teemowork/empty.png").contain().noRepeat());
             padding.size(3, px);
             cursor.pointer();
         };
 
         ValueStyle<Integer> ItemIcon = id -> {
-            display.block();
-            box.size(100, percent);
+            display.block().size(100, percent);
             background.horizontal(id / (Item.all().size() - 1) * 100, percent)
                     .image(BackgroundImage.url("src/main/resources/teemowork/items.jpg").cover().borderBox().noRepeat());
         };

@@ -165,18 +165,16 @@ public class Navi extends Widget<Styles> {
         private static final int Radius = 3;
 
         Style TopMenuGroup = () -> {
-            display.block();
+            display.block().shadow(shadow().offset(0, 1, px).blurRadius(1, px).color(hsla(0, 0, 0, 0.15)));
             margin.vertical(30, px);
-            box.shadow(shadow().offset(0, 1, px).blurRadius(1, px).color(hsla(0, 0, 0, 0.15)));
             border.width(1, px).solid().color(DarkBack).radius(6, px);
             background.image(BackgroundImage.of(linear(LightBack, DarkBack)));
         };
 
         Style TopMenu = () -> {
             position.relative();
-            display.inlineBlock();
+            display.inlineBlock().minWidth(MenuWidth, px).zIndex(1);
             border.right.width(1, px).solid().color(DarkBack);
-            box.minWidth(MenuWidth, px).zIndex(1);
             text.align.center();
         };
 
@@ -202,11 +200,11 @@ public class Navi extends Widget<Styles> {
             visibility.hidden();
             position.absolute().top(42, px).left(0, px);
             background.color(rgb(68, 68, 68)).image(BackgroundImage.of(linear(LightBack, DarkBack)));
-            box.width(MenuWidth, px).shadow(shadow().offset(0, -1, px).color(rgba(255, 255, 255, 0.3))).opacity(0);
+            display.width(MenuWidth, px).shadow(shadow().offset(0, -1, px).color(rgba(255, 255, 255, 0.3))).opacity(0);
             border.radius(Radius, px);
 
             transit().duration(0.2, s).delay(80, ms).easeInOut().whenParentHover(() -> {
-                box.opacity(1);
+                display.opacity(1);
                 visibility.visible();
                 margin.size(0, px);
             });

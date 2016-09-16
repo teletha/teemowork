@@ -136,14 +136,12 @@ public class Record extends Widget<Styles> {
         };
 
         Style Participant = () -> {
-            display.block();
-            box.width(10, em);
+            display.block().width(10, em);
         };
 
         static ValueStyle<Champion> Champion = champion -> {
-            display.inlineBlock();
+            display.inlineBlock().size(IconSize);
             background.image("src/main/resources/teemowork/champions.jpg").cover().horizontal(champion.getIconPosition());
-            box.size(IconSize);
             border.radius(2, px).color(rgb(50, 50, 50)).width(1, px).solid();
             cursor.pointer();
         };
@@ -153,8 +151,7 @@ public class Record extends Widget<Styles> {
         };
 
         Style ScoreValue = () -> {
-            display.inlineBlock();
-            box.width(1.2, em);
+            display.inlineBlock().width(1.2, em);
             padding.horizontal(0.2, em);
         };
 

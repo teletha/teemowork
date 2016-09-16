@@ -188,22 +188,19 @@ public class ChampionComparing extends Widget<Styles> {
         };
 
         private ValueStyle<Champion> Icon = champion -> {
-            display.inlineBlock();
+            display.inlineBlock().size(IconSize);
             background.image("src/main/resources/teemowork/champions.jpg").cover().horizontal(champion.getIconPosition());
-            box.size(IconSize);
             border.radius(2, px).color(rgb(50, 50, 50)).width(1, px).solid();
             cursor.pointer();
             margin.right(IconMargin);
         };
 
         Style NoIcon = () -> {
-            display.inlineBlock();
-            box.width(IconSize.add(IconMargin));
+            display.inlineBlock().width(IconSize.add(IconMargin));
         };
 
         Style Status = () -> {
-            display.inlineBlock();
-            box.width(itemWidth);
+            display.inlineBlock().width(itemWidth);
         };
 
         Style StatusHeader = Status.with(() -> {

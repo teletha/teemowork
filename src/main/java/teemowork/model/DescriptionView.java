@@ -207,7 +207,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<Sty
 
         private static Style Amplifier = () -> {
             font.color(25, 111, 136);
-            box.opacity(0.8);
+            display.opacity(0.8);
 
             notFirstChild(() -> {
                 margin.left(0.4, em);

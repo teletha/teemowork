@@ -132,8 +132,7 @@ public class Setting extends Widget<Styles> {
         };
 
         Style ItemName = () -> {
-            display.block();
-            box.width(10, em);
+            display.block().width(10, em);
         };
 
         Style SettingBox = () -> {

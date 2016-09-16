@@ -136,7 +136,7 @@ public class ItemCatalog extends Widget<Styles> {
 
         Style Filters = () -> {
             display.flex().direction.column();
-            box.width(130, px);
+            display.width(130, px);
             margin.bottom(1, em);
         };
 
@@ -146,13 +146,13 @@ public class ItemCatalog extends Widget<Styles> {
 
         Style Items = () -> {
             display.flex().wrap.enable().alignContent.start();
-            box.width(ItemAreaWidth);
+            display.width(ItemAreaWidth);
             margin.left(160, px);
         };
 
         Style Item = () -> {
             display.flex();
-            box.width(ItemAreaWidth.divide(2).subtract(itemGap.multiply(2)));
+            display.width(ItemAreaWidth.divide(2).subtract(itemGap.multiply(2)));
             border.solid().color(BorderColor).width(1, px);
             margin.right(10, px).bottom(10, px);
             padding.size(itemGap);
