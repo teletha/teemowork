@@ -28,7 +28,7 @@ public class TeemoworkTheme extends StyleDescriptor {
     public static final Font Title = Font.fromGoogle("Yanone Kaffeesatz");
 
     static Style HTML = () -> {
-        font.family(Main).sansSerif();
+        font.family(Main, Font.SansSerif);
         padding.horizontal(10, percent).top(10, px);
     };
 

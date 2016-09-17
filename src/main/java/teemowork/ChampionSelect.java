@@ -500,7 +500,7 @@ public class ChampionSelect extends Widget<Styles> {
 
                 background.color(hsla(0, 100, 100, 0.2));
 
-                transit().duration(0.2, s).easeInOut().whenHover(() -> {
+                transit().duration(0.2, s).easeInOut().when().hover().style(() -> {
                     display.opacity(0);
                 });
             });
@@ -514,9 +514,9 @@ public class ChampionSelect extends Widget<Styles> {
             Numeric boxWidth = ImageSize.add(40);
             Color color = new Color(0, 98, 97, 1);
 
-            font.weight.bold().size(18, px);
+            font.weight.bold().size(12, px);
             text.align.center();
-            line.height(20, px);
+            line.height(14, px);
             padding.size(5, px);
             background.image(BackgroundImage.of(linear(color.opacify(-0.4), color)));
             position.absolute().left(50, percent).bottom(ImageSize.add(20));
@@ -528,7 +528,7 @@ public class ChampionSelect extends Widget<Styles> {
             // createBottomBubble(7);
             createBottomBubble(7, new Numeric(4, px), color.lighten(-100), color);
 
-            transit().duration(0.2, s).delay(100, ms).easeInOut().whenSiblingHover(() -> {
+            transit().duration(0.2, s).delay(100, ms).easeInOut().when().prev().hover().style(() -> {
                 display.opacity(1);
                 position.bottom(ImageSize);
             });

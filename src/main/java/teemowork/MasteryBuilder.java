@@ -302,7 +302,7 @@ public class MasteryBuilder extends Widget<Styles> {
                 font.color(AvailableColor.grayscale());
             });
 
-            transit().easeInOut().whenSiblingHover(() -> {
+            transit().easeInOut().when().prev().hover().style(() -> {
                 display.opacity(1);
                 visibility.visible();
                 position.bottom(IconSize + 12, px);

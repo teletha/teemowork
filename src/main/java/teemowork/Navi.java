@@ -203,7 +203,7 @@ public class Navi extends Widget<Styles> {
             display.width(MenuWidth, px).shadow(shadow().offset(0, -1, px).color(rgba(255, 255, 255, 0.3))).opacity(0);
             border.radius(Radius, px);
 
-            transit().duration(0.2, s).delay(80, ms).easeInOut().whenParentHover(() -> {
+            transit().duration(0.2, s).delay(80, ms).easeInOut().when().parent().hover().style(() -> {
                 display.opacity(1);
                 visibility.visible();
                 margin.size(0, px);
