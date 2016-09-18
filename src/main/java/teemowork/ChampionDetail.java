@@ -9,12 +9,14 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDescriptor.*;
+import static jsx.ui.StructureDSL.*;
 import static teemowork.model.Status.*;
+
+import java.util.List;
 
 import js.dom.User;
 import jsx.style.BinaryStyle;
-import jsx.style.StyleDescriptor;
+import jsx.style.StyleDSL;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
@@ -38,6 +40,7 @@ import teemowork.model.SkillDescriptor;
 import teemowork.model.SkillKey;
 import teemowork.model.SkillType;
 import teemowork.model.Status;
+import teemowork.model.StatusCalculator;
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
 
@@ -123,9 +126,9 @@ public class ChampionDetail extends Widget1<Styles, Build> {
                         }
                     });
 
-                    box(Styles.VBox, () -> {
+                    box($.VBox, () -> {
                         SkillDescriptor status = skill.getDescriptor(build.getVersion());
-                        box(Styles.HBox, () -> {
+                        box($.HBox, () -> {
                             text($.Name, skill);
                             text($.VersionDisplay, status.version.name);
                         });
@@ -202,12 +205,81 @@ public class ChampionDetail extends Widget1<Styles, Build> {
                 }));
 
                 // write amplifiers
-                DescriptionView.writeAmplifier(variable.getAmplifiers(), 0, build);
+                writeAmplifier(variable.getAmplifiers(), 0, build);
 
                 // write unit
                 text(status.getUnit());
             });
         }
+    }
+
+    /**
+     * <p>
+     * Write skill amplifier.
+     * </p>
+     * 
+     * @param root A element to write.
+     * @param amplifiers A list of skill amplifiers.
+     * @param level A current skill level.
+     */
+    public void writeAmplifier(List<Variable> amplifiers, int level, StatusCalculator calculator) {
+        if (!amplifiers.isEmpty()) {
+            box($.Amplifiers, contents(amplifiers, amplifier -> {
+                box($.Amplifier, () -> {
+                    int amp = level;
+
+                    text("+", amplifier.getStatus());
+
+                    VariableResolver resolver = amplifier.getResolver();
+
+                    if (!resolver.isSkillLevelBased()) {
+                        amp = resolver.convertLevel(calculator);
+                    }
+
+                    int estimated = resolver.estimateSize();
+                    int size = estimated == 0 ? amplifier.getAmplifiers().isEmpty() ? 0 : 1 : estimated;
+                    int current = amp;
+
+                    box(contents(1, size, i -> {
+                        String description = resolver.getLevelDescription(i);
+
+                        box($.Value, If(size != 1 && i == current, $.Current), If(description, title(description), $.Indicator), () -> {
+                            text(round(amplifier.calculate(i, calculator, true), 4));
+                        });
+                    }));
+
+                    text(amplifier.getStatus().name().endsWith("Ratio") ? "%" : "");
+                    if (!amplifier.getAmplifiers().isEmpty()) {
+                        text("(");
+                        writeAmplifier(amplifier.getAmplifiers(), current, calculator);
+                        text(")");
+                    }
+                });
+            }));
+        }
+    }
+
+    /**
+     * <p>
+     * Returns the closest {@code long} to the argument, with ties rounding up.
+     * </p>
+     * <p>
+     * Special cases:
+     * <ul>
+     * <li>If the argument is NaN, the result is 0.</li>
+     * <li>If the argument is negative infinity or any value less than or equal to the value of
+     * {@code Long.MIN_VALUE}, the result is equal to the value of {@code Long.MIN_VALUE}.</li>
+     * <li>If the argument is positive infinity or any value greater than or equal to the value of
+     * {@code Long.MAX_VALUE}, the result is equal to the value of {@code Long.MAX_VALUE}.</li>
+     * </ul>
+     * 
+     * @param value A floatingpoint value to be rounded.
+     * @param precision
+     * @return The value of the argument rounded to the nearest {@code int} value.
+     */
+    private static double round(double value, int precision) {
+        double factor = Math.pow(10, precision);
+        return Math.round(value * factor) / factor;
     }
 
     /**
@@ -247,7 +319,7 @@ public class ChampionDetail extends Widget1<Styles, Build> {
     /**
      * @version 2015/08/20 15:49:48
      */
-    static class Styles extends StyleDescriptor {
+    static class Styles extends StyleDSL {
 
         /** The skill icon size. */
         int SkillIconSize = 45;
@@ -273,7 +345,7 @@ public class ChampionDetail extends Widget1<Styles, Build> {
         Style Value = () -> {
             display.opacity(0.7);
 
-            notLastChild(() -> {
+            not(lastChild(), () -> {
                 after(() -> {
                     content.text("/");
                     font.color(210, 210, 210);
@@ -407,6 +479,25 @@ public class ChampionDetail extends Widget1<Styles, Build> {
             display.block().size(100, percent);
             background.horizontal(id / (Item.all().size() - 1) * 100, percent)
                     .image(BackgroundImage.url("src/main/resources/teemowork/items.jpg").cover().borderBox().noRepeat());
+        };
+
+        Style Variable = () -> {
+            font.color(90, 90, 90);
+        };
+
+        Style Amplifiers = () -> {
+            prev().with(Variable, () -> {
+                margin.left(0.4, em);
+            });
+        };
+
+        Style Amplifier = () -> {
+            font.color(25, 111, 136);
+            display.opacity(0.8);
+
+            not(firstChild(), () -> {
+                margin.left(0.4, em);
+            });
         };
     }
 }

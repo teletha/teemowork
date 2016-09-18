@@ -9,10 +9,10 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDescriptor.*;
+import static jsx.ui.StructureDSL.*;
 
 import js.dom.User;
-import jsx.style.StyleDescriptor;
+import jsx.style.StyleDSL;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
@@ -101,7 +101,7 @@ public class MasteryBuilder extends Widget<Styles> {
                                 svg("image", position(0, 0), size(45, 45), attr("xlink:href", mastery
                                         .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? ""
                                                 : "url('#test')"));
-                                svg("filter", Styles.NBox, id("test"), () -> {
+                                svg("filter", $.NBox, id("test"), () -> {
                                     svg("feColorMatrix", attr("type", "matrix"), attr("values", grayscale(0.4)));
                                 });
                             });
@@ -150,7 +150,7 @@ public class MasteryBuilder extends Widget<Styles> {
     /**
      * @version 2013/03/13 15:05:12
      */
-    static class Styles extends StyleDescriptor {
+    static class Styles extends StyleDSL {
 
         private static int TreeWidth = 240;
 
@@ -184,7 +184,7 @@ public class MasteryBuilder extends Widget<Styles> {
         Style Completed = () -> {
         };
 
-        private static void MasteryBox() {
+        private void MasteryBox() {
             display.inlineBlock().width(TreeWidth, px).height(TreeHeight, px);
             padding.size(TreePadding, px);
             background.image(BackgroundImage.of(transparent), BackgroundImage.url(noise));
@@ -230,16 +230,16 @@ public class MasteryBuilder extends Widget<Styles> {
             display.block().size(IconSize, px);
             border.color(AvailableColor).width(IconBorderSize, px).solid().radius(Corner, px);
 
-            insideOf(Unavailable, () -> {
+            ancestor().with(Unavailable, () -> {
                 border.color(AvailableColor.grayscale());
             });
 
-            insideOf(Completed, () -> {
+            ancestor().with(Completed, () -> {
                 border.color(CompleteColor);
             });
         };
 
-        static ValueStyle<Mastery> MasteryImage = mastery -> {
+        ValueStyle<Mastery> MasteryImage = mastery -> {
             background.image(BackgroundImage.url(mastery.getIcon()).horizontal(mastery.getIconPosition()).cover().borderBox().noRepeat());
         };
 
@@ -252,11 +252,11 @@ public class MasteryBuilder extends Widget<Styles> {
             font.color(AvailableColor).size(11, px);
             text.outline(AvailableColor, 1).align.right();
 
-            insideOf(Unavailable, () -> {
+            ancestor().with(Unavailable, () -> {
                 display.none();
             });
 
-            insideOf(Completed, () -> {
+            ancestor().with(Completed, () -> {
                 font.color(CompleteColor);
             });
         };
@@ -298,11 +298,11 @@ public class MasteryBuilder extends Widget<Styles> {
 
             createBottomBubble(6, new Numeric(BorderWidth, px), borderColor, color);
 
-            insideOf(Unavailable, () -> {
+            ancestor().with(Unavailable, () -> {
                 font.color(AvailableColor.grayscale());
             });
 
-            transit().easeInOut().when().prev().hover().style(() -> {
+            transit().easeInOut().when().prev().hover(() -> {
                 display.opacity(1);
                 visibility.visible();
                 position.bottom(IconSize + 12, px);
@@ -319,7 +319,7 @@ public class MasteryBuilder extends Widget<Styles> {
         Style Description = () -> {
             text.unselectable();
 
-            inBackOf(Unavailable, () -> {
+            prev().with(Unavailable, () -> {
                 font.color(hsl(0, 70, 70));
             });
         };

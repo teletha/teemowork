@@ -9,14 +9,14 @@
  */
 package teemowork;
 
-import jsx.style.StyleDescriptor;
+import jsx.style.StyleDSL;
 import jsx.style.value.Font;
 import jsx.ui.Style;
 
 /**
  * @version 2015/09/28 21:54:41
  */
-public class TeemoworkTheme extends StyleDescriptor {
+public class TeemoworkTheme extends StyleDSL {
 
     /** The main font. */
     public static final Font Main = Font.fromGoogle("Source Sans Pro", "400", "600");

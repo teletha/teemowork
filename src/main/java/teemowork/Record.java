@@ -9,12 +9,14 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDescriptor.*;
+import static jsx.ui.StructureDSL.*;
 
 import js.lang.NativeDate;
-import jsx.style.StyleDescriptor;
+import jsx.style.StyleDSL;
 import jsx.style.ValueStyle;
+import jsx.style.value.Color;
 import jsx.style.value.Numeric;
+import jsx.style.value.Unit;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import kiss.Events;
@@ -52,7 +54,7 @@ public class Record extends Widget<Styles> {
                     text($.MatchEnd, match.stats.win ? "勝利" : "敗北");
                 });
 
-                box(Champion.Icon50.of(champion));
+                box($.Icon50.of(champion));
 
                 box($.Score, () -> {
                     text($.ScoreValue, stats.championsKilled);
@@ -96,13 +98,13 @@ public class Record extends Widget<Styles> {
     }
 
     /**
-     * @version 2015/10/19 18:51:45
+     * @version 2016/09/18 22:46:48
      */
-    static class Styles extends StyleDescriptor {
+    static class Styles extends StyleDSL {
 
-        private static final Numeric IconSize = new Numeric(22, px);
+        private final Numeric IconSize = new Numeric(22, px);
 
-        private static final Numeric IconMargin = new Numeric(10, px);
+        private final Numeric IconMargin = new Numeric(10, px);
 
         Style MatchResultList = () -> {
             display.block();
@@ -139,7 +141,7 @@ public class Record extends Widget<Styles> {
             display.block().width(10, em);
         };
 
-        static ValueStyle<Champion> Champion = champion -> {
+        ValueStyle<Champion> Champion = champion -> {
             display.inlineBlock().size(IconSize);
             background.image("src/main/resources/teemowork/champions.jpg").cover().horizontal(champion.getIconPosition());
             border.radius(2, px).color(rgb(50, 50, 50)).width(1, px).solid();
@@ -161,6 +163,14 @@ public class Record extends Widget<Styles> {
 
         Style SettingBox = () -> {
             margin.right(2, em);
+        };
+
+        ValueStyle<Champion> Icon50 = champion -> {
+            display.size(50, Unit.px).flex();
+            border.radius(10, Unit.px).color(Color.rgb(50, 50, 50)).width(2, Unit.px).solid();
+            cursor.pointer();
+            position.relative();
+            background.image(champion.getIcon()).horizontal(champion.getIconPosition()).cover().borderBox();
         };
     }
 }

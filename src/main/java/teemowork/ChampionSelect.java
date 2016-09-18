@@ -9,7 +9,7 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDescriptor.*;
+import static jsx.ui.StructureDSL.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -25,7 +25,7 @@ import javafx.beans.property.SetProperty;
 
 import js.dom.User;
 import jsx.style.BinaryStyle;
-import jsx.style.StyleDescriptor;
+import jsx.style.StyleDSL;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
@@ -458,7 +458,7 @@ public class ChampionSelect extends Widget<Styles> {
     /**
      * @version 2015/01/30 14:32:48
      */
-    static class Styles extends StyleDescriptor {
+    static class Styles extends StyleDSL {
 
         private static final Color backColor = new Color(0, 10, 10);
 
@@ -466,27 +466,27 @@ public class ChampionSelect extends Widget<Styles> {
 
         private static final Numeric ImagesSize = ImageSize.multiply(11);
 
-        private Style Root = () -> {
+        Style Root = () -> {
             display.block().width(ImagesSize.add(2));
             margin.auto();
         };
 
-        private Style ImageSet = () -> {
+        Style ImageSet = () -> {
             display.inlineFlex().direction.row().wrap.enable();
             border.top.solid().width(2, px).color(backColor);
             border.left.solid().width(2, px).color(backColor);
         };
 
-        private Style Container = () -> {
+        Style Container = () -> {
             position.relative();
             display.block();
         };
 
-        private Style Unselected = () -> {
+        Style Unselected = () -> {
             display.none();
         };
 
-        private Style IconImage = () -> {
+        Style IconImage = () -> {
             display.block().size(ImageSize);
             border.bottom.solid().width(2, px).color(backColor);
             border.right.solid().width(2, px).color(backColor);
@@ -500,17 +500,17 @@ public class ChampionSelect extends Widget<Styles> {
 
                 background.color(hsla(0, 100, 100, 0.2));
 
-                transit().duration(0.2, s).easeInOut().when().hover().style(() -> {
+                transit().duration(0.2, s).easeInOut().when().hover(() -> {
                     display.opacity(0);
                 });
             });
         };
 
-        private ValueStyle<Champion> IconPosition = chmapion -> {
+        ValueStyle<Champion> IconPosition = chmapion -> {
             background.horizontal(chmapion.getIconPosition());
         };
 
-        private Style Title = () -> {
+        Style Title = () -> {
             Numeric boxWidth = ImageSize.add(40);
             Color color = new Color(0, 98, 97, 1);
 
@@ -528,22 +528,22 @@ public class ChampionSelect extends Widget<Styles> {
             // createBottomBubble(7);
             createBottomBubble(7, new Numeric(4, px), color.lighten(-100), color);
 
-            transit().duration(0.2, s).delay(100, ms).easeInOut().when().prev().hover().style(() -> {
+            transit().duration(0.2, s).delay(100, ms).easeInOut().when().prev().hover(() -> {
                 display.opacity(1);
                 position.bottom(ImageSize);
             });
         };
 
-        private Style SearchByName = () -> {
+        Style SearchByName = () -> {
 
         };
 
-        private Style Filters = () -> {
+        Style Filters = () -> {
             display.block();
             margin.bottom(10, px);
         };
 
-        private BinaryStyle SkillFilters = show -> {
+        BinaryStyle SkillFilters = show -> {
             margin.top(1, em);
             font.size.smaller();
 
@@ -554,38 +554,38 @@ public class ChampionSelect extends Widget<Styles> {
             }
         };
 
-        private Style FilterBy = () -> {
+        Style FilterBy = () -> {
             font.size.small().color(Color.rgb(100, 100, 100));
             text.verticalAlign.bottom().unselectable();
             margin.left(1, em);
             cursor.pointer();
         };
 
-        private Style FilterBySkill = FilterBy.with(() -> {
+        Style FilterBySkill = FilterBy.with(() -> {
         });
 
-        private Style SortBySkill = FilterBy.with(() -> {
+        Style SortBySkill = FilterBy.with(() -> {
         });
 
-        private Style FilterByChampion = FilterBy.with(() -> {
+        Style FilterByChampion = FilterBy.with(() -> {
         });
 
-        private Style Group = () -> {
+        Style Group = () -> {
             display.block();
             margin.bottom(0.8, em);
         };
 
-        private Style GroupName = () -> {
+        Style GroupName = () -> {
             display.block();
             font.weight.bold();
             margin.bottom(0.4, em);
         };
 
-        private Style GroupItems = () -> {
+        Style GroupItems = () -> {
             display.flex().wrap.enable();
         };
 
-        private Style Filter = () -> {
+        Style Filter = () -> {
             display.width(ImagesSize.divide(4));
         };
     }

@@ -9,7 +9,7 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDescriptor.*;
+import static jsx.ui.StructureDSL.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.function.Consumer;
 
 import js.dom.User;
 import jsx.style.BinaryStyle;
-import jsx.style.StyleDescriptor;
+import jsx.style.StyleDSL;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.ui.Style;
@@ -150,7 +150,7 @@ public class Navi extends Widget<Styles> {
     /**
      * @version 2015/10/19 11:36:50
      */
-    static class Styles extends StyleDescriptor {
+    static class Styles extends StyleDSL {
 
         /** The background color. */
         private static final Color LightBack = new Color(0, 0, 27);
@@ -203,7 +203,7 @@ public class Navi extends Widget<Styles> {
             display.width(MenuWidth, px).shadow(shadow().offset(0, -1, px).color(rgba(255, 255, 255, 0.3))).opacity(0);
             border.radius(Radius, px);
 
-            transit().duration(0.2, s).delay(80, ms).easeInOut().when().parent().hover().style(() -> {
+            transit().duration(0.2, s).delay(80, ms).easeInOut().when().parent().hover(() -> {
                 display.opacity(1);
                 visibility.visible();
                 margin.size(0, px);

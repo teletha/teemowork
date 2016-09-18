@@ -9,11 +9,11 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDescriptor.*;
+import static jsx.ui.StructureDSL.*;
 
 import java.util.Locale;
 
-import jsx.style.StyleDescriptor;
+import jsx.style.StyleDSL;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.Button;
@@ -113,14 +113,14 @@ public class Setting extends Widget<Styles> {
     /**
      * @version 2015/10/19 18:51:45
      */
-    static class Styles extends StyleDescriptor {
+    static class Styles extends StyleDSL {
 
         Style CategoryName = () -> {
             display.block();
             font.weight.bold();
             margin.bottom(0.5, em);
 
-            notFirstChild(() -> {
+            not(firstChild(), () -> {
                 margin.top(1, em);
             });
         };

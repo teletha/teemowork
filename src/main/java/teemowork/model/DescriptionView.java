@@ -9,11 +9,11 @@
  */
 package teemowork.model;
 
-import static jsx.ui.StructureDescriptor.*;
+import static jsx.ui.StructureDSL.*;
 
 import java.util.List;
 
-import jsx.style.StyleDescriptor;
+import jsx.style.StyleDSL;
 import jsx.ui.Style;
 import jsx.ui.Widget3;
 import teemowork.model.DescriptionView.Styles;
@@ -45,7 +45,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<Sty
      */
     @Override
     protected void virtualize() {
-        box(Styles.Passive, contents(model3, text -> {
+        box($.Passive, contents(model3, text -> {
             if (text instanceof Variable) {
                 writeVariable((Variable) text, getLevel());
             } else {
@@ -72,7 +72,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<Sty
         }
 
         // compute current value
-        text(Styles.ComputedValue, status.format(variable.calculate(Math.max(1, level), calculator)));
+        text($.ComputedValue, status.format(variable.calculate(Math.max(1, level), calculator)));
 
         // All values
         int size = resolver.estimateSize();
@@ -82,10 +82,10 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<Sty
             text("(");
 
             if (1 < size) {
-                box(Styles.Variable, contents(1, size, i -> {
+                box($.Variable, contents(1, size, i -> {
                     String description = resolver.getLevelDescription(i);
 
-                    box(Styles.Value, If(i == current, Styles.Current), If(description, title(description), Styles.Indicator), () -> {
+                    box($.Value, If(i == current, $.Current), If(description, title(description), $.Indicator), () -> {
                         text(round(resolver.compute(i), 2));
                     });
                 }));
@@ -105,10 +105,10 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<Sty
      * @param amplifiers A list of skill amplifiers.
      * @param level A current skill level.
      */
-    public static void writeAmplifier(List<Variable> amplifiers, int level, StatusCalculator calculator) {
+    public void writeAmplifier(List<Variable> amplifiers, int level, StatusCalculator calculator) {
         if (!amplifiers.isEmpty()) {
-            box(Styles.Amplifiers, contents(amplifiers, amplifier -> {
-                box(Styles.Amplifier, () -> {
+            box($.Amplifiers, contents(amplifiers, amplifier -> {
+                box($.Amplifier, () -> {
                     int amp = level;
 
                     text("+", amplifier.getStatus());
@@ -126,7 +126,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<Sty
                     box(contents(1, size, i -> {
                         String description = resolver.getLevelDescription(i);
 
-                        box(Styles.Value, If(size != 1 && i == current, Styles.Current), If(description, title(description), Styles.Indicator), () -> {
+                        box($.Value, If(size != 1 && i == current, $.Current), If(description, title(description), $.Indicator), () -> {
                             text(round(amplifier.calculate(i, calculator, true), 4));
                         });
                     }));
@@ -168,13 +168,13 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<Sty
     /**
      * @version 2015/08/20 15:59:24
      */
-    static class Styles extends StyleDescriptor {
+    static class Styles extends StyleDSL {
 
-        private static Style ComputedValue = () -> {
+        Style ComputedValue = () -> {
         };
 
-        private static Style Value = () -> {
-            notLastChild(() -> {
+        Style Value = () -> {
+            not(lastChild(), () -> {
                 after(() -> {
                     content.text("/");
                     font.color(170, 170, 170);
@@ -183,33 +183,33 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<Sty
             });
         };
 
-        private static Style Current = () -> {
+        Style Current = () -> {
             font.color(rgba(160, 123, 1, 1));
         };
 
-        private static Style Passive = () -> {
+        Style Passive = () -> {
             display.block();
         };
 
-        private static Style Indicator = () -> {
+        Style Indicator = () -> {
             cursor.help();
         };
 
-        private static Style Variable = () -> {
+        Style Variable = () -> {
             font.color(90, 90, 90);
         };
 
-        private static Style Amplifiers = () -> {
-            inBackOf(Variable, () -> {
+        Style Amplifiers = () -> {
+            prev().with(Variable, () -> {
                 margin.left(0.4, em);
             });
         };
 
-        private static Style Amplifier = () -> {
+        Style Amplifier = () -> {
             font.color(25, 111, 136);
             display.opacity(0.8);
 
-            notFirstChild(() -> {
+            not(firstChild(), () -> {
                 margin.left(0.4, em);
             });
         };

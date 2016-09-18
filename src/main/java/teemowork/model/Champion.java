@@ -18,9 +18,6 @@ import java.util.Locale;
 import java.util.Optional;
 
 import js.dom.Element;
-import jsx.style.StyleDescriptor;
-import jsx.style.ValueStyle;
-import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
 import kiss.Decoder;
@@ -33,26 +30,6 @@ import teemowork.api.RiotChampionData;
  * @version 2015/10/15 14:33:11
  */
 public class Champion extends RiotChampionData {
-
-    private static final Numeric ChampionIconSize = new Numeric(70, Unit.px);
-
-    /** The large icon style. */
-    public static final ValueStyle<Champion> Icon70 = champion -> {
-        StyleDescriptor.display.size(ChampionIconSize).flex();
-        StyleDescriptor.border.radius(10, Unit.px).color(Color.rgb(50, 50, 50)).width(2, Unit.px).solid();
-        StyleDescriptor.cursor.pointer();
-        StyleDescriptor.position.relative();
-        StyleDescriptor.background.image(champion.getIcon()).horizontal(champion.getIconPosition()).cover().borderBox();
-    };
-
-    /** The large icon style. */
-    public static final ValueStyle<Champion> Icon50 = champion -> {
-        StyleDescriptor.display.size(50, Unit.px).flex();
-        StyleDescriptor.border.radius(10, Unit.px).color(Color.rgb(50, 50, 50)).width(2, Unit.px).solid();
-        StyleDescriptor.cursor.pointer();
-        StyleDescriptor.position.relative();
-        StyleDescriptor.background.image(champion.getIcon()).horizontal(champion.getIconPosition()).cover().borderBox();
-    };
 
     /** The counter for id. */
     private static int counter = 0;

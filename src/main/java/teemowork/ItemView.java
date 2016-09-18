@@ -9,10 +9,10 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDescriptor.*;
+import static jsx.ui.StructureDSL.*;
 import static teemowork.model.Status.*;
 
-import jsx.style.StyleDescriptor;
+import jsx.style.StyleDSL;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
@@ -128,17 +128,17 @@ public class ItemView extends Widget1<Styles, Item> {
     }
 
     /**
-     * @version 2015/10/14 11:02:34
+     * @version 2016/09/18 22:45:23
      */
-    static class Styles extends StyleDescriptor {
+    static class Styles extends StyleDSL {
 
         /** The icon color. */
-        static final Color IconBorderColor = rgb(100, 100, 100);
+        private final Color IconBorderColor = rgb(100, 100, 100);
 
         /** The icon size. */
-        private static final Numeric IconSize = new Numeric(40, px);
+        private final Numeric IconSize = new Numeric(40, px);
 
-        private static final Numeric gap = new Numeric(0.8, em);
+        private final Numeric gap = new Numeric(0.8, em);
 
         ValueStyle<Item> ItemImage = item -> {
             background.image(BackgroundImage.url(item.getIcon()).horizontal(item.getIconPosition()).cover().borderBox().noRepeat());

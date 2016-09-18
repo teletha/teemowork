@@ -9,7 +9,7 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDescriptor.*;
+import static jsx.ui.StructureDSL.*;
 import static teemowork.model.Status.*;
 
 import java.util.HashMap;
@@ -22,7 +22,7 @@ import java.util.function.Predicate;
 import javafx.beans.property.SetProperty;
 
 import js.dom.User;
-import jsx.style.StyleDescriptor;
+import jsx.style.StyleDSL;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.ui.ModelValue;
@@ -110,13 +110,13 @@ public class ItemCatalog extends Widget<Styles> {
     /**
      * @version 2015/10/12 21:55:48
      */
-    static class Styles extends StyleDescriptor {
+    static class Styles extends StyleDSL {
 
-        private static final Color BorderColor = rgb(220, 220, 220);
+        private final Color BorderColor = rgb(220, 220, 220);
 
-        private static final Numeric itemGap = new Numeric(5, px);
+        private final Numeric itemGap = new Numeric(5, px);
 
-        private static final Numeric ItemAreaWidth = new Numeric(580, px);
+        private final Numeric ItemAreaWidth = new Numeric(580, px);
 
         Style Root = () -> {
             display.flex();

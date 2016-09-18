@@ -9,7 +9,7 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDescriptor.*;
+import static jsx.ui.StructureDSL.*;
 import static teemowork.model.Status.*;
 
 import java.util.Comparator;
@@ -19,7 +19,7 @@ import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 
 import js.dom.User;
-import jsx.style.StyleDescriptor;
+import jsx.style.StyleDSL;
 import jsx.style.ValueStyle;
 import jsx.style.value.Numeric;
 import jsx.ui.Style;
@@ -87,7 +87,7 @@ public class ChampionComparing extends Widget<Styles> {
             });
 
             box($.Body, () -> {
-                box(Styles.VBox, contents(group.getValue().sortBy(comparator), build -> {
+                box($.VBox, contents(group.getValue().sortBy(comparator), build -> {
                     box($.RowLine, () -> {
                         ChampionStatus championStatus = build.champion.getStatus(Version.Latest);
                         build.setLevel(level);
@@ -162,7 +162,7 @@ public class ChampionComparing extends Widget<Styles> {
     /**
      * @version 2015/08/20 15:44:41
      */
-    static class Styles extends StyleDescriptor {
+    static class Styles extends StyleDSL {
 
         private static final Numeric itemWidth = new Numeric(6.5, em);
 
