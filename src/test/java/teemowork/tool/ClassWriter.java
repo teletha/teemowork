@@ -10,6 +10,7 @@
 package teemowork.tool;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,12 +20,10 @@ import java.util.Set;
 import java.util.StringJoiner;
 import java.util.function.Consumer;
 
-import com.google.common.io.Files;
-
 import kiss.I;
 
 /**
- * @version 2015/07/13 14:58:21
+ * @version 2016/09/19 9:57:07
  */
 public class ClassWriter {
 
@@ -177,7 +176,10 @@ public class ClassWriter {
             StringBuilder copy = new StringBuilder(code);
             copy.insert(importPosition, imports);
 
-            Files.write(copy, path.resolve(packageName.replace('.', '/')).resolve(className.concat(".java")).toFile(), I.$encoding);
+            Path file = path.resolve(packageName.replace('.', '/')).resolve(className.concat(".java"));
+            byte[] contents = copy.toString().getBytes(I.$encoding);
+
+            Files.write(file, contents);
         } catch (IOException e) {
             throw I.quiet(e);
         }
