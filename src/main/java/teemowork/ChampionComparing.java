@@ -9,7 +9,6 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDSL.*;
 import static teemowork.model.Status.*;
 
 import java.util.Comparator;
@@ -22,6 +21,7 @@ import js.dom.User;
 import jsx.style.StyleDSL;
 import jsx.style.ValueStyle;
 import jsx.style.value.Numeric;
+import jsx.ui.StructureDSL;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
@@ -78,31 +78,36 @@ public class ChampionComparing extends Widget<Styles> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize() {
-        widget(groups);
-        box($.Table, () -> {
-            box($.Head, () -> {
-                box($.NoIcon);
-                box(contents(Header.class, STATUS));
-            });
+    protected StructureDSL virtualize() {
+        return new StructureDSL() {
 
-            box($.Body, () -> {
-                box($.VBox, contents(group.getValue().sortBy(comparator), build -> {
-                    box($.RowLine, () -> {
-                        ChampionStatus championStatus = build.champion.getStatus(Version.Latest);
-                        build.setLevel(level);
+            {
+                widget(groups);
+                box($.Table, () -> {
+                    box($.Head, () -> {
+                        box($.NoIcon);
+                        box(contents(Header.class, STATUS));
+                    });
 
-                        box($.Icon.of(build.champion));
-                        box(contents(STATUS, status -> {
-                            box($.Status, () -> {
-                                text($.StatusBase, build.get(status));
-                                text($.StatusPerLevel, "(", championStatus.get(status.per()), ")");
+                    box($.Body, () -> {
+                        box($.VBox, contents(group.getValue().sortBy(comparator), build -> {
+                            box($.RowLine, () -> {
+                                ChampionStatus championStatus = build.champion.getStatus(Version.Latest);
+                                build.setLevel(level);
+
+                                box($.Icon.of(build.champion));
+                                box(contents(STATUS, status -> {
+                                    box($.Status, () -> {
+                                        text($.StatusBase, build.get(status));
+                                        text($.StatusPerLevel, "(", championStatus.get(status.per()), ")");
+                                    });
+                                }));
                             });
                         }));
                     });
-                }));
-            });
-        });
+                });
+            }
+        };
     }
 
     /**
@@ -154,8 +159,13 @@ public class ChampionComparing extends Widget<Styles> {
          * {@inheritDoc}
          */
         @Override
-        protected void virtualize() {
-            text($.StatusHeader, status);
+        protected StructureDSL virtualize() {
+            return new StructureDSL() {
+
+                {
+                    text($.StatusHeader, status);
+                }
+            };
         }
     }
 

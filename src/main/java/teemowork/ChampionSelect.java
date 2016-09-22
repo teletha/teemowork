@@ -9,8 +9,6 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDSL.*;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -32,6 +30,7 @@ import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.ui.LowLevelWidget;
 import jsx.ui.ModelValue;
+import jsx.ui.StructureDSL;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.Input;
@@ -129,36 +128,42 @@ public class ChampionSelect extends Widget<Styles> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize() {
-        box($.Root, () -> {
-            box($.Filters, input, () -> {
-                text($.FilterBySkill, "スキルで絞込");
-                // text($.FilterByChampion, "チャンピオンで絞込");
-                box($.SkillFilters.of(showSkillFilters), contents(groups, group -> {
-                    box($.Group, () -> {
-                        text($.GroupName, group.name);
-                        box($.GroupItems, contents(group.filters, filter -> {
-                            widget(filter.createUI(activeFilters).style($.Filter));
+    protected StructureDSL virtualize() {
+        return new StructureDSL() {
+
+            {
+                box($.Root, () -> {
+                    box($.Filters, input, () -> {
+                        text($.FilterBySkill, "スキルで絞込");
+                        // text($.FilterByChampion, "チャンピオンで絞込");
+                        box($.SkillFilters.of(showSkillFilters), contents(groups, group -> {
+                            box($.Group, () -> {
+                                text($.GroupName, group.name);
+                                box($.GroupItems, contents(group.filters, filter -> {
+                                    widget(filter.createUI(activeFilters).style($.Filter));
+                                }));
+                            });
                         }));
+                        // box($.SkillFilters, If(showChampionFilters, $.ShowDetailFilter),
+                        // contents(groups,
+                        // group -> {
+                        // box($.Group, () -> {
+                        // text($.GroupName, group.name);
+                        // box($.GroupItems, contents(group.filters, filter -> {
+                        // widget(UI.checkbox(activeFilters, filter, filter.name).style($.Filter));
+                        // }));
+                        // });
+                        // }));
                     });
-                }));
-                // box($.SkillFilters, If(showChampionFilters, $.ShowDetailFilter), contents(groups,
-                // group -> {
-                // box($.Group, () -> {
-                // text($.GroupName, group.name);
-                // box($.GroupItems, contents(group.filters, filter -> {
-                // widget(UI.checkbox(activeFilters, filter, filter.name).style($.Filter));
-                // }));
-                // });
-                // }));
-            });
-            box($.ImageSet, contents(Champion.getAll(), champion -> {
-                box($.Container, If(!filter(champion) || !champion.match(input.value.get()), $.Unselected), () -> {
-                    box($.IconImage, $.IconPosition.of(champion));
-                    text($.Title, champion);
+                    box($.ImageSet, contents(Champion.getAll(), champion -> {
+                        box($.Container, If(!filter(champion) || !champion.match(input.value.get()), $.Unselected), () -> {
+                            box($.IconImage, $.IconPosition.of(champion));
+                            text($.Title, champion);
+                        });
+                    }));
                 });
-            }));
-        });
+            }
+        };
     }
 
     /**

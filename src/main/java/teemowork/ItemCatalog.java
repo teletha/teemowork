@@ -9,7 +9,6 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDSL.*;
 import static teemowork.model.Status.*;
 
 import java.util.HashMap;
@@ -26,6 +25,7 @@ import jsx.style.StyleDSL;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.ui.ModelValue;
+import jsx.ui.StructureDSL;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.UI;
@@ -64,26 +64,31 @@ public class ItemCatalog extends Widget<Styles> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize() {
-        box($.Root, () -> {
-            box($.Groups, contents(groups, group -> {
-                text($.GroupName, group.name);
-                box($.Filters, contents(group.filters, filter -> {
-                    widget(UI.checkbox(activeFilters, filter, filter.status.getName()).style($.FilterName));
-                }));
-            }));
-            box($.Items, contents(Item.all(), item -> {
-                if (show(item)) {
-                    box($.Item, () -> {
-                        widget(Widget.of(ItemView.class, item));
-                    });
-                }
+    protected StructureDSL virtualize() {
+        return new StructureDSL() {
 
-                // box($.Item, If(show(item), $.Selected), () -> {
-                // widget(Widget.of(ItemView.class, item));
-                // });
-            }));
-        });
+            {
+                box($.Root, () -> {
+                    box($.Groups, contents(groups, group -> {
+                        text($.GroupName, group.name);
+                        box($.Filters, contents(group.filters, filter -> {
+                            widget(UI.checkbox(activeFilters, filter, filter.status.getName()).style($.FilterName));
+                        }));
+                    }));
+                    box($.Items, contents(Item.all(), item -> {
+                        if (show(item)) {
+                            box($.Item, () -> {
+                                widget(Widget.of(ItemView.class, item));
+                            });
+                        }
+
+                        // box($.Item, If(show(item), $.Selected), () -> {
+                        // widget(Widget.of(ItemView.class, item));
+                        // });
+                    }));
+                });
+            }
+        };
     }
 
     /**

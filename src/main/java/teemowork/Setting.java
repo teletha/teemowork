@@ -9,11 +9,10 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDSL.*;
-
 import java.util.Locale;
 
 import jsx.style.StyleDSL;
+import jsx.ui.StructureDSL;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.Button;
@@ -76,38 +75,43 @@ public class Setting extends Widget<Styles> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize() {
-        text($.CategoryName, "サモナー");
-        box($.Item, () -> {
-            text($.ItemName, "地域");
-            box(summerRegion);
-        });
-        box($.Item, () -> {
-            text($.ItemName, "名前");
-            box(summerName);
-        });
-        box($.Item, () -> {
-            text($.ItemName, "更新");
-            box(update);
-        });
+    protected StructureDSL virtualize() {
+        return new StructureDSL() {
 
-        text($.CategoryName, "表記言語");
-        box($.Item, () -> {
-            text($.ItemName, "チャンピオン名");
-            box(championEnglish, championJapanease);
-        });
-        box($.Item, () -> {
-            text($.ItemName, "スキル名");
-            box(skillEnglish, skillJapanease);
-        });
-        box($.Item, () -> {
-            text($.ItemName, "アイテム名");
-            box(itemEnglish, itemJapanease);
-        });
-        box($.Item, () -> {
-            text($.ItemName, "ステータス名");
-            box(statusEnglish, statusJapanease);
-        });
+            {
+                text($.CategoryName, "サモナー");
+                box($.Item, () -> {
+                    text($.ItemName, "地域");
+                    box(summerRegion);
+                });
+                box($.Item, () -> {
+                    text($.ItemName, "名前");
+                    box(summerName);
+                });
+                box($.Item, () -> {
+                    text($.ItemName, "更新");
+                    box(update);
+                });
+
+                text($.CategoryName, "表記言語");
+                box($.Item, () -> {
+                    text($.ItemName, "チャンピオン名");
+                    box(championEnglish, championJapanease);
+                });
+                box($.Item, () -> {
+                    text($.ItemName, "スキル名");
+                    box(skillEnglish, skillJapanease);
+                });
+                box($.Item, () -> {
+                    text($.ItemName, "アイテム名");
+                    box(itemEnglish, itemJapanease);
+                });
+                box($.Item, () -> {
+                    text($.ItemName, "ステータス名");
+                    box(statusEnglish, statusJapanease);
+                });
+            }
+        };
     }
 
     /**

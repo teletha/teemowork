@@ -14,6 +14,7 @@ import static jsx.ui.StructureDSL.*;
 import java.util.List;
 
 import jsx.style.StyleDSL;
+import jsx.ui.StructureDSL;
 import jsx.ui.Style;
 import jsx.ui.Widget3;
 import teemowork.model.DescriptionView.Styles;
@@ -44,14 +45,19 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<Sty
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize() {
-        box($.Passive, contents(model3, text -> {
-            if (text instanceof Variable) {
-                writeVariable((Variable) text, getLevel());
-            } else {
-                text(text);
+    protected StructureDSL virtualize() {
+        return new StructureDSL() {
+
+            {
+                box($.Passive, contents(model3, text -> {
+                    if (text instanceof Variable) {
+                        writeVariable((Variable) text, getLevel());
+                    } else {
+                        text(text);
+                    }
+                }));
             }
-        }));
+        };
     }
 
     /**

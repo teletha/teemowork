@@ -17,6 +17,7 @@ import jsx.style.ValueStyle;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
+import jsx.ui.StructureDSL;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import kiss.Events;
@@ -41,46 +42,51 @@ public class Record extends Widget<Styles> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize() {
-        box($.MatchResultList, contents(matches, match -> {
-            box($.MatchResult, () -> {
-                RawStatsDto stats = match.stats;
-                Champion champion = Champion.getByKey(match.championId);
+    protected StructureDSL virtualize() {
+        return new StructureDSL() {
 
-                box($.MatchInfo, () -> {
-                    text($.MatchType, match.subType);
-                    text($.MatchDate, format(match.createDate));
-                    // text($.MatchDuration, format(match.));
-                    text($.MatchEnd, match.stats.win ? "勝利" : "敗北");
-                });
+            {
+                box($.MatchResultList, contents(matches, match -> {
+                    box($.MatchResult, () -> {
+                        RawStatsDto stats = match.stats;
+                        Champion champion = Champion.getByKey(match.championId);
 
-                box($.Icon50.of(champion));
+                        box($.MatchInfo, () -> {
+                            text($.MatchType, match.subType);
+                            text($.MatchDate, format(match.createDate));
+                            // text($.MatchDuration, format(match.));
+                            text($.MatchEnd, match.stats.win ? "勝利" : "敗北");
+                        });
 
-                box($.Score, () -> {
-                    text($.ScoreValue, stats.championsKilled);
-                    text($.Separator, "/");
-                    text($.ScoreValue, stats.numDeaths);
-                    text($.Separator, "/");
-                    text($.ScoreValue, stats.assists);
-                    text("(", stats.getKDA(), ")");
-                });
+                        box($.Icon50.of(champion));
 
-                // box(contents(match.participants, participant -> {
-                // box($.Participant, () -> {
-                // box($.Champion.of(participant.champion()));
-                //
-                // ParticipantStats stats = participant.stats;
-                // box($.Score, () -> {
-                // text($.ScoreValue, stats.kills);
-                // text($.Separator, "/");
-                // text($.ScoreValue, stats.deaths);
-                // text($.Separator, "/");
-                // text($.ScoreValue, stats.assists);
-                // });
-                // });
-                // }));
-            });
-        }));
+                        box($.Score, () -> {
+                            text($.ScoreValue, stats.championsKilled);
+                            text($.Separator, "/");
+                            text($.ScoreValue, stats.numDeaths);
+                            text($.Separator, "/");
+                            text($.ScoreValue, stats.assists);
+                            text("(", stats.getKDA(), ")");
+                        });
+
+                        // box(contents(match.participants, participant -> {
+                        // box($.Participant, () -> {
+                        // box($.Champion.of(participant.champion()));
+                        //
+                        // ParticipantStats stats = participant.stats;
+                        // box($.Score, () -> {
+                        // text($.ScoreValue, stats.kills);
+                        // text($.Separator, "/");
+                        // text($.ScoreValue, stats.deaths);
+                        // text($.Separator, "/");
+                        // text($.ScoreValue, stats.assists);
+                        // });
+                        // });
+                        // }));
+                    });
+                }));
+            }
+        };
     }
 
     private String format(long time) {

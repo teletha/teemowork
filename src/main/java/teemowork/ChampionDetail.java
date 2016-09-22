@@ -22,6 +22,7 @@ import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
+import jsx.ui.StructureDSL;
 import jsx.ui.Style;
 import jsx.ui.TypeStyle;
 import jsx.ui.Widget;
@@ -90,71 +91,76 @@ public class ChampionDetail extends Widget1<Styles, Build> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize() {
-        box($.UpperInfo, () -> {
-            box($.ChampionIconBox.of(build.champion), () -> {
-                text($.Level, build.getLevel());
-            });
-            box($.ItemViewBox, contents(0, 6, index -> {
-                box($.ItemIconBase, () -> {
-                    Item item = build.getItem(index);
+    protected StructureDSL virtualize() {
+        return new StructureDSL() {
 
-                    if (item != null) {
-                        box($.ItemIcon.of(item.position));
-                    }
-                });
-            }));
-        });
-
-        box($.Container, () -> {
-            box($.StatusViewBox, contents(VISIBLE, status -> {
-                box($.StatusBox, () -> {
-                    text($.StatusName, status);
-                    text($.StatusValue, computeStatusValue(status));
-                });
-            }));
-
-            box($.SkillTable, contents(build.champion.skills, skill -> {
-                box($.SkillRow, () -> {
-                    box($.IconBox, () -> {
-                        box($.SkillIcon.of(skill));
-
-                        if (skill.key != SkillKey.Passive) {
-                            box($.LevelBox, contents(skill.getMaxLevel(), level -> {
-                                box($.LevelMark.of(level < build.getLevel(skill)));
-                            }));
-                        }
+            {
+                box($.UpperInfo, () -> {
+                    box($.ChampionIconBox.of(build.champion), () -> {
+                        text($.Level, build.getLevel());
                     });
+                    box($.ItemViewBox, contents(0, 6, index -> {
+                        box($.ItemIconBase, () -> {
+                            Item item = build.getItem(index);
 
-                    box($.VBox, () -> {
-                        SkillDescriptor status = skill.getDescriptor(build.getVersion());
-                        box($.HBox, () -> {
-                            text($.Name, skill);
-                            text($.VersionDisplay, status.version.name);
+                            if (item != null) {
+                                box($.ItemIcon.of(item.position));
+                            }
                         });
-                        box(() -> {
-                            writeStatusValue(skill, status, status.getRange());
-                            writeStatusValue(skill, status, status.getCooldown());
-                            writeStatusValue(skill, status, status.getCost());
-                        });
-
-                        if (!status.getPassive().isEmpty()) {
-                            box($.Text, () -> {
-                                text($.SkillTypeInfo, SkillType.Passive);
-                                widget(Widget.of(SkillWidget.class, skill, build, status.getPassive()));
-                            });
-                        }
-
-                        if (!status.getActive().isEmpty()) {
-                            box($.Text, () -> {
-                                text($.SkillTypeInfo, status.getType());
-                                widget(Widget.of(SkillWidget.class, skill, build, status.getActive()));
-                            });
-                        }
-                    });
+                    }));
                 });
-            }));
-        });
+
+                box($.Container, () -> {
+                    box($.StatusViewBox, contents(VISIBLE, status -> {
+                        box($.StatusBox, () -> {
+                            text($.StatusName, status);
+                            text($.StatusValue, computeStatusValue(status));
+                        });
+                    }));
+
+                    box($.SkillTable, contents(build.champion.skills, skill -> {
+                        box($.SkillRow, () -> {
+                            box($.IconBox, () -> {
+                                box($.SkillIcon.of(skill));
+
+                                if (skill.key != SkillKey.Passive) {
+                                    box($.LevelBox, contents(skill.getMaxLevel(), level -> {
+                                        box($.LevelMark.of(level < build.getLevel(skill)));
+                                    }));
+                                }
+                            });
+
+                            box($.VBox, () -> {
+                                SkillDescriptor status = skill.getDescriptor(build.getVersion());
+                                box($.HBox, () -> {
+                                    text($.Name, skill);
+                                    text($.VersionDisplay, status.version.name);
+                                });
+                                box(() -> {
+                                    writeStatusValue(skill, status, status.getRange());
+                                    writeStatusValue(skill, status, status.getCooldown());
+                                    writeStatusValue(skill, status, status.getCost());
+                                });
+
+                                if (!status.getPassive().isEmpty()) {
+                                    box($.Text, () -> {
+                                        text($.SkillTypeInfo, SkillType.Passive);
+                                        widget(Widget.of(SkillWidget.class, skill, build, status.getPassive()));
+                                    });
+                                }
+
+                                if (!status.getActive().isEmpty()) {
+                                    box($.Text, () -> {
+                                        text($.SkillTypeInfo, status.getType());
+                                        widget(Widget.of(SkillWidget.class, skill, build, status.getActive()));
+                                    });
+                                }
+                            });
+                        });
+                    }));
+                });
+            }
+        };
     }
 
     /**

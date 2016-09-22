@@ -9,7 +9,6 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDSL.*;
 import static teemowork.model.Status.*;
 
 import jsx.style.StyleDSL;
@@ -17,6 +16,7 @@ import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
+import jsx.ui.StructureDSL;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
@@ -45,72 +45,77 @@ public class ItemView extends Widget1<Styles, Item> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize() {
-        ItemDescriptor descriptor = item.getDescriptor(Version.Latest);
+    protected StructureDSL virtualize() {
+        return new StructureDSL() {
 
-        box($.Root, () -> {
-            box($.IconArea, () -> {
-                box($.Icon, $.ItemImage.of(item));
-                box($.Materials, contents(descriptor.getBuildItem(), material -> {
-                    box($.Material, $.ItemImage.of(material));
-                }));
-            });
-            box($.DescriptionArea, () -> {
-                // Name and Cost
-                double cost = item.buyBaseCost;
-                double total = item.buyTotalCost;
+            {
+                ItemDescriptor descriptor = item.getDescriptor(Version.Latest);
 
-                box($.Heading, () -> {
-                    text($.Name, item);
-                    text($.TotalCost, total);
-                    if (cost != total) {
-                        text($.Cost, "(", cost, ")");
-                    }
-                });
+                box($.Root, () -> {
+                    box($.IconArea, () -> {
+                        box($.Icon, $.ItemImage.of(item));
+                        box($.Materials, contents(descriptor.getBuildItem(), material -> {
+                            box($.Material, $.ItemImage.of(material));
+                        }));
+                    });
+                    box($.DescriptionArea, () -> {
+                        // Name and Cost
+                        double cost = item.buyBaseCost;
+                        double total = item.buyTotalCost;
 
-                // Status
-                box($.StatusSet, contents(VISIBLE, status -> {
-                    double value = descriptor.get(status);
-
-                    if (value != 0) {
-                        text($.StatusValue, value, status.getUnit(), " ", status);
-                    }
-                }));
-
-                box($.DescriptionArea, () -> {
-                    box(contents(descriptor.getAbilities(), ability -> {
-                        AbilityDescriptor desc = ability.getDescriptor(Version.Latest);
-
-                        box($.AbilityArea, () -> {
-                            if (ability.name.startsWith("#")) {
-                                text($.AbilityInfo, desc.isUnique() ? "Unique " : "", desc.isActive() ? "Active" : "Passive");
-                            } else {
-                                text($.AbilityInfo, ability.name);
+                        box($.Heading, () -> {
+                            text($.Name, item);
+                            text($.TotalCost, total);
+                            if (cost != total) {
+                                text($.Cost, "(", cost, ")");
                             }
-                            StatusCalculator c = new StatusCalculator() {
-
-                                @Override
-                                public int getLevel(Skill skill) {
-                                    return 0;
-                                }
-
-                                @Override
-                                public int getLevel() {
-                                    return 0;
-                                }
-
-                                @Override
-                                public double calculate(Status status) {
-                                    return 0;
-                                }
-                            };
-
-                            widget(Widget.of(AbilityDescriptionView.class, ability, c, desc.getDescription()));
                         });
-                    }));
+
+                        // Status
+                        box($.StatusSet, contents(VISIBLE, status -> {
+                            double value = descriptor.get(status);
+
+                            if (value != 0) {
+                                text($.StatusValue, value, status.getUnit(), " ", status);
+                            }
+                        }));
+
+                        box($.DescriptionArea, () -> {
+                            box(contents(descriptor.getAbilities(), ability -> {
+                                AbilityDescriptor desc = ability.getDescriptor(Version.Latest);
+
+                                box($.AbilityArea, () -> {
+                                    if (ability.name.startsWith("#")) {
+                                        text($.AbilityInfo, desc.isUnique() ? "Unique " : "", desc.isActive() ? "Active" : "Passive");
+                                    } else {
+                                        text($.AbilityInfo, ability.name);
+                                    }
+                                    StatusCalculator c = new StatusCalculator() {
+
+                                        @Override
+                                        public int getLevel(Skill skill) {
+                                            return 0;
+                                        }
+
+                                        @Override
+                                        public int getLevel() {
+                                            return 0;
+                                        }
+
+                                        @Override
+                                        public double calculate(Status status) {
+                                            return 0;
+                                        }
+                                    };
+
+                                    widget(Widget.of(AbilityDescriptionView.class, ability, c, desc.getDescription()));
+                                });
+                            }));
+                        });
+                    });
                 });
-            });
-        });
+            }
+        };
     }
 
     /**

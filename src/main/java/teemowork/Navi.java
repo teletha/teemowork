@@ -9,8 +9,6 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDSL.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -20,6 +18,7 @@ import jsx.style.BinaryStyle;
 import jsx.style.StyleDSL;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
+import jsx.ui.StructureDSL;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import kiss.Events;
@@ -98,18 +97,23 @@ public class Navi extends Widget<Styles> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize() {
-        box($.TopMenuGroup, contents(menus.items, item -> {
-            html("li", $.TopMenu, () -> {
-                text($.MenuLink.of(item.action != null), item.label);
+    protected StructureDSL virtualize() {
+        return new StructureDSL() {
 
-                box($.SubMenuGroup, contents(item.items, sub -> {
-                    html("li", $.SubMenu, () -> {
-                        text($.MenuLink.of(item.action != null), sub.label);
+            {
+                box($.TopMenuGroup, contents(menus.items, item -> {
+                    html("li", $.TopMenu, () -> {
+                        text($.MenuLink.of(item.action != null), item.label);
+
+                        box($.SubMenuGroup, contents(item.items, sub -> {
+                            html("li", $.SubMenu, () -> {
+                                text($.MenuLink.of(item.action != null), sub.label);
+                            });
+                        }));
                     });
                 }));
-            });
-        }));
+            }
+        };
     }
 
     /**

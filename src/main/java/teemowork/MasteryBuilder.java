@@ -19,6 +19,7 @@ import jsx.style.value.Color;
 import jsx.style.value.LinearGradient;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
+import jsx.ui.StructureDSL;
 import jsx.ui.Style;
 import jsx.ui.Widget;
 import kiss.Events;
@@ -66,16 +67,21 @@ public class MasteryBuilder extends Widget<Styles> {
      * {@inheritDoc}
      */
     @Override
-    protected void virtualize() {
-        box($.Information, () -> {
+    protected StructureDSL virtualize() {
+        return new StructureDSL() {
 
-        });
+            {
+                box($.Information, () -> {
 
-        Mastery[][][] masteries = Mastery.getMasteryTree(Version.Latest);
+                });
 
-        build($.Offense, masteries[0], MasteryType.Offense);
-        build($.Defense, masteries[1], MasteryType.Defense);
-        build($.Utility, masteries[2], MasteryType.Utility);
+                Mastery[][][] masteries = Mastery.getMasteryTree(Version.Latest);
+
+                build($.Offense, masteries[0], MasteryType.Offense);
+                build($.Defense, masteries[1], MasteryType.Defense);
+                build($.Utility, masteries[2], MasteryType.Utility);
+            }
+        };
     }
 
     /**
