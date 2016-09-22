@@ -99,8 +99,8 @@ public class MasteryBuilder extends Widget<Styles> {
                                 boolean available = masterySet.getLevel(mastery) != 0 || masterySet.isAvailable(mastery);
 
                                 box($.MasteryPane, If(!available, $.Unavailable), () -> {
-                                    svg("svg", $.IconImage, size(45, 45), () -> {
-                                        svg("image", position(0, 0), size(45, 45), attr("xlink:href", mastery
+                                    svg("svg", $.IconImage, attr("size", "45 45"), () -> {
+                                        svg("image", attr("position", "0 0"), attr("size", "45 45"), attr("xlink:href", mastery
                                                 .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? ""
                                                         : "url('#test')"));
                                         svg("filter", $.NBox, id("test"), () -> {
