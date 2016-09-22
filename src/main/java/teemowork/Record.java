@@ -9,7 +9,7 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDSL.*;
+import java.util.List;
 
 import js.lang.NativeDate;
 import jsx.style.StyleDSL;
@@ -36,7 +36,7 @@ public class Record extends Widget<Styles> {
     /** The user preference. */
     private final UserPreference preference = I.make(UserPreference.class);
 
-    private final Events<GameDto> matches = GameAPI.user().flatMap(GameAPI::recent).flatMap(game -> Events.from(game.games));
+    private final List<GameDto> matches = GameAPI.user().flatMap(GameAPI::recent).flatMap(game -> Events.from(game.games)).toList();
 
     /**
      * {@inheritDoc}
