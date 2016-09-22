@@ -9,9 +9,9 @@
  */
 package teemowork;
 
+import jsx.style.Style;
 import jsx.style.StyleDSL;
 import jsx.style.value.Font;
-import jsx.ui.Style;
 
 /**
  * @version 2015/09/28 21:54:41

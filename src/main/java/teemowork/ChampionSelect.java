@@ -23,6 +23,7 @@ import javafx.beans.property.SetProperty;
 
 import js.dom.User;
 import jsx.style.BinaryStyle;
+import jsx.style.Style;
 import jsx.style.StyleDSL;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
@@ -31,7 +32,6 @@ import jsx.style.value.Numeric;
 import jsx.ui.LowLevelWidget;
 import jsx.ui.ModelValue;
 import jsx.ui.StructureDSL;
-import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.Input;
 import jsx.ui.piece.UI;

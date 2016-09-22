@@ -15,15 +15,15 @@ import java.util.List;
 
 import js.dom.User;
 import jsx.style.BinaryStyle;
+import jsx.style.Style;
 import jsx.style.StyleDSL;
+import jsx.style.TypeStyle;
 import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
 import jsx.ui.StructureDSL;
-import jsx.ui.Style;
-import jsx.ui.TypeStyle;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.UI;

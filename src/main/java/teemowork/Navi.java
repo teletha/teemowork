@@ -15,11 +15,11 @@ import java.util.function.Consumer;
 
 import js.dom.User;
 import jsx.style.BinaryStyle;
+import jsx.style.Style;
 import jsx.style.StyleDSL;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.ui.StructureDSL;
-import jsx.ui.Style;
 import jsx.ui.Widget;
 import kiss.Events;
 import teemowork.Navi.Styles;

@@ -21,12 +21,12 @@ import java.util.function.Predicate;
 import javafx.beans.property.SetProperty;
 
 import js.dom.User;
+import jsx.style.Style;
 import jsx.style.StyleDSL;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.ui.ModelValue;
 import jsx.ui.StructureDSL;
-import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.UI;
 import kiss.Events;

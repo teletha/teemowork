@@ -11,9 +11,9 @@ package teemowork;
 
 import java.util.Locale;
 
+import jsx.style.Style;
 import jsx.style.StyleDSL;
 import jsx.ui.StructureDSL;
-import jsx.ui.Style;
 import jsx.ui.Widget;
 import jsx.ui.piece.Button;
 import jsx.ui.piece.Input;

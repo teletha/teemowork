@@ -11,9 +11,9 @@ package teemowork.model;
 
 import java.util.List;
 
+import jsx.style.Style;
 import jsx.style.StyleDSL;
 import jsx.ui.StructureDSL;
-import jsx.ui.Style;
 import jsx.ui.Widget3;
 import teemowork.model.DescriptionView.Styles;
 import teemowork.model.variable.Variable;
