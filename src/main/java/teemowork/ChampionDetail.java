@@ -9,7 +9,6 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDSL.*;
 import static teemowork.model.Status.*;
 
 import java.util.List;
@@ -160,109 +159,109 @@ public class ChampionDetail extends Widget1<Styles, Build> {
                     }));
                 });
             }
-        };
-    }
 
-    /**
-     * <p>
-     * Write skill related status.
-     * </p>
-     * 
-     * @param root A element to write.
-     * @param descriptor A current processing skill.
-     * @param variable A target skill variable.
-     */
-    private void writeStatusValue(Skill skill, SkillDescriptor descriptor, Variable variable) {
-        if (variable != null) {
-            box($.StatusBlock, () -> {
-                Status status = variable.getStatus();
-                VariableResolver resolver = variable.getResolver();
+            /**
+             * <p>
+             * Write skill related status.
+             * </p>
+             * 
+             * @param root A element to write.
+             * @param descriptor A current processing skill.
+             * @param variable A target skill variable.
+             */
+            private void writeStatusValue(Skill skill, SkillDescriptor descriptor, Variable variable) {
+                if (variable != null) {
+                    box($.StatusBlock, () -> {
+                        Status status = variable.getStatus();
+                        VariableResolver resolver = variable.getResolver();
 
-                int level = build.getLevel(skill);
+                        int level = build.getLevel(skill);
 
-                if (!resolver.isSkillLevelBased()) {
-                    level = resolver.convertLevel(build);
-                }
+                        if (!resolver.isSkillLevelBased()) {
+                            level = resolver.convertLevel(build);
+                        }
 
-                // write label
-                String label = status.getName();
+                        // write label
+                        String label = status.getName();
 
-                if (status != Range && status != CD) {
-                    if (descriptor.getType() == SkillType.Toggle) {
-                        label = "毎秒" + label;
-                    } else if (descriptor.getType() == SkillType.ToggleForAttack) {
-                        label = "攻撃毎" + label;
-                    }
-                }
+                        if (status != Range && status != CD) {
+                            if (descriptor.getType() == SkillType.Toggle) {
+                                label = "毎秒" + label;
+                            } else if (descriptor.getType() == SkillType.ToggleForAttack) {
+                                label = "攻撃毎" + label;
+                            }
+                        }
 
-                text($.StatusLabel, label);
+                        text($.StatusLabel, label);
 
-                // write values
-                int size = resolver.estimateSize();
-                int current = level;
+                        // write values
+                        int size = resolver.estimateSize();
+                        int current = level;
 
-                box(contents(1, size, i -> {
-                    double value = status.round(variable.calculate(i, build, true));
-                    String desc = resolver.getLevelDescription(i);
+                        box(contents(1, size, i -> {
+                            double value = status.round(variable.calculate(i, build, true));
+                            String desc = resolver.getLevelDescription(i);
 
-                    box($.Value, If(size != 1 && i == current, $.Current), If(desc, title(desc), $.Indicator), () -> {
-                        text(value == -1 ? "∞" : value);
+                            box($.Value, If(size != 1 && i == current, $.Current), If(desc, title(desc), $.Indicator), () -> {
+                                text(value == -1 ? "∞" : value);
+                            });
+                        }));
+
+                        // write amplifiers
+                        writeAmplifier(variable.getAmplifiers(), 0, build);
+
+                        // write unit
+                        text(status.getUnit());
                     });
-                }));
+                }
+            }
 
-                // write amplifiers
-                writeAmplifier(variable.getAmplifiers(), 0, build);
+            /**
+             * <p>
+             * Write skill amplifier.
+             * </p>
+             * 
+             * @param root A element to write.
+             * @param amplifiers A list of skill amplifiers.
+             * @param level A current skill level.
+             */
+            public void writeAmplifier(List<Variable> amplifiers, int level, StatusCalculator calculator) {
+                if (!amplifiers.isEmpty()) {
+                    box($.Amplifiers, contents(amplifiers, amplifier -> {
+                        box($.Amplifier, () -> {
+                            int amp = level;
 
-                // write unit
-                text(status.getUnit());
-            });
-        }
-    }
+                            text("+", amplifier.getStatus());
 
-    /**
-     * <p>
-     * Write skill amplifier.
-     * </p>
-     * 
-     * @param root A element to write.
-     * @param amplifiers A list of skill amplifiers.
-     * @param level A current skill level.
-     */
-    public void writeAmplifier(List<Variable> amplifiers, int level, StatusCalculator calculator) {
-        if (!amplifiers.isEmpty()) {
-            box($.Amplifiers, contents(amplifiers, amplifier -> {
-                box($.Amplifier, () -> {
-                    int amp = level;
+                            VariableResolver resolver = amplifier.getResolver();
 
-                    text("+", amplifier.getStatus());
+                            if (!resolver.isSkillLevelBased()) {
+                                amp = resolver.convertLevel(calculator);
+                            }
 
-                    VariableResolver resolver = amplifier.getResolver();
+                            int estimated = resolver.estimateSize();
+                            int size = estimated == 0 ? amplifier.getAmplifiers().isEmpty() ? 0 : 1 : estimated;
+                            int current = amp;
 
-                    if (!resolver.isSkillLevelBased()) {
-                        amp = resolver.convertLevel(calculator);
-                    }
+                            box(contents(1, size, i -> {
+                                String description = resolver.getLevelDescription(i);
 
-                    int estimated = resolver.estimateSize();
-                    int size = estimated == 0 ? amplifier.getAmplifiers().isEmpty() ? 0 : 1 : estimated;
-                    int current = amp;
+                                box($.Value, If(size != 1 && i == current, $.Current), If(description, title(description), $.Indicator), () -> {
+                                    text(round(amplifier.calculate(i, calculator, true), 4));
+                                });
+                            }));
 
-                    box(contents(1, size, i -> {
-                        String description = resolver.getLevelDescription(i);
-
-                        box($.Value, If(size != 1 && i == current, $.Current), If(description, title(description), $.Indicator), () -> {
-                            text(round(amplifier.calculate(i, calculator, true), 4));
+                            text(amplifier.getStatus().name().endsWith("Ratio") ? "%" : "");
+                            if (!amplifier.getAmplifiers().isEmpty()) {
+                                text("(");
+                                writeAmplifier(amplifier.getAmplifiers(), current, calculator);
+                                text(")");
+                            }
                         });
                     }));
-
-                    text(amplifier.getStatus().name().endsWith("Ratio") ? "%" : "");
-                    if (!amplifier.getAmplifiers().isEmpty()) {
-                        text("(");
-                        writeAmplifier(amplifier.getAmplifiers(), current, calculator);
-                        text(")");
-                    }
-                });
-            }));
-        }
+                }
+            }
+        };
     }
 
     /**

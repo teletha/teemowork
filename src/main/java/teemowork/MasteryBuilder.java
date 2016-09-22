@@ -9,8 +9,6 @@
  */
 package teemowork;
 
-import static jsx.ui.StructureDSL.*;
-
 import js.dom.User;
 import jsx.style.StyleDSL;
 import jsx.style.ValueStyle;
@@ -81,52 +79,53 @@ public class MasteryBuilder extends Widget<Styles> {
                 build($.Defense, masteries[1], MasteryType.Defense);
                 build($.Utility, masteries[2], MasteryType.Utility);
             }
-        };
-    }
 
-    /**
-     * <p>
-     * Helper method to build view.
-     * </p>
-     * 
-     * @param root
-     * @param set
-     */
-    private void build(Style style, Mastery[][] set, MasteryType type) {
-        box(style, () -> {
-            box(contents(set, masteries -> {
-                box($.RankPane, contents(masteries, mastery -> {
-                    if (mastery == null) {
-                        box($.MasteryPane, $.EmptyPane);
-                        System.out.println("");
-                    } else {
-                        boolean available = masterySet.getLevel(mastery) != 0 || masterySet.isAvailable(mastery);
+            /**
+             * <p>
+             * Helper method to build view.
+             * </p>
+             * 
+             * @param root
+             * @param set
+             */
+            private void build(Style style, Mastery[][] set, MasteryType type) {
+                box(style, () -> {
+                    box(contents(set, masteries -> {
+                        box($.RankPane, contents(masteries, mastery -> {
+                            if (mastery == null) {
+                                box($.MasteryPane, $.EmptyPane);
+                                System.out.println("");
+                            } else {
+                                boolean available = masterySet.getLevel(mastery) != 0 || masterySet.isAvailable(mastery);
 
-                        box($.MasteryPane, If(!available, $.Unavailable), () -> {
-                            svg("svg", $.IconImage, size(45, 45), () -> {
-                                svg("image", position(0, 0), size(45, 45), attr("xlink:href", mastery
-                                        .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? ""
-                                                : "url('#test')"));
-                                svg("filter", $.NBox, id("test"), () -> {
-                                    svg("feColorMatrix", attr("type", "matrix"), attr("values", grayscale(0.4)));
+                                box($.MasteryPane, If(!available, $.Unavailable), () -> {
+                                    svg("svg", $.IconImage, size(45, 45), () -> {
+                                        svg("image", position(0, 0), size(45, 45), attr("xlink:href", mastery
+                                                .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? ""
+                                                        : "url('#test')"));
+                                        svg("filter", $.NBox, id("test"), () -> {
+                                            svg("feColorMatrix", attr("type", "matrix"), attr("values", grayscale(0.4)));
+                                        });
+                                    });
+                                    box($.LevelPane, () -> {
+                                        text($.LevelValue, masterySet.getLevel(mastery));
+                                        text($.LevelSeparator, "/");
+                                        text($.LevelValue, mastery.getMaxLevel());
+                                    });
+
+                                    box($.PopupPane, () -> {
+                                        text($.MasteryName, mastery.name);
+                                        widget(Widget.of(MasteryWidget.class, mastery, null, mastery.getDescriptor(Version.Latest)
+                                                .getPassive()));
+                                    });
                                 });
-                            });
-                            box($.LevelPane, () -> {
-                                text($.LevelValue, masterySet.getLevel(mastery));
-                                text($.LevelSeparator, "/");
-                                text($.LevelValue, mastery.getMaxLevel());
-                            });
-
-                            box($.PopupPane, () -> {
-                                text($.MasteryName, mastery.name);
-                                widget(Widget.of(MasteryWidget.class, mastery, null, mastery.getDescriptor(Version.Latest).getPassive()));
-                            });
-                        });
-                    }
-                }));
-            }));
-            text($.SumPoint, type.name().toUpperCase(), "　", masterySet.getSum(type));
-        });
+                            }
+                        }));
+                    }));
+                    text($.SumPoint, type.name().toUpperCase(), "　", masterySet.getSum(type));
+                });
+            }
+        };
     }
 
     private String grayscale(double amount) {
