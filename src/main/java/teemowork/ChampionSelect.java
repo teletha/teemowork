@@ -131,6 +131,28 @@ public class ChampionSelect extends Widget<Styles> {
     protected StructureDSL virtualize() {
         return new StructureDSL() {
 
+            private Predicate<Champion> bySkill = champion -> {
+                if (activeFilters.isEmpty()) {
+                    return true;
+                }
+
+                for (SkillFilter filter : activeFilters) {
+                    if (!filter.filter.test(champion)) {
+                        return false;
+                    }
+                }
+                return true;
+            };
+
+            private Predicate<Champion> byName = champion -> {
+                String name = input.value.get();
+
+                if (name == null || name.isEmpty()) {
+                    return true;
+                }
+                return champion.match(name);
+            };
+
             {
                 box($.Root, () -> {
                     box($.Filters, input, () -> {
@@ -155,8 +177,8 @@ public class ChampionSelect extends Widget<Styles> {
                         // });
                         // }));
                     });
-                    box($.ImageSet, contents(Champion.getAll(), champion -> {
-                        box($.Container, If(!filter(champion) || !champion.match(input.value.get()), $.Unselected), () -> {
+                    box($.ImageSet, contents(Champion.list(bySkill.and(byName)), champion -> {
+                        box($.Container, () -> {
                             box($.IconImage, $.IconPosition.of(champion));
                             text($.Title, champion);
                         });
@@ -164,27 +186,6 @@ public class ChampionSelect extends Widget<Styles> {
                 });
             }
         };
-    }
-
-    /**
-     * <p>
-     * Filter by conditions.
-     * </p>
-     * 
-     * @param champion
-     * @return
-     */
-    private boolean filter(Champion champion) {
-        if (activeFilters.isEmpty()) {
-            return true;
-        }
-
-        for (SkillFilter filter : activeFilters) {
-            if (!filter.filter.test(champion)) {
-                return false;
-            }
-        }
-        return true;
     }
 
     /**
@@ -482,13 +483,13 @@ public class ChampionSelect extends Widget<Styles> {
             border.left.solid().width(2, px).color(backColor);
         };
 
+        Style Unselected = () -> {
+            display.none();
+        };
+
         Style Container = () -> {
             position.relative();
             display.block();
-        };
-
-        Style Unselected = () -> {
-            display.none();
         };
 
         Style IconImage = () -> {

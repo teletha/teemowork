@@ -16,12 +16,14 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import js.dom.Element;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
 import kiss.Decoder;
 import kiss.Encoder;
+import kiss.Events;
 import kiss.I;
 import teemowork.UserPreference;
 import teemowork.api.RiotChampionData;
@@ -135,11 +137,12 @@ public class Champion extends RiotChampionData {
      * Pattern natch against this champion name.
      * </p>
      * 
-     * @param name A name pattern.
+     * @param nameFragment A name pattern.
      * @return A result.
      */
-    public boolean match(String name) {
-        return name == null || name.length() == 0 || systemName.toLowerCase().contains(name.toLowerCase()) || localized.contains(name);
+    public boolean match(String nameFragment) {
+        return nameFragment == null || nameFragment.length() == 0 || systemName.toLowerCase()
+                .contains(nameFragment.toLowerCase()) || localized.contains(nameFragment);
     }
 
     /**
@@ -235,6 +238,17 @@ public class Champion extends RiotChampionData {
     @Override
     public String toString() {
         return getName();
+    }
+
+    /**
+     * <p>
+     * List up all champions which are matched by the specified filter..
+     * </p>
+     * 
+     * @return
+     */
+    public static List<Champion> list(Predicate<Champion> filter) {
+        return Events.from(champions).take(filter).toList();
     }
 
     /**
