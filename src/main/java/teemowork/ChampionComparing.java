@@ -22,7 +22,7 @@ import jsx.style.Style;
 import jsx.style.StyleDSL;
 import jsx.style.ValueStyle;
 import jsx.style.value.Numeric;
-import jsx.ui.StructureDSL;
+import jsx.ui.ViewDSL;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.Select;
@@ -78,36 +78,45 @@ public class ChampionComparing extends Widget<Styles> {
      * {@inheritDoc}
      */
     @Override
-    protected StructureDSL virtualize() {
-        return new StructureDSL() {
+    protected final ViewDSL virtualize() {
+        return new View();
+    }
 
-            {
-                widget(groups);
-                box($.Table, () -> {
-                    box($.Head, () -> {
-                        box($.NoIcon);
-                        box(contents(Header.class, STATUS));
-                    });
+    /**
+     * @version 2016/09/25 13:58:55
+     */
+    private class View extends ViewDSL {
 
-                    box($.Body, () -> {
-                        box($.VBox, contents(group.getValue().sortBy(comparator), build -> {
-                            box($.RowLine, () -> {
-                                ChampionStatus championStatus = build.champion.getStatus(Version.Latest);
-                                build.setLevel(level);
-
-                                box($.Icon.of(build.champion));
-                                box(contents(STATUS, status -> {
-                                    box($.Status, () -> {
-                                        text($.StatusBase, build.get(status));
-                                        text($.StatusPerLevel, "(", championStatus.get(status.per()), ")");
-                                    });
-                                }));
-                            });
-                        }));
-                    });
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        protected void virtualize() {
+            widget(groups);
+            box($.Table, () -> {
+                box($.Head, () -> {
+                    box($.NoIcon);
+                    box(contents(Header.class, STATUS));
                 });
-            }
-        };
+
+                box($.Body, () -> {
+                    box($.VBox, contents(group.getValue().sortBy(comparator), build -> {
+                        box($.RowLine, () -> {
+                            ChampionStatus championStatus = build.champion.getStatus(Version.Latest);
+                            build.setLevel(level);
+
+                            box($.Icon.of(build.champion));
+                            box(contents(STATUS, status -> {
+                                box($.Status, () -> {
+                                    text($.StatusBase, build.get(status));
+                                    text($.StatusPerLevel, "(", championStatus.get(status.per()), ")");
+                                });
+                            }));
+                        });
+                    }));
+                });
+            });
+        }
     }
 
     /**
@@ -159,14 +168,23 @@ public class ChampionComparing extends Widget<Styles> {
          * {@inheritDoc}
          */
         @Override
-        protected StructureDSL virtualize() {
-            return new StructureDSL() {
-
-                {
-                    text($.StatusHeader, status);
-                }
-            };
+        protected final ViewDSL virtualize() {
+            return new View();
         }
+
+        /**
+         * @version 2016/09/25 13:58:55
+         */
+        private class View extends ViewDSL {
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            protected void virtualize() {
+                text($.StatusHeader, status);
+            }
+        };
     }
 
     /**

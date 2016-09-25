@@ -19,7 +19,7 @@ import jsx.style.Style;
 import jsx.style.StyleDSL;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
-import jsx.ui.StructureDSL;
+import jsx.ui.ViewDSL;
 import jsx.ui.Widget;
 import kiss.Events;
 import teemowork.Navi.Styles;
@@ -97,23 +97,32 @@ public class Navi extends Widget<Styles> {
      * {@inheritDoc}
      */
     @Override
-    protected StructureDSL virtualize() {
-        return new StructureDSL() {
+    protected final ViewDSL virtualize() {
+        return new View();
+    }
 
-            {
-                box($.TopMenuGroup, contents(menus.items, item -> {
-                    html("li", $.TopMenu, () -> {
-                        text($.MenuLink.of(item.action != null), item.label);
+    /**
+     * @version 2016/09/25 13:58:55
+     */
+    private class View extends ViewDSL {
 
-                        box($.SubMenuGroup, contents(item.items, sub -> {
-                            html("li", $.SubMenu, () -> {
-                                text($.MenuLink.of(item.action != null), sub.label);
-                            });
-                        }));
-                    });
-                }));
-            }
-        };
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        protected void virtualize() {
+            box($.TopMenuGroup, contents(menus.items, item -> {
+                html("li", $.TopMenu, () -> {
+                    text($.MenuLink.of(item.action != null), item.label);
+
+                    box($.SubMenuGroup, contents(item.items, sub -> {
+                        html("li", $.SubMenu, () -> {
+                            text($.MenuLink.of(item.action != null), sub.label);
+                        });
+                    }));
+                });
+            }));
+        }
     }
 
     /**

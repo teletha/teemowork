@@ -17,7 +17,7 @@ import jsx.style.ValueStyle;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
-import jsx.ui.StructureDSL;
+import jsx.ui.ViewDSL;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import teemowork.ItemView.Styles;
@@ -45,77 +45,86 @@ public class ItemView extends Widget1<Styles, Item> {
      * {@inheritDoc}
      */
     @Override
-    protected StructureDSL virtualize() {
-        return new StructureDSL() {
+    protected final ViewDSL virtualize() {
+        return new View();
+    }
 
-            {
-                ItemDescriptor descriptor = item.getDescriptor(Version.Latest);
+    /**
+     * @version 2016/09/25 13:58:55
+     */
+    private class View extends ViewDSL {
 
-                box($.Root, () -> {
-                    box($.IconArea, () -> {
-                        box($.Icon, $.ItemImage.of(item));
-                        box($.Materials, contents(descriptor.getBuildItem(), material -> {
-                            box($.Material, $.ItemImage.of(material));
-                        }));
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        protected void virtualize() {
+            ItemDescriptor descriptor = item.getDescriptor(Version.Latest);
+
+            box($.Root, () -> {
+                box($.IconArea, () -> {
+                    box($.Icon, $.ItemImage.of(item));
+                    box($.Materials, contents(descriptor.getBuildItem(), material -> {
+                        box($.Material, $.ItemImage.of(material));
+                    }));
+                });
+                box($.DescriptionArea, () -> {
+                    // Name and Cost
+                    double cost = item.buyBaseCost;
+                    double total = item.buyTotalCost;
+
+                    box($.Heading, () -> {
+                        text($.Name, item);
+                        text($.TotalCost, total);
+                        if (cost != total) {
+                            text($.Cost, "(", cost, ")");
+                        }
                     });
+
+                    // Status
+                    box($.StatusSet, contents(VISIBLE, status -> {
+                        double value = descriptor.get(status);
+
+                        if (value != 0) {
+                            text($.StatusValue, value, status.getUnit(), " ", status);
+                        }
+                    }));
+
                     box($.DescriptionArea, () -> {
-                        // Name and Cost
-                        double cost = item.buyBaseCost;
-                        double total = item.buyTotalCost;
+                        box(contents(descriptor.getAbilities(), ability -> {
+                            AbilityDescriptor desc = ability.getDescriptor(Version.Latest);
 
-                        box($.Heading, () -> {
-                            text($.Name, item);
-                            text($.TotalCost, total);
-                            if (cost != total) {
-                                text($.Cost, "(", cost, ")");
-                            }
-                        });
+                            box($.AbilityArea, () -> {
+                                if (ability.name.startsWith("#")) {
+                                    text($.AbilityInfo, desc.isUnique() ? "Unique " : "", desc.isActive() ? "Active" : "Passive");
+                                } else {
+                                    text($.AbilityInfo, ability.name);
+                                }
+                                StatusCalculator c = new StatusCalculator() {
 
-                        // Status
-                        box($.StatusSet, contents(VISIBLE, status -> {
-                            double value = descriptor.get(status);
-
-                            if (value != 0) {
-                                text($.StatusValue, value, status.getUnit(), " ", status);
-                            }
-                        }));
-
-                        box($.DescriptionArea, () -> {
-                            box(contents(descriptor.getAbilities(), ability -> {
-                                AbilityDescriptor desc = ability.getDescriptor(Version.Latest);
-
-                                box($.AbilityArea, () -> {
-                                    if (ability.name.startsWith("#")) {
-                                        text($.AbilityInfo, desc.isUnique() ? "Unique " : "", desc.isActive() ? "Active" : "Passive");
-                                    } else {
-                                        text($.AbilityInfo, ability.name);
+                                    @Override
+                                    public int getLevel(Skill skill) {
+                                        return 0;
                                     }
-                                    StatusCalculator c = new StatusCalculator() {
 
-                                        @Override
-                                        public int getLevel(Skill skill) {
-                                            return 0;
-                                        }
+                                    @Override
+                                    public int getLevel() {
+                                        return 0;
+                                    }
 
-                                        @Override
-                                        public int getLevel() {
-                                            return 0;
-                                        }
+                                    @Override
+                                    public double calculate(Status status) {
+                                        return 0;
+                                    }
+                                };
 
-                                        @Override
-                                        public double calculate(Status status) {
-                                            return 0;
-                                        }
-                                    };
-
-                                    widget(Widget.of(AbilityDescriptionView.class, ability, c, desc.getDescription()));
-                                });
-                            }));
-                        });
+                                widget(Widget.of(AbilityDescriptionView.class, ability, c, desc.getDescription()));
+                            });
+                        }));
                     });
                 });
-            }
-        };
+            });
+        }
     }
 
     /**

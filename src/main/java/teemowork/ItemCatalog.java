@@ -26,7 +26,7 @@ import jsx.style.StyleDSL;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.ui.ModelValue;
-import jsx.ui.StructureDSL;
+import jsx.ui.ViewDSL;
 import jsx.ui.Widget;
 import jsx.ui.piece.UI;
 import kiss.Events;
@@ -64,31 +64,40 @@ public class ItemCatalog extends Widget<Styles> {
      * {@inheritDoc}
      */
     @Override
-    protected StructureDSL virtualize() {
-        return new StructureDSL() {
+    protected final ViewDSL virtualize() {
+        return new View();
+    }
 
-            {
-                box($.Root, () -> {
-                    box($.Groups, contents(groups, group -> {
-                        text($.GroupName, group.name);
-                        box($.Filters, contents(group.filters, filter -> {
-                            widget(UI.checkbox(activeFilters, filter, filter.status.getName()).style($.FilterName));
-                        }));
-                    }));
-                    box($.Items, contents(Item.all(), item -> {
-                        if (show(item)) {
-                            box($.Item, () -> {
-                                widget(Widget.of(ItemView.class, item));
-                            });
-                        }
+    /**
+     * @version 2016/09/25 13:58:55
+     */
+    private class View extends ViewDSL {
 
-                        // box($.Item, If(show(item), $.Selected), () -> {
-                        // widget(Widget.of(ItemView.class, item));
-                        // });
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        protected void virtualize() {
+            box($.Root, () -> {
+                box($.Groups, contents(groups, group -> {
+                    text($.GroupName, group.name);
+                    box($.Filters, contents(group.filters, filter -> {
+                        widget(UI.checkbox(activeFilters, filter, filter.status.getName()).style($.FilterName));
                     }));
-                });
-            }
-        };
+                }));
+                box($.Items, contents(Item.all(), item -> {
+                    if (show(item)) {
+                        box($.Item, () -> {
+                            widget(Widget.of(ItemView.class, item));
+                        });
+                    }
+
+                    // box($.Item, If(show(item), $.Selected), () -> {
+                    // widget(Widget.of(ItemView.class, item));
+                    // });
+                }));
+            });
+        }
     }
 
     /**

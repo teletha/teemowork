@@ -31,7 +31,7 @@ import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.ui.LowLevelWidget;
 import jsx.ui.ModelValue;
-import jsx.ui.StructureDSL;
+import jsx.ui.ViewDSL;
 import jsx.ui.Widget;
 import jsx.ui.piece.Input;
 import jsx.ui.piece.UI;
@@ -128,64 +128,74 @@ public class ChampionSelect extends Widget<Styles> {
      * {@inheritDoc}
      */
     @Override
-    protected StructureDSL virtualize() {
-        return new StructureDSL() {
+    protected final ViewDSL virtualize() {
+        return new View();
+    }
 
-            private Predicate<Champion> bySkill = champion -> {
-                if (activeFilters.isEmpty()) {
-                    return true;
-                }
+    /**
+     * @version 2016/09/25 13:58:55
+     */
+    private class View extends ViewDSL {
 
-                for (SkillFilter filter : activeFilters) {
-                    if (!filter.filter.test(champion)) {
-                        return false;
-                    }
-                }
+        private Predicate<Champion> bySkill = champion -> {
+            if (activeFilters.isEmpty()) {
                 return true;
-            };
+            }
 
-            private Predicate<Champion> byName = champion -> {
-                String name = input.value.get();
-
-                if (name == null || name.isEmpty()) {
-                    return true;
+            for (SkillFilter filter : activeFilters) {
+                if (!filter.filter.test(champion)) {
+                    return false;
                 }
-                return champion.match(name);
-            };
+            }
+            return true;
+        };
 
-            {
-                box($.Root, () -> {
-                    box($.Filters, input, () -> {
-                        text($.FilterBySkill, "スキルで絞込");
-                        // text($.FilterByChampion, "チャンピオンで絞込");
-                        box($.SkillFilters.of(showSkillFilters), contents(groups, group -> {
-                            box($.Group, () -> {
-                                text($.GroupName, group.name);
-                                box($.GroupItems, contents(group.filters, filter -> {
-                                    widget(filter.createUI(activeFilters).style($.Filter));
-                                }));
-                            });
-                        }));
-                        // box($.SkillFilters, If(showChampionFilters, $.ShowDetailFilter),
-                        // contents(groups,
-                        // group -> {
-                        // box($.Group, () -> {
-                        // text($.GroupName, group.name);
-                        // box($.GroupItems, contents(group.filters, filter -> {
-                        // widget(UI.checkbox(activeFilters, filter, filter.name).style($.Filter));
-                        // }));
-                        // });
-                        // }));
-                    });
-                    box($.ImageSet, contents(Champion.list(bySkill.and(byName)), champion -> {
-                        box($.Container, () -> {
-                            box($.IconImage, $.IconPosition.of(champion));
-                            text($.Title, champion);
+        private Predicate<Champion> byName = champion -> {
+            String name = input.value.get();
+
+            if (name == null || name.isEmpty()) {
+                return true;
+            }
+            return champion.match(name);
+        };
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        protected void virtualize() {
+        
+            box($.Root, () -> {
+                box($.Filters, input, () -> {
+                    text($.FilterBySkill, "スキルで絞込");
+                    // text($.FilterByChampion, "チャンピオンで絞込");
+                    box($.SkillFilters.of(showSkillFilters), contents(groups, group -> {
+                        box($.Group, () -> {
+                            text($.GroupName, group.name);
+                            box($.GroupItems, contents(group.filters, filter -> {
+                                widget(filter.createUI(activeFilters).style($.Filter));
+                            }));
                         });
                     }));
+                    // box($.SkillFilters, If(showChampionFilters, $.ShowDetailFilter),
+                    // contents(groups,
+                    // group -> {
+                    // box($.Group, () -> {
+                    // text($.GroupName, group.name);
+                    // box($.GroupItems, contents(group.filters, filter -> {
+                    // widget(UI.checkbox(activeFilters, filter, filter.name).style($.Filter));
+                    // }));
+                    // });
+                    // }));
                 });
-            }
-        };
+                box($.ImageSet, contents(Champion.list(bySkill.and(byName)), champion -> {
+                    box($.Container, () -> {
+                        box($.IconImage, $.IconPosition.of(champion));
+                        text($.Title, champion);
+                    });
+                }));
+            });
+        }
     }
 
     /**

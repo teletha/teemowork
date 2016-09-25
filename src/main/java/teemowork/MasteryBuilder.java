@@ -18,7 +18,7 @@ import jsx.style.value.Color;
 import jsx.style.value.LinearGradient;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
-import jsx.ui.StructureDSL;
+import jsx.ui.ViewDSL;
 import jsx.ui.Widget;
 import kiss.Events;
 import teemowork.MasteryBuilder.Styles;
@@ -65,67 +65,76 @@ public class MasteryBuilder extends Widget<Styles> {
      * {@inheritDoc}
      */
     @Override
-    protected StructureDSL virtualize() {
-        return new StructureDSL() {
+    protected final ViewDSL virtualize() {
+        return new View();
+    }
 
-            {
-                box($.Information, () -> {
+    /**
+     * @version 2016/09/25 13:58:55
+     */
+    private class View extends ViewDSL {
 
-                });
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        protected void virtualize() {
+            box($.Information, () -> {
 
-                Mastery[][][] masteries = Mastery.getMasteryTree(Version.Latest);
+            });
 
-                build($.Offense, masteries[0], MasteryType.Offense);
-                build($.Defense, masteries[1], MasteryType.Defense);
-                build($.Utility, masteries[2], MasteryType.Utility);
-            }
+            Mastery[][][] masteries = Mastery.getMasteryTree(Version.Latest);
 
-            /**
-             * <p>
-             * Helper method to build view.
-             * </p>
-             * 
-             * @param root
-             * @param set
-             */
-            private void build(Style style, Mastery[][] set, MasteryType type) {
-                box(style, () -> {
-                    box(contents(set, masteries -> {
-                        box($.RankPane, contents(masteries, mastery -> {
-                            if (mastery == null) {
-                                box($.MasteryPane, $.EmptyPane);
-                                System.out.println("");
-                            } else {
-                                boolean available = masterySet.getLevel(mastery) != 0 || masterySet.isAvailable(mastery);
+            build($.Offense, masteries[0], MasteryType.Offense);
+            build($.Defense, masteries[1], MasteryType.Defense);
+            build($.Utility, masteries[2], MasteryType.Utility);
+        }
 
-                                box($.MasteryPane, If(!available, $.Unavailable), () -> {
-                                    svg("svg", $.IconImage, attr("size", "45 45"), () -> {
-                                        svg("image", attr("position", "0 0"), attr("size", "45 45"), attr("xlink:href", mastery
-                                                .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? ""
-                                                        : "url('#test')"));
-                                        svg("filter", $.NBox, id("test"), () -> {
-                                            svg("feColorMatrix", attr("type", "matrix"), attr("values", grayscale(0.4)));
-                                        });
-                                    });
-                                    box($.LevelPane, () -> {
-                                        text($.LevelValue, masterySet.getLevel(mastery));
-                                        text($.LevelSeparator, "/");
-                                        text($.LevelValue, mastery.getMaxLevel());
-                                    });
+        /**
+         * <p>
+         * Helper method to build view.
+         * </p>
+         * 
+         * @param root
+         * @param set
+         */
+        private void build(Style style, Mastery[][] set, MasteryType type) {
+            box(style, () -> {
+                box(contents(set, masteries -> {
+                    box($.RankPane, contents(masteries, mastery -> {
+                        if (mastery == null) {
+                            box($.MasteryPane, $.EmptyPane);
+                            System.out.println("");
+                        } else {
+                            boolean available = masterySet.getLevel(mastery) != 0 || masterySet.isAvailable(mastery);
 
-                                    box($.PopupPane, () -> {
-                                        text($.MasteryName, mastery.name);
-                                        widget(Widget.of(MasteryWidget.class, mastery, null, mastery.getDescriptor(Version.Latest)
-                                                .getPassive()));
+                            box($.MasteryPane, If(!available, $.Unavailable), () -> {
+                                svg("svg", $.IconImage, attr("size", "45 45"), () -> {
+                                    svg("image", attr("position", "0 0"), attr("size", "45 45"), attr("xlink:href", mastery
+                                            .getIcon()), attr("preserveAspectRatio", "xMinYMin slice"), attr("filter", available ? ""
+                                                    : "url('#test')"));
+                                    svg("filter", $.NBox, id("test"), () -> {
+                                        svg("feColorMatrix", attr("type", "matrix"), attr("values", grayscale(0.4)));
                                     });
                                 });
-                            }
-                        }));
+                                box($.LevelPane, () -> {
+                                    text($.LevelValue, masterySet.getLevel(mastery));
+                                    text($.LevelSeparator, "/");
+                                    text($.LevelValue, mastery.getMaxLevel());
+                                });
+
+                                box($.PopupPane, () -> {
+                                    text($.MasteryName, mastery.name);
+                                    widget(Widget
+                                            .of(MasteryWidget.class, mastery, null, mastery.getDescriptor(Version.Latest).getPassive()));
+                                });
+                            });
+                        }
                     }));
-                    text($.SumPoint, type.name().toUpperCase(), "　", masterySet.getSum(type));
-                });
-            }
-        };
+                }));
+                text($.SumPoint, type.name().toUpperCase(), "　", masterySet.getSum(type));
+            });
+        }
     }
 
     private String grayscale(double amount) {

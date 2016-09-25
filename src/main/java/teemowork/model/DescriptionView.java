@@ -13,7 +13,7 @@ import java.util.List;
 
 import jsx.style.Style;
 import jsx.style.StyleDSL;
-import jsx.ui.StructureDSL;
+import jsx.ui.ViewDSL;
 import jsx.ui.Widget3;
 import teemowork.model.DescriptionView.Styles;
 import teemowork.model.variable.Variable;
@@ -43,107 +43,116 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<Sty
      * {@inheritDoc}
      */
     @Override
-    protected StructureDSL virtualize() {
-        return new StructureDSL() {
+    protected final ViewDSL virtualize() {
+        return new View();
+    }
 
-            {
-                box($.Passive, contents(model3, text -> {
-                    if (text instanceof Variable) {
-                        writeVariable((Variable) text, getLevel());
-                    } else {
-                        text(text);
-                    }
-                }));
+    /**
+     * @version 2016/09/25 13:58:55
+     */
+    private class View extends ViewDSL {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        protected void virtualize() {
+            box($.Passive, contents(model3, text -> {
+                if (text instanceof Variable) {
+                    writeVariable((Variable) text, getLevel());
+                } else {
+                    text(text);
+                }
+            }));
+        }
+
+        /**
+         * <p>
+         * </p>
+         * 
+         * @param root
+         * @param variable
+         * @param level
+         */
+        protected void writeVariable(Variable variable, int level) {
+            VariableResolver resolver = variable.getResolver();
+            Status status = variable.getStatus();
+            List<Variable> amplifiers = variable.getAmplifiers();
+
+            if (!resolver.isSkillLevelBased()) {
+                level = resolver.convertLevel(calculator);
             }
 
-            /**
-             * <p>
-             * </p>
-             * 
-             * @param root
-             * @param variable
-             * @param level
-             */
-            protected void writeVariable(Variable variable, int level) {
-                VariableResolver resolver = variable.getResolver();
-                Status status = variable.getStatus();
-                List<Variable> amplifiers = variable.getAmplifiers();
+            // compute current value
+            text($.ComputedValue, status.format(variable.calculate(Math.max(1, level), calculator)));
 
-                if (!resolver.isSkillLevelBased()) {
-                    level = resolver.convertLevel(calculator);
-                }
+            // All values
+            int size = resolver.estimateSize();
+            int current = level;
 
-                // compute current value
-                text($.ComputedValue, status.format(variable.calculate(Math.max(1, level), calculator)));
+            if (1 < size || !amplifiers.isEmpty()) {
+                text("(");
 
-                // All values
-                int size = resolver.estimateSize();
-                int current = level;
+                if (1 < size) {
+                    box($.Variable, contents(1, size, i -> {
+                        String description = resolver.getLevelDescription(i);
 
-                if (1 < size || !amplifiers.isEmpty()) {
-                    text("(");
-
-                    if (1 < size) {
-                        box($.Variable, contents(1, size, i -> {
-                            String description = resolver.getLevelDescription(i);
-
-                            box($.Value, If(i == current, $.Current), If(description, title(description), $.Indicator), () -> {
-                                text(round(resolver.compute(i), 2));
-                            });
-                        }));
-                    }
-
-                    writeAmplifier(amplifiers, level, calculator);
-                    text(")");
-                }
-            }
-
-            /**
-             * <p>
-             * Write skill amplifier.
-             * </p>
-             * 
-             * @param root A element to write.
-             * @param amplifiers A list of skill amplifiers.
-             * @param level A current skill level.
-             */
-            public void writeAmplifier(List<Variable> amplifiers, int level, StatusCalculator calculator) {
-                if (!amplifiers.isEmpty()) {
-                    box($.Amplifiers, contents(amplifiers, amplifier -> {
-                        box($.Amplifier, () -> {
-                            int amp = level;
-
-                            text("+", amplifier.getStatus());
-
-                            VariableResolver resolver = amplifier.getResolver();
-
-                            if (!resolver.isSkillLevelBased()) {
-                                amp = resolver.convertLevel(calculator);
-                            }
-
-                            int estimated = resolver.estimateSize();
-                            int size = estimated == 0 ? amplifier.getAmplifiers().isEmpty() ? 0 : 1 : estimated;
-                            int current = amp;
-
-                            box(contents(1, size, i -> {
-                                String description = resolver.getLevelDescription(i);
-
-                                box($.Value, If(size != 1 && i == current, $.Current), If(description, title(description), $.Indicator), () -> {
-                                    text(round(amplifier.calculate(i, calculator, true), 4));
-                                });
-                            }));
-
-                            text(amplifier.getStatus().name().endsWith("Ratio") ? "%" : "");
-                            if (!amplifier.getAmplifiers().isEmpty()) {
-                                text("(");
-                                writeAmplifier(amplifier.getAmplifiers(), current, calculator);
-                                text(")");
-                            }
+                        box($.Value, If(i == current, $.Current), If(description, title(description), $.Indicator), () -> {
+                            text(round(resolver.compute(i), 2));
                         });
                     }));
                 }
+
+                writeAmplifier(amplifiers, level, calculator);
+                text(")");
             }
-        };
+        }
+
+        /**
+         * <p>
+         * Write skill amplifier.
+         * </p>
+         * 
+         * @param root A element to write.
+         * @param amplifiers A list of skill amplifiers.
+         * @param level A current skill level.
+         */
+        public void writeAmplifier(List<Variable> amplifiers, int level, StatusCalculator calculator) {
+            if (!amplifiers.isEmpty()) {
+                box($.Amplifiers, contents(amplifiers, amplifier -> {
+                    box($.Amplifier, () -> {
+                        int amp = level;
+
+                        text("+", amplifier.getStatus());
+
+                        VariableResolver resolver = amplifier.getResolver();
+
+                        if (!resolver.isSkillLevelBased()) {
+                            amp = resolver.convertLevel(calculator);
+                        }
+
+                        int estimated = resolver.estimateSize();
+                        int size = estimated == 0 ? amplifier.getAmplifiers().isEmpty() ? 0 : 1 : estimated;
+                        int current = amp;
+
+                        box(contents(1, size, i -> {
+                            String description = resolver.getLevelDescription(i);
+
+                            box($.Value, If(size != 1 && i == current, $.Current), If(description, title(description), $.Indicator), () -> {
+                                text(round(amplifier.calculate(i, calculator, true), 4));
+                            });
+                        }));
+
+                        text(amplifier.getStatus().name().endsWith("Ratio") ? "%" : "");
+                        if (!amplifier.getAmplifiers().isEmpty()) {
+                            text("(");
+                            writeAmplifier(amplifier.getAmplifiers(), current, calculator);
+                            text(")");
+                        }
+                    });
+                }));
+            }
+        }
     }
 
     /**

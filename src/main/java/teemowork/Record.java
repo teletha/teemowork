@@ -18,7 +18,7 @@ import jsx.style.ValueStyle;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
-import jsx.ui.StructureDSL;
+import jsx.ui.ViewDSL;
 import jsx.ui.Widget;
 import kiss.Events;
 import kiss.I;
@@ -42,51 +42,60 @@ public class Record extends Widget<Styles> {
      * {@inheritDoc}
      */
     @Override
-    protected StructureDSL virtualize() {
-        return new StructureDSL() {
+    protected final ViewDSL virtualize() {
+        return new View();
+    }
 
-            {
-                box($.MatchResultList, contents(matches, match -> {
-                    box($.MatchResult, () -> {
-                        RawStatsDto stats = match.stats;
-                        Champion champion = Champion.getByKey(match.championId);
+    /**
+     * @version 2016/09/25 13:58:55
+     */
+    private class View extends ViewDSL {
 
-                        box($.MatchInfo, () -> {
-                            text($.MatchType, match.subType);
-                            text($.MatchDate, format(match.createDate));
-                            // text($.MatchDuration, format(match.));
-                            text($.MatchEnd, match.stats.win ? "勝利" : "敗北");
-                        });
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        protected void virtualize() {
+            box($.MatchResultList, contents(matches, match -> {
+                box($.MatchResult, () -> {
+                    RawStatsDto stats = match.stats;
+                    Champion champion = Champion.getByKey(match.championId);
 
-                        box($.Icon50.of(champion));
-
-                        box($.Score, () -> {
-                            text($.ScoreValue, stats.championsKilled);
-                            text($.Separator, "/");
-                            text($.ScoreValue, stats.numDeaths);
-                            text($.Separator, "/");
-                            text($.ScoreValue, stats.assists);
-                            text("(", stats.getKDA(), ")");
-                        });
-
-                        // box(contents(match.participants, participant -> {
-                        // box($.Participant, () -> {
-                        // box($.Champion.of(participant.champion()));
-                        //
-                        // ParticipantStats stats = participant.stats;
-                        // box($.Score, () -> {
-                        // text($.ScoreValue, stats.kills);
-                        // text($.Separator, "/");
-                        // text($.ScoreValue, stats.deaths);
-                        // text($.Separator, "/");
-                        // text($.ScoreValue, stats.assists);
-                        // });
-                        // });
-                        // }));
+                    box($.MatchInfo, () -> {
+                        text($.MatchType, match.subType);
+                        text($.MatchDate, format(match.createDate));
+                        // text($.MatchDuration, format(match.));
+                        text($.MatchEnd, match.stats.win ? "勝利" : "敗北");
                     });
-                }));
-            }
-        };
+
+                    box($.Icon50.of(champion));
+
+                    box($.Score, () -> {
+                        text($.ScoreValue, stats.championsKilled);
+                        text($.Separator, "/");
+                        text($.ScoreValue, stats.numDeaths);
+                        text($.Separator, "/");
+                        text($.ScoreValue, stats.assists);
+                        text("(", stats.getKDA(), ")");
+                    });
+
+                    // box(contents(match.participants, participant -> {
+                    // box($.Participant, () -> {
+                    // box($.Champion.of(participant.champion()));
+                    //
+                    // ParticipantStats stats = participant.stats;
+                    // box($.Score, () -> {
+                    // text($.ScoreValue, stats.kills);
+                    // text($.Separator, "/");
+                    // text($.ScoreValue, stats.deaths);
+                    // text($.Separator, "/");
+                    // text($.ScoreValue, stats.assists);
+                    // });
+                    // });
+                    // }));
+                });
+            }));
+        }
     }
 
     private String format(long time) {
