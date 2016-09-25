@@ -29,7 +29,7 @@ import teemowork.api.GameAPI.RawStatsDto;
 import teemowork.model.Champion;
 
 /**
- * @version 2015/10/27 14:10:55
+ * @version 2016/09/25 17:07:36
  */
 public class Record extends Widget<Styles> {
 

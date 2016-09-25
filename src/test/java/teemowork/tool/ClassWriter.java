@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 import kiss.I;
 
 /**
- * @version 2016/09/19 9:57:07
+ * @version 2016/09/25 17:08:20
  */
 public class ClassWriter {
 

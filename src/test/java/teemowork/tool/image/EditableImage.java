@@ -29,7 +29,7 @@ import javax.imageio.plugins.jpeg.JPEGImageWriteParam;
 import kiss.I;
 
 /**
- * @version 2013/03/25 11:51:38
+ * @version 2016/09/25 17:08:32
  */
 public class EditableImage {
 
@@ -128,7 +128,8 @@ public class EditableImage {
      * @param image2
      */
     public EditableImage concat(EditableImage target) {
-        BufferedImage screen = new BufferedImage(image.getWidth() + target.image.getWidth(), Math.max(image.getHeight(), target.image.getHeight()), image.getType());
+        BufferedImage screen = new BufferedImage(image.getWidth() + target.image.getWidth(), Math
+                .max(image.getHeight(), target.image.getHeight()), image.getType());
         Graphics2D graphics = screen.createGraphics();
         graphics.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
         graphics.drawImage(target.image, image.getWidth(), 0, target.image.getWidth(), target.image.getHeight(), null);
