@@ -13,7 +13,7 @@ import java.util.Locale;
 
 import jsx.style.Style;
 import jsx.style.StyleDSL;
-import jsx.ui.ViewDSL;
+import jsx.ui.StructureDSL;
 import jsx.ui.Widget;
 import jsx.ui.piece.Button;
 import jsx.ui.piece.Input;
@@ -74,7 +74,7 @@ public class Setting extends Widget<Styles> {
     /**
      * @version 2016/09/25 13:58:55
      */
-    private class View extends ViewDSL {
+    private class View extends StructureDSL {
 
         /**
          * {@inheritDoc}

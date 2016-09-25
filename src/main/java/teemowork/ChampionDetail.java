@@ -23,7 +23,7 @@ import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
-import jsx.ui.ViewDSL;
+import jsx.ui.StructureDSL;
 import jsx.ui.Widget;
 import jsx.ui.Widget1;
 import jsx.ui.piece.UI;
@@ -89,7 +89,7 @@ public class ChampionDetail extends Widget1<Styles, Build> {
     /**
      * @version 2016/09/25 13:58:55
      */
-    private class View extends ViewDSL {
+    private class View extends StructureDSL {
 
         /**
          * {@inheritDoc}

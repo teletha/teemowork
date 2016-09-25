@@ -19,7 +19,7 @@ import jsx.style.Style;
 import jsx.style.StyleDSL;
 import jsx.style.property.Background.BackgroundImage;
 import jsx.style.value.Color;
-import jsx.ui.ViewDSL;
+import jsx.ui.StructureDSL;
 import jsx.ui.Widget;
 import kiss.Events;
 import teemowork.Navi.Styles;
@@ -96,7 +96,7 @@ public class Navi extends Widget<Styles> {
     /**
      * @version 2016/09/25 13:58:55
      */
-    private class View extends ViewDSL {
+    private class View extends StructureDSL {
 
         /**
          * {@inheritDoc}

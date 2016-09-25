@@ -18,7 +18,7 @@ import jsx.style.value.Color;
 import jsx.style.value.LinearGradient;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
-import jsx.ui.ViewDSL;
+import jsx.ui.StructureDSL;
 import jsx.ui.Widget;
 import kiss.Events;
 import teemowork.MasteryBuilder.Styles;
@@ -64,7 +64,7 @@ public class MasteryBuilder extends Widget<Styles> {
     /**
      * @version 2016/09/25 13:58:55
      */
-    private class View extends ViewDSL {
+    private class View extends StructureDSL {
 
         /**
          * {@inheritDoc}
