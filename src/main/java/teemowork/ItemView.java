@@ -11,6 +11,8 @@ package teemowork;
 
 import static teemowork.model.Status.*;
 
+import java.util.List;
+
 import jsx.style.Style;
 import jsx.style.StyleDSL;
 import jsx.style.ValueStyle;
@@ -19,7 +21,6 @@ import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.ui.StructureDSL;
 import jsx.ui.Widget;
-import jsx.ui.Widget1;
 import teemowork.ItemView.Styles;
 import teemowork.model.Ability;
 import teemowork.model.AbilityDescriptor;
@@ -34,12 +35,19 @@ import teemowork.model.Version;
 /**
  * @version 2015/10/14 11:02:40
  */
-public class ItemView extends Widget1<Styles, Item> {
+public class ItemView extends Widget<Styles> {
 
     private static final Status[] VISIBLE = {Health, BounusHealthRatio, Hreg, Mana, Mreg, AD, ASRatio, ARPen, LS, Critical, AP, CDR, SV,
             MRPen, AR, MR, MSRatio, GoldPer10Sec};
 
-    private final Item item = model1;
+    private final Item item;
+
+    /**
+     * @param item
+     */
+    public ItemView(Item item) {
+        this.item = item;
+    }
 
     /**
      * @version 2016/09/25 13:58:55
@@ -110,7 +118,7 @@ public class ItemView extends Widget1<Styles, Item> {
                                     }
                                 };
 
-                                widget(Widget.of(AbilityDescriptionView.class, ability, c, desc.getDescription()));
+                                widget(new AbilityDescriptionView(ability, c, desc.getDescription()));
                             });
                         }));
                     });
@@ -123,6 +131,15 @@ public class ItemView extends Widget1<Styles, Item> {
      * @version 2015/08/19 13:16:08
      */
     private static class AbilityDescriptionView extends DescriptionView<Ability> {
+
+        /**
+         * @param describable
+         * @param calculator
+         * @param list
+         */
+        private AbilityDescriptionView(Ability describable, StatusCalculator calculator, List list) {
+            super(describable, calculator, list);
+        }
 
         /**
          * {@inheritDoc}

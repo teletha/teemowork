@@ -14,7 +14,7 @@ import java.util.List;
 import jsx.style.Style;
 import jsx.style.StyleDSL;
 import jsx.ui.StructureDSL;
-import jsx.ui.Widget3;
+import jsx.ui.Widget;
 import teemowork.model.DescriptionView.Styles;
 import teemowork.model.variable.Variable;
 import teemowork.model.variable.VariableResolver;
@@ -22,13 +22,26 @@ import teemowork.model.variable.VariableResolver;
 /**
  * @version 2015/09/18 12:50:28
  */
-public abstract class DescriptionView<D extends Describable> extends Widget3<Styles, D, StatusCalculator, List> {
+public abstract class DescriptionView<D extends Describable> extends Widget<Styles> {
 
     /** The target descriptor to view. */
-    protected final Describable describable = model1;
+    protected final D describable;
 
     /** The calculator. */
-    protected final StatusCalculator calculator = model2;
+    protected final StatusCalculator calculator;
+
+    protected final List model3;
+
+    /**
+     * @param describable
+     * @param calculator
+     * @param model3
+     */
+    protected DescriptionView(D describable, StatusCalculator calculator, List model3) {
+        this.describable = describable;
+        this.calculator = calculator;
+        this.model3 = model3;
+    }
 
     /**
      * <p>

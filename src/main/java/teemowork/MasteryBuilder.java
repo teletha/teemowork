@@ -9,6 +9,8 @@
  */
 package teemowork;
 
+import java.util.List;
+
 import js.dom.User;
 import jsx.style.Style;
 import jsx.style.StyleDSL;
@@ -26,6 +28,7 @@ import teemowork.model.DescriptionView;
 import teemowork.model.Mastery;
 import teemowork.model.MasterySet;
 import teemowork.model.MasteryType;
+import teemowork.model.StatusCalculator;
 import teemowork.model.Version;
 
 /**
@@ -117,8 +120,7 @@ public class MasteryBuilder extends Widget<Styles> {
 
                                 box($.PopupPane, () -> {
                                     text($.MasteryName, mastery.name);
-                                    widget(Widget
-                                            .of(MasteryWidget.class, mastery, null, mastery.getDescriptor(Version.Latest).getPassive()));
+                                    widget(new MasteryWidget(mastery, null, mastery.getDescriptor(Version.Latest).getPassive()));
                                 });
                             });
                         }
@@ -139,11 +141,20 @@ public class MasteryBuilder extends Widget<Styles> {
     private class MasteryWidget extends DescriptionView<Mastery> {
 
         /**
+         * @param describable
+         * @param calculator
+         * @param model3
+         */
+        private MasteryWidget(Mastery describable, StatusCalculator calculator, List model3) {
+            super(describable, calculator, model3);
+        }
+
+        /**
          * {@inheritDoc}
          */
         @Override
         protected int getLevel() {
-            return masterySet.getLevel(model1);
+            return masterySet.getLevel(describable);
         }
     }
 

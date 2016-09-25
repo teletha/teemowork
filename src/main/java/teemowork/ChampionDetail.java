@@ -25,7 +25,6 @@ import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
 import jsx.ui.StructureDSL;
 import jsx.ui.Widget;
-import jsx.ui.Widget1;
 import jsx.ui.piece.UI;
 import kiss.Events;
 import kiss.I;
@@ -47,14 +46,14 @@ import teemowork.model.variable.VariableResolver;
 /**
  * @version 2015/10/18 21:57:55
  */
-public class ChampionDetail extends Widget1<Styles, Build> {
+public class ChampionDetail extends Widget<Styles> {
 
     /** The displayable status. */
     private static final Status[] VISIBLE = {Health, Hreg, Mana, Mreg, AD, ARPen, AS, LS, Critical, AP, MRPen, CDR, SV, AR, MR, MS, Range,
             Tenacity};
 
     /** The your custom build. */
-    private final Build build = model1;
+    private final Build build;
 
     /** Up skill level. */
     public final Events<Skill> skillUp = when(User.Click).at($.IconBox);
@@ -78,7 +77,9 @@ public class ChampionDetail extends Widget1<Styles, Build> {
     /**
      * 
      */
-    public ChampionDetail() {
+    public ChampionDetail(Build build) {
+        this.build = build;
+
         championLevelUp.to(update(v -> build.levelUp()));
         championLevelDown.to(update(v -> build.levelDown()));
         skillUp.to(update(build::levelUp));
@@ -146,14 +147,14 @@ public class ChampionDetail extends Widget1<Styles, Build> {
                             if (!status.getPassive().isEmpty()) {
                                 box($.Text, () -> {
                                     text($.SkillTypeInfo, SkillType.Passive);
-                                    widget(Widget.of(SkillWidget.class, skill, build, status.getPassive()));
+                                    widget(new SkillWidget(skill, build, status.getPassive()));
                                 });
                             }
 
                             if (!status.getActive().isEmpty()) {
                                 box($.Text, () -> {
                                     text($.SkillTypeInfo, status.getType());
-                                    widget(Widget.of(SkillWidget.class, skill, build, status.getActive()));
+                                    widget(new SkillWidget(skill, build, status.getActive()));
                                 });
                             }
                         });
@@ -315,11 +316,20 @@ public class ChampionDetail extends Widget1<Styles, Build> {
     private class SkillWidget extends DescriptionView<Skill> {
 
         /**
+         * @param describable
+         * @param calculator
+         * @param model3
+         */
+        private SkillWidget(Skill describable, StatusCalculator calculator, List model3) {
+            super(describable, calculator, model3);
+        }
+
+        /**
          * {@inheritDoc}
          */
         @Override
         protected int getLevel() {
-            return build.getLevel(model1);
+            return build.getLevel(describable);
         }
     }
 

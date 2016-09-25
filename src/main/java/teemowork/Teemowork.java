@@ -63,7 +63,7 @@ public class Teemowork extends Application {
 
     @Route
     public Widget champion(Champion champion) {
-        return Widget.of(ChampionDetail.class, new Build(champion));
+        return new ChampionDetail(new Build(champion));
     }
 
     @Route

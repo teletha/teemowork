@@ -80,7 +80,7 @@ public class ItemCatalog extends Widget<Styles> {
                 box($.Items, contents(Item.all(), item -> {
                     if (show(item)) {
                         box($.Item, () -> {
-                            widget(Widget.of(ItemView.class, item));
+                            widget(new ItemView(item));
                         });
                     }
 
