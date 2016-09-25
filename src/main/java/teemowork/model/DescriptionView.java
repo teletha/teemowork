@@ -40,14 +40,6 @@ public abstract class DescriptionView<D extends Describable> extends Widget3<Sty
     protected abstract int getLevel();
 
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected final ViewDSL virtualize() {
-        return new View();
-    }
-
-    /**
      * @version 2016/09/25 13:58:55
      */
     private class View extends ViewDSL {

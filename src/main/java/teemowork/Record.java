@@ -39,14 +39,6 @@ public class Record extends Widget<Styles> {
     private final List<GameDto> matches = GameAPI.user().flatMap(GameAPI::recent).flatMap(game -> Events.from(game.games)).toList();
 
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected final ViewDSL virtualize() {
-        return new View();
-    }
-
-    /**
      * @version 2016/09/25 13:58:55
      */
     private class View extends ViewDSL {
