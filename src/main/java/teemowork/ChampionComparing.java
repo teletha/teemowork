@@ -24,7 +24,6 @@ import jsx.style.ValueStyle;
 import jsx.style.value.Numeric;
 import jsx.ui.StructureDSL;
 import jsx.ui.Widget;
-import jsx.ui.Widget1;
 import jsx.ui.piece.Select;
 import jsx.ui.piece.UI;
 import kiss.I;
@@ -114,18 +113,21 @@ public class ChampionComparing extends Widget<Styles> {
     /**
      * @version 2015/03/02 10:58:34
      */
-    private class Header extends Widget1<Styles, Status> implements Comparator<Build> {
+    private class Header extends Widget<Styles> implements Comparator<Build> {
 
         /** The champion status. */
-        private final Status status = model1;
+        private final Status status;
 
         /** The sort order of this header. */
-        private boolean decending = status != null;
+        private boolean decending;
 
         /**
          * 
          */
-        private Header() {
+        private Header(Status status) {
+            this.status = status;
+            this.decending = status != null;
+
             when(User.Click).at($.StatusHeader).to(update(v -> {
                 if (order.get(0) == this) {
                     this.decending = !decending;
