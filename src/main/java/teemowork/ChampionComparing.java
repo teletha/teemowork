@@ -87,7 +87,7 @@ public class ChampionComparing extends Widget<Styles> {
             box($.Table, () -> {
                 box($.Head, () -> {
                     box($.NoIcon);
-                    box(contents(Header.class, STATUS));
+                    box(contents(STATUS, Header::new));
                 });
 
                 box($.Body, () -> {
@@ -132,7 +132,7 @@ public class ChampionComparing extends Widget<Styles> {
                 if (order.get(0) == this) {
                     this.decending = !decending;
                 }
-
+                System.out.println(status + "  " + decending);
                 // push this at top
                 order.remove(this);
                 order.add(0, this);
