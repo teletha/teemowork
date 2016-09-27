@@ -14,8 +14,8 @@ import static teemowork.TeemoworkTheme.*;
 
 import java.util.function.Supplier;
 
-import jsx.ui.Application;
-import jsx.ui.Route;
+import jsx.application.Application;
+import jsx.application.Route;
 import jsx.ui.Widget;
 import teemowork.model.Build;
 import teemowork.model.Champion;
