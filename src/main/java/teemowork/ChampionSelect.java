@@ -33,6 +33,7 @@ import jsx.ui.LowLevelWidget;
 import jsx.ui.ModelValue;
 import jsx.ui.StructureDSL;
 import jsx.ui.Widget;
+import jsx.ui.piece.CheckBox;
 import jsx.ui.piece.Input;
 import jsx.ui.piece.UI;
 import kiss.I;
@@ -49,6 +50,9 @@ import teemowork.model.variable.Variable;
  */
 public class ChampionSelect extends Widget<Styles> {
 
+    /** The list of active filters. */
+    private final @ModelValue SetProperty<SkillFilter> activeFilters = I.make(SetProperty.class);
+
     /** The skill filters. */
     private final FilterGroup[] groups = {
             new FilterGroup("ダメージ", type(Status.PhysicalDamage), type(Status.MagicDamage), type(Status.TrueDamage), type("範囲攻撃", Status.Radius)),
@@ -61,9 +65,6 @@ public class ChampionSelect extends Widget<Styles> {
 
     /** The name filter. */
     private final Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
-
-    /** The list of active filters. */
-    private final @ModelValue SetProperty<SkillFilter> activeFilters = I.make(SetProperty.class);
 
     /** The view state of filters. */
     private final @ModelValue BooleanProperty showSkillFilters = when(User.Click).at($.FilterBySkill).toBinary();
@@ -122,6 +123,8 @@ public class ChampionSelect extends Widget<Styles> {
      */
     public ChampionSelect(Teemowork application) {
         when(User.Click).at($.Container, Champion.class).to(name -> application.champion(name));
+
+        showSkillFilters.addListener(on -> update());
     }
 
     /**
@@ -156,7 +159,6 @@ public class ChampionSelect extends Widget<Styles> {
          */
         @Override
         protected void virtualize() {
-
             box($.Root, () -> {
                 box($.Filters, input, () -> {
                     text($.FilterBySkill, "スキルで絞込");
@@ -219,7 +221,7 @@ public class ChampionSelect extends Widget<Styles> {
      * @param statuses
      * @return
      */
-    private static SkillFilter type(Status... statuses) {
+    private SkillFilter type(Status... statuses) {
         return type(statuses[0].getName(), statuses);
     }
 
@@ -231,7 +233,7 @@ public class ChampionSelect extends Widget<Styles> {
      * @param statuses
      * @return
      */
-    private static SkillFilter type(String name, Status... statuses) {
+    private SkillFilter type(String name, Status... statuses) {
         return new SkillFilter(name, champion -> {
             Info info = Info.of(champion);
 
@@ -244,7 +246,7 @@ public class ChampionSelect extends Widget<Styles> {
         });
     }
 
-    private static SkillFilter status(Status status) {
+    private SkillFilter status(Status status) {
         return new SkillFilter(status.name(), champion -> {
             return true;
         });
@@ -258,7 +260,7 @@ public class ChampionSelect extends Widget<Styles> {
      * @param statuses
      * @return
      */
-    private static SkillFilter referSelf(Status... statuses) {
+    private SkillFilter referSelf(Status... statuses) {
         return referSelf(statuses[0].getName(), statuses);
     }
 
@@ -270,7 +272,7 @@ public class ChampionSelect extends Widget<Styles> {
      * @param statuses
      * @return
      */
-    private static SkillFilter referSelf(String name, Status... statuses) {
+    private SkillFilter referSelf(String name, Status... statuses) {
         return new SkillFilter("自身の" + name, champion -> {
             Info info = Info.of(champion);
 
@@ -291,7 +293,7 @@ public class ChampionSelect extends Widget<Styles> {
      * @param statuses
      * @return
      */
-    private static SkillFilter addReferEnemy(Status... statuses) {
+    private SkillFilter addReferEnemy(Status... statuses) {
         return addReferEnemy(statuses[0].getName(), statuses);
     }
 
@@ -303,7 +305,7 @@ public class ChampionSelect extends Widget<Styles> {
      * @param statuses
      * @return
      */
-    private static SkillFilter addReferEnemy(String name, Status... statuses) {
+    private SkillFilter addReferEnemy(String name, Status... statuses) {
         return new SkillFilter(name, champion -> {
             Info info = Info.of(champion);
 
@@ -340,13 +342,16 @@ public class ChampionSelect extends Widget<Styles> {
     /**
      * @version 2015/10/07 1:37:07
      */
-    private static class SkillFilter {
+    private class SkillFilter {
 
         /** The filter name. */
         final String name;
 
         /** The actual filter. */
         final Predicate<Champion> filter;
+
+        /** The actual ui. */
+        final CheckBox checkbox;
 
         /**
          * @param name
@@ -355,6 +360,7 @@ public class ChampionSelect extends Widget<Styles> {
         SkillFilter(String name, Predicate<Champion> filter) {
             this.name = name;
             this.filter = filter;
+            this.checkbox = UI.checkbox(activeFilters, this, name);
         }
 
         /**
@@ -362,15 +368,14 @@ public class ChampionSelect extends Widget<Styles> {
          * @return
          */
         LowLevelWidget createUI(SetProperty<SkillFilter> activeFilters) {
-            return UI.checkbox(activeFilters, this, name);
+            return checkbox;
         }
-
     }
 
     /**
      * @version 2015/11/02 11:00:44
      */
-    private static class SelectFilter extends SkillFilter {
+    private class SelectFilter extends SkillFilter {
 
         /**
          * @param name

@@ -32,7 +32,7 @@ public class Teemowork extends Application {
         document.documentElement().add(HTML);
         document.contentElement().add(Content);
 
-        Navi navi = Widget.of(Navi.class);
+        Navi navi = new Navi();
         navi.menu("< ^ v ^ > Teemowork", this::champion);
         navi.menu("Patch");
         navi.menu("Champion", this::champion, sub -> {
@@ -58,7 +58,7 @@ public class Teemowork extends Application {
 
     @Route
     public Widget champion() {
-        return Widget.of(ChampionSelect.class);
+        return new ChampionSelect(this);
     }
 
     @Route
@@ -68,27 +68,27 @@ public class Teemowork extends Application {
 
     @Route
     public Widget championCompare() {
-        return Widget.of(ChampionComparing.class);
+        return new ChampionComparing(this);
     }
 
     @Route
     public Widget item() {
-        return Widget.of(ItemCatalog.class);
+        return new ItemCatalog();
     }
 
     @Route
     public Widget mastery() {
-        return Widget.of(MasteryBuilder.class);
+        return new MasteryBuilder();
     }
 
     @Route
     public Widget record() {
-        return Widget.of(Record.class);
+        return new Record();
     }
 
     @Route
     public Widget setting() {
-        return Widget.of(Setting.class);
+        return new Setting();
     }
 
     /**

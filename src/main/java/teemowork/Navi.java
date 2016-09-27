@@ -38,7 +38,7 @@ public class Navi extends Widget<Styles> {
     /**
      * 
      */
-    private Navi() {
+    Navi() {
         selectMenu.to(menu -> {
             if (menu.action != null) {
                 menu.action.run();

@@ -67,7 +67,7 @@ public class ChampionComparing extends Widget<Styles> {
     /**
      * 
      */
-    private ChampionComparing(Teemowork teemowork) {
+    ChampionComparing(Teemowork teemowork) {
         when(User.Click).at($.Icon, Build.class).to(build -> {
             teemowork.champion(build.champion);
         });
