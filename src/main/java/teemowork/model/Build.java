@@ -291,7 +291,7 @@ public class Build implements StatusCalculator {
      * Increase chmapion level.
      * </p>
      */
-    public void levelUp() {
+    public void championLevelUp() {
         int now = level.get();
 
         if (now < 18) {
@@ -304,7 +304,7 @@ public class Build implements StatusCalculator {
      * Increase chmapion level.
      * </p>
      */
-    public void levelDown() {
+    public void championLevelDown() {
         int now = level.get();
 
         if (1 < now) {

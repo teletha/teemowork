@@ -56,23 +56,25 @@ public class ChampionDetail extends Widget<Styles> {
     private final Build build;
 
     /** Up skill level. */
-    public final Events<Skill> skillUp = when(User.Click).at($.IconBox);
+    public final Events<Skill> skillUp = when(User.Click).at($.IconBox).sideEffect(updateView);
 
     /** Down skill level. */
-    public final Events<Skill> skillDown = when(User.ClickRight).at($.IconBox, Skill.class);
+    public final Events<Skill> skillDown = when(User.ClickRight).at($.IconBox, Skill.class).sideEffect(updateView);
 
     /** Up champion level. */
-    public final Events<Champion> championLevelUp = when(User.Click, User.MouseWheelUp).at($.ChampionIconBox);
+    public final Events<Champion> championLevelUp = when(User.Click, User.MouseWheelUp).at($.ChampionIconBox).sideEffect(updateView);
 
     /** Down champion level. */
-    public final Events<Champion> championLevelDown = when(User.ClickRight, User.MouseWheelDown).at($.ChampionIconBox);
+    public final Events<Champion> championLevelDown = when(User.ClickRight, User.MouseWheelDown).at($.ChampionIconBox)
+            .sideEffect(updateView);
 
     /** The item selection. */
     private final Events<Ⅱ<Integer, Item>> selectItem = UI.modal()
             .open(when(User.Click).at($.ItemIconBase, Integer.class))
             .show(ItemCatalog.class)
             .closeWhen(items -> items.selectItem)
-            .map(c -> I.pair(c.ⅰ, c.ⅲ));
+            .map(c -> I.pair(c.ⅰ, c.ⅲ))
+            .sideEffect(updateView);
 
     /**
      * 
@@ -80,11 +82,11 @@ public class ChampionDetail extends Widget<Styles> {
     public ChampionDetail(Build build) {
         this.build = build;
 
-        championLevelUp.to(update(v -> build.levelUp()));
-        championLevelDown.to(update(v -> build.levelDown()));
-        skillUp.to(update(build::levelUp));
-        skillDown.to(update(build::levelDown));
-        selectItem.to(update(v -> build.setItem(v.ⅰ, v.ⅱ)));
+        championLevelUp.to(build::championLevelUp);
+        championLevelDown.to(build::championLevelDown);
+        skillUp.to(build::levelUp);
+        skillDown.to(build::levelDown);
+        selectItem.to(v -> build.setItem(v.ⅰ, v.ⅱ));
     }
 
     /**

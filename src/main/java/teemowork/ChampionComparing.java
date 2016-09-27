@@ -128,7 +128,7 @@ public class ChampionComparing extends Widget<Styles> {
             this.status = status;
             this.decending = status != null;
 
-            when(User.Click).at($.StatusHeader).to(update(v -> {
+            when(User.Click).at($.StatusHeader).sideEffect(updateView).to(v -> {
                 if (order.get(0) == this) {
                     this.decending = !decending;
                 }
@@ -136,7 +136,7 @@ public class ChampionComparing extends Widget<Styles> {
                 // push this at top
                 order.remove(this);
                 order.add(0, this);
-            }));
+            });
         }
 
         /**
