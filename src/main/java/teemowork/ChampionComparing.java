@@ -17,12 +17,12 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 
-import js.dom.User;
 import jsx.style.Style;
 import jsx.style.StyleDSL;
 import jsx.style.ValueStyle;
 import jsx.style.value.Numeric;
 import jsx.ui.StructureDSL;
+import jsx.ui.User;
 import jsx.ui.Widget;
 import jsx.ui.piece.Select;
 import jsx.ui.piece.UI;

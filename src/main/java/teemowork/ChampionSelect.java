@@ -21,7 +21,6 @@ import java.util.function.Predicate;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SetProperty;
 
-import js.dom.User;
 import jsx.style.BinaryStyle;
 import jsx.style.Style;
 import jsx.style.StyleDSL;
@@ -32,6 +31,7 @@ import jsx.style.value.Numeric;
 import jsx.ui.LowLevelWidget;
 import jsx.ui.ModelValue;
 import jsx.ui.StructureDSL;
+import jsx.ui.User;
 import jsx.ui.Widget;
 import jsx.ui.piece.CheckBox;
 import jsx.ui.piece.Input;

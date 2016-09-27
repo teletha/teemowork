@@ -13,7 +13,6 @@ import static teemowork.model.Status.*;
 
 import java.util.List;
 
-import js.dom.User;
 import jsx.style.BinaryStyle;
 import jsx.style.Style;
 import jsx.style.StyleDSL;
@@ -24,6 +23,7 @@ import jsx.style.value.Color;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
 import jsx.ui.StructureDSL;
+import jsx.ui.User;
 import jsx.ui.Widget;
 import jsx.ui.piece.UI;
 import kiss.Events;

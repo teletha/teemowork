@@ -11,7 +11,6 @@ package teemowork;
 
 import java.util.List;
 
-import js.dom.User;
 import jsx.style.Style;
 import jsx.style.StyleDSL;
 import jsx.style.ValueStyle;
@@ -21,6 +20,7 @@ import jsx.style.value.LinearGradient;
 import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
 import jsx.ui.StructureDSL;
+import jsx.ui.User;
 import jsx.ui.Widget;
 import kiss.Events;
 import teemowork.MasteryBuilder.Styles;
