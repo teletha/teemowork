@@ -312,7 +312,7 @@ public enum Status {
 
     DashTarget("突撃"),
 
-    Blink("テレポート"),
+    Blink("テレポート"), AntiBlink(Blink + "使用不可"),
 
     BlinkTarget("テレポート"),
 

@@ -21,7 +21,7 @@ import teemowork.tool.ClassWriter;
 import teemowork.tool.riot.ChampionDefinition.Status;
 
 /**
- * @version 2015/07/13 12:41:51
+ * @version 2016/09/28 22:23:51
  */
 public class ChampionDataBuilder {
 

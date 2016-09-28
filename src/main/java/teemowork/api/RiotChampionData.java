@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Teemowork Development Team
+ * Copyright (C) 2016 Nameless Production Committee
  *
  * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,7 +71,7 @@ public class RiotChampionData {
     public static final Champion Chogath = new Champion(31, "Cho'Gath", "チョ＝ガス", "Chogath", 574.4F, 80.0F, 8.925F, 0.85F, 272.2F, 40.0F, 7.205F, 0.45F, 61.156F, 4.2F, 0.625F, 1.44F, 0.0F, 0.0F, 28.88F, 3.5F, 32.1F, 1.25F, 345.0F, 125.0F, new String[] {"Carnivore", "Rupture", "Feral Scream", "Vorpal Spikes", "Feast"}, new String[] {"暴食", "ラプチャー", "スクリーム", "ヴォーパルスパイク", "捕食"}, SkillDefinition::Chogath, false);
 
     /** Corki Definition */
-    public static final Champion Corki = new Champion(42, "Corki", "コーキ", "Corki", 512.76F, 82.0F, 5.42F, 0.55F, 350.16F, 34.0F, 7.42F, 0.55F, 56.0F, 2.5F, 0.625F, 2.3F, 0.0F, 0.0F, 23.38F, 3.5F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {"Hextech Munitions", "Phosphorus Bomb", "Valkyrie", "Gatling Gun", "Missile Barrage"}, new String[] {"ヘクステック榴散弾", "閃光弾", "ワルキューレ機行", "ガトリングガン", "連発ミサイル"}, SkillDefinition::Corki, false);
+    public static final Champion Corki = new Champion(42, "Corki", "コーキ", "Corki", 512.76F, 82.0F, 5.42F, 0.55F, 350.16F, 34.0F, 7.42F, 0.55F, 56.0F, 3.5F, 0.625F, 2.3F, 0.0F, 0.0F, 23.38F, 3.5F, 30.0F, 0.0F, 325.0F, 550.0F, new String[] {"Hextech Munitions", "Phosphorus Bomb", "Valkyrie", "Gatling Gun", "Missile Barrage"}, new String[] {"ヘクステック榴散弾", "閃光弾", "ワルキューレ機行", "ガトリングガン", "連発ミサイル"}, SkillDefinition::Corki, false);
 
     /** Darius Definition */
     public static final Champion Darius = new Champion(122, "Darius", "ダリウス", "Darius", 582.24F, 100.0F, 9.845F, 0.95F, 263.0F, 37.5F, 6.585F, 0.35F, 56.0F, 5.0F, 0.625F, 1.0F, 0.0F, 0.0F, 30.0F, 4.0F, 32.1F, 1.25F, 340.0F, 175.0F, new String[] {"Hemorrhage", "Decimate", "Crippling Strike", "Apprehend", "Noxian Guillotine"}, new String[] {"大出血", "皆殺しの斧", "脚削ぎ", "捕縛", "ノクサスギロチン"}, SkillDefinition::Darius, false);
@@ -191,7 +191,7 @@ public class RiotChampionData {
     public static final Champion Kled = new Champion(240, "Kled", "クレッド", "Kled", 340.0F, 70.0F, 6.0F, 0.75F, 100.0F, 0.0F, 0.0F, 0.0F, 55.0F, 3.0F, 0.625F, 3.5F, 0.0F, 0.0F, 26.0F, 4.0F, 32.1F, 1.25F, 345.0F, 125.0F, new String[] {"Skaarl, the Cowardly Lizard", "Bear Trap on a Rope", "Violent Tendencies", "Jousting", "Chaaaaaaaarge!!!"}, new String[] {"弱虫トカゲ「スカール」", "トラバサミロープ", "狂暴の宴", "ジャウスト", "チャァァァァァァァジ！！！"}, SkillDefinition::Kled, false);
 
     /** Kog'Maw Definition */
-    public static final Champion KogMaw = new Champion(96, "Kog'Maw", "コグ＝マウ", "KogMaw", 517.76F, 82.0F, 5.92F, 0.55F, 322.2F, 40.0F, 8.675F, 0.7F, 57.46F, 2.41F, 0.625F, 3.5F, 0.0F, 0.0F, 19.88F, 3.5F, 30.0F, 0.0F, 325.0F, 500.0F, new String[] {"Icathian Surprise", "Caustic Spittle", "Bio-Arcane Barrage", "Void Ooze", "Living Artillery"}, new String[] {"イカシアの自爆", "腐食粘液", "有機性魔力砲", "ヴォイド分泌液", "生体空撃砲"}, SkillDefinition::KogMaw, false);
+    public static final Champion KogMaw = new Champion(96, "Kog'Maw", "コグ＝マウ", "KogMaw", 517.76F, 82.0F, 5.92F, 0.55F, 322.2F, 40.0F, 8.675F, 0.7F, 57.46F, 2.41F, 0.665F, 2.65F, 0.0F, 0.0F, 19.88F, 3.5F, 30.0F, 0.0F, 325.0F, 500.0F, new String[] {"Icathian Surprise", "Caustic Spittle", "Bio-Arcane Barrage", "Void Ooze", "Living Artillery"}, new String[] {"イカシアの自爆", "腐食粘液", "有機性魔力砲", "ヴォイド分泌液", "生体空撃砲"}, SkillDefinition::KogMaw, false);
 
     /** LeBlanc Definition */
     public static final Champion Leblanc = new Champion(7, "LeBlanc", "ルブラン", "Leblanc", 516.0F, 75.0F, 7.42F, 0.55F, 334.0F, 50.0F, 6.0F, 0.8F, 54.88F, 3.5F, 0.625F, 1.4F, 0.0F, 0.0F, 21.88F, 3.5F, 30.0F, 0.0F, 335.0F, 525.0F, new String[] {"Mirror Image", "Sigil of Malice", "Distortion", "Ethereal Chains", "Mimic"}, new String[] {"鏡像", "シジルマリス", "ディストーション", "エーテルチェイン", "再演"}, SkillDefinition::Leblanc, false);
