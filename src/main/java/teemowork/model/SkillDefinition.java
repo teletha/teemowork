@@ -191,7 +191,44 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void AurelionSol(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P619)
+                .passive("自身を廻る3つの星が{1}を与え、HPが25以下のミニオンにとどめを刺す。詠唱を妨害するスキルは星の効果を一時的に無効化する。なお自身がブッシュの中にいるときも星は敵に見えてしまう。")
+                .variable(1, MagicDamage, new PerLevel(20, 24, 28, 32, 36, 39, 44, 49, 54, 69, 66, 72, 78, 84, 93, 102, 111, 139), amplify(AP, 0.18, 0.1));
 
+        Q.update(P611)
+                .active("星の核を発射し、{1}する。星の核は自身から一定距離離れるか再使用することで爆発し、{2}と{3}を与える。また、星の核は発射されてからの時間経過(移動距離)に従って徐々に大きくなっていく。")
+                .variable(1, MSRatio, 10)
+                .variable(2, MagicDamage, 70, 40, ap(0.65))
+                .variable(3, Stun, 1.1, 0.1)
+                .cd(10)
+                .mana(60, 10)
+                .range(-1);
+
+        W.update(P619)
+                .passive("周回する星は追加{1}を与える。")
+                .variable(1, MagicDamage, 5, 5)
+                .active("自身を廻る星を最大周回軌道(自身からの距離650)まで送り出し持続させ、星のダメージを50%増加させる。")
+                .cd(6, -0.5)
+                .mana(40)
+                .range(650)
+                .type(SkillType.Toggle);
+
+        E.update(P619)
+                .passive("一定方向に移動し続けることで徐々に{1}する。敵チャンピオンか敵タワーからのダメージを受けるとこの効果はリセットされる。")
+                .variable(1, MSRatio, 25, 5)
+                .active("非戦闘時、指定方向に飛翔移動を行う。飛翔状態では地形を無視して移動でき、", MS, "が600に固定され", Q, "のみが使用可能になる。再度使用するか敵チャンピオンかタワーからダメージを受けると、飛翔状態は途中で解除される。飛翔中は壁や茂みを無視して視界を得られるが、自身も敵から同様に視認される。")
+                .cd(60, -5)
+                .mana(60)
+                .range(3000, 1000);
+
+        R.update(P610)
+                .active("指定した方向に強力な星炎を吐き出し、{1}と2秒間{2}を与える。星炎は近くの敵を最大周回軌道(距離650)まで{3}する。")
+                .variable(1, MagicDamage, 150, 100, ap(0.7))
+                .variable(2, MSSlowRatio, 40, 10)
+                .variable(3, Knockback)
+                .cd(120, -20)
+                .mana(100)
+                .range(1300);
     }
 
     /**
@@ -238,7 +275,7 @@ public interface SkillDefinition {
                 .variable(2, AD, 60, 15)
                 .variable(3, DamageReductionRatio, 70)
                 .cd(120, -20)
-                .mana(100, 0);
+                .mana(100);
     }
 
     /**
