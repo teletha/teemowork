@@ -139,6 +139,9 @@ public class RiotChampionData {
     /** Irelia Definition */
     public static final Champion Irelia = new Champion(39, "Irelia", "イレリア", "Irelia", 607.2F, 90.0F, 8.59F, 0.65F, 338.8F, 32.0F, 8.1F, 0.65F, 61.544F, 3.3F, 0.665F, 3.2F, 0.0F, 0.0F, 25.3F, 3.75F, 32.1F, 1.25F, 345.0F, 125.0F, new String[] {"Ionian Fervor", "Bladesurge", "Hiten Style", "Equilibrium Strike", "Transcendent Blades"}, new String[] {"アイオニアの熱情", "瞬剣", "飛天流", "平衡の一撃", "飛剣の舞"}, SkillDefinition::Irelia, false);
 
+    /** Ivern Definition */
+    public static final Champion Ivern = new Champion(427, "Ivern", "アイバーン", "Ivern", 580.0F, 74.0F, 6.9F, 0.85F, 450.0F, 60.0F, 6.0F, 0.75F, 50.0F, 3.0F, 0.625F, 2.8F, 0.0F, 0.0F, 22.0F, 3.5F, 30.0F, 1.25F, 330.0F, 125.0F, new String[] {"Friend of the Forest", "Rootcaller", "Brushmaker", "Triggerseed", "Daisy!"}, new String[] {"モリノトモダチ", "ネッコナゲ", "シゲミヅクリ", "タネバクダン", "デイジー！"}, SkillDefinition::Ivern, false);
+
     /** Janna Definition */
     public static final Champion Janna = new Champion(40, "Janna", "ジャンナ", "Janna", 487.04F, 78.0F, 5.42F, 0.55F, 409.52F, 64.0F, 11.5F, 0.4F, 51.956F, 2.95F, 0.625F, 2.61F, 0.0F, 0.0F, 19.384F, 3.8F, 30.0F, 0.0F, 335.0F, 475.0F, new String[] {"Tailwind", "Howling Gale", "Zephyr", "Eye Of The Storm", "Monsoon"}, new String[] {"テイルウィンド", "ハウリングゲイル", "ゼファー", "ストームブレス", "モンスーン"}, SkillDefinition::Janna, false);
 
@@ -254,7 +257,7 @@ public class RiotChampionData {
     public static final Champion Nocturne = new Champion(56, "Nocturne", "ノクターン", "Nocturne", 582.8F, 85.0F, 8.26F, 0.75F, 273.8F, 35.0F, 6.755F, 0.45F, 59.208F, 3.1F, 0.668F, 2.7F, 0.0F, 0.0F, 26.88F, 3.5F, 32.1F, 1.25F, 345.0F, 125.0F, new String[] {"Umbra Blades", "Duskbringer", "Shroud of Darkness", "Unspeakable Horror", "Paranoia"}, new String[] {"夢幻斬", "闇の手", "漆黒の帳", "底知れぬ恐怖", "パラノイア"}, SkillDefinition::Nocturne, false);
 
     /** Nunu Definition */
-    public static final Champion Nunu = new Champion(20, "Nunu", "ヌヌ", "Nunu", 598.28F, 90.0F, 8.39F, 0.8F, 283.56F, 42.0F, 7.44F, 0.5F, 56.856F, 3.45F, 0.625F, 2.25F, 0.0F, 0.0F, 26.38F, 3.5F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"Visionary", "Consume", "Blood Boil", "Ice Blast", "Absolute Zero"}, new String[] {"雪遊び", "丸かじり", "熱血", "氷弾", "アブソリュート・ゼロ"}, SkillDefinition::Nunu, false);
+    public static final Champion Nunu = new Champion(20, "Nunu", "ヌヌ", "Nunu", 598.28F, 90.0F, 8.39F, 0.8F, 283.56F, 42.0F, 7.44F, 0.5F, 59.0F, 4.0F, 0.625F, 2.25F, 0.0F, 0.0F, 26.38F, 3.5F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"Visionary", "Consume", "Blood Boil", "Ice Blast", "Absolute Zero"}, new String[] {"雪遊び", "丸かじり", "熱血", "氷弾", "アブソリュート・ゼロ"}, SkillDefinition::Nunu, false);
 
     /** Olaf Definition */
     public static final Champion Olaf = new Champion(2, "Olaf", "オラフ", "Olaf", 597.24F, 93.0F, 8.51F, 0.9F, 315.6F, 42.0F, 7.465F, 0.575F, 59.98F, 3.5F, 0.694F, 2.7F, 0.0F, 0.0F, 26.04F, 3.0F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"Berserker Rage", "Undertow", "Vicious Strikes", "Reckless Swing", "Ragnarok"}, new String[] {"狂戦士の怒り", "斧投げ", "残忍な斧", "捨て身切り", "ラグナロク"}, SkillDefinition::Olaf, false);
@@ -335,7 +338,7 @@ public class RiotChampionData {
     public static final Champion TahmKench = new Champion(223, "Tahm Kench", "タム・ケンチ", "TahmKench", 610.0F, 95.0F, 6.5F, 0.55F, 325.0F, 40.0F, 8.0F, 1.0F, 56.0F, 3.2F, 0.625F, 2.5F, 0.0F, 0.0F, 27.0F, 3.5F, 32.1F, 1.25F, 335.0F, 175.0F, new String[] {"An Acquired Taste", "Tongue Lash", "Devour", "Thick Skin", "Abyssal Voyage"}, new String[] {"舌慣らし", "味見", "丸呑み", "ゆるゆる皮膜", "船旅"}, SkillDefinition::TahmKench, false);
 
     /** Taliyah Definition */
-    public static final Champion Taliyah = new Champion(163, "Taliyah", "タリヤ", "Taliyah", 520.0F, 75.0F, 6.0F, 0.7F, 340.0F, 60.0F, 7.0F, 0.85F, 56.0F, 3.3F, 0.625F, 1.36F, 0.0F, 0.0F, 20.0F, 3.0F, 30.0F, 0.0F, 325.0F, 525.0F, new String[] {"Rock Surfing", "Threaded Volley", "Seismic Shove", "Unraveled Earth", "Weaver's Wall"}, new String[] {"ロックサーフィン", "スレッドボレー", "サイズミックシャーブ", "アンレイベルアース", "ウィーバーウォール"}, SkillDefinition::Taliyah, false);
+    public static final Champion Taliyah = new Champion(163, "Taliyah", "タリヤ", "Taliyah", 520.0F, 75.0F, 7.0F, 0.7F, 340.0F, 60.0F, 7.0F, 0.85F, 56.0F, 3.3F, 0.625F, 1.36F, 0.0F, 0.0F, 20.0F, 3.0F, 30.0F, 0.0F, 325.0F, 525.0F, new String[] {"Rock Surfing", "Threaded Volley", "Seismic Shove", "Unraveled Earth", "Weaver's Wall"}, new String[] {"ロックサーフィン", "スレッドボレー", "サイズミックシャーブ", "アンレイベルアース", "ウィーバーウォール"}, SkillDefinition::Taliyah, false);
 
     /** Talon Definition */
     public static final Champion Talon = new Champion(91, "Talon", "タロン", "Talon", 582.8F, 85.0F, 8.51F, 0.75F, 377.2F, 37.0F, 7.59F, 0.5F, 55.208F, 3.1F, 0.668F, 2.7F, 0.0F, 0.0F, 26.88F, 3.5F, 32.1F, 1.25F, 350.0F, 125.0F, new String[] {"Mercy", "Noxian Diplomacy", "Rake", "Cutthroat", "Shadow Assault"}, new String[] {"慈悲", "ノクサスの刃", "飛燕手裏剣", "瞬刃", "シャドウアサルト"}, SkillDefinition::Talon, false);

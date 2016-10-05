@@ -144,12 +144,22 @@ public class Skill extends Describable<SkillDescriptor> {
             }
         }
 
+        if (owner.equals("Jayce")) {
+            switch (key) {
+            case Q:
+            case W:
+            case E:
+                return 6;
+
+            default:
+                return 1;
+            }
+        }
+
         if (key == R) {
             switch (owner) {
             case "Elise":
             case "EliseTransformed":
-            case "Jayce":
-            case "JayceTransformed":
             case "Nidalee":
             case "NidaleeTransformed":
             case "Karma":

@@ -421,16 +421,16 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Ashe(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P522)
-                .passive("スキルと通常攻撃は対象に2秒間{1}を与える。またこのスキルで", MSSlow, "を付与した対象に通常攻撃を行うと追加{2}を与える。また、クリティカルが発生した場合、", Damage, "が増加する代わりに", MSSlowRatio, "の効果が2倍になる。")
-                .variable(1, MSSlowRatio, new Per3Level(5, 4))
+        P.update(P620)
+                .passive("スキルと通常攻撃は対象に2秒間{1}を与える。またこのスキルで", MSSlow, "を付与した対象に通常攻撃を行うと追加{2}を与える。また、クリティカルが発生した場合、", Damage, "が増加する代わりに", MSSlowRatio, "の効果が3倍になり効果時間が半分になる。")
+                .variable(1, MSSlowRatio, new Per3Level(5, 2))
                 .variable(2, PhysicalDamage, amplify(AD, 0.1, 0, amplify(Critical, 0.01)));
 
-        Q.update(P617)
+        Q.update(P620)
                 .passive("通常攻撃するたびに4秒間持続するスタックを得る(最大4スタック)。4秒間スタックの増加がない場合、スタックが1減少する。")
-                .active("4スタックを消費して4秒間{1}し、通常攻撃が5回に分けて合計{2}を与えるようになる。On-Hit Effectsは5連射の初撃のみ有効(Hurricaneは5回発動)。")
+                .active("4スタックを消費して4秒間{1}し、通常攻撃が5回に分けて合計{2}を与えるようになる。On-Hit Effectsは5連射の初撃のみ有効(Hurricaneは5回発動)。使用時に通常攻撃のディレイが40％まで減少される。")
                 .variable(1, ASRatio, 20, 5)
-                .variable(2, PhysicalDamage, amplify(AD, 1.15, 0.05))
+                .variable(2, PhysicalDamage, amplify(AD, 1.05, 0.05))
                 .mana(50);
 
         W.update(P618)
@@ -809,13 +809,13 @@ public interface SkillDefinition {
                 .cd(9)
                 .range(950);
 
-        W.update(P301)
+        W.update(P620)
                 .active("前方扇形60°の領域の敵ユニットに{1}と{2}を与える。")
                 .variable(1, MagicDamage, 75, 50, ap(0.7))
-                .variable(2, Silence, 1.5, 0.25)
+                .variable(2, Silence, 1.5, 0.125)
                 .mana(70, 10)
-                .cd(13)
-                .range(700);
+                .cd(13, -1)
+                .range(650);
 
         E.update(P301)
                 .active("通常攻撃時に前方にトゲを飛ばし当たった敵ユニットに{1}を与える。トゲを飛ばす範囲はUltのスタック数に比例し増加する。")
@@ -1924,6 +1924,58 @@ public interface SkillDefinition {
     /**
      * Define skill.
      */
+    public static void Ivern(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
+        P.update(P620)
+                .passive("伝説級を除く中立モンスターを攻撃することが出来ない。")
+                .active("中立モンスターをクリックすると、", Health, "を{1}と", Mana, "を{2}を消費して対象の周りに木立を発生させる。木立は、{3}かけて成長する。木立完成後に再度クリックすると、対象分の{4}と{5}を得てその対象を逃がすことが出来る。木立発生後の中立モンスターにSmiteを使用すると、即座に対象を逃がすことが出来る。自身のレベルが5以上でRed/Blueを逃がした場合、60秒間対象のコピーを作り味方チャンピオンがコピーに近づいたとき、その対象に同様のバフを付与する。味方チャンピオンが倒した際には60秒間自身だけが拾える対象のコピーが作られる。")
+                .variable(1, Value, new PerLevel(174, 183, 190, 197, 203, 208, 212, 215, 216, 217, 216, 213, 209, 203, 196, 186, 175, 161))
+                .variable(2, Value, new PerLevel(135, 141, 146, 150, 153, 155, 156, 156, 154, 151, 147, 141, 133, 124, 113, 99, 84, 67))
+                .variable(3, Time, 42, 0, level(-2))
+                .variable(4, Gold)
+                .variable(5, Experiment);
+
+        Q.update(P620)
+                .active("指定方向に蔓を飛ばし、当たった敵ユニットに{1}と{2}を与える。全ての味方チャンピオンとペットが", Snare, "効果中の敵ユニットを通常攻撃の対象にすると通常攻撃射程分の距離を取って対象に急接近する。")
+                .variable(1, MagicDamage, 80, 45, ap(0.7))
+                .variable(2, Snare, 1.2, 0.2)
+                .mana(50)
+                .cd(16, -1)
+                .range(600);
+
+        W.update(P620)
+                .passive("ブッシュにいる間{1}し、通常攻撃は追加{2}を与える。この効果はブッシュを出てから、少しの間持続する。またスタックが{3}毎に1増加する(最大3スタック)。")
+                .variable(1, Range, 450)
+                .variable(2, MagicDamage, 20, 10, ap(0.3))
+                .variable(3, CDRAwareTime, 40, -4)
+                .active("指定地点に30秒間ブッシュを設置する。")
+                .mana(30)
+                .cd(0.5)
+                .range(600);
+
+        E.update(P620)
+                .active("指定した味方チャンピオンに{1}を与える。2秒後", Shield, "は破裂し{2}の敵ユニットに{3}と3秒間{4}を与える。")
+                .variable(1, Shield, 80, 40, ap(0.8))
+                .variable(2, MagicDamage, 60, 30, ap(0.7))
+                .variable(3, MSSlowRatio, 70)
+                .mana(50)
+                .cd(12, -1)
+                .range(600);
+
+        R.update(P620)
+                .active("指定地点に60秒間デイジーを召喚する。デイジーは同じ敵チャンピオンに3回連続で通常攻撃をすると、対象に向けて振動を発生させ対象とその直線状にいる敵ユニットに{1}を与える。<br><br>", Health, " : {2}<br>攻撃 : {3}<br>", Range, " : {4}<br>", AR, ": {5}<br>", MR, " : {5}")
+                .variable(1, Knockup, 1)
+                .variable(2, Value, new PerSkillLevel(1250, 2000, 3500), ap(0.5))
+                .variable(3, MagicDamage, 100, 25, ap(0.25))
+                .variable(4, Value, 150)
+                .variable(5, Value, 20, 40, ap(0.05))
+                .mana(100)
+                .cd(160, -20)
+                .range(600);
+    }
+
+    /**
+     * Define skill.
+     */
     public static void Janna(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P504).passive("{1}の全ての味方チャンピオンは{2}する。").variable(1, Range, 1250).variable(2, MSRatio, 8);
 
@@ -2223,15 +2275,14 @@ public interface SkillDefinition {
                 .cd(10, -1)
                 .range(1500);
 
-        E.update(P401)
-                .active("指定地点に3つの罠を仕掛ける。敵チャンピオンが罠に触れると爆発し、{1}にいる敵ユニットに1.5秒かけて{2}を与え、更に罠に触れた敵チャンピオンに{3}を与える。罠は設置から{6}経過しないと反応せず、ひとつづつしか反応しない。一人のチャンピオンが３つ全ての罠にかかった場合は{5}を与える。罠は5秒経過すると自動的に爆発する。また罠は{4}。")
+        E.update(P620)
+                .active("指定地点に3つの罠を仕掛ける。敵チャンピオンが罠に触れると爆発し、{1}にいる敵ユニットに1.5秒かけて{2}を与え、更に罠に触れた敵チャンピオンに{3}を与える。罠は設置から{6}経過しないと反応せず、ひとつづつしか反応しない。罠は5秒経過すると自動的に爆発する。また罠は{4}。")
                 .variable(1, Radius, 50)
-                .variable(2, MagicDamage, 80, 55, ap(1))
+                .variable(2, MagicDamage, 70, 50, ap(1))
                 .variable(3, Snare, 1.5)
                 .variable(4, Visionable)
-                .variable(5, MagicDamage, 240, 165, ap(3))
                 .variable(6, Time, 0.7)
-                .mana(50)
+                .mana(70)
                 .cd(24, -2)
                 .range(900);
 
@@ -3624,18 +3675,16 @@ public interface SkillDefinition {
      * Define skill.
      */
     public static void Nunu(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
-        P.update(P301).passive("通常攻撃を行うたびにスタックが増加する(最大5スタック)。5スタックの状態でスキルを使用すると、スタックを消費してスキルの消費マナが0になる。");
+        P.update(P620).passive("通常攻撃を行うたびにスタックが増加する(最大5スタック)。5スタックの状態でスキルを使用すると、スタックを消費してスキルの消費マナが0になる。");
 
-        Q.update(P420)
-                .active("対象の敵ミニオンかペット及びモンスターに{1}を与え、{2}する。特定のモンスターを対象とした場合{3}間、以下の追加効果を得る。<br>精霊系 : {4}を得て{5}する。<br>動物系またはアンデッド系 : 敵ユニットを倒すと3秒間{7}する。<br>それ以外 : 通常攻撃かスキルでダメージを与えると、{6}を与える。")
+        Q.update(P620)
+                .active("対象の敵ミニオンかペット及びモンスターに{1}を与え、{2}する。大型モンスターに使用した場合に満腹スタッックを1得る（最大5スタック）。1スタックごとに、{{4}し{5}する。また非戦闘時に{3}する。")
                 .variable(1, TrueDamage, 400, 150)
                 .variable(2, RestoreHealth, 70, 45, ap(0.75))
-                .variable(3, Time, 120, 30)
-                .variable(4, Health, amplify(Health, 0.1))
-                .variable(5, Grow)
-                .variable(6, MagicDamage, amplify(Health, 0.01))
-                .variable(7, MSRatio, 15)
-                .cd(13, -1)
+                .variable(3, MS, 10)
+                .variable(4, HealthRatio, 3)
+                .variable(5, BodySizeRatio, 3)
+                .cd(12, -1)
                 .mana(60)
                 .range(125);
 
@@ -3656,7 +3705,7 @@ public interface SkillDefinition {
                 .cd(6, -0.5)
                 .range(550);
 
-        R.update(P418)
+        R.update(P620)
                 .active("{1}の熱を最大3秒まで吸い込み、エリア内の全て敵に{2}と{3}を与える。詠唱終了時（もしくは移動、中断された時）にエリア内の敵に{4}、３秒間{2}と{3}を与える。ダメージ量は詠唱した時間に比例し下限は{5}。")
                 .variable(1, Radius, 650)
                 .variable(2, ASSlowRatio, 25)
@@ -4875,15 +4924,15 @@ public interface SkillDefinition {
                 .passive("非戦闘時、壁の近くにいると{1}する。（戦闘状態になると5秒間使用不可になる）")
                 .variable(-1, MSRatio, new PerLevel(20, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40));
 
-        Q.update(P618)
+        Q.update(P620)
                 .passive("加工された地面を進む時に{1}する。")
                 .variable(-1, MSRatio, new PerLevel(10, 11, 11.5, 12, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18.5, 19, 19.5, 20))
                 .active("周囲の地面を引き裂き、自由に動きながら、指定方向に5つの石の欠片を発射し、当たった対象の{2}に{3}を与える。同一対象への2発目以降はダメージは半減する。使用すると一帯が{4}秒加工された地面に変わる。加工された地面の上でこのスキルを使用すると{5}するが、石の欠片は１つしか発射されない。")
                 .variable(2, Radius)
                 .variable(3, MagicDamage, 60, 20, ap(0.4))
-                .variable(4, CDRAwareTime, 140)
+                .variable(4, CDRAwareTime, 120)
                 .variable(5, RestoreMana, new PerSkillLevel(25, 27.5, 30, 32.5, 35))
-                .cd(10, -1.5)
+                .cd(89, -1.5)
                 .mana(50, 5)
                 .range(1000);
 
@@ -5619,10 +5668,10 @@ public interface SkillDefinition {
     public static void Vladimir(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P613).passive("{1}と{2}を得る。").variable(1, AP, amplify(BounusHealth, 0.025)).variable(2, Health, ap(1.4));
 
-        Q.update(P618)
-                .active("対象の敵ユニットに{1}を与え{2}し、1狂喜をチャージする。2狂喜チャージ時の次の詠唱可能時に2.5秒間真紅の衝動状態になる。真紅の衝動時は追加で{1}を与え{4}する。また0.5秒間{5}する。")
+        Q.update(P620)
+                .active("対象の敵ユニットに{1}を与え{2}し、1狂喜をチャージする。2狂喜チャージ時の次の詠唱可能時に2.5秒間真紅の衝動状態になる。真紅の衝動時は追加で{1}を与え{4}する（ミニオンに対する回復量は35%）。また0.5秒間{5}する。")
                 .variable(1, MagicDamage, 75, 15, ap(0.55))
-                .variable(2, RestoreHealth, 15, 10, ap(0.15))
+                .variable(2, RestoreHealth, 15, 10, ap(0.35))
                 .variable(4, RestoreHealth, 20, 0, level(10), amplify(MissingHealthRatio, 0.05, 0, ap(0.04)))
                 .variable(5, MSRatio, 10)
                 .cd(9, -1)
@@ -5639,11 +5688,11 @@ public interface SkillDefinition {
                 .cost(CurrentHealthRatio, 20, 0)
                 .cd(28, -3);
 
-        E.update(P618)
+        E.update(P620)
                 .active("1秒掛けて血液をチャージする。このスキルを再使用する(もしくは1.5秒経過する)と{1}の敵ユニットに{2}を与える。チャージ時間によってダメージとコストが増加し最大で{3}を与える。またこのスキルは敵ユニットを貫通しない。最大チャージ時では{4}し、命中した敵ユニットに0.5秒間{5}を与える。")
                 .variable(1, Radius, 300)
                 .variable(2, MagicDamage, 30, 15, ap(0.35), amplify(Health, 0.025))
-                .variable(3, MagicDamage, 60, 30, ap(0.7), amplify(Health, 0.08))
+                .variable(3, MagicDamage, 60, 30, ap(1), amplify(Health, 0.06))
                 .variable(4, MSSlowRatio, 20)
                 .variable(5, MSSlowRatio, 40)
                 .cost(CurrentHealthRatio, 2.5, 0)
@@ -5962,7 +6011,7 @@ public interface SkillDefinition {
                 .cd(20, -2)
                 .range(600);
 
-        E.update(P618)
+        E.update(P620)
                 .active("指定地点の敵ユニットに、{1}と2秒間{2}と4秒間マークを与える（指定地点から外れる毎に与えるダメージは減少していき最小で{3}）。マークの付与された対象に、自身と霧の乙女が向かうとき{4}してミストウォーカーが即座に飛びつくようになる。")
                 .variable(1, MagicDamage, amplify(TargetMaxHealthRatio, 15))
                 .variable(2, MSSlowRatio, 30)

@@ -374,6 +374,8 @@ public enum Status {
 
     Fury("Fury"),
 
+    BodySizeRatio("体の大きさ"),
+
     Stack("スタック"), ConsumedStack("消費したスタック"), StackPercentage("");
 
     /** The status name. */
@@ -620,6 +622,7 @@ public enum Status {
         case RestoreHealthRatio:
         case Grow:
         case AttackTowerDamageRatio:
+        case BodySizeRatio:
             return getName() + "が" + formatValue(Math.abs(computed)) + (0 <= computed ? "増加" : "減少");
 
         case DamageReduction:
