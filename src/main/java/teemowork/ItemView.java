@@ -54,11 +54,7 @@ public class ItemView extends Widget<Styles> {
      */
     private class View extends StructureDSL {
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize() {
+        {
             ItemDescriptor descriptor = item.getDescriptor(Version.Latest);
 
             box($.Root, () -> {

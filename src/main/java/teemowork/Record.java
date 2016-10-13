@@ -43,11 +43,7 @@ public class Record extends Widget<Styles> {
      */
     private class View extends StructureDSL {
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize() {
+        {
             box($.MatchResultList, contents(matches, match -> {
                 box($.MatchResult, () -> {
                     RawStatsDto stats = match.stats;

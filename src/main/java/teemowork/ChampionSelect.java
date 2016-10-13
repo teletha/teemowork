@@ -153,12 +153,7 @@ public class ChampionSelect extends Widget<Styles> {
             }
             return champion.match(name);
         };
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize() {
+        {
             box($.Root, () -> {
                 box($.Filters, input, () -> {
                     text($.FilterBySkill, "スキルで絞込");

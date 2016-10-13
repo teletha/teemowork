@@ -69,11 +69,7 @@ public class MasteryBuilder extends Widget<Styles> {
      */
     private class View extends StructureDSL {
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize() {
+        {
             box($.Information, () -> {
 
             });

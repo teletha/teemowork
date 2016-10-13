@@ -98,11 +98,7 @@ public class Navi extends Widget<Styles> {
      */
     private class View extends StructureDSL {
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize() {
+        {
             box($.TopMenuGroup, contents(menus.items, item -> {
                 html("li", $.TopMenu, () -> {
                     text($.MenuLink.of(item.action != null), item.label);

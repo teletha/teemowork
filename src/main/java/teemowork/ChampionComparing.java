@@ -78,11 +78,7 @@ public class ChampionComparing extends Widget<Styles> {
      */
     private class View extends StructureDSL {
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize() {
+        {
             widget(groups);
             box($.Table, () -> {
                 box($.Head, () -> {
@@ -163,11 +159,7 @@ public class ChampionComparing extends Widget<Styles> {
          */
         private class View extends StructureDSL {
 
-            /**
-             * {@inheritDoc}
-             */
-            @Override
-            protected void virtualize() {
+            {
                 text($.StatusHeader, status);
             }
         };

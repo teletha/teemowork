@@ -65,11 +65,7 @@ public class ItemCatalog extends Widget<Styles> {
      */
     private class View extends StructureDSL {
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize() {
+        {
             box($.Root, () -> {
                 box($.Groups, contents(groups, group -> {
                     text($.GroupName, group.name);

@@ -57,11 +57,7 @@ public abstract class DescriptionView<D extends Describable> extends Widget<Styl
      */
     private class View extends StructureDSL {
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize() {
+        {
             box($.Passive, contents(model3, text -> {
                 if (text instanceof Variable) {
                     writeVariable((Variable) text, getLevel());

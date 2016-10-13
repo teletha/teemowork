@@ -76,11 +76,7 @@ public class Setting extends Widget<Styles> {
      */
     private class View extends StructureDSL {
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize() {
+        {
             text($.CategoryName, "サモナー");
             box($.Item, () -> {
                 text($.ItemName, "地域");

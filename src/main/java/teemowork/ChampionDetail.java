@@ -94,11 +94,7 @@ public class ChampionDetail extends Widget<Styles> {
      */
     private class View extends StructureDSL {
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void virtualize() {
+        {
             box($.UpperInfo, () -> {
                 box($.ChampionIconBox.of(build.champion), () -> {
                     text($.Level, build.getLevel());
