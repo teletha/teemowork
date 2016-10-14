@@ -128,63 +128,65 @@ public class ChampionSelect extends Widget<Styles> {
     }
 
     /**
-     * @version 2016/09/25 13:58:55
+     * {@inheritDoc}
      */
-    private class View extends StructureDSL {
-
-        private Predicate<Champion> bySkill = champion -> {
-            if (activeFilters.isEmpty()) {
-                return true;
-            }
-
-            for (SkillFilter filter : activeFilters) {
-                if (!filter.filter.test(champion)) {
-                    return false;
+    @Override
+    protected void virtualize() {
+        new StructureDSL() {
+            private Predicate<Champion> bySkill = champion -> {
+                if (activeFilters.isEmpty()) {
+                    return true;
                 }
-            }
-            return true;
-        };
 
-        private Predicate<Champion> byName = champion -> {
-            String name = input.value.get();
-
-            if (name == null || name.isEmpty()) {
+                for (SkillFilter filter : activeFilters) {
+                    if (!filter.filter.test(champion)) {
+                        return false;
+                    }
+                }
                 return true;
-            }
-            return champion.match(name);
-        };
-        {
-            box($.Root, () -> {
-                box($.Filters, input, () -> {
-                    text($.FilterBySkill, "スキルで絞込");
-                    // text($.FilterByChampion, "チャンピオンで絞込");
-                    box($.SkillFilters.of(showSkillFilters), contents(groups, group -> {
-                        box($.Group, () -> {
-                            text($.GroupName, group.name);
-                            box($.GroupItems, contents(group.filters, filter -> {
-                                widget(filter.createUI(activeFilters).style($.Filter));
-                            }));
+            };
+
+            private Predicate<Champion> byName = champion -> {
+                String name = input.value.get();
+
+                if (name == null || name.isEmpty()) {
+                    return true;
+                }
+                return champion.match(name);
+            };
+            {
+                box($.Root, () -> {
+                    box($.Filters, input, () -> {
+                        text($.FilterBySkill, "スキルで絞込");
+                        // text($.FilterByChampion, "チャンピオンで絞込");
+                        box($.SkillFilters.of(showSkillFilters), contents(groups, group -> {
+                            box($.Group, () -> {
+                                text($.GroupName, group.name);
+                                box($.GroupItems, contents(group.filters, filter -> {
+                                    widget(filter.createUI(activeFilters).style($.Filter));
+                                }));
+                            });
+                        }));
+                        // box($.SkillFilters, If(showChampionFilters, $.ShowDetailFilter),
+                        // contents(groups,
+                        // group -> {
+                        // box($.Group, () -> {
+                        // text($.GroupName, group.name);
+                        // box($.GroupItems, contents(group.filters, filter -> {
+                        // widget(UI.checkbox(activeFilters, filter, filter.name).style($.Filter));
+                        // }));
+                        // });
+                        // }));
+                    });
+                    box($.ImageSet, contents(Champion.list(bySkill.and(byName)), champion -> {
+                        box($.Container, () -> {
+                            box($.IconImage, $.IconPosition.of(champion));
+                            text($.Title, champion);
                         });
                     }));
-                    // box($.SkillFilters, If(showChampionFilters, $.ShowDetailFilter),
-                    // contents(groups,
-                    // group -> {
-                    // box($.Group, () -> {
-                    // text($.GroupName, group.name);
-                    // box($.GroupItems, contents(group.filters, filter -> {
-                    // widget(UI.checkbox(activeFilters, filter, filter.name).style($.Filter));
-                    // }));
-                    // });
-                    // }));
                 });
-                box($.ImageSet, contents(Champion.list(bySkill.and(byName)), champion -> {
-                    box($.Container, () -> {
-                        box($.IconImage, $.IconPosition.of(champion));
-                        text($.Title, champion);
-                    });
-                }));
-            });
-        }
+            }
+        };
     }
 
     /**

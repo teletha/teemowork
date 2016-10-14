@@ -61,31 +61,33 @@ public class ItemCatalog extends Widget<Styles> {
     private final @ModelValue SetProperty<ItemFilter> activeFilters = I.make(SetProperty.class);
 
     /**
-     * @version 2016/09/25 13:58:55
+     * {@inheritDoc}
      */
-    private class View extends StructureDSL {
-
-        {
-            box($.Root, () -> {
-                box($.Groups, contents(groups, group -> {
-                    text($.GroupName, group.name);
-                    box($.Filters, contents(group.filters, filter -> {
-                        widget(UI.checkbox(activeFilters, filter, filter.status.getName()).style($.FilterName));
+    @Override
+    protected void virtualize() {
+        new StructureDSL() {
+            {
+                box($.Root, () -> {
+                    box($.Groups, contents(groups, group -> {
+                        text($.GroupName, group.name);
+                        box($.Filters, contents(group.filters, filter -> {
+                            widget(UI.checkbox(activeFilters, filter, filter.status.getName()).style($.FilterName));
+                        }));
                     }));
-                }));
-                box($.Items, contents(Item.all(), item -> {
-                    if (show(item)) {
-                        box($.Item, () -> {
-                            widget(new ItemView(item));
-                        });
-                    }
+                    box($.Items, contents(Item.all(), item -> {
+                        if (show(item)) {
+                            box($.Item, () -> {
+                                widget(new ItemView(item));
+                            });
+                        }
 
-                    // box($.Item, If(show(item), $.Selected), () -> {
-                    // widget(Widget.of(ItemView.class, item));
-                    // });
-                }));
-            });
-        }
+                        // box($.Item, If(show(item), $.Selected), () -> {
+                        // widget(Widget.of(ItemView.class, item));
+                        // });
+                    }));
+                });
+            }
+        };
     }
 
     /**

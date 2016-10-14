@@ -94,23 +94,25 @@ public class Navi extends Widget<Styles> {
     }
 
     /**
-     * @version 2016/09/25 13:58:55
+     * {@inheritDoc}
      */
-    private class View extends StructureDSL {
+    @Override
+    protected void virtualize() {
+        new StructureDSL() {
+            {
+                box($.TopMenuGroup, contents(menus.items, item -> {
+                    html("li", $.TopMenu, () -> {
+                        text($.MenuLink.of(item.action != null), item.label);
 
-        {
-            box($.TopMenuGroup, contents(menus.items, item -> {
-                html("li", $.TopMenu, () -> {
-                    text($.MenuLink.of(item.action != null), item.label);
-
-                    box($.SubMenuGroup, contents(item.items, sub -> {
-                        html("li", $.SubMenu, () -> {
-                            text($.MenuLink.of(item.action != null), sub.label);
-                        });
-                    }));
-                });
-            }));
-        }
+                        box($.SubMenuGroup, contents(item.items, sub -> {
+                            html("li", $.SubMenu, () -> {
+                                text($.MenuLink.of(item.action != null), sub.label);
+                            });
+                        }));
+                    });
+                }));
+            }
+        };
     }
 
     /**

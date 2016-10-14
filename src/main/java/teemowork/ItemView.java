@@ -50,77 +50,79 @@ public class ItemView extends Widget<Styles> {
     }
 
     /**
-     * @version 2016/09/25 13:58:55
+     * {@inheritDoc}
      */
-    private class View extends StructureDSL {
+    @Override
+    protected void virtualize() {
+        new StructureDSL() {
+            {
+                ItemDescriptor descriptor = item.getDescriptor(Version.Latest);
 
-        {
-            ItemDescriptor descriptor = item.getDescriptor(Version.Latest);
-
-            box($.Root, () -> {
-                box($.IconArea, () -> {
-                    box($.Icon, $.ItemImage.of(item));
-                    box($.Materials, contents(descriptor.getBuildItem(), material -> {
-                        box($.Material, $.ItemImage.of(material));
-                    }));
-                });
-                box($.DescriptionArea, () -> {
-                    // Name and Cost
-                    double cost = item.buyBaseCost;
-                    double total = item.buyTotalCost;
-
-                    box($.Heading, () -> {
-                        text($.Name, item);
-                        text($.TotalCost, total);
-                        if (cost != total) {
-                            text($.Cost, "(", cost, ")");
-                        }
-                    });
-
-                    // Status
-                    box($.StatusSet, contents(VISIBLE, status -> {
-                        double value = descriptor.get(status);
-
-                        if (value != 0) {
-                            text($.StatusValue, value, status.getUnit(), " ", status);
-                        }
-                    }));
-
-                    box($.DescriptionArea, () -> {
-                        box(contents(descriptor.getAbilities(), ability -> {
-                            AbilityDescriptor desc = ability.getDescriptor(Version.Latest);
-
-                            box($.AbilityArea, () -> {
-                                if (ability.name.startsWith("#")) {
-                                    text($.AbilityInfo, desc.isUnique() ? "Unique " : "", desc.isActive() ? "Active" : "Passive");
-                                } else {
-                                    text($.AbilityInfo, ability.name);
-                                }
-                                StatusCalculator c = new StatusCalculator() {
-
-                                    @Override
-                                    public int getLevel(Skill skill) {
-                                        return 0;
-                                    }
-
-                                    @Override
-                                    public int getLevel() {
-                                        return 0;
-                                    }
-
-                                    @Override
-                                    public double calculate(Status status) {
-                                        return 0;
-                                    }
-                                };
-
-                                widget(new AbilityDescriptionView(ability, c, desc.getDescription()));
-                            });
+                box($.Root, () -> {
+                    box($.IconArea, () -> {
+                        box($.Icon, $.ItemImage.of(item));
+                        box($.Materials, contents(descriptor.getBuildItem(), material -> {
+                            box($.Material, $.ItemImage.of(material));
                         }));
                     });
+                    box($.DescriptionArea, () -> {
+                        // Name and Cost
+                        double cost = item.buyBaseCost;
+                        double total = item.buyTotalCost;
+
+                        box($.Heading, () -> {
+                            text($.Name, item);
+                            text($.TotalCost, total);
+                            if (cost != total) {
+                                text($.Cost, "(", cost, ")");
+                            }
+                        });
+
+                        // Status
+                        box($.StatusSet, contents(VISIBLE, status -> {
+                            double value = descriptor.get(status);
+
+                            if (value != 0) {
+                                text($.StatusValue, value, status.getUnit(), " ", status);
+                            }
+                        }));
+
+                        box($.DescriptionArea, () -> {
+                            box(contents(descriptor.getAbilities(), ability -> {
+                                AbilityDescriptor desc = ability.getDescriptor(Version.Latest);
+
+                                box($.AbilityArea, () -> {
+                                    if (ability.name.startsWith("#")) {
+                                        text($.AbilityInfo, desc.isUnique() ? "Unique " : "", desc.isActive() ? "Active" : "Passive");
+                                    } else {
+                                        text($.AbilityInfo, ability.name);
+                                    }
+                                    StatusCalculator c = new StatusCalculator() {
+
+                                        @Override
+                                        public int getLevel(Skill skill) {
+                                            return 0;
+                                        }
+
+                                        @Override
+                                        public int getLevel() {
+                                            return 0;
+                                        }
+
+                                        @Override
+                                        public double calculate(Status status) {
+                                            return 0;
+                                        }
+                                    };
+
+                                    widget(new AbilityDescriptionView(ability, c, desc.getDescription()));
+                                });
+                            }));
+                        });
+                    });
                 });
-            });
-        }
+            }
+        };
     }
 
     /**

@@ -39,51 +39,53 @@ public class Record extends Widget<Styles> {
     private final List<GameDto> matches = GameAPI.user().flatMap(GameAPI::recent).flatMap(game -> Events.from(game.games)).toList();
 
     /**
-     * @version 2016/09/25 13:58:55
+     * {@inheritDoc}
      */
-    private class View extends StructureDSL {
+    @Override
+    protected void virtualize() {
+        new StructureDSL() {
+            {
+                box($.MatchResultList, contents(matches, match -> {
+                    box($.MatchResult, () -> {
+                        RawStatsDto stats = match.stats;
+                        Champion champion = Champion.getByKey(match.championId);
 
-        {
-            box($.MatchResultList, contents(matches, match -> {
-                box($.MatchResult, () -> {
-                    RawStatsDto stats = match.stats;
-                    Champion champion = Champion.getByKey(match.championId);
+                        box($.MatchInfo, () -> {
+                            text($.MatchType, match.subType);
+                            text($.MatchDate, format(match.createDate));
+                            // text($.MatchDuration, format(match.));
+                            text($.MatchEnd, match.stats.win ? "勝利" : "敗北");
+                        });
 
-                    box($.MatchInfo, () -> {
-                        text($.MatchType, match.subType);
-                        text($.MatchDate, format(match.createDate));
-                        // text($.MatchDuration, format(match.));
-                        text($.MatchEnd, match.stats.win ? "勝利" : "敗北");
+                        box($.Icon50.of(champion));
+
+                        box($.Score, () -> {
+                            text($.ScoreValue, stats.championsKilled);
+                            text($.Separator, "/");
+                            text($.ScoreValue, stats.numDeaths);
+                            text($.Separator, "/");
+                            text($.ScoreValue, stats.assists);
+                            text("(", stats.getKDA(), ")");
+                        });
+
+                        // box(contents(match.participants, participant -> {
+                        // box($.Participant, () -> {
+                        // box($.Champion.of(participant.champion()));
+                        //
+                        // ParticipantStats stats = participant.stats;
+                        // box($.Score, () -> {
+                        // text($.ScoreValue, stats.kills);
+                        // text($.Separator, "/");
+                        // text($.ScoreValue, stats.deaths);
+                        // text($.Separator, "/");
+                        // text($.ScoreValue, stats.assists);
+                        // });
+                        // });
+                        // }));
                     });
-
-                    box($.Icon50.of(champion));
-
-                    box($.Score, () -> {
-                        text($.ScoreValue, stats.championsKilled);
-                        text($.Separator, "/");
-                        text($.ScoreValue, stats.numDeaths);
-                        text($.Separator, "/");
-                        text($.ScoreValue, stats.assists);
-                        text("(", stats.getKDA(), ")");
-                    });
-
-                    // box(contents(match.participants, participant -> {
-                    // box($.Participant, () -> {
-                    // box($.Champion.of(participant.champion()));
-                    //
-                    // ParticipantStats stats = participant.stats;
-                    // box($.Score, () -> {
-                    // text($.ScoreValue, stats.kills);
-                    // text($.Separator, "/");
-                    // text($.ScoreValue, stats.deaths);
-                    // text($.Separator, "/");
-                    // text($.ScoreValue, stats.assists);
-                    // });
-                    // });
-                    // }));
-                });
-            }));
-        }
+                }));
+            }
+        };
     }
 
     private String format(long time) {

@@ -72,43 +72,45 @@ public class Setting extends Widget<Styles> {
     private final RadioBox statusJapanease = UI.radiobox(preference.localeStatus, Locale.JAPANESE, "日本語").style($.SettingBox);
 
     /**
-     * @version 2016/09/25 13:58:55
+     * {@inheritDoc}
      */
-    private class View extends StructureDSL {
+    @Override
+    protected void virtualize() {
+        new StructureDSL() {
+            {
+                text($.CategoryName, "サモナー");
+                box($.Item, () -> {
+                    text($.ItemName, "地域");
+                    box(summerRegion);
+                });
+                box($.Item, () -> {
+                    text($.ItemName, "名前");
+                    box(summerName);
+                });
+                box($.Item, () -> {
+                    text($.ItemName, "更新");
+                    box(update);
+                });
 
-        {
-            text($.CategoryName, "サモナー");
-            box($.Item, () -> {
-                text($.ItemName, "地域");
-                box(summerRegion);
-            });
-            box($.Item, () -> {
-                text($.ItemName, "名前");
-                box(summerName);
-            });
-            box($.Item, () -> {
-                text($.ItemName, "更新");
-                box(update);
-            });
-
-            text($.CategoryName, "表記言語");
-            box($.Item, () -> {
-                text($.ItemName, "チャンピオン名");
-                box(championEnglish, championJapanease);
-            });
-            box($.Item, () -> {
-                text($.ItemName, "スキル名");
-                box(skillEnglish, skillJapanease);
-            });
-            box($.Item, () -> {
-                text($.ItemName, "アイテム名");
-                box(itemEnglish, itemJapanease);
-            });
-            box($.Item, () -> {
-                text($.ItemName, "ステータス名");
-                box(statusEnglish, statusJapanease);
-            });
-        }
+                text($.CategoryName, "表記言語");
+                box($.Item, () -> {
+                    text($.ItemName, "チャンピオン名");
+                    box(championEnglish, championJapanease);
+                });
+                box($.Item, () -> {
+                    text($.ItemName, "スキル名");
+                    box(skillEnglish, skillJapanease);
+                });
+                box($.Item, () -> {
+                    text($.ItemName, "アイテム名");
+                    box(itemEnglish, itemJapanease);
+                });
+                box($.Item, () -> {
+                    text($.ItemName, "ステータス名");
+                    box(statusEnglish, statusJapanease);
+                });
+            }
+        };
     }
 
     /**

@@ -74,36 +74,38 @@ public class ChampionComparing extends Widget<Styles> {
     }
 
     /**
-     * @version 2016/09/25 13:58:55
+     * {@inheritDoc}
      */
-    private class View extends StructureDSL {
+    @Override
+    protected void virtualize() {
+        new StructureDSL() {
+            {
+                widget(groups);
+                box($.Table, () -> {
+                    box($.Head, () -> {
+                        box($.NoIcon);
+                        box(contents(STATUS, Header::new));
+                    });
 
-        {
-            widget(groups);
-            box($.Table, () -> {
-                box($.Head, () -> {
-                    box($.NoIcon);
-                    box(contents(STATUS, Header::new));
+                    box($.Body, () -> {
+                        box($.VBox, contents(group.getValue().sortBy(comparator), build -> {
+                            box($.RowLine, () -> {
+                                ChampionStatus championStatus = build.champion.getStatus(Version.Latest);
+                                build.setLevel(level);
+
+                                box($.Icon.of(build.champion));
+                                box(contents(STATUS, status -> {
+                                    box($.Status, () -> {
+                                        text($.StatusBase, build.get(status));
+                                        text($.StatusPerLevel, "(", championStatus.get(status.per()), ")");
+                                    });
+                                }));
+                            });
+                        }));
+                    });
                 });
-
-                box($.Body, () -> {
-                    box($.VBox, contents(group.getValue().sortBy(comparator), build -> {
-                        box($.RowLine, () -> {
-                            ChampionStatus championStatus = build.champion.getStatus(Version.Latest);
-                            build.setLevel(level);
-
-                            box($.Icon.of(build.champion));
-                            box(contents(STATUS, status -> {
-                                box($.Status, () -> {
-                                    text($.StatusBase, build.get(status));
-                                    text($.StatusPerLevel, "(", championStatus.get(status.per()), ")");
-                                });
-                            }));
-                        });
-                    }));
-                });
-            });
-        }
+            }
+        };
     }
 
     /**
@@ -155,14 +157,16 @@ public class ChampionComparing extends Widget<Styles> {
         }
 
         /**
-         * @version 2016/09/25 13:58:55
+         * {@inheritDoc}
          */
-        private class View extends StructureDSL {
-
-            {
-                text($.StatusHeader, status);
-            }
-        };
+        @Override
+        protected void virtualize() {
+            new StructureDSL() {
+                {
+                    text($.StatusHeader, status);
+                }
+            };
+        }
     }
 
     /**
