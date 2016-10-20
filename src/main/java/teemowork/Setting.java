@@ -35,7 +35,7 @@ public class Setting extends Widget<Styles> {
     private final UserPreference preference = I.make(UserPreference.class);
 
     /** The configuration item. */
-    private final Select<Region> summerRegion = UI.select(preference.region, Region.class);
+    private final Select<Region> summerRegion = UI.select(Region.class, preference.region);
 
     /** The configuration item. */
     private final Input summerName = UI.input(preference.name).invalidIf(String::isEmpty, "サモナーネームを入力して下さい。");

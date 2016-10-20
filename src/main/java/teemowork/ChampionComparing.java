@@ -48,7 +48,7 @@ public class ChampionComparing extends Widget<Styles> {
     /** The sort order. */
     private ListProperty<Header> order = I.make(ListProperty.class);
 
-    private final Select<ChampionGroup> groups = UI.select(group, ChampionGroup.class);
+    private final Select<ChampionGroup> groups = UI.select(ChampionGroup.class, group);
 
     private final int level = 18;
 
