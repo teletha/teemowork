@@ -140,7 +140,7 @@ public class RiotChampionData {
     public static final Champion Irelia = new Champion(39, "Irelia", "イレリア", "Irelia", 607.2F, 90.0F, 8.59F, 0.65F, 338.8F, 32.0F, 8.1F, 0.65F, 61.544F, 3.3F, 0.665F, 3.2F, 0.0F, 0.0F, 25.3F, 3.75F, 32.1F, 1.25F, 345.0F, 125.0F, new String[] {"Ionian Fervor", "Bladesurge", "Hiten Style", "Equilibrium Strike", "Transcendent Blades"}, new String[] {"アイオニアの熱情", "瞬剣", "飛天流", "平衡の一撃", "飛剣の舞"}, SkillDefinition::Irelia, false);
 
     /** Ivern Definition */
-    public static final Champion Ivern = new Champion(427, "Ivern", "アイバーン", "Ivern", 580.0F, 74.0F, 6.9F, 0.85F, 450.0F, 60.0F, 6.0F, 0.75F, 50.0F, 3.0F, 0.625F, 2.8F, 0.0F, 0.0F, 22.0F, 3.5F, 30.0F, 1.25F, 330.0F, 125.0F, new String[] {"Friend of the Forest", "Rootcaller", "Brushmaker", "Triggerseed", "Daisy!"}, new String[] {"モリノトモダチ", "ネッコナゲ", "シゲミヅクリ", "タネバクダン", "デイジー！"}, SkillDefinition::Ivern, false);
+    public static final Champion Ivern = new Champion(427, "Ivern", "アイバーン", "Ivern", 580.0F, 90.0F, 6.9F, 0.85F, 450.0F, 60.0F, 6.0F, 0.75F, 50.0F, 3.0F, 0.644F, 3.4F, 0.0F, 0.0F, 22.0F, 3.5F, 32.1F, 1.25F, 330.0F, 125.0F, new String[] {"Friend of the Forest", "Rootcaller", "Brushmaker", "Triggerseed", "Daisy!"}, new String[] {"モリノトモダチ", "ネッコナゲ", "シゲミヅクリ", "タネバクダン", "デイジー！"}, SkillDefinition::Ivern, false);
 
     /** Janna Definition */
     public static final Champion Janna = new Champion(40, "Janna", "ジャンナ", "Janna", 487.04F, 78.0F, 5.42F, 0.55F, 409.52F, 64.0F, 11.5F, 0.4F, 51.956F, 2.95F, 0.625F, 2.61F, 0.0F, 0.0F, 19.384F, 3.8F, 30.0F, 0.0F, 335.0F, 475.0F, new String[] {"Tailwind", "Howling Gale", "Zephyr", "Eye Of The Storm", "Monsoon"}, new String[] {"テイルウィンド", "ハウリングゲイル", "ゼファー", "ストームブレス", "モンスーン"}, SkillDefinition::Janna, false);

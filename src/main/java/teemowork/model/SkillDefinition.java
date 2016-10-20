@@ -1705,11 +1705,11 @@ public interface SkillDefinition {
                 .cd(20, -1)
                 .range(950);
 
-        E.update(P522)
-                .active("指定方向に{1}して、4秒間{2}と{3}を得る(最大4スタックまで保持可能)。このスキルは使用時に装弾数を1つ回復させ、{4}。通常攻撃をする毎にこのスキルの{5}する（建物には無効）。")
+        E.update(P621)
+                .active("指定方向に{1}して、4秒間{2}と{3}を得る(最大8スタックまで保持可能、チャンピオンに向かってダッシュした場合は2スタック)。このスキルは使用時に装弾数を1つ回復させ、{4}。通常攻撃をする毎にこのスキルの{5}し（建物には無効）、当たった対象がミニオン以外の場合は", AR, "と", MR, "の増加時間が更新される。")
                 .variable(1, Dash)
-                .variable(2, AR, 10, 5)
-                .variable(3, MR, 10, 5)
+                .variable(2, AR, 5, 2.5)
+                .variable(3, MR, 5, 2.5)
                 .variable(4, ResetAATimer)
                 .variable(5, CDDecrease, 0.5)
                 .mana(40)
@@ -2738,14 +2738,13 @@ public interface SkillDefinition {
                 .cd(12)
                 .range(1280);
 
-        R.update(P619)
-                .active("指定地点を砲撃し、0.6秒後に{1}の敵ユニットに{2}を与える。", Health, "が50%以下の敵には{3}を与え、25%以下の敵には{4}を与える。2秒間そのユニットの{5}。このスキルを使うたびにスタックが増加し、1スタックにつきこのスキルの消費マナが50ずつ増加していく。スタックは10秒間持続し最大10。")
+        R.update(P621)
+                .active("指定地点を砲撃し、0.6秒後に{1}の敵ユニットに{2}を与える。敵の", Health, "が40%に近づくにつれ与えるダメージが最大50%増加し、40%以下の敵には{4}を与える。2秒間そのユニットの{5}。このスキルを使うたびにスタックが増加し、1スタックにつきこのスキルの消費マナが50ずつ増加していく。スタックは10秒間持続し最大10。")
                 .variable(1, Radius, 200)
                 .variable(2, MagicDamage, 70, 40, ap(0.25), bounusAD(0.65))
-                .variable(3, MagicDamage, 140, 80, ap(0.5), bounusAD(1.3))
-                .variable(4, MagicDamage, 210, 120, ap(0.75), bounusAD(1.95))
+                .variable(4, MagicDamage, 140, 80, ap(0.5), bounusAD(1.3))
                 .variable(5, Visionable)
-                .cost(Mana, new Diff(50, 0, 1), amplify(Stack, 50))
+                .cost(Mana, new Diff(40, 0, 1), amplify(Stack, 40))
                 .cd(2, -0.5)
                 .range(1200, 300);
     }
@@ -3480,12 +3479,14 @@ public interface SkillDefinition {
                 .cd(12)
                 .range(650);
 
-        R.update(P509)
-                .active("15秒間{1}を得て{3}し、自身の周りに砂嵐を発生させ{5}の敵ユニットに毎秒{2}を与える。このスキルで与えたダメージの6.375%を自身の攻撃力に加える。毎秒ダメージの上限は240、増加攻撃力の上限は300。")
+        R.update(P621)
+                .active("15秒間{1}、{6}、{7}、{3}し、自身の周りに砂嵐を発生させ{5}の敵ユニットに毎秒{2}を与える（上限は240）。")
                 .variable(1, Health, 300, 150)
                 .variable(2, MagicDamage, amplify(TargetMaxHealthRatio, 3, 1, ap(0.01)))
                 .variable(3, Range, 50)
                 .variable(5, Radius, 350)
+                .variable(6, AR, 15, 20, amplify(Duration, 1, 1))
+                .variable(7, MR, 15, 20, amplify(Duration, 1, 1))
                 .mana(100)
                 .cd(120);
     }
@@ -3563,14 +3564,14 @@ public interface SkillDefinition {
         W.update(P515)
                 .active("指定地点に罠を仕掛け、0.5秒間{1}の{2}。敵ユニットが罠を踏むと発動し、対象の敵ユニットとその周囲の敵ユニットに4秒かけて{3}を与え、{2}。罠は2分間持続する。")
                 .variable(1, Radius, 400)
-                .variable(3, MagicDamage, 40, 40, ap(0.2))
+                .variable(3, MagicDamage, 25, 20, ap(0.275), amplify(TargetMissingHealthRatio, 1))
                 .variable(2, Visionable)
                 .variable(5, Time, 12)
                 .mana(40, 5)
                 .cd(13, -1)
                 .range(900);
 
-        E.update(P514)
+        E.update(P621)
                 .active("対象の味方チャンピオンは{1}し、7秒間{2}する。")
                 .variable(1, RestoreHealth, 45, 40, ap(0.5))
                 .variable(2, ASRatio, 20, 10)
@@ -3595,28 +3596,28 @@ public interface SkillDefinition {
                 .variable(6, IgnoreUnitCollision)
                 .variable(7, Range, -400);
 
-        Q.update(P514)
+        Q.update(P621)
                 .active("次の通常攻撃は{1}し、{2}を与える。この攻撃は対象の失っている", Health, "に応じて増加し、最大で{3}を与える。対象がHuntedを付与されていた場合、ダメージが33%上昇し、最大で{4}を与える。")
                 .variable(1, Range, 75)
                 .variable(2, MagicDamage, new PerReferedSkillLevel(R, new double[] {4, 16, 50, 90}), ad(0.75), ap(0.36))
                 .variable(3, MagicDamage, new PerReferedSkillLevel(R, new double[] {10, 50, 125, 225}), ad(1.875), ap(0.9))
                 .variable(4, MagicDamage, new PerReferedSkillLevel(R, new double[] {13, 67, 167, 300}), ad(2.5), ap(1.2))
-                .cd(5);
+                .cd(6);
 
-        W.update(P514)
+        W.update(P621)
                 .active("前方に{4}して着地地点{2}の敵ユニットに{1}を与える。ユニットを倒すとこのスキルのCDが{3}になるまで減少する。対象付近にHuntedを付与された敵がいた場合、飛距離が750となってその対象めがけて跳躍するようになり、このスキルのCDが{3}になるまで減少する。この効果は初撃のみ発動する。")
                 .variable(1, MagicDamage, new Refer(R, 50, 50), ap(0.3), null)
                 .variable(2, Radius, 75)
                 .variable(3, CDRAwareTime, 1.5)
                 .variable(4, Dash, 375)
-                .cd(5)
+                .cd(6)
                 .range(375);
 
-        E.update(P514)
+        E.update(P621)
                 .active("前方扇形180°{2}の敵ユニットに{1}を与える。")
                 .variable(1, MagicDamage, new Refer(R, 70, 60), ap(0.45), null)
                 .variable(2, Radius, 300)
-                .cd(5);
+                .cd(6);
 
         R.update(P514).active("Humanに変身する。射程が525になる。{1}。").variable(1, NotSpellCast).cd(3);
     }
@@ -3677,12 +3678,12 @@ public interface SkillDefinition {
     public static void Nunu(Champion champion, Skill P, Skill Q, Skill W, Skill E, Skill R) {
         P.update(P620).passive("通常攻撃を行うたびにスタックが増加する(最大5スタック)。5スタックの状態でスキルを使用すると、スタックを消費してスキルの消費マナが0になる。");
 
-        Q.update(P620)
+        Q.update(P621)
                 .active("対象の敵ミニオンかペット及びモンスターに{1}を与え、{2}する。大型モンスターに使用した場合に満腹スタッックを1得る（最大5スタック）。1スタックごとに、{{4}し{5}する。また非戦闘時に{3}する。")
                 .variable(1, TrueDamage, 400, 150)
                 .variable(2, RestoreHealth, 70, 45, ap(0.75))
                 .variable(3, MS, 10)
-                .variable(4, HealthRatio, 3)
+                .variable(4, HealthRatio, 2)
                 .variable(5, BodySizeRatio, 3)
                 .cd(12, -1)
                 .mana(60)
