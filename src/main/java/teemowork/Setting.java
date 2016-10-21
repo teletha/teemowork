@@ -9,7 +9,10 @@
  */
 package teemowork;
 
+import java.util.List;
 import java.util.Locale;
+
+import javafx.beans.property.Property;
 
 import jsx.style.Style;
 import jsx.style.StyleDSL;
@@ -48,28 +51,30 @@ public class Setting extends Widget<Styles> {
     });
 
     /** The configuration item. */
-    private final RadioBox championEnglish = UI.radiobox(preference.localeChampion, Locale.ENGLISH, "英語").style($.SettingBox);
+    private final List<RadioBox<Locale>> localeChampion = createSelectUI(preference.localeChampion);
 
     /** The configuration item. */
-    private final RadioBox championJapanease = UI.radiobox(preference.localeChampion, Locale.JAPANESE, "日本語").style($.SettingBox);
+    private final List<RadioBox<Locale>> localeSkill = createSelectUI(preference.localeSkill);
 
     /** The configuration item. */
-    private final RadioBox skillEnglish = UI.radiobox(preference.localeSkill, Locale.ENGLISH, "英語").style($.SettingBox);
+    private final List<RadioBox<Locale>> localeItem = createSelectUI(preference.localeItem);
 
     /** The configuration item. */
-    private final RadioBox skillJapanease = UI.radiobox(preference.localeSkill, Locale.JAPANESE, "日本語").style($.SettingBox);
+    private final List<RadioBox<Locale>> localeStatus = createSelectUI(preference.localeStatus);
 
-    /** The configuration item. */
-    private final RadioBox itemEnglish = UI.radiobox(preference.localeItem, Locale.ENGLISH, "英語").style($.SettingBox);
-
-    /** The configuration item. */
-    private final RadioBox itemJapanease = UI.radiobox(preference.localeItem, Locale.JAPANESE, "日本語").style($.SettingBox);
-
-    /** The configuration item. */
-    private final RadioBox statusEnglish = UI.radiobox(preference.localeStatus, Locale.ENGLISH, "英語").style($.SettingBox);
-
-    /** The configuration item. */
-    private final RadioBox statusJapanease = UI.radiobox(preference.localeStatus, Locale.JAPANESE, "日本語").style($.SettingBox);
+    /**
+     * <p>
+     * Build select UI.
+     * </p>
+     * 
+     * @param property
+     * @return
+     */
+    private List<RadioBox<Locale>> createSelectUI(Property<Locale> property) {
+        return Events.from(UserPreference.AvailableLocales)
+                .map(e -> UI.radiobox(property, e, e == Locale.ENGLISH ? "英語" : "日本語").style($.SettingBox))
+                .toList();
+    }
 
     /**
      * {@inheritDoc}
@@ -95,19 +100,19 @@ public class Setting extends Widget<Styles> {
                 text($.CategoryName, "表記言語");
                 box($.Item, () -> {
                     text($.ItemName, "チャンピオン名");
-                    box(championEnglish, championJapanease);
+                    box(localeChampion);;
                 });
                 box($.Item, () -> {
                     text($.ItemName, "スキル名");
-                    box(skillEnglish, skillJapanease);
+                    box(localeSkill);
                 });
                 box($.Item, () -> {
                     text($.ItemName, "アイテム名");
-                    box(itemEnglish, itemJapanease);
+                    box(localeItem);
                 });
                 box($.Item, () -> {
                     text($.ItemName, "ステータス名");
-                    box(statusEnglish, statusJapanease);
+                    box(localeStatus);
                 });
             }
         };

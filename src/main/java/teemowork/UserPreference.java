@@ -26,6 +26,9 @@ import teemowork.model.Region;
 @Manageable(lifestyle = Preference.class)
 public class UserPreference {
 
+    /** The available locales. */
+    public static final Locale[] AvailableLocales = {Locale.ENGLISH, Locale.JAPANESE};
+
     /** The user. */
     public final Property<Region> region = new SimpleObjectProperty(Region.NA);
 
