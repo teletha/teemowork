@@ -3227,9 +3227,10 @@ public interface SkillDefinition {
                 .range(600);
 
         W.update(P524)
-                .active("4秒間詠唱し、毎秒{1}する。この効果は自分の体力欠損分1％ごとに1％増加する。詠唱中は{2}する（タワーに対しては効果半減）。")
+                .active("4秒間詠唱し、毎秒{1}する。この効果は自分の体力欠損分1％ごとに1％増加する。詠唱中は{2}する（タワーに対しては効果半減）。{3}。")
                 .variable(1, RestoreHealth, 30, 20, ap(0.15))
                 .variable(2, DamageReductionRatio, 50, 5)
+                .variable(3, ResetAATimer)
                 .cd(35)
                 .mana(50)
                 .type(SkillType.Channel);
