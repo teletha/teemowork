@@ -9,7 +9,6 @@
  */
 package teemowork;
 
-import java.util.List;
 import java.util.Locale;
 
 import javafx.beans.property.Property;
@@ -20,7 +19,6 @@ import jsx.ui.StructureDSL;
 import jsx.ui.Widget;
 import jsx.ui.piece.Button;
 import jsx.ui.piece.Input;
-import jsx.ui.piece.RadioBox;
 import jsx.ui.piece.Select;
 import jsx.ui.piece.UI;
 import kiss.Events;
@@ -30,7 +28,7 @@ import teemowork.api.GameAPI;
 import teemowork.model.Region;
 
 /**
- * @version 2015/10/20 16:52:02
+ * @version 2016/10/22 10:41:08
  */
 public class Setting extends Widget<Styles> {
 
@@ -51,29 +49,24 @@ public class Setting extends Widget<Styles> {
     });
 
     /** The configuration item. */
-    private final List<RadioBox<Locale>> localeChampion = createSelectUI(preference.localeChampion);
+    private final Select<Locale> localeChampion = createSelectUI(preference.localeChampion);
 
     /** The configuration item. */
-    private final List<RadioBox<Locale>> localeSkill = createSelectUI(preference.localeSkill);
+    private final Select<Locale> localeSkill = createSelectUI(preference.localeSkill);
 
     /** The configuration item. */
-    private final List<RadioBox<Locale>> localeItem = createSelectUI(preference.localeItem);
+    private final Select<Locale> localeItem = createSelectUI(preference.localeItem);
 
     /** The configuration item. */
-    private final List<RadioBox<Locale>> localeStatus = createSelectUI(preference.localeStatus);
+    private final Select<Locale> localeStatus = createSelectUI(preference.localeStatus);
 
     /**
      * <p>
      * Build select UI.
      * </p>
-     * 
-     * @param property
-     * @return
      */
-    private List<RadioBox<Locale>> createSelectUI(Property<Locale> property) {
-        return Events.from(UserPreference.AvailableLocales)
-                .map(e -> UI.radiobox(property, e, e == Locale.ENGLISH ? "英語" : "日本語").style($.SettingBox))
-                .toList();
+    private Select<Locale> createSelectUI(Property<Locale> property) {
+        return UI.select(UserPreference.AvailableLocales, property).label(value -> value == Locale.ENGLISH ? "英語" : "日本語");
     }
 
     /**
@@ -140,11 +133,7 @@ public class Setting extends Widget<Styles> {
         };
 
         Style ItemName = () -> {
-            display.block().width(10, em);
-        };
-
-        Style SettingBox = () -> {
-            margin.right(2, em);
+            display.width(10, em).flex().alignItems.center();
         };
     }
 }
