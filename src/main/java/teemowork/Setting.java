@@ -11,8 +11,6 @@ package teemowork;
 
 import java.util.Locale;
 
-import javafx.beans.property.Property;
-
 import jsx.style.Style;
 import jsx.style.StyleDSL;
 import jsx.ui.StructureDSL;
@@ -23,6 +21,7 @@ import jsx.ui.piece.Select;
 import jsx.ui.piece.UI;
 import kiss.Events;
 import kiss.I;
+import kiss.Variable;
 import teemowork.Setting.Styles;
 import teemowork.api.GameAPI;
 import teemowork.model.Region;
@@ -65,8 +64,8 @@ public class Setting extends Widget<Styles> {
      * Build select UI.
      * </p>
      */
-    private Select<Locale> createSelectUI(Property<Locale> property) {
-        return UI.select(UserPreference.AvailableLocales, property).label(value -> value == Locale.ENGLISH ? "英語" : "日本語");
+    private Select<Locale> createSelectUI(Variable<Locale> variable) {
+        return UI.select(UserPreference.AvailableLocales, variable).label(value -> value == Locale.ENGLISH ? "英語" : "日本語");
     }
 
     /**

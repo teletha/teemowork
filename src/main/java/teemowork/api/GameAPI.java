@@ -43,7 +43,7 @@ public class GameAPI {
      * @return
      */
     public static Events<RiotUser> user() {
-        return parse(RiotUser.class, "/api/lol/" + preference.region.getValue().code + "/v1.4/summoner/by-name/" + preference.name
+        return parse(RiotUser.class, "/api/lol/" + preference.region.get().code + "/v1.4/summoner/by-name/" + preference.name
                 .get(), true, true);
     }
 
@@ -57,7 +57,7 @@ public class GameAPI {
      */
     public static Events<RecentGamesDto> recent(RiotUser user) {
         return parse(RecentGamesDto.class, "/api/lol/" + preference.region
-                .getValue().code + "/v1.3/game/by-summoner/" + user.id + "/recent", false, false);
+                .get().code + "/v1.3/game/by-summoner/" + user.id + "/recent", false, false);
     }
 
     /**
@@ -70,7 +70,7 @@ public class GameAPI {
      */
     public static Events<RiotMatchHistory> matchList(RiotUser user) {
         return parse(RiotMatchHistory.class, "/api/lol/" + preference.region
-                .getValue().code + "/v2.2/matchlist/by-summoner/" + user.id, true, false);
+                .get().code + "/v2.2/matchlist/by-summoner/" + user.id, true, false);
     }
 
     /**
@@ -82,7 +82,7 @@ public class GameAPI {
      * @return
      */
     public static Events<RiotMatch> match(GameDto history) {
-        return parse(RiotMatch.class, "/api/lol/" + preference.region.getValue().code + "/v2.2/match/" + history.gameId, true, false);
+        return parse(RiotMatch.class, "/api/lol/" + preference.region.get().code + "/v2.2/match/" + history.gameId, true, false);
     }
 
     /**
@@ -94,7 +94,7 @@ public class GameAPI {
      * @return
      */
     public static Events<RiotMatch> match(MatchHistory history) {
-        return parse(RiotMatch.class, "/api/lol/" + preference.region.getValue().code + "/v2.2/match/" + history.matchId, true, false);
+        return parse(RiotMatch.class, "/api/lol/" + preference.region.get().code + "/v2.2/match/" + history.matchId, true, false);
     }
 
     /**
@@ -117,7 +117,7 @@ public class GameAPI {
         return Events.from(uri).interval(2000, TimeUnit.MILLISECONDS, GameAPI.class).flatMap(url -> {
             return new Events<M>(observer -> {
                 NativeXMLHttpRequest request = new NativeXMLHttpRequest();
-                request.open("GET", "https://" + preference.region.getValue().code + ".api.pvp.net/" + uri + "?api_key=" + API_KEY);
+                request.open("GET", "https://" + preference.region.get().code + ".api.pvp.net/" + uri + "?api_key=" + API_KEY);
                 request.send();
                 request.addEventListener("load", new NativeFunction(() -> {
                     String text = request.responseText();

@@ -14,8 +14,6 @@ import static teemowork.model.Status.*;
 import java.util.Comparator;
 
 import javafx.beans.property.ListProperty;
-import javafx.beans.property.Property;
-import javafx.beans.property.SimpleObjectProperty;
 
 import jsx.style.Style;
 import jsx.style.StyleDSL;
@@ -27,6 +25,7 @@ import jsx.ui.Widget;
 import jsx.ui.piece.Select;
 import jsx.ui.piece.UI;
 import kiss.I;
+import kiss.Variable;
 import teemowork.ChampionComparing.Styles;
 import teemowork.model.Build;
 import teemowork.model.Champion;
@@ -43,7 +42,7 @@ public class ChampionComparing extends Widget<Styles> {
     private static final Status[] STATUS = {Health, Hreg, Mana, Mreg, AD, AS, AR, MR, MS, Range};
 
     /** The filter. */
-    private Property<ChampionGroup> group = new SimpleObjectProperty(ChampionGroup.ALL);
+    private Variable<ChampionGroup> group = Variable.of(ChampionGroup.ALL);
 
     /** The sort order. */
     private ListProperty<Header> order = I.make(ListProperty.class);
@@ -88,7 +87,7 @@ public class ChampionComparing extends Widget<Styles> {
                     });
 
                     box($.Body, () -> {
-                        box($.VBox, contents(group.getValue().sortBy(comparator), build -> {
+                        box($.VBox, contents(group.v.sortBy(comparator), build -> {
                             box($.RowLine, () -> {
                                 ChampionStatus championStatus = build.champion.getStatus(Version.Latest);
                                 build.setLevel(level);

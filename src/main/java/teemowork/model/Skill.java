@@ -69,7 +69,7 @@ public class Skill extends Describable<SkillDescriptor> {
      * @return A name of this skill.
      */
     public String getName() {
-        return preference.localeSkill.getValue() == Locale.ENGLISH ? name : localized;
+        return preference.localeSkill.is(Locale.ENGLISH) ? name : localized;
     }
 
     /**

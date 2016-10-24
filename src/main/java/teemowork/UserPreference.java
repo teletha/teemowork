@@ -11,13 +11,12 @@ package teemowork;
 
 import java.util.Locale;
 
-import javafx.beans.property.Property;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import kiss.Manageable;
 import kiss.Preference;
+import kiss.Variable;
 import teemowork.model.Region;
 
 /**
@@ -30,20 +29,20 @@ public class UserPreference {
     public static final Locale[] AvailableLocales = {Locale.ENGLISH, Locale.JAPANESE};
 
     /** The user. */
-    public final Property<Region> region = new SimpleObjectProperty(Region.NA);
+    public final Variable<Region> region = Variable.of(Region.NA);
 
     /** The user. */
     public final StringProperty name = new SimpleStringProperty();
 
     /** The user language. */
-    public final Property<Locale> localeChampion = new SimpleObjectProperty<>(Locale.ENGLISH);
+    public final Variable<Locale> localeChampion = Variable.of(Locale.ENGLISH);
 
     /** The user language. */
-    public final Property<Locale> localeSkill = new SimpleObjectProperty<>(Locale.ENGLISH);
+    public final Variable<Locale> localeSkill = Variable.of(Locale.ENGLISH);
 
     /** The user language. */
-    public final Property<Locale> localeItem = new SimpleObjectProperty<>(Locale.ENGLISH);
+    public final Variable<Locale> localeItem = Variable.of(Locale.ENGLISH);
 
     /** The user language. */
-    public final Property<Locale> localeStatus = new SimpleObjectProperty<>(Locale.ENGLISH);
+    public final Variable<Locale> localeStatus = Variable.of(Locale.ENGLISH);
 }

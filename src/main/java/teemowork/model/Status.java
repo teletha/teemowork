@@ -456,7 +456,7 @@ public enum Status {
      * @return A status name.
      */
     public String getName() {
-        return I.make(UserPreference.class).localeStatus.getValue() == Locale.ENGLISH ? name : localized;
+        return I.make(UserPreference.class).localeStatus.is(Locale.ENGLISH) ? name : localized;
     }
 
     /**

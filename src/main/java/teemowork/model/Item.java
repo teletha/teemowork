@@ -95,7 +95,7 @@ public class Item extends RiotItemData {
      * @return
      */
     public String getName() {
-        return preference.localeItem.getValue() == Locale.ENGLISH ? name : localized;
+        return preference.localeItem.is(Locale.ENGLISH) ? name : localized;
     }
 
     /**

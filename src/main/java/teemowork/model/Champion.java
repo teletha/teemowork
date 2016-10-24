@@ -153,7 +153,7 @@ public class Champion extends RiotChampionData {
      * @return A champion name.
      */
     public String getName() {
-        return I.make(UserPreference.class).localeChampion.getValue() == Locale.ENGLISH ? name : localized;
+        return I.make(UserPreference.class).localeChampion.is(Locale.ENGLISH) ? name : localized;
     }
 
     /**
