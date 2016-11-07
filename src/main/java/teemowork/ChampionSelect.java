@@ -122,7 +122,7 @@ public class ChampionSelect extends Widget<Styles> {
      * 
      */
     public ChampionSelect(Teemowork application) {
-        when(User.Click).at($.Container, Champion.class).to(name -> application.champion(name));
+        when(User.Click).at($.Container, Champion.class).to(name -> application.router.champion(name));
 
         showSkillFilters.addListener(on -> update());
     }

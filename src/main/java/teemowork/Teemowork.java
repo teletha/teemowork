@@ -15,15 +15,18 @@ import static teemowork.TeemoworkTheme.*;
 import java.util.function.Supplier;
 
 import jsx.application.Application;
+import jsx.application.ApplicationRouter;
 import jsx.application.Route;
 import jsx.ui.Widget;
+import kiss.I;
+import teemowork.Teemowork.Router;
 import teemowork.model.Build;
 import teemowork.model.Champion;
 
 /**
  * @version 2015/10/27 14:10:47
  */
-public class Teemowork extends Application {
+public class Teemowork extends Application<Router> {
 
     /**
      * 
@@ -33,62 +36,69 @@ public class Teemowork extends Application {
         document.contentElement().add(Content);
 
         Navi navi = new Navi();
-        navi.menu("< ^ v ^ > Teemowork", this::champion);
+        navi.menu("< ^ v ^ > Teemowork", router::champion);
         navi.menu("Patch");
-        navi.menu("Champion", this::champion, sub -> {
-            sub.menu("Compare", this::championCompare);
-            sub.menu("Item", this::item);
-            sub.menu("Mastery", this::mastery);
+        navi.menu("Champion", router::champion, sub -> {
+            sub.menu("Compare", router::championCompare);
+            sub.menu("Item", router::item);
+            sub.menu("Mastery", router::mastery);
             sub.menu("Rune");
         });
-        navi.menu("Record", this::record);
+        navi.menu("Record", router::record);
         navi.menu("About");
-        navi.menu("Setting", this::setting);
+        navi.menu("Setting", router::setting);
 
         navi.renderIn(document.headerElement());
     }
 
     /**
-     * {@inheritDoc}
+     * @version 2016/11/06 11:18:15
      */
-    @Override
-    protected Supplier<Widget> defaultWidget() {
-        return this::champion;
-    }
+    public interface Router extends ApplicationRouter {
 
-    @Route
-    public Widget champion() {
-        return new ChampionSelect(this);
-    }
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        default Supplier<Widget> defaultWidget() {
+            return this::champion;
+        }
 
-    @Route
-    public Widget champion(Champion champion) {
-        return new ChampionDetail(new Build(champion));
-    }
+        @Route
+        default Widget champion() {
+            return I.make(ChampionSelect.class);
+        }
 
-    @Route
-    public Widget championCompare() {
-        return new ChampionComparing(this);
-    }
+        @Route
+        default Widget champion(Champion champion) {
+            return new ChampionDetail(new Build(champion));
+        }
 
-    @Route
-    public Widget item() {
-        return new ItemCatalog();
-    }
+        @Route
+        default Widget championCompare() {
+            return I.make(ChampionComparing.class);
+        }
 
-    @Route
-    public Widget mastery() {
-        return new MasteryBuilder();
-    }
+        @Route
+        default Widget item() {
+            return new ItemCatalog();
+        }
 
-    @Route
-    public Widget record() {
-        return new Record();
-    }
+        @Route
+        default Widget mastery() {
+            return new MasteryBuilder();
+        }
 
-    @Route
-    public Widget setting() {
-        return new Setting();
+        @Route
+        default Widget record() {
+            return new Record();
+        }
+
+        @Route
+        default Widget setting() {
+            return new Setting();
+        }
+
     }
 
     /**
