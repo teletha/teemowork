@@ -9,56 +9,39 @@
  */
 package teemowork;
 
-import java.util.function.Supplier;
-
-import jsx.application.Route;
-import jsx.application.Router;
 import jsx.ui.Widget;
-import kiss.I;
 import teemowork.model.Build;
 import teemowork.model.Champion;
 
 /**
  * @version 2016/11/06 11:18:15
  */
-public interface TeemoworkRouter extends Router {
+public interface TeemoworkRouter {
 
-    @Override
-    default Supplier<Widget> defaultWidget() {
-        return this::champion;
-    }
-
-    @Route
     default Widget champion() {
-        return I.make(ChampionSelect.class);
+        return new ChampionSelect(this);
     }
 
-    @Route
     default Widget champion(Champion champion) {
         return new ChampionDetail(new Build(champion));
     }
 
-    @Route
     default Widget championCompare() {
-        return I.make(ChampionComparing.class);
+        return new ChampionComparing(this);
     }
 
-    @Route
     default Widget item() {
         return new ItemCatalog();
     }
 
-    @Route
     default Widget mastery() {
         return new MasteryBuilder();
     }
 
-    @Route
     default Widget record() {
         return new Record();
     }
 
-    @Route
     default Widget setting() {
         return new Setting();
     }

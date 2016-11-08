@@ -12,7 +12,10 @@ package teemowork;
 import static js.lang.Global.*;
 import static teemowork.TeemoworkTheme.*;
 
-import jsx.application.Application;
+import java.util.function.Supplier;
+
+import jsx.Application;
+import jsx.ui.Widget;
 
 /**
  * @version 2016/11/07 14:31:33
@@ -40,6 +43,14 @@ public class Teemowork extends Application<TeemoworkRouter> {
         navi.menu("Setting", router::setting);
 
         navi.renderIn(document.headerElement());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Supplier<Widget> defaultWidget() {
+        return router::champion;
     }
 
     /**

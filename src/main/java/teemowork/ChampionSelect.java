@@ -121,8 +121,8 @@ public class ChampionSelect extends Widget<Styles> {
     /**
      * 
      */
-    public ChampionSelect(Teemowork application) {
-        when(User.Click).at($.Container, Champion.class).to(name -> application.router.champion(name));
+    public ChampionSelect(TeemoworkRouter router) {
+        when(User.Click).at($.Container, Champion.class).to(name -> router.champion(name));
 
         showSkillFilters.addListener(on -> update());
     }
@@ -154,6 +154,7 @@ public class ChampionSelect extends Widget<Styles> {
                 }
                 return champion.match(name);
             };
+
             {
                 box($.Root, () -> {
                     box($.Filters, input, () -> {
