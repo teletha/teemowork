@@ -9,21 +9,22 @@
  */
 package teemowork;
 
+import jsx.ApplicationRouter;
 import jsx.ui.Widget;
 import teemowork.model.Build;
 import teemowork.model.Champion;
 
 /**
- * @version 2016/11/06 11:18:15
+ * @version 2016/11/09 11:41:24
  */
-public interface TeemoworkRouter {
+public interface TeemoworkRouter extends ApplicationRouter {
 
     default Widget champion() {
-        return new ChampionSelect(this);
+        return cache(() -> new ChampionSelect(this));
     }
 
     default Widget champion(Champion champion) {
-        return new ChampionDetail(new Build(champion));
+        return cache(() -> new ChampionDetail(new Build(champion)));
     }
 
     default Widget championCompare() {
