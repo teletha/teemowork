@@ -230,6 +230,18 @@ public class ItemDataBuilder {
         case 3672: // Jungle Enchant
         case 3673: // Jungle Enchant
         case 3675: // Jungle Enchant
+        case 3631: // Siegeマップ用アイテムなので除外
+        case 3634: // Siegeマップ用アイテムなので除外
+        case 3635: // Siegeマップ用アイテムなので除外
+        case 3636: // Siegeマップ用アイテムなので除外
+        case 3640: // Siegeマップ用アイテムなので除外
+        case 3641: // Siegeマップ用アイテムなので除外
+        case 3642: // Siegeマップ用アイテムなので除外
+        case 3643: // Siegeマップ用アイテムなので除外
+        case 3647: // Siegeマップ用アイテムなので除外
+        case 3901: // GP用アイテム
+        case 3902: // GP用アイテム
+        case 3903: // GP用アイテム
             return false;
 
         default:

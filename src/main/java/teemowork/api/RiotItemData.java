@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Teemowork Development Team
+ * Copyright (C) 2016 Nameless Production Committee
  *
  * Licensed under the MIT License (the "License");
  * you may not use this file except in compliance with the License.
@@ -9,10 +9,10 @@
  */
 package teemowork.api;
 
-import teemowork.model.Describable;
+import teemowork.model.ItemDescriptor;
 import teemowork.model.Item;
 import teemowork.model.ItemDefinition;
-import teemowork.model.ItemDescriptor;
+import teemowork.model.Describable;
 
 public abstract class RiotItemData extends Describable<ItemDescriptor> {
 
@@ -38,22 +38,22 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item SapphireCrystal = new Item("Sapphire Crystal", "サファイアクリスタル", 1027, 350, 350, 245, null, new int[] {3057, 3070, 3010, 3024, 3073, 3802}, 0, 288, 0, 0, 0, 0.0F, 250, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.SapphireCrystal);
 
     /** Ruby Crystal Definition */
-    public static final Item RubyCrystal = new Item("Ruby Crystal", "ルビークリスタル", 1028, 400, 400, 280, null, new int[] {1011, 3751, 2049, 2045, 3010, 3052, 3044, 3067, 3801, 3211, 3136, 3748}, 0, 336, 0, 0, 150, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.RubyCrystal);
+    public static final Item RubyCrystal = new Item("Ruby Crystal", "ルビークリスタル", 1028, 400, 400, 280, null, new int[] {1011, 3751, 2049, 2045, 3010, 3052, 3044, 3067, 3211, 3801, 3136, 3748}, 0, 336, 0, 0, 150, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.RubyCrystal);
 
     /** Cloth Armor Definition */
-    public static final Item ClothArmor = new Item("Cloth Armor", "クロースアーマー", 1029, 300, 300, 210, null, new int[] {3047, 1031, 3191, 3024, 3082, 3075, 2053}, 0, 384, 0, 0, 0, 0.0F, 0, 0, 15, 0, 0, 0, 0, 0, 0, ItemDefinition.ClothArmor);
+    public static final Item ClothArmor = new Item("Cloth Armor", "クロースアーマー", 1029, 300, 300, 210, null, new int[] {3047, 1031, 3191, 3024, 3082, 3075, 2053, 3105, 3109}, 0, 384, 0, 0, 0, 0.0F, 0, 0, 15, 0, 0, 0, 0, 0, 0, ItemDefinition.ClothArmor);
 
     /** Chain Vest Definition */
     public static final Item ChainVest = new Item("Chain Vest", "チェインベスト", 1031, 500, 800, 560, new int[] {1029}, new int[] {3075, 3068, 3026, 2053, 3742}, 0, 432, 0, 2, 0, 0.0F, 0, 0, 40, 0, 0, 0, 0, 0, 0, ItemDefinition.ChainVest);
 
     /** Null-Magic Mantle Definition */
-    public static final Item NullMagicMantle = new Item("Null-Magic Mantle", "ヌルマジックマント", 1033, 450, 450, 315, null, new int[] {3111, 3211, 1057, 3028, 3140, 3155, 3105}, 0, 0, 48, 0, 0, 0.0F, 0, 0, 0, 0, 25, 0, 0, 0, 0, ItemDefinition.NullMagicMantle);
+    public static final Item NullMagicMantle = new Item("Null-Magic Mantle", "ヌルマジックマント", 1033, 450, 450, 315, null, new int[] {3111, 3211, 1057, 3028, 3140, 3155, 3105, 3190, 3814}, 0, 0, 48, 0, 0, 0.0F, 0, 0, 0, 0, 25, 0, 0, 0, 0, ItemDefinition.NullMagicMantle);
 
     /** Long Sword Definition */
-    public static final Item LongSword = new Item("Long Sword", "ロングソード", 1036, 350, 350, 245, null, new int[] {1053, 3133, 3052, 3123, 3034, 3044, 3053, 3072, 3077, 3122, 3134, 3144, 3155}, 0, 48, 48, 0, 0, 0.0F, 0, 10, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.LongSword);
+    public static final Item LongSword = new Item("Long Sword", "ロングソード", 1036, 350, 350, 245, null, new int[] {1053, 3133, 3052, 3123, 3034, 3044, 3053, 3072, 3077, 3122, 3134, 3144, 3155, 3252}, 0, 48, 48, 0, 0, 0.0F, 0, 10, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.LongSword);
 
     /** Pickaxe Definition */
-    public static final Item Pickaxe = new Item("Pickaxe", "ピッケル", 1037, 875, 875, 613, null, new int[] {3004, 3008, 3031, 3035, 3074, 3124, 3139, 3181, 3812}, 0, 96, 48, 0, 0, 0.0F, 0, 25, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.Pickaxe);
+    public static final Item Pickaxe = new Item("Pickaxe", "ピッケル", 1037, 875, 875, 613, null, new int[] {3004, 3008, 3031, 3035, 3074, 3124, 3139, 3181, 3812, 3814}, 0, 96, 48, 0, 0, 0.0F, 0, 25, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.Pickaxe);
 
     /** B. F. Sword Definition */
     public static final Item BFSword = new Item("B. F. Sword", "B. F. ソード", 1038, 1300, 1300, 910, null, new int[] {3031, 3072, 3147, 3508}, 0, 144, 48, 0, 0, 0.0F, 0, 40, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.BFSword);
@@ -154,9 +154,6 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     /** Corrupting Potion Definition */
     public static final Item CorruptingPotion = new Item("Corrupting Potion", "コラプトポーション", 2033, 350, 500, 200, new int[] {2031}, null, 0, 0, 240, 2, 0, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.CorruptingPotion);
 
-    /** Vision Ward Definition */
-    public static final Item VisionWard = new Item("Vision Ward", "ビジョンワード", 2043, 75, 75, 30, null, null, 0, 48, 240, 0, 0, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.VisionWard);
-
     /** Ruby Sightstone Definition */
     public static final Item RubySightstone = new Item("Ruby Sightstone", "ルビーサイトストーン", 2045, 400, 1600, 640, new int[] {2049, 1028}, null, 0, 96, 240, 3, 500, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.RubySightstone);
 
@@ -165,6 +162,9 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
 
     /** Raptor Cloak Definition */
     public static final Item RaptorCloak = new Item("Raptor Cloak", "ラプタークローク", 2053, 250, 1200, 840, new int[] {1006, 1031}, new int[] {3056, 3069, 3512}, 0, 384, 240, 3, 0, 0.0F, 0, 0, 40, 0, 0, 0, 0, 0, 0, ItemDefinition.RaptorCloak);
+
+    /** Control Ward Definition */
+    public static final Item ControlWard = new Item("Control Ward", "コントロールワード", 2055, 75, 75, 30, null, null, 2, 144, 192, 0, 0, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.ControlWard);
 
     /** Elixir of Iron Definition */
     public static final Item ElixirOfIron = new Item("Elixir Of Iron", "アイアンエリクサー", 2138, 500, 500, 200, null, null, 0, 0, 288, 0, 0, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.ElixirOfIron);
@@ -179,7 +179,7 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item EyeOftheWatchers = new Item("Eye Of the Watchers", "ウォッチャーの瞳", 2301, 550, 2200, 880, new int[] {2049, 3098}, null, 0, 144, 288, 3, 200, 0.0F, 0, 0, 0, 25, 0, 0, 0, 0, 0, ItemDefinition.EyeOftheWatchers);
 
     /** Eye of the Oasis Definition */
-    public static final Item EyeOftheOasis = new Item("Eye Of the Oasis", "オアシスの瞳", 2302, 550, 2200, 880, new int[] {2049, 3096}, null, 0, 192, 288, 3, 200, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.EyeOftheOasis);
+    public static final Item EyeOftheOasis = new Item("Eye Of the Oasis", "オアシスの瞳", 2302, 250, 1900, 760, new int[] {2049, 3096}, null, 0, 192, 288, 3, 200, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.EyeOftheOasis);
 
     /** Eye of the Equinox Definition */
     public static final Item EyeOftheEquinox = new Item("Eye Of the Equinox", "イクイノックスの瞳", 2303, 550, 2200, 880, new int[] {2049, 3097}, null, 0, 240, 288, 3, 500, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.EyeOftheEquinox);
@@ -209,7 +209,7 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item FrozenMallet = new Item("Frozen Mallet", "フローズンマレット", 3022, 900, 3100, 2170, new int[] {3052, 1011}, null, 0, 240, 336, 3, 700, 0.0F, 0, 30, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.FrozenMallet);
 
     /** Glacial Shroud Definition */
-    public static final Item GlacialShroud = new Item("Glacial Shroud", "グレイシャルシュラウド", 3024, 350, 1000, 700, new int[] {1027, 1029}, new int[] {3110, 3025, 3050, 3187}, 0, 288, 336, 2, 0, 0.0F, 250, 0, 25, 0, 0, 0, 0, 0, 0, ItemDefinition.GlacialShroud);
+    public static final Item GlacialShroud = new Item("Glacial Shroud", "グレイシャルシュラウド", 3024, 350, 1000, 700, new int[] {1027, 1029}, new int[] {3110, 3025, 3050, 3060, 3187}, 0, 288, 336, 2, 0, 0.0F, 250, 0, 25, 0, 0, 0, 0, 0, 0, ItemDefinition.GlacialShroud);
 
     /** Iceborn Gauntlet Definition */
     public static final Item IcebornGauntlet = new Item("Iceborn Gauntlet", "アイスボーンガントレット", 3025, 650, 2700, 1890, new int[] {3057, 3024}, null, 0, 336, 336, 3, 0, 0.0F, 500, 0, 65, 0, 0, 0, 0, 0, 0, ItemDefinition.IcebornGauntlet);
@@ -221,7 +221,7 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item RodOfAges = new Item("Rod Of Ages", "ロッド・オブ・エイジス", 3027, 750, 2700, 1890, new int[] {3010, 1026}, null, 0, 432, 336, 3, 300, 0.0F, 300, 0, 0, 60, 0, 0, 0, 0, 0, ItemDefinition.RodOfAges);
 
     /** Chalice of Harmony Definition */
-    public static final Item ChaliceOfHarmony = new Item("Chalice Of Harmony", "調和の聖杯", 3028, 200, 900, 630, new int[] {1004, 1033, 1004}, new int[] {3174, 3222}, 0, 0, 384, 2, 0, 0.0F, 0, 0, 0, 0, 25, 0, 0, 0, 0, ItemDefinition.ChaliceOfHarmony);
+    public static final Item ChaliceOfHarmony = new Item("Chalice Of Harmony", "調和の聖杯", 3028, 100, 800, 560, new int[] {1004, 1033, 1004}, new int[] {3174, 3222}, 0, 0, 384, 2, 0, 0.0F, 0, 0, 0, 0, 25, 0, 0, 0, 0, ItemDefinition.ChaliceOfHarmony);
 
     /** Hextech GLP-800 Definition */
     public static final Item HextechGLP800 = new Item("Hextech GLP-800", "ヘクステック・GLP-800", 3030, 850, 3000, 2100, new int[] {3010, 3145}, null, 0, 96, 384, 3, 300, 0.0F, 400, 0, 0, 80, 0, 0, 0, 0, 0, ItemDefinition.HextechGLP800);
@@ -260,7 +260,7 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item NinjaTabi = new Item("Ninja Tabi", "忍者足袋", 3047, 500, 1100, 770, new int[] {1001, 1029}, new int[] {1318, 1317}, 0, 192, 432, 2, 0, 0.0F, 0, 0, 30, 0, 0, 0, 0, 0, 0, ItemDefinition.NinjaTabi);
 
     /** Zeke's Harbinger Definition */
-    public static final Item ZekesHarbinger = new Item("Zeke's Harbinger", "ジークハービンジャー", 3050, 480, 2350, 1645, new int[] {1052, 3024, 1052}, null, 0, 288, 432, 3, 0, 0.0F, 250, 0, 30, 50, 0, 0, 0, 0, 0, ItemDefinition.ZekesHarbinger);
+    public static final Item ZekesHarbinger = new Item("Zeke's Harbinger", "ジークハービンジャー", 3050, 380, 2250, 1575, new int[] {1052, 3024, 1052}, null, 0, 288, 432, 3, 0, 0.0F, 250, 0, 30, 50, 0, 0, 0, 0, 0, ItemDefinition.ZekesHarbinger);
 
     /** Jaurim's Fist Definition */
     public static final Item JaurimsFist = new Item("Jaurim's Fist", "ジャウリムフィスト", 3052, 450, 1200, 840, new int[] {1036, 1028}, new int[] {3022, 3053, 3104, 3748}, 0, 336, 432, 2, 150, 0.0F, 0, 15, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.JaurimsFist);
@@ -275,19 +275,19 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item Sheen = new Item("Sheen", "シーン", 3057, 700, 1050, 735, new int[] {1027}, new int[] {3078, 3100, 3025}, 1, 0, 0, 2, 0, 0.0F, 250, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.Sheen);
 
     /** Banner of Command Definition */
-    public static final Item BannerOfCommand = new Item("Banner Of Command", "統率の旗", 3060, 600, 3000, 2100, new int[] {3105, 3108}, null, 1, 48, 0, 4, 200, 0.0F, 0, 0, 0, 60, 20, 0, 0, 0, 0, ItemDefinition.BannerOfCommand);
+    public static final Item BannerOfCommand = new Item("Banner Of Command", "統率の旗", 3060, 100, 2200, 1540, new int[] {3105, 3024}, null, 1, 48, 0, 3, 0, 0.0F, 400, 0, 60, 0, 30, 0, 0, 0, 0, ItemDefinition.BannerOfCommand);
 
     /** Spirit Visage Definition */
     public static final Item SpiritVisage = new Item("Spirit Visage", "スピリットビサージュ", 3065, 800, 2800, 1960, new int[] {3211, 3067}, null, 1, 96, 0, 3, 500, 0.0F, 0, 0, 0, 0, 55, 0, 0, 0, 0, ItemDefinition.SpiritVisage);
 
     /** Kindlegem Definition */
-    public static final Item Kindlegem = new Item("Kindlegem", "キンドルジェム", 3067, 400, 800, 560, new int[] {1028}, new int[] {3187, 3190, 3401, 3065, 3056, 3083, 3152}, 1, 144, 0, 2, 200, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.Kindlegem);
+    public static final Item Kindlegem = new Item("Kindlegem", "キンドルジェム", 3067, 400, 800, 560, new int[] {1028}, new int[] {3187, 3401, 3065, 3056, 3083, 3152}, 1, 144, 0, 2, 200, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.Kindlegem);
 
     /** Sunfire Cape Definition */
     public static final Item SunfireCape = new Item("Sunfire Cape", "サンファイア・ケープ", 3068, 1000, 2900, 2030, new int[] {1031, 3751}, null, 1, 192, 0, 3, 500, 0.0F, 0, 0, 50, 0, 0, 0, 0, 0, 0, ItemDefinition.SunfireCape);
 
     /** Talisman of Ascension Definition */
-    public static final Item TalismanOfAscension = new Item("Talisman Of Ascension", "超越のタリスマン", 3069, 450, 2500, 1000, new int[] {3096, 2053}, null, 1, 240, 0, 4, 0, 0.0F, 0, 0, 45, 0, 0, 0, 0, 0, 0, ItemDefinition.TalismanOfAscension);
+    public static final Item TalismanOfAscension = new Item("Talisman Of Ascension", "超越のタリスマン", 3069, 350, 2400, 960, new int[] {3096, 2053}, null, 1, 240, 0, 4, 0, 0.0F, 0, 0, 45, 0, 0, 0, 0, 0, 0, ItemDefinition.TalismanOfAscension);
 
     /** Tear of the Goddess Definition */
     public static final Item TearOftheGoddess = new Item("Tear Of the Goddess", "女神の涙", 3070, 275, 750, 525, new int[] {1027, 1004}, new int[] {3003, 3004}, 1, 288, 0, 2, 0, 0.0F, 250, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.TearOftheGoddess);
@@ -356,13 +356,19 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item BansheesVeil = new Item("Banshee's Veil", "バンシーヴェール", 3102, 530, 2450, 1715, new int[] {3211, 1057}, null, 1, 0, 144, 3, 300, 0.0F, 0, 0, 0, 0, 70, 0, 0, 0, 0, ItemDefinition.BansheesVeil);
 
     /** Aegis of the Legion Definition */
-    public static final Item AegisOftheLegion = new Item("Aegis Of the Legion", "イージスの盾", 3105, 400, 1500, 1050, new int[] {1033, 3801}, new int[] {3190, 3060}, 1, 96, 144, 3, 200, 0.0F, 0, 0, 0, 0, 20, 0, 0, 0, 0, ItemDefinition.AegisOftheLegion);
+    public static final Item AegisOftheLegion = new Item("Aegis Of the Legion", "イージスの盾", 3105, 350, 1100, 770, new int[] {1033, 1029}, new int[] {3190, 3060}, 1, 96, 144, 2, 0, 0.0F, 0, 0, 30, 0, 30, 0, 0, 0, 0, ItemDefinition.AegisOftheLegion);
+
+    /** Redemption Definition */
+    public static final Item Redemption = new Item("Redemption", "リデンプション", 3107, 650, 2100, 1470, new int[] {3114, 3801}, null, 2, 192, 192, 3, 400, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.Redemption);
 
     /** Fiendish Codex Definition */
-    public static final Item FiendishCodex = new Item("Fiendish Codex", "フィンディッシュの古書", 3108, 465, 900, 630, new int[] {1052}, new int[] {3174, 3092, 3115, 3165, 3060, 3001, 3157}, 1, 144, 144, 2, 0, 0.0F, 0, 0, 0, 30, 0, 0, 0, 0, 0, ItemDefinition.FiendishCodex);
+    public static final Item FiendishCodex = new Item("Fiendish Codex", "フィンディッシュの古書", 3108, 465, 900, 630, new int[] {1052}, new int[] {3174, 3092, 3115, 3165, 3001, 3157}, 1, 144, 144, 2, 0, 0.0F, 0, 0, 0, 30, 0, 0, 0, 0, 0, ItemDefinition.FiendishCodex);
+
+    /** Knight's Vow Definition */
+    public static final Item KnightsVow = new Item("Knight's Vow", "騎士の誓い", 3109, 800, 2400, 1680, new int[] {3801, 1029, 3801}, null, 2, 240, 192, 3, 400, 0.0F, 0, 0, 20, 0, 0, 0, 0, 0, 0, ItemDefinition.KnightsVow);
 
     /** Frozen Heart Definition */
-    public static final Item FrozenHeart = new Item("Frozen Heart", "フローズンハート", 3110, 800, 2800, 1960, new int[] {3082, 3024}, null, 1, 192, 144, 3, 0, 0.0F, 400, 0, 90, 0, 0, 0, 0, 0, 0, ItemDefinition.FrozenHeart);
+    public static final Item FrozenHeart = new Item("Frozen Heart", "フローズンハート", 3110, 700, 2700, 1890, new int[] {3082, 3024}, null, 1, 192, 144, 3, 0, 0.0F, 400, 0, 90, 0, 0, 0, 0, 0, 0, ItemDefinition.FrozenHeart);
 
     /** Mercury's Treads Definition */
     public static final Item MercurysTreads = new Item("Mercury's Treads", "マーキュリーブーツ", 3111, 350, 1100, 770, new int[] {1001, 1033}, new int[] {1323, 1322}, 1, 240, 144, 2, 0, 0.0F, 0, 0, 0, 0, 25, 0, 0, 0, 0, ItemDefinition.MercurysTreads);
@@ -371,7 +377,7 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item AetherWisp = new Item("Aether Wisp", "エーテルウィスプ", 3113, 415, 850, 595, new int[] {1052}, new int[] {3290, 1402, 1410, 1414, 3100, 3285, 3504, 3673}, 1, 336, 144, 2, 0, 0.0F, 0, 0, 0, 30, 0, 0, 0, 0, 0, ItemDefinition.AetherWisp);
 
     /** Forbidden Idol Definition */
-    public static final Item ForbiddenIdol = new Item("Forbidden Idol", "フォビドゥンアイドル", 3114, 600, 850, 595, new int[] {1004, 1004}, new int[] {3222, 3504}, 1, 384, 144, 2, 0, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.ForbiddenIdol);
+    public static final Item ForbiddenIdol = new Item("Forbidden Idol", "フォビドゥンアイドル", 3114, 550, 800, 560, new int[] {1004, 1004}, new int[] {3107, 3222, 3504}, 1, 384, 144, 2, 0, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.ForbiddenIdol);
 
     /** Nashor's Tooth Definition */
     public static final Item NashorsTooth = new Item("Nashor's Tooth", "ナッシャー・トゥース", 3115, 1000, 3000, 2100, new int[] {3101, 3108}, null, 1, 432, 144, 3, 0, 0.0F, 0, 0, 0, 80, 0, 50, 0, 0, 0, ItemDefinition.NashorsTooth);
@@ -389,10 +395,10 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item GuinsoosRageblade = new Item("Guinsoo's Rageblade", "グインソー・レイジブレード", 3124, 875, 3600, 2520, new int[] {1026, 1043, 1037}, null, 1, 192, 192, 3, 0, 0.0F, 0, 35, 0, 50, 0, 0, 0, 0, 0, ItemDefinition.GuinsoosRageblade);
 
     /** Caulfield's Warhammer Definition */
-    public static final Item CaulfieldsWarhammer = new Item("Caulfield's Warhammer", "コールフィールド・ウォーハンマー", 3133, 400, 1100, 770, new int[] {1036, 1036}, new int[] {3142, 1400, 1408, 1412, 3071, 3104, 3508, 3671, 3812}, 1, 240, 192, 2, 0, 0.0F, 0, 25, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.CaulfieldsWarhammer);
+    public static final Item CaulfieldsWarhammer = new Item("Caulfield's Warhammer", "コールフィールド・ウォーハンマー", 3133, 400, 1100, 770, new int[] {1036, 1036}, new int[] {3142, 1400, 1408, 1412, 3071, 3104, 3156, 3508, 3671, 3812}, 1, 240, 192, 2, 0, 0.0F, 0, 25, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.CaulfieldsWarhammer);
 
     /** Serrated Dirk Definition */
-    public static final Item SerratedDirk = new Item("Serrated Dirk", "セレイテッドダーク", 3134, 400, 1100, 770, new int[] {1036, 1036}, new int[] {3142, 3147, 3156}, 1, 288, 192, 2, 0, 0.0F, 0, 20, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.SerratedDirk);
+    public static final Item SerratedDirk = new Item("Serrated Dirk", "セレイテッドダーク", 3134, 400, 1100, 770, new int[] {1036, 1036}, new int[] {3142, 3147, 3814}, 1, 288, 192, 2, 0, 0.0F, 0, 25, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.SerratedDirk);
 
     /** Void Staff Definition */
     public static final Item VoidStaff = new Item("Void Staff", "ヴォイドスタッフ", 3135, 1365, 2650, 1855, new int[] {1026, 1052}, null, 1, 336, 192, 2, 0, 0.0F, 0, 0, 0, 80, 0, 0, 0, 0, 0, ItemDefinition.VoidStaff);
@@ -407,7 +413,7 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item QuicksilverSash = new Item("Quicksilver Sash", "シルバーサッシュ", 3140, 850, 1300, 910, new int[] {1033}, new int[] {3139, 3137}, 1, 48, 240, 2, 0, 0.0F, 0, 0, 0, 0, 30, 0, 0, 0, 0, ItemDefinition.QuicksilverSash);
 
     /** Youmuu's Ghostblade Definition */
-    public static final Item YoumuusGhostblade = new Item("Youmuu's Ghostblade", "妖夢の霊剣", 3142, 1000, 3200, 2240, new int[] {3133, 3134}, null, 1, 96, 240, 3, 0, 0.0F, 0, 60, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.YoumuusGhostblade);
+    public static final Item YoumuusGhostblade = new Item("Youmuu's Ghostblade", "妖夢の霊剣", 3142, 700, 2900, 2030, new int[] {3133, 3134}, null, 1, 96, 240, 3, 0, 0.0F, 0, 60, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.YoumuusGhostblade);
 
     /** Randuin's Omen Definition */
     public static final Item RanduinsOmen = new Item("Randuin's Omen", "ランデュイン・オーメン", 3143, 900, 2900, 2030, new int[] {3082, 1011}, null, 1, 144, 240, 3, 500, 0.0F, 0, 0, 60, 0, 0, 0, 0, 0, 0, ItemDefinition.RanduinsOmen);
@@ -422,7 +428,7 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item HextechGunblade = new Item("Hextech Gunblade", "ヘクステック・ガンブレード", 3146, 850, 3400, 2380, new int[] {3144, 3145}, null, 1, 288, 240, 4, 0, 0.0F, 0, 40, 0, 80, 0, 0, 0, 0, 0, ItemDefinition.HextechGunblade);
 
     /** Duskblade of Draktharr Definition */
-    public static final Item DuskbladeOfDraktharr = new Item("Duskblade Of Draktharr", "ドラクサー・ダスクブレード", 3147, 850, 3250, 2275, new int[] {3134, 1038}, null, 1, 336, 240, 3, 0, 0.0F, 0, 75, 0, 0, 0, 0, 5, 0, 0, ItemDefinition.DuskbladeOfDraktharr);
+    public static final Item DuskbladeOfDraktharr = new Item("Duskblade Of Draktharr", "ドラクサー・ダスクブレード", 3147, 850, 3250, 2275, new int[] {3134, 1038}, null, 1, 336, 240, 3, 0, 0.0F, 0, 65, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.DuskbladeOfDraktharr);
 
     /** Liandry's Torment Definition */
     public static final Item LiandrysTorment = new Item("Liandry's Torment", "ライアンドリーの仮面", 3151, 750, 3200, 2240, new int[] {3136, 1026}, null, 1, 384, 240, 3, 300, 0.0F, 0, 0, 0, 80, 0, 0, 0, 0, 0, ItemDefinition.LiandrysTorment);
@@ -437,7 +443,7 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item Hexdrinker = new Item("Hexdrinker", "ヘクスドリンカー", 3155, 500, 1300, 910, new int[] {1036, 1033}, new int[] {3156}, 1, 96, 288, 2, 0, 0.0F, 0, 20, 0, 0, 35, 0, 0, 0, 0, ItemDefinition.Hexdrinker);
 
     /** Maw of Malmortius Definition */
-    public static final Item MawOfMalmortius = new Item("Maw Of Malmortius", "マルモティウスの胃袋", 3156, 850, 3250, 2275, new int[] {3155, 3134}, null, 1, 144, 288, 3, 0, 0.0F, 0, 55, 0, 0, 40, 0, 0, 0, 0, ItemDefinition.MawOfMalmortius);
+    public static final Item MawOfMalmortius = new Item("Maw Of Malmortius", "マルモティウスの胃袋", 3156, 850, 3250, 2275, new int[] {3155, 3133}, null, 1, 144, 288, 3, 0, 0.0F, 0, 50, 0, 0, 45, 0, 0, 0, 0, ItemDefinition.MawOfMalmortius);
 
     /** Zhonya's Hourglass Definition */
     public static final Item ZhonyasHourglass = new Item("Zhonya's Hourglass", "ゾーニャの砂時計", 3157, 800, 2900, 2030, new int[] {3191, 3108}, null, 1, 192, 288, 3, 0, 0.0F, 0, 0, 45, 70, 0, 0, 0, 0, 0, ItemDefinition.ZhonyasHourglass);
@@ -449,10 +455,10 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item Morellonomicon = new Item("Morellonomicon", "モレロノミコン", 3165, 665, 2900, 2030, new int[] {3108, 1052, 3802}, null, 1, 288, 288, 3, 0, 0.0F, 400, 0, 0, 100, 0, 0, 0, 0, 0, ItemDefinition.Morellonomicon);
 
     /** Athene's Unholy Grail Definition */
-    public static final Item AthenesUnholyGrail = new Item("Athene's Unholy Grail", "アテネの血杯", 3174, 450, 2250, 1575, new int[] {3108, 3028}, null, 1, 384, 288, 3, 0, 0.0F, 0, 0, 0, 40, 25, 0, 0, 0, 0, ItemDefinition.AthenesUnholyGrail);
+    public static final Item AthenesUnholyGrail = new Item("Athene's Unholy Grail", "アテネの血杯", 3174, 400, 2100, 1470, new int[] {3108, 3028}, null, 1, 384, 288, 3, 0, 0.0F, 0, 0, 0, 40, 25, 0, 0, 0, 0, ItemDefinition.AthenesUnholyGrail);
 
     /** Locket of the Iron Solari Definition */
-    public static final Item LocketOftheIronSolari = new Item("Locket Of the Iron Solari", "ソラリのロケット", 3190, 200, 2500, 1750, new int[] {3105, 3067}, null, 1, 192, 336, 4, 400, 0.0F, 0, 0, 0, 0, 20, 0, 0, 0, 0, ItemDefinition.LocketOftheIronSolari);
+    public static final Item LocketOftheIronSolari = new Item("Locket Of the Iron Solari", "ソラリのロケット", 3190, 650, 2200, 1540, new int[] {3105, 1033}, null, 1, 192, 336, 3, 0, 0.0F, 0, 0, 30, 0, 60, 0, 0, 0, 0, ItemDefinition.LocketOftheIronSolari);
 
     /** Seeker's Armguard Definition */
     public static final Item SeekersArmguard = new Item("Seeker's Armguard", "シーカー・アームガード", 3191, 165, 1200, 840, new int[] {1029, 1052, 1029}, new int[] {3090, 3157, 3170}, 1, 240, 336, 2, 0, 0.0F, 0, 0, 30, 20, 0, 0, 0, 0, 0, ItemDefinition.SeekersArmguard);
@@ -473,7 +479,10 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item SpectresCowl = new Item("Spectre's Cowl", "スペクターカウル", 3211, 350, 1200, 840, new int[] {1028, 1033}, new int[] {3065, 3102}, 1, 0, 384, 2, 250, 0.0F, 0, 0, 0, 0, 30, 0, 0, 0, 0, ItemDefinition.SpectresCowl);
 
     /** Mikael's Crucible Definition */
-    public static final Item MikaelsCrucible = new Item("Mikael's Crucible", "ミカエルのるつぼ", 3222, 650, 2400, 1680, new int[] {3028, 3114}, null, 1, 48, 384, 3, 0, 0.0F, 0, 0, 0, 0, 35, 0, 0, 0, 0, ItemDefinition.MikaelsCrucible);
+    public static final Item MikaelsCrucible = new Item("Mikael's Crucible", "ミカエルのるつぼ", 3222, 500, 2100, 1470, new int[] {3028, 3114}, null, 1, 48, 384, 3, 0, 0.0F, 0, 0, 0, 0, 35, 0, 0, 0, 0, ItemDefinition.MikaelsCrucible);
+
+    /** Poacher's Dirk Definition */
+    public static final Item PoachersDirk = new Item("Poacher's Dirk", "ポーチャーダーク", 3252, 400, 750, 525, new int[] {1036}, null, 2, 288, 192, 2, 0, 0.0F, 0, 15, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.PoachersDirk);
 
     /** Luden's Echo Definition */
     public static final Item LudensEcho = new Item("Luden's Echo", "ルーデンエコー", 3285, 1100, 3200, 2240, new int[] {1058, 3113}, null, 1, 96, 384, 3, 0, 0.0F, 0, 0, 0, 100, 0, 0, 10, 0, 0, ItemDefinition.LudensEcho);
@@ -491,7 +500,7 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item FaceOftheMountain = new Item("Face Of the Mountain", "フェイス・オブ・マウンテン", 3401, 550, 2200, 880, new int[] {3097, 3067}, null, 1, 192, 432, 3, 450, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.FaceOftheMountain);
 
     /** Ardent Censer Definition */
-    public static final Item ArdentCenser = new Item("Ardent Censer", "アーデントセンサー", 3504, 700, 2400, 1680, new int[] {3114, 3113}, null, 2, 96, 0, 3, 0, 0.0F, 0, 0, 0, 60, 0, 0, 0, 0, 0, ItemDefinition.ArdentCenser);
+    public static final Item ArdentCenser = new Item("Ardent Censer", "アーデントセンサー", 3504, 650, 2300, 1610, new int[] {3114, 3113}, null, 2, 96, 0, 3, 0, 0.0F, 0, 0, 0, 60, 0, 0, 0, 0, 0, ItemDefinition.ArdentCenser);
 
     /** Essence Reaver Definition */
     public static final Item EssenceReaver = new Item("Essence Reaver", "エッセンスリーバー", 3508, 400, 3600, 2520, new int[] {1038, 3133, 1018}, null, 2, 144, 0, 3, 0, 0.0F, 0, 70, 0, 0, 0, 0, 0, 20, 0, ItemDefinition.EssenceReaver);
@@ -521,11 +530,14 @@ public abstract class RiotItemData extends Describable<ItemDescriptor> {
     public static final Item RighteousGlory = new Item("Righteous Glory", "ライチャスグローリー", 3800, 750, 2500, 1750, new int[] {3010, 3801}, null, 2, 288, 48, 3, 500, 0.0F, 300, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.RighteousGlory);
 
     /** Crystalline Bracer Definition */
-    public static final Item CrystallineBracer = new Item("Crystalline Bracer", "クリスタルブレーサー", 3801, 100, 650, 455, new int[] {1028, 1006}, new int[] {3105, 3083, 3084, 3800}, 2, 336, 48, 2, 200, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.CrystallineBracer);
+    public static final Item CrystallineBracer = new Item("Crystalline Bracer", "クリスタルブレーサー", 3801, 100, 650, 455, new int[] {1028, 1006}, new int[] {3083, 3084, 3107, 3109, 3800}, 2, 336, 48, 2, 200, 0.0F, 0, 0, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.CrystallineBracer);
 
     /** Lost Chapter Definition */
     public static final Item LostChapter = new Item("Lost Chapter", "ロストチャプター", 3802, 115, 900, 630, new int[] {1052, 1027}, new int[] {3165}, 2, 384, 48, 2, 0, 0.0F, 300, 0, 0, 25, 0, 0, 0, 0, 0, ItemDefinition.LostChapter);
 
     /** Death's Dance Definition */
     public static final Item DeathsDance = new Item("Death's Dance", "デスダンス", 3812, 625, 3500, 2450, new int[] {1053, 1037, 3133}, null, 2, 432, 48, 3, 0, 0.0F, 0, 75, 0, 0, 0, 0, 0, 0, 0, ItemDefinition.DeathsDance);
+
+    /** Edge of Night Definition */
+    public static final Item EdgeOfNight = new Item("Edge Of Night", "ナイトエッジ", 3814, 675, 3100, 2170, new int[] {1037, 3134, 1033}, null, 2, 336, 192, 3, 0, 0.0F, 0, 60, 0, 0, 35, 0, 0, 0, 0, ItemDefinition.EdgeOfNight);
 }

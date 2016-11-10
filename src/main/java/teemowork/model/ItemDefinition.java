@@ -190,6 +190,10 @@ public interface ItemDefinition {
     };
 
     /** Item definition */
+    public static Consumer<ItemDescriptor> ControlWard = item -> {
+    };
+
+    /** Item definition */
     public static Consumer<ItemDescriptor> CorruptingPotion = item -> {
         item.add(ability -> {
             ability.ununique()
@@ -274,6 +278,11 @@ public interface ItemDefinition {
                     .variable(2, ItemCD, 120)
                     .variable(3, CDDecrease);
         });
+    };
+
+    /** EdgeOfNight */
+    public static Consumer<ItemDescriptor> EdgeOfNight = item -> {
+
     };
 
     /** Item definition */
@@ -482,24 +491,7 @@ public interface ItemDefinition {
     public static Consumer<ItemDescriptor> HextechGLP800 = item -> {
         item.add("Frost Bolt", ability -> {
             ability.active("指定方向の敵ユニットに{1}を与え、0.5秒かけて減衰する{2}を付与する。")
-                    .variable(1, MagicDamage, new PerLevel(100,
-                            106,
-                            112,
-                            118,
-                            124,
-                            130,
-                            136,
-                            141,
-                            147,
-                            153,
-                            159,
-                            165,
-                            171,
-                            176,
-                            182,
-                            188,
-                            194,
-                            200), ap(0.35))
+                    .variable(1, MagicDamage, new PerLevel(100, 106, 112, 118, 124, 130, 136, 141, 147, 153, 159, 165, 171, 176, 182, 188, 194, 200), ap(0.35))
                     .variable(2, MSSlowRatio, 65);
         });
     };
@@ -508,24 +500,7 @@ public interface ItemDefinition {
     public static Consumer<ItemDescriptor> HextechProtobelt01 = item -> {
         item.cdr(10).add("Fire Bolt", ability -> {
             ability.active("指定方向にダッシュして前方扇状に矢を放ち、当たった敵ユニットに{1}を与える。同一ユニットに複数の矢が当たった場合、2本目以降の矢は20%のダメージになる。このダッシュで地形を通り抜けることはできない。")
-                    .variable(1, MagicDamage, new PerLevel(75,
-                            79,
-                            83,
-                            88,
-                            92,
-                            97,
-                            101,
-                            106,
-                            110,
-                            115,
-                            119,
-                            124,
-                            128,
-                            132,
-                            137,
-                            141,
-                            146,
-                            150), ap(0.35));
+                    .variable(1, MagicDamage, new PerLevel(75, 79, 83, 88, 92, 97, 101, 106, 110, 115, 119, 124, 128, 132, 137, 141, 146, 150), ap(0.35));
         });
     };
 
@@ -590,6 +565,11 @@ public interface ItemDefinition {
         item.add(Ability.Energize).add(ability -> {
             ability.passive("チャージされた通常攻撃は追加{1}を与える。").variable(1, MagicDamage, 40);
         });
+    };
+
+    /** KnightsVow */
+    public static Consumer<ItemDescriptor> KnightsVow = item -> {
+
     };
 
     /** Last Whisper */
@@ -766,6 +746,11 @@ public interface ItemDefinition {
     public static Consumer<ItemDescriptor> Pickaxe = item -> {
     };
 
+    /** PoachersDirk */
+    public static Consumer<ItemDescriptor> PoachersDirk = item -> {
+
+    };
+
     /** The Hex Core */
     public static Consumer<ItemDescriptor> PrototypeHexCore = item -> {
         item.add(ability -> {
@@ -828,6 +813,11 @@ public interface ItemDefinition {
     /** Recurve Bow */
     public static Consumer<ItemDescriptor> RecurveBow = item -> {
         item.add(Ability.BowDamage);
+    };
+
+    /** Redemption */
+    public static Consumer<ItemDescriptor> Redemption = item -> {
+
     };
 
     /** Refillable Potion */
@@ -1121,16 +1111,6 @@ public interface ItemDefinition {
 
     /** Vampiric Scepter */
     public static Consumer<ItemDescriptor> VampiricScepter = item -> {
-    };
-
-    /** Vision Ward */
-    public static Consumer<ItemDescriptor> VisionWard = item -> {
-        item.add(ability -> {
-            ability.ununique()
-                    .active("このアイテムを消費して、ステルスを看破できる視界{1}を持ち耐久値5のオブジェクトを指定地点に設置する。これは永久に持続する。各プレイヤーは1個しか設置出来ず、2個しか携帯出来ない。{2}")
-                    .variable(1, Radius, 1100)
-                    .variable(2, Visionable);
-        });
     };
 
     /** Void Staff */
