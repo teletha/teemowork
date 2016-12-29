@@ -20,12 +20,12 @@ import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
 import jsx.ui.StructureDSL;
 import jsx.ui.Widget;
-import kiss.Events;
 import kiss.I;
 import teemowork.Record.Styles;
 import teemowork.api.GameAPI;
 import teemowork.api.GameAPI.GameDto;
 import teemowork.api.GameAPI.RawStatsDto;
+import teemowork.api.GameAPI.RecentGamesDto;
 import teemowork.model.Champion;
 
 /**
@@ -36,7 +36,7 @@ public class Record extends Widget<Styles> {
     /** The user preference. */
     private final UserPreference preference = I.make(UserPreference.class);
 
-    private final List<GameDto> matches = GameAPI.user().flatMap(GameAPI::recent).flatMap(game -> Events.from(game.games)).toList();
+    private final List<GameDto> matches = GameAPI.user().flatMap(GameAPI::recent).flatIterable(RecentGamesDto::games).toList();
 
     /**
      * {@inheritDoc}

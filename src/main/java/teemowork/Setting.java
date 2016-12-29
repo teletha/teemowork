@@ -19,11 +19,11 @@ import jsx.ui.piece.Button;
 import jsx.ui.piece.Input;
 import jsx.ui.piece.Select;
 import jsx.ui.piece.UI;
-import kiss.Events;
 import kiss.I;
 import kiss.Variable;
 import teemowork.Setting.Styles;
 import teemowork.api.GameAPI;
+import teemowork.api.GameAPI.RiotMatchHistory;
 import teemowork.model.Region;
 
 /**
@@ -42,7 +42,7 @@ public class Setting extends Widget<Styles> {
 
     /** The configuration item. */
     private final Button update = UI.button().label("次回更新可能時刻").disableIf(summerName.invalid).click(() -> {
-        GameAPI.user().flatMap(GameAPI::matchList).flatMap(history -> Events.from(history.matches)).flatMap(GameAPI::match).to(t -> {
+        GameAPI.user().flatMap(GameAPI::matchList).flatIterable(RiotMatchHistory::matches).flatMap(GameAPI::match).to(t -> {
             System.out.println(t);
         });
     });

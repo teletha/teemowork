@@ -169,6 +169,15 @@ public class GameAPI {
 
         /** The match history manager. */
         public List<MatchHistory> matches = new ArrayList<MatchHistory>();
+
+        /**
+         * For method reference.
+         * 
+         * @return
+         */
+        public List<MatchHistory> matches() {
+            return matches;
+        }
     }
 
     /**
@@ -627,6 +636,10 @@ public class GameAPI {
         public List<GameDto> games;
 
         public long summonerId;
+
+        public List<GameDto> games() {
+            return games;
+        }
     }
 
     /**
