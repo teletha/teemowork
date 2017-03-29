@@ -22,7 +22,7 @@ import jsx.style.value.Unit;
 import jsx.ui.StructureDSL;
 import jsx.ui.User;
 import jsx.ui.Widget;
-import kiss.Events;
+import kiss.Signal;
 import teemowork.MasteryBuilder.Styles;
 import teemowork.model.DescriptionView;
 import teemowork.model.Mastery;
@@ -40,9 +40,9 @@ public class MasteryBuilder extends Widget<Styles> {
 
     private final MasterySet masterySet = new MasterySet("");
 
-    private final Events<Mastery> up = when(User.Click).at($.MasteryPane, Mastery.class);
+    private final Signal<Mastery> up = when(User.Click).at($.MasteryPane, Mastery.class);
 
-    private final Events<Mastery> down = when(User.ClickRight).at($.MasteryPane, Mastery.class);
+    private final Signal<Mastery> down = when(User.ClickRight).at($.MasteryPane, Mastery.class);
 
     /**
      * 

@@ -26,8 +26,8 @@ import jsx.ui.StructureDSL;
 import jsx.ui.User;
 import jsx.ui.Widget;
 import jsx.ui.piece.UI;
-import kiss.Events;
 import kiss.I;
+import kiss.Signal;
 import kiss.Ⅱ;
 import teemowork.ChampionDetail.Styles;
 import teemowork.model.Build;
@@ -56,25 +56,24 @@ public class ChampionDetail extends Widget<Styles> {
     private final Build build;
 
     /** Up skill level. */
-    public final Events<Skill> skillUp = when(User.Click).at($.IconBox).sideEffect(updateView);
+    public final Signal<Skill> skillUp = when(User.Click).at($.IconBox).effect(updateView);
 
     /** Down skill level. */
-    public final Events<Skill> skillDown = when(User.ClickRight).at($.IconBox, Skill.class).sideEffect(updateView);
+    public final Signal<Skill> skillDown = when(User.ClickRight).at($.IconBox, Skill.class).effect(updateView);
 
     /** Up champion level. */
-    public final Events<Champion> championLevelUp = when(User.Click, User.MouseWheelUp).at($.ChampionIconBox).sideEffect(updateView);
+    public final Signal<Champion> championLevelUp = when(User.Click, User.MouseWheelUp).at($.ChampionIconBox).effect(updateView);
 
     /** Down champion level. */
-    public final Events<Champion> championLevelDown = when(User.ClickRight, User.MouseWheelDown).at($.ChampionIconBox)
-            .sideEffect(updateView);
+    public final Signal<Champion> championLevelDown = when(User.ClickRight, User.MouseWheelDown).at($.ChampionIconBox).effect(updateView);
 
     /** The item selection. */
-    private final Events<Ⅱ<Integer, Item>> selectItem = UI.modal()
+    private final Signal<Ⅱ<Integer, Item>> selectItem = UI.modal()
             .open(when(User.Click).at($.ItemIconBase, Integer.class))
             .show(ItemCatalog.class)
             .closeWhen(items -> items.selectItem)
             .map(c -> I.pair(c.ⅰ, c.ⅲ))
-            .sideEffect(updateView);
+            .effect(updateView);
 
     /**
      * 

@@ -23,8 +23,8 @@ import jsx.style.value.Numeric;
 import jsx.style.value.Unit;
 import kiss.Decoder;
 import kiss.Encoder;
-import kiss.Events;
 import kiss.I;
+import kiss.Signal;
 import teemowork.UserPreference;
 import teemowork.api.RiotChampionData;
 
@@ -248,7 +248,7 @@ public class Champion extends RiotChampionData {
      * @return
      */
     public static List<Champion> list(Predicate<Champion> filter) {
-        return Events.from(champions).take(filter).toList();
+        return Signal.from(champions).take(filter).toList();
     }
 
     /**

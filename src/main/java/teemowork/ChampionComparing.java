@@ -110,7 +110,7 @@ public class ChampionComparing extends Widget<Styles> {
     /**
      * @version 2015/03/02 10:58:34
      */
-    private class Header extends Widget<Styles>implements Comparator<Build> {
+    private class Header extends Widget<Styles> implements Comparator<Build> {
 
         /** The champion status. */
         private final Status status;
@@ -125,7 +125,7 @@ public class ChampionComparing extends Widget<Styles> {
             this.status = status;
             this.decending = status != null;
 
-            when(User.Click).at($.StatusHeader).sideEffect(updateView).to(v -> {
+            when(User.Click).at($.StatusHeader).effect(updateView).to(v -> {
                 if (order.get(0) == this) {
                     this.decending = !decending;
                 }

@@ -12,8 +12,8 @@ public class Project extends bee.api.Project {
     {
         product("npc", "Teemowork", "1.0");
 
-        require("npc", "booton", "0.1");
-        require("npc", "antibug", "0.3").atTest();
+        require("com.github.teletha", "sinobu", "1.0");
+        require("com.github.teletha", "antibug", "0.3").atTest();
         require("org.glassfish", "javax.json", "1.0.4");
         require("icy.manipulator", "IcyManipulator", "0.1");
 

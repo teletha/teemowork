@@ -17,10 +17,8 @@ import java.util.concurrent.TimeUnit;
 
 import js.lang.NativeFunction;
 import js.lang.NativeXMLHttpRequest;
-import kiss.Events;
 import kiss.I;
-import kiss.Manageable;
-import kiss.Preference;
+import kiss.Signal;
 import teemowork.UserPreference;
 import teemowork.model.Champion;
 
@@ -42,7 +40,7 @@ public class GameAPI {
      * 
      * @return
      */
-    public static Events<RiotUser> user() {
+    public static Signal<RiotUser> user() {
         return parse(RiotUser.class, "/api/lol/" + preference.region.get().code + "/v1.4/summoner/by-name/" + preference.name
                 .get(), true, true);
     }
@@ -55,7 +53,7 @@ public class GameAPI {
      * @param user
      * @return
      */
-    public static Events<RecentGamesDto> recent(RiotUser user) {
+    public static Signal<RecentGamesDto> recent(RiotUser user) {
         return parse(RecentGamesDto.class, "/api/lol/" + preference.region
                 .get().code + "/v1.3/game/by-summoner/" + user.id + "/recent", false, false);
     }
@@ -68,7 +66,7 @@ public class GameAPI {
      * @param user
      * @return
      */
-    public static Events<RiotMatchHistory> matchList(RiotUser user) {
+    public static Signal<RiotMatchHistory> matchList(RiotUser user) {
         return parse(RiotMatchHistory.class, "/api/lol/" + preference.region
                 .get().code + "/v2.2/matchlist/by-summoner/" + user.id, true, false);
     }
@@ -81,7 +79,7 @@ public class GameAPI {
      * @param user
      * @return
      */
-    public static Events<RiotMatch> match(GameDto history) {
+    public static Signal<RiotMatch> match(GameDto history) {
         return parse(RiotMatch.class, "/api/lol/" + preference.region.get().code + "/v2.2/match/" + history.gameId, true, false);
     }
 
@@ -93,7 +91,7 @@ public class GameAPI {
      * @param user
      * @return
      */
-    public static Events<RiotMatch> match(MatchHistory history) {
+    public static Signal<RiotMatch> match(MatchHistory history) {
         return parse(RiotMatch.class, "/api/lol/" + preference.region.get().code + "/v2.2/match/" + history.matchId, true, false);
     }
 
@@ -106,16 +104,16 @@ public class GameAPI {
      * @param uri
      * @return
      */
-    private static <M> Events<M> parse(Class<M> type, String uri, boolean useCache, boolean trim) {
+    private static <M> Signal<M> parse(Class<M> type, String uri, boolean useCache, boolean trim) {
         if (useCache) {
             String cache = localStorage.getItem(uri);
 
             if (cache != null) {
-                return Events.from(I.read(cache, I.make(type)));
+                return Signal.from(I.read(cache, I.make(type)));
             }
         }
-        return Events.from(uri).interval(2000, TimeUnit.MILLISECONDS, GameAPI.class).flatMap(url -> {
-            return new Events<M>(observer -> {
+        return Signal.from(uri).interval(2000, TimeUnit.MILLISECONDS, GameAPI.class).flatMap(url -> {
+            return new Signal<M>((observer, disposer) -> {
                 NativeXMLHttpRequest request = new NativeXMLHttpRequest();
                 request.open("GET", "https://" + preference.region.get().code + ".api.pvp.net/" + uri + "?api_key=" + API_KEY);
                 request.send();
@@ -164,7 +162,6 @@ public class GameAPI {
     /**
      * @version 2015/10/24 9:45:21
      */
-    @Manageable(lifestyle = Preference.class)
     public static class RiotMatchHistory {
 
         /** The match history manager. */

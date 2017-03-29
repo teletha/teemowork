@@ -21,7 +21,7 @@ import jsx.style.value.Color;
 import jsx.ui.StructureDSL;
 import jsx.ui.User;
 import jsx.ui.Widget;
-import kiss.Events;
+import kiss.Signal;
 import teemowork.Navi.Styles;
 
 /**
@@ -33,7 +33,7 @@ public class Navi extends Widget<Styles> {
     private Menu menus = new Menu("", null);
 
     /** The menu selection. */
-    private final Events<Menu> selectMenu = when(User.Click).at($.MenuLink, Menu.class);
+    private final Signal<Menu> selectMenu = when(User.Click).at($.MenuLink, Menu.class);
 
     /**
      * 

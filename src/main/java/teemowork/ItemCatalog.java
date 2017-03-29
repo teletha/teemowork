@@ -29,8 +29,8 @@ import jsx.ui.StructureDSL;
 import jsx.ui.User;
 import jsx.ui.Widget;
 import jsx.ui.piece.UI;
-import kiss.Events;
 import kiss.I;
+import kiss.Signal;
 import teemowork.ItemCatalog.Styles;
 import teemowork.model.Ability;
 import teemowork.model.AbilityDescriptor;
@@ -56,7 +56,7 @@ public class ItemCatalog extends Widget<Styles> {
             new FilterGroup("Other", type(Status.PhysicalDamage), type(Status.MagicDamage), type(Status.TrueDamage), type(Status.Shield, Status.MagicShield, Status.SpellShield), type(Status.MSSlowRatio))};
 
     /** The user select item. */
-    public final Events<Item> selectItem = when(User.Click).at($.Item, Item.class);
+    public final Signal<Item> selectItem = when(User.Click).at($.Item, Item.class);
 
     private final @ModelValue SetProperty<ItemFilter> activeFilters = I.make(SetProperty.class);
 

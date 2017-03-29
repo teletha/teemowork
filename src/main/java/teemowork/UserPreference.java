@@ -14,15 +14,12 @@ import java.util.Locale;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import kiss.Manageable;
-import kiss.Preference;
 import kiss.Variable;
 import teemowork.model.Region;
 
 /**
  * @version 2015/10/19 18:43:13
  */
-@Manageable(lifestyle = Preference.class)
 public class UserPreference {
 
     /** The available locales. */
