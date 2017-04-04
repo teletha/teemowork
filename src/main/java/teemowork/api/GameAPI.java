@@ -109,10 +109,10 @@ public class GameAPI {
             String cache = localStorage.getItem(uri);
 
             if (cache != null) {
-                return Signal.from(I.read(cache, I.make(type)));
+                return I.signal(I.read(cache, I.make(type)));
             }
         }
-        return Signal.from(uri).interval(2000, TimeUnit.MILLISECONDS, GameAPI.class).flatMap(url -> {
+        return I.signal(uri).interval(2000, TimeUnit.MILLISECONDS, GameAPI.class).flatMap(url -> {
             return new Signal<M>((observer, disposer) -> {
                 NativeXMLHttpRequest request = new NativeXMLHttpRequest();
                 request.open("GET", "https://" + preference.region.get().code + ".api.pvp.net/" + uri + "?api_key=" + API_KEY);
