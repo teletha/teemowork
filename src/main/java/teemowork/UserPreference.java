@@ -11,9 +11,6 @@ package teemowork;
 
 import java.util.Locale;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 import kiss.Variable;
 import teemowork.model.Region;
 
@@ -29,7 +26,7 @@ public class UserPreference {
     public final Variable<Region> region = Variable.of(Region.NA);
 
     /** The user. */
-    public final StringProperty name = new SimpleStringProperty();
+    public final Variable<String> name = Variable.empty();
 
     /** The user language. */
     public final Variable<Locale> localeChampion = Variable.of(Locale.ENGLISH);
