@@ -34,7 +34,7 @@ public class Site extends Task {
     public void update() throws Exception {
         Filer.copy(Filer.locate("application.js"), Filer.locate("site.js"));
 
-        XML xml = I.xml(Filer.locate("application.html"));
+        XML xml = I.xml(Filer.locate("application.html").toFile());
 
         for (XML js : xml.find("script[src=\"application.js\"]")) {
             js.attr("src", "site.js");
