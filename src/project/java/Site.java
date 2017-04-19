@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import bee.api.Command;
 import bee.api.Task;
 import booton.util.HTMLWriter;
+import filer.Filer;
 import kiss.I;
 import kiss.XML;
 
@@ -31,15 +32,15 @@ public class Site extends Task {
      */
     @Command("Update application related files.")
     public void update() throws Exception {
-        I.copy(I.locate("application.js"), I.locate("site.js"));
+        Filer.copy(Filer.locate("application.js"), Filer.locate("site.js"));
 
-        XML xml = I.xml(I.locate("application.html"));
+        XML xml = I.xml(Filer.locate("application.html"));
 
         for (XML js : xml.find("script[src=\"application.js\"]")) {
             js.attr("src", "site.js");
         }
 
-        new HTMLWriter(Files.newBufferedWriter(I.locate("index.html"), I.$encoding)).write(xml);
+        new HTMLWriter(Files.newBufferedWriter(Filer.locate("index.html"), I.$encoding)).write(xml);
 
         ui.talk("Update application related files, plz commit these files.");
     }

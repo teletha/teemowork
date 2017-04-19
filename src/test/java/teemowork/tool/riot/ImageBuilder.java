@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
+import filer.Filer;
 import kiss.I;
 import teemowork.model.Item;
 import teemowork.model.MasterySeason4;
@@ -31,7 +32,7 @@ import teemowork.tool.image.EditableImage;
 public class ImageBuilder {
 
     /** The resource root. */
-    private static final Path Resources = I.locate("src/main/resources/teemowork");
+    private static final Path Resources = Filer.locate("src/main/resources/teemowork");
 
     /** The target version. */
     private final Version version;
@@ -49,7 +50,7 @@ public class ImageBuilder {
         this.version = version;
 
         try {
-            temporary = I.locateTemporary();
+            temporary = Filer.locateTemporary();
             Files.createDirectories(temporary);
 
             champions = RiotAPI.champions();
@@ -166,7 +167,7 @@ public class ImageBuilder {
         EditableImage container = new EditableImage();
 
         for (MasterySeason4 mastery : masteries) {
-            EditableImage image = new EditableImage(I.locate(mastery.getIcon()));
+            EditableImage image = new EditableImage(Filer.locate(mastery.getIcon()));
             image.resize(45);
 
             container.concat(image);

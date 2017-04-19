@@ -20,7 +20,7 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import kiss.I;
+import filer.Filer;
 import teemowork.model.Describable;
 import teemowork.model.Item;
 import teemowork.model.ItemDescriptor;
@@ -65,7 +65,7 @@ public class ItemDataBuilder {
             }
         }
         code.write("}");
-        code.writeTo(I.locate("src/main/java"));
+        code.writeTo(Filer.locate("src/main/java"));
     }
 
     /**

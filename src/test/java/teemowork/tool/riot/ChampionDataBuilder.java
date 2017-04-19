@@ -14,7 +14,7 @@ import static teemowork.tool.ClassWriter.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import kiss.I;
+import filer.Filer;
 import teemowork.model.Champion;
 import teemowork.model.SkillDefinition;
 import teemowork.tool.ClassWriter;
@@ -58,7 +58,7 @@ public class ChampionDataBuilder {
             }
         }
         code.write("}");
-        code.writeTo(I.locate("src/main/java"));
+        code.writeTo(Filer.locate("src/main/java"));
     }
 
     /**
