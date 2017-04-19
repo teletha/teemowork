@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SetProperty;
 
 import jsx.style.BinaryStyle;
@@ -67,13 +66,13 @@ public class ChampionSelect extends Widget<Styles> {
     private final Input input = UI.input().placeholder("Champion Name").style($.SearchByName);
 
     /** The view state of filters. */
-    private final @ModelValue BooleanProperty showSkillFilters = when(User.Click).at($.FilterBySkill).toBinary();
+    private final @ModelValue kiss.Variable<Boolean> showSkillFilters = when(User.Click).at($.FilterBySkill).toBinary();
 
     /** The view state of filters. */
-    private final @ModelValue BooleanProperty showChampionFilters = when(User.Click).at($.FilterByChampion).toBinary();
+    private final @ModelValue kiss.Variable<Boolean> showChampionFilters = when(User.Click).at($.FilterByChampion).toBinary();
 
     /** The view state of sorts. */
-    private final @ModelValue BooleanProperty showSkillSorts = when(User.Click).at($.SortBySkill).toBinary();
+    private final @ModelValue kiss.Variable<Boolean> showSkillSorts = when(User.Click).at($.SortBySkill).toBinary();
 
     /** The list of active sorts. */
     private final @ModelValue SetProperty<SkillFilter> activeSorts = I.make(SetProperty.class);
@@ -124,7 +123,7 @@ public class ChampionSelect extends Widget<Styles> {
     public ChampionSelect(TeemoworkRouter router) {
         when(User.Click).at($.Container, Champion.class).to(name -> router.champion(name));
 
-        showSkillFilters.addListener(on -> update());
+        showSkillFilters.observe().to(on -> update());
     }
 
     /**
