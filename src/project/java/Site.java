@@ -9,6 +9,7 @@
  *          http://opensource.org/licenses/mit-license.php
  */
 
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
 import bee.api.Command;
@@ -40,7 +41,7 @@ public class Site extends Task {
             js.attr("src", "site.js");
         }
 
-        new HTMLWriter(Files.newBufferedWriter(Filer.locate("index.html"), I.$encoding)).write(xml);
+        new HTMLWriter(Files.newBufferedWriter(Filer.locate("index.html"), StandardCharsets.UTF_8)).write(xml);
 
         ui.talk("Update application related files, plz commit these files.");
     }

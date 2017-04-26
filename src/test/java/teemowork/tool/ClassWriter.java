@@ -10,6 +10,7 @@
 package teemowork.tool;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -177,7 +178,7 @@ public class ClassWriter {
             copy.insert(importPosition, imports);
 
             Path file = path.resolve(packageName.replace('.', '/')).resolve(className.concat(".java"));
-            byte[] contents = copy.toString().getBytes(I.$encoding);
+            byte[] contents = copy.toString().getBytes(StandardCharsets.UTF_8);
 
             Files.write(file, contents);
         } catch (IOException e) {
