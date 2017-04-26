@@ -13,7 +13,6 @@ import static js.lang.Global.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import js.lang.NativeFunction;
 import js.lang.NativeXMLHttpRequest;
@@ -112,7 +111,7 @@ public class GameAPI {
                 return I.signal(I.read(cache, I.make(type)));
             }
         }
-        return I.signal(uri).interval(2000, TimeUnit.MILLISECONDS, GameAPI.class).flatMap(url -> {
+        return I.signal(uri).flatMap(url -> {
             return new Signal<M>((observer, disposer) -> {
                 NativeXMLHttpRequest request = new NativeXMLHttpRequest();
                 request.open("GET", "https://" + preference.region.get().code + ".api.pvp.net/" + uri + "?api_key=" + API_KEY);
